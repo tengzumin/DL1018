@@ -1,0 +1,301 @@
+{
+  "gate_id": "CONTRACT_CHECK",
+  "status": "PASS",
+  "contract_version": "DL1018_V311_R2E_PAPER_FINAL",
+  "checks": [
+    {
+      "field": "cfg.plant.mass_model",
+      "expected": "distributed_v1",
+      "actual": "distributed_v1",
+      "source": "V311 configuration / S03",
+      "pass": true
+    },
+    {
+      "field": "m0_kg",
+      "expected": 0.695,
+      "actual": 0.695,
+      "source": "S03 default_config.m + S04 controller_parameters.m",
+      "pass": true
+    },
+    {
+      "field": "Plant_dt_s",
+      "expected": 0.001,
+      "actual": 0.001,
+      "source": "V311 configuration / S03",
+      "pass": true
+    },
+    {
+      "field": "duration_s",
+      "expected": 20,
+      "actual": 20,
+      "source": "DL1018 task contract",
+      "pass": true
+    },
+    {
+      "field": "transitions",
+      "expected": 20000,
+      "actual": 20000,
+      "source": "DL1018 task contract",
+      "pass": true
+    },
+    {
+      "field": "J0_kg_m2",
+      "expected": [
+        [
+          0.003257553333333334,
+          -2.168404344971009e-19,
+          0
+        ],
+        [
+          -2.168404344971009e-19,
+          0.0032575533333333334,
+          0
+        ],
+        [
+          0,
+          0,
+          0.006360648333333333
+        ]
+      ],
+      "actual": [
+        [
+          0.003257553333333334,
+          -2.168404344971009e-19,
+          0
+        ],
+        [
+          -2.168404344971009e-19,
+          0.0032575533333333334,
+          0
+        ],
+        [
+          0,
+          0,
+          0.006360648333333333
+        ]
+      ],
+      "source": "S03 + S04 distributed_v1 nominal arm calculation",
+      "pass": true
+    },
+    {
+      "field": "C0",
+      "expected": [
+        [
+          1.7e-06,
+          1.7e-06,
+          1.7e-06,
+          1.7e-06
+        ],
+        [
+          1.803122292025696e-07,
+          1.8031222920256961e-07,
+          -1.803122292025696e-07,
+          -1.8031222920256967e-07
+        ],
+        [
+          -1.8031222920256961e-07,
+          1.803122292025696e-07,
+          1.8031222920256967e-07,
+          -1.8031222920256956e-07
+        ],
+        [
+          3.2e-08,
+          -3.2e-08,
+          3.2e-08,
+          -3.2e-08
+        ]
+      ],
+      "actual": [
+        [
+          1.7e-06,
+          1.7e-06,
+          1.7e-06,
+          1.7e-06
+        ],
+        [
+          1.803122292025696e-07,
+          1.8031222920256961e-07,
+          -1.803122292025696e-07,
+          -1.8031222920256967e-07
+        ],
+        [
+          -1.8031222920256961e-07,
+          1.803122292025696e-07,
+          1.8031222920256967e-07,
+          -1.8031222920256956e-07
+        ],
+        [
+          3.2e-08,
+          -3.2e-08,
+          3.2e-08,
+          -3.2e-08
+        ]
+      ],
+      "source": "S03 + S04 fixed nominal allocation",
+      "pass": true
+    },
+    {
+      "field": "controller_morphology_mode",
+      "expected": "fixed",
+      "actual": "fixed",
+      "source": "S04 controller_parameters.m called with fixed",
+      "pass": true
+    },
+    {
+      "field": "controller_inertia_derivative_mode",
+      "expected": "full",
+      "actual": "full",
+      "source": "V311 configuration",
+      "pass": true
+    },
+    {
+      "field": "command_filter.acceleration_limit_rad_s2",
+      "expected": "[Inf,Inf,6]",
+      "actual": "[Inf,Inf,6]",
+      "source": "S02 R2E_SHARED_FILTER_CONFIG.json",
+      "pass": true
+    },
+    {
+      "field": "position_rbf_centers",
+      "expected": 35,
+      "actual": 35,
+      "source": "S03 default_config.m",
+      "pass": true
+    },
+    {
+      "field": "attitude_rbf_centers",
+      "expected": 81,
+      "actual": 81,
+      "source": "S03 default_config.m",
+      "pass": true
+    },
+    {
+      "field": "position_rbf_gamma_scale",
+      "expected": 5,
+      "actual": 5,
+      "source": "S03/S06 V311 options",
+      "pass": true
+    },
+    {
+      "field": "attitude_rbf_gamma_scale",
+      "expected": 19,
+      "actual": 19,
+      "source": "S03/S06 V311 options",
+      "pass": true
+    },
+    {
+      "field": "source_vs_DL1018_pure_double_fixtures",
+      "expected": "<=1e-10",
+      "actual": "PASS",
+      "source": "source functions vs isolated DL1018 function copies",
+      "pass": true
+    },
+    {
+      "field": "event_schedule",
+      "expected": [
+        1999,
+        1968,
+        0.32
+      ],
+      "actual": [
+        1999,
+        1968,
+        0.32
+      ],
+      "source": "S07 scheduler with phase -0.1 and 100 Hz",
+      "pass": true
+    },
+    {
+      "field": "frozen_position_Head_nonzero_W0_output",
+      "expected": true,
+      "actual": true,
+      "source": "S14/S15 position Head arithmetic",
+      "pass": true
+    },
+    {
+      "field": "frozen_attitude_Head_nonzero_W0_output",
+      "expected": true,
+      "actual": true,
+      "source": "v39 local helper",
+      "pass": true
+    },
+    {
+      "field": "attitude_projection_boundary",
+      "expected": true,
+      "actual": true,
+      "source": "v39 local helper",
+      "pass": true
+    },
+    {
+      "field": "RBF_update_flag_independent_attitude_events",
+      "expected": true,
+      "actual": true,
+      "source": "S10 event mask correction",
+      "pass": true
+    },
+    {
+      "field": "canonical_applied_torque_used_for_attitude_label",
+      "expected": true,
+      "actual": true,
+      "source": "S10/S15 canonical behavior torque",
+      "pass": true
+    },
+    {
+      "field": "H5 event writer round_trip",
+      "expected": true,
+      "actual": true,
+      "source": "DL1018 H5 event writer",
+      "pass": true
+    },
+    {
+      "field": "H5 event-major X29 matrix shape",
+      "expected": [
+        3,
+        29
+      ],
+      "actual": [
+        3,
+        29
+      ],
+      "source": "DL1018 H5 matrix/scalar-column round trip",
+      "pass": true
+    },
+    {
+      "field": "effective_config_and_B_options_have_no_legacy_paths",
+      "expected": true,
+      "actual": true,
+      "source": "DL1018 effective_config.mat and options factory",
+      "pass": true
+    },
+    {
+      "field": "B_options_have_no_legacy_or_new_model_weights",
+      "expected": true,
+      "actual": true,
+      "source": "controller_options_dl1018.m",
+      "pass": true
+    },
+    {
+      "field": "DL1018 MATLAB path isolation",
+      "expected": true,
+      "actual": true,
+      "source": "init_dl1018.m + which -all dependency audit",
+      "pass": true
+    },
+    {
+      "field": "HDF5 X29 event-major cross-language layout",
+      "expected": [
+        3,
+        29
+      ],
+      "actual": [
+        3,
+        29
+      ],
+      "source": "MATLAB writer read by Python h5py against scalar event columns",
+      "pass": true
+    }
+  ],
+  "source_branch": "codex/kan-position-repair-code",
+  "source_commit": "3671d2d212af927abdb6d9149a1b249c372ac55e",
+  "hash_or_manifest_audit_performed": false
+}

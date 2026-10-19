@@ -1,0 +1,154 @@
+{
+  "contract_id": "DL1018_V311_R2E_PAPER_FINAL",
+  "created_date": "2026-10-18",
+  "source": {
+    "repository": "tengzumin/DL1009",
+    "branch": "codex/kan-position-repair-code",
+    "commit": "3671d2d212af927abdb6d9149a1b249c372ac55e",
+    "configuration_origin": "non-training cfg from the pinned run_start record, with the verified R2E shared-filter value applied",
+    "source_worktree_was_dirty": true,
+    "effective_config_mat_was_present_in_source": false
+  },
+  "plant": {
+    "mass_model": "distributed_v1",
+    "mass_kg": 0.695,
+    "gravity_mps2": 9.8,
+    "dt_s": 0.001,
+    "duration_s": 20.0,
+    "transitions": 20000,
+    "state_samples": 20001,
+    "arm_lengths_m": [0.15, 0.15, 0.15, 0.15],
+    "arm_length_range_m": [0.15, 0.25],
+    "arm_angles_rad": [0.7853981633974483, 2.356194490192345, 3.9269908169872414, 5.497787143782138],
+    "arm_root_radius_m": 0.059,
+    "arm_length_definition": "body_origin_to_rotor_center_radial_distance",
+    "component_masses_kg": {
+      "body": 0.13,
+      "battery": 0.145,
+      "arm_each": 0.04,
+      "motor_each": 0.035,
+      "rotor_each": 0.005,
+      "servo_each": 0.025
+    },
+    "position_reference": "instantaneous_total_cog",
+    "internal_morphing_momentum_model": "neglected_quasi_static",
+    "servo_mount_mode": "root_fixed",
+    "kf_N_per_rad_s2": 1.7e-6,
+    "km_Nm_per_rad_s2": 3.2e-8,
+    "motor_speed_range_rad_s": [0.0, 1900.0],
+    "motor_time_constant_s": 0.0,
+    "initial_state": "zeros(12,1)",
+    "wind_force_scale": 1.0,
+    "wind": {
+      "projected_area_m2": [0.008240355616, 0.007699184218, 0.02712915554],
+      "reference_arm_lengths_m": [0.141623, 0.141623, 0.141623, 0.141623],
+      "rho_air_kg_m3": 1.225,
+      "CdBody": 1.0,
+      "CdArm": 1.0,
+      "rise_time_s": 0.8
+    },
+    "plant_integrator": "source RK4 loop and source morphology/wind update order"
+  },
+  "controller": {
+    "morphology_mode": "fixed",
+    "inertia_derivative_mode": "full",
+    "nominal_inertia_source": "distributed_v1 arm_mass_properties at the initial four-arm geometry",
+    "nominal_J0_kg_m2": [
+      [0.0032575533333333339, -2.168404344971009e-19, 0.0],
+      [-2.168404344971009e-19, 0.0032575533333333334, 0.0],
+      [0.0, 0.0, 0.006360648333333333]
+    ],
+    "nominal_C0": [
+      [1.7e-6, 1.7e-6, 1.7e-6, 1.7e-6],
+      [1.803122292025696e-7, 1.803122292025696e-7, -1.803122292025696e-7, -1.803122292025697e-7],
+      [-1.803122292025696e-7, 1.803122292025696e-7, 1.803122292025697e-7, -1.803122292025696e-7],
+      [3.2e-8, -3.2e-8, 3.2e-8, -3.2e-8]
+    ],
+    "position_bs_k1": [1.0, 1.0, 1.0],
+    "position_bs_k2": [4.0, 4.0, 4.0],
+    "attitude_bs_k1": [1.5, 1.5, 1.3],
+    "attitude_bs_k2": [22.5, 22.5, 12.7],
+    "max_tilt_rad": 0.5235987755982988,
+    "generalized_min": [0.0, -1.3018542948425527, -1.3018542948425527, -0.23104],
+    "generalized_max": [24.548, 1.3018542948425527, 1.3018542948425527, 0.23104]
+  },
+  "command_filter": {
+    "wn_rad_s": [18.0, 18.0, 12.0],
+    "damping": [1.0, 1.0, 1.0],
+    "acceleration_limit_rad_s2": ["Inf", "Inf", 6.0],
+    "source_change": "R2E shared-filter limit only"
+  },
+  "adaptive_clock": {
+    "plant_hz": 1000,
+    "position_rbf_hz": 100,
+    "position_kan_hz": 100,
+    "attitude_rbf_hz": 100,
+    "attitude_kan_hz": 100,
+    "rbf_phase_start": -0.1,
+    "rbf_full_phase_start": -0.1,
+    "event_times_s": "0.01, 0.02, ..., 19.99",
+    "events_per_20s_episode": 1999,
+    "ready_events_after_32_event_window": 1968,
+    "first_ready_event_time_s": 0.32
+  },
+  "rbf_baseline": {
+    "formal_rbf_baseline": true,
+    "position": {
+      "centers": 35,
+      "input_dim": 3,
+      "input_scale": [6.0, 8.0, 10.0],
+      "gamma": 1.2,
+      "gamma_scale": 5.0,
+      "sigma": 0.95,
+      "sigma_w": 0.002,
+      "weight_element_limit": 60.0,
+      "output_limit_mps2": [3.0, 3.0, 3.0],
+      "surface_limit": [7.0, 8.0, 10.0],
+      "beta_rise_time_s": 1.8
+    },
+    "attitude": {
+      "centers": 81,
+      "input_dim": 6,
+      "input_scale": [0.6, 4.0, 0.6, 4.0, 0.6, 3.0],
+      "gamma": [2.1, 2.25, 1.1],
+      "gamma_scale": 19.0,
+      "sigma": 1.2,
+      "sigma_w": [0.11, 0.12, 0.2],
+      "weight_element_limit": 60.0,
+      "output_limit_rads2": [45.0, 45.0, 4.7124],
+      "surface_limit": [2.3, 2.3, 1.4],
+      "beta_rise_time_s": 2.2
+    }
+  },
+  "method_matrix": {
+    "B": ["position RBF output/update on", "position KAN off", "attitude RBF output/update on", "attitude KAN off"],
+    "POS_OFF": ["position RBF output/update off", "position KAN off", "attitude RBF output/update on", "attitude KAN off"],
+    "P_INIT_STUDENT": ["position RBF off", "position Initial KAN", "position PCF Head online", "attitude RBF on"],
+    "P_F": ["position RBF off", "position Selected KAN", "position Head frozen with W0 active", "attitude RBF on"],
+    "P_A": ["position RBF off", "position Selected KAN", "position PCF Head online", "attitude RBF on"],
+    "P_STAR": ["locked selected position KAN and locked position Head mode", "attitude RBF on"],
+    "A_INIT_STUDENT": ["locked P_STAR", "attitude RBF off", "X29 Initial KAN", "DeltaW frozen at zero"],
+    "PA_F": ["locked P_STAR", "attitude RBF off", "X29 Selected KAN", "DeltaW frozen at zero"],
+    "PA_A": ["locked P_STAR", "attitude RBF off", "same X29 Selected KAN", "v39 DeltaW Head online"]
+  },
+  "dataset_plan": {
+    "per_ring_teacher_train": 1536,
+    "per_ring_student_train": 384,
+    "per_ring_val": 144,
+    "position_dev": 24,
+    "dual_ring_dev": 24,
+    "final_test": 48,
+    "student_behavior_per_ring": 1,
+    "position_kan_replaces_position_rbf": true,
+    "attitude_kan_replaces_attitude_rbf": true
+  },
+  "integrity_policy": {
+    "source_tree_modified_by_migration": false,
+    "old_model_weights_used": false,
+    "old_flights_or_events_used": false,
+    "hash_scan": false,
+    "manifest_audit": false,
+    "test_split_sealed_before_training": true,
+    "automatic_git_operations": false
+  }
+}

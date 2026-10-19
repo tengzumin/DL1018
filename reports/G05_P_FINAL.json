@@ -1,0 +1,253 @@
+{
+  "gate_id": "G05_P_FINAL",
+  "status": "PASS",
+  "contract_version": "DL1018_V311_R2E_PAPER_FINAL",
+  "upstream_passed": true,
+  "actual_counts": {
+    "train_windows": 756480,
+    "val_windows": 56736,
+    "epochs_complete": 20,
+    "plant_started": 0
+  },
+  "checks": {
+    "input_dim": 14,
+    "parameters": 4163,
+    "architecture": "N_KAN",
+    "score_initial_or_best": 0.28929967716293864,
+    "zero_prediction_score": 0.4462578226932979,
+    "epoch0_score": 0.3154019973966094,
+    "best_epoch": 12,
+    "score_detail": {
+      "score_mps2": 0.28929967716293864,
+      "by_source_task_mps2": {
+        "B/FIG8_3D": 0.34007420865610777,
+        "B/HELIX": 0.35785413278143025,
+        "B/SQUARE": 0.34345867493392845,
+        "POS_OFF/FIG8_3D": 0.23613421899232018,
+        "POS_OFF/HELIX": 0.22066024807796678,
+        "POS_OFF/SQUARE": 0.21540447678152405,
+        "P_INIT_STUDENT/FIG8_3D": 0.29674647752988714,
+        "P_INIT_STUDENT/HELIX": 0.2804543775609804,
+        "P_INIT_STUDENT/SQUARE": 0.2814090142766204
+      },
+      "by_task_mps2": {
+        "FIG8_3D": 0.2947570103597973,
+        "HELIX": 0.2889895505104005,
+        "SQUARE": 0.28405325937100706
+      },
+      "by_wind_mps2": {
+        "0": 0.14953879378288404,
+        "1": 0.19973831586559507,
+        "2": 0.2593383684619821,
+        "3": 0.17612431738480758,
+        "4": 0.27724958972586145,
+        "5": 0.32704690700471034,
+        "6": 0.2250662021005535,
+        "7": 0.38455394778070523,
+        "8": 0.521023315469561,
+        "9": 0.2071238103003932,
+        "10": 0.31108337357581073,
+        "11": 0.3895098809851251,
+        "12": 0.17847517303522187,
+        "13": 0.250153180679908,
+        "14": 0.3406816765678889,
+        "15": 0.15120021804714062
+      },
+      "by_phase_mps2": {
+        "0": 0.30625972613028546,
+        "1": 0.23443755585238824,
+        "2": 0.28958613698614,
+        "3": 0.3367930426646266,
+        "4": 0.2972935153568275,
+        "5": 0.27289288062568184
+      },
+      "by_axis_mps2": {
+        "x": 0.35526305711973055,
+        "y": 0.3376574931516644,
+        "z": 0.1042040651040946
+      },
+      "prediction_raw_clip_fraction": 0.0,
+      "target_raw_clip_fraction": 0.00019975559315660839
+    },
+    "weight_balance_train": {
+      "source_task_sums": {
+        "B/HELIX": 0.08333333333333333,
+        "B/FIG8_3D": 0.08333333333333334,
+        "B/SQUARE": 0.08333333333333334,
+        "POS_OFF/HELIX": 0.08333333333333333,
+        "POS_OFF/FIG8_3D": 0.08333333333333334,
+        "POS_OFF/SQUARE": 0.08333333333333334,
+        "P_INIT_STUDENT/HELIX": 0.16666666666666669,
+        "P_INIT_STUDENT/FIG8_3D": 0.16666666666666669,
+        "P_INIT_STUDENT/SQUARE": 0.16666666666666666
+      },
+      "wind_sums": {
+        "0": 0.0625,
+        "1": 0.0625,
+        "2": 0.0625,
+        "3": 0.0625,
+        "4": 0.0625,
+        "5": 0.0625,
+        "6": 0.0625,
+        "7": 0.0625,
+        "8": 0.0625,
+        "9": 0.0625,
+        "10": 0.0625,
+        "11": 0.0625,
+        "12": 0.06249999999999999,
+        "13": 0.0625,
+        "14": 0.0625,
+        "15": 0.0625
+      },
+      "phase_sums": {
+        "0": 0.06249999999999998,
+        "1": 0.18750000000000003,
+        "2": 0.1875,
+        "3": 0.1875,
+        "4": 0.1875,
+        "5": 0.1875
+      },
+      "source_phase_sums": {
+        "B/0": 0.015624999999999997,
+        "B/1": 0.04687500000000001,
+        "B/2": 0.04687499999999999,
+        "B/3": 0.04687499999999999,
+        "B/4": 0.046875,
+        "B/5": 0.04687500000000001,
+        "POS_OFF/0": 0.015624999999999997,
+        "POS_OFF/1": 0.04687500000000001,
+        "POS_OFF/2": 0.04687499999999999,
+        "POS_OFF/3": 0.04687499999999999,
+        "POS_OFF/4": 0.046875,
+        "POS_OFF/5": 0.04687500000000001,
+        "P_INIT_STUDENT/0": 0.031249999999999993,
+        "P_INIT_STUDENT/1": 0.09375,
+        "P_INIT_STUDENT/2": 0.09375000000000001,
+        "P_INIT_STUDENT/3": 0.09375,
+        "P_INIT_STUDENT/4": 0.09375,
+        "P_INIT_STUDENT/5": 0.09375
+      },
+      "sample_count": 756480,
+      "weight_total": 1.0
+    },
+    "weight_balance_val": {
+      "source_task_sums": {
+        "B/HELIX": 0.08333333333333334,
+        "B/FIG8_3D": 0.08333333333333334,
+        "B/SQUARE": 0.08333333333333334,
+        "POS_OFF/HELIX": 0.08333333333333334,
+        "POS_OFF/FIG8_3D": 0.08333333333333334,
+        "POS_OFF/SQUARE": 0.08333333333333334,
+        "P_INIT_STUDENT/HELIX": 0.16666666666666669,
+        "P_INIT_STUDENT/FIG8_3D": 0.16666666666666669,
+        "P_INIT_STUDENT/SQUARE": 0.16666666666666669
+      },
+      "wind_sums": {
+        "0": 0.0625,
+        "1": 0.0625,
+        "2": 0.0625,
+        "3": 0.0625,
+        "4": 0.0625,
+        "5": 0.0625,
+        "6": 0.0625,
+        "7": 0.0625,
+        "8": 0.0625,
+        "9": 0.0625,
+        "10": 0.06249999999999999,
+        "11": 0.0625,
+        "12": 0.0625,
+        "13": 0.0625,
+        "14": 0.0625,
+        "15": 0.0625
+      },
+      "phase_sums": {
+        "0": 0.062499999999999986,
+        "1": 0.1875,
+        "2": 0.1875,
+        "3": 0.1875,
+        "4": 0.18750000000000003,
+        "5": 0.1875
+      },
+      "source_phase_sums": {
+        "B/0": 0.015624999999999997,
+        "B/1": 0.046875,
+        "B/2": 0.04687500000000001,
+        "B/3": 0.046875,
+        "B/4": 0.04687500000000001,
+        "B/5": 0.046875,
+        "POS_OFF/0": 0.015624999999999997,
+        "POS_OFF/1": 0.046875,
+        "POS_OFF/2": 0.04687500000000001,
+        "POS_OFF/3": 0.046875,
+        "POS_OFF/4": 0.04687500000000001,
+        "POS_OFF/5": 0.046875,
+        "P_INIT_STUDENT/0": 0.031249999999999993,
+        "P_INIT_STUDENT/1": 0.09375,
+        "P_INIT_STUDENT/2": 0.09375000000000001,
+        "P_INIT_STUDENT/3": 0.09375,
+        "P_INIT_STUDENT/4": 0.09375000000000001,
+        "P_INIT_STUDENT/5": 0.09375
+      },
+      "sample_count": 56736,
+      "weight_total": 1.0
+    },
+    "position_silu_unclipped": true,
+    "normalizer_reused": true,
+    "matlab_export_parity": [
+      {
+        "gate_id": "MODEL_PARITY_POSITION_FINAL_CANDIDATE",
+        "status": "PASS",
+        "modality": "position",
+        "package": "final_candidate",
+        "fixture_count": 64,
+        "max_phi_error": 1.3260347231369707e-07,
+        "max_output_error": 3.452264096814872e-07,
+        "max_physical_output_error": 3.452264096814872e-07,
+        "max_double_readout_error": 4.440892098500626e-16,
+        "max_head_applied_error": 0,
+        "beta_values": [
+          0,
+          0.5,
+          1
+        ],
+        "boundary_feature_fixtures": 8,
+        "resolved_function": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\matlab\\models\\position_stage1_model_forward_v2.m",
+        "path_isolation": true,
+        "tolerance_float32": 1e-05,
+        "tolerance_double_readout": 1e-10
+      },
+      {
+        "gate_id": "MODEL_PARITY_POSITION_SELECTED",
+        "status": "PASS",
+        "modality": "position",
+        "package": "selected",
+        "fixture_count": 64,
+        "max_phi_error": 1.3260347231369707e-07,
+        "max_output_error": 3.452264096814872e-07,
+        "max_physical_output_error": 3.452264096814872e-07,
+        "max_double_readout_error": 4.440892098500626e-16,
+        "max_head_applied_error": 0,
+        "beta_values": [
+          0,
+          0.5,
+          1
+        ],
+        "boundary_feature_fixtures": 8,
+        "resolved_function": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\matlab\\models\\position_stage1_model_forward_v2.m",
+        "path_isolation": true,
+        "tolerance_float32": 1e-05,
+        "tolerance_double_readout": 1e-10
+      }
+    ]
+  },
+  "artifacts": [
+    "models/position/final_candidate/best_model.pt",
+    "models/position/final_candidate/matlab_model_and_parity.mat",
+    "models/position/final_candidate/matlab_parity.json",
+    "models/position/final_candidate/normalizer.npz",
+    "models/position/final_candidate/training_history.csv"
+  ],
+  "training_passed": true,
+  "next_gate_allowed": true,
+  "blocking_reason": ""
+}

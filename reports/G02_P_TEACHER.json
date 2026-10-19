@@ -1,0 +1,45 @@
+{
+  "gate_id": "G02_P_TEACHER",
+  "status": "PASS",
+  "contract_version": "DL1018_V311_R2E_PAPER_FINAL",
+  "upstream_passed": true,
+  "model_id": "",
+  "actual_counts": {
+    "plant_started": 1633,
+    "episodes_complete": 1632,
+    "engineering_errors": 1,
+    "physical_failures": 0,
+    "train_complete_per_collector": {
+      "B": 768,
+      "POS_OFF": 768
+    },
+    "val_complete_per_collector": {
+      "B": 48,
+      "POS_OFF": 48
+    }
+  },
+  "checks": {
+    "position_events_per_episode": 1999,
+    "position_ready_per_episode": 1968,
+    "position_label_closure_max_abs_mps2": 1E-9,
+    "B_attitude_events_per_episode": 1999,
+    "B_attitude_ready_per_episode": 1968,
+    "B_attitude_torque_closure_max_abs_Nm": 1E-8,
+    "B_attitude_dynamics_closure_max_abs_rads2": 1E-8,
+    "old_data_used": false,
+    "unique_accepted_tuples": true,
+    "first_batch_passed": true
+  },
+  "max_errors": {},
+  "artifacts": [
+    "data/raw",
+    "data/events/position",
+    "data/events/attitude",
+    "logs/attempt_index.csv",
+    "logs/episode_index.csv",
+    "reports/G02_P_TEACHER.json"
+  ],
+  "next_gate_allowed": true,
+  "blocking_reason": "",
+  "elapsed_s": 8942.5135948
+}

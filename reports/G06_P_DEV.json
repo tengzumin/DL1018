@@ -1,0 +1,143 @@
+{
+  "gate_id": "G06_P_DEV",
+  "status": "STOP_POSITION_NOT_QUALIFIED",
+  "contract_version": "DL1018_V311_R2E_PAPER_FINAL",
+  "upstream_passed": true,
+  "model_id": "DL1018_POSITION_SELECTED",
+  "actual_counts": {
+    "plant_started": 72,
+    "complete": 72,
+    "physical_failures": 0,
+    "engineering_errors": 0
+  },
+  "checks": {
+    "P_F": {
+      "method": "P_F",
+      "pass": false,
+      "n": 24,
+      "macro_Q": 0.038247874721278545,
+      "macro_peak": 0.072259656865255664,
+      "total_wins": 1,
+      "peak_warnings": 12,
+      "severe_peaks": 1,
+      "per_task": {
+        "HELIX": {
+          "n": 8,
+          "Q_B_m": 0.012306964763040516,
+          "Q_candidate_m": 0.034123985163374171,
+          "A_B_rad": 0.015890350358206538,
+          "A_candidate_rad": 0.015945205495062745,
+          "wins": 0,
+          "peak_warnings": 6,
+          "severe_peaks": 0,
+          "complete_finite": true,
+          "pass": false
+        },
+        "FIG8_3D": {
+          "n": 8,
+          "Q_B_m": 0.020805218768341762,
+          "Q_candidate_m": 0.04528473849621896,
+          "A_B_rad": 0.01183736713165001,
+          "A_candidate_rad": 0.011985682686948215,
+          "wins": 0,
+          "peak_warnings": 5,
+          "severe_peaks": 1,
+          "complete_finite": true,
+          "pass": false
+        },
+        "SQUARE": {
+          "n": 8,
+          "Q_B_m": 0.017764571660947324,
+          "Q_candidate_m": 0.03533490050424249,
+          "A_B_rad": 0.014171402380434933,
+          "A_candidate_rad": 0.014358603359389353,
+          "wins": 1,
+          "peak_warnings": 1,
+          "severe_peaks": 0,
+          "complete_finite": true,
+          "pass": false
+        }
+      },
+      "checks": {
+        "baseline_scene_coverage": true,
+        "candidate_scene_coverage": true,
+        "macro_Q_improves": false,
+        "total_win_count": 1,
+        "total_wins_pass": false,
+        "peak_warning_count": 12,
+        "peak_warning_pass": false,
+        "per_task_rules_pass": false
+      }
+    },
+    "P_A": {
+      "method": "P_A",
+      "pass": false,
+      "n": 24,
+      "macro_Q": 0.028083902704153924,
+      "macro_peak": 0.05882728603858204,
+      "total_wins": 2,
+      "peak_warnings": 5,
+      "severe_peaks": 1,
+      "per_task": {
+        "HELIX": {
+          "n": 8,
+          "Q_B_m": 0.012306964763040516,
+          "Q_candidate_m": 0.025468830675690959,
+          "A_B_rad": 0.015890350358206538,
+          "A_candidate_rad": 0.01595742266597161,
+          "wins": 0,
+          "peak_warnings": 2,
+          "severe_peaks": 0,
+          "complete_finite": true,
+          "pass": false
+        },
+        "FIG8_3D": {
+          "n": 8,
+          "Q_B_m": 0.020805218768341762,
+          "Q_candidate_m": 0.033505198990686914,
+          "A_B_rad": 0.01183736713165001,
+          "A_candidate_rad": 0.012007722938311514,
+          "wins": 1,
+          "peak_warnings": 3,
+          "severe_peaks": 1,
+          "complete_finite": true,
+          "pass": false
+        },
+        "SQUARE": {
+          "n": 8,
+          "Q_B_m": 0.017764571660947324,
+          "Q_candidate_m": 0.0252776784460839,
+          "A_B_rad": 0.014171402380434933,
+          "A_candidate_rad": 0.014416182950943988,
+          "wins": 1,
+          "peak_warnings": 0,
+          "severe_peaks": 0,
+          "complete_finite": true,
+          "pass": false
+        }
+      },
+      "checks": {
+        "baseline_scene_coverage": true,
+        "candidate_scene_coverage": true,
+        "macro_Q_improves": false,
+        "total_win_count": 2,
+        "total_wins_pass": false,
+        "peak_warning_count": 5,
+        "peak_warning_pass": false,
+        "per_task_rules_pass": false
+      }
+    },
+    "position_selected_head_mode": "",
+    "P_STAR": "P_A",
+    "scenes": 24
+  },
+  "max_errors": {},
+  "artifacts": [
+    "reports/POSITION_DEV.csv",
+    "configs/selected_models.json",
+    "logs/attempt_index.csv",
+    "data/raw/dev"
+  ],
+  "next_gate_allowed": false,
+  "blocking_reason": "Neither P_F nor P_A passed the predeclared DEV thresholds."
+}

@@ -1,0 +1,245 @@
+{
+  "contract_version": "DL1018_V311_R2E_PAPER_FINAL",
+  "scene_count": 888,
+  "split_counts": {
+    "TRAIN": 768,
+    "VAL": 48,
+    "DEV": 24,
+    "TEST": 48
+  },
+  "student_train_scene_count": 384,
+  "student_val_scene_count": 48,
+  "student_wind_cells": [
+    0,
+    2,
+    4,
+    6,
+    9,
+    11,
+    13,
+    15
+  ],
+  "test_status": "SEALED",
+  "b_raw_reused_across_position_and_attitude": true,
+  "roles": [
+    {
+      "gate": "G02_P_TEACHER",
+      "collector_id": "B",
+      "split": "TRAIN",
+      "scene_count": 768,
+      "plant_runs": 768,
+      "reuse": false,
+      "status": "PASS"
+    },
+    {
+      "gate": "G02_P_TEACHER",
+      "collector_id": "B",
+      "split": "VAL",
+      "scene_count": 48,
+      "plant_runs": 48,
+      "reuse": false,
+      "status": "PASS"
+    },
+    {
+      "gate": "G02_P_TEACHER",
+      "collector_id": "POS_OFF",
+      "split": "TRAIN",
+      "scene_count": 768,
+      "plant_runs": 768,
+      "reuse": false,
+      "status": "PASS"
+    },
+    {
+      "gate": "G02_P_TEACHER",
+      "collector_id": "POS_OFF",
+      "split": "VAL",
+      "scene_count": 48,
+      "plant_runs": 48,
+      "reuse": false,
+      "status": "PASS"
+    },
+    {
+      "gate": "G04_P_STUDENT",
+      "collector_id": "P_INIT_STUDENT",
+      "split": "TRAIN",
+      "scene_count": 384,
+      "plant_runs": 384,
+      "reuse": false,
+      "status": "NOT_STARTED"
+    },
+    {
+      "gate": "G04_P_STUDENT",
+      "collector_id": "P_INIT_STUDENT",
+      "split": "VAL",
+      "scene_count": 48,
+      "plant_runs": 48,
+      "reuse": false,
+      "status": "NOT_STARTED"
+    },
+    {
+      "gate": "G07_A_TEACHER",
+      "collector_id": "P_STAR",
+      "split": "TRAIN",
+      "scene_count": 768,
+      "plant_runs": 768,
+      "reuse": false,
+      "status": "NOT_STARTED"
+    },
+    {
+      "gate": "G07_A_TEACHER",
+      "collector_id": "P_STAR",
+      "split": "VAL",
+      "scene_count": 48,
+      "plant_runs": 48,
+      "reuse": false,
+      "status": "NOT_STARTED"
+    },
+    {
+      "gate": "G07_A_TEACHER",
+      "collector_id": "B",
+      "split": "TRAIN",
+      "scene_count": 768,
+      "plant_runs": 0,
+      "reuse": true,
+      "status": "NOT_STARTED"
+    },
+    {
+      "gate": "G07_A_TEACHER",
+      "collector_id": "B",
+      "split": "VAL",
+      "scene_count": 48,
+      "plant_runs": 0,
+      "reuse": true,
+      "status": "NOT_STARTED"
+    },
+    {
+      "gate": "G09_A_STUDENT",
+      "collector_id": "A_INIT_STUDENT",
+      "split": "TRAIN",
+      "scene_count": 384,
+      "plant_runs": 384,
+      "reuse": false,
+      "status": "NOT_STARTED"
+    },
+    {
+      "gate": "G09_A_STUDENT",
+      "collector_id": "A_INIT_STUDENT",
+      "split": "VAL",
+      "scene_count": 48,
+      "plant_runs": 48,
+      "reuse": false,
+      "status": "NOT_STARTED"
+    },
+    {
+      "gate": "G06_P_DEV",
+      "collector_id": "B",
+      "split": "DEV",
+      "scene_count": 24,
+      "plant_runs": 24,
+      "reuse": false,
+      "status": "NOT_STARTED"
+    },
+    {
+      "gate": "G06_P_DEV",
+      "collector_id": "P_F",
+      "split": "DEV",
+      "scene_count": 24,
+      "plant_runs": 24,
+      "reuse": false,
+      "status": "NOT_STARTED"
+    },
+    {
+      "gate": "G06_P_DEV",
+      "collector_id": "P_A",
+      "split": "DEV",
+      "scene_count": 24,
+      "plant_runs": 24,
+      "reuse": false,
+      "status": "NOT_STARTED"
+    },
+    {
+      "gate": "G11_PA_DEV",
+      "collector_id": "PA_F",
+      "split": "DEV",
+      "scene_count": 24,
+      "plant_runs": 24,
+      "reuse": false,
+      "status": "NOT_STARTED"
+    },
+    {
+      "gate": "G11_PA_DEV",
+      "collector_id": "PA_A",
+      "split": "DEV",
+      "scene_count": 24,
+      "plant_runs": 24,
+      "reuse": false,
+      "status": "NOT_STARTED"
+    },
+    {
+      "gate": "G11_PA_DEV",
+      "collector_id": "B",
+      "split": "DEV",
+      "scene_count": 24,
+      "plant_runs": 0,
+      "reuse": true,
+      "status": "NOT_STARTED"
+    },
+    {
+      "gate": "G11_PA_DEV",
+      "collector_id": "P_STAR",
+      "split": "DEV",
+      "scene_count": 24,
+      "plant_runs": 0,
+      "reuse": true,
+      "status": "NOT_STARTED"
+    },
+    {
+      "gate": "G12_FINAL_TEST",
+      "collector_id": "B",
+      "split": "TEST",
+      "scene_count": 48,
+      "plant_runs": 48,
+      "reuse": false,
+      "status": "NOT_STARTED"
+    },
+    {
+      "gate": "G12_FINAL_TEST",
+      "collector_id": "P_F",
+      "split": "TEST",
+      "scene_count": 48,
+      "plant_runs": 48,
+      "reuse": false,
+      "status": "NOT_STARTED"
+    },
+    {
+      "gate": "G12_FINAL_TEST",
+      "collector_id": "P_A",
+      "split": "TEST",
+      "scene_count": 48,
+      "plant_runs": 48,
+      "reuse": false,
+      "status": "NOT_STARTED"
+    },
+    {
+      "gate": "G12_FINAL_TEST",
+      "collector_id": "PA_F",
+      "split": "TEST",
+      "scene_count": 48,
+      "plant_runs": 48,
+      "reuse": false,
+      "status": "NOT_STARTED"
+    },
+    {
+      "gate": "G12_FINAL_TEST",
+      "collector_id": "PA_A",
+      "split": "TEST",
+      "scene_count": 48,
+      "plant_runs": 48,
+      "reuse": false,
+      "status": "NOT_STARTED"
+    }
+  ],
+  "quota_status": "PASS",
+  "plant_runs_started": 1633,
+  "hash_or_manifest_audit_performed": false
+}

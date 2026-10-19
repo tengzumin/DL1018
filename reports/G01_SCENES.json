@@ -1,0 +1,70 @@
+{
+  "gate_id": "G01_SCENES",
+  "status": "PASS",
+  "contract_version": "DL1018_V311_R2E_PAPER_FINAL",
+  "upstream_passed": true,
+  "model_id": "",
+  "actual_counts": {
+    "scenes_total": 888,
+    "train": 768,
+    "val": 48,
+    "dev": 24,
+    "test": 48,
+    "student_train": 384,
+    "student_val": 48,
+    "plant_started": 0,
+    "engineering_errors": 0,
+    "physical_failures": 0
+  },
+  "checks": {
+    "unique_scene_ids": true,
+    "unique_seeds": true,
+    "student_half_factorial": true,
+    "test_sealed": true,
+    "shared_external_inputs_by_scene_id": true,
+    "scene_arrays_preflighted": true,
+    "wind_peak_mps": 16.999999373701762,
+    "minimum_arm_hold_s": 5.8,
+    "minimum_retraction_margin_s": 0.79999999999999982,
+    "arm_length_range_m": [
+      0.15,
+      0.25
+    ],
+    "reference_stats": [
+      {
+        "task": "HELIX",
+        "max_nominal_tilt_deg": 5.4606770493406245,
+        "tilt_limited_samples": 0,
+        "max_corner_position_jump_m": 0,
+        "max_corner_speed_mps": 1.0767385366520439,
+        "max_corner_accel_mps2": 0.936841355259654
+      },
+      {
+        "task": "FIG8_3D",
+        "max_nominal_tilt_deg": 4.3644899275226532,
+        "tilt_limited_samples": 0,
+        "max_corner_position_jump_m": 0,
+        "max_corner_speed_mps": 1.4730989438208948,
+        "max_corner_accel_mps2": 0.24288479580805841
+      },
+      {
+        "task": "SQUARE",
+        "max_nominal_tilt_deg": 2.6983893602612152,
+        "tilt_limited_samples": 0,
+        "max_corner_position_jump_m": 0,
+        "max_corner_speed_mps": 0,
+        "max_corner_accel_mps2": 0
+      }
+    ]
+  },
+  "max_errors": {
+    "plant_calls": 0
+  },
+  "artifacts": [
+    "configs/scene_specs.csv",
+    "configs/dataset_plan.json",
+    "reports/G01_SCENES.json"
+  ],
+  "next_gate_allowed": true,
+  "blocking_reason": ""
+}
