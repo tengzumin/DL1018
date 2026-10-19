@@ -1,0 +1,549 @@
+{
+  "repository": "tengzumin/DL1018",
+  "repository_private": true,
+  "branch": "codex/dl1018-causal-diagnosis-upload",
+  "created_at_utc": "2026-10-19T11:20:25.188286+00:00",
+  "included_payload_files": 128,
+  "included_payload_bytes": 55693590,
+  "scope_manifest_included_in_commit": true,
+  "total_staged_file_count": 129,
+  "included_policy": "Experiment code, markdown documentation, CSV analysis/results, JSON manifests/metrics, PNG figures, compact trained candidate model artifacts under models/, and this experiment-scoped .gitignore.",
+  "included_file_index": [
+    {
+      "path": ".gitignore",
+      "bytes": 204
+    },
+    {
+      "path": "derived_events/D2_METADATA.json",
+      "bytes": 990
+    },
+    {
+      "path": "figures/D2_BRIDGE_W08_ERROR_AND_RESIDUAL.png",
+      "bytes": 548912
+    },
+    {
+      "path": "figures/D3_BRIDGE6_PAIRED_Q.png",
+      "bytes": 43636
+    },
+    {
+      "path": "figures/D3_BRIDGE6_TIMEBINS.png",
+      "bytes": 47102
+    },
+    {
+      "path": "local_runtime/d2_runtime_replay_and_decompose.m",
+      "bytes": 20957
+    },
+    {
+      "path": "local_runtime/d3_export_final_components.m",
+      "bytes": 4645
+    },
+    {
+      "path": "local_runtime/d3_run_final_bridge6.m",
+      "bytes": 11842
+    },
+    {
+      "path": "local_runtime/d5_position_feature_dl1018.m",
+      "bytes": 662
+    },
+    {
+      "path": "local_runtime/d5_preflight_candidate.m",
+      "bytes": 8798
+    },
+    {
+      "path": "local_runtime/d5_run_candidate_bridge6.m",
+      "bytes": 16128
+    },
+    {
+      "path": "local_runtime/position_stage1_model_forward_v2.m",
+      "bytes": 3877
+    },
+    {
+      "path": "local_runtime/run_dl1018_closed_loop.m",
+      "bytes": 220471
+    },
+    {
+      "path": "local_runtime/run_episode_dl1018.m",
+      "bytes": 1217
+    },
+    {
+      "path": "manifests/BRIDGE6.csv",
+      "bytes": 5379
+    },
+    {
+      "path": "manifests/D2_RUN_START_HASHES.csv",
+      "bytes": 2387
+    },
+    {
+      "path": "manifests/D4_SEQUENCE_CACHE.csv",
+      "bytes": 732744
+    },
+    {
+      "path": "manifests/FIT_PROTOCOL_FROZEN.json",
+      "bytes": 3001
+    },
+    {
+      "path": "manifests/G06_REPLAY2.csv",
+      "bytes": 1132
+    },
+    {
+      "path": "manifests/SOURCE_AND_PROTECTION.json",
+      "bytes": 15360
+    },
+    {
+      "path": "models/C1_X20_FIXED_INFORMATION/seed2026101901/best_model.pt",
+      "bytes": 26661
+    },
+    {
+      "path": "models/C1_X20_FIXED_INFORMATION/seed2026101901/export_report.json",
+      "bytes": 936
+    },
+    {
+      "path": "models/C1_X20_FIXED_INFORMATION/seed2026101901/fit_report.json",
+      "bytes": 3994
+    },
+    {
+      "path": "models/C1_X20_FIXED_INFORMATION/seed2026101901/matlab_model_and_parity.mat",
+      "bytes": 38921
+    },
+    {
+      "path": "models/C1_X20_FIXED_INFORMATION/seed2026101901/model.json",
+      "bytes": 270
+    },
+    {
+      "path": "models/C1_X20_FIXED_INFORMATION/seed2026101901/normalizer.npz",
+      "bytes": 820
+    },
+    {
+      "path": "models/C1_X20_FIXED_INFORMATION/seed2026101901/resume.pt",
+      "bytes": 236898
+    },
+    {
+      "path": "models/C1_X20_FIXED_INFORMATION/seed2026101901/training_history.csv",
+      "bytes": 941
+    },
+    {
+      "path": "models/C1_X20_FIXED_INFORMATION/seed2026101902/best_model.pt",
+      "bytes": 26661
+    },
+    {
+      "path": "models/C1_X20_FIXED_INFORMATION/seed2026101902/fit_report.json",
+      "bytes": 3995
+    },
+    {
+      "path": "models/C1_X20_FIXED_INFORMATION/seed2026101902/model.json",
+      "bytes": 271
+    },
+    {
+      "path": "models/C1_X20_FIXED_INFORMATION/seed2026101902/normalizer.npz",
+      "bytes": 820
+    },
+    {
+      "path": "models/C1_X20_FIXED_INFORMATION/seed2026101902/resume.pt",
+      "bytes": 237922
+    },
+    {
+      "path": "models/C1_X20_FIXED_INFORMATION/seed2026101902/training_history.csv",
+      "bytes": 996
+    },
+    {
+      "path": "models/C2_X14_ADAPTATION_AWARE/seed2026101901/best_model.pt",
+      "bytes": 19685
+    },
+    {
+      "path": "models/C2_X14_ADAPTATION_AWARE/seed2026101901/export_report.json",
+      "bytes": 932
+    },
+    {
+      "path": "models/C2_X14_ADAPTATION_AWARE/seed2026101901/fit_report.json",
+      "bytes": 2246
+    },
+    {
+      "path": "models/C2_X14_ADAPTATION_AWARE/seed2026101901/matlab_model_and_parity.mat",
+      "bytes": 29678
+    },
+    {
+      "path": "models/C2_X14_ADAPTATION_AWARE/seed2026101901/normalizer.npz",
+      "bytes": 724
+    },
+    {
+      "path": "models/C2_X14_ADAPTATION_AWARE/seed2026101901/resume.pt",
+      "bytes": 208674
+    },
+    {
+      "path": "models/C2_X14_ADAPTATION_AWARE/seed2026101901/training_history.csv",
+      "bytes": 2575
+    },
+    {
+      "path": "models/C2_X14_ADAPTATION_AWARE/seed2026101902/best_model.pt",
+      "bytes": 19685
+    },
+    {
+      "path": "models/C2_X14_ADAPTATION_AWARE/seed2026101902/fit_report.json",
+      "bytes": 2247
+    },
+    {
+      "path": "models/C2_X14_ADAPTATION_AWARE/seed2026101902/normalizer.npz",
+      "bytes": 724
+    },
+    {
+      "path": "models/C2_X14_ADAPTATION_AWARE/seed2026101902/resume.pt",
+      "bytes": 213410
+    },
+    {
+      "path": "models/C2_X14_ADAPTATION_AWARE/seed2026101902/training_history.csv",
+      "bytes": 3257
+    },
+    {
+      "path": "README_EXECUTION.md",
+      "bytes": 4892
+    },
+    {
+      "path": "reports/CAUSE_STATUS_AFTER_BRIDGE.md",
+      "bytes": 7213
+    },
+    {
+      "path": "reports/D0_CURRENT_STATE.md",
+      "bytes": 913
+    },
+    {
+      "path": "reports/D1_G04_PAIRED_ALL.csv",
+      "bytes": 2291879
+    },
+    {
+      "path": "reports/D1_GROUPED_BY_TASK_WIND_CLASS_PHASE.csv",
+      "bytes": 2230117
+    },
+    {
+      "path": "reports/D1_INITIAL_EFFECT_DECISION.md",
+      "bytes": 3127
+    },
+    {
+      "path": "reports/D1_METRIC_PARITY.json",
+      "bytes": 7661
+    },
+    {
+      "path": "reports/D2_ADAPTATION_PROBE.csv",
+      "bytes": 602269
+    },
+    {
+      "path": "reports/D2_ADAPTATION_SELECTION.json",
+      "bytes": 1833
+    },
+    {
+      "path": "reports/D2_EVENT_H5_PARITY.csv",
+      "bytes": 1793
+    },
+    {
+      "path": "reports/D2_LABEL_COMPONENT_SUMMARY.csv",
+      "bytes": 190528
+    },
+    {
+      "path": "reports/D2_LABEL_COMPONENTS.csv",
+      "bytes": 33274567
+    },
+    {
+      "path": "reports/D2_LOCAL_SENSITIVITY.csv",
+      "bytes": 8420
+    },
+    {
+      "path": "reports/D2_RUNTIME_REPLAY.csv",
+      "bytes": 4688
+    },
+    {
+      "path": "reports/D2_RUNTIME_REPLAY_DECISION.md",
+      "bytes": 4440
+    },
+    {
+      "path": "reports/D2_SIGNAL_MECHANISM.md",
+      "bytes": 4644
+    },
+    {
+      "path": "reports/D2_X20_INFORMATION_PROBE.csv",
+      "bytes": 6370
+    },
+    {
+      "path": "reports/D2_X20_INFORMATION_SUMMARY.json",
+      "bytes": 1737
+    },
+    {
+      "path": "reports/D3_COMPONENT_BY_SCENE_TIME.csv",
+      "bytes": 26105
+    },
+    {
+      "path": "reports/D3_COMPONENT_EXPORT.json",
+      "bytes": 187
+    },
+    {
+      "path": "reports/D3_COMPONENT_SUMMARY.csv",
+      "bytes": 20987
+    },
+    {
+      "path": "reports/D3_FINAL_INITIAL_BRIDGE_MATLAB.csv",
+      "bytes": 11363
+    },
+    {
+      "path": "reports/D3_FINAL_LABEL_COMPONENTS.csv",
+      "bytes": 6674538
+    },
+    {
+      "path": "reports/D3_INITIAL_FINAL_BRIDGE.csv",
+      "bytes": 7523
+    },
+    {
+      "path": "reports/D3_INITIAL_FINAL_BRIDGE.md",
+      "bytes": 4329
+    },
+    {
+      "path": "reports/D3_MATLAB_RESULT.json",
+      "bytes": 100
+    },
+    {
+      "path": "reports/D3_PAIRED_EVENT_COMPONENTS.csv",
+      "bytes": 7225545
+    },
+    {
+      "path": "reports/D3_PREFLIGHT.json",
+      "bytes": 2434
+    },
+    {
+      "path": "reports/D3_TIMEBIN_SUMMARY.csv",
+      "bytes": 475
+    },
+    {
+      "path": "reports/D4_RECURRENCE_PARITY.json",
+      "bytes": 1030
+    },
+    {
+      "path": "reports/D4_REPAIR_CANDIDATES.md",
+      "bytes": 3791
+    },
+    {
+      "path": "reports/D4_TRAINING_COMPARISON.csv",
+      "bytes": 6807
+    },
+    {
+      "path": "reports/D5_CANDIDATE_DECISION.md",
+      "bytes": 4708
+    },
+    {
+      "path": "reports/D5_POSITION_CANDIDATE_C1.csv",
+      "bytes": 13854
+    },
+    {
+      "path": "reports/D5_POSITION_CANDIDATE_C2.csv",
+      "bytes": 13711
+    },
+    {
+      "path": "reports/D5_PREFLIGHT_C1.json",
+      "bytes": 2829
+    },
+    {
+      "path": "reports/D5_PREFLIGHT_C2.json",
+      "bytes": 2826
+    },
+    {
+      "path": "reports/D5_RESULT_C1.json",
+      "bytes": 360
+    },
+    {
+      "path": "reports/D5_RESULT_C2.json",
+      "bytes": 359
+    },
+    {
+      "path": "reports/D5_RUNTIME_PATCH.json",
+      "bytes": 1888
+    },
+    {
+      "path": "reports/FINAL_CAUSAL_REPORT_ZH.md",
+      "bytes": 8913
+    },
+    {
+      "path": "reports/FINAL_PROTECTION_CHECK.json",
+      "bytes": 7751
+    },
+    {
+      "path": "reports/NEXT_ACTION.md",
+      "bytes": 820
+    },
+    {
+      "path": "RESOURCE_LEDGER.csv",
+      "bytes": 4525
+    },
+    {
+      "path": "runs/D3_FINAL_INITIAL_BRIDGE/DL1018_TRAIN_T1_C02_W08/P_A/metrics.json",
+      "bytes": 2494
+    },
+    {
+      "path": "runs/D3_FINAL_INITIAL_BRIDGE/DL1018_TRAIN_T1_C02_W15/P_A/metrics.json",
+      "bytes": 2495
+    },
+    {
+      "path": "runs/D3_FINAL_INITIAL_BRIDGE/DL1018_TRAIN_T2_C01_W08/P_A/metrics.json",
+      "bytes": 2482
+    },
+    {
+      "path": "runs/D3_FINAL_INITIAL_BRIDGE/DL1018_TRAIN_T2_C01_W15/P_A/metrics.json",
+      "bytes": 2499
+    },
+    {
+      "path": "runs/D3_FINAL_INITIAL_BRIDGE/DL1018_TRAIN_T3_C03_W08/P_A/metrics.json",
+      "bytes": 2490
+    },
+    {
+      "path": "runs/D3_FINAL_INITIAL_BRIDGE/DL1018_TRAIN_T3_C03_W15/P_A/metrics.json",
+      "bytes": 2496
+    },
+    {
+      "path": "runs/D5_POSITION_REPAIR_C1_SEED2026101901/DL1018_TRAIN_T1_C02_W08/P_A/metrics.json",
+      "bytes": 3429
+    },
+    {
+      "path": "runs/D5_POSITION_REPAIR_C1_SEED2026101901/DL1018_TRAIN_T1_C02_W08/P_A_ATTEMPT_01/error.json",
+      "bytes": 139
+    },
+    {
+      "path": "runs/D5_POSITION_REPAIR_C1_SEED2026101901/DL1018_TRAIN_T1_C02_W08/P_A_ATTEMPT_02/error.json",
+      "bytes": 139
+    },
+    {
+      "path": "runs/D5_POSITION_REPAIR_C1_SEED2026101901/DL1018_TRAIN_T1_C02_W08/P_A_ATTEMPT_03/error.json",
+      "bytes": 133
+    },
+    {
+      "path": "runs/D5_POSITION_REPAIR_C1_SEED2026101901/DL1018_TRAIN_T1_C02_W15/P_A/metrics.json",
+      "bytes": 3443
+    },
+    {
+      "path": "runs/D5_POSITION_REPAIR_C1_SEED2026101901/DL1018_TRAIN_T2_C01_W08/P_A/metrics.json",
+      "bytes": 3432
+    },
+    {
+      "path": "runs/D5_POSITION_REPAIR_C1_SEED2026101901/DL1018_TRAIN_T2_C01_W15/P_A/metrics.json",
+      "bytes": 3440
+    },
+    {
+      "path": "runs/D5_POSITION_REPAIR_C1_SEED2026101901/DL1018_TRAIN_T3_C03_W08/P_A/metrics.json",
+      "bytes": 3433
+    },
+    {
+      "path": "runs/D5_POSITION_REPAIR_C1_SEED2026101901/DL1018_TRAIN_T3_C03_W15/P_A/metrics.json",
+      "bytes": 3453
+    },
+    {
+      "path": "runs/D5_POSITION_REPAIR_C2_SEED2026101901/DL1018_TRAIN_T1_C02_W08/P_A/metrics.json",
+      "bytes": 3402
+    },
+    {
+      "path": "runs/D5_POSITION_REPAIR_C2_SEED2026101901/DL1018_TRAIN_T1_C02_W15/P_A/metrics.json",
+      "bytes": 3420
+    },
+    {
+      "path": "runs/D5_POSITION_REPAIR_C2_SEED2026101901/DL1018_TRAIN_T2_C01_W08/P_A/metrics.json",
+      "bytes": 3410
+    },
+    {
+      "path": "runs/D5_POSITION_REPAIR_C2_SEED2026101901/DL1018_TRAIN_T2_C01_W15/P_A/metrics.json",
+      "bytes": 3415
+    },
+    {
+      "path": "runs/D5_POSITION_REPAIR_C2_SEED2026101901/DL1018_TRAIN_T3_C03_W08/P_A/metrics.json",
+      "bytes": 3408
+    },
+    {
+      "path": "runs/D5_POSITION_REPAIR_C2_SEED2026101901/DL1018_TRAIN_T3_C03_W15/P_A/metrics.json",
+      "bytes": 3424
+    },
+    {
+      "path": "scripts/check_metric_parity.py",
+      "bytes": 3048
+    },
+    {
+      "path": "scripts/d0_snapshot.py",
+      "bytes": 9073
+    },
+    {
+      "path": "scripts/d1_pair_analyze.py",
+      "bytes": 22546
+    },
+    {
+      "path": "scripts/d2_signal_analysis.py",
+      "bytes": 38030
+    },
+    {
+      "path": "scripts/d3_bridge_analyze.py",
+      "bytes": 15833
+    },
+    {
+      "path": "scripts/d4_export_candidates.py",
+      "bytes": 4250
+    },
+    {
+      "path": "scripts/d4_finalize_reports.py",
+      "bytes": 7037
+    },
+    {
+      "path": "scripts/d4_kan.py",
+      "bytes": 4504
+    },
+    {
+      "path": "scripts/d4_recurrence_parity.py",
+      "bytes": 5375
+    },
+    {
+      "path": "scripts/d4_sequence_data.py",
+      "bytes": 8200
+    },
+    {
+      "path": "scripts/d4_train_candidates.py",
+      "bytes": 31603
+    },
+    {
+      "path": "scripts/d5_finalize_preflights.py",
+      "bytes": 3420
+    },
+    {
+      "path": "scripts/d5_prepare_runtime.py",
+      "bytes": 7965
+    },
+    {
+      "path": "scripts/prepare_bridge_manifest.py",
+      "bytes": 4284
+    },
+    {
+      "path": "state/D2_MATLAB_SUMMARY.json",
+      "bytes": 319
+    },
+    {
+      "path": "state/D3_SUMMARY.json",
+      "bytes": 512
+    },
+    {
+      "path": "state/state.json",
+      "bytes": 2879
+    }
+  ],
+  "excluded_policy": "Raw simulator MAT trajectories, MATLAB run_start snapshots, D4 NPZ sequence caches, JSONL checkpoints, Python bytecode, plant markers, and other generated run files are retained locally and excluded from GitHub.",
+  "excluded_by_extension": {
+    ".jsonl": {
+      "count": 1,
+      "bytes": 2927588
+    },
+    ".marker": {
+      "count": 20,
+      "bytes": 500
+    },
+    ".mat": {
+      "count": 39,
+      "bytes": 863176153
+    },
+    ".npz": {
+      "count": 2064,
+      "bytes": 531960408
+    },
+    ".pyc": {
+      "count": 11,
+      "bytes": 226443
+    }
+  },
+  "important_caveat": "Full raw-trajectory replay requires local runs/ artifacts; summary CSVs, metrics and reports are included in the repository."
+}
