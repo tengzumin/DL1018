@@ -1,0 +1,18 @@
+{
+  "fit_id": "WIDE_MLP_SEED2026101911",
+  "family": "WIDE_MLP",
+  "seed": 2026101911,
+  "status": "USER_AUTHORIZED_ADDITIONAL_EXPLORATORY_CANDIDATE",
+  "optimizer_steps": 60000,
+  "batch_size": 256,
+  "learning_rate": 0.001,
+  "weight_decay": 1e-05,
+  "optimizer": "Adam",
+  "architecture": "current-event X14 -> Linear(14,128), SiLU -> Linear(128,128), SiLU -> Linear(128,32), tanh, normalized 33D feature, linear 33x3 head",
+  "initialization": "random initialization; does not preserve DL1018 Initial function",
+  "training_pool": "same frozen mixed TRAIN, B/POS_OFF/Student masses 0.25/0.25/0.50",
+  "loss_and_sampling": "shared fixed one-time weighted loss and uniform permutation batch order",
+  "selection": "minimum shared fixed VAL clipped physical RMSE; VAL is development, not blind TEST",
+  "new_data": 0,
+  "new_plant_starts_during_fit": 0
+}

@@ -1,0 +1,391 @@
+{
+  "task": "DL1018_TRAINING_DATA_STRUCTURE_COMPARE_V2",
+  "captured_at_utc": "2026-10-19T11:58:26.555274+00:00",
+  "root": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018",
+  "git": {
+    "head": "7b5ec35605f7a49316e4a905e5afa2c26320998d",
+    "branch": "codex/dl1018-causal-diagnosis-upload",
+    "origin": "https://github.com/tengzumin/DL1018.git",
+    "tracked_worktree_status": "",
+    "untracked_status": "?? experiments/training_data_structure_compare_v2/scripts/d0_initialize.py"
+  },
+  "review_bases": {
+    "DL1018_main": "12bce70c5f69fd5055bc6cf798303cf2c6d80050",
+    "causal_diagnosis": "7b5ec35605f7a49316e4a905e5afa2c26320998d",
+    "DL1009_reference": "3671d2d212af927abdb6d9149a1b249c372ac55e"
+  },
+  "runtime": {
+    "python_executable": "C:\\ProgramData\\anaconda3\\python.exe",
+    "python_version": "3.12.7 | packaged by Anaconda, Inc. | (main, Oct  4 2024, 13:17:27) [MSC v.1929 64 bit (AMD64)]",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "torch": "2.6.0+cu124",
+    "cuda_available": true,
+    "cuda": "12.4",
+    "devices": [
+      "NVIDIA GeForce RTX 3070 Laptop GPU"
+    ]
+  },
+  "data_index": {
+    "attempt_rows": 2137,
+    "episode_rows": 2064,
+    "accepted_split_role_counts": {
+      "train/B": 768,
+      "train/POS_OFF": 768,
+      "train/P_INIT_STUDENT": 384,
+      "val/B": 48,
+      "val/POS_OFF": 48,
+      "val/P_INIT_STUDENT": 48
+    }
+  },
+  "relevant_processes": [],
+  "resource_budget": {
+    "micro_fits_max": 2,
+    "official_fits_max": 8,
+    "canary_plants_max": 24,
+    "dev_plants_max": 48,
+    "total_new_plants_max": 80
+  },
+  "protected_files": [
+    {
+      "path": "configs/contract_dl1018.json",
+      "exists": true,
+      "size_bytes": 5930,
+      "sha256": "1924290d90570233a138c1d45e0ccb8070e8cc292affc47a9d8a9d96d2f74405"
+    },
+    {
+      "path": "configs/scene_specs.csv",
+      "exists": true,
+      "size_bytes": 162757,
+      "sha256": "d116b74dc6d9ce3c21a40fcd48b4153a0adc09e98a6c8d341c0f1b6ba680b4e3"
+    },
+    {
+      "path": "configs/selected_models.json",
+      "exists": true,
+      "size_bytes": 2559,
+      "sha256": "0466e1daba176c6330de82c1ae4c3940ac0bbf98fe614ebb2cdc064815313880"
+    },
+    {
+      "path": "logs/gate_status.json",
+      "exists": true,
+      "size_bytes": 4380,
+      "sha256": "be133b9b5987350fee149334d7698742bfcfab43042214ab6bc2bfadf1bda72a"
+    },
+    {
+      "path": "logs/attempt_index.csv",
+      "exists": true,
+      "size_bytes": 893435,
+      "sha256": "57957934a9f3a7259c411227960db0599fa132d95f34a50016d8de3d4b608ba2"
+    },
+    {
+      "path": "logs/episode_index.csv",
+      "exists": true,
+      "size_bytes": 542225,
+      "sha256": "193bf3a6ccde3be857a44ad4e24e89aa72d3099e6dee663cc04c424ea5ab1437"
+    },
+    {
+      "path": "reports/G00_MIGRATION.json",
+      "exists": true,
+      "size_bytes": 928,
+      "sha256": "0250dd21f003d73bbb9c6a4c1d11ff48c3705fb649f9cd94d467c123820d0abc"
+    },
+    {
+      "path": "reports/G01_SCENES.json",
+      "exists": true,
+      "size_bytes": 1835,
+      "sha256": "e0deac0227c17db75ac3cede218164e39c99f981c46dd5ecab48de58bd562eb0"
+    },
+    {
+      "path": "reports/G02_P_TEACHER.json",
+      "exists": true,
+      "size_bytes": 1175,
+      "sha256": "0631e2817688db99a911de2f2a6604cc8f78870b50cc149ab9b4e5e048de2b19"
+    },
+    {
+      "path": "reports/G03_P_INITIAL.json",
+      "exists": true,
+      "size_bytes": 6172,
+      "sha256": "43b645183bcac3c7e1e3a650bd38a821b4a65c7b84d32be521f39fa2e0f35ee7"
+    },
+    {
+      "path": "reports/G04_P_STUDENT.json",
+      "exists": true,
+      "size_bytes": 1410,
+      "sha256": "edc6bf21b646b377b707c2518334be756a1b87f4d327c03859943d4395f66816"
+    },
+    {
+      "path": "reports/G05_P_FINAL.json",
+      "exists": true,
+      "size_bytes": 8066,
+      "sha256": "7fcfdbc9eec70490cf142a8755593c45ed41a2103612bd7ea62309cb1db457b3"
+    },
+    {
+      "path": "reports/G06_P_DEV.json",
+      "exists": true,
+      "size_bytes": 4067,
+      "sha256": "a50105453ff8b6c690cd1cd9842649bc1a044306e83cd2c46447639189fd606d"
+    },
+    {
+      "path": "training/data.py",
+      "exists": true,
+      "size_bytes": 10095,
+      "sha256": "4afbf47f72dc9c149a6e4113dae6b4d47b1e785953ab28a24d1005482b2e29d2"
+    },
+    {
+      "path": "training/models.py",
+      "exists": true,
+      "size_bytes": 3767,
+      "sha256": "cbe307606f58a9f551a870037d1d94517d7842abe574abf69aee2f8ba4b1ceba"
+    },
+    {
+      "path": "training/common.py",
+      "exists": true,
+      "size_bytes": 19546,
+      "sha256": "7c802b9da3628cd65528896c1a308ebda89b90c94075f4d5b863bd020786fbe9"
+    },
+    {
+      "path": "training/train_position.py",
+      "exists": true,
+      "size_bytes": 1908,
+      "sha256": "2b94d418ebe38a6e90a5b6146687b335061070e6dc0911dffdff8725016ffdf3"
+    },
+    {
+      "path": "training/export_matlab.py",
+      "exists": true,
+      "size_bytes": 5778,
+      "sha256": "d15f985dd9b19935e8cb9335033f61b120eec76f9eb5a448d8bce34766d0510a"
+    },
+    {
+      "path": "matlab/runtime/collect_position_role_dl1018.m",
+      "exists": true,
+      "size_bytes": 22622,
+      "sha256": "e1aaf94878c0b17b7de9cedfd79ca954d680958e6cc3342bbd6afbad9dbc7475"
+    },
+    {
+      "path": "matlab/runtime/collect_position_dev_dl1018.m",
+      "exists": true,
+      "size_bytes": 15813,
+      "sha256": "291a0dc7780d58f5497c539ca85c0fc6bbf4b5295791b9288e96127c9693f12d"
+    },
+    {
+      "path": "matlab/runtime/controller_options_dl1018.m",
+      "exists": true,
+      "size_bytes": 2869,
+      "sha256": "93633a5fd95f73d33982045c2fa372d49b1a0df8ea0cfb5ca4461208ca9d53b1"
+    },
+    {
+      "path": "matlab/data/export_position_events_dl1018.m",
+      "exists": true,
+      "size_bytes": 5962,
+      "sha256": "4506849cc2c888e078129772e6bb1927cb479f02b75c072472778ed32d4cf094"
+    },
+    {
+      "path": "matlab/metrics/metrics_dl1018.m",
+      "exists": true,
+      "size_bytes": 7118,
+      "sha256": "f2f8f995c44ed5044cd6c56b883f67370606c681b7c712d699fbea13fe760fb9"
+    },
+    {
+      "path": "experiments/position_causal_repair_v1/manifests/SOURCE_AND_PROTECTION.json",
+      "exists": true,
+      "size_bytes": 15360,
+      "sha256": "946eda1ec49497dd4363e35450134b895a2e22718841453acc34531070d32f0a"
+    },
+    {
+      "path": "experiments/position_causal_repair_v1/reports/FINAL_CAUSAL_REPORT_ZH.md",
+      "exists": true,
+      "size_bytes": 8913,
+      "sha256": "f9e108c64c3f49c1fa6c7ba2be3571750fb150965bf012071ad04b59b9b06640"
+    },
+    {
+      "path": "experiments/position_causal_repair_v1/reports/D4_TRAINING_COMPARISON.csv",
+      "exists": true,
+      "size_bytes": 6807,
+      "sha256": "99106612e184d4aeb9bf6d10959f8527ea9084bc62349a0ef2c7b5501dad39b6"
+    }
+  ],
+  "protected_paths": [
+    "configs/contract_dl1018.json",
+    "B",
+    "Plant",
+    "data/raw/**",
+    "data/events/**",
+    "models/**",
+    "logs/**",
+    "reports/G00-G06*",
+    "experiments/position_causal_repair_v1/**"
+  ],
+  "policy": "Generated artifacts remain confined to experiments/training_data_structure_compare_v2; original contracts, data, B, Plant, and reports remain read-only.",
+  "final_verification": {
+    "checked_at_utc": "2026-10-19T16:17:43Z",
+    "protected_file_count": 26,
+    "all_initial_hashes_match": true,
+    "results": [
+      {
+        "path": "configs/contract_dl1018.json",
+        "initial_sha256": "1924290d90570233a138c1d45e0ccb8070e8cc292affc47a9d8a9d96d2f74405",
+        "final_sha256": "1924290d90570233a138c1d45e0ccb8070e8cc292affc47a9d8a9d96d2f74405",
+        "match": true
+      },
+      {
+        "path": "configs/scene_specs.csv",
+        "initial_sha256": "d116b74dc6d9ce3c21a40fcd48b4153a0adc09e98a6c8d341c0f1b6ba680b4e3",
+        "final_sha256": "d116b74dc6d9ce3c21a40fcd48b4153a0adc09e98a6c8d341c0f1b6ba680b4e3",
+        "match": true
+      },
+      {
+        "path": "configs/selected_models.json",
+        "initial_sha256": "0466e1daba176c6330de82c1ae4c3940ac0bbf98fe614ebb2cdc064815313880",
+        "final_sha256": "0466e1daba176c6330de82c1ae4c3940ac0bbf98fe614ebb2cdc064815313880",
+        "match": true
+      },
+      {
+        "path": "logs/gate_status.json",
+        "initial_sha256": "be133b9b5987350fee149334d7698742bfcfab43042214ab6bc2bfadf1bda72a",
+        "final_sha256": "be133b9b5987350fee149334d7698742bfcfab43042214ab6bc2bfadf1bda72a",
+        "match": true
+      },
+      {
+        "path": "logs/attempt_index.csv",
+        "initial_sha256": "57957934a9f3a7259c411227960db0599fa132d95f34a50016d8de3d4b608ba2",
+        "final_sha256": "57957934a9f3a7259c411227960db0599fa132d95f34a50016d8de3d4b608ba2",
+        "match": true
+      },
+      {
+        "path": "logs/episode_index.csv",
+        "initial_sha256": "193bf3a6ccde3be857a44ad4e24e89aa72d3099e6dee663cc04c424ea5ab1437",
+        "final_sha256": "193bf3a6ccde3be857a44ad4e24e89aa72d3099e6dee663cc04c424ea5ab1437",
+        "match": true
+      },
+      {
+        "path": "reports/G00_MIGRATION.json",
+        "initial_sha256": "0250dd21f003d73bbb9c6a4c1d11ff48c3705fb649f9cd94d467c123820d0abc",
+        "final_sha256": "0250dd21f003d73bbb9c6a4c1d11ff48c3705fb649f9cd94d467c123820d0abc",
+        "match": true
+      },
+      {
+        "path": "reports/G01_SCENES.json",
+        "initial_sha256": "e0deac0227c17db75ac3cede218164e39c99f981c46dd5ecab48de58bd562eb0",
+        "final_sha256": "e0deac0227c17db75ac3cede218164e39c99f981c46dd5ecab48de58bd562eb0",
+        "match": true
+      },
+      {
+        "path": "reports/G02_P_TEACHER.json",
+        "initial_sha256": "0631e2817688db99a911de2f2a6604cc8f78870b50cc149ab9b4e5e048de2b19",
+        "final_sha256": "0631e2817688db99a911de2f2a6604cc8f78870b50cc149ab9b4e5e048de2b19",
+        "match": true
+      },
+      {
+        "path": "reports/G03_P_INITIAL.json",
+        "initial_sha256": "43b645183bcac3c7e1e3a650bd38a821b4a65c7b84d32be521f39fa2e0f35ee7",
+        "final_sha256": "43b645183bcac3c7e1e3a650bd38a821b4a65c7b84d32be521f39fa2e0f35ee7",
+        "match": true
+      },
+      {
+        "path": "reports/G04_P_STUDENT.json",
+        "initial_sha256": "edc6bf21b646b377b707c2518334be756a1b87f4d327c03859943d4395f66816",
+        "final_sha256": "edc6bf21b646b377b707c2518334be756a1b87f4d327c03859943d4395f66816",
+        "match": true
+      },
+      {
+        "path": "reports/G05_P_FINAL.json",
+        "initial_sha256": "7fcfdbc9eec70490cf142a8755593c45ed41a2103612bd7ea62309cb1db457b3",
+        "final_sha256": "7fcfdbc9eec70490cf142a8755593c45ed41a2103612bd7ea62309cb1db457b3",
+        "match": true
+      },
+      {
+        "path": "reports/G06_P_DEV.json",
+        "initial_sha256": "a50105453ff8b6c690cd1cd9842649bc1a044306e83cd2c46447639189fd606d",
+        "final_sha256": "a50105453ff8b6c690cd1cd9842649bc1a044306e83cd2c46447639189fd606d",
+        "match": true
+      },
+      {
+        "path": "training/data.py",
+        "initial_sha256": "4afbf47f72dc9c149a6e4113dae6b4d47b1e785953ab28a24d1005482b2e29d2",
+        "final_sha256": "4afbf47f72dc9c149a6e4113dae6b4d47b1e785953ab28a24d1005482b2e29d2",
+        "match": true
+      },
+      {
+        "path": "training/models.py",
+        "initial_sha256": "cbe307606f58a9f551a870037d1d94517d7842abe574abf69aee2f8ba4b1ceba",
+        "final_sha256": "cbe307606f58a9f551a870037d1d94517d7842abe574abf69aee2f8ba4b1ceba",
+        "match": true
+      },
+      {
+        "path": "training/common.py",
+        "initial_sha256": "7c802b9da3628cd65528896c1a308ebda89b90c94075f4d5b863bd020786fbe9",
+        "final_sha256": "7c802b9da3628cd65528896c1a308ebda89b90c94075f4d5b863bd020786fbe9",
+        "match": true
+      },
+      {
+        "path": "training/train_position.py",
+        "initial_sha256": "2b94d418ebe38a6e90a5b6146687b335061070e6dc0911dffdff8725016ffdf3",
+        "final_sha256": "2b94d418ebe38a6e90a5b6146687b335061070e6dc0911dffdff8725016ffdf3",
+        "match": true
+      },
+      {
+        "path": "training/export_matlab.py",
+        "initial_sha256": "d15f985dd9b19935e8cb9335033f61b120eec76f9eb5a448d8bce34766d0510a",
+        "final_sha256": "d15f985dd9b19935e8cb9335033f61b120eec76f9eb5a448d8bce34766d0510a",
+        "match": true
+      },
+      {
+        "path": "matlab/runtime/collect_position_role_dl1018.m",
+        "initial_sha256": "e1aaf94878c0b17b7de9cedfd79ca954d680958e6cc3342bbd6afbad9dbc7475",
+        "final_sha256": "e1aaf94878c0b17b7de9cedfd79ca954d680958e6cc3342bbd6afbad9dbc7475",
+        "match": true
+      },
+      {
+        "path": "matlab/runtime/collect_position_dev_dl1018.m",
+        "initial_sha256": "291a0dc7780d58f5497c539ca85c0fc6bbf4b5295791b9288e96127c9693f12d",
+        "final_sha256": "291a0dc7780d58f5497c539ca85c0fc6bbf4b5295791b9288e96127c9693f12d",
+        "match": true
+      },
+      {
+        "path": "matlab/runtime/controller_options_dl1018.m",
+        "initial_sha256": "93633a5fd95f73d33982045c2fa372d49b1a0df8ea0cfb5ca4461208ca9d53b1",
+        "final_sha256": "93633a5fd95f73d33982045c2fa372d49b1a0df8ea0cfb5ca4461208ca9d53b1",
+        "match": true
+      },
+      {
+        "path": "matlab/data/export_position_events_dl1018.m",
+        "initial_sha256": "4506849cc2c888e078129772e6bb1927cb479f02b75c072472778ed32d4cf094",
+        "final_sha256": "4506849cc2c888e078129772e6bb1927cb479f02b75c072472778ed32d4cf094",
+        "match": true
+      },
+      {
+        "path": "matlab/metrics/metrics_dl1018.m",
+        "initial_sha256": "f2f8f995c44ed5044cd6c56b883f67370606c681b7c712d699fbea13fe760fb9",
+        "final_sha256": "f2f8f995c44ed5044cd6c56b883f67370606c681b7c712d699fbea13fe760fb9",
+        "match": true
+      },
+      {
+        "path": "experiments/position_causal_repair_v1/manifests/SOURCE_AND_PROTECTION.json",
+        "initial_sha256": "946eda1ec49497dd4363e35450134b895a2e22718841453acc34531070d32f0a",
+        "final_sha256": "946eda1ec49497dd4363e35450134b895a2e22718841453acc34531070d32f0a",
+        "match": true
+      },
+      {
+        "path": "experiments/position_causal_repair_v1/reports/FINAL_CAUSAL_REPORT_ZH.md",
+        "initial_sha256": "f9e108c64c3f49c1fa6c7ba2be3571750fb150965bf012071ad04b59b9b06640",
+        "final_sha256": "f9e108c64c3f49c1fa6c7ba2be3571750fb150965bf012071ad04b59b9b06640",
+        "match": true
+      },
+      {
+        "path": "experiments/position_causal_repair_v1/reports/D4_TRAINING_COMPARISON.csv",
+        "initial_sha256": "99106612e184d4aeb9bf6d10959f8527ea9084bc62349a0ef2c7b5501dad39b6",
+        "final_sha256": "99106612e184d4aeb9bf6d10959f8527ea9084bc62349a0ef2c7b5501dad39b6",
+        "match": true
+      }
+    ],
+    "scope": "Read-only SHA-256 comparison after D6; no protected source was rewritten."
+  },
+  "initial_taskbook_policy": "No push/commit/merge; generated artifacts remain confined to this experiment directory.",
+  "publication_authorization": {
+    "authorized_by_user": true,
+    "authorized_at_client_date": "2026-10-20",
+    "remote": "origin",
+    "branch": "codex/dl1018-causal-diagnosis-upload",
+    "included": "Code, reports, CSVs, manifests, state, model weights/checkpoints, and model exports.",
+    "excluded_local_only": "Large derived .npy caches and per-run raw .mat Plant snapshots (preserved locally and excluded via this directory .gitignore)."
+  }
+}

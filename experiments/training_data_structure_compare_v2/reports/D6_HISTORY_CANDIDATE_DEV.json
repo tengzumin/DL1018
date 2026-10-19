@@ -1,0 +1,147 @@
+{
+  "gate_id": "D6_HISTORY_CANDIDATE_DEV",
+  "status": "STOP_POSITION_NOT_QUALIFIED",
+  "original_G06_status_unchanged": true,
+  "candidate_family": "HISTORY_KAN",
+  "model_id": "HISTORY_KAN_SEED2026101911_STEP15000",
+  "seed": 2.026101911E+9,
+  "selected_step": 15000,
+  "fit_status": "PAUSED_BY_USER_PARTIAL_FIT",
+  "upstream_canary_passed": true,
+  "actual_counts": {
+    "new_plant_starts": 48,
+    "completed_candidate_rows": 48,
+    "complete": true,
+    "finite": true,
+    "physical_failures": false
+  },
+  "checks": {
+    "P_F": {
+      "method": "P_F",
+      "pass": false,
+      "n": 24,
+      "macro_Q": 0.034458011136811344,
+      "macro_B_Q": 0.016958918397443207,
+      "macro_peak": 0.070298606434196678,
+      "total_wins": 1,
+      "peak_warnings": 12,
+      "severe_peaks": 2,
+      "per_task": {
+        "HELIX": {
+          "n": 8,
+          "Q_B_m": 0.012306964763040534,
+          "Q_candidate_m": 0.032004558424079253,
+          "A_B_rad": 0.015890350358206521,
+          "A_candidate_rad": 0.016541421186871366,
+          "wins": 0,
+          "peak_warnings": 5,
+          "severe_peaks": 0,
+          "complete_finite": true,
+          "pass": false
+        },
+        "FIG8_3D": {
+          "n": 8,
+          "Q_B_m": 0.020805218768341766,
+          "Q_candidate_m": 0.04308941729889481,
+          "A_B_rad": 0.011837367131650024,
+          "A_candidate_rad": 0.013289066809913432,
+          "wins": 0,
+          "peak_warnings": 6,
+          "severe_peaks": 2,
+          "complete_finite": true,
+          "pass": false
+        },
+        "SQUARE": {
+          "n": 8,
+          "Q_B_m": 0.017764571660947318,
+          "Q_candidate_m": 0.028280057687459975,
+          "A_B_rad": 0.014171402380434944,
+          "A_candidate_rad": 0.015506182442260253,
+          "wins": 1,
+          "peak_warnings": 1,
+          "severe_peaks": 0,
+          "complete_finite": true,
+          "pass": false
+        }
+      },
+      "checks": {
+        "candidate_scene_coverage": true,
+        "macro_Q_improves": false,
+        "total_win_count": 1,
+        "total_wins_pass": false,
+        "peak_warning_count": 12,
+        "peak_warning_pass": false,
+        "per_task_rules_pass": false
+      }
+    },
+    "P_A": {
+      "method": "P_A",
+      "pass": false,
+      "n": 24,
+      "macro_Q": 0.028520332253344546,
+      "macro_B_Q": 0.016958918397443207,
+      "macro_peak": 0.061168930714181717,
+      "total_wins": 2,
+      "peak_warnings": 9,
+      "severe_peaks": 1,
+      "per_task": {
+        "HELIX": {
+          "n": 8,
+          "Q_B_m": 0.012306964763040534,
+          "Q_candidate_m": 0.025981369829063898,
+          "A_B_rad": 0.015890350358206521,
+          "A_candidate_rad": 0.016515665012054839,
+          "wins": 0,
+          "peak_warnings": 3,
+          "severe_peaks": 0,
+          "complete_finite": true,
+          "pass": false
+        },
+        "FIG8_3D": {
+          "n": 8,
+          "Q_B_m": 0.020805218768341766,
+          "Q_candidate_m": 0.036572571034085968,
+          "A_B_rad": 0.011837367131650024,
+          "A_candidate_rad": 0.013147441937183086,
+          "wins": 0,
+          "peak_warnings": 6,
+          "severe_peaks": 1,
+          "complete_finite": true,
+          "pass": false
+        },
+        "SQUARE": {
+          "n": 8,
+          "Q_B_m": 0.017764571660947318,
+          "Q_candidate_m": 0.023007055896883778,
+          "A_B_rad": 0.014171402380434944,
+          "A_candidate_rad": 0.015416294335296253,
+          "wins": 2,
+          "peak_warnings": 0,
+          "severe_peaks": 0,
+          "complete_finite": true,
+          "pass": false
+        }
+      },
+      "checks": {
+        "candidate_scene_coverage": true,
+        "macro_Q_improves": false,
+        "total_win_count": 2,
+        "total_wins_pass": false,
+        "peak_warning_count": 9,
+        "peak_warning_pass": false,
+        "per_task_rules_pass": false
+      }
+    },
+    "position_selected_head_mode": "",
+    "P_STAR": "",
+    "scenes": 24,
+    "B_reused_rows": 24
+  },
+  "next_gate_allowed": false,
+  "plant_budget_max": 80,
+  "reserved_dev_budget": 0,
+  "notes": [
+    "This independent exploratory DEV does not overwrite reports/G06_P_DEV.json or the original selected-model config.",
+    "The model is the frozen user-paused best checkpoint at 15k/60k; no training or second seed was run."
+  ]
+}
