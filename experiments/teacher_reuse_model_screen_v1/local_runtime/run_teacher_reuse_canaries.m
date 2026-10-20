@@ -8,7 +8,8 @@ officialFull=strcmpi(mode,'OFFICIAL_FULL');
 belowRbf=strcmpi(mode,'BELOW_RBF');
 frozenSix=strcmpi(mode,'FROZEN_SIX');
 dev24Locked=strcmpi(mode,'DEV24_LOCKED');
-assert(extension||officialFull||belowRbf||frozenSix||dev24Locked||strcmpi(mode,'ORIGINAL'),'MODEL:Mode','Unknown canary mode %s.',mode);
+posthocDssm14=strcmpi(mode,'POSTHOC_DSSM14_DEV24');
+assert(extension||officialFull||belowRbf||frozenSix||dev24Locked||posthocDssm14||strcmpi(mode,'ORIGINAL'),'MODEL:Mode','Unknown canary mode %s.',mode);
 root=char(java.io.File(root).getCanonicalPath());out=fullfile(root,'experiments','teacher_reuse_model_screen_v1');
 local=fullfile(out,'local_runtime');addpath(genpath(fullfile(root,'matlab')));addpath(genpath(local),'-begin');rehash;
 [cfg,~,resolved]=init_dl1018();assert(strcmp(root,resolved),'MODEL:Root','Unexpected project root.');
@@ -20,6 +21,8 @@ elseif belowRbf,parityPaths={fullfile(out,'reports','rbf_qualified_zero_plant_pa
 elseif frozenSix,parityPaths={fullfile(out,'reports','official_selected_zero_plant_parity.json'), ...
         fullfile(out,'reports','rbf_qualified_zero_plant_parity.json')};
 elseif dev24Locked,parityPaths={fullfile(out,'reports','official_selected_zero_plant_parity.json'), ...
+        fullfile(out,'reports','rbf_qualified_zero_plant_parity.json')};
+elseif posthocDssm14,parityPaths={fullfile(out,'reports','official_selected_zero_plant_parity.json'), ...
         fullfile(out,'reports','rbf_qualified_zero_plant_parity.json')};
 else,parityPaths={fullfile(out,'reports','zero_plant_model_parity.json')};end
 for pi=1:numel(parityPaths)
@@ -43,6 +46,7 @@ elseif officialFull,models={'MLP14','GRU14'};seedList=[2026102001 2026102002];va
 elseif belowRbf,models={'KAN14','DSSM14','GRU20','DSSM20'};seedList=[2026102001 2026102002];variants={'best_teacher_val','final_step'};
 elseif frozenSix,models={};seedList=[];variants={};
 elseif dev24Locked,models={};seedList=[];variants={};
+elseif posthocDssm14,models={};seedList=[];variants={};
 else,models={'MLP14','KAN14','TCN14','GRU14','DSSM14','MLP20','TCN20','TCN14_L128'};seedList=2026102001;variants={'fast_screen'};end
 if belowRbf
     auth=jsondecode(fileread(fullfile(out,'reports','rbf_qualified_extension_authorization.json')));
@@ -106,6 +110,25 @@ elseif dev24Locked
             norm(opts.stage1_position_runtime.weight-double(model.output_W),'fro')<1e-12, ...
             'MODEL:DevMode','Online position updates and original B attitude RBF must be enabled.');
     end
+elseif posthocDssm14
+    lock=jsondecode(fileread(fullfile(out,'reports','dssm14_posthoc_dev24_locked.json')));
+    assert(strcmp(lock.status,'POSTHOC_DSSM14_DEV24_LOCKED')&&numel(lock.candidates)==1, ...
+        'MODEL:PosthocLock','A single DSSM14 DEV24 candidate must be locked.');
+    c=lock.candidates;assert(strcmp(char(c.model_id),'DSSM14')&&double(c.seed)==2026102001&& ...
+        strcmp(char(c.checkpoint_kind),'final_step')&&~logical(c.freeze_position_updates)&& ...
+        contains(char(c.dev_group_id),'LOCKED_DEV'), ...
+        'MODEL:PosthocCandidate','Unexpected DSSM14 DEV24 candidate or online-update setting.');
+    selection=jsondecode(fileread(fullfile(out,'reports','rbf_qualified_canary_selection.json')));
+    selected=selection.selected_best_package_per_config;si=find(strcmp({selected.model_id},'DSSM14'),1);
+    assert(~isempty(si)&&strcmp(selected(si).group_id,char(c.source_group))&& ...
+        double(selected(si).seed)==double(c.seed)&&strcmp(selected(si).checkpoint_kind,char(c.checkpoint_kind)), ...
+        'MODEL:PosthocPackageLock','DSSM14 package must match the selected RBF-qualified online package.');
+    package=canary_package(out,'FROZEN_SIX','DSSM14',double(c.seed),char(c.checkpoint_kind));
+    q=load(fullfile(package,'matlab_model_and_parity.mat'),'model');model=q.model;model.model_id='DSSM14';
+    opts=position_only_search_options(cfg,model,head.head_type,head.gamma,head.kappa);
+    assert(opts.stage1_position_runtime.update_enabled&&opts.rbf_attitude_update_enabled&& ...
+        norm(opts.stage1_position_runtime.weight-double(model.output_W),'fro')<1e-12, ...
+        'MODEL:PosthocIsolation','Online neural position updates, original B attitude RBF, and own W0 are required.');
 else
 for mi=1:numel(models)
     modelId=models{mi};
@@ -124,6 +147,16 @@ for mi=1:numel(models)
 end
 end
 if dryRun
+    if posthocDssm14
+        write_json(fullfile(out,'reports','dssm14_posthoc_dev24_preflight.json'),struct( ...
+            'status','POSTHOC_DEV24_PREFLIGHT_PASS','candidate_count',numel(lock.candidates), ...
+            'scene_count',height(devB),'plant_starts',count_plants(out), ...
+            'candidate_order',{{lock.candidates.dev_group_id}},'test_accessed',false, ...
+            'formal_result_modified',false));
+        fprintf('POSTHOC_DSSM14_DEV24_PREFLIGHT PASS candidates=%d scenes=%d Plant=%d\n', ...
+            numel(lock.candidates),height(devB),count_plants(out));
+        return
+    end
     if dev24Locked
         write_json(fullfile(out,'reports','dev24_canary_preflight.json'),struct( ...
             'status','DEV24_PREFLIGHT_PASS','candidate_count',numel(lock.candidates), ...
@@ -180,6 +213,11 @@ if frozenSix
 end
 if dev24Locked
     report=run_locked_dev24(root,out,cfg,head,specs,devB,taskStart,lock);
+    return
+end
+if posthocDssm14
+    report=run_locked_dev24(root,out,cfg,head,specs,devB,taskStart,lock, ...
+        'dssm14_posthoc_dev24',true);
     return
 end
 state.phase='SMALL_SCREEN_CANARY';state.status='IN_PROGRESS';state.head=head;state.plant_budget_max=198;
@@ -312,14 +350,24 @@ state.updated_at_utc=utc_now();write_json(statePath,state);
 fprintf('FROZEN_SIX_CANARY_COMPLETE candidates=%d cumulative_new_Plant=%d\n',numel(scores),count_plants(out));
 end
 
-function report=run_locked_dev24(root,out,cfg,head,specs,devB,taskStart,lock)
-statePath=fullfile(out,'state','state.json');state=load_state(statePath);
-state.phase='LOCKED_DEV24';state.status='IN_PROGRESS';state.head=head;
+function report=run_locked_dev24(root,out,cfg,head,specs,devB,taskStart,lock,outputPrefix,isPosthoc)
+if nargin<9||isempty(outputPrefix),outputPrefix='teacher_reuse_locked_dev24';end
+if nargin<10,isPosthoc=false;end
+if isPosthoc
+    statePath=fullfile(out,'state','dssm14_posthoc_dev24_state.json');
+    ledgerPath=fullfile(out,'reports','dssm14_posthoc_dev24_resource_ledger.csv');
+    if ~isfile(ledgerPath),write_text(ledgerPath,['timestamp_utc,phase,resource_type,identity,count,status,notes' newline]);end
+else
+    statePath=fullfile(out,'state','state.json');ledgerPath=fullfile(out,'RESOURCE_LEDGER.csv');
+end
+state=load_state(statePath);
+if isPosthoc,state.phase='POSTHOC_DSSM14_DEV24';else,state.phase='LOCKED_DEV24';end
+state.status='IN_PROGRESS';state.head=head;
 if isfield(state,'plant_budget_max'),state=rmfield(state,'plant_budget_max');end
 state.active_group='';state.active_scene='';state.active_run_id='';state.cumulative_new_plant_starts=count_plants(out);
 state.updated_at_utc=utc_now();write_json(statePath,state);
 started=datetime('now','TimeZone','UTC');allRows=struct([]);candidateResults=struct([]);
-resultsPath=fullfile(out,'reports','teacher_reuse_locked_dev24_results.csv');reportPath=fullfile(out,'reports','teacher_reuse_locked_dev24_result.json');
+resultsPath=fullfile(out,'reports',[outputPrefix '_results.csv']);reportPath=fullfile(out,'reports',[outputPrefix '_result.json']);
 for ci=1:numel(lock.candidates)
     c=lock.candidates(ci);modelId=char(c.model_id);group=char(c.dev_group_id);
     package=canary_package(out,'FROZEN_SIX',modelId,double(c.seed),char(c.checkpoint_kind));
@@ -330,9 +378,10 @@ for ci=1:numel(lock.candidates)
         assert(height(spec)==1,'MODEL:DevScene','Expected one DEV spec for %s.',sceneId);
         b=baseline_row(group,sceneId,table(),table(),table(),devB);
         row=run_one(root,out,cfg,model,spec,'LOCKED_DEV',group,'FEATURE',head.gamma,head.kappa, ...
-            b,started,planned,logical(c.freeze_position_updates));
+            b,started,planned,logical(c.freeze_position_updates),statePath,ledgerPath);
         rows=append_rows(rows,row);allRows=append_rows(allRows,row);persist_rows(allRows,resultsPath);
-        state=load_state(statePath);state.phase='LOCKED_DEV24';state.active_group=group;state.active_scene=sceneId;
+        state=load_state(statePath);if isPosthoc,state.phase='POSTHOC_DSSM14_DEV24';else,state.phase='LOCKED_DEV24';end
+        state.active_group=group;state.active_scene=sceneId;
         state.cumulative_new_plant_starts=count_plants(out);state.updated_at_utc=utc_now();write_json(statePath,state);
     end
     full=numel(rows)==height(devB)&&all([rows.complete])&&all([rows.finite])&& ...
@@ -353,19 +402,27 @@ for ci=1:numel(lock.candidates)
         'cumulative_new_plant_starts',count_plants(out),'finished_at_utc',utc_now());
     write_json(reportPath,report);
     if pass,candidateStatus='PASS';else,candidateStatus='COMPLETE_NOT_BELOW_B';end
-    append_ledger(out,'LOCKED_DEV24','candidate',group,sum(double([rows.plant_started])), ...
-        candidateStatus,sprintf('Q=%.10g same_scene_B=%.10g',qMacro,bMacro));
+    if isPosthoc,ledgerPhase='POSTHOC_DSSM14_DEV24';else,ledgerPhase='LOCKED_DEV24';end
+    append_ledger(out,ledgerPhase,'candidate',group,sum(double([rows.plant_started])), ...
+        candidateStatus,sprintf('Q=%.10g same_scene_B=%.10g',qMacro,bMacro),ledgerPath);
     if pass,break;end
 end
-state=load_state(statePath);state.phase='LOCKED_DEV24_COMPLETE';state.status='COMPLETE';
+state=load_state(statePath);if isPosthoc,state.phase='POSTHOC_DSSM14_DEV24_COMPLETE';else,state.phase='LOCKED_DEV24_COMPLETE';end
+state.status='COMPLETE';
 state.active_group='';state.active_scene='';state.active_run_id='';state.cumulative_new_plant_starts=count_plants(out);
-state.plant_starts=count_plants(out);state.final_result_status=report.status;state.completed_at_utc=utc_now();
+state.plant_starts=count_plants(out);
+if isPosthoc
+    state.posthoc_result_status=report.status;state.posthoc_report_path=relpath(root,reportPath);
+else
+    state.final_result_status=report.status;state.completed_at_utc=utc_now();
+end
 for staleField={'active_fit','active_fit_step','active_fit_status'}
     if isfield(state,staleField{1}),state=rmfield(state,staleField{1});end
 end
 state.updated_at_utc=utc_now();write_json(statePath,state);
-fprintf('LOCKED_DEV24_COMPLETE status=%s candidates_run=%d cumulative_new_Plant=%d\n', ...
-    report.status,numel(candidateResults),count_plants(out));
+if isPosthoc,completionLabel='POSTHOC_DSSM14_DEV24_COMPLETE';else,completionLabel='LOCKED_DEV24_COMPLETE';end
+fprintf('%s status=%s candidates_run=%d cumulative_new_Plant=%d\n', ...
+    completionLabel,report.status,numel(candidateResults),count_plants(out));
 end
 
 function report=run_x20_extension_groups(root,out,cfg,head,models,seeds,specs,ids,bridge,bridgePair,finalBridge,devB)
@@ -466,7 +523,9 @@ end
 score=score_six(rows,group,headType,gamma,kappa);emit_group(out,rows,score,planned,taskStart);
 end
 
-function row=run_one(root,out,cfg,model,spec,phase,group,headType,gamma,kappa,b,taskStart,planned,freezePosition)
+function row=run_one(root,out,cfg,model,spec,phase,group,headType,gamma,kappa,b,taskStart,planned,freezePosition,statePath,ledgerPath)
+if nargin<15||isempty(statePath),statePath=fullfile(out,'state','state.json');end
+if nargin<16||isempty(ledgerPath),ledgerPath=fullfile(out,'RESOURCE_LEDGER.csv');end
 sceneId=char(spec.scene_id);sceneDir=fullfile(out,'runs',group,sceneId);if ~isfolder(sceneDir),mkdir(sceneDir);end
 raw=fullfile(sceneDir,'raw_run.mat');start=fullfile(sceneDir,'run_start.mat');marker=fullfile(sceneDir,'plant_started.marker');mp=fullfile(sceneDir,'metrics.json');
 if isfile(mp)
@@ -498,14 +557,14 @@ else
         'model_id',char(model.model_id),'head_type',headType,'gamma',gamma,'kappa',kappa,'encoder_frozen',true, ...
         'candidate_fit_status',candidateFitStatus,'scene_spec',spec,'cfg',cfg,'opts',opts,'initial_state',scene.initial_state, ...
         'reused_B_run_id',char(b.run_id),'started_at_utc',utc_now());
-    runStart=rs;save(start,'runStart','-v7');state=load_state(fullfile(out,'state','state.json'));
+    runStart=rs;save(start,'runStart','-v7');state=load_state(statePath);
     state.active_group=group;state.active_scene=sceneId;state.active_run_id=rs.run_id;state.head_type=headType;
     state.gamma=gamma;state.kappa=kappa;state.cumulative_new_plant_starts=count_plants(out);state.updated_at_utc=utc_now();
-    write_json(fullfile(out,'state','state.json'),state);opts.r2e_first_plant_step_marker=marker;
+    write_json(statePath,state);opts.r2e_first_plant_step_marker=marker;
     try
         episode=@run_episode_dl1018;log=episode(scene,'P_A',cfg,opts,raw);plantStarted=isfile(marker);
     catch err
-        plantStarted=isfile(marker);if plantStarted,append_ledger(out,phase,'Plant',rs.run_id,1,'ENGINEERING_ERROR',err.identifier);end
+        plantStarted=isfile(marker);if plantStarted,append_ledger(out,phase,'Plant',rs.run_id,1,'ENGINEERING_ERROR',err.identifier,ledgerPath);end
         write_json(fullfile(sceneDir,'error.json'),struct('identifier',err.identifier,'message',err.message,'plant_started',plantStarted,'scene_id',sceneId));rethrow(err)
     end
 end
@@ -513,11 +572,11 @@ core=measure_pcf_dl1018(log,scene,double(rs.opts.stage1_position_runtime.weight)
 met=metrics_dl1018(log,scene,spec,core,double(b.Q_0_20_m),double(field_or(b,'A_0_20_rad',NaN)),double(b.position_peak_m),true);
 row=make_row(rs.run_id,phase,sceneId,char(spec.task),headType,gamma,kappa,char(model.model_id),log,core,met,b,plantStarted, ...
     relpath(root,raw),relpath(root,start),cfg.rbf.position.dmax);
-if plantStarted,append_ledger(out,phase,'Plant',rs.run_id,1,char(log.status),sprintf('%s %s gamma=%g kappa=%g',headType,sceneId,gamma,kappa));end
+if plantStarted,append_ledger(out,phase,'Plant',rs.run_id,1,char(log.status),sprintf('%s %s gamma=%g kappa=%g',headType,sceneId,gamma,kappa),ledgerPath);end
 write_json(mp,struct('metrics_row',row,'source_reused',false,'finished_at_utc',utc_now()));
 if ~strcmp(phase,'LOCKED_DEV'),persist_rows(row,fullfile(out,'reports','SEARCH_ALL_RUNS.csv'));end
-state=load_state(fullfile(out,'state','state.json'));state.active_group='';state.active_scene='';state.active_run_id='';
-state.cumulative_new_plant_starts=count_plants(out);state.updated_at_utc=utc_now();write_json(fullfile(out,'state','state.json'),state);
+state=load_state(statePath);state.active_group='';state.active_scene='';state.active_run_id='';
+state.cumulative_new_plant_starts=count_plants(out);state.updated_at_utc=utc_now();write_json(statePath,state);
 fprintf('POSITION_SEARCH_RUN %s %s status=%s Q=%.9g B=%.9g starts=%d ETA=%s\n',group,sceneId,row.status,row.Q_0_20_m,row.B_Q_0_20_m,count_plants(out),eta_text(count_plants(out),planned,taskStart));
 end
 
@@ -703,9 +762,11 @@ if plants<1,s='待首组实测';return;end
 elapsed=max(1,seconds(datetime('now','TimeZone','UTC')-t0));remaining=max(0,planned-plants)*elapsed/plants;
 if remaining<3600,s=sprintf('约 %.0f 分钟',remaining/60);else,s=sprintf('约 %.1f 小时',remaining/3600);end
 end
-function append_ledger(out,phase,kind,id,count,status,notes)
-p=fullfile(out,'RESOURCE_LEDGER.csv');if contains(fileread(p),char(id)),return;end
-f=fopen(p,'a');fprintf(f,'%s,%s,%s,%s,%d,%s,%s\n',utc_now(),phase,kind,id,count,status,strrep(char(notes),',',';'));fclose(f);
+function append_ledger(out,phase,kind,id,count,status,notes,path)
+if nargin<8||isempty(path),path=fullfile(out,'RESOURCE_LEDGER.csv');end
+if ~isfile(path),write_text(path,['timestamp_utc,phase,resource_type,identity,count,status,notes' newline]);end
+if contains(fileread(path),char(id)),return;end
+f=fopen(path,'a');fprintf(f,'%s,%s,%s,%s,%d,%s,%s\n',utc_now(),phase,kind,id,count,status,strrep(char(notes),',',';'));fclose(f);
 end
 function log_progress(out,s)
 f=fopen(fullfile(out,'reports','progress.log'),'a');fwrite(f,s,'char');fclose(f);
