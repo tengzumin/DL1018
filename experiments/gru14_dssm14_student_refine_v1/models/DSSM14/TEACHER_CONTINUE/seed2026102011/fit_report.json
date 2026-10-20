@@ -1,0 +1,245 @@
+{
+  "status": "COMPLETE",
+  "fit_id": "TEACHER_CONTINUE_DSSM14_SEED2026102011",
+  "model_id": "DSSM14",
+  "group": "TEACHER_CONTINUE",
+  "seed": 2026102011,
+  "source_checkpoint": "experiments/teacher_reuse_model_screen_v1/models/official/DSSM14/seed2026102001/final_step.pt",
+  "source_checkpoint_sha256": "af4b480aa4bc2b087ec7acd9fb9847d036e44e3eccfa43c07033cd15ec59d8bc",
+  "original_model_step": 60000,
+  "start_output_max_abs_error": 0.0,
+  "normalizer_frozen": true,
+  "train_window_count": 605184,
+  "teacher_val_window_count": 37824,
+  "student_val_window_count": 9456,
+  "role_weight_mass": {
+    "B": 0.4999999701976776,
+    "POS_OFF": 0.4999999701976776
+  },
+  "optimizer_samples_seen_by_role": {
+    "B": 1280028,
+    "POS_OFF": 1279972
+  },
+  "student_samples_seen": 0,
+  "student_nonzero_loss_samples": 0,
+  "student_weighted_loss_sum": 0.0,
+  "student_gradient_norm_probe": null,
+  "student_optimization_contribution_verified": false,
+  "teacher_continue_student_samples_seen": 0,
+  "optimizer": {
+    "name": "Adam",
+    "lr": 0.0001,
+    "weight_decay": 1e-05,
+    "batch_size": 256,
+    "fresh_state": true
+  },
+  "loss": "mean_axis SmoothL1(pred/3,target_clip/3), one hierarchical sample weight, N/batch correction",
+  "steps": 10000,
+  "selected_step": 6000,
+  "best_common_val_rmse_mps2": 0.2038643581707356,
+  "best_common_val_detail": {
+    "common_val_rmse_mps2": 0.2038643581707356,
+    "teacher_val_rmse_mps2": 0.18046068443112578,
+    "student_val_rmse_mps2": 0.27845852143618866,
+    "teacher_val_detail": {
+      "weighted_clipped_rmse_mps2": 0.18046068443112578,
+      "natural_time_weighted_rmse_mps2": 0.18325546181231256,
+      "by_axis_weighted_rmse_mps2": {
+        "x": 0.19651481272677707,
+        "y": 0.21179101202687997,
+        "z": 0.11926722718182402
+      },
+      "by_role_weighted_rmse_mps2": {
+        "B": 0.22135944294014312,
+        "POS_OFF": 0.12701226032131802
+      },
+      "by_task_weighted_rmse_mps2": {
+        "FIG8_3D": 0.1751693222883998,
+        "HELIX": 0.18827936020282945,
+        "SQUARE": 0.17766475995366082
+      },
+      "by_wind_weighted_rmse_mps2": {
+        "0": 0.13582029355443503,
+        "1": 0.17140851174422403,
+        "2": 0.19210113336692167,
+        "3": 0.15447956886271297,
+        "4": 0.1863018166415052,
+        "5": 0.24593041873868626,
+        "6": 0.14585547212545746,
+        "7": 0.16922590511455235,
+        "8": 0.20471319811385347,
+        "9": 0.15517439823693105,
+        "10": 0.16761348354049196,
+        "11": 0.19535208666709633,
+        "12": 0.14933084455683093,
+        "13": 0.1937197807940622,
+        "14": 0.2355273920536946,
+        "15": 0.14077375564380493
+      },
+      "by_phase_weighted_rmse_mps2": {
+        "0": 0.17213278739548782,
+        "1": 0.13978701977163172,
+        "2": 0.18977805117603816,
+        "3": 0.23629808373324923,
+        "4": 0.17931340273471746,
+        "5": 0.14234774380033816
+      },
+      "prediction_raw_clip_fraction": 0.0,
+      "target_raw_clip_fraction": 0.0
+    },
+    "student_val_detail": {
+      "weighted_clipped_rmse_mps2": 0.27845852143618866,
+      "natural_time_weighted_rmse_mps2": 0.2827132682313759,
+      "by_axis_weighted_rmse_mps2": {
+        "x": 0.36777916607378397,
+        "y": 0.2834261704737289,
+        "z": 0.13048193504831904
+      },
+      "by_role_weighted_rmse_mps2": {
+        "STUDENT": 0.27845852143618866
+      },
+      "by_task_weighted_rmse_mps2": {
+        "FIG8_3D": 0.2690602964235612,
+        "HELIX": 0.2829542462901871,
+        "SQUARE": 0.2831269960117437
+      },
+      "by_wind_weighted_rmse_mps2": {
+        "0": 0.17543588273312072,
+        "1": 0.21524497516849941,
+        "2": 0.2205909693003858,
+        "3": 0.18273358473424983,
+        "4": 0.24436341584192972,
+        "5": 0.3009218979771782,
+        "6": 0.19103873325999643,
+        "7": 0.2730985765953748,
+        "10": 0.3603754871511694,
+        "13": 0.3150124378586655,
+        "14": 0.43231348155836546,
+        "15": 0.13752055145447348
+      },
+      "by_phase_weighted_rmse_mps2": {
+        "0": 0.314391058803019,
+        "1": 0.2233047779113863,
+        "2": 0.27476102906692246,
+        "3": 0.33617856312369343,
+        "4": 0.2694177585455684,
+        "5": 0.24803024839016147
+      },
+      "prediction_raw_clip_fraction": 0.0,
+      "target_raw_clip_fraction": 0.0007050197405527354
+    }
+  },
+  "final_step_common_val_rmse_mps2": 0.20388586485759957,
+  "final_step_common_val_detail": {
+    "common_val_rmse_mps2": 0.20388586485759957,
+    "teacher_val_rmse_mps2": 0.1805635622031295,
+    "student_val_rmse_mps2": 0.2782704250575744,
+    "teacher_val_detail": {
+      "weighted_clipped_rmse_mps2": 0.1805635622031295,
+      "natural_time_weighted_rmse_mps2": 0.18337436609560226,
+      "by_axis_weighted_rmse_mps2": {
+        "x": 0.1967710125028338,
+        "y": 0.21175716959797347,
+        "z": 0.11937198058554185
+      },
+      "by_role_weighted_rmse_mps2": {
+        "B": 0.2212080392153305,
+        "POS_OFF": 0.12756725041120714
+      },
+      "by_task_weighted_rmse_mps2": {
+        "FIG8_3D": 0.1751222243459733,
+        "HELIX": 0.18827790392073496,
+        "SQUARE": 0.17802594593034451
+      },
+      "by_wind_weighted_rmse_mps2": {
+        "0": 0.13495804787904317,
+        "1": 0.17252067936790538,
+        "2": 0.18880252313458373,
+        "3": 0.15507893403880804,
+        "4": 0.18469933769325247,
+        "5": 0.24610350548874305,
+        "6": 0.14343030969602064,
+        "7": 0.17188086839586292,
+        "8": 0.20608420501055671,
+        "9": 0.15686028975414343,
+        "10": 0.16552364487202512,
+        "11": 0.19820402200012938,
+        "12": 0.14786240181726948,
+        "13": 0.19515148501483257,
+        "14": 0.23393443154243432,
+        "15": 0.14405114804499886
+      },
+      "by_phase_weighted_rmse_mps2": {
+        "0": 0.17240995740402626,
+        "1": 0.1399544399700326,
+        "2": 0.18981471867929406,
+        "3": 0.23668677784099149,
+        "4": 0.17958648657338436,
+        "5": 0.14172694130083877
+      },
+      "prediction_raw_clip_fraction": 0.0,
+      "target_raw_clip_fraction": 0.0
+    },
+    "student_val_detail": {
+      "weighted_clipped_rmse_mps2": 0.2782704250575744,
+      "natural_time_weighted_rmse_mps2": 0.2825547071299717,
+      "by_axis_weighted_rmse_mps2": {
+        "x": 0.36700929945398,
+        "y": 0.2838217130436785,
+        "z": 0.13058597820753975
+      },
+      "by_role_weighted_rmse_mps2": {
+        "STUDENT": 0.2782704250575744
+      },
+      "by_task_weighted_rmse_mps2": {
+        "FIG8_3D": 0.26792330825246696,
+        "HELIX": 0.2833345224046681,
+        "SQUARE": 0.2832700790555398
+      },
+      "by_wind_weighted_rmse_mps2": {
+        "0": 0.1734043787430173,
+        "1": 0.21733188994200447,
+        "2": 0.21463781787651282,
+        "3": 0.18494424122377473,
+        "4": 0.24252158686550837,
+        "5": 0.30270042064588204,
+        "6": 0.18982174125725873,
+        "7": 0.27426739779986925,
+        "10": 0.361183343314778,
+        "13": 0.3140219977356086,
+        "14": 0.4308095898562315,
+        "15": 0.1399398059260645
+      },
+      "by_phase_weighted_rmse_mps2": {
+        "0": 0.3150114462110413,
+        "1": 0.2231565665833906,
+        "2": 0.27474207982290144,
+        "3": 0.3359804973467376,
+        "4": 0.2686115044455524,
+        "5": 0.24755848865795277
+      },
+      "prediction_raw_clip_fraction": 0.0,
+      "target_raw_clip_fraction": 0.0007050197405527354
+    }
+  },
+  "eval_steps": [
+    0,
+    1000,
+    2000,
+    3000,
+    4000,
+    5000,
+    6000,
+    7000,
+    8000,
+    9000,
+    10000
+  ],
+  "steps_per_s_mean": 60.001695210571214,
+  "elapsed_s": 174.92515819999971,
+  "protocol_sha256": "fba01c7a17c119ff943fafe810e72f5199b247229eab88853979f70c0c19a212",
+  "fit_source_sha256": "8c6f6a312a0e6a0fbeefb65ae9e4cf2a8df400c08a3bfb9cb34ea69965464b7c",
+  "model_source_sha256": "7d38948b0ea2f70ec7d1f3c433063cdc7f264080e5f717262e56ba4fd8ec1c22",
+  "data_source_sha256": "507ea8bbce3cd3f66d33d15d2490367655a95d9140c85361ca4fdc43747790c5",
+  "completed_at_utc": "2026-10-20T08:37:11.660663+00:00"
+}
