@@ -1,0 +1,37 @@
+{
+  "status": "PASS",
+  "candidate_lock": {
+    "order": 1,
+    "group": "TEMPORAL",
+    "dev_group_id": "LOCKED_DEV_FIRST_GRU14_ONLINE",
+    "model_id": "GRU14",
+    "seed": 2.026102002E+9,
+    "checkpoint_kind": "final_step",
+    "source_group": "OFFICIAL_GRU14_SEED2026102002_FINAL_STEP",
+    "freeze_position_updates": false,
+    "six_scene_Q_0_20_m": 0.015284916766821185,
+    "same_scene_B_macro_Q_0_20_m": 0.020356747923155928
+  },
+  "candidate_results": {
+    "order": 1,
+    "group_id": "LOCKED_DEV_FIRST_GRU14_ONLINE",
+    "model_id": "GRU14",
+    "seed": 2.026102002E+9,
+    "checkpoint_kind": "final_step",
+    "freeze_position_updates": false,
+    "scene_count": 24,
+    "expected_scene_count": 24,
+    "complete_finite_stable": true,
+    "macro_Q_0_20_m": 0.015059659369799935,
+    "same_scene_B_macro_Q_0_20_m": 0.016958918397443203,
+    "delta_Q_vs_B_m": -0.0018992590276432682,
+    "wins_vs_same_scene_B": 12,
+    "strictly_below_B": true,
+    "plant_starts": 24
+  },
+  "results_csv": "experiments/teacher_reuse_model_screen_v1/reports/teacher_reuse_locked_dev24_results.csv",
+  "selection_rule": "Candidate passes only if all 24 DEV runs are complete, finite, stable, and the equal-weight macro Q_0_20_m is strictly below same-scene B. If candidate 1 does not pass, execute candidate 2 once.",
+  "test_accessed": false,
+  "cumulative_new_plant_starts": 264,
+  "finished_at_utc": "2026-10-20T00:31:00.870Z"
+}

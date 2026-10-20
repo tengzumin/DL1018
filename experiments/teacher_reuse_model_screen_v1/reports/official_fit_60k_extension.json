@@ -1,0 +1,88 @@
+{
+  "status": "OFFICIAL_FITS_AT_60K",
+  "protocol_sha256": "746360dc2985a3a9fb5602975481884e89a59e677d383dc3d3c8f0ef6a5a0f29",
+  "rule": "If any successful selected fit improves by at least 1% in steps 30001-40000 over its best score through 30000, extend every successful selected fit to 60000.",
+  "fit_evidence": [
+    {
+      "model_id": "MLP14",
+      "seed": 2026102001,
+      "best_through_30k_mps2": 0.2674038349175009,
+      "best_30k_to_40k_mps2": 0.2655405202326081,
+      "relative_improvement": 0.0069681673991985995,
+      "triggered": false
+    },
+    {
+      "model_id": "MLP14",
+      "seed": 2026102002,
+      "best_through_30k_mps2": 0.2636634436063712,
+      "best_30k_to_40k_mps2": 0.2631741818819676,
+      "relative_improvement": 0.0018556297289888434,
+      "triggered": false
+    },
+    {
+      "model_id": "GRU14",
+      "seed": 2026102001,
+      "best_through_30k_mps2": 0.1477612160484737,
+      "best_30k_to_40k_mps2": 0.1447659420375333,
+      "relative_improvement": 0.020271043315979446,
+      "triggered": true
+    },
+    {
+      "model_id": "GRU14",
+      "seed": 2026102002,
+      "best_through_30k_mps2": 0.1464950148680101,
+      "best_30k_to_40k_mps2": 0.1422239882357145,
+      "relative_improvement": 0.029154757492217208,
+      "triggered": true
+    }
+  ],
+  "decision_at_utc": "2026-10-19T21:02:57.707231+00:00",
+  "fits": [
+    {
+      "fit_id": "OFFICIAL_MLP14_SEED2026102001",
+      "model_id": "MLP14",
+      "seed": 2026102001,
+      "last_step": 60000,
+      "selected_step": 54000,
+      "best_teacher_val_rmse_mps2": 0.26413700955544794,
+      "final_teacher_val_rmse_mps2": 0.2650118445418348,
+      "steps_per_s_mean": 270.80127906395415,
+      "status": "COMPLETE"
+    },
+    {
+      "fit_id": "OFFICIAL_MLP14_SEED2026102002",
+      "model_id": "MLP14",
+      "seed": 2026102002,
+      "last_step": 60000,
+      "selected_step": 60000,
+      "best_teacher_val_rmse_mps2": 0.26292012048866353,
+      "final_teacher_val_rmse_mps2": 0.26292012048866353,
+      "steps_per_s_mean": 276.74692339541315,
+      "status": "COMPLETE"
+    },
+    {
+      "fit_id": "OFFICIAL_GRU14_SEED2026102001",
+      "model_id": "GRU14",
+      "seed": 2026102001,
+      "last_step": 60000,
+      "selected_step": 54000,
+      "best_teacher_val_rmse_mps2": 0.14345156994761316,
+      "final_teacher_val_rmse_mps2": 0.14425262439199077,
+      "steps_per_s_mean": 225.03984437182194,
+      "status": "COMPLETE"
+    },
+    {
+      "fit_id": "OFFICIAL_GRU14_SEED2026102002",
+      "model_id": "GRU14",
+      "seed": 2026102002,
+      "last_step": 60000,
+      "selected_step": 52000,
+      "best_teacher_val_rmse_mps2": 0.14107338203117198,
+      "final_teacher_val_rmse_mps2": 0.14433389503982083,
+      "steps_per_s_mean": 225.88890701943586,
+      "status": "COMPLETE"
+    }
+  ],
+  "finished_at_utc": "2026-10-19T21:09:05.461838+00:00",
+  "plant_starts": 0
+}

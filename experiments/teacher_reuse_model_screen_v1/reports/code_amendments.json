@@ -1,0 +1,62 @@
+{
+  "amendments": [
+    {
+      "timestamp_utc": "2026-10-19T18:22:04.351679+00:00",
+      "protocol_sha256": "746360dc2985a3a9fb5602975481884e89a59e677d383dc3d3c8f0ef6a5a0f29",
+      "file": "experiments/teacher_reuse_model_screen_v1/scripts/fit_models.py",
+      "frozen_source_sha256": "2b11eb5f3e516bee48ec3208999668b686c268733e068c0c5e874a01d2265691",
+      "current_source_sha256": "9843d0786f17c09ff9b6e4aa0c69bb6c495d191ebe6954976c16958ec2c83063",
+      "reason": "The first completed fit exposed a missing step-0 history field that interrupted report and ledger finalization. Also made FAST_SCREEN and OFFICIAL artifacts stage-specific and report/ledger recovery idempotent.",
+      "scope": "Bookkeeping and recovery only. Model definitions, input tensors, data/windows, labels, normalizers, seeds, optimizer, loss, sample weighting, schedules, and selection rules are unchanged.",
+      "first_fit_handling": "Reuse its saved 2000-step checkpoint and validation report; regenerate the history CSV and complete the training-results and resource-ledger rows without another optimizer step."
+    },
+    {
+      "timestamp_utc": "2026-10-19T19:22:26.995571+00:00",
+      "protocol_sha256": "746360dc2985a3a9fb5602975481884e89a59e677d383dc3d3c8f0ef6a5a0f29",
+      "file": "experiments/teacher_reuse_model_screen_v1/scripts/fit_models.py",
+      "previous_source_sha256": "9843d0786f17c09ff9b6e4aa0c69bb6c495d191ebe6954976c16958ec2c83063",
+      "current_source_sha256": "979a839653a5c9a445090f5283c10ef94b43c594e211489a26d1519de3e8d449",
+      "reason": "The first L128 training attempt revealed that FAST_SCREEN selected the 32-event small-pool windows for every configuration. Added the pre-registered 128-event small-pool window selection (72,000 endpoints).",
+      "scope": "Input context and endpoint definition were already frozen in protocol; this fixes implementation to follow that frozen L=128 definition. No optimizer step ran in the failed attempt and no Plant started.",
+      "recovery": "Retry the same FAST_SCREEN_TCN14_L128_SEED2026102001 configuration and seed from random initialization; no fit or Plant result is discarded."
+    },
+    {
+      "timestamp_utc": "2026-10-19T20:48:09.453845+00:00",
+      "protocol_sha256": "746360dc2985a3a9fb5602975481884e89a59e677d383dc3d3c8f0ef6a5a0f29",
+      "file": "experiments/teacher_reuse_model_screen_v1/scripts/fit_models.py",
+      "previous_source_sha256": "979a839653a5c9a445090f5283c10ef94b43c594e211489a26d1519de3e8d449",
+      "current_source_sha256": "5cf16cc1837ee2d6c87a102c7a8a34d3a18c31098890826322c81d0053b1ecf6",
+      "reason": "The official-fit state updater counted resource type plant_start but the completed canary ledger uses Plant. Recognize both existing ledger spellings so live state preserves the actual canary Plant count during training.",
+      "scope": "State bookkeeping only. Training model, input, data, optimizer, loss, weights, seed, validation, schedule, checkpoint, selection and Plant run definitions are unchanged."
+    },
+    {
+      "timestamp_utc": "2026-10-19T21:03:00.000000+00:00",
+      "protocol_sha256": "746360dc2985a3a9fb5602975481884e89a59e677d383dc3d3c8f0ef6a5a0f29",
+      "file": "experiments/teacher_reuse_model_screen_v1/scripts/fit_models.py",
+      "previous_source_sha256": "5cf16cc1837ee2d6c87a102c7a8a34d3a18c31098890826322c81d0053b1ecf6",
+      "current_source_sha256": "31A08407F5B3FE66B42A7E930925E5AE4CDABFA0A764C218356EEDB82CA4E9FF",
+      "reason": "The first official resume on CUDA exposed that torch.load(map_location=cuda) moves saved CPU/CUDA RNG byte tensors to CUDA before RNG restoration. Restore the saved RNG tensors on CPU for exact checkpoint resume.",
+      "scope": "Checkpoint restoration compatibility only. The failed invocation stopped before any new optimizer step or Plant; no training data, model, optimizer, schedule, random seed, or selection rule changed."
+    },
+    {
+      "timestamp_utc": "2026-10-20T00:36:47+00:00",
+      "protocol_sha256": "746360dc2985a3a9fb5602975481884e89a59e677d383dc3d3c8f0ef6a5a0f29",
+      "file": "experiments/teacher_reuse_model_screen_v1/local_runtime/run_dl1018_closed_loop.m",
+      "current_source_sha256": "442c6b48d5b47e48695ecdbbc6d0408589b81d796d610cd9d48c5bd3301b9a50",
+      "previous_source_sha256": null,
+      "reason": "The frozen-canary taskbook requires disabling neural position online updates while retaining the fixed network output. The runtime previously asserted that search heads must update and always applied online updates. Added a frozen static-output branch and allowed the update flag to be false.",
+      "scope": "Implements the written frozen mode only: fixed position W0/head output, no neural update; B attitude RBF, PCF, filters, and all other controller settings remain unchanged.",
+      "first_attempt_handling": "The frozen-runtime assertion failed before plant_started.marker; no Plant ran. error.json and run_start.mat are preserved in preplant_attempt_01. After the implementation fix, the zero-Plant preflight passed and the pre-registered scenes ran once."
+    },
+    {
+      "timestamp_utc": "2026-10-20T00:36:47+00:00",
+      "protocol_sha256": "746360dc2985a3a9fb5602975481884e89a59e677d383dc3d3c8f0ef6a5a0f29",
+      "file": "experiments/teacher_reuse_model_screen_v1/local_runtime/run_teacher_reuse_canaries.m",
+      "current_source_sha256": "964ab963cee8a9a26077fab951d943d94461c0da29b990639d889b11752700e1",
+      "previous_source_sha256": null,
+      "reason": "Added locked frozen-six and DEV24 execution modes, source-package checks, update isolation, per-scene persistence, and the predeclared advance/stop rule. The original protocol and candidate criteria were not changed.",
+      "scope": "Runner/reporting implementation for the taskbook frozen and DEV24 stages plus the user-authorized below-B extension. No Plant budget limit is applied in the extension.",
+      "first_attempt_handling": "The frozen-runtime assertion failed before plant_started.marker; no Plant ran. error.json and run_start.mat are preserved in preplant_attempt_01. After the implementation fix, the zero-Plant preflight passed and the pre-registered scenes ran once."
+    }
+  ]
+}

@@ -1,0 +1,793 @@
+{
+  "task": "DL1018_TEACHER_REUSE_MODEL_SCREEN_V1",
+  "status": "FROZEN_BEFORE_FIRST_FIT",
+  "frozen_at_utc": "2026-10-19T18:19:52.128018+00:00",
+  "project_root": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018",
+  "git_at_freeze": {
+    "branch": "codex/dl1018-causal-diagnosis-upload",
+    "commit": "e13d6a456e761455fc107515261c324f85ab68a3",
+    "working_tree_has_local_changes": true
+  },
+  "source_sha256": {
+    "C:\\Users\\35326\\Downloads\\DL1018_教师数据复用_五模型选型与位置闭环实验Prompt.md": "e0554e44f6a410db9ccfce9b1261d7bc3290a106e13a80c711bd32780202945c",
+    "configs/contract_dl1018.json": "1924290d90570233a138c1d45e0ccb8070e8cc292affc47a9d8a9d96d2f74405",
+    "configs/scene_specs.csv": "d116b74dc6d9ce3c21a40fcd48b4153a0adc09e98a6c8d341c0f1b6ba680b4e3",
+    "configs/effective_config.mat": "cec90417369c7a44580b0315b2473ae86eb62550012188340b1dd5f3a796522f",
+    "models/position/initial/normalizer.npz": "619a343fc73b707c0b2f640f4a261e81ee779e1351d67e4e4af243cc489ce0ab",
+    "experiments/position_causal_repair_v1/scripts/d4_sequence_data.py": "7f67e51d7502290182f39a27871577a9400faa2badd5b250c28fa71f3165d43f",
+    "experiments/position_only_closed_loop_search_v1/reports/FINAL_RESULT.json": "30bb13f22b807397e2b9faf79d83d5ed8c4cea3e2f407b2c5aa8b72173ea08c3",
+    "experiments/position_only_closed_loop_search_v1/reports/SEARCH_GROUP_SCORES.json": "e84afa541dadaa97f4a32542ff996eea6461acc25afeaf968451881b6d9f014d",
+    "experiments/teacher_reuse_model_screen_v1/manifests/teacher_reuse_manifest.csv": "1dccdacd8624645f4f61004d18dd4aff269a3b4042c115d46293e627bff2f931",
+    "experiments/teacher_reuse_model_screen_v1/manifests/small_teacher_pool.csv": "264b783cecc5eb87dcce50600ede1dad063d5bf5a6446c8032def33798779a75",
+    "experiments/teacher_reuse_model_screen_v1/reports/data_interface_audit.json": "3fc079eec1ce9e3f13ddbdadfff83a18e76ed5d4452fff1f1d05a1143bc80ac6",
+    "experiments/teacher_reuse_model_screen_v1/reports/model_performance_preflight.json": "923e85501e940ec139070c7865827faeb9becb67dac7e2b0938caccc6a43a949",
+    "experiments/teacher_reuse_model_screen_v1/scripts/teacher_data.py": "3d6ec20f544cda2ec99c3bddf17e595a75683c90fbd6b542475d006b6d2badad",
+    "experiments/teacher_reuse_model_screen_v1/scripts/teacher_models.py": "58b891598b4d1211254b9294fd525233b81a94fbf24206f011aa53bd2de1beea",
+    "experiments/teacher_reuse_model_screen_v1/scripts/fit_models.py": "2b11eb5f3e516bee48ec3208999668b686c268733e068c0c5e874a01d2265691",
+    "experiments/teacher_reuse_model_screen_v1/scripts/model_preflight.py": "f1727d48603c4d3b0e4ad25c35269c592b6ec3febc622adbe301cc7c3bebd856",
+    "experiments/teacher_reuse_model_screen_v1/scripts/raw_sample_parity.m": "509acc2eb6fe2b7e62c8fd302d037c208fd5f313fe84eb70a023ede9e6e94e01",
+    "experiments/teacher_reuse_model_screen_v1/scripts/freeze_protocol.py": "d5514628e88616b24c4467fd71267a33254612e9b08e564dbde661361cf37c54"
+  },
+  "upstream_position_head": {
+    "source": "experiments/position_only_closed_loop_search_v1/reports/FINAL_RESULT.json",
+    "selected_complete_six_scene_group": "FEATURE_G12_K1",
+    "head_type": "FEATURE",
+    "gamma": 12,
+    "kappa": 1,
+    "PCF": true,
+    "six_scene_macro_Q_0_20_m": 0.016154319320043704,
+    "state_bound": 60,
+    "leakage": 0.002,
+    "beta_rise_s": 1.8,
+    "output_limit_mps2": [
+      3,
+      3,
+      3
+    ],
+    "position_rbf_output_and_update": false,
+    "attitude_controller": "original_B_RBF_unchanged",
+    "new_model_W0": "each model uses its own trained 33x3 readout; no upstream W0 or encoder weights are loaded",
+    "implementation_source": "experiments/position_only_closed_loop_search_v1/local_runtime/position_only_search_head_step.m"
+  },
+  "fixed_system": {
+    "contract_id": "DL1018_V311_R2E_PAPER_FINAL",
+    "contract_path": "configs/contract_dl1018.json",
+    "plant": {
+      "mass_model": "distributed_v1",
+      "mass_kg": 0.695,
+      "gravity_mps2": 9.8,
+      "dt_s": 0.001,
+      "duration_s": 20.0,
+      "transitions": 20000,
+      "state_samples": 20001,
+      "arm_lengths_m": [
+        0.15,
+        0.15,
+        0.15,
+        0.15
+      ],
+      "arm_length_range_m": [
+        0.15,
+        0.25
+      ],
+      "arm_angles_rad": [
+        0.7853981633974483,
+        2.356194490192345,
+        3.9269908169872414,
+        5.497787143782138
+      ],
+      "arm_root_radius_m": 0.059,
+      "arm_length_definition": "body_origin_to_rotor_center_radial_distance",
+      "component_masses_kg": {
+        "body": 0.13,
+        "battery": 0.145,
+        "arm_each": 0.04,
+        "motor_each": 0.035,
+        "rotor_each": 0.005,
+        "servo_each": 0.025
+      },
+      "position_reference": "instantaneous_total_cog",
+      "internal_morphing_momentum_model": "neglected_quasi_static",
+      "servo_mount_mode": "root_fixed",
+      "kf_N_per_rad_s2": 1.7e-06,
+      "km_Nm_per_rad_s2": 3.2e-08,
+      "motor_speed_range_rad_s": [
+        0.0,
+        1900.0
+      ],
+      "motor_time_constant_s": 0.0,
+      "initial_state": "zeros(12,1)",
+      "wind_force_scale": 1.0,
+      "wind": {
+        "projected_area_m2": [
+          0.008240355616,
+          0.007699184218,
+          0.02712915554
+        ],
+        "reference_arm_lengths_m": [
+          0.141623,
+          0.141623,
+          0.141623,
+          0.141623
+        ],
+        "rho_air_kg_m3": 1.225,
+        "CdBody": 1.0,
+        "CdArm": 1.0,
+        "rise_time_s": 0.8
+      },
+      "plant_integrator": "source RK4 loop and source morphology/wind update order"
+    },
+    "position_bs_k1": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "position_bs_k2": [
+      4.0,
+      4.0,
+      4.0
+    ],
+    "attitude_bs_k1": [
+      1.5,
+      1.5,
+      1.3
+    ],
+    "attitude_bs_k2": [
+      22.5,
+      22.5,
+      12.7
+    ],
+    "nominal_C0": [
+      [
+        1.7e-06,
+        1.7e-06,
+        1.7e-06,
+        1.7e-06
+      ],
+      [
+        1.803122292025696e-07,
+        1.803122292025696e-07,
+        -1.803122292025696e-07,
+        -1.803122292025697e-07
+      ],
+      [
+        -1.803122292025696e-07,
+        1.803122292025696e-07,
+        1.803122292025697e-07,
+        -1.803122292025696e-07
+      ],
+      [
+        3.2e-08,
+        -3.2e-08,
+        3.2e-08,
+        -3.2e-08
+      ]
+    ],
+    "nominal_J0": [
+      [
+        0.003257553333333334,
+        -2.168404344971009e-19,
+        0.0
+      ],
+      [
+        -2.168404344971009e-19,
+        0.0032575533333333334,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.006360648333333333
+      ]
+    ],
+    "command_filter": {
+      "wn_rad_s": [
+        18.0,
+        18.0,
+        12.0
+      ],
+      "damping": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "acceleration_limit_rad_s2": [
+        "Inf",
+        "Inf",
+        6.0
+      ],
+      "source_change": "R2E shared-filter limit only"
+    },
+    "plant_dt_s": 0.001,
+    "position_event_hz": 100,
+    "no_B_or_formal_contract_changes": true
+  },
+  "data": {
+    "accepted_teacher_manifest": "manifests/teacher_reuse_manifest.csv",
+    "small_teacher_pool": "manifests/small_teacher_pool.csv",
+    "audit": "reports/data_interface_audit.json",
+    "accepted_teacher_runs": 1632,
+    "train_runs": 1536,
+    "val_runs": 96,
+    "train_B": 768,
+    "train_POS_OFF": 768,
+    "val_B": 48,
+    "val_POS_OFF": 48,
+    "paired_physical_train_scenes": 768,
+    "paired_physical_val_scenes": 48,
+    "student_records_excluded": 432,
+    "normalizer_id": "TEACHER_TRAIN_INITIAL_X14_PLUS_TRAIN_X20_EXTRAS",
+    "normalizer_values": {
+      "initial_teacher_normalizer_path": "models/position/initial/normalizer.npz",
+      "initial_normalizer_matches_full_accepted_teacher_train_first10": true,
+      "initial_vs_recomputed_train_max_abs": {
+        "mu_first10_max_abs": 1.674376193250282e-10,
+        "sigma_first10_max_abs": 4.6510625906215353e-10
+      },
+      "selected_x14_mu": [
+        -0.0003210961390454922,
+        0.00010413240979372578,
+        0.0012458302670522478,
+        -0.0002937525857506763,
+        -2.4406690708359296e-06,
+        0.0013002019947184235,
+        -9.158795663313209e-05,
+        -0.0003259206050389756,
+        -1.2886785617888659e-05,
+        9.836238917899191,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "selected_x14_sigma": [
+        0.057807406854438685,
+        0.05799857678126535,
+        0.02056114772589947,
+        0.08076072328949724,
+        0.08323147198842583,
+        0.02647117635074219,
+        0.06356476071172179,
+        0.05754160026923624,
+        0.0030036248135297035,
+        0.15973659687862168,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "x20_mu": [
+        -0.0003210961390454922,
+        0.00010413240979372578,
+        0.0012458302670522478,
+        -0.0002937525857506763,
+        -2.4406690708359296e-06,
+        0.0013002019947184235,
+        -9.158795663313209e-05,
+        -0.0003259206050389756,
+        -1.2886785617888659e-05,
+        9.836238917899191,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -0.04004735354520243,
+        0.00010657306866612095,
+        0.03996563828104985,
+        -0.0014687629341134667,
+        -1.2226917612606602e-05,
+        0.008924568468790249
+      ],
+      "x20_sigma": [
+        0.057807406854438685,
+        0.05799857678126535,
+        0.02056114772589947,
+        0.08076072328949724,
+        0.08323147198842583,
+        0.02647117635074219,
+        0.06356476071172179,
+        0.05754160026923624,
+        0.0030036248135297035,
+        0.15973659687862168,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        0.4096749775266877,
+        0.4619338917946706,
+        0.12680041805532602,
+        0.4928246497681221,
+        0.5429170066706717,
+        0.1564399931769137
+      ],
+      "new_x20_stats_source": "accepted B/POS_OFF TRAIN only"
+    },
+    "small_pool_selection_seed": 2026102000,
+    "small_pool_runs": 192,
+    "small_pool_physical_scenes": 96,
+    "small_pool_label_blind": true,
+    "window_stride_events": 5,
+    "L32_train_windows_full": 605184,
+    "L32_val_windows": 37824,
+    "L32_small_pool_windows": 75648,
+    "L128_train_windows_full": 576000,
+    "L128_val_windows": 36000,
+    "target": "clip(a_actual - (a_nominal_without_learning - a_applied), -3, 3) m/s^2; output then update",
+    "training_roles": [
+      "B",
+      "POS_OFF"
+    ],
+    "validation_roles": [
+      "B",
+      "POS_OFF"
+    ],
+    "excluded_from_training_validation_and_normalizer": [
+      "P_INIT_STUDENT",
+      "other Student records",
+      "DEV",
+      "TEST"
+    ]
+  },
+  "input_contract": {
+    "X14": [
+      "e_x [m]",
+      "e_y [m]",
+      "e_z [m]",
+      "s_x [m/s]",
+      "s_y [m/s]",
+      "s_z [m/s]",
+      "roll [rad]",
+      "pitch [rad]",
+      "yaw [rad]",
+      "preview_thrust_per_mass [m/s^2]",
+      "arm_command_1 [dimensionless {-1,0,1}]",
+      "arm_command_2 [dimensionless {-1,0,1}]",
+      "arm_command_3 [dimensionless {-1,0,1}]",
+      "arm_command_4 [dimensionless {-1,0,1}]"
+    ],
+    "X20_extra": [
+      "inertial_velocity_x [m/s]",
+      "inertial_velocity_y [m/s]",
+      "inertial_velocity_z [m/s]",
+      "nominal_acceleration_x [m/s^2]",
+      "nominal_acceleration_y [m/s^2]",
+      "nominal_acceleration_z [m/s^2]"
+    ],
+    "X20_causal_source": "current X14 plus current raw command; X20 adds raw inertial velocity and zero-compensation nominal acceleration; no actual acceleration, residual, true wind, true morphology, or scene ID input",
+    "forbidden_inputs": [
+      "current actual acceleration",
+      "residual target",
+      "true wind",
+      "true morphology",
+      "scene/task/wind ID"
+    ],
+    "normalization": "X14 first ten dimensions use accepted teacher TRAIN statistics; last four arm commands remain raw. X20 adds six teacher TRAIN standardized dimensions."
+  },
+  "models": {
+    "predeclared_configs": [
+      {
+        "model_id": "MLP14",
+        "family": "MLP",
+        "group": "CURRENT",
+        "input_dim": 14,
+        "window": 32,
+        "parameter_count": 4195,
+        "training_steps_per_s": 335.4790011116203,
+        "measured_training_steps": 120,
+        "teacher_val_evaluation_s": 0.1335813000005146,
+        "estimated_fast_fit_4000_steps_s": 12.457575199989758,
+        "preflight_val_score_mps2_diagnostic_only": 0.3252869777533062,
+        "preflight_receptive_field_events": 1,
+        "effective_receptive_field_events": 32,
+        "device": "cuda",
+        "preflight_only_not_candidate_fit": true
+      },
+      {
+        "model_id": "KAN14",
+        "family": "KAN",
+        "group": "CURRENT",
+        "input_dim": 14,
+        "window": 32,
+        "parameter_count": 4163,
+        "training_steps_per_s": 271.1918338718081,
+        "measured_training_steps": 120,
+        "teacher_val_evaluation_s": 0.30229160000089905,
+        "estimated_fast_fit_4000_steps_s": 15.958873066653421,
+        "preflight_val_score_mps2_diagnostic_only": 0.33196037175082843,
+        "preflight_receptive_field_events": 1,
+        "effective_receptive_field_events": 32,
+        "device": "cuda",
+        "preflight_only_not_candidate_fit": true
+      },
+      {
+        "model_id": "TCN14",
+        "family": "TCN",
+        "group": "TEMPORAL",
+        "input_dim": 14,
+        "window": 32,
+        "parameter_count": 6163,
+        "training_steps_per_s": 3.5420971292446373,
+        "measured_training_steps": 120,
+        "teacher_val_evaluation_s": 29.240054999998392,
+        "estimated_fast_fit_4000_steps_s": 1246.2347299999528,
+        "preflight_val_score_mps2_diagnostic_only": 0.32228489858246495,
+        "preflight_receptive_field_events": 63,
+        "effective_receptive_field_events": 32,
+        "device": "cuda",
+        "preflight_only_not_candidate_fit": true
+      },
+      {
+        "model_id": "GRU14",
+        "family": "GRU",
+        "group": "TEMPORAL",
+        "input_dim": 14,
+        "window": 32,
+        "parameter_count": 5763,
+        "training_steps_per_s": 298.98204089644014,
+        "measured_training_steps": 120,
+        "teacher_val_evaluation_s": 0.1583838000005926,
+        "estimated_fast_fit_4000_steps_s": 14.012265199994241,
+        "preflight_val_score_mps2_diagnostic_only": 0.3282427571749976,
+        "preflight_receptive_field_events": 1,
+        "effective_receptive_field_events": 32,
+        "device": "cuda",
+        "preflight_only_not_candidate_fit": true
+      },
+      {
+        "model_id": "DSSM14",
+        "family": "DSSM",
+        "group": "TEMPORAL",
+        "input_dim": 14,
+        "window": 32,
+        "parameter_count": 1667,
+        "training_steps_per_s": 68.71778173961656,
+        "measured_training_steps": 120,
+        "teacher_val_evaluation_s": 0.5178540999986581,
+        "estimated_fast_fit_4000_steps_s": 60.28051306665778,
+        "preflight_val_score_mps2_diagnostic_only": 0.3435532439297357,
+        "preflight_receptive_field_events": 1,
+        "effective_receptive_field_events": 32,
+        "device": "cuda",
+        "preflight_only_not_candidate_fit": true
+      },
+      {
+        "model_id": "MLP20",
+        "family": "MLP",
+        "group": "CURRENT",
+        "input_dim": 20,
+        "window": 32,
+        "parameter_count": 4579,
+        "training_steps_per_s": 357.0246989703602,
+        "measured_training_steps": 120,
+        "teacher_val_evaluation_s": 0.11367690000042785,
+        "estimated_fast_fit_4000_steps_s": 11.658414266615484,
+        "preflight_val_score_mps2_diagnostic_only": 0.3375918354549904,
+        "preflight_receptive_field_events": 1,
+        "effective_receptive_field_events": 32,
+        "device": "cuda",
+        "preflight_only_not_candidate_fit": true
+      },
+      {
+        "model_id": "TCN20",
+        "family": "TCN",
+        "group": "TEMPORAL",
+        "input_dim": 20,
+        "window": 32,
+        "parameter_count": 6259,
+        "training_steps_per_s": 3.190394640571027,
+        "measured_training_steps": 120,
+        "teacher_val_evaluation_s": 30.251583799999935,
+        "estimated_fast_fit_4000_steps_s": 1374.7697251999489,
+        "preflight_val_score_mps2_diagnostic_only": 0.314311553988304,
+        "preflight_receptive_field_events": 63,
+        "effective_receptive_field_events": 32,
+        "device": "cuda",
+        "preflight_only_not_candidate_fit": true
+      },
+      {
+        "model_id": "TCN14_L128",
+        "family": "TCN",
+        "group": "TEMPORAL",
+        "input_dim": 14,
+        "window": 128,
+        "parameter_count": 8275,
+        "training_steps_per_s": 2.337503096022869,
+        "measured_training_steps": 120,
+        "teacher_val_evaluation_s": 43.55582200000208,
+        "estimated_fast_fit_4000_steps_s": 1885.4509679999949,
+        "preflight_val_score_mps2_diagnostic_only": 0.3270293013842084,
+        "preflight_receptive_field_events": 255,
+        "effective_receptive_field_events": 128,
+        "device": "cuda",
+        "preflight_only_not_candidate_fit": true
+      }
+    ],
+    "seeds": [
+      2026102001,
+      2026102002
+    ],
+    "all_random_initialized": true,
+    "forbidden_weight_sources": [
+      "Initial",
+      "Final",
+      "HISTORY",
+      "previous position candidate"
+    ],
+    "common_output": "h in R^32; phi=[h;1]/sqrt(1+sum(h^2)); 33x3 readout in m/s^2",
+    "TCN_dilations_L32": [
+      1,
+      2,
+      4,
+      8,
+      16
+    ],
+    "TCN_dilations_L128": [
+      1,
+      2,
+      4,
+      8,
+      16,
+      32,
+      64
+    ],
+    "TCN_receptive_field_events": {
+      "L32": 63,
+      "L128": 255
+    },
+    "GRU_state": "single layer, hidden 32; zero initial state for each independent window",
+    "DSSM": {
+      "state_dim": 32,
+      "dt_s": 0.01,
+      "tau_init_s_logspace": [
+        0.02,
+        1.28
+      ],
+      "tau_clamp_s": [
+        0.005,
+        5.0
+      ]
+    },
+    "context_reset": "each sampled window is independent; no state carried between episodes or windows"
+  },
+  "training": {
+    "optimizer": "Adam",
+    "learning_rate": 0.001,
+    "weight_decay": 1e-05,
+    "batch_size": 256,
+    "loss": "mean-axis SmoothL1(pred/3,target_clip/3), multiplied once by hierarchical sample weight; uniform shuffled endpoints and N/actual_batch unbiased scale",
+    "hierarchical_weights": "role 0.5, task 1/3, class 1/16, equally weighted scenes per role/task/class, equal mass per observed phase within scene, uniform endpoints within phase",
+    "fast_screen_steps": 2000,
+    "fast_eval_interval": 500,
+    "shortened_uniform_budget_reason": "TCN14_L128 same-device 4000-step estimate exceeds 30 minutes",
+    "full_train_from_scratch": true,
+    "full_models": {
+      "current_frame_group": 1,
+      "temporal_group": 1
+    },
+    "full_fit_seeds_per_config": 2,
+    "official_step_gate": 40000,
+    "official_max_steps": 60000,
+    "official_eval_interval": 2000,
+    "official_uniform_extension_rule": "After all four full fits reach 40k, extend all successful fits to 60k only if any fit improved by >=1% during 30k-40k versus its best validation score through 30k.",
+    "best_checkpoint": "lowest positive-step teacher VAL RMSE",
+    "final_checkpoint": "checkpoint at final scheduled step",
+    "step0": "diagnostic only; never eligible for selection"
+  },
+  "canary": {
+    "scene_ids": [
+      "DL1018_TRAIN_T1_C02_W08",
+      "DL1018_TRAIN_T1_C02_W15",
+      "DL1018_TRAIN_T2_C01_W08",
+      "DL1018_TRAIN_T2_C01_W15",
+      "DL1018_TRAIN_T3_C03_W08",
+      "DL1018_TRAIN_T3_C03_W15"
+    ],
+    "small_screen_seed": 2026102001,
+    "small_screen_checkpoint": "teacher VAL best positive-step checkpoint",
+    "second_seed_use": "offline direction comparison only; does not replace seed1 Plant model",
+    "group_selection": "rank complete stable six-scene equal-weight Q_0_20; advance top current-frame and top temporal config; exceeding B is not required to enter full training",
+    "full_stage": "two selected configs, two seeds each trained from scratch on all 1536 accepted teacher TRAIN runs; canary each best and final checkpoint, then freeze best canary package for six-scene comparison",
+    "dev24": "predeclare first and optional second model/config/mode/checkpoint/normalizer/Head before running DEV; stop after first candidate if complete stable and macro Q_0_20 < same-scene B"
+  },
+  "metrics": {
+    "primary": "equal-scene arithmetic mean of each scene's 3D position RMSE over 0 <= t < 20 s, Q_0_20_m",
+    "secondary": [
+      "Q_5_20_m",
+      "per-scene/task/axis RMSE",
+      "peak and p95",
+      "attitude error",
+      "motor TV",
+      "saturation",
+      "clip fraction",
+      "runtime P99"
+    ],
+    "position_win": "all 24 DEV scenes complete, finite and stable with no hard stop, and macro Q_0_20_m strictly below same-scene B",
+    "real_time_claim_threshold_ms_p99": 10,
+    "dev_is_blind_test": false
+  },
+  "new_plant_budget": {
+    "new_plant_cap_total": 198,
+    "small_screen_main_mode": 48,
+    "full_fit_checkpoint_main_mode": 48,
+    "two_selected_config_frozen_mode": 12,
+    "dev24_first_and_optional_second": 48,
+    "missing_baseline_references_only": 30,
+    "engineering_retry_reserve": 12,
+    "new_teacher_runs": 0,
+    "new_student_runs": 0,
+    "test_runs": 0,
+    "old_package_bridge_runs": 0
+  },
+  "known_references_m": {
+    "current_B_DEV24_Q_0_20": 0.016958918397443207,
+    "old_Final_online_DEV24_Q_0_20": 0.028083902704153924,
+    "previous_task_best_DEV24_Q_0_20": 0.0151714813076377,
+    "previous_task_best_same_scene_B_Q_0_20": 0.016958918397443207,
+    "scope": "historical reference only; do not identify the previous task winner as a newly trained model or substitute for this task's same-scene comparisons"
+  },
+  "preflight": {
+    "data_status": "PASS_DATA_PREFLIGHT",
+    "raw_export_parity": "PASS_SIX_RAW_REEXPORT_PARITY",
+    "X20_raw_source_parity": "PASS",
+    "model_performance_status": "PASS_MODEL_PERFORMANCE_PREFLIGHT",
+    "device": "cuda",
+    "torch_version": "2.6.0+cu124",
+    "cuda_version": "12.4",
+    "model_measurements": [
+      {
+        "model_id": "MLP14",
+        "family": "MLP",
+        "group": "CURRENT",
+        "input_dim": 14,
+        "window": 32,
+        "parameter_count": 4195,
+        "training_steps_per_s": 335.4790011116203,
+        "measured_training_steps": 120,
+        "teacher_val_evaluation_s": 0.1335813000005146,
+        "estimated_fast_fit_4000_steps_s": 12.457575199989758,
+        "preflight_val_score_mps2_diagnostic_only": 0.3252869777533062,
+        "preflight_receptive_field_events": 1,
+        "effective_receptive_field_events": 32,
+        "device": "cuda",
+        "preflight_only_not_candidate_fit": true
+      },
+      {
+        "model_id": "KAN14",
+        "family": "KAN",
+        "group": "CURRENT",
+        "input_dim": 14,
+        "window": 32,
+        "parameter_count": 4163,
+        "training_steps_per_s": 271.1918338718081,
+        "measured_training_steps": 120,
+        "teacher_val_evaluation_s": 0.30229160000089905,
+        "estimated_fast_fit_4000_steps_s": 15.958873066653421,
+        "preflight_val_score_mps2_diagnostic_only": 0.33196037175082843,
+        "preflight_receptive_field_events": 1,
+        "effective_receptive_field_events": 32,
+        "device": "cuda",
+        "preflight_only_not_candidate_fit": true
+      },
+      {
+        "model_id": "TCN14",
+        "family": "TCN",
+        "group": "TEMPORAL",
+        "input_dim": 14,
+        "window": 32,
+        "parameter_count": 6163,
+        "training_steps_per_s": 3.5420971292446373,
+        "measured_training_steps": 120,
+        "teacher_val_evaluation_s": 29.240054999998392,
+        "estimated_fast_fit_4000_steps_s": 1246.2347299999528,
+        "preflight_val_score_mps2_diagnostic_only": 0.32228489858246495,
+        "preflight_receptive_field_events": 63,
+        "effective_receptive_field_events": 32,
+        "device": "cuda",
+        "preflight_only_not_candidate_fit": true
+      },
+      {
+        "model_id": "GRU14",
+        "family": "GRU",
+        "group": "TEMPORAL",
+        "input_dim": 14,
+        "window": 32,
+        "parameter_count": 5763,
+        "training_steps_per_s": 298.98204089644014,
+        "measured_training_steps": 120,
+        "teacher_val_evaluation_s": 0.1583838000005926,
+        "estimated_fast_fit_4000_steps_s": 14.012265199994241,
+        "preflight_val_score_mps2_diagnostic_only": 0.3282427571749976,
+        "preflight_receptive_field_events": 1,
+        "effective_receptive_field_events": 32,
+        "device": "cuda",
+        "preflight_only_not_candidate_fit": true
+      },
+      {
+        "model_id": "DSSM14",
+        "family": "DSSM",
+        "group": "TEMPORAL",
+        "input_dim": 14,
+        "window": 32,
+        "parameter_count": 1667,
+        "training_steps_per_s": 68.71778173961656,
+        "measured_training_steps": 120,
+        "teacher_val_evaluation_s": 0.5178540999986581,
+        "estimated_fast_fit_4000_steps_s": 60.28051306665778,
+        "preflight_val_score_mps2_diagnostic_only": 0.3435532439297357,
+        "preflight_receptive_field_events": 1,
+        "effective_receptive_field_events": 32,
+        "device": "cuda",
+        "preflight_only_not_candidate_fit": true
+      },
+      {
+        "model_id": "MLP20",
+        "family": "MLP",
+        "group": "CURRENT",
+        "input_dim": 20,
+        "window": 32,
+        "parameter_count": 4579,
+        "training_steps_per_s": 357.0246989703602,
+        "measured_training_steps": 120,
+        "teacher_val_evaluation_s": 0.11367690000042785,
+        "estimated_fast_fit_4000_steps_s": 11.658414266615484,
+        "preflight_val_score_mps2_diagnostic_only": 0.3375918354549904,
+        "preflight_receptive_field_events": 1,
+        "effective_receptive_field_events": 32,
+        "device": "cuda",
+        "preflight_only_not_candidate_fit": true
+      },
+      {
+        "model_id": "TCN20",
+        "family": "TCN",
+        "group": "TEMPORAL",
+        "input_dim": 20,
+        "window": 32,
+        "parameter_count": 6259,
+        "training_steps_per_s": 3.190394640571027,
+        "measured_training_steps": 120,
+        "teacher_val_evaluation_s": 30.251583799999935,
+        "estimated_fast_fit_4000_steps_s": 1374.7697251999489,
+        "preflight_val_score_mps2_diagnostic_only": 0.314311553988304,
+        "preflight_receptive_field_events": 63,
+        "effective_receptive_field_events": 32,
+        "device": "cuda",
+        "preflight_only_not_candidate_fit": true
+      },
+      {
+        "model_id": "TCN14_L128",
+        "family": "TCN",
+        "group": "TEMPORAL",
+        "input_dim": 14,
+        "window": 128,
+        "parameter_count": 8275,
+        "training_steps_per_s": 2.337503096022869,
+        "measured_training_steps": 120,
+        "teacher_val_evaluation_s": 43.55582200000208,
+        "estimated_fast_fit_4000_steps_s": 1885.4509679999949,
+        "preflight_val_score_mps2_diagnostic_only": 0.3270293013842084,
+        "preflight_receptive_field_events": 255,
+        "effective_receptive_field_events": 128,
+        "device": "cuda",
+        "preflight_only_not_candidate_fit": true
+      }
+    ],
+    "zero_plant_model_matlab_parity_required_before_plant": true,
+    "plant_starts_at_freeze": 0,
+    "resolved_preflight_issues": [
+      "Set CUBLAS_WORKSPACE_CONFIG before importing torch to allow deterministic CUDA operations.",
+      "Kept TCN model input in [batch,time,feature] order; TCN performs its own channel/time transpose.",
+      "Selected the 128-event small-pool window for the L128 performance preflight."
+    ]
+  },
+  "recovery": {
+    "fit_directive": "python experiments/teacher_reuse_model_screen_v1/scripts/fit_models.py --stage FAST_SCREEN",
+    "state_path": "experiments/teacher_reuse_model_screen_v1/state/state.json",
+    "checkpoint_rule": "stage-specific checkpoint folder; continue only matching run/protocol checkpoints; full fit starts from a new random initialization and does not load the screen checkpoint",
+    "no_git_push_or_commit": true
+  },
+  "software": {
+    "python": "3.12.7 | packaged by Anaconda, Inc. | (main, Oct  4 2024, 13:17:27) [MSC v.1929 64 bit (AMD64)]",
+    "torch": "2.6.0+cu124",
+    "cuda": "12.4"
+  }
+}

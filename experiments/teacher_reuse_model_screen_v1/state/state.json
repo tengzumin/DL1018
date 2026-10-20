@@ -1,0 +1,111 @@
+{
+  "task": "DL1018_TEACHER_REUSE_MODEL_SCREEN_V1",
+  "phase": "LOCKED_DEV24_COMPLETE",
+  "status": "COMPLETE",
+  "protocol_sha256": "746360dc2985a3a9fb5602975481884e89a59e677d383dc3d3c8f0ef6a5a0f29",
+  "fits_started": 34,
+  "fits_completed": [
+    "FAST_SCREEN_DSSM14_SEED2026102001",
+    "FAST_SCREEN_DSSM14_SEED2026102002",
+    "FAST_SCREEN_DSSM20_SEED2026102001",
+    "FAST_SCREEN_DSSM20_SEED2026102002",
+    "FAST_SCREEN_GRU14_SEED2026102001",
+    "FAST_SCREEN_GRU14_SEED2026102002",
+    "FAST_SCREEN_GRU20_SEED2026102001",
+    "FAST_SCREEN_GRU20_SEED2026102002",
+    "FAST_SCREEN_KAN14_SEED2026102001",
+    "FAST_SCREEN_KAN14_SEED2026102002",
+    "FAST_SCREEN_KAN20_SEED2026102001",
+    "FAST_SCREEN_KAN20_SEED2026102002",
+    "FAST_SCREEN_MLP14_SEED2026102001",
+    "FAST_SCREEN_MLP14_SEED2026102002",
+    "FAST_SCREEN_MLP20_SEED2026102001",
+    "FAST_SCREEN_MLP20_SEED2026102002",
+    "FAST_SCREEN_TCN14_L128_SEED2026102001",
+    "FAST_SCREEN_TCN14_L128_SEED2026102002",
+    "FAST_SCREEN_TCN14_SEED2026102001",
+    "FAST_SCREEN_TCN14_SEED2026102002",
+    "FAST_SCREEN_TCN20_SEED2026102001",
+    "FAST_SCREEN_TCN20_SEED2026102002",
+    "OFFICIAL_DSSM14_SEED2026102001",
+    "OFFICIAL_DSSM14_SEED2026102002",
+    "OFFICIAL_DSSM20_SEED2026102001",
+    "OFFICIAL_DSSM20_SEED2026102002",
+    "OFFICIAL_GRU14_SEED2026102001",
+    "OFFICIAL_GRU14_SEED2026102002",
+    "OFFICIAL_GRU20_SEED2026102001",
+    "OFFICIAL_GRU20_SEED2026102002",
+    "OFFICIAL_KAN14_SEED2026102001",
+    "OFFICIAL_KAN14_SEED2026102002",
+    "OFFICIAL_MLP14_SEED2026102001",
+    "OFFICIAL_MLP14_SEED2026102002"
+  ],
+  "optimizer_steps_completed_total": 764000,
+  "plant_starts": 264,
+  "teacher_runs": 0,
+  "student_runs": 0,
+  "test_runs": 0,
+  "old_package_bridge_runs": 0,
+  "preflight_errors": [
+    {
+      "status": "RESOLVED_BEFORE_FIT",
+      "issue": "Set CUBLAS_WORKSPACE_CONFIG before importing torch to allow deterministic CUDA operations."
+    },
+    {
+      "status": "RESOLVED_BEFORE_FIT",
+      "issue": "Kept TCN model input in [batch,time,feature] order; TCN performs its own channel/time transpose."
+    },
+    {
+      "status": "RESOLVED_BEFORE_FIT",
+      "issue": "Selected the 128-event small-pool window for the L128 performance preflight."
+    },
+    {
+      "status": "RESOLVED_BEFORE_FIT",
+      "issue": "Official fit launcher initially referenced official_step_gate_40k; frozen protocol uses official_step_gate. Fixed the key before any optimizer step or new Plant run."
+    }
+  ],
+  "updated_at_utc": "2026-10-20T00:31:00.870Z",
+  "code_amendments_path": "reports/code_amendments.json",
+  "post_freeze_code_amendments": 3,
+  "failed_fit_attempts": {
+    "fit_id": "FAST_SCREEN_TCN14_L128_SEED2026102001",
+    "optimizer_steps": 0,
+    "plant_starts": 0,
+    "reason": "The small-pool training loader supplied L=32 windows to an L=128 model. Fixed the loader; retrying the same registered fit."
+  },
+  "started_at_utc": "2026-10-19T20:20:47.394Z",
+  "head": {
+    "source": "experiments/position_only_closed_loop_search_v1/reports/FINAL_RESULT.json",
+    "selected_complete_six_scene_group": "FEATURE_G12_K1",
+    "head_type": "FEATURE",
+    "gamma": 12,
+    "kappa": 1,
+    "PCF": true,
+    "six_scene_macro_Q_0_20_m": 0.016154319320043704,
+    "state_bound": 60,
+    "leakage": 0.002,
+    "beta_rise_s": 1.8,
+    "output_limit_mps2": [
+      3,
+      3,
+      3
+    ],
+    "position_rbf_output_and_update": false,
+    "attitude_controller": "original_B_RBF_unchanged",
+    "new_model_W0": "each model uses its own trained 33x3 readout; no upstream W0 or encoder weights are loaded",
+    "implementation_source": "experiments/position_only_closed_loop_search_v1/local_runtime/position_only_search_head_step.m"
+  },
+  "cumulative_new_plant_starts": 264,
+  "active_group": "",
+  "active_scene": "",
+  "active_run_id": "",
+  "head_type": "FEATURE",
+  "gamma": 12,
+  "kappa": 1,
+  "completed_search_rows": 12,
+  "last_group_complete_stable": true,
+  "last_group_macro_Q_0_20_m": 0.0337868448234539,
+  "last_group_B_macro_Q_0_20_m": 0.020356747923155928,
+  "final_result_status": "PASS",
+  "completed_at_utc": "2026-10-20T00:31:00.870Z"
+}

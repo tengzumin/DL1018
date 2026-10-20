@@ -1,0 +1,32 @@
+{
+  "status": "CANDIDATES_LOCKED_BEFORE_DEV24",
+  "selection_rule": "For each selected input group, compare its complete stable online and frozen six-scene canaries. Keep the lower-Q mode per configuration; order the two distinct configurations by six-scene Q before opening DEV24.",
+  "dev_gate": "Candidate passes only if all 24 DEV runs are complete, finite, stable, and the equal-weight macro Q_0_20_m is strictly below same-scene B. If candidate 1 does not pass, execute candidate 2 once.",
+  "plant_budget_max": null,
+  "candidates": [
+    {
+      "order": 1,
+      "group": "TEMPORAL",
+      "dev_group_id": "LOCKED_DEV_FIRST_GRU14_ONLINE",
+      "model_id": "GRU14",
+      "seed": 2026102002,
+      "checkpoint_kind": "final_step",
+      "source_group": "OFFICIAL_GRU14_SEED2026102002_FINAL_STEP",
+      "freeze_position_updates": false,
+      "six_scene_Q_0_20_m": 0.015284916766821185,
+      "same_scene_B_macro_Q_0_20_m": 0.020356747923155928
+    },
+    {
+      "order": 2,
+      "group": "CURRENT_FRAME",
+      "dev_group_id": "LOCKED_DEV_SECOND_KAN14_ONLINE",
+      "model_id": "KAN14",
+      "seed": 2026102002,
+      "checkpoint_kind": "best_teacher_val",
+      "source_group": "RBF_QUALIFIED_KAN14_SEED2026102002_BEST_TEACHER_VAL",
+      "freeze_position_updates": false,
+      "six_scene_Q_0_20_m": 0.01916015805733795,
+      "same_scene_B_macro_Q_0_20_m": 0.020356747923155928
+    }
+  ]
+}

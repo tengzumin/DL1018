@@ -1,0 +1,1137 @@
+{
+  "task": "DL1018_TEACHER_REUSE_MODEL_SCREEN_V1",
+  "status": "PASS_DATA_PREFLIGHT",
+  "index_counts": {
+    "accepted_teacher_rows": 1632,
+    "accepted_teacher_train_rows": 1536,
+    "accepted_teacher_val_rows": 96,
+    "train_B": 768,
+    "train_POS_OFF": 768,
+    "val_B": 48,
+    "val_POS_OFF": 48,
+    "paired_physical_train_scenes": 768,
+    "paired_physical_val_scenes": 48,
+    "train_val_scene_overlap": 0,
+    "student_records_excluded": 432
+  },
+  "source_integrity": {
+    "all_accepted_event_h5_and_raw_mat_present": true,
+    "all_accepted_teacher_ids_in_existing_d4_cache": true,
+    "all_event_shapes": [
+      1999,
+      14
+    ],
+    "all_target_shapes": [
+      1999,
+      3
+    ],
+    "all_event_major": true,
+    "ready_events_per_episode": 1968,
+    "event_dt_s_target": 0.01,
+    "max_event_dt_error_s": 1.9897278269453977e-15,
+    "max_target_clip_identity_error_mps2": 0.0,
+    "max_h5_vs_cache_x14_abs": 0.0,
+    "max_h5_vs_cache_target_clip_abs": 0.0,
+    "max_h5_vs_cache_target_raw_abs": 0.0,
+    "max_x20_prefix_vs_x14_abs": 0.0,
+    "x20_available_all_teacher": true
+  },
+  "normalizer": {
+    "initial_teacher_normalizer_path": "models/position/initial/normalizer.npz",
+    "initial_normalizer_matches_full_accepted_teacher_train_first10": true,
+    "initial_vs_recomputed_train_max_abs": {
+      "mu_first10_max_abs": 1.674376193250282e-10,
+      "sigma_first10_max_abs": 4.6510625906215353e-10
+    },
+    "selected_x14_mu": [
+      -0.0003210961390454922,
+      0.00010413240979372578,
+      0.0012458302670522478,
+      -0.0002937525857506763,
+      -2.4406690708359296e-06,
+      0.0013002019947184235,
+      -9.158795663313209e-05,
+      -0.0003259206050389756,
+      -1.2886785617888659e-05,
+      9.836238917899191,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "selected_x14_sigma": [
+      0.057807406854438685,
+      0.05799857678126535,
+      0.02056114772589947,
+      0.08076072328949724,
+      0.08323147198842583,
+      0.02647117635074219,
+      0.06356476071172179,
+      0.05754160026923624,
+      0.0030036248135297035,
+      0.15973659687862168,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "x20_mu": [
+      -0.0003210961390454922,
+      0.00010413240979372578,
+      0.0012458302670522478,
+      -0.0002937525857506763,
+      -2.4406690708359296e-06,
+      0.0013002019947184235,
+      -9.158795663313209e-05,
+      -0.0003259206050389756,
+      -1.2886785617888659e-05,
+      9.836238917899191,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      -0.04004735354520243,
+      0.00010657306866612095,
+      0.03996563828104985,
+      -0.0014687629341134667,
+      -1.2226917612606602e-05,
+      0.008924568468790249
+    ],
+    "x20_sigma": [
+      0.057807406854438685,
+      0.05799857678126535,
+      0.02056114772589947,
+      0.08076072328949724,
+      0.08323147198842583,
+      0.02647117635074219,
+      0.06356476071172179,
+      0.05754160026923624,
+      0.0030036248135297035,
+      0.15973659687862168,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      0.4096749775266877,
+      0.4619338917946706,
+      0.12680041805532602,
+      0.4928246497681221,
+      0.5429170066706717,
+      0.1564399931769137
+    ],
+    "new_x20_stats_source": "accepted B/POS_OFF TRAIN only"
+  },
+  "feature_distribution": [
+    {
+      "index_zero_based": 0,
+      "name": "e_x",
+      "unit": "m",
+      "train_mean": -0.0003210961383499121,
+      "train_std_population": 0.057807406850350046,
+      "train_min": -0.3677400052547455,
+      "train_max": 0.3069092035293579,
+      "standardizer_mean": -0.0003210961390454922,
+      "standardizer_std": 0.057807406854438685,
+      "kan_spline_abs_z_gt_4_fraction": 0.001427471548274137
+    },
+    {
+      "index_zero_based": 1,
+      "name": "e_y",
+      "unit": "m",
+      "train_mean": 0.00010413240954287915,
+      "train_std_population": 0.05799857678273529,
+      "train_min": -0.35097506642341614,
+      "train_max": 0.30622532963752747,
+      "standardizer_mean": 0.00010413240979372578,
+      "standardizer_std": 0.05799857678126535,
+      "kan_spline_abs_z_gt_4_fraction": 0.0021410444805736203
+    },
+    {
+      "index_zero_based": 2,
+      "name": "e_z",
+      "unit": "m",
+      "train_mean": 0.0012458302667994552,
+      "train_std_population": 0.020561147724961853,
+      "train_min": -0.08302713930606842,
+      "train_max": 0.1888054758310318,
+      "standardizer_mean": 0.0012458302670522478,
+      "standardizer_std": 0.02056114772589947,
+      "kan_spline_abs_z_gt_4_fraction": 0.002704151554944139
+    },
+    {
+      "index_zero_based": 3,
+      "name": "s_x",
+      "unit": "m/s",
+      "train_mean": -0.0002937525850605974,
+      "train_std_population": 0.08076072328535111,
+      "train_min": -0.5925832986831665,
+      "train_max": 0.5395588874816895,
+      "standardizer_mean": -0.0002937525857506763,
+      "standardizer_std": 0.08076072328949724,
+      "kan_spline_abs_z_gt_4_fraction": 0.004876787352009338
+    },
+    {
+      "index_zero_based": 4,
+      "name": "s_y",
+      "unit": "m/s",
+      "train_mean": -2.4406683304670475e-06,
+      "train_std_population": 0.08323147198770184,
+      "train_min": -0.6917747855186462,
+      "train_max": 0.5630893111228943,
+      "standardizer_mean": -2.4406690708359296e-06,
+      "standardizer_std": 0.08323147198842583,
+      "kan_spline_abs_z_gt_4_fraction": 0.004570319013673503
+    },
+    {
+      "index_zero_based": 5,
+      "name": "s_z",
+      "unit": "m/s",
+      "train_mean": 0.001300201994719431,
+      "train_std_population": 0.02647117635051139,
+      "train_min": -0.21776282787322998,
+      "train_max": 0.31841421127319336,
+      "standardizer_mean": 0.0013002019947184235,
+      "standardizer_std": 0.02647117635074219,
+      "kan_spline_abs_z_gt_4_fraction": 0.0056255341212272806
+    },
+    {
+      "index_zero_based": 6,
+      "name": "roll",
+      "unit": "rad",
+      "train_mean": -9.158795741147756e-05,
+      "train_std_population": 0.06356476071091913,
+      "train_min": -0.4707469046115875,
+      "train_max": 0.4243108034133911,
+      "standardizer_mean": -9.158795663313209e-05,
+      "standardizer_std": 0.06356476071172179,
+      "kan_spline_abs_z_gt_4_fraction": 0.001840438448390862
+    },
+    {
+      "index_zero_based": 7,
+      "name": "pitch",
+      "unit": "rad",
+      "train_mean": -0.0003259206054142842,
+      "train_std_population": 0.05754160026789696,
+      "train_min": -0.40566661953926086,
+      "train_max": 0.4251870810985565,
+      "standardizer_mean": -0.0003259206050389756,
+      "standardizer_std": 0.05754160026923624,
+      "kan_spline_abs_z_gt_4_fraction": 0.0026367350341837585
+    },
+    {
+      "index_zero_based": 8,
+      "name": "yaw",
+      "unit": "rad",
+      "train_mean": -1.2886785607287841e-05,
+      "train_std_population": 0.0030036248136228825,
+      "train_min": -0.07142533361911774,
+      "train_max": 0.04698741436004639,
+      "standardizer_mean": -1.2886785617888659e-05,
+      "standardizer_std": 0.0030036248135297035,
+      "kan_spline_abs_z_gt_4_fraction": 0.012348296544105386
+    },
+    {
+      "index_zero_based": 9,
+      "name": "preview_thrust_per_mass",
+      "unit": "m/s^2",
+      "train_mean": 9.836238917731754,
+      "train_std_population": 0.15973659734372794,
+      "train_min": 8.685734748840332,
+      "train_max": 11.701804161071777,
+      "standardizer_mean": 9.836238917899191,
+      "standardizer_std": 0.15973659687862168,
+      "kan_spline_abs_z_gt_4_fraction": 0.005941447286143072
+    },
+    {
+      "index_zero_based": 10,
+      "name": "arm_command_1",
+      "unit": "dimensionless {-1,0,1}",
+      "train_mean": 0.0,
+      "train_std_population": 0.2500625234472699,
+      "train_min": -1.0,
+      "train_max": 1.0,
+      "standardizer_mean": 0.0,
+      "standardizer_std": 1.0,
+      "kan_spline_abs_z_gt_4_fraction": 0.0
+    },
+    {
+      "index_zero_based": 11,
+      "name": "arm_command_2",
+      "unit": "dimensionless {-1,0,1}",
+      "train_mean": 0.0,
+      "train_std_population": 0.2500625234472699,
+      "train_min": -1.0,
+      "train_max": 1.0,
+      "standardizer_mean": 0.0,
+      "standardizer_std": 1.0,
+      "kan_spline_abs_z_gt_4_fraction": 0.0
+    },
+    {
+      "index_zero_based": 12,
+      "name": "arm_command_3",
+      "unit": "dimensionless {-1,0,1}",
+      "train_mean": 0.0,
+      "train_std_population": 0.2500625234472699,
+      "train_min": -1.0,
+      "train_max": 1.0,
+      "standardizer_mean": 0.0,
+      "standardizer_std": 1.0,
+      "kan_spline_abs_z_gt_4_fraction": 0.0
+    },
+    {
+      "index_zero_based": 13,
+      "name": "arm_command_4",
+      "unit": "dimensionless {-1,0,1}",
+      "train_mean": 0.0,
+      "train_std_population": 0.2500625234472699,
+      "train_min": -1.0,
+      "train_max": 1.0,
+      "standardizer_mean": 0.0,
+      "standardizer_std": 1.0,
+      "kan_spline_abs_z_gt_4_fraction": 0.0
+    },
+    {
+      "index_zero_based": 14,
+      "name": "inertial_velocity_x",
+      "unit": "m/s",
+      "train_mean": -0.04004735354520243,
+      "train_std_population": 0.4096749775266877,
+      "train_min": -1.2815020084381104,
+      "train_max": 1.568359375,
+      "standardizer_mean": -0.04004735354520243,
+      "standardizer_std": 0.4096749775266877,
+      "kan_spline_abs_z_gt_4_fraction": 0.0
+    },
+    {
+      "index_zero_based": 15,
+      "name": "inertial_velocity_y",
+      "unit": "m/s",
+      "train_mean": 0.00010657306866612095,
+      "train_std_population": 0.4619338917946706,
+      "train_min": -1.5379444360733032,
+      "train_max": 1.6072443723678589,
+      "standardizer_mean": 0.00010657306866612095,
+      "standardizer_std": 0.4619338917946706,
+      "kan_spline_abs_z_gt_4_fraction": 0.0
+    },
+    {
+      "index_zero_based": 16,
+      "name": "inertial_velocity_z",
+      "unit": "m/s",
+      "train_mean": 0.03996563828104985,
+      "train_std_population": 0.12680041805532602,
+      "train_min": -0.5255101919174194,
+      "train_max": 0.5493740439414978,
+      "standardizer_mean": 0.03996563828104985,
+      "standardizer_std": 0.12680041805532602,
+      "kan_spline_abs_z_gt_4_fraction": 3.9733408370852095e-05
+    },
+    {
+      "index_zero_based": 17,
+      "name": "nominal_acceleration_x",
+      "unit": "m/s^2",
+      "train_mean": -0.0014687629341134667,
+      "train_std_population": 0.4928246497681221,
+      "train_min": -3.085216522216797,
+      "train_max": 3.2411274909973145,
+      "standardizer_mean": -0.0014687629341134667,
+      "standardizer_std": 0.4928246497681221,
+      "kan_spline_abs_z_gt_4_fraction": 0.002254056715857929
+    },
+    {
+      "index_zero_based": 18,
+      "name": "nominal_acceleration_y",
+      "unit": "m/s^2",
+      "train_mean": -1.2226917612606602e-05,
+      "train_std_population": 0.5429170066706717,
+      "train_min": -4.111912727355957,
+      "train_max": 3.5029969215393066,
+      "standardizer_mean": -1.2226917612606602e-05,
+      "standardizer_std": 0.5429170066706717,
+      "kan_spline_abs_z_gt_4_fraction": 0.001986019051192263
+    },
+    {
+      "index_zero_based": 19,
+      "name": "nominal_acceleration_z",
+      "unit": "m/s^2",
+      "train_mean": 0.008924568468790249,
+      "train_std_population": 0.1564399931769137,
+      "train_min": -1.2267934083938599,
+      "train_max": 1.595290184020996,
+      "standardizer_mean": 0.008924568468790249,
+      "standardizer_std": 0.1564399931769137,
+      "kan_spline_abs_z_gt_4_fraction": 0.0050809910163415045
+    }
+  ],
+  "target_distribution": [
+    {
+      "role": "B",
+      "task": "FIG8_3D",
+      "phase_code": 0,
+      "phase": "STATIC",
+      "ready_event_count": 33456,
+      "target_raw_bias_mps2": [
+        -0.32603827404266983,
+        0.12265695845294465,
+        0.016812784561559994
+      ],
+      "target_raw_rms_mps2": [
+        0.5278165214269034,
+        0.46364006130121205,
+        0.1766642425396937
+      ],
+      "events_over_clip_limit_fraction": 0.0
+    },
+    {
+      "role": "B",
+      "task": "FIG8_3D",
+      "phase_code": 1,
+      "phase": "PRE",
+      "ready_event_count": 132840,
+      "target_raw_bias_mps2": [
+        0.010377103166931068,
+        -0.008837210271056871,
+        -0.027439083072510678
+      ],
+      "target_raw_rms_mps2": [
+        0.5087291592891611,
+        0.4799605989232554,
+        0.1647751990050986
+      ],
+      "events_over_clip_limit_fraction": 0.0001806684733514002
+    },
+    {
+      "role": "B",
+      "task": "FIG8_3D",
+      "phase_code": 2,
+      "phase": "EXTEND",
+      "ready_event_count": 42850,
+      "target_raw_bias_mps2": [
+        0.03577476964521618,
+        -0.0013497485622406445,
+        -0.0194523321078167
+      ],
+      "target_raw_rms_mps2": [
+        0.5639748628556505,
+        0.6359337705606498,
+        0.1980162747250484
+      ],
+      "events_over_clip_limit_fraction": 0.0014002333722287048
+    },
+    {
+      "role": "B",
+      "task": "FIG8_3D",
+      "phase_code": 3,
+      "phase": "HOLD",
+      "ready_event_count": 159535,
+      "target_raw_bias_mps2": [
+        0.04678703014411398,
+        -0.0018473140564415698,
+        -0.015903027115392498
+      ],
+      "target_raw_rms_mps2": [
+        0.5690862540241137,
+        0.5920880295949636,
+        0.2023332501298613
+      ],
+      "events_over_clip_limit_fraction": 0.002356849594132949
+    },
+    {
+      "role": "B",
+      "task": "FIG8_3D",
+      "phase_code": 4,
+      "phase": "RETRACT",
+      "ready_event_count": 42180,
+      "target_raw_bias_mps2": [
+        0.010474374676008277,
+        0.02013712228623626,
+        0.015134919946875065
+      ],
+      "target_raw_rms_mps2": [
+        0.618181141180606,
+        0.5719528918932151,
+        0.16844933918411914
+      ],
+      "events_over_clip_limit_fraction": 0.000948316737790422
+    },
+    {
+      "role": "B",
+      "task": "FIG8_3D",
+      "phase_code": 5,
+      "phase": "RECOVERY",
+      "ready_event_count": 124435,
+      "target_raw_bias_mps2": [
+        0.005329019919137934,
+        -0.016031390657961414,
+        -0.00045936622397868115
+      ],
+      "target_raw_rms_mps2": [
+        0.5426472943603092,
+        0.5030186548750082,
+        0.1527460281122376
+      ],
+      "events_over_clip_limit_fraction": 0.00044199783019246996
+    },
+    {
+      "role": "B",
+      "task": "HELIX",
+      "phase_code": 0,
+      "phase": "STATIC",
+      "ready_event_count": 33456,
+      "target_raw_bias_mps2": [
+        0.16347752331254278,
+        -0.2970565970884574,
+        -0.04793284332945825
+      ],
+      "target_raw_rms_mps2": [
+        0.5298613938926404,
+        0.4950247044731653,
+        0.1657370950474569
+      ],
+      "events_over_clip_limit_fraction": 0.0010760401721664275
+    },
+    {
+      "role": "B",
+      "task": "HELIX",
+      "phase_code": 1,
+      "phase": "PRE",
+      "ready_event_count": 132940,
+      "target_raw_bias_mps2": [
+        0.01028505290541373,
+        0.0134723496384867,
+        -0.005503096046004153
+      ],
+      "target_raw_rms_mps2": [
+        0.510820998237866,
+        0.48041505560948156,
+        0.15799888391001715
+      ],
+      "events_over_clip_limit_fraction": 0.00019557695200842485
+    },
+    {
+      "role": "B",
+      "task": "HELIX",
+      "phase_code": 2,
+      "phase": "EXTEND",
+      "ready_event_count": 42715,
+      "target_raw_bias_mps2": [
+        0.019815078839074494,
+        0.05970649681788237,
+        -0.009519292388701545
+      ],
+      "target_raw_rms_mps2": [
+        0.6689326626194172,
+        0.6119924979270148,
+        0.17895508245187575
+      ],
+      "events_over_clip_limit_fraction": 0.0017090015217136837
+    },
+    {
+      "role": "B",
+      "task": "HELIX",
+      "phase_code": 3,
+      "phase": "HOLD",
+      "ready_event_count": 159670,
+      "target_raw_bias_mps2": [
+        -0.02018258950215336,
+        0.010682620401862825,
+        -0.027452008751504917
+      ],
+      "target_raw_rms_mps2": [
+        0.6113937006169229,
+        0.5956034700973681,
+        0.2032871564768857
+      ],
+      "events_over_clip_limit_fraction": 0.0018976639318594602
+    },
+    {
+      "role": "B",
+      "task": "HELIX",
+      "phase_code": 4,
+      "phase": "RETRACT",
+      "ready_event_count": 42074,
+      "target_raw_bias_mps2": [
+        0.02787804365051758,
+        0.028430799716464374,
+        -0.0228404853913197
+      ],
+      "target_raw_rms_mps2": [
+        0.5730624442930259,
+        0.5689555578034301,
+        0.1926920655514002
+      ],
+      "events_over_clip_limit_fraction": 0.0005941911869563151
+    },
+    {
+      "role": "B",
+      "task": "HELIX",
+      "phase_code": 5,
+      "phase": "RECOVERY",
+      "ready_event_count": 124441,
+      "target_raw_bias_mps2": [
+        -0.002378578113333011,
+        0.026167373089948976,
+        -0.021542325991299068
+      ],
+      "target_raw_rms_mps2": [
+        0.52947780025082,
+        0.4966109188874494,
+        0.16425031235072643
+      ],
+      "events_over_clip_limit_fraction": 0.00018482654430613705
+    },
+    {
+      "role": "B",
+      "task": "SQUARE",
+      "phase_code": 0,
+      "phase": "STATIC",
+      "ready_event_count": 33456,
+      "target_raw_bias_mps2": [
+        0.29234170359397793,
+        0.1836400402007204,
+        -0.018847973061011828
+      ],
+      "target_raw_rms_mps2": [
+        0.4843860970628737,
+        0.5326471185826156,
+        0.14701190799723338
+      ],
+      "events_over_clip_limit_fraction": 0.0007771401243424199
+    },
+    {
+      "role": "B",
+      "task": "SQUARE",
+      "phase_code": 1,
+      "phase": "PRE",
+      "ready_event_count": 132940,
+      "target_raw_bias_mps2": [
+        -0.046277902433549026,
+        -0.013769441817307567,
+        -0.007935070754211663
+      ],
+      "target_raw_rms_mps2": [
+        0.520577408702554,
+        0.47679001312602065,
+        0.15276180761083918
+      ],
+      "events_over_clip_limit_fraction": 0.00032345418986008727
+    },
+    {
+      "role": "B",
+      "task": "SQUARE",
+      "phase_code": 2,
+      "phase": "EXTEND",
+      "ready_event_count": 42725,
+      "target_raw_bias_mps2": [
+        -0.00946523949097383,
+        -0.06601033663996053,
+        -0.011503129155376619
+      ],
+      "target_raw_rms_mps2": [
+        0.6570380443341778,
+        0.617095788402659,
+        0.1849190539040194
+      ],
+      "events_over_clip_limit_fraction": 0.0012404915155061439
+    },
+    {
+      "role": "B",
+      "task": "SQUARE",
+      "phase_code": 3,
+      "phase": "HOLD",
+      "ready_event_count": 159619,
+      "target_raw_bias_mps2": [
+        -0.012906999830325427,
+        -0.03234319205516481,
+        -0.014266454805945194
+      ],
+      "target_raw_rms_mps2": [
+        0.6079554189019066,
+        0.5887079071109951,
+        0.1914376627980933
+      ],
+      "events_over_clip_limit_fraction": 0.0017855017259850018
+    },
+    {
+      "role": "B",
+      "task": "SQUARE",
+      "phase_code": 4,
+      "phase": "RETRACT",
+      "ready_event_count": 42114,
+      "target_raw_bias_mps2": [
+        0.03026662750184382,
+        0.007699131356563216,
+        -0.011071728111926736
+      ],
+      "target_raw_rms_mps2": [
+        0.5753932322689141,
+        0.579839691795564,
+        0.16996428592368448
+      ],
+      "events_over_clip_limit_fraction": 0.0010685282803818209
+    },
+    {
+      "role": "B",
+      "task": "SQUARE",
+      "phase_code": 5,
+      "phase": "RECOVERY",
+      "ready_event_count": 124442,
+      "target_raw_bias_mps2": [
+        -0.01981769598723959,
+        0.017315046484738507,
+        -0.006509837772231027
+      ],
+      "target_raw_rms_mps2": [
+        0.5252936500298034,
+        0.4999932632116136,
+        0.1662166935279533
+      ],
+      "events_over_clip_limit_fraction": 0.000482152327992157
+    },
+    {
+      "role": "POS_OFF",
+      "task": "FIG8_3D",
+      "phase_code": 0,
+      "phase": "STATIC",
+      "ready_event_count": 33456,
+      "target_raw_bias_mps2": [
+        -0.3253446652443255,
+        0.1225171289553452,
+        0.016140748936330378
+      ],
+      "target_raw_rms_mps2": [
+        0.4933588398629482,
+        0.4338042258554927,
+        0.16231306292591163
+      ],
+      "events_over_clip_limit_fraction": 0.0
+    },
+    {
+      "role": "POS_OFF",
+      "task": "FIG8_3D",
+      "phase_code": 1,
+      "phase": "PRE",
+      "ready_event_count": 132840,
+      "target_raw_bias_mps2": [
+        0.009831636602108824,
+        -0.00937387254535077,
+        -0.02783503125826006
+      ],
+      "target_raw_rms_mps2": [
+        0.47609602705491827,
+        0.4494963094812329,
+        0.1580669440325605
+      ],
+      "events_over_clip_limit_fraction": 0.0
+    },
+    {
+      "role": "POS_OFF",
+      "task": "FIG8_3D",
+      "phase_code": 2,
+      "phase": "EXTEND",
+      "ready_event_count": 42850,
+      "target_raw_bias_mps2": [
+        0.038266827140814696,
+        0.0018195995073254064,
+        -0.022254740079967413
+      ],
+      "target_raw_rms_mps2": [
+        0.5235361027545558,
+        0.5971971684231139,
+        0.1868747747409139
+      ],
+      "events_over_clip_limit_fraction": 0.00023337222870478414
+    },
+    {
+      "role": "POS_OFF",
+      "task": "FIG8_3D",
+      "phase_code": 3,
+      "phase": "HOLD",
+      "ready_event_count": 159535,
+      "target_raw_bias_mps2": [
+        0.046261122743322815,
+        -0.002822958033352729,
+        -0.016882208927688876
+      ],
+      "target_raw_rms_mps2": [
+        0.5271842623476446,
+        0.5419317374985447,
+        0.19008036600357997
+      ],
+      "events_over_clip_limit_fraction": 0.0003635565863290187
+    },
+    {
+      "role": "POS_OFF",
+      "task": "FIG8_3D",
+      "phase_code": 4,
+      "phase": "RETRACT",
+      "ready_event_count": 42180,
+      "target_raw_bias_mps2": [
+        0.011664614464341026,
+        0.021800067142994196,
+        0.012621964398609183
+      ],
+      "target_raw_rms_mps2": [
+        0.5831710472431885,
+        0.5212483277898494,
+        0.15640455579665277
+      ],
+      "events_over_clip_limit_fraction": 0.0
+    },
+    {
+      "role": "POS_OFF",
+      "task": "FIG8_3D",
+      "phase_code": 5,
+      "phase": "RECOVERY",
+      "ready_event_count": 124435,
+      "target_raw_bias_mps2": [
+        0.005171878199477716,
+        -0.01542685436399794,
+        -0.0008621911239648642
+      ],
+      "target_raw_rms_mps2": [
+        0.5077632798852537,
+        0.47011689580249344,
+        0.14545879047992386
+      ],
+      "events_over_clip_limit_fraction": 0.0
+    },
+    {
+      "role": "POS_OFF",
+      "task": "HELIX",
+      "phase_code": 0,
+      "phase": "STATIC",
+      "ready_event_count": 33456,
+      "target_raw_bias_mps2": [
+        0.1632258513336669,
+        -0.2968407061566869,
+        -0.048375066529359946
+      ],
+      "target_raw_rms_mps2": [
+        0.4747757593150131,
+        0.4795468119749882,
+        0.16414515169181085
+      ],
+      "events_over_clip_limit_fraction": 0.0
+    },
+    {
+      "role": "POS_OFF",
+      "task": "HELIX",
+      "phase_code": 1,
+      "phase": "PRE",
+      "ready_event_count": 132940,
+      "target_raw_bias_mps2": [
+        0.010163941394179705,
+        0.013167686274798057,
+        -0.006348572272506695
+      ],
+      "target_raw_rms_mps2": [
+        0.4800070610392649,
+        0.44935167298670853,
+        0.1504692879402627
+      ],
+      "events_over_clip_limit_fraction": 0.0
+    },
+    {
+      "role": "POS_OFF",
+      "task": "HELIX",
+      "phase_code": 2,
+      "phase": "EXTEND",
+      "ready_event_count": 42715,
+      "target_raw_bias_mps2": [
+        0.021204990447974643,
+        0.06029585303216005,
+        -0.01153830629438422
+      ],
+      "target_raw_rms_mps2": [
+        0.6379886134357793,
+        0.5765237136744839,
+        0.16950512621313296
+      ],
+      "events_over_clip_limit_fraction": 0.0008662062507315932
+    },
+    {
+      "role": "POS_OFF",
+      "task": "HELIX",
+      "phase_code": 3,
+      "phase": "HOLD",
+      "ready_event_count": 159670,
+      "target_raw_bias_mps2": [
+        -0.020841725242676364,
+        0.010668070765807298,
+        -0.027868373718855973
+      ],
+      "target_raw_rms_mps2": [
+        0.5740768627320625,
+        0.5426530353769913,
+        0.19125598474334188
+      ],
+      "events_over_clip_limit_fraction": 0.000263042525208242
+    },
+    {
+      "role": "POS_OFF",
+      "task": "HELIX",
+      "phase_code": 4,
+      "phase": "RETRACT",
+      "ready_event_count": 42074,
+      "target_raw_bias_mps2": [
+        0.028155741380044372,
+        0.02830628932073322,
+        -0.026174206907884662
+      ],
+      "target_raw_rms_mps2": [
+        0.5367849195311628,
+        0.5217922325875843,
+        0.18408757775721832
+      ],
+      "events_over_clip_limit_fraction": 0.00016637353234776823
+    },
+    {
+      "role": "POS_OFF",
+      "task": "HELIX",
+      "phase_code": 5,
+      "phase": "RECOVERY",
+      "ready_event_count": 124441,
+      "target_raw_bias_mps2": [
+        -0.001396327452294117,
+        0.026310061529784216,
+        -0.022013793501272985
+      ],
+      "target_raw_rms_mps2": [
+        0.49514586472763417,
+        0.4614369849386593,
+        0.15665216528785617
+      ],
+      "events_over_clip_limit_fraction": 0.0
+    },
+    {
+      "role": "POS_OFF",
+      "task": "SQUARE",
+      "phase_code": 0,
+      "phase": "STATIC",
+      "ready_event_count": 33456,
+      "target_raw_bias_mps2": [
+        0.2915756226938582,
+        0.18294377367903994,
+        -0.01860115673105855
+      ],
+      "target_raw_rms_mps2": [
+        0.46734950158409627,
+        0.4798921902852318,
+        0.14278794535774056
+      ],
+      "events_over_clip_limit_fraction": 0.0
+    },
+    {
+      "role": "POS_OFF",
+      "task": "SQUARE",
+      "phase_code": 1,
+      "phase": "PRE",
+      "ready_event_count": 132940,
+      "target_raw_bias_mps2": [
+        -0.045570352283241834,
+        -0.014083118928778058,
+        -0.008467167149296299
+      ],
+      "target_raw_rms_mps2": [
+        0.48746463080712193,
+        0.44793260395931167,
+        0.14496948801005852
+      ],
+      "events_over_clip_limit_fraction": 2.2566571385587482e-05
+    },
+    {
+      "role": "POS_OFF",
+      "task": "SQUARE",
+      "phase_code": 2,
+      "phase": "EXTEND",
+      "ready_event_count": 42725,
+      "target_raw_bias_mps2": [
+        -0.008888316634803163,
+        -0.06515464092175342,
+        -0.01348266204559592
+      ],
+      "target_raw_rms_mps2": [
+        0.618766163087895,
+        0.5808372991416554,
+        0.17481899697197573
+      ],
+      "events_over_clip_limit_fraction": 0.0002574605032182563
+    },
+    {
+      "role": "POS_OFF",
+      "task": "SQUARE",
+      "phase_code": 3,
+      "phase": "HOLD",
+      "ready_event_count": 159619,
+      "target_raw_bias_mps2": [
+        -0.013425264250429584,
+        -0.0322851199628539,
+        -0.014665913750723849
+      ],
+      "target_raw_rms_mps2": [
+        0.5681434177689565,
+        0.5389977768688092,
+        0.17898452340254106
+      ],
+      "events_over_clip_limit_fraction": 0.00032577575351305294
+    },
+    {
+      "role": "POS_OFF",
+      "task": "SQUARE",
+      "phase_code": 4,
+      "phase": "RETRACT",
+      "ready_event_count": 42114,
+      "target_raw_bias_mps2": [
+        0.032368876887806715,
+        0.007005266947319507,
+        -0.013952777112759992
+      ],
+      "target_raw_rms_mps2": [
+        0.5334768155723394,
+        0.5302190388725525,
+        0.16047399315490238
+      ],
+      "events_over_clip_limit_fraction": 2.3745072897373797e-05
+    },
+    {
+      "role": "POS_OFF",
+      "task": "SQUARE",
+      "phase_code": 5,
+      "phase": "RECOVERY",
+      "ready_event_count": 124442,
+      "target_raw_bias_mps2": [
+        -0.020265652629580588,
+        0.017180095750684365,
+        -0.007175284514956584
+      ],
+      "target_raw_rms_mps2": [
+        0.48750462305375225,
+        0.4674441540537047,
+        0.1578373175994522
+      ],
+      "events_over_clip_limit_fraction": 0.0
+    }
+  ],
+  "input_contract": {
+    "x14": [
+      "e_x [m]",
+      "e_y [m]",
+      "e_z [m]",
+      "s_x [m/s]",
+      "s_y [m/s]",
+      "s_z [m/s]",
+      "roll [rad]",
+      "pitch [rad]",
+      "yaw [rad]",
+      "preview_thrust_per_mass [m/s^2]",
+      "arm_command_1 [dimensionless {-1,0,1}]",
+      "arm_command_2 [dimensionless {-1,0,1}]",
+      "arm_command_3 [dimensionless {-1,0,1}]",
+      "arm_command_4 [dimensionless {-1,0,1}]"
+    ],
+    "x20_extra": [
+      "inertial_velocity_x [m/s]",
+      "inertial_velocity_y [m/s]",
+      "inertial_velocity_z [m/s]",
+      "nominal_acceleration_x [m/s^2]",
+      "nominal_acceleration_y [m/s^2]",
+      "nominal_acceleration_z [m/s^2]"
+    ],
+    "causal_source": "current X14 plus current raw command; X20 adds raw inertial velocity and zero-compensation nominal acceleration; no actual acceleration, residual, true wind, true morphology, or scene ID input"
+  },
+  "x20_raw_source_parity": {
+    "status": "PASS",
+    "six_samples_one_per_task_role": [
+      {
+        "run_id": "G02_P_TEACHER_DL1018_TRAIN_T1_C00_W00_B",
+        "scene_id": "DL1018_TRAIN_T1_C00_W00",
+        "task": "HELIX",
+        "role": "B",
+        "max_abs_difference": 0.0,
+        "source_fields": [
+          "log/state[plant_index,3:6]",
+          "log/position_nominal_acceleration_mps2[plant_index,0:3]"
+        ],
+        "uses_current_actual_acceleration_or_true_morphology": false
+      },
+      {
+        "run_id": "G02_P_TEACHER_DL1018_TRAIN_T1_C00_W00_POS_OFF",
+        "scene_id": "DL1018_TRAIN_T1_C00_W00",
+        "task": "HELIX",
+        "role": "POS_OFF",
+        "max_abs_difference": 0.0,
+        "source_fields": [
+          "log/state[plant_index,3:6]",
+          "log/position_nominal_acceleration_mps2[plant_index,0:3]"
+        ],
+        "uses_current_actual_acceleration_or_true_morphology": false
+      },
+      {
+        "run_id": "G02_P_TEACHER_DL1018_TRAIN_T2_C00_W00_B",
+        "scene_id": "DL1018_TRAIN_T2_C00_W00",
+        "task": "FIG8_3D",
+        "role": "B",
+        "max_abs_difference": 0.0,
+        "source_fields": [
+          "log/state[plant_index,3:6]",
+          "log/position_nominal_acceleration_mps2[plant_index,0:3]"
+        ],
+        "uses_current_actual_acceleration_or_true_morphology": false
+      },
+      {
+        "run_id": "G02_P_TEACHER_DL1018_TRAIN_T2_C00_W00_POS_OFF",
+        "scene_id": "DL1018_TRAIN_T2_C00_W00",
+        "task": "FIG8_3D",
+        "role": "POS_OFF",
+        "max_abs_difference": 0.0,
+        "source_fields": [
+          "log/state[plant_index,3:6]",
+          "log/position_nominal_acceleration_mps2[plant_index,0:3]"
+        ],
+        "uses_current_actual_acceleration_or_true_morphology": false
+      },
+      {
+        "run_id": "G02_P_TEACHER_DL1018_TRAIN_T3_C00_W00_B",
+        "scene_id": "DL1018_TRAIN_T3_C00_W00",
+        "task": "SQUARE",
+        "role": "B",
+        "max_abs_difference": 0.0,
+        "source_fields": [
+          "log/state[plant_index,3:6]",
+          "log/position_nominal_acceleration_mps2[plant_index,0:3]"
+        ],
+        "uses_current_actual_acceleration_or_true_morphology": false
+      },
+      {
+        "run_id": "G02_P_TEACHER_DL1018_TRAIN_T3_C00_W00_POS_OFF",
+        "scene_id": "DL1018_TRAIN_T3_C00_W00",
+        "task": "SQUARE",
+        "role": "POS_OFF",
+        "max_abs_difference": 0.0,
+        "source_fields": [
+          "log/state[plant_index,3:6]",
+          "log/position_nominal_acceleration_mps2[plant_index,0:3]"
+        ],
+        "uses_current_actual_acceleration_or_true_morphology": false
+      }
+    ]
+  },
+  "windows": {
+    "L32_train_full": 605184,
+    "L32_val_teacher": 37824,
+    "L32_small_teacher": 75648,
+    "L128_train_full": 576000,
+    "L128_val_teacher": 36000,
+    "L128_endpoint_rule": "zero-based 127,132,...,1997"
+  },
+  "small_pool": {
+    "rows": 192,
+    "physical_scenes": 96,
+    "selection_seed": 2026102000,
+    "wind_cells_per_task": "each of 16 appears twice",
+    "wind_cells_per_class": "two distinct cells",
+    "label_blind": true
+  },
+  "no_plant_or_training_performed": true
+}

@@ -1,0 +1,27 @@
+{
+  "status": "CANDIDATES_LOCKED_FOR_FROZEN_SIX",
+  "selection_basis": "Complete stable six-scene official online canaries, grouped by current-frame versus temporal input; choose the lowest Q within each group before frozen runs and before DEV access.",
+  "frozen_policy": "Disable only stage1_position_runtime.update_enabled. Keep B attitude RBF, PCF, FEATURE gamma=12, kappa=1, and all other controller settings unchanged.",
+  "dev_order_policy": "Lock the DEV24 order only after both frozen six-scene runs finish, using the lowest complete stable online-or-frozen six-scene Q per model configuration. First candidate is the lower-Q configuration; second is the other configuration.",
+  "plant_budget_max": null,
+  "candidates": [
+    {
+      "group": "CURRENT_FRAME",
+      "model_id": "KAN14",
+      "seed": 2026102002,
+      "checkpoint_kind": "best_teacher_val",
+      "source_group": "RBF_QUALIFIED_KAN14_SEED2026102002_BEST_TEACHER_VAL",
+      "online_macro_Q_0_20_m": 0.01916015805733795,
+      "same_scene_B_macro_Q_0_20_m": 0.020356747923155928
+    },
+    {
+      "group": "TEMPORAL",
+      "model_id": "GRU14",
+      "seed": 2026102002,
+      "checkpoint_kind": "final_step",
+      "source_group": "OFFICIAL_GRU14_SEED2026102002_FINAL_STEP",
+      "online_macro_Q_0_20_m": 0.015284916766821185,
+      "same_scene_B_macro_Q_0_20_m": 0.020356747923155928
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "status": "OFFICIAL_FITS_AT_40K_GATE",
+  "protocol_sha256": "746360dc2985a3a9fb5602975481884e89a59e677d383dc3d3c8f0ef6a5a0f29",
+  "selection_source": "reports/small_canary_selection.json",
+  "selection_metric": "complete stable six-scene equal-weight macro Q_0_20_m",
+  "current_frame_winner": {
+    "group_id": "SMALL_MLP14",
+    "head_type": "FEATURE",
+    "gamma": 12,
+    "kappa": 1,
+    "n": 6,
+    "expected_n": 6,
+    "complete_stable": true,
+    "macro_Q_0_20_m": 0.01765456704640603,
+    "same_scene_B_macro_Q_0_20_m": 0.020356747923155928,
+    "delta_Q_vs_B_m": -0.002702180876749897,
+    "wins": 3,
+    "new_plant_starts": 6
+  },
+  "temporal_winner": {
+    "group_id": "SMALL_GRU14",
+    "head_type": "FEATURE",
+    "gamma": 12,
+    "kappa": 1,
+    "n": 6,
+    "expected_n": 6,
+    "complete_stable": true,
+    "macro_Q_0_20_m": 0.01589655109256568,
+    "same_scene_B_macro_Q_0_20_m": 0.020356747923155928,
+    "delta_Q_vs_B_m": -0.004460196830590249,
+    "wins": 3,
+    "new_plant_starts": 6
+  },
+  "model_ids": [
+    "MLP14",
+    "GRU14"
+  ],
+  "seeds": [
+    2026102001,
+    2026102002
+  ],
+  "train_runs": 1536,
+  "val_runs": 96,
+  "train_windows": 605184,
+  "val_windows": 37824,
+  "step_gate": 40000,
+  "eval_interval": 2000,
+  "extension_rule": "At 40k, if any successful fit improves by >=1% during 30k-40k over the best score through 30k, extend all successful selected fits to 60k.",
+  "selected_at_utc": "2026-10-19T20:49:48.393826+00:00",
+  "fits": [
+    {
+      "fit_id": "OFFICIAL_MLP14_SEED2026102001",
+      "model_id": "MLP14",
+      "seed": 2026102001,
+      "status": "AT_40K_STAGE_GATE",
+      "last_step": 40000,
+      "best_step": 38000,
+      "best_teacher_val_rmse_mps2": 0.26554052023260816,
+      "final_teacher_val_rmse_mps2": 0.2663748793250878,
+      "steps_per_s_mean": 286.02937015978256
+    },
+    {
+      "fit_id": "OFFICIAL_MLP14_SEED2026102002",
+      "model_id": "MLP14",
+      "seed": 2026102002,
+      "status": "AT_40K_STAGE_GATE",
+      "last_step": 40000,
+      "best_step": 36000,
+      "best_teacher_val_rmse_mps2": 0.2631741818819676,
+      "final_teacher_val_rmse_mps2": 0.26507948557175987,
+      "steps_per_s_mean": 292.5363935067346
+    },
+    {
+      "fit_id": "OFFICIAL_GRU14_SEED2026102001",
+      "model_id": "GRU14",
+      "seed": 2026102001,
+      "status": "AT_40K_STAGE_GATE",
+      "last_step": 40000,
+      "best_step": 38000,
+      "best_teacher_val_rmse_mps2": 0.14476594203753337,
+      "final_teacher_val_rmse_mps2": 0.1459951661552432,
+      "steps_per_s_mean": 232.75933577284505
+    },
+    {
+      "fit_id": "OFFICIAL_GRU14_SEED2026102002",
+      "model_id": "GRU14",
+      "seed": 2026102002,
+      "status": "AT_40K_STAGE_GATE",
+      "last_step": 40000,
+      "best_step": 40000,
+      "best_teacher_val_rmse_mps2": 0.1422239882357145,
+      "final_teacher_val_rmse_mps2": 0.1422239882357145,
+      "steps_per_s_mean": 232.07984074423536
+    }
+  ]
+}

@@ -1,0 +1,170 @@
+{
+  "status": "OFFICIAL_FULL_CANARY_COMPLETE",
+  "head": {
+    "source": "experiments/position_only_closed_loop_search_v1/reports/FINAL_RESULT.json",
+    "selected_complete_six_scene_group": "FEATURE_G12_K1",
+    "head_type": "FEATURE",
+    "gamma": 12,
+    "kappa": 1,
+    "PCF": true,
+    "six_scene_macro_Q_0_20_m": 0.016154319320043704,
+    "state_bound": 60,
+    "leakage": 0.002,
+    "beta_rise_s": 1.8,
+    "output_limit_mps2": [
+      3,
+      3,
+      3
+    ],
+    "position_rbf_output_and_update": false,
+    "attitude_controller": "original_B_RBF_unchanged",
+    "new_model_W0": "each model uses its own trained 33x3 readout; no upstream W0 or encoder weights are loaded",
+    "implementation_source": "experiments/position_only_closed_loop_search_v1/local_runtime/position_only_search_head_step.m"
+  },
+  "package_scores": [
+    {
+      "group_id": "OFFICIAL_MLP14_SEED2026102001_BEST_TEACHER_VAL",
+      "head_type": "FEATURE",
+      "gamma": 12,
+      "kappa": 1,
+      "n": 6,
+      "expected_n": 6,
+      "complete_stable": true,
+      "macro_Q_0_20_m": 0.023927085826918115,
+      "same_scene_B_macro_Q_0_20_m": 0.020356747923155928,
+      "delta_Q_vs_B_m": 0.0035703379037621864,
+      "wins": 2,
+      "new_plant_starts": 6
+    },
+    {
+      "group_id": "OFFICIAL_MLP14_SEED2026102001_FINAL_STEP",
+      "head_type": "FEATURE",
+      "gamma": 12,
+      "kappa": 1,
+      "n": 6,
+      "expected_n": 6,
+      "complete_stable": true,
+      "macro_Q_0_20_m": 0.024703886520038829,
+      "same_scene_B_macro_Q_0_20_m": 0.020356747923155928,
+      "delta_Q_vs_B_m": 0.0043471385968829011,
+      "wins": 2,
+      "new_plant_starts": 6
+    },
+    {
+      "group_id": "OFFICIAL_MLP14_SEED2026102002_BEST_TEACHER_VAL",
+      "head_type": "FEATURE",
+      "gamma": 12,
+      "kappa": 1,
+      "n": 6,
+      "expected_n": 6,
+      "complete_stable": true,
+      "macro_Q_0_20_m": 0.022395339839504393,
+      "same_scene_B_macro_Q_0_20_m": 0.020356747923155928,
+      "delta_Q_vs_B_m": 0.0020385919163484652,
+      "wins": 2,
+      "new_plant_starts": 6
+    },
+    {
+      "group_id": "OFFICIAL_MLP14_SEED2026102002_FINAL_STEP",
+      "head_type": "FEATURE",
+      "gamma": 12,
+      "kappa": 1,
+      "n": 6,
+      "expected_n": 6,
+      "complete_stable": true,
+      "macro_Q_0_20_m": 0.022395339839504393,
+      "same_scene_B_macro_Q_0_20_m": 0.020356747923155928,
+      "delta_Q_vs_B_m": 0.0020385919163484652,
+      "wins": 2,
+      "new_plant_starts": 6
+    },
+    {
+      "group_id": "OFFICIAL_GRU14_SEED2026102001_BEST_TEACHER_VAL",
+      "head_type": "FEATURE",
+      "gamma": 12,
+      "kappa": 1,
+      "n": 6,
+      "expected_n": 6,
+      "complete_stable": true,
+      "macro_Q_0_20_m": 0.01639766965753827,
+      "same_scene_B_macro_Q_0_20_m": 0.020356747923155928,
+      "delta_Q_vs_B_m": -0.0039590782656176576,
+      "wins": 3,
+      "new_plant_starts": 6
+    },
+    {
+      "group_id": "OFFICIAL_GRU14_SEED2026102001_FINAL_STEP",
+      "head_type": "FEATURE",
+      "gamma": 12,
+      "kappa": 1,
+      "n": 6,
+      "expected_n": 6,
+      "complete_stable": true,
+      "macro_Q_0_20_m": 0.015865633003938735,
+      "same_scene_B_macro_Q_0_20_m": 0.020356747923155928,
+      "delta_Q_vs_B_m": -0.0044911149192171929,
+      "wins": 3,
+      "new_plant_starts": 6
+    },
+    {
+      "group_id": "OFFICIAL_GRU14_SEED2026102002_BEST_TEACHER_VAL",
+      "head_type": "FEATURE",
+      "gamma": 12,
+      "kappa": 1,
+      "n": 6,
+      "expected_n": 6,
+      "complete_stable": true,
+      "macro_Q_0_20_m": 0.015460417718154216,
+      "same_scene_B_macro_Q_0_20_m": 0.020356747923155928,
+      "delta_Q_vs_B_m": -0.0048963302050017126,
+      "wins": 3,
+      "new_plant_starts": 6
+    },
+    {
+      "group_id": "OFFICIAL_GRU14_SEED2026102002_FINAL_STEP",
+      "head_type": "FEATURE",
+      "gamma": 12,
+      "kappa": 1,
+      "n": 6,
+      "expected_n": 6,
+      "complete_stable": true,
+      "macro_Q_0_20_m": 0.015284916766821185,
+      "same_scene_B_macro_Q_0_20_m": 0.020356747923155928,
+      "delta_Q_vs_B_m": -0.0050718311563347426,
+      "wins": 3,
+      "new_plant_starts": 6
+    }
+  ],
+  "selected_best_package_per_config": [
+    {
+      "model_id": "MLP14",
+      "seed": 2.026102002E+9,
+      "checkpoint_kind": "best_teacher_val",
+      "group_id": "OFFICIAL_MLP14_SEED2026102002_BEST_TEACHER_VAL",
+      "macro_Q_0_20_m": 0.022395339839504393,
+      "same_scene_B_macro_Q_0_20_m": 0.020356747923155928,
+      "delta_Q_vs_B_m": 0.0020385919163484652,
+      "complete_stable": true
+    },
+    {
+      "model_id": "GRU14",
+      "seed": 2.026102002E+9,
+      "checkpoint_kind": "final_step",
+      "group_id": "OFFICIAL_GRU14_SEED2026102002_FINAL_STEP",
+      "macro_Q_0_20_m": 0.015284916766821185,
+      "same_scene_B_macro_Q_0_20_m": 0.020356747923155928,
+      "delta_Q_vs_B_m": -0.0050718311563347426,
+      "complete_stable": true
+    }
+  ],
+  "results_csv": "experiments/teacher_reuse_model_screen_v1/reports/official_full_canary_results.csv",
+  "selection_metric": "Lowest complete stable equal-weight six-scene Q_0_20_m among both seeds x best/final checkpoints; same-scene B is reported.",
+  "advance_to_frozen_six_scene": [
+    "MLP14",
+    "GRU14"
+  ],
+  "package_count": 8,
+  "new_plant_starts_this_stage": 48,
+  "cumulative_new_plant_starts": 132,
+  "finished_at_utc": "2026-10-19T22:00:15.973Z"
+}
