@@ -6,6 +6,7 @@ end
 projectRoot=char(java.io.File(projectRoot).getCanonicalPath());
 switch upper(char(action))
     case 'BUILD'
+        assert_reference_buildable(projectRoot);
         out=build_all(projectRoot);
     case 'GET'
         assert(nargin>=3&&~isempty(sceneId),'DL1018:SceneId','GET requires scene_id.');
@@ -15,6 +16,7 @@ switch upper(char(action))
         assert(numel(idx)==1,'DL1018:UnknownScene','Expected one scene_id: %s.',sceneId);
         [cfg,~,root]=init_dl1018();assert(strcmp(root,projectRoot),'DL1018:RootMismatch','Unexpected root.');
         [scene,metadata]=construct_scene(M(idx,:),cfg);
+        metadata.reference_contract_id=reference_contract_id();
         out=struct('scene',scene,'metadata',metadata,'spec',M(idx,:));
     otherwise
         error('DL1018:SceneAction','Action must be BUILD or GET.');
@@ -115,6 +117,7 @@ else
     write_json_dl1018(planPath,plan);
 end
 report=struct('gate_id','G01_SCENES','status','PASS','contract_version','DL1018_V311_R2E_PAPER_FINAL', ...
+    'reference_contract_id',reference_contract_id(), ...
     'upstream_passed',true,'model_id','','actual_counts',struct('scenes_total',height(M), ...
     'train',nnz(M.split=="TRAIN"),'val',nnz(M.split=="VAL"),'dev',nnz(M.split=="DEV"), ...
     'test',nnz(M.split=="TEST"),'student_train',nnz(M.student_train),'student_val',nnz(M.student_val), ...
@@ -308,7 +311,7 @@ switch upper(char(task))
     case 'FIG8_3D'
         th=2*pi*u;p=[1.5*sin(th),sin(2*th),.4*u+.35*(1-cos(2*th))];
         pu=[3*pi*cos(th),4*pi*cos(2*th),.4+1.4*pi*sin(2*th)];
-        puu=[-6*pi^2*sin(th),-8*pi^2*sin(2*th),2.8*pi^2*cos(2*th)];
+        puu=[-6*pi^2*sin(th),-16*pi^2*sin(2*th),5.6*pi^2*cos(2*th)];
         v=pu.*ud;a=puu.*(ud.^2)+pu.*udd;
     case 'SQUARE'
         p=zeros(numel(t),3);v=p;a=p;points=[0 0 0;2 0 0;2 2 0;0 2 0;0 0 0];
@@ -324,6 +327,55 @@ function [p,v,a]=square_row(t,i,points)
 u=min(max((t-5*i)/5,0),1);h=10*u^3-15*u^4+6*u^5;
 hd=30*u^2-60*u^3+30*u^4;hdd=60*u-180*u^2+120*u^3;dp=points(i+2,:)-points(i+1,:);
 p=points(i+1,:)+dp*h;v=dp*hd/5;a=dp*hdd/25;
+end
+
+function assert_reference_buildable(root)
+reportPath=fullfile(root,'reports','G01_SCENES.json');
+if isfile(reportPath)
+    prior=jsondecode(fileread(reportPath));
+    assert(isfield(prior,'reference_contract_id')&& ...
+        strcmp(char(string(prior.reference_contract_id)),reference_contract_id()), ...
+        'DL1018:ReferenceIdentityConflict', ...
+        'G01 belongs to another reference contract; use a fresh output root.');
+    return;
+end
+assert(~has_legacy_scene_artifacts(root),'DL1018:LegacySceneEvidence', ...
+    'G01 is missing but prior scene or pipeline artifacts exist; use a fresh output root.');
+end
+
+function tf=has_legacy_scene_artifacts(root)
+tf=false;
+paths={fullfile(root,'configs','scene_specs.csv'),fullfile(root,'configs','dataset_plan.json'), ...
+    fullfile(root,'reports','G02_P_TEACHER.json'),fullfile(root,'reports','G03_P_INITIAL.json'), ...
+    fullfile(root,'reports','G04_P_STUDENT.json'),fullfile(root,'reports','G05_P_FINAL.json'), ...
+    fullfile(root,'reports','G06_P_DEV.json'),fullfile(root,'reports','G07_A_TEACHER.json'), ...
+    fullfile(root,'reports','G08_A_INITIAL.json'),fullfile(root,'reports','G09_A_STUDENT.json'), ...
+    fullfile(root,'reports','G10_A_FINAL.json'),fullfile(root,'reports','G11_PA_DEV.json'), ...
+    fullfile(root,'reports','G12_FINAL_TEST.json'),fullfile(root,'reports','G13_FINAL_REPORT.json')};
+if any(cellfun(@isfile,paths)),tf=true;return;end
+for name={'attempt_index.csv','episode_index.csv'}
+    p=fullfile(root,'logs',name{1});
+    if isfile(p)
+        lines=readlines(p);
+        if numel(lines)>1&&any(strlength(strtrim(lines(2:end)))>0),tf=true;return;end
+    end
+end
+for p={fullfile(root,'data','raw'),fullfile(root,'data','events','position'), ...
+        fullfile(root,'data','events','attitude')}
+    if isfolder(p{1})
+        entries=dir(p{1});
+        if any(~ismember({entries.name},{'.','..'})),tf=true;return;end
+    end
+end
+modelRoot=fullfile(root,'models');
+if isfolder(modelRoot)
+    entries=dir(fullfile(modelRoot,'**','*'));
+    tf=any(~[entries.isdir]&~ismember({entries.name},{'.','..'}));
+end
+end
+
+function id=reference_contract_id()
+id='DL1018_SCENE_REF_FIG8_A2_V2';
 end
 
 function [jump,maxSpeed,maxAccel]=corner_metrics(task,ref,t)

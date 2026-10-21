@@ -16,6 +16,7 @@ import h5py
 import numpy as np
 
 CONTRACT = "DL1018_V311_R2E_PAPER_FINAL"
+REFERENCE_CONTRACT_ID = "DL1018_SCENE_REF_FIG8_A2_V2"
 GATES = [
     "G00_MIGRATION", "G01_SCENES", "G02_P_TEACHER", "G03_P_INITIAL",
     "G04_P_STUDENT", "G05_P_FINAL", "G06_P_DEV", "G07_A_TEACHER",
@@ -101,6 +102,45 @@ def atomic_json(path: Path, value: dict) -> None:
 
 def gate_report(root: Path, gate: str) -> dict | None:
     return read_json(root / "reports" / f"{gate}.json")
+
+
+def _has_legacy_scene_artifacts(root: Path) -> bool:
+    if any((root / "reports" / f"{gate}.json").is_file() for gate in GATES[2:]):
+        return True
+    if any((root / "configs" / name).is_file() for name in ("scene_specs.csv", "dataset_plan.json")):
+        return True
+    if any((root / relative).is_file() and _csv_has_data_rows(root / relative)
+           for relative in ("logs/attempt_index.csv", "logs/episode_index.csv")):
+        return True
+    if any(path.is_dir() and next(path.iterdir(), None) is not None for path in (
+        root / "data" / "raw", root / "data" / "events" / "position",
+        root / "data" / "events" / "attitude")):
+        return True
+    models = root / "models"
+    return models.is_dir() and any(path.is_file() for path in models.rglob("*"))
+
+
+def _csv_has_data_rows(path: Path) -> bool:
+    with path.open("r", encoding="utf-8-sig", newline="") as stream:
+        next(stream, None)
+        return any(line.strip() for line in stream)
+
+
+def _assert_scene_buildable(root: Path) -> None:
+    report = gate_report(root, "G01_SCENES")
+    if report is not None:
+        if report.get("reference_contract_id") != REFERENCE_CONTRACT_ID:
+            raise GateError("G01 属于旧场景参考；请使用没有旧场景/采集产物的新输出根目录。", EXIT_CONTRACT)
+        return
+    if _has_legacy_scene_artifacts(root):
+        raise GateError("G01 缺失但已有场景或下游产物；拒绝为旧数据根目录盖新身份。", EXIT_CONTRACT)
+
+
+def _assert_scene_reference(root: Path) -> None:
+    report = gate_report(root, "G01_SCENES")
+    if (report is None or report.get("reference_contract_id") != REFERENCE_CONTRACT_ID or
+            report.get("status") != "PASS" or not report.get("next_gate_allowed")):
+        raise GateError("当前 G01 场景参考身份缺失或不匹配；下游 Gate 已 fail-closed。", EXIT_CONTRACT)
 
 
 def report_statuses(root: Path) -> dict[str, str]:
@@ -519,6 +559,10 @@ def run_training_gate(root: Path, gate: str) -> dict:
 
 
 def run_gate(root: Path, source_root: Path | None, gate: str, resume: bool = False) -> dict:
+    if gate == "G01_SCENES":
+        _assert_scene_buildable(root)
+    elif GATES.index(gate) > GATES.index("G01_SCENES"):
+        _assert_scene_reference(root)
     ensure_layout(root)
     index = GATES.index(gate)
     statuses = report_statuses(root)
@@ -626,6 +670,16 @@ def main(argv: list[str] | None = None) -> int:
     if args.status:
         _safe_print(json.dumps(derive_state(root), ensure_ascii=False, indent=2))
         return EXIT_OK
+    try:
+        if args.stage == "G01_SCENES":
+            _assert_scene_buildable(root)
+        elif args.stage and GATES.index(args.stage) > GATES.index("G01_SCENES"):
+            _assert_scene_reference(root)
+        elif args.through and GATES.index(args.through) >= GATES.index("G01_SCENES"):
+            _assert_scene_buildable(root)
+    except GateError as exc:
+        _safe_print(str(exc), file=sys.stderr)
+        return exc.code
     source = args.source_root.expanduser().resolve() if args.source_root else None
     if source is not None and not source.is_dir():
         _safe_print(f"源目录不存在：{source}", file=sys.stderr)

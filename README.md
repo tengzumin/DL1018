@@ -2,6 +2,8 @@
 
 DL1018 is the isolated formal experiment project for the V3.11/R2E contract. Its MATLAB runtime uses only files under this project; DL1009 is read only and supplies the migration reference. The contract id is `DL1018_V311_R2E_PAPER_FINAL`.
 
+The corrected scene-reference identity, cache guards, and zero-Plant regression are documented in [the engineering note](reports/integration_next14_v1/engineering/A_CORRECTED_REFERENCE_CACHE_GUARD_ZH.md).
+
 ## Runtime
 
 - MATLAB R2025b (`25.2.0.2998904`)

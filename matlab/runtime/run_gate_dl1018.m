@@ -3,6 +3,10 @@ function report=run_gate_dl1018(gateId,projectRoot,sourceRoot)
 projectRoot=char(java.io.File(projectRoot).getCanonicalPath());
 sourceRoot=char(java.io.File(sourceRoot).getCanonicalPath());
 gateId=upper(char(gateId));
+if ~ismember(gateId,{'G00_MIGRATION','G01_SCENES'})
+    addpath(fullfile(projectRoot,'matlab','runtime'));
+    assert_scene_reference_contract_dl1018(projectRoot);
+end
 if strcmp(gateId,'G01_SCENES')
     priorPath=fullfile(projectRoot,'reports','G00_MIGRATION.json');
     assert(isfile(priorPath),'DL1018:GateLocked','G00_MIGRATION must PASS before G01.');

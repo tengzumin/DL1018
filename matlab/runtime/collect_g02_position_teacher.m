@@ -1,10 +1,11 @@
 function report=collect_g02_position_teacher(projectRoot)
 % Collect the locked B/POS_OFF position Teacher pool from new DL1018 scenes.
 projectRoot=char(java.io.File(projectRoot).getCanonicalPath());
-prior=jsondecode(fileread(fullfile(projectRoot,'reports','G01_SCENES.json')));
-assert(strcmp(prior.status,'PASS')&&prior.next_gate_allowed,'DL1018:GateLocked','G01 must PASS before G02.');
 addpath(fullfile(projectRoot,'matlab','data'),fullfile(projectRoot,'matlab','scenes'), ...
     fullfile(projectRoot,'matlab','runtime'));
+assert_scene_reference_contract_dl1018(projectRoot);
+prior=jsondecode(fileread(fullfile(projectRoot,'reports','G01_SCENES.json')));
+assert(strcmp(prior.status,'PASS')&&prior.next_gate_allowed,'DL1018:GateLocked','G01 must PASS before G02.');
 [cfg,~,root]=init_dl1018();assert(strcmp(root,projectRoot),'DL1018:RootMismatch','Unexpected project root.');
 M=read_specs(fullfile(projectRoot,'configs','scene_specs.csv'));
 assert(nnz(M.split=="TRAIN")==768&&nnz(M.split=="VAL")==48,'DL1018:ScenePlan','G02 scene plan is incomplete.');

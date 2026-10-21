@@ -4,6 +4,7 @@ root=char(java.io.File(root).getCanonicalPath());gateId=upper(char(gateId));
 assert(ismember(gateId,{'G11_PA_DEV','G12_FINAL_TEST'}));
 addpath(fullfile(root,'matlab','runtime'),fullfile(root,'matlab','data'), ...
     fullfile(root,'matlab','scenes'),fullfile(root,'matlab','models'),fullfile(root,'matlab','metrics'));
+assert_scene_reference_contract_dl1018(root);
 [cfg,~,resolved]=init_dl1018();assert(strcmp(root,resolved));
 smPath=fullfile(root,'configs','selected_models.json');sm=jsondecode(fileread(smPath));
 assert(isfield(sm,'position_star_method')&&isfield(sm,'position_selected_head_mode'));
