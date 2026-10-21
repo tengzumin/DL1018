@@ -1,0 +1,77 @@
+{
+  "task": "DL1018_TRAINING_DATA_STRUCTURE_COMPARE_V2",
+  "phase": "D3_OFFICIAL_FITS",
+  "seeds": [
+    2026101911,
+    2026101912
+  ],
+  "families": [
+    "MIXED_KAN",
+    "TEACHER_KAN",
+    "DEEP_KAN",
+    "HISTORY_KAN"
+  ],
+  "optimizer_steps_per_fit": 60000,
+  "max_official_fits": 8,
+  "optimizer": {
+    "name": "Adam",
+    "lr": 0.001,
+    "weight_decay": 1e-05,
+    "batch_size": 256
+  },
+  "checkpoint_and_evaluation_steps": [
+    0,
+    3000,
+    6000,
+    9000,
+    12000,
+    15000,
+    18000,
+    21000,
+    24000,
+    27000,
+    30000,
+    33000,
+    36000,
+    39000,
+    42000,
+    45000,
+    48000,
+    51000,
+    54000,
+    57000,
+    60000
+  ],
+  "source_mass": {
+    "MIXED": {
+      "B": 0.25,
+      "POS_OFF": 0.25,
+      "P_INIT_STUDENT": 0.5
+    },
+    "TEACHER": {
+      "B": 0.5,
+      "POS_OFF": 0.5
+    },
+    "COMMON_VAL": {
+      "B": 0.25,
+      "POS_OFF": 0.25,
+      "P_INIT_STUDENT": 0.5
+    }
+  },
+  "rows": {
+    "mixed_train_episodes": 1920,
+    "mixed_train_endpoints": 756480,
+    "teacher_train_episodes": 1536,
+    "teacher_train_endpoints": 605184,
+    "common_val_episodes": 144,
+    "common_val_endpoints": 56736
+  },
+  "normalizer": "same frozen DL1018 Initial TRAIN-only X14 normalizer",
+  "label": "existing target_clip in m/s^2; unchanged",
+  "head": "same Initial 33x3 head initialization; all model parameters train offline; deployed online head remains unchanged",
+  "source_weighting": "uniform sampling plus one hierarchical weighted loss; no WeightedRandomSampler",
+  "selection": "lowest common VAL clipped physical RMSE; shared VAL includes B/POS_OFF/Student, is development data and not blind TEST",
+  "no_plant_during_training": true,
+  "no_contract_or_B_changes": true,
+  "history_input": "first 10 raw X14 features, true current-plus-past 32 events from each single episode"
+}

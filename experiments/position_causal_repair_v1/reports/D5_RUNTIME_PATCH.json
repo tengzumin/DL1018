@@ -1,0 +1,35 @@
+{
+  "status": "PREPARED_ISOLATED_COPY",
+  "source_files": {
+    "matlab/runtime/run_episode_dl1018.m": {
+      "sha256": "f43e4096f3d3414fea9d5ed2315462f5e0aad738b0b5ea173e9ef2c2425943a9"
+    },
+    "matlab/runtime/run_dl1018_closed_loop.m": {
+      "sha256": "20913227a365a78e759e5f4f8ba8e91d3f4ac2a5899927ac03e9d707b9b5c0a3"
+    },
+    "matlab/models/position_stage1_model_forward_v2.m": {
+      "sha256": "8db5a691dc1961e13956c1d6e76cdea346142e0cc04788ba17f39c72d4a122ee"
+    }
+  },
+  "local_files": {
+    "experiments/position_causal_repair_v1/local_runtime/run_episode_dl1018.m": {
+      "sha256": "fcc1f5de659541e692483f8395d93fd2a251256286ebade5e510ed4c7a2e2330"
+    },
+    "experiments/position_causal_repair_v1/local_runtime/run_dl1018_closed_loop.m": {
+      "sha256": "259921e5befe491f588b4db15b008fd39052bc6157d445a688d90a08981a627e"
+    },
+    "experiments/position_causal_repair_v1/local_runtime/position_stage1_model_forward_v2.m": {
+      "sha256": "ca0deb9a70b3c20ce53a94b4c80bec2439c2f869f076a29c33cc26a7ad4cbd3a"
+    }
+  },
+  "changes": [
+    "Candidate model input dimension selects an isolated 14- or 20-row history.",
+    "The isolated run_episode wrapper re-adds its folder, clears cached controller code, and calls a checked local handle.",
+    "X20 appends current inertial velocity x(4:6) and zero-compensation nominal acceleration from the current backstepping preview.",
+    "The original X14 feature remains logged separately; the candidate input is logged with its actual dimension.",
+    "MATLAB KAN forward accepts 14/20 dimensions and loops over exactly the declared input count.",
+    "Model W0 remains 33x3 and the original online PCF Head update, beta, clip, attitude RBF, Plant, and safety rules are retained.",
+    "The original source files are not written by this preparation script."
+  ],
+  "zero_plant": true
+}

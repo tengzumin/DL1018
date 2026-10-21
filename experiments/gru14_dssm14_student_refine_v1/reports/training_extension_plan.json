@@ -1,0 +1,47 @@
+{
+  "status": "COMPLETE",
+  "trigger": "best validation step equals training endpoint",
+  "user_directed": true,
+  "chunk_steps": 10000,
+  "initial_steps": 10000,
+  "target_fit_ids": [
+    "STUDENT_MIX20_DSSM14_SEED2026102011",
+    "TEACHER_CONTINUE_DSSM14_SEED2026102012"
+  ],
+  "extensions": [
+    {
+      "fit_id": "STUDENT_MIX20_DSSM14_SEED2026102011",
+      "from_steps": 10000,
+      "to_steps": 20000,
+      "previous_best_step": 10000,
+      "previous_best_common_val_rmse_mps2": 0.20024448892907154,
+      "new_best_step": 18000,
+      "new_best_common_val_rmse_mps2": 0.19942704948077034,
+      "best_still_at_endpoint": false,
+      "completed_at_utc": "2026-10-20T08:51:58.728614+00:00"
+    },
+    {
+      "fit_id": "TEACHER_CONTINUE_DSSM14_SEED2026102012",
+      "from_steps": 10000,
+      "to_steps": 20000,
+      "previous_best_step": 10000,
+      "previous_best_common_val_rmse_mps2": 0.2042744709773869,
+      "new_best_step": 19000,
+      "new_best_common_val_rmse_mps2": 0.2035510448899056,
+      "best_still_at_endpoint": false,
+      "completed_at_utc": "2026-10-20T08:54:50.490926+00:00"
+    }
+  ],
+  "updated_at_utc": "2026-10-20T08:54:50.490926+00:00",
+  "final_steps_by_fit": {
+    "STUDENT_MIX20_DSSM14_SEED2026102011": 20000,
+    "STUDENT_MIX20_DSSM14_SEED2026102012": 10000,
+    "TEACHER_CONTINUE_DSSM14_SEED2026102011": 10000,
+    "TEACHER_CONTINUE_DSSM14_SEED2026102012": 20000,
+    "STUDENT_MIX20_GRU14_SEED2026102011": 10000,
+    "STUDENT_MIX20_GRU14_SEED2026102012": 10000,
+    "TEACHER_CONTINUE_GRU14_SEED2026102011": 10000,
+    "TEACHER_CONTINUE_GRU14_SEED2026102012": 10000
+  },
+  "completed_at_utc": "2026-10-20T08:54:50.514311+00:00"
+}

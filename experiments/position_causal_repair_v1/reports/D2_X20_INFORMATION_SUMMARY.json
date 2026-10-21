@@ -1,0 +1,61 @@
+{
+  "lambda_grid": [
+    0.0001,
+    0.001,
+    0.01,
+    0.1,
+    1.0,
+    10.0
+  ],
+  "folds": 4,
+  "grouping": "whole scenes, balanced round-robin within task x class x wind",
+  "fit_data": "G04 TRAIN only; stride 5, ready events, equal weight per scene",
+  "validation": "48 G04 VAL scenes held out and evaluated once",
+  "selected": {
+    "X14": {
+      "alpha": 0.1,
+      "cv_macro_Q": {
+        "0.0001": 0.5269722499813304,
+        "0.001": 0.526972223245135,
+        "0.01": 0.5269719612610577,
+        "0.1": 0.5269698712488352,
+        "1.0": 0.5269948606245982,
+        "10.0": 0.5289761466488415
+      }
+    },
+    "X20": {
+      "alpha": 0.0001,
+      "cv_macro_Q": {
+        "0.0001": 0.5095611886424867,
+        "0.001": 0.509561462630919,
+        "0.01": 0.509564217405887,
+        "0.1": 0.5095931637597156,
+        "1.0": 0.5099664531654288,
+        "10.0": 0.5145044110351356
+      }
+    }
+  },
+  "summary": {
+    "X14": {
+      "macro_by_task_Q_mps2": {
+        "FIG8_3D": 0.5092284413669418,
+        "HELIX": 0.47996551274441596,
+        "SQUARE": 0.4848915672746399
+      },
+      "overall_equal_scene_Q_mps2": 0.4913618404619992,
+      "selected_alpha": 0.1
+    },
+    "X20": {
+      "macro_by_task_Q_mps2": {
+        "FIG8_3D": 0.4746261071366352,
+        "HELIX": 0.4748913184384268,
+        "SQUARE": 0.4777503868635485
+      },
+      "overall_equal_scene_Q_mps2": 0.4757559374795368,
+      "selected_alpha": 0.0001
+    },
+    "inference_limit": "A linear scene-held-out probe tests incremental predictive information only; it does not estimate nonlinear KAN C1 gain or closed-loop performance."
+  },
+  "new_plant_starts": 0,
+  "encoder_fits": 0
+}

@@ -1,0 +1,41 @@
+{
+  "task": "DL1018_POSITION_CAUSAL_REPAIR_V1_D4",
+  "frozen_at_utc": "2026-10-19T09:26:53Z",
+  "train_split_only": true,
+  "val_split_only_for_selection": true,
+  "test_opened": false,
+  "plant_starts_d4": 0,
+  "new_fit_limit": 6,
+  "families": {
+    "C0_X14_FIXED_CONTROL": {
+      "status": "REUSE_G05_FINAL",
+      "model_id": "DL1018_POSITION_SELECTED",
+      "reason": "G05 used the prescribed X14 N_KAN, Initial warm start, same TRAIN roles B/POS_OFF/P_INIT_STUDENT, source masses 0.25/0.25/0.50, task/wind/phase balancing, stride 5, normalized SmoothL1 /3, Adam lr=1e-3, weight_decay=1e-5, batch=256, max_epochs=60 and patience=8. G05 recorded 756480 TRAIN and 56736 VAL events and passed parity. Re-fitting an identical control is redundant; the historical seed is 2026101802 and is retained as such."
+    },
+    "C1_X20_FIXED_INFORMATION": {
+      "status": "FIT_TWICE",
+      "input_order": ["X14", "v_I_xyz_mps", "a_nom_xyz_mps2"],
+      "model": "same 32-hidden cubic-spline X-KAN and 33x3 W0 as X14",
+      "normalizer": "preserve all 14 Initial values; estimate only six added means/stds on actual TRAIN episodes",
+      "initialization": "copy Initial X14 parameters; zero all weights for the six new inputs; verify X20 equals Initial X14 before fitting",
+      "seeds": [2026101901, 2026101902],
+      "optimizer": {"name": "Adam", "lr": 0.001, "weight_decay": 0.00001, "batch_size": 256, "max_epochs": 60, "patience": 8},
+      "endpoint_stride": 5
+    },
+    "C2_X14_ADAPTATION_AWARE": {
+      "status": "FIT_TWICE",
+      "input_order": "original X14",
+      "initialization": "Initial full X14 encoder and W0; shared encoder and W0 are outer learned parameters",
+      "episode_reset": "reset W to the shared learned W0 for each episode",
+      "online_recurrence": "for every ready 100Hz event, output beta*clip(W_t^T phi_t,-3,3), then update W with the production gamma, leak=0.002, dt=0.01, PCF surface-eta, and [-60,60] projection; only loss endpoints are sparse stride 5",
+      "loss": "SmoothL1(beta*clip(W_t^T phi_t,-3,3)/3,target_clip/3); original target_clip remains m/s^2",
+      "recorded_context": "X14 surface and PCF eta are taken from each source episode log; B/POS_OFF logs carry zero PCF eta because PCF coordination was not active for those original collectors. This is an offline recorded-trajectory objective, not closed-loop differentiation.",
+      "seeds": [2026101901, 2026101902],
+      "optimizer": {"name": "Adam", "lr": 0.001, "weight_decay": 0.00001, "batching": "one complete episode per optimizer step", "max_epochs": 60, "patience": 8},
+      "selection": "adaptive applied VAL score; report fixed-W0 and adaptive scores separately"
+    }
+  },
+  "primary_canary_order": ["C2_X14_ADAPTATION_AWARE_2026101901", "C1_X20_FIXED_INFORMATION_2026101901"],
+  "second_seed_role": "direction check only; never switch the predesignated flight seed after seeing results",
+  "resource_budget": {"fits_new_reserved": 4, "fits_new_started": 0, "plant_new": 0}
+}

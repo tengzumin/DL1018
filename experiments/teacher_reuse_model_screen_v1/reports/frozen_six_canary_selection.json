@@ -1,0 +1,62 @@
+{
+  "status": "FROZEN_SIX_CANARY_COMPLETE",
+  "candidate_lock": [
+    {
+      "group": "CURRENT_FRAME",
+      "model_id": "KAN14",
+      "seed": 2.026102002E+9,
+      "checkpoint_kind": "best_teacher_val",
+      "source_group": "RBF_QUALIFIED_KAN14_SEED2026102002_BEST_TEACHER_VAL",
+      "online_macro_Q_0_20_m": 0.01916015805733795,
+      "same_scene_B_macro_Q_0_20_m": 0.020356747923155928
+    },
+    {
+      "group": "TEMPORAL",
+      "model_id": "GRU14",
+      "seed": 2.026102002E+9,
+      "checkpoint_kind": "final_step",
+      "source_group": "OFFICIAL_GRU14_SEED2026102002_FINAL_STEP",
+      "online_macro_Q_0_20_m": 0.015284916766821185,
+      "same_scene_B_macro_Q_0_20_m": 0.020356747923155928
+    }
+  ],
+  "group_scores": [
+    {
+      "group_id": "FROZEN_KAN14_SEED2026102002_BEST_TEACHER_VAL",
+      "head_type": "FEATURE",
+      "gamma": 12,
+      "kappa": 1,
+      "n": 6,
+      "expected_n": 6,
+      "complete_stable": true,
+      "macro_Q_0_20_m": 0.051679171721309723,
+      "same_scene_B_macro_Q_0_20_m": 0.020356747923155928,
+      "delta_Q_vs_B_m": 0.031322423798153795,
+      "wins": 0,
+      "new_plant_starts": 6
+    },
+    {
+      "group_id": "FROZEN_GRU14_SEED2026102002_FINAL_STEP",
+      "head_type": "FEATURE",
+      "gamma": 12,
+      "kappa": 1,
+      "n": 6,
+      "expected_n": 6,
+      "complete_stable": true,
+      "macro_Q_0_20_m": 0.0337868448234539,
+      "same_scene_B_macro_Q_0_20_m": 0.020356747923155928,
+      "delta_Q_vs_B_m": 0.013430096900297971,
+      "wins": 0,
+      "new_plant_starts": 6
+    }
+  ],
+  "results_csv": "experiments/teacher_reuse_model_screen_v1/reports/frozen_six_canary_results.csv",
+  "selection_metric": "Lowest complete stable equal-weight six-scene Q_0_20_m; frozen runs disable only neural position updates.",
+  "dev24_order_locked_before_dev": [
+    "FROZEN_GRU14_SEED2026102002_FINAL_STEP",
+    "FROZEN_KAN14_SEED2026102002_BEST_TEACHER_VAL"
+  ],
+  "additional_plant_starts": 12,
+  "cumulative_new_plant_starts": 240,
+  "finished_at_utc": "2026-10-20T00:17:10.711Z"
+}

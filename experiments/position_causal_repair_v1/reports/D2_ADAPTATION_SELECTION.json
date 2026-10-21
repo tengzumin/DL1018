@@ -1,0 +1,67 @@
+{
+  "method": "same-scene early-support ridge, no future labels enter support",
+  "support_s": [
+    5.5,
+    10.0
+  ],
+  "query_s": [
+    10.0,
+    20.0
+  ],
+  "alpha_grid": [
+    0.0001,
+    0.001,
+    0.01,
+    0.1,
+    1.0,
+    10.0
+  ],
+  "ridge_target": "target_clip (m/s^2), regression of clipped pre-beta head output; applied beta results reported separately",
+  "selection_scope": "TRAIN episodes only, macro averaged by task; VAL used only for evaluation",
+  "counterfactual_note": "INITIAL/FINAL fixed-head and early-ridge predictions on G04 are offline counterfactuals on Initial-generated closed-loop state trajectories, not closed-loop results.",
+  "encoder_selection": {
+    "INITIAL": {
+      "selected_alpha": 0.01,
+      "train_macro_query_Q_by_alpha": {
+        "0.0001": 0.6465642161141186,
+        "0.001": 0.4440731298343019,
+        "0.01": 0.3794031131877471,
+        "0.1": 0.43092242788931623,
+        "1.0": 0.5213592474795808,
+        "10.0": 0.5957767378467121
+      },
+      "training_scenes": 384,
+      "support_time_s": [
+        5.5,
+        10.0
+      ],
+      "query_time_s": [
+        10.0,
+        20.0
+      ],
+      "tie_rule": "higher alpha if scores exactly tie"
+    },
+    "FINAL": {
+      "selected_alpha": 0.01,
+      "train_macro_query_Q_by_alpha": {
+        "0.0001": 0.6384028940736542,
+        "0.001": 0.43917631502285603,
+        "0.01": 0.3539952226389193,
+        "0.1": 0.386816386881694,
+        "1.0": 0.46395696857509994,
+        "10.0": 0.5140260837934002
+      },
+      "training_scenes": 384,
+      "support_time_s": [
+        5.5,
+        10.0
+      ],
+      "query_time_s": [
+        10.0,
+        20.0
+      ],
+      "tie_rule": "higher alpha if scores exactly tie"
+    }
+  },
+  "matrix_solves": 4704
+}

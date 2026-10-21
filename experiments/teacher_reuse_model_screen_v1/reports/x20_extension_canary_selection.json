@@ -1,0 +1,182 @@
+{
+  "status": "X20_EXTENSION_CANARY_COMPLETE",
+  "head": {
+    "source": "experiments/position_only_closed_loop_search_v1/reports/FINAL_RESULT.json",
+    "selected_complete_six_scene_group": "FEATURE_G12_K1",
+    "head_type": "FEATURE",
+    "gamma": 12,
+    "kappa": 1,
+    "PCF": true,
+    "six_scene_macro_Q_0_20_m": 0.016154319320043704,
+    "state_bound": 60,
+    "leakage": 0.002,
+    "beta_rise_s": 1.8,
+    "output_limit_mps2": [
+      3,
+      3,
+      3
+    ],
+    "position_rbf_output_and_update": false,
+    "attitude_controller": "original_B_RBF_unchanged",
+    "new_model_W0": "each model uses its own trained 33x3 readout; no upstream W0 or encoder weights are loaded",
+    "implementation_source": "experiments/position_only_closed_loop_search_v1/local_runtime/position_only_search_head_step.m"
+  },
+  "models": [
+    {
+      "model_id": "KAN20",
+      "group": "CURRENT",
+      "seed_ids": [
+        2.026102001E+9,
+        2.026102002E+9
+      ],
+      "seed_macro_Q_0_20_m": [
+        0.021640270565007697,
+        0.021187373022690692
+      ],
+      "seed_complete_stable": [
+        true,
+        true
+      ],
+      "two_seed_mean_macro_Q_0_20_m": 0.021413821793849194,
+      "incumbent_model": "SMALL_MLP14",
+      "incumbent_macro_Q_0_20_m": 0.017654567046406031,
+      "both_seeds_complete_stable": true,
+      "competitive_for_full_training": false
+    },
+    {
+      "model_id": "GRU20",
+      "group": "TEMPORAL",
+      "seed_ids": [
+        2.026102001E+9,
+        2.026102002E+9
+      ],
+      "seed_macro_Q_0_20_m": [
+        0.0177553719072059,
+        0.017879210987424593
+      ],
+      "seed_complete_stable": [
+        true,
+        true
+      ],
+      "two_seed_mean_macro_Q_0_20_m": 0.017817291447315246,
+      "incumbent_model": "SMALL_GRU14",
+      "incumbent_macro_Q_0_20_m": 0.015896551092565679,
+      "both_seeds_complete_stable": true,
+      "competitive_for_full_training": false
+    },
+    {
+      "model_id": "DSSM20",
+      "group": "TEMPORAL",
+      "seed_ids": [
+        2.026102001E+9,
+        2.026102002E+9
+      ],
+      "seed_macro_Q_0_20_m": [
+        0.017443080399569457,
+        0.018144291990084317
+      ],
+      "seed_complete_stable": [
+        true,
+        true
+      ],
+      "two_seed_mean_macro_Q_0_20_m": 0.017793686194826887,
+      "incumbent_model": "SMALL_GRU14",
+      "incumbent_macro_Q_0_20_m": 0.015896551092565679,
+      "both_seeds_complete_stable": true,
+      "competitive_for_full_training": false
+    }
+  ],
+  "seed_group_scores": [
+    {
+      "group_id": "X20_KAN20_SEED2026102001",
+      "head_type": "FEATURE",
+      "gamma": 12,
+      "kappa": 1,
+      "n": 6,
+      "expected_n": 6,
+      "complete_stable": true,
+      "macro_Q_0_20_m": 0.021640270565007697,
+      "same_scene_B_macro_Q_0_20_m": 0.020356747923155928,
+      "delta_Q_vs_B_m": 0.0012835226418517684,
+      "wins": 2,
+      "new_plant_starts": 6
+    },
+    {
+      "group_id": "X20_KAN20_SEED2026102002",
+      "head_type": "FEATURE",
+      "gamma": 12,
+      "kappa": 1,
+      "n": 6,
+      "expected_n": 6,
+      "complete_stable": true,
+      "macro_Q_0_20_m": 0.021187373022690692,
+      "same_scene_B_macro_Q_0_20_m": 0.020356747923155928,
+      "delta_Q_vs_B_m": 0.00083062509953476388,
+      "wins": 2,
+      "new_plant_starts": 6
+    },
+    {
+      "group_id": "X20_GRU20_SEED2026102001",
+      "head_type": "FEATURE",
+      "gamma": 12,
+      "kappa": 1,
+      "n": 6,
+      "expected_n": 6,
+      "complete_stable": true,
+      "macro_Q_0_20_m": 0.0177553719072059,
+      "same_scene_B_macro_Q_0_20_m": 0.020356747923155928,
+      "delta_Q_vs_B_m": -0.0026013760159500285,
+      "wins": 3,
+      "new_plant_starts": 6
+    },
+    {
+      "group_id": "X20_GRU20_SEED2026102002",
+      "head_type": "FEATURE",
+      "gamma": 12,
+      "kappa": 1,
+      "n": 6,
+      "expected_n": 6,
+      "complete_stable": true,
+      "macro_Q_0_20_m": 0.017879210987424593,
+      "same_scene_B_macro_Q_0_20_m": 0.020356747923155928,
+      "delta_Q_vs_B_m": -0.0024775369357313351,
+      "wins": 3,
+      "new_plant_starts": 6
+    },
+    {
+      "group_id": "X20_DSSM20_SEED2026102001",
+      "head_type": "FEATURE",
+      "gamma": 12,
+      "kappa": 1,
+      "n": 6,
+      "expected_n": 6,
+      "complete_stable": true,
+      "macro_Q_0_20_m": 0.017443080399569457,
+      "same_scene_B_macro_Q_0_20_m": 0.020356747923155928,
+      "delta_Q_vs_B_m": -0.002913667523586471,
+      "wins": 3,
+      "new_plant_starts": 6
+    },
+    {
+      "group_id": "X20_DSSM20_SEED2026102002",
+      "head_type": "FEATURE",
+      "gamma": 12,
+      "kappa": 1,
+      "n": 6,
+      "expected_n": 6,
+      "complete_stable": true,
+      "macro_Q_0_20_m": 0.018144291990084317,
+      "same_scene_B_macro_Q_0_20_m": 0.020356747923155928,
+      "delta_Q_vs_B_m": -0.0022124559330716116,
+      "wins": 3,
+      "new_plant_starts": 6
+    }
+  ],
+  "results_csv": "experiments/teacher_reuse_model_screen_v1/reports/x20_extension_canary_results.csv",
+  "selection_rule": "Both seeds must complete all six scenes finite and STABLE; their mean six-scene Q must be no worse than the frozen same-group winner.",
+  "additional_plant_starts": 36,
+  "cumulative_new_plant_starts": 84,
+  "advance_to_full_training": [],
+  "plant_starts": 84,
+  "finished_at_utc": "2026-10-19T21:31:34.148Z"
+}

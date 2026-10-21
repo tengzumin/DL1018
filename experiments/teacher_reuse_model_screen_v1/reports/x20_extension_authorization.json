@@ -1,0 +1,30 @@
+{
+  "status": "USER_AUTHORIZED_EXTENSION",
+  "authorized_by": "user message: 补齐 KAN20、GRU20、DSSM20 时，应先用同一个小子集、两个种子、统一 Head 和六场 canary 筛选，有竞争力再全量训练。",
+  "authorized_at_local_date": "2026-10-20",
+  "separate_from_original_frozen_protocol": true,
+  "configs": [
+    {"model_id": "KAN20", "family": "KAN", "input_dim": 20, "window": 32, "group": "CURRENT"},
+    {"model_id": "GRU20", "family": "GRU", "input_dim": 20, "window": 32, "group": "TEMPORAL"},
+    {"model_id": "DSSM20", "family": "DSSM", "input_dim": 20, "window": 32, "group": "TEMPORAL"}
+  ],
+  "screen": {
+    "train_subset": "The existing 192-run small_teacher_pool.csv, reused unchanged.",
+    "validation": "Existing 96-run teacher-only VAL, reused unchanged.",
+    "seeds": [2026102001, 2026102002],
+    "steps_per_seed": 2000,
+    "eval_interval": 500,
+    "optimizer_and_loss": "The same frozen fast-screen optimizer, batch size, normalization, weighting, target clipping, and loss.",
+    "head": {"type": "FEATURE", "gamma": 12, "kappa": 1, "PCF": true, "position_rbf": false, "attitude_controller": "original B RBF unchanged"},
+    "canary": "All six existing BRIDGE6 scenes for each candidate and each seed, with matching same-scene B references; 36 additional Plant starts maximum.",
+    "selection_metric": "Equal-weight mean Q_0_20_m over six scenes, averaged over both trained seeds. Report each seed separately and report same-scene B; do not tune on these six scenes.",
+    "advance_to_full_training_only_if": "Both seeds complete all six scenes finite and STABLE, and the two-seed mean macro Q is no worse than the current same-group screen winner (KAN20 vs MLP14; GRU20/DSSM20 vs GRU14)."
+  },
+  "scope_constraints": [
+    "Do not edit the original frozen protocol or preregistered configuration list.",
+    "Do not modify B, the training/validation contract, or existing teacher/student/test data.",
+    "Do not collect new teacher data or run TEST.",
+    "Treat this as a separately logged user-authorized extension."
+  ],
+  "plant_budget_context": {"existing_starts": 48, "extension_max_starts": 36, "combined_max_starts": 84, "original_experiment_global_limit": 198}
+}

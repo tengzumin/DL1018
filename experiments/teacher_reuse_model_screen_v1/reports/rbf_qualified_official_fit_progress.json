@@ -1,0 +1,201 @@
+{
+  "status": "OFFICIAL_FITS_AT_60K",
+  "authorization_path": "experiments/teacher_reuse_model_screen_v1/reports/rbf_qualified_extension_authorization.json",
+  "protocol_sha256": "746360dc2985a3a9fb5602975481884e89a59e677d383dc3d3c8f0ef6a5a0f29",
+  "model_ids": [
+    "KAN14",
+    "DSSM14",
+    "GRU20",
+    "DSSM20"
+  ],
+  "seeds": [
+    2026102001,
+    2026102002
+  ],
+  "train_runs": 1536,
+  "val_runs": 96,
+  "train_windows": 605184,
+  "val_windows": 37824,
+  "step_gate": 40000,
+  "eval_interval": 2000,
+  "plant_starts": 0,
+  "source_sha256": {
+    "fit_models.py": "31a08407f5b3fe66b42a7e930925e5ae4cdabfa0a764c218356eedb82ca4e9ff",
+    "teacher_models.py": "58b891598b4d1211254b9294fd525233b81a94fbf24206f011aa53bd2de1beea",
+    "teacher_data.py": "3d6ec20f544cda2ec99c3bddf17e595a75683c90fbd6b542475d006b6d2badad"
+  },
+  "started_at_utc": "2026-10-19T22:00:43.980664+00:00",
+  "completed_fits": [],
+  "completed": 8,
+  "fits": [
+    {
+      "fit_id": "OFFICIAL_KAN14_SEED2026102001",
+      "model_id": "KAN14",
+      "seed": 2026102001,
+      "status": "COMPLETE",
+      "last_step": 60000,
+      "selected_step": 60000,
+      "best_teacher_val_rmse_mps2": 0.2755687949620022,
+      "final_teacher_val_rmse_mps2": 0.2755687949620022,
+      "steps_per_s_mean": 221.15464384813586
+    },
+    {
+      "fit_id": "OFFICIAL_KAN14_SEED2026102002",
+      "model_id": "KAN14",
+      "seed": 2026102002,
+      "status": "COMPLETE",
+      "last_step": 60000,
+      "selected_step": 60000,
+      "best_teacher_val_rmse_mps2": 0.27656714808220534,
+      "final_teacher_val_rmse_mps2": 0.27656714808220534,
+      "steps_per_s_mean": 221.5101753217387
+    },
+    {
+      "fit_id": "OFFICIAL_DSSM14_SEED2026102001",
+      "model_id": "DSSM14",
+      "seed": 2026102001,
+      "status": "COMPLETE",
+      "last_step": 60000,
+      "selected_step": 50000,
+      "best_teacher_val_rmse_mps2": 0.1844557515721394,
+      "final_teacher_val_rmse_mps2": 0.18650162734491404,
+      "steps_per_s_mean": 69.60598768759691
+    },
+    {
+      "fit_id": "OFFICIAL_DSSM14_SEED2026102002",
+      "model_id": "DSSM14",
+      "seed": 2026102002,
+      "status": "COMPLETE",
+      "last_step": 60000,
+      "selected_step": 52000,
+      "best_teacher_val_rmse_mps2": 0.1823617807821911,
+      "final_teacher_val_rmse_mps2": 0.18511412500906094,
+      "steps_per_s_mean": 69.60971096638362
+    },
+    {
+      "fit_id": "OFFICIAL_GRU20_SEED2026102001",
+      "model_id": "GRU20",
+      "seed": 2026102001,
+      "status": "COMPLETE",
+      "last_step": 60000,
+      "selected_step": 46000,
+      "best_teacher_val_rmse_mps2": 0.09129191433478553,
+      "final_teacher_val_rmse_mps2": 0.09240944055554683,
+      "steps_per_s_mean": 245.76331234015353
+    },
+    {
+      "fit_id": "OFFICIAL_GRU20_SEED2026102002",
+      "model_id": "GRU20",
+      "seed": 2026102002,
+      "status": "COMPLETE",
+      "last_step": 60000,
+      "selected_step": 56000,
+      "best_teacher_val_rmse_mps2": 0.09168265700869578,
+      "final_teacher_val_rmse_mps2": 0.09307426483915268,
+      "steps_per_s_mean": 245.8583674061377
+    },
+    {
+      "fit_id": "OFFICIAL_DSSM20_SEED2026102001",
+      "model_id": "DSSM20",
+      "seed": 2026102001,
+      "status": "COMPLETE",
+      "last_step": 60000,
+      "selected_step": 50000,
+      "best_teacher_val_rmse_mps2": 0.130393750575096,
+      "final_teacher_val_rmse_mps2": 0.13285979074479337,
+      "steps_per_s_mean": 69.50619304932407
+    },
+    {
+      "fit_id": "OFFICIAL_DSSM20_SEED2026102002",
+      "model_id": "DSSM20",
+      "seed": 2026102002,
+      "status": "COMPLETE",
+      "last_step": 60000,
+      "selected_step": 60000,
+      "best_teacher_val_rmse_mps2": 0.12766230303204495,
+      "final_teacher_val_rmse_mps2": 0.12766230303204495,
+      "steps_per_s_mean": 69.21866544815202
+    }
+  ],
+  "extension_decision": {
+    "status": "UNIFORM_60K_EXTENSION_REQUIRED",
+    "protocol_sha256": "746360dc2985a3a9fb5602975481884e89a59e677d383dc3d3c8f0ef6a5a0f29",
+    "rule": "Apply the frozen extension rule to all eight fits: if any improves by at least 1% during steps 30001-40000 over its best through 30000, extend all to 60000.",
+    "fit_evidence": [
+      {
+        "fit_id": "OFFICIAL_KAN14_SEED2026102001",
+        "model_id": "KAN14",
+        "seed": 2026102001,
+        "best_through_30k_mps2": 0.2795411268940753,
+        "best_30k_to_40k_mps2": 0.2778162060833539,
+        "relative_improvement": 0.0061705439549687826,
+        "triggered": false
+      },
+      {
+        "fit_id": "OFFICIAL_KAN14_SEED2026102002",
+        "model_id": "KAN14",
+        "seed": 2026102002,
+        "best_through_30k_mps2": 0.279501959541844,
+        "best_30k_to_40k_mps2": 0.2774747774563598,
+        "relative_improvement": 0.0072528367558035095,
+        "triggered": false
+      },
+      {
+        "fit_id": "OFFICIAL_DSSM14_SEED2026102001",
+        "model_id": "DSSM14",
+        "seed": 2026102001,
+        "best_through_30k_mps2": 0.1857111462699583,
+        "best_30k_to_40k_mps2": 0.1844862467759977,
+        "relative_improvement": 0.00659572415852749,
+        "triggered": false
+      },
+      {
+        "fit_id": "OFFICIAL_DSSM14_SEED2026102002",
+        "model_id": "DSSM14",
+        "seed": 2026102002,
+        "best_through_30k_mps2": 0.1865011857698828,
+        "best_30k_to_40k_mps2": 0.1846245202119682,
+        "relative_improvement": 0.010062485930948203,
+        "triggered": true
+      },
+      {
+        "fit_id": "OFFICIAL_GRU20_SEED2026102001",
+        "model_id": "GRU20",
+        "seed": 2026102001,
+        "best_through_30k_mps2": 0.0926972528834172,
+        "best_30k_to_40k_mps2": 0.0926052805308325,
+        "relative_improvement": 0.0009921799160581856,
+        "triggered": false
+      },
+      {
+        "fit_id": "OFFICIAL_GRU20_SEED2026102002",
+        "model_id": "GRU20",
+        "seed": 2026102002,
+        "best_through_30k_mps2": 0.095489332786853,
+        "best_30k_to_40k_mps2": 0.094013530443497,
+        "relative_improvement": 0.015455153997674425,
+        "triggered": true
+      },
+      {
+        "fit_id": "OFFICIAL_DSSM20_SEED2026102001",
+        "model_id": "DSSM20",
+        "seed": 2026102001,
+        "best_through_30k_mps2": 0.1324375997894501,
+        "best_30k_to_40k_mps2": 0.132411000038535,
+        "relative_improvement": 0.0002008474251827619,
+        "triggered": false
+      },
+      {
+        "fit_id": "OFFICIAL_DSSM20_SEED2026102002",
+        "model_id": "DSSM20",
+        "seed": 2026102002,
+        "best_through_30k_mps2": 0.1302861315970673,
+        "best_30k_to_40k_mps2": 0.12986157523325,
+        "relative_improvement": 0.0032586458636312664,
+        "triggered": false
+      }
+    ],
+    "decision_at_utc": "2026-10-19T22:51:24.714191+00:00"
+  },
+  "finished_at_utc": "2026-10-19T23:17:20.487124+00:00"
+}

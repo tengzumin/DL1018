@@ -1,0 +1,34 @@
+{
+  "status": "USER_AUTHORIZED_SCOPE_EXTENSION",
+  "authorized_date": "2026-10-20",
+  "request": "Continue every configuration whose existing six-scene mean position Q is below the same-scene RBF baseline; train and screen them using the same method, without a Plant-start cap.",
+  "baseline": {
+    "metric": "same-scene B macro_Q_0_20_m",
+    "value_m": 0.020356747923155928,
+    "source": "reports/small_canary_group_scores.json"
+  },
+  "eligible_configurations": [
+    "MLP14",
+    "KAN14",
+    "GRU14",
+    "DSSM14",
+    "GRU20",
+    "DSSM20"
+  ],
+  "already_in_official_full_training_and_screening": ["MLP14", "GRU14"],
+  "additional_official_configurations": ["KAN14", "DSSM14", "GRU20", "DSSM20"],
+  "training_method": {
+    "dataset": "reuse the accepted teacher-only full split: 1536 TRAIN runs and 96 VAL runs",
+    "seeds": [2026102001, 2026102002],
+    "schedule": "the frozen official 40000-step gate with 2000-step evaluations; apply the existing uniform 60000-step extension rule if any fit improves by at least 1% from its best through 30000 to its best in steps 30001-40000",
+    "initialization": "fresh initialization per model and seed; no B, Initial, Final, or History weights"
+  },
+  "screening_method": {
+    "checkpoints": ["best_teacher_val", "final_step"],
+    "scenes": "the same six BRIDGE6 scenes",
+    "selection": "retain finite, complete, stable groups and compare equal-weight mean position Q; report same-scene B alongside every result"
+  },
+  "plant_start_limit": null,
+  "selection_rule_supersedes": "The earlier X20 extension requirement to match the incumbent model is replaced for this authorized extension by the user's explicit below-RBF eligibility rule.",
+  "preserved": ["original protocol.json", "contract_dl1018.json", "B data and controller"]
+}

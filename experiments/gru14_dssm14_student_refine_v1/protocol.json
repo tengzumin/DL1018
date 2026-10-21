@@ -1,0 +1,168 @@
+{
+  "task_id": "DL1018_GRU14_DSSM14_STUDENT_REFINE_V1",
+  "status": "FROZEN_BEFORE_FIRST_PLANT",
+  "frozen_at_utc": "2026-10-20T05:47:13.475036+00:00",
+  "project_root": "C:/Users/35326/Desktop/postgraduation/0/Mcode/drone_tcn/DL1018",
+  "git_head": "1343f2d147b00ad00937c8c76ac7d5ace2fe4e7f",
+  "upstream_position_head": {
+    "head_type": "FEATURE",
+    "gamma": 12,
+    "kappa": 1,
+    "PCF": true,
+    "state_bound": 60,
+    "leakage": 0.002,
+    "beta_rise_s": 1.8,
+    "output_clip_mps2": 3,
+    "event_hz": 100,
+    "plant_zoh_hz": 1000
+  },
+  "physical_contract": {
+    "plant": "B2-RBF-Full-SPLIT",
+    "keep_original_B_plant_position_attitude_bs_rbf_fixed_C0_J0": true,
+    "disable_only_position_rbf_output_and_update": true,
+    "keep_B_attitude_rbf_and_updates": true,
+    "state_times": 20001,
+    "transitions": 20000,
+    "dt_s": 0.001
+  },
+  "input_contract": {
+    "input_dim": 14,
+    "feature_order": [
+      "e_p(3)",
+      "s_p(3)",
+      "Euler(3)",
+      "preview_thrust_per_mass(1)",
+      "raw_arm_commands(4)"
+    ],
+    "history_events": 32,
+    "event_hz": 100,
+    "endpoint_zero_based": "31,36,...,1996",
+    "stride": 5,
+    "endpoints_per_episode": 394,
+    "independent_zero_state_window": true,
+    "normalizer_frozen_from_original_package": true
+  },
+  "checkpoints": {
+    "GRU14": {
+      "original_seed": 2026102002,
+      "checkpoint": "experiments/teacher_reuse_model_screen_v1/models/official/GRU14/seed2026102002/final_step.pt",
+      "checkpoint_sha256": "0a97b872375ef2de5ab9f2b35c735bdf1c738d03f7e7fb02275f87da777d70eb",
+      "matlab_package": "experiments/teacher_reuse_model_screen_v1/models/official_export/GRU14/seed2026102002/final_step/matlab_model_and_parity.mat",
+      "matlab_package_sha256": "6e92b0f908a601862dd696db60595a6208b5f7d2cf10ff7c9809ae5a4dd8ae52",
+      "original_selected_step": 60000,
+      "fit_report": "experiments/teacher_reuse_model_screen_v1/models/official/GRU14/seed2026102002/fit_report.json",
+      "export_report": "experiments/teacher_reuse_model_screen_v1/models/official_export/GRU14/seed2026102002/final_step/export_report.json"
+    },
+    "DSSM14": {
+      "original_seed": 2026102001,
+      "checkpoint": "experiments/teacher_reuse_model_screen_v1/models/official/DSSM14/seed2026102001/final_step.pt",
+      "checkpoint_sha256": "af4b480aa4bc2b087ec7acd9fb9847d036e44e3eccfa43c07033cd15ec59d8bc",
+      "matlab_package": "experiments/teacher_reuse_model_screen_v1/models/official_export/DSSM14/seed2026102001/final_step/matlab_model_and_parity.mat",
+      "matlab_package_sha256": "5121e00e93d115d28d45b5e54edcb9154ff3dc667ff3279cabfb42f396476845",
+      "original_selected_step": 60000,
+      "fit_report": "experiments/teacher_reuse_model_screen_v1/models/official/DSSM14/seed2026102001/fit_report.json",
+      "export_report": "experiments/teacher_reuse_model_screen_v1/models/official_export/DSSM14/seed2026102001/final_step/export_report.json"
+    }
+  },
+  "scene_selection": {
+    "seed": 2026102010,
+    "algorithm": "TRAIN: all per-task/class W15 plus one windy W00-W14 per class; every windy cell once per task and one extra W00/W05/W10 rotating by task; bridge W08 fixed. VAL: eight per task including W15 and C00; deterministic greedy wind-band/amplitude coverage; no outcome/label use.",
+    "counts_per_model": {
+      "DSSM14": {
+        "train": 96,
+        "val": 24
+      },
+      "GRU14": {
+        "train": 96,
+        "val": 24
+      }
+    },
+    "plan_path": "experiments/gru14_dssm14_student_refine_v1/manifests/student_scene_plan.csv",
+    "plan_sha256": "e9be0a2a19f5e3cb4c9e6e0f51e384d0b554b85ecfaa826fc0852cba2f0b9081",
+    "selected_w15_wind_amplitudes_zero": true
+  },
+  "teacher_reuse": {
+    "manifest_path": "experiments/gru14_dssm14_student_refine_v1/manifests/teacher_reuse_manifest.csv",
+    "source_manifest_sha256": "1dccdacd8624645f4f61004d18dd4aff269a3b4042c115d46293e627bff2f931",
+    "train_episodes": 1536,
+    "val_episodes": 96,
+    "train_roles": {
+      "B": 768,
+      "POS_OFF": 768
+    },
+    "val_roles": {
+      "B": 48,
+      "POS_OFF": 48
+    }
+  },
+  "training": {
+    "groups": [
+      "TEACHER_CONTINUE",
+      "STUDENT_MIX20"
+    ],
+    "seeds": [
+      2026102011,
+      2026102012
+    ],
+    "extra_steps": 10000,
+    "total_fits": 8,
+    "total_optimizer_steps": 80000,
+    "optimizer": "Adam",
+    "lr": 0.0001,
+    "weight_decay": 1e-05,
+    "batch": 256,
+    "teacher_role_mass": {
+      "B": 0.5,
+      "POS_OFF": 0.5
+    },
+    "student_mix_role_mass": {
+      "B": 0.4,
+      "POS_OFF": 0.4,
+      "own_student": 0.2
+    },
+    "loss": "mean_axis SmoothL1(pred/3,target_clip/3), exactly one hierarchical sample weight, N/batch correction",
+    "selection": "sqrt(0.8*teacher_val_RMSE^2 + 0.2*own_student_val_RMSE^2); evaluate every 1000; positive best and final 10000"
+  },
+  "canary": {
+    "scenes": [
+      "T1_C02_W08",
+      "T1_C02_W15",
+      "T2_C01_W08",
+      "T2_C01_W15",
+      "T3_C03_W08",
+      "T3_C03_W15"
+    ],
+    "selection_order": [
+      "fewest losses vs same-scene B",
+      "lowest worst positive relative degradation",
+      "lowest six-scene macro Q",
+      "lowest common val",
+      "ascending seed",
+      "checkpoint name"
+    ]
+  },
+  "dev24": {
+    "four_groups": [
+      "GRU14_TEACHER_CONTINUE",
+      "GRU14_STUDENT_MIX20",
+      "DSSM14_TEACHER_CONTINUE",
+      "DSSM14_STUDENT_MIX20"
+    ],
+    "lock_before_first_dev_plant": true,
+    "all_24_per_group": true,
+    "test_access": false
+  },
+  "source_sha256": {
+    "scene_specs.csv": "d116b74dc6d9ce3c21a40fcd48b4153a0adc09e98a6c8d341c0f1b6ba680b4e3",
+    "teacher_manifest.csv": "1dccdacd8624645f4f61004d18dd4aff269a3b4042c115d46293e627bff2f931",
+    "data_interface_audit.json": "3fc079eec1ce9e3f13ddbdadfff83a18e76ed5d4452fff1f1d05a1143bc80ac6",
+    "teacher_models.py": "7d38948b0ea2f70ec7d1f3c433063cdc7f264080e5f717262e56ba4fd8ec1c22",
+    "fit_models.py": "31a08407f5b3fe66b42a7e930925e5ae4cdabfa0a764c218356eedb82ca4e9ff",
+    "export_fast_screen.py": "3ad4ce3b04f315ff6bbabf3bd7c320e9904f77ed5a81f519abb5747e07e7508a",
+    "run_episode_dl1018.m": "f43e4096f3d3414fea9d5ed2315462f5e0aad738b0b5ea173e9ef2c2425943a9",
+    "export_position_events_dl1018.m": "4506849cc2c888e078129772e6bb1927cb479f02b75c072472778ed32d4cf094",
+    "controller_options_dl1018.m": "93633a5fd95f73d33982045c2fa372d49b1a0df8ea0cfb5ca4461208ca9d53b1"
+  },
+  "plant_started": false,
+  "reuse_eligible_raw_episodes": 0
+}

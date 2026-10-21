@@ -1,0 +1,171 @@
+{
+  "task": "DL1018_KAN14_TASK_SPECIALIST_COMPARE_V1",
+  "status": "FROZEN_BEFORE_FIRST_FIT",
+  "created_at_utc": "2026-10-20T12:18:00.237123+00:00",
+  "user_override": "Single seed only: 2026102001. Seed 2026102002 intentionally omitted.",
+  "seed": 2026102001,
+  "tasks": [
+    "HELIX",
+    "FIG8_3D",
+    "SQUARE"
+  ],
+  "question": "With the same KAN14 architecture, X14 input, teacher source, normalizer and total optimizer-step budget, do three task-specific experts outperform one shared KAN14 on the same task-matched DEV24 scenes?",
+  "data": {
+    "source_manifest": "experiments/teacher_reuse_model_screen_v1/manifests/teacher_reuse_manifest.csv",
+    "roles": [
+      "B",
+      "POS_OFF"
+    ],
+    "splits": [
+      "train",
+      "val"
+    ],
+    "per_task": {
+      "train_episodes": 512,
+      "train_B": 256,
+      "train_POS_OFF": 256,
+      "val_episodes": 32,
+      "val_B": 16,
+      "val_POS_OFF": 16,
+      "physical_train_scenes": 256,
+      "physical_val_scenes": 16,
+      "train_endpoints_per_episode": 394,
+      "val_endpoints_per_episode": 394,
+      "train_windows": 201728,
+      "val_windows": 12608
+    },
+    "train_total_episodes": 1536,
+    "val_total_episodes": 96,
+    "train_total_windows": 605184,
+    "val_total_windows": 37824,
+    "endpoint_zero_based": "31,36,...,1996; stride 5; 394 endpoints per episode",
+    "normalizer_id": "TEACHER_TRAIN_INITIAL_X14_PLUS_TRAIN_X20_EXTRAS",
+    "task_filtering": "Filter by manifest task after preserving TRAIN/VAL and B/POS_OFF membership; renormalize each filtered task's existing hierarchical endpoint weights to sum exactly 1. Do not use DEV/TEST for training, normalization, or checkpoint selection.",
+    "student_data": "excluded",
+    "new_training_data": 0,
+    "test_accessed": false
+  },
+  "comparison": {
+    "shared": {
+      "model_id": "KAN14",
+      "seed": 2026102001,
+      "checkpoint": "experiments/teacher_reuse_model_screen_v1/models/official/KAN14/seed2026102001/final_step.pt",
+      "steps": 60000
+    },
+    "experts": [
+      {
+        "model_id": "KAN14_HELIX",
+        "task": "HELIX",
+        "seed": 2026102001,
+        "steps": 20000,
+        "checkpoint_kind_for_closed_loop": "final_step"
+      },
+      {
+        "model_id": "KAN14_FIG8_3D",
+        "task": "FIG8_3D",
+        "seed": 2026102001,
+        "steps": 20000,
+        "checkpoint_kind_for_closed_loop": "final_step"
+      },
+      {
+        "model_id": "KAN14_SQUARE",
+        "task": "SQUARE",
+        "seed": 2026102001,
+        "steps": 20000,
+        "checkpoint_kind_for_closed_loop": "final_step"
+      }
+    ],
+    "fit_count": 3,
+    "additional_optimizer_steps": 60000,
+    "all_random_initialization": true,
+    "shared_warm_start": false,
+    "matched_initialization_within_seed": true
+  },
+  "training": {
+    "optimizer": "Adam",
+    "lr": 0.001,
+    "weight_decay": 1e-05,
+    "batch_size": 256,
+    "eval_interval_steps": 1000,
+    "loss": "mean_axis SmoothL1(pred/3,target_clip/3), one hierarchical sample weight; unbiased N/batch scaling",
+    "architecture": "existing KAN14",
+    "input_dim": 14,
+    "window_contract": 32,
+    "context_length": 1,
+    "parameter_count": 4163
+  },
+  "head_and_plant": {
+    "head_type": "FEATURE",
+    "gamma": 12,
+    "kappa": 1,
+    "PCF": true,
+    "position_rbf_output": false,
+    "position_rbf_update": false,
+    "attitude_controller": "original B attitude RBF, output and update enabled",
+    "plant": "existing B Plant, fixed C0/J0, actuator/mass/reference/wind/initial state, 1 ms integration, existing physical stop conditions",
+    "position_update_hz": 100,
+    "plant_dt_s": 0.001,
+    "application": "1 kHz held output / ZOH",
+    "state_bound": 60,
+    "leakage": 0.002,
+    "beta_rise_s": 1.8,
+    "output_dmax_mps2": [
+      3,
+      3,
+      3
+    ],
+    "X14": [
+      "position error xyz",
+      "position sliding surface xyz",
+      "Euler xyz",
+      "zero-compensation preview thrust and m1",
+      "four raw arm commands"
+    ],
+    "controller_state_reset_each_episode": true
+  },
+  "dev24": {
+    "scene_manifest": "reports/POSITION_DEV.csv",
+    "scenes": 24,
+    "shared_runs": 24,
+    "expert_runs": 24,
+    "runs_this_single_seed": 48,
+    "expert_routing": "HELIX expert on HELIX eight scenes; FIG8_3D expert on FIG8_3D eight scenes; SQUARE expert on SQUARE eight scenes.",
+    "baseline": "same-scene B DEV24 results and raw data reused; no B refly",
+    "primary_metric": "Q_0_20_m",
+    "macro": "equal-weight mean of per-scene Q_0_20_m",
+    "selection_or_early_stop": "none; complete all 48 runs unless a physical hard stop makes a run incomplete; do not select a checkpoint by DEV",
+    "test_accessed": false
+  },
+  "resource_budget": {
+    "new_fits": 3,
+    "new_optimizer_steps": 60000,
+    "closed_loop_plant_starts_max": 48,
+    "new_teacher_or_student_collection": 0,
+    "test_runs": 0
+  },
+  "source_sha256": {
+    "experiments/teacher_reuse_model_screen_v1/scripts/fit_models.py": "31a08407f5b3fe66b42a7e930925e5ae4cdabfa0a764c218356eedb82ca4e9ff",
+    "experiments/teacher_reuse_model_screen_v1/scripts/teacher_models.py": "7d38948b0ea2f70ec7d1f3c433063cdc7f264080e5f717262e56ba4fd8ec1c22",
+    "experiments/teacher_reuse_model_screen_v1/scripts/teacher_data.py": "3d6ec20f544cda2ec99c3bddf17e595a75683c90fbd6b542475d006b6d2badad",
+    "experiments/teacher_reuse_model_screen_v1/scripts/export_fast_screen.py": "3ad4ce3b04f315ff6bbabf3bd7c320e9904f77ed5a81f519abb5747e07e7508a",
+    "experiments/teacher_reuse_model_screen_v1/manifests/teacher_reuse_manifest.csv": "1dccdacd8624645f4f61004d18dd4aff269a3b4042c115d46293e627bff2f931",
+    "experiments/teacher_reuse_model_screen_v1/reports/data_interface_audit.json": "3fc079eec1ce9e3f13ddbdadfff83a18e76ed5d4452fff1f1d05a1143bc80ac6",
+    "experiments/teacher_reuse_model_screen_v1/models/official/KAN14/seed2026102001/fit_report.json": "0d64397b7de43b412de07bb0e42d3f1f138ff2012896ffcfdfcf3b8d061f84cd",
+    "experiments/teacher_reuse_model_screen_v1/models/official/KAN14/seed2026102001/final_step.pt": "a31f87bbfba7004e5e06f1b42413218c12f6129f71f45a52bf7319e58aadce4d",
+    "experiments/teacher_reuse_model_screen_v1/local_runtime/position_only_search_options.m": "4e8322934ddb524961fa762426800564f6c758e00b943b622c9143ed734f19bf",
+    "experiments/teacher_reuse_model_screen_v1/local_runtime/position_only_search_head_step.m": "3bd0fe9686c3b75793575e517d4cc5f08de58ab6a26a2bc7516aa690422bb7dc",
+    "experiments/teacher_reuse_model_screen_v1/local_runtime/position_stage1_model_forward_v2.m": "dc803aa102c49d67dd687ae941f8a60bb0c465f74fd01e5ae93ad1ea1a293676",
+    "experiments/teacher_reuse_model_screen_v1/local_runtime/run_episode_dl1018.m": "fcc1f5de659541e692483f8395d93fd2a251256286ebade5e510ed4c7a2e2330",
+    "experiments/teacher_reuse_model_screen_v1/local_runtime/run_dl1018_closed_loop.m": "442c6b48d5b47e48695ecdbbc6d0408589b81d796d610cd9d48c5bd3301b9a50",
+    "experiments/kan14_task_specialist_compare_v1/scripts/run_training.py": "639eef9c2f6409f358a4f819fb8d48c95b7de0df1c96fdc673594bdaafec295e",
+    "experiments/kan14_task_specialist_compare_v1/scripts/prepare_cleanup.py": "edd25aacd5b73f4ee8de6238e069012a58aaf9b10e76c982114ad35dc50f48be",
+    "experiments/kan14_task_specialist_compare_v1/TASK_PROMPT_SOURCE.md": "c1253068ce3d154fe7f03f3be6ca83efe3e1f44e75f6a621888591aac9126093",
+    "configs/effective_config.mat": "cec90417369c7a44580b0315b2473ae86eb62550012188340b1dd5f3a796522f",
+    "configs/scene_specs.csv": "d116b74dc6d9ce3c21a40fcd48b4153a0adc09e98a6c8d341c0f1b6ba680b4e3",
+    "reports/POSITION_DEV.csv": "0e98d7e1c433de62f443f01b5389434582c0987a157b007b37a90969e56d607f",
+    "logs/attempt_index.csv": "57957934a9f3a7259c411227960db0599fa132d95f34a50016d8de3d4b608ba2",
+    "logs/episode_index.csv": "193bf3a6ccde3be857a44ad4e24e89aa72d3099e6dee663cc04c424ea5ab1437",
+    "models/position/initial/normalizer.npz": "619a343fc73b707c0b2f640f4a261e81ee779e1351d67e4e4af243cc489ce0ab"
+  },
+  "frozen_at_utc": "2026-10-20T12:18:00.254200+00:00"
+}

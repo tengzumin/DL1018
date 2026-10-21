@@ -1,0 +1,129 @@
+{
+  "status": "X20_EXTENSION_FITS_COMPLETE",
+  "original_protocol_sha256": "746360dc2985a3a9fb5602975481884e89a59e677d383dc3d3c8f0ef6a5a0f29",
+  "extension_source_sha256": {
+    "x20_extension.py": "6f337e165129412e34b27e0e3b32a569cd28422c657e2254c43169d08babc16b",
+    "fit_x20_extension.py": "638116132a6357a4418ce2a78bff94770e8619eb419579abb4037eedf9e090aa",
+    "export_x20_extension.py": "54c9bc3672916e770147d5e29f61553ad68439021808cc72083744e4dfd32277",
+    "run_teacher_reuse_canaries.m": "8245c07394d858addb14c51c43576933be8b5acffb47b427bf3bd58cccaf6d71",
+    "run_x20_extension_parity.m": "787c5acdf1b04ed1e6ec696e909fdb17bfa3ba6c6f63813d57e4cad370326f54"
+  },
+  "authorization_path": "experiments/teacher_reuse_model_screen_v1/reports/x20_extension_authorization.json",
+  "configs": [
+    {
+      "model_id": "KAN20",
+      "family": "KAN",
+      "input_dim": 20,
+      "window": 32,
+      "group": "CURRENT"
+    },
+    {
+      "model_id": "GRU20",
+      "family": "GRU",
+      "input_dim": 20,
+      "window": 32,
+      "group": "TEMPORAL"
+    },
+    {
+      "model_id": "DSSM20",
+      "family": "DSSM",
+      "input_dim": 20,
+      "window": 32,
+      "group": "TEMPORAL"
+    }
+  ],
+  "seeds": [
+    2026102001,
+    2026102002
+  ],
+  "train_runs": 192,
+  "val_runs": 96,
+  "train_windows": 75648,
+  "val_windows": 37824,
+  "steps_per_fit": 2000,
+  "uniform_training": {
+    "optimizer": "Adam",
+    "lr": 0.001,
+    "weight_decay": 1e-05,
+    "batch_size": 256,
+    "eval_interval": 500
+  },
+  "started_at_utc": "2026-10-19T21:09:39.159031+00:00",
+  "completed": 6,
+  "fits": [
+    {
+      "fit_id": "FAST_SCREEN_KAN20_SEED2026102001",
+      "model_id": "KAN20",
+      "seed": 2026102001,
+      "status": "COMPLETE",
+      "last_step": 2000,
+      "selected_step": 2000,
+      "best_teacher_val_rmse_mps2": 0.28137212823786417,
+      "final_teacher_val_rmse_mps2": 0.28137212823786417,
+      "steps_per_s_mean": 201.00437654075586,
+      "fit_report_path": "experiments/teacher_reuse_model_screen_v1/models/fast_screen/KAN20/seed2026102001/fit_report.json"
+    },
+    {
+      "fit_id": "FAST_SCREEN_KAN20_SEED2026102002",
+      "model_id": "KAN20",
+      "seed": 2026102002,
+      "status": "COMPLETE",
+      "last_step": 2000,
+      "selected_step": 2000,
+      "best_teacher_val_rmse_mps2": 0.28098633958147745,
+      "final_teacher_val_rmse_mps2": 0.28098633958147745,
+      "steps_per_s_mean": 208.64359584388652,
+      "fit_report_path": "experiments/teacher_reuse_model_screen_v1/models/fast_screen/KAN20/seed2026102002/fit_report.json"
+    },
+    {
+      "fit_id": "FAST_SCREEN_GRU20_SEED2026102001",
+      "model_id": "GRU20",
+      "seed": 2026102001,
+      "status": "COMPLETE",
+      "last_step": 2000,
+      "selected_step": 2000,
+      "best_teacher_val_rmse_mps2": 0.12472286321612326,
+      "final_teacher_val_rmse_mps2": 0.12472286321612326,
+      "steps_per_s_mean": 263.71968153588256,
+      "fit_report_path": "experiments/teacher_reuse_model_screen_v1/models/fast_screen/GRU20/seed2026102001/fit_report.json"
+    },
+    {
+      "fit_id": "FAST_SCREEN_GRU20_SEED2026102002",
+      "model_id": "GRU20",
+      "seed": 2026102002,
+      "status": "COMPLETE",
+      "last_step": 2000,
+      "selected_step": 2000,
+      "best_teacher_val_rmse_mps2": 0.12774735224820105,
+      "final_teacher_val_rmse_mps2": 0.12774735224820105,
+      "steps_per_s_mean": 260.29242681371056,
+      "fit_report_path": "experiments/teacher_reuse_model_screen_v1/models/fast_screen/GRU20/seed2026102002/fit_report.json"
+    },
+    {
+      "fit_id": "FAST_SCREEN_DSSM20_SEED2026102001",
+      "model_id": "DSSM20",
+      "seed": 2026102001,
+      "status": "COMPLETE",
+      "last_step": 2000,
+      "selected_step": 2000,
+      "best_teacher_val_rmse_mps2": 0.20018514039678842,
+      "final_teacher_val_rmse_mps2": 0.20018514039678842,
+      "steps_per_s_mean": 67.72550213637606,
+      "fit_report_path": "experiments/teacher_reuse_model_screen_v1/models/fast_screen/DSSM20/seed2026102001/fit_report.json"
+    },
+    {
+      "fit_id": "FAST_SCREEN_DSSM20_SEED2026102002",
+      "model_id": "DSSM20",
+      "seed": 2026102002,
+      "status": "COMPLETE",
+      "last_step": 2000,
+      "selected_step": 2000,
+      "best_teacher_val_rmse_mps2": 0.1927822435793581,
+      "final_teacher_val_rmse_mps2": 0.1927822435793581,
+      "steps_per_s_mean": 58.64394752140838,
+      "fit_report_path": "experiments/teacher_reuse_model_screen_v1/models/fast_screen/DSSM20/seed2026102002/fit_report.json"
+    }
+  ],
+  "finished_at_utc": "2026-10-19T21:11:36.223146+00:00",
+  "plant_starts": 0
+}

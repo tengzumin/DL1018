@@ -1,0 +1,365 @@
+{
+  "task": "DL1018_POSITION_CAUSAL_REPAIR_V1",
+  "captured_at_utc": "2026-10-19T08:28:21.294346+00:00",
+  "dl1018_root": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018",
+  "review_base": "12bce70c5f69fd5055bc6cf798303cf2c6d80050",
+  "git": {
+    "head": "12bce70c5f69fd5055bc6cf798303cf2c6d80050",
+    "branch": "main",
+    "remote_v": "origin\thttps://github.com/tengzumin/DL1018.git (fetch)\norigin\thttps://github.com/tengzumin/DL1018.git (push)",
+    "porcelain_status": "",
+    "tracked_worktree_clean": true
+  },
+  "dl1009_reference": {
+    "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1009\\RBF-BS0",
+    "exists": true,
+    "expected_branch": "codex/kan-position-repair-code",
+    "expected_head": "3671d2d212af927abdb6d9149a1b249c372ac55e",
+    "head": "3671d2d212af927abdb6d9149a1b249c372ac55e",
+    "branch": "codex/kan-position-repair-code",
+    "worktree_dirty": true,
+    "remote_v": "origin\thttps://github.com/tengzumin/DL1009.git (fetch)\norigin\thttps://github.com/tengzumin/DL1009.git (push)"
+  },
+  "runtime": {
+    "python": {
+      "executable": "C:\\ProgramData\\anaconda3\\python.exe",
+      "version": "3.12.7 | packaged by Anaconda, Inc. | (main, Oct  4 2024, 13:17:27) [MSC v.1929 64 bit (AMD64)]",
+      "platform": "Windows-11-10.0.26200-SP0",
+      "torch": "2.6.0+cu124",
+      "cuda_available": true,
+      "cuda_version": "12.4",
+      "devices": [
+        "NVIDIA GeForce RTX 3070 Laptop GPU"
+      ]
+    },
+    "matlab_where": "C:\\Program Files\\MATLAB\\R2025b\\bin\\matlab.exe",
+    "matlab_version": "25.2.0.2978516 (R2025b; prior local verification)",
+    "active_python_matlab_processes_query": "[\n    {\n        \"ProcessId\":  25580,\n        \"Name\":  \"python.exe\",\n        \"CommandLine\":  \"\\\"C:\\\\Users\\\\35326\\\\.codex\\\\mcp\\\\solidworks-mcp\\\\.venv\\\\Scripts\\\\python.exe\\\" \\\"C:\\\\Users\\\\35326\\\\.codex\\\\mcp\\\\solidworks-mcp\\\\.venv\\\\Scripts\\\\mcp_cad.exe\\\"\"\n    },\n    {\n        \"ProcessId\":  8308,\n        \"Name\":  \"python.exe\",\n        \"CommandLine\":  \"\\\"C:\\\\ProgramData\\\\anaconda3\\\\python.exe\\\" \\\"C:\\\\Users\\\\35326\\\\.codex\\\\mcp\\\\solidworks-mcp\\\\.venv\\\\Scripts\\\\mcp_cad.exe\\\"\"\n    },\n    {\n        \"ProcessId\":  2504,\n        \"Name\":  \"python.exe\",\n        \"CommandLine\":  \"\\\"C:\\\\Users\\\\35326\\\\.codex\\\\mcp\\\\solidworks-mcp\\\\.venv\\\\Scripts\\\\python.exe\\\" \\\"C:\\\\Users\\\\35326\\\\.codex\\\\mcp\\\\solidworks-mcp\\\\.venv\\\\Scripts\\\\mcp_cad.exe\\\"\"\n    },\n    {\n        \"ProcessId\":  14784,\n        \"Name\":  \"python.exe\",\n        \"CommandLine\":  \"\\\"C:\\\\ProgramData\\\\anaconda3\\\\python.exe\\\" \\\"C:\\\\Users\\\\35326\\\\.codex\\\\mcp\\\\solidworks-mcp\\\\.venv\\\\Scripts\\\\mcp_cad.exe\\\"\"\n    },\n    {\n        \"ProcessId\":  6528,\n        \"Name\":  \"python.exe\",\n        \"CommandLine\":  \"\\\"C:\\\\Users\\\\35326\\\\.codex\\\\mcp\\\\solidworks-mcp\\\\.venv\\\\Scripts\\\\python.exe\\\" \\\"C:\\\\Users\\\\35326\\\\.codex\\\\mcp\\\\solidworks-mcp\\\\.venv\\\\Scripts\\\\mcp_cad.exe\\\"\"\n    },\n    {\n        \"ProcessId\":  28340,\n        \"Name\":  \"python.exe\",\n        \"CommandLine\":  \"\\\"C:\\\\ProgramData\\\\anaconda3\\\\python.exe\\\" \\\"C:\\\\Users\\\\35326\\\\.codex\\\\mcp\\\\solidworks-mcp\\\\.venv\\\\Scripts\\\\mcp_cad.exe\\\"\"\n    },\n    {\n        \"ProcessId\":  26232,\n        \"Name\":  \"python.exe\",\n        \"CommandLine\":  \"\\\"C:\\\\ProgramData\\\\anaconda3\\\\python.exe\\\" experiments\\\\position_causal_repair_v1\\\\scripts\\\\d0_snapshot.py\"\n    }\n]"
+  },
+  "authorization_and_budget": {
+    "plant_starts_max": 80,
+    "fits_max": 6,
+    "planned_d3": 6,
+    "planned_d5_max": 18,
+    "planned_d6_max": 48,
+    "extra_plant_reserve": 8,
+    "no_main_pipeline_restart": true,
+    "no_auto_git_publish": true
+  },
+  "current_state": {
+    "gate_status": {
+      "contract_version": "DL1018_V311_R2E_PAPER_FINAL",
+      "updated_at": "2026-10-19T07:20:52+00:00",
+      "current_gate": "G06_P_DEV",
+      "gate_status": {
+        "G00_MIGRATION": "PASS",
+        "G01_SCENES": "PASS",
+        "G02_P_TEACHER": "PASS",
+        "G03_P_INITIAL": "PASS",
+        "G04_P_STUDENT": "PASS",
+        "G05_P_FINAL": "PASS",
+        "G06_P_DEV": "STOP_POSITION_NOT_QUALIFIED",
+        "G07_A_TEACHER": "NOT_STARTED",
+        "G08_A_INITIAL": "NOT_STARTED",
+        "G09_A_STUDENT": "NOT_STARTED",
+        "G10_A_FINAL": "NOT_STARTED",
+        "G11_PA_DEV": "NOT_STARTED",
+        "G12_FINAL_TEST": "NOT_STARTED",
+        "G13_FINAL_REPORT": "NOT_STARTED"
+      },
+      "upstream_status": {
+        "G00_MIGRATION": {},
+        "G01_SCENES": {
+          "G00_MIGRATION": "PASS"
+        },
+        "G02_P_TEACHER": {
+          "G00_MIGRATION": "PASS",
+          "G01_SCENES": "PASS"
+        },
+        "G03_P_INITIAL": {
+          "G00_MIGRATION": "PASS",
+          "G01_SCENES": "PASS",
+          "G02_P_TEACHER": "PASS"
+        },
+        "G04_P_STUDENT": {
+          "G00_MIGRATION": "PASS",
+          "G01_SCENES": "PASS",
+          "G02_P_TEACHER": "PASS",
+          "G03_P_INITIAL": "PASS"
+        },
+        "G05_P_FINAL": {
+          "G00_MIGRATION": "PASS",
+          "G01_SCENES": "PASS",
+          "G02_P_TEACHER": "PASS",
+          "G03_P_INITIAL": "PASS",
+          "G04_P_STUDENT": "PASS"
+        },
+        "G06_P_DEV": {
+          "G00_MIGRATION": "PASS",
+          "G01_SCENES": "PASS",
+          "G02_P_TEACHER": "PASS",
+          "G03_P_INITIAL": "PASS",
+          "G04_P_STUDENT": "PASS",
+          "G05_P_FINAL": "PASS"
+        },
+        "G07_A_TEACHER": {
+          "G00_MIGRATION": "PASS",
+          "G01_SCENES": "PASS",
+          "G02_P_TEACHER": "PASS",
+          "G03_P_INITIAL": "PASS",
+          "G04_P_STUDENT": "PASS",
+          "G05_P_FINAL": "PASS",
+          "G06_P_DEV": "STOP_POSITION_NOT_QUALIFIED"
+        },
+        "G08_A_INITIAL": {
+          "G00_MIGRATION": "PASS",
+          "G01_SCENES": "PASS",
+          "G02_P_TEACHER": "PASS",
+          "G03_P_INITIAL": "PASS",
+          "G04_P_STUDENT": "PASS",
+          "G05_P_FINAL": "PASS",
+          "G06_P_DEV": "STOP_POSITION_NOT_QUALIFIED",
+          "G07_A_TEACHER": "NOT_STARTED"
+        },
+        "G09_A_STUDENT": {
+          "G00_MIGRATION": "PASS",
+          "G01_SCENES": "PASS",
+          "G02_P_TEACHER": "PASS",
+          "G03_P_INITIAL": "PASS",
+          "G04_P_STUDENT": "PASS",
+          "G05_P_FINAL": "PASS",
+          "G06_P_DEV": "STOP_POSITION_NOT_QUALIFIED",
+          "G07_A_TEACHER": "NOT_STARTED",
+          "G08_A_INITIAL": "NOT_STARTED"
+        },
+        "G10_A_FINAL": {
+          "G00_MIGRATION": "PASS",
+          "G01_SCENES": "PASS",
+          "G02_P_TEACHER": "PASS",
+          "G03_P_INITIAL": "PASS",
+          "G04_P_STUDENT": "PASS",
+          "G05_P_FINAL": "PASS",
+          "G06_P_DEV": "STOP_POSITION_NOT_QUALIFIED",
+          "G07_A_TEACHER": "NOT_STARTED",
+          "G08_A_INITIAL": "NOT_STARTED",
+          "G09_A_STUDENT": "NOT_STARTED"
+        },
+        "G11_PA_DEV": {
+          "G00_MIGRATION": "PASS",
+          "G01_SCENES": "PASS",
+          "G02_P_TEACHER": "PASS",
+          "G03_P_INITIAL": "PASS",
+          "G04_P_STUDENT": "PASS",
+          "G05_P_FINAL": "PASS",
+          "G06_P_DEV": "STOP_POSITION_NOT_QUALIFIED",
+          "G07_A_TEACHER": "NOT_STARTED",
+          "G08_A_INITIAL": "NOT_STARTED",
+          "G09_A_STUDENT": "NOT_STARTED",
+          "G10_A_FINAL": "NOT_STARTED"
+        },
+        "G12_FINAL_TEST": {
+          "G00_MIGRATION": "PASS",
+          "G01_SCENES": "PASS",
+          "G02_P_TEACHER": "PASS",
+          "G03_P_INITIAL": "PASS",
+          "G04_P_STUDENT": "PASS",
+          "G05_P_FINAL": "PASS",
+          "G06_P_DEV": "STOP_POSITION_NOT_QUALIFIED",
+          "G07_A_TEACHER": "NOT_STARTED",
+          "G08_A_INITIAL": "NOT_STARTED",
+          "G09_A_STUDENT": "NOT_STARTED",
+          "G10_A_FINAL": "NOT_STARTED",
+          "G11_PA_DEV": "NOT_STARTED"
+        },
+        "G13_FINAL_REPORT": {
+          "G00_MIGRATION": "PASS",
+          "G01_SCENES": "PASS",
+          "G02_P_TEACHER": "PASS",
+          "G03_P_INITIAL": "PASS",
+          "G04_P_STUDENT": "PASS",
+          "G05_P_FINAL": "PASS",
+          "G06_P_DEV": "STOP_POSITION_NOT_QUALIFIED",
+          "G07_A_TEACHER": "NOT_STARTED",
+          "G08_A_INITIAL": "NOT_STARTED",
+          "G09_A_STUDENT": "NOT_STARTED",
+          "G10_A_FINAL": "NOT_STARTED",
+          "G11_PA_DEV": "NOT_STARTED",
+          "G12_FINAL_TEST": "NOT_STARTED"
+        }
+      },
+      "actual_artifact_paths": [
+        "reports/G00_MIGRATION.json",
+        "reports/G01_SCENES.json",
+        "reports/G02_P_TEACHER.json",
+        "reports/G03_P_INITIAL.json",
+        "reports/G04_P_STUDENT.json",
+        "reports/G05_P_FINAL.json",
+        "reports/G06_P_DEV.json"
+      ],
+      "next_allowed_action": "G06_P_DEV"
+    },
+    "attempt_rows": 2137,
+    "accepted_complete_attempts": 2064,
+    "episode_rows": 2064
+  },
+  "protected_paths": [
+    "data/raw/**",
+    "data/events/**",
+    "models/**",
+    "logs/**",
+    "reports/G00-G06*",
+    "configs/contract_dl1018.json",
+    "configs/scene_specs.csv",
+    "configs/selected_models.json",
+    "B/controller/Plant/scene generator/attitude RBF/safety and frozen gates"
+  ],
+  "protected_file_fingerprints": [
+    {
+      "path": "configs/contract_dl1018.json",
+      "size_bytes": 5930,
+      "mtime_utc": "2026-10-18T04:08:32.115588+00:00",
+      "sha256": "1924290d90570233a138c1d45e0ccb8070e8cc292affc47a9d8a9d96d2f74405"
+    },
+    {
+      "path": "configs/scene_specs.csv",
+      "size_bytes": 162757,
+      "mtime_utc": "2026-10-18T04:24:48.622971+00:00",
+      "sha256": "d116b74dc6d9ce3c21a40fcd48b4153a0adc09e98a6c8d341c0f1b6ba680b4e3"
+    },
+    {
+      "path": "configs/selected_models.json",
+      "size_bytes": 2559,
+      "mtime_utc": "2026-10-19T06:48:54.610393+00:00",
+      "sha256": "0466e1daba176c6330de82c1ae4c3940ac0bbf98fe614ebb2cdc064815313880"
+    },
+    {
+      "path": "logs/gate_status.json",
+      "size_bytes": 4380,
+      "mtime_utc": "2026-10-19T07:20:52.372272+00:00",
+      "sha256": "be133b9b5987350fee149334d7698742bfcfab43042214ab6bc2bfadf1bda72a"
+    },
+    {
+      "path": "logs/attempt_index.csv",
+      "size_bytes": 893435,
+      "mtime_utc": "2026-10-19T07:20:47.036951+00:00",
+      "sha256": "57957934a9f3a7259c411227960db0599fa132d95f34a50016d8de3d4b608ba2"
+    },
+    {
+      "path": "logs/episode_index.csv",
+      "size_bytes": 542225,
+      "mtime_utc": "2026-10-19T06:34:34.407393+00:00",
+      "sha256": "193bf3a6ccde3be857a44ad4e24e89aa72d3099e6dee663cc04c424ea5ab1437"
+    },
+    {
+      "path": "reports/G00_MIGRATION.json",
+      "size_bytes": 928,
+      "mtime_utc": "2026-10-18T04:50:15.587813+00:00",
+      "sha256": "0250dd21f003d73bbb9c6a4c1d11ff48c3705fb649f9cd94d467c123820d0abc"
+    },
+    {
+      "path": "reports/G01_SCENES.json",
+      "size_bytes": 1835,
+      "mtime_utc": "2026-10-18T04:31:02.838405+00:00",
+      "sha256": "e0deac0227c17db75ac3cede218164e39c99f981c46dd5ecab48de58bd562eb0"
+    },
+    {
+      "path": "reports/G02_P_TEACHER.json",
+      "size_bytes": 1175,
+      "mtime_utc": "2026-10-18T20:33:38.637720+00:00",
+      "sha256": "0631e2817688db99a911de2f2a6604cc8f78870b50cc149ab9b4e5e048de2b19"
+    },
+    {
+      "path": "reports/G03_P_INITIAL.json",
+      "size_bytes": 6172,
+      "mtime_utc": "2026-10-19T02:52:09.082430+00:00",
+      "sha256": "43b645183bcac3c7e1e3a650bd38a821b4a65c7b84d32be521f39fa2e0f35ee7"
+    },
+    {
+      "path": "reports/G04_P_STUDENT.json",
+      "size_bytes": 1410,
+      "mtime_utc": "2026-10-19T06:34:34.974292+00:00",
+      "sha256": "edc6bf21b646b377b707c2518334be756a1b87f4d327c03859943d4395f66816"
+    },
+    {
+      "path": "reports/G05_P_FINAL.json",
+      "size_bytes": 8066,
+      "mtime_utc": "2026-10-19T06:48:54.613392+00:00",
+      "sha256": "7fcfdbc9eec70490cf142a8755593c45ed41a2103612bd7ea62309cb1db457b3"
+    },
+    {
+      "path": "reports/G06_P_DEV.json",
+      "size_bytes": 4067,
+      "mtime_utc": "2026-10-19T07:20:48.413181+00:00",
+      "sha256": "a50105453ff8b6c690cd1cd9842649bc1a044306e83cd2c46447639189fd606d"
+    },
+    {
+      "path": "training/data.py",
+      "size_bytes": 10095,
+      "mtime_utc": "2026-10-18T06:00:42.653880+00:00",
+      "sha256": "4afbf47f72dc9c149a6e4113dae6b4d47b1e785953ab28a24d1005482b2e29d2"
+    },
+    {
+      "path": "training/models.py",
+      "size_bytes": 3767,
+      "mtime_utc": "2026-10-18T05:10:05.774314+00:00",
+      "sha256": "cbe307606f58a9f551a870037d1d94517d7842abe574abf69aee2f8ba4b1ceba"
+    },
+    {
+      "path": "training/common.py",
+      "size_bytes": 19546,
+      "mtime_utc": "2026-10-19T06:47:55.558157+00:00",
+      "sha256": "7c802b9da3628cd65528896c1a308ebda89b90c94075f4d5b863bd020786fbe9"
+    },
+    {
+      "path": "training/train_position.py",
+      "size_bytes": 1908,
+      "mtime_utc": "2026-10-18T05:13:47.814828+00:00",
+      "sha256": "2b94d418ebe38a6e90a5b6146687b335061070e6dc0911dffdff8725016ffdf3"
+    },
+    {
+      "path": "training/export_matlab.py",
+      "size_bytes": 5778,
+      "mtime_utc": "2026-10-18T05:43:47.170274+00:00",
+      "sha256": "d15f985dd9b19935e8cb9335033f61b120eec76f9eb5a448d8bce34766d0510a"
+    },
+    {
+      "path": "matlab/runtime/collect_position_role_dl1018.m",
+      "size_bytes": 22622,
+      "mtime_utc": "2026-10-18T06:14:38.033485+00:00",
+      "sha256": "e1aaf94878c0b17b7de9cedfd79ca954d680958e6cc3342bbd6afbad9dbc7475"
+    },
+    {
+      "path": "matlab/runtime/collect_position_dev_dl1018.m",
+      "size_bytes": 15813,
+      "mtime_utc": "2026-10-19T06:50:10.006541+00:00",
+      "sha256": "291a0dc7780d58f5497c539ca85c0fc6bbf4b5295791b9288e96127c9693f12d"
+    },
+    {
+      "path": "matlab/runtime/controller_options_dl1018.m",
+      "size_bytes": 2869,
+      "mtime_utc": "2026-10-18T03:48:30.436558+00:00",
+      "sha256": "93633a5fd95f73d33982045c2fa372d49b1a0df8ea0cfb5ca4461208ca9d53b1"
+    },
+    {
+      "path": "matlab/data/export_position_events_dl1018.m",
+      "size_bytes": 5962,
+      "mtime_utc": "2026-10-18T04:40:51.796459+00:00",
+      "sha256": "4506849cc2c888e078129772e6bb1927cb479f02b75c072472778ed32d4cf094"
+    },
+    {
+      "path": "matlab/metrics/metrics_dl1018.m",
+      "size_bytes": 7118,
+      "mtime_utc": "2026-10-18T06:02:41.020089+00:00",
+      "sha256": "f2f8f995c44ed5044cd6c56b883f67370606c681b7c712d699fbea13fe760fb9"
+    }
+  ],
+  "source_worktree_policy": "No modifications to original source/data/config/log/report paths; all derived work under experiments/position_causal_repair_v1/.",
+  "dl1009_policy": "Read-only; worktree was found dirty before this experiment; no cleanup or edits.",
+  "final_protection_review": {
+    "report": "reports/FINAL_PROTECTION_CHECK.json",
+    "checked_at_utc": "2026-10-19T11:13:37.876305+00:00",
+    "checked_count": 23,
+    "all_sha256_match": true,
+    "mismatch_count": 0
+  }
+}

@@ -1,0 +1,69 @@
+function result=d6_preflight_history_dev(root)
+% Zero-Plant DEV scene, B identity, and frozen/online controller-mode preflight.
+root=char(java.io.File(root).getCanonicalPath());
+out=fullfile(root,'experiments','training_data_structure_compare_v2');
+addpath(genpath(fullfile(root,'matlab')));[cfg,~,resolved]=init_dl1018();
+assert(strcmp(root,resolved),'D6:Root','Unexpected DL1018 root.');
+local=fullfile(out,'local_runtime');addpath(genpath(local),'-begin');rehash;
+M=readtable(fullfile(root,'configs','scene_specs.csv'),'TextType','string');M=M(M.split=="DEV",:);
+assert(height(M)==24,'D6:SceneCount','Expected the frozen 24-scene DEV split.');
+baseline=readtable(fullfile(root,'reports','POSITION_DEV.csv'),'TextType','string');
+baselineB=baseline(baseline.method=="B",:);
+assert(height(baselineB)==24&&numel(unique(baselineB.scene_id))==24,'D6:BaselineCoverage','B must cover each DEV scene once.');
+q=load(fullfile(out,'models','HISTORY_KAN','seed2026101911','matlab_model_and_parity.mat'),'model');model=q.model;
+checks=struct([]);maxSceneDiff=0;maxCfgDiff=0;
+for i=1:height(M)
+    spec=M(i,:);sceneId=char(spec.scene_id);b=baselineB(baselineB.scene_id==sceneId,:);
+    assert(height(b)==1&&b.status=="STABLE"&&b.complete&&b.finite&&b.transitions==20000, ...
+        'D6:BaselineStatus','B record is not stable/complete/finite for %s.',sceneId);
+    raw=fullfile(root,strrep(char(b.raw_path),'/',filesep));d=load(raw,'log','scene');
+    rs=load(fullfile(fileparts(raw),'run_start.mat'),'runStart');
+    assert(strcmp(char(rs.runStart.run_id),char(b.run_id))&&strcmp(char(rs.runStart.collector_id),'B'), ...
+        'D6:BaselineRunStart','B run-start identity mismatch for %s.',sceneId);
+    generated=make_scenes_dl1018('GET',root,sceneId);scene=generated.scene;
+    assert(scene_equal(scene,d.scene),'D6:SceneIdentity','Generated scene differs from B raw for %s.',sceneId);
+    assert(isequaln(cfg,rs.runStart.cfg),'D6:ConfigIdentity','Current cfg differs from B raw for %s.',sceneId);
+    maxSceneDiff=max(maxSceneDiff,max(abs(scene.reference.position(:)-d.scene.reference.position(:))));
+    maxCfgDiff=maxCfgDiff,double(~isequaln(cfg,rs.runStart.cfg));
+    Bopts=controller_options_dl1018(cfg,'B',[],[],'frozen');
+    assert(attitude_equal(Bopts,rs.runStart.opts),'D6:BAttitude','B identity must keep original attitude RBF.');
+    frozen=controller_options_dl1018(cfg,'P_F',model,[],'frozen');
+    online=controller_options_dl1018(cfg,'P_A',model,[],'online');
+    assert(frozen.stage1_position_runtime.enabled&&~frozen.stage1_position_runtime.update_enabled&& ...
+        online.stage1_position_runtime.enabled&&online.stage1_position_runtime.update_enabled, ...
+        'D6:HeadModes','P_F must freeze and P_A must adapt the same position Head.');
+    assert(isequal(size(frozen.stage1_position_runtime.weight),[33,3])&& ...
+        isequal(size(online.stage1_position_runtime.weight),[33,3])&& ...
+        isequaln(frozen.stage1_position_runtime.weight,online.stage1_position_runtime.weight), ...
+        'D6:W0','P_F and P_A must start from the same frozen W0.');
+    assert(attitude_equal(frozen,rs.runStart.opts)&&attitude_equal(online,rs.runStart.opts), ...
+        'D6:AttitudeIdentity','P_F/P_A must preserve the same original attitude RBF as B.');
+    z=struct('scene_id',sceneId,'task',char(spec.task),'B_run_id',char(b.run_id), ...
+        'B_status',char(b.status),'B_raw_path',char(b.raw_path),'scene_matches',true, ...
+        'cfg_matches',true,'P_F_frozen',true,'P_A_online',true,'attitude_RBF_identity',true);
+    if isempty(checks),checks=z;else,checks(end+1,1)=z;end %#ok<AGROW>
+end
+report=struct('status','PASS','candidate_family','HISTORY_KAN','seed',2026101911, ...
+    'selected_step',15000,'fit_status','PAUSED_BY_USER_PARTIAL_FIT','dev_scene_count',height(M), ...
+    'baseline_B_rows_reused',height(baselineB),'plant_starts',0,'max_scene_reference_abs_diff',maxSceneDiff, ...
+    'max_cfg_identity_diff',maxCfgDiff,'checks',checks, ...
+    'notes','B source records are reused read-only. History checkpoint is frozen from user-paused fit; no training is resumed.');
+fid=fopen(fullfile(out,'reports','D6_PREFLIGHT_HISTORY.json'),'w');
+fwrite(fid,jsonencode(report,'PrettyPrint',true),'char');fclose(fid);
+fprintf('D6 preflight PASS: %d DEV scenes, %d verified B records, P_F/P_A mode parity, Plant=0.\n', ...
+    height(M),height(baselineB));result=report;
+end
+
+function yes=scene_equal(a,b)
+yes=isequaln(a.time,b.time)&&isequaln(a.initial_state,b.initial_state)&& ...
+    isequaln(a.environment_wind_I,b.environment_wind_I)&&isequaln(a.reference.position,b.reference.position)&& ...
+    isequaln(a.reference.velocity,b.reference.velocity)&&isequaln(a.reference.acceleration,b.reference.acceleration)&& ...
+    isequaln(a.reference.yaw,b.reference.yaw)&&isequaln(a.reference.yaw_rate,b.reference.yaw_rate)&& ...
+    isequaln(a.reference.yaw_acceleration,b.reference.yaw_acceleration)&&isequaln(a.arms.command,b.arms.command)&& ...
+    isequaln(a.arms.rho_true,b.arms.rho_true)&&isequaln(a.arms.rhoDot_true,b.arms.rhoDot_true);
+end
+function yes=attitude_equal(a,b)
+names={'rbf_attitude_enabled','rbf_attitude_output_enabled','rbf_attitude_update_enabled', ...
+    'attitude_rbf_frequency_hz','rbf_attitude_gamma_scale'};yes=true;
+for i=1:numel(names),yes=yes&&isfield(a,names{i})&&isfield(b,names{i})&&isequaln(a.(names{i}),b.(names{i}));end
+end
