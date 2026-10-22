@@ -100,6 +100,6 @@ R3 的 mask 只是由 R2 屏查提出并初步检查的机制候选；本轮 12 
 
 1. 在 72 场冻结 DSSM14 VAL+DEV 原始身份上完成一事件 dAtt 持续性诊断。高频 W09–W14 场景宏平均向量 NRMSE=0.194351、配对余弦=0.941987、Z 轴滞后相关=0.973390；独立审阅及主会话结果表复算通过。它把“下一事件可用上一事件 dAtt 作为输入”的时序可行性保留为未来可证伪探针，但原轨迹持续性不是干预效应、稳定性或安全余量。报告、脚本和结果表见 [dAtt 一事件滞后诊断](phase1/DATT_LAG_PROXY_DIAGNOSTIC_ZH.md)。
 
-2. 历史 runtime 身份追溯找到了 DL1018 同级冻结归档。DSSM 72 场中 61 场匹配主归档、11 场匹配 tail21 归档；模型与 run_start 哈希、场景 ID 和完整稳定状态一致。两份 local runtime 树的 8 个 `.m` 文件逐文件字节一致；归档的路径绑定身份哈希因独立归档路径而不同，tail runner 仅授权其固定索引切片。**B 的 72 场仍没有逐运行 runtime-tree/source 清单**；现有记录足以追溯 B raw、run_start 和评分，不足以重建其历史实际加载源码环境。身份报告和只读复核脚本见 [历史运行身份审计](phase1/HISTORICAL_RUNTIME_IDENTITY_AUDIT_20261022_ZH.md) 与 [verify_historical_runtime_identity.py](phase1/verify_historical_runtime_identity.py)。
+2. 历史 runtime 身份追溯找到了 DL1018 同级冻结归档。DSSM 72 场中 61 场匹配主归档、11 场匹配 tail21 归档；模型与 run_start 哈希、场景 ID 和完整稳定状态一致。两份 local runtime 树的 8 个 `.m` 文件逐文件字节一致；归档的路径绑定身份哈希因独立归档路径而不同，tail runner 仅授权其固定索引切片。普通历史 B 仍没有逐运行 runtime-tree/source 清单。新增搜索找到 21 条后续 `_ACC_FIX_V1` B 稳定重跑，其 raw、场景和模板 run_start 与 B 清单匹配，并可绑定冻结 runtime/runner 身份；这只能证明同一 raw 内容在后续身份下重现，不能追认旧 B 原始 attempt 的执行环境。身份报告和只读复核脚本见 [历史运行身份审计](phase1/HISTORICAL_RUNTIME_IDENTITY_AUDIT_20261022_ZH.md) 与 [verify_historical_runtime_identity.py](phase1/verify_historical_runtime_identity.py)。
 
-若另行开启周期，先决定如何处理 B 的历史身份缺口：若找不到同期清单，应把当前 B 明确作为历史归档对照，或另行批准一组新冻结 B 基线，并说明它不是旧 B 的精确复现。三轮上限已用尽；本次只做离线身份/日志复核，不新增航次、训练或 TEST 访问。
+若另行开启周期，应把当前 B 明确作为历史归档对照，或另行批准一组新冻结 B 基线，并说明它不是旧 B 的精确复现；后续 ACC_FIX 运行不能回填旧 B 身份。三轮上限已用尽；本次只做离线身份/日志复核，不新增航次、训练或 TEST 访问。

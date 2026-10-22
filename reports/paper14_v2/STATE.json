@@ -399,7 +399,7 @@
     "limitation": "The main session has no model-switch control, and collaboration tools expose no model or normal/fast speed selector. Main-session and subagent model/speed compliance cannot be independently verified."
   },
   "closeout_artifact_sha256": {
-    "FINAL_CLOSEOUT_20261022.md": "ad39ae35342f926b87c8b4179490dfa3ebaa316f4c9d0863b2b288072878f684",
+    "FINAL_CLOSEOUT_20261022.md": "5101f65964f5e0f8030ed8b579101985b2ed6ac6195891b80bb9f5a9ec0b6f3f",
     "SCENE_PAIRWISE_LOSSES_20261022.csv": "5d8279e9c2c3dfed4b8c6f3c466f2c5235c13e62ec92becc7c53cc131d5d058b",
     "build_scene_pairwise_losses.ps1": "f9733a3638eb4f31b54fd4f5755c0c90a24d0a592a322848b00a9a0d5a652d4b",
     "README_EXECUTION_ZH.md": "07821d0adb4c2f3a7947b046409a146c05dcf18cdae2f75664cb01116f11f912",
@@ -423,7 +423,7 @@
     "phase1/datt_lag_proxy_v1/datt_lag_proxy_scene_summary.csv": "af98a87087ddd31c2a828d410611bafe1cb47f64def8cdb5935cb6e3fcbf3f97",
     "phase1/datt_lag_proxy_v1/datt_lag_proxy_group_summary.csv": "ef012bd56c69dc2a14485e4c463d2bfc1924da581ee8c8def9f4a3a7a9ff3635",
     "phase1/datt_lag_proxy_v1/datt_lag_proxy_metadata.json": "7b14dd6b17639df45f37a2d84e67b710ab0e336dde0b4d5d3fa6bbacfe4fffac",
-    "phase1/HISTORICAL_RUNTIME_IDENTITY_AUDIT_20261022_ZH.md": "2e8ad23f4652602902c96a4765ef8dccc0c9aba42237fb9085d22249a18e1c9d",
+    "phase1/HISTORICAL_RUNTIME_IDENTITY_AUDIT_20261022_ZH.md": "ee19936f0d289babe31add5f1e83ca5d897d4d8767d9e513ebc15a46dea8b6a3",
     "phase1/verify_historical_runtime_identity.py": "44ef81503b4d7ac3722d506441bec415b95920f0bc7605c7cf81819e4a51d7d7",
     "NEXT_CYCLE_TASKBOOK_DRAFT_W15_RBF_BRIDGE_20261022.md": "d66e65bd312d87a99caf1388f3f8f0ba5f99298507ccb1404b7b08d886e0a384",
     "../integration_next14_v1/engineering/A_CORRECTED_REFERENCE_CACHE_GUARD_ZH.md": "207b994eb42570481ba90c7f3c61a3e72ff65edb883df9002aa486f2b34b5214"
@@ -538,7 +538,7 @@
     "next_action": "If a separate cycle is opened, first decide whether B historical runtime identity can be recovered; if not, explicitly accept the archival-comparator limitation or separately budget a new frozen B baseline. DSSM72 run identity is closed to the two archived sessions. A delayed dAtt probe remains a candidate only; freeze its single-factor 12-scene taskbook before any run and do not infer intervention direction from observational or persistence statistics."
   },
   "historical_runtime_identity_audit": {
-    "status": "DSSM72_IDENTITY_CLOSED_TO_ARCHIVED_SESSIONS; B72_RUNTIME_UNCLOSED",
+    "status": "DSSM72_IDENTITY_CLOSED_TO_ARCHIVED_SESSIONS; B72_RUNTIME_UNCLOSED_AFTER_ARCHIVE_SEARCH",
     "report": "phase1/HISTORICAL_RUNTIME_IDENTITY_AUDIT_20261022_ZH.md",
     "verifier": "phase1/verify_historical_runtime_identity.py",
     "archive_root": "../REFERENCE_FIX_FULL72_20261021_022342_313/corrected_reference_training_v1",
@@ -558,7 +558,19 @@
       "manifest_rows": 72,
       "raw_and_run_start_hashes_present": true,
       "per_run_runtime_tree_sha256_present": false,
-      "historical_runtime_identity": "UNCLOSED"
+      "historical_runtime_identity": "UNCLOSED",
+      "archive_search_roots": 6,
+      "run_status_json_files_parsed": 1021,
+      "fig8_acc_fix_status_records": 4,
+      "acc_fix_stable_replays_same_raw": 21,
+      "acc_fix_source_scene_and_template_start_match": true,
+      "acc_fix_runtime_scene_suffix": "_ACC_FIX_V1",
+      "acc_fix_runtime_tree_sha256": "a0cc9c286e635013038c378667c5c865579626c6b646b0df3a85c2ea0f238191",
+      "acc_fix_runner_script_sha256": "8d2786c49b080d93454e2acbaa937bb6b465b4295bcdcef1bb759879d7c2b3e9",
+      "acc_fix_supervisor_script_sha256": "ab940f0bc1d35cf5cb425227ea8086184ba6edd1d34de6aa4566c5147301703b",
+      "acc_fix_support_helper_sha256": "dd51671c5b78b5748a1ac3d78385217687bcaee24c3ee64e57055f1d44e30a4c",
+      "acc_fix_attempt_run_start_sha256_present": false,
+      "acc_fix_proves_original_b_runtime_identity": false
     },
     "test_accessed": false,
     "raw_run_mat_opened": false,
@@ -566,13 +578,14 @@
   },
   "post_closeout_supplement_review": {
     "status": "PASS_WITH_SCOPE_LIMITS",
-    "scope": "Main-model independent arithmetic/source check for the dAtt lag proxy; independent Luna audit of the proxy; main-model hash-only rerun of the DSSM/B identity verifier; independent archive identity audit. No raw_run.mat content, TEST, Plant, training, or experiment was accessed or launched.",
+    "scope": "Main-model independent arithmetic/source check for the dAtt lag proxy; independent Luna audit of the proxy; main-model hash-only rerun of the DSSM/B identity verifier; six-root text-only historical B archive search and ACC_FIX identity cross-check. No raw_run.mat content, TEST, Plant, training, or experiment was accessed or launched.",
     "findings": [
       "dAtt lag-proxy formula, consecutive 100 Hz pairing, scene-macro calculations, and reported hash identities pass; interpretation remains descriptive only.",
-      "DSSM72 raw/run_start/model/status identities map 61+11 to archived sessions; local runtime .m snapshots are byte-identical. B72 lacks per-run runtime-tree/source binding.",
+      "DSSM72 raw/run_start/model/status identities map 61+11 to archived sessions; local runtime .m snapshots are byte-identical.",
+      "Twenty-one later ACC_FIX_V1 B runs reproduce the same raw identities and bind to a frozen runtime/runner tree, but lack attempt run_start hashes and do not establish the original B execution identity; original B remains unclosed after the six-root search.",
       "Main-session/subagent model and speed remain unverifiable because the collaboration interface exposes no actual model or normal/fast selector."
     ],
-    "validation": "python -B reports/paper14_v2/phase1/verify_historical_runtime_identity.py returned PASS_DSSM72_IDENTITY_B_UNCLOSED; one independent CSV-only macro recomputation passed."
+    "validation": "python -B reports/paper14_v2/phase1/verify_historical_runtime_identity.py returned PASS_DSSM72_IDENTITY_B_UNCLOSED; one independent CSV-only macro recomputation passed; PowerShell 7 rechecked all 21 ACC_FIX raw/scene/template-start/runtime-tree links and frozen runner identity."
   },
   "reference_guard_followup": {
     "status": "PASS",
