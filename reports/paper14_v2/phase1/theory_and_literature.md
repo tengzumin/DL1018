@@ -78,7 +78,7 @@ eta_0=0。这是线性滤波器稳定的直接证据。如果另外能证明全�
 ### 3. 与实际位置误差对应的理想外环条件界
 
 源码反步量为 e=p_ref-p、s=dot(e)+k1 e，名义加速度
-a_N=ddot(p_ref)+k1 dot(e)+e+k2 s，且 corrected 实验 k1=1、k2=4。在理想双积分器上，若命令精确实现、没有姿态/推力/电机饱和、采样保持误差已经合并进扰动 delta，则可写成
+a_N=ddot(p_ref)+k1 dot(e)+e+k2 s，且 corrected 实验 k1=1、k2=4。定义平动加速度实现残差 delta:=a_N-a_actual，其中 a_actual 是 Plant 的实际平动加速度，单位为 m/s²。在理想双积分器上，若命令精确实现、没有姿态/推力/电机饱和、采样保持误差已经合并进 delta，则可写成
 
 \[
 \dot e=s-e,\qquad \dot s=-e-4s+\delta.

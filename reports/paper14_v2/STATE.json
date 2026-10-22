@@ -399,7 +399,7 @@
     "limitation": "The main session has no model-switch control, and collaboration tools expose no model or normal/fast speed selector. Main-session and subagent model/speed compliance cannot be independently verified."
   },
   "closeout_artifact_sha256": {
-    "FINAL_CLOSEOUT_20261022.md": "5101f65964f5e0f8030ed8b579101985b2ed6ac6195891b80bb9f5a9ec0b6f3f",
+    "FINAL_CLOSEOUT_20261022.md": "1ea3a96e887f2b5c5fb33e9ededd92193e7dd5db299c74d5ee238e88222fd99c",
     "SCENE_PAIRWISE_LOSSES_20261022.csv": "5d8279e9c2c3dfed4b8c6f3c466f2c5235c13e62ec92becc7c53cc131d5d058b",
     "build_scene_pairwise_losses.ps1": "f9733a3638eb4f31b54fd4f5755c0c90a24d0a592a322848b00a9a0d5a652d4b",
     "README_EXECUTION_ZH.md": "07821d0adb4c2f3a7947b046409a146c05dcf18cdae2f75664cb01116f11f912",
@@ -415,10 +415,11 @@
     "phase1/w15_control_chain_replay_20261022.md": "7d2c65df02b2dc0425a261a2d168908a776e4f70d5ba0a404ab640c220852b07",
     "phase1/audit_w15_control_chain_replay.py": "2f595ce293ad7086d8e96c04be748a713515ea5ab54ba0acbbad7f8728177524",
     "phase1/w15_control_chain_replay_20261022.json": "94682e19d7825ad978795bce2022ef2f5351f16cae6ac9e2261741c7924cea4f",
-    "QUALIFICATION_AUDIT_MATRIX_20261022.md": "879065721cd998464150b323e954c73d95c3d10b7db9e2846c3f4fad2c0a8574",
-    "phase1/theory_appendix_limited_20261022.md": "2166ffa8e9058034687ffd51a6e4e767303291fbfb8092c298da680bc8b7a905",
-    "phase1/DATT_NEXTBLOCK_DIAGNOSTIC_REPORT_ZH.md": "2e4cf9c87918178ab78f0478efabb2498c7dba4ec04f2d2654eca15767f0d2c1",
-    "phase1/DATT_LAG_PROXY_DIAGNOSTIC_ZH.md": "dacb08c9b0a0714f419177dea70dcc91d23f903b0f4cc247429507f8b999d0c4",
+    "QUALIFICATION_AUDIT_MATRIX_20261022.md": "74fa968aec988ec336b7dc03552cede523e2d17d137ee978cd3d85d0cbff4ea4",
+    "phase1/theory_appendix_limited_20261022.md": "b5d33482c33a828d9893777ffce04decb4b6c3ad35c407e961c106fbade08f2f",
+    "phase1/theory_and_literature.md": "2853e2444ad93a66b172f72f0859e4bef5f5cfbc04c91dab1ec818bf77c0df55",
+    "phase1/DATT_NEXTBLOCK_DIAGNOSTIC_REPORT_ZH.md": "376160ae29be56a189099af87b93098f935de99b0b57644e14f2ec7e53c6c9eb",
+    "phase1/DATT_LAG_PROXY_DIAGNOSTIC_ZH.md": "1a548fd3d4152eed8d2ece64f5dc977f48e9a10323011ab79e3866ccc0442d95",
     "phase1/datt_lag_proxy_analysis.py": "1732811c13952c4251551d655c2ae83b8939c5aba698232d74e6da67ef6c9e8f",
     "phase1/datt_lag_proxy_v1/datt_lag_proxy_scene_summary.csv": "af98a87087ddd31c2a828d410611bafe1cb47f64def8cdb5935cb6e3fcbf3f97",
     "phase1/datt_lag_proxy_v1/datt_lag_proxy_group_summary.csv": "ef012bd56c69dc2a14485e4c463d2bfc1924da581ee8c8def9f4a3a7a9ff3635",
@@ -621,5 +622,16 @@
     "new_training_or_simulation": 0,
     "test_accessed": false,
     "current_cycle_status": "Three rounds exhausted; NOT_QUALIFIED; no 72-scene expansion or TEST48."
+  },
+  "datt_deployability_boundary_review": {
+    "status": "PASS_WITH_DEPLOYMENT_SCOPE_LIMIT",
+    "scope": "Read-only source/hash and report review of the dAtt diagnostic and limited R3 theory appendix. No raw MAT, TEST, Plant, training, or experiment was opened or launched.",
+    "findings": [
+      "The historical dAtt diagnostics use Plant truth R_actual and m_true; they are offline oracle quantities, not validated deployment inputs.",
+      "A future candidate proxy requires verified estimator output R_hat, controller-available m_nom, and event-available R_raw/T_req; its signal source, timing, delay, and error bounds must be frozen and its persistence recomputed before any screen.",
+      "The ideal outer-loop residual convention is explicitly delta=a_N-a_actual. The limited R3 theory appendix now records actual isolated runner, forward, Head, and PCF helper hashes; all theoretical claims remain conditional and the theory gate remains failed."
+    ],
+    "validation": "PowerShell 7 SHA-256 checks matched the R3 runner 86e7f7ec42492341e58daf30879f7aec9153924e80a76f6f029fce2a628c38d9, DSSM forward dc803aa102c49d67dd687ae941f8a60bb0c465f74fd01e5ae93ad1ea1a293676, FEATURE Head 3bd0fe9686c3b75793575e517d4cc5f08de58ab6a26a2bc7516aa690422bb7dc, and PCF helper b4ae22db5bd444a162d0cd01a3a59a589f2e37077b089bb33693401b660228d0. Text and state hash entries were refreshed; no experiment or test workload was run.",
+    "current_cycle_status": "Three rounds exhausted; NOT_QUALIFIED; no new runs, DEV72 expansion, or TEST48."
   }
 }

@@ -23,7 +23,7 @@ G_n=-12\beta_n\phi_ns_{\mathrm{eff},n}^{\top}-0.002W_n,
 \quad C=[-60,60]^{33\times3}.
 \]
 应用的 \(u_n\) 在下一位置事件前保持；PCF 按 \(0.001\,\mathrm{s}\) 推进。SI 单位约定为：`s_n`、`eta_n` 与 `s_eff,n` 为 m/s，`W_n` 与 `u_n` 为 m/s^2，`gamma=12 s^-2`，泄漏率 `0.002 s^-1`，`G_n` 为 m/s^3；`beta_n` 与 `phi_n` 无量纲，`h_n` 以 s 计，因此 `h_n G_n` 与 `W_n` 同为 m/s^2。
-以上限定来自实际 R3 runner/forward/Head 分支；它不把其他候选或另一个未启用 Head helper 的方程代入本结果。
+以上限定来自实际 R3 runner/forward/Head 分支；它不把其他候选或另一个未启用 Head helper 的方程代入本结果。复核的实际隔离文件 SHA-256 为：R3 runner `86e7f7ec42492341e58daf30879f7aec9153924e80a76f6f029fce2a628c38d9`、DSSM forward `dc803aa102c49d67dd687ae941f8a60bb0c465f74fd01e5ae93ad1ea1a293676`、FEATURE Head `3bd0fe9686c3b75793575e517d4cc5f08de58ab6a26a2bc7516aa690422bb7dc`、PCF helper `b4ae22db5bd444a162d0cd01a3a59a589f2e37077b089bb33693401b660228d0`。runner 使用 R3 本地隔离副本；本附录的身份是该实际 R3 路径，不以 FULL72 上游 runner 身份替代。
 
 ## 2. 命题一：Head 的命令与投影界
 
