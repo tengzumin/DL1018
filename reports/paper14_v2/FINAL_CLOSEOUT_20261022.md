@@ -93,3 +93,13 @@ R3 的 mask 只是由 R2 屏查提出并初步检查的机制候选；本轮 12 
 - 本次独立审阅由 GPT-6-Luna xhigh 执行，复核结果为 PASS。协作工具未提供 normal/fast 速度档位选择；当前 Codex 主会话也没有模型切换入口，因此不能证明主决策会话满足“GPT-6-Luna xhigh、正常速度”这一执行配置要求。此项按未核验记录，不影响对原始结果的数值复算，但属于计划执行限制。
 
 原始逐轮证据：[R1 结果摘要](../../experiments/paper14_v2_round1_frozen_w0_screen/reports/round1_screen_summary.json)、[R1 12 场评分 CSV](../../experiments/paper14_v2_round1_frozen_w0_screen/reports/round1_screen_results.csv)、[R2 根因审核](../../experiments/paper14_v2_round2_pcf_screen/reports/round2_root_review_20261022.md)、[R2 12 场评分 CSV](../../experiments/paper14_v2_round2_pcf_screen/reports/round2_screen_results.csv)、[R3 主审核](../../experiments/paper14_v2_round3_xy_pcf_screen/reports/round3_main_review_20261022.md)、[R3 12 场评分 CSV](../../experiments/paper14_v2_round3_xy_pcf_screen/reports/round3_xy_screen_results.csv)、[直接相关论文与缺口对照](phase1/theory_and_literature.md)。完整 70 条 corrected KAN14/DSSM14 对 B 输场也见 [current14 输场报告](../corrected14_full72_benchmark_20261021/RESULTS_14D_VS_B_ZH.md)。
+
+## 追加只读补证（2026-10-22）
+
+本追加记录更新后续动作，不改变三轮筛查失败、性能门未过、TEST48 封存和 `NOT_QUALIFIED` 判定。
+
+1. 在 72 场冻结 DSSM14 VAL+DEV 原始身份上完成一事件 dAtt 持续性诊断。高频 W09–W14 场景宏平均向量 NRMSE=0.194351、配对余弦=0.941987、Z 轴滞后相关=0.973390；独立审阅及主会话结果表复算通过。它把“下一事件可用上一事件 dAtt 作为输入”的时序可行性保留为未来可证伪探针，但原轨迹持续性不是干预效应、稳定性或安全余量。报告、脚本和结果表见 [dAtt 一事件滞后诊断](phase1/DATT_LAG_PROXY_DIAGNOSTIC_ZH.md)。
+
+2. 历史 runtime 身份追溯找到了 DL1018 同级冻结归档。DSSM 72 场中 61 场匹配主归档、11 场匹配 tail21 归档；模型与 run_start 哈希、场景 ID 和完整稳定状态一致。两份 local runtime 树的 8 个 `.m` 文件逐文件字节一致；归档的路径绑定身份哈希因独立归档路径而不同，tail runner 仅授权其固定索引切片。**B 的 72 场仍没有逐运行 runtime-tree/source 清单**；现有记录足以追溯 B raw、run_start 和评分，不足以重建其历史实际加载源码环境。身份报告和只读复核脚本见 [历史运行身份审计](phase1/HISTORICAL_RUNTIME_IDENTITY_AUDIT_20261022_ZH.md) 与 [verify_historical_runtime_identity.py](phase1/verify_historical_runtime_identity.py)。
+
+若另行开启周期，先决定如何处理 B 的历史身份缺口：若找不到同期清单，应把当前 B 明确作为历史归档对照，或另行批准一组新冻结 B 基线，并说明它不是旧 B 的精确复现。三轮上限已用尽；本次只做离线身份/日志复核，不新增航次、训练或 TEST 访问。

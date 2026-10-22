@@ -1,0 +1,30 @@
+{
+  "schema": "DATT_LAG_PROXY_DESCRIPTIVE_V1",
+  "analysis_role": "offline descriptive persistence diagnostic on existing VAL+DEV raw; not an experiment",
+  "test_accessed": false,
+  "inputs": {
+    "mechanism_manifest_sha256": "f1ba9ff2335ea75e992436f753fb75ff1678271f33bf6d2fe706db4b45572e3b",
+    "paired_score_table_sha256": "b2264145e9d18896f5764ffe38302576dd08c80e7cce1c277323246092169137",
+    "frozen_raw_indexes": {
+      "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\corrected_reference_training_v1\\corrected_pair_eval_v1\\reports\\RAW_INDEX.csv": "364367e46ae8e3eb3335efd34a834b984a2a87fc1cef0dd5bf4991bbf342d8b4",
+      "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\corrected_reference_training_v1\\corrected_pair_eval_tail21_v1\\reports\\RAW_INDEX.csv": "3527883329ec23f51928d3967071d307a42683adc831cee8958822c7b732d116"
+    },
+    "scene_count": 72,
+    "split_set": [
+      "DEV",
+      "VAL"
+    ],
+    "raw_identity_set_sha256": "6225763db893447b748dbdf5f79cb7962bd6e7d1ce7265113a9486871c262a33"
+  },
+  "signal": "dAtt_k=(R_actual_k-R_raw_k)e3*T_req_k/m_true; computed after event k command and compared with dAtt_(k+1), the persistence predictor available one event later",
+  "timing": "100 Hz events; one event lag is 0.01 s; only valid inference events, consecutive within each scene",
+  "metrics": "scene-level vector persistence RMSE/cosine and per-axis correlation/sign agreement; group summaries macro-average scenes",
+  "geometric_bound": "||dAtt_k||_2 <= 2*T_req_k/m_true, checked pointwise; this is not a safety or lag-error bound",
+  "limits": [
+    "uses oracle simulated attitude and true mass; sensor/mass estimator error is not represented",
+    "closed-loop trajectories would change under intervention; same-trajectory persistence is not a causal treatment result",
+    "no alpha, saturation safety margin, stability proof, or performance qualification is inferred",
+    "all 72 raw files are VAL/DEV; TEST48 is not accessed"
+  ],
+  "command": "python -B reports/paper14_v2/phase1/datt_lag_proxy_analysis.py"
+}

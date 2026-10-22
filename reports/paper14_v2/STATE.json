@@ -83,7 +83,14 @@
     "phase1/datt_nextblock_diagnostic.py",
     "phase1/datt_nextblock_v1/datt_nextblock_pairs.csv",
     "phase1/datt_nextblock_v1/datt_nextblock_group_summary.csv",
-    "phase1/datt_nextblock_v1/datt_nextblock_metadata.json"
+    "phase1/datt_nextblock_v1/datt_nextblock_metadata.json",
+    "phase1/DATT_LAG_PROXY_DIAGNOSTIC_ZH.md",
+    "phase1/datt_lag_proxy_analysis.py",
+    "phase1/datt_lag_proxy_v1/datt_lag_proxy_scene_summary.csv",
+    "phase1/datt_lag_proxy_v1/datt_lag_proxy_group_summary.csv",
+    "phase1/datt_lag_proxy_v1/datt_lag_proxy_metadata.json",
+    "phase1/HISTORICAL_RUNTIME_IDENTITY_AUDIT_20261022_ZH.md",
+    "phase1/verify_historical_runtime_identity.py"
   ],
   "process_snapshot": {
     "disk_free_bytes": 163714027520,
@@ -95,7 +102,7 @@
     "checked_at_local": "2026-10-22 14:20:04 +08:00",
     "action": "Read-only PowerShell 7 audit: no DL1018 experiment or MATLAB process; no process started or stopped. Offline regression tests only; TEST remains sealed."
   },
-  "last_updated_local": "2026-10-22 14:20:04 +08:00",
+  "last_updated_local": "2026-10-22 15:18:32 +08:00",
   "phase1_status": {
     "status": "historical_round1_closed_registered_screen_failed",
     "concluded": [
@@ -121,7 +128,9 @@
       "主模型独立审核 Round2 条件离散推导，复算 Head/位置外环界与数值一致；推导只适用于声明假设，完整部署理论验收仍未通过。",
       "主模型在执行前澄清 Round2 配对评分语义：候选与对照需共享场景/输入/时基身份但轨迹允许分叉；补入有效配置与 runner contract 的 PCF-off 离线兼容门槛。",
       "原理论/文献总报告的 Farrell 来源限界句已同步更正，明确可读 PDF 为 ACC 2008 稿，TAC 2009 全文未核读。",
-      "Read-only dAtt next-block diagnosis completed on 72 VAL/DEV scenes: HF conditional association beta=-0.005719 s^2 (scene-cluster 95% CI [-0.008952,-0.002667]) with same-sign early/late estimates; association is not causal and no experiment was launched."
+      "Read-only dAtt next-block diagnosis completed on 72 VAL/DEV scenes: HF conditional association beta=-0.005719 s^2 (scene-cluster 95% CI [-0.008952,-0.002667]) with same-sign early/late estimates; association is not causal and no experiment was launched.",
+      "Read-only one-event dAtt persistence diagnostic completed on the same frozen 72 VAL/DEV identities; independent reviewer and main-model table/source checks passed, with no MAT mutation, TEST access, training, or closed-loop launch. HF vector NRMSE=0.194351 and mean cosine=0.941987; descriptive candidate only, not causal, safe, or performance evidence.",
+      "Independent hash-only runtime identity audit closed all 72 DSSM run records to 61 primary plus 11 tail21 stable statuses, model/run_start identity and frozen source snapshots; the two archive .m trees are byte-identical. B still has 72 raw/run_start identities but no per-run source/runtime-tree binding, so its historical executable identity remains unclosed. No raw_run.mat was opened and TEST was untouched."
     ],
     "unresolved": [],
     "current_experiment_interrupted": false,
@@ -167,7 +176,7 @@
   },
   "current_decision": "STOP_NEW_RUNS_AFTER_THREE_FAILED_REGISTERED_SCREENS; NO_72_NO_TEST; TEST_REMAINS_SEALED",
   "paper_evidence_package_status": "NOT_QUALIFIED",
-  "next_action": "Three-round cap exhausted; no new runs or TEST48. The full72 offline dAtt next-block diagnosis supports an observational high-frequency association (beta=-0.005719 s^2; scene-bootstrap 95% CI [-0.008952,-0.002667]), same direction in early and late phases; causal intervention remains unresolved. If a separate cycle is explicitly opened, prioritize deriving a deployable single-factor high-frequency dAtt intervention before the W15 RBF-to-DSSM draft, close B runtime identity, then freeze the exact 12-scene taskbook. Development performance, method contribution, deployed-theory proof, ablations and TEST gates remain unresolved.",
+  "next_action": "Three-round cap exhausted; no new runs or TEST48 in this cycle. The one-event dAtt persistence diagnostic passed independent formula/identity/group-macro review and keeps a delayed dAtt probe as a falsifiable candidate only; it does not establish causal benefit or safety. DSSM72 identity is now closed to archived source snapshots; B historical runtime identity remains unclosed and may be unrecoverable. Before any separately authorized cycle, locate a B contemporaneous source manifest or explicitly choose archival-comparator limitations versus a newly frozen B baseline, then freeze one single-factor 12-scene taskbook. Development performance, method contribution, deployed-theory proof, ablations and TEST gates remain unresolved.",
   "phase3_status": {
     "status": "closed_registered_screen_gate_failed",
     "taskbook": "../../experiments/paper14_v2_round3_xy_pcf_screen/TASKBOOK_ZH.md",
@@ -363,7 +372,14 @@
     "w15_control_chain_replay_json": "phase1/w15_control_chain_replay_20261022.json",
     "qualification_audit_matrix": "QUALIFICATION_AUDIT_MATRIX_20261022.md",
     "limited_theory_appendix": "phase1/theory_appendix_limited_20261022.md",
-    "datt_nextblock_report": "phase1/DATT_NEXTBLOCK_DIAGNOSTIC_REPORT_ZH.md"
+    "datt_nextblock_report": "phase1/DATT_NEXTBLOCK_DIAGNOSTIC_REPORT_ZH.md",
+    "datt_lag_proxy_report": "phase1/DATT_LAG_PROXY_DIAGNOSTIC_ZH.md",
+    "datt_lag_proxy_script": "phase1/datt_lag_proxy_analysis.py",
+    "datt_lag_proxy_scene_table": "phase1/datt_lag_proxy_v1/datt_lag_proxy_scene_summary.csv",
+    "datt_lag_proxy_group_table": "phase1/datt_lag_proxy_v1/datt_lag_proxy_group_summary.csv",
+    "datt_lag_proxy_metadata": "phase1/datt_lag_proxy_v1/datt_lag_proxy_metadata.json",
+    "historical_runtime_identity_report": "phase1/HISTORICAL_RUNTIME_IDENTITY_AUDIT_20261022_ZH.md",
+    "historical_runtime_identity_verifier": "phase1/verify_historical_runtime_identity.py"
   },
   "closeout_review": {
     "status": "PASS_AFTER_DATT_CLOSEOUT_SYNC",
@@ -383,7 +399,7 @@
     "limitation": "The main session has no model-switch control, and collaboration tools expose no model or normal/fast speed selector. Main-session and subagent model/speed compliance cannot be independently verified."
   },
   "closeout_artifact_sha256": {
-    "FINAL_CLOSEOUT_20261022.md": "0e26e3fb5a1e0ff752e19487f3c37509353233dd14cb52b096f99f2dd02bc4b9",
+    "FINAL_CLOSEOUT_20261022.md": "ad39ae35342f926b87c8b4179490dfa3ebaa316f4c9d0863b2b288072878f684",
     "SCENE_PAIRWISE_LOSSES_20261022.csv": "5d8279e9c2c3dfed4b8c6f3c466f2c5235c13e62ec92becc7c53cc131d5d058b",
     "build_scene_pairwise_losses.ps1": "f9733a3638eb4f31b54fd4f5755c0c90a24d0a592a322848b00a9a0d5a652d4b",
     "README_EXECUTION_ZH.md": "07821d0adb4c2f3a7947b046409a146c05dcf18cdae2f75664cb01116f11f912",
@@ -402,6 +418,13 @@
     "QUALIFICATION_AUDIT_MATRIX_20261022.md": "879065721cd998464150b323e954c73d95c3d10b7db9e2846c3f4fad2c0a8574",
     "phase1/theory_appendix_limited_20261022.md": "2166ffa8e9058034687ffd51a6e4e767303291fbfb8092c298da680bc8b7a905",
     "phase1/DATT_NEXTBLOCK_DIAGNOSTIC_REPORT_ZH.md": "2e4cf9c87918178ab78f0478efabb2498c7dba4ec04f2d2654eca15767f0d2c1",
+    "phase1/DATT_LAG_PROXY_DIAGNOSTIC_ZH.md": "dacb08c9b0a0714f419177dea70dcc91d23f903b0f4cc247429507f8b999d0c4",
+    "phase1/datt_lag_proxy_analysis.py": "1732811c13952c4251551d655c2ae83b8939c5aba698232d74e6da67ef6c9e8f",
+    "phase1/datt_lag_proxy_v1/datt_lag_proxy_scene_summary.csv": "af98a87087ddd31c2a828d410611bafe1cb47f64def8cdb5935cb6e3fcbf3f97",
+    "phase1/datt_lag_proxy_v1/datt_lag_proxy_group_summary.csv": "ef012bd56c69dc2a14485e4c463d2bfc1924da581ee8c8def9f4a3a7a9ff3635",
+    "phase1/datt_lag_proxy_v1/datt_lag_proxy_metadata.json": "7b14dd6b17639df45f37a2d84e67b710ab0e336dde0b4d5d3fa6bbacfe4fffac",
+    "phase1/HISTORICAL_RUNTIME_IDENTITY_AUDIT_20261022_ZH.md": "2e8ad23f4652602902c96a4765ef8dccc0c9aba42237fb9085d22249a18e1c9d",
+    "phase1/verify_historical_runtime_identity.py": "44ef81503b4d7ac3722d506441bec415b95920f0bc7605c7cf81819e4a51d7d7",
     "NEXT_CYCLE_TASKBOOK_DRAFT_W15_RBF_BRIDGE_20261022.md": "d66e65bd312d87a99caf1388f3f8f0ba5f99298507ccb1404b7b08d886e0a384",
     "../integration_next14_v1/engineering/A_CORRECTED_REFERENCE_CACHE_GUARD_ZH.md": "207b994eb42570481ba90c7f3c61a3e72ff65edb883df9002aa486f2b34b5214"
   },
@@ -512,7 +535,44 @@
       "metadata_json_sha256": "b1d08fd717fdb8c374337b7c49079516473a80481ca355c290b642e79e703fc8"
     },
     "cycle_decision": "Rounds 3/3 used; no new experiment or TEST48 authorized in this cycle; qualification remains NOT_QUALIFIED.",
-    "next_action": "If a separate cycle is opened, prioritize a deployable single-factor high-frequency dAtt intervention before the W15 RBF bridge draft; first close B runtime identity and freeze the 12-scene taskbook. Do not infer intervention direction from the observational coefficient."
+    "next_action": "If a separate cycle is opened, first decide whether B historical runtime identity can be recovered; if not, explicitly accept the archival-comparator limitation or separately budget a new frozen B baseline. DSSM72 run identity is closed to the two archived sessions. A delayed dAtt probe remains a candidate only; freeze its single-factor 12-scene taskbook before any run and do not infer intervention direction from observational or persistence statistics."
+  },
+  "historical_runtime_identity_audit": {
+    "status": "DSSM72_IDENTITY_CLOSED_TO_ARCHIVED_SESSIONS; B72_RUNTIME_UNCLOSED",
+    "report": "phase1/HISTORICAL_RUNTIME_IDENTITY_AUDIT_20261022_ZH.md",
+    "verifier": "phase1/verify_historical_runtime_identity.py",
+    "archive_root": "../REFERENCE_FIX_FULL72_20261021_022342_313/corrected_reference_training_v1",
+    "dssm": {
+      "scene_count": 72,
+      "primary_session_stable_records": 61,
+      "tail21_session_stable_records": 11,
+      "raw_sha_unique_and_exactly_matched": true,
+      "run_start_opaque_byte_sha_matches": 72,
+      "runtime_tree_primary_sha256": "5a4a104314c63a2a7928e2be359b6ce269da92f23895f1346768728879745db0",
+      "runtime_tree_tail21_sha256": "ef022e03be0c1caee5753fbf1a233aff4adf4331dfb520c6fcc9db2945de76c6",
+      "normalized_runtime_tree_sha256": "2b47d306b50f5b654d76da5850b62d765f1fd63fc63cf9a6cbade1173862fa38",
+      "local_runtime_m_files_byte_identical": 8,
+      "path_bound_runner_supervisor_identity_differences": true
+    },
+    "baseline_b": {
+      "manifest_rows": 72,
+      "raw_and_run_start_hashes_present": true,
+      "per_run_runtime_tree_sha256_present": false,
+      "historical_runtime_identity": "UNCLOSED"
+    },
+    "test_accessed": false,
+    "raw_run_mat_opened": false,
+    "plant_or_training_started": false
+  },
+  "post_closeout_supplement_review": {
+    "status": "PASS_WITH_SCOPE_LIMITS",
+    "scope": "Main-model independent arithmetic/source check for the dAtt lag proxy; independent Luna audit of the proxy; main-model hash-only rerun of the DSSM/B identity verifier; independent archive identity audit. No raw_run.mat content, TEST, Plant, training, or experiment was accessed or launched.",
+    "findings": [
+      "dAtt lag-proxy formula, consecutive 100 Hz pairing, scene-macro calculations, and reported hash identities pass; interpretation remains descriptive only.",
+      "DSSM72 raw/run_start/model/status identities map 61+11 to archived sessions; local runtime .m snapshots are byte-identical. B72 lacks per-run runtime-tree/source binding.",
+      "Main-session/subagent model and speed remain unverifiable because the collaboration interface exposes no actual model or normal/fast selector."
+    ],
+    "validation": "python -B reports/paper14_v2/phase1/verify_historical_runtime_identity.py returned PASS_DSSM72_IDENTITY_B_UNCLOSED; one independent CSV-only macro recomputation passed."
   },
   "reference_guard_followup": {
     "status": "PASS",
