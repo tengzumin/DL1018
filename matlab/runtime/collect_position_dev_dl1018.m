@@ -3,6 +3,7 @@ function report=collect_position_dev_dl1018(root)
 root=char(java.io.File(root).getCanonicalPath());
 addpath(fullfile(root,'matlab','runtime'),fullfile(root,'matlab','data'), ...
     fullfile(root,'matlab','scenes'),fullfile(root,'matlab','models'),fullfile(root,'matlab','metrics'));
+assert_scene_reference_contract_dl1018(root);
 [cfg,~,resolved]=init_dl1018();assert(strcmp(root,resolved));
 M=readtable(fullfile(root,'configs','scene_specs.csv'),'TextType','string');
 M=M(M.split=="DEV",:);assert(height(M)==24);

@@ -5,6 +5,7 @@ assert(ismember(gateId,{'G04_P_STUDENT','G07_A_TEACHER','G09_A_STUDENT'}), ...
     'DL1018:CollectorGate','Unsupported role collection Gate.');
 addpath(fullfile(root,'matlab','runtime'),fullfile(root,'matlab','data'), ...
     fullfile(root,'matlab','scenes'),fullfile(root,'matlab','models'));
+assert_scene_reference_contract_dl1018(root);
 [cfg,~,resolved]=init_dl1018();assert(strcmp(root,resolved));
 M=read_specs(fullfile(root,'configs','scene_specs.csv'));
 if strcmp(gateId,'G07_A_TEACHER')

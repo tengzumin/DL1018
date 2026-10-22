@@ -1,0 +1,94 @@
+{
+  "actual_raw_files_read": 58,
+  "corrected_dssm14_72": {
+    "losses": 26,
+    "mean_B_mm": 17.058080675350787,
+    "mean_DSSM14_mm": 12.387217899198617,
+    "n": 72,
+    "ties": 0,
+    "wins": 46,
+    "worst_loss_delta_mm": 2.4062681782696194,
+    "worst_loss_scene": "DL1018_VAL_T3_C00_W13"
+  },
+  "existing_reuse": {
+    "PAIR14_composed_report": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\corrected_reference_training_v1\\corrected_pair_eval_tail21_v1\\reports\\composed_postrun\\PAIR_EVAL_COMPOSED_144_20261021T135503Z_56556.json",
+    "prior_adaptation_audit": "Not reused as corrected evidence: its fixed 216 rows are FULL72 old NN methods.",
+    "raw_scan": "The analyzer imports raw_scan.arr and raw_scan.score as pure helpers; it never calls raw_scan.main.",
+    "runtime_replay": "Reuse the 144 corrected PAIR14 verified REPLAY_VALID rows; no replay runner is invoked."
+  },
+  "fixed_task_win_references": {
+    "FIG8_3D": "DL1018_VAL_T2_C02_W12",
+    "HELIX": "DL1018_VAL_T1_C00_W07",
+    "SQUARE": "DL1018_VAL_T3_C03_W00"
+  },
+  "interpretation_limit": "State-velocity acceleration is a centered numerical derivative at 1 ms transition samples, with the first/last samples excluded; it is not a logged plant acceleration. Fields with no valid inference events remain unavailable. All component comparisons are descriptive associations on separate closed-loop trajectories.",
+  "loss_phase_patterns_0_5_vs_5_20": {
+    "BOTH_WORSE": 12,
+    "EARLY_ONLY": 4,
+    "LATE_ONLY": 10
+  },
+  "mean_loss_delta_mm": 0.85473729008508,
+  "pair_transition_grid_identity_verified": 29,
+  "purpose": "Corrected DSSM14 26-loss offline diagnosis with 3 fixed task win references",
+  "raw_file_sha_verified": 58,
+  "raw_files_whitelisted": 58,
+  "raw_phase_patterns_recomputed": {
+    "BOTH_WORSE": 12,
+    "EARLY_ONLY": 4,
+    "LATE_ONLY": 10
+  },
+  "raw_scan_helper_sha256": "680c9a3fe95d9c3b4fb9c7702343078fc679c3f64a41a44865aa4aa7435100d4",
+  "raw_scan_helper_source": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1009_DL1018_FULL_AUDIT_20261020_233501\\scripts\\raw_scan.py",
+  "raw_scan_pure_helper_q_and_external_identity_verified": 58,
+  "raw_scope": "Only VAL/DEV rows; 29 scenes x {FULL B, corrected DSSM14}; no TEST row or TEST raw path is in the whitelist.",
+  "runtime_replay_reused_valid_corrected_candidate_rows": 29,
+  "selected_physical_scenes": 29,
+  "selection_rule": "26 DSSM14 losses from PAIR14_SCENE_RESULTS_VS_B; per task, earliest VAL DSSM14 win by source_scene_id as fixed reference; then B and DSSM14 only.",
+  "sources": {
+    "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\reports\\corrected14_full72_benchmark_20261021\\PAIR14_SCENE_RESULTS_VS_B.csv": {
+      "sha256": "b2264145e9d18896f5764ffe38302576dd08c80e7cce1c277323246092169137",
+      "size_bytes": 108162
+    },
+    "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\reports\\corrected14_full72_benchmark_20261021\\VALIDATION_SUMMARY.json": {
+      "sha256": "e3759ba831ce8dd71f41846c49f9f7068b1e93b065afcf43c656d358a02c5bac",
+      "size_bytes": 1558
+    },
+    "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\corrected_reference_training_v1\\corrected_pair_eval_tail21_v1\\reports\\RAW_INDEX.csv": {
+      "sha256": "3527883329ec23f51928d3967071d307a42683adc831cee8958822c7b732d116",
+      "size_bytes": 47197
+    },
+    "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\corrected_reference_training_v1\\corrected_pair_eval_tail21_v1\\reports\\b_comparison_offline_v1\\actual_raw_file_integrity_216.csv": {
+      "sha256": "acc5c37fa99a6c5cb1ff46e25eeeda2ef19fc5c7eef8f65b531e75d4558ea179",
+      "size_bytes": 105175
+    },
+    "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\corrected_reference_training_v1\\corrected_pair_eval_tail21_v1\\reports\\composed_postrun\\PAIR_EVAL_COMPOSED_144_20261021T135503Z_56556.json": {
+      "sha256": "b15b7bbb812d5407b8878e86bfe6b5e96298789f3dd817d9c6389f9f8d185e22",
+      "size_bytes": 3210610
+    },
+    "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\corrected_reference_training_v1\\corrected_pair_eval_v1\\reports\\RAW_INDEX.csv": {
+      "sha256": "364367e46ae8e3eb3335efd34a834b984a2a87fc1cef0dd5bf4991bbf342d8b4",
+      "size_bytes": 89229
+    },
+    "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\reports\\RAW_INDEX.csv": {
+      "sha256": "4213d3b9993fe64940e558dbb7da198b18d9fa9cfa44064fcbbea80ea04806f5",
+      "size_bytes": 144560
+    },
+    "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\supporting_rescore\\corrected_training_comparison\\comparison_plan.json": {
+      "sha256": "fd6805c79281ec346c464f2b7a998ad801723e6872f2b6e9a7df2da78da662d5",
+      "size_bytes": 4438
+    },
+    "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\supporting_rescore\\corrected_training_comparison_v2\\comparison_plan_v3.json": {
+      "sha256": "0fd120c640da5a2579f9ba46a40cdbee7579796adc888e0216ac7f31a3c4e9be",
+      "size_bytes": 3659
+    },
+    "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\supporting_rescore\\corrected_training_comparison_v2\\outputs\\current14\\SCENE_COMPARISON_V2.csv": {
+      "sha256": "a1d8479126ec33891ae336177e6a54fd05ad97c60e27ea253fb4f1ac0f96d4b9",
+      "size_bytes": 217745
+    },
+    "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\supporting_rescore\\outputs\\RAW_METRICS.csv": {
+      "sha256": "e9736f11487385bf1feceb9bee4a68b2b7547f8875fbe071d1ffff009d757384",
+      "size_bytes": 995746
+    }
+  },
+  "status": "RAW_ANALYSIS_COMPLETE"
+}

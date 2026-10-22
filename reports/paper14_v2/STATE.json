@@ -86,16 +86,16 @@
     "phase1/datt_nextblock_v1/datt_nextblock_metadata.json"
   ],
   "process_snapshot": {
-    "disk_free_bytes": 164264988672,
-    "disk_free_gb": 153.04,
+    "disk_free_bytes": 163714027520,
+    "disk_free_gb": 152.47,
     "matlab_processes": 0,
     "python_processes": 8,
     "python_dl1018_experiment_processes": 0,
     "solidworks_mcp_processes": 8,
-    "checked_at_local": "2026-10-22 13:50:27 +08:00",
-    "action": "Read-only PowerShell 7 audit: no project-matching Python experiment or MATLAB process, no process started or stopped; TEST remains sealed."
+    "checked_at_local": "2026-10-22 14:20:04 +08:00",
+    "action": "Read-only PowerShell 7 audit: no DL1018 experiment or MATLAB process; no process started or stopped. Offline regression tests only; TEST remains sealed."
   },
-  "last_updated_local": "2026-10-22 13:53:16 +08:00",
+  "last_updated_local": "2026-10-22 14:20:04 +08:00",
   "phase1_status": {
     "status": "historical_round1_closed_registered_screen_failed",
     "concluded": [
@@ -401,7 +401,8 @@
     "phase1/w15_control_chain_replay_20261022.json": "94682e19d7825ad978795bce2022ef2f5351f16cae6ac9e2261741c7924cea4f",
     "QUALIFICATION_AUDIT_MATRIX_20261022.md": "879065721cd998464150b323e954c73d95c3d10b7db9e2846c3f4fad2c0a8574",
     "phase1/theory_appendix_limited_20261022.md": "2166ffa8e9058034687ffd51a6e4e767303291fbfb8092c298da680bc8b7a905",
-    "phase1/DATT_NEXTBLOCK_DIAGNOSTIC_REPORT_ZH.md": "2e4cf9c87918178ab78f0478efabb2498c7dba4ec04f2d2654eca15767f0d2c1"
+    "phase1/DATT_NEXTBLOCK_DIAGNOSTIC_REPORT_ZH.md": "2e4cf9c87918178ab78f0478efabb2498c7dba4ec04f2d2654eca15767f0d2c1",
+    "../integration_next14_v1/engineering/A_CORRECTED_REFERENCE_CACHE_GUARD_ZH.md": "207b994eb42570481ba90c7f3c61a3e72ff65edb883df9002aa486f2b34b5214"
   },
   "r3_offline_artifact_review": {
     "status": "PASS_AFTER_CAUSAL_WORDING_REVISION",
@@ -511,5 +512,40 @@
     },
     "cycle_decision": "Rounds 3/3 used; no new experiment or TEST48 authorized in this cycle; qualification remains NOT_QUALIFIED.",
     "next_action": "If a separate cycle is opened, prioritize a deployable single-factor high-frequency dAtt intervention before the W15 RBF bridge draft; first close B runtime identity and freeze the 12-scene taskbook. Do not infer intervention direction from the observational coefficient."
+  },
+  "reference_guard_followup": {
+    "status": "PASS",
+    "implementation_changes": [
+      "MATLAB scene GET and G01 carry DL1018_SCENE_REF_FIG8_A2_V2.",
+      "Collector, gate, Python runner, and low-level Plant entry fail closed on stale/missing reference identity.",
+      "Corrected FIG8 second derivative and make_scenes default root traversal."
+    ],
+    "validation": {
+      "powershell": "7.6.6",
+      "python_result": "python -B -m unittest discover -s tests -p 'test_dl1018_scene_reference.py' -v: 6 tests passed",
+      "matlab_numeric_result": {
+        "default_root_get_passed": true,
+        "scenes_checked": 9,
+        "max_position_error_m": 0,
+        "max_velocity_error_mps": 0,
+        "max_five_point_acceleration_error_mps2": 1.331e-11,
+        "old_fig8_acceleration_error_mps2": 0.6476,
+        "plant_calls": 0,
+        "optimizer_steps": 0,
+        "test_accesses": 0
+      },
+      "matlab_cache_guard_result": {
+        "plant_boundary_missing_g01_rejected": true,
+        "plant_calls": 0,
+        "optimizer_steps": 0,
+        "test_accesses": 0
+      },
+      "git_diff_check": "PASS with cr-at-eol whitespace handling for the repository CRLF state file."
+    },
+    "review": "GPT-6-Luna xhigh requested; runtime model/speed not independently verifiable",
+    "new_research_rounds": 0,
+    "new_training_or_simulation": 0,
+    "test_accessed": false,
+    "current_cycle_status": "Three rounds exhausted; NOT_QUALIFIED; no 72-scene expansion or TEST48."
   }
 }

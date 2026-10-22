@@ -11,6 +11,8 @@ function log=run_dl1018_closed_loop(s,method,cfg,opts)
     % OUTPUT:
     %   log: 闭环时序与诊断日志。
     %RUN_BASELINE_CLOSED_LOOP One shared controller loop; Plant advances only here.
+    projectRoot=fileparts(fileparts(fileparts(mfilename('fullpath'))));
+    assert_scene_reference_contract_dl1018(projectRoot,s);
     if nargin<4,opts=struct;
     end
     assert(strcmp(method,'B2-RBF-Full-SPLIT')&&abs(cfg.plant.dt-.001)<1e-12, ...
