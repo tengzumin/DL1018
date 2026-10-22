@@ -68,13 +68,13 @@
     "phase1/round2_literature_main_review.md"
   ],
   "process_snapshot": {
-    "disk_free_bytes": 166269784064,
-    "disk_free_gb": 166.27,
+    "disk_free_bytes": 166259744768,
+    "disk_free_gb": 154.84,
     "matlab_processes": 0,
-    "checked_at_local": "2026-10-22 09:09:14 +08:00",
-    "action": "Read-only PS7 closeout status after Round3 review; no MATLAB process detected; no process stopped or modified; no new run started."
+    "checked_at_local": "2026-10-22 09:26:28 +08:00",
+    "action": "Read-only PS7 final closeout status; no experiment started, no process stopped or modified, TEST remains sealed."
   },
-  "last_updated_local": "2026-10-22 09:09:14 +08:00",
+  "last_updated_local": "2026-10-22 09:27:40 +08:00",
   "phase1_status": {
     "status": "historical_round1_closed_registered_screen_failed",
     "concluded": [
@@ -199,5 +199,31 @@
     "theory_report": "../../experiments/paper14_v2_round3_xy_pcf_screen/reports/round3_theory_audit.md",
     "raw_attempt_manifest": "../../experiments/paper14_v2_round3_xy_pcf_screen/reports/round3_attempt_hashes.csv",
     "new_runs_authorized": false
+  },
+  "closeout_artifacts": {
+    "report": "FINAL_CLOSEOUT_20261022.md",
+    "pairwise_loss_table": "SCENE_PAIRWISE_LOSSES_20261022.csv",
+    "pairwise_builder": "build_scene_pairwise_losses.ps1"
+  },
+  "closeout_review": {
+    "status": "PASS",
+    "reviewer": "GPT-6-Luna xhigh subagent",
+    "scope": "Read-only audit of report, 120 pairwise records, source CSV identities, criteria coverage, and causal/theory wording.",
+    "findings": [
+      "Rebuilt pairwise keys and values agree for all 120 records; 46 distinct scene IDs.",
+      "No scoring, identity, baseline, or causal-language blocker found.",
+      "TEST48 thresholds and not-evaluated status are stated explicitly."
+    ]
+  },
+  "execution_configuration": {
+    "requested": "GPT-6-Luna xhigh for main decisions and delegated reviewers; normal speed.",
+    "verified": "Delegated independent reviewer used GPT-6-Luna xhigh.",
+    "limitation": "Current Codex main session has no model-switch control; collaboration tools expose no normal/fast speed selector. Main-session model and speed compliance cannot be independently verified."
+  },
+  "closeout_artifact_sha256": {
+    "FINAL_CLOSEOUT_20261022.md": "d3cb64acad6f8eaa038f4cd3dc9dca62ef9120038151a84063c46d956ba584b7",
+    "SCENE_PAIRWISE_LOSSES_20261022.csv": "5d8279e9c2c3dfed4b8c6f3c466f2c5235c13e62ec92becc7c53cc131d5d058b",
+    "build_scene_pairwise_losses.ps1": "f9733a3638eb4f31b54fd4f5755c0c90a24d0a592a322848b00a9a0d5a652d4b",
+    "README_EXECUTION_ZH.md": "e8a39a482020afbe01773c8705970790e48f57aa53f08fbf0196bbb55d5fcde6"
   }
 }
