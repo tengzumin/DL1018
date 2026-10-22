@@ -66,7 +66,12 @@
     "phase1/round2_theory_followup.md",
     "phase1/round2_theory_main_review.md",
     "phase1/round2_literature_main_review.md",
-    "phase1/w15_raw_offline_causal_audit_20261022.md"
+    "phase1/w15_raw_offline_causal_audit_20261022.md",
+    "R3_METHOD_EXPERIMENTS_DRAFT_ZH.md",
+    "figures/gen_fig_r3_screen_evidence.py",
+    "figures/r3_screen_evidence_summary.csv",
+    "figures/fig_r3_screen_evidence.pdf",
+    "figures/fig_r3_screen_evidence.png"
   ],
   "process_snapshot": {
     "disk_free_bytes": 165991919616,
@@ -78,7 +83,7 @@
     "checked_at_local": "2026-10-22 10:46:27 +08:00",
     "action": "Read-only PowerShell 7 audit: no MATLAB process and no Python command line matching DL1018/paper14_v2/run_dl1018; all six Python processes are SolidWorks MCP services. No process started or stopped; TEST remains sealed."
   },
-  "last_updated_local": "2026-10-22 10:46:27 +08:00",
+  "last_updated_local": "2026-10-22 11:01:12 +08:00",
   "phase1_status": {
     "status": "historical_round1_closed_registered_screen_failed",
     "concluded": [
@@ -299,7 +304,12 @@
     "pairwise_loss_table": "SCENE_PAIRWISE_LOSSES_20261022.csv",
     "pairwise_builder": "build_scene_pairwise_losses.ps1",
     "w15_offline_diagnosis": "phase1/w15_offline_diagnosis_20261022.md",
-    "w15_source_audit": "phase1/w15_source_audit_20261022.md"
+    "w15_source_audit": "phase1/w15_source_audit_20261022.md",
+    "r3_internal_draft": "R3_METHOD_EXPERIMENTS_DRAFT_ZH.md",
+    "r3_figure_generator": "figures/gen_fig_r3_screen_evidence.py",
+    "r3_summary": "figures/r3_screen_evidence_summary.csv",
+    "r3_figure_pdf": "figures/fig_r3_screen_evidence.pdf",
+    "r3_figure_png": "figures/fig_r3_screen_evidence.png"
   },
   "closeout_review": {
     "status": "PASS",
@@ -322,6 +332,20 @@
     "build_scene_pairwise_losses.ps1": "f9733a3638eb4f31b54fd4f5755c0c90a24d0a592a322848b00a9a0d5a652d4b",
     "README_EXECUTION_ZH.md": "3b02e01a9ea2bf2a5adecc18c1d7c52339be688f197fd6767a0e53b9af41706f",
     "phase1/w15_offline_diagnosis_20261022.md": "617d7030b2bd9b01a3a24784fdbE2e1ef6b4920ec850c5010e0658446dc25094",
-    "phase1/w15_source_audit_20261022.md": "1602f8c635ffd3a7f9b005b6c7a88dbfb0284257c7215c99036c7a0f03e02ef8"
+    "phase1/w15_source_audit_20261022.md": "1602f8c635ffd3a7f9b005b6c7a88dbfb0284257c7215c99036c7a0f03e02ef8",
+    "R3_METHOD_EXPERIMENTS_DRAFT_ZH.md": "f54697e4f4f35740a90af3d3dbe7536c80db588b5d38b7a45341ccbbae308de6",
+    "figures/gen_fig_r3_screen_evidence.py": "25aa1197bb0b2722dd1122f4f145af256474d35bc629699dc6a647d58e776121",
+    "figures/r3_screen_evidence_summary.csv": "4803fc54f1c9a1b21338712a3e1bf25c28d73fe90444089533743b5606327657",
+    "figures/fig_r3_screen_evidence.pdf": "b32ecda36864077676e2d2a6900761b50ba1e5d96885485a458e0ff14b3f3ea9",
+    "figures/fig_r3_screen_evidence.png": "2c9765f646695ee457835e880bae9cf7ce4a5b9a7feae21dc762deefc7b08b75"
+  },
+  "r3_offline_artifact_review": {
+    "status": "PASS_AFTER_CAUSAL_WORDING_REVISION",
+    "reviewer": "GPT-6-Luna xhigh requested; runtime model and speed are not independently verifiable",
+    "scope": "Read-only consistency review of the draft, figure generator, summary CSV, PNG, taskbook, round-3 main review, closeout, and W15 audit; PDF visual layout was checked by the main session through embedded-font and text-extraction inspection.",
+    "finding": "The first review identified one causal overstatement. The sentence was revised to state that the relation is unestablished while closed-loop accumulation cannot be excluded; follow-up found no remaining overclaim. Numeric, group, win/loss, and scope checks passed.",
+    "validation": "Figure generator rerun from the fixed 12-scene CSV; 8 wins, 0 ties, 4 losses; all12 deltaQ -0.635549 mm; high-frequency -0.062289 mm; W15 +0.348385 mm.",
+    "test_accessed": false,
+    "new_simulation_or_training": false
   }
 }
