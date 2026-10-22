@@ -633,5 +633,83 @@
     ],
     "validation": "PowerShell 7 verified the R3 runner, DSSM forward, FEATURE Head, PCF helper, X14 Plant-state feature, controller P.mass source, and offline dAtt construction; a Luna xhigh review was requested but actual model/speed cannot be independently verified. Text and state hash entries were refreshed; no experiment or test workload was run.",
     "current_cycle_status": "Three rounds exhausted; NOT_QUALIFIED; no new runs, DEV72 expansion, or TEST48."
+  },
+  "x14_training_feature_lineage_review": {
+    "status": "PASS_WITH_SOURCE_H5_PRODUCER_HASH_LIMIT",
+    "report": "phase1/DATT_LAG_PROXY_DIAGNOSTIC_ZH.md",
+    "scope": "Read-only PowerShell 7 review of text indices/source code and root attributes plus x14 shapes for 1,632 TRAIN/VAL event H5 files. No H5 numeric arrays, raw MAT, or TEST data were read; no Plant simulation, training, or experiment was launched.",
+    "data_identity": {
+      "pair_training_input_rows": 1632,
+      "g3_d4_cache_index_rows": 1632,
+      "exact_per_run_sha_matches": {
+        "raw": 1632,
+        "event_h5": 1632,
+        "cache": 1632
+      },
+      "split_counts": {
+        "TRAIN": 1536,
+        "VAL": 96
+      },
+      "event_h5_metadata_rows_checked": 1632,
+      "event_h5_contract_version": "DL1018_V311_R2E_PAPER_FINAL",
+      "feature_order": [
+        "e_p_xyz_m",
+        "s_p_xyz_mps",
+        "euler_rpy_rad",
+        "nominal_thrust_mps2",
+        "arm_command_1_to_4"
+      ],
+      "all_split_role_and_x14_shape_checks_passed": true,
+      "x14_shape": [
+        1999,
+        14
+      ],
+      "source_manifest_event_h5_sha_matches": 1094,
+      "source_manifest_event_h5_actions": {
+        "REUSE_HS_ACCEPTED": 1088,
+        "PILOT6_IMPORT": 6
+      },
+      "remaining_g3_generated_or_rebuilt_rows": {
+        "total": 538,
+        "RUN_PLANT": 522,
+        "REUSE_FULL72_B_REBUILD_D2_D4": 16
+      }
+    },
+    "frozen_code_sha256": {
+      "d2_exporter": "4506849cc2c888e078129772e6bb1927cb479f02b75c072472778ed32d4cf094",
+      "d2_h5_writer": "9eedcad58dab9e54e4a71a035088f84ed5eab8a7867e45ae017e0259964939ce",
+      "d4_builder": "7f67e51d7502290182f39a27871577a9400faa2badd5b250c28fa71f3165d43f"
+    },
+    "frozen_code_hashes_match_current_source": {
+      "d2_exporter": true,
+      "d2_h5_writer": true,
+      "d4_builder": true
+    },
+    "checkpoint_and_normalizer": {
+      "model_id": "DSSM14",
+      "input_dim": 14,
+      "window": 32,
+      "seed": 2026102001,
+      "published_step": 60000,
+      "checkpoint_sha256": "544b018b78187d9d9cbbcbd5c3332244b80ad91cb137f32bd71198a4302dfbf5",
+      "fit_report_sha256": "ab69002b465638ded0599964371eb17e3c1cecd0c587ca911c2054650c3cac72",
+      "normalizer_status": "PASS_TRAIN_ONLY",
+      "normalizer_source": "final_G3_TRAIN_D4_cache_only",
+      "train_episodes": 1536,
+      "train_event_rows": 3070464,
+      "normalizer_sha256": "520983e01aa9af38bd3c1aad15b5b8e6a65f5129a32e997e2234951ace198404"
+    },
+    "findings": [
+      "All training-input/cache index rows align by raw, H5 and cache SHA. Every inspected event H5 records the Euler-RPY X14 feature order; exporter code puts Plant x(7:9) into that slot, and the training loader uses the first 14 X20 columns.",
+      "The 1,088 reused and 6 pilot-imported H5 files carry stable file hashes and matching contract/feature metadata, but no per-file exporter source SHA. Their producer byte identity is therefore not claimed as cryptographically bound per file.",
+      "Only H5 root attributes and x14 shapes were inspected; no per-sample Euler value was compared with Plant x(7:9). The result establishes metadata/shape and source-code contract consistency, not numerical equality for every sample.",
+      "Replacing Plant Euler with an estimator output changes the input signal semantics/distribution; the existing checkpoint and normalizer cannot be treated as the same validated input identity."
+    ],
+    "independent_review": {
+      "status": "PASS_WITH_SCOPE_LIMIT",
+      "reviewer_request": "GPT-6-Luna xhigh requested; the collaboration interface exposes no speed selector, so normal-versus-Fast execution and backend identity cannot be independently verified.",
+      "finding": "Independently rechecked both 1,632-row indices, per-run raw/H5/cache SHA matches, all H5 contract/feature-order/role/split/shape metadata, frozen code hashes, and DSSM14/normalizer identity. Confirmed 1,088 reuse plus 6 pilot-import rows and the no-value-array scope limit."
+    },
+    "current_cycle_status": "Three rounds exhausted; NOT_QUALIFIED; no new runs, DEV72 expansion, or TEST48."
   }
 }
