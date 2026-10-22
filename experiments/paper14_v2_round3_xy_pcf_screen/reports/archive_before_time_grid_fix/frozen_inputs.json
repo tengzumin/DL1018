@@ -1,0 +1,714 @@
+{
+  "normalizer": {
+    "train_only_report_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\corrected_reference_training_v1\\corrected_pair_training\\reports\\TRAIN_ONLY_NORMALIZER.json",
+    "npz_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\corrected_reference_training_v1\\corrected_pair_training\\data\\normalizer_x14_train_only.npz",
+    "npz_file_sha256": "520983e01aa9af38bd3c1aad15b5b8e6a65f5129a32e997e2234951ace198404",
+    "actual_runner_arrays_fields": [
+      "input_mu",
+      "input_sigma"
+    ],
+    "actual_runner_arrays_identity_sha256": "533aad9a2c66874cfa67f5d268661835e81e58b797cba7d6fc1c12d4013de5f0",
+    "identity_rule": "SHA256 over each field name + NUL + repr((shape,str(float64))) + NUL + C-order float64 bytes; as audited from opts/stage1_position_runtime/model in candidate raw",
+    "train_only_report_sha256": "b1d8a4e0386a6f91d11d51daeec0a01605dcf3fa58fd19f594dadd57e4e4d54e"
+  },
+  "raw_index": {
+    "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\corrected_reference_training_v1\\corrected_pair_eval_v1\\reports\\RAW_INDEX.csv",
+    "sha256": "364367e46ae8e3eb3335efd34a834b984a2a87fc1cef0dd5bf4991bbf342d8b4"
+  },
+  "single_difference": {
+    "path": "opts.stage1_position_runtime.position_only_search_head.eta_mask",
+    "ON": [
+      1,
+      1,
+      1
+    ],
+    "R3": [
+      1,
+      1,
+      0
+    ],
+    "scope": "FEATURE Head update surface only; eta 1 kHz recursion unchanged"
+  },
+  "analysis": {
+    "paired_raw_tolerance_m": 1E-12,
+    "claim_limit": "The fixed 12-scene screen only decides whether to request a separate 72-scene review. It does not prove H3, theory, generalization, or TEST performance.",
+    "metrics": [
+      "Q_0_20_m",
+      "RMSE_X_0_20_m",
+      "RMSE_Y_0_20_m",
+      "RMSE_Z_0_20_m",
+      "RMSE_Z_0_5_m",
+      "RMSE_Z_5_20_m",
+      "peak_m",
+      "p95_m",
+      "motor_saturated_fraction",
+      "generalized_clipped_fraction",
+      "controller_call_time_mean_p95_max_s",
+      "candidate_wall_runtime_s",
+      "status_last_transition_finite_complete_safety"
+    ],
+    "propose_72_only_if": "按全部五项预登记门槛同时通过；否则登记为筛查未通过、不进入72场、保留数据且不调参；不得据此声称证伪H2。",
+    "else": "筛查未通过，不进入72场，保留全部数据且不调参。",
+    "schema": "ROUND3_XY_PCF_SCREEN_ANALYSIS_V1",
+    "decision_delta_direction": "candidate_PCF_off_minus_reference_PCF_on_and_B",
+    "reference_position_input_rule": "B/ON/OFF/XY reference/position input arrays must be exactly equal; never compare closed-loop state trajectories.",
+    "controller_call_time_missing_policy": "Missing, empty, nonfinite, negative, or wrong-length log/controller_call_time_s blocks scoring.",
+    "metric": "Q_0_20_m",
+    "groups": [
+      "W09_W11",
+      "W12_W14",
+      "W15",
+      "W00_W08"
+    ],
+    "high_frequency_group": "W09_W14",
+    "gates": [
+      "hf_mean_q_xy_lt_on_and_off_and_le_b",
+      "hf_z_rmse_strictly_better_than_on_at_least_4_of_6",
+      "w15_and_low_groups_not_worse_than_b",
+      "macro12_xy_q_strictly_better_than_b",
+      "all_12_stable_complete_finite_safe_identity_verified"
+    ],
+    "test_access": false,
+    "theory_gate": "No full closed-loop ISS/UUB proof is established; conditional eta/filter/weight/output bounds do not establish an invariant domain and uniform residual bound or guarantee H3 improvement."
+  },
+  "scene_list": {
+    "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\reports\\paper14_v2\\phase1\\ROUND_SCREEN_12_SCENES.csv",
+    "sha256": "176ed5770824a241b5c41b9c786f2110b730a7783414152875181985d497a32e"
+  },
+  "schema": "ROUND3_XY_PCF_SCREEN_INPUTS_V1",
+  "experiment_dir": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\paper14_v2_round3_xy_pcf_screen",
+  "repo_root": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018",
+  "run": {
+    "head_type": "FEATURE",
+    "model_context_length": 32,
+    "position_event_hz": 100,
+    "method": "DSSM14_PCF_XY",
+    "model_architecture": "DSSM",
+    "attitude": "RBF/G12/R32",
+    "duration_s": 20,
+    "gamma": 12,
+    "seed": 2026102001,
+    "model_window": 32,
+    "pcf_enabled": true,
+    "output_path_pattern": "experiments/paper14_v2_round3_xy_pcf_screen/runs/<scene>/attempt_01",
+    "plant_dt_s": 0.001,
+    "optimizer_steps": 0,
+    "beta": 1,
+    "kappa": 1,
+    "update_enabled": true,
+    "weight_delta_threshold_unitless": 1E-12,
+    "signal_tolerance_mps": 1E-12,
+    "eta_mask": [
+      1,
+      1,
+      0
+    ]
+  },
+  "scenes": [
+    {
+      "task": "FIG8_3D",
+      "band": "W09_W11",
+      "scene_id": "DL1018_VAL_T2_C00_W10",
+      "split": "VAL"
+    },
+    {
+      "task": "FIG8_3D",
+      "band": "W12_W14",
+      "scene_id": "DL1018_VAL_T2_C02_W12",
+      "split": "VAL"
+    },
+    {
+      "task": "FIG8_3D",
+      "band": "W15",
+      "scene_id": "DL1018_VAL_T2_C05_W15",
+      "split": "VAL"
+    },
+    {
+      "task": "FIG8_3D",
+      "band": "W00_W08",
+      "scene_id": "DL1018_VAL_T2_C06_W00",
+      "split": "VAL"
+    },
+    {
+      "task": "HELIX",
+      "band": "W09_W11",
+      "scene_id": "DL1018_VAL_T1_C02_W09",
+      "split": "VAL"
+    },
+    {
+      "task": "HELIX",
+      "band": "W12_W14",
+      "scene_id": "DL1018_VAL_T1_C05_W12",
+      "split": "VAL"
+    },
+    {
+      "task": "HELIX",
+      "band": "W15",
+      "scene_id": "DL1018_VAL_T1_C08_W15",
+      "split": "VAL"
+    },
+    {
+      "task": "HELIX",
+      "band": "W00_W08",
+      "scene_id": "DL1018_VAL_T1_C00_W07",
+      "split": "VAL"
+    },
+    {
+      "task": "SQUARE",
+      "band": "W09_W11",
+      "scene_id": "DL1018_VAL_T3_C12_W09",
+      "split": "VAL"
+    },
+    {
+      "task": "SQUARE",
+      "band": "W12_W14",
+      "scene_id": "DL1018_VAL_T3_C00_W13",
+      "split": "VAL"
+    },
+    {
+      "task": "SQUARE",
+      "band": "W15",
+      "scene_id": "DL1018_VAL_T3_C02_W15",
+      "split": "VAL"
+    },
+    {
+      "task": "SQUARE",
+      "band": "W00_W08",
+      "scene_id": "DL1018_VAL_T3_C03_W00",
+      "split": "VAL"
+    }
+  ],
+  "rescores": [
+    {
+      "role": "ON_CANDIDATE",
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\reports\\paper14_v2\\phase1\\candidate_dssm_raw_rescore.csv",
+      "sha256": "cf0a4dc078f0cb751877695cabc58aba05bd0933b022d948410d376133a974e0"
+    },
+    {
+      "role": "B_BASELINE",
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\reports\\paper14_v2\\phase1\\baseline_b_raw_rescore.csv",
+      "sha256": "27a77399470eda26fde5f1724d199de10235844c519e8d561547af6f1a8933b2"
+    }
+  ],
+  "runtimeFiles": [
+    {
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\corrected_reference_training_v1\\corrected_pair_eval_v1\\sources\\local_runtime\\run_dl1018_closed_loop.m",
+      "sha256": "01d83dec95aea5d30feef3afd0628a2ce0911f70465f0773a4f568a01b08450b"
+    },
+    {
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\corrected_reference_training_v1\\corrected_pair_eval_v1\\sources\\local_runtime\\run_episode_dl1018.m",
+      "sha256": "fcc1f5de659541e692483f8395d93fd2a251256286ebade5e510ed4c7a2e2330"
+    },
+    {
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\corrected_reference_training_v1\\corrected_pair_eval_v1\\sources\\local_runtime\\position_stage1_model_forward_v2.m",
+      "sha256": "dc803aa102c49d67dd687ae941f8a60bb0c465f74fd01e5ae93ad1ea1a293676"
+    },
+    {
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\corrected_reference_training_v1\\corrected_pair_eval_v1\\sources\\local_runtime\\position_only_search_head_step.m",
+      "sha256": "3bd0fe9686c3b75793575e517d4cc5f08de58ab6a26a2bc7516aa690422bb7dc"
+    },
+    {
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\corrected_reference_training_v1\\corrected_pair_eval_v1\\sources\\local_runtime\\position_only_search_options.m",
+      "sha256": "4e8322934ddb524961fa762426800564f6c758e00b943b622c9143ed734f19bf"
+    },
+    {
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\matlab\\runtime\\controller_options_dl1018.m",
+      "sha256": "93633a5fd95f73d33982045c2fa372d49b1a0df8ea0cfb5ca4461208ca9d53b1"
+    },
+    {
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\matlab\\models\\position_filter_realization_pcf_step_v3_5.m",
+      "sha256": "b4ae22db5bd444a162d0cd01a3a59a589f2e37077b089bb33693401b660228d0"
+    },
+    {
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\matlab\\runtime\\init_dl1018.m",
+      "sha256": "df1cfe9fdbfd61da9636427784852d1fa72a6d3b2aa6a941a094967322afda1c"
+    },
+    {
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\configs\\effective_config.mat",
+      "sha256": "cec90417369c7a44580b0315b2473ae86eb62550012188340b1dd5f3a796522f"
+    }
+  ],
+  "model": {
+    "shape": "33x3",
+    "canonical_id": "CORRECTED_DSSM14_SEED2026102001_FINAL60000",
+    "checkpoint_sha256": "544b018b78187d9d9cbbcbd5c3332244b80ad91cb137f32bd71198a4302dfbf5",
+    "w0_output_W_double_f_order_sha256": "88f8c4f2495438c3797655c48bab1bf0c11ac2e27bff1f5f2a7423a8f0a2cf53",
+    "mat_sha256": "6f3628b10540c617496b2a20f249c4319af79c1a02d5945f1f91f0aead9c9b6e",
+    "mat_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\corrected_reference_training_v1\\corrected_pair_training\\models\\DSSM14\\matlab_model_and_parity.mat"
+  },
+  "matlab": {
+    "product_version": "25.2.0.2978516",
+    "exe": "C:\\Program Files\\MATLAB\\R2025b\\bin\\matlab.exe"
+  },
+  "model_binding": {
+    "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\corrected_reference_training_v1\\corrected_pair_eval_v1\\reports\\PAIR_EVAL_MODEL_BINDING_FORWARD.json",
+    "sha256": "cc5616b3c10def65b8cb3636d92219dd5ed4848a1651d4c1f1d81f147fd384af"
+  },
+  "reuse_manifest": {
+    "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\paper14_v2_round1_frozen_w0_screen\\reused_pair_raw_manifest.csv",
+    "sha256": "3bdfe154105f399607584a56ab0e67e498d200395a76adfe46fd1455880cf2b6"
+  },
+  "lineage": {
+    "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\reports\\paper14_v2\\phase1\\mechanism_run_start_lineage.csv",
+    "sha256": "99f630dd3702e4ea3e9638b875dc1d3d621ffa22daf8b88baa0232d6860fda50"
+  },
+  "safety": {
+    "minimum_free_bytes": 30000000000,
+    "write_outside_experiment_dir": false,
+    "requires_parent_review_before_run": true,
+    "only_val_scene_ids": true,
+    "read_test": false,
+    "train": false,
+    "refuse_existing_attempt": true,
+    "automatic_retry": false,
+    "copy_inputs": false,
+    "optimizer_steps": 0,
+    "restart_or_kill_processes": false,
+    "rerun_b_or_on": false,
+    "estimated_bytes_per_attempt": 55000000,
+    "estimated_cycle_output_bytes": 825000000,
+    "max_cycle_output_bytes": 80000000000,
+    "probe_then_explicit_continue": true,
+    "max_cycle_duration_hours": 72,
+    "requires_parent_review_before_continue": true,
+    "global_deadline_utc": "2026-10-24T17:01:00Z",
+    "selected_pair_raw_count": 24,
+    "selected_pair_raw_total_bytes": 1071933345,
+    "selected_pair_raw_max_bytes": 49600404,
+    "selected_pair_raw_median_bytes": 42410571,
+    "estimated_basis": "Taskbook upper bound 30 s per scene and 55,000,000 bytes per scene; 12 scenes=360 s and 660,000,000 bytes. Actual timing/output is measured only after an authorized PROBE.",
+    "estimated_runtime_per_attempt_seconds": 21.19,
+    "estimated_cycle_runtime_seconds": 318,
+    "gpu_compute_jobs_must_be_zero": true,
+    "gpu_unknown_pid_blocks": true,
+    "gpu_engine_compute_counters_required": true,
+    "gpu_wddm_allowed_graphics_types": [
+      "C+G",
+      "G"
+    ],
+    "gpu_suspected_compute_image_patterns": [
+      "^pythonw?\\.exe$",
+      "^matlab(?:window)?\\.exe$",
+      "^jupyter-lab\\.exe$"
+    ],
+    "gpu_wddm_classification_policy": "Allow only PID-mapped, non-suspicious WDDM G/C+G contexts after ordinary/PIDS PID+type cross-check. C+G identifies both Compute and Graphics contexts but does not establish active kernel work. For compute-query PIDs missing ordinary rows, require one matching PIDS row, a Win32 image mapping, at least one per-PID GPU engine row, and no active per-PID engtype_Compute counter; non-Compute 3D/Copy/Video activity is allowed. Block Type C, unknown PID/type/image, query failure, nonfinite/out-of-range counter values, and any active global or per-PID engtype_Compute counter.",
+    "gpu_wddm_pids_query_required": true,
+    "gpu_compute_query_pid_pids_fallback_required": true,
+    "gpu_per_pid_engine_counters_required": true
+  },
+  "mechanism_evidence": [
+    {
+      "sha256": "fe522376a58dd72239e54fc0e4585f5ff4e84f5a756a646d50ce526e11c88aad",
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\reports\\paper14_v2\\phase1\\mechanism_summary.json"
+    },
+    {
+      "sha256": "4b04c9a8e868bee06cefc6392c2eb8a62674f86461d5fc6659905cfd8e0736e0",
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\reports\\paper14_v2\\phase1\\mechanism_components_summary.json"
+    }
+  ],
+  "scoring_helper": {
+    "sha256": "680c9a3fe95d9c3b4fb9c7702343078fc679c3f64a41a44865aa4aa7435100d4",
+    "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1009_DL1018_FULL_AUDIT_20261020_233501\\scripts\\raw_scan.py"
+  },
+  "scene_payload_identity": {
+    "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\paper14_v2_round1_frozen_w0_screen\\scene_payload_identity.csv",
+    "sha256": "d6a76d83d6e98ab9f29a1dff3ad479ccdfde6dc581cad70f2da4014367bddd16"
+  },
+  "plantFiles": [
+    {
+      "sha256": "5ac26d8c5ba6243f755bcf6ad3a07e98e503c213e4c95edbee7dd2c2627f3d53",
+      "name": "allocate_control",
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\matlab\\core\\allocate_control.m"
+    },
+    {
+      "sha256": "5886c00b3f8800301a324159e534b4c65e857cdd00392a3231af22c6dbba517d",
+      "name": "allocation_matrix",
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\matlab\\core\\allocation_matrix.m"
+    },
+    {
+      "sha256": "517bbfcd0df9526b189f64bff067a49551f573ad96e682ee005533ab510e686c",
+      "name": "arm_directions",
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\matlab\\core\\arm_directions.m"
+    },
+    {
+      "sha256": "8ec66e107156b5219f7e41aca2464eef1ec8043eb7f67df313c0f23ef4b551f5",
+      "name": "arm_mass_properties",
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\matlab\\core\\arm_mass_properties.m"
+    },
+    {
+      "sha256": "cf6b20ffc4df2625d9316a80340d69542e380d14feaed66ef8498e793fdaccbc",
+      "name": "attitude_bs_step",
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\matlab\\core\\attitude_bs_step.m"
+    },
+    {
+      "sha256": "ef42d1d08af24ed82da307a4d886b0c205e28e754177765a2584e3e9bb0cd039",
+      "name": "baseline_force_to_attitude",
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\matlab\\core\\baseline_force_to_attitude.m"
+    },
+    {
+      "sha256": "64fbd68ef652f419066e0546569ba4029bdc00da3eabb0f8019bdc12f66d14a5",
+      "name": "command_filter_init",
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\matlab\\core\\command_filter_init.m"
+    },
+    {
+      "sha256": "15c7eb27162e1971a1164304830f4afd3af35eb9bd709291e969dbfefd0d262b",
+      "name": "command_filter_step",
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\matlab\\core\\command_filter_step.m"
+    },
+    {
+      "sha256": "4fad5e78c0bd4177461647af167e7c86a7defa628b43d523b0b7da2ef5556398",
+      "name": "controller_parameters",
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\matlab\\core\\controller_parameters.m"
+    },
+    {
+      "sha256": "685abb7b72a335fdc826673e6431098fe79af88409f17b1b70ce08edb214dc51",
+      "name": "default_config",
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\matlab\\core\\default_config.m"
+    },
+    {
+      "sha256": "db380b506e4bacc37bc398d5726c5ebd25be8ebc08b6c9e76ff59bc78fd45d3a",
+      "name": "distributed_mass_properties",
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\matlab\\core\\distributed_mass_properties.m"
+    },
+    {
+      "sha256": "51459cd2c09f1181e85bbee8f89ddbd75bd2ba923f1aebacbdd1ecfe7b3ba5ac",
+      "name": "morphology_aware_wind_load",
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\matlab\\core\\morphology_aware_wind_load.m"
+    },
+    {
+      "sha256": "ea533c3ae97cbc552208287e7f8d9b0a0f5a018f36fb5c8bd45520e19e73c681",
+      "name": "position_bs_step",
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\matlab\\core\\position_bs_step.m"
+    },
+    {
+      "sha256": "cc5a71c5c87af0598c310bae5be170c505c7674b115446d826b074d21a049618",
+      "name": "rbf_event_scheduler_step",
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\matlab\\core\\rbf_event_scheduler_step.m"
+    },
+    {
+      "sha256": "4139c7d08daa5bea6e04702b966ce76cdb6a54ea33d9820cfd9c3a70529248f4",
+      "name": "rbf_mimo_basis",
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\matlab\\core\\rbf_mimo_basis.m"
+    },
+    {
+      "sha256": "dde65f5f3b664ecdbd82a393dde0aea8da3b7401b5f54c8a92fcef5acd17f78a",
+      "name": "rbf_mimo_update",
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\matlab\\core\\rbf_mimo_update.m"
+    },
+    {
+      "sha256": "7e10a8c77b2740f2f9f222f3b06c6c021cb3a9342070ad7f3ebaba3c47395ef5",
+      "name": "rk4_vehicle_step",
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\matlab\\core\\rk4_vehicle_step.m"
+    },
+    {
+      "sha256": "962b5434c23d5ac1a9ac568f136635a8ea651a775165d84b7d95250ca88bb9ae",
+      "name": "simulation_parameters",
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\matlab\\core\\simulation_parameters.m"
+    },
+    {
+      "sha256": "711a87e01e616ee141f9068a8c4e31758dc328ade3f692e1a92a5de723d30438",
+      "name": "tcn0916_morphology_scenario",
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\matlab\\core\\tcn0916_morphology_scenario.m"
+    },
+    {
+      "sha256": "3fd341fa2292c8118f8b363611671677517c44009550bdf82e96cd751e6dce5f",
+      "name": "tcn0916_topologies",
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\matlab\\core\\tcn0916_topologies.m"
+    },
+    {
+      "sha256": "c3258dd5b70268d1465ca7701855b065244aebfaf5816c85e959d39015cd2786",
+      "name": "vehicle_derivative",
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\matlab\\core\\vehicle_derivative.m"
+    },
+    {
+      "sha256": "88b500b0016225e21cde55fce0fbd6d54d0ffd2b34bed7a58f36d57e25b04f66",
+      "name": "wind_velocity_profile",
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\matlab\\core\\wind_velocity_profile.m"
+    }
+  ],
+  "setupFiles": [
+    {
+      "name": "build_round3_xy_pcf_options.m",
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\paper14_v2_round3_xy_pcf_screen\\build_round3_xy_pcf_options.m",
+      "sha256": "3e16a3bf07fcf8957defb8a42adb62cb4ec3c7fa35fddff2a30a278cf974c7c8"
+    },
+    {
+      "name": "round3_xy_math.m",
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\paper14_v2_round3_xy_pcf_screen\\round3_xy_math.m",
+      "sha256": "ab780a7efe746d7fc7029a87d5bf751be622609c0b5c8e8a4fc6a9fb48ca6a8b"
+    },
+    {
+      "name": "run_round3_xy_pcf_screen.m",
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\paper14_v2_round3_xy_pcf_screen\\run_round3_xy_pcf_screen.m",
+      "sha256": "a10765729ce97611c8d0c2d076ce5311a683fde0cd81b87c66fd200839f49a14"
+    },
+    {
+      "name": "verify_round3_identity.py",
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\paper14_v2_round3_xy_pcf_screen\\verify_round3_identity.py",
+      "sha256": "77964149155552ea8f7fdd9e2813756a42131f15fcf0605c0e86e9570f6b6d0f"
+    },
+    {
+      "name": "rescore_round3.py",
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\paper14_v2_round3_xy_pcf_screen\\rescore_round3.py",
+      "sha256": "434d103cfd688c0741b90acf8248bb4d8a29cf529f2f6f3612a3db6a84bb2cb1"
+    },
+    {
+      "name": "offline_smoke_round3.m",
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\paper14_v2_round3_xy_pcf_screen\\offline_smoke_round3.m",
+      "sha256": "a2151f135ceb9b279b43a842b96fd867bc7314cd4b0fb6b78663642748eab096"
+    },
+    {
+      "name": "offline_smoke_round3.py",
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\paper14_v2_round3_xy_pcf_screen\\offline_smoke_round3.py",
+      "sha256": "70c95875e6a25864b1c9833419ea2a46cbfeddd44f44ff6e8463e3f0f0599659"
+    },
+    {
+      "name": "preflight_round3.ps1",
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\paper14_v2_round3_xy_pcf_screen\\preflight_round3.ps1",
+      "sha256": "6dbd0d04f77b279c9c73da217c9c6f8dfb95c99a123a91e1e22fff5b5e85741a"
+    },
+    {
+      "name": "launch_round3.ps1",
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\paper14_v2_round3_xy_pcf_screen\\launch_round3.ps1",
+      "sha256": "b763ec2af6fe384709644d738aec500af6d09aeb71f226e81e23c39edfd1fbe9"
+    },
+    {
+      "name": "static_test_round3.ps1",
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\paper14_v2_round3_xy_pcf_screen\\static_test_round3.ps1",
+      "sha256": "2226179187e4875ebab968727f2e93701b39817727f3ae0b4445fd632eb13a96"
+    },
+    {
+      "name": "test_rescore_round3_tilt.py",
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\paper14_v2_round3_xy_pcf_screen\\test_rescore_round3_tilt.py",
+      "sha256": "12ea316b53e40c0c7e8cbcf0dae449982de7cc99d86f69c60ca0e9a859ab4a65"
+    }
+  ],
+  "taskbook": {
+    "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\paper14_v2_round3_xy_pcf_screen\\TASKBOOK_ZH.md",
+    "sha256": "a9d876f0e22175785f184707ba0f35090be3adf6a25317e83c39a9c88a1ccb4a"
+  },
+  "upstream_round1": {
+    "lock_sha256": "3aa4aaa36bddec431f5b1b03d8e0dd9e5d5866818e343b81fddf1b9c2ca19eb3",
+    "results_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\paper14_v2_round1_frozen_w0_screen\\reports\\round1_screen_results.csv",
+    "summary_sha256": "b1e39d991133a3b0b3ffc649946b825584d94b08e718d54893084d9370152a08",
+    "summary_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\paper14_v2_round1_frozen_w0_screen\\reports\\round1_screen_summary.json",
+    "lock_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\paper14_v2_round1_frozen_w0_screen\\frozen_inputs.json",
+    "results_sha256": "2090abdc99b386650c6f5debf75974b34943dfa2b45129fe913efeafb1214dc4"
+  },
+  "frozen_taskbook_manifest": {
+    "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\paper14_v2_round3_xy_pcf_screen\\frozen_taskbook_manifest.json",
+    "sha256": "fe73d468b5a958622a61d36118e339743bec28773bbe4168e67a0714808bb349"
+  },
+  "upstream_round2": {
+    "lock_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\paper14_v2_round2_pcf_screen\\frozen_inputs.json",
+    "lock_sha256": "92bf5bb355e473360f4ea6023dc508ed7c5369733eb083dfe38b26e53bf6bd58",
+    "results_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\paper14_v2_round2_pcf_screen\\reports\\round2_screen_results.csv",
+    "results_sha256": "197cef3db125b229972e72b6ac4bfe3d0c34b85ab2351184dc3ce460b79d3443",
+    "summary_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\paper14_v2_round2_pcf_screen\\reports\\round2_screen_summary.json",
+    "summary_sha256": "47e047e03ff6bd1b06ca06925740cb0bf95a4108d5ce04ab630297b38e108ba2",
+    "audit_script_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\paper14_v2_round2_pcf_screen\\offline_replay_round2.py",
+    "audit_script_sha256": "1d7e78d855ccd4c11e996c86c9e244a48e78c60dc93346c55b06829d1d5fcacc",
+    "audit_json_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\paper14_v2_round2_pcf_screen\\reports\\round2_same_state_replay_audit.json",
+    "audit_json_sha256": "6f4f75adc18b5f07cda29f60d5a7518670fb93613658cd8b8fbdd9fec3688aed",
+    "independent_gate_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\paper14_v2_round2_pcf_screen\\reports\\round2_gate_independent_recalculation.json",
+    "independent_gate_sha256": "0f6416d6289e20c4ff33a42ff718de1d7f52cc3d9c409879ac27bb0405b31926",
+    "root_review_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\paper14_v2_round2_pcf_screen\\reports\\round2_root_review_20261022.md",
+    "root_review_sha256": "96fbdfb17ad508057c4c533ce22551b59156d96b137a61684b7f7e5fb3e7feb3",
+    "main_review_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\paper14_v2_round2_pcf_screen\\reports\\main_review_round2_20261022.md",
+    "main_review_sha256": "b1408984a28bbb35b6c44217ed52b03992e83b76ccbb1bdcef4a51e45c3793a0",
+    "probe_review_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\paper14_v2_round2_pcf_screen\\reports\\probe_review_round2_20261022.md",
+    "probe_review_sha256": "cdd90cbecc28d6ee14db14dd1863627d95db5a69cc67480ff2e4bf3d50ace2f0"
+  },
+  "localRuntimeFiles": [
+    {
+      "upstream_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\corrected_reference_training_v1\\corrected_pair_eval_v1\\sources\\local_runtime\\run_dl1018_closed_loop.m",
+      "sha256": "86e7f7ec42492341e58daf30879f7aec9153924e80a76f6f029fce2a628c38d9",
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\paper14_v2_round3_xy_pcf_screen\\runtime\\run_dl1018_closed_loop.m",
+      "name": "run_dl1018_closed_loop.m",
+      "change": "R3 isolated FEATURE eta-mask and per-event mask/effective-eta logging",
+      "upstream_sha256": "01d83dec95aea5d30feef3afd0628a2ce0911f70465f0773a4f568a01b08450b"
+    },
+    {
+      "upstream_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\corrected_reference_training_v1\\corrected_pair_eval_v1\\sources\\local_runtime\\run_episode_dl1018.m",
+      "sha256": "fcc1f5de659541e692483f8395d93fd2a251256286ebade5e510ed4c7a2e2330",
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\paper14_v2_round3_xy_pcf_screen\\runtime\\run_episode_dl1018.m",
+      "name": "run_episode_dl1018.m",
+      "change": "byte-identical source copy from frozen R2 lock",
+      "upstream_sha256": "fcc1f5de659541e692483f8395d93fd2a251256286ebade5e510ed4c7a2e2330"
+    },
+    {
+      "upstream_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\corrected_reference_training_v1\\corrected_pair_eval_v1\\sources\\local_runtime\\position_stage1_model_forward_v2.m",
+      "sha256": "dc803aa102c49d67dd687ae941f8a60bb0c465f74fd01e5ae93ad1ea1a293676",
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\paper14_v2_round3_xy_pcf_screen\\runtime\\position_stage1_model_forward_v2.m",
+      "name": "position_stage1_model_forward_v2.m",
+      "change": "byte-identical source copy from frozen R2 lock",
+      "upstream_sha256": "dc803aa102c49d67dd687ae941f8a60bb0c465f74fd01e5ae93ad1ea1a293676"
+    },
+    {
+      "upstream_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\corrected_reference_training_v1\\corrected_pair_eval_v1\\sources\\local_runtime\\position_only_search_head_step.m",
+      "sha256": "3bd0fe9686c3b75793575e517d4cc5f08de58ab6a26a2bc7516aa690422bb7dc",
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\paper14_v2_round3_xy_pcf_screen\\runtime\\position_only_search_head_step.m",
+      "name": "position_only_search_head_step.m",
+      "change": "byte-identical source copy from frozen R2 lock",
+      "upstream_sha256": "3bd0fe9686c3b75793575e517d4cc5f08de58ab6a26a2bc7516aa690422bb7dc"
+    },
+    {
+      "upstream_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\corrected_reference_training_v1\\corrected_pair_eval_v1\\sources\\local_runtime\\position_only_search_options.m",
+      "sha256": "4e8322934ddb524961fa762426800564f6c758e00b943b622c9143ed734f19bf",
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\paper14_v2_round3_xy_pcf_screen\\runtime\\position_only_search_options.m",
+      "name": "position_only_search_options.m",
+      "change": "byte-identical source copy from frozen R2 lock",
+      "upstream_sha256": "4e8322934ddb524961fa762426800564f6c758e00b943b622c9143ed734f19bf"
+    },
+    {
+      "upstream_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\matlab\\runtime\\controller_options_dl1018.m",
+      "sha256": "93633a5fd95f73d33982045c2fa372d49b1a0df8ea0cfb5ca4461208ca9d53b1",
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\paper14_v2_round3_xy_pcf_screen\\runtime\\controller_options_dl1018.m",
+      "name": "controller_options_dl1018.m",
+      "change": "byte-identical source copy from frozen R2 lock",
+      "upstream_sha256": "93633a5fd95f73d33982045c2fa372d49b1a0df8ea0cfb5ca4461208ca9d53b1"
+    },
+    {
+      "upstream_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\matlab\\models\\position_filter_realization_pcf_step_v3_5.m",
+      "sha256": "b4ae22db5bd444a162d0cd01a3a59a589f2e37077b089bb33693401b660228d0",
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\paper14_v2_round3_xy_pcf_screen\\runtime\\position_filter_realization_pcf_step_v3_5.m",
+      "name": "position_filter_realization_pcf_step_v3_5.m",
+      "change": "byte-identical source copy from frozen R2 lock",
+      "upstream_sha256": "b4ae22db5bd444a162d0cd01a3a59a589f2e37077b089bb33693401b660228d0"
+    }
+  ],
+  "round2_off_raws": [
+    {
+      "scene_id": "DL1018_VAL_T2_C00_W10",
+      "status_sha256": "d320e99fbc516a355b7c810c100f2af68dae10c2df0dc6c172d0a35effc11564",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\paper14_v2_round2_pcf_screen\\runs\\DL1018_VAL_T2_C00_W10\\attempt_01\\raw_run.mat",
+      "raw_sha256": "6c7fd7e53220b5ef907091bb2b4a0e323a6dda2e88f88dc17d7db62b24324eb9",
+      "status_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\paper14_v2_round2_pcf_screen\\runs\\DL1018_VAL_T2_C00_W10\\attempt_01\\run_status.json",
+      "run_start_sha256": "6de781b57c7d128840c3aa1db027beb7a834056b3c77408bf9683cea99ee0b6f",
+      "band": "W09_W11",
+      "run_start_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\paper14_v2_round2_pcf_screen\\runs\\DL1018_VAL_T2_C00_W10\\attempt_01\\run_start.mat",
+      "split": "VAL"
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C02_W12",
+      "status_sha256": "37c415366c1ad261568fcd445609fb038758ac0efe961351f3ec5119548d6257",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\paper14_v2_round2_pcf_screen\\runs\\DL1018_VAL_T2_C02_W12\\attempt_01\\raw_run.mat",
+      "raw_sha256": "ebd91ad50b938e01c556aded93b4c707aca48832cecd4debf091d19a8d849b7f",
+      "status_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\paper14_v2_round2_pcf_screen\\runs\\DL1018_VAL_T2_C02_W12\\attempt_01\\run_status.json",
+      "run_start_sha256": "e6107456b846eda9cf51fbcb27052573c807a9640567ae8136efa04d5887c3fc",
+      "band": "W12_W14",
+      "run_start_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\paper14_v2_round2_pcf_screen\\runs\\DL1018_VAL_T2_C02_W12\\attempt_01\\run_start.mat",
+      "split": "VAL"
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C05_W15",
+      "status_sha256": "5d1bd6d047c10640babd46429664bda6d92b1945a03b33505684758781bda1ae",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\paper14_v2_round2_pcf_screen\\runs\\DL1018_VAL_T2_C05_W15\\attempt_01\\raw_run.mat",
+      "raw_sha256": "02b67ced9d9dce27fa8080a9c709950afd8ecc21456d63cf624d2922a033728f",
+      "status_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\paper14_v2_round2_pcf_screen\\runs\\DL1018_VAL_T2_C05_W15\\attempt_01\\run_status.json",
+      "run_start_sha256": "c32df4a52e0c7f574be0a12e1cbc714c85b202d84d1bd1106f114efbd62f096f",
+      "band": "W15",
+      "run_start_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\paper14_v2_round2_pcf_screen\\runs\\DL1018_VAL_T2_C05_W15\\attempt_01\\run_start.mat",
+      "split": "VAL"
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C06_W00",
+      "status_sha256": "db5e0788a4197be9fc29fd5bbd907bb47ebdc930b2eb296e1bc7781809ab290a",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\paper14_v2_round2_pcf_screen\\runs\\DL1018_VAL_T2_C06_W00\\attempt_01\\raw_run.mat",
+      "raw_sha256": "0f6fff275bca271d6dc15aa3f81e166581ff77d508cf0b2398c1ea0ac090c56e",
+      "status_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\paper14_v2_round2_pcf_screen\\runs\\DL1018_VAL_T2_C06_W00\\attempt_01\\run_status.json",
+      "run_start_sha256": "8c3256c19a4516911defebeb75a8e5717c3400e858f422901d3e07ea0019d07c",
+      "band": "W00_W08",
+      "run_start_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\paper14_v2_round2_pcf_screen\\runs\\DL1018_VAL_T2_C06_W00\\attempt_01\\run_start.mat",
+      "split": "VAL"
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C02_W09",
+      "status_sha256": "0b2580bf0afb00f7f8882c6fb275b7c72aef0c0b06b85b878989162c4b31c0f3",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\paper14_v2_round2_pcf_screen\\runs\\DL1018_VAL_T1_C02_W09\\attempt_01\\raw_run.mat",
+      "raw_sha256": "a9454e9821d366efc4bf0f0d7f0da678d71b9b62f451b83e2aad15d317d62464",
+      "status_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\paper14_v2_round2_pcf_screen\\runs\\DL1018_VAL_T1_C02_W09\\attempt_01\\run_status.json",
+      "run_start_sha256": "09f39524415f1756540830440621c54f1721f821250083f51bd9a19517c5de15",
+      "band": "W09_W11",
+      "run_start_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\paper14_v2_round2_pcf_screen\\runs\\DL1018_VAL_T1_C02_W09\\attempt_01\\run_start.mat",
+      "split": "VAL"
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C05_W12",
+      "status_sha256": "066d6914318f784fefe3f596dfb1346438e9224e078ed28d783c63c11a550d3b",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\paper14_v2_round2_pcf_screen\\runs\\DL1018_VAL_T1_C05_W12\\attempt_01\\raw_run.mat",
+      "raw_sha256": "d4ec8dee99028cc47792becab8be1fcb1c0290e1e64858bf8a33374df799b5f6",
+      "status_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\paper14_v2_round2_pcf_screen\\runs\\DL1018_VAL_T1_C05_W12\\attempt_01\\run_status.json",
+      "run_start_sha256": "45fdea082cae718ba093b8da14e554deda2686a8f5221ca92e6b939921214d94",
+      "band": "W12_W14",
+      "run_start_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\paper14_v2_round2_pcf_screen\\runs\\DL1018_VAL_T1_C05_W12\\attempt_01\\run_start.mat",
+      "split": "VAL"
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C08_W15",
+      "status_sha256": "63c08a9a4dbb6041c533ef5955d9121b44fe62ebf2d5d1b8a83a3c1e2e4e363a",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\paper14_v2_round2_pcf_screen\\runs\\DL1018_VAL_T1_C08_W15\\attempt_01\\raw_run.mat",
+      "raw_sha256": "1d627dbc6841cc83f8167846700785502217bac7385f87aaca32c2a9570a0356",
+      "status_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\paper14_v2_round2_pcf_screen\\runs\\DL1018_VAL_T1_C08_W15\\attempt_01\\run_status.json",
+      "run_start_sha256": "13edfd3462cb2c5b24037babc2178b5868b73e4180eea4084a981d23c6d0d270",
+      "band": "W15",
+      "run_start_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\paper14_v2_round2_pcf_screen\\runs\\DL1018_VAL_T1_C08_W15\\attempt_01\\run_start.mat",
+      "split": "VAL"
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C00_W07",
+      "status_sha256": "7a9a389c80bbd8db97c3ea3b7815af8e0be2c9eb512104c138b2ab8d3d38fb86",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\paper14_v2_round2_pcf_screen\\runs\\DL1018_VAL_T1_C00_W07\\attempt_01\\raw_run.mat",
+      "raw_sha256": "5a7987b9c9d9440908fa7e85493b63d4e9d10b8df54b0707c8687b36676cc0a0",
+      "status_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\paper14_v2_round2_pcf_screen\\runs\\DL1018_VAL_T1_C00_W07\\attempt_01\\run_status.json",
+      "run_start_sha256": "09d28c90c4ac19d2a6fb96c869b5d3b8cf89341a1440469093b674260bd79056",
+      "band": "W00_W08",
+      "run_start_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\paper14_v2_round2_pcf_screen\\runs\\DL1018_VAL_T1_C00_W07\\attempt_01\\run_start.mat",
+      "split": "VAL"
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C12_W09",
+      "status_sha256": "77cebb89a5b1099106ac834a920860dcfb673a0e87af716a6ad815806f654cab",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\paper14_v2_round2_pcf_screen\\runs\\DL1018_VAL_T3_C12_W09\\attempt_01\\raw_run.mat",
+      "raw_sha256": "ce2f68ad88cc325d78317c9273ba2f7aeed84c2c8105d1c9397f8e70db797855",
+      "status_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\paper14_v2_round2_pcf_screen\\runs\\DL1018_VAL_T3_C12_W09\\attempt_01\\run_status.json",
+      "run_start_sha256": "0c2cfe92d4d40a2bfdcaafc281ed1ba8d188a8714de6fb605f3d0b214ffffd58",
+      "band": "W09_W11",
+      "run_start_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\paper14_v2_round2_pcf_screen\\runs\\DL1018_VAL_T3_C12_W09\\attempt_01\\run_start.mat",
+      "split": "VAL"
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C00_W13",
+      "status_sha256": "576cf971976a7ecf45629311f66c1cc28d1fd8bfc0585c7535e33203779f5c01",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\paper14_v2_round2_pcf_screen\\runs\\DL1018_VAL_T3_C00_W13\\attempt_01\\raw_run.mat",
+      "raw_sha256": "7013d1f3c81b3fb033df8623ff4548dc708f652ae9f2f56f80b39f5e09766355",
+      "status_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\paper14_v2_round2_pcf_screen\\runs\\DL1018_VAL_T3_C00_W13\\attempt_01\\run_status.json",
+      "run_start_sha256": "14ef6a9280040df16ab5f32a62a39ae0ec188073281ae391e4565aeebca574ee",
+      "band": "W12_W14",
+      "run_start_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\paper14_v2_round2_pcf_screen\\runs\\DL1018_VAL_T3_C00_W13\\attempt_01\\run_start.mat",
+      "split": "VAL"
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C02_W15",
+      "status_sha256": "95993cb66c3890e492be24be39d57c37605c2a406d6c66f325fed3d88cab68fe",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\paper14_v2_round2_pcf_screen\\runs\\DL1018_VAL_T3_C02_W15\\attempt_01\\raw_run.mat",
+      "raw_sha256": "992a49098bc5b877530e13045ae2cad2be5d3bfc8ae4641bee6c3e11b50d4703",
+      "status_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\paper14_v2_round2_pcf_screen\\runs\\DL1018_VAL_T3_C02_W15\\attempt_01\\run_status.json",
+      "run_start_sha256": "379e444bea5335f73dc6f3a833e12d8b48ad278049364d5d3ef46e257f372718",
+      "band": "W15",
+      "run_start_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\paper14_v2_round2_pcf_screen\\runs\\DL1018_VAL_T3_C02_W15\\attempt_01\\run_start.mat",
+      "split": "VAL"
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C03_W00",
+      "status_sha256": "0cba32be9a21efb08a9c190ea5708d0769d08f712d6bca8105fabaaadfcc0450",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\paper14_v2_round2_pcf_screen\\runs\\DL1018_VAL_T3_C03_W00\\attempt_01\\raw_run.mat",
+      "raw_sha256": "6dcf705effa7e67fc12fc1d253bc7867f95db336048befc222fb3e658e3ea3cb",
+      "status_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\paper14_v2_round2_pcf_screen\\runs\\DL1018_VAL_T3_C03_W00\\attempt_01\\run_status.json",
+      "run_start_sha256": "360f5f002b645af83991786c542dc3e38e185c601a44b0cc30429810817b7af5",
+      "band": "W00_W08",
+      "run_start_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\paper14_v2_round2_pcf_screen\\runs\\DL1018_VAL_T3_C03_W00\\attempt_01\\run_start.mat",
+      "split": "VAL"
+    }
+  ]
+}

@@ -1,0 +1,152 @@
+{
+  "audit": "corrected DSSM14 G12/R32, full72 VAL+DEV only; no TEST read",
+  "inputs": {
+    "workspace": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018",
+    "raw_index_files": [
+      "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\corrected_reference_training_v1\\corrected_pair_eval_v1\\reports\\RAW_INDEX.csv",
+      "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\corrected_reference_training_v1\\corrected_pair_eval_tail21_v1\\reports\\RAW_INDEX.csv"
+    ],
+    "raw_index_sha256": {
+      "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\corrected_reference_training_v1\\corrected_pair_eval_v1\\reports\\RAW_INDEX.csv": "364367e46ae8e3eb3335efd34a834b984a2a87fc1cef0dd5bf4991bbf342d8b4",
+      "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\corrected_reference_training_v1\\corrected_pair_eval_tail21_v1\\reports\\RAW_INDEX.csv": "3527883329ec23f51928d3967071d307a42683adc831cee8958822c7b732d116"
+    },
+    "existing_score_table": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\reports\\paper14_v2\\phase1\\mechanism_by_scene.csv",
+    "raw_index_shard_selected_rows": {
+      "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\corrected_reference_training_v1\\corrected_pair_eval_v1\\reports\\RAW_INDEX.csv": 61,
+      "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\corrected_reference_training_v1\\corrected_pair_eval_tail21_v1\\reports\\RAW_INDEX.csv": 11
+    },
+    "raw_index_shard_alias_rows": {
+      "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\corrected_reference_training_v1\\corrected_pair_eval_v1\\reports\\RAW_INDEX.csv": 21,
+      "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\corrected_reference_training_v1\\corrected_pair_eval_tail21_v1\\reports\\RAW_INDEX.csv": 3
+    },
+    "raw_index_shard_exact_id_rows": {
+      "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\corrected_reference_training_v1\\corrected_pair_eval_v1\\reports\\RAW_INDEX.csv": 40,
+      "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\corrected_reference_training_v1\\corrected_pair_eval_tail21_v1\\reports\\RAW_INDEX.csv": 8
+    },
+    "raw_index_shard_union_unique_raw_sha_count": 72,
+    "raw_files": 72,
+    "split_counts": {
+      "VAL": 48,
+      "DEV": 24
+    },
+    "raw_index_id_alias_count": 24,
+    "raw_index_exact_id_match_count": 48,
+    "raw_index_id_alias_rule": "24 raw rows preserve exact raw SHA but carry a trailing _ACC_FIX_V1 runtime_scene_id; base scene IDs are kept from the score table after split/task/wind agreement",
+    "raw_sha_stat_unchanged_all72": true,
+    "run_start_files": 72,
+    "run_start_sha_stat_unchanged_all72": true,
+    "run_start_path_source": "sibling run_start.mat derived only from each selected RAW_INDEX.csv run_status_path",
+    "run_start_unique_file_sha256_count": 72,
+    "run_start_model_sha256_unique_count": 1,
+    "run_start_gamma_values": [
+      12.0
+    ],
+    "run_start_kappa_values": [
+      1.0
+    ],
+    "run_start_head_type_values": [
+      "FEATURE"
+    ],
+    "run_start_pcf_enabled_values": [
+      1
+    ],
+    "run_start_position_sample_time_s_values": [
+      0.01
+    ],
+    "run_start_position_update_hz_values": [
+      100.0
+    ],
+    "pair_summary": {
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\reports\\corrected14_full72_benchmark_20261021\\PAIR14_SCENE_RESULTS_VS_B.csv",
+      "sha256": "b2264145e9d18896f5764ffe38302576dd08c80e7cce1c277323246092169137",
+      "all_rows": 144,
+      "DSSM_rows": 72,
+      "KAN_rows_excluded": 72,
+      "DSSM_candidate_raw_sha_unique": 72,
+      "exact_same_frozen_raw_sha_set_as_mechanism_72": true,
+      "split_task_Q_and_outcome_match_count": 72
+    },
+    "model_arrays_identity_hash_count": 1,
+    "normalizer_identity_hash_count": 1,
+    "runtime_config_identity_count": 1,
+    "current_model_identity": {
+      "model_id": "DSSM14",
+      "architecture": "DSSM",
+      "seed": 2026102001,
+      "selected_step": 60000,
+      "input_dim": 14,
+      "window": 32,
+      "context_length": 32,
+      "head_type": "FEATURE",
+      "gamma": 12.0,
+      "kappa": 1.0,
+      "beta_scale": 1.0,
+      "pcf_enabled": true,
+      "W0_equals_kappa_output_W_max_abs": 0.0,
+      "model_arrays_identity_sha256_custom": "8de4d6548316c7b6f97382ecc9d5fbce8c00dbf6d10dc4187789b34c9205eb26",
+      "normalizer_identity_sha256_custom": "533aad9a2c66874cfa67f5d268661835e81e58b797cba7d6fc1c12d4013de5f0"
+    }
+  },
+  "event_convention": {
+    "scheduled_position_events_per_scene": 1999,
+    "online_inference_events_per_scene": 1968,
+    "hdf5_event_index": "zero-based column i; MATLAB transition k=i+1",
+    "first_last_transition_k": [
+      11,
+      19991
+    ],
+    "first_last_event_time_s": [
+      0.01,
+      19.99
+    ],
+    "beta_source": "logged stage1_position_event_beta on valid inference events",
+    "beta_formula": "clip(transition_time(k)/1.8 s, 0, 1)",
+    "beta_max_abs_error": 0.0
+  },
+  "label_equations": {
+    "Y": "R_actual*e3*T_real/m - g*e3 + wind/m - (a_nominal - a_applied)",
+    "dWind": "wind_force_I/m",
+    "dAlloc": "R_actual*e3*(T_real-T_req)/m",
+    "dAtt": "(R_actual-R_raw)*e3*T_req/m",
+    "dMap": "R_raw*e3*T_req/m - g*e3 - (a_nominal-a_applied)",
+    "closure": "Y - (dWind+dAlloc+dAtt+dMap)",
+    "units": "all Y/dWind/dAlloc/dAtt/dMap/closure m/s^2; Y is offline-only, not deployed input"
+  },
+  "pcf_and_online_head_equations": {
+    "pcf_realized_acceleration": "a_F = (T/m) R(euler_filtered)e3 - g e3",
+    "pcf_filter_residual": "r_F = a_req - a_F",
+    "pcf_eta_1khz_update": "eta[k+1] = exp(-K2*dt) eta[k] + diag((1-exp(-K2*dt))/K2) r_F[k]",
+    "pcf_coordination_at_position_event": "s_coord = s - eta_before_event; s_eff = clip(s_coord, [-7,-8,-10], [7,8,10])",
+    "position_search_output_then_update": "u[k] = beta*clip(W_before^T phi, +/-dmax); W_after = clip(W_before + h*(-gamma*beta*phi*s_eff^T - 0.002*W_before), +/-60)",
+    "event_convention": "PCF eta runs each 1 kHz transition; position SEARCH inference/Head update runs at 100 Hz scheduled events, with logged h approximately 0.01 s; output is evaluated before W update",
+    "units": "eta/s/s_eff m/s; r_F/a_req/a_F/u m/s^2; phi and beta dimensionless; h and dt s; K2 and leakage 0.002 s^-1; gamma s^-2 under physical units; W has output scale m/s^2"
+  },
+  "validation": {
+    "closure_rms_all72_mps2": 4.918501882630919e-16,
+    "closure_max_abs_all72_mps2": 3.021888295151598e-15,
+    "nominal_bs_replay_max_abs_all72_mps2": 5.551115123125783e-16,
+    "applied_alias_max_abs_all72_mps2": 2.220446049250313e-16,
+    "online_output_applied_max_abs_all72_mps2": 6.661338147750939e-16,
+    "same_event_stage1_applied_max_abs_all72_mps2": 0.0,
+    "pcf_r_f_vs_a_req_minus_a_f_max_abs_all72_mps2": 0.0,
+    "pcf_eta_1khz_continuity_max_abs_all72_m": 0.0,
+    "pcf_eta_1khz_replay_max_abs_all72_m": 0.0,
+    "pcf_event_eta_sample_alignment_max_abs_all72_m": 0.0,
+    "pcf_event_coord_relation_max_abs_all72_mps": 0.0,
+    "pcf_event_coord_eff_clip_max_abs_all72_mps": 0.0,
+    "search_weight_update_replay_max_abs_all72": 2.220446049250313e-16,
+    "search_projection_mismatch_total_all72": 0,
+    "position_q_replay_max_abs_all72_m": 4.85722573273506e-17,
+    "search_effective_update_dt_range_s": [
+      0.00999999999999801,
+      0.010000000000001563
+    ]
+  },
+  "outputs": [
+    "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\reports\\paper14_v2\\phase1\\mechanism_components_by_scene.csv",
+    "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\reports\\paper14_v2\\phase1\\mechanism_components_summary.csv",
+    "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\reports\\paper14_v2\\phase1\\mechanism_same_state_groups.csv",
+    "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\reports\\paper14_v2\\phase1\\mechanism_input_lineage.csv",
+    "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\reports\\paper14_v2\\phase1\\mechanism_run_start_lineage.csv"
+  ]
+}

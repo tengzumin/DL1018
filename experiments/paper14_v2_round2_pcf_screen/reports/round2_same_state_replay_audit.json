@@ -1,0 +1,737 @@
+{
+  "audit_id": "DL1018_R2_PCF_SAME_STATE_OFFLINE_REPLAY_V1",
+  "created_utc": "2026-10-21T22:47:53.211249+00:00",
+  "scope": "read-only same-record-state replay; no Plant execution; no TEST access",
+  "interpretation_limit": "PCF-off counterfactual uses the PCF-on logged states/features; it identifies local update-law effects, not a closed-loop causal outcome or tracking improvement.",
+  "equations": {
+    "position_surface": "z2 = v_ref + k1*(p_ref-p) - v, units m/s",
+    "pcf_residual": "r_f = a_req - a_f, units m/s^2",
+    "pcf_eta_step": "eta[k+1]=exp(-k2*dt)*eta[k]+(1-exp(-k2*dt))/k2*r_f[k], k2=[4,4,4] 1/s, eta units m/s",
+    "head_signal": "s_coord=surface-eta_before; s_eff=clip(s_coord, +/-[7,8,10] m/s); surface equals MATLAB position feature(4:6)",
+    "feature_update": "W_next=clip(W+dt*(-gamma*beta*phi*s_eff^T-0.002*W), +/-60), output is W_before^T*phi",
+    "counterfactual": "same phi/surface/eta samples, recursively evolve a PCF-off W; no plant/state feedback is replayed"
+  },
+  "locked_update_helper": {
+    "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\corrected_reference_training_v1\\corrected_pair_eval_v1\\sources\\local_runtime\\position_only_search_head_step.m",
+    "sha256": "3bd0fe9686c3b75793575e517d4cc5f08de58ab6a26a2bc7516aa690422bb7dc"
+  },
+  "locked_support_sources": [
+    {
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\matlab\\core\\default_config.m",
+      "sha256": "685abb7b72a335fdc826673e6431098fe79af88409f17b1b70ce08edb214dc51"
+    },
+    {
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\matlab\\core\\controller_parameters.m",
+      "sha256": "4fad5e78c0bd4177461647af167e7c86a7defa628b43d523b0b7da2ef5556398"
+    },
+    {
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\matlab\\core\\position_bs_step.m",
+      "sha256": "ea533c3ae97cbc552208287e7f8d9b0a0f5a018f36fb5c8bd45520e19e73c681"
+    },
+    {
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\matlab\\models\\position_filter_realization_pcf_step_v3_5.m",
+      "sha256": "b4ae22db5bd444a162d0cd01a3a59a589f2e37077b089bb33693401b660228d0"
+    }
+  ],
+  "locked_source_parameters": {
+    "plant_dt_s": 0.001,
+    "event_dt_s": 0.01,
+    "position_k2_per_s": [
+      4.0,
+      4.0,
+      4.0
+    ],
+    "surface_limit_mps": [
+      7.0,
+      8.0,
+      10.0
+    ],
+    "feature_weight_projection": [
+      -60.0,
+      60.0
+    ]
+  },
+  "frozen_input_lock_sha256": "92bf5bb355e473360f4ea6023dc508ed7c5369733eb083dfe38b26e53bf6bd58",
+  "frozen_scene_list_sha256": "176ed5770824a241b5c41b9c786f2110b730a7783414152875181985d497a32e",
+  "frozen_on_rescore_sha256": "cf0a4dc078f0cb751877695cabc58aba05bd0933b022d948410d376133a974e0",
+  "frozen_b_rescore_sha256": "27a77399470eda26fde5f1724d199de10235844c519e8d561547af6f1a8933b2",
+  "frozen_rescore_split_counts_checked": {
+    "ON_CANDIDATE": {
+      "DEV": 24,
+      "VAL": 48
+    },
+    "B_BASELINE": {
+      "DEV": 24,
+      "VAL": 48
+    }
+  },
+  "test_scope_guard": "Both frozen rescore manifests are asserted to contain only DEV/VAL rows and no TEST scene/path; only the frozen VAL scene IDs are used for raw access.",
+  "source_units_note": "[7,8,10] limits the position surface in m/s. It is not an acceleration limit; the taskbook's one sentence labeling it m/s^2 is a documentation-unit error.",
+  "scene_count": 12,
+  "event_count": 23616,
+  "common_W0_max_abs_identity_error": 0.0,
+  "maximum_errors": {
+    "max_abs_r_f_identity_error_mps2": 0.0,
+    "max_abs_initial_eta_error_mps": 0.0,
+    "max_abs_eta_state_continuity_error_mps": 0.0,
+    "max_abs_eta_recurrence_error_mps": 3.00454106039183e-15,
+    "max_abs_eta_event_timestamp_error_mps": 0.0,
+    "max_abs_surface_feature_identity_error_mps": 0.0,
+    "max_abs_coord_identity_error_mps": 0.0,
+    "max_abs_s_eff_clip_error_mps": 0.0,
+    "max_abs_output_before_update_error_mps2": 4.440892098500626e-16,
+    "max_abs_weight_update_replay_error": 0.0,
+    "max_abs_local_on_output_replay_error_mps2": 4.440892098500626e-16
+  },
+  "scene_checks": [
+    {
+      "scene_id": "DL1018_VAL_T2_C00_W10",
+      "band": "W09_W14",
+      "on_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\corrected_reference_training_v1\\corrected_pair_eval_v1\\runs\\r034\\attempt_01\\raw_run.mat",
+      "on_raw_sha256": "30bd63348a369911e8d14e48be3e48cf461c994ef054e9612fbc90487612d278",
+      "b_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\runs\\DL1018_VAL_T2_C00_W10_ACC_FIX_V1\\B\\attempt_01\\raw_run.mat",
+      "b_raw_sha256": "05ad0e797ca10ce164747709bca2f87967c4b928283e7eaaae7839de43e059b7",
+      "frozen_inputs_sha256": "92bf5bb355e473360f4ea6023dc508ed7c5369733eb083dfe38b26e53bf6bd58",
+      "raw_internal_source_scene_id": "DL1018_VAL_T2_C00_W10",
+      "run_start_sha256": "6de781b57c7d128840c3aa1db027beb7a834056b3c77408bf9683cea99ee0b6f",
+      "events": 1968,
+      "head_type": "FEATURE",
+      "gamma": 12.0,
+      "first_event_t_s": 0.32,
+      "last_event_t_s": 19.99,
+      "max_abs_r_f_identity_error_mps2": 0.0,
+      "max_abs_initial_eta_error_mps": 0.0,
+      "max_abs_eta_state_continuity_error_mps": 0.0,
+      "max_abs_eta_recurrence_error_mps": 3.00454106039183e-15,
+      "max_abs_eta_event_timestamp_error_mps": 0.0,
+      "max_abs_surface_feature_identity_error_mps": 0.0,
+      "max_abs_coord_identity_error_mps": 0.0,
+      "max_abs_s_eff_clip_error_mps": 0.0,
+      "max_abs_output_before_update_error_mps2": 4.440892098500626e-16,
+      "max_abs_weight_update_replay_error": 0.0,
+      "max_abs_local_on_output_replay_error_mps2": 4.440892098500626e-16,
+      "output_cap_or_beta_residual_mps2": 0.0,
+      "weight_projection_events": 0,
+      "surface_eta_sign_flip_fraction_axis_xyz": [
+        0.5884146341463414,
+        0.32977642276422764,
+        0.11636178861788618
+      ],
+      "eta_surface_abs_ratio_median_axis_xyz": [
+        1.1766450944776992,
+        1.3978941574556987,
+        0.4264884429265741
+      ],
+      "actual_on_position_error_rmse_m_axis_xyz": [
+        0.006947157445900924,
+        0.0033255999852287955,
+        0.0041820215909008345
+      ],
+      "offline_counterfactual_raw_head_rms_delta_mps2_axis_xyz": [
+        0.09249561203063149,
+        0.20154976387408285,
+        0.3526936779742932
+      ],
+      "offline_counterfactual_raw_head_signed_mean_delta_mps2_axis_xyz": [
+        -0.046917808811695084,
+        0.0867718467982669,
+        0.2997547105886799
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C02_W12",
+      "band": "W09_W14",
+      "on_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\corrected_reference_training_v1\\corrected_pair_eval_v1\\runs\\r038\\attempt_01\\raw_run.mat",
+      "on_raw_sha256": "928b42f96988bd237da2bc790674813b6470702ebcbee4504496dcbc6377428c",
+      "b_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\runs\\DL1018_VAL_T2_C02_W12_ACC_FIX_V1\\B\\attempt_01\\raw_run.mat",
+      "b_raw_sha256": "8bafacea5aa164f9ec12dea659ba9edc3c0ec8bf1d617ea5d8d5591566562404",
+      "frozen_inputs_sha256": "92bf5bb355e473360f4ea6023dc508ed7c5369733eb083dfe38b26e53bf6bd58",
+      "raw_internal_source_scene_id": "DL1018_VAL_T2_C02_W12",
+      "run_start_sha256": "e6107456b846eda9cf51fbcb27052573c807a9640567ae8136efa04d5887c3fc",
+      "events": 1968,
+      "head_type": "FEATURE",
+      "gamma": 12.0,
+      "first_event_t_s": 0.32,
+      "last_event_t_s": 19.99,
+      "max_abs_r_f_identity_error_mps2": 0.0,
+      "max_abs_initial_eta_error_mps": 0.0,
+      "max_abs_eta_state_continuity_error_mps": 0.0,
+      "max_abs_eta_recurrence_error_mps": 1.1449174941446927e-15,
+      "max_abs_eta_event_timestamp_error_mps": 0.0,
+      "max_abs_surface_feature_identity_error_mps": 0.0,
+      "max_abs_coord_identity_error_mps": 0.0,
+      "max_abs_s_eff_clip_error_mps": 0.0,
+      "max_abs_output_before_update_error_mps2": 2.220446049250313e-16,
+      "max_abs_weight_update_replay_error": 0.0,
+      "max_abs_local_on_output_replay_error_mps2": 2.220446049250313e-16,
+      "output_cap_or_beta_residual_mps2": 0.0,
+      "weight_projection_events": 0,
+      "surface_eta_sign_flip_fraction_axis_xyz": [
+        0.36077235772357724,
+        0.3628048780487805,
+        0.08638211382113821
+      ],
+      "eta_surface_abs_ratio_median_axis_xyz": [
+        0.9835194303859105,
+        1.6709639859669894,
+        0.2818072606768071
+      ],
+      "actual_on_position_error_rmse_m_axis_xyz": [
+        0.00727108868157886,
+        0.004551097894532134,
+        0.0029098059769586417
+      ],
+      "offline_counterfactual_raw_head_rms_delta_mps2_axis_xyz": [
+        0.0999100686118032,
+        0.1939028996749663,
+        0.07748942988578837
+      ],
+      "offline_counterfactual_raw_head_signed_mean_delta_mps2_axis_xyz": [
+        -0.03427996982611227,
+        0.07399365237235006,
+        0.0665811225151271
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C05_W15",
+      "band": "W15",
+      "on_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\corrected_reference_training_v1\\corrected_pair_eval_v1\\runs\\r044\\attempt_01\\raw_run.mat",
+      "on_raw_sha256": "8a1648e22fd7fd11c678d3505433784073f72d650daddc0f7914b2101880be42",
+      "b_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\runs\\DL1018_VAL_T2_C05_W15_ACC_FIX_V1\\B\\attempt_01\\raw_run.mat",
+      "b_raw_sha256": "64088a9da0d8a58a3d41ab4aa48ccef8adb44e32200101b37bba4e0e35db2c64",
+      "frozen_inputs_sha256": "92bf5bb355e473360f4ea6023dc508ed7c5369733eb083dfe38b26e53bf6bd58",
+      "raw_internal_source_scene_id": "DL1018_VAL_T2_C05_W15",
+      "run_start_sha256": "c32df4a52e0c7f574be0a12e1cbc714c85b202d84d1bd1106f114efbd62f096f",
+      "events": 1968,
+      "head_type": "FEATURE",
+      "gamma": 12.0,
+      "first_event_t_s": 0.32,
+      "last_event_t_s": 19.99,
+      "max_abs_r_f_identity_error_mps2": 0.0,
+      "max_abs_initial_eta_error_mps": 0.0,
+      "max_abs_eta_state_continuity_error_mps": 0.0,
+      "max_abs_eta_recurrence_error_mps": 3.920475055707584e-16,
+      "max_abs_eta_event_timestamp_error_mps": 0.0,
+      "max_abs_surface_feature_identity_error_mps": 0.0,
+      "max_abs_coord_identity_error_mps": 0.0,
+      "max_abs_s_eff_clip_error_mps": 0.0,
+      "max_abs_output_before_update_error_mps2": 1.6653345369377348e-16,
+      "max_abs_weight_update_replay_error": 0.0,
+      "max_abs_local_on_output_replay_error_mps2": 2.220446049250313e-16,
+      "output_cap_or_beta_residual_mps2": 0.0,
+      "weight_projection_events": 0,
+      "surface_eta_sign_flip_fraction_axis_xyz": [
+        0.17073170731707318,
+        0.3074186991869919,
+        0.22154471544715448
+      ],
+      "eta_surface_abs_ratio_median_axis_xyz": [
+        0.7506932564691267,
+        1.6114052469064482,
+        0.4052665452549964
+      ],
+      "actual_on_position_error_rmse_m_axis_xyz": [
+        0.004480926469711488,
+        0.0077065276308272215,
+        0.000499248996703318
+      ],
+      "offline_counterfactual_raw_head_rms_delta_mps2_axis_xyz": [
+        0.07011985908739503,
+        0.1925255518761164,
+        0.012803200192996302
+      ],
+      "offline_counterfactual_raw_head_signed_mean_delta_mps2_axis_xyz": [
+        0.0018066452164487042,
+        0.04781682641956386,
+        0.009126937399358897
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C06_W00",
+      "band": "W00_W08",
+      "on_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\corrected_reference_training_v1\\corrected_pair_eval_v1\\runs\\r046\\attempt_01\\raw_run.mat",
+      "on_raw_sha256": "3cf46555bce725143f713354e1fd95cbaded2f838aee8cf674643a89247b6f4a",
+      "b_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\runs\\DL1018_VAL_T2_C06_W00_ACC_FIX_V1\\B\\attempt_01\\raw_run.mat",
+      "b_raw_sha256": "90faa47e391b977f1df32dde668fa5bf252f3991eeb38f4db5789421e53a71c3",
+      "frozen_inputs_sha256": "92bf5bb355e473360f4ea6023dc508ed7c5369733eb083dfe38b26e53bf6bd58",
+      "raw_internal_source_scene_id": "DL1018_VAL_T2_C06_W00",
+      "run_start_sha256": "8c3256c19a4516911defebeb75a8e5717c3400e858f422901d3e07ea0019d07c",
+      "events": 1968,
+      "head_type": "FEATURE",
+      "gamma": 12.0,
+      "first_event_t_s": 0.32,
+      "last_event_t_s": 19.99,
+      "max_abs_r_f_identity_error_mps2": 0.0,
+      "max_abs_initial_eta_error_mps": 0.0,
+      "max_abs_eta_state_continuity_error_mps": 0.0,
+      "max_abs_eta_recurrence_error_mps": 2.411265631607762e-16,
+      "max_abs_eta_event_timestamp_error_mps": 0.0,
+      "max_abs_surface_feature_identity_error_mps": 0.0,
+      "max_abs_coord_identity_error_mps": 0.0,
+      "max_abs_s_eff_clip_error_mps": 0.0,
+      "max_abs_output_before_update_error_mps2": 2.220446049250313e-16,
+      "max_abs_weight_update_replay_error": 0.0,
+      "max_abs_local_on_output_replay_error_mps2": 3.3306690738754696e-16,
+      "output_cap_or_beta_residual_mps2": 0.0,
+      "weight_projection_events": 0,
+      "surface_eta_sign_flip_fraction_axis_xyz": [
+        0.17632113821138212,
+        0.3277439024390244,
+        0.019308943089430895
+      ],
+      "eta_surface_abs_ratio_median_axis_xyz": [
+        0.6060786414273063,
+        1.1470620030133094,
+        0.08287584718511613
+      ],
+      "actual_on_position_error_rmse_m_axis_xyz": [
+        0.009470876988573719,
+        0.005323493024371242,
+        0.003711059561614282
+      ],
+      "offline_counterfactual_raw_head_rms_delta_mps2_axis_xyz": [
+        0.1257640580243204,
+        0.1837802149911289,
+        0.017951980335112958
+      ],
+      "offline_counterfactual_raw_head_signed_mean_delta_mps2_axis_xyz": [
+        0.08348934817854035,
+        0.05368072625855528,
+        0.011832763675858568
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C02_W09",
+      "band": "W09_W14",
+      "on_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\corrected_reference_training_v1\\corrected_pair_eval_v1\\runs\\r006\\attempt_01\\raw_run.mat",
+      "on_raw_sha256": "8529f802edf55ad195d40b552d17cec1e9c08148e4f1ad070609b10a1f027f09",
+      "b_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\data\\raw\\val\\DL1018_VAL_T1_C02_W09\\B\\attempt_01\\raw_run.mat",
+      "b_raw_sha256": "7cf337cf777465c680da3dab2a123d63455f359f2cc3a9c61a1159336b32f1c4",
+      "frozen_inputs_sha256": "92bf5bb355e473360f4ea6023dc508ed7c5369733eb083dfe38b26e53bf6bd58",
+      "raw_internal_source_scene_id": "DL1018_VAL_T1_C02_W09",
+      "run_start_sha256": "09f39524415f1756540830440621c54f1721f821250083f51bd9a19517c5de15",
+      "events": 1968,
+      "head_type": "FEATURE",
+      "gamma": 12.0,
+      "first_event_t_s": 0.32,
+      "last_event_t_s": 19.99,
+      "max_abs_r_f_identity_error_mps2": 0.0,
+      "max_abs_initial_eta_error_mps": 0.0,
+      "max_abs_eta_state_continuity_error_mps": 0.0,
+      "max_abs_eta_recurrence_error_mps": 1.846179459308317e-15,
+      "max_abs_eta_event_timestamp_error_mps": 0.0,
+      "max_abs_surface_feature_identity_error_mps": 0.0,
+      "max_abs_coord_identity_error_mps": 0.0,
+      "max_abs_s_eff_clip_error_mps": 0.0,
+      "max_abs_output_before_update_error_mps2": 4.440892098500626e-16,
+      "max_abs_weight_update_replay_error": 0.0,
+      "max_abs_local_on_output_replay_error_mps2": 3.3306690738754696e-16,
+      "output_cap_or_beta_residual_mps2": 0.0,
+      "weight_projection_events": 0,
+      "surface_eta_sign_flip_fraction_axis_xyz": [
+        0.29115853658536583,
+        0.45985772357723576,
+        0.21798780487804878
+      ],
+      "eta_surface_abs_ratio_median_axis_xyz": [
+        1.0522771790935346,
+        1.2335725975944984,
+        0.6784221421558648
+      ],
+      "actual_on_position_error_rmse_m_axis_xyz": [
+        0.005489844213450678,
+        0.008092828662702067,
+        0.0012579540300069396
+      ],
+      "offline_counterfactual_raw_head_rms_delta_mps2_axis_xyz": [
+        0.1311953614833446,
+        0.13581591441623428,
+        0.09686030762803978
+      ],
+      "offline_counterfactual_raw_head_signed_mean_delta_mps2_axis_xyz": [
+        0.008099250699321343,
+        -0.053761732373727306,
+        0.08157141247685532
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C05_W12",
+      "band": "W09_W14",
+      "on_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\corrected_reference_training_v1\\corrected_pair_eval_v1\\runs\\r012\\attempt_01\\raw_run.mat",
+      "on_raw_sha256": "d28c1ccc279b55a6fcbd9e131a271e4e56f2ef46edf4947934ee3f9cbd5b2223",
+      "b_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\data\\raw\\val\\DL1018_VAL_T1_C05_W12\\B\\attempt_01\\raw_run.mat",
+      "b_raw_sha256": "97f1e5b074de8f4de8da8ef7d930580eb6b89774a09a8dea7b59d8cbe5c8f29e",
+      "frozen_inputs_sha256": "92bf5bb355e473360f4ea6023dc508ed7c5369733eb083dfe38b26e53bf6bd58",
+      "raw_internal_source_scene_id": "DL1018_VAL_T1_C05_W12",
+      "run_start_sha256": "45fdea082cae718ba093b8da14e554deda2686a8f5221ca92e6b939921214d94",
+      "events": 1968,
+      "head_type": "FEATURE",
+      "gamma": 12.0,
+      "first_event_t_s": 0.32,
+      "last_event_t_s": 19.99,
+      "max_abs_r_f_identity_error_mps2": 0.0,
+      "max_abs_initial_eta_error_mps": 0.0,
+      "max_abs_eta_state_continuity_error_mps": 0.0,
+      "max_abs_eta_recurrence_error_mps": 1.2975731600306517e-15,
+      "max_abs_eta_event_timestamp_error_mps": 0.0,
+      "max_abs_surface_feature_identity_error_mps": 0.0,
+      "max_abs_coord_identity_error_mps": 0.0,
+      "max_abs_s_eff_clip_error_mps": 0.0,
+      "max_abs_output_before_update_error_mps2": 3.3306690738754696e-16,
+      "max_abs_weight_update_replay_error": 0.0,
+      "max_abs_local_on_output_replay_error_mps2": 2.220446049250313e-16,
+      "output_cap_or_beta_residual_mps2": 0.0,
+      "weight_projection_events": 0,
+      "surface_eta_sign_flip_fraction_axis_xyz": [
+        0.3389227642276423,
+        0.27235772357723576,
+        0.11128048780487805
+      ],
+      "eta_surface_abs_ratio_median_axis_xyz": [
+        1.0718846830680697,
+        0.9518544772859834,
+        0.4150992937276127
+      ],
+      "actual_on_position_error_rmse_m_axis_xyz": [
+        0.007443423515449025,
+        0.00792434587167037,
+        0.0029807285555051325
+      ],
+      "offline_counterfactual_raw_head_rms_delta_mps2_axis_xyz": [
+        0.12775877088476018,
+        0.12712073227134402,
+        0.08881025610059655
+      ],
+      "offline_counterfactual_raw_head_signed_mean_delta_mps2_axis_xyz": [
+        0.0446193727210838,
+        -0.022384753581677387,
+        0.07524379345418354
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C08_W15",
+      "band": "W15",
+      "on_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\corrected_reference_training_v1\\corrected_pair_eval_v1\\runs\\r018\\attempt_01\\raw_run.mat",
+      "on_raw_sha256": "ca1511df873c65d104a4535dde6f6bfc7124c2eae056c01f5d3b3dbee5d2c483",
+      "b_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\data\\raw\\val\\DL1018_VAL_T1_C08_W15\\B\\attempt_01\\raw_run.mat",
+      "b_raw_sha256": "22031939a953b244fbf2dcfe9e797dd4e059d8df0344b966e67f073ccab254b6",
+      "frozen_inputs_sha256": "92bf5bb355e473360f4ea6023dc508ed7c5369733eb083dfe38b26e53bf6bd58",
+      "raw_internal_source_scene_id": "DL1018_VAL_T1_C08_W15",
+      "run_start_sha256": "13edfd3462cb2c5b24037babc2178b5868b73e4180eea4084a981d23c6d0d270",
+      "events": 1968,
+      "head_type": "FEATURE",
+      "gamma": 12.0,
+      "first_event_t_s": 0.32,
+      "last_event_t_s": 19.99,
+      "max_abs_r_f_identity_error_mps2": 0.0,
+      "max_abs_initial_eta_error_mps": 0.0,
+      "max_abs_eta_state_continuity_error_mps": 0.0,
+      "max_abs_eta_recurrence_error_mps": 3.8163916471489756e-16,
+      "max_abs_eta_event_timestamp_error_mps": 0.0,
+      "max_abs_surface_feature_identity_error_mps": 0.0,
+      "max_abs_coord_identity_error_mps": 0.0,
+      "max_abs_s_eff_clip_error_mps": 0.0,
+      "max_abs_output_before_update_error_mps2": 2.220446049250313e-16,
+      "max_abs_weight_update_replay_error": 0.0,
+      "max_abs_local_on_output_replay_error_mps2": 1.942890293094024e-16,
+      "output_cap_or_beta_residual_mps2": 0.0,
+      "weight_projection_events": 0,
+      "surface_eta_sign_flip_fraction_axis_xyz": [
+        0.17835365853658536,
+        0.30335365853658536,
+        0.0858739837398374
+      ],
+      "eta_surface_abs_ratio_median_axis_xyz": [
+        0.9370407782899783,
+        1.4904190453420867,
+        0.2994580887041436
+      ],
+      "actual_on_position_error_rmse_m_axis_xyz": [
+        0.009827062982725208,
+        0.0029954386030850108,
+        0.0006108003587851241
+      ],
+      "offline_counterfactual_raw_head_rms_delta_mps2_axis_xyz": [
+        0.15204835366991787,
+        0.12951370505658225,
+        0.011592942062026641
+      ],
+      "offline_counterfactual_raw_head_signed_mean_delta_mps2_axis_xyz": [
+        0.021533074762377577,
+        0.02455183415340905,
+        0.009511629676191043
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C00_W07",
+      "band": "W00_W08",
+      "on_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\corrected_reference_training_v1\\corrected_pair_eval_v1\\runs\\r002\\attempt_01\\raw_run.mat",
+      "on_raw_sha256": "231a29949fe0f4ca1a900b909ee8ca9a003f99a71448c14974b68530b45f2b18",
+      "b_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\data\\raw\\val\\DL1018_VAL_T1_C00_W07\\B\\attempt_01\\raw_run.mat",
+      "b_raw_sha256": "e3ec711f1108c2c9a0c78d9d1ce07211a12313c6c00c22d112eb515a16ddf927",
+      "frozen_inputs_sha256": "92bf5bb355e473360f4ea6023dc508ed7c5369733eb083dfe38b26e53bf6bd58",
+      "raw_internal_source_scene_id": "DL1018_VAL_T1_C00_W07",
+      "run_start_sha256": "09d28c90c4ac19d2a6fb96c869b5d3b8cf89341a1440469093b674260bd79056",
+      "events": 1968,
+      "head_type": "FEATURE",
+      "gamma": 12.0,
+      "first_event_t_s": 0.32,
+      "last_event_t_s": 19.99,
+      "max_abs_r_f_identity_error_mps2": 0.0,
+      "max_abs_initial_eta_error_mps": 0.0,
+      "max_abs_eta_state_continuity_error_mps": 0.0,
+      "max_abs_eta_recurrence_error_mps": 2.0990154059319366e-15,
+      "max_abs_eta_event_timestamp_error_mps": 0.0,
+      "max_abs_surface_feature_identity_error_mps": 0.0,
+      "max_abs_coord_identity_error_mps": 0.0,
+      "max_abs_s_eff_clip_error_mps": 0.0,
+      "max_abs_output_before_update_error_mps2": 4.440892098500626e-16,
+      "max_abs_weight_update_replay_error": 0.0,
+      "max_abs_local_on_output_replay_error_mps2": 4.440892098500626e-16,
+      "output_cap_or_beta_residual_mps2": 0.0,
+      "weight_projection_events": 0,
+      "surface_eta_sign_flip_fraction_axis_xyz": [
+        0.266260162601626,
+        0.6036585365853658,
+        0.2936991869918699
+      ],
+      "eta_surface_abs_ratio_median_axis_xyz": [
+        0.7023286462407086,
+        1.2198119308787854,
+        0.7920437586635013
+      ],
+      "actual_on_position_error_rmse_m_axis_xyz": [
+        0.005063352379342018,
+        0.008148325991124937,
+        0.0013402699819491674
+      ],
+      "offline_counterfactual_raw_head_rms_delta_mps2_axis_xyz": [
+        0.11819991915698683,
+        0.13768967897957807,
+        0.1357871140962878
+      ],
+      "offline_counterfactual_raw_head_signed_mean_delta_mps2_axis_xyz": [
+        -0.006101649211325718,
+        -0.019646494705886686,
+        0.11649176259620378
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C12_W09",
+      "band": "W09_W14",
+      "on_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\corrected_reference_training_v1\\corrected_pair_eval_v1\\runs\\r090\\attempt_01\\raw_run.mat",
+      "on_raw_sha256": "53fdade30b678ed42342625feffa2c7c5ac969c0944ec483f1cf18ae8570cf7d",
+      "b_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\data\\raw\\val\\DL1018_VAL_T3_C12_W09\\B\\attempt_01\\raw_run.mat",
+      "b_raw_sha256": "b7d2b3f37d1f860f44935c238e7406b81ba2eab8ebf37bdb663c868fd03b0a27",
+      "frozen_inputs_sha256": "92bf5bb355e473360f4ea6023dc508ed7c5369733eb083dfe38b26e53bf6bd58",
+      "raw_internal_source_scene_id": "DL1018_VAL_T3_C12_W09",
+      "run_start_sha256": "0c2cfe92d4d40a2bfdcaafc281ed1ba8d188a8714de6fb605f3d0b214ffffd58",
+      "events": 1968,
+      "head_type": "FEATURE",
+      "gamma": 12.0,
+      "first_event_t_s": 0.32,
+      "last_event_t_s": 19.99,
+      "max_abs_r_f_identity_error_mps2": 0.0,
+      "max_abs_initial_eta_error_mps": 0.0,
+      "max_abs_eta_state_continuity_error_mps": 0.0,
+      "max_abs_eta_recurrence_error_mps": 1.420738526825005e-15,
+      "max_abs_eta_event_timestamp_error_mps": 0.0,
+      "max_abs_surface_feature_identity_error_mps": 0.0,
+      "max_abs_coord_identity_error_mps": 0.0,
+      "max_abs_s_eff_clip_error_mps": 0.0,
+      "max_abs_output_before_update_error_mps2": 4.440892098500626e-16,
+      "max_abs_weight_update_replay_error": 0.0,
+      "max_abs_local_on_output_replay_error_mps2": 4.440892098500626e-16,
+      "output_cap_or_beta_residual_mps2": 0.0,
+      "weight_projection_events": 0,
+      "surface_eta_sign_flip_fraction_axis_xyz": [
+        0.21646341463414634,
+        0.4583333333333333,
+        0.057926829268292686
+      ],
+      "eta_surface_abs_ratio_median_axis_xyz": [
+        0.8313423221082786,
+        1.1349611627768506,
+        0.2588074368712283
+      ],
+      "actual_on_position_error_rmse_m_axis_xyz": [
+        0.004299766846807665,
+        0.008514806526633136,
+        0.002780668335813035
+      ],
+      "offline_counterfactual_raw_head_rms_delta_mps2_axis_xyz": [
+        0.12024813802689596,
+        0.12923954016567465,
+        0.0822121658215776
+      ],
+      "offline_counterfactual_raw_head_signed_mean_delta_mps2_axis_xyz": [
+        0.096627280655095,
+        -0.06541752846171885,
+        0.06876787084217756
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C00_W13",
+      "band": "W09_W14",
+      "on_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\corrected_reference_training_v1\\corrected_pair_eval_v1\\runs\\r066\\attempt_01\\raw_run.mat",
+      "on_raw_sha256": "96a830d444c9a128c789df6d2b4250430fdb24a9cbc9e73a4a8776ef8aa29fde",
+      "b_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\data\\raw\\val\\DL1018_VAL_T3_C00_W13\\B\\attempt_01\\raw_run.mat",
+      "b_raw_sha256": "d09b3b1e952264fab9a270c79ffadd85d617c8816757ef4b6d545a606073e733",
+      "frozen_inputs_sha256": "92bf5bb355e473360f4ea6023dc508ed7c5369733eb083dfe38b26e53bf6bd58",
+      "raw_internal_source_scene_id": "DL1018_VAL_T3_C00_W13",
+      "run_start_sha256": "14ef6a9280040df16ab5f32a62a39ae0ec188073281ae391e4565aeebca574ee",
+      "events": 1968,
+      "head_type": "FEATURE",
+      "gamma": 12.0,
+      "first_event_t_s": 0.32,
+      "last_event_t_s": 19.99,
+      "max_abs_r_f_identity_error_mps2": 0.0,
+      "max_abs_initial_eta_error_mps": 0.0,
+      "max_abs_eta_state_continuity_error_mps": 0.0,
+      "max_abs_eta_recurrence_error_mps": 2.73826100682939e-15,
+      "max_abs_eta_event_timestamp_error_mps": 0.0,
+      "max_abs_surface_feature_identity_error_mps": 0.0,
+      "max_abs_coord_identity_error_mps": 0.0,
+      "max_abs_s_eff_clip_error_mps": 0.0,
+      "max_abs_output_before_update_error_mps2": 4.440892098500626e-16,
+      "max_abs_weight_update_replay_error": 0.0,
+      "max_abs_local_on_output_replay_error_mps2": 4.440892098500626e-16,
+      "output_cap_or_beta_residual_mps2": 0.0,
+      "weight_projection_events": 0,
+      "surface_eta_sign_flip_fraction_axis_xyz": [
+        0.38922764227642276,
+        0.4573170731707317,
+        0.21595528455284552
+      ],
+      "eta_surface_abs_ratio_median_axis_xyz": [
+        1.2343510864392673,
+        1.2326222892184449,
+        0.7064370043352375
+      ],
+      "actual_on_position_error_rmse_m_axis_xyz": [
+        0.005035340348669282,
+        0.007751181930223929,
+        0.0034228880293591425
+      ],
+      "offline_counterfactual_raw_head_rms_delta_mps2_axis_xyz": [
+        0.14237059211357234,
+        0.1339933457134203,
+        0.35178787173430254
+      ],
+      "offline_counterfactual_raw_head_signed_mean_delta_mps2_axis_xyz": [
+        0.12204835751362746,
+        0.10197174302079566,
+        0.29375826046352865
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C02_W15",
+      "band": "W15",
+      "on_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\corrected_reference_training_v1\\corrected_pair_eval_v1\\runs\\r070\\attempt_01\\raw_run.mat",
+      "on_raw_sha256": "1e5e7368871e5646530b4ddb03ea231b2a1b6f2d81805eaf3ccbb786dcb5b395",
+      "b_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\data\\raw\\val\\DL1018_VAL_T3_C02_W15\\B\\attempt_01\\raw_run.mat",
+      "b_raw_sha256": "88ff5ca24b906f70bcc37d8dac9767b3e37b64ddfe3b0760a17b336b5a286505",
+      "frozen_inputs_sha256": "92bf5bb355e473360f4ea6023dc508ed7c5369733eb083dfe38b26e53bf6bd58",
+      "raw_internal_source_scene_id": "DL1018_VAL_T3_C02_W15",
+      "run_start_sha256": "379e444bea5335f73dc6f3a833e12d8b48ad278049364d5d3ef46e257f372718",
+      "events": 1968,
+      "head_type": "FEATURE",
+      "gamma": 12.0,
+      "first_event_t_s": 0.32,
+      "last_event_t_s": 19.99,
+      "max_abs_r_f_identity_error_mps2": 0.0,
+      "max_abs_initial_eta_error_mps": 0.0,
+      "max_abs_eta_state_continuity_error_mps": 0.0,
+      "max_abs_eta_recurrence_error_mps": 3.170207152347615e-16,
+      "max_abs_eta_event_timestamp_error_mps": 0.0,
+      "max_abs_surface_feature_identity_error_mps": 0.0,
+      "max_abs_coord_identity_error_mps": 0.0,
+      "max_abs_s_eff_clip_error_mps": 0.0,
+      "max_abs_output_before_update_error_mps2": 1.3877787807814457e-16,
+      "max_abs_weight_update_replay_error": 0.0,
+      "max_abs_local_on_output_replay_error_mps2": 1.3877787807814457e-16,
+      "output_cap_or_beta_residual_mps2": 0.0,
+      "weight_projection_events": 0,
+      "surface_eta_sign_flip_fraction_axis_xyz": [
+        0.1092479674796748,
+        0.15302491103202848,
+        0.10467479674796748
+      ],
+      "eta_surface_abs_ratio_median_axis_xyz": [
+        0.5082801537307278,
+        0.48594297240669976,
+        0.3679545827611731
+      ],
+      "actual_on_position_error_rmse_m_axis_xyz": [
+        0.006367663340773577,
+        0.00474130169501332,
+        0.00042721370887859
+      ],
+      "offline_counterfactual_raw_head_rms_delta_mps2_axis_xyz": [
+        0.13853569787360986,
+        0.08890320147395758,
+        0.0038513760183585054
+      ],
+      "offline_counterfactual_raw_head_signed_mean_delta_mps2_axis_xyz": [
+        0.10972739493960072,
+        -0.009213862141787427,
+        0.0027511333478848704
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C03_W00",
+      "band": "W00_W08",
+      "on_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\corrected_reference_training_v1\\corrected_pair_eval_v1\\runs\\r072\\attempt_01\\raw_run.mat",
+      "on_raw_sha256": "b6160a9137137df694bf173e18fd10cfe35d2b8b8b906458bc06381f74ed98c5",
+      "b_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\data\\raw\\val\\DL1018_VAL_T3_C03_W00\\B\\attempt_01\\raw_run.mat",
+      "b_raw_sha256": "1238d9a55670a2e12d80d5eea6ea6edaebb6fb50586e99ad7d0fc18ed921e476",
+      "frozen_inputs_sha256": "92bf5bb355e473360f4ea6023dc508ed7c5369733eb083dfe38b26e53bf6bd58",
+      "raw_internal_source_scene_id": "DL1018_VAL_T3_C03_W00",
+      "run_start_sha256": "360f5f002b645af83991786c542dc3e38e185c601a44b0cc30429810817b7af5",
+      "events": 1968,
+      "head_type": "FEATURE",
+      "gamma": 12.0,
+      "first_event_t_s": 0.32,
+      "last_event_t_s": 19.99,
+      "max_abs_r_f_identity_error_mps2": 0.0,
+      "max_abs_initial_eta_error_mps": 0.0,
+      "max_abs_eta_state_continuity_error_mps": 0.0,
+      "max_abs_eta_recurrence_error_mps": 3.122502256758253e-16,
+      "max_abs_eta_event_timestamp_error_mps": 0.0,
+      "max_abs_surface_feature_identity_error_mps": 0.0,
+      "max_abs_coord_identity_error_mps": 0.0,
+      "max_abs_s_eff_clip_error_mps": 0.0,
+      "max_abs_output_before_update_error_mps2": 2.220446049250313e-16,
+      "max_abs_weight_update_replay_error": 0.0,
+      "max_abs_local_on_output_replay_error_mps2": 2.220446049250313e-16,
+      "output_cap_or_beta_residual_mps2": 0.0,
+      "weight_projection_events": 0,
+      "surface_eta_sign_flip_fraction_axis_xyz": [
+        0.19207317073170732,
+        0.17835365853658536,
+        0.033028455284552845
+      ],
+      "eta_surface_abs_ratio_median_axis_xyz": [
+        0.6704355057904134,
+        0.6314281884808861,
+        0.13427406219470203
+      ],
+      "actual_on_position_error_rmse_m_axis_xyz": [
+        0.00910131685989061,
+        0.006159935505889855,
+        0.0026306907071386265
+      ],
+      "offline_counterfactual_raw_head_rms_delta_mps2_axis_xyz": [
+        0.10685784639757936,
+        0.08341511146075457,
+        0.005594207763900523
+      ],
+      "offline_counterfactual_raw_head_signed_mean_delta_mps2_axis_xyz": [
+        0.06458798022879308,
+        0.03184479927215305,
+        0.0005269872271302954
+      ]
+    }
+  ],
+  "grouped_window_axis_csv": "round2_same_state_replay_by_scene_window_axis.csv"
+}

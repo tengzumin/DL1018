@@ -1,0 +1,200 @@
+{
+  "schema": "ROUND2_PCF_SCREEN_RESULTS_V2",
+  "status": "COMPLETE_12_SCENE_SCREEN",
+  "safe_complete_finite_identity_verified_runs": {
+    "B": 12,
+    "PCF_on": 12,
+    "PCF_off": 12
+  },
+  "metric_rows": 12,
+  "delta_direction": "PCF_off_minus_PCF_on_and_B",
+  "q_comparison_tolerance_m": 1e-12,
+  "reference_position_input_rule": "ON/B/OFF logged reference/position arrays must be elementwise exactly equal; this is an input identity check, not a state trajectory comparison.",
+  "controller_call_time_s": {
+    "definition": "Per-controller-call elapsed time read from log/controller_call_time_s; mean/p95/max is separate from whole-scene wall runtime.",
+    "missing_field_policy": "Missing, empty, nonfinite, negative or wrong-length field blocks scoring."
+  },
+  "candidate_episode_runtime_s": {
+    "definition": "OFF run_status.episode_runtime_seconds; timer surrounds only run_episode_dl1018 and excludes scene/input loading plus MAT/status/report writes.",
+    "mean": 16.88694095,
+    "p95": 17.30509109,
+    "max": 17.3094758,
+    "sum": 202.6432914
+  },
+  "candidate_attempt_execution_and_raw_persistence_s": {
+    "definition": "OFF run_status.attempt_execution_and_raw_persistence_seconds; starts immediately before run_start.mat save and ends after raw_run.mat save, excluding scene/input loading and later status/report writes.",
+    "mean": 20.776454116666663,
+    "p95": 21.16954138,
+    "max": 21.1898971,
+    "sum": 249.31744939999996
+  },
+  "groups": {
+    "W09_W11": {
+      "n": 3,
+      "mean_q_b_m": 0.009607702582749409,
+      "mean_q_on_m": 0.009443868339091374,
+      "mean_q_off_m": 0.01066153522401051,
+      "mean_q_off_minus_on_m": 0.001217666884919136,
+      "mean_q_off_minus_b_m": 0.0010538326412610998,
+      "q_outcomes_off_vs_on": {
+        "WIN": 0,
+        "TIE": 0,
+        "LOSS": 3
+      },
+      "q_outcomes_off_vs_b": {
+        "WIN": 1,
+        "TIE": 0,
+        "LOSS": 2
+      },
+      "mean_rmse_z_b_0_20_m": 0.0018504494174008603,
+      "mean_rmse_z_on_0_20_m": 0.002718293854181992,
+      "mean_rmse_z_off_0_20_m": 0.002140276111915532,
+      "mean_rmse_z_off_minus_on_0_20_m": -0.0005780177422664602,
+      "mean_rmse_z_off_minus_b_0_20_m": 0.0002898266945146716,
+      "z_outcomes_off_vs_on": {
+        "WIN": 2,
+        "TIE": 0,
+        "LOSS": 1
+      },
+      "z_outcomes_off_vs_b": {
+        "WIN": 0,
+        "TIE": 0,
+        "LOSS": 3
+      }
+    },
+    "W12_W14": {
+      "n": 3,
+      "mean_q_b_m": 0.0096582121691477,
+      "mean_q_on_m": 0.009982198106208921,
+      "mean_q_off_m": 0.011032908734863288,
+      "mean_q_off_minus_on_m": 0.0010507106286543656,
+      "mean_q_off_minus_b_m": 0.0013746965657155871,
+      "q_outcomes_off_vs_on": {
+        "WIN": 0,
+        "TIE": 0,
+        "LOSS": 3
+      },
+      "q_outcomes_off_vs_b": {
+        "WIN": 1,
+        "TIE": 0,
+        "LOSS": 2
+      },
+      "mean_rmse_z_b_0_20_m": 0.0025483050740611178,
+      "mean_rmse_z_on_0_20_m": 0.0030796798377889143,
+      "mean_rmse_z_off_0_20_m": 0.0027450643848847133,
+      "mean_rmse_z_off_minus_on_0_20_m": -0.0003346154529042006,
+      "mean_rmse_z_off_minus_b_0_20_m": 0.00019675931082359564,
+      "z_outcomes_off_vs_on": {
+        "WIN": 2,
+        "TIE": 0,
+        "LOSS": 1
+      },
+      "z_outcomes_off_vs_b": {
+        "WIN": 0,
+        "TIE": 0,
+        "LOSS": 3
+      }
+    },
+    "W15": {
+      "n": 3,
+      "mean_q_b_m": 0.008628703145549912,
+      "mean_q_on_m": 0.008984547641962097,
+      "mean_q_off_m": 0.010136980136031195,
+      "mean_q_off_minus_on_m": 0.0011524324940690982,
+      "mean_q_off_minus_b_m": 0.0015082769904812838,
+      "q_outcomes_off_vs_on": {
+        "WIN": 0,
+        "TIE": 0,
+        "LOSS": 3
+      },
+      "q_outcomes_off_vs_b": {
+        "WIN": 0,
+        "TIE": 0,
+        "LOSS": 3
+      },
+      "mean_rmse_z_b_0_20_m": 0.0004749796659011591,
+      "mean_rmse_z_on_0_20_m": 0.0005083079739559613,
+      "mean_rmse_z_off_0_20_m": 0.0004343393700290778,
+      "mean_rmse_z_off_minus_on_0_20_m": -7.39686039268835e-05,
+      "mean_rmse_z_off_minus_b_0_20_m": -4.064029587208135e-05,
+      "z_outcomes_off_vs_on": {
+        "WIN": 3,
+        "TIE": 0,
+        "LOSS": 0
+      },
+      "z_outcomes_off_vs_b": {
+        "WIN": 1,
+        "TIE": 0,
+        "LOSS": 2
+      }
+    },
+    "W00_W08": {
+      "n": 3,
+      "mean_q_b_m": 0.013501790561116186,
+      "mean_q_on_m": 0.010736206734283348,
+      "mean_q_off_m": 0.012123615122831952,
+      "mean_q_off_minus_on_m": 0.0013874083885486027,
+      "mean_q_off_minus_b_m": -0.0013781754382842341,
+      "q_outcomes_off_vs_on": {
+        "WIN": 0,
+        "TIE": 0,
+        "LOSS": 3
+      },
+      "q_outcomes_off_vs_b": {
+        "WIN": 3,
+        "TIE": 0,
+        "LOSS": 0
+      },
+      "mean_rmse_z_b_0_20_m": 0.002499281119229891,
+      "mean_rmse_z_on_0_20_m": 0.002540209397528584,
+      "mean_rmse_z_off_0_20_m": 0.0023880674922890388,
+      "mean_rmse_z_off_minus_on_0_20_m": -0.0001521419052395456,
+      "mean_rmse_z_off_minus_b_0_20_m": -0.00011121362694085247,
+      "z_outcomes_off_vs_on": {
+        "WIN": 2,
+        "TIE": 0,
+        "LOSS": 1
+      },
+      "z_outcomes_off_vs_b": {
+        "WIN": 2,
+        "TIE": 0,
+        "LOSS": 1
+      }
+    }
+  },
+  "hf_w09_w14_gate": {
+    "n": 6,
+    "mean_q_on_m": 0.009713033222650148,
+    "mean_q_off_m": 0.010847221979436897,
+    "mean_q_improvement_off_vs_on_m": -0.001134188756786749,
+    "mean_q_off_minus_b_m": 0.0012142646034883423,
+    "z_rmse_off_wins_of_6": 4
+  },
+  "all_12_macro": {
+    "mean_q_b_m": 0.010349102114640803,
+    "mean_q_on_m": 0.009786705205386435,
+    "mean_q_off_m": 0.010988759804434235,
+    "mean_q_improvement_off_vs_b_m": -0.0006396576897934325
+  },
+  "micro_sensitivity": {
+    "q_outcomes_off_vs_on": {
+      "WIN": 0,
+      "TIE": 0,
+      "LOSS": 12
+    },
+    "q_outcomes_off_vs_b": {
+      "WIN": 5,
+      "TIE": 0,
+      "LOSS": 7
+    },
+    "mean_q_improvement_off_vs_on_m": -0.0012020545990478002,
+    "mean_q_improvement_off_vs_b_m": -0.0006396576897934325
+  },
+  "registered_gate_pass": false,
+  "decision": "SCREEN_NOT_PASSED_NO_72_NO_TUNING",
+  "claim_limit": "A 12-scene screen can only decide whether to request a separate 72-scene review; it does not independently prove or falsify H2.",
+  "rescore_csv_sha256": {
+    "ON_CANDIDATE": "cf0a4dc078f0cb751877695cabc58aba05bd0933b022d948410d376133a974e0",
+    "B_BASELINE": "27a77399470eda26fde5f1724d199de10235844c519e8d561547af6f1a8933b2"
+  }
+}

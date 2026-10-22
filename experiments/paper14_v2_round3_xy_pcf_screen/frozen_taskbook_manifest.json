@@ -1,0 +1,36 @@
+{
+  "taskbook_id": "PAPER14_V2_R3_PCF_XY_ONLY_SCREEN_20261022_REVISION_2_FROZEN",
+  "frozen_utc": "2026-10-21T22:49:00Z",
+  "taskbook": {
+    "path": "experiments/paper14_v2_round3_xy_pcf_screen/TASKBOOK_ZH.md",
+    "sha256": "a9d876f0e22175785f184707ba0f35090be3adf6a25317e83c39a9c88a1ccb4a"
+  },
+  "upstream_round2_lock": {
+    "path": "experiments/paper14_v2_round2_pcf_screen/frozen_inputs.json",
+    "sha256": "92bf5bb355e473360f4ea6023dc508ed7c5369733eb083dfe38b26e53bf6bd58"
+  },
+  "reviewed_mechanism_audit": {
+    "script": {
+      "path": "experiments/paper14_v2_round2_pcf_screen/offline_replay_round2.py",
+      "sha256": "1d7e78d855ccd4c11e996c86c9e244a48e78c60dc93346c55b06829d1d5fcacc"
+    },
+    "json": {
+      "path": "experiments/paper14_v2_round2_pcf_screen/reports/round2_same_state_replay_audit.json",
+      "sha256": "6f4f75adc18b5f07cda29f60d5a7518670fb93613658cd8b8fbdd9fec3688aed"
+    },
+    "independent_review": "Luna xhigh read-only source/artifact review; no remaining blockers; no execution or TEST access."
+  },
+  "authorization": {
+    "permitted": [
+      "build isolated Round 3 source, runner, lock, scorer, status verifier, static/offline smoke, read-only preflight, and reports under this Round 3 directory"
+    ],
+    "not_permitted_yet": [
+      "MATLAB/Plant flight, including PROBE",
+      "training or GPU job",
+      "72-scene expansion",
+      "TEST access",
+      "editing Round 1/Round 2 locks or source/raw/model/cache inputs"
+    ],
+    "run_gate": "Requires separate main-model source review after the isolated package is complete."
+  }
+}
