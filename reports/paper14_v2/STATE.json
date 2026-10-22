@@ -65,7 +65,8 @@
     "phase1/deployment_chain_finite_horizon_audit.md",
     "phase1/round2_theory_followup.md",
     "phase1/round2_theory_main_review.md",
-    "phase1/round2_literature_main_review.md"
+    "phase1/round2_literature_main_review.md",
+    "phase1/w15_raw_offline_causal_audit_20261022.md"
   ],
   "process_snapshot": {
     "disk_free_bytes": 166259744768,
@@ -74,7 +75,7 @@
     "checked_at_local": "2026-10-22 09:42:58 +08:00",
     "action": "Read-only PS7 W15 raw identity/status audit; no experiment started, no process stopped or modified, TEST remains sealed."
   },
-  "last_updated_local": "2026-10-22 09:47:21 +08:00",
+  "last_updated_local": "2026-10-22 10:25:02 +08:00",
   "phase1_status": {
     "status": "historical_round1_closed_registered_screen_failed",
     "concluded": [
@@ -248,7 +249,44 @@
         "conclusion": "No causal overclaim, decision-state contradiction, or internal arithmetic contradiction found; displayed rounded means may differ by 0.000001 mm from deltas computed before rounding."
       },
       "test_accessed": false,
-      "new_run_or_training": false
+      "new_run_or_training": false,
+      "raw_variable_audit": {
+        "status": "MAIN_MODEL_REVIEWED; NO_IMPLEMENTATION_BUG_PROVEN; PERFORMANCE_ROOT_CAUSE_UNLOCALIZED",
+        "report": "phase1/w15_raw_offline_causal_audit_20261022.md",
+        "raw_files": 9,
+        "sha256_verified_against_existing_identity_table": true,
+        "first_b_vs_candidate_request_difference": "0.020 s position_commanded_force_N; B logs a tiny nonzero compensation vs candidate zero before Head readiness; exact origin unresolved because some MAT records lack full cfg.",
+        "first_r3_vs_pcf_on_difference": "0.320 s Z eta-mask/update coordinate; Head output 0.330 s; state 0.331 s",
+        "fixed_state_head_update_recompute": "MATCH; output residual approximately 1e-17",
+        "selected_3_scene_w15_q_mm": {
+          "B": 8.628703146,
+          "PCF_on": 8.984547642,
+          "R3_XY": 8.977088353,
+          "R3_XY_minus_B": 0.348385207,
+          "R3_XY_minus_PCF_on": -0.007459289
+        },
+        "selected_3_scene_w15_x_rmse_mm": {
+          "B": 5.738941396,
+          "PCF_on": 6.837030784,
+          "R3_XY": 6.836014973,
+          "R3_XY_minus_B": 1.097073577,
+          "R3_XY_minus_PCF_on": -0.001015811
+        },
+        "configuration_identity_limit": "Several MAT records lack embedded full cfg; the tiny B compensation field cannot be classified as enabled legacy RBF, numerical residue, or identity/config mismatch, and complete motor-chain equivalence is unproven.",
+        "implementation_bug_found": false,
+        "performance_root_cause": "UNLOCALIZED",
+        "theory_gate": "NOT_PASSED",
+        "test_accessed": false,
+        "new_run_or_training": false,
+        "next_if_new_budget": "Complete-identity same-state offline chain replay before authoring any new single-factor taskbook.",
+        "report_sha256": "d0bc32d4ca1ee46f6ef50e8215305bf0d67744f1e4d44c780847af4be3ae0e14",
+        "independent_document_review": {
+          "status": "PASS_LIMITED_SCOPE",
+          "reviewer": "GPT-6-Luna xhigh requested; runtime model/speed not independently verifiable",
+          "scope": "Read-only new audit, matching STATE field, and existing W15 diagnosis/source audit/R3 main review/theory reports; no MAT/CSV/log/model/cache/TEST or script execution.",
+          "verified": "B2-BS source path discrepancy and missing cfg are clearly marked unresolved; no claim that the tiny field is proven legacy RBF or an implementation bug; long-horizon amplification is not excluded; values and timing match existing records; W15 subset stays at three selected scenes; stop after 3/3 with theory gate failed and TEST sealed."
+        }
+      }
     },
     "new_runs_authorized": false
   },

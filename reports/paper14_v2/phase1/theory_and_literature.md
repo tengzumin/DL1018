@@ -145,6 +145,12 @@ V=V_x+\frac{1}{2\gamma}\|W-W^\star\|_F^2.
 - 源码本身没有可证明的统一 r_f 上界、闭环紧集、近似残差界或离散 Lyapunov 负漂移；未从 TEST 或有限航次日志补造这些前提。
 - 未运行数值复测、未改代码。所有“连续/理想”结果均明确标作条件分析。
 
+## 定向出版方摘要补充核对（2026-10-22）
 
+本补充针对“自适应近似器 + command-filtered backstepping + filter-error compensation”与四旋翼控制检索，限于 IEEE Xplore 出版方记录的摘要和元数据；出版方全文页面要求 JavaScript 验证，本次未能核读三篇全文及其具体定理。它是针对性补查，不是系统综述。
 
+- *Adaptive Neural Network Command Filtered Backstepping Control for the Underactuated TORA System*，IEEE Access 11, 13679–13689 (2023)，[IEEE Xplore DOI 10.1109/ACCESS.2023.3243497](https://ieeexplore.ieee.org/document/10041801/)。摘要明确包含两个自适应神经网络、command filter、filter-error compensation 和 Lyapunov 论证。对象是 TORA，不是四旋翼；它说明“神经网络自适应 + 命令滤波反步 + 滤波误差补偿”这一泛化组合已有先例。
+- *Safety-Critical Control of Quadrotor UAV System Considering Actuator Faults and Output Constraints*，IEEE Transactions on Industrial Informatics 22(3), 2412–2422 (2026；出版日期 2025-12-22)，[IEEE Xplore DOI 10.1109/TII.2025.3640655](https://ieeexplore.ieee.org/document/11311382/)。摘要描述四旋翼 disturbance observer + RBFNN 补偿、command filter 与 auxiliary filter-error system、执行器故障/输出约束，并声称半全局有界稳定性及仿真和实验验证。它是比一般 CFB 文献更近的四旋翼先例，但其目标、补偿结构和学习器与 DL1018 不同。
+- *Event-Triggered Quantization-Based Predefined-Time Adaptive Fuzzy Control for Quadrotor Trajectory Tracking*，IEEE Transactions on Artificial Intelligence 7(1), 596–605 (2026；出版日期 2025-06-10)，[IEEE Xplore DOI 10.1109/TAI.2025.3578011](https://ieeexplore.ieee.org/document/11029485/)。摘要描述自适应模糊近似器、命令滤波、滤波误差补偿、执行器饱和/全状态约束与预定义时间稳定性论证。它也不是 DSSM Head 或当前 PCF mask，但进一步说明通用模块组合已有近邻工作。
 
+**对本项目的影响：** 论文不能把“自适应网络/模糊器 + command filter + 补偿 + 饱和处理”本身当作新方法。最多可继续考察的具体差异是因果 FEATURE Head 的离散在线更新与选择性 PCF eta 协调；当前计划未通过性能门和部署理论门，也没有证明该差异的独立收益，因此本次不认定该机制为已成立的论文贡献。仍需系统文献检索、可核查的精确方法差异，以及相应的单因素消融和合格独立测试。
