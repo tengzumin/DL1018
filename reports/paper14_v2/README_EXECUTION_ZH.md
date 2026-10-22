@@ -9,6 +9,7 @@ corrected DSSM14 的已有 DEV24+VAL48 基准是 46/72 胜、宏平均 Q 比 B �
 额外只读 W15 复核发现，三场 R3 的 X RMSE 宏平均只比 PCF-on 低 0.001016 mm，却比 B 高 1.097074 mm；故 R3 的 Z-mask 未修复已存在于 PCF-on 基线的水平差距。该结论尚未定位 PCF-on 对 B 的具体根因。原始 MAT、模型、缓存、锁与历史实验均留在本地；本次没有启动、终止或修改实验进程。
 
 - [阶段性根因与验收报告](FINAL_CLOSEOUT_20261022.md)
+- [逐项资格审计矩阵](QUALIFICATION_AUDIT_MATRIX_20261022.md)
 - [W15 离线诊断与 raw 身份表](phase1/w15_offline_diagnosis_20261022.md)
 - [W15 源码与早期控制分叉补充审计](phase1/w15_source_audit_20261022.md)
 - [跨轮逐场比较表](SCENE_PAIRWISE_LOSSES_20261022.csv)
