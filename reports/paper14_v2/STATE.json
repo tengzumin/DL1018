@@ -71,10 +71,10 @@
     "disk_free_bytes": 166259744768,
     "disk_free_gb": 154.84,
     "matlab_processes": 0,
-    "checked_at_local": "2026-10-22 09:26:28 +08:00",
-    "action": "Read-only PS7 final closeout status; no experiment started, no process stopped or modified, TEST remains sealed."
+    "checked_at_local": "2026-10-22 09:42:58 +08:00",
+    "action": "Read-only PS7 W15 raw identity/status audit; no experiment started, no process stopped or modified, TEST remains sealed."
   },
-  "last_updated_local": "2026-10-22 09:27:40 +08:00",
+  "last_updated_local": "2026-10-22 09:47:21 +08:00",
   "phase1_status": {
     "status": "historical_round1_closed_registered_screen_failed",
     "concluded": [
@@ -145,7 +145,7 @@
   },
   "current_decision": "STOP_NEW_RUNS_AFTER_THREE_FAILED_REGISTERED_SCREENS; NO_72_NO_TEST; TEST_REMAINS_SEALED",
   "paper_evidence_package_status": "NOT_QUALIFIED",
-  "next_action": "Close out evidence and gaps under the frozen plan. Do not launch training, another candidate, 72-scene validation or TEST48 within this three-round plan. Any new experiment requires a new user-approved plan and a falsifiable W15 horizontal-error hypothesis plus an audited theory path.",
+  "next_action": "Three-round cap is exhausted. Keep training, new Plant runs, 72-scene expansion and TEST48 sealed. If the user approves a new plan, first verify that a read-only same-state replay can localize the inherited W15 X gap between B and DSSM14/PCF-on requested and reconstructed acceleration; if logs cannot distinguish the mechanism, do not launch a flight. Theory must gain instantiated deployment bounds or a reviewed discrete Lyapunov/invariant-set proof.",
   "phase3_status": {
     "status": "closed_registered_screen_gate_failed",
     "taskbook": "../../experiments/paper14_v2_round3_xy_pcf_screen/TASKBOOK_ZH.md",
@@ -198,12 +198,50 @@
     "review_report": "../../experiments/paper14_v2_round3_xy_pcf_screen/reports/round3_main_review_20261022.md",
     "theory_report": "../../experiments/paper14_v2_round3_xy_pcf_screen/reports/round3_theory_audit.md",
     "raw_attempt_manifest": "../../experiments/paper14_v2_round3_xy_pcf_screen/reports/round3_attempt_hashes.csv",
+    "offline_w15_diagnosis": {
+      "status": "MAIN_SESSION_READ_ONLY_REVIEWED; SECOND_LUNA_DOC_REVIEW_PASS_LIMITED; FIRST_DELEGATE_SCOPE_LIMITATION_RECORDED",
+      "report": "phase1/w15_offline_diagnosis_20261022.md",
+      "scenes": [
+        "DL1018_VAL_T1_C08_W15",
+        "DL1018_VAL_T2_C05_W15",
+        "DL1018_VAL_T3_C02_W15"
+      ],
+      "q_macro_mm": {
+        "B": 8.628703146,
+        "PCF_on": 8.984547642,
+        "R3_XY": 8.977088353,
+        "R3_XY_minus_B": 0.348385207,
+        "R3_XY_minus_PCF_on": -0.007459289
+      },
+      "x_rmse_0_20_macro_mm": {
+        "B": 5.738941396,
+        "PCF_on": 6.837030784,
+        "R3_XY": 6.836014973,
+        "R3_XY_minus_B": 1.097073577,
+        "R3_XY_minus_PCF_on": -0.001015811
+      },
+      "timing": "First R3 mask difference in Z surface at 0.320 s; Z Head output differs at 0.330 s; full state/position first differs at 0.331 s. Candidate vs B request/state differ at 0.020/0.021 s, before first Head update.",
+      "saturation_or_limit_counts": "Motor saturation, generalized clipping, and tilt limitation are zero in all three R3 W15 records.",
+      "decision": "W15 X deficit is already present in PCF-on and essentially unchanged by R3 Z mask in these three scenes; its cause relative to B remains unlocalized.",
+      "delegate_scope_note": "W15 subagent read the full 12-scene R3 score CSV despite a W15-only review scope; do not characterize its report as a strictly scoped independent document audit. Main session independently filtered W15 rows and checked raw identities.",
+      "independent_document_review": {
+        "status": "PASS_LIMITED_SCOPE",
+        "reviewer": "GPT-6-Luna xhigh subagent; model/speed setting not verifiable from tools",
+        "scope": "Read-only consistency review of the three closeout text files; no data files or CSV read.",
+        "verified": "Q and X 0-20 s deltas recompute from STATE precision values and match.",
+        "not_independently_reconstructed": "X early/late, Y and Z macro means because the allowed documents do not include the three per-scene score rows. Main session calculated these from W15-filtered score rows.",
+        "conclusion": "No causal overclaim, decision-state contradiction, or internal arithmetic contradiction found; displayed rounded means may differ by 0.000001 mm from deltas computed before rounding."
+      },
+      "test_accessed": false,
+      "new_run_or_training": false
+    },
     "new_runs_authorized": false
   },
   "closeout_artifacts": {
     "report": "FINAL_CLOSEOUT_20261022.md",
     "pairwise_loss_table": "SCENE_PAIRWISE_LOSSES_20261022.csv",
-    "pairwise_builder": "build_scene_pairwise_losses.ps1"
+    "pairwise_builder": "build_scene_pairwise_losses.ps1",
+    "w15_offline_diagnosis": "phase1/w15_offline_diagnosis_20261022.md"
   },
   "closeout_review": {
     "status": "PASS",
@@ -221,9 +259,10 @@
     "limitation": "Current Codex main session has no model-switch control; collaboration tools expose no normal/fast speed selector. Main-session model and speed compliance cannot be independently verified."
   },
   "closeout_artifact_sha256": {
-    "FINAL_CLOSEOUT_20261022.md": "d3cb64acad6f8eaa038f4cd3dc9dca62ef9120038151a84063c46d956ba584b7",
+    "FINAL_CLOSEOUT_20261022.md": "9d86d8c168a84d4040c361cd0bd981dcfb46db0320bda28c86e240a576373aa5",
     "SCENE_PAIRWISE_LOSSES_20261022.csv": "5d8279e9c2c3dfed4b8c6f3c466f2c5235c13e62ec92becc7c53cc131d5d058b",
     "build_scene_pairwise_losses.ps1": "f9733a3638eb4f31b54fd4f5755c0c90a24d0a592a322848b00a9a0d5a652d4b",
-    "README_EXECUTION_ZH.md": "e8a39a482020afbe01773c8705970790e48f57aa53f08fbf0196bbb55d5fcde6"
+    "README_EXECUTION_ZH.md": "0a5bf80791bb4a9dd637a6a8caa9d411b583b055d8590f1d8d4e2ab0be27079d",
+    "phase1/w15_offline_diagnosis_20261022.md": "c3ac2d78e5d05edd906e122391897b14cbe652c653ac7a7b208c632117e00190"
   }
 }
