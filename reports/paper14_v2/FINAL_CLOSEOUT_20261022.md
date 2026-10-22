@@ -70,7 +70,7 @@ R3 的 W15 差异定位到水平 **X 轴误差**：候选相对 B 的平均 X RM
 
 已核验的数学结论限于局部或条件性质：DSSM 特征归一化范数、Head 输出裁剪界、投影之后的权重盒界，以及在 PCF 残差已知有界时 eta 离散滤波的条件界。它们没有证明完整闭环稳定。
 
-部署链理论复核可以在明确且有限的质量/惯量/风/形态/电机/参考/初值假设下，对实际 RK4 离散 Plant 写出条件有限时域增长包络；但这些假设目前没有被数值实例化并绑定到历史 72 场，而且该递推不意味着误差衰减。仍缺少增广离散 Lyapunov 漂移或经审计的正向不变域，也没有闭合统一残差界。因此不能声称实际系统的 ISS/UUB、参数收敛或 R3 mask 的性能改善定理。有限仿真和权重裁剪均不能替代这些证明。理论审核详见 [R3 理论审计](../../experiments/paper14_v2_round3_xy_pcf_screen/reports/round3_theory_audit.md) 和 [全链理论复核](phase1/deployment_chain_finite_horizon_audit.md)。
+部署链理论复核可以在明确且有限的质量/惯量/风/形态/电机/参考/初值假设下，对实际 RK4 离散 Plant 写出条件有限时域增长包络；但这些假设目前没有被数值实例化并绑定到历史 72 场，而且该递推不意味着误差衰减。仍缺少增广离散 Lyapunov 漂移或经审计的正向不变域，也没有闭合统一残差界。因此不能声称实际系统的 ISS/UUB、参数收敛或 R3 mask 的性能改善定理。有限仿真和权重裁剪均不能替代这些证明。理论审核详见 [R3 理论审计](../../experiments/paper14_v2_round3_xy_pcf_screen/reports/round3_theory_audit.md) 和 [全链理论复核](phase1/deployment_chain_finite_horizon_audit.md)。 可证明的局部结果已另整理为[限定理论附录](phase1/theory_appendix_limited_20261022.md)，该附录不改变理论门未通过的判定。
 
 R3 的 mask 只是由 R2 屏查提出并初步检查的机制候选；本轮 12 场未过 W15 门，且没有完整 72 场结果、与 corrected KAN14 的同轮比较、方案要求的关键消融、或一次独立 TEST48。它还没有形成可宣称的方法贡献。TEST 未被读取，且不能在结果失败后打开来补救。
 
