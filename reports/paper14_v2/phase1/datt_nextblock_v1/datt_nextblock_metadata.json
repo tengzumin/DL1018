@@ -1,0 +1,48 @@
+{
+  "schema": "DATT_NEXTBLOCK_DIAGNOSTIC_V1",
+  "analysis_role": "offline observational mechanism diagnostic; no causal claim or experiment",
+  "inputs": {
+    "manifest_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\reports\\paper14_v2\\phase1\\mechanism_components_by_scene.csv",
+    "manifest_sha256": "f1ba9ff2335ea75e992436f753fb75ff1678271f33bf6d2fe706db4b45572e3b",
+    "paired_score_table": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\reports\\corrected14_full72_benchmark_20261021\\PAIR14_SCENE_RESULTS_VS_B.csv",
+    "paired_score_sha256": "b2264145e9d18896f5764ffe38302576dd08c80e7cce1c277323246092169137",
+    "frozen_raw_indexes": {
+      "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\corrected_reference_training_v1\\corrected_pair_eval_v1\\reports\\RAW_INDEX.csv": "364367e46ae8e3eb3335efd34a834b984a2a87fc1cef0dd5bf4991bbf342d8b4",
+      "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\corrected_reference_training_v1\\corrected_pair_eval_tail21_v1\\reports\\RAW_INDEX.csv": "3527883329ec23f51928d3967071d307a42683adc831cee8958822c7b732d116"
+    },
+    "scenes": 72,
+    "raw_sha_unique": 72,
+    "raw_identity_set_sha256": "6225763db893447b748dbdf5f79cb7962bd6e7d1ce7265113a9486871c262a33"
+  },
+  "time_and_event_rules": {
+    "scored_samples": "exact existing full72 grid t=0.000..19.999 s at 1 kHz; t=20 terminal excluded",
+    "blocks": "20 half-open blocks [j,j+1), j=0..19; each has exactly 1000 scored samples",
+    "source_target_pairs": "source j=0..18 only; target j+1=1..19; no overlap in source-derived predictor and target interval",
+    "source_phase": "early j=0..9; late j=10..18; phase is determined by predictor/source block",
+    "events": "event flag indices are exactly 10,20,...,19990 (0-based); event times exactly 0.01..19.99 s; only valid inference events enter projections"
+  },
+  "predictor": {
+    "datt": "(R_actual-R_raw)e3*T_req/m, same-event world/inertial coordinates, m/s^2",
+    "residual": "logged applied_output - beta*clip(Y,-3,3), same-event world/inertial coordinates, m/s^2",
+    "event_projection": "residual dot dAtt / norm(dAtt), m/s^2; equal-weight mean over valid source-block events",
+    "near_zero_rule": "exclude event when norm(dAtt) <= 1.0e-12 m/s^2; count exclusions; no imputation",
+    "reconstruction_check": "per-scene 3D target RMS and online residual RMS/axis RMS must match the audited full72 mechanism table within 1e-12 m/s^2"
+  },
+  "outcome_and_model": {
+    "z_rmse": "sqrt(mean((logged state z - reference z)^2)) on the same 1000 aligned full72 score timestamps per block",
+    "main_model": "target_block_z_rmse ~ projection_mean + source_block_z_rmse + scene_FE + source_block_FE",
+    "main_coefficient": "projection beta is a conditional predictive association beyond current-block error and common source-block trend; units s^2",
+    "estimation": "two-way FE OLS; 2000 percentile bootstrap replicates resampling entire scene clusters; duplicate draws receive distinct scene FE IDs; seed 2026102201",
+    "interval_rule": "report CI only for strata with >=20 independent scenes; 5..19 scene point estimates are descriptive only; this threshold does not guarantee generalization",
+    "posthoc_outcome_strata": "candidate WIN/LOSS/TIE vs B uses full-horizon outcome and is exploratory only; outcome strata are produced within W09-W14",
+    "group_scope": "overall and wind groups; task, source-phase and posthoc outcome strata within W09-W14 only"
+  },
+  "outputs": [
+    "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\reports\\paper14_v2\\phase1\\datt_nextblock_v1\\datt_nextblock_pairs.csv",
+    "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\reports\\paper14_v2\\phase1\\datt_nextblock_v1\\datt_nextblock_group_summary.csv",
+    "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\reports\\paper14_v2\\phase1\\datt_nextblock_v1\\datt_nextblock_metadata.json"
+  ],
+  "script_sha256": "bc4eadb94a367fec53b8a8049f9618a8b80757c307db9608103200cf2db55dff",
+  "elapsed_seconds": 18.9281325340271,
+  "all_72_raw_sha_before_after_matched": true
+}

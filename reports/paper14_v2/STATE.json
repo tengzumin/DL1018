@@ -78,7 +78,12 @@
     "phase1/audit_w15_control_chain_replay.py",
     "phase1/w15_control_chain_replay_20261022.json",
     "QUALIFICATION_AUDIT_MATRIX_20261022.md",
-    "phase1/theory_appendix_limited_20261022.md"
+    "phase1/theory_appendix_limited_20261022.md",
+    "phase1/DATT_NEXTBLOCK_DIAGNOSTIC_REPORT_ZH.md",
+    "phase1/datt_nextblock_diagnostic.py",
+    "phase1/datt_nextblock_v1/datt_nextblock_pairs.csv",
+    "phase1/datt_nextblock_v1/datt_nextblock_group_summary.csv",
+    "phase1/datt_nextblock_v1/datt_nextblock_metadata.json"
   ],
   "process_snapshot": {
     "disk_free_bytes": 165936209920,
@@ -90,7 +95,7 @@
     "checked_at_local": "2026-10-22 12:00:12 +08:00",
     "action": "Read-only PowerShell 7 audit: no project-matching Python experiment or MATLAB process, no process started or stopped; TEST remains sealed."
   },
-  "last_updated_local": "2026-10-22 12:52:42 +08:00",
+  "last_updated_local": "2026-10-22 13:39:37 +08:00",
   "phase1_status": {
     "status": "historical_round1_closed_registered_screen_failed",
     "concluded": [
@@ -115,7 +120,8 @@
       "The suspected Round1 active-helper provenance gap was retracted after line-level review of the locked external runner: FEATURE+update uses position_only_search_head_step, already SHA-locked in R1; workspace position_stage1_update_head*.m is an unused fallback for this configuration.",
       "主模型独立审核 Round2 条件离散推导，复算 Head/位置外环界与数值一致；推导只适用于声明假设，完整部署理论验收仍未通过。",
       "主模型在执行前澄清 Round2 配对评分语义：候选与对照需共享场景/输入/时基身份但轨迹允许分叉；补入有效配置与 runner contract 的 PCF-off 离线兼容门槛。",
-      "原理论/文献总报告的 Farrell 来源限界句已同步更正，明确可读 PDF 为 ACC 2008 稿，TAC 2009 全文未核读。"
+      "原理论/文献总报告的 Farrell 来源限界句已同步更正，明确可读 PDF 为 ACC 2008 稿，TAC 2009 全文未核读。",
+      "Read-only dAtt next-block diagnosis completed on 72 VAL/DEV scenes: HF conditional association beta=-0.005719 s^2 (scene-cluster 95% CI [-0.008952,-0.002667]) with same-sign early/late estimates; association is not causal and no experiment was launched."
     ],
     "unresolved": [],
     "current_experiment_interrupted": false,
@@ -161,7 +167,7 @@
   },
   "current_decision": "STOP_NEW_RUNS_AFTER_THREE_FAILED_REGISTERED_SCREENS; NO_72_NO_TEST; TEST_REMAINS_SEALED",
   "paper_evidence_package_status": "NOT_QUALIFIED",
-  "next_action": "Three-round cap is exhausted; keep all new runs and TEST48 sealed. The read-only W15 replay now reconstructs the 20 ms control chain through motor commands without finding an implementation mismatch; long-horizon W15 X-RMSE cause, development gates, theory and ablations remain unresolved. If a new research budget is explicitly opened, freeze one discriminating B-position-RBF-to-DSSM-readiness screen and close the deployed-theory gap before any flight.",
+  "next_action": "Three-round cap exhausted; no new runs or TEST48. The full72 offline dAtt next-block diagnosis supports an observational high-frequency association (beta=-0.005719 s^2; scene-bootstrap 95% CI [-0.008952,-0.002667]), same direction in early and late phases; causal intervention remains unresolved. If a separate cycle is explicitly opened, prioritize deriving a deployable single-factor high-frequency dAtt intervention before the W15 RBF-to-DSSM draft, close B runtime identity, then freeze the exact 12-scene taskbook. Development performance, method contribution, deployed-theory proof, ablations and TEST gates remain unresolved.",
   "phase3_status": {
     "status": "closed_registered_screen_gate_failed",
     "taskbook": "../../experiments/paper14_v2_round3_xy_pcf_screen/TASKBOOK_ZH.md",
@@ -356,7 +362,8 @@
     "w15_control_chain_replay_script": "phase1/audit_w15_control_chain_replay.py",
     "w15_control_chain_replay_json": "phase1/w15_control_chain_replay_20261022.json",
     "qualification_audit_matrix": "QUALIFICATION_AUDIT_MATRIX_20261022.md",
-    "limited_theory_appendix": "phase1/theory_appendix_limited_20261022.md"
+    "limited_theory_appendix": "phase1/theory_appendix_limited_20261022.md",
+    "datt_nextblock_report": "phase1/DATT_NEXTBLOCK_DIAGNOSTIC_REPORT_ZH.md"
   },
   "closeout_review": {
     "status": "PASS",
@@ -391,7 +398,8 @@
     "phase1/audit_w15_control_chain_replay.py": "2f595ce293ad7086d8e96c04be748a713515ea5ab54ba0acbbad7f8728177524",
     "phase1/w15_control_chain_replay_20261022.json": "94682e19d7825ad978795bce2022ef2f5351f16cae6ac9e2261741c7924cea4f",
     "QUALIFICATION_AUDIT_MATRIX_20261022.md": "9ea212700774ef4b577bda93cbe1a0969704c2497ea6b3c60203c2138a4fe02e",
-    "phase1/theory_appendix_limited_20261022.md": "2166ffa8e9058034687ffd51a6e4e767303291fbfb8092c298da680bc8b7a905"
+    "phase1/theory_appendix_limited_20261022.md": "2166ffa8e9058034687ffd51a6e4e767303291fbfb8092c298da680bc8b7a905",
+    "phase1/DATT_NEXTBLOCK_DIAGNOSTIC_REPORT_ZH.md": "2e4cf9c87918178ab78f0478efabb2498c7dba4ec04f2d2654eca15767f0d2c1"
   },
   "r3_offline_artifact_review": {
     "status": "PASS_AFTER_CAUSAL_WORDING_REVISION",
@@ -445,5 +453,61 @@
     "R3_independent_cfg_replay": false,
     "R3_logged_chain_matches_DSSM_at_20ms": true,
     "independent_review": "PASS; R3 excluded from independent config replay; 20 ms assertion scope and CSV selection scope reviewed."
+  },
+  "offline_datt_nextblock_diagnostic": {
+    "status": "OFFLINE_COMPLETE; HIGH_FREQUENCY_ASSOCIATION_SUPPORTED; CAUSAL_MECHANISM_UNRESOLVED",
+    "report": "phase1/DATT_NEXTBLOCK_DIAGNOSTIC_REPORT_ZH.md",
+    "script": "phase1/datt_nextblock_diagnostic.py",
+    "script_sha256": "bc4eadb94a367fec53b8a8049f9618a8b80757c307db9608103200cf2db55dff",
+    "inputs": {
+      "mechanism_manifest_sha256": "f1ba9ff2335ea75e992436f753fb75ff1678271f33bf6d2fe706db4b45572e3b",
+      "paired_score_table_sha256": "b2264145e9d18896f5764ffe38302576dd08c80e7cce1c277323246092169137",
+      "full72_raw_index_sha256": "364367e46ae8e3eb3335efd34a834b984a2a87fc1cef0dd5bf4991bbf342d8b4",
+      "tail21_raw_index_sha256": "3527883329ec23f51928d3967071d307a42683adc831cee8958822c7b732d116",
+      "model_sha256": "6f3628b10540c617496b2a20f249c4319af79c1a02d5945f1f91f0aead9c9b6e",
+      "scene_count": 72,
+      "split_counts": {
+        "VAL": 48,
+        "DEV": 24
+      },
+      "raw_identity_set_sha256": "6225763db893447b748dbdf5f79cb7962bd6e7d1ce7265113a9486871c262a33",
+      "all_raw_sha_before_after_matched": true
+    },
+    "analysis": {
+      "pairs": 1368,
+      "nearzero_datt_events_excluded": 0,
+      "beta_w09_w14": -0.005719380517307793,
+      "beta_w09_w14_ci95": [
+        -0.008952276375259258,
+        -0.0026673220417358944
+      ],
+      "beta_early": -0.006218320300045079,
+      "beta_early_ci95": [
+        -0.010822778907836911,
+        -0.0018502107688848632
+      ],
+      "beta_late": -0.0050858653315685575,
+      "beta_late_ci95": [
+        -0.008149765985642191,
+        -0.0018442471035272489
+      ],
+      "bootstrap_replicates": 2000,
+      "bootstrap_cluster": "scene",
+      "test_accessed": false,
+      "new_simulation_or_training": false
+    },
+    "independent_review": {
+      "script_static_review": "PASS; GPT-6-Luna xhigh requested, model/speed not verifiable",
+      "result_review": "PASS; derived tables only, no raw/MAT read",
+      "main_recalculation": "Statsmodels 0.14.2 coefficients matched; explicit dummy-FE scene-bootstrap CIs for HF/early/late matched within 1e-13"
+    },
+    "outputs": {
+      "report_sha256": "2e4cf9c87918178ab78f0478efabb2498c7dba4ec04f2d2654eca15767f0d2c1",
+      "pairs_csv_sha256": "55e7bd9ac8d901368cc5f191afd58faa73c9f2f634999a220a7ad16acf8beab4",
+      "group_summary_csv_sha256": "b569e8e4f2d49cde53aebe27f913c6f2a73abe7edf22a3a5b192019251a87f99",
+      "metadata_json_sha256": "b1d08fd717fdb8c374337b7c49079516473a80481ca355c290b642e79e703fc8"
+    },
+    "cycle_decision": "Rounds 3/3 used; no new experiment or TEST48 authorized in this cycle; qualification remains NOT_QUALIFIED.",
+    "next_action": "If a separate cycle is opened, prioritize a deployable single-factor high-frequency dAtt intervention before the W15 RBF bridge draft; first close B runtime identity and freeze the 12-scene taskbook. Do not infer intervention direction from the observational coefficient."
   }
 }
