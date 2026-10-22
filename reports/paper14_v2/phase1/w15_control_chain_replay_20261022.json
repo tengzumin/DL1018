@@ -1,0 +1,453 @@
+{
+  "scope": "SHA-hash five complete metadata/input files; scan CSV rows by scene_id and select only three pinned VAL W15 records for analysis; read only their raw/run-start/source files; no new simulation, training, Plant, or TEST access",
+  "audit_script_sha256": "2f595ce293ad7086d8e96c04be748a713515ea5ab54ba0acbbad7f8728177524",
+  "pinned_helper_sha256": "372d92cb17da99884e742d3fa0c877200c3bb2bc6fac7f10e7a1a046b97a76af",
+  "input_table_sha256": {
+    "experiments/paper14_v2_round3_xy_pcf_screen/frozen_inputs.json": "2557c553578fc7616ce79f7fb62505bb69b2ba6fac7ab83e60e283d0c1e92404",
+    "reports/paper14_v2/phase1/candidate_dssm_raw_rescore.csv": "cf0a4dc078f0cb751877695cabc58aba05bd0933b022d948410d376133a974e0",
+    "reports/paper14_v2/phase1/baseline_b_raw_rescore.csv": "27a77399470eda26fde5f1724d199de10235844c519e8d561547af6f1a8933b2",
+    "reports/paper14_v2/phase1/mechanism_run_start_lineage.csv": "99f630dd3702e4ea3e9638b875dc1d3d621ffa22daf8b88baa0232d6860fda50",
+    "experiments/paper14_v2_round3_xy_pcf_screen/reports/round3_attempt_hashes.csv": "e849bb496e5d71d97b9d488a1164494e2be4467dcd149aba8c982495c3ea1663"
+  },
+  "source_sha256": {
+    "matlab/core/position_bs_step.m": "ea533c3ae97cbc552208287e7f8d9b0a0f5a018f36fb5c8bd45520e19e73c681",
+    "matlab/runtime/controller_options_dl1018.m": "93633a5fd95f73d33982045c2fa372d49b1a0df8ea0cfb5ca4461208ca9d53b1",
+    "matlab/core/baseline_force_to_attitude.m": "ef42d1d08af24ed82da307a4d886b0c205e28e754177765a2584e3e9bb0cd039",
+    "matlab/core/command_filter_step.m": "15c7eb27162e1971a1164304830f4afd3af35eb9bd709291e969dbfefd0d262b",
+    "matlab/core/attitude_bs_step.m": "cf6b20ffc4df2625d9316a80340d69542e380d14feaed66ef8498e793fdaccbc",
+    "matlab/core/allocate_control.m": "5ac26d8c5ba6243f755bcf6ad3a07e98e503c213e4c95edbee7dd2c2627f3d53",
+    "matlab/core/controller_parameters.m": "4fad5e78c0bd4177461647af167e7c86a7defa628b43d523b0b7da2ef5556398",
+    "matlab/core/simulation_parameters.m": "962b5434c23d5ac1a9ac568f136635a8ea651a775165d84b7d95250ca88bb9ae",
+    "matlab/core/arm_mass_properties.m": "8ec66e107156b5219f7e41aca2464eef1ec8043eb7f67df313c0f23ef4b551f5",
+    "matlab/core/distributed_mass_properties.m": "db380b506e4bacc37bc398d5726c5ebd25be8ebc08b6c9e76ff59bc78fd45d3a",
+    "matlab/core/allocation_matrix.m": "5886c00b3f8800301a324159e534b4c65e857cdd00392a3231af22c6dbba517d",
+    "matlab/core/arm_directions.m": "517bbfcd0df9526b189f64bff067a49551f573ad96e682ee005533ab510e686c",
+    "matlab/runtime/run_dl1018_closed_loop.m": "20913227a365a78e759e5f4f8ba8e91d3f4ac2a5899927ac03e9d707b9b5c0a3",
+    "experiments/paper14_v2_round3_xy_pcf_screen/runtime/run_dl1018_closed_loop.m": "86e7f7ec42492341e58daf30879f7aec9153924e80a76f6f029fce2a628c38d9",
+    "experiments/paper14_v2_round3_xy_pcf_screen/runtime/run_episode_dl1018.m": "fcc1f5de659541e692483f8395d93fd2a251256286ebade5e510ed4c7a2e2330",
+    "experiments/paper14_v2_round3_xy_pcf_screen/runtime/position_stage1_model_forward_v2.m": "dc803aa102c49d67dd687ae941f8a60bb0c465f74fd01e5ae93ad1ea1a293676",
+    "experiments/paper14_v2_round3_xy_pcf_screen/runtime/position_only_search_head_step.m": "3bd0fe9686c3b75793575e517d4cc5f08de58ab6a26a2bc7516aa690422bb7dc",
+    "experiments/paper14_v2_round3_xy_pcf_screen/runtime/position_only_search_options.m": "4e8322934ddb524961fa762426800564f6c758e00b943b622c9143ed734f19bf",
+    "experiments/paper14_v2_round3_xy_pcf_screen/runtime/controller_options_dl1018.m": "93633a5fd95f73d33982045c2fa372d49b1a0df8ea0cfb5ca4461208ca9d53b1",
+    "experiments/paper14_v2_round3_xy_pcf_screen/runtime/position_filter_realization_pcf_step_v3_5.m": "b4ae22db5bd444a162d0cd01a3a59a589f2e37077b089bb33693401b660228d0"
+  },
+  "results": [
+    {
+      "scene_id": "DL1018_VAL_T1_C08_W15",
+      "time_s": 0.02,
+      "matched_core_config_fields_B_vs_DSSM": 60,
+      "state_and_six_references_equal_at_replay": true,
+      "common_B_DSSM_control_inputs_equal": [
+        "position_bs_nominal_force_N",
+        "filtered_attitude_reference",
+        "filtered_attitude_rate",
+        "attitude_compensation_applied_torque_Nm"
+      ],
+      "R3_runtime_identity": {
+        "names": [
+          "run_dl1018_closed_loop.m",
+          "run_episode_dl1018.m",
+          "position_stage1_model_forward_v2.m",
+          "position_only_search_head_step.m",
+          "position_only_search_options.m",
+          "controller_options_dl1018.m",
+          "position_filter_realization_pcf_step_v3_5.m"
+        ],
+        "sha256": [
+          "86e7f7ec42492341e58daf30879f7aec9153924e80a76f6f029fce2a628c38d9",
+          "fcc1f5de659541e692483f8395d93fd2a251256286ebade5e510ed4c7a2e2330",
+          "dc803aa102c49d67dd687ae941f8a60bb0c465f74fd01e5ae93ad1ea1a293676",
+          "3bd0fe9686c3b75793575e517d4cc5f08de58ab6a26a2bc7516aa690422bb7dc",
+          "4e8322934ddb524961fa762426800564f6c758e00b943b622c9143ed734f19bf",
+          "93633a5fd95f73d33982045c2fa372d49b1a0df8ea0cfb5ca4461208ca9d53b1",
+          "b4ae22db5bd444a162d0cd01a3a59a589f2e37077b089bb33693401b660228d0"
+        ],
+        "upstream_sha256": [
+          "01d83dec95aea5d30feef3afd0628a2ce0911f70465f0773a4f568a01b08450b",
+          "fcc1f5de659541e692483f8395d93fd2a251256286ebade5e510ed4c7a2e2330",
+          "dc803aa102c49d67dd687ae941f8a60bb0c465f74fd01e5ae93ad1ea1a293676",
+          "3bd0fe9686c3b75793575e517d4cc5f08de58ab6a26a2bc7516aa690422bb7dc",
+          "4e8322934ddb524961fa762426800564f6c758e00b943b622c9143ed734f19bf",
+          "93633a5fd95f73d33982045c2fa372d49b1a0df8ea0cfb5ca4461208ca9d53b1",
+          "b4ae22db5bd444a162d0cd01a3a59a589f2e37077b089bb33693401b660228d0"
+        ],
+        "plant_identity_verified_count": 10
+      },
+      "R3_independent_cfg_replay": false,
+      "replay_max_abs_errors": {
+        "B": {
+          "target_euler_rad": 0.0,
+          "filter_request_rad_s2": 0.0,
+          "filter_applied_rad_s2": 0.0,
+          "nominal_torque_Nm": 0.0,
+          "requested_generalized": 0.0,
+          "clipped_generalized": 0.0,
+          "motor_squared": 8.149072527885437e-10,
+          "motor_setpoint": 4.547473508864641e-13,
+          "motor_command": 4.547473508864641e-13,
+          "allocated_generalized": 2.498001805406602e-16
+        },
+        "DSSM": {
+          "target_euler_rad": 0.0,
+          "filter_request_rad_s2": 0.0,
+          "filter_applied_rad_s2": 0.0,
+          "nominal_torque_Nm": 0.0,
+          "requested_generalized": 0.0,
+          "clipped_generalized": 0.0,
+          "motor_squared": 9.313225746154785e-10,
+          "motor_setpoint": 4.547473508864641e-13,
+          "motor_command": 4.547473508864641e-13,
+          "allocated_generalized": 1.942890293094024e-16
+        }
+      },
+      "B_minus_DSSM_chain_differences": {
+        "position_commanded_force_N": {
+          "max_abs": 5.189587082982117e-09,
+          "unit": "N",
+          "components": [
+            -6.114747793091594e-17,
+            5.189587082982117e-09,
+            8.98816819041269e-11
+          ]
+        },
+        "raw_outer_attitude": {
+          "max_abs": 7.619162918312029e-10,
+          "unit": "rad",
+          "components": [
+            -7.619162918312029e-10,
+            -8.97693198001342e-18,
+            0.0
+          ]
+        },
+        "command_filter_acceleration_request_unclamped_rads2": {
+          "max_abs": 2.468608785582971e-07,
+          "unit": "rad/s^2",
+          "components": [
+            -2.468608785582971e-07,
+            -2.9085259616018963e-15,
+            0.0
+          ]
+        },
+        "attitude_bs_nominal_torque_Nm": {
+          "max_abs": 8.041624778186082e-10,
+          "unit": "N m",
+          "components": [
+            -8.041624778186082e-10,
+            -9.474678381653115e-18,
+            -5.604116134186325e-23
+          ]
+        },
+        "requested_generalized": {
+          "max_abs": 8.041624778186082e-10,
+          "unit": "N,N m",
+          "components": [
+            9.08206843064363e-11,
+            -8.041624778186082e-10,
+            -9.474678381653115e-18,
+            -5.604116134186325e-23
+          ]
+        },
+        "motor_squared_requested": {
+          "max_abs": 0.0011283141793683171,
+          "unit": "rad^2/s^2",
+          "components": [
+            -0.001101602567359805,
+            -0.001101601985283196,
+            0.0011283141793683171,
+            0.0011283141793683171
+          ]
+        },
+        "motor_setpoint": {
+          "max_abs": 5.636396736008464e-07,
+          "unit": "rad/s",
+          "components": [
+            -5.50399704479787e-07,
+            -5.503993634192739e-07,
+            5.636396736008464e-07,
+            5.636396736008464e-07
+          ]
+        }
+      },
+      "no_tilt_limit_or_motor_saturation": true,
+      "R3_DSSM_logged_chain_exactly_equal_at_20ms": true
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C05_W15",
+      "time_s": 0.02,
+      "matched_core_config_fields_B_vs_DSSM": 60,
+      "state_and_six_references_equal_at_replay": true,
+      "common_B_DSSM_control_inputs_equal": [
+        "position_bs_nominal_force_N",
+        "filtered_attitude_reference",
+        "filtered_attitude_rate",
+        "attitude_compensation_applied_torque_Nm"
+      ],
+      "R3_runtime_identity": {
+        "names": [
+          "run_dl1018_closed_loop.m",
+          "run_episode_dl1018.m",
+          "position_stage1_model_forward_v2.m",
+          "position_only_search_head_step.m",
+          "position_only_search_options.m",
+          "controller_options_dl1018.m",
+          "position_filter_realization_pcf_step_v3_5.m"
+        ],
+        "sha256": [
+          "86e7f7ec42492341e58daf30879f7aec9153924e80a76f6f029fce2a628c38d9",
+          "fcc1f5de659541e692483f8395d93fd2a251256286ebade5e510ed4c7a2e2330",
+          "dc803aa102c49d67dd687ae941f8a60bb0c465f74fd01e5ae93ad1ea1a293676",
+          "3bd0fe9686c3b75793575e517d4cc5f08de58ab6a26a2bc7516aa690422bb7dc",
+          "4e8322934ddb524961fa762426800564f6c758e00b943b622c9143ed734f19bf",
+          "93633a5fd95f73d33982045c2fa372d49b1a0df8ea0cfb5ca4461208ca9d53b1",
+          "b4ae22db5bd444a162d0cd01a3a59a589f2e37077b089bb33693401b660228d0"
+        ],
+        "upstream_sha256": [
+          "01d83dec95aea5d30feef3afd0628a2ce0911f70465f0773a4f568a01b08450b",
+          "fcc1f5de659541e692483f8395d93fd2a251256286ebade5e510ed4c7a2e2330",
+          "dc803aa102c49d67dd687ae941f8a60bb0c465f74fd01e5ae93ad1ea1a293676",
+          "3bd0fe9686c3b75793575e517d4cc5f08de58ab6a26a2bc7516aa690422bb7dc",
+          "4e8322934ddb524961fa762426800564f6c758e00b943b622c9143ed734f19bf",
+          "93633a5fd95f73d33982045c2fa372d49b1a0df8ea0cfb5ca4461208ca9d53b1",
+          "b4ae22db5bd444a162d0cd01a3a59a589f2e37077b089bb33693401b660228d0"
+        ],
+        "plant_identity_verified_count": 10
+      },
+      "R3_independent_cfg_replay": false,
+      "replay_max_abs_errors": {
+        "B": {
+          "target_euler_rad": 0.0,
+          "filter_request_rad_s2": 0.0,
+          "filter_applied_rad_s2": 0.0,
+          "nominal_torque_Nm": 0.0,
+          "requested_generalized": 0.0,
+          "clipped_generalized": 0.0,
+          "motor_squared": 9.313225746154785e-10,
+          "motor_setpoint": 4.547473508864641e-13,
+          "motor_command": 4.547473508864641e-13,
+          "allocated_generalized": 2.220446049250313e-16
+        },
+        "DSSM": {
+          "target_euler_rad": 0.0,
+          "filter_request_rad_s2": 0.0,
+          "filter_applied_rad_s2": 0.0,
+          "nominal_torque_Nm": 0.0,
+          "requested_generalized": 0.0,
+          "clipped_generalized": 0.0,
+          "motor_squared": 4.656612873077393e-10,
+          "motor_setpoint": 2.2737367544323206e-13,
+          "motor_command": 2.2737367544323206e-13,
+          "allocated_generalized": 2.220446049250313e-16
+        }
+      },
+      "B_minus_DSSM_chain_differences": {
+        "position_commanded_force_N": {
+          "max_abs": 5.766207924117958e-09,
+          "unit": "N",
+          "components": [
+            4.3246559430342585e-09,
+            5.766207924117958e-09,
+            1.774919405515222e-11
+          ]
+        },
+        "raw_outer_attitude": {
+          "max_abs": 8.465964825878081e-10,
+          "unit": "rad",
+          "components": [
+            -8.465964825878081e-10,
+            6.349473949277071e-10,
+            0.0
+          ]
+        },
+        "command_filter_acceleration_request_unclamped_rads2": {
+          "max_abs": 2.74297260363654e-07,
+          "unit": "rad/s^2",
+          "components": [
+            -2.74297260363654e-07,
+            2.0572295594822876e-07,
+            0.0
+          ]
+        },
+        "attitude_bs_nominal_torque_Nm": {
+          "max_abs": 8.935379548356999e-10,
+          "unit": "N m",
+          "components": [
+            -8.935379548356999e-10,
+            6.701535009025596e-10,
+            4.404329795600941e-15
+          ]
+        },
+        "requested_generalized": {
+          "max_abs": 8.935379548356999e-10,
+          "unit": "N,N m",
+          "components": [
+            1.9561241515475558e-11,
+            -8.935379548356999e-10,
+            6.701535009025596e-10,
+            4.404329795600941e-15
+          ]
+        },
+        "motor_squared_requested": {
+          "max_abs": 0.0021709438879042864,
+          "unit": "rad^2/s^2",
+          "components": [
+            -0.002165122306905687,
+            -0.0003068764926865697,
+            0.0021709438879042864,
+            0.00031256163492798805
+          ]
+        },
+        "motor_setpoint": {
+          "max_abs": 1.0843933750948054e-06,
+          "unit": "rad/s",
+          "components": [
+            -1.0818811233548331e-06,
+            -1.5331784197769593e-07,
+            1.0843933750948054e-06,
+            1.5615000847901683e-07
+          ]
+        }
+      },
+      "no_tilt_limit_or_motor_saturation": true,
+      "R3_DSSM_logged_chain_exactly_equal_at_20ms": true
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C02_W15",
+      "time_s": 0.02,
+      "matched_core_config_fields_B_vs_DSSM": 60,
+      "state_and_six_references_equal_at_replay": true,
+      "common_B_DSSM_control_inputs_equal": [
+        "position_bs_nominal_force_N",
+        "filtered_attitude_reference",
+        "filtered_attitude_rate",
+        "attitude_compensation_applied_torque_Nm"
+      ],
+      "R3_runtime_identity": {
+        "names": [
+          "run_dl1018_closed_loop.m",
+          "run_episode_dl1018.m",
+          "position_stage1_model_forward_v2.m",
+          "position_only_search_head_step.m",
+          "position_only_search_options.m",
+          "controller_options_dl1018.m",
+          "position_filter_realization_pcf_step_v3_5.m"
+        ],
+        "sha256": [
+          "86e7f7ec42492341e58daf30879f7aec9153924e80a76f6f029fce2a628c38d9",
+          "fcc1f5de659541e692483f8395d93fd2a251256286ebade5e510ed4c7a2e2330",
+          "dc803aa102c49d67dd687ae941f8a60bb0c465f74fd01e5ae93ad1ea1a293676",
+          "3bd0fe9686c3b75793575e517d4cc5f08de58ab6a26a2bc7516aa690422bb7dc",
+          "4e8322934ddb524961fa762426800564f6c758e00b943b622c9143ed734f19bf",
+          "93633a5fd95f73d33982045c2fa372d49b1a0df8ea0cfb5ca4461208ca9d53b1",
+          "b4ae22db5bd444a162d0cd01a3a59a589f2e37077b089bb33693401b660228d0"
+        ],
+        "upstream_sha256": [
+          "01d83dec95aea5d30feef3afd0628a2ce0911f70465f0773a4f568a01b08450b",
+          "fcc1f5de659541e692483f8395d93fd2a251256286ebade5e510ed4c7a2e2330",
+          "dc803aa102c49d67dd687ae941f8a60bb0c465f74fd01e5ae93ad1ea1a293676",
+          "3bd0fe9686c3b75793575e517d4cc5f08de58ab6a26a2bc7516aa690422bb7dc",
+          "4e8322934ddb524961fa762426800564f6c758e00b943b622c9143ed734f19bf",
+          "93633a5fd95f73d33982045c2fa372d49b1a0df8ea0cfb5ca4461208ca9d53b1",
+          "b4ae22db5bd444a162d0cd01a3a59a589f2e37077b089bb33693401b660228d0"
+        ],
+        "plant_identity_verified_count": 10
+      },
+      "R3_independent_cfg_replay": false,
+      "replay_max_abs_errors": {
+        "B": {
+          "target_euler_rad": 0.0,
+          "filter_request_rad_s2": 1.1102230246251565e-16,
+          "filter_applied_rad_s2": 1.1102230246251565e-16,
+          "nominal_torque_Nm": 4.336808689942018e-19,
+          "requested_generalized": 4.336808689942018e-19,
+          "clipped_generalized": 4.336808689942018e-19,
+          "motor_squared": 4.656612873077393e-10,
+          "motor_setpoint": 2.2737367544323206e-13,
+          "motor_command": 2.2737367544323206e-13,
+          "allocated_generalized": 5.551115123125783e-17
+        },
+        "DSSM": {
+          "target_euler_rad": 0.0,
+          "filter_request_rad_s2": 0.0,
+          "filter_applied_rad_s2": 0.0,
+          "nominal_torque_Nm": 0.0,
+          "requested_generalized": 1.7763568394002505e-15,
+          "clipped_generalized": 1.7763568394002505e-15,
+          "motor_squared": 6.984919309616089e-10,
+          "motor_setpoint": 4.547473508864641e-13,
+          "motor_command": 4.547473508864641e-13,
+          "allocated_generalized": 3.552713678800501e-15
+        }
+      },
+      "B_minus_DSSM_chain_differences": {
+        "position_commanded_force_N": {
+          "max_abs": 5.8557946139639605e-08,
+          "unit": "N",
+          "components": [
+            5.8557946139639605e-08,
+            -2.1482215322810944e-24,
+            -1.672071454316004e-11
+          ]
+        },
+        "raw_outer_attitude": {
+          "max_abs": 8.597524853506955e-09,
+          "unit": "rad",
+          "components": [
+            3.088335363878577e-25,
+            8.597524853506955e-09,
+            0.0
+          ]
+        },
+        "command_filter_acceleration_request_unclamped_rads2": {
+          "max_abs": 2.7855980527791147e-06,
+          "unit": "rad/s^2",
+          "components": [
+            1.000620657892446e-22,
+            2.7855980527791147e-06,
+            0.0
+          ]
+        },
+        "attitude_bs_nominal_torque_Nm": {
+          "max_abs": 9.074234222101324e-09,
+          "unit": "N m",
+          "components": [
+            -2.7807277614081267e-25,
+            9.074234222101324e-09,
+            1.218802886741294e-26
+          ]
+        },
+        "requested_generalized": {
+          "max_abs": 9.074234222101324e-09,
+          "unit": "N,N m",
+          "components": [
+            1.0231016034367713e-10,
+            -2.7807277614081267e-25,
+            9.074234222101324e-09,
+            1.218802886741294e-26
+          ]
+        },
+        "motor_squared_requested": {
+          "max_abs": 0.012596325250342488,
+          "unit": "rad^2/s^2",
+          "components": [
+            -0.012566233519464731,
+            0.012596325017511845,
+            0.012596325250342488,
+            -0.01256623410154134
+          ]
+        },
+        "motor_setpoint": {
+          "max_abs": 6.286447501224757e-06,
+          "unit": "rad/s",
+          "components": [
+            -6.284660685196286e-06,
+            6.286447273851081e-06,
+            6.286447501224757e-06,
+            -6.284661026256799e-06
+          ]
+        }
+      },
+      "no_tilt_limit_or_motor_saturation": true,
+      "R3_DSSM_logged_chain_exactly_equal_at_20ms": true
+    }
+  ]
+}

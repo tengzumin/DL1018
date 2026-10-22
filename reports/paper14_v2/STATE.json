@@ -72,7 +72,11 @@
     "figures/r3_screen_evidence_summary.csv",
     "figures/fig_r3_screen_evidence.pdf",
     "figures/fig_r3_screen_evidence.png",
-    "phase1/w15_same_state_replay_feasibility_20261022.md"
+    "phase1/w15_same_state_replay_feasibility_20261022.md",
+    "FINAL_CLOSEOUT_20261022.md",
+    "phase1/w15_control_chain_replay_20261022.md",
+    "phase1/audit_w15_control_chain_replay.py",
+    "phase1/w15_control_chain_replay_20261022.json"
   ],
   "process_snapshot": {
     "disk_free_bytes": 165936209920,
@@ -84,7 +88,7 @@
     "checked_at_local": "2026-10-22 12:00:12 +08:00",
     "action": "Read-only PowerShell 7 audit: no project-matching Python experiment or MATLAB process, no process started or stopped; TEST remains sealed."
   },
-  "last_updated_local": "2026-10-22 12:03:01 +08:00",
+  "last_updated_local": "2026-10-22 12:27:10 +08:00",
   "phase1_status": {
     "status": "historical_round1_closed_registered_screen_failed",
     "concluded": [
@@ -155,7 +159,7 @@
   },
   "current_decision": "STOP_NEW_RUNS_AFTER_THREE_FAILED_REGISTERED_SCREENS; NO_72_NO_TEST; TEST_REMAINS_SEALED",
   "paper_evidence_package_status": "NOT_QUALIFIED",
-  "next_action": "Three-round cap is exhausted. Keep training, new Plant runs, 72-scene expansion and TEST48 sealed. Same-state replay verifies the 20 ms W15 position-command split and its local force equation; the long-horizon W15 X-RMSE cause remains unlocalized. If a new cycle is authorized, first continue read-only stagewise replay through attitude, filtering, allocation and motor commands, then freeze a discriminating taskbook and close the deployment-theory gap.",
+  "next_action": "Three-round cap is exhausted; keep all new runs and TEST48 sealed. The read-only W15 replay now reconstructs the 20 ms control chain through motor commands without finding an implementation mismatch; long-horizon W15 X-RMSE cause, development gates, theory and ablations remain unresolved. If a new research budget is explicitly opened, freeze one discriminating B-position-RBF-to-DSSM-readiness screen and close the deployed-theory gap before any flight.",
   "phase3_status": {
     "status": "closed_registered_screen_gate_failed",
     "taskbook": "../../experiments/paper14_v2_round3_xy_pcf_screen/TASKBOOK_ZH.md",
@@ -316,7 +320,7 @@
       "matlab_formats_seen": "B HELIX/SQUARE sidecars MAT v5; B FIG8 and all current DSSM/R3 sidecars MAT v7.3/HDF5",
       "max_nominal_force_replay_error_N": 0.0,
       "max_command_force_replay_error_N": 0.0,
-      "max_branch_residual_N": 1.3298417271892515E-19,
+      "max_branch_residual_N": 1.3298417271892515e-19,
       "first_B_DSSM_position_command_split_s": 0.02,
       "first_B_DSSM_state_split_s": 0.021,
       "first_current_DSSM_R3_position_command_split_s": 0.33,
@@ -345,7 +349,10 @@
     "r3_figure_pdf": "figures/fig_r3_screen_evidence.pdf",
     "r3_figure_png": "figures/fig_r3_screen_evidence.png",
     "w15_same_state_replay_feasibility": "phase1/w15_same_state_replay_feasibility_20261022.md",
-    "w15_position_replay_script": "phase1/audit_w15_position_replay.py"
+    "w15_position_replay_script": "phase1/audit_w15_position_replay.py",
+    "w15_control_chain_replay": "phase1/w15_control_chain_replay_20261022.md",
+    "w15_control_chain_replay_script": "phase1/audit_w15_control_chain_replay.py",
+    "w15_control_chain_replay_json": "phase1/w15_control_chain_replay_20261022.json"
   },
   "closeout_review": {
     "status": "PASS",
@@ -363,7 +370,7 @@
     "limitation": "The main session has no model-switch control, and collaboration tools expose no model or normal/fast speed selector. Main-session and subagent model/speed compliance cannot be independently verified."
   },
   "closeout_artifact_sha256": {
-    "FINAL_CLOSEOUT_20261022.md": "7fbcd81998e093ae863524dde596d64c762f13168492040ac0b041e0697e3af9",
+    "FINAL_CLOSEOUT_20261022.md": "262c3c621687657b6269359059c9372fed08e2ed376d0a8f4b1ffa830479908f",
     "SCENE_PAIRWISE_LOSSES_20261022.csv": "5d8279e9c2c3dfed4b8c6f3c466f2c5235c13e62ec92becc7c53cc131d5d058b",
     "build_scene_pairwise_losses.ps1": "f9733a3638eb4f31b54fd4f5755c0c90a24d0a592a322848b00a9a0d5a652d4b",
     "README_EXECUTION_ZH.md": "3b02e01a9ea2bf2a5adecc18c1d7c52339be688f197fd6767a0e53b9af41706f",
@@ -375,7 +382,10 @@
     "figures/fig_r3_screen_evidence.pdf": "b32ecda36864077676e2d2a6900761b50ba1e5d96885485a458e0ff14b3f3ea9",
     "figures/fig_r3_screen_evidence.png": "2c9765f646695ee457835e880bae9cf7ce4a5b9a7feae21dc762deefc7b08b75",
     "phase1/w15_same_state_replay_feasibility_20261022.md": "3c5cb1789d5d6ee69600086934d1e1248efa95efcf31a785aa8a4abfdbc7222e",
-    "phase1/audit_w15_position_replay.py": "372d92cb17da99884e742d3fa0c877200c3bb2bc6fac7f10e7a1a046b97a76af"
+    "phase1/audit_w15_position_replay.py": "372d92cb17da99884e742d3fa0c877200c3bb2bc6fac7f10e7a1a046b97a76af",
+    "phase1/w15_control_chain_replay_20261022.md": "7d2c65df02b2dc0425a261a2d168908a776e4f70d5ba0a404ab640c220852b07",
+    "phase1/audit_w15_control_chain_replay.py": "2f595ce293ad7086d8e96c04be748a713515ea5ab54ba0acbbad7f8728177524",
+    "phase1/w15_control_chain_replay_20261022.json": "94682e19d7825ad978795bce2022ef2f5351f16cae6ac9e2261741c7924cea4f"
   },
   "r3_offline_artifact_review": {
     "status": "PASS_AFTER_CAUSAL_WORDING_REVISION",
@@ -393,5 +403,41 @@
     "finding": "Existing material supports local position and single Head/PCF event recomputation but not a complete matched-state controller-chain counterfactual or attribution of final X RMSE. Reviewer corrections to X-axis causal wording, R3 effective eta mask, and source anchors were applied and confirmed.",
     "test_accessed": false,
     "new_simulation_or_training": false
+  },
+  "same_state_control_chain_replay": {
+    "status": "MAIN_SESSION_VERIFIED; INDEPENDENT_REVIEW_PASS",
+    "script": "phase1/audit_w15_control_chain_replay.py",
+    "report": "phase1/w15_control_chain_replay_20261022.md",
+    "json": "phase1/w15_control_chain_replay_20261022.json",
+    "scenes": [
+      "DL1018_VAL_T1_C08_W15",
+      "DL1018_VAL_T2_C05_W15",
+      "DL1018_VAL_T3_C02_W15"
+    ],
+    "input_tables_and_source_hashes_locked": true,
+    "B_DSSM_matched_core_config_fields_per_scene": 60,
+    "state_and_six_references_equal_at_20ms": true,
+    "R3_runtime_files_identity_verified": 7,
+    "shared_control_and_plant_source_hashes_verified": 10,
+    "replayed_chain": "position command -> force/attitude target -> command filter -> attitude nominal torque -> generalized command -> motor squared request/setpoint/command",
+    "max_replay_residuals": {
+      "filter_acceleration_rad_s2": 1.1102230246251565e-16,
+      "nominal_torque_Nm": 4.336808689942018e-19,
+      "generalized_command": 1.7763568394002505e-15,
+      "motor_squared_rad2_s2": 9.313225746154785e-10,
+      "motor_command_rad_s": 4.547473508864641e-13
+    },
+    "no_tilt_generalized_or_motor_saturation": true,
+    "long_horizon_W15_X_RMSE_cause": "UNLOCALIZED",
+    "historical_B_and_current_DSSM_runtime_tree_hashes_available": false,
+    "R3_run_start_full_cfg_available": false,
+    "test_accessed": false,
+    "new_simulation_training_or_plant": false,
+    "new_runs_authorized": false,
+    "input_scope": "SHA-hash five complete metadata/input files; scan CSV rows by scene_id and select only three pinned VAL W15 records for analysis.",
+    "B_DSSM_common_controller_inputs_verified": true,
+    "R3_independent_cfg_replay": false,
+    "R3_logged_chain_matches_DSSM_at_20ms": true,
+    "independent_review": "PASS; R3 excluded from independent config replay; 20 ms assertion scope and CSV selection scope reviewed."
   }
 }
