@@ -18,6 +18,18 @@
 
 主要数值来源：[DSSM 原始结果逐场重评分](phase1/candidate_dssm_raw_rescore.csv)、[B 原始结果逐场重评分](phase1/baseline_b_raw_rescore.csv)、[current14 逐场配对表](../corrected14_full72_benchmark_20261021/PAIR14_SCENE_RESULTS_VS_B.csv)、[R3 注册结果与审核](../../experiments/paper14_v2_round3_xy_pcf_screen/reports/round3_xy_screen_results.csv)、[最终根因审计](FINAL_CLOSEOUT_20261022.md)。DSSM/B 指标已按 `scene_id` 合并独立重评分值，并用 `1e-12 m` 判定胜平负；KAN14 数值是从 current14 配对表重新聚合的对照结果。
 
+## 微小改善敏感性
+
+以独立重评分 CSV 按 `scene_id` 合并 B 与 corrected DSSM14，定义改善量 `gain = Q_B - Q_DSSM14`（mm，正值表示 DSSM14 更优）。下表按改善量**严格大于**指定阈值重新计胜；官方胜负口径仍是 `gain > 1e-12 m`，其他行只用于检查微小改善对胜场数的影响，不改变预登记验收规则。
+
+| 最小改善阈值 | ALL72 | W00–W08 | W09–W14 | W15 |
+|---|---:|---:|---:|---:|
+| 官方容差 `1e-12 m` | 46/72 | 38/38 | 5/28 | 3/6 |
+| `0.1 mm` | 46/72 | 38/38 | 5/28 | 3/6 |
+| `0.5 mm` | 44/72 | 38/38 | 4/28 | 2/6 |
+| `1.0 mm` | 39/72 | 37/38 | 1/28 | 1/6 |
+
+因此总体胜场并非主要由近零改善贡献；提高到 `1 mm` 仍有 39 场改善。但这不修复分组门：高频与 W15 各只有一场改善超过 `1 mm`，且两组平均 Q 仍劣于 B。数据来自 [DSSM 独立重评分](phase1/candidate_dssm_raw_rescore.csv) 和 [B 独立重评分](phase1/baseline_b_raw_rescore.csv)；本计算只读取已核验的汇总 CSV，没有重新读取 raw MAT。
 ## 机制、理论与消融
 
 | 计划要求 | 已有证据 | 判定与限制 |
