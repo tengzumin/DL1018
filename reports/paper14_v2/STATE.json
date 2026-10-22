@@ -5,7 +5,7 @@
   "deadline_asia_shanghai": "2026-10-25 01:01",
   "plan_hours": 72,
   "max_research_rounds": 3,
-  "completed_research_rounds": 1,
+  "completed_research_rounds": 3,
   "goal_id": "01a159f0-fd23-7a53-bc3d-016e1383d0be",
   "candidate": "corrected DSSM14 primary; corrected KAN14 and B comparators",
   "development_criteria": {
@@ -68,16 +68,15 @@
     "phase1/round2_literature_main_review.md"
   ],
   "process_snapshot": {
-    "disk_free_bytes": 168223555584,
-    "python_like_processes": 10,
+    "disk_free_bytes": 166269784064,
+    "disk_free_gb": 166.27,
     "matlab_processes": 0,
-    "disk_free_gb": 168.22,
-    "checked_at_local": "2026-10-22 04:03:27 +08:00",
-    "action": "read-only PS7 status after third MATLAB pre-Plant source-path failure; no process was stopped or modified"
+    "checked_at_local": "2026-10-22 09:09:14 +08:00",
+    "action": "Read-only PS7 closeout status after Round3 review; no MATLAB process detected; no process stopped or modified; no new run started."
   },
-  "last_updated_local": "2026-10-22 04:58:55 +08:00",
+  "last_updated_local": "2026-10-22 09:09:14 +08:00",
   "phase1_status": {
-    "status": "round1_failed_round2_taskbook_frozen_package_implementation_authorized_no_flight",
+    "status": "historical_round1_closed_registered_screen_failed",
     "concluded": [
       "DSSM14/B raw for all72 independently rescored; raw identities unchanged and scores match frozen table within 1e-12 m",
       "Current DSSM14 is 46/72 wins with 4.671 mm scene-macro Q improvement; W09-W14 is 5/28 and +0.5255 mm; W15 is 3/6 and +0.0505 mm",
@@ -102,11 +101,7 @@
       "主模型在执行前澄清 Round2 配对评分语义：候选与对照需共享场景/输入/时基身份但轨迹允许分叉；补入有效配置与 runner contract 的 PCF-off 离线兼容门槛。",
       "原理论/文献总报告的 Farrell 来源限界句已同步更正，明确可读 PDF 为 ACC 2008 稿，TAC 2009 全文未核读。"
     ],
-    "unresolved": [
-      "Implement and independently review the Round2 isolated static package; no closed-loop launch authorized.",
-      "No 72-scene or TEST authorization; TEST remains sealed.",
-      "主模型独立理论审核已完成；完整部署链仍缺少不变域、加速度残差/RK4 数值界或联合 Lyapunov/ISS，理论 gate 未通过。"
-    ],
+    "unresolved": [],
     "current_experiment_interrupted": false,
     "new_plant_or_training": false,
     "round1_complete": true,
@@ -121,10 +116,15 @@
     "continue_authorized": false,
     "current_round_screen_started": false,
     "test_accessed": false,
-    "theory_gate_pass": false
+    "theory_gate_pass": false,
+    "historical_unresolved_at_round1_close": [
+      "Implement and independently review the Round2 isolated static package; no closed-loop launch authorized.",
+      "No 72-scene or TEST authorization; TEST remains sealed.",
+      "主模型独立理论审核已完成；完整部署链仍缺少不变域、加速度残差/RK4 数值界或联合 Lyapunov/ISS，理论 gate 未通过。"
+    ]
   },
   "phase2_status": {
-    "status": "taskbook_frozen_static_package_pending",
+    "status": "historical_round2_closed_registered_screen_failed",
     "taskbook": "../../experiments/paper14_v2_round2_pcf_screen/TASKBOOK_ZH.md",
     "taskbook_sha256": "94773b95085613dfb1f998a5c1fdd2d9458c8d217783c2db5e78f78fb572e91b",
     "implementation_authorized": true,
@@ -137,6 +137,67 @@
     "theory_main_review_sha256": "17850a7f62dccd4c7acc7d37e8a11880b255fc1dab50c7d8d31b912156590f3e",
     "theory_gate_pass": false,
     "literature_main_review": "phase1/round2_literature_main_review.md",
-    "literature_main_review_sha256": "ef1817b8e2d1972c95a7a50d209beef3f3fe8ff5315eece09dad3fa57cccf7bb"
+    "literature_main_review_sha256": "ef1817b8e2d1972c95a7a50d209beef3f3fe8ff5315eece09dad3fa57cccf7bb",
+    "screen_result": "SCREEN_NOT_PASSED_NO_72_NO_TUNING",
+    "registered_gate_pass": false,
+    "screen_summary": "../../experiments/paper14_v2_round2_pcf_screen/reports/round2_screen_summary.json",
+    "new_runs_authorized": false
+  },
+  "current_decision": "STOP_NEW_RUNS_AFTER_THREE_FAILED_REGISTERED_SCREENS; NO_72_NO_TEST; TEST_REMAINS_SEALED",
+  "paper_evidence_package_status": "NOT_QUALIFIED",
+  "next_action": "Close out evidence and gaps under the frozen plan. Do not launch training, another candidate, 72-scene validation or TEST48 within this three-round plan. Any new experiment requires a new user-approved plan and a falsifiable W15 horizontal-error hypothesis plus an audited theory path.",
+  "phase3_status": {
+    "status": "closed_registered_screen_gate_failed",
+    "taskbook": "../../experiments/paper14_v2_round3_xy_pcf_screen/TASKBOOK_ZH.md",
+    "taskbook_sha256": "a9d876f0e22175785f184707ba0f35090be3adf6a25317e83c39a9c88a1ccb4a",
+    "candidate": "DSSM14_PCF_XY",
+    "eta_mask": [
+      1,
+      1,
+      0
+    ],
+    "scenes_completed": 12,
+    "stable_complete_safe_identity_verified": 12,
+    "decision": "STOP_AFTER_R3_SCREEN_NO_72_NO_TEST",
+    "registered_gates": {
+      "g1_all_12_stable_complete_safe_identity_no_saturation": true,
+      "g2_high_frequency_below_on_off_and_not_worse_than_b": true,
+      "g3_high_frequency_z_rmse_wins_on_at_least_4_of_6": true,
+      "g4_w15_and_w00_w08_not_worse_than_b": false,
+      "g5_all_12_macro_q_strictly_below_b": true
+    },
+    "all12_candidate_q_mean_m": 0.00971355295109254,
+    "all12_b_q_mean_m": 0.010349102114640803,
+    "all12_delta_candidate_minus_b_m": -0.0006355491635482617,
+    "all12_wins_ties_losses": {
+      "WIN": 8,
+      "TIE": 0,
+      "LOSS": 4
+    },
+    "w15_candidate_q_mean_m": 0.008977088352513677,
+    "w15_b_q_mean_m": 0.008628703145549912,
+    "w15_delta_candidate_minus_b_m": 0.00034838520696376583,
+    "high_frequency_candidate_q_mean_m": 0.009570667986160125,
+    "high_frequency_b_q_mean_m": 0.009632957375948556,
+    "w00_w08_candidate_q_mean_m": 0.010735787479536232,
+    "w00_w08_b_q_mean_m": 0.013501790561116186,
+    "theory_gate": "NOT_PASSED",
+    "independent_raw_recompute": {
+      "reviewer": "Codex main session",
+      "paired_raw_files": 48,
+      "candidate_and_baseline_q_and_xyz_rmse_rows": 48,
+      "max_abs_difference_to_screen_csv_m": 0.0,
+      "raw_sha_verified": true,
+      "reference_position_and_time_exactly_equal": true,
+      "decision": "PASS"
+    },
+    "independent_luna_review": "NO_BLOCKER; ONLY_REGISTERED_GATE_4_FAILED; STOP_NO_72_NO_TEST",
+    "test_accessed": false,
+    "seventy_two_scene_authorized": false,
+    "further_r3_candidates_authorized": false,
+    "review_report": "../../experiments/paper14_v2_round3_xy_pcf_screen/reports/round3_main_review_20261022.md",
+    "theory_report": "../../experiments/paper14_v2_round3_xy_pcf_screen/reports/round3_theory_audit.md",
+    "raw_attempt_manifest": "../../experiments/paper14_v2_round3_xy_pcf_screen/reports/round3_attempt_hashes.csv",
+    "new_runs_authorized": false
   }
 }
