@@ -199,7 +199,7 @@
     "theory_report": "../../experiments/paper14_v2_round3_xy_pcf_screen/reports/round3_theory_audit.md",
     "raw_attempt_manifest": "../../experiments/paper14_v2_round3_xy_pcf_screen/reports/round3_attempt_hashes.csv",
     "offline_w15_diagnosis": {
-      "status": "MAIN_SESSION_READ_ONLY_REVIEWED; SECOND_LUNA_DOC_REVIEW_PASS_LIMITED; FIRST_DELEGATE_SCOPE_LIMITATION_RECORDED",
+      "status": "MAIN_SESSION_READ_ONLY_REVIEWED; SECOND_LUNA_DOC_REVIEW_PASS_LIMITED; SOURCE_ONLY_REVIEW_CONDITIONAL_EQUIVALENCE; TWO_DELEGATE_SCOPE_LIMITATIONS_RECORDED",
       "report": "phase1/w15_offline_diagnosis_20261022.md",
       "scenes": [
         "DL1018_VAL_T1_C08_W15",
@@ -224,6 +224,21 @@
       "saturation_or_limit_counts": "Motor saturation, generalized clipping, and tilt limitation are zero in all three R3 W15 records.",
       "decision": "W15 X deficit is already present in PCF-on and essentially unchanged by R3 Z mask in these three scenes; its cause relative to B remains unlocalized.",
       "delegate_scope_note": "W15 subagent read the full 12-scene R3 score CSV despite a W15-only review scope; do not characterize its report as a strictly scoped independent document audit. Main session independently filtered W15 rows and checked raw identities.",
+      "second_delegate_scope_note": "An early-command delegate SHA-hashed 9 experiment MAT candidates and 3 B MATs, including R1/R2 PCF-off or identity-unconfirmed files, outside its strict W15 scope. It read no MAT variables/signals, used none of those hashes for scientific conclusions, and stopped. Treat this only as a scope deviation, not evidence.",
+      "source_review": {
+        "status": "SOURCE_ONLY_CONDITIONAL_EQUIVALENCE; ROOT_CAUSE_NOT_LOCALIZED",
+        "report": "phase1/w15_source_audit_20261022.md",
+        "scope": "Read-only R3 taskbook, isolated runner, controller options, and position BS source; no MAT/CSV/logs/TEST or execution.",
+        "finding": "Candidate held position force is zero before readiness; the 0.020 s first request difference precedes the 0.320 s effective update-coordinate difference and 0.330 s Head-output difference, so the Head/mask cannot directly cause the first divergence. Position-command equality with B is conditional on matching full state, complete reference, controller/Plant parameters, filter state, attitude torque path, actuator setup, and source identity.",
+        "decision": "No implementation error proven; same-state offline replay remains the only next diagnostic. No new Plant run under exhausted three-round cap; TEST48 remains sealed.",
+        "independent_review": {
+          "status": "PASS_LIMITED_SCOPE",
+          "reviewer": "Delegated reviewer; model and speed settings not verifiable from tools.",
+          "scope": "Read-only closeout, README, STATE, W15 diagnosis, and W15 source audit text; did not read CSV/PS1 or run a JSON parser.",
+          "verified": "Causal language, two scope disclosures, and stop/theory/TEST state are consistent; four reviewed text artifact hashes match STATE.",
+          "primary_validation": "Main session parsed STATE JSON and verified all six listed artifact SHA256 values."
+        }
+      },
       "independent_document_review": {
         "status": "PASS_LIMITED_SCOPE",
         "reviewer": "GPT-6-Luna xhigh subagent; model/speed setting not verifiable from tools",
@@ -241,7 +256,8 @@
     "report": "FINAL_CLOSEOUT_20261022.md",
     "pairwise_loss_table": "SCENE_PAIRWISE_LOSSES_20261022.csv",
     "pairwise_builder": "build_scene_pairwise_losses.ps1",
-    "w15_offline_diagnosis": "phase1/w15_offline_diagnosis_20261022.md"
+    "w15_offline_diagnosis": "phase1/w15_offline_diagnosis_20261022.md",
+    "w15_source_audit": "phase1/w15_source_audit_20261022.md"
   },
   "closeout_review": {
     "status": "PASS",
@@ -259,10 +275,11 @@
     "limitation": "Current Codex main session has no model-switch control; collaboration tools expose no normal/fast speed selector. Main-session model and speed compliance cannot be independently verified."
   },
   "closeout_artifact_sha256": {
-    "FINAL_CLOSEOUT_20261022.md": "9d86d8c168a84d4040c361cd0bd981dcfb46db0320bda28c86e240a576373aa5",
+    "FINAL_CLOSEOUT_20261022.md": "12f5fb33ad2437f0bbd6e3ec2582f75226711c3fb75a2d9e3840396317cc72e8",
     "SCENE_PAIRWISE_LOSSES_20261022.csv": "5d8279e9c2c3dfed4b8c6f3c466f2c5235c13e62ec92becc7c53cc131d5d058b",
     "build_scene_pairwise_losses.ps1": "f9733a3638eb4f31b54fd4f5755c0c90a24d0a592a322848b00a9a0d5a652d4b",
-    "README_EXECUTION_ZH.md": "0a5bf80791bb4a9dd637a6a8caa9d411b583b055d8590f1d8d4e2ab0be27079d",
-    "phase1/w15_offline_diagnosis_20261022.md": "c3ac2d78e5d05edd906e122391897b14cbe652c653ac7a7b208c632117e00190"
+    "README_EXECUTION_ZH.md": "3b02e01a9ea2bf2a5adecc18c1d7c52339be688f197fd6767a0e53b9af41706f",
+    "phase1/w15_offline_diagnosis_20261022.md": "617d7030b2bd9b01a3a24784fdbE2e1ef6b4920ec850c5010e0658446dc25094",
+    "phase1/w15_source_audit_20261022.md": "1602f8c635ffd3a7f9b005b6c7a88dbfb0284257c7215c99036c7a0f03e02ef8"
   }
 }

@@ -10,6 +10,7 @@ corrected DSSM14 的已有 DEV24+VAL48 基准是 46/72 胜、宏平均 Q 比 B �
 
 - [阶段性根因与验收报告](FINAL_CLOSEOUT_20261022.md)
 - [W15 离线诊断与 raw 身份表](phase1/w15_offline_diagnosis_20261022.md)
+- [W15 源码与早期控制分叉补充审计](phase1/w15_source_audit_20261022.md)
 - [跨轮逐场比较表](SCENE_PAIRWISE_LOSSES_20261022.csv)
 - [PS7 重建脚本](build_scene_pairwise_losses.ps1)
 
