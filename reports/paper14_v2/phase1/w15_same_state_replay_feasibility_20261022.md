@@ -1,35 +1,52 @@
-# W15 同状态重放可行性审查
+# W15 同状态重放复核
 
-日期：2026-10-22。结论：**现有证据支持位置层和单次 Head/PCF 事件的局部复算；不足以重建 B 与 PCF-on 的完整同状态控制链反事实，也不足以把控制差异归因到最终 0–20 s X 轴 RMSE。** 本审查只复核既有 W15 审计、任务书和列明源码，没有重新读取 MAT、运行仿真、Plant、训练或预检，也没有访问 TEST。
+更新日期：2026-10-22。范围为三个固定 VAL W15 场景的 B、当前 corrected DSSM14（PCF-on）与 R3 原始记录；只读 MAT、run-start sidecar、身份表和源码，不运行 MATLAB、Plant、训练或新航次，不访问 TEST。
 
-## 已有记录能支持的结论
+## 结论
 
-既有九个 W15 raw 审计显示，三场平均 X RMSE 为 B 5.738941 mm、PCF-on 6.837031 mm、R3 6.836015 mm。B 与 R3 在 20 ms 的位置命令力差等于 B 的 RBF 补偿力负值，逐分量残差小于约 \(10^{-19}\) N；状态首次差异在 21 ms，位置名义加速度差异到 22–28 ms 才出现。该早期分叉符合 B formal-RBF 与候选 P_A/DSSM 的预定配置差异，只定位首个请求差异。它既不能证明该微小差异造成后续误差，也不能排除经闭环递推累积的影响。
+更早版本把“本次 MAT 白名单没有纳入 PCF-on `run_start.mat`”写成了完整重放受配置缺失阻碍。后续逐场核对发现：三场 B、PCF-on DSSM14 和 R3 的 run-start 侧车实际都存在，身份哈希与已有记录相符；B 与当前 DSSM14 的 Plant、位置/姿态反步、命令滤波、限幅和形态配置共有 60 个字段，三场 MATLAB 逻辑数组形状一致，数值在 \(10^{-12}\) 容差内一致。初态、20 ms 时状态、时间轴及六个参考量也逐元素一致。因此，**W15 首个位置请求差异现在可以在同状态下复现**，无需再假设配置不齐。
 
-R3 相对 PCF-on 的首个 Head 更新坐标差异在 0.320 s，Head 输出差异在 0.330 s，完整状态差异在 0.331 s。既有 raw audit 已用记录的事件输入复算权重更新和更新后输出。三场 R3 相对 B 的平均 X RMSE 差为 +1.097074 mm；R3 的 X RMSE 比 PCF-on 低 0.001016 mm，但该差值来自各自闭环轨迹，不能据此估计 Z-mask 的因果效应，更不能解释其与 B 的差距。
+复算定位到的首个差异与预定控制器替换相符：B 开启位置 RBF 输出/更新；DSSM14 关闭位置 RBF，并在 Head readiness 期间保持零补偿。20 ms 两者的名义位置力完全相同，命令力差逐分量等于 B 的 RBF 补偿力负值，复算残差不超过 \(1.4\times10^{-19}\) N。状态在 21 ms 才首次分离。这说明最早分叉不是当前位置反步公式的实现错误。
 
-## 方程与重放边界
+这仍**没有定位毫米级 W15 X 轴误差的长期闭环根因**：位置力差很小，离线同状态计算只解释首个请求分叉；不同控制器轨迹在 21 ms 后分离，不能用它们的 20 s RMSE 直接证明该分叉造成或没有造成后续误差。PCF-on 与 R3 的首个位置命令差异在 0.330 s、状态差异在 0.331 s，与 Z 轴 eta-mask 配置差异出现的时序一致；但 R3 相对 PCF-on 的三场 X RMSE 低约 0.001016 mm，这一配对观察不能单独识别 mask 的因果效应。
 
-`position_bs_step` 在固定状态、参考、参数和残差力下按
+## 输入与配置身份
+
+脚本对每场六个指定 MAT 文件（B、PCF-on、R3 各一份 raw 和一份 run-start）逐个核验 SHA256：B 与 DSSM raw 哈希来自已审核的重评分表；DSSM run-start 哈希来自 `mechanism_run_start_lineage.csv`；R3 raw/run-start 哈希来自 `round3_attempt_hashes.csv`；B run-start 哈希与既有 W15 原始记录审计表一致。它还锁定五个输入表/manifest 的 SHA256，以及 `position_bs_step.m` 与 `controller_options_dl1018.m` 的源码哈希。CSV 全文件仅用于身份哈希；扫描行时按 `scene_id` 过滤，只有三个固定场景的行进入完整字段解析。未递归搜索 MAT 目录，也未读取模型 checkpoint 或 TEST 文件。
+
+| 场景 | 共同核心配置字段 | B 与 DSSM 配置差异 | B−DSSM 位置命令首差异 | 状态首差异 | 名义力复算最大误差 | \(F_B-F_{DSSM}+F_{RBF,B}\) 最大残差 |
+|---|---:|---:|---:|---:|---:|---:|
+| HELIX `T1_C08_W15` | 60，0 差异 | 位置 RBF 开/开 vs. 关/关 | 0.020 s，\(5.190\times10^{-9}\) N | 0.021 s | 0 N | \(6.06\times10^{-20}\) N |
+| FIG8 `T2_C05_W15` | 60，0 差异 | 位置 RBF 开/开 vs. 关/关 | 0.020 s，\(5.766\times10^{-9}\) N | 0.021 s | 0 N | \(4.38\times10^{-20}\) N |
+| SQUARE `T3_C02_W15` | 60，0 差异 | 位置 RBF 开/开 vs. 关/关 | 0.020 s，\(5.856\times10^{-8}\) N | 0.021 s | 0 N | \(1.33\times10^{-19}\) N |
+
+“共同核心配置字段”覆盖 `cfg.plant`、`cfg.control.bs`、命令滤波、控制限幅、形态模式及相关惯量/质量模型字段；脚本分别处理 MAT v5 与 v7.3/HDF5 sidecar，并把 v7.3 反向存储的轴序归一到 MATLAB 逻辑维度，再核对数组形状。数值按 \(10^{-12}\) 绝对容差比对，NaN 配置值会令检查失败，配置中匹配的无穷限值保留为有效值。初态、状态时钟和位置、速度、加速度、偏航、偏航角速度、偏航角加速度六组参考数组在三份 raw 中均逐元素相等。R3 与 PCF-on 的相同状态及参考同样成立。
+
+位置环使用源码中的关系
 
 \[
-e=r_p-p,\quad \dot e=r_v-v,\quad z_2=r_v+k_1\odot e-v,
+e=r_p-p,\quad \dot e=r_v-v,\quad z_2=r_v+k_1\odot e-v,\quad
+a_{nom}=r_a+k_1\odot\dot e+e+k_2\odot z_2,
 \]
 \[
-a_{nom}=r_a+k_1\odot\dot e+e+k_2\odot z_2,\quad
-F_{cmd}=m a_{nom}-F_{residual}
+F_{cmd}=m a_{nom}-F_{residual}.
 \]
 
-计算名义与命令力。日志中的完整状态、参考及位置中间量可以核验已发生的局部计算；要在同一状态替换控制器重算，仍须有与该运行匹配的质量、重力、反步增益、倾角限值和候选/B 各自的残差估计内态。源码方程见 [position_bs_step.m](../../../matlab/core/position_bs_step.m#L17)。
+脚本按 [position_bs_step.m](../../../matlab/core/position_bs_step.m#L17) 重算 20 ms 名义力与命令力；B 与 DSSM 的日志结果逐位匹配。DSSM 在该时点的 held Head 力与实际补偿力均为零；B 的补偿力来自已启用的 formal position RBF。这是**预先定义的方法比较导致的控制器分支差异**，不是代码计算错误。
 
-单次 Head 事件需要 \(\phi,W_{before},s,\eta,\Delta t,\beta,d_{max}\)、mask 与协调开关；源码按更新前权重先算并限幅输出。PCF-on 更新面为 \(s-\eta\)；R3 runner 先计算 \(\eta_{eff}=[1,1,0]^\top\odot\eta\)，再用 \(s-\eta_{eff}\) 作为更新面，随后泄漏、Euler 更新并投影。既有审计已对一组实际事件完成局部复算，见 [position_stage1_update_head.m](../../../matlab/models/position_stage1_update_head.m#L8)、[position_stage1_update_head_pcf_v3_5.m](../../../matlab/models/position_stage1_update_head_pcf_v3_5.m#L9) 与 [R3 runner](../../../experiments/paper14_v2_round3_xy_pcf_screen/runtime/run_dl1018_closed_loop.m#L1960)。这不构成整条闭环重放。
+## 尚未回答的问题与下一步
 
-完整“位置 → 姿态目标 → 命令滤波 → 姿态力矩 → 分配/电机”重建还缺少可逐运行绑定的完整参数及身份：部分 MAT 没有完整数值 `cfg`，R3 `runIdentity` 不含全部运行参数，PCF-on 没有本次白名单内的 `run_start` 侧车。具体还需确认滤波初值与参数；姿态反步增益、惯量及惯量导数、姿态 RBF 残差估计内态；分配矩阵、限幅、上一时刻电机状态与电机时间常数；以及补齐模型/normalizer、runner/source SHA 与逐运行的绑定。对应源码为 [command_filter_step.m](../../../matlab/core/command_filter_step.m#L14)、[attitude_bs_step.m](../../../matlab/core/attitude_bs_step.m#L41)、[固定控制器/分配配置](../../../experiments/paper14_v2_round3_xy_pcf_screen/runtime/run_dl1018_closed_loop.m#L67)、[分配与电机状态](../../../experiments/paper14_v2_round3_xy_pcf_screen/runtime/run_dl1018_closed_loop.m#L2428) 和 [电机时间常数](../../../experiments/paper14_v2_round3_xy_pcf_screen/runtime/run_dl1018_closed_loop.m#L147)。
+- DSSM14/PCF-on 的 W15 场景宏平均 X RMSE 比 B 高约 1.097 mm；这三场中 R3 相对 PCF-on 低约 0.001016 mm。该配对观察不能单独识别 `[1,1,0]` mask 的因果效应。现有数据没有把这段长时误差归因到位置补偿、Head、姿态耦合或 Plant 响应中的单一组件。
+- B 的 run-start 含完整数值配置和 `collector_id=B`，但没有逐运行绑定的 `runtime_tree_sha256`。本次复算验证的是日志字段、配置和当前位置环方程，不声称证明历史 B 可执行文件与当前源码逐字节相同。
+- 更深的姿态/滤波/力矩/电机逐级重放尚未完成；即使日志能复建这些控制输出，也不能替代不同控制器下的闭环状态反事实。
+- 本计划研发额度已达 3/3，因此不再启动候选、72 场扩展或 TEST48。若用户另立研究周期，下一项离线工作应从同一 W15 状态继续核对“位置命令→姿态/推力目标→命令滤波→姿态力矩→分配/电机”链；只有其输出能按日志精度重建，才可据此冻结新的单因素任务书。优先可证伪假设是 readiness 前保留 B 位置 RBF、Head ready 后切换至 DSSM 是否改善早期 X 误差；它目前只是待检验方向，不是因果结论或已授权实验。
 
-要把 20 秒 X RMSE 解释为闭环因果结果，还须从相同初态分别推进各控制器及其内态，并固定或记录逐步外力、外力矩、形态输入、Plant 参数与求解步长。已记录的分离轨迹不提供另一控制器的反事实状态。Plant 使用广义输入、外力和外力矩推进，见 [vehicle_derivative.m](../../../matlab/core/vehicle_derivative.m#L31) 和 [rk4_vehicle_step.m](../../../matlab/core/rk4_vehicle_step.m#L13)。
+## 可复现入口
 
-## 决定与下一步边界
+在项目根目录用 PowerShell 7 执行：
 
-因此，当前能严谨报告的是：局部位置力和 Head/PCF 事件与已记录日志相符；W15 X 回归仍未定位；本次审查没有发现可确认的实现错误。不得据此宣称 RBF 差异无害，也不得将其解释为性能根因。若未来另行批准研究周期，先取得完整运行配置/源码/模型身份及以上内态，做不推进 Plant 的固定共同状态重放，并逐级复现已记录输出；重放不能在记录精度内复现时，停止因果推断。完成并审核该诊断前不新建闭环任务书。当前 3/3 轮次已耗尽，72 场扩展与 TEST48 保持封存。
+```powershell
+python -B reports/paper14_v2/phase1/audit_w15_position_replay.py
+```
 
-本次 Luna 子代理的任务范围为源码和既有审计文件，没有重新读 MAT；请求的 GPT-6-Luna xhigh 和正常速度档无法由当前工具独立核验。
+脚本只读取表内指定的三个 VAL W15 配对组、run-start、重评分/lineage/hash 清单和源码方程；校验 SHA、配置、初态/参考、位置力重算及首个分叉时间。它不写文件、不读取 TEST、不启动 Plant、MATLAB 或训练。

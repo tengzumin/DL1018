@@ -75,16 +75,16 @@
     "phase1/w15_same_state_replay_feasibility_20261022.md"
   ],
   "process_snapshot": {
-    "disk_free_bytes": 165975461888,
-    "disk_free_gb": 154.58,
+    "disk_free_bytes": 165936209920,
+    "disk_free_gb": 154.54,
     "matlab_processes": 0,
     "python_processes": 8,
     "python_dl1018_experiment_processes": 0,
     "solidworks_mcp_processes": 8,
-    "checked_at_local": "2026-10-22 11:16:24 +08:00",
-    "action": "Read-only PowerShell 7 audit: 0 MATLAB and 0 Python command lines matching DL1018/paper14_v2/run_dl1018; all 8 Python processes are SolidWorks MCP services. No process started or stopped; TEST remains sealed."
+    "checked_at_local": "2026-10-22 12:00:12 +08:00",
+    "action": "Read-only PowerShell 7 audit: no project-matching Python experiment or MATLAB process, no process started or stopped; TEST remains sealed."
   },
-  "last_updated_local": "2026-10-22 11:16:24 +08:00",
+  "last_updated_local": "2026-10-22 12:03:01 +08:00",
   "phase1_status": {
     "status": "historical_round1_closed_registered_screen_failed",
     "concluded": [
@@ -155,7 +155,7 @@
   },
   "current_decision": "STOP_NEW_RUNS_AFTER_THREE_FAILED_REGISTERED_SCREENS; NO_72_NO_TEST; TEST_REMAINS_SEALED",
   "paper_evidence_package_status": "NOT_QUALIFIED",
-  "next_action": "Three-round cap is exhausted. Keep training, new Plant runs, 72-scene expansion and TEST48 sealed. If the user approves a new plan, first verify that a read-only same-state replay can localize the inherited W15 X gap between B and DSSM14/PCF-on requested and reconstructed acceleration; if logs cannot distinguish the mechanism, do not launch a flight. Theory must gain instantiated deployment bounds or a reviewed discrete Lyapunov/invariant-set proof.",
+  "next_action": "Three-round cap is exhausted. Keep training, new Plant runs, 72-scene expansion and TEST48 sealed. Same-state replay verifies the 20 ms W15 position-command split and its local force equation; the long-horizon W15 X-RMSE cause remains unlocalized. If a new cycle is authorized, first continue read-only stagewise replay through attitude, filtering, allocation and motor commands, then freeze a discriminating taskbook and close the deployment-theory gap.",
   "phase3_status": {
     "status": "closed_registered_screen_gate_failed",
     "taskbook": "../../experiments/paper14_v2_round3_xy_pcf_screen/TASKBOOK_ZH.md",
@@ -298,7 +298,40 @@
         }
       }
     },
-    "new_runs_authorized": false
+    "new_runs_authorized": false,
+    "same_state_position_replay": {
+      "status": "MAIN_SESSION_VERIFIED; INDEPENDENT_LUNA_REVIEW_PASS_WITH_NONBLOCKING_GENERAL_CHAR_SHAPE_CAVEAT",
+      "script": "phase1/audit_w15_position_replay.py",
+      "report": "phase1/w15_same_state_replay_feasibility_20261022.md",
+      "scenes": [
+        "DL1018_VAL_T1_C08_W15",
+        "DL1018_VAL_T2_C05_W15",
+        "DL1018_VAL_T3_C02_W15"
+      ],
+      "raw_and_sidecar_files": 18,
+      "input_table_and_source_hashes_locked": true,
+      "complete_csv_field_parsing_scope": "Only the three pinned W15 scene rows",
+      "common_core_config_fields_per_scene": 60,
+      "logical_shape_or_value_mismatches": 0,
+      "matlab_formats_seen": "B HELIX/SQUARE sidecars MAT v5; B FIG8 and all current DSSM/R3 sidecars MAT v7.3/HDF5",
+      "max_nominal_force_replay_error_N": 0.0,
+      "max_command_force_replay_error_N": 0.0,
+      "max_branch_residual_N": 1.3298417271892515E-19,
+      "first_B_DSSM_position_command_split_s": 0.02,
+      "first_B_DSSM_state_split_s": 0.021,
+      "first_current_DSSM_R3_position_command_split_s": 0.33,
+      "first_current_DSSM_R3_state_split_s": 0.331,
+      "conclusion": "The 20 ms command difference is consistent with the pre-registered position-RBF replacement and is reproducible at the same state. This local replay does not identify the 20 s X-RMSE cause.",
+      "independent_review": {
+        "status": "PASS_WITH_NONBLOCKING_CAVEAT",
+        "reviewer": "GPT-6-Luna xhigh requested; model/speed settings not independently verifiable",
+        "scope": "Read-only review of the pinned script and two W15 report passages; no MAT reread or rerun",
+        "caveat": "Generic MAT v5 character-matrix shape handling was not independently tested beyond these pinned W15 sidecars; the pinned 60-field comparisons pass."
+      },
+      "test_accessed": false,
+      "new_simulation_or_training": false,
+      "new_runs_authorized": false
+    }
   },
   "closeout_artifacts": {
     "report": "FINAL_CLOSEOUT_20261022.md",
@@ -311,7 +344,8 @@
     "r3_summary": "figures/r3_screen_evidence_summary.csv",
     "r3_figure_pdf": "figures/fig_r3_screen_evidence.pdf",
     "r3_figure_png": "figures/fig_r3_screen_evidence.png",
-    "w15_same_state_replay_feasibility": "phase1/w15_same_state_replay_feasibility_20261022.md"
+    "w15_same_state_replay_feasibility": "phase1/w15_same_state_replay_feasibility_20261022.md",
+    "w15_position_replay_script": "phase1/audit_w15_position_replay.py"
   },
   "closeout_review": {
     "status": "PASS",
@@ -325,11 +359,11 @@
   },
   "execution_configuration": {
     "requested": "GPT-6-Luna xhigh for main decisions and delegated reviewers; normal speed.",
-    "verified": "Delegated independent reviewer used GPT-6-Luna xhigh.",
-    "limitation": "Current Codex main session has no model-switch control; collaboration tools expose no normal/fast speed selector. Main-session model and speed compliance cannot be independently verified."
+    "verified": "Delegated Luna xhigh was requested for reviews; the collaboration tool does not expose the agent model or speed, so compliance is not independently verifiable.",
+    "limitation": "The main session has no model-switch control, and collaboration tools expose no model or normal/fast speed selector. Main-session and subagent model/speed compliance cannot be independently verified."
   },
   "closeout_artifact_sha256": {
-    "FINAL_CLOSEOUT_20261022.md": "12f5fb33ad2437f0bbd6e3ec2582f75226711c3fb75a2d9e3840396317cc72e8",
+    "FINAL_CLOSEOUT_20261022.md": "7fbcd81998e093ae863524dde596d64c762f13168492040ac0b041e0697e3af9",
     "SCENE_PAIRWISE_LOSSES_20261022.csv": "5d8279e9c2c3dfed4b8c6f3c466f2c5235c13e62ec92becc7c53cc131d5d058b",
     "build_scene_pairwise_losses.ps1": "f9733a3638eb4f31b54fd4f5755c0c90a24d0a592a322848b00a9a0d5a652d4b",
     "README_EXECUTION_ZH.md": "3b02e01a9ea2bf2a5adecc18c1d7c52339be688f197fd6767a0e53b9af41706f",
@@ -340,7 +374,8 @@
     "figures/r3_screen_evidence_summary.csv": "4803fc54f1c9a1b21338712a3e1bf25c28d73fe90444089533743b5606327657",
     "figures/fig_r3_screen_evidence.pdf": "b32ecda36864077676e2d2a6900761b50ba1e5d96885485a458e0ff14b3f3ea9",
     "figures/fig_r3_screen_evidence.png": "2c9765f646695ee457835e880bae9cf7ce4a5b9a7feae21dc762deefc7b08b75",
-    "phase1/w15_same_state_replay_feasibility_20261022.md": "4fdc8b9c13794323f8051819f716e99a2f16c6dd5671f614b1efc91c734c6b8d"
+    "phase1/w15_same_state_replay_feasibility_20261022.md": "3c5cb1789d5d6ee69600086934d1e1248efa95efcf31a785aa8a4abfdbc7222e",
+    "phase1/audit_w15_position_replay.py": "372d92cb17da99884e742d3fa0c877200c3bb2bc6fac7f10e7a1a046b97a76af"
   },
   "r3_offline_artifact_review": {
     "status": "PASS_AFTER_CAUSAL_WORDING_REVISION",
