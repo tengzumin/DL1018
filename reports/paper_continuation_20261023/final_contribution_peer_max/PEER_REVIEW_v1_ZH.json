@@ -1,0 +1,85 @@
+{
+  "schema": "C5_FINAL_CONTRIBUTION_PEER_REVIEW_V1",
+  "review_type": "independent_non_author_read_only",
+  "overall_judgment": "CONDITIONAL_CONTINUE_WITH_NARROWED_CLAIMS",
+  "test_gate": "NOT_DECIDED_OR_RELEASED_BY_THIS_REVIEW",
+  "broad_novelty_claim": "NOT_MET",
+  "specific_delayed_prediction_mechanism": "SUPPORTED_ON_FIXED_DEV72_WITH_LIMITS",
+  "audit": {
+    "path": "../c5_matched_ablation_dev72_parent_review/C5_MATCHED_ABLATION_DEV72_BOTH_RAW_PARENT_AUDIT_v3.json",
+    "sha256": "ec696b9e80a1f22af26b8ef58cb3fcc0a275102ee68b82b286ddf6d54d0a75ba",
+    "status": "PASS_C5_MATCHED_ABLATION_DEV72_ALL_EVENTS",
+    "independent_read_scope": "JSON scene metrics only; no MAT or TEST opened",
+    "tie_tolerance_m": 1e-12
+  },
+  "locked_source_identity": {
+    "input_lock_sha256": "82024c01276cc4bfbd9b7772cf5332dee3fdfcbed422969589b68f1c90ed2d75",
+    "helper_sha256": "48feebf934b8eb90b4424f2286aa857c48213d229714f30af99aacf53329549d",
+    "candidate": "DSSM14",
+    "seed": 2026102001,
+    "selected_step": 60000,
+    "input_dim": 14,
+    "window": 32
+  },
+  "q_definition": "Equal-scene-weighted 0-20 s three-dimensional position RMSE; metrics in mm; scene wins use raw meters and 1e-12 m tie tolerance.",
+  "groups": {
+    "ALL72": {"n": 72, "freeze_q_mm": 34.910909424, "no_prediction_q_mm": 12.110170832, "c5_q_mm": 11.558928371, "b_q_mm": 17.058080675, "no_prediction_wlt_vs_c5": [18, 54, 0]},
+    "DEV": {"n": 24, "freeze_q_mm": 33.832277680, "no_prediction_q_mm": 11.204390489, "c5_q_mm": 10.725462309, "b_q_mm": 15.188546603, "no_prediction_wlt_vs_c5": [7, 17, 0]},
+    "VAL": {"n": 48, "freeze_q_mm": 35.450225296, "no_prediction_q_mm": 12.563061004, "c5_q_mm": 11.975661402, "b_q_mm": 17.992847711, "no_prediction_wlt_vs_c5": [11, 37, 0]},
+    "HF_W09_W14": {"n": 28, "freeze_q_mm": 36.340376808, "no_prediction_q_mm": 10.617151290, "c5_q_mm": 10.179304496, "b_q_mm": 10.719024064, "no_prediction_wlt_vs_c5": [9, 19, 0]},
+    "W15": {"n": 6, "freeze_q_mm": 20.580653564, "no_prediction_q_mm": 7.691233196, "c5_q_mm": 6.334075115, "b_q_mm": 7.647291830, "no_prediction_wlt_vs_c5": [0, 6, 0]},
+    "T1": {"n": 24, "freeze_q_mm": 36.479100374, "no_prediction_q_mm": 11.861268865, "c5_q_mm": 11.137289261, "b_q_mm": 16.324755928, "no_prediction_wlt_vs_c5": [2, 22, 0]},
+    "T2": {"n": 24, "freeze_q_mm": 32.786532782, "no_prediction_q_mm": 11.797425910, "c5_q_mm": 11.796358789, "b_q_mm": 16.833777336, "no_prediction_wlt_vs_c5": [13, 11, 0]},
+    "T3": {"n": 24, "freeze_q_mm": 35.467095115, "no_prediction_q_mm": 12.671817722, "c5_q_mm": 11.743137063, "b_q_mm": 18.015708762, "no_prediction_wlt_vs_c5": [5, 19, 0]}
+  },
+  "no_prediction_effect": {
+    "c5_mean_advantage_mm": 0.551242461,
+    "c5_wlt_vs_no_prediction": [54, 18, 0],
+    "c5_wins_gt_1um": 54,
+    "c5_wins_gt_10um": 54,
+    "no_prediction_vs_b_wlt": [57, 15, 0],
+    "t2_no_prediction_q_delta_vs_c5_um": 1.067120,
+    "t2_no_prediction_wlt_vs_c5": [13, 11, 0],
+    "t2_no_prediction_wins_vs_b": 23,
+    "t2_c5_wins_vs_b": 18
+  },
+  "c5_regressions_vs_no_prediction": [
+    {"scene_id": "DL1018_DEV_T2_C06_W07", "c5_minus_no_prediction_mm": 0.405959989},
+    {"scene_id": "DL1018_DEV_T2_C08_W08", "c5_minus_no_prediction_mm": 0.239310594},
+    {"scene_id": "DL1018_DEV_T2_C09_W10", "c5_minus_no_prediction_mm": 0.800814234},
+    {"scene_id": "DL1018_DEV_T2_C12_W13", "c5_minus_no_prediction_mm": 0.141208859},
+    {"scene_id": "DL1018_DEV_T2_C14_W14", "c5_minus_no_prediction_mm": 0.699081465},
+    {"scene_id": "DL1018_DEV_T3_C06_W08", "c5_minus_no_prediction_mm": 0.605226998},
+    {"scene_id": "DL1018_DEV_T3_C09_W09", "c5_minus_no_prediction_mm": 0.610218444},
+    {"scene_id": "DL1018_VAL_T1_C00_W07", "c5_minus_no_prediction_mm": 0.019599339},
+    {"scene_id": "DL1018_VAL_T1_C13_W04", "c5_minus_no_prediction_mm": 0.423637358},
+    {"scene_id": "DL1018_VAL_T2_C00_W10", "c5_minus_no_prediction_mm": 0.607207900},
+    {"scene_id": "DL1018_VAL_T2_C02_W12", "c5_minus_no_prediction_mm": 0.212915282},
+    {"scene_id": "DL1018_VAL_T2_C03_W13", "c5_minus_no_prediction_mm": 0.882323173},
+    {"scene_id": "DL1018_VAL_T2_C04_W14", "c5_minus_no_prediction_mm": 0.538358584},
+    {"scene_id": "DL1018_VAL_T2_C09_W03", "c5_minus_no_prediction_mm": 0.272732888},
+    {"scene_id": "DL1018_VAL_T2_C12_W06", "c5_minus_no_prediction_mm": 0.204157761},
+    {"scene_id": "DL1018_VAL_T3_C01_W14", "c5_minus_no_prediction_mm": 0.463945318},
+    {"scene_id": "DL1018_VAL_T3_C09_W06", "c5_minus_no_prediction_mm": 0.294435075},
+    {"scene_id": "DL1018_VAL_T3_C11_W08", "c5_minus_no_prediction_mm": 0.403617539}
+  ],
+  "claims": {
+    "allowed": [
+      "The delayed prediction gradient reduced equal-scene mean Q in this fixed DEV72 matched simulation by 0.551242 mm, with 54 wins and 18 losses.",
+      "Freezing this physical-label pretrained W0 performed worse than the configured online adaptation in the same fixed loop; the contrast includes the training-label versus online PCF-coordinate mismatch.",
+      "M110 modestly improved over M111 on this development set; do not claim global optimality."
+    ],
+    "not_supported": [
+      "First or novel composite adaptation, integral labeling, projection update, or neural representation.",
+      "Universal benefit by scenario/task, especially a clear T2 benefit.",
+      "Plant closed-loop stability, parameter convergence, independent TEST generalization, hardware performance, or cross-seed reliability."
+    ]
+  },
+  "audit_constraints": {
+    "MATLAB_started_by_reviewer": false,
+    "Plant_started_by_reviewer": false,
+    "training_started_by_reviewer": false,
+    "TEST_accessed_by_reviewer": false,
+    "gate_changed": false
+  }
+}

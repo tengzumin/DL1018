@@ -1,0 +1,18 @@
+{
+  "schema": "C5_MATCHED_ABLATION_DEV72_DEADLINE_PARSE_NOTE_V1",
+  "status": "DOCUMENTED_NO_SOURCE_CHANGE",
+  "contract_deadline_utc": "2026-10-24T17:01:00Z",
+  "launcher_conversion": "PowerShell 7 ConvertFrom-Json materializes deadline_utc as System.DateTime with Kind=Utc; a subsequent [DateTime]::Parse(value) loses the UTC kind and ToUniversalTime shifts 8 hours earlier.",
+  "actual_deadline_utc": "2026-10-24T17:01:00Z",
+  "launcher_effective_deadline_utc": "2026-10-24T09:01:00Z",
+  "effect": "Conservative early cutoff by 8 hours; it does not extend authorized runtime.",
+  "remaining60_deadline_guard_seconds": 11400,
+  "prelaunch_real_utc_seconds_to_actual_deadline": 106278,
+  "prelaunch_seconds_to_launcher_effective_deadline": 77478,
+  "both_exceed_minimum_guard": true,
+  "current_second_batch": "C5_NO_DELAYED_PREDICTION REMAINING60 already running; do not interrupt or modify source",
+  "freeze_batch": "C5_FREEZE_TRAINED_W0 REMAINING60 completed naturally OS0; no changes",
+  "flight_retries": 0,
+  "source_or_release_changed": false,
+  "note": "Root identified this PowerShell date-kind conversion. No active run was interrupted, no frozen source or release was changed, and the existing minimum guard still had more than 21 hours remaining at NO_PRED launch."
+}

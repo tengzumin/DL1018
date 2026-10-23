@@ -1,0 +1,264 @@
+{
+  "schema": "TEST_READINESS_METHOD_IDENTITIES_V1",
+  "status": "READ_ONLY_PREPARATION_NOT_RELEASE",
+  "test_accessed_by_this_inventory": false,
+  "methods": [
+    {
+      "method_id": "B_TRACEABLE",
+      "role": "new traceable baseline; run B constructor on frozen C3 core",
+      "input_lock": {
+        "path": "experiments/b_traceable_c3core_dev72_20261023/B_TRACEABLE_DEV72_INPUT_LOCK_v3.json",
+        "sha256": "8d738e5c70ba2fc8697550549d1a0537f08eadb49b99bc5684e5c26f6222f452",
+        "source_count": 32
+      },
+      "runtime": {
+        "core_path": "experiments/position_delayed_prediction_c3_dev72_20261023/run_dl1018_closed_loop.m",
+        "core_sha256": "e5f1e30c433ee3f8206b36446cde71776589c161fe2a3ec60fbaf070585eb07f",
+        "wrapper_path": "experiments/position_delayed_prediction_c3_dev72_20261023/run_episode_dl1018.m",
+        "wrapper_sha256": "fcc1f5de659541e692483f8395d93fd2a251256286ebade5e510ed4c7a2e2330",
+        "controller_constructor_path": "matlab/runtime/controller_options_dl1018.m",
+        "controller_constructor_sha256": "93633a5fd95f73d33982045c2fa372d49b1a0df8ea0cfb5ca4461208ca9d53b1",
+        "controller_constructor_call": "controller_options_dl1018(cfg,'B')",
+        "learned_model": false
+      },
+      "cfg_opts_snapshot": {
+        "path": "experiments/b_traceable_c3core_dev72_20261023/B_TRACEABLE_DEV72_PREPARED_CFG_OPTS_v3.mat",
+        "sha256": "1736946bf085a4badb3c13662f47c2af25ed88f7cffbe65f0412a9fc3cb8003d",
+        "cfg_leaves": 120,
+        "opts_leaves": 13
+      },
+      "baseline_lineage_note": "B_source is historical physical scene input; B72_scoring/new traceable raw is the scored output. They are distinct artifacts."
+    },
+    {
+      "method_id": "CORRECTED_DSSM14_G12_R32",
+      "role": "historical corrected DSSM14 comparator",
+      "acceptance": {
+        "path": "C:/Users/35326/Desktop/postgraduation/0/Mcode/drone_tcn/REFERENCE_FIX_FULL72_20261021_022342_313/corrected_reference_training_v1/corrected_pair_eval_v1/reports/PAIR_EVAL_MODEL_ACCEPTANCE.json",
+        "sha256": "d2443465fac3d3f407798458b1cb8eb5432a245df80dd7068053bf3888ebbb44",
+        "status": "PASS_PAIR_MODEL_EXPORT_AND_PARITY"
+      },
+      "runtime": {
+        "root": "C:/Users/35326/Desktop/postgraduation/0/Mcode/drone_tcn/REFERENCE_FIX_FULL72_20261021_022342_313/corrected_reference_training_v1/corrected_pair_eval_v1/sources/local_runtime",
+        "runtime_tree_sha256": "5a4a104314c63a2a7928e2be359b6ce269da92f23895f1346768728879745db0",
+        "core": "run_dl1018_closed_loop.m",
+        "core_sha256": "01d83dec95aea5d30feef3afd0628a2ce0911f70465f0773a4f568a01b08450b",
+        "wrapper": "run_episode_dl1018.m",
+        "wrapper_sha256": "fcc1f5de659541e692483f8395d93fd2a251256286ebade5e510ed4c7a2e2330",
+        "forward_helper": "position_stage1_model_forward_v2.m",
+        "forward_helper_sha256": "dc803aa102c49d67dd687ae941f8a60bb0c465f74fd01e5ae93ad1ea1a293676",
+        "head_step_helper": "position_only_search_head_step.m",
+        "head_step_helper_sha256": "3bd0fe9686c3b75793575e517d4cc5f08de58ab6a26a2bc7516aa690422bb7dc",
+        "head_options_helper": "position_only_search_options.m",
+        "head_options_helper_sha256": "4e8322934ddb524961fa762426800564f6c758e00b943b622c9143ed734f19bf"
+      },
+      "model": {
+        "model_id": "DSSM14",
+        "seed": 2026102001,
+        "selected_step": 60000,
+        "input_dim": 14,
+        "window": 32,
+        "W0_shape": [33, 3],
+        "model_field_count": 15,
+        "W0_sha256": "88f8c4f2495438c3797655c48bab1bf0c11ac2e27bff1f5f2a7423a8f0a2cf53",
+        "model_mat_path": "C:/Users/35326/Desktop/postgraduation/0/Mcode/drone_tcn/REFERENCE_FIX_FULL72_20261021_022342_313/corrected_reference_training_v1/corrected_pair_training/models/DSSM14/matlab_model_and_parity.mat",
+        "model_mat_sha256": "6f3628b10540c617496b2a20f249c4319af79c1a02d5945f1f91f0aead9c9b6e",
+        "checkpoint_path": "C:/Users/35326/Desktop/postgraduation/0/Mcode/drone_tcn/REFERENCE_FIX_FULL72_20261021_022342_313/corrected_reference_training_v1/corrected_pair_training/models/official/DSSM14/seed2026102001/final_step.pt",
+        "checkpoint_sha256": "544b018b78187d9d9cbbcbd5c3332244b80ad91cb137f32bd71198a4302dfbf5",
+        "normalizer_path": "C:/Users/35326/Desktop/postgraduation/0/Mcode/drone_tcn/REFERENCE_FIX_FULL72_20261021_022342_313/corrected_reference_training_v1/corrected_pair_training/data/normalizer_x14_train_only.npz",
+        "normalizer_sha256": "520983e01aa9af38bd3c1aad15b5b8e6a65f5129a32e997e2234951ace198404"
+      },
+      "cfg_opts_snapshot_example": {
+        "path": "C:/Users/35326/Desktop/postgraduation/0/Mcode/drone_tcn/REFERENCE_FIX_FULL72_20261021_022342_313/runs/DL1018_VAL_T1_C00_W07/DSSM14_G12_R32/attempt_01/run_start.mat",
+        "sha256": "1b6417b4369f5b5618d1ee81ac8595de1bb6d607e0fdd04ad2913748f6986cde",
+        "hdf5_top_level_keys": ["cfg", "meta", "opts", "scene", "sceneMeta", "spec"],
+        "scope": "one historical VAL scene only; not a shared TEST snapshot"
+      }
+    },
+    {
+      "method_id": "CORRECTED_KAN14_G12_R32",
+      "role": "historical corrected KAN14 comparator",
+      "acceptance_sha256": "d2443465fac3d3f407798458b1cb8eb5432a245df80dd7068053bf3888ebbb44",
+      "runtime": {
+        "root": "C:/Users/35326/Desktop/postgraduation/0/Mcode/drone_tcn/REFERENCE_FIX_FULL72_20261021_022342_313/corrected_reference_training_v1/corrected_pair_eval_v1/sources/local_runtime",
+        "runtime_tree_sha256": "5a4a104314c63a2a7928e2be359b6ce269da92f23895f1346768728879745db0",
+        "core": "run_dl1018_closed_loop.m",
+        "core_sha256": "01d83dec95aea5d30feef3afd0628a2ce0911f70465f0773a4f568a01b08450b",
+        "wrapper": "run_episode_dl1018.m",
+        "wrapper_sha256": "fcc1f5de659541e692483f8395d93fd2a251256286ebade5e510ed4c7a2e2330",
+        "forward_helper": "position_stage1_model_forward_v2.m",
+        "forward_helper_sha256": "dc803aa102c49d67dd687ae941f8a60bb0c465f74fd01e5ae93ad1ea1a293676",
+        "head_step_helper": "position_only_search_head_step.m",
+        "head_step_helper_sha256": "3bd0fe9686c3b75793575e517d4cc5f08de58ab6a26a2bc7516aa690422bb7dc",
+        "head_options_helper": "position_only_search_options.m",
+        "head_options_helper_sha256": "4e8322934ddb524961fa762426800564f6c758e00b943b622c9143ed734f19bf"
+      },
+      "model": {
+        "model_id": "KAN14",
+        "seed": 2026102001,
+        "selected_step": 60000,
+        "input_dim": 14,
+        "window": 32,
+        "W0_shape": [33, 3],
+        "model_field_count": 16,
+        "model_mat_path": "C:/Users/35326/Desktop/postgraduation/0/Mcode/drone_tcn/REFERENCE_FIX_FULL72_20261021_022342_313/corrected_reference_training_v1/corrected_pair_training/models/KAN14/matlab_model_and_parity.mat",
+        "model_mat_sha256": "0a24606ff8fccc3b51503874c36063a7f2b648b36109368ea184d5bcbb8219c9",
+        "checkpoint_path": "C:/Users/35326/Desktop/postgraduation/0/Mcode/drone_tcn/REFERENCE_FIX_FULL72_20261021_022342_313/corrected_reference_training_v1/corrected_pair_training/models/official/KAN14/seed2026102001/final_step.pt",
+        "checkpoint_sha256": "bff45dd31c288a5cef8ee018b6efa289419e48d1942319a5498971d02e2d4269",
+        "normalizer_shared_path": "C:/Users/35326/Desktop/postgraduation/0/Mcode/drone_tcn/REFERENCE_FIX_FULL72_20261021_022342_313/corrected_reference_training_v1/corrected_pair_training/data/normalizer_x14_train_only.npz",
+        "normalizer_sha256": "520983e01aa9af38bd3c1aad15b5b8e6a65f5129a32e997e2234951ace198404",
+        "model_schema_note": "actual model_id is KAN14; 16 model fields include silu_unclipped"
+      },
+      "cfg_opts_snapshot_example": {
+        "path": "C:/Users/35326/Desktop/postgraduation/0/Mcode/drone_tcn/REFERENCE_FIX_FULL72_20261021_022342_313/runs/DL1018_VAL_T1_C00_W07/NEW_KAN14_G12_R32/attempt_01/run_start.mat",
+        "sha256": "b10d1de1a0a0307659c3e1bb0f608aa8a4e0da109991493dbc327104404bbda9",
+        "hdf5_top_level_keys": ["cfg", "meta", "opts", "scene", "sceneMeta", "spec"],
+        "scope": "one historical VAL scene only; not a shared TEST snapshot"
+      }
+    },
+    {
+      "method_id": "C5_M110",
+      "role": "frozen C5 M110 method",
+      "input_lock": {
+        "path": "experiments/position_axis_coordinate_c5_dev72_20261023/C5_DEV72_INPUT_LOCK_v3.json",
+        "sha256": "82024c01276cc4bfbd9b7772cf5332dee3fdfcbed422969589b68f1c90ed2d75",
+        "source_count": 32
+      },
+      "runtime": {
+        "core_path": "experiments/position_axis_coordinate_c5_dev72_20261023/run_dl1018_closed_loop.m",
+        "core_sha256": "48350037b66efe00301b138068f187c62cf92583f0f9ba2fabc9b24f248a963c",
+        "wrapper_path": "experiments/position_axis_coordinate_c5_dev72_20261023/run_episode_dl1018.m",
+        "wrapper_sha256": "fcc1f5de659541e692483f8395d93fd2a251256286ebade5e510ed4c7a2e2330",
+        "prediction_helper_path": "experiments/position_axis_coordinate_c5_dev72_20261023/delayed_prediction_step_candidate.m",
+        "prediction_helper_sha256": "48feebf934b8eb90b4424f2286aa857c48213d229714f30af99aacf53329549d",
+        "forward_helper_sha256": "dc803aa102c49d67dd687ae941f8a60bb0c465f74fd01e5ae93ad1ea1a293676",
+        "pcf_helper_path": "matlab/models/position_filter_realization_pcf_step_v3_5.m",
+        "pcf_helper_sha256": "b4ae22db5bd444a162d0cd01a3a59a589f2e37077b089bb33693401b660228d0"
+      },
+      "model_identity": {
+        "id": "DSSM14",
+        "seed": 2026102001,
+        "selected_step": 60000,
+        "input_dim": 14,
+        "window": 32,
+        "W0_sha256": "88f8c4f2495438c3797655c48bab1bf0c11ac2e27bff1f5f2a7423a8f0a2cf53",
+        "normalizer_arrays_sha256": "533aad9a2c66874cfa67f5d268661835e81e58b797cba7d6fc1c12d4013de5f0",
+        "model_mat_path": "C:/Users/35326/Desktop/postgraduation/0/Mcode/drone_tcn/REFERENCE_FIX_FULL72_20261021_022342_313/corrected_reference_training_v1/corrected_pair_training/models/DSSM14/matlab_model_and_parity.mat",
+        "model_mat_sha256": "6f3628b10540c617496b2a20f249c4319af79c1a02d5945f1f91f0aead9c9b6e",
+        "normalizer_path": "C:/Users/35326/Desktop/postgraduation/0/Mcode/drone_tcn/REFERENCE_FIX_FULL72_20261021_022342_313/corrected_reference_training_v1/corrected_pair_training/data/normalizer_x14_train_only.npz",
+        "normalizer_file_sha256": "520983e01aa9af38bd3c1aad15b5b8e6a65f5129a32e997e2234951ace198404"
+      },
+      "cfg_opts_snapshot": {
+        "path": "experiments/position_axis_coordinate_c5_dev72_20261023/C5_DEV72_PREPARED_CFG_OPTS_v3.mat",
+        "sha256": "842ef395569e675db6e139c2684d72b976946915e5e0a58b9b7f24ec10c1d24a",
+        "cfg_leaves": 120,
+        "opts_leaves": 43
+      },
+      "coordinate_mask": [1, 1, 0],
+      "prediction_gradient_enabled": true,
+      "weight_update_enabled": true
+    },
+    {
+      "method_id": "C5_FREEZE_TRAINED_W0",
+      "role": "strict matched ablation; freeze learned weights",
+      "input_lock": {
+        "path": "experiments/position_c5_matched_ablations_dev72_v3_20261023/C5_FREEZE_TRAINED_W0/C5_ABLATION_DEV72_INPUT_LOCK_v3.json",
+        "sha256": "28b2d3b99a20a2390b31db0a07aa1cd76a581fb0134b881e7f4ffc861b8670b3"
+      },
+      "runtime_core_sha256": "48350037b66efe00301b138068f187c62cf92583f0f9ba2fabc9b24f248a963c",
+      "wrapper_sha256": "fcc1f5de659541e692483f8395d93fd2a251256286ebade5e510ed4c7a2e2330",
+      "prediction_helper_path": "experiments/position_c5_matched_ablations_dev72_v3_20261023/C5_FREEZE_TRAINED_W0/delayed_prediction_step_candidate.m",
+      "prediction_helper_sha256": "aab2a67b17886e5e71460fc972a57a389faef10fed9b30292befc64ab6511eaa",
+      "model_identity": "same DSSM14/W0/normalizer as C5_M110",
+      "cfg_opts_snapshot": {
+        "path": "experiments/position_c5_matched_ablations_dev72_v3_20261023/C5_FREEZE_TRAINED_W0/C5_ABLATION_DEV72_PREPARED_CFG_OPTS_v3.mat",
+        "sha256": "b63d453aefbf2678f2e172ce7929b6d736b7fe312e0c2d13e8ea01eadec09dff",
+        "cfg_leaves": 120,
+        "opts_leaves": 43
+      },
+      "coordinate_mask": [1, 1, 0],
+      "prediction_gradient_enabled": false,
+      "weight_update_enabled": false
+    },
+    {
+      "method_id": "C5_NO_DELAYED_PREDICTION",
+      "role": "strict matched ablation; remove prediction gradient only",
+      "input_lock": {
+        "path": "experiments/position_c5_matched_ablations_dev72_v3_20261023/C5_NO_DELAYED_PREDICTION/C5_ABLATION_DEV72_INPUT_LOCK_v3.json",
+        "sha256": "e0020306b8b7e7fba2948b93cbde30e0ec8f8470ede5dcef5e128d20c8728074"
+      },
+      "runtime_core_sha256": "48350037b66efe00301b138068f187c62cf92583f0f9ba2fabc9b24f248a963c",
+      "wrapper_sha256": "fcc1f5de659541e692483f8395d93fd2a251256286ebade5e510ed4c7a2e2330",
+      "prediction_helper_path": "experiments/position_c5_matched_ablations_dev72_v3_20261023/C5_NO_DELAYED_PREDICTION/delayed_prediction_step_candidate.m",
+      "prediction_helper_sha256": "390fd63989922e0f252df51c392f18977b9957bec6534e4905634b8c94147248",
+      "model_identity": "same DSSM14/W0/normalizer as C5_M110",
+      "cfg_opts_snapshot": {
+        "path": "experiments/position_c5_matched_ablations_dev72_v3_20261023/C5_NO_DELAYED_PREDICTION/C5_ABLATION_DEV72_PREPARED_CFG_OPTS_v3.mat",
+        "sha256": "47d4a599b948a60cb961b92dee78519391091a1e4bdffec0863a631ad0f34de9",
+        "cfg_leaves": 120,
+        "opts_leaves": 43
+      },
+      "coordinate_mask": [1, 1, 0],
+      "prediction_gradient_enabled": false,
+      "weight_update_enabled": true
+    }
+  ],
+  "shared_source_and_configuration": {
+    "effective_config_path": "configs/effective_config.mat",
+    "effective_config_sha256": "cec90417369c7a44580b0315b2473ae86eb62550012188340b1dd5f3a796522f",
+    "scene_specs_path": "configs/scene_specs.csv",
+    "scene_specs_sha256": "d116b74dc6d9ce3c21a40fcd48b4153a0adc09e98a6c8d341c0f1b6ba680b4e3",
+    "current_generator_path": "matlab/scenes/make_scenes_dl1018.m",
+    "current_generator_sha256": "7d11b4ebf63105b016c67f4b3c427282b35dafa53280ef2daf5578a6a16bb9ec",
+    "corrected_fixed_generator_path": "C:/Users/35326/Desktop/postgraduation/0/Mcode/drone_tcn/REFERENCE_FIX_FULL72_20261021_022342_313/sources/reference_fixed/make_scenes_dl1018.m",
+    "corrected_fixed_generator_sha256": "454106ad22f44ebf5a2210fbd50a7672b5508e550ebfc80c16158e5cdbee544a",
+    "construct_scene_block_sha256_both_sources": "ccc4babb57b44ac5cf6d328ef2b927f798560bce3a0fc8dded1d9a1e6058851f",
+    "make_reference_block_sha256_both_sources": "8260088e8a98a371519a5bf1d4826afb61b93fd3f4899c828141c64f544891dc",
+    "position_forward_in_model_lock": {
+      "path": "C:/Users/35326/Desktop/postgraduation/0/Mcode/drone_tcn/REFERENCE_FIX_FULL72_20261021_022342_313/corrected_reference_training_v1/corrected_pair_eval_v1/sources/local_runtime/position_stage1_model_forward_v2.m",
+      "sha256": "dc803aa102c49d67dd687ae941f8a60bb0c465f74fd01e5ae93ad1ea1a293676"
+    },
+    "current_same_basename_forward_sha256": "8db5a691dc1961e13956c1d6e76cdea346142e0cc04788ba17f39c72d4a122ee",
+    "note": "same basename has distinct sources; path and SHA must be bound per method"
+  },
+  "historical_artifact_reviews": {
+    "model_binding_forward_sha256": "cc5616b3c10def65b8cb3636d92219dd5ed4848a1651d4c1f1d81f147fd384af",
+    "snapshot_index_sha256": "8f2bbd1612743dfa585322baa52d772c0e91de2d2aa2bf7d3f5ae9013312a6dc",
+    "snapshot_count": 72,
+    "seal_observation_sha256": "b0aa6a4ed24b96996cc032debb12853b47d8ca843771b2bb9860e2d39d6ba0b5",
+    "seal_observation_files_enumerated": 20646,
+    "seal_observation_scope_limit": "No matching TEST outputs found in observed names; not proof about external/deleted artifacts."
+  },
+  "gate_status": {
+    "dataset_plan_path": "configs/dataset_plan.json",
+    "dataset_plan_sha256": "db0dd1b632ccbfefda8b78667e5fc0495358c11e8bb8d8e0590602826da907e9",
+    "test_status": "SEALED",
+    "G01_path": "reports/G01_SCENES.json",
+    "G01_sha256": "e0deac0227c17db75ac3cede218164e39c99f981c46dd5ecab48de58bd562eb0",
+    "G01_status": "PASS",
+    "G06_path": "reports/G06_P_DEV.json",
+    "G06_sha256": "a50105453ff8b6c690cd1cd9842649bc1a044306e83cd2c46447639189fd606d",
+    "G06_status": "STOP_POSITION_NOT_QUALIFIED",
+    "G06_next_gate_allowed": false,
+    "G12_report_present": false
+  },
+  "readiness_protocol": {
+    "taskbook_sha256": "5c32935ee3f0aa857d15efe233ec88fad76b27e908ad69688f3ccd9053ed6034",
+    "contribution_scope_path": "reports/paper_continuation_20261023/C5_CONTRIBUTION_SCOPE_DRAFT_ZH.md",
+    "contribution_scope_sha256": "b42f74a17ffef3028a05b7fc3a3d2a4f219c76ee025b1820acf5d7fdd609a604",
+    "protocol_draft_path": "reports/paper_continuation_20261023/TEST48_CONDITIONAL_PROTOCOL_DRAFT_ZH.md",
+    "protocol_draft_sha256": "42715535e67ecee826dc493bd46a32e29f27d55c28b27b7db8fa04f5bbd05ccd",
+    "method_process_policy": "six sequential fresh MATLAB processes, one per method; no in-process method rotation",
+    "test_scene_count": 48,
+    "methods": 6,
+    "flight_cap": 288,
+    "bootstrap_seed": 2026102301,
+    "deadline_utc": "2026-10-24T17:01:00Z",
+    "PS7_typed_deadline_erratum_sha256": "188244e577319e790b2d52e4765a6e580e7910251831f778acbeeabb6c9fe2b7"
+  },
+  "not_performed": [
+    "No TEST raw, metrics, statuses, or numeric scene arrays read",
+    "No TEST scene generated",
+    "No MATLAB, Plant, training, or TEST run started",
+    "No G01/G06/G12 state, cache, or experiment output modified"
+  ]
+}

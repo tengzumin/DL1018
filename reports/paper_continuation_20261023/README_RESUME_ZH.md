@@ -1,5 +1,14 @@
 # 当前续作入口
 
+最新主审：C5及严格双消融完整DEV72全部自然OS0并通过全raw审核，累计300航次、训练0、TEST0。C5 Q11.558928 mm；NO_PRED 12.110171 mm（C5 54胜18负）；冻结W0 34.910909 mm。T2对NO_PRED仅平均好1.067微米且11胜13负，不作普遍收益主张。详见 `DEV72_FINAL_SCIENCE_SCOPE_DECISION_ZH.md` 与 `c5_matched_ablation_dev72_parent_review/C5_MATCHED_ABLATION_DEV72_PARENT_FINDINGS_ZH.md`。最终审计使用v3（SHA cb980b25b79d7ae61de97d95afd1f24400c16d1591b96d1f69ff345456151d84），已实际OS0，勿重跑Plant。
+
+当前审核六方法独立TEST入口源码；尚未授权任何MATLAB模式、TEST输入生成或Plant。新派执行者为Luna max；速度参数不可设置。下方按时间保留的旧状态仅为历史，最新状态以本段和STATE.json为准。
+
+
+最新执行状态（UTC 2026-10-23 11:40前）：FREEZE新60已自然OS0且60记录完整；NO_PRED新60正在同一批准顺序内运行，两个新增首场均已由根读取raw/配置/模型并复算全部1968事件PASS。累计自然闭合240航次，不预记第二批完成；训练0/TEST0。根额外完成C5全72实际物理递推及held-output/F分解核验OS0（1,440,000转移）。已定位并保留两个非算法工程问题：PS7二次Parse把门限提前8h（仍足够，不改冻结源码）；NO_PRED marker路径262/263字符使Python普通Path假报缺失（extended读取实核原SHA全部匹配）。只新增读路径适配v2，未移动/重跑/删除产物。完整双消融审计应在第二批自然OS0后运行 `c5_matched_ablation_dev72_parent_review/audit_c5_matched_ablation_dev72_raw_parent_v2.py`，SHA78e3912b01adb9ab44e1cf8a8cca2985ede2833b08b8228d925c2eb67a416f52，输出_v2.json。TEST仍封存，只读准备见任务书和条件协议。
+
+最新补充：完整消融v2 FREEZE无Plant预检自然OS1、0新航次，源脚本错误假定旧sceneIdentity含C3输出路径；根实际读取三个MAT快照确认仅原7字段。原v2锁/源码/跨语言PASS/OS1全部保留，NO_PRED未启动；v3仅修复C3输出血缘为独立封存C5 DEV72锁中的C3_reference，尚须源码/真实schema复核后再放行无Plant。累计仍为180自然完成航次、训练0/TEST0。数值理论补证已读取C5全72作后验有限路径界核验OS0，界/实际Q为3.74–31.33倍；不能升级为先验Plant或稳定性保证。剩余8输场的最大逐轴MSE退化8/8来自Y，8/8早段较差而4场晚段已胜B，详见新增轴/时段表和根因更新报告。
+
 **最新进度（UTC 2026-10-23 10时后）：**严格消融两配置的12场均已自然OS0且全部raw/47,232事件主审通过。FREEZE平均Q31.106419mm、NO_PRED 9.710166mm、完整C5 9.055650mm；NO_PRED相对C5为3胜9负，无风3场均较差。见 `C5_ABLATION_SCREEN12_DECISION_ZH.md`、`c5_matched_ablation_parent_raw_review/SCREEN12_PARENT_COMPACT_v1.json` 及全部配对CSV。两个v3 FIRST加v4各11场均已结束，不重跑。当前累计自然完成180航次，训练0、TEST0。正在隔离实现两配置各补60的DEV72入口；尚未放行任何新增Plant。
 
 物理引理非作者复核已实际落盘，主审以独立勘误明确恢复为“第二行加M乘第三行”，并完成实际M110三轴21基向量精确检查OS0。原冻结证明不改；条件误差界的代数通过，最终论文理论/贡献门仍待综合审核。下文按阶段保留的旧状态以本段及 `STATE.json` 为最新状态依据；旧失败账本不删除。
