@@ -1,0 +1,37 @@
+{
+  "schema": "TEST48_SCORE_STATISTICS_CONTRACT_V1",
+  "state": "PRE_TEST_RULES_NO_EXECUTION_RELEASE",
+  "TEST_accessed_when_written": false,
+  "score_source": "reports/delayed_prediction_c3_dev72_parent_20261023/parent_raw_metrics.py",
+  "score_source_sha256": "c64482d0adbc4358417648ec08351bd78f1d3dbdb38950435fa71b9cb0f531b1",
+  "score_function": "score; imported for numeric scoring only; TEST audit wrapper must report actual TEST_accessed=true",
+  "samples": "20000 transition starts at 0:0.001:19.999; error=state[:-1,:3]-reference.position[:-1,:]",
+  "Q": "sqrt(sum(error**2)/number_of_transition_starts), SI meters, per scene before scene-equal macro means",
+  "phases_s": [[0, 20], [0, 5], [5, 20]],
+  "phase_upper_endpoint_excluded": true,
+  "win_tie_tolerance_m": 1e-12,
+  "strict_win_sensitivity_m": [1e-6, 1e-5],
+  "candidate": "C5_M110",
+  "baseline": "B_TRACEABLE",
+  "acceptance": {
+    "complete_paired_scenes": 48,
+    "wins_vs_B_at_least": 41,
+    "ALL48_mean_Q": "strictly smaller than paired B",
+    "HF_W09_W14_mean_Q": "no larger than paired B",
+    "W15_mean_Q": "no larger than paired B",
+    "safety_integrity_actuators": "retain existing checks; no added attitude-improvement gate"
+  },
+  "reports": ["all six methods and all 48 scenes", "T1,T2,T3", "each W00-W15 and preregistered frequency bands", "XYZ RMSE in all phases", "3D peak and p95", "all losses for each comparison", "safety stops, saturation, clipping and completeness", "timing mean,p50,p95,p99,max,over1ms per scene,ready/nonready; retain JIT samples"],
+  "bootstrap": {
+    "replicates": 10000,
+    "seed": 2026102301,
+    "unit": "one paired physical scene, never within-flight windows",
+    "group_sampling": "within each declared group, replacement, common sample indices across methods",
+    "groups": ["ALL48", "HF_W09_W14", "W15", "T1", "T2", "T3"],
+    "interval": "numpy quantile 0.025 and 0.975 of scene-equal mean paired Q differences; default linear interpolation",
+    "scope": "descriptive intervals for fixed simulation design; no multiplicity-corrected significance or cross-training-seed claims"
+  },
+  "no_test_result_based_selection_tuning_or_retry": true,
+  "no_first_or_global_stability_claim": true,
+  "original_g06_g12_and_cache_protection_unchanged": true
+}

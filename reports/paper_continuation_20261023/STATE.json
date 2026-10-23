@@ -1,5 +1,5 @@
 {
-  "status": "DEV72_C5_AND_BOTH_MATCHED_ABLATIONS_RAW_PARENT_PASS_TEST_ENTRY_CODE_REVIEW",
+  "status": "DEV_NOPLANT_ISOLATED_V2_JSON_REPAIR1_RELEASED",
   "authorization": "USER_CONTINUATION_AUTHORIZATION.json",
   "C3_previous_stage": "CLOSED_DEV72_61_WINS_REQUIRED_62_FAIL",
   "paper_status": "NOT_QUALIFIED",
@@ -24,7 +24,7 @@
   "minimum_free_bytes": 30000000000,
   "hard_deadline_utc": "2026-10-24T17:01:00Z",
   "historical_evidence_preserved": true,
-  "updated_utc": "2026-10-23T12:14:23.018124+00:00",
+  "updated_utc": "2026-10-23T12:45:26.099262+00:00",
   "B_probe_prepare": "No-Plant body PASS; earlier verifier natural OS exit UNKNOWN after shutdown hang; actual B1 science run natural OS exit 0",
   "B_probe_engineering_failures": [
     "v1 launcher nested shell lost batch expression; 0 Plant; own failed setup terminated",
@@ -231,11 +231,12 @@
     "actual_M110_check_OS_exit": 0
   },
   "last_verified_git_push": {
-    "commit": "02a074706b2d4d15fb6e9e1069a75cdd0770eda8",
+    "commit": "342d0c2643ea590f434ea7f6e745783def94fdab",
     "remote": "https://github.com/tengzumin/DL1018.git",
     "branch": "codex/dl1018-causal-diagnosis-upload",
     "remote_ls_verified": true,
-    "includes_active_DEV72_ablations": false,
+    "actual_HEAD_blobs_SHA_verified": 609,
+    "includes_active_TEST_implementation": false,
     "includes_mat_checkpoint_cache": false
   },
   "C5_matched_ablation_noPlant": {
@@ -452,9 +453,9 @@
     "independent_summary_sha256": "71b5b437b4d2515ef9abf1fa8ab19379a9e6e5520813ca5b499caed749fab9bd",
     "root_findings": "c5_matched_ablation_dev72_parent_review/C5_MATCHED_ABLATION_DEV72_PARENT_FINDINGS_ZH.md"
   },
-  "next_action": "Review TEST entry code; separately authorize DEV72 noPlant generator equivalence; no TEST generation or Plant yet.",
+  "next_action": "Run isolated v2 DEV noPlant once; review actual all72 generator and six-method results before TEST freeze.",
   "TEST_readiness": {
-    "status": "CODE_ONLY_IMPLEMENTATION_AWAITING_ROOT_SOURCE_AUDIT",
+    "status": "ISOLATED_V2_DEV_NOPLANT_RETRY1_AUTHORIZED",
     "conditional_protocol": "TEST48_CONDITIONAL_PROTOCOL_DRAFT_ZH.md",
     "seal_observation": "TEST_SEAL_METADATA_OBSERVATION_v1.json",
     "unsealed": false,
@@ -471,7 +472,78 @@
     },
     "code_only_taskbook": "TEST_ENTRY_CODE_ONLY_TASKBOOK_ZH.md",
     "execution_order_decision": "Six methods, six separate sequential MATLAB processes, 48 scenes each; avoid same-name helper cache contamination; disclose block order for timing.",
-    "code_task_dispatch_pending": false
+    "code_task_dispatch_pending": false,
+    "source_review_sha256": "b9cdb15b61302cc071df53ea7d1641cea3b3925a7ce45ae3608ee128f5fa72f6",
+    "DEV_release_sha256": "30dc9f50d4917321df2aef276909111d0690d18bf4182d5e801cba5015471b91",
+    "DEV_v1_failure": {
+      "natural_OS_exit": 1,
+      "OS_receipt_sha256": "b39027f98b58e69daf5983d01605688fa95ac802b1b2b90f9036c958a4500909",
+      "location": "verify_code_contract line81 c.method_order(k).id",
+      "actual_matlab_schema_diagnosis": {
+        "contract_method_order_class": "cell",
+        "contract_method_order_size": [
+          6,
+          1
+        ],
+        "manifest_methods_class": "struct",
+        "manifest_methods_size": [
+          6,
+          1
+        ],
+        "TEST_accessed": false,
+        "Plant_calls": 0,
+        "contract_method_fieldnames": [
+          [
+            "id",
+            "alias",
+            "source",
+            "uses_learned_model"
+          ],
+          [
+            "id",
+            "alias",
+            "source",
+            "model_id"
+          ],
+          [
+            "id",
+            "alias",
+            "source",
+            "model_id"
+          ],
+          [
+            "id",
+            "alias",
+            "source",
+            "actual_weight_update",
+            "actual_prediction_gradient"
+          ],
+          [
+            "id",
+            "alias",
+            "source",
+            "actual_weight_update",
+            "actual_prediction_gradient"
+          ],
+          [
+            "id",
+            "alias",
+            "source",
+            "actual_weight_update",
+            "actual_prediction_gradient"
+          ]
+        ]
+      },
+      "diagnostic_natural_OS_exit": 0,
+      "diagnostic_sha256": "0e3ca5c0e18b64b036a542a997dc3cdc072860a767d6b17c12bcfc02b5478623",
+      "Plant_calls": 0,
+      "TEST_accessed": false,
+      "preserve_v1": true,
+      "repair1_scope": "isolated v2 directory; null-pad heterogeneous contract method metadata to identical field sets; no algorithm change; source review before any mode"
+    },
+    "current_entry_directory": "experiments/c5_test48_v2",
+    "current_report_directory": "reports/paper_continuation_20261023/test_entry_v2",
+    "DEV_v2_release_sha256": "970dbe9d29e30f941b23795fefabb2d804caef27e9ced95af4187ba343bd450b"
   },
   "PS7_deadline_metadata_erratum": "PS7_TYPED_DEADLINE_ERRATUM_ZH.md; old launcher guard conservatively earlier by 8h; running code unchanged, future entry type-preserving fix tested.",
   "subagent_preference_latest": {
@@ -483,9 +555,11 @@
     "next_spawn_policy": "gpt-6-luna max with fork_turns none; at most two executors"
   },
   "contribution_scope_decision": {
-    "file": "DEV72_FINAL_SCIENCE_SCOPE_DECISION_ZH.md",
-    "sha256": "aba58d6c00152ce598d302853eeec5f79926c163a520f30249dc719491c1281e",
+    "file": "DEV72_FINAL_SCIENCE_SCOPE_DECISION_v2_ZH.md",
+    "sha256": "2436548d60c675e5ac64d2c83a061902f40c02975c726d40bbddcf27a91a97f5",
     "status": "CONTINUE_SPECIFIC_MECHANISM_WITH_LIMITS_NO_BROAD_FIRST_OR_STABILITY_CLAIM",
-    "TEST_release": false
+    "TEST_release": false,
+    "erratum_check": "PARENT_T2_DIRECTION_ERRATUM_CHECK_v1.json",
+    "original_v1_preserved": true
   }
 }

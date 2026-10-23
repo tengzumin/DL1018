@@ -1,0 +1,63 @@
+{
+  "status": "PASS_ROOT_CODE_AND_ACTUAL_INPUT_REF_REVIEW_FOR_DEV_NOPLANT_ONLY",
+  "files": [
+    {
+      "path": "experiments/c5_test48_v1/test48_entry_v1.m",
+      "sha256": "e97322adec504762b3f67428504cae1ea1b44200051bd1032fa77883648df384"
+    },
+    {
+      "path": "experiments/c5_test48_v1/RUN_TEST48_EXACT_v1.ps1",
+      "sha256": "e5fda783ae711815acf8a6a379845e192551b3ceec6eaae8b78d4a9c15adc13b"
+    },
+    {
+      "path": "experiments/c5_test48_v1/TEST48_RUN_CONTRACT_v1.json",
+      "sha256": "01435c5dbac3477b24541e1abec73591fac69f287071d4b81d1b79a677f51c33"
+    },
+    {
+      "path": "reports/paper_continuation_20261023/test_entry_v1/TEST_METHOD_SOURCE_MANIFEST_v1.json",
+      "sha256": "66f6d2e0c042dff9aa07e75f6d0443d38d694097495b30d551dfd94f2c90919c"
+    },
+    {
+      "path": "reports/paper_continuation_20261023/test_entry_v1/build_test48_method_manifest_v1.ps1",
+      "sha256": "5020a3ff7905b8035939e8243054e735d4b57bc573f2694854f2c6682f7c793c"
+    },
+    {
+      "path": "reports/paper_continuation_20261023/test_entry_v1/CODE_ONLY_HANDOFF_v2_ZH.md",
+      "sha256": "575618ae353be03544c85c24e91e8b175bac09805070b956e0fb31cd7efe521d"
+    }
+  ],
+  "actual_file_ref_hashes_checked": 211,
+  "actual_corrected_model_field_counts": [
+    15,
+    15
+  ],
+  "minimal_static_patch_lines": [
+    "--- \n",
+    "+++ \n",
+    "@@ -180,7 +180,7 @@\n",
+    "         [d1,e1]=compare_tree(oldScene,currentSceneForB,[id '.B_source_vs_current']);",
+    "         [aForCorrected,noteC]=remove_current_pack_contract_note(a,b,id);",
+    "         [d2,e2]=compare_pack(aForCorrected,b,[id '.current_vs_corrected_fixed']);",
+    "-        fieldAudit=[fieldwise_compare(oldScene,currentSceneForB,id,'B_source_vs_current','scene'), ...",
+    "+        fieldAudit=[fieldwise_compare(oldScene,currentSceneForB,id,'B_source_vs_current','scene'); ...",
+    "             fieldwise_compare_pack(aForCorrected,b,id,'current_vs_corrected_fixed')];",
+    "         records{k}=struct('scene_id',id,'B_source_path',char(row.B_source.path), ...",
+    "             'B_source_sha256',char(row.B_source.sha256),'current_vs_B_max_abs',d1, ...",
+    "@@ -764,7 +764,8 @@\n",
+    "         else",
+    "             af=double(a(:)); bf=double(b(:)); finiteA=isfinite(af); finiteB=isfinite(bf);",
+    "             if any(~finiteA)||any(~finiteB)",
+    "-                assert(contains(path,'.metadata')&&isequal(finiteA,finiteB)&& ...",
+    "+                isMetadataPath=startsWith(path,'metadata.')||contains(path,'.metadata.');",
+    "+                assert(isMetadataPath&&isequal(finiteA,finiteB)&& ...",
+    "                     all(~isnan(af))&&all(~isnan(bf))&&isequaln(af(~finiteA),bf(~finiteB)), ...",
+    "                     'TEST48:MetadataNonfinite','Only exactly matching non-NaN metadata infinities may pass at %s.',path);",
+    "             end"
+  ],
+  "free_bytes_at_review": 182128480256,
+  "scientific_scope_decision": "DEV72_FINAL_SCIENCE_SCOPE_DECISION_v2_ZH.md",
+  "TEST_accessed": false,
+  "Plant_authorized": false,
+  "runtime_behavior_not_yet_verified": true,
+  "created_utc": "2026-10-23T12:34:24.949374+00:00"
+}

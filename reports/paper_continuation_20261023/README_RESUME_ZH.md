@@ -1,6 +1,6 @@
 # 当前续作入口
 
-最新主审：C5及严格双消融完整DEV72全部自然OS0并通过全raw审核，累计300航次、训练0、TEST0。C5 Q11.558928 mm；NO_PRED 12.110171 mm（C5 54胜18负）；冻结W0 34.910909 mm。T2对NO_PRED仅平均好1.067微米且11胜13负，不作普遍收益主张。详见 `DEV72_FINAL_SCIENCE_SCOPE_DECISION_ZH.md` 与 `c5_matched_ablation_dev72_parent_review/C5_MATCHED_ABLATION_DEV72_PARENT_FINDINGS_ZH.md`。最终审计使用v3（SHA cb980b25b79d7ae61de97d95afd1f24400c16d1591b96d1f69ff345456151d84），已实际OS0，勿重跑Plant。
+最新主审：C5及严格双消融完整DEV72全部自然OS0并通过全raw审核，累计300航次、训练0、TEST0。C5 Q11.558928 mm；NO_PRED 12.110171 mm（C5 54胜18负）；冻结W0 34.910909 mm。T2对NO_PRED仅平均好1.067微米且13胜11负，不作普遍收益主张。详见 `DEV72_FINAL_SCIENCE_SCOPE_DECISION_v2_ZH.md` 与 `c5_matched_ablation_dev72_parent_review/C5_MATCHED_ABLATION_DEV72_PARENT_FINDINGS_ZH.md`。最终审计使用v3（SHA cb980b25b79d7ae61de97d95afd1f24400c16d1591b96d1f69ff345456151d84），已实际OS0，勿重跑Plant。
 
 当前审核六方法独立TEST入口源码；尚未授权任何MATLAB模式、TEST输入生成或Plant。新派执行者为Luna max；速度参数不可设置。下方按时间保留的旧状态仅为历史，最新状态以本段和STATE.json为准。
 

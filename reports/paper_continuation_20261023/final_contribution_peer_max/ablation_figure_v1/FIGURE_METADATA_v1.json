@@ -1,0 +1,134 @@
+{
+  "schema": "C5_MATCHED_ABLATION_FIGURE_METADATA_V1",
+  "script": {
+    "path": "gen_fig_c5_matched_ablation_v1.py",
+    "sha256": "9c5138a4e4e3ea30b77f0252dc97fdcd1574b749978fbf4d2a094eb405f6c39f"
+  },
+  "inputs": {
+    "MATCHED_ABLATION_DEV72_INDEPENDENT_SUMMARY_v1.json": {
+      "path_from_figure_directory": "../../c5_matched_ablation_dev72_parent_review/MATCHED_ABLATION_DEV72_INDEPENDENT_SUMMARY_v1.json",
+      "sha256": "71b5b437b4d2515ef9abf1fa8ab19379a9e6e5520813ca5b499caed749fab9bd",
+      "verified": true
+    },
+    "MATCHED_ABLATION_DEV72_ALL_PAIRS_v1.csv": {
+      "path_from_figure_directory": "../../c5_matched_ablation_dev72_parent_review/MATCHED_ABLATION_DEV72_ALL_PAIRS_v1.csv",
+      "sha256": "9ad962499032826a31ee0f4c3b424ec45793272f411314ab6c35d3356e34e49b",
+      "verified": true
+    }
+  },
+  "inputs_flags_from_summary": {
+    "raw_read": false,
+    "Plant_started": false,
+    "TEST_accessed": false
+  },
+  "figure": {
+    "panel_a_group_mean_q_mm": {
+      "ALL72": {
+        "B": 17.058080675350787,
+        "Frozen W0": 34.910909423748926,
+        "NoPred": 12.110170832282906,
+        "C5": 11.558928371025633
+      },
+      "HF_W09_W14": {
+        "B": 10.719024063836468,
+        "Frozen W0": 36.340376808323434,
+        "NoPred": 10.617151290274187,
+        "C5": 10.179304495531369
+      },
+      "W15": {
+        "B": 7.647291829871464,
+        "Frozen W0": 20.58065356428749,
+        "NoPred": 7.691233196129121,
+        "C5": 6.334075115054494
+      }
+    },
+    "panel_b_delta_definition": "C5_minus_NO_PRED_Q_0_20_m, converted from m to mm; negative favors C5 and positive favors NO_PRED",
+    "panel_b_points": 72,
+    "panel_b_reverse_points_c5_worse": 18,
+    "panel_b_reverse_count_by_task": {
+      "T1": 2,
+      "T2": 11,
+      "T3": 5
+    },
+    "panel_b_task_means_and_saved_ci_mm": {
+      "T1": {
+        "n": 24,
+        "mean_mm": -0.7239796038714299,
+        "ci95_mm": [
+          -0.9199708929955295,
+          -0.5194489381972601
+        ],
+        "wins_losses_ties_from_saved_summary": {
+          "wins": 22,
+          "losses": 2,
+          "ties": 0,
+          "wins_gt_1um": 22,
+          "wins_gt_10um": 22
+        }
+      },
+      "T2": {
+        "n": 24,
+        "mean_mm": -0.0010671202672301614,
+        "ci95_mm": [
+          -0.2026488480022634,
+          0.19667167556209156
+        ],
+        "wins_losses_ties_from_saved_summary": {
+          "wins": 13,
+          "losses": 11,
+          "ties": 0,
+          "wins_gt_1um": 13,
+          "wins_gt_10um": 13
+        }
+      },
+      "T3": {
+        "n": 24,
+        "mean_mm": -0.92868065963315,
+        "ci95_mm": [
+          -1.2546524652272235,
+          -0.5750712153365883
+        ],
+        "wins_losses_ties_from_saved_summary": {
+          "wins": 19,
+          "losses": 5,
+          "ties": 0,
+          "wins_gt_1um": 19,
+          "wins_gt_10um": 19
+        }
+      }
+    },
+    "paired_bootstrap": {
+      "seed": 2026102301,
+      "replicates": 10000,
+      "unit": "one paired physical scene, not windows or training seeds",
+      "scope": "Descriptive development intervals; no multiplicity correction or independent TEST inference.",
+      "ci_source": "stored JSON field C5_minus_ablation_Q_95pct_scene_bootstrap_m",
+      "ci_recomputed": false
+    },
+    "display_jitter": {
+      "seed": 20261023,
+      "purpose": "horizontal scatter separation only",
+      "used_for_statistics": false
+    },
+    "pdf_true_type_font_setting": {
+      "pdf.fonttype": 42,
+      "font_family": "Times New Roman / DejaVu Serif"
+    },
+    "png_dpi": 300
+  },
+  "outputs": {
+    "fig_c5_matched_ablation_v1.pdf": {
+      "sha256": "ce8eaadc787981414e8e71a24cc761625c2bcc6e69c29725193830317f589b80",
+      "bytes": 73250
+    },
+    "fig_c5_matched_ablation_v1.png": {
+      "sha256": "e4f3419814d9d874688269a873f89247cb18b28e66883d92fbab20bc35e3918a",
+      "bytes": 208900,
+      "dpi": 300
+    },
+    "CAPTION_ZH_v1.md": {
+      "sha256": "73ff68a29c6567760ff96444335422417b4069edbc54a5ef2a6044a0a483bf99",
+      "bytes": 791
+    }
+  }
+}
