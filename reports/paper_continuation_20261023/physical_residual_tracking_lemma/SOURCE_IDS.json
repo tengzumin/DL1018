@@ -1,0 +1,74 @@
+{
+  "schema": "PHYSICAL_RESIDUAL_TRACKING_LEMMA_SOURCE_IDS_V1",
+  "created_utc": "2026-10-23T08:47:55.4267162Z",
+  "review_scope": "Exact derivation and standard-library symbolic/Fraction check only; no raw, MATLAB, Plant, training, or TEST",
+  "sources": [
+    {
+      "role": "approved_taskbook",
+      "path": "reports/paper_continuation_20261023/PHYSICAL_RESIDUAL_TRACKING_LEMMA_TASKBOOK_ZH.md",
+      "sha256": "6fd08c0e8250f4075fa33933a8c89d32995bbc75fef09ad1ba54e1bb2f72af91"
+    },
+    {
+      "role": "frozen_sampled_equations",
+      "path": "reports/paper_continuation_20261023/EXACT_SAMPLED_ERROR_ACCOUNTING_TASKBOOK_ZH.md",
+      "sha256": "104b9da52f2885bd53c2d122ba84ed09ed121d79af6215f9e59593c0eef0e606"
+    },
+    {
+      "role": "C5_BS_step",
+      "path": "matlab/core/position_bs_step.m",
+      "sha256": "ea533c3ae97cbc552208287e7f8d9b0a0f5a018f36fb5c8bd45520e19e73c681"
+    },
+    {
+      "role": "PCF_filter_step",
+      "path": "matlab/models/position_filter_realization_pcf_step_v3_5.m",
+      "sha256": "b4ae22db5bd444a162d0cd01a3a59a589f2e37077b089bb33693401b660228d0"
+    },
+    {
+      "role": "C5_frozen_core",
+      "path": "experiments/position_axis_coordinate_c5_dev72_20261023/run_dl1018_closed_loop.m",
+      "sha256": "48350037b66efe00301b138068f187c62cf92583f0f9ba2fabc9b24f248a963c"
+    },
+    {
+      "role": "prior_delay_storage_conditional_proof",
+      "path": "reports/paper_continuation_20261023/finite_horizon_certificate/delay_storage_perturbation/DELAY_STORAGE_PERTURBATION_BOUND_ZH.md",
+      "sha256": "8f406230d647b89e91c6495777402bb6b24ea4bee7f400e6e3751b499d97f604"
+    },
+    {
+      "role": "prior_conditional_prior_proof",
+      "path": "reports/paper_continuation_20261023/finite_horizon_certificate/conditional_prior_bound/CONDITIONAL_PRIOR_ERROR_BOUND_ZH.md",
+      "sha256": "6ff1d3155095f48ac5ae06bc9caf54a9eed8e52312a354034ce9446ae50fd8db"
+    },
+    {
+      "role": "scoring_definition",
+      "path": "reports/delayed_prediction_c3_dev72_parent_20261023/parent_raw_metrics.py",
+      "sha256": "c64482d0adbc4358417648ec08351bd78f1d3dbdb38950435fa71b9cb0f531b1"
+    }
+  ],
+  "source_line_map": [
+    "position_bs_step.m:19-56; position_bs_step.m:24 and :56 establish nominal/requested acceleration split",
+    "run_dl1018_closed_loop.m:2128, :2138, :2155 bind applied residual force to BS request",
+    "run_dl1018_closed_loop.m:2257-2261 bind a_req and r_f to the actual PCF helper",
+    "position_filter_realization_pcf_step_v3_5.m:13-21 defines r_f and exact exponential eta update",
+    "EXACT_SAMPLED_ERROR_ACCOUNTING_TASKBOOK_ZH.md:5-19 defines rho_p, rho_s, d0/Ybar, rho_eta",
+    "DELAY_STORAGE_PERTURBATION_BOUND_ZH.md:21-29, :51-64, :174 gives old coordinate and conditionality",
+    "parent_raw_metrics.py:81-85 defines scored 20000-sample Q"
+  ],
+  "artifacts": [
+    {
+      "path": "reports\\paper_continuation_20261023\\physical_residual_tracking_lemma\\PHYSICAL_RESIDUAL_TRACKING_LEMMA_ZH.md",
+      "sha256": "ba5db2bfe3a99b949b11d266755f6b8202bb812d7a0cb1e8177500b8e3a1c179"
+    },
+    {
+      "path": "reports\\paper_continuation_20261023\\physical_residual_tracking_lemma\\verify_physical_residual_tracking_lemma.py",
+      "sha256": "887877787bde3d1991f18894a56813ad164b04cce5c0080128d1595f588c8765"
+    },
+    {
+      "path": "reports\\paper_continuation_20261023\\physical_residual_tracking_lemma\\EXACT_CHECK_RESULT.json",
+      "sha256": "a1efe17d3cc6ad92c7ff4f6bda4bca16f1281e8122586f7db4fc30877bb63ad6"
+    },
+    {
+      "path": "reports\\paper_continuation_20261023\\physical_residual_tracking_lemma\\EXECUTION_RECORD.json",
+      "sha256": "b5e61efa3b5c662c4637e219b24df2ee5af734c05bbf5fe64efa179fbb3d5262"
+    }
+  ]
+}

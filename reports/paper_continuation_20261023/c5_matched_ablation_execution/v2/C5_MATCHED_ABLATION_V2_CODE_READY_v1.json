@@ -1,0 +1,140 @@
+{
+  "schema": "C5_MATCHED_ABLATION_V2_CODE_READY_V1",
+  "status": "WAIT_ROOT_SOURCE_REVIEW_NO_MATLAB",
+  "created_utc": "2026-10-23",
+  "engineering_delta": [
+    "add strict unique scene_row(lock,id) copied from frozen C5 lookup logic",
+    "call scene_row and scene_identity_row for all 12 locked scenes during same-runner preflight",
+    "move per-scene scene_row lookup into the existing scene try so lookup errors are written into FAILED_STOP batch ledger"
+  ],
+  "algorithm_and_controls_unchanged": true,
+  "core_wrapper_helper_checker_prepare_fixtures_same_as_v1": true,
+  "no_matlab_started": true,
+  "plant_calls": 0,
+  "training_steps": 0,
+  "TEST_accessed": false,
+  "builder_path": "experiments/position_c5_matched_ablations_v2_20261023/build_c5_matched_ablation_inputs_v1.py",
+  "builder_sha256": "d5da9465c9a247c62bfab9d02ae390ab15aebc6493efee8ce1bf040ca96f499c",
+  "fixture_generator_sha256": "02e453bb8fc6ec7ea76320a02aced66a570abef694e63307e00f0bf6f0efbfe9",
+  "runner_diff_path": "reports/paper_continuation_20261023/c5_matched_ablation_execution/v2/C5_ABLATION_SCENE_ROW_FIX_v2.patch",
+  "runner_diff_sha256": "2cdca8053fce4e34e7b42dc80b7efc4780da1b819bc94c5eae38f02f0f4e2dc5",
+  "v1_failed_artifacts_preserved": {
+    "batch_path": "experiments/position_c5_matched_ablations_20261023/C5_FREEZE_TRAINED_W0/C5_ABLATION_FIRST_BATCH_STATUS_v1.json",
+    "batch_sha256": "84c054c81e690b5fd99e8afe31d52ea069bfdffde19ffb296e8c79855c7e302d",
+    "os_exit_path": "reports/paper_continuation_20261023/c5_matched_ablation_execution/C5_C5_FREEZE_TRAINED_W0_FIRST_MATLAB_OS_EXIT_v1.json",
+    "os_exit_sha256": "4a8b4244f44b77dff049fcc24d10fce4a7db7078c90aafc93c6e47dd7c746ab1",
+    "os_exit_code": 1,
+    "plant_calls": 0
+  },
+  "variants": [
+    {
+      "variant_id": "C5_FREEZE_TRAINED_W0",
+      "scene_ids": [
+        "DL1018_VAL_T1_C00_W07",
+        "DL1018_VAL_T1_C02_W09",
+        "DL1018_VAL_T1_C05_W12",
+        "DL1018_VAL_T1_C08_W15",
+        "DL1018_VAL_T2_C00_W10",
+        "DL1018_VAL_T2_C02_W12",
+        "DL1018_VAL_T2_C05_W15",
+        "DL1018_VAL_T2_C06_W00",
+        "DL1018_VAL_T3_C00_W13",
+        "DL1018_VAL_T3_C02_W15",
+        "DL1018_VAL_T3_C03_W00",
+        "DL1018_VAL_T3_C12_W09"
+      ],
+      "coordinate_mask": [
+        1,
+        1,
+        0
+      ],
+      "source_counts": {
+        "total": 32,
+        "matlab": 31,
+        "mat": 1
+      },
+      "shared_input_count": 6,
+      "input_lock_sha256": "e6ee37cc37b55f6511b9248a7389a5671a2440db91f38c33520a5299f8b0d82e",
+      "run_contract_sha256": "15b175a440378e56b94893f491215eafc440ed2078eab37f4134c08e92402545",
+      "parent_release_contract_sha256": "52ea74dee1f9cd0e737bb49ee67ccc00b39b5d5bc4ea006e010e5d523af0bca9",
+      "source_binding_sha256": "eee16f527a38d65037b014f9f788a5222fe7cf896995cf8c5122d8dcdfff402b",
+      "verified_source_binding_ref_count": 69,
+      "files": {
+        "C5_ABLATION_INPUT_LOCK_v1.json": "e6ee37cc37b55f6511b9248a7389a5671a2440db91f38c33520a5299f8b0d82e",
+        "C5_ABLATION_RUN_CONTRACT_v1.json": "15b175a440378e56b94893f491215eafc440ed2078eab37f4134c08e92402545",
+        "C5_ABLATION_PARENT_RELEASE_CONTRACT_v1.json": "52ea74dee1f9cd0e737bb49ee67ccc00b39b5d5bc4ea006e010e5d523af0bca9",
+        "C5_ABLATION_SOURCE_BINDING_v1.json": "eee16f527a38d65037b014f9f788a5222fe7cf896995cf8c5122d8dcdfff402b",
+        "run_c5_matched_ablation_v1.m": "eb9e6a94beaaf7588c6b4e9ddfe109dddbc3c4ac8c4e88397d34ce3922bf2223",
+        "prepare_c5_matched_ablation_v1.m": "2d43f855ab2ceff76b3f8e3a4d67cd6d3dda2962abd170404c26c8ce6893b015",
+        "run_dl1018_closed_loop.m": "48350037b66efe00301b138068f187c62cf92583f0f9ba2fabc9b24f248a963c",
+        "run_episode_dl1018.m": "fcc1f5de659541e692483f8395d93fd2a251256286ebade5e510ed4c7a2e2330",
+        "delayed_prediction_step_candidate.m": "aab2a67b17886e5e71460fc972a57a389faef10fed9b30292befc64ab6511eaa",
+        "check_c5_matched_ablation_synthetic_v1.m": "452c24a8370e73454ac9f89c3db5017fc90304ce8885ef78d68878f3a4ca5e6a",
+        "C5_ABLATION_CROSSLANG_FIXTURE_v2.json": "60d88931d22ee2a61735092f499cf81f4a767f6a4968390277434193a5daf486",
+        "RUN_C5_ABLATION_NOPLANT_EXACT_v1.ps1": "5f1b5fa9bf945b3e3039fcd6d4d70b8765ed692a7ebfe577c6b130974ee1b7b1",
+        "RUN_C5_ABLATION_PARENT_EXACT_v1.ps1": "94b0ebd261dce9399ddc058dca6be88c78a6857ec27bc735f2c63c59d1380b11"
+      },
+      "no_plant_command": "& 'C:/Users/35326/Desktop/postgraduation/0/Mcode/drone_tcn/DL1018/experiments/position_c5_matched_ablations_v2_20261023/C5_FREEZE_TRAINED_W0/RUN_C5_ABLATION_NOPLANT_EXACT_v1.ps1'",
+      "future_first_command": "& 'C:/Users/35326/Desktop/postgraduation/0/Mcode/drone_tcn/DL1018/experiments/position_c5_matched_ablations_v2_20261023/C5_FREEZE_TRAINED_W0/RUN_C5_ABLATION_PARENT_EXACT_v1.ps1' -Phase FIRST"
+    },
+    {
+      "variant_id": "C5_NO_DELAYED_PREDICTION",
+      "scene_ids": [
+        "DL1018_VAL_T1_C00_W07",
+        "DL1018_VAL_T1_C02_W09",
+        "DL1018_VAL_T1_C05_W12",
+        "DL1018_VAL_T1_C08_W15",
+        "DL1018_VAL_T2_C00_W10",
+        "DL1018_VAL_T2_C02_W12",
+        "DL1018_VAL_T2_C05_W15",
+        "DL1018_VAL_T2_C06_W00",
+        "DL1018_VAL_T3_C00_W13",
+        "DL1018_VAL_T3_C02_W15",
+        "DL1018_VAL_T3_C03_W00",
+        "DL1018_VAL_T3_C12_W09"
+      ],
+      "coordinate_mask": [
+        1,
+        1,
+        0
+      ],
+      "source_counts": {
+        "total": 32,
+        "matlab": 31,
+        "mat": 1
+      },
+      "shared_input_count": 6,
+      "input_lock_sha256": "2ef41bfded25b28be3b31227cbbbdb53f2cf1d04f0408a9b9884ffdd261871d4",
+      "run_contract_sha256": "f7a2fc8e5b00adc901ca860387b73deb24127a47423ce216b17ca25e8462f033",
+      "parent_release_contract_sha256": "99f6db33d940a38f9e2406ad4f14e32f080cc523e495195bdd0425915d404ce5",
+      "source_binding_sha256": "a2186df8b3ee88ed7ee32063173d0128202bff151cee9acd691cc1152f754a6e",
+      "verified_source_binding_ref_count": 69,
+      "files": {
+        "C5_ABLATION_INPUT_LOCK_v1.json": "2ef41bfded25b28be3b31227cbbbdb53f2cf1d04f0408a9b9884ffdd261871d4",
+        "C5_ABLATION_RUN_CONTRACT_v1.json": "f7a2fc8e5b00adc901ca860387b73deb24127a47423ce216b17ca25e8462f033",
+        "C5_ABLATION_PARENT_RELEASE_CONTRACT_v1.json": "99f6db33d940a38f9e2406ad4f14e32f080cc523e495195bdd0425915d404ce5",
+        "C5_ABLATION_SOURCE_BINDING_v1.json": "a2186df8b3ee88ed7ee32063173d0128202bff151cee9acd691cc1152f754a6e",
+        "run_c5_matched_ablation_v1.m": "eb9e6a94beaaf7588c6b4e9ddfe109dddbc3c4ac8c4e88397d34ce3922bf2223",
+        "prepare_c5_matched_ablation_v1.m": "2d43f855ab2ceff76b3f8e3a4d67cd6d3dda2962abd170404c26c8ce6893b015",
+        "run_dl1018_closed_loop.m": "48350037b66efe00301b138068f187c62cf92583f0f9ba2fabc9b24f248a963c",
+        "run_episode_dl1018.m": "fcc1f5de659541e692483f8395d93fd2a251256286ebade5e510ed4c7a2e2330",
+        "delayed_prediction_step_candidate.m": "390fd63989922e0f252df51c392f18977b9957bec6534e4905634b8c94147248",
+        "check_c5_matched_ablation_synthetic_v1.m": "452c24a8370e73454ac9f89c3db5017fc90304ce8885ef78d68878f3a4ca5e6a",
+        "C5_ABLATION_CROSSLANG_FIXTURE_v2.json": "a23e7be7e3c1df8d69d441a8a561df52d938e9f9abe37ae60e4f860a60ed42aa",
+        "RUN_C5_ABLATION_NOPLANT_EXACT_v1.ps1": "3c298044cd2d57559dd5514d3ead7c6c8d625d78ee83fc31b07a1a5388708d58",
+        "RUN_C5_ABLATION_PARENT_EXACT_v1.ps1": "7ae77f6b14011cba43b9c4e711c8b166bf3c7e4ed4b864a585bcbed4fd08fcd5"
+      },
+      "no_plant_command": "& 'C:/Users/35326/Desktop/postgraduation/0/Mcode/drone_tcn/DL1018/experiments/position_c5_matched_ablations_v2_20261023/C5_NO_DELAYED_PREDICTION/RUN_C5_ABLATION_NOPLANT_EXACT_v1.ps1'",
+      "future_first_command": "& 'C:/Users/35326/Desktop/postgraduation/0/Mcode/drone_tcn/DL1018/experiments/position_c5_matched_ablations_v2_20261023/C5_NO_DELAYED_PREDICTION/RUN_C5_ABLATION_PARENT_EXACT_v1.ps1' -Phase FIRST"
+    }
+  ],
+  "validation": {
+    "python_builder_os_exit": 0,
+    "source_reference_sha_checks": "all passed",
+    "powershell_parser_errors": 0,
+    "runner_local_function_blocks": "25 defined, all end-closed in each variant",
+    "runner_diff_review": "normalized v2 back to v1 exactly after reversing only the three authorized edits",
+    "parent_review_required_before_no_plant": true,
+    "plant_authorized_by_this_manifest": false
+  }
+}

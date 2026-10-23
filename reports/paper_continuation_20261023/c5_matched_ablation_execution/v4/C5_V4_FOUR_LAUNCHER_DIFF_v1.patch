@@ -1,0 +1,42 @@
+--- a/experiments/position_c5_matched_ablations_v3_20261023/C5_FREEZE_TRAINED_W0/RUN_C5_ABLATION_NOPLANT_EXACT_v1.ps1
++++ b/experiments/position_c5_matched_ablations_v4_20261023/C5_FREEZE_TRAINED_W0/RUN_C5_ABLATION_NOPLANT_EXACT_v1.ps1
+@@ -1,6 +1,6 @@
+ $ErrorActionPreference = 'Stop'
+ $taskDir = [IO.Path]::GetDirectoryName($PSCommandPath)
+-$reportDir = 'C:/Users/35326/Desktop/postgraduation/0/Mcode/drone_tcn/DL1018/reports/paper_continuation_20261023/c5_matched_ablation_execution/v3'
++$reportDir = 'C:/Users/35326/Desktop/postgraduation/0/Mcode/drone_tcn/DL1018/reports/paper_continuation_20261023/c5_matched_ablation_execution/v4'
+ $exitPath = Join-Path $reportDir 'C5_FREEZE_TRAINED_W0_NOPLANT_OS_EXIT_v1.json'
+ $resultPath = Join-Path $taskDir 'C5_ABLATION_PREPARE_RESULT_v1.json'
+ $snapshotPath = Join-Path $taskDir 'C5_ABLATION_PREPARED_CFG_OPTS_v1.mat'
+--- a/experiments/position_c5_matched_ablations_v3_20261023/C5_FREEZE_TRAINED_W0/RUN_C5_ABLATION_PARENT_EXACT_v1.ps1
++++ b/experiments/position_c5_matched_ablations_v4_20261023/C5_FREEZE_TRAINED_W0/RUN_C5_ABLATION_PARENT_EXACT_v1.ps1
+@@ -1,7 +1,7 @@
+ param([Parameter(Mandatory=$true)][ValidateSet('FIRST','TAIL11')][string]$Phase)
+ $ErrorActionPreference = 'Stop'
+ $taskDir = [IO.Path]::GetDirectoryName($PSCommandPath)
+-$reportDir = 'C:/Users/35326/Desktop/postgraduation/0/Mcode/drone_tcn/DL1018/reports/paper_continuation_20261023/c5_matched_ablation_execution/v3'
++$reportDir = 'C:/Users/35326/Desktop/postgraduation/0/Mcode/drone_tcn/DL1018/reports/paper_continuation_20261023/c5_matched_ablation_execution/v4'
+ $releasePath = Join-Path $taskDir ("C5_ABLATION_{0}_PARENT_RELEASE_v1.json" -f $Phase)
+ $lockPath = Join-Path $taskDir 'C5_ABLATION_INPUT_LOCK_v1.json'
+ $contractPath = Join-Path $taskDir 'C5_ABLATION_RUN_CONTRACT_v1.json'
+--- a/experiments/position_c5_matched_ablations_v3_20261023/C5_NO_DELAYED_PREDICTION/RUN_C5_ABLATION_NOPLANT_EXACT_v1.ps1
++++ b/experiments/position_c5_matched_ablations_v4_20261023/C5_NO_DELAYED_PREDICTION/RUN_C5_ABLATION_NOPLANT_EXACT_v1.ps1
+@@ -1,6 +1,6 @@
+ $ErrorActionPreference = 'Stop'
+ $taskDir = [IO.Path]::GetDirectoryName($PSCommandPath)
+-$reportDir = 'C:/Users/35326/Desktop/postgraduation/0/Mcode/drone_tcn/DL1018/reports/paper_continuation_20261023/c5_matched_ablation_execution/v3'
++$reportDir = 'C:/Users/35326/Desktop/postgraduation/0/Mcode/drone_tcn/DL1018/reports/paper_continuation_20261023/c5_matched_ablation_execution/v4'
+ $exitPath = Join-Path $reportDir 'C5_NO_DELAYED_PREDICTION_NOPLANT_OS_EXIT_v1.json'
+ $resultPath = Join-Path $taskDir 'C5_ABLATION_PREPARE_RESULT_v1.json'
+ $snapshotPath = Join-Path $taskDir 'C5_ABLATION_PREPARED_CFG_OPTS_v1.mat'
+--- a/experiments/position_c5_matched_ablations_v3_20261023/C5_NO_DELAYED_PREDICTION/RUN_C5_ABLATION_PARENT_EXACT_v1.ps1
++++ b/experiments/position_c5_matched_ablations_v4_20261023/C5_NO_DELAYED_PREDICTION/RUN_C5_ABLATION_PARENT_EXACT_v1.ps1
+@@ -1,7 +1,7 @@
+ param([Parameter(Mandatory=$true)][ValidateSet('FIRST','TAIL11')][string]$Phase)
+ $ErrorActionPreference = 'Stop'
+ $taskDir = [IO.Path]::GetDirectoryName($PSCommandPath)
+-$reportDir = 'C:/Users/35326/Desktop/postgraduation/0/Mcode/drone_tcn/DL1018/reports/paper_continuation_20261023/c5_matched_ablation_execution/v3'
++$reportDir = 'C:/Users/35326/Desktop/postgraduation/0/Mcode/drone_tcn/DL1018/reports/paper_continuation_20261023/c5_matched_ablation_execution/v4'
+ $releasePath = Join-Path $taskDir ("C5_ABLATION_{0}_PARENT_RELEASE_v1.json" -f $Phase)
+ $lockPath = Join-Path $taskDir 'C5_ABLATION_INPUT_LOCK_v1.json'
+ $contractPath = Join-Path $taskDir 'C5_ABLATION_RUN_CONTRACT_v1.json'

@@ -1,0 +1,84 @@
+### C5_FREEZE_TRAINED_W0/RUN_C5_ABLATION_NOPLANT_EXACT_v1.ps1
+warning: in the working copy of 'C:\Users\35326\Desktop\postgraduation\0\Mcode\drone_tcn\DL1018\experiments\position_c5_matched_ablations_v2_20261023\C5_FREEZE_TRAINED_W0\RUN_C5_ABLATION_NOPLANT_EXACT_v1.ps1', LF will be replaced by CRLF the next time Git touches it
+diff --git "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_c5_matched_ablations_v2_20261023\\C5_FREEZE_TRAINED_W0\\RUN_C5_ABLATION_NOPLANT_EXACT_v1.ps1" "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_c5_matched_ablations_v3_20261023\\C5_FREEZE_TRAINED_W0\\RUN_C5_ABLATION_NOPLANT_EXACT_v1.ps1"
+index ccf470a..f2556c0 100644
+--- "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_c5_matched_ablations_v2_20261023\\C5_FREEZE_TRAINED_W0\\RUN_C5_ABLATION_NOPLANT_EXACT_v1.ps1"
++++ "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_c5_matched_ablations_v3_20261023\\C5_FREEZE_TRAINED_W0\\RUN_C5_ABLATION_NOPLANT_EXACT_v1.ps1"
+@@ -1,5 +1,5 @@
+ $ErrorActionPreference = 'Stop'
+-$taskDir = 'C:/Users/35326/Desktop/postgraduation/0/Mcode/drone_tcn/DL1018/experiments/position_c5_matched_ablations_20261023/C5_FREEZE_TRAINED_W0'
+-$reportDir = 'C:/Users/35326/Desktop/postgraduation/0/Mcode/drone_tcn/DL1018/reports/paper_continuation_20261023/c5_matched_ablation_execution/v2'
++$taskDir = [IO.Path]::GetDirectoryName($PSCommandPath)
++$reportDir = 'C:/Users/35326/Desktop/postgraduation/0/Mcode/drone_tcn/DL1018/reports/paper_continuation_20261023/c5_matched_ablation_execution/v3'
+ $exitPath = Join-Path $reportDir 'C5_FREEZE_TRAINED_W0_NOPLANT_OS_EXIT_v1.json'
+ $resultPath = Join-Path $taskDir 'C5_ABLATION_PREPARE_RESULT_v1.json'
+@@ -22,5 +22,5 @@ $prefDir = Join-Path $taskDir 'matlab_prefdir_noplant_v1'
+ if (-not (Test-Path -LiteralPath $prefDir)) { New-Item -ItemType Directory -Path $prefDir | Out-Null }
+ $env:MATLAB_PREFDIR = $prefDir
+-& $matlabExe -singleCompThread -wait -batch "try; cd('C:/Users/35326/Desktop/postgraduation/0/Mcode/drone_tcn/DL1018/experiments/position_c5_matched_ablations_20261023/C5_FREEZE_TRAINED_W0'); check_c5_matched_ablation_synthetic_v1; prepare_c5_matched_ablation_v1; run_c5_matched_ablation_v1('PREFLIGHT_ONLY_C5_MATCHED_ABLATION_V1'); quit(0,'force'); catch ME; fprintf(2,'%s\n',getReport(ME,'extended','hyperlinks','off')); quit(1,'force'); end"
++& $matlabExe -singleCompThread -wait -batch "try; cd('$($taskDir.Replace('\','/'))'); check_c5_matched_ablation_synthetic_v1; prepare_c5_matched_ablation_v1; run_c5_matched_ablation_v1('PREFLIGHT_ONLY_C5_MATCHED_ABLATION_V1'); quit(0,'force'); catch ME; fprintf(2,'%s\n',getReport(ME,'extended','hyperlinks','off')); quit(1,'force'); end"
+ $matlabOsExitCode = $LASTEXITCODE
+ $prepareStatus = $null; if (Test-Path -LiteralPath $resultPath) { $prepareStatus = (Get-Content -Raw -LiteralPath $resultPath | ConvertFrom-Json).status }
+### C5_FREEZE_TRAINED_W0/RUN_C5_ABLATION_PARENT_EXACT_v1.ps1
+warning: in the working copy of 'C:\Users\35326\Desktop\postgraduation\0\Mcode\drone_tcn\DL1018\experiments\position_c5_matched_ablations_v2_20261023\C5_FREEZE_TRAINED_W0\RUN_C5_ABLATION_PARENT_EXACT_v1.ps1', LF will be replaced by CRLF the next time Git touches it
+diff --git "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_c5_matched_ablations_v2_20261023\\C5_FREEZE_TRAINED_W0\\RUN_C5_ABLATION_PARENT_EXACT_v1.ps1" "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_c5_matched_ablations_v3_20261023\\C5_FREEZE_TRAINED_W0\\RUN_C5_ABLATION_PARENT_EXACT_v1.ps1"
+index 892f8fb..8c238a0 100644
+--- "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_c5_matched_ablations_v2_20261023\\C5_FREEZE_TRAINED_W0\\RUN_C5_ABLATION_PARENT_EXACT_v1.ps1"
++++ "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_c5_matched_ablations_v3_20261023\\C5_FREEZE_TRAINED_W0\\RUN_C5_ABLATION_PARENT_EXACT_v1.ps1"
+@@ -1,6 +1,6 @@
+ param([Parameter(Mandatory=$true)][ValidateSet('FIRST','TAIL11')][string]$Phase)
+ $ErrorActionPreference = 'Stop'
+-$taskDir = 'C:/Users/35326/Desktop/postgraduation/0/Mcode/drone_tcn/DL1018/experiments/position_c5_matched_ablations_20261023/C5_FREEZE_TRAINED_W0'
+-$reportDir = 'C:/Users/35326/Desktop/postgraduation/0/Mcode/drone_tcn/DL1018/reports/paper_continuation_20261023/c5_matched_ablation_execution/v2'
++$taskDir = [IO.Path]::GetDirectoryName($PSCommandPath)
++$reportDir = 'C:/Users/35326/Desktop/postgraduation/0/Mcode/drone_tcn/DL1018/reports/paper_continuation_20261023/c5_matched_ablation_execution/v3'
+ $releasePath = Join-Path $taskDir ("C5_ABLATION_{0}_PARENT_RELEASE_v1.json" -f $Phase)
+ $lockPath = Join-Path $taskDir 'C5_ABLATION_INPUT_LOCK_v1.json'
+@@ -65,3 +65,3 @@ $exitRecord=[ordered]@{schema='C5_MATCHED_ABLATION_MATLAB_OS_EXIT_V1';variant_id
+ [IO.File]::WriteAllText($exitPath,($exitRecord | ConvertTo-Json -Depth 6),[Text.UTF8Encoding]::new($false))
+ Write-Output ("MATLAB_OS_EXIT_CODE={0}; PHASE={1}; MODE={2}" -f $matlabOsExitCode,$Phase,$matlabMode)
+-exit $matlabOsExitCode
+\ No newline at end of file
++exit $matlabOsExitCode
+### C5_NO_DELAYED_PREDICTION/RUN_C5_ABLATION_NOPLANT_EXACT_v1.ps1
+warning: in the working copy of 'C:\Users\35326\Desktop\postgraduation\0\Mcode\drone_tcn\DL1018\experiments\position_c5_matched_ablations_v2_20261023\C5_NO_DELAYED_PREDICTION\RUN_C5_ABLATION_NOPLANT_EXACT_v1.ps1', LF will be replaced by CRLF the next time Git touches it
+diff --git "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_c5_matched_ablations_v2_20261023\\C5_NO_DELAYED_PREDICTION\\RUN_C5_ABLATION_NOPLANT_EXACT_v1.ps1" "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_c5_matched_ablations_v3_20261023\\C5_NO_DELAYED_PREDICTION\\RUN_C5_ABLATION_NOPLANT_EXACT_v1.ps1"
+index eb12722..855a8e4 100644
+--- "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_c5_matched_ablations_v2_20261023\\C5_NO_DELAYED_PREDICTION\\RUN_C5_ABLATION_NOPLANT_EXACT_v1.ps1"
++++ "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_c5_matched_ablations_v3_20261023\\C5_NO_DELAYED_PREDICTION\\RUN_C5_ABLATION_NOPLANT_EXACT_v1.ps1"
+@@ -1,5 +1,5 @@
+ $ErrorActionPreference = 'Stop'
+-$taskDir = 'C:/Users/35326/Desktop/postgraduation/0/Mcode/drone_tcn/DL1018/experiments/position_c5_matched_ablations_20261023/C5_NO_DELAYED_PREDICTION'
+-$reportDir = 'C:/Users/35326/Desktop/postgraduation/0/Mcode/drone_tcn/DL1018/reports/paper_continuation_20261023/c5_matched_ablation_execution/v2'
++$taskDir = [IO.Path]::GetDirectoryName($PSCommandPath)
++$reportDir = 'C:/Users/35326/Desktop/postgraduation/0/Mcode/drone_tcn/DL1018/reports/paper_continuation_20261023/c5_matched_ablation_execution/v3'
+ $exitPath = Join-Path $reportDir 'C5_NO_DELAYED_PREDICTION_NOPLANT_OS_EXIT_v1.json'
+ $resultPath = Join-Path $taskDir 'C5_ABLATION_PREPARE_RESULT_v1.json'
+@@ -22,5 +22,5 @@ $prefDir = Join-Path $taskDir 'matlab_prefdir_noplant_v1'
+ if (-not (Test-Path -LiteralPath $prefDir)) { New-Item -ItemType Directory -Path $prefDir | Out-Null }
+ $env:MATLAB_PREFDIR = $prefDir
+-& $matlabExe -singleCompThread -wait -batch "try; cd('C:/Users/35326/Desktop/postgraduation/0/Mcode/drone_tcn/DL1018/experiments/position_c5_matched_ablations_20261023/C5_NO_DELAYED_PREDICTION'); check_c5_matched_ablation_synthetic_v1; prepare_c5_matched_ablation_v1; run_c5_matched_ablation_v1('PREFLIGHT_ONLY_C5_MATCHED_ABLATION_V1'); quit(0,'force'); catch ME; fprintf(2,'%s\n',getReport(ME,'extended','hyperlinks','off')); quit(1,'force'); end"
++& $matlabExe -singleCompThread -wait -batch "try; cd('$($taskDir.Replace('\','/'))'); check_c5_matched_ablation_synthetic_v1; prepare_c5_matched_ablation_v1; run_c5_matched_ablation_v1('PREFLIGHT_ONLY_C5_MATCHED_ABLATION_V1'); quit(0,'force'); catch ME; fprintf(2,'%s\n',getReport(ME,'extended','hyperlinks','off')); quit(1,'force'); end"
+ $matlabOsExitCode = $LASTEXITCODE
+ $prepareStatus = $null; if (Test-Path -LiteralPath $resultPath) { $prepareStatus = (Get-Content -Raw -LiteralPath $resultPath | ConvertFrom-Json).status }
+### C5_NO_DELAYED_PREDICTION/RUN_C5_ABLATION_PARENT_EXACT_v1.ps1
+warning: in the working copy of 'C:\Users\35326\Desktop\postgraduation\0\Mcode\drone_tcn\DL1018\experiments\position_c5_matched_ablations_v2_20261023\C5_NO_DELAYED_PREDICTION\RUN_C5_ABLATION_PARENT_EXACT_v1.ps1', LF will be replaced by CRLF the next time Git touches it
+diff --git "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_c5_matched_ablations_v2_20261023\\C5_NO_DELAYED_PREDICTION\\RUN_C5_ABLATION_PARENT_EXACT_v1.ps1" "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_c5_matched_ablations_v3_20261023\\C5_NO_DELAYED_PREDICTION\\RUN_C5_ABLATION_PARENT_EXACT_v1.ps1"
+index 76ee1e4..8c238a0 100644
+--- "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_c5_matched_ablations_v2_20261023\\C5_NO_DELAYED_PREDICTION\\RUN_C5_ABLATION_PARENT_EXACT_v1.ps1"
++++ "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_c5_matched_ablations_v3_20261023\\C5_NO_DELAYED_PREDICTION\\RUN_C5_ABLATION_PARENT_EXACT_v1.ps1"
+@@ -1,6 +1,6 @@
+ param([Parameter(Mandatory=$true)][ValidateSet('FIRST','TAIL11')][string]$Phase)
+ $ErrorActionPreference = 'Stop'
+-$taskDir = 'C:/Users/35326/Desktop/postgraduation/0/Mcode/drone_tcn/DL1018/experiments/position_c5_matched_ablations_20261023/C5_NO_DELAYED_PREDICTION'
+-$reportDir = 'C:/Users/35326/Desktop/postgraduation/0/Mcode/drone_tcn/DL1018/reports/paper_continuation_20261023/c5_matched_ablation_execution/v2'
++$taskDir = [IO.Path]::GetDirectoryName($PSCommandPath)
++$reportDir = 'C:/Users/35326/Desktop/postgraduation/0/Mcode/drone_tcn/DL1018/reports/paper_continuation_20261023/c5_matched_ablation_execution/v3'
+ $releasePath = Join-Path $taskDir ("C5_ABLATION_{0}_PARENT_RELEASE_v1.json" -f $Phase)
+ $lockPath = Join-Path $taskDir 'C5_ABLATION_INPUT_LOCK_v1.json'
+@@ -65,3 +65,3 @@ $exitRecord=[ordered]@{schema='C5_MATCHED_ABLATION_MATLAB_OS_EXIT_V1';variant_id
+ [IO.File]::WriteAllText($exitPath,($exitRecord | ConvertTo-Json -Depth 6),[Text.UTF8Encoding]::new($false))
+ Write-Output ("MATLAB_OS_EXIT_CODE={0}; PHASE={1}; MODE={2}" -f $matlabOsExitCode,$Phase,$matlabMode)
+-exit $matlabOsExitCode
+\ No newline at end of file
++exit $matlabOsExitCode

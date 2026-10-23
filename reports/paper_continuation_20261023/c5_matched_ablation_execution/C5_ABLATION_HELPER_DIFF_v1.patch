@@ -1,0 +1,29 @@
+--- C5_FREEZE_TRAINED_W0/delayed_prediction_step_candidate.m (C5 base)
++++ C5_FREEZE_TRAINED_W0/delayed_prediction_step_candidate.m
+@@ -38,9 +38,10 @@
+     previousResidual=previousRaw-y_prev;
+     predGrad=phi_prev*previousResidual.';
+ end
++predGrad=zeros(33,3); % Keep targets/residuals, but apply no online weight update.
+ beta=min((n+1)*dt/betaRise,1); raw=W_k.'*phi_k; applied=beta*min(max(raw,-predLimit),predLimit);
+-candidate=W_k-h*gamma*beta*(phi_k*s_eff_k.')-h*lambda*W_k-rho*predGrad;
+-W_next=min(max(candidate,-weightLimit),weightLimit); % one joint projection
++candidate=W_k;
++W_next=min(max(candidate,-weightLimit),weightLimit);
+ out=struct('raw',raw,'applied',applied,'beta',beta,'has_previous',hasPrevious, ...
+     'previous_raw',previousRaw,'previous_residual',previousResidual, ...
+     'prediction_gradient',predGrad,'preprojection_candidate',candidate,'W_next',W_next);
+--- C5_NO_DELAYED_PREDICTION/delayed_prediction_step_candidate.m (C5 base)
++++ C5_NO_DELAYED_PREDICTION/delayed_prediction_step_candidate.m
+@@ -38,9 +38,10 @@
+     previousResidual=previousRaw-y_prev;
+     predGrad=phi_prev*previousResidual.';
+ end
++predGrad=zeros(33,3); % Retain old inputs/residuals, but remove only their gradient contribution.
+ beta=min((n+1)*dt/betaRise,1); raw=W_k.'*phi_k; applied=beta*min(max(raw,-predLimit),predLimit);
+ candidate=W_k-h*gamma*beta*(phi_k*s_eff_k.')-h*lambda*W_k-rho*predGrad;
+-W_next=min(max(candidate,-weightLimit),weightLimit); % one joint projection
++W_next=min(max(candidate,-weightLimit),weightLimit); % one original joint projection
+ out=struct('raw',raw,'applied',applied,'beta',beta,'has_previous',hasPrevious, ...
+     'previous_raw',previousRaw,'previous_residual',previousResidual, ...
+     'prediction_gradient',predGrad,'preprojection_candidate',candidate,'W_next',W_next);

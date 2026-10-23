@@ -1,0 +1,89 @@
+{
+  "schema": "PHYSICAL_RESIDUAL_TRACKING_LEMMA_EXACT_CHECK_V1",
+  "status": "PASS_EXACT_RATIONAL_AND_SYMBOLIC_ALGEBRA",
+  "plant_or_matlab_started": false,
+  "raw_or_test_data_read": false,
+  "training_started": false,
+  "normalization": {
+    "T0_s": "1",
+    "delta": "1/1000",
+    "state": "[e, sigma=T0*s]",
+    "eta": "eta_tilde=T0*eta",
+    "acceleration_inputs": "T0^2 times physical acceleration"
+  },
+  "A2": [
+    [
+      "999/1000",
+      "1/1000"
+    ],
+    [
+      "-1/1000",
+      "249/250"
+    ]
+  ],
+  "augmented_A_by_M": {
+    "0": [
+      [
+        "999/1000",
+        "1/1000",
+        "0"
+      ],
+      [
+        "-1/1000",
+        "249/250",
+        "0"
+      ],
+      [
+        "0",
+        "0",
+        "249/250"
+      ]
+    ],
+    "1": [
+      [
+        "999/1000",
+        "1/1000",
+        "1/1000"
+      ],
+      [
+        "-1/1000",
+        "249/250",
+        "0"
+      ],
+      [
+        "0",
+        "0",
+        "249/250"
+      ]
+    ]
+  },
+  "determinant": "199001/200000",
+  "trace": "399/200",
+  "discriminant": "1/200000",
+  "resolvent_channels": {
+    "D(z)": "z^2 - (399/200) z + 199001/200000",
+    "rho_p_to_e": "z - 249/250 over D(z)",
+    "T0_rho_s_to_e": "1/1000 over D(z)",
+    "T0^2_(epsilon_M+M_rf)_to_e": "1/1000000 over D(z)",
+    "initial": "z*((z-249/250)*e0+(1/1000)*sigma0)/D(z)"
+  },
+  "exact_symbolic_identity": "beta*(z-d)-beta*(alpha-d)-(beta-delta)*(z-alpha)=delta*(z-alpha)",
+  "nonnegative_kernel_l1_sums": {
+    "rho_p_to_e": "800",
+    "normalized_second_state_increment_to_e": "200",
+    "finite_horizon_N": 20000,
+    "finite_horizon_upper_bounds": "800 and 200; partial positive sums <= infinite sums"
+  },
+  "scored_Q_definition": "sqrt(sum_{n=0}^{N-1} ||e_n||_2^2 / N), N=20000; three axes are summed, not divided by 3",
+  "finite_horizon_bound": "Q_N <= (J_N + 800||rho_p||_2 + 200||T0*rho_s||_2 + 200*delta||T0^2*(epsilon_M+M*r_f)||_2)/sqrt(N); 200*delta=1/5",
+  "source_sha256": {
+    "taskbook": "6fd08c0e8250f4075fa33933a8c89d32995bbc75fef09ad1ba54e1bb2f72af91",
+    "sampled_equations": "104b9da52f2885bd53c2d122ba84ed09ed121d79af6215f9e59593c0eef0e606",
+    "bs_step": "ea533c3ae97cbc552208287e7f8d9b0a0f5a018f36fb5c8bd45520e19e73c681",
+    "pcf_step": "b4ae22db5bd444a162d0cd01a3a59a589f2e37077b089bb33693401b660228d0",
+    "c5_core": "48350037b66efe00301b138068f187c62cf92583f0f9ba2fabc9b24f248a963c",
+    "delay_storage_proof": "8f406230d647b89e91c6495777402bb6b24ea4bee7f400e6e3751b499d97f604",
+    "conditional_prior_proof": "6ff1d3155095f48ac5ae06bc9caf54a9eed8e52312a354034ce9446ae50fd8db",
+    "metric_definition": "c64482d0adbc4358417648ec08351bd78f1d3dbdb38950435fa71b9cb0f531b1"
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "schema": "C5_MATCHED_ABLATION_RUN_CONTRACT_V1",
+  "state": "LOCKED_C5_MATCHED_ABLATION_NO_PLANT_PARENT_REVIEW_REQUIRED_V1",
+  "variant_id": "C5_FREEZE_TRAINED_W0",
+  "ablation_mode": "C5_FREEZE_TRAINED_W0",
+  "candidate": "C5_AXIS_MIXED_COORDINATE_M110",
+  "coordinate_mask": [
+    1,
+    1,
+    0
+  ],
+  "coordinate_mask_semantics": "Diagonal entries of M; axis order [x,y,z]. Actual delayed reference uses direct a_f on mask=1 axes and direct a_req on mask=0 axes.",
+  "pcf_auxiliary_enabled": true,
+  "legacy_stage1_update_enabled": true,
+  "stage1_update_enabled": true,
+  "position_delayed_prediction_enabled": true,
+  "actual_weight_update_enabled": false,
+  "actual_prediction_gradient_enabled": false,
+  "intervention": "candidate=W_k; prediction_gradient=zeros(33,3); W_next=clip(candidate,-60,60).",
+  "model": {
+    "id": "DSSM14",
+    "seed": 2026102001,
+    "selected_step": 60000,
+    "input_dim": 14,
+    "window": 32,
+    "W0_sha256": "88f8c4f2495438c3797655c48bab1bf0c11ac2e27bff1f5f2a7423a8f0a2cf53",
+    "normalizer_arrays_sha256": "533aad9a2c66874cfa67f5d268661835e81e58b797cba7d6fc1c12d4013de5f0"
+  },
+  "fixed_parameters": {
+    "gamma": 12,
+    "leak_per_s": 0.002,
+    "event_period_s": 0.01,
+    "tau_s": 1,
+    "rho": 0.01,
+    "plant_dt_s": 0.001,
+    "beta_rise_s": 1.8,
+    "prediction_clip": 3,
+    "weight_clip": 60
+  },
+  "scene_ids": [
+    "DL1018_VAL_T1_C00_W07",
+    "DL1018_VAL_T1_C02_W09",
+    "DL1018_VAL_T1_C05_W12",
+    "DL1018_VAL_T1_C08_W15",
+    "DL1018_VAL_T2_C00_W10",
+    "DL1018_VAL_T2_C02_W12",
+    "DL1018_VAL_T2_C05_W15",
+    "DL1018_VAL_T2_C06_W00",
+    "DL1018_VAL_T3_C00_W13",
+    "DL1018_VAL_T3_C02_W15",
+    "DL1018_VAL_T3_C03_W00",
+    "DL1018_VAL_T3_C12_W09"
+  ],
+  "first_scene_id": "DL1018_VAL_T1_C00_W07",
+  "limits": {
+    "max_new_Plant": 12,
+    "max_output_bytes": 1073741824,
+    "minimum_free_bytes": 30000000000,
+    "deadline_utc": "2026-10-24T17:01:00Z",
+    "per_scene_output_reserve_bytes": 80000000,
+    "first_flights_per_configuration": 1,
+    "tail_flights_per_configuration": 11,
+    "seconds_per_remaining_scene_for_deadline_guard": 180,
+    "process_exit_buffer_seconds": 600
+  },
+  "prohibitions": {
+    "training_steps": 0,
+    "optimizer_steps": 0,
+    "new_B_sorties": 0,
+    "TEST_accessed": false,
+    "automatic_retry": false,
+    "parameter_or_seed_search": false,
+    "M_search": false,
+    "scenario_or_metric_switching": false
+  },
+  "scoring_comparator": "B_TRACEABLE_DEV72",
+  "parent_release_required_before_Plant": true,
+  "plant_authorized_by_this_contract": false
+}

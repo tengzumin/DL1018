@@ -1,0 +1,57 @@
+--- v1/run_c5_matched_ablation_v1.m
++++ v2/run_c5_matched_ablation_v1.m
+@@ -151,7 +151,7 @@
+         'C5Ablation:C3Parity','Ablation cfg/W0/options differ from frozen C3 except M110 mask.');
+     assert(numel(pack.sceneIdentity)==12&&isequal(string({pack.sceneIdentity.scene_id}).',string(contract.scene_ids(:))), ...
+         'C5Ablation:SceneIdentity','Prepared scene identities/order differ from the locked C5 screen12.');
+-    verify_scene_rows(lock,pack.sceneIdentity,contract);
++    verify_scene_rows(lock,pack,contract);
+ 
+     remaining=12; reserve=double(contract.limits.per_scene_output_reserve_bytes);
+     usable=double(java.io.File(repoRoot).getUsableSpace());
+@@ -291,7 +291,7 @@
+     'training_steps',0,'optimizer_steps',0,'TEST_accessed',false,'created_utc',utc_now());
+ write_json_new(batchPath,batch);
+ for k=1:numel(sceneIds)
+-    sceneId=char(sceneIds{k}); row=scene_row(lock,sceneId);
++    sceneId=char(sceneIds{k});
+     attemptDir=fullfile(runRoot,sceneId,contract.variant_id,'attempt_01');
+     attemptStartedPath=fullfile(attemptDir,'attempt_started.marker');
+     markerPath=fullfile(attemptDir,'first_plant_step.marker'); rawPath=fullfile(attemptDir,'raw_run.mat');
+@@ -299,6 +299,7 @@
+     failurePath=fullfile(attemptDir,'C5_MATCHED_ABLATION_FAILURE_v1.json');
+     invocationEntered=false; attemptCreated=false; rawSceneId='';
+     try
++        row=scene_row(lock,sceneId);
+         remaining=numel(sceneIds)-k+1; usable=double(java.io.File(repoRoot).getUsableSpace());
+         elapsedSeconds=seconds(deadline-datetime('now','TimeZone','UTC'));
+         currentBytes=directory_bytes(here);
+@@ -484,11 +485,11 @@
+ for i=1:numel(binding.file_refs), verify_ref(binding.file_refs(i)); end
+ end
+ 
+-function verify_scene_rows(lock,identity,contract)
++function verify_scene_rows(lock,pack,contract)
+ for k=1:12
+-    row=lock.scenes(k); id=char(contract.scene_ids{k}); ix=find(strcmp({identity.scene_id},id));
+-    assert(numel(ix)==1&&same_path(row.B_source.path,identity(ix).B_raw_path)&& ...
+-        strcmpi(row.B_source.sha256,identity(ix).B_raw_sha256)&& ...
++    id=char(contract.scene_ids{k}); row=scene_row(lock,id); identity=scene_identity_row(pack,id);
++    assert(strcmp(identity.scene_id,id)&&same_path(row.B_source.path,identity.B_raw_path)&& ...
++        strcmpi(row.B_source.sha256,identity.B_raw_sha256)&& ...
+         same_path(row.C3_reuse.raw_path,row.C3_reuse.scope_raw_path)&& ...
+         strcmpi(row.C3_reuse.raw_sha256,row.C3_reuse.scope_raw_sha256)&& ...
+         strcmpi(row.C3_reuse.status_sha256,row.C3_reuse.scope_status_sha256), ...
+@@ -503,7 +504,6 @@
+         'C5Ablation:C3Status','Reused C3 status changed for %s.',id);
+ end
+ end
+-
+ function identity=scene_identity_row(pack,id)
+ ix=find(strcmp({pack.sceneIdentity.scene_id},id));
+ assert(numel(ix)==1,'C5Ablation:SceneIdentity','Prepared scene identity is absent or duplicated: %s.',id);
+@@ -587,3 +587,4 @@
+ end
+ function h=file_sha_if_exists(path), if isfile(path), h=sha256_file(path); else, h=''; end, end
+ function release_job_lock(lock,channel,raf), try, lock.release(); catch, end; try, channel.close(); catch, end; try, raf.close(); catch, end; end
++function row=scene_row(lock,id), ix=find(strcmp({lock.scenes.scene_id},id)); assert(numel(ix)==1,'C5:Scene','Scene is not locked.'); row=lock.scenes(ix); end
