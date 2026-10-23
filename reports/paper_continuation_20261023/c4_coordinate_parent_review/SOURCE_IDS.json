@@ -1,0 +1,237 @@
+{
+  "schema": "C4_COORDINATE_INDEPENDENT_SOURCE_IDS_V1",
+  "review_status": "CONDITIONAL_STATIC_CORE_PASS_NO_PLANT_RELEASE",
+  "review_file": "reports/paper_continuation_20261023/c4_coordinate_parent_review/INDEPENDENT_CODE_REVIEW_ZH.md",
+  "taskbook_sha256": "a785c5289244dcb41eb3ad6d23b8873a2e4dbbaca9f3b1d2b723a0823dc78ab5",
+  "source_files": [
+    {
+      "sha256": "a785c5289244dcb41eb3ad6d23b8873a2e4dbbaca9f3b1d2b723a0823dc78ab5",
+      "path": "reports/paper_continuation_20261023/C4_COORDINATE_SCREEN_TASKBOOK_ZH.md",
+      "role": "审查任务书"
+    },
+    {
+      "sha256": "e5f1e30c433ee3f8206b36446cde71776589c161fe2a3ec60fbaf070585eb07f",
+      "path": "experiments/position_delayed_prediction_c3_dev72_20261023/run_dl1018_closed_loop.m",
+      "role": "冻结C3 core"
+    },
+    {
+      "sha256": "cec0d688226123a9b9f14e2a215f283e1ef859caa8371ac2b764d3b1c2bcc878",
+      "path": "experiments/position_coordinate_c4_20261023/run_dl1018_closed_loop.m",
+      "role": "隔离C4 core"
+    },
+    {
+      "sha256": "48feebf934b8eb90b4424f2286aa857c48213d229714f30af99aacf53329549d",
+      "path": "experiments/position_delayed_prediction_c3_dev72_20261023/delayed_prediction_step_candidate.m",
+      "role": "C3 helper；与C4哈希相同"
+    },
+    {
+      "sha256": "48feebf934b8eb90b4424f2286aa857c48213d229714f30af99aacf53329549d",
+      "path": "experiments/position_coordinate_c4_20261023/delayed_prediction_step_candidate.m",
+      "role": "C4 helper；与C3哈希相同"
+    },
+    {
+      "sha256": "fcc1f5de659541e692483f8395d93fd2a251256286ebade5e510ed4c7a2e2330",
+      "path": "experiments/position_delayed_prediction_c3_dev72_20261023/run_episode_dl1018.m",
+      "role": "C3 wrapper；与C4哈希相同"
+    },
+    {
+      "sha256": "fcc1f5de659541e692483f8395d93fd2a251256286ebade5e510ed4c7a2e2330",
+      "path": "experiments/position_coordinate_c4_20261023/run_episode_dl1018.m",
+      "role": "C4 wrapper；与C3哈希相同"
+    },
+    {
+      "sha256": "1e940ef58967aca7e371f4d53998a6890c5ae0535ca3d2df19fdc5c3eb27be14",
+      "path": "experiments/position_coordinate_c4_20261023/prepare_c4_coordinate_v1.m",
+      "role": "历史prepare入口"
+    },
+    {
+      "sha256": "e40ead03ac0ad940c77ea11e1748cf569daca29aaf700cc48b362c8b48f56828",
+      "path": "experiments/position_coordinate_c4_20261023/prepare_c4_coordinate_v2.m",
+      "role": "当前静态审查的prepare入口"
+    },
+    {
+      "sha256": "53fed7e5f9fcb38ecae415429051c2cd26cce6e20a50fa57d8d30e8d432eb1ad",
+      "path": "experiments/position_coordinate_c4_20261023/run_c4_coordinate_v1.m",
+      "role": "历史runner"
+    },
+    {
+      "sha256": "36e5b85c9030923569d5282c4c11f4bd2c215b827c2b6a507d881c29ec97d746",
+      "path": "experiments/position_coordinate_c4_20261023/run_c4_coordinate_v2.m",
+      "role": "当前静态审查runner"
+    },
+    {
+      "sha256": "77d16060a21756dd057241ce3d36c17c72472c154812098cb0cbbbbe6653da3a",
+      "path": "experiments/position_coordinate_c4_20261023/C4_COORDINATE_LOCK_BUILD_v1.py",
+      "role": "v1 lock builder"
+    },
+    {
+      "sha256": "02bd3efe963396e71d09ad307ca1b0f30b14fac16033e305c8543e0f2513dea4",
+      "path": "experiments/position_coordinate_c4_20261023/C4_COORDINATE_LOCK_BUILD_v2.py",
+      "role": "最小版本化v2 lock builder"
+    },
+    {
+      "sha256": "318bdaee3533c908da45140bcc2fef4e2ddb01e0fe63158c24057bde6bfdbd39",
+      "path": "experiments/position_coordinate_c4_20261023/C4_INPUT_LOCK_v1.json",
+      "role": "冻结C4 v1 lock"
+    },
+    {
+      "sha256": "7f9d482313701940a272b1b4030af87bc2c0a5d926d9929e57bb84ea0d0aae96",
+      "path": "experiments/position_coordinate_c4_20261023/C4_INPUT_LOCK_v2.json",
+      "role": "C4 v2 lock"
+    },
+    {
+      "sha256": "850ab16657461c3cd07c66da51e7641acd4a00eaf7f1c54dc9f14ca63f3fc39b",
+      "path": "experiments/position_coordinate_c4_20261023/C4_RUN_CONTRACT_v1.json",
+      "role": "C4 v1 contract"
+    },
+    {
+      "sha256": "e7954fefae818841493de27a116ba723c36b6c60a1acd41e1ae95d94507883f0",
+      "path": "experiments/position_coordinate_c4_20261023/C4_RUN_CONTRACT_v2.json",
+      "role": "C4 v2 contract"
+    },
+    {
+      "sha256": "69330e2d325cc28866d51f018d49bb7f953c0fe68c948d9cf91eab65743af011",
+      "path": "experiments/position_coordinate_c4_20261023/c4_coordinate_fixture_v1.py",
+      "role": "跨语言fixture生成器"
+    },
+    {
+      "sha256": "a058f33520a9a5c7aab9069fd60a1477646e3be00696b783ea3b9ea25b725c2a",
+      "path": "experiments/position_coordinate_c4_20261023/c4_coordinate_synthetic_check.py",
+      "role": "Python自检"
+    },
+    {
+      "sha256": "6615a9d9a6096777429065a598d631ca844f46cf4131032e7ff0a3d3067d9ebc",
+      "path": "reports/delayed_prediction_proposal_20261023/construction/delayed_prediction_kernel.py",
+      "role": "独立Python参考核"
+    },
+    {
+      "sha256": "ab2b772e53046aa32b3c60395ef3b247d96aca5c9e45ff988acc28be8838eca3",
+      "path": "experiments/position_coordinate_c4_20261023/check_c4_coordinate_synthetic_v1.m",
+      "role": "失败且保留的MATLAB checker v1"
+    },
+    {
+      "sha256": "b37e6e22474a43a7ff1ad3db87cde074b2b488f74f9b1fa4ca343b32b64f2f91",
+      "path": "experiments/position_coordinate_c4_20261023/check_c4_coordinate_synthetic_v2.m",
+      "role": "通过合成核验的MATLAB checker v2"
+    },
+    {
+      "sha256": "1306fa797179380d86df4a93deb0594f2f2e99a920d8eeb68aef0957044181a0",
+      "path": "experiments/position_coordinate_c4_20261023/C4_CROSSLANG_FIXTURE_v1.json",
+      "role": "跨语言合成fixture"
+    },
+    {
+      "sha256": "e2ca8b8ee191fc5f5a338c9b544f40c698600fc0d52fb493aef891f425a52bac",
+      "path": "experiments/position_coordinate_c4_20261023/C4_CROSSLANG_SYNTHETIC_RESULT_v1.json",
+      "role": "保留的首次checker失败记录"
+    },
+    {
+      "sha256": "e4afee38fb0f83251a5153a8db642590cdc5f6ce4b378f0bbfb7a1bfdc6407d4",
+      "path": "experiments/position_coordinate_c4_20261023/C4_CROSSLANG_SYNTHETIC_RESULT_v2.json",
+      "role": "跨语言合成PASS结果"
+    },
+    {
+      "sha256": "b7f12c4a7c7b9c679225a3f1cc588196578693d5f8ae849c9d44a356a9e2a157",
+      "path": "experiments/position_coordinate_c4_20261023/RUN_C4_CROSSLANG_NOPLANT_EXACT_v1.ps1",
+      "role": "旧无Plant命令"
+    },
+    {
+      "sha256": "600a7cb945d4b3535718bb7136d4745a40ea6b71b3db4c26193749e7815e8a94",
+      "path": "experiments/position_coordinate_c4_20261023/RUN_C4_CROSSLANG_NOPLANT_EXACT_v2.ps1",
+      "role": "历史命令；脚本调用prepare v1"
+    },
+    {
+      "sha256": "1a0ee5e41f640a0547a8215d20f87c33a71e51abcf2dfac54d7c7898e7f0319a",
+      "path": "reports/paper_continuation_20261023/c4_coordinate_execution/C4_CROSSLANG_MATLAB_OS_EXIT_v1.json",
+      "role": "历史无Plant退出记录"
+    },
+    {
+      "sha256": "2e4459dd3fdf4a7b912f1af72ef7f8bcf0f9661280567d84415bb94ad31728ec",
+      "path": "reports/paper_continuation_20261023/c4_coordinate_execution/C4_CROSSLANG_MATLAB_OS_EXIT_v2.json",
+      "role": "checker v2通过、历史wrapper执行prepare v1、OS exit 1"
+    },
+    {
+      "sha256": "290063c9a4e30544685ca206d0f09442deeb2008d4fa94ce4b320b562c830e02",
+      "path": "reports/paper_continuation_20261023/c4_coordinate_execution/C4_PREPARE_MATLAB_OS_EXIT_v2.json",
+      "role": "prepare v2无Plant失败、OS exit 1"
+    }
+  ],
+  "pending_artifacts": [
+    {
+      "path": "experiments/position_coordinate_c4_20261023/RUN_C4_CROSSLANG_NOPLANT_EXACT_v3.ps1",
+      "status": "尚未出现；待实现者另存"
+    },
+    {
+      "path": "experiments/position_coordinate_c4_20261023/prepare_c4_coordinate_v3.m",
+      "status": "尚未出现；待审的sceneIdentity完整结构修复"
+    },
+    {
+      "path": "experiments/position_coordinate_c4_20261023/C4_PREPARE_RESULT_v3.json",
+      "status": "尚未出现；待无Plant运行"
+    },
+    {
+      "path": "experiments/position_coordinate_c4_20261023/C4_PREPARED_CFG_OPTS_v3.mat",
+      "status": "尚未出现；待无Plant运行"
+    },
+    {
+      "path": "experiments/position_coordinate_c4_20261023/C4_RELEASE_v3.json",
+      "status": "尚未出现；主审完成绑定前不放行"
+    }
+  ],
+  "required_b1_release_bindings": [
+    {
+      "sha256": "5a1fffedd408c070a77e3083643a33d9b422a55330ffecc1b6d1ab61b5d48957",
+      "path": "experiments/b_traceable_c3core_20261023/runs_b/DL1018_VAL_T2_C00_W10/B_TRACEABLE_C3CORE_V1/attempt_01/raw_run.mat",
+      "role": "新B1首场计分基线raw；主审报告独立复算及33组完整数组比较PASS"
+    },
+    {
+      "sha256": "4de20ba0f17cb0cc498220032626f15b621c8d44dbaab2ea24d3457741a30175",
+      "path": "experiments/b_traceable_c3core_20261023/runs_b/DL1018_VAL_T2_C00_W10/B_TRACEABLE_C3CORE_V1/attempt_01/run_status.json",
+      "role": "新B1状态；主审根审计应一并绑定"
+    }
+  ],
+  "review_findings": [
+    {
+      "sources": [
+        "run_dl1018_closed_loop.m:23-32",
+        "run_dl1018_closed_loop.m:2006-2046",
+        "run_dl1018_closed_loop.m:2261-2277",
+        "run_dl1018_closed_loop.m:2869-2890",
+        "delayed_prediction_step_candidate.m:37-46"
+      ],
+      "status": "PASS_STATIC",
+      "id": "CORE-001"
+    },
+    {
+      "sources": [
+        "check_c4_coordinate_synthetic_v2.m:2,41-80,91-98,112-126",
+        "C4_CROSSLANG_SYNTHETIC_RESULT_v2.json"
+      ],
+      "status": "PASS_RECORDED_SYNTHETIC",
+      "id": "XLANG-001"
+    },
+    {
+      "sources": [
+        "prepare_c4_coordinate_v2.m:59,134-136",
+        "run_c4_coordinate_v2.m:63,142"
+      ],
+      "status": "FIXED_IN_V2",
+      "id": "ENTRY-001"
+    },
+    {
+      "sources": [
+        "prepare_c4_coordinate_v2.m:81-98",
+        "C4_PREPARE_MATLAB_OS_EXIT_v2.json"
+      ],
+      "status": "BLOCKED_PENDING_V3",
+      "id": "ENTRY-002"
+    },
+    {
+      "sources": [
+        "run_c4_coordinate_v2.m:18-25",
+        "C4_RELEASE_v2.json (absent)"
+      ],
+      "status": "BLOCKED_PENDING_RELEASE_BINDINGS",
+      "id": "RELEASE-001"
+    }
+  ]
+}

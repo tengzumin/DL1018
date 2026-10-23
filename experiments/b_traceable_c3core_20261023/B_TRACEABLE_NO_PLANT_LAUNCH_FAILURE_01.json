@@ -1,0 +1,33 @@
+{
+  "schema": "B_TRACEABLE_NO_PLANT_LAUNCH_FAILURE_V1",
+  "status": "FAILED_LAUNCH_EMPTY_BATCH_NO_PLANT",
+  "session_id": 41017,
+  "attempted_command": "Nested pwsh -NoProfile -Command with POSIX-style MATLAB_PREFDIR=...; & MATLAB -singleCompThread -wait -batch $expr; nested shell did not inherit $expr.",
+  "observed_error": "PowerShell rejected MATLAB_PREFDIR=... as an unknown command; MATLAB reported invalid/missing -batch command.",
+  "parent_observed_process_chain": [
+    {
+      "pid": 85384,
+      "role": "task wrapper"
+    },
+    {
+      "pid": 76060,
+      "role": "child pwsh"
+    },
+    {
+      "pid": 94352,
+      "role": "MATLAB launcher"
+    },
+    {
+      "pid": 75628,
+      "role": "MATLAB compute"
+    }
+  ],
+  "plant_invocation_entered": false,
+  "attempt_started_marker_count": 0,
+  "first_plant_step_marker_count": 0,
+  "raw_count": 0,
+  "prepare_result_present": false,
+  "c3_input_lock_sha256": "0baa4a16765af16c333cd65617c94308dd328021a12dd2b9bde23204867d03c1",
+  "recorded_utc": "2026-10-23T04:25:15.407Z",
+  "os_exit_code": "unknown_pending_original_session"
+}

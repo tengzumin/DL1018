@@ -1,0 +1,15 @@
+����ʹ�� java.security.MessageDigest$Delegate/update
+Ϊ�������������˷Ǳ���ֵ
+
+���� prepare_b_traceable_dev72_v2>sha256_file (�� 254 ��)
+md.update(bytes); d=typecast(md.digest(),'uint8'); h=lower(reshape(dec2hex(d,2).',1,[]));
+^^^^^^^^^^^^^^^^
+���� prepare_b_traceable_dev72_v2>verify_file (�� 249 ��)
+assert(strcmpi(sha256_file(path),expected),'BDEV72:SHA','SHA mismatch: %s.',path);
+               ^^^^^^^^^^^^^^^^^
+���� prepare_b_traceable_dev72_v2>verify_ref (�� 246 ��)
+function verify_ref(item), verify_file(char(item.path),char(item.sha256)); end
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+���� prepare_b_traceable_dev72_v2 (�� 34 ��)
+for k=1:numel(upstreamNames), verify_ref(lock.upstream_refs.(upstreamNames{k})); end
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ERROR: MATLAB error Exit Status: 0x00000001

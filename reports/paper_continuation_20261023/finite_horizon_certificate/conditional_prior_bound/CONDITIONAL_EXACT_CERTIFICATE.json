@@ -1,0 +1,110 @@
+{
+  "method": "Python standard library; Fraction exact arithmetic; alternating-series exponential enclosure",
+  "checked_sources": {
+    "taskbook": {
+      "path": "reports/paper_continuation_20261023/CONDITIONAL_ERROR_BOUND_TASKBOOK_ZH.md",
+      "sha256": "336C89F493F41D1C529F429EFDC1444229C3F5CEE819CDF7AE9C43C23A204383"
+    },
+    "frozen_perturbation_report": {
+      "path": "reports/paper_continuation_20261023/finite_horizon_certificate/delay_storage_perturbation/DELAY_STORAGE_PERTURBATION_BOUND_ZH.md",
+      "sha256": "8F406230D647B89E91C6495777402BB6B24EA4BEE7F400E6E3751B499D97F604"
+    },
+    "frozen_perturbation_exact_certificate": {
+      "path": "reports/paper_continuation_20261023/finite_horizon_certificate/delay_storage_perturbation/PERTURBATION_EXACT_CERTIFICATE.json",
+      "sha256": "8E92FCA3D02584BCA289942BDB7946BE494FFB50AC944B6BD694DBD7EFCF2307"
+    },
+    "c5_core": {
+      "path": "experiments/position_axis_coordinate_c5_20261023/run_dl1018_closed_loop.m",
+      "sha256": "48350037B66EFE00301B138068F187C62CF92583F0F9BA2FABC9B24F248A963C"
+    },
+    "c5_controller_helper": {
+      "path": "experiments/position_axis_coordinate_c5_20261023/delayed_prediction_step_candidate.m",
+      "sha256": "48FEEBF934B8EB90B4424F2286AA857C48213D229714F30AF99AACF53329549D"
+    },
+    "pcf_filter_helper": {
+      "path": "matlab/models/position_filter_realization_pcf_step_v3_5.m",
+      "sha256": "B4AE22DB5BD444A162D0CD01A3A59A589F2E37077B089BB33693401B660228D0"
+    },
+    "sampled_equation_taskbook": {
+      "path": "reports/paper_continuation_20261023/EXACT_SAMPLED_ERROR_ACCOUNTING_TASKBOOK_ZH.md",
+      "sha256": "104B9DA52F2885BD53C2D122BA84ED09ED121D79AF6215F9E59593C0EEF0E606"
+    },
+    "fixed_mask_addendum": {
+      "path": "reports/paper_continuation_20261023/finite_horizon_certificate/CONSTANT_DIAGONAL_M_ADDENDUM_ZH.md",
+      "sha256": "32E5B41673A5E7FDF8555AE2B4B5B1BE63F2E10C5783EF184DC53F65C530EEFC"
+    }
+  },
+  "fixed_storage": {
+    "alpha": "1/24",
+    "alpha_minus_kappa": "619/15000",
+    "mu_z_after_perturbation_budget": "1/50000",
+    "nu_w_after_young": "33333/40000000000",
+    "contraction_rate_1_minus_theta": "99999/5000000000",
+    "theta_exact": "4999900001/5000000000",
+    "theta_decimal": 0.9999800002,
+    "Cx_exact": "2509296895893346752463319889653854486846609796137360841/25600000000000000000000000000000000000000000000000",
+    "Cw_exact": "44331185622045154333/20833125000000000",
+    "chi_x_squared_exact": "25035358596004514198498141185492820413677608904997/1280000000000000000000000000000000000000000000000",
+    "event_dx_squared_bound_factor_10_chi_x_squared": "25035358596004514198498141185492820413677608904997/128000000000000000000000000000000000000000000000",
+    "weight_energy_sum_factor_inverse_nu_w": "40000000000/33333",
+    "event_state_feedback_gain_g_l1_upper": "15785908290249111577339877/1600000000000000000000000000",
+    "frozen_nominal_matrix_pd_minors_positive": true
+  },
+  "sample_matrix_contraction": {
+    "A2_exact": [
+      [
+        "999/1000",
+        "1/1000"
+      ],
+      [
+        "-1/1000",
+        "249/250"
+      ]
+    ],
+    "I_minus_AT_A_exact": [
+      [
+        "999/500000",
+        "-3/1000000"
+      ],
+      [
+        "-3/1000000",
+        "7983/1000000"
+      ]
+    ],
+    "leading_principal_minors_exact": [
+      "999/500000",
+      "638001/40000000000"
+    ],
+    "strict_contraction_certified": true
+  },
+  "filter_step": {
+    "delta": "1/1000",
+    "decay_a_lower": "1378751293842878820370502249/1384277343750000000000000000",
+    "decay_a_upper": "612778352819057253498001/615234375000000000000000",
+    "integral_b_lower": "2456022180942746501999/2460937500000000000000000",
+    "integral_b_upper": "5526049907121179629497751/5537109375000000000000000000",
+    "rho_eta_coefficient_lower": "11059467878820370502249/1384277343750000000000000000",
+    "rho_eta_coefficient_upper": "4915319057253498001/615234375000000000000000",
+    "initial_eta_is_zero_in_frozen_runner": true,
+    "eta_sup_bound_normalized": "R_f_tilde/4",
+    "rho_eta_sup_bound_normalized": "(4915319057253498001/615234375000000000000000)*R_f_tilde/2"
+  },
+  "beta_clock": {
+    "beta_q_exact": "min((321+10*q)/1800,1)",
+    "beta_0": "107/600",
+    "last_ramped_event_q": 147,
+    "first_fully_ramped_event_q": 148,
+    "sum_one_minus_beta_q0_to_q1967": "4588/75",
+    "sum_one_minus_beta_squared_q0_to_q1967": "27234257/810000"
+  },
+  "conditional_bound_formulas": {
+    "event_representation_bound": "E_q=E+(1-beta_q)*||U||_F",
+    "sample_forcing_bound": "F_q^2=(delta*R_eta+R_p)^2+(delta*E_q+R_s+R_rho_eta)^2",
+    "dx_q_bound": "||d_x,q||^2 <= 10*chi_x_squared*F_q^2",
+    "dw_q_bound_q_ge_1": "||d_w,q|| <= h_e*lambda_e*||U||_F + rho*(E+Xi)",
+    "V_input_q": "u_q=Cx*D_x,q^2+Cw*D_w^2",
+    "V_geometric_convolution": "V_q <= theta^(q-1)*V_1 + sum_{j=1}^{q-1} theta^(q-1-j)*u_j",
+    "local_domain_sufficient_threshold": "V_q <= min(49/2, (alpha-kappa)*(3-u_star)^2), u_star=max_k ||U[:,k]||_2 < 3"
+  },
+  "scope": "conditional local theorem only; hypotheses are not established for the real Plant; no MATLAB/Plant/raw/TEST run"
+}

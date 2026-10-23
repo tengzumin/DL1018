@@ -1,0 +1,30 @@
+{
+  "schema": "B_TRACEABLE_PREPARE_FAILURE_V1",
+  "status": "FAILED_PREPARE_NO_PLANT_PATH_SHADOW",
+  "session_id": 35945,
+  "matlab_pids": [
+    87552,
+    91856
+  ],
+  "task_wrapper_pid": 85420,
+  "command": "MATLAB_PREFDIR=<project-local>; MATLAB -singleCompThread -wait -batch \"cd(<B experiment dir>); checkcode prepare/runner; prepare_b_traceable_probe();\"",
+  "error_id": "BTRACE:WhichShadow",
+  "message": "Active source run_dl1018_closed_loop resolves to a shadow.",
+  "matlab_stack": "prepare_b_traceable_probe at line 69: assert(same_path(which(name),item.path), BTRACE:WhichShadow, Active source %s resolves to a shadow., name)",
+  "plant_invocation_entered": false,
+  "attempt_started_marker_count": 0,
+  "first_plant_step_marker_count": 0,
+  "raw_count": 0,
+  "prepare_snapshot_written": false,
+  "prepare_result_written": false,
+  "input_lock_sha256": "0baa4a16765af16c333cd65617c94308dd328021a12dd2b9bde23204867d03c1",
+  "checkcode_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\b_traceable_c3core_20261023\\B_TRACEABLE_CHECKCODE.json",
+  "checkcode_sha256": "beb86d974b0f6f01634184b497c8ec95bbc19e7c4bf7cd69f10b4be754b174f7",
+  "checkcode_prepare_count": 3,
+  "checkcode_runner_count": 6,
+  "session_exit_code": 1,
+  "recorded_utc": "2026-10-23T04:30:19.958Z",
+  "matlab_os_exit_code": "unknown_interrupted",
+  "confirmed_task_pid_chain_exited": true,
+  "no_plant_markers_confirmed": true
+}

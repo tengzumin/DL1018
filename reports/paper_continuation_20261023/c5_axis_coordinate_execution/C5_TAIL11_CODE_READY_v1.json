@@ -1,0 +1,83 @@
+{
+  "schema": "C5_TAIL11_CODE_READY_V1",
+  "state": "CODE_READY_PARENT_AUDIT_REQUIRED",
+  "created_utc": "2026-10-23T06:44:31.883481+00:00",
+  "execution_authorized": false,
+  "MATLAB_or_Plant_started_for_tail": false,
+  "tail_scene_ids": [
+    "DL1018_VAL_T1_C00_W07",
+    "DL1018_VAL_T1_C02_W09",
+    "DL1018_VAL_T1_C05_W12",
+    "DL1018_VAL_T1_C08_W15",
+    "DL1018_VAL_T2_C02_W12",
+    "DL1018_VAL_T2_C05_W15",
+    "DL1018_VAL_T2_C06_W00",
+    "DL1018_VAL_T3_C00_W13",
+    "DL1018_VAL_T3_C02_W15",
+    "DL1018_VAL_T3_C03_W00",
+    "DL1018_VAL_T3_C12_W09"
+  ],
+  "candidate": "C5_AXIS_MIXED_COORDINATE_M110",
+  "coordinate_mask": [
+    1,
+    1,
+    0
+  ],
+  "physical_B_source_rule": "Reuse each locked old C3 DEV72 B_source only as the 14-field physical scene input; never score it as the B comparator.",
+  "scoring_comparator": "B_TRACEABLE_DEV72",
+  "new_files": [
+    {
+      "role": "tail_runner",
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_20261023\\run_c5_tail11_v1.m",
+      "sha256": "a37782a9149bea1b6a745463e234e0b0f333985882a11b0f62bc3e7ed01c965b"
+    },
+    {
+      "role": "launcher",
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_20261023\\RUN_C5_TAIL11_EXACT_v1.ps1",
+      "sha256": "b59ecb9ad8577b14d4787d2ff95d1ecb128ceabfcc468c4d5ca848ead16507dc"
+    },
+    {
+      "role": "source_binding",
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_20261023\\C5_TAIL11_SOURCE_BINDING_v1.json",
+      "sha256": "4a1f1f8a759f63d0a80d17d8c9abffa5342c25e12e2095edb00ad609dc0eaecf"
+    },
+    {
+      "role": "tail_contract",
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_20261023\\C5_TAIL11_RUN_CONTRACT_v1.json",
+      "sha256": "9ba6fcdf9b1f067daa5af58248a1da380ab87667d945702e10a48afe411f7117"
+    },
+    {
+      "role": "parent_release_contract",
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_20261023\\C5_TAIL11_PARENT_RELEASE_CONTRACT_v1.json",
+      "sha256": "e31bc28fa13fdd1632775f16713bf6e10dca08ed7ceb0a325594c8d1c0372b73"
+    },
+    {
+      "role": "first_outer_invocation_history",
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\reports\\paper_continuation_20261023\\c5_axis_coordinate_execution\\C5_FIRST_OUTER_INVOCATION_HISTORY_v1.json",
+      "sha256": "b74cf1edba0f05c7b820f3c9a5d332a29ff80df988b00d4ba2525658b81218fd"
+    }
+  ],
+  "unchanged_runtime_sha256": {
+    "c5_core": "48350037b66efe00301b138068f187c62cf92583f0f9ba2fabc9b24f248a963c",
+    "prediction_helper": "48feebf934b8eb90b4424f2286aa857c48213d229714f30af99aacf53329549d",
+    "episode_wrapper": "fcc1f5de659541e692483f8395d93fd2a251256286ebade5e510ed4c7a2e2330",
+    "c5_input_lock": "10a7eea144e3574e05eea7b4f7b56112595eac0c81d27b5e8c7a5a41499f84b0",
+    "c5_run_contract": "2861f8a49b76c5d244b9019a01c8b83a6f7b627f6fc6a392ec794c01037fdf4f",
+    "prepare_result": "c3f5bba0f8e0c1bca7d6d76c7f0778a583db98fd971ecc4a023391640ca4257d",
+    "snapshot": "e417b56e68a73f7af6f40a5e7928631db1b4f3c05de1c3abd24828053760749d",
+    "first_scene_release": "6feeb676700a7ec5858d93687bd1f36480af2c2d304d4b0f2e7e71c5f3bae588"
+  },
+  "static_checks": [
+    "All source binding, active source, shared input, upstream, pilot and B72 path/SHA references resolve and match.",
+    "Tail order is original C5 twelve-scene order minus T2_C00W10; exactly eleven unique scenes.",
+    "C5 M110/model/fixed parameters and 80MB/scene, 1GiB total, 30GB reserve-adjusted free-space, deadline, and 180s-per-scene+600s exit buffer are retained.",
+    "B72 manifest and parent review verify 72 scenes; B72 batch body verifies 71 newly executed sorties plus the already completed pilot.",
+    "First pilot raw/review/status/source/cfg/opts, OS0 and outer invocation history match; the first-scene decision is not treated as tail execution authorization.",
+    "RUN_C5_TAIL11_EXACT_v1.ps1 passes the PowerShell 7 parser."
+  ],
+  "tail_release_present": false,
+  "first_pilot_Q_m": 0.0087686930092208,
+  "same_scene_B72_Q_m": 0.00851665899477647,
+  "first_scene_beats_B": false,
+  "history_sha256": "b74cf1edba0f05c7b820f3c9a5d332a29ff80df988b00d4ba2525658b81218fd"
+}

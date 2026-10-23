@@ -1,0 +1,36 @@
+{
+  "schema": "C4_COORDINATE_DEVELOPMENT_LOG_V1",
+  "scope": "source isolation and No-Plant entry construction only",
+  "plant_calls": 0,
+  "matlab_started": false,
+  "training_steps": 0,
+  "TEST_accessed": false,
+  "events": [
+    {
+      "event": "lock_builder_initialization",
+      "status": "FAILED_BEFORE_LOCK_WRITE",
+      "failure": "KeyError: authorization in C3_DEV72_INPUT_LOCK_v2.c3_reference_refs",
+      "repair": "Read the authorization ref from authorization_and_scope_refs.authorization; no upstream files changed and no partial C4 lock was written.",
+      "retry": 1
+    },
+    {
+      "event": "lock_build",
+      "status": "LOCK_BUILT_NO_PLANT",
+      "active_sources": 32,
+      "matlab_sources": 31,
+      "mat_sources": 1,
+      "scene_count": 12,
+      "plant_authorized_by_lock": false
+    },
+    {
+      "event": "final_lock_rebuild_after_entry_freeze",
+      "status": "LOCK_BUILT_NO_PLANT",
+      "input_lock_sha256": "318bdaee3533c908da45140bcc2fef4e2ddb01e0fe63158c24057bde6bfdbd39",
+      "active_sources": 32,
+      "matlab_sources": 31,
+      "mat_sources": 1,
+      "scene_count": 12,
+      "prior_draft_preserved_at": "experiments/position_coordinate_c4_20261023/lock_build_drafts/C4_INPUT_LOCK_DRAFT_01.json"
+    }
+  ]
+}

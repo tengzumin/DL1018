@@ -1,0 +1,38 @@
+{
+  "schema": "B_TRACEABLE_C3CORE_CONTRACT_V2",
+  "status": "FIXED_SINGLE_SCENE_PARENT_RELEASE_REQUIRED",
+  "scene_id": "DL1018_VAL_T2_C00_W10",
+  "method": "B2-RBF-Full-SPLIT",
+  "collector_tag": "B_TRACEABLE_C3CORE_V1",
+  "runtime_source": "C3 frozen isolated run_dl1018_closed_loop B branch",
+  "wrapper_role": "C3 frozen run_episode_dl1018",
+  "config_source": "C3_DEV72_PREPARED_CONFIG_OPTS_v2.mat cfg; exact equality with fresh init_dl1018 cfg",
+  "options_source": "controller_options_dl1018(cfg,'B') freshly constructed; no candidate opts or model loading",
+  "expected": {
+    "position_rbf_output_enabled": true,
+    "position_rbf_update_enabled": true,
+    "attitude_rbf_enabled": true,
+    "attitude_rbf_output_enabled": true,
+    "attitude_rbf_update_enabled": true,
+    "position_rbf_frequency_hz": 100,
+    "attitude_rbf_frequency_hz": 100,
+    "stage1_position_runtime": false,
+    "position_only_search": false,
+    "pcf": false,
+    "delayed_prediction": false,
+    "training_steps": 0,
+    "optimizer_steps": 0,
+    "TEST_accessed": false,
+    "parameter_or_seed_search": false
+  },
+  "limits": {
+    "max_new_Plant": 1,
+    "max_output_bytes": 134217728,
+    "minimum_free_bytes": 30000000000,
+    "hard_deadline_utc": "2026-10-24T17:01:00Z",
+    "transitions": 20000,
+    "score_horizon_s": 20,
+    "win_tolerance_m": 1e-12
+  },
+  "plant_gate": "No Plant in prepare_b_traceable_probe; run_b_traceable_probe requires exact B_TRACEABLE_RELEASE.json signed by parent."
+}

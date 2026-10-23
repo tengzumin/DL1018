@@ -1,0 +1,112 @@
+{
+  "schema": "C5_TAIL11_CODE_READY_V3",
+  "state": "CODE_READY_PARENT_AUDIT_REQUIRED",
+  "created_utc": "2026-10-23T06:57:58.432308+00:00",
+  "execution_authorized": false,
+  "MATLAB_or_Plant_started_for_v2_fix": false,
+  "tail_runner_version": "C5_TAIL11_V2",
+  "engineering_fix": {
+    "cause": "The v1 runner read prepared_snapshot_sha256 from PARENT_C5_FIRST_METADATA_OS_REVIEW.json, where the field is absent; the field is present in PARENT_C5_FIRST_RAW_REVIEW.json.",
+    "exact_change": "run_c5_tail11_v2.m changes only the snapshot SHA assertion from metaReview.prepared_snapshot_sha256 to rawReview.prepared_snapshot_sha256. No candidate, scene, model, snapshot, algorithm, runtime core/helper/wrapper, or comparison gate changed.",
+    "preserved_v1_evidence": true,
+    "v1_failure_plant_calls": 0
+  },
+  "tail_scene_ids": [
+    "DL1018_VAL_T1_C00_W07",
+    "DL1018_VAL_T1_C02_W09",
+    "DL1018_VAL_T1_C05_W12",
+    "DL1018_VAL_T1_C08_W15",
+    "DL1018_VAL_T2_C02_W12",
+    "DL1018_VAL_T2_C05_W15",
+    "DL1018_VAL_T2_C06_W00",
+    "DL1018_VAL_T3_C00_W13",
+    "DL1018_VAL_T3_C02_W15",
+    "DL1018_VAL_T3_C03_W00",
+    "DL1018_VAL_T3_C12_W09"
+  ],
+  "candidate": "C5_AXIS_MIXED_COORDINATE_M110",
+  "coordinate_mask": [
+    1,
+    1,
+    0
+  ],
+  "new_files": [
+    {
+      "role": "tail_runner",
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_20261023\\run_c5_tail11_v2.m",
+      "sha256": "50b7c87dce32b8b0cdd7adb9bc4326c93f9ee6fd3292a145a42e0fa04a15d2bd"
+    },
+    {
+      "role": "launcher",
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_20261023\\RUN_C5_TAIL11_EXACT_v2.ps1",
+      "sha256": "05f23bae37177daa7129fecc10c67db47a6c5a8306f6f31b772eaf4e770cd1c5"
+    },
+    {
+      "role": "source_binding",
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_20261023\\C5_TAIL11_SOURCE_BINDING_v2.json",
+      "sha256": "e1f23d4174c30a909fc27a63468cafa61933a17cd6895c221da17adf7082c0a6"
+    },
+    {
+      "role": "tail_contract",
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_20261023\\C5_TAIL11_RUN_CONTRACT_v2.json",
+      "sha256": "0cf2be3da558d59ab4236f8a7c49d2d62a86be2daf1ed1ef5f6aa5c0e13f7010"
+    },
+    {
+      "role": "parent_release_contract",
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_20261023\\C5_TAIL11_PARENT_RELEASE_CONTRACT_v2.json",
+      "sha256": "c3f2fd04a16e2d592727499ad509bf41c42f56bee4c48c6d1a6d9358c500c443"
+    }
+  ],
+  "unchanged_c5_runtime_and_input_sha256": {
+    "c5_core": "48350037b66efe00301b138068f187c62cf92583f0f9ba2fabc9b24f248a963c",
+    "prediction_helper": "48feebf934b8eb90b4424f2286aa857c48213d229714f30af99aacf53329549d",
+    "episode_wrapper": "fcc1f5de659541e692483f8395d93fd2a251256286ebade5e510ed4c7a2e2330",
+    "c5_input_lock": "10a7eea144e3574e05eea7b4f7b56112595eac0c81d27b5e8c7a5a41499f84b0",
+    "c5_run_contract": "2861f8a49b76c5d244b9019a01c8b83a6f7b627f6fc6a392ec794c01037fdf4f",
+    "prepare_result": "c3f5bba0f8e0c1bca7d6d76c7f0778a583db98fd971ecc4a023391640ca4257d",
+    "snapshot": "e417b56e68a73f7af6f40a5e7928631db1b4f3c05de1c3abd24828053760749d",
+    "first_scene_release": "6feeb676700a7ec5858d93687bd1f36480af2c2d304d4b0f2e7e71c5f3bae588"
+  },
+  "prior_failed_invocation": [
+    {
+      "role": "v1_preflight_failure",
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_20261023\\C5_TAIL11_PREFLIGHT_FAILURE_v1.json",
+      "sha256": "7046e0f77b23858fdfc120cb986af85c14da0669f45610a3b4f231cfbb5aaca5"
+    },
+    {
+      "role": "v1_MATLAB_OS_exit",
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_20261023\\C5_TAIL11_OS_EXIT_v1.json",
+      "sha256": "1ba6c71a08e9ef40e5faade4d306741e9ae96357e37694bbc706d8a003147707"
+    },
+    {
+      "role": "v1_execution_receipt",
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\reports\\paper_continuation_20261023\\c5_axis_coordinate_execution\\C5_TAIL11_EXECUTION_RECEIPT_v1.json",
+      "sha256": "6799b34fedc0f1c8d1b6f84189f3565a18d4f76b3a5ddcbc022bc8ff900108f7"
+    },
+    {
+      "role": "v1_outer_command",
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\reports\\paper_continuation_20261023\\c5_axis_coordinate_execution\\C5_TAIL11_COMMAND_v1.txt",
+      "sha256": "b8086aad860d56dc8d7dac8252865312baf519018abc3ea376afca1f4dc4e658"
+    },
+    {
+      "role": "v1_stdout",
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\reports\\paper_continuation_20261023\\c5_axis_coordinate_execution\\C5_TAIL11_STDOUT_v1.txt",
+      "sha256": "5c7afbc919bb5bce64b1987a73938493498d64a0748d9550697c6caacef2b62b"
+    },
+    {
+      "role": "v1_stderr",
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\reports\\paper_continuation_20261023\\c5_axis_coordinate_execution\\C5_TAIL11_STDERR_v1.txt",
+      "sha256": "7bc2c109f3f16b4fb1fdf4086b35c9462fcf586036892c246748a5b70e26de61"
+    }
+  ],
+  "validation": [
+    "Actual JSON audit passed for every JSON field consumed by verify_c5_first_pilot; raw review snapshot SHA equals the frozen snapshot SHA, while metadata review correctly has no such field.",
+    "Actual B72 manifest, parent attestation, batch body, and all eleven tail-scene comparator run_status JSONs passed path/hash, identity, stable completion, 20000-transition, 20001-state, and plant-call checks; raw/MAT files were not opened.",
+    "The v2 binding has exact hashes for the new runner, launcher, tail run contract and release contract; all other source-file roles preserve the v1 binding path/SHA values.",
+    "V2 uses separate batch/body/OS/preflight/release output filenames and v2 tail schemas; original C5 lock, run contract, prepare result, snapshot, first-scene artifacts, runtime core/helper/wrapper, candidate and eleven scene paths remain unchanged.",
+    "All eleven attempt_01 paths and all v2 release/batch/body/OS/preflight output paths were absent at CODE_READY.",
+    "PowerShell 7 parser passed for RUN_C5_TAIL11_EXACT_v2.ps1, and [DateTime]::UtcNow.ToString('o') executed successfully.",
+    "No MATLAB or Plant was started for this v2 correction."
+  ],
+  "v2_parent_release_present": false
+}

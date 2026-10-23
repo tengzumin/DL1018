@@ -1,0 +1,74 @@
+{
+  "schema": "C4_C3_SNAPSHOT_FIELD_AUDIT_V1",
+  "status": "PASS_STATIC_MAT_FIELD_AUDIT_ONLY",
+  "c3_snapshot_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_delayed_prediction_c3_dev72_20261023\\C3_DEV72_PREPARED_CONFIG_OPTS_v2.mat",
+  "c3_snapshot_sha256": "3ddf24ad98e0900a2bb105b34369e73be03d015c66ec599347dfb43d0e730ae6",
+  "decoder_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\reports\\paper14_v2\\phase1\\audit_w15_position_replay.py",
+  "decoder_sha256": "372d92cb17da99884e742d3fa0c877200c3bb2bc6fac7f10e7a1a046b97a76af",
+  "decoded_fields": {
+    "opts": [
+      "attitude_rbf_frequency_hz",
+      "formal_rbf_baseline",
+      "position_delayed_prediction_enabled",
+      "position_rbf_frequency_hz",
+      "rbf_attitude_enabled",
+      "rbf_attitude_gamma_scale",
+      "rbf_attitude_output_enabled",
+      "rbf_attitude_update_enabled",
+      "rbf_full_phase_start",
+      "rbf_phase_start",
+      "rbf_position_gamma_scale",
+      "rbf_position_output_enabled",
+      "rbf_position_update_enabled",
+      "stage1_position_runtime",
+      "v1_adaptive"
+    ],
+    "modelIdentity": [
+      "W0_sha256",
+      "input_dim",
+      "model_id",
+      "normalizer_arrays_sha256",
+      "selected_step",
+      "window"
+    ],
+    "sourceIdentity": [
+      "prepare_entry",
+      "prepare_entry_sha256",
+      "runner",
+      "runner_sha256",
+      "source_paths",
+      "source_sha256",
+      "which_checks"
+    ],
+    "sceneIdentity": [
+      "B_raw_path",
+      "B_raw_sha256",
+      "alias_normalized_in_memory",
+      "canonical_scene_id",
+      "payload_review_sha256",
+      "raw_scene_id",
+      "scene_id"
+    ]
+  },
+  "sceneIdentity_rows": 72,
+  "W0_shape_matlab_order": [
+    33,
+    3
+  ],
+  "prepare_c4_field_access_contract": {
+    "cfg": "Loaded and compared in full with fresh init_dl1018 config using isequaln.",
+    "opts": "Requires position_delayed_prediction_enabled; C4 adds only position_coordinate_m=0; after removing that field, full structure equals frozen C3 opts.",
+    "W0": "Compared exactly with frozen model output_W and C3 snapshot W0; required finite 33x3 and locked hash.",
+    "modelIdentity": [
+      "W0_sha256",
+      "normalizer_arrays_sha256"
+    ],
+    "sceneIdentity": [
+      "scene_id",
+      "B_raw_path",
+      "B_raw_sha256; C3 rows have 7 total fields. Clone first C3 row for template, assign each locked C3 row, preserving all fields."
+    ],
+    "sourceIdentity": "Loaded from C3 snapshot but not dereferenced; C4 creates and saves a new sourceIdentity."
+  },
+  "scope": "Static input-contract audit only; no MATLAB, Plant, training, or TEST."
+}

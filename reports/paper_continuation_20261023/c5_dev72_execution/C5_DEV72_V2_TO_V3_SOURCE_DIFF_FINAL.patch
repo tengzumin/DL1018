@@ -1,0 +1,487 @@
+--- freeze_c5_dev72_inputs_v2.py
++++ freeze_c5_dev72_inputs_v3.py
+@@ -269,11 +269,11 @@
+     taskbook_path = Path(taskbook["path"])
+     assert taskbook_path.is_file()
+     source_files = {
+-        "input_lock_builder": ref(EXP / "freeze_c5_dev72_inputs_v2.py"),
+-        "prepare_entry": ref(EXP / "prepare_c5_dev72_v2.m"),
+-        "batch_runner": ref(EXP / "run_c5_dev72_v2.m"),
+-        "no_plant_launcher": ref(EXP / "RUN_C5_DEV72_NOPLANT_EXACT_v2.ps1"),
+-        "plant_launcher": ref(EXP / "RUN_C5_DEV72_EXACT_v2.ps1"),
++        "input_lock_builder": ref(EXP / "freeze_c5_dev72_inputs_v3.py"),
++        "prepare_entry": ref(EXP / "prepare_c5_dev72_v3.m"),
++        "batch_runner": ref(EXP / "run_c5_dev72_v3.m"),
++        "no_plant_launcher": ref(EXP / "RUN_C5_DEV72_NOPLANT_EXACT_v3.ps1"),
++        "plant_launcher": ref(EXP / "RUN_C5_DEV72_EXACT_v3.ps1"),
+         "isolated_sources": [ref(EXP / name) for name in ("run_dl1018_closed_loop.m", "run_episode_dl1018.m", "delayed_prediction_step_candidate.m")],
+         "c5_crosslang_fixture": dict(c5_lock["source_files"]["synthetic_fixture"]),
+         "c5_crosslang_checker": dict(c5_lock["source_files"]["synthetic_check"]),
+@@ -337,8 +337,8 @@
+     c5_model = c5_contract["model"]
+     c5_fixed = c5_contract["fixed_parameters"]
+     contract = {
+-        "schema": "C5_AXIS_COORDINATE_DEV72_RUN_CONTRACT_V2",
+-        "state": "LOCKED_C5_M110_DEV72_NO_PLANT_WAIT_PARENT_RELEASE_V2",
++        "schema": "C5_AXIS_COORDINATE_DEV72_RUN_CONTRACT_V3",
++        "state": "LOCKED_C5_M110_DEV72_NO_PLANT_WAIT_PARENT_RELEASE_V3",
+         "candidate": c5_contract["candidate"], "output_condition_id": "C5_AXIS_MASK_M110",
+         "coordinate_mask": [1, 1, 0],
+         "pcf_auxiliary_enabled": True, "model": c5_model,
+@@ -361,7 +361,7 @@
+         "c5_screen_parent_summary_sha256": sha(c5_screen_summary_path),
+         "b72_scoring_manifest_sha256": sha(b72_manifest_path),
+     }
+-    contract_path = EXP / "C5_DEV72_RUN_CONTRACT_v2.json"
++    contract_path = EXP / "C5_DEV72_RUN_CONTRACT_v3.json"
+     if contract_path.is_file():
+         assert read_json(contract_path) == contract, "Existing contract differs; preserve and version rather than overwrite."
+     else:
+@@ -370,20 +370,20 @@
+     source_files["run_contract"] = contract_ref
+ 
+     release_contract = {
+-        "schema": "C5_AXIS_COORDINATE_DEV72_PARENT_RELEASE_CONTRACT_V2",
+-        "state": "RELEASE_REQUIRED_AFTER_CODE_AND_NOPLANT_REVIEW_V2",
++        "schema": "C5_AXIS_COORDINATE_DEV72_PARENT_RELEASE_CONTRACT_V3",
++        "state": "RELEASE_REQUIRED_AFTER_CODE_AND_NOPLANT_REVIEW_V3",
+         "required_fields": ["schema", "state", "plant_authorized", "max_new_Plant",
+                             "parent_release_contract_sha256", "candidate", "coordinate_mask",
+                             "input_lock_sha256", "run_contract_sha256", "prepare_result_sha256",
+                             "prepared_snapshot_sha256", "source_binding_sha256", "runner_sha256",
+-                            "launcher_sha256",
++                            "runner_preflight_result_sha256", "launcher_sha256",
+                             "scene_ids_new_60", "c5_screen_summary_sha256", "b72_manifest_sha256",
+                             "training_steps", "optimizer_steps", "parameter_or_seed_search",
+                             "new_B_sorties", "TEST_accessed", "automatic_retry"],
+         "exact_scene_order_source": {"path": str(c3_lock_path.resolve()), "sha256": sha(c3_lock_path), "field": "scene_ids_all_72 filtered to exclude scene_ids_reuse_12 while preserving order"},
+         "plant_authorized_by_this_contract": False,
+     }
+-    release_contract_path = EXP / "C5_DEV72_PARENT_RELEASE_CONTRACT_v2.json"
++    release_contract_path = EXP / "C5_DEV72_PARENT_RELEASE_CONTRACT_v3.json"
+     if release_contract_path.is_file():
+         assert read_json(release_contract_path) == release_contract
+     else:
+@@ -391,8 +391,8 @@
+     source_files["parent_release_contract"] = ref(release_contract_path)
+ 
+     lock = {
+-        "schema": "C5_AXIS_COORDINATE_DEV72_INPUT_LOCK_V2",
+-        "state": "LOCKED_C5_M110_DEV72_NO_PLANT_WAIT_PARENT_RELEASE_V2",
++        "schema": "C5_AXIS_COORDINATE_DEV72_INPUT_LOCK_V3",
++        "state": "LOCKED_C5_M110_DEV72_NO_PLANT_WAIT_PARENT_RELEASE_V3",
+         "plant_authorized_by_this_lock": False,
+         "created_utc": datetime.now(timezone.utc).isoformat(timespec="seconds").replace("+00:00", "Z"),
+         "repo_root": str(ROOT.resolve()),
+@@ -423,13 +423,13 @@
+                         "The 60-scene batch still requires a distinct parent release.",
+                         "C3 B_source entries are physical inputs only, never B comparator outputs."]}
+ 
+-    lock_path = EXP / "C5_DEV72_INPUT_LOCK_v2.json"
++    lock_path = EXP / "C5_DEV72_INPUT_LOCK_v3.json"
+     assert not lock_path.exists(), "Preserve an existing lock and use a new version."
+     lock_path.write_text(json.dumps(lock, indent=2) + "\n", encoding="utf-8")
+ 
+     binding = {
+-        "schema": "C5_AXIS_COORDINATE_DEV72_SOURCE_BINDING_V2",
+-        "state": "SOURCE_BOUND_C5_DEV72_WAIT_PARENT_REVIEW_V2",
++        "schema": "C5_AXIS_COORDINATE_DEV72_SOURCE_BINDING_V3",
++        "state": "SOURCE_BOUND_C5_DEV72_WAIT_PARENT_REVIEW_V3",
+         "input_lock_path": str(lock_path.resolve()), "input_lock_sha256": sha(lock_path),
+         "run_contract_path": str(contract_path.resolve()), "run_contract_sha256": sha(contract_path),
+         "prepare_entry_path": source_files["prepare_entry"]["path"],
+@@ -446,7 +446,7 @@
+         "coordinate_mask": [1, 1, 0], "source_files": source_files,
+         "upstream_ref_sha256": {k: v["sha256"] for k, v in upstream_refs.items() if isinstance(v, dict) and "sha256" in v},
+     }
+-    binding_path = EXP / "C5_DEV72_SOURCE_BINDING_v2.json"
++    binding_path = EXP / "C5_DEV72_SOURCE_BINDING_v3.json"
+     assert not binding_path.exists(), "Preserve an existing source binding and version it."
+     binding_path.write_text(json.dumps(binding, indent=2) + "\n", encoding="utf-8")
+ 
+--- prepare_c5_dev72_v2.m
++++ prepare_c5_dev72_v3.m
+@@ -1,20 +1,20 @@
+-function result=prepare_c5_dev72_v2()
++function result=prepare_c5_dev72_v3()
+ % No-Plant preparation for the fixed C5 M110 completion screen.
+ here=fileparts(mfilename('fullpath')); repoRoot=fileparts(fileparts(here));
+-lockPath=fullfile(here,'C5_DEV72_INPUT_LOCK_v2.json');
+-contractPath=fullfile(here,'C5_DEV72_RUN_CONTRACT_v2.json');
+-bindingPath=fullfile(here,'C5_DEV72_SOURCE_BINDING_v2.json');
+-resultPath=fullfile(here,'C5_DEV72_PREPARE_RESULT_v2.json');
+-snapshotPath=fullfile(here,'C5_DEV72_PREPARED_CFG_OPTS_v2.mat');
++lockPath=fullfile(here,'C5_DEV72_INPUT_LOCK_v3.json');
++contractPath=fullfile(here,'C5_DEV72_RUN_CONTRACT_v3.json');
++bindingPath=fullfile(here,'C5_DEV72_SOURCE_BINDING_v3.json');
++resultPath=fullfile(here,'C5_DEV72_PREPARE_RESULT_v3.json');
++snapshotPath=fullfile(here,'C5_DEV72_PREPARED_CFG_OPTS_v3.mat');
+ assert(isfile(lockPath)&&isfile(contractPath)&&isfile(bindingPath)&&~isfile(resultPath)&&~isfile(snapshotPath), ...
+     'C5DEV72:NoOverwrite','Frozen lock/contract/binding must exist and prepare outputs must be absent.');
+ lock=jsondecode(fileread(lockPath)); contract=jsondecode(fileread(contractPath)); binding=jsondecode(fileread(bindingPath));
+ lockSha=sha256_file(lockPath); contractSha=sha256_file(contractPath); bindingSha=sha256_file(bindingPath);
+ allSceneIds=string(lock.scene_ids_all_72(:)); newSceneIds=string(lock.scene_ids_new_60(:));
+ reuseSceneIds=string(lock.scene_ids_reuse_12(:)); reuseMaskInAll=ismember(allSceneIds,reuseSceneIds);
+-assert(strcmp(lock.schema,'C5_AXIS_COORDINATE_DEV72_INPUT_LOCK_V2')&& ...
+-    strcmp(lock.state,'LOCKED_C5_M110_DEV72_NO_PLANT_WAIT_PARENT_RELEASE_V2')&& ...
+-    ~logical(lock.plant_authorized_by_this_lock)&&strcmp(contract.schema,'C5_AXIS_COORDINATE_DEV72_RUN_CONTRACT_V2')&& ...
++assert(strcmp(lock.schema,'C5_AXIS_COORDINATE_DEV72_INPUT_LOCK_V3')&& ...
++    strcmp(lock.state,'LOCKED_C5_M110_DEV72_NO_PLANT_WAIT_PARENT_RELEASE_V3')&& ...
++    ~logical(lock.plant_authorized_by_this_lock)&&strcmp(contract.schema,'C5_AXIS_COORDINATE_DEV72_RUN_CONTRACT_V3')&& ...
+     strcmp(contract.state,lock.state)&&isequal(double(lock.coordinate_mask(:)),[1;1;0])&& ...
+     isequal(double(contract.coordinate_mask(:)),[1;1;0])&&logical(lock.pcf_auxiliary_enabled)&& ...
+     logical(contract.pcf_auxiliary_enabled)&&double(lock.counts.total)==72&& ...
+@@ -36,8 +36,8 @@
+     ~logical(contract.prohibitions.automatic_retry)&&~logical(contract.prohibitions.parameter_or_seed_search), ...
+     'C5DEV72:Contract','C5 DEV72 limits or prohibitions differ from the frozen taskbook.');
+ assert(strcmpi(binding.input_lock_sha256,lockSha)&&strcmpi(binding.run_contract_sha256,contractSha)&& ...
+-    strcmpi(binding.prepare_entry_sha256,sha256_file(fullfile(here,'prepare_c5_dev72_v2.m')))&& ...
+-    same_path(binding.prepare_entry_path,fullfile(here,'prepare_c5_dev72_v2.m'))&& ...
++    strcmpi(binding.prepare_entry_sha256,sha256_file(fullfile(here,'prepare_c5_dev72_v3.m')))&& ...
++    same_path(binding.prepare_entry_path,fullfile(here,'prepare_c5_dev72_v3.m'))&& ...
+     isequal(string(binding.scene_ids_all_72(:)),string(lock.scene_ids_all_72(:)))&& ...
+     isequal(string(binding.scene_ids_new_60(:)),string(lock.scene_ids_new_60(:)))&& ...
+     isequal(string(binding.scene_ids_reuse_12(:)),string(lock.scene_ids_reuse_12(:)))&& ...
+@@ -67,8 +67,8 @@
+ for k=1:numel(lock.shared_input_files), verify_ref(lock.shared_input_files(k)); end
+ assert(strcmpi(lock.source_files.run_contract.sha256,contractSha)&& ...
+     strcmpi(lock.source_files.batch_runner.sha256,binding.runner_sha256)&& ...
+-    same_path(binding.runner_path,fullfile(here,'run_c5_dev72_v2.m'))&& ...
+-    strcmpi(lock.source_files.batch_runner.sha256,sha256_file(fullfile(here,'run_c5_dev72_v2.m'))), ...
++    same_path(binding.runner_path,fullfile(here,'run_c5_dev72_v3.m'))&& ...
++    strcmpi(lock.source_files.batch_runner.sha256,sha256_file(fullfile(here,'run_c5_dev72_v3.m'))), ...
+     'C5DEV72:SourceBinding','Runner or contract source reference changed.');
+ 
+ % Rebuild source lookup after init_dl1018 resets the MATLAB path.
+@@ -195,8 +195,8 @@
+ cfgLeaves=leaf_count(cfg); optsLeaves=leaf_count(opts);
+ assert(cfgLeaves==120&&optsLeaves==43,'C5DEV72:LeafCount','Expected exactly 120 cfg and 43 C5 opts leaves.');
+ save(snapshotPath,'cfg','opts','W0','modelIdentity','sceneIdentity','sourceIdentity','-v7.3');
+-result=struct('schema','C5_AXIS_COORDINATE_DEV72_PREPARE_RESULT_V2', ...
+-    'status','PREPARED_C5_M110_DEV72_NO_PLANT_WAIT_PARENT_RELEASE_V2','created_utc',utc_now(), ...
++result=struct('schema','C5_AXIS_COORDINATE_DEV72_PREPARE_RESULT_V3', ...
++    'status','PREPARED_C5_M110_DEV72_NO_PLANT_WAIT_PARENT_RELEASE_V3','created_utc',utc_now(), ...
+     'input_lock_path',lockPath,'input_lock_sha256',lockSha,'run_contract_path',contractPath, ...
+     'run_contract_sha256',contractSha,'source_binding_path',bindingPath,'source_binding_sha256',bindingSha, ...
+     'snapshot_path',snapshotPath,'snapshot_sha256',sha256_file(snapshotPath), ...
+--- run_c5_dev72_v2.m
++++ run_c5_dev72_v3.m
+@@ -1,44 +1,60 @@
+-function batch=run_c5_dev72_v2(mode)
++function batch=run_c5_dev72_v3(mode)
+ % Fixed C5 DEV72 batch plus an explicit no-Plant preflight-only mode.
+ preflightOnly=nargin==1&&strcmpi(char(mode),'PREFLIGHT_ONLY');
+-plantRun=nargin==1&&strcmpi(char(mode),'PARENT_APPROVED_C5_M110_DEV72_V2');
++plantRun=nargin==1&&strcmpi(char(mode),'PARENT_APPROVED_C5_M110_DEV72_V3');
+ if ~(preflightOnly||plantRun)
+     error('C5DEV72:Mode','Use PREFLIGHT_ONLY or the exact parent-approved V2 mode.');
+ end
+ here=fileparts(mfilename('fullpath')); repoRoot=fileparts(fileparts(here));
+-lockPath=fullfile(here,'C5_DEV72_INPUT_LOCK_v2.json');
+-contractPath=fullfile(here,'C5_DEV72_RUN_CONTRACT_v2.json');
+-prepPath=fullfile(here,'C5_DEV72_PREPARE_RESULT_v2.json');
+-snapshotPath=fullfile(here,'C5_DEV72_PREPARED_CFG_OPTS_v2.mat');
+-bindingPath=fullfile(here,'C5_DEV72_SOURCE_BINDING_v2.json');
+-releasePath=fullfile(here,'C5_DEV72_RELEASE_v2.json');
+-releaseContractPath=fullfile(here,'C5_DEV72_PARENT_RELEASE_CONTRACT_v2.json');
+-batchPath=fullfile(here,'C5_DEV72_BATCH_STATUS_v2.json');
+-bodyPath=fullfile(here,'C5_DEV72_BODY_COMPLETE_v2.json');
+-preflightPath=fullfile(here,'C5_DEV72_PREFLIGHT_FAILURE_v2.json');
+-runnerPreflightPath=fullfile(here,'C5_DEV72_RUNNER_PREFLIGHT_RESULT_v2.json');
+-attemptRoot=fullfile(here,'runs_dev72_v2'); batchWritten=false; batch=struct(); records=empty_records();
++lockPath=fullfile(here,'C5_DEV72_INPUT_LOCK_v3.json');
++contractPath=fullfile(here,'C5_DEV72_RUN_CONTRACT_v3.json');
++prepPath=fullfile(here,'C5_DEV72_PREPARE_RESULT_v3.json');
++snapshotPath=fullfile(here,'C5_DEV72_PREPARED_CFG_OPTS_v3.mat');
++bindingPath=fullfile(here,'C5_DEV72_SOURCE_BINDING_v3.json');
++releasePath=fullfile(here,'C5_DEV72_RELEASE_v3.json');
++releaseContractPath=fullfile(here,'C5_DEV72_PARENT_RELEASE_CONTRACT_v3.json');
++batchPath=fullfile(here,'C5_DEV72_BATCH_STATUS_v3.json');
++bodyPath=fullfile(here,'C5_DEV72_BODY_COMPLETE_v3.json');
++preflightPath=fullfile(here,'C5_DEV72_PREFLIGHT_FAILURE_v3.json');
++runnerPreflightPath=fullfile(here,'C5_DEV72_RUNNER_PREFLIGHT_RESULT_v3.json');
++attemptRoot=fullfile(here,'runs_dev72_v3'); batchWritten=false; batch=struct(); records=empty_records();
+ try
+     needed={lockPath,contractPath,prepPath,snapshotPath,bindingPath,releaseContractPath};
+-    if ~preflightOnly, needed{end+1}=releasePath; end
+-    assert(all(cellfun(@isfile,needed))&&~any(isfile({batchPath,bodyPath,preflightPath,runnerPreflightPath})), ...
+-        'C5DEV72:NoRetry','Frozen inputs/release are required and previous batch outputs must remain absent.');
++    if ~preflightOnly, needed=[needed {releasePath,runnerPreflightPath}]; end
++    assert(all(cellfun(@isfile,needed))&&~any(isfile({batchPath,bodyPath,preflightPath}))&& ...
++        (plantRun||~isfile(runnerPreflightPath)), ...
++        'C5DEV72:NoRetry','Frozen inputs/release and a valid preflight are required; previous batch outputs must remain absent.');
+     lock=jsondecode(fileread(lockPath)); contract=jsondecode(fileread(contractPath));
+     prep=jsondecode(fileread(prepPath)); binding=jsondecode(fileread(bindingPath));
+     releaseContract=jsondecode(fileread(releaseContractPath));
+     if preflightOnly, release=struct('b72_manifest_sha256',lock.b72_scoring_manifest_sha256);
+     else, release=jsondecode(fileread(releasePath)); end
+     lockSha=sha256_file(lockPath); contractSha=sha256_file(contractPath); prepSha=sha256_file(prepPath);
++    runnerPreflightSha='';
+     snapshotSha=sha256_file(snapshotPath); bindingSha=sha256_file(bindingPath);
+     if preflightOnly, releaseSha=''; else, releaseSha=sha256_file(releasePath); end
+     releaseContractSha=sha256_file(releaseContractPath);
+     runnerPath=[mfilename('fullpath') '.m']; runnerSha=sha256_file(runnerPath);
+-    assert(strcmp(lock.schema,'C5_AXIS_COORDINATE_DEV72_INPUT_LOCK_V2')&& ...
+-        strcmp(lock.state,'LOCKED_C5_M110_DEV72_NO_PLANT_WAIT_PARENT_RELEASE_V2')&& ...
+-        ~logical(lock.plant_authorized_by_this_lock)&&strcmp(prep.status,'PREPARED_C5_M110_DEV72_NO_PLANT_WAIT_PARENT_RELEASE_V2')&& ...
++    if plantRun
++        runnerPreflight=jsondecode(fileread(runnerPreflightPath));
++        runnerPreflightSha=sha256_file(runnerPreflightPath);
++        assert(strcmp(runnerPreflight.schema,'C5_AXIS_COORDINATE_DEV72_RUNNER_PREFLIGHT_RESULT_V3')&& ...
++            strcmp(runnerPreflight.status,'PREFLIGHT_PASS_WAIT_PARENT_RELEASE_V3')&& ...
++            logical(runnerPreflight.release_presence_and_release_contract_validation_skipped)&& ...
++            double(runnerPreflight.plant_calls)==0&&double(runnerPreflight.training_steps)==0&& ...
++            double(runnerPreflight.optimizer_steps)==0&&~logical(runnerPreflight.TEST_accessed)&& ...
++            strcmpi(runnerPreflight.runner_sha256,runnerSha)&&strcmpi(runnerPreflight.input_lock_sha256,lockSha)&& ...
++            strcmpi(runnerPreflight.run_contract_sha256,contractSha)&& ...
++            strcmpi(runnerPreflight.prepare_result_sha256,prepSha)&&strcmpi(runnerPreflight.snapshot_sha256,snapshotSha)&& ...
++            strcmpi(runnerPreflight.source_binding_sha256,bindingSha), ...
++            'C5DEV72:PreflightBinding','Successful no-Plant runner preflight does not match the frozen inputs.');
++    end
++    assert(strcmp(lock.schema,'C5_AXIS_COORDINATE_DEV72_INPUT_LOCK_V3')&& ...
++        strcmp(lock.state,'LOCKED_C5_M110_DEV72_NO_PLANT_WAIT_PARENT_RELEASE_V3')&& ...
++        ~logical(lock.plant_authorized_by_this_lock)&&strcmp(prep.status,'PREPARED_C5_M110_DEV72_NO_PLANT_WAIT_PARENT_RELEASE_V3')&& ...
+         strcmpi(prep.input_lock_sha256,lockSha)&&strcmpi(prep.run_contract_sha256,contractSha)&& ...
+         strcmpi(prep.snapshot_sha256,snapshotSha)&&strcmpi(prep.source_binding_sha256,bindingSha)&& ...
+-        strcmp(contract.schema,'C5_AXIS_COORDINATE_DEV72_RUN_CONTRACT_V2')&& ...
++        strcmp(contract.schema,'C5_AXIS_COORDINATE_DEV72_RUN_CONTRACT_V3')&& ...
+         strcmp(contract.state,lock.state)&&isequal(double(contract.coordinate_mask(:)),[1;1;0])&& ...
+         double(contract.limits.max_new_Plant)==60&&double(contract.limits.per_scene_output_reserve_bytes)==80000000&& ...
+         double(contract.limits.max_output_bytes)==5*1024^3&&double(contract.limits.minimum_free_bytes)==30000000000&& ...
+@@ -68,7 +84,7 @@
+     for k=1:numel(lock.shared_input_files), verify_ref(lock.shared_input_files(k)); end
+     if ~preflightOnly
+         verify_dev72_release_contract(releaseContract,release,lock,contract,prep,binding, ...
+-            lockSha,contractSha,prepSha,snapshotSha,bindingSha,releaseContractSha,runnerSha);
++            lockSha,contractSha,prepSha,snapshotSha,bindingSha,releaseContractSha,runnerSha,runnerPreflightSha);
+     end
+     verify_upstream_evidence(lock,release);
+ 
+@@ -118,8 +134,8 @@
+         (~isfolder(attemptRoot)||isempty(dir(fullfile(attemptRoot,'**','first_plant_step.marker')))), ...
+         'C5DEV72:ExistingAttempts','New attempt/Plant markers already exist; do not overwrite or retry.');
+     if preflightOnly
+-        batch=struct('schema','C5_AXIS_COORDINATE_DEV72_RUNNER_PREFLIGHT_RESULT_V2', ...
+-            'status','PREFLIGHT_PASS_WAIT_PARENT_RELEASE_V2','process_scope','PREFLIGHT_ONLY_NO_PLANT', ...
++        batch=struct('schema','C5_AXIS_COORDINATE_DEV72_RUNNER_PREFLIGHT_RESULT_V3', ...
++            'status','PREFLIGHT_PASS_WAIT_PARENT_RELEASE_V3','process_scope','PREFLIGHT_ONLY_NO_PLANT', ...
+             'release_presence_and_release_contract_validation_skipped',true,'plant_calls',0, ...
+             'training_steps',0,'optimizer_steps',0,'TEST_accessed',false,'scene_count',72, ...
+             'new_scene_count',numel(sceneIds),'reuse_scene_count',12,'input_lock_sha256',lockSha, ...
+@@ -137,7 +153,7 @@
+     lockCleanup=onCleanup(@()release_job_lock(jobLock,channel,raf)); %#ok<NASGU>
+     if ~isfolder(attemptRoot), mkdir(attemptRoot); end
+     batchId=['C5_DEV72_' strrep(utc_now(),':','')];
+-    batch=struct('schema','C5_AXIS_COORDINATE_DEV72_BATCH_STATUS_V2','status','RUNNING', ...
++    batch=struct('schema','C5_AXIS_COORDINATE_DEV72_BATCH_STATUS_V3','status','RUNNING', ...
+         'batch_id',batchId,'process_scope','ONE_SEQUENTIAL_MATLAB_PROCESS','release_sha256',releaseSha, ...
+         'source_binding_sha256',bindingSha,'runner_sha256',runnerSha,'input_lock_sha256',lockSha, ...
+         'prepare_result_sha256',prepSha,'snapshot_sha256',snapshotSha,'scene_ids_new_60',{sceneIds}, ...
+@@ -150,7 +166,7 @@
+         paths=struct('attempt_started',fullfile(attemptDir,'attempt_started.marker'), ...
+             'plant_marker',fullfile(attemptDir,'first_plant_step.marker'),'raw',fullfile(attemptDir,'raw_run.mat'), ...
+             'run_start',fullfile(attemptDir,'run_start.mat'),'run_status',fullfile(attemptDir,'run_status.json'), ...
+-            'failure',fullfile(attemptDir,'C5_DEV72_FAILURE_V2.json'));
++            'failure',fullfile(attemptDir,'C5_DEV72_FAILURE_V3.json'));
+         invocationEntered=false; attemptCreated=false; startedUtc=utc_now();
+         try
+             remaining=numel(sceneIds)-k+1;
+@@ -178,7 +194,7 @@
+                 'C5DEV72:W0Reset','Candidate mask or W0 reset differs for %s.',id);
+             runSceneIdentity=struct('scene_id',id,'source_scene_id',sourceSceneId, ...
+                 'identity',pack.sceneIdentity(ix),'external_identity_sha256',row.external_identity_sha256);
+-            runStart=struct('schema','C5_AXIS_COORDINATE_DEV72_RUN_START_V2','scene_id',id, ...
++            runStart=struct('schema','C5_AXIS_COORDINATE_DEV72_RUN_START_V3','scene_id',id, ...
+                 'source_scene_id',sourceSceneId,'started_utc',startedUtc,'release_sha256',releaseSha, ...
+                 'input_lock_sha256',lockSha,'run_contract_sha256',contractSha, ...
+                 'prepare_result_sha256',prepSha,'cfg_opts_snapshot_sha256',snapshotSha, ...
+@@ -198,7 +214,7 @@
+             log=run_episode_dl1018(scene,contract.candidate,pack.cfg,opts,paths.raw);
+             assert(isfile(paths.raw)&&isfile(paths.plant_marker),'C5DEV72:PlantOutput', ...
+                 'Episode returned without raw or first-Plant marker for %s.',id);
+-            runIdentity=struct('schema','C5_AXIS_COORDINATE_DEV72_RUN_IDENTITY_V2','scene_id',id, ...
++            runIdentity=struct('schema','C5_AXIS_COORDINATE_DEV72_RUN_IDENTITY_V3','scene_id',id, ...
+                 'candidate',contract.candidate,'coordinate_mask',[1 1 0],'release_sha256',releaseSha, ...
+                 'input_lock_sha256',lockSha,'prepare_result_sha256',prepSha, ...
+                 'model_identity',pack.modelIdentity,'initial_W0_sha256',contract.model.W0_sha256, ...
+@@ -211,7 +227,7 @@
+                 double(log.last_transition)==20000&&all(isfinite(log.state(:)))&& ...
+                 all(isfinite(log.reference.position(:)));
+             statusLabel='FAILED_NO_RETRY'; if complete, statusLabel='RUN_COMPLETE_RAW_PENDING_AUDIT'; end
+-            runStatus=struct('schema','C5_AXIS_COORDINATE_DEV72_RUN_STATUS_V2','status',statusLabel, ...
++            runStatus=struct('schema','C5_AXIS_COORDINATE_DEV72_RUN_STATUS_V3','status',statusLabel, ...
+                 'scene_id',id,'source_scene_id',sourceSceneId,'candidate',contract.candidate, ...
+                 'coordinate_mask',[1 1 0],'log_status',logStatus,'safety_stop_reason',char(safetyReason), ...
+                 'last_transition',double(log.last_transition),'transitions',numel(log.transition_time), ...
+@@ -239,7 +255,7 @@
+             batch.status='RUNNING'; batch.completed_scenes=k; batch.plant_calls=k;
+             batch.records=records; batch.updated_utc=utc_now(); write_json_replace(batchPath,batch);
+         catch ME
+-            failure=struct('schema','C5_AXIS_COORDINATE_DEV72_FAILURE_V2','status','FAILED_NO_RETRY', ...
++            failure=struct('schema','C5_AXIS_COORDINATE_DEV72_FAILURE_V3','status','FAILED_NO_RETRY', ...
+                 'scene_id',id,'batch_index',k,'identifier',ME.identifier,'message',ME.message, ...
+                 'failed_utc',utc_now(),'attempt_dir',attemptDir,'attempt_created',attemptCreated, ...
+                 'plant_invocation_entered',invocationEntered,'plant_start_confirmed',isfile(paths.plant_marker), ...
+@@ -256,7 +272,7 @@
+     end
+     batch.status='COMPLETE_RAW_PENDING_PARENT_AUDIT'; batch.completed_scenes=60; batch.plant_calls=60;
+     batch.records=records; batch.completed_utc=utc_now(); write_json_replace(batchPath,batch);
+-    body=struct('schema','C5_AXIS_COORDINATE_DEV72_BODY_COMPLETE_V2', ...
++    body=struct('schema','C5_AXIS_COORDINATE_DEV72_BODY_COMPLETE_V3', ...
+         'status','COMPLETE_RAW_PENDING_PARENT_AUDIT','batch_id',batchId, ...
+         'matlab_process_count',1,'shared_matlab_os_exit_code',[], ...
+         'completed_scene_count',60,'plant_calls',60,'scene_ids_new_60',{sceneIds}, ...
+@@ -265,7 +281,7 @@
+     write_json_new(bodyPath,body);
+ catch ME
+     if ~batchWritten&&~isfile(preflightPath)
+-        write_json_new(preflightPath,struct('schema','C5_AXIS_COORDINATE_DEV72_PREFLIGHT_FAILURE_V2', ...
++        write_json_new(preflightPath,struct('schema','C5_AXIS_COORDINATE_DEV72_PREFLIGHT_FAILURE_V3', ...
+             'status','FAILED_BEFORE_BATCH','identifier',ME.identifier,'message',ME.message, ...
+             'failed_utc',utc_now(),'plant_calls',0,'partial_work_started',false));
+     elseif batchWritten&&isfile(batchPath)
+@@ -280,17 +296,18 @@
+ end
+ end
+ 
+-function verify_dev72_release_contract(c,release,lock,contract,prep,binding,lockSha,contractSha,prepSha,snapshotSha,bindingSha,contractSha2,runnerSha)
+-assert(strcmp(c.schema,'C5_AXIS_COORDINATE_DEV72_PARENT_RELEASE_CONTRACT_V2')&& ...
+-    strcmp(c.state,'RELEASE_REQUIRED_AFTER_CODE_AND_NOPLANT_REVIEW_V2')&& ...
+-    all(isfield(release,c.required_fields))&&strcmp(release.schema,'C5_AXIS_COORDINATE_DEV72_PARENT_RELEASE_V2')&& ...
+-    strcmp(release.state,'APPROVED_C5_M110_DEV72_V2')&&logical(release.plant_authorized)&& ...
++function verify_dev72_release_contract(c,release,lock,contract,prep,binding,lockSha,contractSha,prepSha,snapshotSha,bindingSha,contractSha2,runnerSha,runnerPreflightSha)
++assert(strcmp(c.schema,'C5_AXIS_COORDINATE_DEV72_PARENT_RELEASE_CONTRACT_V3')&& ...
++    strcmp(c.state,'RELEASE_REQUIRED_AFTER_CODE_AND_NOPLANT_REVIEW_V3')&& ...
++    all(isfield(release,c.required_fields))&&strcmp(release.schema,'C5_AXIS_COORDINATE_DEV72_PARENT_RELEASE_V3')&& ...
++    strcmp(release.state,'APPROVED_C5_M110_DEV72_V3')&&logical(release.plant_authorized)&& ...
+     double(release.max_new_Plant)==60&&strcmp(release.candidate,contract.candidate)&& ...
+     strcmpi(release.launcher_sha256,binding.plant_launcher_sha256)&& ...
+     strcmpi(release.input_lock_sha256,lockSha)&& ...
+     strcmpi(release.run_contract_sha256,contractSha)&&strcmpi(release.prepare_result_sha256,prepSha)&& ...
+     strcmpi(release.prepared_snapshot_sha256,snapshotSha)&&strcmpi(release.source_binding_sha256,bindingSha)&& ...
+-    strcmpi(release.runner_sha256,runnerSha)&&isequal(string(release.scene_ids_new_60(:)),string(lock.scene_ids_new_60(:)))&& ...
++    strcmpi(release.runner_sha256,runnerSha)&&strcmpi(release.runner_preflight_result_sha256,runnerPreflightSha)&& ...
++    isequal(string(release.scene_ids_new_60(:)),string(lock.scene_ids_new_60(:)))&& ...
+     strcmpi(release.c5_screen_summary_sha256,lock.c5_screen_summary_sha256)&& ...
+     strcmpi(release.b72_manifest_sha256,lock.b72_scoring_manifest_sha256)&& ...
+     strcmpi(release.parent_release_contract_sha256,contractSha2)&& ...
+@@ -456,5 +473,7 @@
+ else
+     n=1;
+ end
++end
++
+ function h=file_sha_if_exists(path), if isfile(path), h=sha256_file(path); else, h=''; end, end
+ function release_job_lock(lock,channel,raf), try, lock.release(); catch, end; try, channel.close(); catch, end; try, raf.close(); catch, end; end
+--- RUN_C5_DEV72_NOPLANT_EXACT_v2.ps1
++++ RUN_C5_DEV72_NOPLANT_EXACT_v3.ps1
+@@ -2,14 +2,14 @@
+ if ($PSVersionTable.PSVersion.Major -lt 7) { throw 'This exact no-Plant command requires PowerShell 7.' }
+ $taskDir = 'C:/Users/35326/Desktop/postgraduation/0/Mcode/drone_tcn/DL1018/experiments/position_axis_coordinate_c5_dev72_20261023'
+ $reportDir = 'C:/Users/35326/Desktop/postgraduation/0/Mcode/drone_tcn/DL1018/reports/paper_continuation_20261023/c5_dev72_execution'
+-$exitPath = Join-Path $reportDir 'C5_DEV72_NOPLANT_OS_EXIT_v2.json'
+-$stdoutPath = Join-Path $reportDir 'C5_DEV72_NOPLANT_STDOUT_v2.txt'
+-$stderrPath = Join-Path $reportDir 'C5_DEV72_NOPLANT_STDERR_v2.txt'
+-$resultPath = Join-Path $taskDir 'C5_DEV72_PREPARE_RESULT_v2.json'
+-$snapshotPath = Join-Path $taskDir 'C5_DEV72_PREPARED_CFG_OPTS_v2.mat'
+-$failurePath = Join-Path $taskDir 'C5_DEV72_PREPARE_FAILURE_v2.json'
+-$runnerPreflightPath = Join-Path $taskDir 'C5_DEV72_RUNNER_PREFLIGHT_RESULT_v2.json'
+-$runnerFailurePath = Join-Path $taskDir 'C5_DEV72_PREFLIGHT_FAILURE_v2.json'
++$exitPath = Join-Path $reportDir 'C5_DEV72_NOPLANT_OS_EXIT_v3.json'
++$stdoutPath = Join-Path $reportDir 'C5_DEV72_NOPLANT_STDOUT_v3.txt'
++$stderrPath = Join-Path $reportDir 'C5_DEV72_NOPLANT_STDERR_v3.txt'
++$resultPath = Join-Path $taskDir 'C5_DEV72_PREPARE_RESULT_v3.json'
++$snapshotPath = Join-Path $taskDir 'C5_DEV72_PREPARED_CFG_OPTS_v3.mat'
++$failurePath = Join-Path $taskDir 'C5_DEV72_PREPARE_FAILURE_v3.json'
++$runnerPreflightPath = Join-Path $taskDir 'C5_DEV72_RUNNER_PREFLIGHT_RESULT_v3.json'
++$runnerFailurePath = Join-Path $taskDir 'C5_DEV72_PREFLIGHT_FAILURE_v3.json'
+ if ((Test-Path -LiteralPath $exitPath) -or (Test-Path -LiteralPath $stdoutPath) -or
+     (Test-Path -LiteralPath $stderrPath) -or (Test-Path -LiteralPath $resultPath) -or
+     (Test-Path -LiteralPath $snapshotPath) -or (Test-Path -LiteralPath $failurePath) -or
+@@ -22,10 +22,10 @@
+ if ($parseErrors.Count -gt 0) { throw ($parseErrors | Out-String) }
+ $matlabExe = 'C:/Program Files/MATLAB/R2025b/bin/matlab.exe'
+ if (-not (Test-Path -LiteralPath $matlabExe)) { throw 'Locked MATLAB executable is missing.' }
+-$env:MATLAB_PREFDIR = Join-Path $taskDir 'matlab_prefdir_dev72_noplant_v2'
++$env:MATLAB_PREFDIR = Join-Path $taskDir 'matlab_prefdir_dev72_noplant_v3'
+ New-Item -ItemType Directory -Path $env:MATLAB_PREFDIR -Force | Out-Null
+ $startedUtc = [DateTime]::UtcNow.ToString('o')
+-$matlabBatch = "try; cd('$taskDir'); result=prepare_c5_dev72_v2(); preflight=run_c5_dev72_v2('PREFLIGHT_ONLY'); assert(preflight.plant_calls==0); fprintf('C5_DEV72_PREPARED=%s; RUNNER_PREFLIGHT=%s; PLANT_CALLS=%d',result.status,preflight.status,preflight.plant_calls); quit(0,'force'); catch ME; fprintf(2,'%s\n',getReport(ME,'extended','hyperlinks','off')); quit(1,'force'); end"
++$matlabBatch = "try; cd('$taskDir'); result=prepare_c5_dev72_v3(); preflight=run_c5_dev72_v3('PREFLIGHT_ONLY'); assert(preflight.plant_calls==0); fprintf('C5_DEV72_PREPARED=%s; RUNNER_PREFLIGHT=%s; PLANT_CALLS=%d',result.status,preflight.status,preflight.plant_calls); quit(0,'force'); catch ME; fprintf(2,'%s\n',getReport(ME,'extended','hyperlinks','off')); quit(1,'force'); end"
+ & $matlabExe -singleCompThread -wait -batch $matlabBatch 1> $stdoutPath 2> $stderrPath
+ $matlabOsExitCode = $LASTEXITCODE
+ $prepareStatus = $null
+@@ -45,19 +45,19 @@
+     $runnerPreflightSha = (Get-FileHash -LiteralPath $runnerPreflightPath -Algorithm SHA256).Hash.ToLowerInvariant()
+ }
+ $record = [ordered]@{
+-    schema = 'C5_AXIS_COORDINATE_DEV72_NOPLANT_OS_EXIT_V2'
++    schema = 'C5_AXIS_COORDINATE_DEV72_NOPLANT_OS_EXIT_V3'
+     matlab_os_exit_code = $matlabOsExitCode
+     started_utc = $startedUtc
+     completed_utc = [DateTime]::UtcNow.ToString('o')
+     command_file = $PSCommandPath
+     command_sha256 = (Get-FileHash -LiteralPath $PSCommandPath -Algorithm SHA256).Hash.ToLowerInvariant()
+-    input_lock_sha256 = if (Test-Path -LiteralPath (Join-Path $taskDir 'C5_DEV72_INPUT_LOCK_v2.json')) {
+-        (Get-FileHash -LiteralPath (Join-Path $taskDir 'C5_DEV72_INPUT_LOCK_v2.json') -Algorithm SHA256).Hash.ToLowerInvariant()
++    input_lock_sha256 = if (Test-Path -LiteralPath (Join-Path $taskDir 'C5_DEV72_INPUT_LOCK_v3.json')) {
++        (Get-FileHash -LiteralPath (Join-Path $taskDir 'C5_DEV72_INPUT_LOCK_v3.json') -Algorithm SHA256).Hash.ToLowerInvariant()
+     } else { $null }
+-    prepare_entry_sha256 = (Get-FileHash -LiteralPath (Join-Path $taskDir 'prepare_c5_dev72_v2.m') -Algorithm SHA256).Hash.ToLowerInvariant()
+-    runner_sha256 = (Get-FileHash -LiteralPath (Join-Path $taskDir 'run_c5_dev72_v2.m') -Algorithm SHA256).Hash.ToLowerInvariant()
+-    source_binding_sha256 = if (Test-Path -LiteralPath (Join-Path $taskDir 'C5_DEV72_SOURCE_BINDING_v2.json')) {
+-        (Get-FileHash -LiteralPath (Join-Path $taskDir 'C5_DEV72_SOURCE_BINDING_v2.json') -Algorithm SHA256).Hash.ToLowerInvariant()
++    prepare_entry_sha256 = (Get-FileHash -LiteralPath (Join-Path $taskDir 'prepare_c5_dev72_v3.m') -Algorithm SHA256).Hash.ToLowerInvariant()
++    runner_sha256 = (Get-FileHash -LiteralPath (Join-Path $taskDir 'run_c5_dev72_v3.m') -Algorithm SHA256).Hash.ToLowerInvariant()
++    source_binding_sha256 = if (Test-Path -LiteralPath (Join-Path $taskDir 'C5_DEV72_SOURCE_BINDING_v3.json')) {
++        (Get-FileHash -LiteralPath (Join-Path $taskDir 'C5_DEV72_SOURCE_BINDING_v3.json') -Algorithm SHA256).Hash.ToLowerInvariant()
+     } else { $null }
+     prepare_result_status = $prepareStatus
+     prepare_result_sha256 = if (Test-Path -LiteralPath $resultPath) { (Get-FileHash -LiteralPath $resultPath -Algorithm SHA256).Hash.ToLowerInvariant() } else { $null }
+--- RUN_C5_DEV72_EXACT_v2.ps1
++++ RUN_C5_DEV72_EXACT_v3.ps1
+@@ -2,13 +2,13 @@
+ if ($PSVersionTable.PSVersion.Major -lt 7) { throw 'This exact C5 DEV72 command requires PowerShell 7.' }
+ $taskDir = 'C:/Users/35326/Desktop/postgraduation/0/Mcode/drone_tcn/DL1018/experiments/position_axis_coordinate_c5_dev72_20261023'
+ $reportDir = 'C:/Users/35326/Desktop/postgraduation/0/Mcode/drone_tcn/DL1018/reports/paper_continuation_20261023/c5_dev72_execution'
+-$releasePath = Join-Path $taskDir 'C5_DEV72_RELEASE_v2.json'
+-$batchPath = Join-Path $taskDir 'C5_DEV72_BATCH_STATUS_v2.json'
+-$bodyPath = Join-Path $taskDir 'C5_DEV72_BODY_COMPLETE_v2.json'
+-$osPath = Join-Path $reportDir 'C5_DEV72_MATLAB_OS_EXIT_v2.json'
+-$stdoutPath = Join-Path $reportDir 'C5_DEV72_STDOUT_v2.txt'
+-$stderrPath = Join-Path $reportDir 'C5_DEV72_STDERR_v2.txt'
+-$commandPath = Join-Path $reportDir 'C5_DEV72_COMMAND_v2.txt'
++$releasePath = Join-Path $taskDir 'C5_DEV72_RELEASE_v3.json'
++$batchPath = Join-Path $taskDir 'C5_DEV72_BATCH_STATUS_v3.json'
++$bodyPath = Join-Path $taskDir 'C5_DEV72_BODY_COMPLETE_v3.json'
++$osPath = Join-Path $reportDir 'C5_DEV72_MATLAB_OS_EXIT_v3.json'
++$stdoutPath = Join-Path $reportDir 'C5_DEV72_STDOUT_v3.txt'
++$stderrPath = Join-Path $reportDir 'C5_DEV72_STDERR_v3.txt'
++$commandPath = Join-Path $reportDir 'C5_DEV72_COMMAND_v3.txt'
+ if (-not (Test-Path -LiteralPath $releasePath)) { throw 'Separate parent release is required; this launcher does not grant it.' }
+ $activeMatlab = @(Get-CimInstance -ClassName Win32_Process -Filter "Name = 'matlab.exe'" -ErrorAction Stop)
+ if ($activeMatlab.Count -ne 0) { throw 'An existing MATLAB process is active; do not start or interrupt it.' }
+@@ -35,12 +35,12 @@
+ if ($parseErrors.Count -gt 0) { throw ($parseErrors | Out-String) }
+ $matlabExe = 'C:/Program Files/MATLAB/R2025b/bin/matlab.exe'
+ if (-not (Test-Path -LiteralPath $matlabExe)) { throw 'Locked MATLAB executable is missing.' }
+-$env:MATLAB_PREFDIR = Join-Path $taskDir 'matlab_prefdir_dev72_run_v2'
++$env:MATLAB_PREFDIR = Join-Path $taskDir 'matlab_prefdir_dev72_run_v3'
+ New-Item -ItemType Directory -Path $env:MATLAB_PREFDIR -Force | Out-Null
+ $invocation = "& '$PSCommandPath'"
+ [IO.File]::WriteAllText($commandPath, $invocation + [Environment]::NewLine, [Text.UTF8Encoding]::new($false))
+ $startedUtc = [DateTime]::UtcNow.ToString('o')
+-$matlabBatch = "try; cd('$taskDir'); run_c5_dev72_v2('PARENT_APPROVED_C5_M110_DEV72_V2'); quit(0,'force'); catch ME; fprintf(2,'%s\n',getReport(ME,'extended','hyperlinks','off')); quit(1,'force'); end"
++$matlabBatch = "try; cd('$taskDir'); run_c5_dev72_v3('PARENT_APPROVED_C5_M110_DEV72_V3'); quit(0,'force'); catch ME; fprintf(2,'%s\n',getReport(ME,'extended','hyperlinks','off')); quit(1,'force'); end"
+ & $matlabExe -singleCompThread -wait -batch $matlabBatch 1> $stdoutPath 2> $stderrPath
+ $matlabOsExitCode = $LASTEXITCODE
+ $bodyStatus = $null
+@@ -58,7 +58,7 @@
+     $bodySha = (Get-FileHash -LiteralPath $bodyPath -Algorithm SHA256).Hash.ToLowerInvariant()
+ }
+ $record = [ordered]@{
+-    schema = 'C5_AXIS_COORDINATE_DEV72_MATLAB_OS_EXIT_V2'
++    schema = 'C5_AXIS_COORDINATE_DEV72_MATLAB_OS_EXIT_V3'
+     matlab_os_exit_code = $matlabOsExitCode
+     started_utc = $startedUtc
+     completed_utc = [DateTime]::UtcNow.ToString('o')

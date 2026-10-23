@@ -1,0 +1,47 @@
+{
+  "schema": "C5_TAIL11_LAUNCHER_AMENDMENT_V1",
+  "state": "AMENDED_BEFORE_EXECUTION",
+  "created_utc": "2026-10-23T06:47:20.340756+00:00",
+  "reason": "Static review found a PowerShell DateTime member-call error in the OS-exit timestamp expression.",
+  "exact_change": {
+    "old": "[DateTime]::UtcNow().ToString('o')",
+    "new": "[DateTime]::UtcNow.ToString('o')",
+    "scope": "Only the completed_utc expression in RUN_C5_TAIL11_EXACT_v1.ps1; no runner/core/lock/preparation/first-scene/contract changes."
+  },
+  "preserved_original_bytes": [
+    {
+      "role": "original_launcher",
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\reports\\paper_continuation_20261023\\c5_axis_coordinate_execution\\C5_TAIL11_LAUNCHER_ORIGINAL_v1.ps1",
+      "sha256": "b59ecb9ad8577b14d4787d2ff95d1ecb128ceabfcc468c4d5ca848ead16507dc"
+    },
+    {
+      "role": "original_source_binding",
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\reports\\paper_continuation_20261023\\c5_axis_coordinate_execution\\C5_TAIL11_SOURCE_BINDING_ORIGINAL_v1.json",
+      "sha256": "4a1f1f8a759f63d0a80d17d8c9abffa5342c25e12e2095edb00ad609dc0eaecf"
+    }
+  ],
+  "updated_files": [
+    {
+      "role": "launcher",
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_20261023\\RUN_C5_TAIL11_EXACT_v1.ps1",
+      "sha256": "6a3695b816e9bd43a9049cb97d8fa71148901def1ca1bd837b1483435fcae00e"
+    },
+    {
+      "role": "source_binding",
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_20261023\\C5_TAIL11_SOURCE_BINDING_v1.json",
+      "sha256": "87e034b4d6b27ee0af3f49b24ee492c350a5376aa05ae90630ef0f60555b1ecd"
+    }
+  ],
+  "validation": {
+    "timestamp_expression_actual_runtime": "PASS",
+    "timestamp": "2026-10-23T06:47:05.5964471Z",
+    "parser": "PASS_POWERSHELL_7",
+    "MATLAB_started": false,
+    "Plant_started": false
+  },
+  "prior_code_ready_v1": {
+    "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\reports\\paper_continuation_20261023\\c5_axis_coordinate_execution\\C5_TAIL11_CODE_READY_v1.json",
+    "sha256": "58673c87adab082ef5d83e31ad02c85af4bc91c8759e5f06e5d920a4ec70db6a",
+    "overwritten": false
+  }
+}

@@ -1,0 +1,224 @@
+{
+  "schema": "C3_REALIZATION_MECHANISM_SOURCE_IDENTITY_V1",
+  "generated_utc": "2026-10-23T04:12:00Z",
+  "analysis_scope": "read-only source and raw field feasibility; no Plant/training/TEST; no source edits",
+  "repo_root": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018",
+  "input_lock": {
+    "path": "experiments/position_delayed_prediction_c3_dev72_20261023/C3_DEV72_INPUT_LOCK_v2.json",
+    "sha256": "a95eda8e6ab8b45408d24b560366636bab62f72ea619bf46fa602142b6708730",
+    "state": "LOCKED_INPUTS_AND_SOURCES_NO_PLANT_PARENT_REVIEW_REQUIRED"
+  },
+  "raw_manifest": {
+    "path": "reports/delayed_prediction_c3_dev72_parent_20261023/PARENT_C3_ALL72_RAW_MANIFEST.json",
+    "sha256": "4d23aa8fb74d506151e7159a07027ad474e2b080d1448ba4d0a3e056b9ea8aa6",
+    "row_count": 72,
+    "verified_on_disk": true
+  },
+  "selected_sources": [
+    {
+      "role": "C3 input lock",
+      "sha256": "a95eda8e6ab8b45408d24b560366636bab62f72ea619bf46fa602142b6708730",
+      "line_refs": [],
+      "path": "experiments/position_delayed_prediction_c3_dev72_20261023/C3_DEV72_INPUT_LOCK_v2.json"
+    },
+    {
+      "role": "C3 runtime core",
+      "sha256": "e5f1e30c433ee3f8206b36446cde71776589c161fe2a3ec60fbaf070585eb07f",
+      "line_refs": [
+        "1993-2003",
+        "2010-2019",
+        "2022,2082-2103",
+        "2127",
+        "2222-2237",
+        "2499-2531",
+        "2553-2556",
+        "2632-2652",
+        "2659-2673",
+        "2828-2848",
+        "2882-2902",
+        "2933-2944"
+      ],
+      "path": "experiments/position_delayed_prediction_c3_dev72_20261023/run_dl1018_closed_loop.m"
+    },
+    {
+      "role": "C3 prediction helper",
+      "sha256": "48feebf934b8eb90b4424f2286aa857c48213d229714f30af99aacf53329549d",
+      "line_refs": [
+        "4-5",
+        "37-43"
+      ],
+      "path": "experiments/position_delayed_prediction_c3_dev72_20261023/delayed_prediction_step_candidate.m"
+    },
+    {
+      "role": "position backstepping command",
+      "sha256": "ea533c3ae97cbc552208287e7f8d9b0a0f5a018f36fb5c8bd45520e19e73c681",
+      "line_refs": [
+        "24-27",
+        "55-56"
+      ],
+      "path": "matlab/core/position_bs_step.m"
+    },
+    {
+      "role": "force to attitude",
+      "sha256": "ef42d1d08af24ed82da307a4d886b0c205e28e754177765a2584e3e9bb0cd039",
+      "line_refs": [
+        "15-23"
+      ],
+      "path": "matlab/core/baseline_force_to_attitude.m"
+    },
+    {
+      "role": "command filter",
+      "sha256": "15c7eb27162e1971a1164304830f4afd3af35eb9bd709291e969dbfefd0d262b",
+      "line_refs": [
+        "10-24"
+      ],
+      "path": "matlab/core/command_filter_step.m"
+    },
+    {
+      "role": "PCF realization",
+      "sha256": "b4ae22db5bd444a162d0cd01a3a59a589f2e37077b089bb33693401b660228d0",
+      "line_refs": [
+        "13-21"
+      ],
+      "path": "matlab/models/position_filter_realization_pcf_step_v3_5.m"
+    },
+    {
+      "role": "control allocation",
+      "sha256": "5ac26d8c5ba6243f755bcf6ad3a07e98e503c213e4c95edbee7dd2c2627f3d53",
+      "line_refs": [
+        "16-44"
+      ],
+      "path": "matlab/core/allocate_control.m"
+    },
+    {
+      "role": "Plant translational RHS",
+      "sha256": "c3258dd5b70268d1465ca7701855b065244aebfaf5816c85e959d39015cd2786",
+      "line_refs": [
+        "27-38"
+      ],
+      "path": "matlab/core/vehicle_derivative.m"
+    },
+    {
+      "role": "Plant RK4 step",
+      "sha256": "7e10a8c77b2740f2f9f222f3b06c6c021cb3a9342070ad7f3ebaba3c47395ef5",
+      "line_refs": [
+        "12-18"
+      ],
+      "path": "matlab/core/rk4_vehicle_step.m"
+    },
+    {
+      "role": "Plant wind force",
+      "sha256": "51459cd2c09f1181e85bbee8f89ddbd75bd2ba923f1aebacbdd1ecfe7b3ba5ac",
+      "line_refs": [
+        "source computes morphology-aware force; runtime logs resulting wind_force_I"
+      ],
+      "path": "matlab/core/morphology_aware_wind_load.m"
+    },
+    {
+      "role": "Plant/controller parameters",
+      "sha256": "962b5434c23d5ac1a9ac568f136635a8ea651a775165d84b7d95250ca88bb9ae",
+      "line_refs": [],
+      "path": "matlab/core/simulation_parameters.m"
+    },
+    {
+      "role": "effective config",
+      "sha256": "cec90417369c7a44580b0315b2473ae86eb62550012188340b1dd5f3a796522f",
+      "line_refs": [],
+      "path": "configs/effective_config.mat"
+    }
+  ],
+  "selected_source_lock_check": "All 12 selected source/config SHA256 values match corresponding entries in C3_DEV72_INPUT_LOCK_v2.json (isolated_c3_sources, frozen_runtime_files, or frozen_plant_files).",
+  "previous_audits": [
+    {
+      "sha256": "053207fe60bb4304d7d06dfc395a5276cfc103a5bcd407576e17646b93ed5769",
+      "lines": [
+        "36",
+        "40",
+        "42"
+      ],
+      "path": "reports/train_pcf_contract_parent_review_20261022/FINAL_REVIEW_ZH.md"
+    },
+    {
+      "sha256": "0e4f225d1d17439a961e50687512b4a7855baf4e0eec355eef97ad06678f4729",
+      "lines": [
+        "24",
+        "44"
+      ],
+      "path": "reports/low_residual_parent_review_20261022/MECHANISM_REVIEW_ZH.md"
+    },
+    {
+      "sha256": "376160ae29be56a189099af87b93098f935de99b0b57644e14f2ec7e53c6c9eb",
+      "lines": [],
+      "path": "reports/paper14_v2/phase1/DATT_NEXTBLOCK_DIAGNOSTIC_REPORT_ZH.md"
+    }
+  ],
+  "raw_field_audit": {
+    "rows": 72,
+    "present_in_all_72": [
+      "state",
+      "requested_generalized",
+      "controller_clipped_generalized",
+      "allocated_generalized",
+      "realized_generalized",
+      "filtered_attitude_reference",
+      "wind_force_I",
+      "physical_impulse_force_I_N",
+      "stage1_position_delayed_prediction_target_mps2",
+      "stage1_position_pcf_a_req_mps2",
+      "stage1_position_pcf_a_f_mps2",
+      "stage1_position_pcf_r_f_mps2",
+      "stage1_position_pcf_eta_before_mps",
+      "stage1_position_pcf_eta_after_mps",
+      "stage1_position_pcf_event_s_coord_eff_mps"
+    ],
+    "absent_in_all_72": [
+      "position_plant_acceleration_truth_mps2",
+      "position_realized_force_N",
+      "diagnostic_external_force_I"
+    ],
+    "flags": {
+      "physical_impulse_enabled": [
+        0
+      ],
+      "state_perturbation_enabled": [
+        0
+      ]
+    },
+    "sample_h5py_shapes": {
+      "state": [
+        12,
+        20001
+      ],
+      "requested_generalized": [
+        4,
+        20000
+      ],
+      "realized_generalized": [
+        4,
+        20000
+      ],
+      "filtered_attitude_reference": [
+        3,
+        20000
+      ],
+      "wind_force_I": [
+        3,
+        20000
+      ],
+      "physical_impulse_force_I_N": [
+        3,
+        20000
+      ],
+      "time": [
+        1,
+        20001
+      ],
+      "transition_time": [
+        1,
+        20000
+      ]
+    },
+    "alignment": "Source uses q=1:last for transition/control arrays and qs=1:last+1 for state/time arrays; first last state rows align to each transition start, final state is terminal and has no same-row control.",
+    "note": "HDF5 dataset shapes above are h5py dimension order; MATLAB dimensions are reversed."
+  }
+}
