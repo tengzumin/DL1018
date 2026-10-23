@@ -1,0 +1,9 @@
+{
+  "status": "CORRECTING_PUBLISHED_LOG_EOL_NORMALIZATION",
+  "affected_commit": "f97527fbb513e204a180ca0e9e890f170fce78d5",
+  "affected_path": "reports/paper_continuation_20261023/test_entry_v1/logs/DEV_INPUT_EQUIVALENCE.stderr.log",
+  "cause": "Git auto line-ending conversion changed the staged stderr blob; the Python verification failed but the surrounding PowerShell did not stop before commit. Local experiment log and its receipt SHA unchanged.",
+  "fix": "Add -text for continuation .log; restage original bytes and require successful separate staged-blob verification before commit. Preserve prior commit/manifest as history.",
+  "MATLAB_or_Plant_rerun": false,
+  "TEST_accessed": false
+}
