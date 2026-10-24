@@ -1,3 +1,7 @@
+## 最新终审裁决：性能/交付通过，方法创新未通过
+
+当前以 PAPER_EVIDENCE_REQUIREMENTS_AUDIT_CHECKPOINT_v4.json 和 final_c5_nonauthor_review_v1.md 为准：NOT_QUALIFIED_METHOD_CONTRIBUTION_UNCLOSED，目标继续。C6固定12关闭不扩展。C5 TEST46/48、DEV64/72事实保留；manuscript_test_v2补齐DEV mask因果范围及历史两ID输入不重叠的限定证据，根已复核34文件身份、修订页和日志。旧v1稿与旧checkpoint保留。新阶段仅允许PCF_TRANSLATION_DEV_DIAGNOSTIC_TASKBOOK_v1_ZH.md的同状态脚本准备/审核，无新Plant或训练。两Luna分别准备诊断脚本和审查解析平移结构是否等价/存在代数环；不使用旧TEST选新候选。已推送结果证据4287655，新增终审/稿件修订即将增量提交。
+
 ## 最新审核更新（UTC 2026-10-24）：C6关闭、C5稿件通过限定审核
 
 C6 screen12 reader_v5实际OS0，23616事件/物理/安全通过；科学门both-original-loss-improve失败，固定C6不扩DEV72、不扫beta。主审432个数字与独立24raw复算一致。C5最终9页稿已根复核54项文件身份与修订渲染，数据/范围表述通过，论文整体资格仍待最终证据与Git交付审核。总航次603不变。详见RESULT_PACKAGE_ENTRY_ZH.md和STATE.json；以下旧启动说明均不执行。

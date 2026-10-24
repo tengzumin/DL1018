@@ -1,6 +1,6 @@
 # DL1018 仿真论文证据包入口（持续审核版）
 
-当前性能验收已通过，论文证据包整体仍待最终贡献、稿件和复现发布审核。本页不替代原始记录，也不将历史失败改为通过。
+当前性能验收、数据/稿件及可复现交付审核已通过，但独立科学终审判定**方法创新尚未闭合，论文证据包整体未达标**。后续先按 `PCF_TRANSLATION_DEV_DIAGNOSTIC_TASKBOOK_v1_ZH.md` 做开发集同状态诊断，不授权新候选或闭环。本页不替代原始记录，也不将历史失败改为通过。
 
 ## 已核验的结果
 
@@ -39,13 +39,13 @@ Jiang TNNLS 2022 等已有指令滤波、神经近似、跟踪/预测复合更�
 
 ## 来源限制与复现
 
-原 DSSM 首批 32 场的自然退出码 UNKNOWN，scene32 缺 `runIdentity`，旧六进程 OS0 门仍未通过；恢复的 208 场有各自自然 OS0 凭据。另有两条历史 TEST 摘要意外展示，C5 选择在其前冻结，与当前 TEST 的物理重叠 UNKNOWN。报告保留这两类披露，不声称历史完全盲测。单种子、单 Plant、理想全状态、无实飞与未隔离计时限制外推。
+原 DSSM 首批 32 场的自然退出码 UNKNOWN，scene32 缺 `runIdentity`，旧六进程 OS0 门仍未通过；恢复的 208 场有各自自然 OS0 凭据。另有两条历史 TEST 摘要意外展示，C5 选择在其前冻结，当时与当前 TEST 的物理重叠 UNKNOWN。后续仅核查这两个已识别旧 ID 的配置/执行输入：4份旧输入×48当前场景×12共同字段，未发现完整外生输入相同；7个核心字段逐一0/48匹配，旧源缺2字段。根已独立复算2304项，当前DEV72与TEST48的完整外生身份也无交集。此结论不覆盖所有历史场景，不抹掉暴露事件。报告保留这些披露，不声称历史完全盲测。单种子、单 Plant、理想全状态、无实飞与未隔离计时限制外推。
 
-- [英文稿与证据映射](final_contribution_peer_max/manuscript_test_v1/EVIDENCE_MAP_ZH.md)：含 LaTeX 构建命令、输入身份及图表。
+- [英文稿与证据映射](final_contribution_peer_max/manuscript_test_v2/EVIDENCE_MAP_ZH.md)：含 LaTeX 构建命令、输入身份及图表。
 - `test_results_final_v1/build_test_results_final_v1.py`：校验冻结 JSON/CSV，整理表格和图；不运行 Plant、不重新采样。
 - `test_handoff_incident_v1/recovery_v1/raw_review_v5/audit_test48_raw_recovery288_v5.py`：完整原始记录审核；需要本地保留的 MAT/模型与冻结来源文件。
 - `test_handoff_incident_v1/recovery_v1/statistics_v5/test48_statistics_recovery288_v5.py`：冻结统计实现。
-- `PAPER_EVIDENCE_REQUIREMENTS_AUDIT_CHECKPOINT_v3.json`：逐项完成证据与剩余工作。
+- `PAPER_EVIDENCE_REQUIREMENTS_AUDIT_CHECKPOINT_v4.json`：逐项完成证据与剩余工作。
 - `STATE.json` 和 `README_RESUME_ZH.md`：现场状态与续跑入口；不得执行旧历史启动命令。
 
 后续提交只包含审核过的源码、任务书、报告、小表与论文图稿。MAT、checkpoint、缓存、夹具和私有论文全文保留本地，不上传 GitHub。

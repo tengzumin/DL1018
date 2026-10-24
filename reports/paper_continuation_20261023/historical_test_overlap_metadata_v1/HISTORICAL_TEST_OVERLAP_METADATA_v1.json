@@ -1,0 +1,187 @@
+{
+  "schema": "HISTORICAL_TEST_OVERLAP_METADATA_V1",
+  "status": "NO_COMPLETE_EXTERNAL_INPUT_MATCH_FOUND",
+  "scope": {
+    "old_scene_ids": [
+      "TEST_C10_34_J1",
+      "TEST_C10_34_J2"
+    ],
+    "current_set": "C5 TEST48 frozen shared scenes (48 scenes)",
+    "read": [
+      "incident JSON path/ID metadata only",
+      "old scene config MAT external arrays",
+      "old D1 P_SLOW run_start.mat scene arrays only",
+      "current TEST48 shared input MAT and input index"
+    ],
+    "not_read": [
+      "old report contents",
+      "historical TEST scores or metrics",
+      "raw_run.mat logs",
+      "events.csv",
+      "trajectory/state-error arrays"
+    ],
+    "scorer_called": false
+  },
+  "current_inputs": {
+    "shared_scene_mat": "experiments/c5_test48_v3/input/TEST_SCENES_SHARED_v1.mat",
+    "shared_scene_mat_sha256": "da207d858e8918f27c19fef30d4ad57206e20f1971e743515043d1a88a995d5c",
+    "input_index": "experiments/c5_test48_v3/input/TEST_INPUT_INDEX_v1.json",
+    "input_index_sha256": "90940e818d293c66c34423a63088113557518c5ecdfd528a3f37867f391eef68",
+    "contract": "experiments/c5_test48_v9/TEST48_RUN_CONTRACT_v4.json",
+    "contract_binds_shared_scene_sha256": "da207d858e8918f27c19fef30d4ad57206e20f1971e743515043d1a88a995d5c",
+    "contract_binds_input_index_sha256": "90940e818d293c66c34423a63088113557518c5ecdfd528a3f37867f391eef68",
+    "scene_count": 48,
+    "external_fields_14": [
+      "time",
+      "initial_state",
+      "reference/position",
+      "reference/velocity",
+      "reference/acceleration",
+      "reference/yaw",
+      "reference/yaw_rate",
+      "reference/yaw_acceleration",
+      "arms/command",
+      "arms/rho_true",
+      "arms/rhoDot_true",
+      "arms/rho_hat",
+      "arms/rhoDot_hat",
+      "environment_wind_I"
+    ],
+    "old_sources_lack": [
+      "arms/rho_hat",
+      "arms/rhoDot_hat"
+    ]
+  },
+  "old_sources": [
+    {
+      "scene_id": "TEST_C10_34_J1",
+      "config_mat": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1009\\RBF-BS0\\experiments\\k1_position_attitude_fusion_v3\\configs\\blind_test_position_scenes_v3\\TEST_C10_34_J1.mat",
+      "config_file_sha256": "7e00fd8c6769d03beb1bc3e5bc6b6d6131c0f2de53b870e92cf0db56d70afded",
+      "executed_run_start_mat": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1009\\RBF-BS0\\experiments\\kan_position_attitude_followup_v2\\runs\\D1\\TEST_C10_34_J1\\P_SLOW\\attempt_215b8cee-bc10-4a65-a5d1-40c2de9ca777\\run_start.mat",
+      "run_start_file_sha256": "ae0b0f6988c50942162e0cec4e470d1e6838e864f51b786520771c7b1a8c523c",
+      "run_start_key_field_sha256": {
+        "reference/position": "3764321d4c77242bedfd0de018e082c933096e62f18f50efac0f4e42ea588141",
+        "reference/velocity": "a6987d2038bb694e710caa19d3a24d80cbce2e25f4f2b2a483c04b87f7bafa8f",
+        "reference/acceleration": "6c6ab09ff155d934da1a0a1e5502017d997594866f30e7f3598d3346de21c052",
+        "environment_wind_I": "4d0fc0e6f86dfbba294b98438800e042148e366175abf57ef19e2b23deae8aeb",
+        "arms/command": "de3644de8c6a3d85b73ea8faa63f9dfdc6f2f425abcd99532d6e6fab045dadb6",
+        "arms/rho_true": "27da47f1bb1a3ae6c4cafa3bfc0a63518bc96f4b05bc55cc8bc3f9afca204773",
+        "arms/rhoDot_true": "5a0365d6bf79c4acfa4c144764cc91e895188f4bb58f58e3532c270074079c99"
+      }
+    },
+    {
+      "scene_id": "TEST_C10_34_J2",
+      "config_mat": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1009\\RBF-BS0\\experiments\\k1_position_attitude_fusion_v3\\configs\\blind_test_position_scenes_v3\\TEST_C10_34_J2.mat",
+      "config_file_sha256": "02616722d17eede00d22f5d47784ea8816a33e5cf94a87cea54e0a65a89131d2",
+      "executed_run_start_mat": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1009\\RBF-BS0\\experiments\\kan_position_attitude_followup_v2\\runs\\D1\\TEST_C10_34_J2\\P_SLOW\\attempt_bbed4e96-9723-4f8b-b0bb-b25828343964\\run_start.mat",
+      "run_start_file_sha256": "4adf58e7492ff7610875cafa610208cbc8f647467e7ee67f18b254b665917bdf",
+      "run_start_key_field_sha256": {
+        "reference/position": "3764321d4c77242bedfd0de018e082c933096e62f18f50efac0f4e42ea588141",
+        "reference/velocity": "a6987d2038bb694e710caa19d3a24d80cbce2e25f4f2b2a483c04b87f7bafa8f",
+        "reference/acceleration": "6c6ab09ff155d934da1a0a1e5502017d997594866f30e7f3598d3346de21c052",
+        "environment_wind_I": "666246d35bf2bc0d3b80c18501a8649a89ec0a1db3d61f855edda043482a5e06",
+        "arms/command": "d7a30364045c54a5def03c969178297e867328e2705c88d412c49a24803a478a",
+        "arms/rho_true": "0780748d9a32c15b2ae64584c5a07eda4677ba611f3dcf03a530c59ef9a45994",
+        "arms/rhoDot_true": "54a95b2282436467ac9b90b5158b9b33c3657c0f34f88da4e371bc28ea4ddb27"
+      }
+    }
+  ],
+  "comparison": {
+    "common_fields_compared": 12,
+    "fields_and_hdf5_shapes": {
+      "time": [
+        1,
+        20001
+      ],
+      "initial_state": [
+        1,
+        12
+      ],
+      "reference/position": [
+        3,
+        20001
+      ],
+      "reference/velocity": [
+        3,
+        20001
+      ],
+      "reference/acceleration": [
+        3,
+        20001
+      ],
+      "reference/yaw": [
+        1,
+        20001
+      ],
+      "reference/yaw_rate": [
+        1,
+        20001
+      ],
+      "reference/yaw_acceleration": [
+        1,
+        20001
+      ],
+      "arms/command": [
+        4,
+        20001
+      ],
+      "arms/rho_true": [
+        4,
+        20001
+      ],
+      "arms/rhoDot_true": [
+        4,
+        20001
+      ],
+      "environment_wind_I": [
+        3,
+        20001
+      ]
+    },
+    "exact_match_counts_among_48_for_each_old_config_and_run_start": {
+      "time": 48,
+      "initial_state": 48,
+      "reference/yaw": 48,
+      "reference/yaw_rate": 48,
+      "reference/yaw_acceleration": 48,
+      "reference/position": 0,
+      "reference/velocity": 0,
+      "reference/acceleration": 0,
+      "arms/command": 0,
+      "arms/rho_true": 0,
+      "arms/rhoDot_true": 0,
+      "environment_wind_I": 0
+    },
+    "complete_12_common_field_match_count_per_old_id": 0,
+    "old_config_vs_executed_run_start_equal_fields": [
+      "time",
+      "initial_state",
+      "reference/position",
+      "reference/velocity",
+      "reference/acceleration",
+      "reference/yaw",
+      "reference/yaw_rate",
+      "reference/yaw_acceleration"
+    ],
+    "old_config_vs_executed_run_start_equal_count": "8/12",
+    "old_config_vs_executed_run_start_different_fields": [
+      "arms/command",
+      "arms/rho_true",
+      "arms/rhoDot_true",
+      "environment_wind_I"
+    ],
+    "conclusion": "No complete external-input match was found for either old ID among current TEST48. Position/velocity/acceleration reference, wind, and morphology arrays each have zero exact matches in all 48 current scenes. The two current rho_hat fields are absent from the old MAT sources, so 14/14 equality cannot be asserted; the mismatch on multiple shared fields already excludes the same complete scenario."
+  },
+  "hash_format": "Per-field SHA256 is SHA256(shape string + dtype string + contiguous little-endian C-order array bytes). Equality was directly tested after shape and dtype checks.",
+  "incident_reference": {
+    "incident_json": "reports/paper_continuation_20261023/c5_eight_loss_recovery/v2/HISTORICAL_TEST_EXPOSURE_INCIDENT_v1.json",
+    "incident_json_sha256": "42F1C2F672091CE46040222F1878CBF537ADB647081F342A6378F353ED616C2B",
+    "reported_old_report_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1009\\RBF-BS0\\experiments\\kan_position_attitude_followup_v2\\reports\\D1_report_v2.md",
+    "reported_old_report_sha256_from_incident": "6ca43100616564982cf82edb2eeed02c2edf7e5134b73c69e9b095e879c82238",
+    "reported_scene_ids": [
+      "TEST_C10_34_J2",
+      "TEST_C10_34_J1"
+    ],
+    "old_report_content_opened": false
+  }
+}

@@ -1,0 +1,129 @@
+{
+  "schema": "PAPER_EVIDENCE_REQUIREMENTS_AUDIT_CHECKPOINT_V4",
+  "utc": "2026-10-24T07:01:29.149169+00:00",
+  "paper_status": "NOT_QUALIFIED_METHOD_CONTRIBUTION_UNCLOSED",
+  "goal_complete": false,
+  "TEST_scores_accessed": true,
+  "checks": [
+    {
+      "requirement": "DEV_performance",
+      "status": "PROVEN",
+      "evidence": "c5_dev72_parent_review/C5_DEV72_RAW_PARENT_REVIEW_v3.json",
+      "qualification": "72 raw: 64 wins, macro Q/HF/W15 below paired B; preserve 8 losses.",
+      "evidence_sha256": "bb34889559d95a1c995d4d420e3b3d7a702908b58b47cce969dc508a1c697fab"
+    },
+    {
+      "requirement": "matched_ablations_DEV72",
+      "status": "PROVEN",
+      "evidence": "c5_matched_ablation_dev72_parent_review/C5_MATCHED_ABLATION_DEV72_BOTH_RAW_PARENT_AUDIT_v3.json",
+      "qualification": "144 flights, 283392 events; full C5 vs NO_PRED54/18; T2 only13/11, descriptive CI crosses zero.",
+      "evidence_sha256": "ec696b9e80a1f22af26b8ef58cb3fcc0a275102ee68b82b286ddf6d54d0a75ba"
+    },
+    {
+      "requirement": "six_method_input_source_identity",
+      "status": "PROVEN",
+      "evidence": "test_entry_v3/PARENT_DEV_INPUT_EQUIVALENCE_REVIEW_v2.json",
+      "qualification": "72 DEV/VAL: 1008 physical arrays independently rehashed; 5616 field rows. 24 text-ID representation differences disclosed.",
+      "evidence_sha256": "cae19929e7a99d58059fdff450d46ef5c6930859a3a74e9f0d11514000fc8560"
+    },
+    {
+      "requirement": "TEST_shared_input_integrity",
+      "status": "PROVEN",
+      "evidence": "test_input_review_v1/PARENT_FROZEN_TEST_INPUT_REVIEW_v1.json",
+      "qualification": "48 original IDs; 672 independent physical array hashes; true MATLAB load roundtrip; six cfg/opts preflight identities.",
+      "evidence_sha256": "98a93686a1bdd00b64031fa5c1518fd63b62847cfad2e31019b27845e2eb8da1"
+    },
+    {
+      "requirement": "limited_theory_requirement",
+      "status": "PROVEN_ONLY_WITH_DECLARED_SCOPE",
+      "evidence": "THEORY_FINITE_PATH_SCOPE_ACCEPTANCE_v2_ZH.md",
+      "qualification": "Conditional finite-path error bound only; actual code recurrence and physics bridge, nonauthor check and numeric instantiation. No prior Plant stability/PE/parameter convergence/interval certificate.",
+      "evidence_sha256": "a7d29ad6bd8cb6f5175cced87b181b2ff22317dfb0303428dfd3efa59aaff7ec"
+    },
+    {
+      "requirement": "contribution_and_literature",
+      "status": "NOT_PROVEN_SUFFICIENT_METHOD_INNOVATION",
+      "evidence": "final_c5_nonauthor_review_v1.md",
+      "qualification": "Independent nonauthor science review: concrete implementation interventions are real, but M110 selection lacks a derived selection principle and independent mask TEST; standard projected finite-path bound and good TEST cannot establish sufficient new method knowledge. Primary-literature equation review/new falsifiable mechanism required.",
+      "evidence_sha256": "b782241af04c8c556fad2cd5580c29072973bc1aa1889cf73e586929207c82a8"
+    },
+    {
+      "requirement": "TEST_performance_41_wins_macro_HF_W15",
+      "status": "PROVEN_WITH_RECOVERY_DISCLOSURES",
+      "evidence": "test_handoff_incident_v1/recovery_v1/statistics_v5/PARENT_INDEPENDENT_PERFORMANCE_REVIEW_v1.json",
+      "qualification": "Parent independently recomputed:46/48 wins; macro Q,HF,W15 all better than B. Old strict six-process OS0 gate remains UNMET.",
+      "evidence_sha256": "5315c7cd1cbef22fff407746837c02344e8e4473602da44b9082a2f1fce95f8d"
+    },
+    {
+      "requirement": "TEST_all_methods_and_ablations",
+      "status": "PROVEN_WITH_RECOVERY_DISCLOSURES",
+      "evidence": "test_handoff_incident_v1/recovery_v1/raw_review_v5/RECOVERY288_FULL_RAW_AUDIT_v5.json",
+      "qualification": "All288 raw, six methods; originalDSSM32 retained with OS UNKNOWN and scene32 missing runIdentity; recovery208 actual OS0. Historical TEST summary exposure disclosed; physical overlap UNKNOWN.",
+      "evidence_sha256": "3ae6d02fb36beb6690696c4b34b63106169bd98acd0fc5191140ef39329ab6a2"
+    },
+    {
+      "requirement": "TEST_all_groups_axes_phases_peaks_losses",
+      "status": "PROVEN",
+      "evidence": "test_handoff_incident_v1/recovery_v1/statistics_v5/RECOVERY288_FINAL_STATISTICS_v5.json",
+      "qualification": "Complete frozen statistics plus all288-row table independently checked:11232 numeric cells. All C5 losses retained.",
+      "evidence_sha256": "d7e3af0215e159a885691c8a4ab755333b90345650afc5370b65814f9498e1a8"
+    },
+    {
+      "requirement": "TEST_scene_paired_intervals_and_sensitivity",
+      "status": "PROVEN",
+      "evidence": "test_handoff_incident_v1/recovery_v1/statistics_v5/RECOVERY288_FINAL_STATISTICS_v5.json",
+      "qualification": "Fixed scene-paired10000 bootstrap, seed2026102301;1e-12m and1/10um sensitivity. No cross-seed inference.",
+      "evidence_sha256": "d7e3af0215e159a885691c8a4ab755333b90345650afc5370b65814f9498e1a8"
+    },
+    {
+      "requirement": "TEST_safety_actuators_integrity",
+      "status": "PROVEN_WITH_RECOVERY_DISCLOSURES",
+      "evidence": "test_handoff_incident_v1/recovery_v1/raw_review_v5/RECOVERY288_FULL_RAW_AUDIT_v5.json",
+      "qualification": "All288 raw full-state/transition/actuator checks and learned-method events audited; original process identity limitations preserved.",
+      "evidence_sha256": "3ae6d02fb36beb6690696c4b34b63106169bd98acd0fc5191140ef39329ab6a2"
+    },
+    {
+      "requirement": "actual_controller_timing_resources",
+      "status": "PROVEN_DESCRIPTIVE_ONLY",
+      "evidence": "test_handoff_incident_v1/recovery_v1/statistics_v5/RECOVERY288_FINAL_STATISTICS_v5.json",
+      "qualification": "Native telemetry and JIT retained; controller-call timing only, not full1kHz loop or hard-real-time claim.",
+      "evidence_sha256": "d7e3af0215e159a885691c8a4ab755333b90345650afc5370b65814f9498e1a8"
+    },
+    {
+      "requirement": "paper_figures_and_method_experiment_text",
+      "status": "V1_PARENT_RENDER_TRANSCRIPTION_PASS_V2_TRANSPARENCY_REVISION_RUNNING",
+      "evidence": "final_contribution_peer_max/manuscript_test_v1/PARENT_FINAL_DRAFT_REVIEW_v2.json",
+      "qualification": "V1 final9-page draft and54file identities parent passed. V2 must add DEV mask contrast53/19/−0.200317mm and updated historical overlap scope; this edit will not close innovation gate.",
+      "evidence_sha256": "05e2cb515e1e0a6cf01087507d7ed3a653881a34066f9f293b7a5751bed832a4"
+    },
+    {
+      "requirement": "final_reproducibility_and_DL1018_Git",
+      "status": "PROVEN_FOR_RELEASED_EVIDENCE_PACKAGE",
+      "evidence": "DELIVERY_CLEAN_CHECKOUT_PARENT_REVIEW_v1.json",
+      "qualification": "GitHub remote4287655 verified;417 selected files staged and clean-checkout SHA exact;8CSV/3PNG+report rebuilt,LaTex4commands9pages. No MAT/checkpoint/cache/fixtures/private fulltext in delivery; full Plant reproduction still requires local retained inputs.",
+      "evidence_sha256": "c62503f31fa2ffc45f8c55947a093367d00857f6af50a238aa68a62b3602ce75"
+    },
+    {
+      "requirement": "original_constraints_and_terminal_decision",
+      "status": "ONGOING",
+      "evidence": null,
+      "qualification": "User 2026-10-24 autonomous continuation removes global time/round/flight ceilings; current immutable TEST batch keeps frozen deadline and finite208 scope. Preserve PS7, no interruption/deletion, disk floor and provenance. Paper remains NOT_QUALIFIED."
+    }
+  ],
+  "note": "Parent adopts independent nonauthor review. Performance/evidence engineering success does not close innovation. Goal remains active.",
+  "prior_checkpoint_sha256": "b5a7455c92896b481ec82ecc1bdf63c12161fcfb010fda86f3291c65457a8776",
+  "unchanged_prior_evidence_rehashed": [
+    "DEV_performance",
+    "matched_ablations_DEV72",
+    "six_method_input_source_identity",
+    "TEST_shared_input_integrity",
+    "limited_theory_requirement",
+    "contribution_and_literature",
+    "paper_figures_and_method_experiment_text",
+    "final_reproducibility_and_DL1018_Git"
+  ],
+  "novelty_status": "Actual method-improvement contribution remains unproven, not merely priority uncertainty; must not substitute application/replication-paper scope.",
+  "C6": "Closed fixed12:23616events integrity PASS, both-original-loss-improve gate FAIL;no DEV72 expansion or beta search.",
+  "historical_overlap_update": "The2 identified exposed old scenes:4config/executed instances vs48current x12commonfields=2304 comparisons;no full external match,7core fields0/48 each. Old missing2fields and exposure incident retained; not all historical scenarios checked. CurrentDEV72/TEST48 exact full external identities also disjoint.",
+  "next_authorized_work": "Primary equation-level literature review and unique falsifiable mechanism formulation; no new candidate/Plant yet. Preserve frozen C5 TEST; future new candidate requires fresh sealed test."
+}
