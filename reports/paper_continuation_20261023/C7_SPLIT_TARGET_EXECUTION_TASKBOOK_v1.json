@@ -1,0 +1,85 @@
+{
+  "schema": "C7_SPLIT_TRACKING_TARGET_COORDINATE_TASK_V1",
+  "status": "APPROVED_ISOLATED_PREPARATION_ONLY_NO_PLANT_YET",
+  "hypothesis": "Decoupling physical-residual prediction target from compensated tracking surface can distinguish whether coupled target coordinates cause physical tracking loss. Frozen-W0 fit ease is not the rationale.",
+  "candidate": "C7_MS110_MY000",
+  "tracking_mask_Ms": [
+    1,
+    1,
+    0
+  ],
+  "prediction_target_mask_My": [
+    0,
+    0,
+    0
+  ],
+  "only_changed_factor": "Completed-interval prediction reference uses a_req on all axes; tracking surface remains clip(s-Ms*eta).",
+  "baseline": "Frozen C5 Ms=My=110, same 12 physical scenes; reuse pinned B72 and C5 results.",
+  "fixed_model": {
+    "id": "DSSM14",
+    "seed": 2026102001,
+    "selected_step": 60000,
+    "input_dim": 14,
+    "window": 32,
+    "W0_sha256": "88f8c4f2495438c3797655c48bab1bf0c11ac2e27bff1f5f2a7423a8f0a2cf53",
+    "normalizer_arrays_sha256": "533aad9a2c66874cfa67f5d268661835e81e58b797cba7d6fc1c12d4013de5f0"
+  },
+  "fixed_parameters": {
+    "gamma": 12,
+    "leak_per_s": 0.002,
+    "event_period_s": 0.01,
+    "tau_s": 1,
+    "rho": 0.01,
+    "plant_dt_s": 0.001,
+    "beta_rise_s": 1.8,
+    "prediction_clip": 3,
+    "weight_clip": 60
+  },
+  "scene_ids": [
+    "DL1018_VAL_T1_C00_W07",
+    "DL1018_VAL_T1_C02_W09",
+    "DL1018_VAL_T1_C05_W12",
+    "DL1018_VAL_T1_C08_W15",
+    "DL1018_VAL_T2_C00_W10",
+    "DL1018_VAL_T2_C02_W12",
+    "DL1018_VAL_T2_C05_W15",
+    "DL1018_VAL_T2_C06_W00",
+    "DL1018_VAL_T3_C00_W13",
+    "DL1018_VAL_T3_C02_W15",
+    "DL1018_VAL_T3_C03_W00",
+    "DL1018_VAL_T3_C12_W09"
+  ],
+  "first_scene_id": "DL1018_VAL_T2_C00_W10",
+  "training_steps": 0,
+  "maximum_new_closed_loop_sorties": 12,
+  "maximum_output_bytes": 1073741824,
+  "minimum_free_bytes": 30000000000,
+  "launch_protocol": "Prepare isolated code and cross-language/no-Plant checks; main-source review; at most one first flight; engineering/raw safety review; then remaining11. No automatic retry or extension.",
+  "physical_assumptions": "Existing ideal state feedback; no true wind/configuration/Plant oracle deployment inputs.",
+  "source_directory": "experiments/position_split_target_c7_20261024",
+  "scoring": "0-20s 3D position RMSE, unrounded values, 1e-12 m tolerance; existing safety and actuator checks.",
+  "screen_gates": {
+    "complete_safe_all12": true,
+    "mean_Q_not_above_C5": true,
+    "HF_group_mean_Q_not_above_C5": true,
+    "W15_group_mean_Q_not_above_C5": true,
+    "both_existing_screen_losses_strictly_improve_vs_C5": [
+      "DL1018_VAL_T2_C00_W10",
+      "DL1018_VAL_T3_C00_W13"
+    ],
+    "failure_action": "Close fixed candidate; no My/parameter/seed sweep, no DEV72 or TEST extension."
+  },
+  "mechanism_reports": [
+    "Prediction target and Ms/My identities on all update events.",
+    "Same-run physical u-d0, coordinated u-d0-Ms*rf, prediction residual, early/late and per-axis position error.",
+    "All scenes and all failures; no cross-controller different-state component causal claim."
+  ],
+  "scientific_limits": [
+    "Ms!=My leaves a tracking-coordinate mismatch term; ideal fitting physical d0 does not prove Q improves.",
+    "Finite-path proof must explicitly retain (My-Ms)*rf if rewritten in tracking coordinates.",
+    "Success is an isolation result, not sufficient proof of new method originality.",
+    "No use of C5 TEST results to tune or select; any new final candidate needs a fresh sealed independent test."
+  ],
+  "historical_contract_sha256": "2861f8a49b76c5d244b9019a01c8b83a6f7b627f6fc6a392ec794c01037fdf4f",
+  "new_flights_released_now": 0
+}

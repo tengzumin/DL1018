@@ -1,0 +1,16 @@
+{
+  "status": "PARENT_CONTINUOUS_DIRECTION_REVIEW_PASS_WITH_DISCRETE_SCOPE_LIMIT",
+  "source_read": [
+    "matlab/core/position_bs_step.m",
+    "matlab/core/command_filter_step.m",
+    "matlab/models/position_filter_realization_pcf_step_v3_5.m",
+    "experiments/position_axis_coordinate_c5_dev72_20261023/delayed_prediction_step_candidate.m"
+  ],
+  "finding": "No verified tracking-sign bug; fixed-mask PCF continuous coordinate identity holds. Input-dependent residual invalidates naive counterfactual prediction, not the algebraic error identity.",
+  "required_correction": "Direct physical e/sigma response uses rho_p/rho_s only; rho_eta must not be added separately. Peer notified and acknowledged.",
+  "innovation_gate": "UNMET",
+  "next_taskbook": "DEV_PHYSICAL_RESPONSE_DECOMPOSITION_TASKBOOK_v1_ZH.md",
+  "new_flights": 0,
+  "new_training_steps": 0,
+  "script_execution_approved": false
+}

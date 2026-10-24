@@ -1,0 +1,17 @@
+{
+  "record_type": "READ_ONLY_TEXT_SEARCH_SCOPE_INCIDENT",
+  "reviewer": "independent final reviewer",
+  "date_local": "2026-10-24",
+  "command": "rg -n \"CoordinateMask|targetMask|TargetMask|target_mask|d_M|dM|DelayedPrediction|delayed_prediction|rf\" experiments/position_axis_coordinate_c5_dev72_20261023/run_dl1018_closed_loop.m experiments/position_coordinate_c4_20261023/run_dl1018_closed_loop.m experiments/position_c5_matched_ablations_dev72_20261023 reports/paper_continuation_20261023",
+  "scope_error": "The final reports directory was included in a broad recursive text search while checking whether C4/C5 separated tracking and target masks.",
+  "observed_exposure": "The displayed matching lines included TEST scene identifiers, file paths, and hashes from metadata/recovery records.",
+  "raw_test_files_opened": false,
+  "test_performance_scores_read_or_computed": false,
+  "test_metadata_used_for_mechanism_or_candidate_selection": false,
+  "disposition": "Stopped the broad search immediately and notified the parent reviewer. The metadata exposure is disclosed and is not treated as a clean-room claim that no TEST metadata was ever seen.",
+  "independent_dev_gram_source": {
+    "path": "reports/paper_continuation_20261023/dev_physical_response_decomposition_v1/DEV72_RESPONSE_GRAM_v2.json",
+    "sha256": "855f1570cc6f4ac8ff2040b81c7b19c49c2a08ceda3dd3cce297cfbf2c186657",
+    "scope": "24 DEV + 48 VAL only; no TEST identifiers; reaggregation used the DEV JSON's per-scene Gram matrices and Q values."
+  }
+}
