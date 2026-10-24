@@ -1,0 +1,105 @@
+{
+  "schema": "DEV72_PRIOR_TARGET_TRANSLATION_PREPARATION_IDENTITY_V1",
+  "status": "PREPARED_NOT_EXECUTED_PENDING_PARENT_REVIEW",
+  "workspace_root": "C:/Users/35326/Desktop/postgraduation/0/Mcode/drone_tcn/DL1018",
+  "created_local": "2026-10-24",
+  "artifacts": {
+    "script": "reports/paper_continuation_20261023/dev_prior_target_translation_v1/decompose_prior_target_translation_dev72.py",
+    "script_sha256": "d34a9665ff3b58869bdae7a051754aefe4c06861d554fda70f302285ff9ed913",
+    "preparation_note": "reports/paper_continuation_20261023/dev_prior_target_translation_v1/PREPARATION_NOTE_ZH.md",
+    "preparation_note_sha256": "cfa675ff3b6b6e515ed539842e0c84b037a0cbc4c8e92b224aa4a0f03cea5d32"
+  },
+  "existing_coverage": {
+    "judgement": "No prior same-recorded-state frozen-W0 y0-vs-yM energy decomposition found.",
+    "c1_result": "experiments/position_prior_calibration_c1_20261022/C1_CALIBRATION_RESULT.json",
+    "c1_result_sha256": "4f0ba4a848a179bf4db0d59b7c4fce1ad9a26cf51479a709d262140239140db5",
+    "c1_source": "experiments/position_prior_calibration_c1_20261022/fit_prior_scale.py",
+    "c1_source_sha256": "c5f25a00a7a89c774139f011ab31f252256a3cd73d26d7822eadee40e04d156f",
+    "c1_scope": "TRAIN1536 same-endpoint cache labels; raw unclipped frozen-W0 sidecar; scalar calibration; dev_labels_used=false.",
+    "mechanism_review": "reports/paper_continuation_20261023/realization_mechanism_review/REALIZATION_MECHANISM_REVIEW_ZH.md",
+    "mechanism_review_sha256": "620249e63fd43e65bfb0679c75374302cd9536f4762416096c48ae5df315b8c6",
+    "sampled_error_review": "reports/paper_continuation_20261023/sampled_error_accounting/FINDINGS_AND_CONDITIONAL_BOUND_ZH.md",
+    "sampled_error_review_sha256": "8c0468a61ae804a7a362860eadcbeacd36af1af32d9d94500226461e3e4639ad",
+    "uncovered_scope": "The formula, early/late windows, axes and fixed-W0 Y versus Y+Mrf comparisons already exist for TRAIN/training-VAL Teacher B/POS_OFF traces; C3 fixed-input fit covers 9 T2-HF scenes on C3 Z. The only distinct domain proposed here is the frozen C5 M110 PCF-on DEV72 candidate-run trajectory; explicit cross-term is an accounting view of the known relation, not a novel mechanism.",
+    "train_comparison_windows_axes": "sidecar_contract_group_metrics_mixed_v2 includes early_lt_5s/late_ge_5s, per-axis, and Y_raw/Y_plus_Mrf_raw (plus clipped variants); target-shift algebra and early window are prior art in this project.",
+    "proposed_unique_scope": "C5 M110 PCF-on DEV72 candidate-run raw trajectories, using same logged phi_prev and launch-frozen W0; cross-term and full group/time reporting.",
+    "coordinate_interpretation": "reports/train_pcf_contract_parent_review_20261022/COORDINATE_INTERPRETATION_ZH.md",
+    "coordinate_interpretation_sha256": "6c2e6ba551217f7b76910267de42151bab332b16a475ae6aed7a0910ed0b4b0a",
+    "training_review": "reports/train_pcf_contract_parent_review_20261022/FINAL_REVIEW_ZH.md",
+    "training_review_sha256": "053207fe60bb4304d7d06dfc395a5276cfc103a5bcd407576e17646b93ed5769",
+    "c3_fixed_input_fit_review": "reports/delayed_prediction_c3_dev72_parent_20261023/PARENT_T2_HF_FIXED_INPUT_FIT_REVIEW.json",
+    "c3_fixed_input_fit_review_sha256": "ac8fc2179dadd8ddd4b43f92dbb48edabfec75766c03a91becbdfe2016f7b855",
+    "c3_fixed_input_fit_scope": "9 C3 T2-HF scenes; Z-axis Wk/W0 only; no y0/yM target-shift comparison."
+  },
+  "planned_inputs": {
+    "parent_review": "reports/paper_continuation_20261023/c5_dev72_parent_review/C5_DEV72_RAW_PARENT_REVIEW_v3.json",
+    "parent_review_sha256": "bb34889559d95a1c995d4d420e3b3d7a702908b58b47cce969dc508a1c697fab",
+    "reviewed_scenes": 72,
+    "new_raws": 60,
+    "reused_raws": 12,
+    "scene_path_sha_external_identity_table_sha256": "851eec075f3fb7ea0d27a1aac949b45acaf49221ecc2fdca0379387277b4a82a",
+    "input_lock": "experiments/position_axis_coordinate_c5_dev72_20261023/C5_DEV72_INPUT_LOCK_v3.json",
+    "input_lock_sha256": "82024c01276cc4bfbd9b7772cf5332dee3fdfcbed422969589b68f1c90ed2d75",
+    "run_contract": "experiments/position_axis_coordinate_c5_dev72_20261023/C5_DEV72_RUN_CONTRACT_v3.json",
+    "run_contract_sha256": "6ac3cd505dc13fc5b7e6e0cdef966b21225b54d6f847d32177d43f7c678c8150",
+    "model_id": "DSSM14",
+    "seed": 2026102001,
+    "selected_step": 60000,
+    "W0_sha256": "88f8c4f2495438c3797655c48bab1bf0c11ac2e27bff1f5f2a7423a8f0a2cf53",
+    "mask": [
+      1,
+      1,
+      0
+    ],
+    "raw_access_status": "Not opened or read in preparation; these are frozen C5 development-side records (24 DEV + 48 VAL), not independent TEST.",
+    "dev_split_count": {
+      "DEV": 24,
+      "VAL": 48,
+      "TEST": 0
+    }
+  },
+  "decoder": {
+    "path": "reports/paper14_v2/phase1/audit_w15_position_replay.py",
+    "sha256": "372d92cb17da99884e742d3fa0c877200c3bb2bc6fac7f10e7a1a046b97a76af",
+    "decoder_use": "Pinned decoder h5_tree axis normalization for selected MATLAB HDF5 log leaves."
+  },
+  "audited_event_source": {
+    "path": "reports/paper_continuation_20261023/c5_dev72_parent_review/audit_c5_dev72_raw_parent_v4.py",
+    "sha256": "d82e089c7d41f39c620daea63d95315632e6fb2f80addf4dc12e6a4603b8e57e",
+    "scope": "Source/field/alignment reference only; reused v4 audit source is not modified or executed."
+  },
+  "planned_fields": [
+    "stage1_position_event_inference_valid",
+    "stage1_position_event_phi_33",
+    "stage1_position_search_initial_weight",
+    "state",
+    "stage1_position_pcf_a_req_mps2",
+    "stage1_position_pcf_r_f_mps2",
+    "stage1_position_coordinate_mask",
+    "stage1_position_delayed_prediction_target_mps2",
+    "stage1_position_delayed_prediction_prev_index_zero_based"
+  ],
+  "planned_outputs": [
+    "ALL72",
+    "HF_W09_W14",
+    "W15",
+    "T1",
+    "T2",
+    "T3"
+  ],
+  "phases": [
+    "all_0_20",
+    "0_5",
+    "5_20"
+  ],
+  "safeguards": {
+    "scorer_calls": 0,
+    "plant_calls": 0,
+    "training_or_optimizer_steps": 0,
+    "candidate_or_scoring_changes": 0,
+    "test_accessed": false,
+    "execution_performed": false,
+    "root_review_required_before_any_raw_batch_read": true
+  },
+  "decision": "Worth root source review only for the distinct frozen C5 PCF-on DEV72 candidate-run trajectory domain; if the goal is causality or candidate improvement, do not run."
+}

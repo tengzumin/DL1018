@@ -1,3 +1,5 @@
+> 最新续跑：DEV72同状态目标平移诊断已完成，直接剥离PCF平移的普遍收益理由被否定；简单两步mask预测因漏算输入相关残差灵敏度被否定。当前执行 CONTROL_PATH_CREDIT_SOURCE_TASKBOOK_v1_ZH.md 的只读控制链/协调误差核验，未新增Plant或训练。性能达标、方法贡献未闭合。
+
 ## 最新终审裁决：性能/交付通过，方法创新未通过
 
 当前以 PAPER_EVIDENCE_REQUIREMENTS_AUDIT_CHECKPOINT_v4.json 和 final_c5_nonauthor_review_v1.md 为准：NOT_QUALIFIED_METHOD_CONTRIBUTION_UNCLOSED，目标继续。C6固定12关闭不扩展。C5 TEST46/48、DEV64/72事实保留；manuscript_test_v2补齐DEV mask因果范围及历史两ID输入不重叠的限定证据，根已复核34文件身份、修订页和日志。旧v1稿与旧checkpoint保留。新阶段仅允许PCF_TRANSLATION_DEV_DIAGNOSTIC_TASKBOOK_v1_ZH.md的同状态脚本准备/审核，无新Plant或训练。两Luna分别准备诊断脚本和审查解析平移结构是否等价/存在代数环；不使用旧TEST选新候选。已推送结果证据4287655，新增终审/稿件修订即将增量提交。
