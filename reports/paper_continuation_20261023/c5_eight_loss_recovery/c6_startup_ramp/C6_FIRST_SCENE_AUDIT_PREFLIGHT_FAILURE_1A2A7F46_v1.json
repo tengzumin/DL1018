@@ -1,0 +1,12 @@
+{
+  "schema": "C6_FIRST_SCENE_AUDIT_PREFLIGHT_FAILURE_V1",
+  "failed_script_path": "experiments/c5_eight_loss_recovery_20261024/c6_startup_ramp/audit_c6_first_scene_pair_1a2a7f46_failed_lock_schema.py",
+  "failed_script_sha256": "1a2a7f46b6de8703117629326a14862a910aba2a15cb5264873848ccf66fe8a9",
+  "failure": "KeyError: lock['input_identity']",
+  "failure_location": "audit_c6_first_scene_pair_v1.py:336",
+  "cause": "The C6 input lock has no top-level input_identity. Its 14-field list is stored at scenes[scene_id].b_scene_to_scored_log.matching_fields.",
+  "raw_value_read": false,
+  "scoring_started": false,
+  "review_outputs_created": false,
+  "resolution": "Use the fixed first-scene row's b_scene_to_scored_log.matching_fields and statically preflight every JSON key path before any future raw audit."
+}

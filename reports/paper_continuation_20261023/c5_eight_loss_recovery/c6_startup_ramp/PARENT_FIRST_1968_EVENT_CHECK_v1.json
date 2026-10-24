@@ -1,0 +1,70 @@
+{
+  "status": "PASS_PARENT_C6_FIRST_1968_EVENTS",
+  "result": {
+    "event_count": 1968,
+    "checks": {
+      "phi_unit_norm": 2.220446049250313e-16,
+      "past_mixed_reference_target": 4.799494135454552e-13,
+      "surface_original_from_actual_state": 2.220446049250313e-16,
+      "surface_M110": 2.220446049250313e-16,
+      "surface_clip_M110": 2.220446049250313e-16,
+      "eta_event_before": 0.0,
+      "output_before_update": 4.440892098500626e-16,
+      "applied_beta_clip": 4.440892098500626e-16,
+      "beta_clock": 0.0,
+      "event_period": 1.9897278269453977e-15,
+      "joint_update_once": 4.718447854656915e-15,
+      "weight_continuity": 0.0,
+      "prediction_term_norm": 3.875589085766684e-15,
+      "separate_actual_af_integral": 0.0,
+      "M110_reference_integral": 0.0,
+      "event_reference_integral": 0.0,
+      "event_velocity": 0.0,
+      "held_compensation": 4.440892098500626e-16,
+      "request_contains_applied_compensation": 6.661338147750939e-16,
+      "rf_definition": 0.0,
+      "nameplate_af_from_actual_thrust_filtered_attitude": 1.7763568394002505e-15,
+      "direct_mixed_reference": 0.0,
+      "eta_initial_zero": 0.0,
+      "eta_continuity": 0.0,
+      "eta_exact_held_step": 0.0
+    },
+    "log_status": "STABLE"
+  },
+  "raw_sha256": "11fc0a35f38efb5ac38d0d4f6a1da30be7c7eaada409baaa6d50521f0310eb38",
+  "prepared_snapshot_sha256": "f6ad61507b1d9027abb6bb2e4f5fc30d8558c0820fe663e0a2deb3a62b84255b",
+  "inherited_function_sha256": "87f29962bb583cbaddb2059288c8b9aa44e72d4e74bafa7460dc27b7b86bb85d",
+  "single_change": {
+    "before": "- .00002 * wb - .01 * gradient, -60, 60)",
+    "after": "- .00002 * wb - .01 * beta[:, None, None] * gradient, -60, 60)"
+  },
+  "helper_pins": {
+    "entry": {
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\c5_test48_v3\\test48_entry_v1.m",
+      "sha256": "0490da98749b114ed9e9553fc7cb44349e0c5c9d182551d8a05c844a009b9bf2"
+    },
+    "launcher": {
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\c5_test48_v3\\RUN_TEST48_EXACT_v1.ps1",
+      "sha256": "a5bd7682752a258b9b1ef891e42369e93d033fa5416dba6be89800dbec2559f9"
+    },
+    "scorer": {
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\reports\\delayed_prediction_c3_dev72_parent_20261023\\parent_raw_metrics.py",
+      "sha256": "c64482d0adbc4358417648ec08351bd78f1d3dbdb38950435fa71b9cb0f531b1"
+    },
+    "c5_reviewer": {
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\reports\\paper_continuation_20261023\\c5_dev72_parent_review\\audit_c5_dev72_raw_parent_v4.py",
+      "sha256": "d82e089c7d41f39c620daea63d95315632e6fb2f80addf4dc12e6a4603b8e57e"
+    },
+    "ablation_auditor": {
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\reports\\paper_continuation_20261023\\c5_matched_ablation_parent_raw_review\\event_audit_c5_matched_ablation.py",
+      "sha256": "1a8106ca6df7bb75ecb7a9cf5a09b9f91bc6eaa38547917a1fab677092c3755a"
+    },
+    "decoder": {
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\reports\\paper14_v2\\phase1\\audit_w15_position_replay.py",
+      "sha256": "372d92cb17da99884e742d3fa0c877200c3bb2bc6fac7f10e7a1a046b97a76af"
+    }
+  },
+  "prediction_term_norm_log_interpretation": "Unscaled reference gradient norm; actual update multiplies beta.",
+  "TEST_accessed": false,
+  "tail_authorized": false
+}

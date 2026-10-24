@@ -1,0 +1,270 @@
+{
+  "schema": "C6_FIRST_SCENE_RAW_REVIEW_V1",
+  "status": "PASS_C6_FIRST_RAW_ALL_EVENTS",
+  "scope": "FIXED_DEV_FIRST_SCENE_ONLY",
+  "scene_id": "DL1018_VAL_T1_C00_W07",
+  "candidate": "C6_STARTUP_PREDICTION_RAMP",
+  "event_count": 1968,
+  "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\c5_eight_loss_recovery_20261024\\c6_startup_ramp\\runs_c6_startup_ramp_v1\\DL1018_VAL_T1_C00_W07\\C6_STARTUP_PREDICTION_RAMP\\attempt_01\\raw_run.mat",
+  "raw_sha256": "11fc0a35f38efb5ac38d0d4f6a1da30be7c7eaada409baaa6d50521f0310eb38",
+  "prepared_snapshot_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\c5_eight_loss_recovery_20261024\\c6_startup_ramp\\C6_STARTUP_RAMP_PREPARED_CFG_OPTS_v1.mat",
+  "prepared_snapshot_sha256": "f6ad61507b1d9027abb6bb2e4f5fc30d8558c0820fe663e0a2deb3a62b84255b",
+  "C6_event_audit": {
+    "event_count": 1968,
+    "checks_max_abs": {
+      "phi_unit_norm": 2.220446049250313e-16,
+      "past_mixed_reference_target": 4.799494135454552e-13,
+      "surface_original_from_actual_state": 2.220446049250313e-16,
+      "surface_M110": 2.220446049250313e-16,
+      "surface_clip_M110": 2.220446049250313e-16,
+      "eta_event_before": 0.0,
+      "output_before_update": 4.440892098500626e-16,
+      "applied_beta_clip": 4.440892098500626e-16,
+      "beta_clock": 0.0,
+      "event_period": 1.9897278269453977e-15,
+      "C6_kernel_beta": 0.0,
+      "C6_kernel_output_before_update": 4.440892098500626e-16,
+      "C6_kernel_applied_output": 4.440892098500626e-16,
+      "C6_kernel_prediction_gradient": 4.732117475647613e-13,
+      "C6_beta_scaled_joint_update": 2.220446049250313e-16,
+      "weight_continuity": 0.0,
+      "stage1DelayedTermNorm_unscaled_reference": 3.875589085766684e-15,
+      "C6_actual_prediction_norm_equals_beta_times_reference": 0.0,
+      "separate_actual_af_integral": 0.0,
+      "M110_reference_integral": 0.0,
+      "event_reference_integral": 0.0,
+      "event_velocity": 0.0,
+      "held_compensation": 4.440892098500626e-16,
+      "request_contains_applied_compensation": 6.661338147750939e-16,
+      "rf_definition": 0.0,
+      "nameplate_af_from_actual_thrust_filtered_attitude": 1.7763568394002505e-15,
+      "direct_mixed_reference": 0.0,
+      "eta_initial_zero": 0.0,
+      "eta_continuity": 0.0,
+      "eta_exact_held_step": 0.0
+    },
+    "max_unscaled_stage1DelayedTermNorm": 0.004231978889211807,
+    "max_beta_scaled_actual_prediction_step_norm": 0.0039191422973371606,
+    "stage1DelayedTermNorm_semantics": "Unscaled reference norm rho*||prediction_gradient||; actual C6 step norm is beta times this field.",
+    "event_audit_source_sha256": "d82e089c7d41f39c620daea63d95315632e6fb2f80addf4dc12e6a4603b8e57e",
+    "C6_MATLAB_helper_sha256": "53e5c2fa8098769b84952c93469625eae9abedccb199a1c57d3746b8005bd067",
+    "C6_Python_kernel_sha256": "0ad47c691f5411e36d75ab5f1f78ecb0a945564371ecfb2fc18066b47ae2bcac"
+  },
+  "paired_C6_C5_B72": {
+    "external_identity_sha256": "25da4a97c98d1fb69f4270da159ca906925b0cd51fcbbe0710699fca8ef986c3",
+    "identity_fields": [
+      "initial_state",
+      "time",
+      "environment_wind_I",
+      "arms/command",
+      "arms/rho_true",
+      "arms/rhoDot_true",
+      "arms/rho_hat",
+      "arms/rhoDot_hat",
+      "reference/acceleration",
+      "reference/position",
+      "reference/velocity",
+      "reference/yaw",
+      "reference/yaw_acceleration",
+      "reference/yaw_rate"
+    ],
+    "same_locked_physical_B_source_sha256": "e3ec711f1108c2c9a0c78d9d1ce07211a12313c6c00c22d112eb515a16ddf927",
+    "metrics": {
+      "C6": {
+        "Q_0_20_m": 0.009336262045897012,
+        "Q_0_5_m": 0.01648588664630656,
+        "Q_5_20_m": 0.0050622359171865056,
+        "rmse_x_0_20_m": 0.004198572559724364,
+        "rmse_y_0_20_m": 0.008313812401732403,
+        "rmse_z_0_20_m": 0.0006467617793184355,
+        "peak_m": 0.042857846955411956,
+        "p95_m": 0.024325146151799745,
+        "motor_saturated_fraction": 0.0,
+        "generalized_clipped_fraction": 0.0
+      },
+      "C5": {
+        "Q_0_20_m": 0.00955818951164021,
+        "Q_0_5_m": 0.016982853904149893,
+        "Q_5_20_m": 0.005066840574822944,
+        "rmse_x_0_20_m": 0.004217551980540875,
+        "rmse_y_0_20_m": 0.008553962246406857,
+        "rmse_z_0_20_m": 0.0006332234352191961,
+        "peak_m": 0.04304104601935524,
+        "p95_m": 0.025885482518493996,
+        "motor_saturated_fraction": 0.0,
+        "generalized_clipped_fraction": 0.0
+      },
+      "B72": {
+        "Q_0_20_m": 0.014217858960200806,
+        "Q_0_5_m": 0.01940384339090708,
+        "Q_5_20_m": 0.012001123771128006,
+        "rmse_x_0_20_m": 0.004922540453071,
+        "rmse_y_0_20_m": 0.013312018161272912,
+        "rmse_z_0_20_m": 0.000840405481884834,
+        "peak_m": 0.06042593456338524,
+        "p95_m": 0.021732512807730687,
+        "motor_saturated_fraction": 0.0,
+        "generalized_clipped_fraction": 0.0
+      }
+    },
+    "Q_differences_m": {
+      "C6_minus_C5": -0.00022192746574319772,
+      "C6_minus_B72": -0.004881596914303794,
+      "C5_minus_B72": -0.004659669448560597
+    },
+    "interpretation": "One DEV scene only; descriptive paired values, not a screen gate or tail authorization."
+  },
+  "safety_and_actuators": {
+    "C6": {
+      "state_samples": 20001,
+      "transitions": 20000,
+      "finite_sample_fields": [
+        "arms/command",
+        "arms/rhoDot_hat",
+        "arms/rhoDot_true",
+        "arms/rho_hat",
+        "arms/rho_true",
+        "environment_wind_I",
+        "reference/acceleration",
+        "reference/position",
+        "reference/velocity",
+        "reference/yaw",
+        "reference/yaw_acceleration",
+        "reference/yaw_rate",
+        "state",
+        "time"
+      ],
+      "finite_transition_fields": [
+        "allocated_generalized",
+        "controller_call_time_s",
+        "controller_clipped_generalized",
+        "generalized_clipped",
+        "motor_command",
+        "motor_saturated",
+        "motor_setpoint",
+        "motor_squared_requested",
+        "realized_generalized",
+        "requested_generalized",
+        "tilt_limited"
+      ],
+      "arms_command_shape": [
+        20001,
+        4
+      ],
+      "transition_limit_flag_counts": {
+        "motor_saturated": 0,
+        "generalized_clipped": 0,
+        "tilt_limited": 0
+      },
+      "log_status": "STABLE",
+      "safety_stop_reason": "",
+      "safe_stop": false,
+      "complete": true,
+      "plant_calls": 1,
+      "motor_saturated_fraction": 0.0,
+      "generalized_clipped_fraction": 0.0
+    },
+    "C5": {
+      "state_samples": 20001,
+      "transitions": 20000,
+      "finite_sample_fields": [
+        "arms/command",
+        "arms/rhoDot_hat",
+        "arms/rhoDot_true",
+        "arms/rho_hat",
+        "arms/rho_true",
+        "environment_wind_I",
+        "reference/acceleration",
+        "reference/position",
+        "reference/velocity",
+        "reference/yaw",
+        "reference/yaw_acceleration",
+        "reference/yaw_rate",
+        "state",
+        "time"
+      ],
+      "finite_transition_fields": [
+        "allocated_generalized",
+        "controller_call_time_s",
+        "controller_clipped_generalized",
+        "generalized_clipped",
+        "motor_command",
+        "motor_saturated",
+        "motor_setpoint",
+        "motor_squared_requested",
+        "realized_generalized",
+        "requested_generalized",
+        "tilt_limited"
+      ],
+      "arms_command_shape": [
+        20001,
+        4
+      ],
+      "transition_limit_flag_counts": {
+        "motor_saturated": 0,
+        "generalized_clipped": 0,
+        "tilt_limited": 0
+      },
+      "log_status": "STABLE",
+      "safety_stop_reason": "",
+      "safe_stop": false,
+      "complete": true,
+      "plant_calls": 1,
+      "motor_saturated_fraction": 0.0,
+      "generalized_clipped_fraction": 0.0
+    },
+    "B72": {
+      "state_samples": 20001,
+      "transitions": 20000,
+      "finite_sample_fields": [
+        "arms/command",
+        "arms/rhoDot_hat",
+        "arms/rhoDot_true",
+        "arms/rho_hat",
+        "arms/rho_true",
+        "environment_wind_I",
+        "reference/acceleration",
+        "reference/position",
+        "reference/velocity",
+        "reference/yaw",
+        "reference/yaw_acceleration",
+        "reference/yaw_rate",
+        "state",
+        "time"
+      ],
+      "finite_transition_fields": [
+        "allocated_generalized",
+        "controller_call_time_s",
+        "controller_clipped_generalized",
+        "generalized_clipped",
+        "motor_command",
+        "motor_saturated",
+        "motor_setpoint",
+        "motor_squared_requested",
+        "realized_generalized",
+        "requested_generalized",
+        "tilt_limited"
+      ],
+      "arms_command_shape": [
+        20001,
+        4
+      ],
+      "transition_limit_flag_counts": {
+        "motor_saturated": 0,
+        "generalized_clipped": 0,
+        "tilt_limited": 0
+      },
+      "log_status": "STABLE",
+      "safety_stop_reason": "",
+      "safe_stop": false,
+      "complete": true,
+      "plant_calls": 1,
+      "motor_saturated_fraction": 0.0,
+      "generalized_clipped_fraction": 0.0
+    }
+  },
+  "metric_scorer_sha256": "c64482d0adbc4358417648ec08351bd78f1d3dbdb38950435fa71b9cb0f531b1",
+  "mat_decoder_sha256": "372d92cb17da99884e742d3fa0c877200c3bb2bc6fac7f10e7a1a046b97a76af",
+  "plant_calls_in_this_audit": 0,
+  "TEST_accessed": false
+}

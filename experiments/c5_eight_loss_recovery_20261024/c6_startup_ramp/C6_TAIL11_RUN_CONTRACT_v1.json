@@ -1,0 +1,113 @@
+{
+  "schema": "C6_TAIL11_RUN_CONTRACT_V1",
+  "state": "LOCKED_C6_TAIL11_WAIT_PARENT_RELEASE_V1",
+  "candidate": "C6_STARTUP_PREDICTION_RAMP",
+  "taskbook_sha256": "d9360ccccfe942f2ae1ab06b600e3c2a29c9cbc3cb05bc9f64b0b55454d49df9",
+  "coordinate_mask": [
+    1,
+    1,
+    0
+  ],
+  "model": {
+    "id": "DSSM14",
+    "seed": 2026102001,
+    "selected_step": 60000,
+    "input_dim": 14,
+    "window": 32,
+    "W0_sha256": "88f8c4f2495438c3797655c48bab1bf0c11ac2e27bff1f5f2a7423a8f0a2cf53",
+    "normalizer_arrays_sha256": "533aad9a2c66874cfa67f5d268661835e81e58b797cba7d6fc1c12d4013de5f0"
+  },
+  "fixed_parameters": {
+    "gamma": 12,
+    "leak_per_s": 0.002,
+    "event_period_s": 0.01,
+    "tau_s": 1,
+    "rho": 0.01,
+    "plant_dt_s": 0.001,
+    "beta_rise_s": 1.8,
+    "prediction_clip": 3,
+    "weight_clip": 60,
+    "coordinate_mask": [
+      1,
+      1,
+      0
+    ],
+    "control": "C0/J0 nominal",
+    "pcf_coordinate_mask": "M110"
+  },
+  "update_rule": {
+    "description": "Only the existing delayed prediction gradient term is multiplied by the existing beta.",
+    "expression": "W_next = clip(W - h*gamma*beta*phi*s_eff^T - h*lambda*W - rho*beta*prediction_gradient, -60, 60)",
+    "prediction_gradient_scaled_by_beta": true,
+    "tracking_term_unchanged": true,
+    "prediction_output_scaled_by_beta": true,
+    "output_precedes_weight_update": true,
+    "beta_formula": "min((n+1)*plant_dt_s/beta_rise_s,1)",
+    "beta_one_equivalence_is_same_input_only": true,
+    "later_closed_loop_state_may_differ": true
+  },
+  "scoring_comparator": "B_TRACEABLE_DEV72",
+  "original_run_contract_sha256": "6b75d40ff257d38a8aa6c9d7e1384dacbaee5b89d9a218a19bbe3037b7d7a463",
+  "input_lock_sha256": "919de01ed9a111f24f4028b5436bdfa46d817f32c475bbf18e70b87d2eb37c06",
+  "prepare_result_sha256": "01ed7e161429579ab3d669214975c1042a32d133b9389fd83b91b6685fdeac6a",
+  "snapshot_sha256": "f6ad61507b1d9027abb6bb2e4f5fc30d8558c0820fe663e0a2deb3a62b84255b",
+  "original_scene_ids": [
+    "DL1018_VAL_T1_C00_W07",
+    "DL1018_VAL_T1_C02_W09",
+    "DL1018_VAL_T1_C05_W12",
+    "DL1018_VAL_T1_C08_W15",
+    "DL1018_VAL_T2_C00_W10",
+    "DL1018_VAL_T2_C02_W12",
+    "DL1018_VAL_T2_C05_W15",
+    "DL1018_VAL_T2_C06_W00",
+    "DL1018_VAL_T3_C00_W13",
+    "DL1018_VAL_T3_C02_W15",
+    "DL1018_VAL_T3_C03_W00",
+    "DL1018_VAL_T3_C12_W09"
+  ],
+  "first_scene_id": "DL1018_VAL_T1_C00_W07",
+  "tail_scene_ids": [
+    "DL1018_VAL_T1_C02_W09",
+    "DL1018_VAL_T1_C05_W12",
+    "DL1018_VAL_T1_C08_W15",
+    "DL1018_VAL_T2_C00_W10",
+    "DL1018_VAL_T2_C02_W12",
+    "DL1018_VAL_T2_C05_W15",
+    "DL1018_VAL_T2_C06_W00",
+    "DL1018_VAL_T3_C00_W13",
+    "DL1018_VAL_T3_C02_W15",
+    "DL1018_VAL_T3_C03_W00",
+    "DL1018_VAL_T3_C12_W09"
+  ],
+  "limits": {
+    "max_new_Plant": 11,
+    "max_total_Plant_including_pilot": 12,
+    "max_output_bytes": 80000000000,
+    "minimum_free_bytes": 30000000000,
+    "per_scene_output_reserve_bytes": 89478486,
+    "deadline_utc": "2026-10-24T17:01:00Z",
+    "seconds_per_remaining_scene_for_deadline_guard": 180,
+    "process_exit_buffer_seconds": 600
+  },
+  "b72_binding": {
+    "raw_manifest_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\reports\\paper_continuation_20261023\\c5_axis_coordinate_parent_review\\C5_B72_SCORING_MANIFEST_v1.json",
+    "raw_manifest_sha256": "7c1c17c1168e918f3796bb78ba1a5acc8fcee19d9a0ee96d971d9ec0f4fd7355",
+    "parent_review_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\reports\\paper_continuation_20261023\\c5_axis_coordinate_parent_review\\C5_B72_INPUT_PARENT_ATTESTATION_v1.json",
+    "parent_review_sha256": "97e62726933d30197e7733c6d81d717c38820b492169226342527f1f3d18fdc1",
+    "batch_status_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\b_traceable_c3core_dev72_20261023\\B_TRACEABLE_DEV72_BODY_COMPLETE_v3.json",
+    "batch_status_sha256": "16875fcf8ff4901659c5b1ed2dd595c43963bead074ec7eedf7c111387a6050b",
+    "input_lock_sha256": "8d738e5c70ba2fc8697550549d1a0537f08eadb49b99bc5684e5c26f6222f452",
+    "run_contract_sha256": "03cb8c04c70974db9b13e4da20a5f65860a2a604f4888a8a94e4dcfb9ac52de8",
+    "prepare_result_sha256": "3ee8867ef084471db6bba4d45d996cb9d5b8984143cd5abff6e30b849851aec8",
+    "release_sha256": "f8fd7865a394d7195948d6a47d6769b0c5c64ce28cd0ccc19e9d47d02506f3d1"
+  },
+  "b72_complete_scene_count": 72,
+  "first_scene_review": {
+    "raw_review_sha256": "e3faaac63ce4fdc021e11b1fb489fb64928f5b02d831b4fa65ff14977a09e5a8",
+    "metadata_os_review_sha256": "1136e276cf30f8ec0f823986d060f53ac04138b84c6e151fa59c3ba959d54064",
+    "review_is_tail_authorization": false,
+    "scientific_outcome_claimed": false
+  },
+  "first_scene_review_is_tail_authorization": false,
+  "first_scene_outcome_used_as_authorization": false
+}

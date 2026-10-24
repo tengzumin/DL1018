@@ -1,0 +1,48 @@
+{
+  "schema": "C6_NOPLANT_PARENT_RELEASE_CONTRACT_V1",
+  "state": "CONTRACT_ONLY_PARENT_RELEASE_REQUIRED",
+  "release_file_name": "C6_NOPLANT_PARENT_RELEASE_v1.json",
+  "required_release_schema": "C6_NOPLANT_PARENT_RELEASE_V1",
+  "required_release_state": "APPROVED_C6_NOPLANT_V1",
+  "required_fields": [
+    "schema",
+    "state",
+    "plant_authorized",
+    "max_new_Plant",
+    "taskbook_sha256",
+    "c6_input_lock_sha256",
+    "c6_run_contract_sha256",
+    "c6_source_binding_sha256",
+    "c6_noplant_parent_release_contract_sha256",
+    "c6_prepare_entry_sha256",
+    "c6_synthetic_check_sha256",
+    "c6_fixture_builder_sha256",
+    "c6_fixture_sha256",
+    "c6_noplant_launcher_sha256",
+    "training_steps",
+    "optimizer_steps",
+    "parameter_or_seed_search",
+    "new_B_sorties",
+    "TEST_accessed",
+    "GPU",
+    "automatic_retry",
+    "created_utc"
+  ],
+  "required_values": {
+    "plant_authorized": false,
+    "max_new_Plant": 0,
+    "training_steps": 0,
+    "optimizer_steps": 0,
+    "parameter_or_seed_search": false,
+    "new_B_sorties": 0,
+    "TEST_accessed": false,
+    "GPU": false,
+    "automatic_retry": false
+  },
+  "execution_rule": "Only after a separate parent release, run C6 synthetic cross-language and no-Plant source/which/cfg/opts/identity preparation. No episode, Plant, score, or TEST access. Preserve natural OS exit evidence; no retry.",
+  "required_threads": {
+    "OMP_NUM_THREADS": 1,
+    "MKL_NUM_THREADS": 1,
+    "OPENBLAS_NUM_THREADS": 1
+  }
+}

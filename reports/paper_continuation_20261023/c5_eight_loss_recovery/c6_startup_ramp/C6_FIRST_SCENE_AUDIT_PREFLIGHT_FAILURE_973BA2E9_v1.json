@@ -1,0 +1,12 @@
+{
+  "schema": "C6_FIRST_SCENE_AUDIT_PREFLIGHT_FAILURE_V1",
+  "failed_script_path": "experiments/c5_eight_loss_recovery_20261024/c6_startup_ramp/audit_c6_first_scene_pair_973ba2e9_failed_b72_lock_assumption.py",
+  "failed_script_sha256": "973ba2e9138ab67d6eba857ee9d26acc7b11f120a191c86cd6e0db36c6d7f21f",
+  "failure": "AssertionError: B72 input lock does not bind the same 14-field scene",
+  "failure_location": "audit_c6_first_scene_pair_v1.py:363",
+  "cause": "The B72 input-lock row scored_log identifies the physical B source; the traceable-B scoring raw is separately bound by the C6 release and B72 manifest.",
+  "raw_trajectory_values_read": false,
+  "scoring_started": false,
+  "review_outputs_created": false,
+  "resolution": "Compare the B72 input-lock row scored_log path/SHA to the shared physical B source; keep the release and manifest checks for the distinct traceable-B scoring raw."
+}

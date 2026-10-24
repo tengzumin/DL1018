@@ -1,0 +1,61 @@
+{
+  "status": "APPROVED_SOURCE_FOR_POST_SIX_OS0_READONLY_RAW_AUDIT",
+  "script_sha256": "31229d1b9d137ec2847b25b7a32c3d0183e517fac963dc2ed01de74bcde11d45",
+  "README_sha256": "93a66d1fa243d14be5705b533b729be1654dcf7d43a5999fbde3d90ff9a301c9",
+  "source_review": "Root read full initial wrapper plus all subsequent changes; corrected reference counts, noncircular release binding, opaque string handling, column struct parsing, disabled debug, paired input hashes and actual corrected-model initial W0 checks. Numeric scoring calls only frozen score function; C5 event equations imported unchanged. Unknown schemas fail; no overwrite or Plant retry.",
+  "pure_function_checks": {
+    "schema": "DEV_OR_SYNTHETIC_SELF_CHECK_V1",
+    "status": "DEV_OR_SYNTHETIC_SELF_CHECK",
+    "TEST_accessed": false,
+    "synthetic_only": true,
+    "checks": {
+      "ready_cutoff": "t>=0.320 s",
+      "ready_calls_in_synthetic_check": 3,
+      "nonready_calls_in_synthetic_check": 1,
+      "all_call_window_retained": true,
+      "overall_over1ms_definition": "strictly greater than 0.001 s",
+      "struct_column_self_check": {
+        "rows_preserved": 2,
+        "singleton_columns_unboxed": true,
+        "nested_path_cell_preserved": true,
+        "synthetic_only": true
+      }
+    },
+    "note": "Only small in-memory numeric vectors and non-TEST synthetic struct columns were used; no TEST IDs, files, MAT values, or TEST-shaped rows were read or fabricated."
+  },
+  "actual_helper_hashes": {
+    "entry": {
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\c5_test48_v3\\test48_entry_v1.m",
+      "sha256": "0490da98749b114ed9e9553fc7cb44349e0c5c9d182551d8a05c844a009b9bf2"
+    },
+    "launcher": {
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\c5_test48_v3\\RUN_TEST48_EXACT_v1.ps1",
+      "sha256": "a5bd7682752a258b9b1ef891e42369e93d033fa5416dba6be89800dbec2559f9"
+    },
+    "scorer": {
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\reports\\delayed_prediction_c3_dev72_parent_20261023\\parent_raw_metrics.py",
+      "sha256": "c64482d0adbc4358417648ec08351bd78f1d3dbdb38950435fa71b9cb0f531b1"
+    },
+    "c5_reviewer": {
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\reports\\paper_continuation_20261023\\c5_dev72_parent_review\\audit_c5_dev72_raw_parent_v4.py",
+      "sha256": "d82e089c7d41f39c620daea63d95315632e6fb2f80addf4dc12e6a4603b8e57e"
+    },
+    "ablation_auditor": {
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\reports\\paper_continuation_20261023\\c5_matched_ablation_parent_raw_review\\event_audit_c5_matched_ablation.py",
+      "sha256": "1a8106ca6df7bb75ecb7a9cf5a09b9f91bc6eaa38547917a1fab677092c3755a"
+    },
+    "decoder": {
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\reports\\paper14_v2\\phase1\\audit_w15_position_replay.py",
+      "sha256": "372d92cb17da99884e742d3fa0c877200c3bb2bc6fac7f10e7a1a046b97a76af"
+    }
+  },
+  "limitations": "Actual TEST raw schema and physical results are not yet verified; any reader adaptation must preserve the frozen scoring and scientific rules. No claim that source review proves completed TEST.",
+  "wrapper_CLI_executed": false,
+  "TEST_raw_accessed_by_this_review": false,
+  "Plant_calls": 0,
+  "timing_measurement_in_progress": true,
+  "ready_cutoff_semantics": "Fixed common t>=0.320 window across all methods; native event/call telemetry separately disclosed.",
+  "approved_future_command": "python reports/paper_continuation_20261023/test_raw_review_v1/audit_test48_raw_v1.py --output-json reports/paper_continuation_20261023/test_raw_review_v1/TEST48_RAW_PARENT_AUDIT_v1.json",
+  "must_wait_for": "All six method OS0 receipts and all formal timing jobs naturally closed",
+  "utc": "2026-10-23T14:12:00.590836+00:00"
+}

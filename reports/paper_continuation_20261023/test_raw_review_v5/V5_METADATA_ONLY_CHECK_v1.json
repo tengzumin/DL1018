@@ -1,0 +1,68 @@
+{
+  "schema": "TEST48_READER_V5_METADATA_ONLY_CHECK_V1",
+  "reader_sha256": "1c7380abd2b1f29e0f7045017abaeef87f54d751ad74a710bfbdbdac504730ff",
+  "AST_metadata_function_check": true,
+  "BLAS_threads": 1,
+  "reader_CLI_executed": false,
+  "TEST_input_index_metadata_accessed": true,
+  "TEST_MAT_raw_score_accessed": false,
+  "Plant_calls": 0,
+  "training_steps": 0,
+  "status": "PASS_ALL_APPROVED_METADATA_GATES",
+  "checks": [
+    {
+      "function": "verify_v4_code_and_manifest",
+      "status": "PASS",
+      "lineage": {
+        "methods": [
+          "B_TRACEABLE",
+          "CORRECTED_DSSM14_G12_R32",
+          "CORRECTED_KAN14_G12_R32",
+          "C5_M110",
+          "C5_FREEZE_TRAINED_W0",
+          "C5_NO_DELAYED_PREDICTION"
+        ],
+        "method_source_reference_count": 190,
+        "model_reference_count": 12,
+        "shared_source_reference_count": 12,
+        "method_and_shared_source_reference_count": 202,
+        "global_platform_reference_count": 32,
+        "global_platform_lock_sha256": "f7c756e8f7473f3ddba18e35618fd5c0487c3f42d234cca9366727fc0719d738",
+        "D_K_source_change": "Each corrected method adds exactly the locked PCF helper. Only the two historical reference paths/SHAs are corrected to r002/r001; frozen TEST cfgpack bytes and all model/source identities stay unchanged.",
+        "B_behavior": "Reuse all 48 v3 raw records; no B rerun."
+      }
+    },
+    {
+      "function": "validate_method_lineage",
+      "status": "PASS",
+      "source_reference_count": 190
+    },
+    {
+      "function": "verify_v4_run_release",
+      "status": "PASS",
+      "release_sha256": "59fae7920eb498d06f29c5c8d7eb1191843de79a640b6ec46e5c40fd32b1d06a"
+    },
+    {
+      "function": "verify_v3_failure_history",
+      "status": "PASS",
+      "receipt_sha256": "b6bee28f012250f21020757984ae2cda601ce56f37161eefad820b6bf3058f1a"
+    },
+    {
+      "function": "verify_v4_failure_and_path_diagnostic_history",
+      "status": "PASS"
+    },
+    {
+      "function": "verify_v5_v8_history",
+      "status": "PASS",
+      "process_count": 6,
+      "historical_VAL_Plant_calls": 1
+    },
+    {
+      "function": "verify_stage_preconditions",
+      "status": "PASS",
+      "stage_artifact_count": 3
+    }
+  ],
+  "forbidden_TEST_MAT_open_attempts": [],
+  "completed_utc": "2026-10-23T17:39:55.393982+00:00"
+}

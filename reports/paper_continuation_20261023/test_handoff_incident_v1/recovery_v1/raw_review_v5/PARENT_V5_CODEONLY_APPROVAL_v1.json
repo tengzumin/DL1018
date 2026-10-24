@@ -1,0 +1,144 @@
+{
+  "status": "PASS_PARENT_V5_INTEGER_SEMANTICS_AND_STATISTICS_SOURCE_REVIEW",
+  "raw_sha256": "7d81d3274801b6a33e18900c7da938d5db45c26ecd728517a585da2fbaef6495",
+  "stats_sha256": "679c36785a4d8cdaea0d63a70f716a123528dc39fd9a95d43912e8521f9e90b8",
+  "changed_existing_functions": [
+    "verify_scene32_exception_identity",
+    "verify_recovery_tail_run_identity",
+    "verify_v4_run_identity",
+    "synthetic_self_check"
+  ],
+  "score_event_physics_AST_exact": true,
+  "all_statistics_functions_AST_exact": true,
+  "synthetic": {
+    "schema": "DEV_OR_SYNTHETIC_SELF_CHECK_V1",
+    "status": "DEV_OR_SYNTHETIC_SELF_CHECK",
+    "TEST_accessed": false,
+    "synthetic_only": true,
+    "checks": {
+      "mixed_method_order_count": 6,
+      "v3_B_reuse_count": 1,
+      "v9_unstarted_method_count": 5,
+      "single_PCF_helper_addition": true,
+      "unexpected_extra_reference_rejected": true,
+      "scene32_exception_wrong_raw_path_start_path_raw_sha_start_sha_rejected": true,
+      "tail_canonical_and_local_index_errors_rejected": true,
+      "recovery288_missing_and_duplicate_pairs_rejected": true,
+      "v4_status_four_path_schema_and_bad_paths_rejected": true,
+      "v4_record_run_status_self_path_rejected": true,
+      "pinned_native_scene_binding_positive_and_negative": {
+        "valid_row_accepted": true,
+        "wrong_path_hash_index_scene_or_result_rejected": 9
+      },
+      "field_specific_actuator_shapes_positive_and_negative": {
+        "exact_field_shapes_accepted": true,
+        "wrong_field_length_or_width_rejected": 9
+      },
+      "MATLAB_double_integer_scalar_strictness": {
+        "2_0_accepted": true,
+        "2_5_rejected": true,
+        "bool_rejected": true
+      },
+      "B_identity_copy_matches_frozen_v1_outside_native_checks": true,
+      "score_wrapper_matches_frozen_v1_outside_actuator_check": true,
+      "separate_historical_v3_v4_and_path_diagnostic_audit_paths_present": true,
+      "frozen_v1_timing_and_struct_checks": {
+        "ready_cutoff": "t>=0.320 s",
+        "ready_calls_in_synthetic_check": 3,
+        "nonready_calls_in_synthetic_check": 1,
+        "all_call_window_retained": true,
+        "overall_over1ms_definition": "strictly greater than 0.001 s",
+        "struct_column_self_check": {
+          "Nx1_and_1xN_order_preserved": true,
+          "shadow_path_order_preserved": true,
+          "four_field_global_without_which_all_paths": true,
+          "ragged_or_wrong_type_rejected": 2,
+          "synthetic_only": true
+        }
+      }
+    },
+    "note": "No TEST ID, TEST-shaped row, TEST raw, performance score, MATLAB, Plant, or training was used."
+  },
+  "statistics_checks": [
+    {
+      "contract_path": "reports\\paper_continuation_20261023\\TEST48_SCORE_STATISTICS_CONTRACT_v1.json",
+      "contract_sha256": "c7d2983a031b56b16950ede637cce598f6c169b1fea6dc3a092f4337489d992c",
+      "freeze_path": "reports\\paper_continuation_20261023\\TEST48_SCIENTIFIC_FREEZE_v1_ZH.md",
+      "freeze_sha256": "bbcf14230f3bc7585f68ce4baf33227e85d1f20899b9fd11d7ec95af221068f6",
+      "score_source_path": "reports\\delayed_prediction_c3_dev72_parent_20261023\\parent_raw_metrics.py",
+      "score_source_sha256": "c64482d0adbc4358417648ec08351bd78f1d3dbdb38950435fa71b9cb0f531b1",
+      "recovery_reader_path": "reports\\paper_continuation_20261023\\test_handoff_incident_v1\\recovery_v1\\raw_review_v5\\audit_test48_raw_recovery288_v5.py",
+      "recovery_reader_sha256": "7d81d3274801b6a33e18900c7da938d5db45c26ecd728517a585da2fbaef6495",
+      "recovery_release_path": "reports\\paper_continuation_20261023\\test_handoff_incident_v1\\recovery_v1\\PARENT_RECOVERY208_RUN_RELEASE_v1.json",
+      "recovery_release_sha256": "97721e4ded2f7f8224aa6720e89302fa64e805244282ab1d3a87c35f283ed397",
+      "recovery_scope_path": "reports\\paper_continuation_20261023\\test_handoff_incident_v1\\recovery_v1\\RECOVERY208_SCOPE_v1.json",
+      "recovery_scope_sha256": "2480b9ac36eaa608a090c312ce2f3d63f37b3830c5054912e559fae720dc1a95"
+    },
+    {
+      "schema": "DEV_OR_SYNTHETIC_SELF_CHECK_V1",
+      "status": "DEV_OR_SYNTHETIC_SELF_CHECK",
+      "TEST_accessed": false,
+      "synthetic_only": true,
+      "checks": {
+        "scene_equal_mean_of_two_scores": 2.0,
+        "wlt_at_1e-12_m": {
+          "wins": 2,
+          "losses": 2,
+          "ties": 1
+        },
+        "wlt_at_1e-6_m": {
+          "wins": 2,
+          "losses": 2,
+          "ties": 1
+        },
+        "wlt_at_1e-5_m": {
+          "wins": 1,
+          "losses": 1,
+          "ties": 3
+        },
+        "bootstrap_shape": [
+          10000,
+          5
+        ],
+        "deterministic_index_sha256": "c4a64849c3ffbe39ffd7da41d35706db6f58fcefc06912d5a3d35eca4776d8b9"
+      },
+      "note": "No real TEST scene IDs, raw files, or measured values were read or generated."
+    },
+    {
+      "valid_synthetic_envelope": true,
+      "rejected_cases": {
+        "legacy_pass_schema_and_status": true,
+        "wrong_recovery_schema": true,
+        "wrong_recovery_status": true,
+        "original_DSSM_OS0_instead_of_UNKNOWN": true,
+        "old_DSSM_gate_reclassified": true,
+        "release_legacy_gate_reclassified": true,
+        "timing_legacy_gate_reclassified": true,
+        "missing_new_receipt": true,
+        "duplicate_new_receipt": true,
+        "nonzero_new_receipt": true,
+        "boolean_block_index": true,
+        "boolean_os_exit_code": true,
+        "boolean_training_steps": true,
+        "boolean_optimizer_steps": true,
+        "missing_scene_method_pair": true,
+        "duplicate_scene_method_pair": true,
+        "bad_event_count": true,
+        "bad_event_scope": true,
+        "safety_stop_row": true,
+        "missing_actuator_ledger_row": true,
+        "nonfinite_actuator_ledger_row": true,
+        "wrong_arms_command_sample_count": true,
+        "wrong_transition_channel_sample_count": true,
+        "wrong_tilt_channel_width": true,
+        "boolean_actuator_dimension": true,
+        "missing_initial_weight_ledger_row": true,
+        "failed_initial_weight_ledger_row": true
+      },
+      "TEST_accessed": false,
+      "raw_or_score_files_opened": false
+    }
+  ],
+  "metadata_pref_report_sha256": "f6a7445cd36291d86da7f8a00b1a28eff534b1a0857caf5f6023a845023d1a01",
+  "actual_raw_opened": false
+}

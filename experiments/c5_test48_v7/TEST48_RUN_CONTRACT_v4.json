@@ -1,0 +1,126 @@
+{
+  "schema": "TEST48_RUN_CONTRACT_V4",
+  "state": "CODE_ONLY_WAITING_FOR_SEPARATE_STAGE_RELEASES",
+  "version": "c5_test48_v7",
+  "taskbook_path": "reports/paper_continuation_20261023/TEST_CORRECTED_REFERENCE_BINDING_TASKBOOK_v1_ZH.md",
+  "taskbook_sha256": "670f7d9507458523581dcd98d8090cadb9bd7612a38475b367e91a51c45ac948",
+  "code_only_release_path": "reports/paper_continuation_20261023/TEST_CORRECTED_REFERENCE_BINDING_CODE_ONLY_RELEASE_v1.json",
+  "code_only_release_sha256": "058dbc251f60595896c39cbc97db0b92a58b6fc455f82e52620e5cebaa372a0f",
+  "dependency_review_path": "reports/paper_continuation_20261023/test_dependency_review_v1/DEPENDENCY_REVIEW_v1.json",
+  "dependency_review_sha256": "dc9d9ab261bc13ee08fd733b961acf56396e1da8eb945fc15455a1b2b2d3d4b7",
+  "method_source_manifest_path": "reports/paper_continuation_20261023/test_entry_v7/TEST_METHOD_SOURCE_MANIFEST_v4.json",
+  "method_source_manifest_sha256": "43278c6143b5aad1271df3e68596c32c02cb4255748504320279c573e34e0663",
+  "v3_source_manifest_path": "reports/paper_continuation_20261023/test_entry_v3/TEST_METHOD_SOURCE_MANIFEST_v1.json",
+  "v3_source_manifest_sha256": "b9ed7fef91bf61b03e4f51d8a9cbaf7233484ac6faa4750827aefb7e247f9633",
+  "v3_frozen_inputs": {
+    "shared_scenes_path": "experiments/c5_test48_v3/input/TEST_SCENES_SHARED_v1.mat",
+    "shared_scenes_sha256": "da207d858e8918f27c19fef30d4ad57206e20f1971e743515043d1a88a995d5c",
+    "cfg_opts_path": "experiments/c5_test48_v3/input/TEST_METHOD_CFG_OPTS_v1.mat",
+    "cfg_opts_sha256": "389fdfabd9fbd350d3bdd6df934cfe718eb7208bef2b7b4af02f1192cbb1b9e4",
+    "index_path": "experiments/c5_test48_v3/input/TEST_INPUT_INDEX_v1.json",
+    "index_sha256": "90940a818d293c66c34423a63088113557518c5ecdfd528a3f37867f391eef68",
+    "freeze_result_path": "reports/paper_continuation_20261023/test_entry_v3/TEST_INPUT_FREEZE_RESULT_v1.json",
+    "freeze_os_path": "reports/paper_continuation_20261023/test_entry_v3/TEST_INPUT_FREEZE_MATLAB_OS_EXIT_v1.json",
+    "freeze_result_sha256": "7b6edd167dff5e7ee05cc29814ff007dbd5e4cacb6fe3a8b23668fef57f6c1e9",
+    "freeze_os_sha256": "5a75bf1317e2a4888e853a31105859f08b6e68024d9fc0fa5fde984bf5cce544",
+    "scene_set_sha256": "90e59e5461650cf718a2eeb48b68a4f3c38e3e5b4046ca721116d143b731769e"
+  },
+  "method_order": [
+    {
+      "id": "B_TRACEABLE",
+      "alias": "BTR",
+      "source": "frozen C3 core; controller_options_dl1018(cfg,'B')"
+    },
+    {
+      "id": "CORRECTED_DSSM14_G12_R32",
+      "alias": "DSSM",
+      "source": "corrected pair runtime; DSSM14"
+    },
+    {
+      "id": "CORRECTED_KAN14_G12_R32",
+      "alias": "KAN",
+      "source": "corrected pair runtime; KAN14"
+    },
+    {
+      "id": "C5_M110",
+      "alias": "C5M110",
+      "source": "C5 core and delayed_prediction_step_candidate"
+    },
+    {
+      "id": "C5_FREEZE_TRAINED_W0",
+      "alias": "C5FREEZE",
+      "source": "C5 core and freeze helper"
+    },
+    {
+      "id": "C5_NO_DELAYED_PREDICTION",
+      "alias": "C5NOPRED",
+      "source": "C5 core and no-pred helper"
+    }
+  ],
+  "engineering_dev2": [
+    {
+      "method_id": "CORRECTED_DSSM14_G12_R32",
+      "alias": "DSSM",
+      "v3_order": 2,
+      "peer_legacy_run_id": "r002",
+      "peer_legacy_method_id": "CORRECTED_TRAIN_DSSM14_G12_R32",
+      "scene_id": "DL1018_VAL_T1_C00_W07",
+      "run_start_path": "C:/Users/35326/Desktop/postgraduation/0/Mcode/drone_tcn/REFERENCE_FIX_FULL72_20261021_022342_313/corrected_reference_training_v1/corrected_pair_eval_v1/runs/r002/attempt_01/run_start.mat",
+      "run_start_sha256": "3b798c8624cc10cc1ddf3b3b1000099bc62e42e8430af92a42b0fa467385743e",
+      "raw_path": "C:/Users/35326/Desktop/postgraduation/0/Mcode/drone_tcn/REFERENCE_FIX_FULL72_20261021_022342_313/corrected_reference_training_v1/corrected_pair_eval_v1/runs/r002/attempt_01/raw_run.mat",
+      "raw_sha256": "231a29949fe0f4ca1a900b909ee8ca9a003f99a71448c14974b68530b45f2b18",
+      "v3_cfg_opts_snapshot_sha256": "1b6417b4369f5b5618d1ee81ac8595de1bb6d607e0fdd04ad2913748f6986cde",
+      "relation": "Exact corrected_reference_training/corrected_pair_eval_v1 r002/attempt_01 run_start and adjacent raw; both SHA-bound, corrected model identity retained, source/runtime scene is DL1018_VAL_T1_C00_W07."
+    },
+    {
+      "method_id": "CORRECTED_KAN14_G12_R32",
+      "alias": "KAN",
+      "v3_order": 3,
+      "peer_legacy_run_id": "r001",
+      "peer_legacy_method_id": "CORRECTED_TRAIN_KAN14_G12_R32",
+      "scene_id": "DL1018_VAL_T1_C00_W07",
+      "run_start_path": "C:/Users/35326/Desktop/postgraduation/0/Mcode/drone_tcn/REFERENCE_FIX_FULL72_20261021_022342_313/corrected_reference_training_v1/corrected_pair_eval_v1/runs/r001/attempt_01/run_start.mat",
+      "run_start_sha256": "0012bf34074ac2f034517fbb65237bd667b31e7e539987601e4d16e0b26c9525",
+      "raw_path": "C:/Users/35326/Desktop/postgraduation/0/Mcode/drone_tcn/REFERENCE_FIX_FULL72_20261021_022342_313/corrected_reference_training_v1/corrected_pair_eval_v1/runs/r001/attempt_01/raw_run.mat",
+      "raw_sha256": "e6f704af8dba06cfd25ab401aedfc3866f8f91c06677858ec5b7c0154b8fa54f",
+      "v3_cfg_opts_snapshot_sha256": "b10d1de1a0a0307659c3e1bb0f608aa8a4e0da109991493dbc327104404bbda9",
+      "relation": "Exact corrected_reference_training/corrected_pair_eval_v1 r001/attempt_01 run_start and adjacent raw; both SHA-bound, corrected model identity retained, source/runtime scene is DL1018_VAL_T1_C00_W07."
+    }
+  ],
+  "execution": {
+    "scene_count": 48,
+    "unstarted_method_ids": [
+      "CORRECTED_DSSM14_G12_R32",
+      "CORRECTED_KAN14_G12_R32",
+      "C5_M110",
+      "C5_FREEZE_TRAINED_W0",
+      "C5_NO_DELAYED_PREDICTION"
+    ],
+    "max_unique_plant_calls": 240,
+    "B48_reused": true,
+    "training_steps": 0,
+    "parameter_search": false
+  },
+  "limits": {
+    "raw_transitions": 20000,
+    "raw_state_samples": 20001,
+    "outputs_must_be_short_paths_under_chars": 240,
+    "test_q_horizon_s": 20,
+    "max_output_bytes": 80000000000,
+    "prior_created_bytes": 21371186747,
+    "prior_creation_observation_path": "reports/paper_continuation_20261023/RESOURCE_CREATION_TIME_OBSERVATION_v2.json",
+    "prior_creation_observation_sha256": "94d094050d3ce3dc9f5621161157df0605edb4e020cb90315a2af84fcff86158",
+    "per_scene_output_reserve_bytes": 80000000,
+    "process_exit_buffer_seconds": 600,
+    "no_retry": true,
+    "per_scene_seconds_guard": 180,
+    "hard_deadline_utc": "2026-10-24T17:01:00Z",
+    "minimum_free_bytes_after_reserve": 30000000000
+  },
+  "entry_path": "experiments/c5_test48_v7/test48_entry_v4.m",
+  "entry_sha256": "e78f64c315ebd174676489213650906d4cd027ff71ce47c173d9e456542c4582",
+  "launcher_path": "experiments/c5_test48_v7/RUN_TEST48_EXACT_v1.ps1",
+  "launcher_sha256": "92b78af579c02613278ed8b83a31d7483be5776a340065a18927b43c689632a5",
+  "global_platform_lock_sha256": "f7c756e8f7473f3ddba18e35618fd5c0487c3f42d234cca9366727fc0719d738",
+  "global_platform_ref_count": 32
+}

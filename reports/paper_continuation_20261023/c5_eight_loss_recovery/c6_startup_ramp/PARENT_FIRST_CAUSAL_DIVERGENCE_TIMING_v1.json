@@ -1,0 +1,37 @@
+{
+  "status": "PASS_PARENT_FIRST_EXPECTED_CAUSAL_DIVERGENCE_TIMING",
+  "scene_id": "DL1018_VAL_T1_C00_W07",
+  "raw_sha256_C5": "27f3d6f19f20edeb3e45c77be25daf4746e41c800fbe6126b12c07fdc52caaa5",
+  "raw_sha256_C6": "11fc0a35f38efb5ac38d0d4f6a1da30be7c7eaada409baaa6d50521f0310eb38",
+  "checks": {
+    "state": {
+      "first_exact_difference_zero_based": 341,
+      "first_difference_over_1e-12_zero_based": 341,
+      "max_abs": 0.007450654516174493
+    },
+    "position_compensation_applied_acceleration_mps2": {
+      "first_exact_difference_zero_based": 340,
+      "first_difference_over_1e-12_zero_based": 340,
+      "max_abs": 0.01675247198433233
+    },
+    "stage1_position_event_raw_acceleration_mps2": {
+      "first_exact_difference_zero_based": 340,
+      "first_difference_over_1e-12_zero_based": 340,
+      "max_abs": 0.029744255582716428,
+      "valid_events_only_for_max_abs": 1968,
+      "matching_nonready_nan_entries_excluded": 54096
+    },
+    "stage1_position_event_weight_before_33x3": {
+      "first_different_event_ordinal_zero_based": 2,
+      "corresponding_plant_step": 340,
+      "max_abs": 0.03237489092713139
+    },
+    "stage1_position_event_weight_after_33x3": {
+      "first_different_event_ordinal_zero_based": 1,
+      "corresponding_plant_step": 330,
+      "max_abs": 0.03237489092713139
+    }
+  },
+  "interpretation": "First delayed-label update differs at n=330; output-before-update defers first compensation difference to n=340. Physical state differs only afterward. Supports the intended single-factor timing, not general performance or stability.",
+  "TEST_accessed": false
+}

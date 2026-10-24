@@ -1,0 +1,107 @@
+{
+  "status": "PARENT_FINAL_SYNTHETIC_AND_PROTECTED_CODE_PASS_PEER_PENDING",
+  "source_sha256": "535a14ef2593dad33a564a4fddfce1ecf776fbcd8e0d6e6a8df453c861fee866",
+  "old_source_sha256": "5a5e102f57d48ff60e83404606baf306a9a7d7160304919e98dc4f57eb7cbd08",
+  "protected_functions_exact": {
+    "parse_scene_id": true,
+    "numeric_scalars": true,
+    "quality_scalars": true,
+    "group_members": true,
+    "wlt": true,
+    "mean_metric": true,
+    "group_summary": true,
+    "bootstrap_indices": true,
+    "bootstrap_cis": true,
+    "_quality_failure": true,
+    "integrity_report": true
+  },
+  "protected_constants_exact": [
+    "METHODS",
+    "CANDIDATE",
+    "PRIMARY_Q",
+    "TIE_TOL_M",
+    "SENSITIVITY_M",
+    "BOOTSTRAP_REPLICATES",
+    "BOOTSTRAP_SEED",
+    "CI_GROUP_ORDER",
+    "BANDS",
+    "BASE_SCORE_FIELDS"
+  ],
+  "analyze_numeric_prefix_AST_exact": true,
+  "added_analyze_assignments": "Only recovery_provenance and recovery_release metadata; prior overly broad parent assertion rejected these allowed additions before runtime, then corrected.",
+  "ROOT_exact": true,
+  "source_bindings": {
+    "contract_path": "reports\\paper_continuation_20261023\\TEST48_SCORE_STATISTICS_CONTRACT_v1.json",
+    "contract_sha256": "c7d2983a031b56b16950ede637cce598f6c169b1fea6dc3a092f4337489d992c",
+    "freeze_path": "reports\\paper_continuation_20261023\\TEST48_SCIENTIFIC_FREEZE_v1_ZH.md",
+    "freeze_sha256": "bbcf14230f3bc7585f68ce4baf33227e85d1f20899b9fd11d7ec95af221068f6",
+    "score_source_path": "reports\\delayed_prediction_c3_dev72_parent_20261023\\parent_raw_metrics.py",
+    "score_source_sha256": "c64482d0adbc4358417648ec08351bd78f1d3dbdb38950435fa71b9cb0f531b1",
+    "recovery_reader_path": "reports\\paper_continuation_20261023\\test_handoff_incident_v1\\recovery_v1\\raw_review_v1\\audit_test48_raw_recovery288_v1.py",
+    "recovery_reader_sha256": "a709201623d9e9f0e4b312946a1db35021bd5aa379c9f7ca04af3147e4be79d0",
+    "recovery_release_path": "reports\\paper_continuation_20261023\\test_handoff_incident_v1\\recovery_v1\\PARENT_RECOVERY208_RUN_RELEASE_v1.json",
+    "recovery_release_sha256": "97721e4ded2f7f8224aa6720e89302fa64e805244282ab1d3a87c35f283ed397",
+    "recovery_scope_path": "reports\\paper_continuation_20261023\\test_handoff_incident_v1\\recovery_v1\\RECOVERY208_SCOPE_v1.json",
+    "recovery_scope_sha256": "2480b9ac36eaa608a090c312ce2f3d63f37b3830c5054912e559fae720dc1a95"
+  },
+  "guarded_selfcheck": {
+    "schema": "DEV_OR_SYNTHETIC_SELF_CHECK_V1",
+    "status": "DEV_OR_SYNTHETIC_SELF_CHECK",
+    "TEST_accessed": false,
+    "synthetic_only": true,
+    "checks": {
+      "scene_equal_mean_of_two_scores": 2.0,
+      "wlt_at_1e-12_m": {
+        "wins": 2,
+        "losses": 2,
+        "ties": 1
+      },
+      "wlt_at_1e-6_m": {
+        "wins": 2,
+        "losses": 2,
+        "ties": 1
+      },
+      "wlt_at_1e-5_m": {
+        "wins": 1,
+        "losses": 1,
+        "ties": 3
+      },
+      "bootstrap_shape": [
+        10000,
+        5
+      ],
+      "deterministic_index_sha256": "c4a64849c3ffbe39ffd7da41d35706db6f58fcefc06912d5a3d35eca4776d8b9"
+    },
+    "note": "No real TEST scene IDs, raw files, or measured values were read or generated."
+  },
+  "guarded_recovery_schema_check": {
+    "valid_synthetic_envelope": true,
+    "rejected_cases": {
+      "legacy_pass_schema_and_status": true,
+      "wrong_recovery_schema": true,
+      "wrong_recovery_status": true,
+      "original_DSSM_OS0_instead_of_UNKNOWN": true,
+      "old_DSSM_gate_reclassified": true,
+      "release_legacy_gate_reclassified": true,
+      "timing_legacy_gate_reclassified": true,
+      "missing_new_receipt": true,
+      "duplicate_new_receipt": true,
+      "nonzero_new_receipt": true,
+      "missing_scene_method_pair": true,
+      "duplicate_scene_method_pair": true,
+      "bad_event_count": true,
+      "bad_event_scope": true,
+      "safety_stop_row": true,
+      "missing_actuator_ledger_row": true,
+      "nonfinite_actuator_ledger_row": true,
+      "missing_initial_weight_ledger_row": true,
+      "failed_initial_weight_ledger_row": true
+    },
+    "TEST_accessed": false,
+    "raw_or_score_files_opened": false
+  },
+  "synthetic_analyze_output_schema": "RECOVERY288_DESCRIPTIVE_STATISTICS_V1",
+  "TEST_raw_opened": false,
+  "actual_TEST_scores_accessed": false,
+  "created_utc": "2026-10-23T19:04:22.304396+00:00"
+}

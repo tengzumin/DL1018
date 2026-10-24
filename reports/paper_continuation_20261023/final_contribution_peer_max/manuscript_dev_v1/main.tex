@@ -1,0 +1,157 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=0.9in]{geometry}
+\usepackage{amsmath,amssymb,booktabs,tabularx,array}
+\usepackage{url}
+\usepackage[hidelinks]{hyperref}
+
+\title{Coordinate-Matched Delayed Residual Learning for Discrete Position-Loop Compensation: A Development-Set Study}
+\author{}
+\date{Internal draft --- 23 October 2026; independent test pending}
+
+\newcommand{\clip}{\operatorname{clip}}
+\newcommand{\Cset}{\mathcal{C}}
+\newcommand{\Qmetric}{Q}
+\newcommand{\NOpred}{\textsc{NoPred}}
+\newcommand{\Cfive}{\textsc{C5}}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We examine a fixed discrete residual-compensation loop for multirotor position tracking. The controller uses a pretrained DSSM14 representation and a linear output head, emits each prediction before updating, and forms its update target only after a complete 10-ms interval. A fixed coordinate mask $M=\operatorname{diag}(1,1,0)$ aligns the online target and tracking surface with the position-loop command-filter realization. On 72 development scenes, the scene-equal 0--20-s three-dimensional position RMSE is 11.558928~mm for C5 and 17.058081~mm for a traceable baseline B (64 wins, 8 losses). Matched full-set ablations yield 34.910909~mm when the trained weights are frozen and 12.110171~mm when only the delayed-prediction gradient is removed; C5 beats the latter in 54 of 72 scenes. This incremental benefit is not uniform across tasks: for T2 the mean difference is only 1.067~$\mu$m in favor of C5, its paired scene-bootstrap interval crosses zero, and C5 wins 13 of 24 scenes. We state a finite-path error inequality for the implemented projected update and summarize its posterior numerical mapping. The analysis is conditional on the observed path and ordinary floating-point residual assumptions; it is not a prior closed-loop stability or future-performance guarantee. Independent TEST48 results are not yet available.
+\end{abstract}
+
+\section{Introduction}
+Learning-based residual compensation can improve tracking while changing the command-filter states that define the tracking error. Consequently, a smaller regression error for one residual coordinate does not by itself imply a smaller physical position error. For the fixed loop studied here, the applied compensation $u$ and the discrete physical forcing $d_0$ satisfy
+\begin{equation}
+  u-d_0 = \epsilon_M + M r_f, \qquad
+  \epsilon_M := u-d_M, \quad d_M := d_0+M r_f,
+  \label{eq:physical-coordinate}
+\end{equation}
+where $r_f$ is the command-filter realization difference. The term $M r_f$ remains in the physical forcing, so fitting $d_M$ more closely does not alone determine the position error.
+
+Related work already combines learned representations with adaptive linear coefficients and composite tracking/prediction updates~\cite{oconnell2022neuralfly}; integral concurrent learning uses interval data to avoid state-derivative estimates under its own excitation assumptions~\cite{parikh2019integral}; and discrete-time adaptive control has been studied with causal error models and high-order tuners~\cite{fisher2023discrete}. Learning-based quadrotor tracking with a separate disturbance-estimation channel has also been reported~\cite{huang2023datt}. A discrete-time command-filtered adaptive fuzzy quadrotor controller is identified in the literature~\cite{zhao2024commandfilter}; because its full text was not available in this review, we make no theorem-level comparison to it. We therefore do not claim novelty for composite learning, integral labels, a linear head, projection, or command-filter compensation.
+
+This study tests a narrower implementation-level question: whether, in one frozen simulation loop, a causal delayed-prediction gradient and a fixed PCF-coordinate mask contribute to position tracking when the other controller components are held constant. The evidence supports a bounded mechanism claim for this development set. It does not establish a new adaptive-control principle or generalize beyond the tested model, training seed, plant, and scenes.
+
+\section{Method}
+\subsection{Fixed controller and coordinate-matched interval target}
+The simulation uses the fixed nominal position backstepping and attitude controllers, command-filter realization, plant, actuator model, and nominal parameters $C_0,J_0$. It assumes ideal, noiseless full-state Euler-angle feedback. No wind or morphology/configuration variable is supplied to the learner. Let $a_{\mathrm{req}}=a_{\mathrm{nom}}-u$ be the requested acceleration, $a_f$ the acceleration implied by the filtered command, and $r_f=a_{\mathrm{req}}-a_f$. The auxiliary PCF state is updated at the 1-ms simulation step by
+\begin{equation}
+  \eta[n+1]=e^{-4\Delta t}\eta[n]
+       +\frac{1-e^{-4\Delta t}}{4}r_f[n],
+  \qquad \eta[0]=0, \quad \Delta t=1~\mathrm{ms}.
+\end{equation}
+For a fixed diagonal mask $M$, C5 uses $M=\operatorname{diag}(1,1,0)$, the modified surface $s_M=s-M\eta$, and the reference acceleration $a_M=a_{\mathrm{req}}-Mr_f$. Thus the $x$ and $y$ coordinates use the PCF correction, while $z$ retains the nominal coordinate. This mask is fixed in every scene and does not select a coordinate from observed wind or scene identity.
+
+The candidate uses the locked DSSM14 encoder (14 input channels, a 32-step window) and its unit-normalized 33-dimensional feature vector $\phi$. The linear head $W\in\mathbb{R}^{33\times3}$ starts from the same trained weights $W_0$ in every scene; model seed 2026102001 and selected step 60000 are fixed. The offline training target is the physical acceleration residual $a_{\mathrm{actual}}-a_{\mathrm{req}}$. In contrast, the online target is formed from velocity increments relative to $a_M$ and therefore includes the PCF coordinate shift $Mr_f$ in general. The two targets are not interchangeable.
+
+Updates occur at $n_q=320+10q$, $q=0,\ldots,1967$. At an event, the controller first applies the output of the current weights,
+\begin{equation}
+  u_q=\beta_q\clip(W_q^\top\phi_q,-3,3),
+  \qquad \beta_q=\min\!\left(\frac{(n_q+1)\Delta t}{1.8~\mathrm{s}},1\right),
+\end{equation}
+where the clip is componentwise and $u_q$ is in $\mathrm{m}/\mathrm{s}^2$. Only at event $q\geq1$ is the preceding interval label available. With $h=10\Delta t=0.01$~s and $n_q-n_{q-1}=10$, it is
+\begin{equation}
+  y_{q-1}=\frac{v[n_q]-v[n_{q-1}]
+          -\Delta t\displaystyle\sum_{i=n_{q-1}}^{n_q-1}a_M[i]}{h}.
+  \label{eq:interval-target}
+\end{equation}
+This is an interval-average residual derived from sampled velocity, not an instantaneous disturbance measurement. The event retains $\phi_{q-1}$ for the delayed gradient. The update is one joint box projection:
+\begin{align}
+  W_{q+1}&=\Pi_{\Cset}(W_q-G_q), \qquad
+  \Cset=[-60,60]^{33\times3}, \label{eq:update}\\
+  G_q&=0.12\beta_q\phi_q s_{\mathrm{eff},q}^{\top}
+       +0.00002W_q
+       +0.01\phi_{q-1}(W_q^{\top}\phi_{q-1}-y_{q-1})^{\top}, \quad q\geq1,
+\end{align}
+where $s_{\mathrm{eff},q}=\clip(s_M[n_q],\pm[7,8,10])$. At $q=0$, the delayed-prediction term is zero because no complete prior interval exists. The applied output is held between events, and the newly updated weights do not alter the output already applied at the current event.
+
+\subsection{Matched ablations}
+The \NOpred{} ablation sets only the delayed-prediction coefficient to zero. It retains the same trained initialization, encoder, PCF, mask, target construction, readiness, event clock, tracking update, leakage, output limits, and single weight projection. The \emph{Frozen W0} ablation retains the same encoder and trained weights but disables online weight updates. It is therefore a frozen-network comparison, not a no-network experiment. Because $W_0$ was pretrained against the physical target while online learning uses the PCF-shifted target in~\eqref{eq:interval-target}, its result also reflects this target mismatch.
+
+\section{Experimental protocol}
+We report 72 development scenes formed by DEV24 and VAL48. Each scene is a 20-s, 1-ms-step simulation with the same plant and actuators, initial conditions, reference, nominal gains, and controller settings across paired methods. The model seed, selected checkpoint, feature normalizer, and initial weights are fixed; no training, seed search, or test-set tuning is performed in this study. B denotes the traceable baseline. The C5 candidate and both matched ablations use the same C5 simulation chain.
+
+For scene $i$, the primary metric is
+\begin{equation}
+  Q_i=\sqrt{\frac{1}{N}\sum_{n=0}^{N-1}
+      \|p_i[n]-p_{i,\mathrm{ref}}[n]\|_2^2},
+  \qquad N=20{,}000,
+  \label{eq:q}
+\end{equation}
+which uses samples $n=0,\ldots,19{,}999$ and excludes the terminal state at 20~s. Group means give every scene equal weight. Paired wins use the unrounded $Q_i$ in metres and a $10^{-12}$-m tie tolerance. For C5 against B, \NOpred{}, and Frozen W0, winner counts are unchanged at 1- and 10-$\mu$m sensitivity thresholds; C5--C3 counts are reported only at the original tolerance. W09--W14 are the \emph{high-frequency wind} group, and W15 is the no-wind group. The scene-bootstrap intervals below use 10,000 resamples of paired physical scenes (seed 2026102301); they are descriptive development intervals, have no multiplicity correction, and do not provide independent-test inference.
+
+\section{Development results}
+Table~\ref{tab:means} shows scene-equal mean $Q$. C5 improves over B on 64 of 72 scenes and loses on 8; all 64 wins exceed 10~$\mu$m. The mean decreases from 17.058081 to 11.558928~mm (32.24\%). This is the cumulative difference between the frozen candidate and B, not the effect of any single added component. In particular, C5 improves over C3 (mask $M=\operatorname{diag}(1,1,1)$) by only 0.200317~mm on average (53 wins, 19 losses); the high-frequency-wind mean decreases by 0.440679~mm and the W15 mean by 0.008825~mm. These comparisons do not make $M=\operatorname{diag}(1,1,0)$ globally optimal.
+
+\begin{table}[t]
+\centering
+\small
+\caption{Scene-equal mean 0--20-s three-dimensional position RMSE $Q$ (mm). Lower is better. Frozen W0 keeps the pretrained network and weights fixed; \NOpred{} removes only the delayed-prediction gradient.}
+\label{tab:means}
+\begin{tabular}{lrrrrr}
+\toprule
+Group & $n$ & B & Frozen W0 & \NOpred{} & C5 \\
+\midrule
+All scenes & 72 & 17.058081 & 34.910909 & 12.110171 & 11.558928 \\
+High-frequency wind (W09--W14) & 28 & 10.719024 & 36.340377 & 10.617151 & 10.179304 \\
+No wind (W15) & 6 & 7.647292 & 20.580654 & 7.691233 & 6.334075 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The frozen-W0 model loses to C5 in all 72 scenes. This supports the need for online adaptation in this configured loop, but does not show that the network has no value: the ablation retains its representation and exposes the difference between the offline physical target and the online PCF-coordinate target. \NOpred{} beats B in 57/72 scenes (16/28 in the high-frequency-wind group and 3/6 in W15). For T2, \NOpred{} beats B in 23/24 scenes, compared with 18/24 for C5.
+
+Table~\ref{tab:paired} reports the full set of task and preregistered group contrasts for C5 minus \NOpred{}. Negative differences favor C5. C5 wins in 54 scenes and loses in 18, with no ties; every C5 win is larger than 10~$\mu$m. The T2 mean difference is just 1.067~$\mu$m, with a paired interval spanning zero. The direction of the individual T2 outcomes is 13 C5 wins and 11 \NOpred{} wins; all 18 C5 regressions are retained in the scene-level audit. Thus the data do not support a clear or uniform T2 benefit.
+
+\begin{table}[t]
+\centering
+\small
+\caption{Paired C5 minus \NOpred{} mean $Q$ and stored descriptive 95\% scene-bootstrap interval (mm). Negative values favor C5. Counts are C5 wins/losses under the $10^{-12}$-m tie tolerance.}
+\label{tab:paired}
+\begin{tabular}{lrrrr}
+\toprule
+Group & $n$ & Mean difference & 95\% interval & C5 wins/losses \\
+\midrule
+All scenes & 72 & $-0.551242$ & [$-0.725160$, $-0.374423$] & 54/18 \\
+T1 & 24 & $-0.723980$ & [$-0.919971$, $-0.519449$] & 22/2 \\
+T2 & 24 & $-0.001067$ & [$-0.202649$, $+0.196672$] & 13/11 \\
+T3 & 24 & $-0.928681$ & [$-1.254652$, $-0.575071$] & 19/5 \\
+High-frequency wind (W09--W14) & 28 & $-0.437847$ & [$-0.741756$, $-0.138022$] & 19/9 \\
+No wind (W15) & 6 & $-1.357158$ & [$-1.775262$, $-0.856830$] & 6/0 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Finite-path analysis}
+The projected-gradient inequality is derived in exact arithmetic. For $q\geq1$, set $\psi_q=\phi_{q-1}$, $\rho=0.01$, $\ell_q(W)=\tfrac12\|W^\top\psi_q-y_{q-1}\|_2^2$, $g_q=\psi_q(W_q^\top\psi_q-y_{q-1})^\top$, and write $G_q=\rho g_q+b_q$ for the actual tracking and leakage terms. For any comparator $U\in\Cset$ fixed before the path, define $D_q=\|W_q-U\|_F^2$, $\bar W_{q+1}=W_q-G_q$, $Z_q=\Pi_{\Cset}(\bar W_{q+1})$, and the ideal projection residual $R_q^{\mathrm{ideal}}=Z_q-\bar W_{q+1}$. To express the stored floating-point update, let $\delta_q=W_{q+1}^{\mathrm{actual}}-Z_q$. For $1\leq m\leq1967$,
+\begin{equation}
+\begin{aligned}
+&2\rho\sum_{q=1}^{m}\!\left[\ell_q(W_q)-\ell_q(U)\right] \\
+&\quad+\rho\sum_{q=1}^{m}\!\|\psi_q^\top(W_q-U)\|_2^2 \\
+&\leq D_1-D_{m+1}+\sum_{q=1}^{m}\|G_q\|_F^2
+-2\sum_{q=1}^{m}\langle b_q,W_q-U\rangle_F
+-\sum_{q=1}^{m}\|R_q^{\mathrm{ideal}}\|_F^2 \\
+&\quad+\sum_{q=1}^{m}\left[2\langle\delta_q,Z_q-U\rangle_F+\|\delta_q\|_F^2\right].
+\end{aligned}
+\label{eq:path-inequality}
+\end{equation}
+For an exact projected update, $\delta_q=0$; expanding $\|Z_q+\delta_q-U\|_F^2$ gives the stored-state correction. The inequality retains tracking/leakage and projection terms, but its right-hand side need not be small. Since the applied output uses $W_{q-1}$ while the loss uses $W_q$, if $L\geq\max_q\|\phi_q\|_2$ the historical-output residual sum is bounded by $2P+2L^2J$, where $P=\sum_q\|W_q^\top\psi_q-y_{q-1}\|_2^2$ and $J=\sum_q\|W_q-W_{q-1}\|_F^2$. The physical-forcing map retains ramp, interval-target variation, output clipping, and $Mr_f$ terms; the 20,000-sample recursion contributes verified 800/200 kernel gains and sampling remainders.
+
+The proof and numeric-scope addendum remain in the audited notes (\url{BOX_PROJECTION_FINITE_PATH_BOUND_ZH.md}; \url{BOX_PROJECTION_BOUND_NUMERIC_SCOPE_ADDENDUM_ZH.md}); this draft does not revise their proof. The physical-bridge check \url{ACTUAL_PHYSICAL_BRIDGE_DEV72_CHECK_v1.json} covers 72 development paths with 20,000 full-recursion and 19,670 held-interval samples each. Its requested-acceleration identity, physical $e$/$\sigma$ recursions, held output, and forcing decomposition have maximum absolute residual $8.9\times10^{-16}$; this applies only to the bridge checks, not the distinct label, event, or projection audits. Since raw data omit the full pre-projection candidate, $Z_q$ and $\delta_q$ were reconstructed for the 72 C5 paths from stored weights and the exact-arithmetic $G_q$ definition using ordinary floating point, with $L=1+10^{-9}$ and a per-element $10^{-10}$ residual envelope. Posterior bound-to-observed-$Q$ ratios range from 3.740385 to 31.331274. These completed-path checks are not outward-rounded interval certification, a prior plant-domain bound, or evidence of closed-loop stability.
+
+\section{Limitations and pending independent test}
+The evidence uses one trained model identity (seed 2026102001, step 60000), one fixed plant and actuator model, and 72 development scenes that were used during method development. It does not establish cross-seed reliability, independent generalization, sensor-noise robustness, or real-flight performance. The controller assumes ideal full-state Euler-angle feedback. The W15 group contains only six scenes. Eight C5 scenes remain worse than B, and the task-level prediction-gradient effect is not uniform. Current timing measurements were not isolated from other work and are not used to claim hard real-time performance.
+
+\paragraph{Independent test placeholder.}
+The planned TEST48 evaluation remains pending its separate engineering and identity gates. No independent-test arrays or scores are available in this draft; no TEST value is imputed from development data. A fixed candidate must be frozen before the one independent test, and the test results must not be used to retune the controller or choose among task-specific variants.
+
+\section{Conclusion}
+The matched development ablations support a specific claim: in this fixed C5 simulation loop, the delayed-prediction gradient is associated with lower scene-equal mean $Q$ across the complete 72-scene development set, although 18 scenes regress and T2 shows no clear mean advantage. The coordinate mask also provides a small, development-specific improvement over C3. The contribution is therefore limited to an explicitly timed and coordinate-matched discrete implementation, its complete matched evaluation, and a conditional finite-path analysis. The results do not establish a new composite-learning principle, a general stability guarantee, or an independent-test outcome.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

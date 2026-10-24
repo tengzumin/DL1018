@@ -1,0 +1,61 @@
+{
+  "schema": "C5_JIANG_TNNLS_LITERATURE_PEER_CHALLENGE_V1",
+  "independent_assessment": "NEEDS_NARROWING_NOVELTY_UNRESOLVED",
+  "parent_decision": "ROOT_REVIEW_REQUIRED",
+  "scope": "Read-only challenge of the claimed contribution; no TEST, MAT, jobs, candidate, or parameter changes.",
+  "primary_source": {
+    "authors": "Yiming Jiang et al.",
+    "title": "Composite-Learning-Based Adaptive Neural Control for Dual-Arm Robots With Relative Motion",
+    "journal": "IEEE Transactions on Neural Networks and Learning Systems",
+    "volume_issue_pages": "33(3):1010-1021",
+    "year": 2022,
+    "online_year": 2020,
+    "doi": "10.1109/TNNLS.2020.3037795",
+    "doi_url": "https://doi.org/10.1109/TNNLS.2020.3037795",
+    "author_institution_pdf_url": "https://robot.hnu.edu.cn/__local/9/ED/C7/44E36AB21A4F7DFA03929198159_5CECB4EB_308954.pdf",
+    "local_pdf": "reports/paper_continuation_20261023/literature_primary_increment_v1/Jiang_TNNLS_dualarm_author_copy.pdf",
+    "local_pdf_sha256": "5d4ee22934c86e3cda4dbd7bb354f87cadf75a931f3d00589d37ee0a3fe5fe2a",
+    "reviewed_printed_pages_and_equations": [
+      {"page": 5, "items": ["command-filtered controller", "Eq. (37)"]},
+      {"page": 6, "items": ["history-regression integrals P,Q and prediction error", "Eqs. (44)-(47)", "composite tracking/prediction adaptation", "Eq. (48)", "weight projection", "Eq. (49)"]},
+      {"page": 7, "items": ["Theorem 1 and PPE-conditioned error-neighborhood/contact-force statements", "Eqs. (59)-(61)"]}
+    ]
+  },
+  "coverage": {
+    "already_present_in_primary_source": [
+      "command/instruction filtering combined with neural control",
+      "tracking and historical prediction errors in a composite learning update",
+      "projection of adaptive weights",
+      "PPE-conditioned theorem-level error claims for the paper's own continuous-time dual-arm system"
+    ],
+    "claims_to_remove": [
+      "first/original composite learning, integral-label learning, tracking-plus-prediction, projection, or command-filter compensation",
+      "transferring Jiang et al.'s PPE, convergence, or stability theorem to DL1018",
+      "using performance gains as proof of novelty"
+    ]
+  },
+  "audited_c5_differences": {
+    "helper_path": "experiments/position_axis_coordinate_c5_dev72_20261023/delayed_prediction_step_candidate.m",
+    "helper_sha256": "48feebf934b8eb90b4424f2286aa857c48213d229714f30af99aacf53329549d",
+    "core_path": "experiments/position_axis_coordinate_c5_dev72_20261023/run_dl1018_closed_loop.m",
+    "core_sha256_from_locked_input_manifest": "48350037b66efe00301b138068f187c62cf92583f0f9ba2fabc9b24f248a963c",
+    "details": [
+      "1-ms simulation with 10-ms discrete events; current weight output is applied before event update",
+      "completed previous-interval velocity-increment target subtracts the PCF mask-reference acceleration integral",
+      "fixed M=diag(1,1,0) shifts the online target/tracking coordinates on x/y only",
+      "current tracking outer product, leakage, and previous-feature prediction gradient combined before one elementwise [-60,60] box projection",
+      "pretrained DSSM14 representation/linear output head with physical offline target and PCF-coordinate online target"
+    ]
+  },
+  "evidence_limits": {
+    "dev72_c5_vs_no_prediction": "54 C5 wins, 18 regressions; supports a finite implementation-specific mechanism effect, not novelty",
+    "t2": "C5 mean advantage 1.067 micrometres; descriptive paired interval crosses zero",
+    "c5_vs_c3": "mean improvement 0.200317 mm; not global coordinate optimality",
+    "not_established": [
+      "whether the coordinate-matched discrete mechanism is sufficiently novel for publication",
+      "priority over all related discrete-time or command-filtered adaptive control literature",
+      "prior plant stability, parameter convergence, cross-seed generalization, or real-flight performance"
+    ]
+  },
+  "scope_note": "The source is not algorithmically identical to C5; this review rejects broad novelty language but does not by itself establish that the remaining implementation-level contribution is sufficient. Root retains the final decision."
+}

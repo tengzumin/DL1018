@@ -1,0 +1,124 @@
+{
+  "schema": "TEST_DEPENDENCY_REVIEW_V1",
+  "status": "REVIEW_COMPLETE_WITH_CONDITIONS",
+  "scope": {
+    "read_only": true,
+    "test_performance_or_raw_read": false,
+    "test_input_read": false,
+    "matlab_started": false,
+    "plant_started": false,
+    "training_started": false,
+    "source_modified": false,
+    "old_dev_raw_read": true,
+    "test_failure_diagnostic_read": true
+  },
+  "conclusion": {
+    "active_missing_dependency": {
+      "function": "position_filter_realization_pcf_step_v3_5",
+      "path": "matlab/models/position_filter_realization_pcf_step_v3_5.m",
+      "sha256": "b4ae22db5bd444a162d0cd01a3a59a589f2e37077b089bb33693401b660228d0",
+      "reason": "Archived core calls it at each control step while pcfCoordinationEnabled; missing from both corrected D/K method source_refs and archived local_runtime tree."
+    },
+    "inactive_for_frozen_DK_options": {
+      "function": "position_stage1_update_head_pcf_v3_5",
+      "path": "matlab/models/position_stage1_update_head_pcf_v3_5.m",
+      "sha256": "a89e8f97ece37c9f02172f788f983791e3abc7a2074108c3be7a74b8df91394a",
+      "reason": "Both stage1SearchEnabled and stage1PositionUpdateEnabled are true; L1952 branch executes before the later elseif at L1988."
+    },
+    "minimal_entry_repair": "Bind exact filter helper path and SHA in both D/K method identities; before Plant, assert exact which resolution, SHA, and frozen branch-defining opts.",
+    "conditional_closure": "For the active D/K-specific direct call, filter helper is the missing dependency identified. Full closure is sufficient only if frozen shared platform sources (init/core/plant) are verified as global cross-method identities; otherwise list/verify those shared refs explicitly."
+  },
+  "old_dev_opts": [
+    {
+      "run_id": "r001",
+      "method": "CORRECTED_TRAIN_KAN14_G12_R32",
+      "scene_id": "DL1018_VAL_T1_C00_W07",
+      "run_start_sha256": "0012bf34074ac2f034517fbb65237bd667b31e7e539987601e4d16e0b26c9525",
+      "raw_sha256": "e6f704af8dba06cfd25ab401aedfc3866f8f91c06677858ec5b7c0154b8fa54f",
+      "stage1_enabled": true,
+      "update_enabled": true,
+      "position_only_search_head_enabled": true,
+      "head_type": "FEATURE",
+      "gamma": 12,
+      "kappa": 1,
+      "pcf_coordination_enabled": true
+    },
+    {
+      "run_id": "r002",
+      "method": "CORRECTED_TRAIN_DSSM14_G12_R32",
+      "scene_id": "DL1018_VAL_T1_C00_W07",
+      "run_start_sha256": "3b798c8624cc10cc1ddf3b3b1000099bc62e42e8430af92a42b0fa467385743e",
+      "raw_sha256": "231a29949fe0f4ca1a900b909ee8ca9a003f99a71448c14974b68530b45f2b18",
+      "stage1_enabled": true,
+      "update_enabled": true,
+      "position_only_search_head_enabled": true,
+      "head_type": "FEATURE",
+      "gamma": 12,
+      "kappa": 1,
+      "pcf_coordination_enabled": true
+    }
+  ],
+  "old_dev_filter_equation_check": {
+    "scope": "read-only 20,000-step DEV raw data for the above two runs",
+    "equations": [
+      "r_f = a_req - a_f",
+      "eta_next = exp(-k2*dt)*eta_before + ((1-exp(-k2*dt))/k2)*r_f"
+    ],
+    "dt_s": 0.001,
+    "k2_per_s": [
+      4,
+      4,
+      4
+    ],
+    "max_abs_residual_by_run": {
+      "r001": 0.0,
+      "r002": 0.0
+    },
+    "source_identity_limit": "Numerical recurrence agreement does not prove the MATLAB which path or source SHA used by the old process."
+  },
+  "old_dev_path_evidence": {
+    "launcher": "corrected_pair_eval_v1/scripts/run_corrected_pair_eval_stage.m:424-437 resets path, calls init_dl1018, then adds archived local_runtime",
+    "initializer": "matlab/runtime/init_dl1018.m:4-11 adds matlab/models",
+    "initializer_sha256": "df1cfe9fdbfd61da9636427784852d1fa72a6d3b2aa6a941a094967322afda1c",
+    "old_raw_did_not_record_helper_which": true
+  },
+  "test_v3_preflight_evidence": {
+    "entry": "experiments/c5_test48_v3/test48_entry_v1.m",
+    "sha256": "0490da98749b114ed9e9553fc7cb44349e0c5c9d182551d8a05c844a009b9bf2",
+    "binder_lines": "598-628",
+    "manifest_sha256": "b9ed7fef91bf61b03e4f51d8a9cbaf7233484ac6faa4750827aefb7e247f9633",
+    "corrected_dssm_source_ref_count": 12,
+    "corrected_kan_source_ref_count": 12,
+    "filter_helper_in_dssm_refs": false,
+    "filter_helper_in_kan_refs": false,
+    "pcf_head_helper_in_dssm_refs": false,
+    "pcf_head_helper_in_kan_refs": false,
+    "archived_runtime_tree_sha256": "5a4a104314c63a2a7928e2be359b6ce269da92f23895f1346768728879745db0"
+  },
+  "reproduction_recommendation": {
+    "method": "one engineering replay each for KAN r001 and DSSM r002, same first VAL scene, frozen model/cfg/opts/W0/core, exact helper identity; preserve old raw and write new output separately",
+    "checks": [
+      "full state trajectory",
+      "controller/actuator command arrays",
+      "initial and final learned weight",
+      "independently recomputed Q"
+    ],
+    "not_test_evidence": true
+  },
+  "test_protocol_risk": {
+    "v3_failed_before_plant": true,
+    "plant_calls": 0,
+    "raw_created": false,
+    "official_v3_os_exit": 1,
+    "old_failure_must_be_preserved": true,
+    "new_test_execution": "Root must decide under a new frozen dependency identity/release; treat as first trajectory-level observation only if the no-retry contract permits and disclose the pre-Plant failure."
+  },
+  "relevant_hashes": {
+    "filter_helper_sha256": "b4ae22db5bd444a162d0cd01a3a59a589f2e37077b089bb33693401b660228d0",
+    "pcf_head_helper_sha256": "a89e8f97ece37c9f02172f788f983791e3abc7a2074108c3be7a74b8df91394a",
+    "position_only_search_step_sha256": "3bd0fe9686c3b75793575e517d4cc5f08de58ab6a26a2bc7516aa690422bb7dc",
+    "model_forward_v2_sha256": "dc803aa102c49d67dd687ae941f8a60bb0c465f74fd01e5ae93ad1ea1a293676",
+    "archived_core_sha256": "01d83dec95aea5d30feef3afd0628a2ce0911f70465f0773a4f568a01b08450b",
+    "archived_episode_wrapper_sha256": "fcc1f5de659541e692483f8395d93fd2a251256286ebade5e510ed4c7a2e2330"
+  }
+}

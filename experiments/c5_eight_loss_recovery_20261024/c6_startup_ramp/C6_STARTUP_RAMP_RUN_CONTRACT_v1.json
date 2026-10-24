@@ -1,0 +1,164 @@
+{
+  "schema": "C6_STARTUP_RAMP_RUN_CONTRACT_V1",
+  "state": "LOCKED_C6_STARTUP_RAMP_NO_PLANT_PARENT_REVIEW_REQUIRED_V1",
+  "taskbook_sha256": "d9360ccccfe942f2ae1ab06b600e3c2a29c9cbc3cb05bc9f64b0b55454d49df9",
+  "candidate": "C6_STARTUP_PREDICTION_RAMP",
+  "pcf_auxiliary_enabled": true,
+  "algorithm_change": {
+    "description": "Only the existing delayed prediction gradient term is multiplied by the existing beta.",
+    "expression": "W_next = clip(W - h*gamma*beta*phi*s_eff^T - h*lambda*W - rho*beta*prediction_gradient, -60, 60)",
+    "prediction_gradient_scaled_by_beta": true,
+    "tracking_term_unchanged": true,
+    "prediction_output_scaled_by_beta": true,
+    "output_precedes_weight_update": true,
+    "beta_formula": "min((n+1)*plant_dt_s/beta_rise_s,1)",
+    "beta_one_equivalence_is_same_input_only": true,
+    "later_closed_loop_state_may_differ": true
+  },
+  "model": {
+    "id": "DSSM14",
+    "seed": 2026102001,
+    "selected_step": 60000,
+    "input_dim": 14,
+    "window": 32,
+    "W0_sha256": "88f8c4f2495438c3797655c48bab1bf0c11ac2e27bff1f5f2a7423a8f0a2cf53",
+    "normalizer_arrays_sha256": "533aad9a2c66874cfa67f5d268661835e81e58b797cba7d6fc1c12d4013de5f0"
+  },
+  "fixed_parameters": {
+    "gamma": 12,
+    "leak_per_s": 0.002,
+    "event_period_s": 0.01,
+    "tau_s": 1,
+    "rho": 0.01,
+    "plant_dt_s": 0.001,
+    "beta_rise_s": 1.8,
+    "prediction_clip": 3,
+    "weight_clip": 60,
+    "coordinate_mask": [
+      1,
+      1,
+      0
+    ],
+    "control": "C0/J0 nominal",
+    "pcf_coordinate_mask": "M110"
+  },
+  "scene_ids": [
+    "DL1018_VAL_T1_C00_W07",
+    "DL1018_VAL_T1_C02_W09",
+    "DL1018_VAL_T1_C05_W12",
+    "DL1018_VAL_T1_C08_W15",
+    "DL1018_VAL_T2_C00_W10",
+    "DL1018_VAL_T2_C02_W12",
+    "DL1018_VAL_T2_C05_W15",
+    "DL1018_VAL_T2_C06_W00",
+    "DL1018_VAL_T3_C00_W13",
+    "DL1018_VAL_T3_C02_W15",
+    "DL1018_VAL_T3_C03_W00",
+    "DL1018_VAL_T3_C12_W09"
+  ],
+  "first_scene_id": "DL1018_VAL_T1_C00_W07",
+  "coordinate_mask": [
+    1,
+    1,
+    0
+  ],
+  "limits": {
+    "max_new_Plant": 12,
+    "max_output_bytes": 80000000000,
+    "minimum_free_bytes": 30000000000,
+    "deadline_utc": "2026-10-24T17:01:00Z",
+    "per_scene_output_reserve_bytes": 89478486,
+    "total_reserved_bytes_for_12": 1073741832,
+    "matlab_single_thread": true
+  },
+  "prohibitions": {
+    "training_steps": 0,
+    "optimizer_steps": 0,
+    "parameter_or_seed_search": false,
+    "new_B_sorties": 0,
+    "TEST_accessed": false,
+    "automatic_retry": false,
+    "M_search": false,
+    "intermediate_mask_scan": false,
+    "scenario_or_metric_switching": false,
+    "B_axis_output_input_or_concatenation": false,
+    "score_old_C3_B_source_as_comparator": false,
+    "full_DEV72_extension_authorized": false,
+    "first_scene_release_does_not_authorize_tail": true
+  },
+  "scoring_comparator": "B_TRACEABLE_DEV72",
+  "physical_scene_source_rule": "Each locked old C3 DEV72 B_source is loaded only as a 14-field physical scene input; score only against the traceable B72 manifest.",
+  "input_identity": {
+    "physical_source_sha256_required_before_each_load": true,
+    "identity_field_count": 14,
+    "identity_fields": [
+      "initial_state",
+      "time",
+      "environment_wind_I",
+      "arms/command",
+      "arms/rho_true",
+      "arms/rhoDot_true",
+      "arms/rho_hat",
+      "arms/rhoDot_hat",
+      "reference/acceleration",
+      "reference/position",
+      "reference/velocity",
+      "reference/yaw",
+      "reference/yaw_acceleration",
+      "reference/yaw_rate"
+    ],
+    "no_data_copy": true
+  },
+  "b72_required_before_first_plant": {
+    "input_lock_sha256": "8d738e5c70ba2fc8697550549d1a0537f08eadb49b99bc5684e5c26f6222f452",
+    "run_contract_sha256": "03cb8c04c70974db9b13e4da20a5f65860a2a604f4888a8a94e4dcfb9ac52de8",
+    "complete_72_raw_manifest_required": true,
+    "parent_review_required": true,
+    "first_plant_release_must_bind_actual_raw_identity": true
+  },
+  "groups": {
+    "high_frequency_6": [
+      "DL1018_VAL_T1_C05_W12",
+      "DL1018_VAL_T1_C08_W15",
+      "DL1018_VAL_T2_C02_W12",
+      "DL1018_VAL_T2_C05_W15",
+      "DL1018_VAL_T3_C00_W13",
+      "DL1018_VAL_T3_C02_W15"
+    ],
+    "no_wind_3": [
+      "DL1018_VAL_T1_C00_W07",
+      "DL1018_VAL_T2_C06_W00",
+      "DL1018_VAL_T3_C03_W00"
+    ],
+    "W15_3": [
+      "DL1018_VAL_T1_C08_W15",
+      "DL1018_VAL_T2_C05_W15",
+      "DL1018_VAL_T3_C02_W15"
+    ],
+    "original_C5_losers": [
+      "DL1018_VAL_T2_C00_W10",
+      "DL1018_VAL_T3_C00_W13"
+    ]
+  },
+  "preregistered_gates": {
+    "all_12_safe_and_complete": true,
+    "all12_equal_weight_early_main_Q_strictly_below_C5": true,
+    "HF6_equal_weight_early_Y_MSE_strictly_below_C5": true,
+    "original_two_C5_losers_each_main_Q_strictly_below_C5": true,
+    "overall_main_Q_mean_strictly_below_B72": true,
+    "HF6_main_Q_mean_not_above_B72": true,
+    "no_wind3_main_Q_mean_not_above_B72": true,
+    "position_rmse_full_precision_win_tolerance_m": 1E-12,
+    "report_B_win_count_at_least_original_10_of_12": true,
+    "report_all_new_regressions": true,
+    "report_all_scenes_Q_0_20_0_5_5_20_per_axis_peak_safety_saturation_and_update_events": true,
+    "failure_action": "Reject fixed candidate; do not tune beta or extend automatically to DEV72."
+  },
+  "phase_sequence": [
+    "NO_PLANT_CROSS_LANGUAGE_SOURCE_WHICH_CFG_OPTS_14_FIELD_IDENTITY",
+    "PARENT_REVIEW",
+    "FIRST_SCENE_T1_C00_W07_ONLY",
+    "INDEPENDENT_ROOT_RECALCULATION",
+    "SEPARATE_TAIL11_PARENT_RELEASE"
+  ]
+}

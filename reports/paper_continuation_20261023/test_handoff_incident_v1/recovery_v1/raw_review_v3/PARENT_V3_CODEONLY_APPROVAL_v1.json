@@ -1,0 +1,60 @@
+{
+  "status": "PASS_PARENT_V3_NATIVE_SEMANTIC_AND_FIELD_SHAPE_SOURCE_REVIEW",
+  "source_sha256": "6e5f5ad4a5432f40ea68b7596f7f19c5e9bd384e8a758a2cd44f20b06fd49ce1",
+  "changed_existing_functions": [
+    "load_v1",
+    "verify_scene32_exception_identity",
+    "verify_recovery_tail_run_identity",
+    "verify_v4_run_identity",
+    "run_review",
+    "synthetic_self_check"
+  ],
+  "all_other_existing_functions_AST_exact": true,
+  "synthetic_self_check": {
+    "schema": "DEV_OR_SYNTHETIC_SELF_CHECK_V1",
+    "status": "DEV_OR_SYNTHETIC_SELF_CHECK",
+    "TEST_accessed": false,
+    "synthetic_only": true,
+    "checks": {
+      "mixed_method_order_count": 6,
+      "v3_B_reuse_count": 1,
+      "v9_unstarted_method_count": 5,
+      "single_PCF_helper_addition": true,
+      "unexpected_extra_reference_rejected": true,
+      "scene32_exception_wrong_raw_path_start_path_raw_sha_start_sha_rejected": true,
+      "tail_canonical_and_local_index_errors_rejected": true,
+      "recovery288_missing_and_duplicate_pairs_rejected": true,
+      "v4_status_four_path_schema_and_bad_paths_rejected": true,
+      "v4_record_run_status_self_path_rejected": true,
+      "pinned_native_scene_binding_positive_and_negative": {
+        "valid_row_accepted": true,
+        "wrong_path_hash_index_scene_or_result_rejected": 9
+      },
+      "field_specific_actuator_shapes_positive_and_negative": {
+        "exact_field_shapes_accepted": true,
+        "wrong_field_length_or_width_rejected": 9
+      },
+      "B_identity_copy_matches_frozen_v1_outside_native_checks": true,
+      "score_wrapper_matches_frozen_v1_outside_actuator_check": true,
+      "separate_historical_v3_v4_and_path_diagnostic_audit_paths_present": true,
+      "frozen_v1_timing_and_struct_checks": {
+        "ready_cutoff": "t>=0.320 s",
+        "ready_calls_in_synthetic_check": 3,
+        "nonready_calls_in_synthetic_check": 1,
+        "all_call_window_retained": true,
+        "overall_over1ms_definition": "strictly greater than 0.001 s",
+        "struct_column_self_check": {
+          "rows_preserved": 2,
+          "singleton_columns_unboxed": true,
+          "nested_path_cell_preserved": true,
+          "synthetic_only": true
+        }
+      }
+    },
+    "note": "No TEST ID, TEST-shaped row, TEST raw, performance score, MATLAB, Plant, or training was used."
+  },
+  "native_rows_validated": 288,
+  "actual_raw_opened": false,
+  "score_formulas_unchanged": true,
+  "prior_v1_v2_failures_preserved": true
+}

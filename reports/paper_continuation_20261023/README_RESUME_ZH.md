@@ -1,4 +1,116 @@
+## 最新审核更新（UTC 2026-10-24）：C6关闭、C5稿件通过限定审核
+
+C6 screen12 reader_v5实际OS0，23616事件/物理/安全通过；科学门both-original-loss-improve失败，固定C6不扩DEV72、不扫beta。主审432个数字与独立24raw复算一致。C5最终9页稿已根复核54项文件身份与修订渲染，数据/范围表述通过，论文整体资格仍待最终证据与Git交付审核。总航次603不变。详见RESULT_PACKAGE_ENTRY_ZH.md和STATE.json；以下旧启动说明均不执行。
+
+## 最新续跑状态（UTC 2026-10-24 06:20；以下旧入口均为历史）
+
+C5 TEST48全部原始审核v5、统计v5均真实自然OS0，父级独立复算通过：46/48胜B，平均Q 12.155996 vs18.619575mm，HF16/18、W153/3；四性能门通过。完整结果在test_results_final_v1，父级核对288行11232数字一致。论文目标未完成：最终稿、贡献/文献审阅与最终Git交付待续。见PAPER_EVIDENCE_REQUIREMENTS_AUDIT_CHECKPOINT_v3.json。
+
+C6固定12场已全部完成：pilot1历史审计通过，tail_v5剩余11场于根session12070真实自然OS0/11Plant。全部55个尾批产物hash已根核验；尚待screen12逐事件/物理/安全/预登记门槛审核，不能提前宣布筛查通过或启动DEV72。尾批不得重跑。v2/v3/v4失败均0Plant、历史原位保留；v5 noPlant先真实OS0核验11输入后才跑正式尾批。总新增实际航次603，无训练。
+
+两名Luna/max分别准备C6最小审核脚本和C5最终TEST论文稿。无1.5倍速度工具开关；不声称已设置。C6无风分组为W15（三场真实风数组为零），W00不是无风。禁止使用C5 TEST输场调C6。旧DSSM自然OS UNKNOWN/scene32 identity缺口与历史TEST暴露事件继续披露，不能改旧六OS0门。
+
+当前不存在待继续的MATLAB重负载会话；下一步由根审核并运行screen12只读审核脚本。任何新飞行仅在预登记门槛审核决定后启动。STATE.json保存当前状态；历史入口不再执行。
+
+---
+
+## 最新更正：C6 tail_v2 已自然失败、0 Plant（UTC 2026-10-23）
+
+根session53470已自然OS1：verify_b72_parent_and_manifest消费release.scene_id及b72_first_scene_*字段，但tail release contract未列这些required字段，根按contract生成release时漏项。0场完成/0新Plant，旧失败产物保留。不得重启原v2或覆盖旧release/日志；Luna在独立tail_v3修正metadata接口及输出位置，科学循环不变。C6首场通过事实仍有效。正式raw v3也已自然OS1，在首B 1x31 MATLAB struct binding被当Nx1解码处拒绝，未score；另Luna先核所有288身份metadata再交v4，勿重复运行旧reader。当前无重负载作业，实际当前进度以STATE.json为准。
+
+## 当前执行入口（UTC 2026-10-23；覆盖以下历史启动说明）
+
+C6首场真实审计PASS：1968事件、cfg/opts、W0、物理14字段、执行器与C5/B配对均根独立复核。Q为9.336262mm，C5为9.558190mm，B为14.217859mm。退出日志UTC属性错误已在独立tail_v2修复，旧v1保留；根已启动固定余下11场，exec session53470，release SHA99a8e7ea6ef6cd3129f8ac2a777a812d4804c8ef1927be733a5363db5b4a8bb1。不得重复启动或中断。运行入口RUN_C6_TAIL11_EXACT_v2.ps1，runner/sourcebinding为v2，科学contract与模型仍冻结v1。
+
+正式恢复208全部自然OS0，不重跑。原生MATLAB无Plant比较全部288个start与shared scene/sceneMeta/spec精确相等，表格内容已真实语义核验。全量raw reader v1/v2/v3的实际失败均保留：依次status自身路径schema、opaque存储ref比较、1x31 struct数组被当Nx1。第3次在首B identity/which_bindings处拒绝，尚未进入score。Luna正在修独立v4，并先做全部288身份metadata预检；不得简单跳过which路径/源码约束。旧DSSM退出UNKNOWN、scene32缺runIdentity、旧六OS0门UNMET必须继续披露。
+
+两执行者均gpt-6-luna/max；根持重负载会话，仅一个重负载作业。用户已授权自主新增Plant/方向，不需重复问额度；历史数据不删除、不打断旧实验、不用C5 TEST调C6。论文仍NOT_QUALIFIED，当前真实数量以STATE及marker/自然OSreceipt为准。
+
+以下为历史记录，不执行其中旧命令。
+
+## 当前执行入口（UTC 2026-10-23 18:42；覆盖以下历史启动说明）
+
+正式恢复208已由根启动，根持有exec session16903；不得重复启动协调器或中断根会话。DSSM新增tail16自然OS0且元数据审查通过，KAN当前43/48已提交，其后协调器自动顺序运行C5M110/FREEZE/NO_PRED各48。原B48及旧DSSM32保留复用；旧DSSM进程OS仍UNKNOWN，scene32缺runIdentity，原六OS0门未通过。恢复release SHA97721e4ded2f7f8224aa6720e89302fa64e805244282ab1d3a87c35f283ed397。
+
+完整288结果审核器在test_handoff_incident_v1/recovery_v1/raw_review_v1，源码SHAa709201623d9e9f0e4b312946a1db35021bd5aa379c9f7ca04af3147e4be79d0；根guarded --self-check CLI自然0，metadata检查通过，仍等源码peerreview及所有五张恢复自然OS0凭据；不要提前运行raw CLI、读成绩或将旧门改PASS。
+
+C6隔离启动链源码已根审，仅创建NOPLANT release SHA93baec8c00f4ebb1d802d7e0e92fca508893ea936ecef87a7c47cc349bb54236，尚未执行。须等正式恢复208根进程终止且无MATLAB后，才可根启动RUN_C6_NOPLANT_EXACT_v1.ps1；核验其真实结果后另发首场1和tail11门。不得与正式测试并发重负载。C6是DEV机制分支，不得用C5 TEST成绩选C6。
+
+用户已授权自主新增实验与方向，取消旧全局时间/轮数/Plant上限，仍保留本批冻结科学合同、来源/失败披露、不打断/不删除/不改旧记录及资源工程检查。论文仍NOT_QUALIFIED。精确当前进度以真实PID、batch/OSreceipt和STATE.json为准。
+
+以下都是历史记录，不执行其中旧命令。
+
+## 当前事故状态（UTC 2026-10-23 17:48）
+
+原正式测试进程树已由根与接管Luna实际确认消失；旧PS104920/MATLAB103688/104296不存在。DSSM batch仍RUNNING且31/48已提交，第32场T2_C15_W13已有Plant marker和raw文件但未提交完成；没有RUN_DSSM自然OS退出收据，也没有failure/日志错误。退出码和原因均未知，不把旧状态改PASS，不因session不可附着推定原因。全部原文件保留，当前不允许启动/重跑TEST组合。
+
+取证入口test_handoff_incident_v1/PARENT_INITIAL_INCIDENT_OBSERVATION_v1.json。Luna test48_takeover_luna_max查进程/事件/第32场元数据；根另限令仅检查该raw的HDF结构/shape/status身份，禁止轨迹数值/得分。C6 Luna继续CODEONLY，不得看到CIM为空就启动MATLAB。现目标未完成，TEST恢复须根明确审核并保留全部未知退出/部分运行事实。
+
+以下状态全部按时间归档，不能用于直接启动。
+
+## 执行者已按用户要求换回 Luna max（UTC 2026-10-23 17:45）
+
+Sol 两执行者已撤回。正式监督由 test48_takeover_luna_max、C6入口由 c6_takeover_luna_max 接管；模型均 gpt-6-luna/max。原 MATLAB 测试没有被结束或重启。原 session68299 无法由根 write_stdin 接管，但已实际核验原 PS7 PID104920 及 MATLAB wait PID103688/worker104296 均活；以原PS自动写出的receipt和实际PID为准，不因handle不可见重启。observer84940继续。最终mixed reader源v5已根审（PARENT_SOURCE_APPROVAL_v1.json），仍须全部6组自然OS0后根另放行真实raw审计。
+
+以下为既有时间记录；其中 Sol 执行者名称已过期，原运行/源码/授权与历史证据保持。
+
+## 正式 TEST 已续跑（UTC 2026-10-23 17:27）
+
+v9 PREPARE 与 fixed DEV2 均已自然 OS0，根独立复算两方法各377个非耗时数值数组 exact。正式五方法240航次已按原冻结顺序启动，执行 session68299，观察 session84940；首块 corrected DSSM，随后 KAN、C5、FREEZE、NO_PRED。原 B48 复用，当前成绩不读取，不重启/打断。累计此前351次Plant开始/350次随自然OS0完成；新TEST数量以实际marker/receipt为准，不预填完成。当前入口 release 为 test_entry_v9/RUN_UNSTARTED_TEST_PARENT_RELEASE_v1.json，SHA59fae7920eb498d06f29c5c8d7eb1191843de79a640b6ec46e5c40fd32b1d06a。
+
+两位 Sol max：正式执行者等待自然进程并轻量适配最终raw reader，另一位仅DEV离线调查八输场。旧全胜真实记录及根审核见 c5_eight_loss_recovery/PARENT_FIRST_FACTS_REVIEW_v1_ZH.md。保留事故、所有失败、实际主机负载及计时限制，论文仍未达标。以下按时间归档，不代替本段与 STATE.json。
+
+## 当前入口（UTC 2026-10-23 17:19；以 STATE.json 为准）
+
+正式与隔离修复两路均为 Sol max。正式入口 experiments/c5_test48_v9，根独立源码/真实路径核验通过，已仅放行一次 PREPARE_NO_PLANT（session 95112）。DEV2 和余下 TEST240 尚未放行；先等本次自然 OS0，根审核后逐阶段推进，B48 保留复用、TEST 分数未读。v9 只修任务书路径与历史训练记录身份/部署 collector 的精确映射，六方法模型、W0、normalizer 和冻结 TEST 三文件不变。以前 v7/v8 的零 Plant 失败与 v6 一次工程 Plant 失败全部保留。
+
+第二位 Sol 按 C5_EIGHT_LOSSES_PARALLEL_RECOVERY_TASKBOOK_v1_ZH.md 追查八个 DEV 输场与旧小规模 FIG8 全胜记忆，只写隔离目录、先取证与轻量离线检查，尚无 MATLAB/Plant/训练授权；不接触 TEST 性能，不改冻结 C5。正式重负载优先。用户本轮明确授权此截止后的隔离新方向；它不改变原冻结 TEST 选择或结论。论文仍未达标。
+
+下文全部按时间保留，过期入口不得直接执行。
+
+## 当前可续跑状态（2026-10-23 16:30 UTC）
+
+根因已收束为**参考模板层级绑定错误**。真正corrected历史是corrected_pair_eval_v1/runs/r002(DSSM)、r001(KAN)；根独立核v6DSSM与r002的377个非耗时数值数组全部exact，cfg/opts/scene/sceneMeta/spec也exact。v1恢复legacy模型的方案未实施且已撤回，见PARENT_MODEL_IDENTITY_ROOT_CAUSE_v2_ZH.md。保持原六方法模型、normalizer/W0及所有TEST输入字节不变。
+
+执行者 test48_execution_luna_max 正按冻结任务书 TEST_CORRECTED_REFERENCE_BINDING_TASKBOOK_v1_ZH.md（SHA670f7d…ac948）仅创建v7四个static文件：修r001/r002参考，删除静默模型覆盖并加前置模型完整相等断言，分离历史/新collector身份。CODEONLY，不得直接MATLAB或Plant。根审核后才另放行prepare和DEV2，最终再放行未启动TEST240。旧B48复用；所有旧失败包括v6一条Plant失败原样保留。当前累计Plant开始349，TEST仅48B，分数未读，论文仍未达标。peer只读追溯PAIR14最终144行raw索引；局部旧STOP日志不代表总体resume结论。
+
+以下为历史状态与已撤回入口，不能直接执行：
+
+## 当前阻断与下一步（2026-10-23 16:10 UTC）
+
+v6 PREPARE自然OS0且根已复核；随后 ENGINEERING_DEV2 的DSSM第一场真实Plant完成，但与旧DEV状态最大差0.13140362151790552，自然OS1/no-retry停止，KAN未启动。旧失败和新raw都保留。累计Plant开始349，已自然OS0完成348；TEST仍仅旧B48，未读任何TEST分数。根独立查明：重建入口将旧run_start内嵌模型、normalizer及W0替换为另一个同名外部模型。旧DSSM W0 SHA8a067…，当前外部/C5 W0 SHA88f8…；KAN也不同。旧“与v3重建preflight一致”不能证明历史实际模型身份。两名Luna分别进行源码/模型来源追踪、首个同状态分叉复核，禁止新Plant/TEST或改源码。根须先选择并冻结真实历史模型复现，或明确命名为匹配新模型对照并补DEV的科学路径，不能抹去失败或用TEST选路径。
+
+最新事实见 test_engineering_dev2_parent_review/PARENT_V6_ACTUAL_EMBEDDED_MODEL_MISMATCH_v1.json 与 STATE.json。下文均为历史入口，不直接执行。
+
+## 当前续跑入口（2026-10-23 16:00 UTC）
+
+v6 已获一次 PREPARE_NO_PLANT 放行，执行者 test48_execution_luna_max。命令：`& ./experiments/c5_test48_v6/RUN_TEST48_EXACT_v1.ps1 -Mode PREPARE_NO_PLANT`。本轮只修复旧 DEV 日志身份元数据比较，控制器/模型/冻结 TEST 输入与核心运行循环未改。不得重启既有进程；自然退出后由根模型复核，另行放行两个旧 DEV 复现，二者通过后才继续五方法各48个未启动 TEST 组合。旧 B48 复用；原 v3/v4/v5 失败全部保留。当前 TEST 分数仍未访问，论文新颖性未闭合，目标未完成。
+
+以下为历史状态（以本节及 STATE.json 为准）：
+
 # 当前续作入口
+
+截至 UTC 2026-10-23 14:43，v3 TEST 的 B48 已自然 OS0，原 DSSM 首场因遗漏 PCF 函数路径自然 OS1，Plant0、raw0；其余四方法未启动。执行与观察进程均已自然退出，目前无 MATLAB，不得重启旧session。B48、失败记录及全部冻结输入保留，未读取 TEST 成绩。
+
+当前由 Luna max 隔离实现 v4 入口，主模型审核。唯一已证缺失为既有 PCF filter helper；独立复核排除了未激活的 updater。下一步依次为无 Plant 准备、DSSM/KAN 各一场旧 VAL 工程复现、审核一致后继续五方法共240个尚未进入Plant的TEST组合；每步须另行主审release，现阶段仅代码授权。累计自然完成348航次，训练0，论文证据包仍未达标，方法新颖性待进一步论证。详见 STATE.json 与 TEST_UNSTARTED_DEPENDENCY_REPAIR_TASKBOOK_v2_ZH.md。工具没有1.5倍速度参数。
+
+以下旧当前段落按时间保留，不代表当前状态或授权：
+
+以本段和 `STATE.json` 为当前状态；下方旧阶段记录保留，不再代表当前授权。
+
+截至 UTC 2026-10-23 13:40，C5、B及双消融开发审计已闭合，累计自然完成300航次、0训练、0 TEST闭环。C5对B为64/72胜，总体Q11.558928 vs17.058081 mm，高频10.179304 vs10.719024 mm，无风6.334075 vs7.647292 mm。开发验收通过；论文证据包仍未达标。严格消融、限定条件误差界和全部反例已主审，见 `DEV72_FINAL_SCIENCE_SCOPE_DECISION_v2_ZH.md`。
+
+六方法入口v3的DEV72输入预检已自然OS0，根独立重哈希1008个原始B物理数组、核5616字段及212源引用（79唯一文件），物理数组完全一致。24个T2历史ID为char、当前为string，文本相等但字节不同，不能把整个pack称字节相等；见 `test_entry_v3/PARENT_DEV_INPUT_EQUIVALENCE_REVIEW_v2.json`。此前入口失败及reader失败保留，不重跑已完成航次。
+
+当前固定TEST48已实际进入Plant（UTC2026-10-23 13:57启动），六方法顺序共288个唯一组合。冻结输入已自然OS0，根独立核672物理数组及MATLAB保存/重载48pack、6cfg/opts摘要全部一致；正式release为 `test_entry_v3/LOCKED_TEST48_PARENT_RELEASE_v1.json`。执行session73732，30秒worker/launcher观察session56172；不要重启或打断。实际完成raw数、已开始数和自然OS0组数分别见STATE.json，不提前把raw完成当整组自然完成。计时结束前不读性能分数、不做重负载审计/绘图/编译/Git。统计源码与raw审核wrapper已根审冻结，后者等待六组自然OS0后实际执行。所有执行者为Luna max，工具无1.5倍速度参数。新取得的指令滤波复合学习先例另作贡献挑战复核，不改变冻结方法/参数/计分；论文仍未达标。
+
+只用PowerShell7，不结束已有实验、不删除历史数据，不改旧G01/G06/G12及参考缓存保护。总截止仍为2026-10-24T17:01:00Z，新增产物80,000,000,000 bytes、预留后磁盘至少30,000,000,000 bytes。
+
+## 按时间保留的旧阶段记录
+
+
+最新工程状态：正式TEST仍未打开。入口v1在GET前因异构JSON方法表解为cell而自然OS1；根实际MATLAB类型诊断确认。v2六方法预检走通，首场记录器拒绝原spec schedule NaN占位而自然OS1；根读取原72行设计确认仅8个start/retract字段使用NaN。两次均0Plant/0TEST且旧证据保留。v3仅精确占位白名单与字节相等标记修复，已主审放行一次DEV无Plant，由新建Luna max test48_execution_luna_max执行。待72场完整通过及根复核1008个实际B物理数组哈希后，才进入TEST输入冻结。当前仍300自然航次、训练0、TEST0。
+
 
 最新主审：C5及严格双消融完整DEV72全部自然OS0并通过全raw审核，累计300航次、训练0、TEST0。C5 Q11.558928 mm；NO_PRED 12.110171 mm（C5 54胜18负）；冻结W0 34.910909 mm。T2对NO_PRED仅平均好1.067微米且13胜11负，不作普遍收益主张。详见 `DEV72_FINAL_SCIENCE_SCOPE_DECISION_v2_ZH.md` 与 `c5_matched_ablation_dev72_parent_review/C5_MATCHED_ABLATION_DEV72_PARENT_FINDINGS_ZH.md`。最终审计使用v3（SHA cb980b25b79d7ae61de97d95afd1f24400c16d1591b96d1f69ff345456151d84），已实际OS0，勿重跑Plant。
 

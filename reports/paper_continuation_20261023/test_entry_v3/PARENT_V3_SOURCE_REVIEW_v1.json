@@ -1,0 +1,71 @@
+{
+  "status": "PASS_ROOT_V3_SCHEDULE_SENTINEL_AND_BYTE_FLAG_ONLY_SOURCE_REPAIR",
+  "files": [
+    {
+      "path": "experiments/c5_test48_v3/test48_entry_v1.m",
+      "sha256": "0490da98749b114ed9e9553fc7cb44349e0c5c9d182551d8a05c844a009b9bf2"
+    },
+    {
+      "path": "experiments/c5_test48_v3/RUN_TEST48_EXACT_v1.ps1",
+      "sha256": "a5bd7682752a258b9b1ef891e42369e93d033fa5416dba6be89800dbec2559f9"
+    },
+    {
+      "path": "experiments/c5_test48_v3/TEST48_RUN_CONTRACT_v1.json",
+      "sha256": "4ef328f0ffc1997dbfd64c86d0cb804f7fd054064a7283979f0cff466712f9ef"
+    },
+    {
+      "path": "reports/paper_continuation_20261023/test_entry_v3/TEST_METHOD_SOURCE_MANIFEST_v1.json",
+      "sha256": "b9ed7fef91bf61b03e4f51d8a9cbaf7233484ac6faa4750827aefb7e247f9633"
+    },
+    {
+      "path": "reports/paper_continuation_20261023/test_entry_v3/build_test48_method_manifest_v1.ps1",
+      "sha256": "86052ea1bad9bed3019126f351db771615f162ad8ca620d91f518f6eaf16774b"
+    }
+  ],
+  "method_source_and_model_refs_unchanged": true,
+  "all_contract_scientific_values_unchanged": true,
+  "reviewed_source_delta": [
+    "--- \n",
+    "+++ \n",
+    "@@ -760,7 +760,11 @@\n",
+    "     if isnumeric(a)||islogical(a)",
+    "         assert((isnumeric(b)||islogical(b))&&isequal(size(a),size(b)), ...",
+    "             'TEST48:CompareShape','Numeric field shape/type mismatch at %s.',path);",
+    "-        if contains(path,'.arms.command')||islogical(a)||isinteger(a)",
+    "+        scheduleSpecPath=~isempty(regexp(path,'^spec\\.(start|retract)_a[1-4]_s$','once'));",
+    "+        if scheduleSpecPath",
+    "+            assert(strcmp(class(a),class(b))&&isequal(size(a),size(b))&&bitEqual, ...",
+    "+                'TEST48:ScheduleSpecExact','Original schedule placeholder differs at %s.',path);",
+    "+        elseif contains(path,'.arms.command')||islogical(a)||isinteger(a)",
+    "             assert(bitEqual,'TEST48:StrictField','Discrete field differs at %s.',path);",
+    "         else",
+    "             af=double(a(:)); bf=double(b(:)); finiteA=isfinite(af); finiteB=isfinite(bf);",
+    "@@ -798,15 +802,17 @@\n",
+    "         'matlab_class',class(value),'array_sha256',hash_array_value(value));",
+    " end",
+    " end",
+    "-function row=field_audit_row(id,relation,path,a,b,maxAbs,bitEqual)",
+    "+function row=field_audit_row(id,relation,path,a,b,maxAbs,exactValueEqual)",
+    "+shaA=hash_array_value(a); shaB=hash_array_value(b);",
+    "+bitEqual=strcmp(class(a),class(b))&&isequal(size(a),size(b))&&strcmpi(shaA,shaB);",
+    " row=struct('scene_id',id,'relation',relation,'field_path',path, ...",
+    "-    'shape_a',mat2str(size(a)),'class_a',class(a),'sha256_a',hash_array_value(a), ...",
+    "-    'shape_b',mat2str(size(b)),'class_b',class(b),'sha256_b',hash_array_value(b), ...",
+    "-    'max_abs_diff',maxAbs,'bit_equal',logical(bitEqual));",
+    "+    'shape_a',mat2str(size(a)),'class_a',class(a),'sha256_a',shaA, ...",
+    "+    'shape_b',mat2str(size(b)),'class_b',class(b),'sha256_b',shaB, ...",
+    "+    'max_abs_diff',maxAbs,'bit_equal',logical(bitEqual),'exact_value_equal',logical(exactValueEqual));",
+    " end",
+    " function rows=empty_field_audits()",
+    " rows=repmat(struct('scene_id','','relation','','field_path','','shape_a','','class_a','','sha256_a','', ...",
+    "-    'shape_b','','class_b','','sha256_b','','max_abs_diff',0,'bit_equal',false),0,1);",
+    "+    'shape_b','','class_b','','sha256_b','','max_abs_diff',0,'bit_equal',false,'exact_value_equal',false),0,1);",
+    " end",
+    " function rows=empty_inventory_rows()",
+    " rows=repmat(struct('scene_id','','field_path','','shape','','matlab_class','','array_sha256',''),0,1);"
+  ],
+  "PS7_AST_pass": true,
+  "TEST_accessed": false,
+  "Plant_authorized": false,
+  "prior_v2_failure_receipt_sha256": "c105cea9835cc3d3ccdbc61a5cf1b096a2d0269dce9c57e7458d6b0ca6d047b7"
+}
