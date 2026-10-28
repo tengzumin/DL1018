@@ -1,0 +1,262 @@
+{
+  "schema": "CAUSAL_FIXED_J0_TORQUE_RESIDUAL_AUDIT_V1",
+  "status": "PASS_PAST_ONLY_NOMINAL_ACCOUNTING",
+  "Plant_calls": 0,
+  "TEST_read": false,
+  "training_jobs": 0,
+  "inertia_reconstruction_used": false,
+  "Plant_truth_read": false,
+  "inputs": [
+    "past measured body omega",
+    "past issued controller body torque",
+    "fixed nominal J0",
+    "timestamps"
+  ],
+  "target_formula": "mean(J0^-1*(J0*omega_dot + omega cross (J0*omega) - tau_issued)) over the preceding 10 ms",
+  "deployment_assumption": "Ideal gyro/state feedback as in the existing simulation; noisy derivative robustness not established.",
+  "interpretation": "Interval-average nominal-model residual. RBF output is an offline comparator only; no claim that it is a deployable measurement.",
+  "synthetic_nominal_zero_residual_max_abs": 1.7763568394002505E-15,
+  "fixed_J0_kgm2": [
+    [
+      0.0032575533333333339,
+      0,
+      0
+    ],
+    [
+      0,
+      0.0032575533333333334,
+      0
+    ],
+    [
+      0,
+      0,
+      0.0063606483333333332
+    ]
+  ],
+  "source_script_sha256": "14947c1fb96a04c667a419426d3aac036aa8254244ae377af1694c4a9eb15e67",
+  "manifest_sha256": "fc333f414ffc5d8761af20e1e852ce31f57516f59d164061bb67d02f8ab8b606",
+  "rows": [
+    {
+      "scene_id": "DL1018_VAL_T1_C08_W15",
+      "source_raw_sha256": "c118dd1bd5567e0e7c58b7f5334109187b2cfe743977a6a18a3976d7d0ab23c3",
+      "event_count": 1999,
+      "interval_s": 0.01,
+      "all_observations_strictly_after_feature_index": true,
+      "mature_observed_residual_RMS_rad_s2": [
+        3.1494441794434627,
+        21.026664747363235,
+        0.012021612795204951
+      ],
+      "mature_RBF_applied_RMS_rad_s2": [
+        3.0930408488118419,
+        20.678459652483138,
+        0.051111493657268227
+      ],
+      "mature_observed_minus_RBF_RMSE_rad_s2": [
+        0.3462453242530924,
+        1.1097746976217868,
+        0.051220244763913118
+      ],
+      "mature_observed_RBF_correlation": [
+        0.98869876617133623,
+        0.99741310650265336,
+        0.10867939575162594
+      ],
+      "observed_target_outside_dmax_axis_counts": [
+        0,
+        0,
+        0
+      ],
+      "maximum_abs_interval_residual_rad_s2": [
+        6.5879209044609093,
+        32.522508329958022,
+        0.069834211148757486
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C05_W12",
+      "source_raw_sha256": "4b14d0a1c390c3275334f76f15b0b358c02e701b58982b404bf4ec8a4f12495d",
+      "event_count": 1999,
+      "interval_s": 0.01,
+      "all_observations_strictly_after_feature_index": true,
+      "mature_observed_residual_RMS_rad_s2": [
+        17.292486150461912,
+        9.6315978281257113,
+        1.001699338080092
+      ],
+      "mature_RBF_applied_RMS_rad_s2": [
+        17.007664603934419,
+        9.4543761277012948,
+        0.94916115608194485
+      ],
+      "mature_observed_minus_RBF_RMSE_rad_s2": [
+        1.0255260666083026,
+        0.93091181300643766,
+        0.23100799911274938
+      ],
+      "mature_observed_RBF_correlation": [
+        0.99664132122501359,
+        0.99096053133061468,
+        0.94906437178707748
+      ],
+      "observed_target_outside_dmax_axis_counts": [
+        0,
+        0,
+        0
+      ],
+      "maximum_abs_interval_residual_rad_s2": [
+        27.521276166849585,
+        16.858494620311681,
+        2.7407539893793151
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C02_W12",
+      "source_raw_sha256": "a9b189771beb2c8212c08ae229cee5adf92d2bb80990dc2e3e15ac0ccb2e760c",
+      "event_count": 1999,
+      "interval_s": 0.01,
+      "all_observations_strictly_after_feature_index": true,
+      "mature_observed_residual_RMS_rad_s2": [
+        9.2113109582259689,
+        9.2113111409980188,
+        0.054823085535068324
+      ],
+      "mature_RBF_applied_RMS_rad_s2": [
+        9.0546483046071771,
+        9.0546835914973922,
+        0.03877699408043378
+      ],
+      "mature_observed_minus_RBF_RMSE_rad_s2": [
+        0.66367732349206643,
+        0.639266872209316,
+        0.062445767833818513
+      ],
+      "mature_observed_RBF_correlation": [
+        0.99484137444802812,
+        0.9952362751220456,
+        0.077080331943555375
+      ],
+      "observed_target_outside_dmax_axis_counts": [
+        0,
+        0,
+        0
+      ],
+      "maximum_abs_interval_residual_rad_s2": [
+        15.196250332747677,
+        15.196202256954663,
+        0.2482351474507084
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C05_W15",
+      "source_raw_sha256": "b291199298fb4c591478a9c3115323a4299e281b0be447c9fbca0ffe4f640314",
+      "event_count": 1999,
+      "interval_s": 0.01,
+      "all_observations_strictly_after_feature_index": true,
+      "mature_observed_residual_RMS_rad_s2": [
+        16.63365755438053,
+        7.9355003541309381,
+        0.01372734981746164
+      ],
+      "mature_RBF_applied_RMS_rad_s2": [
+        16.360926684756706,
+        7.8033382265557121,
+        0.025546581622357754
+      ],
+      "mature_observed_minus_RBF_RMSE_rad_s2": [
+        0.92392705878760217,
+        0.49522720772570256,
+        0.024528158329894648
+      ],
+      "mature_observed_RBF_correlation": [
+        0.9969620685539996,
+        0.996037704699627,
+        0.29137621783947865
+      ],
+      "observed_target_outside_dmax_axis_counts": [
+        0,
+        0,
+        0
+      ],
+      "maximum_abs_interval_residual_rad_s2": [
+        26.015592096083921,
+        12.724068869343906,
+        0.0719420840573178
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C00_W13",
+      "source_raw_sha256": "fe56d41b82deed388bd90f3e1933d40ba4abb1a33c9a770f85729de9932071f6",
+      "event_count": 1999,
+      "interval_s": 0.01,
+      "all_observations_strictly_after_feature_index": true,
+      "mature_observed_residual_RMS_rad_s2": [
+        2.0492170204791565E-5,
+        5.6043916879004617E-5,
+        3.4242094794023603E-15
+      ],
+      "mature_RBF_applied_RMS_rad_s2": [
+        0.0017631090842860702,
+        0.00064118441439570085,
+        0.00049552201440814425
+      ],
+      "mature_observed_minus_RBF_RMSE_rad_s2": [
+        0.0017667680766087906,
+        0.00064009294567763059,
+        0.00049552201441073831
+      ],
+      "mature_observed_RBF_correlation": [
+        -0.17293617661542979,
+        0.063179815906566253,
+        -0.11620858271161831
+      ],
+      "observed_target_outside_dmax_axis_counts": [
+        0,
+        0,
+        0
+      ],
+      "maximum_abs_interval_residual_rad_s2": [
+        7.818896284916832E-5,
+        0.00021980148290534629,
+        6.8001160258290838E-15
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C02_W15",
+      "source_raw_sha256": "fdf56c425be3a5dcede1c9fd0abb4d24a081996ec72049b0f0d7a33aad88b911",
+      "event_count": 1999,
+      "interval_s": 0.01,
+      "all_observations_strictly_after_feature_index": true,
+      "mature_observed_residual_RMS_rad_s2": [
+        9.086040957542405,
+        9.086040952868693,
+        0.0012509418467890395
+      ],
+      "mature_RBF_applied_RMS_rad_s2": [
+        8.9355925761452237,
+        8.934561928945703,
+        0.012069422234566076
+      ],
+      "mature_observed_minus_RBF_RMSE_rad_s2": [
+        0.5703961598969719,
+        0.53748695341008446,
+        0.012147895119795939
+      ],
+      "mature_observed_RBF_correlation": [
+        0.99631650350090128,
+        0.99676393581481082,
+        -0.025092720131678639
+      ],
+      "observed_target_outside_dmax_axis_counts": [
+        0,
+        0,
+        0
+      ],
+      "maximum_abs_interval_residual_rad_s2": [
+        13.917046427809767,
+        13.917045955970142,
+        0.0054561412590093152
+      ]
+    }
+  ]
+}

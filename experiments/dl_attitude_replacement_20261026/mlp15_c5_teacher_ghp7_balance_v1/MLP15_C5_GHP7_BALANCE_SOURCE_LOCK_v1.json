@@ -1,0 +1,97 @@
+{
+  "schema": "DL1018_MLP15_C5_GHP7_BALANCE_SOURCE_LOCK_V1",
+  "status": "APPROVED_FOR_OFFLINE_TRAINING",
+  "created_utc": "2026-10-26",
+  "purpose": "One offline MLP15 training job with fixed balanced C5/GHP7 teacher sampling; no Plant/closed loop/TEST release.",
+  "source_file_sha256": {
+    "experiments/dl_attitude_replacement_20261026/mlp15_c5_teacher_ghp7_balance_v1/MLP15_C5_GHP7_BALANCED_OFFLINE_TASKBOOK_v1.md": "e37f6377e68b6980b9b0f0391117719c577c8eb75d96ee10a38331257a256e33",
+    "experiments/dl_attitude_replacement_20261026/mlp15_c5_teacher_ghp7_balance_v1/prepare_ghp7_teacher_data_v1.py": "4fa28fccaed6cf2b359415b73e5d153608a19832a80af714d92f6f303338f0b7",
+    "experiments/dl_attitude_replacement_20261026/mlp15_c5_teacher_ghp7_balance_v1/train_mlp15_ghp7_balance_v1.py": "5ffc29dae25db7ffc7a1670b2be29df207a9dc8aab7f0371d2725537abbe3a10",
+    "experiments/dl_attitude_replacement_20261026/mlp15_c5_teacher_ghp7_balance_v1/audit_ghp7_balanced_fit_v1.py": "99916c72e83d321b612970f3bba4b03b5af2498bbca212a717057d3a69649fcd",
+    "experiments/dl_attitude_replacement_20261026/mlp15_c5_teacher_ghp7_balance_v1/data/GHP7_TEACHER_DATA_MANIFEST_v1.json": "6b8ddf9f8c66312a86ced05f2cf7dfbcc48aa23ea22559e215f78a517323dfb6",
+    "experiments/dl_attitude_replacement_20261026/mlp15_c5_teacher_ghp7_balance_v1/data/ghp7_g1_g2_train_v1.npz": "a8dfd231d6a38e459de6974f3ef0e6d4e1d37111beccb595eb0c3d2182ce2234",
+    "experiments/dl_attitude_replacement_20261026/GHP7_BASELINE_REUSE_MANIFEST_v1.json": "8a34df2807cfe10486ee1dc5c3d698b6e530d2fdf901ca9d815ae1f5d1f71b25",
+    "experiments/dl_attitude_replacement_20261026/mlp15_c5_teacher_redistill_v1/matched_teacher_data_v1.npz": "b3a8ca6446d6bdde0573e6c233aa222a6cfb28d35f13b084e8dd9683c16c111f",
+    "experiments/dl_attitude_replacement_20261026/mlp15_c5_teacher_redistill_v1/DATASET_MANIFEST_v1.json": "98766ddac3125b81d4637eeb2576349b6ce181c94564c1a444d1d4cab734d55c",
+    "experiments/dl_attitude_replacement_20261026/mlp15_c5_teacher_full72_v1/MLP15_C5_TEACHER_FULL72_SOURCE_LOCK_v1.json": "2c733dd093ab2ea1ff74f6cf2828a130345f022b3439456bf22abff8961edc8a",
+    "experiments/dl_attitude_replacement_20261026/mlp15_c5_teacher_full72_v1/train_mlp15_c5_full72_v1.py": "eb4d98213b9f75d1ede547ea5cc455ad72bad4a28ca172dd64d9bf0137270d09",
+    "experiments/dl_attitude_replacement_20261026/architecture_screen_v1/screen_attitude_architectures_v1.py": "66816f8b04776aca47440008bda96523055c70fc0b68700df07ea30c06357700",
+    "experiments/dl_attitude_replacement_20261026/mlp15_c5_teacher_full72_v1/runs/C5_MLP15_FULL72_SEED2026102001/final_step_60000.pt": "cc55d7448f32950495c61cfc5226510d2cb3b7aae8ba0e8253694b9d2aaaa806",
+    "experiments/dl_attitude_replacement_20261026/mlp15_c5_teacher_full72_v1/runs/C5_MLP15_FULL72_SEED2026102001/run_receipt.json": "3c5563cc8decf62a87595422850976fc596d7b82f1356c7029a8be1af8cd6bca"
+  },
+  "base_dataset_sha256": "b3a8ca6446d6bdde0573e6c233aa222a6cfb28d35f13b084e8dd9683c16c111f",
+  "base_manifest_sha256": "98766ddac3125b81d4637eeb2576349b6ce181c94564c1a444d1d4cab734d55c",
+  "ghp7_train_bundle_sha256": "a8dfd231d6a38e459de6974f3ef0e6d4e1d37111beccb595eb0c3d2182ce2234",
+  "ghp7_train_x_sha256": "4a33b0b0d86b3b1e7dad8c84657cc563b8d6238f89a586907fa3e9d23d98184e",
+  "ghp7_train_y_sha256": "a501e9928d6e05121fe9e54d5ac83c3d0dc6cf126b9d7362bfde7f73b6d06eb4",
+  "ghp7_train_scene_ids": [
+    "DL1018_GHP7_G1_W00",
+    "DL1018_GHP7_G1_W12",
+    "DL1018_GHP7_G2_W00",
+    "DL1018_GHP7_G2_W12"
+  ],
+  "ghp7_holdout_bundle_sha256_for_post_training_audit": "64632902d70e8aff6618e73320bf07704d2a9894b6b31179046089bc255940bd",
+  "ghp7_holdout_scene_ids": [
+    "DL1018_GHP7_G3_W00",
+    "DL1018_GHP7_G3_W12"
+  ],
+  "feature_contract": {
+    "input_dim": 13,
+    "allowed_feature_groups": [
+      "wrapped_attitude_error_euler_rad_x3",
+      "body_rate_rad_s_x3",
+      "nominal_bs_body_torque_Nm_x3",
+      "morph_command_x4"
+    ],
+    "prohibited_inputs": [
+      "Jhat",
+      "Jdot_hat",
+      "inertia or mass properties",
+      "Plant truth",
+      "RBF weights or hidden state",
+      "observer",
+      "physical feedforward"
+    ]
+  },
+  "target_contract": "C5 logged rbf_output_raw at attitude event k; post-dmax/pre-beta; rad/s^2",
+  "training_contract": {
+    "architecture": "MLP15",
+    "window_events": 15,
+    "hidden": [
+      64,
+      32
+    ],
+    "activation": "SiLU",
+    "optimizer": "Adam",
+    "learning_rate": 0.001,
+    "weight_decay": 1e-05,
+    "batch_size": 512,
+    "sampling_per_batch": {
+      "base_c5_72_scenes": 256,
+      "ghp7_g1_g2_4_scenes": 256
+    },
+    "loss": "SmoothL1(beta=1.0)",
+    "seed": 2026102001,
+    "optimizer_steps": 60000,
+    "checkpoint_policy": "final_step_only_at_60000",
+    "normalizer_fit": "all 72 base C5 plus 4 GHP7 G1/G2 training scenes"
+  },
+  "safety_context": {
+    "max_tilt_deg": 30,
+    "attitude_residual_dmax_rad_s2": [
+      45,
+      45,
+      4.7124
+    ],
+    "plant_called": false,
+    "TEST48_read": false,
+    "ghp7_holdout_opened_by_training": false
+  },
+  "training_release": {
+    "approved": true,
+    "authorized_jobs": 1,
+    "approved_by": "Codex primary reviewer",
+    "approval_reference": "ROOT_REVIEW_C5_GHP7_BALANCED_OFFLINE_20261026",
+    "note": "One 60000-step offline MLP15 training only; G3 holdout, Plant, closed-loop, B/C5 reruns, and TEST remain sealed."
+  }
+}

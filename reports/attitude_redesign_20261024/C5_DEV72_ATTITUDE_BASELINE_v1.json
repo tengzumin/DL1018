@@ -1,0 +1,4829 @@
+{
+  "schema": "C5_DEV72_ATTITUDE_BASELINE_V1",
+  "parent_sha256": "bb34889559d95a1c995d4d420e3b3d7a702908b58b47cce969dc508a1c697fab",
+  "script_sha256": "d13c8d078cb996f2727f19bc51f667d27a268752c69c4200be568388c9c67e6e",
+  "scope": "Frozen C5 DEV only, descriptive tracking baseline; no candidate comparison or TEST selection.",
+  "alignment": "20,000 left transition states and same-row filtered command, not terminal state.",
+  "body_rate_definition": "omega - R_actual^T R_ref omega_ref, omega_ref=T(ref)^-1 etaDot_ref",
+  "new_rollouts": 0,
+  "training_steps": 0,
+  "groups": [
+    {
+      "group": "ALL",
+      "period": "ALL",
+      "n": 72,
+      "scene_equal_mean_SO3_RMSE_deg": 0.9389480284087068,
+      "max_SO3_peak_deg": 5.505542613344926
+    },
+    {
+      "group": "C00",
+      "period": "ALL",
+      "n": 6,
+      "scene_equal_mean_SO3_RMSE_deg": 0.008265566214644783,
+      "max_SO3_peak_deg": 0.0346701605699137
+    },
+    {
+      "group": "ACTIVE",
+      "period": "ALL",
+      "n": 66,
+      "scene_equal_mean_SO3_RMSE_deg": 1.023555524971803,
+      "max_SO3_peak_deg": 5.505542613344926
+    },
+    {
+      "group": "ALL",
+      "period": "PRE_0_5",
+      "n": 72,
+      "scene_equal_mean_SO3_RMSE_deg": 0.007631139399406529,
+      "max_SO3_peak_deg": 0.04795395820722745
+    },
+    {
+      "group": "C00",
+      "period": "PRE_0_5",
+      "n": 6,
+      "scene_equal_mean_SO3_RMSE_deg": 0.007877135851144959,
+      "max_SO3_peak_deg": 0.032677391914319544
+    },
+    {
+      "group": "ACTIVE",
+      "period": "PRE_0_5",
+      "n": 66,
+      "scene_equal_mean_SO3_RMSE_deg": 0.007608776085612126,
+      "max_SO3_peak_deg": 0.04795395820722745
+    },
+    {
+      "group": "ALL",
+      "period": "POST_5",
+      "n": 72,
+      "scene_equal_mean_SO3_RMSE_deg": 1.084093362705672,
+      "max_SO3_peak_deg": 5.505542613344926
+    },
+    {
+      "group": "C00",
+      "period": "POST_5",
+      "n": 6,
+      "scene_equal_mean_SO3_RMSE_deg": 0.008384971795443216,
+      "max_SO3_peak_deg": 0.0346701605699137
+    },
+    {
+      "group": "ACTIVE",
+      "period": "POST_5",
+      "n": 66,
+      "scene_equal_mean_SO3_RMSE_deg": 1.181885034606602,
+      "max_SO3_peak_deg": 5.505542613344926
+    }
+  ],
+  "rows": [
+    {
+      "scene_id": "DL1018_DEV_T1_C00_W03",
+      "class": "C00",
+      "task": "T1",
+      "wind": "W03",
+      "period": "ALL",
+      "samples": 20000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_DEV_T1_C00_W03\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "fa36bf4aa229279d964b40c10cb3579487b5c641d167572383ef49f63196af5d",
+      "SO3_RMSE_deg": 0.002056115417879365,
+      "SO3_peak_deg": 0.005549558429218104,
+      "Euler_axis_RMSE_deg": [
+        0.0016034787592717622,
+        0.0012867250657262403,
+        1.057441119560889e-05
+      ],
+      "transported_body_rate_RMSE_rads": [
+        4.482706472105349e-05,
+        3.593823959690101e-05,
+        3.3282782906463033e-06
+      ]
+    },
+    {
+      "scene_id": "DL1018_DEV_T1_C00_W03",
+      "class": "C00",
+      "task": "T1",
+      "wind": "W03",
+      "period": "PRE_0_5",
+      "samples": 5000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_DEV_T1_C00_W03\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "fa36bf4aa229279d964b40c10cb3579487b5c641d167572383ef49f63196af5d",
+      "SO3_RMSE_deg": 0.002237399577637839,
+      "SO3_peak_deg": 0.005549558429218104,
+      "Euler_axis_RMSE_deg": [
+        0.0018294385310702252,
+        0.0012876781778788074,
+        1.2997623296445411e-05
+      ],
+      "transported_body_rate_RMSE_rads": [
+        5.0652781072008485e-05,
+        3.5912198633913236e-05,
+        4.0166119907923505e-06
+      ]
+    },
+    {
+      "scene_id": "DL1018_DEV_T1_C00_W03",
+      "class": "C00",
+      "task": "T1",
+      "wind": "W03",
+      "period": "POST_5",
+      "samples": 15000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_DEV_T1_C00_W03\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "fa36bf4aa229279d964b40c10cb3579487b5c641d167572383ef49f63196af5d",
+      "SO3_RMSE_deg": 0.001992024562813,
+      "SO3_peak_deg": 0.004337179038023315,
+      "Euler_axis_RMSE_deg": [
+        0.0015207159702783023,
+        0.001286407204748632,
+        9.632141976718243e-06
+      ],
+      "transported_body_rate_RMSE_rads": [
+        4.2708932304196624e-05,
+        3.5946915725716885e-05,
+        3.064668205824402e-06
+      ]
+    },
+    {
+      "scene_id": "DL1018_DEV_T1_C01_W15",
+      "class": "C01",
+      "task": "T1",
+      "wind": "W15",
+      "period": "ALL",
+      "samples": 20000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_DEV_T1_C01_W15\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "b61f01ab5920de766b8596512490b596e3959fa87368cd40a3b30758831fe651",
+      "SO3_RMSE_deg": 0.9535576868551284,
+      "SO3_peak_deg": 2.8935426175068875,
+      "Euler_axis_RMSE_deg": [
+        0.6940416211469791,
+        0.6539123258412607,
+        0.01129155590718027
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.013893769435493315,
+        0.013071827266389157,
+        0.000580611561691655
+      ]
+    },
+    {
+      "scene_id": "DL1018_DEV_T1_C01_W15",
+      "class": "C01",
+      "task": "T1",
+      "wind": "W15",
+      "period": "PRE_0_5",
+      "samples": 5000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_DEV_T1_C01_W15\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "b61f01ab5920de766b8596512490b596e3959fa87368cd40a3b30758831fe651",
+      "SO3_RMSE_deg": 0.00017478317544126825,
+      "SO3_peak_deg": 0.00037962971302037075,
+      "Euler_axis_RMSE_deg": [
+        0.00015866783252993332,
+        7.330726268442136e-05,
+        6.87789694429621e-08
+      ],
+      "transported_body_rate_RMSE_rads": [
+        4.127963589145392e-06,
+        1.9090127866064886e-06,
+        2.4119068781452746e-08
+      ]
+    },
+    {
+      "scene_id": "DL1018_DEV_T1_C01_W15",
+      "class": "C01",
+      "task": "T1",
+      "wind": "W15",
+      "period": "POST_5",
+      "samples": 15000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_DEV_T1_C01_W15\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "b61f01ab5920de766b8596512490b596e3959fa87368cd40a3b30758831fe651",
+      "SO3_RMSE_deg": 1.1010735697631433,
+      "SO3_peak_deg": 2.8935426175068875,
+      "Euler_axis_RMSE_deg": [
+        0.8014102283603628,
+        0.7550729135155433,
+        0.013038365685100006
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.016043142870257786,
+        0.01509404594185988,
+        0.0006704324827299566
+      ]
+    },
+    {
+      "scene_id": "DL1018_DEV_T1_C04_W00",
+      "class": "C04",
+      "task": "T1",
+      "wind": "W00",
+      "period": "ALL",
+      "samples": 20000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_DEV_T1_C04_W00\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "ac0f403f134db3ea213547889b36f8dc5e81251d5ab03836c912e3a54453527d",
+      "SO3_RMSE_deg": 0.7456467169412722,
+      "SO3_peak_deg": 2.5801852412399593,
+      "Euler_axis_RMSE_deg": [
+        0.5425223376741799,
+        0.5112338402986918,
+        0.06541057114500307
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.013122020817884073,
+        0.01248113001207618,
+        0.0018481202169905566
+      ]
+    },
+    {
+      "scene_id": "DL1018_DEV_T1_C04_W00",
+      "class": "C04",
+      "task": "T1",
+      "wind": "W00",
+      "period": "PRE_0_5",
+      "samples": 5000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_DEV_T1_C04_W00\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "ac0f403f134db3ea213547889b36f8dc5e81251d5ab03836c912e3a54453527d",
+      "SO3_RMSE_deg": 0.0011815973709436954,
+      "SO3_peak_deg": 0.0029485806644670336,
+      "Euler_axis_RMSE_deg": [
+        0.00019155152023887757,
+        0.0011659693084184986,
+        1.3404371130671144e-06
+      ],
+      "transported_body_rate_RMSE_rads": [
+        5.119283382957466e-06,
+        3.1446061467363226e-05,
+        4.235070519791106e-07
+      ]
+    },
+    {
+      "scene_id": "DL1018_DEV_T1_C04_W00",
+      "class": "C04",
+      "task": "T1",
+      "wind": "W00",
+      "period": "POST_5",
+      "samples": 15000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_DEV_T1_C04_W00\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "ac0f403f134db3ea213547889b36f8dc5e81251d5ab03836c912e3a54453527d",
+      "SO3_RMSE_deg": 0.8609983952305688,
+      "SO3_peak_deg": 2.5801852412399593,
+      "Euler_axis_RMSE_deg": [
+        0.6264508256332769,
+        0.5903216068047895,
+        0.07552962171286455
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.015152004214766108,
+        0.01441195610894664,
+        0.0021340253955407576
+      ]
+    },
+    {
+      "scene_id": "DL1018_DEV_T1_C05_W06",
+      "class": "C05",
+      "task": "T1",
+      "wind": "W06",
+      "period": "ALL",
+      "samples": 20000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_DEV_T1_C05_W06\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "727febc0aedbd4f127eb46aec8d103ab5b2b1e4336d8e92882c4447b779b602e",
+      "SO3_RMSE_deg": 1.292527658504589,
+      "SO3_peak_deg": 3.899247654641637,
+      "Euler_axis_RMSE_deg": [
+        1.245864769218682,
+        0.32987999164340664,
+        0.16718365334433846
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.026006458982528197,
+        0.025344905726445943,
+        0.015598673397423017
+      ]
+    },
+    {
+      "scene_id": "DL1018_DEV_T1_C05_W06",
+      "class": "C05",
+      "task": "T1",
+      "wind": "W06",
+      "period": "PRE_0_5",
+      "samples": 5000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_DEV_T1_C05_W06\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "727febc0aedbd4f127eb46aec8d103ab5b2b1e4336d8e92882c4447b779b602e",
+      "SO3_RMSE_deg": 0.0037697329409073247,
+      "SO3_peak_deg": 0.009044806416047397,
+      "Euler_axis_RMSE_deg": [
+        0.0032931938242423972,
+        0.001834324743533116,
+        1.983010302220546e-05
+      ],
+      "transported_body_rate_RMSE_rads": [
+        9.576433734696467e-05,
+        5.380198157981756e-05,
+        8.319672622751858e-06
+      ]
+    },
+    {
+      "scene_id": "DL1018_DEV_T1_C05_W06",
+      "class": "C05",
+      "task": "T1",
+      "wind": "W06",
+      "period": "POST_5",
+      "samples": 15000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_DEV_T1_C05_W06\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "727febc0aedbd4f127eb46aec8d103ab5b2b1e4336d8e92882c4447b779b602e",
+      "SO3_RMSE_deg": 1.4924807962037543,
+      "SO3_peak_deg": 3.899247654641637,
+      "Euler_axis_RMSE_deg": [
+        1.4385994633202246,
+        0.3809111317176888,
+        0.1930470541854211
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.030029621289827474,
+        0.02926575980263459,
+        0.018011795929528493
+      ]
+    },
+    {
+      "scene_id": "DL1018_DEV_T1_C07_W08",
+      "class": "C07",
+      "task": "T1",
+      "wind": "W08",
+      "period": "ALL",
+      "samples": 20000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_DEV_T1_C07_W08\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "b7fc7c1a8ac1c744429a36ad1ee93e1b4b45d59c82c61808b1f9c4af999483b1",
+      "SO3_RMSE_deg": 0.9331994653468827,
+      "SO3_peak_deg": 3.218226189246347,
+      "Euler_axis_RMSE_deg": [
+        0.2780589869469273,
+        0.8763427264834771,
+        0.14654370227475966
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.022189652576381263,
+        0.025891237331442114,
+        0.02122076392158586
+      ]
+    },
+    {
+      "scene_id": "DL1018_DEV_T1_C07_W08",
+      "class": "C07",
+      "task": "T1",
+      "wind": "W08",
+      "period": "PRE_0_5",
+      "samples": 5000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_DEV_T1_C07_W08\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "b7fc7c1a8ac1c744429a36ad1ee93e1b4b45d59c82c61808b1f9c4af999483b1",
+      "SO3_RMSE_deg": 0.012607532121967325,
+      "SO3_peak_deg": 0.033185116837729345,
+      "Euler_axis_RMSE_deg": [
+        0.011142736789174712,
+        0.005892235498613197,
+        0.0002067228201412072
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.00032367299209591996,
+        0.00017571088006773734,
+        9.620987709814826e-05
+      ]
+    },
+    {
+      "scene_id": "DL1018_DEV_T1_C07_W08",
+      "class": "C07",
+      "task": "T1",
+      "wind": "W08",
+      "period": "POST_5",
+      "samples": 15000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_DEV_T1_C07_W08\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "b7fc7c1a8ac1c744429a36ad1ee93e1b4b45d59c82c61808b1f9c4af999483b1",
+      "SO3_RMSE_deg": 1.0775413400621225,
+      "SO3_peak_deg": 3.218226189246347,
+      "Euler_axis_RMSE_deg": [
+        0.3210104049739682,
+        1.0119076997768135,
+        0.1692140498217659
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.025621722305081952,
+        0.02989645356837983,
+        0.024503564566012766
+      ]
+    },
+    {
+      "scene_id": "DL1018_DEV_T1_C10_W09",
+      "class": "C10",
+      "task": "T1",
+      "wind": "W09",
+      "period": "ALL",
+      "samples": 20000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_DEV_T1_C10_W09\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "1e684df2174bc6b754e7798c67acb5c0b4ead218bcc1bd7b1d5cfc1a2fcf4991",
+      "SO3_RMSE_deg": 1.3335046612945423,
+      "SO3_peak_deg": 3.384187598046507,
+      "Euler_axis_RMSE_deg": [
+        1.1859731237630446,
+        0.608707090263934,
+        0.06197914179083767
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.027962290808277723,
+        0.01900121500969089,
+        0.004161158958670078
+      ]
+    },
+    {
+      "scene_id": "DL1018_DEV_T1_C10_W09",
+      "class": "C10",
+      "task": "T1",
+      "wind": "W09",
+      "period": "PRE_0_5",
+      "samples": 5000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_DEV_T1_C10_W09\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "1e684df2174bc6b754e7798c67acb5c0b4ead218bcc1bd7b1d5cfc1a2fcf4991",
+      "SO3_RMSE_deg": 0.0055395392177857595,
+      "SO3_peak_deg": 0.013161513344839898,
+      "Euler_axis_RMSE_deg": [
+        0.005227078883501726,
+        0.0018337159713526896,
+        3.236638851579407e-05
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.0001363905956060988,
+        4.7570924530240315e-05,
+        1.303546843161209e-05
+      ]
+    },
+    {
+      "scene_id": "DL1018_DEV_T1_C10_W09",
+      "class": "C10",
+      "task": "T1",
+      "wind": "W09",
+      "period": "POST_5",
+      "samples": 15000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_DEV_T1_C10_W09\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "1e684df2174bc6b754e7798c67acb5c0b4ead218bcc1bd7b1d5cfc1a2fcf4991",
+      "SO3_RMSE_deg": 1.5397952288407641,
+      "SO3_peak_deg": 3.384187598046507,
+      "Euler_axis_RMSE_deg": [
+        1.3694404792711805,
+        0.7028736075179938,
+        0.07156734595454349
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.03228797622744521,
+        0.02194069601133283,
+        0.004804886595742705
+      ]
+    },
+    {
+      "scene_id": "DL1018_DEV_T1_C11_W12",
+      "class": "C11",
+      "task": "T1",
+      "wind": "W12",
+      "period": "ALL",
+      "samples": 20000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_DEV_T1_C11_W12\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "996edaae6b20f048468a04d36d1b2af19c1daf5d45e5bc8160f52f3bd35b2aa2",
+      "SO3_RMSE_deg": 1.127178402339769,
+      "SO3_peak_deg": 2.877253505601207,
+      "Euler_axis_RMSE_deg": [
+        0.5494542581833619,
+        0.9773224901727224,
+        0.12595176427345883
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.031201521476320004,
+        0.022193464963999956,
+        0.008546315398193522
+      ]
+    },
+    {
+      "scene_id": "DL1018_DEV_T1_C11_W12",
+      "class": "C11",
+      "task": "T1",
+      "wind": "W12",
+      "period": "PRE_0_5",
+      "samples": 5000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_DEV_T1_C11_W12\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "996edaae6b20f048468a04d36d1b2af19c1daf5d45e5bc8160f52f3bd35b2aa2",
+      "SO3_RMSE_deg": 0.004931409893398161,
+      "SO3_peak_deg": 0.010625033268944739,
+      "Euler_axis_RMSE_deg": [
+        0.004285713893064394,
+        0.0024389652861630936,
+        4.473281793875495e-05
+      ],
+      "transported_body_rate_RMSE_rads": [
+        8.935878150675981e-05,
+        5.0957359934624186e-05,
+        1.4624871244216111e-05
+      ]
+    },
+    {
+      "scene_id": "DL1018_DEV_T1_C11_W12",
+      "class": "C11",
+      "task": "T1",
+      "wind": "W12",
+      "period": "POST_5",
+      "samples": 15000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_DEV_T1_C11_W12\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "996edaae6b20f048468a04d36d1b2af19c1daf5d45e5bc8160f52f3bd35b2aa2",
+      "SO3_RMSE_deg": 1.3015503939534832,
+      "SO3_peak_deg": 2.877253505601207,
+      "Euler_axis_RMSE_deg": [
+        0.6344503027555273,
+        1.1285139270500797,
+        0.14543656772325494
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.03602837670853907,
+        0.02562678905481946,
+        0.009868431379145995
+      ]
+    },
+    {
+      "scene_id": "DL1018_DEV_T1_C15_W14",
+      "class": "C15",
+      "task": "T1",
+      "wind": "W14",
+      "period": "ALL",
+      "samples": 20000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_DEV_T1_C15_W14\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "6c72ae52e3f39af36442935468af7d2a047af460b845223167ee206d0dc96707",
+      "SO3_RMSE_deg": 0.8924541790891425,
+      "SO3_peak_deg": 2.767939869638804,
+      "Euler_axis_RMSE_deg": [
+        0.3411047463247798,
+        0.8109494218100788,
+        0.15533547171410403
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.04276228446534211,
+        0.057014918356369876,
+        0.02130704850434406
+      ]
+    },
+    {
+      "scene_id": "DL1018_DEV_T1_C15_W14",
+      "class": "C15",
+      "task": "T1",
+      "wind": "W14",
+      "period": "PRE_0_5",
+      "samples": 5000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_DEV_T1_C15_W14\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "6c72ae52e3f39af36442935468af7d2a047af460b845223167ee206d0dc96707",
+      "SO3_RMSE_deg": 0.01417208874584927,
+      "SO3_peak_deg": 0.03163464301747654,
+      "Euler_axis_RMSE_deg": [
+        0.006288651784779896,
+        0.012698114624694178,
+        0.00027223107618000263
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.00012533713608767257,
+        0.0002647965677364147,
+        0.0001260204201391008
+      ]
+    },
+    {
+      "scene_id": "DL1018_DEV_T1_C15_W14",
+      "class": "C15",
+      "task": "T1",
+      "wind": "W14",
+      "period": "POST_5",
+      "samples": 15000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_DEV_T1_C15_W14\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "6c72ae52e3f39af36442935468af7d2a047af460b845223167ee206d0dc96707",
+      "SO3_RMSE_deg": 1.0304848371834945,
+      "SO3_peak_deg": 2.767939869638804,
+      "Euler_axis_RMSE_deg": [
+        0.3938570996016614,
+        0.9363750346987725,
+        0.1793658839549428
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.04937757986975356,
+        0.06583497941447188,
+        0.024603152797420022
+      ]
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C00_W04",
+      "class": "C00",
+      "task": "T2",
+      "wind": "W04",
+      "period": "ALL",
+      "samples": 20000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_DEV_T2_C00_W04\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "9b408641737fe13bcc290d87f0d02176c26701717fc9145e1ca0191be906442f",
+      "SO3_RMSE_deg": 0.004184958589085488,
+      "SO3_peak_deg": 0.01037583586662595,
+      "Euler_axis_RMSE_deg": [
+        0.0033718333983324003,
+        0.002477759423899695,
+        3.5252430239788214e-05
+      ],
+      "transported_body_rate_RMSE_rads": [
+        9.49864164407837e-05,
+        7.03025015675164e-05,
+        1.2794358559619097e-05
+      ]
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C00_W04",
+      "class": "C00",
+      "task": "T2",
+      "wind": "W04",
+      "period": "PRE_0_5",
+      "samples": 5000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_DEV_T2_C00_W04\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "9b408641737fe13bcc290d87f0d02176c26701717fc9145e1ca0191be906442f",
+      "SO3_RMSE_deg": 0.0035961661431786994,
+      "SO3_peak_deg": 0.009129663575763251,
+      "Euler_axis_RMSE_deg": [
+        0.002847458894802967,
+        0.0021953461291092367,
+        2.892584955861115e-05
+      ],
+      "transported_body_rate_RMSE_rads": [
+        8.069192274317946e-05,
+        6.226581257131603e-05,
+        1.1194916595910019e-05
+      ]
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C00_W04",
+      "class": "C00",
+      "task": "T2",
+      "wind": "W04",
+      "period": "POST_5",
+      "samples": 15000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_DEV_T2_C00_W04\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "9b408641737fe13bcc290d87f0d02176c26701717fc9145e1ca0191be906442f",
+      "SO3_RMSE_deg": 0.0043636033519747885,
+      "SO3_peak_deg": 0.01037583586662595,
+      "Euler_axis_RMSE_deg": [
+        0.0035293540347041056,
+        0.0025649965837729037,
+        3.712245761690689e-05
+      ],
+      "transported_body_rate_RMSE_rads": [
+        9.929499960061195e-05,
+        7.278446604286848e-05,
+        1.3284781847650754e-05
+      ]
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C02_W15",
+      "class": "C02",
+      "task": "T2",
+      "wind": "W15",
+      "period": "ALL",
+      "samples": 20000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_DEV_T2_C02_W15\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "f0e524b6bd8bbafc6e6ecccff3879500332371af068421db120cd795944f608b",
+      "SO3_RMSE_deg": 0.7555668343856989,
+      "SO3_peak_deg": 2.5943087520293373,
+      "Euler_axis_RMSE_deg": [
+        0.549850847679844,
+        0.5179585276077657,
+        0.014421115991640301
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.01344856825822413,
+        0.012675733277455265,
+        0.0007522413766532823
+      ]
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C02_W15",
+      "class": "C02",
+      "task": "T2",
+      "wind": "W15",
+      "period": "PRE_0_5",
+      "samples": 5000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_DEV_T2_C02_W15\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "f0e524b6bd8bbafc6e6ecccff3879500332371af068421db120cd795944f608b",
+      "SO3_RMSE_deg": 0.0002440770984983116,
+      "SO3_peak_deg": 0.0005009248492992941,
+      "Euler_axis_RMSE_deg": [
+        0.00022723792401766613,
+        8.908802296822414e-05,
+        1.1557901246861927e-07
+      ],
+      "transported_body_rate_RMSE_rads": [
+        5.936535542922399e-06,
+        2.318497985229569e-06,
+        2.795752463926106e-08
+      ]
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C02_W15",
+      "class": "C02",
+      "task": "T2",
+      "wind": "W15",
+      "period": "POST_5",
+      "samples": 15000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_DEV_T2_C02_W15\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "f0e524b6bd8bbafc6e6ecccff3879500332371af068421db120cd795944f608b",
+      "SO3_RMSE_deg": 0.8724534190661938,
+      "SO3_peak_deg": 2.5943087520293373,
+      "Euler_axis_RMSE_deg": [
+        0.6349130562893102,
+        0.5980869884751278,
+        0.016652070399442987
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.015529068629959753,
+        0.014636675978619762,
+        0.0008686135224627191
+      ]
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C03_W01",
+      "class": "C03",
+      "task": "T2",
+      "wind": "W01",
+      "period": "ALL",
+      "samples": 20000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_DEV_T2_C03_W01\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "5bab1c31978d9230c2fa234f2e7623d42ce13fa20b1b99e9d73a7127c4f96b4f",
+      "SO3_RMSE_deg": 0.7515111181665597,
+      "SO3_peak_deg": 2.5844186962989855,
+      "Euler_axis_RMSE_deg": [
+        0.5467664867306636,
+        0.5156312733174047,
+        0.017741201647261617
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.013245668143746364,
+        0.012511442779934207,
+        0.001279171609595051
+      ]
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C03_W01",
+      "class": "C03",
+      "task": "T2",
+      "wind": "W01",
+      "period": "PRE_0_5",
+      "samples": 5000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_DEV_T2_C03_W01\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "5bab1c31978d9230c2fa234f2e7623d42ce13fa20b1b99e9d73a7127c4f96b4f",
+      "SO3_RMSE_deg": 0.001999034541848605,
+      "SO3_peak_deg": 0.0042879947437932135,
+      "Euler_axis_RMSE_deg": [
+        0.0016580404485094546,
+        0.0011164808407992338,
+        8.411337920249018e-06
+      ],
+      "transported_body_rate_RMSE_rads": [
+        4.4938070098126484e-05,
+        3.0163824106199642e-05,
+        3.779173589371334e-06
+      ]
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C03_W01",
+      "class": "C03",
+      "task": "T2",
+      "wind": "W01",
+      "period": "POST_5",
+      "samples": 15000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_DEV_T2_C03_W01\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "5bab1c31978d9230c2fa234f2e7623d42ce13fa20b1b99e9d73a7127c4f96b4f",
+      "SO3_RMSE_deg": 0.8677695252336517,
+      "SO3_peak_deg": 2.5844186962989855,
+      "Euler_axis_RMSE_deg": [
+        0.6313508308774772,
+        0.5953993599711721,
+        0.020485774517980258
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.015294758131103663,
+        0.014446959217380734,
+        0.0014770585347262484
+      ]
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C06_W07",
+      "class": "C06",
+      "task": "T2",
+      "wind": "W07",
+      "period": "ALL",
+      "samples": 20000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_DEV_T2_C06_W07\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "02869a1271b1a5483b03565cc2e2366fd370392e68e9265ca943251e212a56be",
+      "SO3_RMSE_deg": 0.6039002639039674,
+      "SO3_peak_deg": 2.11369189016789,
+      "Euler_axis_RMSE_deg": [
+        0.438133250212033,
+        0.41454004112730514,
+        0.05261001016976325
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.018732303933967055,
+        0.018520674741997374,
+        0.005950934473305033
+      ]
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C06_W07",
+      "class": "C06",
+      "task": "T2",
+      "wind": "W07",
+      "period": "PRE_0_5",
+      "samples": 5000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_DEV_T2_C06_W07\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "02869a1271b1a5483b03565cc2e2366fd370392e68e9265ca943251e212a56be",
+      "SO3_RMSE_deg": 0.010148668824817604,
+      "SO3_peak_deg": 0.026687596658199,
+      "Euler_axis_RMSE_deg": [
+        0.0027749686136706907,
+        0.009762118508965693,
+        0.00011418391478623503
+      ],
+      "transported_body_rate_RMSE_rads": [
+        8.272920358471507e-05,
+        0.00029038386445347285,
+        3.693282926400985e-05
+      ]
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C06_W07",
+      "class": "C06",
+      "task": "T2",
+      "wind": "W07",
+      "period": "POST_5",
+      "samples": 15000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_DEV_T2_C06_W07\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "02869a1271b1a5483b03565cc2e2366fd370392e68e9265ca943251e212a56be",
+      "SO3_RMSE_deg": 0.6972993425816036,
+      "SO3_peak_deg": 2.11369189016789,
+      "Euler_axis_RMSE_deg": [
+        0.5059101630772775,
+        0.47863642563485437,
+        0.060748771296995456
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.021630148701730686,
+        0.02138517593105641,
+        0.006871514156001901
+      ]
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C08_W08",
+      "class": "C08",
+      "task": "T2",
+      "wind": "W08",
+      "period": "ALL",
+      "samples": 20000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_DEV_T2_C08_W08\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "6a0db67bee5e28cc6d5815e7273e376efc8311aa9c8591b1c238707b2b011d3b",
+      "SO3_RMSE_deg": 0.8935826364012328,
+      "SO3_peak_deg": 2.7608001294895193,
+      "Euler_axis_RMSE_deg": [
+        0.31945237987691893,
+        0.8234352303207413,
+        0.13448988403920475
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.01988393764778994,
+        0.02077750314000067,
+        0.020542590057081103
+      ]
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C08_W08",
+      "class": "C08",
+      "task": "T2",
+      "wind": "W08",
+      "period": "PRE_0_5",
+      "samples": 5000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_DEV_T2_C08_W08\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "6a0db67bee5e28cc6d5815e7273e376efc8311aa9c8591b1c238707b2b011d3b",
+      "SO3_RMSE_deg": 0.013220487964908812,
+      "SO3_peak_deg": 0.03432300404105057,
+      "Euler_axis_RMSE_deg": [
+        0.011514400874675064,
+        0.006490654236198999,
+        0.0002455687731676359
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.00033045135073650386,
+        0.00019249531667142687,
+        0.00011671093208362487
+      ]
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C08_W08",
+      "class": "C08",
+      "task": "T2",
+      "wind": "W08",
+      "period": "POST_5",
+      "samples": 15000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_DEV_T2_C08_W08\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "6a0db67bee5e28cc6d5815e7273e376efc8311aa9c8591b1c238707b2b011d3b",
+      "SO3_RMSE_deg": 1.0317921190836006,
+      "SO3_peak_deg": 2.7608001294895193,
+      "Euler_axis_RMSE_deg": [
+        0.36881192614872904,
+        0.9508137191446556,
+        0.15529547678698674
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.02295920082399493,
+        0.02399153664999396,
+        0.023720444090639628
+      ]
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C09_W10",
+      "class": "C09",
+      "task": "T2",
+      "wind": "W10",
+      "period": "ALL",
+      "samples": 20000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_DEV_T2_C09_W10\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "9810e02aa6bede12197eda25dbb0c18335252b1965f055931ea28b2f2dbb505d",
+      "SO3_RMSE_deg": 0.6527214373723373,
+      "SO3_peak_deg": 2.1739750316584816,
+      "Euler_axis_RMSE_deg": [
+        0.4718038197541908,
+        0.44807584256025546,
+        0.0479569152597079
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.05337017198853117,
+        0.05404534589423769,
+        0.009219787392538781
+      ]
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C09_W10",
+      "class": "C09",
+      "task": "T2",
+      "wind": "W10",
+      "period": "PRE_0_5",
+      "samples": 5000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_DEV_T2_C09_W10\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "9810e02aa6bede12197eda25dbb0c18335252b1965f055931ea28b2f2dbb505d",
+      "SO3_RMSE_deg": 0.017335459965745533,
+      "SO3_peak_deg": 0.04099506773916604,
+      "Euler_axis_RMSE_deg": [
+        0.016688970233301396,
+        0.004683120329265725,
+        0.0002170363098807305
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.0004339364867385021,
+        0.00012878706628230592,
+        0.00011596884793716681
+      ]
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C09_W10",
+      "class": "C09",
+      "task": "T2",
+      "wind": "W10",
+      "period": "POST_5",
+      "samples": 15000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_DEV_T2_C09_W10\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "9810e02aa6bede12197eda25dbb0c18335252b1965f055931ea28b2f2dbb505d",
+      "SO3_RMSE_deg": 0.7536313380447625,
+      "SO3_peak_deg": 2.1739750316584816,
+      "Euler_axis_RMSE_deg": [
+        0.5447069106749464,
+        0.517386351813392,
+        0.05537573409640547
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.061626057074009054,
+        0.06240614570484422,
+        0.010645882920653355
+      ]
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C12_W13",
+      "class": "C12",
+      "task": "T2",
+      "wind": "W13",
+      "period": "ALL",
+      "samples": 20000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_DEV_T2_C12_W13\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "28c004f613cb24fdca025ab73a6a6e7d32863a4a61197ed6d246db65f4e944bb",
+      "SO3_RMSE_deg": 0.8509149886715432,
+      "SO3_peak_deg": 2.35249343466146,
+      "Euler_axis_RMSE_deg": [
+        0.5598111771079721,
+        0.637666156510689,
+        0.10368024166853164
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.043454441558820237,
+        0.04652870176210535,
+        0.012858658973039205
+      ]
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C12_W13",
+      "class": "C12",
+      "task": "T2",
+      "wind": "W13",
+      "period": "PRE_0_5",
+      "samples": 5000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_DEV_T2_C12_W13\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "28c004f613cb24fdca025ab73a6a6e7d32863a4a61197ed6d246db65f4e944bb",
+      "SO3_RMSE_deg": 0.015320035666150618,
+      "SO3_peak_deg": 0.033739786061861,
+      "Euler_axis_RMSE_deg": [
+        0.0038145653554011783,
+        0.014834028144771099,
+        0.000364449765431668
+      ],
+      "transported_body_rate_RMSE_rads": [
+        7.890873306519096e-05,
+        0.00031023547115318674,
+        8.250012664371273e-05
+      ]
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C12_W13",
+      "class": "C12",
+      "task": "T2",
+      "wind": "W13",
+      "period": "POST_5",
+      "samples": 15000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_DEV_T2_C12_W13\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "28c004f613cb24fdca025ab73a6a6e7d32863a4a61197ed6d246db65f4e944bb",
+      "SO3_RMSE_deg": 0.9825121828406266,
+      "SO3_peak_deg": 2.35249343466146,
+      "Euler_axis_RMSE_deg": [
+        0.6464105158878536,
+        0.7362636439585707,
+        0.11971944596451178
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.0501768463808011,
+        0.0537264184072734,
+        0.014847824038881819
+      ]
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C14_W14",
+      "class": "C14",
+      "task": "T2",
+      "wind": "W14",
+      "period": "ALL",
+      "samples": 20000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_DEV_T2_C14_W14\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "f863bed7657ef34ad0712ac755999e07dd7b55fed51c57811cdc80fa7421a93e",
+      "SO3_RMSE_deg": 0.9878729579818647,
+      "SO3_peak_deg": 3.3727508648649147,
+      "Euler_axis_RMSE_deg": [
+        0.908040276796751,
+        0.3755629178547285,
+        0.11389607955052058
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.0370146041091772,
+        0.030357343103551204,
+        0.016723868159719296
+      ]
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C14_W14",
+      "class": "C14",
+      "task": "T2",
+      "wind": "W14",
+      "period": "PRE_0_5",
+      "samples": 5000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_DEV_T2_C14_W14\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "f863bed7657ef34ad0712ac755999e07dd7b55fed51c57811cdc80fa7421a93e",
+      "SO3_RMSE_deg": 0.015364274207909114,
+      "SO3_peak_deg": 0.03364802075518606,
+      "Euler_axis_RMSE_deg": [
+        0.013336768633363307,
+        0.007612287262713954,
+        0.00046792255102381014
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.00027726632483305176,
+        0.0001570647858327805,
+        0.0001489651429701043
+      ]
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C14_W14",
+      "class": "C14",
+      "task": "T2",
+      "wind": "W14",
+      "period": "POST_5",
+      "samples": 15000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_DEV_T2_C14_W14\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "f863bed7657ef34ad0712ac755999e07dd7b55fed51c57811cdc80fa7421a93e",
+      "SO3_RMSE_deg": 1.1406629451807724,
+      "SO3_peak_deg": 3.3727508648649147,
+      "Euler_axis_RMSE_deg": [
+        1.0484863228710393,
+        0.433640432521715,
+        0.13151558690436696
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.04274048351318137,
+        0.035053523131919104,
+        0.019310868047819358
+      ]
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C00_W05",
+      "class": "C00",
+      "task": "T3",
+      "wind": "W05",
+      "period": "ALL",
+      "samples": 20000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_DEV_T3_C00_W05\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "a88c5010bb1e264ddde36f9e1400d0f6947b5a0a7361dede183c59e0f9f634f3",
+      "SO3_RMSE_deg": 0.006014691656467931,
+      "SO3_peak_deg": 0.01744131776281504,
+      "Euler_axis_RMSE_deg": [
+        0.0048711129506998,
+        0.0035265377017584783,
+        7.01308549333966e-05
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.00013913506149384236,
+        9.969581043228422e-05,
+        2.5702798626560617e-05
+      ]
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C00_W05",
+      "class": "C00",
+      "task": "T3",
+      "wind": "W05",
+      "period": "PRE_0_5",
+      "samples": 5000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_DEV_T3_C00_W05\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "a88c5010bb1e264ddde36f9e1400d0f6947b5a0a7361dede183c59e0f9f634f3",
+      "SO3_RMSE_deg": 0.006359403900462739,
+      "SO3_peak_deg": 0.01744131776281504,
+      "Euler_axis_RMSE_deg": [
+        0.005177992700688511,
+        0.0036904383635106563,
+        8.499195112391978e-05
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.0001450730898692927,
+        0.00010236441191899862,
+        2.9931581290964567e-05
+      ]
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C00_W05",
+      "class": "C00",
+      "task": "T3",
+      "wind": "W05",
+      "period": "POST_5",
+      "samples": 15000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_DEV_T3_C00_W05\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "a88c5010bb1e264ddde36f9e1400d0f6947b5a0a7361dede183c59e0f9f634f3",
+      "SO3_RMSE_deg": 0.005895310139433409,
+      "SO3_peak_deg": 0.015005768365898335,
+      "Euler_axis_RMSE_deg": [
+        0.0047644292104972365,
+        0.0034701843050393985,
+        6.441975757717446e-05
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.00013709857760428864,
+        9.879025870242673e-05,
+        2.412906870956341e-05
+      ]
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C03_W15",
+      "class": "C03",
+      "task": "T3",
+      "wind": "W15",
+      "period": "ALL",
+      "samples": 20000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_DEV_T3_C03_W15\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "6afcc865b94f06d8e9558f261fa97c1b90aac73d5e4daf985c4f3b4315ce8a58",
+      "SO3_RMSE_deg": 0.5236284068809941,
+      "SO3_peak_deg": 2.0355321647814146,
+      "Euler_axis_RMSE_deg": [
+        0.3812608504743584,
+        0.3588637418141853,
+        0.005503336788897369
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.012117257886402378,
+        0.011466628984375348,
+        0.0003952079106526256
+      ]
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C03_W15",
+      "class": "C03",
+      "task": "T3",
+      "wind": "W15",
+      "period": "PRE_0_5",
+      "samples": 5000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_DEV_T3_C03_W15\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "6afcc865b94f06d8e9558f261fa97c1b90aac73d5e4daf985c4f3b4315ce8a58",
+      "SO3_RMSE_deg": 0.001025987115056548,
+      "SO3_peak_deg": 0.002669295462775012,
+      "Euler_axis_RMSE_deg": [
+        4.213620027151975e-05,
+        0.0010251213178666472,
+        1.495871659538221e-07
+      ],
+      "transported_body_rate_RMSE_rads": [
+        1.0634912917337932e-06,
+        2.6653969219837977e-05,
+        6.516127188804172e-08
+      ]
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C03_W15",
+      "class": "C03",
+      "task": "T3",
+      "wind": "W15",
+      "period": "POST_5",
+      "samples": 15000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_DEV_T3_C03_W15\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "6afcc865b94f06d8e9558f261fa97c1b90aac73d5e4daf985c4f3b4315ce8a58",
+      "SO3_RMSE_deg": 0.6046337131744451,
+      "SO3_peak_deg": 2.0355321647814146,
+      "Euler_axis_RMSE_deg": [
+        0.4402421086335203,
+        0.41437973320848137,
+        0.006354705952435263
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.01399180419163672,
+        0.013240513718976214,
+        0.00045634678565160784
+      ]
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C05_W02",
+      "class": "C05",
+      "task": "T3",
+      "wind": "W02",
+      "period": "ALL",
+      "samples": 20000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_DEV_T3_C05_W02\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "6c7d83ee79e1549a6ef603739a8922ce73f4b1695237cd9eec94567a8126eb23",
+      "SO3_RMSE_deg": 1.5827656725849366,
+      "SO3_peak_deg": 3.7895175764835303,
+      "Euler_axis_RMSE_deg": [
+        1.2982947210383964,
+        0.8023904185482328,
+        0.4675190709173625
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.023812566332784366,
+        0.02223832851057671,
+        0.01752632802023549
+      ]
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C05_W02",
+      "class": "C05",
+      "task": "T3",
+      "wind": "W02",
+      "period": "PRE_0_5",
+      "samples": 5000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_DEV_T3_C05_W02\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "6c7d83ee79e1549a6ef603739a8922ce73f4b1695237cd9eec94567a8126eb23",
+      "SO3_RMSE_deg": 0.0026928783655763636,
+      "SO3_peak_deg": 0.007812876148701601,
+      "Euler_axis_RMSE_deg": [
+        0.0011980723560905309,
+        0.0024118191613218863,
+        1.233519094568119e-05
+      ],
+      "transported_body_rate_RMSE_rads": [
+        3.255519544494236e-05,
+        6.447292810433922e-05,
+        6.561707011388261e-06
+      ]
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C05_W02",
+      "class": "C05",
+      "task": "T3",
+      "wind": "W02",
+      "period": "POST_5",
+      "samples": 15000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_DEV_T3_C05_W02\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "6c7d83ee79e1549a6ef603739a8922ce73f4b1695237cd9eec94567a8126eb23",
+      "SO3_RMSE_deg": 1.827619712965391,
+      "SO3_peak_deg": 3.7895175764835303,
+      "Euler_axis_RMSE_deg": [
+        1.4991414537802739,
+        0.9265196019225869,
+        0.5398445228438703
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.027496376740534813,
+        0.025678582924419442,
+        0.020237660046190847
+      ]
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C06_W08",
+      "class": "C06",
+      "task": "T3",
+      "wind": "W08",
+      "period": "ALL",
+      "samples": 20000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_DEV_T3_C06_W08\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "5acc8772586d329a0ccddfa2f3f4698b26a062612c998d67b201821b45121082",
+      "SO3_RMSE_deg": 0.6125687234067542,
+      "SO3_peak_deg": 2.660324067339794,
+      "Euler_axis_RMSE_deg": [
+        0.4420719927701562,
+        0.4216226957807728,
+        0.05644470087690467
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.029803038991023833,
+        0.029535242903984366,
+        0.008090732558214799
+      ]
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C06_W08",
+      "class": "C06",
+      "task": "T3",
+      "wind": "W08",
+      "period": "PRE_0_5",
+      "samples": 5000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_DEV_T3_C06_W08\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "5acc8772586d329a0ccddfa2f3f4698b26a062612c998d67b201821b45121082",
+      "SO3_RMSE_deg": 0.019017519143532124,
+      "SO3_peak_deg": 0.04749148884267173,
+      "Euler_axis_RMSE_deg": [
+        0.005839990549316603,
+        0.01809890548504832,
+        0.00032738303565991127
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.0001697515470212804,
+        0.00052925193216616,
+        0.00012430344097013468
+      ]
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C06_W08",
+      "class": "C06",
+      "task": "T3",
+      "wind": "W08",
+      "period": "POST_5",
+      "samples": 15000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_DEV_T3_C06_W08\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "5acc8772586d329a0ccddfa2f3f4698b26a062612c998d67b201821b45121082",
+      "SO3_RMSE_deg": 0.7072482113917167,
+      "SO3_peak_deg": 2.660324067339794,
+      "Euler_axis_RMSE_deg": [
+        0.5104496324083607,
+        0.4867358010290004,
+        0.06517645241619331
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.03441344561269733,
+        0.03410299198008749,
+        0.009342097586887557
+      ]
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C09_W09",
+      "class": "C09",
+      "task": "T3",
+      "wind": "W09",
+      "period": "ALL",
+      "samples": 20000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_DEV_T3_C09_W09\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "fa11a41b18ce9d4c3b7558d3bbb0d230aaef3e7071fc15419df0c6d1fca2f3a4",
+      "SO3_RMSE_deg": 0.6179632461875201,
+      "SO3_peak_deg": 2.1257598339538744,
+      "Euler_axis_RMSE_deg": [
+        0.44797391391635494,
+        0.4240155537308967,
+        0.06707277398757806
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.019298642350707107,
+        0.01901478484832952,
+        0.00510078943953567
+      ]
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C09_W09",
+      "class": "C09",
+      "task": "T3",
+      "wind": "W09",
+      "period": "PRE_0_5",
+      "samples": 5000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_DEV_T3_C09_W09\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "fa11a41b18ce9d4c3b7558d3bbb0d230aaef3e7071fc15419df0c6d1fca2f3a4",
+      "SO3_RMSE_deg": 0.007591175424558819,
+      "SO3_peak_deg": 0.017529593120024507,
+      "Euler_axis_RMSE_deg": [
+        0.0027149132123994555,
+        0.007088732987076499,
+        6.009767128029803e-05
+      ],
+      "transported_body_rate_RMSE_rads": [
+        7.213227309387875e-05,
+        0.0001883328323607778,
+        2.651269708372109e-05
+      ]
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C09_W09",
+      "class": "C09",
+      "task": "T3",
+      "wind": "W09",
+      "period": "POST_5",
+      "samples": 15000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_DEV_T3_C09_W09\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "fa11a41b18ce9d4c3b7558d3bbb0d230aaef3e7071fc15419df0c6d1fca2f3a4",
+      "SO3_RMSE_deg": 0.7135490332626397,
+      "SO3_peak_deg": 2.1257598339538744,
+      "Euler_axis_RMSE_deg": [
+        0.5172733447106408,
+        0.489593882412595,
+        0.07744896046176653
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.022284113797779812,
+        0.021956113059596126,
+        0.005889864421269469
+      ]
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C10_W11",
+      "class": "C10",
+      "task": "T3",
+      "wind": "W11",
+      "period": "ALL",
+      "samples": 20000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_DEV_T3_C10_W11\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "493d55f39a7f72da25a27ef44b21c30840c587bd49714a4988edd3383328d56e",
+      "SO3_RMSE_deg": 1.3758702139298862,
+      "SO3_peak_deg": 3.971013432421994,
+      "Euler_axis_RMSE_deg": [
+        1.2319925193992576,
+        0.609253075104846,
+        0.09852784554481857
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.05758648284197757,
+        0.046475066290404224,
+        0.012357189043672341
+      ]
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C10_W11",
+      "class": "C10",
+      "task": "T3",
+      "wind": "W11",
+      "period": "PRE_0_5",
+      "samples": 5000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_DEV_T3_C10_W11\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "493d55f39a7f72da25a27ef44b21c30840c587bd49714a4988edd3383328d56e",
+      "SO3_RMSE_deg": 0.01683068230560555,
+      "SO3_peak_deg": 0.04132313574415492,
+      "Euler_axis_RMSE_deg": [
+        0.015364423317010675,
+        0.0068558468559118905,
+        0.0003935918661826782
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.0003932383076970067,
+        0.00017763748927392942,
+        0.00015715620670099064
+      ]
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C10_W11",
+      "class": "C10",
+      "task": "T3",
+      "wind": "W11",
+      "period": "POST_5",
+      "samples": 15000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_DEV_T3_C10_W11\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "493d55f39a7f72da25a27ef44b21c30840c587bd49714a4988edd3383328d56e",
+      "SO3_RMSE_deg": 1.5886883594599888,
+      "SO3_peak_deg": 3.971013432421994,
+      "Euler_axis_RMSE_deg": [
+        1.4225547682390598,
+        0.7034937183947779,
+        0.11376992935490081
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.06649475515174329,
+        0.05366468606607848,
+        0.014268564353978974
+      ]
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C13_W12",
+      "class": "C13",
+      "task": "T3",
+      "wind": "W12",
+      "period": "ALL",
+      "samples": 20000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_DEV_T3_C13_W12\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "b6eb8d2a5ee9b0dd91e4b073a1f97e79c6e75cde589714810511a1d450812035",
+      "SO3_RMSE_deg": 0.9397655384326323,
+      "SO3_peak_deg": 2.426086391113604,
+      "Euler_axis_RMSE_deg": [
+        0.7685612216293948,
+        0.539181856335252,
+        0.05859501453196223
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.024573443872363113,
+        0.027929496808057504,
+        0.003027212771928395
+      ]
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C13_W12",
+      "class": "C13",
+      "task": "T3",
+      "wind": "W12",
+      "period": "PRE_0_5",
+      "samples": 5000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_DEV_T3_C13_W12\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "b6eb8d2a5ee9b0dd91e4b073a1f97e79c6e75cde589714810511a1d450812035",
+      "SO3_RMSE_deg": 0.004930779302479389,
+      "SO3_peak_deg": 0.010424910441568108,
+      "Euler_axis_RMSE_deg": [
+        0.004319181095385076,
+        0.002378172317840186,
+        4.224512195119387e-05
+      ],
+      "transported_body_rate_RMSE_rads": [
+        9.002867024570998e-05,
+        5.173299566979974e-05,
+        1.3815450536734094e-05
+      ]
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C13_W12",
+      "class": "C13",
+      "task": "T3",
+      "wind": "W12",
+      "period": "POST_5",
+      "samples": 15000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_DEV_T3_C13_W12\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "b6eb8d2a5ee9b0dd91e4b073a1f97e79c6e75cde589714810511a1d450812035",
+      "SO3_RMSE_deg": 1.0851440390285783,
+      "SO3_peak_deg": 2.426086391113604,
+      "Euler_axis_RMSE_deg": [
+        0.8874545528729036,
+        0.6225920657758014,
+        0.06765969043025331
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.028374921261748343,
+        0.032250191169988104,
+        0.0034955151169954934
+      ]
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C15_W14",
+      "class": "C15",
+      "task": "T3",
+      "wind": "W14",
+      "period": "ALL",
+      "samples": 20000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_DEV_T3_C15_W14\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "2df0e35d32bff888c3225638d468b2e796d8942387002a48cf53b4242d3c6a27",
+      "SO3_RMSE_deg": 0.8819637785753126,
+      "SO3_peak_deg": 2.738061389010655,
+      "Euler_axis_RMSE_deg": [
+        0.3744892023338035,
+        0.7916401427386502,
+        0.10861159281875926
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.06261537395379989,
+        0.05175476811152424,
+        0.014084040472199943
+      ]
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C15_W14",
+      "class": "C15",
+      "task": "T3",
+      "wind": "W14",
+      "period": "PRE_0_5",
+      "samples": 5000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_DEV_T3_C15_W14\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "2df0e35d32bff888c3225638d468b2e796d8942387002a48cf53b4242d3c6a27",
+      "SO3_RMSE_deg": 0.015953753696992874,
+      "SO3_peak_deg": 0.03535993198449548,
+      "Euler_axis_RMSE_deg": [
+        0.013638208968294237,
+        0.00826159600271619,
+        0.0005070163918584026
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.0002835762968285539,
+        0.00017192989982323657,
+        0.00016590911992681522
+      ]
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C15_W14",
+      "class": "C15",
+      "task": "T3",
+      "wind": "W14",
+      "period": "POST_5",
+      "samples": 15000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_DEV_T3_C15_W14\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "2df0e35d32bff888c3225638d468b2e796d8942387002a48cf53b4242d3c6a27",
+      "SO3_RMSE_deg": 1.018362395322076,
+      "SO3_peak_deg": 2.738061389010655,
+      "Euler_axis_RMSE_deg": [
+        0.4323511882388247,
+        0.9140948543801076,
+        0.12541352307850778
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.0723018206455427,
+        0.05976117616318065,
+        0.016262567020145672
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C00_W07",
+      "class": "C00",
+      "task": "T1",
+      "wind": "W07",
+      "period": "ALL",
+      "samples": 20000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_20261023\\runs_c5_v1\\DL1018_VAL_T1_C00_W07\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "27f3d6f19f20edeb3e45c77be25daf4746e41c800fbe6126b12c07fdc52caaa5",
+      "SO3_RMSE_deg": 0.010116952120648252,
+      "SO3_peak_deg": 0.025098905794305567,
+      "Euler_axis_RMSE_deg": [
+        0.009509329615364418,
+        0.003448863704191831,
+        9.582509227017292e-05
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.0002806227285966686,
+        0.0001033982685907495,
+        4.315594357468615e-05
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C00_W07",
+      "class": "C00",
+      "task": "T1",
+      "wind": "W07",
+      "period": "PRE_0_5",
+      "samples": 5000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_20261023\\runs_c5_v1\\DL1018_VAL_T1_C00_W07\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "27f3d6f19f20edeb3e45c77be25daf4746e41c800fbe6126b12c07fdc52caaa5",
+      "SO3_RMSE_deg": 0.009905296493437571,
+      "SO3_peak_deg": 0.024141200401700362,
+      "Euler_axis_RMSE_deg": [
+        0.009328951013183562,
+        0.0033270882543847426,
+        9.865776180266772e-05
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.0002710205910450862,
+        9.831229385253611e-05,
+        4.208070456757566e-05
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C00_W07",
+      "class": "C00",
+      "task": "T1",
+      "wind": "W07",
+      "period": "POST_5",
+      "samples": 15000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_20261023\\runs_c5_v1\\DL1018_VAL_T1_C00_W07\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "27f3d6f19f20edeb3e45c77be25daf4746e41c800fbe6126b12c07fdc52caaa5",
+      "SO3_RMSE_deg": 0.010186526758796806,
+      "SO3_peak_deg": 0.025098905794305567,
+      "Euler_axis_RMSE_deg": [
+        0.00956870022396302,
+        0.0034885110074788033,
+        9.486207403459828e-05
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.0002837512422585035,
+        0.00010503888274937657,
+        4.3508451923668e-05
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C01_W08",
+      "class": "C01",
+      "task": "T1",
+      "wind": "W08",
+      "period": "ALL",
+      "samples": 20000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T1_C01_W08\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "9a94b2e6e93690d04bfea5f1cac8bbdfd107f779057721671b5fa7bc2c600266",
+      "SO3_RMSE_deg": 1.3845453558017766,
+      "SO3_peak_deg": 4.261949150015861,
+      "Euler_axis_RMSE_deg": [
+        0.9181009743512619,
+        0.8853407760846702,
+        0.5407963853942581
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.09311120996483577,
+        0.08782875953505205,
+        0.06871124668236782
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C01_W08",
+      "class": "C01",
+      "task": "T1",
+      "wind": "W08",
+      "period": "PRE_0_5",
+      "samples": 5000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T1_C01_W08\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "9a94b2e6e93690d04bfea5f1cac8bbdfd107f779057721671b5fa7bc2c600266",
+      "SO3_RMSE_deg": 0.013809462235973397,
+      "SO3_peak_deg": 0.0374078218415071,
+      "Euler_axis_RMSE_deg": [
+        0.005180472197620976,
+        0.012796972895341725,
+        0.00026588761235437535
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.00015466053152225155,
+        0.00037839203029598346,
+        8.550080276929778e-05
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C01_W08",
+      "class": "C01",
+      "task": "T1",
+      "wind": "W08",
+      "period": "POST_5",
+      "samples": 15000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T1_C01_W08\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "9a94b2e6e93690d04bfea5f1cac8bbdfd107f779057721671b5fa7bc2c600266",
+      "SO3_RMSE_deg": 1.5987153872033038,
+      "SO3_peak_deg": 4.261949150015861,
+      "Euler_axis_RMSE_deg": [
+        1.0601274701856622,
+        1.0222767721573809,
+        0.6244578584996102
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.10751552719581625,
+        0.1014156806175051,
+        0.07934089818034902
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C02_W09",
+      "class": "C02",
+      "task": "T1",
+      "wind": "W09",
+      "period": "ALL",
+      "samples": 20000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_20261023\\runs_c5_v1\\DL1018_VAL_T1_C02_W09\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "a7f3dbe60e9e544e0c55dd5b1ee0afb9b530e37223ce37b84632764c418af8fd",
+      "SO3_RMSE_deg": 1.0355756777563796,
+      "SO3_peak_deg": 3.2518680108410565,
+      "Euler_axis_RMSE_deg": [
+        0.7488440154209123,
+        0.705878344286646,
+        0.13472935468443709
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.016444795031290718,
+        0.015559634545827426,
+        0.01270902532358027
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C02_W09",
+      "class": "C02",
+      "task": "T1",
+      "wind": "W09",
+      "period": "PRE_0_5",
+      "samples": 5000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_20261023\\runs_c5_v1\\DL1018_VAL_T1_C02_W09\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "a7f3dbe60e9e544e0c55dd5b1ee0afb9b530e37223ce37b84632764c418af8fd",
+      "SO3_RMSE_deg": 0.006536926262804164,
+      "SO3_peak_deg": 0.015578944339786068,
+      "Euler_axis_RMSE_deg": [
+        0.006441820133203022,
+        0.0011104132900448822,
+        3.3012025586435465e-05
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.00016849752024474324,
+        2.7522294964125795e-05,
+        8.670125375087458e-06
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C02_W09",
+      "class": "C02",
+      "task": "T1",
+      "wind": "W09",
+      "period": "POST_5",
+      "samples": 15000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_20261023\\runs_c5_v1\\DL1018_VAL_T1_C02_W09\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "a7f3dbe60e9e544e0c55dd5b1ee0afb9b530e37223ce37b84632764c418af8fd",
+      "SO3_RMSE_deg": 1.1957738367597464,
+      "SO3_peak_deg": 3.2518680108410565,
+      "Euler_axis_RMSE_deg": [
+        0.864682589293172,
+        0.8150778520513143,
+        0.15557205722209624
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.01898856448032453,
+        0.01796671136038447,
+        0.014675117529688869
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C03_W10",
+      "class": "C03",
+      "task": "T1",
+      "wind": "W10",
+      "period": "ALL",
+      "samples": 20000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T1_C03_W10\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "747a57d4103f697dfde58237b160f6cb62a018c13ae6cb232946300811337cc7",
+      "SO3_RMSE_deg": 0.7438709721713251,
+      "SO3_peak_deg": 2.415227168254021,
+      "Euler_axis_RMSE_deg": [
+        0.5368550800494656,
+        0.5071304607931174,
+        0.11999373024388066
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.020626876924480328,
+        0.02012144523863569,
+        0.016508370964787918
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C03_W10",
+      "class": "C03",
+      "task": "T1",
+      "wind": "W10",
+      "period": "PRE_0_5",
+      "samples": 5000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T1_C03_W10\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "747a57d4103f697dfde58237b160f6cb62a018c13ae6cb232946300811337cc7",
+      "SO3_RMSE_deg": 0.012941852864784822,
+      "SO3_peak_deg": 0.02957300615836331,
+      "Euler_axis_RMSE_deg": [
+        0.002053252403842636,
+        0.012777559117893534,
+        6.34376131030345e-05
+      ],
+      "transported_body_rate_RMSE_rads": [
+        4.9735964219868436e-05,
+        0.0003388535645213027,
+        2.753338647852106e-05
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C03_W10",
+      "class": "C03",
+      "task": "T1",
+      "wind": "W10",
+      "period": "POST_5",
+      "samples": 15000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T1_C03_W10\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "747a57d4103f697dfde58237b160f6cb62a018c13ae6cb232946300811337cc7",
+      "SO3_RMSE_deg": 0.8589157120852771,
+      "SO3_peak_deg": 2.415227168254021,
+      "Euler_axis_RMSE_deg": [
+        0.619905716501641,
+        0.5855373461018368,
+        0.13855682007397307
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.023817848580175466,
+        0.023233419982340596,
+        0.01906221821262188
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C04_W11",
+      "class": "C04",
+      "task": "T1",
+      "wind": "W11",
+      "period": "ALL",
+      "samples": 20000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T1_C04_W11\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "bda0123bfe6214e4a39cf27945a3c7f247ac4be796d872dfe523da9a7ec5da9f",
+      "SO3_RMSE_deg": 0.5518539792191142,
+      "SO3_peak_deg": 2.2642398083441333,
+      "Euler_axis_RMSE_deg": [
+        0.39678559964488824,
+        0.3738223410700213,
+        0.08453821885209734
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.014470087290163152,
+        0.013401702448915403,
+        0.01638404987981397
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C04_W11",
+      "class": "C04",
+      "task": "T1",
+      "wind": "W11",
+      "period": "PRE_0_5",
+      "samples": 5000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T1_C04_W11\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "bda0123bfe6214e4a39cf27945a3c7f247ac4be796d872dfe523da9a7ec5da9f",
+      "SO3_RMSE_deg": 0.017650738595887564,
+      "SO3_peak_deg": 0.04221889029821123,
+      "Euler_axis_RMSE_deg": [
+        0.017228261737184614,
+        0.003824029028944682,
+        0.0002746660320188007
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.00044535815828181043,
+        9.699793916628262e-05,
+        9.225345603156306e-05
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C04_W11",
+      "class": "C04",
+      "task": "T1",
+      "wind": "W11",
+      "period": "POST_5",
+      "samples": 15000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T1_C04_W11\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "bda0123bfe6214e4a39cf27945a3c7f247ac4be796d872dfe523da9a7ec5da9f",
+      "SO3_RMSE_deg": 0.6371445960813243,
+      "SO3_peak_deg": 2.2642398083441333,
+      "Euler_axis_RMSE_deg": [
+        0.45806056198561385,
+        0.43164721225180763,
+        0.09761619801602477
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.016706639008196876,
+        0.015474851701140336,
+        0.01891859624070788
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C05_W12",
+      "class": "C05",
+      "task": "T1",
+      "wind": "W12",
+      "period": "ALL",
+      "samples": 20000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_20261023\\runs_c5_v1\\DL1018_VAL_T1_C05_W12\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "4b14d0a1c390c3275334f76f15b0b358c02e701b58982b404bf4ec8a4f12495d",
+      "SO3_RMSE_deg": 1.426591190567392,
+      "SO3_peak_deg": 3.558750862786674,
+      "Euler_axis_RMSE_deg": [
+        1.234263751068985,
+        0.7007275541116965,
+        0.18749450931127826
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.024177755637408267,
+        0.024988536013047492,
+        0.008673537790598557
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C05_W12",
+      "class": "C05",
+      "task": "T1",
+      "wind": "W12",
+      "period": "PRE_0_5",
+      "samples": 5000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_20261023\\runs_c5_v1\\DL1018_VAL_T1_C05_W12\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "4b14d0a1c390c3275334f76f15b0b358c02e701b58982b404bf4ec8a4f12495d",
+      "SO3_RMSE_deg": 0.0052675107010374195,
+      "SO3_peak_deg": 0.011184995194727796,
+      "Euler_axis_RMSE_deg": [
+        0.0015237933372037214,
+        0.005042239923085289,
+        3.41001263057719e-05
+      ],
+      "transported_body_rate_RMSE_rads": [
+        3.12614887144267e-05,
+        0.0001057696155149693,
+        1.2147634548333055e-05
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C05_W12",
+      "class": "C05",
+      "task": "T1",
+      "wind": "W12",
+      "period": "POST_5",
+      "samples": 15000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_20261023\\runs_c5_v1\\DL1018_VAL_T1_C05_W12\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "4b14d0a1c390c3275334f76f15b0b358c02e701b58982b404bf4ec8a4f12495d",
+      "SO3_RMSE_deg": 1.6472828084807791,
+      "SO3_peak_deg": 3.558750862786674,
+      "Euler_axis_RMSE_deg": [
+        1.4252047463277444,
+        0.809125247037812,
+        0.2165000099497222
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.027918061617097943,
+        0.028854211368475137,
+        0.010015336300806215
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C06_W13",
+      "class": "C06",
+      "task": "T1",
+      "wind": "W13",
+      "period": "ALL",
+      "samples": 20000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T1_C06_W13\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "de018bccce860bc2ab7a2f60c2e327449de54397e357c7d609d1a693d60ad43f",
+      "SO3_RMSE_deg": 0.6599183909528908,
+      "SO3_peak_deg": 2.2988278542358147,
+      "Euler_axis_RMSE_deg": [
+        0.4800987277963769,
+        0.45256349507618765,
+        0.016821440811170586
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.03840998173573104,
+        0.03855410069788066,
+        0.003910841989405398
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C06_W13",
+      "class": "C06",
+      "task": "T1",
+      "wind": "W13",
+      "period": "PRE_0_5",
+      "samples": 5000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T1_C06_W13\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "de018bccce860bc2ab7a2f60c2e327449de54397e357c7d609d1a693d60ad43f",
+      "SO3_RMSE_deg": 0.011444627565085104,
+      "SO3_peak_deg": 0.02440714419858356,
+      "Euler_axis_RMSE_deg": [
+        0.010707602442465283,
+        0.0040340309355875546,
+        0.00020261515464194995
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.00022039731124721233,
+        8.312406057732911e-05,
+        6.112806135619766e-05
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C06_W13",
+      "class": "C06",
+      "task": "T1",
+      "wind": "W13",
+      "period": "POST_5",
+      "samples": 15000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T1_C06_W13\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "de018bccce860bc2ab7a2f60c2e327449de54397e357c7d609d1a693d60ad43f",
+      "SO3_RMSE_deg": 0.761979472901842,
+      "SO3_peak_deg": 2.2988278542358147,
+      "Euler_axis_RMSE_deg": [
+        0.554335789023444,
+        0.522570121258608,
+        0.019423374500448086
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.04435184405328962,
+        0.0445184149645958,
+        0.004515713440291959
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C07_W14",
+      "class": "C07",
+      "task": "T1",
+      "wind": "W14",
+      "period": "ALL",
+      "samples": 20000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T1_C07_W14\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "df07c18cd061aa78e8e1152b73bccc2ae11026a5d54630065c877a5e4ec42dd1",
+      "SO3_RMSE_deg": 1.4879420153031053,
+      "SO3_peak_deg": 4.33045616612664,
+      "Euler_axis_RMSE_deg": [
+        0.319301717659392,
+        1.4258353169370546,
+        0.2648744334800478
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.056519714567983444,
+        0.06040821996837611,
+        0.0340866193029245
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C07_W14",
+      "class": "C07",
+      "task": "T1",
+      "wind": "W14",
+      "period": "PRE_0_5",
+      "samples": 5000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T1_C07_W14\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "df07c18cd061aa78e8e1152b73bccc2ae11026a5d54630065c877a5e4ec42dd1",
+      "SO3_RMSE_deg": 0.016230526739755353,
+      "SO3_peak_deg": 0.03567716664730045,
+      "Euler_axis_RMSE_deg": [
+        0.004787611041834012,
+        0.015505451413610986,
+        0.00037180485847856275
+      ],
+      "transported_body_rate_RMSE_rads": [
+        9.42513194283419e-05,
+        0.0003253592503523966,
+        0.00011829175567848209
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C07_W14",
+      "class": "C07",
+      "task": "T1",
+      "wind": "W14",
+      "period": "POST_5",
+      "samples": 15000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T1_C07_W14\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "df07c18cd061aa78e8e1152b73bccc2ae11026a5d54630065c877a5e4ec42dd1",
+      "SO3_RMSE_deg": 1.7181018919744753,
+      "SO3_peak_deg": 4.33045616612664,
+      "Euler_axis_RMSE_deg": [
+        0.3686875038030014,
+        1.6463884702661984,
+        0.30585057561204204
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.06526332215487773,
+        0.06975315118413185,
+        0.03935977840838096
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C08_W15",
+      "class": "C08",
+      "task": "T1",
+      "wind": "W15",
+      "period": "ALL",
+      "samples": 20000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_20261023\\runs_c5_v1\\DL1018_VAL_T1_C08_W15\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "c118dd1bd5567e0e7c58b7f5334109187b2cfe743977a6a18a3976d7d0ab23c3",
+      "SO3_RMSE_deg": 1.4596550243266802,
+      "SO3_peak_deg": 3.9721324469414148,
+      "Euler_axis_RMSE_deg": [
+        0.3022463857049529,
+        1.4279719739192167,
+        0.020946567284832233
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.011180723275734557,
+        0.023872368065724604,
+        0.0015201553741210072
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C08_W15",
+      "class": "C08",
+      "task": "T1",
+      "wind": "W15",
+      "period": "PRE_0_5",
+      "samples": 5000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_20261023\\runs_c5_v1\\DL1018_VAL_T1_C08_W15\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "c118dd1bd5567e0e7c58b7f5334109187b2cfe743977a6a18a3976d7d0ab23c3",
+      "SO3_RMSE_deg": 0.00017478317544126825,
+      "SO3_peak_deg": 0.00037962971302037075,
+      "Euler_axis_RMSE_deg": [
+        0.00015866783252993332,
+        7.330726268442136e-05,
+        6.87789694429621e-08
+      ],
+      "transported_body_rate_RMSE_rads": [
+        4.127963589145392e-06,
+        1.9090127866064886e-06,
+        2.4119068781452746e-08
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C08_W15",
+      "class": "C08",
+      "task": "T1",
+      "wind": "W15",
+      "period": "POST_5",
+      "samples": 15000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_20261023\\runs_c5_v1\\DL1018_VAL_T1_C08_W15\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "c118dd1bd5567e0e7c58b7f5334109187b2cfe743977a6a18a3976d7d0ab23c3",
+      "SO3_RMSE_deg": 1.6854644394171523,
+      "SO3_peak_deg": 3.9721324469414148,
+      "Euler_axis_RMSE_deg": [
+        0.34900405227415704,
+        1.6488800065318097,
+        0.024187012520960397
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.012910386965981131,
+        0.027565436235845436,
+        0.0017553242288624049
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C09_W00",
+      "class": "C09",
+      "task": "T1",
+      "wind": "W00",
+      "period": "ALL",
+      "samples": 20000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T1_C09_W00\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "f4bd4680c782671bc12af42c005c5676a12fd5089e69c8ffcb2070ed8447ce14",
+      "SO3_RMSE_deg": 0.6705708399434059,
+      "SO3_peak_deg": 2.211093154281942,
+      "Euler_axis_RMSE_deg": [
+        0.48806581858666326,
+        0.4595311015876315,
+        0.013909012058868495
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.015947808456101817,
+        0.015099674584814532,
+        0.0011038862122263477
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C09_W00",
+      "class": "C09",
+      "task": "T1",
+      "wind": "W00",
+      "period": "PRE_0_5",
+      "samples": 5000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T1_C09_W00\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "f4bd4680c782671bc12af42c005c5676a12fd5089e69c8ffcb2070ed8447ce14",
+      "SO3_RMSE_deg": 0.0008459505798448625,
+      "SO3_peak_deg": 0.002189206998296902,
+      "Euler_axis_RMSE_deg": [
+        0.00030946589645533914,
+        0.0007873061773453614,
+        1.1522728930421903e-06
+      ],
+      "transported_body_rate_RMSE_rads": [
+        8.402445638597249e-06,
+        2.133938585456025e-05,
+        3.4790959990413633e-07
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C09_W00",
+      "class": "C09",
+      "task": "T1",
+      "wind": "W00",
+      "period": "POST_5",
+      "samples": 15000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T1_C09_W00\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "f4bd4680c782671bc12af42c005c5676a12fd5089e69c8ffcb2070ed8447ce14",
+      "SO3_RMSE_deg": 0.7743083558671865,
+      "SO3_peak_deg": 2.211093154281942,
+      "Euler_axis_RMSE_deg": [
+        0.5635698351643558,
+        0.530620615711562,
+        0.016060743698920712
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.018414942371246214,
+        0.01743559801956701,
+        0.0012746579877405866
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C10_W01",
+      "class": "C10",
+      "task": "T1",
+      "wind": "W01",
+      "period": "ALL",
+      "samples": 20000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T1_C10_W01\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "6a5276fe9a6bac6e34d87b4a32d5c9defbc4653a708477bb03a85bdebfa9db48",
+      "SO3_RMSE_deg": 1.34305532788053,
+      "SO3_peak_deg": 3.166989899110296,
+      "Euler_axis_RMSE_deg": [
+        1.1913872174071232,
+        0.6169403158493613,
+        0.0960273566245747
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.023187720101129534,
+        0.013390327518321251,
+        0.00346580118210268
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C10_W01",
+      "class": "C10",
+      "task": "T1",
+      "wind": "W01",
+      "period": "PRE_0_5",
+      "samples": 5000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T1_C10_W01\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "6a5276fe9a6bac6e34d87b4a32d5c9defbc4653a708477bb03a85bdebfa9db48",
+      "SO3_RMSE_deg": 0.0022395690464668745,
+      "SO3_peak_deg": 0.005869673330422555,
+      "Euler_axis_RMSE_deg": [
+        0.0020875903210283895,
+        0.0008102669501901382,
+        1.332747234270887e-05
+      ],
+      "transported_body_rate_RMSE_rads": [
+        5.614604703059472e-05,
+        2.1912304116061946e-05,
+        3.3474826150809152e-06
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C10_W01",
+      "class": "C10",
+      "task": "T1",
+      "wind": "W01",
+      "period": "POST_5",
+      "samples": 15000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T1_C10_W01\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "6a5276fe9a6bac6e34d87b4a32d5c9defbc4653a708477bb03a85bdebfa9db48",
+      "SO3_RMSE_deg": 1.5508261711448725,
+      "SO3_peak_deg": 3.166989899110296,
+      "Euler_axis_RMSE_deg": [
+        1.3756949333786426,
+        0.7123811612586592,
+        0.11088284012655203
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.026774853261812094,
+        0.015461813218836632,
+        0.004001962024216683
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C11_W02",
+      "class": "C11",
+      "task": "T1",
+      "wind": "W02",
+      "period": "ALL",
+      "samples": 20000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T1_C11_W02\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "1a3519270fa87d15b1a745859ca9a8606351dfeb7dbb50cfc72d5f07087d8df9",
+      "SO3_RMSE_deg": 0.908530861594733,
+      "SO3_peak_deg": 2.307361808781674,
+      "Euler_axis_RMSE_deg": [
+        0.6744664697532422,
+        0.5092848925219893,
+        0.3513342552151467
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.014490314345697553,
+        0.017597332985882626,
+        0.014377087922389186
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C11_W02",
+      "class": "C11",
+      "task": "T1",
+      "wind": "W02",
+      "period": "PRE_0_5",
+      "samples": 5000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T1_C11_W02\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "1a3519270fa87d15b1a745859ca9a8606351dfeb7dbb50cfc72d5f07087d8df9",
+      "SO3_RMSE_deg": 0.0027491345305027566,
+      "SO3_peak_deg": 0.005842736758542687,
+      "Euler_axis_RMSE_deg": [
+        0.0009438574420486921,
+        0.0025818933272779526,
+        1.1569260853610804e-05
+      ],
+      "transported_body_rate_RMSE_rads": [
+        2.5881026868720212e-05,
+        7.031106750042831e-05,
+        4.334320928830569e-06
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C11_W02",
+      "class": "C11",
+      "task": "T1",
+      "wind": "W02",
+      "period": "POST_5",
+      "samples": 15000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T1_C11_W02\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "1a3519270fa87d15b1a745859ca9a8606351dfeb7dbb50cfc72d5f07087d8df9",
+      "SO3_RMSE_deg": 1.049079874324735,
+      "SO3_peak_deg": 2.307361808781674,
+      "Euler_axis_RMSE_deg": [
+        0.7788066050949862,
+        0.5880696503055239,
+        0.40568585359301507
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.016731967104128966,
+        0.02031960932381918,
+        0.016601230975704765
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C12_W03",
+      "class": "C12",
+      "task": "T1",
+      "wind": "W03",
+      "period": "ALL",
+      "samples": 20000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T1_C12_W03\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "b5cbe243985c96f651d10cee9aee301ce638bd42ef3f8dc045d531b2999f51a9",
+      "SO3_RMSE_deg": 0.9711777114746367,
+      "SO3_peak_deg": 2.7774448437579267,
+      "Euler_axis_RMSE_deg": [
+        0.8805063941045206,
+        0.39299254304568965,
+        0.11904440603477522
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.018091266207724995,
+        0.018083956612634258,
+        0.0066988463100668945
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C12_W03",
+      "class": "C12",
+      "task": "T1",
+      "wind": "W03",
+      "period": "PRE_0_5",
+      "samples": 5000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T1_C12_W03\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "b5cbe243985c96f651d10cee9aee301ce638bd42ef3f8dc045d531b2999f51a9",
+      "SO3_RMSE_deg": 0.0020148800322282827,
+      "SO3_peak_deg": 0.004087533782237932,
+      "Euler_axis_RMSE_deg": [
+        0.0018495002868921186,
+        0.0007992249107513683,
+        6.436576971515725e-06
+      ],
+      "transported_body_rate_RMSE_rads": [
+        5.16475933709166e-05,
+        2.246818173028143e-05,
+        2.123830318032125e-06
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C12_W03",
+      "class": "C12",
+      "task": "T1",
+      "wind": "W03",
+      "period": "POST_5",
+      "samples": 15000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T1_C12_W03\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "b5cbe243985c96f651d10cee9aee301ce638bd42ef3f8dc045d531b2999f51a9",
+      "SO3_RMSE_deg": 1.1214188229379938,
+      "SO3_peak_deg": 2.7774448437579267,
+      "Euler_axis_RMSE_deg": [
+        1.0167206465862801,
+        0.4537884664310803,
+        0.13746063968916117
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.020889973548101876,
+        0.020881550407408,
+        0.007735161343564684
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C13_W04",
+      "class": "C13",
+      "task": "T1",
+      "wind": "W04",
+      "period": "ALL",
+      "samples": 20000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T1_C13_W04\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "71a8d1668b4af4983bc59877ee4c27af2edd59f791f7ad8048027c30d8da8894",
+      "SO3_RMSE_deg": 1.1721622576185367,
+      "SO3_peak_deg": 2.772030528068168,
+      "Euler_axis_RMSE_deg": [
+        0.6182999550618455,
+        0.9580445875525695,
+        0.3110068463785888
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.028628213739603867,
+        0.01811435223637381,
+        0.023576176453080966
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C13_W04",
+      "class": "C13",
+      "task": "T1",
+      "wind": "W04",
+      "period": "PRE_0_5",
+      "samples": 5000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T1_C13_W04\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "71a8d1668b4af4983bc59877ee4c27af2edd59f791f7ad8048027c30d8da8894",
+      "SO3_RMSE_deg": 0.005996611174410953,
+      "SO3_peak_deg": 0.015134287478243082,
+      "Euler_axis_RMSE_deg": [
+        0.0023459276446818104,
+        0.005517833702287969,
+        5.4202778456924383e-05
+      ],
+      "transported_body_rate_RMSE_rads": [
+        6.644294156345311e-05,
+        0.00015501396754198475,
+        1.8953437693703814e-05
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C13_W04",
+      "class": "C13",
+      "task": "T1",
+      "wind": "W04",
+      "period": "POST_5",
+      "samples": 15000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T1_C13_W04\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "71a8d1668b4af4983bc59877ee4c27af2edd59f791f7ad8048027c30d8da8894",
+      "SO3_RMSE_deg": 1.3534919619753887,
+      "SO3_peak_deg": 2.772030528068168,
+      "Euler_axis_RMSE_deg": [
+        0.7139500062659397,
+        1.106250014006226,
+        0.35911977158949787
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.03305699156011877,
+        0.020916460809958185,
+        0.027223421444009306
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C14_W05",
+      "class": "C14",
+      "task": "T1",
+      "wind": "W05",
+      "period": "ALL",
+      "samples": 20000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T1_C14_W05\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "711be305adef806852a3ed1ba9953db3ece82315f11145290e1a200697c8fe76",
+      "SO3_RMSE_deg": 1.3503928000527157,
+      "SO3_peak_deg": 3.952081180573055,
+      "Euler_axis_RMSE_deg": [
+        0.6722716048597062,
+        1.1411454299513888,
+        0.2427996320320671
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.028149010632557335,
+        0.02117754312402305,
+        0.022083486485749045
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C14_W05",
+      "class": "C14",
+      "task": "T1",
+      "wind": "W05",
+      "period": "PRE_0_5",
+      "samples": 5000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T1_C14_W05\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "711be305adef806852a3ed1ba9953db3ece82315f11145290e1a200697c8fe76",
+      "SO3_RMSE_deg": 0.0065055840137247705,
+      "SO3_peak_deg": 0.015004046355970867,
+      "Euler_axis_RMSE_deg": [
+        0.0059611140521999674,
+        0.0026034517453958606,
+        5.542588447885529e-05
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.0001675254863318736,
+        7.358371627068181e-05,
+        2.2099994344415294e-05
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C14_W05",
+      "class": "C14",
+      "task": "T1",
+      "wind": "W05",
+      "period": "POST_5",
+      "samples": 15000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T1_C14_W05\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "711be305adef806852a3ed1ba9953db3ece82315f11145290e1a200697c8fe76",
+      "SO3_RMSE_deg": 1.5592947695580734,
+      "SO3_peak_deg": 3.952081180573055,
+      "Euler_axis_RMSE_deg": [
+        0.7762647546470721,
+        1.3176803850244778,
+        0.28036086399947713
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.032503533826230516,
+        0.024453683543358203,
+        0.025499810542141243
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C15_W06",
+      "class": "C15",
+      "task": "T1",
+      "wind": "W06",
+      "period": "ALL",
+      "samples": 20000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T1_C15_W06\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "0576a03a8aeee7cf7508bc47f7d65cbe13b8d9925679fe38067ed7f757d6fcc7",
+      "SO3_RMSE_deg": 0.8778896144435802,
+      "SO3_peak_deg": 2.429962462801597,
+      "Euler_axis_RMSE_deg": [
+        0.3346029824974961,
+        0.8003407854096243,
+        0.14020504978222337
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.01941448883594184,
+        0.021428955331795018,
+        0.01223704691483217
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C15_W06",
+      "class": "C15",
+      "task": "T1",
+      "wind": "W06",
+      "period": "PRE_0_5",
+      "samples": 5000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T1_C15_W06\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "0576a03a8aeee7cf7508bc47f7d65cbe13b8d9925679fe38067ed7f757d6fcc7",
+      "SO3_RMSE_deg": 0.004090580289505361,
+      "SO3_peak_deg": 0.007726185145339079,
+      "Euler_axis_RMSE_deg": [
+        0.0014974047871511842,
+        0.003806551945236225,
+        1.9655850693330317e-05
+      ],
+      "transported_body_rate_RMSE_rads": [
+        4.3484289498454674e-05,
+        0.00011083873422147093,
+        7.101555697563364e-06
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C15_W06",
+      "class": "C15",
+      "task": "T1",
+      "wind": "W06",
+      "period": "POST_5",
+      "samples": 15000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T1_C15_W06\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "0576a03a8aeee7cf7508bc47f7d65cbe13b8d9925679fe38067ed7f757d6fcc7",
+      "SO3_RMSE_deg": 1.0136968593132247,
+      "SO3_peak_deg": 2.429962462801597,
+      "Euler_axis_RMSE_deg": [
+        0.38636527680584953,
+        0.9241513226239279,
+        0.16189484606928298
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.02241790665338915,
+        0.024743943509629857,
+        0.014130124065875722
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C00_W10",
+      "class": "C00",
+      "task": "T2",
+      "wind": "W10",
+      "period": "ALL",
+      "samples": 20000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_20261023\\runs_c5_v1\\DL1018_VAL_T2_C00_W10\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "9115113229c8fe3add21e1337216ceded2f829e06f4eb1d5a4930eb2e87020c4",
+      "SO3_RMSE_deg": 0.014844353661707985,
+      "SO3_peak_deg": 0.0346701605699137,
+      "Euler_axis_RMSE_deg": [
+        0.002992939756628558,
+        0.014538928540807022,
+        0.00016021994257716705
+      ],
+      "transported_body_rate_RMSE_rads": [
+        7.57194461887504e-05,
+        0.00039361178889127054,
+        6.32832465875855e-05
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C00_W10",
+      "class": "C00",
+      "task": "T2",
+      "wind": "W10",
+      "period": "PRE_0_5",
+      "samples": 5000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_20261023\\runs_c5_v1\\DL1018_VAL_T2_C00_W10\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "9115113229c8fe3add21e1337216ceded2f829e06f4eb1d5a4930eb2e87020c4",
+      "SO3_RMSE_deg": 0.013711460822238246,
+      "SO3_peak_deg": 0.032677391914319544,
+      "Euler_axis_RMSE_deg": [
+        0.002456075632569814,
+        0.013489198739506523,
+        8.936875428518817e-05
+      ],
+      "transported_body_rate_RMSE_rads": [
+        6.002261076352602e-05,
+        0.00035997258828015394,
+        3.4578000280448326e-05
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C00_W10",
+      "class": "C00",
+      "task": "T2",
+      "wind": "W10",
+      "period": "POST_5",
+      "samples": 15000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_20261023\\runs_c5_v1\\DL1018_VAL_T2_C00_W10\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "9115113229c8fe3add21e1337216ceded2f829e06f4eb1d5a4930eb2e87020c4",
+      "SO3_RMSE_deg": 0.01520323632932233,
+      "SO3_peak_deg": 0.0346701605699137,
+      "Euler_axis_RMSE_deg": [
+        0.003151636930989355,
+        0.014872382568874272,
+        0.00017766536499389026
+      ],
+      "transported_body_rate_RMSE_rads": [
+        8.027250322423509e-05,
+        0.00040420320677584455,
+        7.029328818425914e-05
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C01_W11",
+      "class": "C01",
+      "task": "T2",
+      "wind": "W11",
+      "period": "ALL",
+      "samples": 20000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T2_C01_W11\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "7312795142c94b909180f1791d9251190b999d9c75bc2c16c0845f35af9ec378",
+      "SO3_RMSE_deg": 1.1591959887498353,
+      "SO3_peak_deg": 3.4663573517828397,
+      "Euler_axis_RMSE_deg": [
+        0.8424804649491597,
+        0.7955139669318122,
+        0.03586543659295786
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.05375378380069859,
+        0.05417222247106726,
+        0.01031899556374821
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C01_W11",
+      "class": "C01",
+      "task": "T2",
+      "wind": "W11",
+      "period": "PRE_0_5",
+      "samples": 5000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T2_C01_W11\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "7312795142c94b909180f1791d9251190b999d9c75bc2c16c0845f35af9ec378",
+      "SO3_RMSE_deg": 0.019339349242927392,
+      "SO3_peak_deg": 0.04795395820722745,
+      "Euler_axis_RMSE_deg": [
+        0.01892091361655736,
+        0.003984556530329547,
+        0.0003301928986870328
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.0004843880187637623,
+        9.845626915133817e-05,
+        0.00010229266954127074
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C01_W11",
+      "class": "C01",
+      "task": "T2",
+      "wind": "W11",
+      "period": "POST_5",
+      "samples": 15000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T2_C01_W11\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "7312795142c94b909180f1791d9251190b999d9c75bc2c16c0845f35af9ec378",
+      "SO3_RMSE_deg": 1.3384776614878182,
+      "SO3_peak_deg": 3.4663573517828397,
+      "Euler_axis_RMSE_deg": [
+        0.9727513101698919,
+        0.918577525242809,
+        0.04141340016896133
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.06206889306734429,
+        0.06255266862461394,
+        0.011915203369202714
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C02_W12",
+      "class": "C02",
+      "task": "T2",
+      "wind": "W12",
+      "period": "ALL",
+      "samples": 20000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_20261023\\runs_c5_v1\\DL1018_VAL_T2_C02_W12\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "a9b189771beb2c8212c08ae229cee5adf92d2bb80990dc2e3e15ac0ccb2e760c",
+      "SO3_RMSE_deg": 0.9275801974402527,
+      "SO3_peak_deg": 2.7716714795151094,
+      "Euler_axis_RMSE_deg": [
+        0.674706685426043,
+        0.6362423581701053,
+        0.016810140326829186
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.01687562773818539,
+        0.016359361680123304,
+        0.0017593485098527796
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C02_W12",
+      "class": "C02",
+      "task": "T2",
+      "wind": "W12",
+      "period": "PRE_0_5",
+      "samples": 5000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_20261023\\runs_c5_v1\\DL1018_VAL_T2_C02_W12\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "a9b189771beb2c8212c08ae229cee5adf92d2bb80990dc2e3e15ac0ccb2e760c",
+      "SO3_RMSE_deg": 0.005398499069475509,
+      "SO3_peak_deg": 0.011598828704471542,
+      "Euler_axis_RMSE_deg": [
+        0.0015271758975413728,
+        0.005177887601087398,
+        3.865160165749265e-05
+      ],
+      "transported_body_rate_RMSE_rads": [
+        3.1823008090190224e-05,
+        0.00010914811597099047,
+        1.2473050940500823e-05
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C02_W12",
+      "class": "C02",
+      "task": "T2",
+      "wind": "W12",
+      "period": "POST_5",
+      "samples": 15000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_20261023\\runs_c5_v1\\DL1018_VAL_T2_C02_W12\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "a9b189771beb2c8212c08ae229cee5adf92d2bb80990dc2e3e15ac0ccb2e760c",
+      "SO3_RMSE_deg": 1.071072818399227,
+      "SO3_peak_deg": 2.7716714795151094,
+      "Euler_axis_RMSE_deg": [
+        0.7790836739760728,
+        0.734663311274722,
+        0.01941066525808638
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.0194862877730932,
+        0.018890058628929018,
+        0.00203150790789215
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C03_W13",
+      "class": "C03",
+      "task": "T2",
+      "wind": "W13",
+      "period": "ALL",
+      "samples": 20000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T2_C03_W13\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "78b8062650df377a7785fe1da324f941f791e85fa83988e682903d25fdb366af",
+      "SO3_RMSE_deg": 0.7544351384470463,
+      "SO3_peak_deg": 2.7401371013717197,
+      "Euler_axis_RMSE_deg": [
+        0.5489893795147012,
+        0.5174211190736349,
+        0.015887717228391066
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.01879799725368958,
+        0.01836188666602264,
+        0.004105000443362495
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C03_W13",
+      "class": "C03",
+      "task": "T2",
+      "wind": "W13",
+      "period": "PRE_0_5",
+      "samples": 5000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T2_C03_W13\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "78b8062650df377a7785fe1da324f941f791e85fa83988e682903d25fdb366af",
+      "SO3_RMSE_deg": 0.012818747353359805,
+      "SO3_peak_deg": 0.02782629394591172,
+      "Euler_axis_RMSE_deg": [
+        0.012116106975936677,
+        0.004177769945296881,
+        0.0002509202830471528
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.00024927336534991,
+        8.548025870552035e-05,
+        7.185919323734413e-05
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C03_W13",
+      "class": "C03",
+      "task": "T2",
+      "wind": "W13",
+      "period": "POST_5",
+      "samples": 15000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T2_C03_W13\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "78b8062650df377a7785fe1da324f941f791e85fa83988e682903d25fdb366af",
+      "SO3_RMSE_deg": 0.87111522242291,
+      "SO3_peak_deg": 2.7401371013717197,
+      "Euler_axis_RMSE_deg": [
+        0.633879734973834,
+        0.5974615759170722,
+        0.01834498363703107
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.021705580432907195,
+        0.021202422981574626,
+        0.004739864654058258
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C04_W14",
+      "class": "C04",
+      "task": "T2",
+      "wind": "W14",
+      "period": "ALL",
+      "samples": 20000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T2_C04_W14\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "b3cbe42c3835600cef5b4a5adbafe619cb83c56da94f37fe87669e027e91c6bf",
+      "SO3_RMSE_deg": 0.5249661005210581,
+      "SO3_peak_deg": 2.0039561359784424,
+      "Euler_axis_RMSE_deg": [
+        0.3813491481896558,
+        0.36059031787164597,
+        0.013376889319258437
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.018868643197098026,
+        0.018696047510664955,
+        0.0024065131804591224
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C04_W14",
+      "class": "C04",
+      "task": "T2",
+      "wind": "W14",
+      "period": "PRE_0_5",
+      "samples": 5000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T2_C04_W14\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "b3cbe42c3835600cef5b4a5adbafe619cb83c56da94f37fe87669e027e91c6bf",
+      "SO3_RMSE_deg": 0.015201446287351358,
+      "SO3_peak_deg": 0.03422586605437628,
+      "Euler_axis_RMSE_deg": [
+        0.00459986765659797,
+        0.014486786820583608,
+        0.00029750341132770547
+      ],
+      "transported_body_rate_RMSE_rads": [
+        9.113542337285282e-05,
+        0.00030118332803479356,
+        0.00010503199997144504
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C04_W14",
+      "class": "C04",
+      "task": "T2",
+      "wind": "W14",
+      "period": "POST_5",
+      "samples": 15000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T2_C04_W14\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "b3cbe42c3835600cef5b4a5adbafe619cb83c56da94f37fe87669e027e91c6bf",
+      "SO3_RMSE_deg": 0.6061150998547815,
+      "SO3_peak_deg": 2.0039561359784424,
+      "Euler_axis_RMSE_deg": [
+        0.44033605822426347,
+        0.41628981986860775,
+        0.015445346258760383
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.021787568923066974,
+        0.021587635802985925,
+        0.002778140327021892
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C05_W15",
+      "class": "C05",
+      "task": "T2",
+      "wind": "W15",
+      "period": "ALL",
+      "samples": 20000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_20261023\\runs_c5_v1\\DL1018_VAL_T2_C05_W15\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "b291199298fb4c591478a9c3115323a4299e281b0be447c9fbca0ffe4f640314",
+      "SO3_RMSE_deg": 1.2732127489669982,
+      "SO3_peak_deg": 3.3320399201680964,
+      "Euler_axis_RMSE_deg": [
+        1.1525554596041538,
+        0.5408249711746865,
+        0.012705106281309242
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.02134776451015424,
+        0.013580753931113668,
+        0.0007713279228594312
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C05_W15",
+      "class": "C05",
+      "task": "T2",
+      "wind": "W15",
+      "period": "PRE_0_5",
+      "samples": 5000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_20261023\\runs_c5_v1\\DL1018_VAL_T2_C05_W15\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "b291199298fb4c591478a9c3115323a4299e281b0be447c9fbca0ffe4f640314",
+      "SO3_RMSE_deg": 0.0002440770984983116,
+      "SO3_peak_deg": 0.0005009248492992941,
+      "Euler_axis_RMSE_deg": [
+        0.00022723792401766613,
+        8.908802296822414e-05,
+        1.1557901246861927e-07
+      ],
+      "transported_body_rate_RMSE_rads": [
+        5.936535542922399e-06,
+        2.318497985229569e-06,
+        2.795752463926106e-08
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C05_W15",
+      "class": "C05",
+      "task": "T2",
+      "wind": "W15",
+      "period": "POST_5",
+      "samples": 15000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_20261023\\runs_c5_v1\\DL1018_VAL_T2_C05_W15\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "b291199298fb4c591478a9c3115323a4299e281b0be447c9fbca0ffe4f640314",
+      "SO3_RMSE_deg": 1.470179439949964,
+      "SO3_peak_deg": 3.3320399201680964,
+      "Euler_axis_RMSE_deg": [
+        1.3308564032502148,
+        0.6244908832661814,
+        0.014670593063041632
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.024650274934785544,
+        0.01568170381872247,
+        0.0008906527676464709
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C06_W00",
+      "class": "C06",
+      "task": "T2",
+      "wind": "W00",
+      "period": "ALL",
+      "samples": 20000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_20261023\\runs_c5_v1\\DL1018_VAL_T2_C06_W00\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "6e53de0aa938b4b19c35343b56eff7960a86187dceeb9871c296c4331b7a3b20",
+      "SO3_RMSE_deg": 0.6356845920610457,
+      "SO3_peak_deg": 2.1585055701909743,
+      "Euler_axis_RMSE_deg": [
+        0.45841007736146694,
+        0.43137871234958725,
+        0.12545358285615596
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.012361434766095747,
+        0.011677643602167265,
+        0.004039294206024198
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C06_W00",
+      "class": "C06",
+      "task": "T2",
+      "wind": "W00",
+      "period": "PRE_0_5",
+      "samples": 5000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_20261023\\runs_c5_v1\\DL1018_VAL_T2_C06_W00\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "6e53de0aa938b4b19c35343b56eff7960a86187dceeb9871c296c4331b7a3b20",
+      "SO3_RMSE_deg": 0.0013005890219649366,
+      "SO3_peak_deg": 0.003760931542569286,
+      "Euler_axis_RMSE_deg": [
+        0.0005232742652917533,
+        0.0011906098187457687,
+        6.13592970718931e-06
+      ],
+      "transported_body_rate_RMSE_rads": [
+        1.4062410747558996e-05,
+        3.216680510936375e-05,
+        1.2871079125065058e-06
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C06_W00",
+      "class": "C06",
+      "task": "T2",
+      "wind": "W00",
+      "period": "POST_5",
+      "samples": 15000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_20261023\\runs_c5_v1\\DL1018_VAL_T2_C06_W00\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "6e53de0aa938b4b19c35343b56eff7960a86187dceeb9871c296c4331b7a3b20",
+      "SO3_RMSE_deg": 0.73402495661557,
+      "SO3_peak_deg": 2.1585055701909743,
+      "Euler_axis_RMSE_deg": [
+        0.5293262769125258,
+        0.4981127570881287,
+        0.14486131962229246
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.014273753070518005,
+        0.013484168565316406,
+        0.004664175135170772
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C07_W01",
+      "class": "C07",
+      "task": "T2",
+      "wind": "W01",
+      "period": "ALL",
+      "samples": 20000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T2_C07_W01\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "fe47d38d003ab95387ffede70f9fed513b1b3481747aac4d823b73f62ff5fb12",
+      "SO3_RMSE_deg": 1.4770358247837583,
+      "SO3_peak_deg": 4.055851207603636,
+      "Euler_axis_RMSE_deg": [
+        0.42710721027490917,
+        1.383380582281773,
+        0.3019252073616968
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.019814440320907362,
+        0.022447333066498765,
+        0.014593988491411927
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C07_W01",
+      "class": "C07",
+      "task": "T2",
+      "wind": "W01",
+      "period": "PRE_0_5",
+      "samples": 5000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T2_C07_W01\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "fe47d38d003ab95387ffede70f9fed513b1b3481747aac4d823b73f62ff5fb12",
+      "SO3_RMSE_deg": 0.0011994118427854435,
+      "SO3_peak_deg": 0.0022161499338041804,
+      "Euler_axis_RMSE_deg": [
+        0.001117725301539214,
+        0.00043503716848916564,
+        2.1831189497199004e-06
+      ],
+      "transported_body_rate_RMSE_rads": [
+        3.0608003962420516e-05,
+        1.189118979215753e-05,
+        8.246247504546458e-07
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C07_W01",
+      "class": "C07",
+      "task": "T2",
+      "wind": "W01",
+      "period": "POST_5",
+      "samples": 15000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T2_C07_W01\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "fe47d38d003ab95387ffede70f9fed513b1b3481747aac4d823b73f62ff5fb12",
+      "SO3_RMSE_deg": 1.7055339215027634,
+      "SO3_peak_deg": 4.055851207603636,
+      "Euler_axis_RMSE_deg": [
+        0.4931805034553482,
+        1.597390283397652,
+        0.34863319948854005
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.02287973808178531,
+        0.025919946667852287,
+        0.016851686361408554
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C08_W02",
+      "class": "C08",
+      "task": "T2",
+      "wind": "W02",
+      "period": "ALL",
+      "samples": 20000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T2_C08_W02\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "3a6be9965ff565af1f59900693046be080057ee6d909717df9947aaa0644d22f",
+      "SO3_RMSE_deg": 1.7136141182112923,
+      "SO3_peak_deg": 3.9884129323242825,
+      "Euler_axis_RMSE_deg": [
+        0.7972012749470319,
+        1.423578062264407,
+        0.571583000973873
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.02820241249381406,
+        0.022776618157393635,
+        0.023321672294855766
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C08_W02",
+      "class": "C08",
+      "task": "T2",
+      "wind": "W02",
+      "period": "PRE_0_5",
+      "samples": 5000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T2_C08_W02\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "3a6be9965ff565af1f59900693046be080057ee6d909717df9947aaa0644d22f",
+      "SO3_RMSE_deg": 0.0031293971758316235,
+      "SO3_peak_deg": 0.008536331228074418,
+      "Euler_axis_RMSE_deg": [
+        0.0009518247382634626,
+        0.0029811054284934616,
+        1.241253048520135e-05
+      ],
+      "transported_body_rate_RMSE_rads": [
+        2.5983880548143903e-05,
+        8.078472979588042e-05,
+        5.235437069778607e-06
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C08_W02",
+      "class": "C08",
+      "task": "T2",
+      "wind": "W02",
+      "period": "POST_5",
+      "samples": 15000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T2_C08_W02\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "3a6be9965ff565af1f59900693046be080057ee6d909717df9947aaa0644d22f",
+      "SO3_RMSE_deg": 1.9787103199984895,
+      "SO3_peak_deg": 3.9884129323242825,
+      "Euler_axis_RMSE_deg": [
+        0.9205285773471602,
+        1.6438054538633171,
+        0.6600071989140531
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.03256533743477825,
+        0.026300131891800374,
+        0.026929547385135477
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C09_W03",
+      "class": "C09",
+      "task": "T2",
+      "wind": "W03",
+      "period": "ALL",
+      "samples": 20000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T2_C09_W03\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "5b31ab0bbe83039f5c246112c0ac739dc3b8eb68984f4373f80dc0d1fc00bc2c",
+      "SO3_RMSE_deg": 0.5684090713979881,
+      "SO3_peak_deg": 1.9553597711415274,
+      "Euler_axis_RMSE_deg": [
+        0.4084054258667314,
+        0.384405025687805,
+        0.09301691180486228
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.012271521697431632,
+        0.011431527533431789,
+        0.005424355572809597
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C09_W03",
+      "class": "C09",
+      "task": "T2",
+      "wind": "W03",
+      "period": "PRE_0_5",
+      "samples": 5000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T2_C09_W03\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "5b31ab0bbe83039f5c246112c0ac739dc3b8eb68984f4373f80dc0d1fc00bc2c",
+      "SO3_RMSE_deg": 0.0019380566049140306,
+      "SO3_peak_deg": 0.004093174578121069,
+      "Euler_axis_RMSE_deg": [
+        0.0017609063520739785,
+        0.0008092224777655874,
+        7.527125242003227e-06
+      ],
+      "transported_body_rate_RMSE_rads": [
+        4.884538781569233e-05,
+        2.2674692732285814e-05,
+        2.3282577575675737e-06
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C09_W03",
+      "class": "C09",
+      "task": "T2",
+      "wind": "W03",
+      "period": "POST_5",
+      "samples": 15000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T2_C09_W03\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "5b31ab0bbe83039f5c246112c0ac739dc3b8eb68984f4373f80dc0d1fc00bc2c",
+      "SO3_RMSE_deg": 0.6563413069754406,
+      "SO3_peak_deg": 1.9553597711415274,
+      "Euler_axis_RMSE_deg": [
+        0.4715848692506169,
+        0.4438724442356346,
+        0.10740667805153224
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.014169904648117553,
+        0.013199984505656886,
+        0.006263506156041198
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C10_W04",
+      "class": "C10",
+      "task": "T2",
+      "wind": "W04",
+      "period": "ALL",
+      "samples": 20000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T2_C10_W04\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "aca803e783c29ff5f6d4183bdc535f130c8a5d37daabfe77c6a225290f5aa1b5",
+      "SO3_RMSE_deg": 1.5551336830730933,
+      "SO3_peak_deg": 4.0060785420819105,
+      "Euler_axis_RMSE_deg": [
+        1.2405622679876278,
+        0.8384620044233608,
+        0.4840094194499786
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.030122122194463745,
+        0.03916207721164567,
+        0.03438541221148907
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C10_W04",
+      "class": "C10",
+      "task": "T2",
+      "wind": "W04",
+      "period": "PRE_0_5",
+      "samples": 5000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T2_C10_W04\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "aca803e783c29ff5f6d4183bdc535f130c8a5d37daabfe77c6a225290f5aa1b5",
+      "SO3_RMSE_deg": 0.004721518220958218,
+      "SO3_peak_deg": 0.01277324844826249,
+      "Euler_axis_RMSE_deg": [
+        0.0020072606955524306,
+        0.004272954744407117,
+        4.0587922755391814e-05
+      ],
+      "transported_body_rate_RMSE_rads": [
+        5.746312973410509e-05,
+        0.00012074419917400305,
+        1.4344765027575191e-05
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C10_W04",
+      "class": "C10",
+      "task": "T2",
+      "wind": "W04",
+      "period": "POST_5",
+      "samples": 15000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T2_C10_W04\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "aca803e783c29ff5f6d4183bdc535f130c8a5d37daabfe77c6a225290f5aa1b5",
+      "SO3_RMSE_deg": 1.7957116320259243,
+      "SO3_peak_deg": 4.0060785420819105,
+      "Euler_axis_RMSE_deg": [
+        1.4324774499589776,
+        0.9681693848537579,
+        0.5588859367282505
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.03478201489266899,
+        0.045220417906671154,
+        0.03970485312924103
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C11_W05",
+      "class": "C11",
+      "task": "T2",
+      "wind": "W05",
+      "period": "ALL",
+      "samples": 20000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T2_C11_W05\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "6d93f3dfb3eb4a07f6f450fe86735c793d2d6db7cd818789259e610b0de3126d",
+      "SO3_RMSE_deg": 0.8890395728344775,
+      "SO3_peak_deg": 2.2760838580575538,
+      "Euler_axis_RMSE_deg": [
+        0.6834828383206306,
+        0.5499207272488419,
+        0.15226544017332128
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.016062342151930364,
+        0.024764408568867816,
+        0.01247559155518553
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C11_W05",
+      "class": "C11",
+      "task": "T2",
+      "wind": "W05",
+      "period": "PRE_0_5",
+      "samples": 5000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T2_C11_W05\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "6d93f3dfb3eb4a07f6f450fe86735c793d2d6db7cd818789259e610b0de3126d",
+      "SO3_RMSE_deg": 0.005001685314347358,
+      "SO3_peak_deg": 0.01213379589702412,
+      "Euler_axis_RMSE_deg": [
+        0.0044896705148275064,
+        0.002202323059791373,
+        4.267672295930834e-05
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.00012856434807546134,
+        6.267502785473419e-05,
+        1.6722083249601586e-05
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C11_W05",
+      "class": "C11",
+      "task": "T2",
+      "wind": "W05",
+      "period": "POST_5",
+      "samples": 15000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T2_C11_W05\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "6d93f3dfb3eb4a07f6f450fe86735c793d2d6db7cd818789259e610b0de3126d",
+      "SO3_RMSE_deg": 1.0265704118417558,
+      "SO3_peak_deg": 2.2760838580575538,
+      "Euler_axis_RMSE_deg": [
+        0.7892137445952079,
+        0.6349924867809384,
+        0.17582098401821328
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.01854704660074949,
+        0.028595453012114462,
+        0.01440556905018794
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C12_W06",
+      "class": "C12",
+      "task": "T2",
+      "wind": "W06",
+      "period": "ALL",
+      "samples": 20000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T2_C12_W06\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "494f8a9c7c2e79a0cc43a1282870ca269d4dd3e3be5b8d26bfdc092217fb5457",
+      "SO3_RMSE_deg": 0.9538838393637308,
+      "SO3_peak_deg": 2.840481240823882,
+      "Euler_axis_RMSE_deg": [
+        0.8559895687146054,
+        0.4169339978076629,
+        0.11279188892530323
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.018075452754504152,
+        0.025718973208112297,
+        0.01008051573522708
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C12_W06",
+      "class": "C12",
+      "task": "T2",
+      "wind": "W06",
+      "period": "PRE_0_5",
+      "samples": 5000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T2_C12_W06\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "494f8a9c7c2e79a0cc43a1282870ca269d4dd3e3be5b8d26bfdc092217fb5457",
+      "SO3_RMSE_deg": 0.00396503186426138,
+      "SO3_peak_deg": 0.009395027221507918,
+      "Euler_axis_RMSE_deg": [
+        0.0013254751002446537,
+        0.0037367452376424583,
+        2.3803021227922034e-05
+      ],
+      "transported_body_rate_RMSE_rads": [
+        3.8993053464399484e-05,
+        0.00011085321422180583,
+        7.018484227133235e-06
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C12_W06",
+      "class": "C12",
+      "task": "T2",
+      "wind": "W06",
+      "period": "POST_5",
+      "samples": 15000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T2_C12_W06\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "494f8a9c7c2e79a0cc43a1282870ca269d4dd3e3be5b8d26bfdc092217fb5457",
+      "SO3_RMSE_deg": 1.1014478039561508,
+      "SO3_peak_deg": 2.840481240823882,
+      "Euler_axis_RMSE_deg": [
+        0.9884113195946687,
+        0.4814290777973948,
+        0.13024085414181416
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.020871722885785197,
+        0.029697643245905833,
+        0.011639976241291934
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C13_W07",
+      "class": "C13",
+      "task": "T2",
+      "wind": "W07",
+      "period": "ALL",
+      "samples": 20000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T2_C13_W07\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "4c1b8d3e155df1f3a5f38fb4f6579eff464f7f87d1834cfb0cfd055cf3ad70da",
+      "SO3_RMSE_deg": 1.2520274200347628,
+      "SO3_peak_deg": 3.8482807937876937,
+      "Euler_axis_RMSE_deg": [
+        0.6920821301015996,
+        1.0028520758346746,
+        0.29874203526830667
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.03571462393452111,
+        0.030072981320115745,
+        0.0384540714443228
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C13_W07",
+      "class": "C13",
+      "task": "T2",
+      "wind": "W07",
+      "period": "PRE_0_5",
+      "samples": 5000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T2_C13_W07\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "4c1b8d3e155df1f3a5f38fb4f6579eff464f7f87d1834cfb0cfd055cf3ad70da",
+      "SO3_RMSE_deg": 0.008624788306945031,
+      "SO3_peak_deg": 0.023461405738385437,
+      "Euler_axis_RMSE_deg": [
+        0.008200329291539115,
+        0.002670350601310535,
+        7.149926553349568e-05
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.00023610470533762362,
+        7.870163770802043e-05,
+        3.286808862773847e-05
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C13_W07",
+      "class": "C13",
+      "task": "T2",
+      "wind": "W07",
+      "period": "POST_5",
+      "samples": 15000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T2_C13_W07\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "4c1b8d3e155df1f3a5f38fb4f6579eff464f7f87d1834cfb0cfd055cf3ad70da",
+      "SO3_RMSE_deg": 1.4457081603954833,
+      "SO3_peak_deg": 3.8482807937876937,
+      "Euler_axis_RMSE_deg": [
+        0.7991335837066249,
+        1.1579928055693798,
+        0.3449575864908882
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.04123947019424146,
+        0.03472525799266937,
+        0.044402932944679376
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C14_W08",
+      "class": "C14",
+      "task": "T2",
+      "wind": "W08",
+      "period": "ALL",
+      "samples": 20000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T2_C14_W08\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "447bafc202e6c53e7838c19b88e2eb3daa8512d2e9468131b0f73babf4279964",
+      "SO3_RMSE_deg": 1.5204387141352258,
+      "SO3_peak_deg": 3.9030492861836295,
+      "Euler_axis_RMSE_deg": [
+        0.8003754577518416,
+        1.1369512786090261,
+        0.5810509222638236
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.10243509072835093,
+        0.08199741153815397,
+        0.07234296750037603
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C14_W08",
+      "class": "C14",
+      "task": "T2",
+      "wind": "W08",
+      "period": "PRE_0_5",
+      "samples": 5000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T2_C14_W08\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "447bafc202e6c53e7838c19b88e2eb3daa8512d2e9468131b0f73babf4279964",
+      "SO3_RMSE_deg": 0.013238163800834885,
+      "SO3_peak_deg": 0.03985717100346864,
+      "Euler_axis_RMSE_deg": [
+        0.00416078055368777,
+        0.012563404101242771,
+        0.0002585282523107702
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.00012297629242231952,
+        0.00036861310938726634,
+        7.609529567561055e-05
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C14_W08",
+      "class": "C14",
+      "task": "T2",
+      "wind": "W08",
+      "period": "POST_5",
+      "samples": 15000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T2_C14_W08\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "447bafc202e6c53e7838c19b88e2eb3daa8512d2e9468131b0f73babf4279964",
+      "SO3_RMSE_deg": 1.7556347650526005,
+      "SO3_peak_deg": 3.9030492861836295,
+      "Euler_axis_RMSE_deg": [
+        0.9241908499494866,
+        1.3128182154688168,
+        0.6709397961610024
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.11828183310344471,
+        0.09468221607075099,
+        0.08353445196753219
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C15_W09",
+      "class": "C15",
+      "task": "T2",
+      "wind": "W09",
+      "period": "ALL",
+      "samples": 20000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T2_C15_W09\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "6af25d0ace1feb24deb1891364444ad40973204af8e20ebe400afc673d42d431",
+      "SO3_RMSE_deg": 0.8547199834808442,
+      "SO3_peak_deg": 2.338369854370263,
+      "Euler_axis_RMSE_deg": [
+        0.35413643764589386,
+        0.7714573328579858,
+        0.0981031818872882
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.03068264324695904,
+        0.022426130486352242,
+        0.008165890060190521
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C15_W09",
+      "class": "C15",
+      "task": "T2",
+      "wind": "W09",
+      "period": "PRE_0_5",
+      "samples": 5000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T2_C15_W09\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "6af25d0ace1feb24deb1891364444ad40973204af8e20ebe400afc673d42d431",
+      "SO3_RMSE_deg": 0.005831177222616915,
+      "SO3_peak_deg": 0.014156703643838132,
+      "Euler_axis_RMSE_deg": [
+        0.005723905295363818,
+        0.0011129763894363826,
+        2.64072814751831e-05
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.00014837326383074359,
+        2.766770850097031e-05,
+        7.97828870512017e-06
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C15_W09",
+      "class": "C15",
+      "task": "T2",
+      "wind": "W09",
+      "period": "POST_5",
+      "samples": 15000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T2_C15_W09\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "6af25d0ace1feb24deb1891364444ad40973204af8e20ebe400afc673d42d431",
+      "SO3_RMSE_deg": 0.9869398830084464,
+      "SO3_peak_deg": 2.338369854370263,
+      "Euler_axis_RMSE_deg": [
+        0.4089081815364202,
+        0.8908019658272324,
+        0.11327979591597802
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.035429161114611155,
+        0.02589546001948022,
+        0.009429156523736765
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C00_W13",
+      "class": "C00",
+      "task": "T3",
+      "wind": "W13",
+      "period": "ALL",
+      "samples": 20000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_20261023\\runs_c5_v1\\DL1018_VAL_T3_C00_W13\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "fe56d41b82deed388bd90f3e1933d40ba4abb1a33c9a770f85729de9932071f6",
+      "SO3_RMSE_deg": 0.01237632584207968,
+      "SO3_peak_deg": 0.024689010321272065,
+      "Euler_axis_RMSE_deg": [
+        0.011715473152593947,
+        0.0039849432806619385,
+        0.00019223249038854056
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.0002448976029424809,
+        8.405883048317095e-05,
+        5.990144964470207e-05
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C00_W13",
+      "class": "C00",
+      "task": "T3",
+      "wind": "W13",
+      "period": "PRE_0_5",
+      "samples": 5000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_20261023\\runs_c5_v1\\DL1018_VAL_T3_C00_W13\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "fe56d41b82deed388bd90f3e1933d40ba4abb1a33c9a770f85729de9932071f6",
+      "SO3_RMSE_deg": 0.011453088169914657,
+      "SO3_peak_deg": 0.024088565777566285,
+      "Euler_axis_RMSE_deg": [
+        0.01090772110439584,
+        0.003486465293090256,
+        0.00019384523605316033
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.00022601254468847452,
+        7.358749880175863e-05,
+        5.2672043996566556e-05
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C00_W13",
+      "class": "C00",
+      "task": "T3",
+      "wind": "W13",
+      "period": "POST_5",
+      "samples": 15000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_20261023\\runs_c5_v1\\DL1018_VAL_T3_C00_W13\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "fe56d41b82deed388bd90f3e1933d40ba4abb1a33c9a770f85729de9932071f6",
+      "SO3_RMSE_deg": 0.012669129630318968,
+      "SO3_peak_deg": 0.024689010321272065,
+      "Euler_axis_RMSE_deg": [
+        0.011972619666908275,
+        0.004137779257864776,
+        0.0001916918933283445
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.00025087691095524085,
+        8.727051420515234e-05,
+        6.212458037248219e-05
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C01_W14",
+      "class": "C01",
+      "task": "T3",
+      "wind": "W14",
+      "period": "ALL",
+      "samples": 20000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T3_C01_W14\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "556be0c5cc9ae61c077597fdf474c2fde74f443a848bcd7dcfe0f7f49768db83",
+      "SO3_RMSE_deg": 1.029315694421989,
+      "SO3_peak_deg": 2.8284317504426046,
+      "Euler_axis_RMSE_deg": [
+        0.7376446452551296,
+        0.6980523454831532,
+        0.21458620329637323
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.026234457415802312,
+        0.02577406352868251,
+        0.031031441818491212
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C01_W14",
+      "class": "C01",
+      "task": "T3",
+      "wind": "W14",
+      "period": "PRE_0_5",
+      "samples": 5000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T3_C01_W14\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "556be0c5cc9ae61c077597fdf474c2fde74f443a848bcd7dcfe0f7f49768db83",
+      "SO3_RMSE_deg": 0.016287479727818334,
+      "SO3_peak_deg": 0.03779862139541794,
+      "Euler_axis_RMSE_deg": [
+        0.004490273417586925,
+        0.01565338967366082,
+        0.00037226015728859335
+      ],
+      "transported_body_rate_RMSE_rads": [
+        8.808867152051874e-05,
+        0.00032912302234899674,
+        0.0001105968859944421
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C01_W14",
+      "class": "C01",
+      "task": "T3",
+      "wind": "W14",
+      "period": "POST_5",
+      "samples": 15000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T3_C01_W14\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "556be0c5cc9ae61c077597fdf474c2fde74f443a848bcd7dcfe0f7f49768db83",
+      "SO3_RMSE_deg": 1.1885141863040316,
+      "SO3_peak_deg": 2.8284317504426046,
+      "Euler_axis_RMSE_deg": [
+        0.8517547237201758,
+        0.8059907525379041,
+        0.24778271126330623
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.030292899409994467,
+        0.0297607184117947,
+        0.03583196568087601
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C02_W15",
+      "class": "C02",
+      "task": "T3",
+      "wind": "W15",
+      "period": "ALL",
+      "samples": 20000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_20261023\\runs_c5_v1\\DL1018_VAL_T3_C02_W15\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "fdf56c425be3a5dcede1c9fd0abb4d24a081996ec72049b0f0d7a33aad88b911",
+      "SO3_RMSE_deg": 0.9516730050263839,
+      "SO3_peak_deg": 2.878863737671003,
+      "Euler_axis_RMSE_deg": [
+        0.6925952175016961,
+        0.6526815413063052,
+        0.006054300947152278
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.013838126674346094,
+        0.01303678889225853,
+        0.0006498599791595651
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C02_W15",
+      "class": "C02",
+      "task": "T3",
+      "wind": "W15",
+      "period": "PRE_0_5",
+      "samples": 5000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_20261023\\runs_c5_v1\\DL1018_VAL_T3_C02_W15\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "fdf56c425be3a5dcede1c9fd0abb4d24a081996ec72049b0f0d7a33aad88b911",
+      "SO3_RMSE_deg": 0.001025987115056548,
+      "SO3_peak_deg": 0.002669295462775012,
+      "Euler_axis_RMSE_deg": [
+        4.213620027151975e-05,
+        0.0010251213178666472,
+        1.495871659538221e-07
+      ],
+      "transported_body_rate_RMSE_rads": [
+        1.0634912917337932e-06,
+        2.6653969219837977e-05,
+        6.516127188804172e-08
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C02_W15",
+      "class": "C02",
+      "task": "T3",
+      "wind": "W15",
+      "period": "POST_5",
+      "samples": 15000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_20261023\\runs_c5_v1\\DL1018_VAL_T3_C02_W15\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "fdf56c425be3a5dcede1c9fd0abb4d24a081996ec72049b0f0d7a33aad88b911",
+      "SO3_RMSE_deg": 1.0988971716125566,
+      "SO3_peak_deg": 2.878863737671003,
+      "Euler_axis_RMSE_deg": [
+        0.7997400701580957,
+        0.7536514947405907,
+        0.006990904562653284
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.01597889230923076,
+        0.015053579287013286,
+        0.0007503936668636203
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C03_W00",
+      "class": "C03",
+      "task": "T3",
+      "wind": "W00",
+      "period": "ALL",
+      "samples": 20000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_20261023\\runs_c5_v1\\DL1018_VAL_T3_C03_W00\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "e119ec1f94986ad18ef0ce69a11b8971b324fd8b4a52c0193e926f5c5ef20634",
+      "SO3_RMSE_deg": 0.7998002293206704,
+      "SO3_peak_deg": 2.714214336470465,
+      "Euler_axis_RMSE_deg": [
+        0.5797871646386763,
+        0.545851613681321,
+        0.10076165602592516
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.013713679765754572,
+        0.013002257929803232,
+        0.002722177858584436
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C03_W00",
+      "class": "C03",
+      "task": "T3",
+      "wind": "W00",
+      "period": "PRE_0_5",
+      "samples": 5000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_20261023\\runs_c5_v1\\DL1018_VAL_T3_C03_W00\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "e119ec1f94986ad18ef0ce69a11b8971b324fd8b4a52c0193e926f5c5ef20634",
+      "SO3_RMSE_deg": 0.0018710186478510188,
+      "SO3_peak_deg": 0.0036527048667422154,
+      "Euler_axis_RMSE_deg": [
+        0.0005161920814874782,
+        0.0017982758718982684,
+        5.421367041722367e-06
+      ],
+      "transported_body_rate_RMSE_rads": [
+        1.4015963644458318e-05,
+        4.825262049167772e-05,
+        1.4945727370997883e-06
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C03_W00",
+      "class": "C03",
+      "task": "T3",
+      "wind": "W00",
+      "period": "POST_5",
+      "samples": 15000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_20261023\\runs_c5_v1\\DL1018_VAL_T3_C03_W00\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "e119ec1f94986ad18ef0ce69a11b8971b324fd8b4a52c0193e926f5c5ef20634",
+      "SO3_RMSE_deg": 0.9235291236293536,
+      "SO3_peak_deg": 2.714214336470465,
+      "Euler_axis_RMSE_deg": [
+        0.6694804848200723,
+        0.6302942970914187,
+        0.11634953841901884
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.01583519134105457,
+        0.01501368838512753,
+        0.0031433001204319065
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C04_W01",
+      "class": "C04",
+      "task": "T3",
+      "wind": "W01",
+      "period": "ALL",
+      "samples": 20000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T3_C04_W01\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "bb031cfd44b71447c8a5efa013f332857da670326515fed6c026e3db25cbe2a4",
+      "SO3_RMSE_deg": 0.517299090881543,
+      "SO3_peak_deg": 1.9474913841042123,
+      "Euler_axis_RMSE_deg": [
+        0.3703991231145538,
+        0.349196019346214,
+        0.09632543888986506
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.011510163972664291,
+        0.01087132422308582,
+        0.004427866492518084
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C04_W01",
+      "class": "C04",
+      "task": "T3",
+      "wind": "W01",
+      "period": "PRE_0_5",
+      "samples": 5000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T3_C04_W01\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "bb031cfd44b71447c8a5efa013f332857da670326515fed6c026e3db25cbe2a4",
+      "SO3_RMSE_deg": 0.002124111283121135,
+      "SO3_peak_deg": 0.004880555191255877,
+      "Euler_axis_RMSE_deg": [
+        0.0016667086894632268,
+        0.0013166879313689177,
+        5.307932008241438e-06
+      ],
+      "transported_body_rate_RMSE_rads": [
+        4.55260295802605e-05,
+        3.467288514945159e-05,
+        3.6392939178421992e-06
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C04_W01",
+      "class": "C04",
+      "task": "T3",
+      "wind": "W01",
+      "period": "POST_5",
+      "samples": 15000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T3_C04_W01\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "bb031cfd44b71447c8a5efa013f332857da670326515fed6c026e3db25cbe2a4",
+      "SO3_RMSE_deg": 0.5973242798398929,
+      "SO3_peak_deg": 1.9474913841042123,
+      "Euler_axis_RMSE_deg": [
+        0.42769898437190074,
+        0.40321611493997334,
+        0.1112270361035277
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.013290766545376616,
+        0.012553107971665096,
+        0.005112859391045203
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C05_W02",
+      "class": "C05",
+      "task": "T3",
+      "wind": "W02",
+      "period": "ALL",
+      "samples": 20000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T3_C05_W02\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "3682bb0e3259a7aa8779abde107875a494ca28459847084057c6f71e38a3bc84",
+      "SO3_RMSE_deg": 1.6783682527828792,
+      "SO3_peak_deg": 5.505542613344926,
+      "Euler_axis_RMSE_deg": [
+        1.3272872571898557,
+        0.9146104522025579,
+        0.5758588648773004
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.025547579460234546,
+        0.027985563809826874,
+        0.02358884879194318
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C05_W02",
+      "class": "C05",
+      "task": "T3",
+      "wind": "W02",
+      "period": "PRE_0_5",
+      "samples": 5000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T3_C05_W02\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "3682bb0e3259a7aa8779abde107875a494ca28459847084057c6f71e38a3bc84",
+      "SO3_RMSE_deg": 0.002931588406653905,
+      "SO3_peak_deg": 0.0063780400519733845,
+      "Euler_axis_RMSE_deg": [
+        0.00100854753563654,
+        0.002752609702804807,
+        1.256337458280025e-05
+      ],
+      "transported_body_rate_RMSE_rads": [
+        2.753709013356739e-05,
+        7.405533817143941e-05,
+        3.846856549719702e-06
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C05_W02",
+      "class": "C05",
+      "task": "T3",
+      "wind": "W02",
+      "period": "POST_5",
+      "samples": 15000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T3_C05_W02\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "3682bb0e3259a7aa8779abde107875a494ca28459847084057c6f71e38a3bc84",
+      "SO3_RMSE_deg": 1.938011985995549,
+      "SO3_peak_deg": 5.505542613344926,
+      "Euler_axis_RMSE_deg": [
+        1.5326191998477803,
+        1.0560999858366462,
+        0.6649445412647218
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.0294997994728589,
+        0.03231491731291941,
+        0.027238056309254344
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C06_W03",
+      "class": "C06",
+      "task": "T3",
+      "wind": "W03",
+      "period": "ALL",
+      "samples": 20000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T3_C06_W03\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "2375f9511bde942b12f488b7704a57d1cf98f012452b8332abc0e5cf0636d108",
+      "SO3_RMSE_deg": 0.6471685493444566,
+      "SO3_peak_deg": 2.1899659938373603,
+      "Euler_axis_RMSE_deg": [
+        0.47116975561814595,
+        0.44362048940612586,
+        0.008401872014478973
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.013037164627916157,
+        0.012327263730469782,
+        0.0008722843795080385
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C06_W03",
+      "class": "C06",
+      "task": "T3",
+      "wind": "W03",
+      "period": "PRE_0_5",
+      "samples": 5000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T3_C06_W03\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "2375f9511bde942b12f488b7704a57d1cf98f012452b8332abc0e5cf0636d108",
+      "SO3_RMSE_deg": 0.0021841438984410554,
+      "SO3_peak_deg": 0.0053050631516562904,
+      "Euler_axis_RMSE_deg": [
+        0.0018777458014803705,
+        0.0011156584579990222,
+        6.681636665415589e-06
+      ],
+      "transported_body_rate_RMSE_rads": [
+        5.235467026715251e-05,
+        2.931455552964747e-05,
+        1.893245191557942e-06
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C06_W03",
+      "class": "C06",
+      "task": "T3",
+      "wind": "W03",
+      "period": "POST_5",
+      "samples": 15000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T3_C06_W03\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "2375f9511bde942b12f488b7704a57d1cf98f012452b8332abc0e5cf0636d108",
+      "SO3_RMSE_deg": 0.7472848083914336,
+      "SO3_peak_deg": 2.1899659938373603,
+      "Euler_axis_RMSE_deg": [
+        0.5440588903503488,
+        0.5122484129762068,
+        0.00970164537155891
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.015053990668369346,
+        0.01423428800442857,
+        0.0010072266495278904
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C07_W04",
+      "class": "C07",
+      "task": "T3",
+      "wind": "W04",
+      "period": "ALL",
+      "samples": 20000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T3_C07_W04\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "7cc4cbf25f3472f421af0b5fdecce4f603db8600cf07979973f00c2f313909ef",
+      "SO3_RMSE_deg": 1.7193328167104642,
+      "SO3_peak_deg": 3.9760576203002027,
+      "Euler_axis_RMSE_deg": [
+        0.745666672719808,
+        1.4945304732975653,
+        0.4629762373929244
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.0484981022965652,
+        0.02755113468370931,
+        0.03472764796142208
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C07_W04",
+      "class": "C07",
+      "task": "T3",
+      "wind": "W04",
+      "period": "PRE_0_5",
+      "samples": 5000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T3_C07_W04\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "7cc4cbf25f3472f421af0b5fdecce4f603db8600cf07979973f00c2f313909ef",
+      "SO3_RMSE_deg": 0.004236546061027102,
+      "SO3_peak_deg": 0.00981214252266325,
+      "Euler_axis_RMSE_deg": [
+        0.0016188038449869288,
+        0.003914744212229966,
+        2.6093104796137462e-05
+      ],
+      "transported_body_rate_RMSE_rads": [
+        4.551783829429296e-05,
+        0.00010878837882314128,
+        9.419665240287428e-06
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C07_W04",
+      "class": "C07",
+      "task": "T3",
+      "wind": "W04",
+      "period": "POST_5",
+      "samples": 15000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T3_C07_W04\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "7cc4cbf25f3472f421af0b5fdecce4f603db8600cf07979973f00c2f313909ef",
+      "SO3_RMSE_deg": 1.9853130223508524,
+      "SO3_peak_deg": 3.9760576203002027,
+      "Euler_axis_RMSE_deg": [
+        0.8610212011896549,
+        1.7257336620732189,
+        0.534598910362148
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.05600077866601144,
+        0.03181324805029184,
+        0.04010003342891275
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C08_W05",
+      "class": "C08",
+      "task": "T3",
+      "wind": "W05",
+      "period": "ALL",
+      "samples": 20000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T3_C08_W05\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "66efc5be513728ab6347eda9862ed4e18372800e911069fb99eac1d52bcb36b7",
+      "SO3_RMSE_deg": 1.6062118366129126,
+      "SO3_peak_deg": 4.374517570046068,
+      "Euler_axis_RMSE_deg": [
+        0.5794260952268824,
+        1.429679571281611,
+        0.41718531485835814
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.03998709397500246,
+        0.025034971690748118,
+        0.03504179781257516
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C08_W05",
+      "class": "C08",
+      "task": "T3",
+      "wind": "W05",
+      "period": "PRE_0_5",
+      "samples": 5000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T3_C08_W05\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "66efc5be513728ab6347eda9862ed4e18372800e911069fb99eac1d52bcb36b7",
+      "SO3_RMSE_deg": 0.006339742758263488,
+      "SO3_peak_deg": 0.016408278681876328,
+      "Euler_axis_RMSE_deg": [
+        0.005901356396362808,
+        0.002313480609534595,
+        5.314798547886598e-05
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.00016934859236319346,
+        6.507097091766964e-05,
+        2.1316257757096765e-05
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C08_W05",
+      "class": "C08",
+      "task": "T3",
+      "wind": "W05",
+      "period": "POST_5",
+      "samples": 15000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T3_C08_W05\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "66efc5be513728ab6347eda9862ed4e18372800e911069fb99eac1d52bcb36b7",
+      "SO3_RMSE_deg": 1.8546900607166559,
+      "SO3_peak_deg": 4.374517570046068,
+      "Euler_axis_RMSE_deg": [
+        0.6690549487429194,
+        1.6508512303220375,
+        0.4817241066935724
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.04617301542140885,
+        0.02890787087740974,
+        0.040462780928349214
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C09_W06",
+      "class": "C09",
+      "task": "T3",
+      "wind": "W06",
+      "period": "ALL",
+      "samples": 20000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T3_C09_W06\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "2519a56231716c681041f46d427ab293b092aec837b3dc5c666925c3aab16aca",
+      "SO3_RMSE_deg": 0.5813042595094413,
+      "SO3_peak_deg": 2.023207226632211,
+      "Euler_axis_RMSE_deg": [
+        0.42307753719165275,
+        0.3985538439040928,
+        0.0069783065609195175
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.013650295731548844,
+        0.013011223311777228,
+        0.0008779866770212171
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C09_W06",
+      "class": "C09",
+      "task": "T3",
+      "wind": "W06",
+      "period": "PRE_0_5",
+      "samples": 5000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T3_C09_W06\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "2519a56231716c681041f46d427ab293b092aec837b3dc5c666925c3aab16aca",
+      "SO3_RMSE_deg": 0.00458406950530607,
+      "SO3_peak_deg": 0.009536488234030001,
+      "Euler_axis_RMSE_deg": [
+        0.0015899996253604153,
+        0.004299405116960149,
+        2.6820435999846545e-05
+      ],
+      "transported_body_rate_RMSE_rads": [
+        4.6241783919766543e-05,
+        0.00012589769990216712,
+        8.860398484394548e-06
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C09_W06",
+      "class": "C09",
+      "task": "T3",
+      "wind": "W06",
+      "period": "POST_5",
+      "samples": 15000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T3_C09_W06\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "2519a56231716c681041f46d427ab293b092aec837b3dc5c666925c3aab16aca",
+      "SO3_RMSE_deg": 0.6712271237075296,
+      "SO3_peak_deg": 2.023207226632211,
+      "Euler_axis_RMSE_deg": [
+        0.48852699748182066,
+        0.4602036437196589,
+        0.00805783946429195
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.015761981219931102,
+        0.01502389073048767,
+        0.0010137987823767485
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C10_W07",
+      "class": "C10",
+      "task": "T3",
+      "wind": "W07",
+      "period": "ALL",
+      "samples": 20000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T3_C10_W07\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "564459c991c3710b1c3603e5d7f35286ad9fb5756b80259ca5631fbd65f9050c",
+      "SO3_RMSE_deg": 1.368587589819266,
+      "SO3_peak_deg": 3.788250327703119,
+      "Euler_axis_RMSE_deg": [
+        1.2238233042821696,
+        0.6044448676482974,
+        0.12489271840105615
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.03488849835058844,
+        0.02959610264910559,
+        0.012875645815451305
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C10_W07",
+      "class": "C10",
+      "task": "T3",
+      "wind": "W07",
+      "period": "PRE_0_5",
+      "samples": 5000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T3_C10_W07\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "564459c991c3710b1c3603e5d7f35286ad9fb5756b80259ca5631fbd65f9050c",
+      "SO3_RMSE_deg": 0.008319824765146802,
+      "SO3_peak_deg": 0.017629712755619014,
+      "Euler_axis_RMSE_deg": [
+        0.007604604191242357,
+        0.0033733788837359236,
+        7.474755995118109e-05
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.00021984792636687997,
+        9.791900925982409e-05,
+        3.373022235129772e-05
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C10_W07",
+      "class": "C10",
+      "task": "T3",
+      "wind": "W07",
+      "period": "POST_5",
+      "samples": 15000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T3_C10_W07\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "564459c991c3710b1c3603e5d7f35286ad9fb5756b80259ca5631fbd65f9050c",
+      "SO3_RMSE_deg": 1.580301526560159,
+      "SO3_peak_deg": 3.788250327703119,
+      "Euler_axis_RMSE_deg": [
+        1.4131426078556977,
+        0.6979500966927789,
+        0.1442136827202656
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.040285567868759656,
+        0.03417458890234675,
+        0.01486750240100754
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C11_W08",
+      "class": "C11",
+      "task": "T3",
+      "wind": "W08",
+      "period": "ALL",
+      "samples": 20000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T3_C11_W08\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "0cb7d65203f343f27fb9630edf2d654758ffaf49d8feb83d7a81907d363ba54f",
+      "SO3_RMSE_deg": 0.9187687167166942,
+      "SO3_peak_deg": 2.2143988868085915,
+      "Euler_axis_RMSE_deg": [
+        0.6765472868113989,
+        0.5577757522018175,
+        0.29802333298961037
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.02959559609415638,
+        0.04855545604311123,
+        0.03728550913715677
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C11_W08",
+      "class": "C11",
+      "task": "T3",
+      "wind": "W08",
+      "period": "PRE_0_5",
+      "samples": 5000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T3_C11_W08\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "0cb7d65203f343f27fb9630edf2d654758ffaf49d8feb83d7a81907d363ba54f",
+      "SO3_RMSE_deg": 0.015106438086899278,
+      "SO3_peak_deg": 0.0407094311396253,
+      "Euler_axis_RMSE_deg": [
+        0.00508459877990495,
+        0.014220078216000328,
+        0.00030267024680924546
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.00014886731331209747,
+        0.0004062832404380667,
+        9.816965460116772e-05
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C11_W08",
+      "class": "C11",
+      "task": "T3",
+      "wind": "W08",
+      "period": "POST_5",
+      "samples": 15000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T3_C11_W08\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "0cb7d65203f343f27fb9630edf2d654758ffaf49d8feb83d7a81907d363ba54f",
+      "SO3_RMSE_deg": 1.0608668805584254,
+      "SO3_peak_deg": 2.2143988868085915,
+      "Euler_axis_RMSE_deg": [
+        0.7812040006773111,
+        0.6440116324914077,
+        0.3441276586848096
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.03417394266199909,
+        0.05606652055117673,
+        0.043053560167102406
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C12_W09",
+      "class": "C12",
+      "task": "T3",
+      "wind": "W09",
+      "period": "ALL",
+      "samples": 20000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_20261023\\runs_c5_v1\\DL1018_VAL_T3_C12_W09\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "5c5aa2cab0fc158c120048cde9b675a6f4ae9d99ff99b5c0baa06dfa1c403b4a",
+      "SO3_RMSE_deg": 0.9546704684850282,
+      "SO3_peak_deg": 2.6856182847616665,
+      "Euler_axis_RMSE_deg": [
+        0.8762877867263954,
+        0.3743252334121954,
+        0.0761839673438688
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.02461048957863408,
+        0.019498912905298437,
+        0.006289896434364613
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C12_W09",
+      "class": "C12",
+      "task": "T3",
+      "wind": "W09",
+      "period": "PRE_0_5",
+      "samples": 5000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_20261023\\runs_c5_v1\\DL1018_VAL_T3_C12_W09\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "5c5aa2cab0fc158c120048cde9b675a6f4ae9d99ff99b5c0baa06dfa1c403b4a",
+      "SO3_RMSE_deg": 0.005782422945291619,
+      "SO3_peak_deg": 0.013604065081319274,
+      "Euler_axis_RMSE_deg": [
+        0.005566441459218509,
+        0.0015654947962510525,
+        2.8851293413598365e-05
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.00014575434360445134,
+        4.049015570401688e-05,
+        1.0094470344461458e-05
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C12_W09",
+      "class": "C12",
+      "task": "T3",
+      "wind": "W09",
+      "period": "POST_5",
+      "samples": 15000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_20261023\\runs_c5_v1\\DL1018_VAL_T3_C12_W09\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "5c5aa2cab0fc158c120048cde9b675a6f4ae9d99ff99b5c0baa06dfa1c403b4a",
+      "SO3_RMSE_deg": 1.1023534486383475,
+      "SO3_peak_deg": 2.6856182847616665,
+      "Euler_axis_RMSE_deg": [
+        1.0118448753626317,
+        0.4322326035452135,
+        0.08796966653077933
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.02841762097051492,
+        0.022515393093769924,
+        0.0072629444607954785
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C13_W10",
+      "class": "C13",
+      "task": "T3",
+      "wind": "W10",
+      "period": "ALL",
+      "samples": 20000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T3_C13_W10\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "7f57c52b2c601a010654768a34d68d6d62a7543d33cbf098f99510573d2abe82",
+      "SO3_RMSE_deg": 1.1463709811760654,
+      "SO3_peak_deg": 3.1577781389254347,
+      "Euler_axis_RMSE_deg": [
+        0.5881523421131319,
+        0.9721844050506134,
+        0.15963935550431488
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.05159367559105981,
+        0.05483342990962467,
+        0.017661860420250673
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C13_W10",
+      "class": "C13",
+      "task": "T3",
+      "wind": "W10",
+      "period": "PRE_0_5",
+      "samples": 5000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T3_C13_W10\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "7f57c52b2c601a010654768a34d68d6d62a7543d33cbf098f99510573d2abe82",
+      "SO3_RMSE_deg": 0.013730319826775044,
+      "SO3_peak_deg": 0.03322090223222751,
+      "Euler_axis_RMSE_deg": [
+        0.002555556166472049,
+        0.013490120028278348,
+        8.041079761921282e-05
+      ],
+      "transported_body_rate_RMSE_rads": [
+        5.951714083041103e-05,
+        0.0003573691029301655,
+        3.8578965485963865e-05
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C13_W10",
+      "class": "C13",
+      "task": "T3",
+      "wind": "W10",
+      "period": "POST_5",
+      "samples": 15000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T3_C13_W10\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "7f57c52b2c601a010654768a34d68d6d62a7543d33cbf098f99510573d2abe82",
+      "SO3_RMSE_deg": 1.323691452497869,
+      "SO3_peak_deg": 3.1577781389254347,
+      "Euler_axis_RMSE_deg": [
+        0.6791382233549934,
+        1.1225548370207554,
+        0.18433564390122323
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.0595752350721115,
+        0.06331585485995103,
+        0.02039414757294431
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C14_W11",
+      "class": "C14",
+      "task": "T3",
+      "wind": "W11",
+      "period": "ALL",
+      "samples": 20000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T3_C14_W11\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "a2dd1c96069b474bf9f58413c4b3e10d7e6e7042e0d2d11a4251125e3cd9564c",
+      "SO3_RMSE_deg": 1.3574090942075006,
+      "SO3_peak_deg": 3.9021596121849393,
+      "Euler_axis_RMSE_deg": [
+        0.6305406831923637,
+        1.194056824926495,
+        0.12276289468744704
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.08101379122324377,
+        0.03971145789771254,
+        0.029555716373919728
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C14_W11",
+      "class": "C14",
+      "task": "T3",
+      "wind": "W11",
+      "period": "PRE_0_5",
+      "samples": 5000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T3_C14_W11\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "a2dd1c96069b474bf9f58413c4b3e10d7e6e7042e0d2d11a4251125e3cd9564c",
+      "SO3_RMSE_deg": 0.017881201472911477,
+      "SO3_peak_deg": 0.04242571019308894,
+      "Euler_axis_RMSE_deg": [
+        0.01757254756645344,
+        0.0032923569882286553,
+        0.0002695844127545448
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.0004548324379533731,
+        8.078936067922449e-05,
+        7.459719287196106e-05
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C14_W11",
+      "class": "C14",
+      "task": "T3",
+      "wind": "W11",
+      "period": "POST_5",
+      "samples": 15000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T3_C14_W11\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "a2dd1c96069b474bf9f58413c4b3e10d7e6e7042e0d2d11a4251125e3cd9564c",
+      "SO3_RMSE_deg": 1.5673670128363675,
+      "SO3_peak_deg": 3.9021596121849393,
+      "Euler_axis_RMSE_deg": [
+        0.7280149765434765,
+        1.3787767483050126,
+        0.1417542951405815
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.0935462997680947,
+        0.04585481809118276,
+        0.034127974433305994
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C15_W12",
+      "class": "C15",
+      "task": "T3",
+      "wind": "W12",
+      "period": "ALL",
+      "samples": 20000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T3_C15_W12\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "e904f0f7a56ddb5cd8ee6960d0c709d7da8271c83640e4f199824b18841fcdb1",
+      "SO3_RMSE_deg": 0.8666104632629357,
+      "SO3_peak_deg": 2.4613352709041236,
+      "Euler_axis_RMSE_deg": [
+        0.34807558620077356,
+        0.7851275278654631,
+        0.12655608576522714
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.018276897383478635,
+        0.030848137119663055,
+        0.005247962115075637
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C15_W12",
+      "class": "C15",
+      "task": "T3",
+      "wind": "W12",
+      "period": "PRE_0_5",
+      "samples": 5000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T3_C15_W12\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "e904f0f7a56ddb5cd8ee6960d0c709d7da8271c83640e4f199824b18841fcdb1",
+      "SO3_RMSE_deg": 0.005272153825339198,
+      "SO3_peak_deg": 0.012784555567289137,
+      "Euler_axis_RMSE_deg": [
+        0.0017218974478713353,
+        0.004982985403064482,
+        3.419794155685791e-05
+      ],
+      "transported_body_rate_RMSE_rads": [
+        3.546226112265215e-05,
+        0.00010464798632033831,
+        1.2949716725004046e-05
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C15_W12",
+      "class": "C15",
+      "task": "T3",
+      "wind": "W12",
+      "period": "POST_5",
+      "samples": 15000,
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T3_C15_W12\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "e904f0f7a56ddb5cd8ee6960d0c709d7da8271c83640e4f199824b18841fcdb1",
+      "SO3_RMSE_deg": 1.000670939010629,
+      "SO3_peak_deg": 2.4613352709041236,
+      "Euler_axis_RMSE_deg": [
+        0.40192183730389974,
+        0.9065826143463167,
+        0.14613437903446141
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.021104333317219233,
+        0.035620309299672914,
+        0.006059820067458366
+      ]
+    }
+  ]
+}

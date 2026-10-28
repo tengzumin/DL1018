@@ -1,0 +1,157 @@
+{
+  "status": "PASS",
+  "started_utc": "20261025T130255",
+  "scope": "synthetic only; no Plant/scene/closed-loop run or external data read",
+  "interface_test": {
+    "case_names": [
+      "zero disturbance and estimate",
+      "known disturbance exactly estimated",
+      "known disturbance estimate mismatch"
+    ],
+    "max_torque_interface_error_Nm": 0,
+    "max_synthetic_alpha_error_rads2": 7.1054273576010019E-15,
+    "J0_nondiagonal": [
+      [
+        0.012,
+        0.0011,
+        -0.0004
+      ],
+      [
+        0.0011,
+        0.014,
+        0.0007
+      ],
+      [
+        -0.0004,
+        0.0007,
+        0.024
+      ]
+    ],
+    "Jhat_nondiagonal": [
+      [
+        0.018,
+        0.0017,
+        -0.0005
+      ],
+      [
+        0.0017,
+        0.023,
+        0.0011
+      ],
+      [
+        -0.0005,
+        0.0011,
+        0.031
+      ]
+    ],
+    "Jdothat_kgm2ps": [
+      [
+        0.00011,
+        2E-5,
+        -1E-5
+      ],
+      [
+        2E-5,
+        -0.00015,
+        3E-5
+      ],
+      [
+        -1E-5,
+        3E-5,
+        0.0002
+      ]
+    ],
+    "acceleration_clip_dmax_rads2": [
+      45,
+      45,
+      4.7124
+    ],
+    "beta": 0.5,
+    "candidate_tau_shape_error_by_axis_Nm": [
+      0,
+      0,
+      0
+    ],
+    "candidate_torque_delta_error_by_axis_Nm": [
+      0,
+      0,
+      1.3877787807814457E-17
+    ],
+    "candidate_torque_mapping_error_Nm": 8.8817841970012523E-16,
+    "first_event_updated_observer": false,
+    "morphology_commit_error_m": 0
+  },
+  "causality_observer_test": {
+    "n_samples": 21,
+    "n_completed_observer_intervals": 2,
+    "dt_s": 0.001,
+    "synthetic_lumped_disturbance_Nm": [
+      6.5,
+      -7.67,
+      1.7399999999999998
+    ],
+    "expected_projected_dhat_a_rads2": [
+      45,
+      -45,
+      4.7124
+    ],
+    "max_residual_error_Nm": 8.8817841970012523E-16,
+    "max_residual_acceleration_error_rads2": 1.1368683772161603E-13,
+    "max_observer_update_error_rads2": 0,
+    "max_interval_command_average_error_Nm": 1.7763568394002505E-15,
+    "current_event_command_causality_checked": true,
+    "morphology_command_scale_mps": 0.05,
+    "plant_or_scene_called": false
+  },
+  "executed_m_functions": [
+    "default_config",
+    "ndgrid",
+    "ismember",
+    "partialMatchString",
+    "ismember>ismemberR2012a",
+    "ismember>needsCastingChecks",
+    "unique",
+    "unique>uniqueR2012a",
+    "sortrows",
+    "sortrows>canCallBuiltinHelper",
+    "ismember>ismemberBuiltinTypes",
+    "default_config>symmetric_center_subset",
+    "run_phys_attitude_synthetic_audit_v2",
+    "attitude_bs_step",
+    "attitude_bs_step>euler_kinematics",
+    "attitude_bs_step>wrap_angles",
+    "run_phys_attitude_synthetic_audit_v2>check_interface_and_acceleration_mapping",
+    "phys_attitude_replacement_candidate",
+    "phys_attitude_replacement_candidate>validate_prepare",
+    "distributed_mass_properties>component_masses",
+    "distributed_mass_properties>component_dimensions",
+    "distributed_mass_properties",
+    "distributed_mass_properties>required",
+    "arm_directions",
+    "distributed_mass_properties>cuboid_inertia",
+    "distributed_mass_properties>component_term",
+    "distributed_mass_properties>body_rotation",
+    "distributed_mass_properties>cylinder_inertia",
+    "arm_mass_properties",
+    "run_phys_attitude_synthetic_audit_v2>check_causality_and_observer",
+    "run_phys_attitude_synthetic_audit_v2>@(x)x.name",
+    "run_phys_attitude_synthetic_audit_v2>expected_event_residual",
+    "mean",
+    "mean>mysize"
+  ],
+  "forbidden_functions_checked": [
+    "run_dl1018_closed_loop",
+    "vehicle_derivative",
+    "make_scenes_dl1018",
+    "tcn0916_morphology_scenario",
+    "simulation_parameters",
+    "load",
+    "matfile",
+    "readmatrix",
+    "readtable",
+    "readstruct"
+  ],
+  "forbidden_calls_found": [],
+  "external_data_files_opened": [],
+  "notes": "Only audit JSON is written. No TEST, MAT, raw, scene log, or flight data is read."
+}

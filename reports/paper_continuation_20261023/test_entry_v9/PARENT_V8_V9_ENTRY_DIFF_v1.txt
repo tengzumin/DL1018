@@ -1,0 +1,45 @@
+--- v8
++++ v9
+@@ -177,7 +177,8 @@
+ function release=verify_stage_release(path,schema,status,contractPath,manifestPath,plant,sceneGeneration,testAccess)
+ assert(isfile(path),'TEST48V4:ParentRelease','The separate parent stage release is missing: %s.',path);
+ release=jsondecode(fileread(path)); root=fileparts(fileparts(fileparts(mfilename('fullpath'))));
+-taskbookPath=fullfile(root,'reports','paper_continuation_20261023','TEST_UNSTARTED_DEPENDENCY_REPAIR_TASKBOOK_v4_ZH.md');
++contract=jsondecode(fileread(contractPath));
++taskbookPath=repo_path(root,char(contract.taskbook_path));
+ launcherPath=fullfile(fileparts(mfilename('fullpath')),'RUN_TEST48_EXACT_v1.ps1');
+ assert(isfield(release,'schema')&&strcmp(release.schema,schema)&&isfield(release,'status')&&strcmp(release.status,status), ...
+     'TEST48V4:ParentRelease','Parent release schema/status mismatch.');
+@@ -778,12 +779,14 @@
+         'TEST48:HistoricalRunStartMetadata','Historical corrected run_start lacks its actual meta.method_id.');
+     actual=char(old.meta.method_id);
+     if strcmp(char(m.method_id),'CORRECTED_DSSM14_G12_R32')
+-        expected='DSSM14_G12_R32';
++        expected='CORRECTED_TRAIN_DSSM14_G12_R32'; deployed='DSSM14_G12_R32';
++    elseif strcmp(char(m.method_id),'CORRECTED_KAN14_G12_R32')
++        expected='CORRECTED_TRAIN_KAN14_G12_R32'; deployed='NEW_KAN14_G12_R32';
+     else
+-        expected='NEW_KAN14_G12_R32';
++        error('TEST48:HistoricalMethodId','Unknown corrected method identity: %s.',char(m.method_id));
+     end
+     assert(strcmp(actual,expected),'TEST48:HistoricalMethodId','Historical run_start method id differs from the locked identity.');
+-    methodContract=struct('candidate',actual,'collector_tag',actual);
++    methodContract=struct('candidate',deployed,'collector_tag',deployed);
+     return
+ end
+ assert(isfile(char(m.run_contract_path))&&strcmpi(sha256_file(char(m.run_contract_path)),char(m.run_contract_sha256)), ...
+@@ -902,11 +905,12 @@
+ v5out=fullfile(root,'experiments','c5_test48_v5'); v5report=fullfile(root,'reports','paper_continuation_20261023','test_entry_v5');
+ v6out=fullfile(root,'experiments','c5_test48_v6'); v6report=fullfile(root,'reports','paper_continuation_20261023','test_entry_v6');
+ v7out=fullfile(root,'experiments','c5_test48_v7'); v7report=fullfile(root,'reports','paper_continuation_20261023','test_entry_v7');
++v8out=fullfile(root,'experiments','c5_test48_v8'); v8report=fullfile(root,'reports','paper_continuation_20261023','test_entry_v8');
+ assert(double(limits.prior_created_bytes)+directory_bytes(v3out)+directory_bytes(v3report)+ ...
+     directory_bytes(v4out)+directory_bytes(v4report)+directory_bytes(v5out)+directory_bytes(v5report)+ ...
+     directory_bytes(v6out)+directory_bytes(v6report)+directory_bytes(v7out)+directory_bytes(v7report)+ ...
+-    directory_bytes(outputRoot)+directory_bytes(reportRoot)+reserve<=double(limits.max_output_bytes), ...
+-    'TEST48V4:OutputCap','Cycle-wide baseline plus v3/v4/v5/v6/v7/v8 output and remaining reserve exceeds the cap.');
++    directory_bytes(v8out)+directory_bytes(v8report)+directory_bytes(outputRoot)+directory_bytes(reportRoot)+reserve<=double(limits.max_output_bytes), ...
++    'TEST48V4:OutputCap','Cycle-wide baseline plus v3/v4/v5/v6/v7/v8/v9 output and remaining reserve exceeds the cap.');
+ required=double(remainingSceneCalls)*double(limits.per_scene_seconds_guard)+ ...
+     double(remainingProcesses)*double(limits.process_exit_buffer_seconds);
+ assert(seconds(deadline-datetime('now','TimeZone','UTC'))>=required, ...

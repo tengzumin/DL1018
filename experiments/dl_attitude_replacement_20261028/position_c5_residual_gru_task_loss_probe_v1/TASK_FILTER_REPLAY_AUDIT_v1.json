@@ -1,0 +1,1393 @@
+{
+  "schema": "TRAIN24_C5_TASK_FILTER_REPLAY_AUDIT_V1",
+  "scope": "TRAIN24 C5 raw only; no TEST data, new Plant calls, real-wind fields, or inertia reconstruction",
+  "source_dataset_manifest_sha256": "53026f8b922713c3c4a64cf99adb12abd64fbe74247c58b70b050a8a23e04f73",
+  "source_dataset_sha256": "fbeaca11080620d2ba217a0ddeb7f4a1a25b6518fa2bb16012780a4c46cb6001",
+  "source_scene_count": 24,
+  "source_replay": "C5 matched TRAIN24 raw. This is a mapping/timing audit only; current cohort uses the older attitude-RBF backbone, so no residual-GRU fitting or generalization claim is made.",
+  "runtime_equations": {
+    "nominal_command_acceleration": "a_cmd = logged a_nominal - logged applied compensation acceleration",
+    "outer_attitude_target": "roll/pitch=baseline_force_to_attitude(a_cmd, current state yaw, g, max_tilt); target yaw is reference yaw (runtime replaces adapter yaw with r.euler(3))",
+    "task_reference": "baseline_force_to_attitude(reference acceleration, reference yaw, g, max_tilt)",
+    "filter": "command_filter_step: wrapped target error, wn^2*error - 2*zeta*wn*rate, per-run acceleration clip, semi-implicit rate then Euler update; logged reference is pre-update filter state",
+    "event_action_mapping_for_later_fit": "event action at t=0.01,...,19.99 s is held for its following 10 one-ms transitions; learned residual is zero before the first 31 events, first ready at t=0.32 s; beta=clip(t/1.8,0,1); event action=clip(a_C5+beta*clip(delta,-0.5,0.5),-3,3)"
+  },
+  "fixed_candidate_objective_before_same_backbone_fit": {
+    "primary": "existing SmoothL1(action_event, interval_acceleration_target) on ready 10-ms events",
+    "existing_smoothness": "0.01 * mean(second_difference(delta)^2) on contiguous ready events",
+    "only_new_term": "0.1 * mean(task_SO3_geodesic(filtered_candidate_reference, reference_acceleration_yaw_target)^2) over all 20,000 transitions",
+    "task_weight": 0.1,
+    "training_scope_when_same_backbone_data_arrives": "whole-scene grouped TRAIN split; hold out complete scenes for validation; no row-wise split"
+  },
+  "differentiability_smoke_check": {
+    "scene_id": "DL1018_TRAIN_T1_C00_W00",
+    "segment_transition_indices_0based": [
+      300,
+      499
+    ],
+    "perturbed_event_time_s": 0.32,
+    "task_loss_so3_squared_rad2": 1.1337171246979421e-05,
+    "gradient_wrt_event_delta_mps2": [
+      3.913234498826996e-06,
+      -5.031577114613935e-07,
+      1.23385045088352e-08
+    ],
+    "gradient_norm": 3.945468814235686e-06,
+    "finite_nonzero_gradient": true,
+    "segment_only_autograd_smoke_check": true
+  },
+  "maximum_replay_errors": {
+    "outer_target_wrapped_rad": 8.326672684688674e-17,
+    "filtered_reference_wrapped_rad": 5.828670879282072e-16,
+    "filter_acceleration_rad_s2": 7.904787935331115e-14,
+    "filter_requested_acceleration_rad_s2": 7.904787935331115e-14,
+    "event_hold_mps2": 0.0
+  },
+  "scenes": [
+    {
+      "scene_id": "DL1018_TRAIN_T1_C00_W00",
+      "raw_sha256": "249d40351fa3503b8889ad3141317ffb641bed9360c1ad8c3156a2bc6a6af3e5",
+      "status_sha256": "f92d58be42ecd91174021aa794451bc6aa943583e31b92157b646e8a954abc8f",
+      "run_start_sha256": "060dcf42948cc278d928c468197a407deaf60a2abb0894579bda66c50c9848d8",
+      "release_sha256": "a90675ea6f17b512a2ee01cf21510fb06d1dd86b50d282583283d0f08cb76e97",
+      "source_runtime_scene_id": "DL1018_TRAIN_T1_C00_W00",
+      "command_filter": {
+        "wn_rad_s": [
+          18.0,
+          18.0,
+          12.0
+        ],
+        "damping": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "acceleration_limit_rad_s2": [
+          "Inf",
+          "Inf",
+          6.0
+        ],
+        "dt_s": 0.001,
+        "initial_euler_source": "state[:,0,roll,pitch,yaw]",
+        "initial_rate_rad_s": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "event_count": 1999,
+      "event_time_first_last_s": [
+        0.01,
+        19.99
+      ],
+      "event_to_next_10_transitions_hold_max_abs_mps2": 0.0,
+      "npz_event_action_vs_raw_max_abs_mps2": 2.9755733432779152e-08,
+      "target_reconstruction_max_abs_wrapped_rad": 5.551115123125783e-17,
+      "target_reconstruction_rmse_rad": 5.913836463773935e-18,
+      "filtered_replay_max_abs_wrapped_rad": 3.608224830031759e-16,
+      "filtered_replay_rmse_rad": 3.7993989892197047e-17,
+      "filter_acceleration_replay_max_abs_rad_s2": 5.867528685143952e-14,
+      "filter_requested_acceleration_replay_max_abs_rad_s2": 5.867528685143952e-14,
+      "filter_acceleration_clamp_count_by_axis": [
+        0,
+        0,
+        0
+      ],
+      "frozen_trajectory_task_command_euler_rmse_rad": [
+        0.0009713670507699152,
+        0.060577584600032694,
+        0.0
+      ],
+      "frozen_trajectory_task_SO3_rmse_rad": 0.060585369816878745
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T1_C00_W09",
+      "raw_sha256": "edcbe77d12c0e5258e74fb18a2ab6ee87e37982d6373292c75db77ba528322ce",
+      "status_sha256": "95308c41d5f505b2ff354b256d8deb0c9c59ca6b22e46bfcb525ab81c26d0953",
+      "run_start_sha256": "4d89b48a4a51b1fb70a8ec3e47d846981a2485415f3f9f1860eed4c9d2a76abb",
+      "release_sha256": "0c2244dae5b7ea5cb59c0b87b7f1b11d06466a29a934e2ef6330149abc7615db",
+      "source_runtime_scene_id": "DL1018_TRAIN_T1_C00_W09",
+      "command_filter": {
+        "wn_rad_s": [
+          18.0,
+          18.0,
+          12.0
+        ],
+        "damping": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "acceleration_limit_rad_s2": [
+          "Inf",
+          "Inf",
+          6.0
+        ],
+        "dt_s": 0.001,
+        "initial_euler_source": "state[:,0,roll,pitch,yaw]",
+        "initial_rate_rad_s": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "event_count": 1999,
+      "event_time_first_last_s": [
+        0.01,
+        19.99
+      ],
+      "event_to_next_10_transitions_hold_max_abs_mps2": 0.0,
+      "npz_event_action_vs_raw_max_abs_mps2": 2.973117474436293e-08,
+      "target_reconstruction_max_abs_wrapped_rad": 5.551115123125783e-17,
+      "target_reconstruction_rmse_rad": 5.491196529389672e-18,
+      "filtered_replay_max_abs_wrapped_rad": 2.7755575615628914e-16,
+      "filtered_replay_rmse_rad": 3.20210167950705e-17,
+      "filter_acceleration_replay_max_abs_rad_s2": 4.39648317751562e-14,
+      "filter_requested_acceleration_replay_max_abs_rad_s2": 4.39648317751562e-14,
+      "filter_acceleration_clamp_count_by_axis": [
+        0,
+        0,
+        0
+      ],
+      "frozen_trajectory_task_command_euler_rmse_rad": [
+        0.030524128559668167,
+        0.035073501738014844,
+        0.0
+      ],
+      "frozen_trajectory_task_SO3_rmse_rad": 0.04649461035420059
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T1_C00_W12",
+      "raw_sha256": "439ee639ab9e2d3653e743487989afc7dff2889e0a18399a6331e69abe27a6a0",
+      "status_sha256": "10e40598afe7bbbb6539c26d5b82f5b9c26cf00ea52e55ac4c1eb406404eecbd",
+      "run_start_sha256": "a86508eb96fe9eb9062bd015b1b0f152ca0e36dce81dc97a6a1c352d3e81d61d",
+      "release_sha256": "7ec49784000eb64bb3b9a9d3371503583d03ffb3f8825d4673b17b5dddfc3c00",
+      "source_runtime_scene_id": "DL1018_TRAIN_T1_C00_W12",
+      "command_filter": {
+        "wn_rad_s": [
+          18.0,
+          18.0,
+          12.0
+        ],
+        "damping": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "acceleration_limit_rad_s2": [
+          "Inf",
+          "Inf",
+          6.0
+        ],
+        "dt_s": 0.001,
+        "initial_euler_source": "state[:,0,roll,pitch,yaw]",
+        "initial_rate_rad_s": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "event_count": 1999,
+      "event_time_first_last_s": [
+        0.01,
+        19.99
+      ],
+      "event_to_next_10_transitions_hold_max_abs_mps2": 0.0,
+      "npz_event_action_vs_raw_max_abs_mps2": 5.831061145045169e-08,
+      "target_reconstruction_max_abs_wrapped_rad": 5.551115123125783e-17,
+      "target_reconstruction_rmse_rad": 6.066198597496596e-18,
+      "filtered_replay_max_abs_wrapped_rad": 3.0531133177191805e-16,
+      "filtered_replay_rmse_rad": 3.691065539264486e-17,
+      "filter_acceleration_replay_max_abs_rad_s2": 6.750155989720952e-14,
+      "filter_requested_acceleration_replay_max_abs_rad_s2": 6.750155989720952e-14,
+      "filter_acceleration_clamp_count_by_axis": [
+        0,
+        0,
+        0
+      ],
+      "frozen_trajectory_task_command_euler_rmse_rad": [
+        0.0024206506382700465,
+        0.05842304379399856,
+        0.0
+      ],
+      "frozen_trajectory_task_SO3_rmse_rad": 0.058473155322832905
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T1_C00_W15",
+      "raw_sha256": "b50b8ca81f53723bcdeda2bf1157832796ceee07dae1e7e0a4a3e5fe2303f976",
+      "status_sha256": "98a328b8825a8b4e6fc3f868b91f2b476164a97f4ebd03e361ce5e4cbb4553f0",
+      "run_start_sha256": "48f5fb9e879105ac1b6085a3304427d52c3c2935571cc517fafd1e9a0f53c208",
+      "release_sha256": "e7eda2ac7f0128d368e1cddd1f530eb1fcdbf246b7984888418ed31e41722f0e",
+      "source_runtime_scene_id": "DL1018_TRAIN_T1_C00_W15",
+      "command_filter": {
+        "wn_rad_s": [
+          18.0,
+          18.0,
+          12.0
+        ],
+        "damping": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "acceleration_limit_rad_s2": [
+          "Inf",
+          "Inf",
+          6.0
+        ],
+        "dt_s": 0.001,
+        "initial_euler_source": "state[:,0,roll,pitch,yaw]",
+        "initial_rate_rad_s": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "event_count": 1999,
+      "event_time_first_last_s": [
+        0.01,
+        19.99
+      ],
+      "event_to_next_10_transitions_hold_max_abs_mps2": 0.0,
+      "npz_event_action_vs_raw_max_abs_mps2": 3.7131935859413545e-09,
+      "target_reconstruction_max_abs_wrapped_rad": 4.163336342344337e-17,
+      "target_reconstruction_rmse_rad": 3.944800786815642e-18,
+      "filtered_replay_max_abs_wrapped_rad": 2.220446049250313e-16,
+      "filtered_replay_rmse_rad": 2.3671836262512496e-17,
+      "filter_acceleration_replay_max_abs_rad_s2": 3.852473895449293e-14,
+      "filter_requested_acceleration_replay_max_abs_rad_s2": 3.852473895449293e-14,
+      "filter_acceleration_clamp_count_by_axis": [
+        0,
+        0,
+        0
+      ],
+      "frozen_trajectory_task_command_euler_rmse_rad": [
+        0.0005098080638096312,
+        0.0004281698345618082,
+        0.0
+      ],
+      "frozen_trajectory_task_SO3_rmse_rad": 0.0006657579622261882
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T1_C15_W00",
+      "raw_sha256": "cbffafaf965dc519c61717f5854803d2a5be27f702e1fac3dd40bca7c0734f0e",
+      "status_sha256": "8d852fbd744fdfa131537ca041d9033d967e594c84e03f976c2c69d67e9db51f",
+      "run_start_sha256": "f91f11dbad8148bad8975c9a6b23fcdc5ba4950bf6c746155d9f8efb157936a9",
+      "release_sha256": "32f9280a4fb943055333208a31ffca45ffa526254f64107dcd3059d9462499c1",
+      "source_runtime_scene_id": "DL1018_TRAIN_T1_C15_W00",
+      "command_filter": {
+        "wn_rad_s": [
+          18.0,
+          18.0,
+          12.0
+        ],
+        "damping": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "acceleration_limit_rad_s2": [
+          "Inf",
+          "Inf",
+          6.0
+        ],
+        "dt_s": 0.001,
+        "initial_euler_source": "state[:,0,roll,pitch,yaw]",
+        "initial_rate_rad_s": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "event_count": 1999,
+      "event_time_first_last_s": [
+        0.01,
+        19.99
+      ],
+      "event_to_next_10_transitions_hold_max_abs_mps2": 0.0,
+      "npz_event_action_vs_raw_max_abs_mps2": 2.976437030177692e-08,
+      "target_reconstruction_max_abs_wrapped_rad": 5.551115123125783e-17,
+      "target_reconstruction_rmse_rad": 5.627141788358815e-18,
+      "filtered_replay_max_abs_wrapped_rad": 2.7755575615628914e-16,
+      "filtered_replay_rmse_rad": 3.429321663993316e-17,
+      "filter_acceleration_replay_max_abs_rad_s2": 7.277511926417901e-14,
+      "filter_requested_acceleration_replay_max_abs_rad_s2": 7.277511926417901e-14,
+      "filter_acceleration_clamp_count_by_axis": [
+        0,
+        0,
+        0
+      ],
+      "frozen_trajectory_task_command_euler_rmse_rad": [
+        0.03392231822849218,
+        0.033961604576488176,
+        0.0
+      ],
+      "frozen_trajectory_task_SO3_rmse_rad": 0.047999534051279526
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T1_C15_W09",
+      "raw_sha256": "c4b1fa3cfe41d1c50bbd521118839b6d5f098ea8c866c3859f46b3f93d5225ca",
+      "status_sha256": "f1a7f5e6ab0a299d3d1ecccc7d16b8536218f67280e05521bb7a2a327884a91b",
+      "run_start_sha256": "dcb0c38e76bb453f5fa244b8d0dea05e6035959d5d9f6e6a5eb2946ea2bfcc7a",
+      "release_sha256": "9b815befd424b8498bb2b4a75805106a3423a8d0da740d0f4022a9ce05b2990b",
+      "source_runtime_scene_id": "DL1018_TRAIN_T1_C15_W09",
+      "command_filter": {
+        "wn_rad_s": [
+          18.0,
+          18.0,
+          12.0
+        ],
+        "damping": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "acceleration_limit_rad_s2": [
+          "Inf",
+          "Inf",
+          6.0
+        ],
+        "dt_s": 0.001,
+        "initial_euler_source": "state[:,0,roll,pitch,yaw]",
+        "initial_rate_rad_s": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "event_count": 1999,
+      "event_time_first_last_s": [
+        0.01,
+        19.99
+      ],
+      "event_to_next_10_transitions_hold_max_abs_mps2": 0.0,
+      "npz_event_action_vs_raw_max_abs_mps2": 5.914543166340991e-08,
+      "target_reconstruction_max_abs_wrapped_rad": 5.551115123125783e-17,
+      "target_reconstruction_rmse_rad": 6.5451021001283056e-18,
+      "filtered_replay_max_abs_wrapped_rad": 4.163336342344337e-16,
+      "filtered_replay_rmse_rad": 4.4769308731267215e-17,
+      "filter_acceleration_replay_max_abs_rad_s2": 6.394884621840902e-14,
+      "filter_requested_acceleration_replay_max_abs_rad_s2": 6.394884621840902e-14,
+      "filter_acceleration_clamp_count_by_axis": [
+        0,
+        0,
+        0
+      ],
+      "frozen_trajectory_task_command_euler_rmse_rad": [
+        0.01466546275569362,
+        0.0657041129987333,
+        0.0
+      ],
+      "frozen_trajectory_task_SO3_rmse_rad": 0.06732041934067227
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T1_C15_W12",
+      "raw_sha256": "c6cd2cb578036965501a27b4fda7671f279408c2dd085af11f1a6ede63379e13",
+      "status_sha256": "76863eee69e36cfb639c9d6ea3d8464e54add7e3dc1fa0830d74ba026a4846c1",
+      "run_start_sha256": "d1d1f8a01aa9a4aa53cd6436eb52550e4ff0d9f2b57366b3544d751259d60af9",
+      "release_sha256": "bfaca47a2fc7369afbb0cff288399997bec740e0038f9505fc473976cf406dba",
+      "source_runtime_scene_id": "DL1018_TRAIN_T1_C15_W12",
+      "command_filter": {
+        "wn_rad_s": [
+          18.0,
+          18.0,
+          12.0
+        ],
+        "damping": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "acceleration_limit_rad_s2": [
+          "Inf",
+          "Inf",
+          6.0
+        ],
+        "dt_s": 0.001,
+        "initial_euler_source": "state[:,0,roll,pitch,yaw]",
+        "initial_rate_rad_s": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "event_count": 1999,
+      "event_time_first_last_s": [
+        0.01,
+        19.99
+      ],
+      "event_to_next_10_transitions_hold_max_abs_mps2": 0.0,
+      "npz_event_action_vs_raw_max_abs_mps2": 2.9657939548677348e-08,
+      "target_reconstruction_max_abs_wrapped_rad": 5.551115123125783e-17,
+      "target_reconstruction_rmse_rad": 5.632997316543292e-18,
+      "filtered_replay_max_abs_wrapped_rad": 3.608224830031759e-16,
+      "filtered_replay_rmse_rad": 3.415718777125184e-17,
+      "filter_acceleration_replay_max_abs_rad_s2": 6.750155989720952e-14,
+      "filter_requested_acceleration_replay_max_abs_rad_s2": 6.750155989720952e-14,
+      "filter_acceleration_clamp_count_by_axis": [
+        0,
+        0,
+        0
+      ],
+      "frozen_trajectory_task_command_euler_rmse_rad": [
+        0.032064669279951115,
+        0.03365784497329261,
+        0.0
+      ],
+      "frozen_trajectory_task_SO3_rmse_rad": 0.0464853325381673
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T1_C15_W15",
+      "raw_sha256": "77193ab5a215f5ec94f55db83acfaf03137cdfa4b04f2783dfc7b7ed9e0d6884",
+      "status_sha256": "ea70bcf3d6aa37e50a9962d5231875e0c61a54bef6b7436bb673f89ea3993567",
+      "run_start_sha256": "e63da9dff66751bd2f7025d47d5086a6ffae8824ad61cd25ffbbc275be71c059",
+      "release_sha256": "e2354243e56718360d908c3731f769e0ef93c055358705f1e928a8195c45bb6b",
+      "source_runtime_scene_id": "DL1018_TRAIN_T1_C15_W15",
+      "command_filter": {
+        "wn_rad_s": [
+          18.0,
+          18.0,
+          12.0
+        ],
+        "damping": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "acceleration_limit_rad_s2": [
+          "Inf",
+          "Inf",
+          6.0
+        ],
+        "dt_s": 0.001,
+        "initial_euler_source": "state[:,0,roll,pitch,yaw]",
+        "initial_rate_rad_s": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "event_count": 1999,
+      "event_time_first_last_s": [
+        0.01,
+        19.99
+      ],
+      "event_to_next_10_transitions_hold_max_abs_mps2": 0.0,
+      "npz_event_action_vs_raw_max_abs_mps2": 1.4898658584616697e-08,
+      "target_reconstruction_max_abs_wrapped_rad": 4.163336342344337e-17,
+      "target_reconstruction_rmse_rad": 4.083664954382439e-18,
+      "filtered_replay_max_abs_wrapped_rad": 1.6653345369377348e-16,
+      "filtered_replay_rmse_rad": 2.4624290673790077e-17,
+      "filter_acceleration_replay_max_abs_rad_s2": 3.68594044175552e-14,
+      "filter_requested_acceleration_replay_max_abs_rad_s2": 3.68594044175552e-14,
+      "filter_acceleration_clamp_count_by_axis": [
+        0,
+        0,
+        0
+      ],
+      "frozen_trajectory_task_command_euler_rmse_rad": [
+        0.006213675142615993,
+        0.014689399286576506,
+        0.0
+      ],
+      "frozen_trajectory_task_SO3_rmse_rad": 0.015949484384912182
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T2_C00_W00",
+      "raw_sha256": "751d4c2dfb7e969e0552836583c974c6fb8a6a25b261aa2cbf2d3b6c97e9922c",
+      "status_sha256": "8a630bfc8b327bf7f25a1a9f125d12063e4d16458023e8e6f9a94258571051db",
+      "run_start_sha256": "a9563992bf80932f06cef3a0ec796176a71d4c212aa4410bdd4749ec0fb13466",
+      "release_sha256": "d28631e315519e04d476db1c154acb393be4fb37aa482dcadbc09c75a1024a3f",
+      "source_runtime_scene_id": "DL1018_TRAIN_T2_C00_W00_ACC_FIX_V1",
+      "command_filter": {
+        "wn_rad_s": [
+          18.0,
+          18.0,
+          12.0
+        ],
+        "damping": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "acceleration_limit_rad_s2": [
+          "Inf",
+          "Inf",
+          6.0
+        ],
+        "dt_s": 0.001,
+        "initial_euler_source": "state[:,0,roll,pitch,yaw]",
+        "initial_rate_rad_s": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "event_count": 1999,
+      "event_time_first_last_s": [
+        0.01,
+        19.99
+      ],
+      "event_to_next_10_transitions_hold_max_abs_mps2": 0.0,
+      "npz_event_action_vs_raw_max_abs_mps2": 1.4898552003206333e-08,
+      "target_reconstruction_max_abs_wrapped_rad": 8.326672684688674e-17,
+      "target_reconstruction_rmse_rad": 6.1245268681002e-18,
+      "filtered_replay_max_abs_wrapped_rad": 4.996003610813204e-16,
+      "filtered_replay_rmse_rad": 4.3107354137185716e-17,
+      "filter_acceleration_replay_max_abs_rad_s2": 6.861178292183467e-14,
+      "filter_requested_acceleration_replay_max_abs_rad_s2": 6.861178292183467e-14,
+      "filter_acceleration_clamp_count_by_axis": [
+        0,
+        0,
+        0
+      ],
+      "frozen_trajectory_task_command_euler_rmse_rad": [
+        0.030708353124015934,
+        0.03233810909859255,
+        0.0
+      ],
+      "frozen_trajectory_task_SO3_rmse_rad": 0.044594135428925624
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T2_C00_W09",
+      "raw_sha256": "55ea1baeb32c127f8fa56e5c85be622336563827918e99ff9ab47305c11d9f56",
+      "status_sha256": "b495535fa9c5b8483fdacb15c496e32ca9e76cadc77e59316ca7274c670d0217",
+      "run_start_sha256": "eb5ae3c695aa84d40c4f3374429c8a166138f13df2b96e68ec646fc9dd270c1f",
+      "release_sha256": "ee999cb00ea1355fe7911c5b3c35d19d79df5253a9f04408224b0fecc12b685f",
+      "source_runtime_scene_id": "DL1018_TRAIN_T2_C00_W09_ACC_FIX_V1",
+      "command_filter": {
+        "wn_rad_s": [
+          18.0,
+          18.0,
+          12.0
+        ],
+        "damping": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "acceleration_limit_rad_s2": [
+          "Inf",
+          "Inf",
+          6.0
+        ],
+        "dt_s": 0.001,
+        "initial_euler_source": "state[:,0,roll,pitch,yaw]",
+        "initial_rate_rad_s": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "event_count": 1999,
+      "event_time_first_last_s": [
+        0.01,
+        19.99
+      ],
+      "event_to_next_10_transitions_hold_max_abs_mps2": 0.0,
+      "npz_event_action_vs_raw_max_abs_mps2": 5.950137427213065e-08,
+      "target_reconstruction_max_abs_wrapped_rad": 5.551115123125783e-17,
+      "target_reconstruction_rmse_rad": 6.533472590303086e-18,
+      "filtered_replay_max_abs_wrapped_rad": 3.3306690738754696e-16,
+      "filtered_replay_rmse_rad": 4.059810097239688e-17,
+      "filter_acceleration_replay_max_abs_rad_s2": 7.638334409421077e-14,
+      "filter_requested_acceleration_replay_max_abs_rad_s2": 7.638334409421077e-14,
+      "filter_acceleration_clamp_count_by_axis": [
+        0,
+        0,
+        0
+      ],
+      "frozen_trajectory_task_command_euler_rmse_rad": [
+        0.005472765017726794,
+        0.05850028925930712,
+        0.0
+      ],
+      "frozen_trajectory_task_SO3_rmse_rad": 0.05875564585224348
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T2_C00_W12",
+      "raw_sha256": "5b6ad72f12eeaa2820f7b30982a5d5b50b58395aa6983ad640249b7faa041dbb",
+      "status_sha256": "3b124508679435904710dc1267e874d135e5d5197b7d9d31ad1adcd454c334cd",
+      "run_start_sha256": "59d4f6a45b86797bc6dd2ba9296eefc5f7c7d62b14a91eab71d1cbc661966b1e",
+      "release_sha256": "f80ce93e07943f9cd0b70f525ef86b2642566a9a37dffd8d480af485d0c854f7",
+      "source_runtime_scene_id": "DL1018_TRAIN_T2_C00_W12_ACC_FIX_V1",
+      "command_filter": {
+        "wn_rad_s": [
+          18.0,
+          18.0,
+          12.0
+        ],
+        "damping": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "acceleration_limit_rad_s2": [
+          "Inf",
+          "Inf",
+          6.0
+        ],
+        "dt_s": 0.001,
+        "initial_euler_source": "state[:,0,roll,pitch,yaw]",
+        "initial_rate_rad_s": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "event_count": 1999,
+      "event_time_first_last_s": [
+        0.01,
+        19.99
+      ],
+      "event_to_next_10_transitions_hold_max_abs_mps2": 0.0,
+      "npz_event_action_vs_raw_max_abs_mps2": 2.9309907723096273e-08,
+      "target_reconstruction_max_abs_wrapped_rad": 8.326672684688674e-17,
+      "target_reconstruction_rmse_rad": 5.9688861718762065e-18,
+      "filtered_replay_max_abs_wrapped_rad": 4.163336342344337e-16,
+      "filtered_replay_rmse_rad": 3.9501762378222424e-17,
+      "filter_acceleration_replay_max_abs_rad_s2": 6.217248937900877e-14,
+      "filter_requested_acceleration_replay_max_abs_rad_s2": 6.217248937900877e-14,
+      "filter_acceleration_clamp_count_by_axis": [
+        0,
+        0,
+        0
+      ],
+      "frozen_trajectory_task_command_euler_rmse_rad": [
+        0.029158528399824007,
+        0.030856518134415877,
+        0.0
+      ],
+      "frozen_trajectory_task_SO3_rmse_rad": 0.04245314457872696
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T2_C00_W15",
+      "raw_sha256": "a1dbb66f36986117514c06c953b7b2fb55ec5311f10256853a33ddbcb4291859",
+      "status_sha256": "1f81c24b540947d52adb1fc9d7cd54a40b6e53bbabcea3aee46ea531cce9f2f2",
+      "run_start_sha256": "50a299a4fd832e41d48419409c9b89d0baeae3a410ed071b713d42740c24657a",
+      "release_sha256": "083f589072c78236df3062ddecc8ad9e0e872e571195c8d9367781c3c98acfdb",
+      "source_runtime_scene_id": "DL1018_TRAIN_T2_C00_W15_ACC_FIX_V1",
+      "command_filter": {
+        "wn_rad_s": [
+          18.0,
+          18.0,
+          12.0
+        ],
+        "damping": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "acceleration_limit_rad_s2": [
+          "Inf",
+          "Inf",
+          6.0
+        ],
+        "dt_s": 0.001,
+        "initial_euler_source": "state[:,0,roll,pitch,yaw]",
+        "initial_rate_rad_s": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "event_count": 1999,
+      "event_time_first_last_s": [
+        0.01,
+        19.99
+      ],
+      "event_to_next_10_transitions_hold_max_abs_mps2": 0.0,
+      "npz_event_action_vs_raw_max_abs_mps2": 3.703802292642777e-09,
+      "target_reconstruction_max_abs_wrapped_rad": 5.551115123125783e-17,
+      "target_reconstruction_rmse_rad": 4.7827302848492095e-18,
+      "filtered_replay_max_abs_wrapped_rad": 3.0531133177191805e-16,
+      "filtered_replay_rmse_rad": 2.9559432281981165e-17,
+      "filter_acceleration_replay_max_abs_rad_s2": 5.995204332975845e-14,
+      "filter_requested_acceleration_replay_max_abs_rad_s2": 5.995204332975845e-14,
+      "filter_acceleration_clamp_count_by_axis": [
+        0,
+        0,
+        0
+      ],
+      "frozen_trajectory_task_command_euler_rmse_rad": [
+        0.0008174220081743388,
+        0.0005595629406002592,
+        0.0
+      ],
+      "frozen_trajectory_task_SO3_rmse_rad": 0.000990600521992555
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T2_C15_W00",
+      "raw_sha256": "6ba84b11f08e6ab3216685b10b7cde2c81a5130e673563b3bde0a1eb600dcb89",
+      "status_sha256": "7a4a45192d38e75ae49017d89294bfa9b25097b5d274dea701ccd5a7c43350ec",
+      "run_start_sha256": "bb272f3dc1b0aa4c004862caa2564789b142a74b55de9c644cb432fe78b8bdf9",
+      "release_sha256": "86369455a61aa0373a29589bed94ce52a75737ad039172472e88883d828e9f9e",
+      "source_runtime_scene_id": "DL1018_TRAIN_T2_C15_W00_ACC_FIX_V1",
+      "command_filter": {
+        "wn_rad_s": [
+          18.0,
+          18.0,
+          12.0
+        ],
+        "damping": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "acceleration_limit_rad_s2": [
+          "Inf",
+          "Inf",
+          6.0
+        ],
+        "dt_s": 0.001,
+        "initial_euler_source": "state[:,0,roll,pitch,yaw]",
+        "initial_rate_rad_s": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "event_count": 1999,
+      "event_time_first_last_s": [
+        0.01,
+        19.99
+      ],
+      "event_to_next_10_transitions_hold_max_abs_mps2": 0.0,
+      "npz_event_action_vs_raw_max_abs_mps2": 5.9098079763231226e-08,
+      "target_reconstruction_max_abs_wrapped_rad": 8.326672684688674e-17,
+      "target_reconstruction_rmse_rad": 6.559320160966802e-18,
+      "filtered_replay_max_abs_wrapped_rad": 5.828670879282072e-16,
+      "filtered_replay_rmse_rad": 4.939263220776561e-17,
+      "filter_acceleration_replay_max_abs_rad_s2": 6.794564910705958e-14,
+      "filter_requested_acceleration_replay_max_abs_rad_s2": 6.794564910705958e-14,
+      "filter_acceleration_clamp_count_by_axis": [
+        0,
+        0,
+        0
+      ],
+      "frozen_trajectory_task_command_euler_rmse_rad": [
+        0.06497534946859035,
+        0.014416556257853009,
+        0.0
+      ],
+      "frozen_trajectory_task_SO3_rmse_rad": 0.06655485124650852
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T2_C15_W09",
+      "raw_sha256": "58654b6124b5f8ce7333e855acab5f644e0cdbdcc221fa55f6643fd286331546",
+      "status_sha256": "0c174bff156fc686531b81554cdc3e5368a002652e7753d951f7253f865be0eb",
+      "run_start_sha256": "b8c9d5741b6b0c30d8da3691659b69d9c3b0b530eed4fac7e79eab8359efda86",
+      "release_sha256": "755ba36ab23b42a043c35ae55432214c64805ec51a7d166d361d6e1fb5712ae9",
+      "source_runtime_scene_id": "DL1018_TRAIN_T2_C15_W09_ACC_FIX_V1",
+      "command_filter": {
+        "wn_rad_s": [
+          18.0,
+          18.0,
+          12.0
+        ],
+        "damping": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "acceleration_limit_rad_s2": [
+          "Inf",
+          "Inf",
+          6.0
+        ],
+        "dt_s": 0.001,
+        "initial_euler_source": "state[:,0,roll,pitch,yaw]",
+        "initial_rate_rad_s": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "event_count": 1999,
+      "event_time_first_last_s": [
+        0.01,
+        19.99
+      ],
+      "event_to_next_10_transitions_hold_max_abs_mps2": 0.0,
+      "npz_event_action_vs_raw_max_abs_mps2": 2.9756381025869416e-08,
+      "target_reconstruction_max_abs_wrapped_rad": 8.326672684688674e-17,
+      "target_reconstruction_rmse_rad": 6.292020505526698e-18,
+      "filtered_replay_max_abs_wrapped_rad": 4.440892098500626e-16,
+      "filtered_replay_rmse_rad": 3.981681821572128e-17,
+      "filter_acceleration_replay_max_abs_rad_s2": 6.52811138479592e-14,
+      "filter_requested_acceleration_replay_max_abs_rad_s2": 6.52811138479592e-14,
+      "filter_acceleration_clamp_count_by_axis": [
+        0,
+        0,
+        0
+      ],
+      "frozen_trajectory_task_command_euler_rmse_rad": [
+        0.033993303794315755,
+        0.03574164741986548,
+        0.0
+      ],
+      "frozen_trajectory_task_SO3_rmse_rad": 0.049323907659852013
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T2_C15_W12",
+      "raw_sha256": "34c9162512a9bbe1e94d16d911315b0c75501192e25fc829c7cf030c13d3f878",
+      "status_sha256": "67d138d66cd49e20ece3f2149cf40101228b1562520061366a40371444bab51b",
+      "run_start_sha256": "239ad07d847f8931c2e71b671b0a61eba3971a96fd5e2a23e16017ec0a4363f1",
+      "release_sha256": "86f32ebe6c87cb6794cdabdff220ee606ebe1264dab06831aaba3c14b6229ee6",
+      "source_runtime_scene_id": "DL1018_TRAIN_T2_C15_W12_ACC_FIX_V1",
+      "command_filter": {
+        "wn_rad_s": [
+          18.0,
+          18.0,
+          12.0
+        ],
+        "damping": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "acceleration_limit_rad_s2": [
+          "Inf",
+          "Inf",
+          6.0
+        ],
+        "dt_s": 0.001,
+        "initial_euler_source": "state[:,0,roll,pitch,yaw]",
+        "initial_rate_rad_s": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "event_count": 1999,
+      "event_time_first_last_s": [
+        0.01,
+        19.99
+      ],
+      "event_to_next_10_transitions_hold_max_abs_mps2": 0.0,
+      "npz_event_action_vs_raw_max_abs_mps2": 5.555496773723689e-08,
+      "target_reconstruction_max_abs_wrapped_rad": 8.326672684688674e-17,
+      "target_reconstruction_rmse_rad": 7.199386529569741e-18,
+      "filtered_replay_max_abs_wrapped_rad": 4.440892098500626e-16,
+      "filtered_replay_rmse_rad": 4.3080970509702555e-17,
+      "filter_acceleration_replay_max_abs_rad_s2": 7.904787935331115e-14,
+      "filter_requested_acceleration_replay_max_abs_rad_s2": 7.904787935331115e-14,
+      "filter_acceleration_clamp_count_by_axis": [
+        0,
+        0,
+        0
+      ],
+      "frozen_trajectory_task_command_euler_rmse_rad": [
+        0.0630563469194409,
+        0.014372267736402154,
+        0.0
+      ],
+      "frozen_trajectory_task_SO3_rmse_rad": 0.06467279938437541
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T2_C15_W15",
+      "raw_sha256": "6fe6dfccb7284b94154f0ca87ebde99b3bb3425a78a2170e6b867e8d8a32ee37",
+      "status_sha256": "3d025df8769404cd45d4d14bd05237ef6011eda6a25e746031a077d238a07c49",
+      "run_start_sha256": "7416d50cea0e36a6834ff08cfb485cb738161e422be590a3ef964da51e92d363",
+      "release_sha256": "d7636030a5d985cc71ce3107e7b522e267daf669fec0e98204b8123e912ac903",
+      "source_runtime_scene_id": "DL1018_TRAIN_T2_C15_W15_ACC_FIX_V1",
+      "command_filter": {
+        "wn_rad_s": [
+          18.0,
+          18.0,
+          12.0
+        ],
+        "damping": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "acceleration_limit_rad_s2": [
+          "Inf",
+          "Inf",
+          6.0
+        ],
+        "dt_s": 0.001,
+        "initial_euler_source": "state[:,0,roll,pitch,yaw]",
+        "initial_rate_rad_s": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "event_count": 1999,
+      "event_time_first_last_s": [
+        0.01,
+        19.99
+      ],
+      "event_to_next_10_transitions_hold_max_abs_mps2": 0.0,
+      "npz_event_action_vs_raw_max_abs_mps2": 1.4900974121268007e-08,
+      "target_reconstruction_max_abs_wrapped_rad": 5.551115123125783e-17,
+      "target_reconstruction_rmse_rad": 4.634186478382981e-18,
+      "filtered_replay_max_abs_wrapped_rad": 2.498001805406602e-16,
+      "filtered_replay_rmse_rad": 2.5537565780037584e-17,
+      "filter_acceleration_replay_max_abs_rad_s2": 5.81756864903582e-14,
+      "filter_requested_acceleration_replay_max_abs_rad_s2": 5.81756864903582e-14,
+      "filter_acceleration_clamp_count_by_axis": [
+        0,
+        0,
+        0
+      ],
+      "frozen_trajectory_task_command_euler_rmse_rad": [
+        0.019780815321377064,
+        0.009527015604950024,
+        0.0
+      ],
+      "frozen_trajectory_task_SO3_rmse_rad": 0.02195535783108874
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T3_C00_W00",
+      "raw_sha256": "a2444321dcb97f7401e203dc5583d606558e2da3be7decca814279ad904d76ce",
+      "status_sha256": "d75a69a66f3e93585f63dc04172ded174faefc023f84288846d60dcfbaf8eeee",
+      "run_start_sha256": "0d0bd0e3e5e85cfdc383ab047448fe2be97519f7d2f5596ae67aa33fb164c2d1",
+      "release_sha256": "d0b967c856c45736fe2b9f2b89775c2efa1bef3e43de1567cca57d5d36847429",
+      "source_runtime_scene_id": "DL1018_TRAIN_T3_C00_W00",
+      "command_filter": {
+        "wn_rad_s": [
+          18.0,
+          18.0,
+          12.0
+        ],
+        "damping": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "acceleration_limit_rad_s2": [
+          "Inf",
+          "Inf",
+          6.0
+        ],
+        "dt_s": 0.001,
+        "initial_euler_source": "state[:,0,roll,pitch,yaw]",
+        "initial_rate_rad_s": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "event_count": 1999,
+      "event_time_first_last_s": [
+        0.01,
+        19.99
+      ],
+      "event_to_next_10_transitions_hold_max_abs_mps2": 0.0,
+      "npz_event_action_vs_raw_max_abs_mps2": 2.979812840919749e-08,
+      "target_reconstruction_max_abs_wrapped_rad": 5.551115123125783e-17,
+      "target_reconstruction_rmse_rad": 5.4540757118424144e-18,
+      "filtered_replay_max_abs_wrapped_rad": 4.163336342344337e-16,
+      "filtered_replay_rmse_rad": 3.835769757015087e-17,
+      "filter_acceleration_replay_max_abs_rad_s2": 6.947220576591917e-14,
+      "filter_requested_acceleration_replay_max_abs_rad_s2": 6.947220576591917e-14,
+      "filter_acceleration_clamp_count_by_axis": [
+        0,
+        0,
+        0
+      ],
+      "frozen_trajectory_task_command_euler_rmse_rad": [
+        0.06083087995034849,
+        0.001896734349107558,
+        0.0
+      ],
+      "frozen_trajectory_task_SO3_rmse_rad": 0.060860437774806805
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T3_C00_W09",
+      "raw_sha256": "ba37417cf86ded3dacadcd0ca6cb2469c74161e3677aa86b8ef9f12287c1b962",
+      "status_sha256": "dcd68b81a5bbb4ae19c1451f2137f43e83bc270d19567f6c9338e8da725ecc26",
+      "run_start_sha256": "d487ed4d211c22e14aa6cdba1e7b2319960dc9b059b8c52491dee7467566ef88",
+      "release_sha256": "d469c7849db104590c45a54dafd2b23ca2e1f7d9cf7036abcac114acc7121713",
+      "source_runtime_scene_id": "DL1018_TRAIN_T3_C00_W09",
+      "command_filter": {
+        "wn_rad_s": [
+          18.0,
+          18.0,
+          12.0
+        ],
+        "damping": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "acceleration_limit_rad_s2": [
+          "Inf",
+          "Inf",
+          6.0
+        ],
+        "dt_s": 0.001,
+        "initial_euler_source": "state[:,0,roll,pitch,yaw]",
+        "initial_rate_rad_s": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "event_count": 1999,
+      "event_time_first_last_s": [
+        0.01,
+        19.99
+      ],
+      "event_to_next_10_transitions_hold_max_abs_mps2": 0.0,
+      "npz_event_action_vs_raw_max_abs_mps2": 2.9753320252012827e-08,
+      "target_reconstruction_max_abs_wrapped_rad": 5.551115123125783e-17,
+      "target_reconstruction_rmse_rad": 4.602314905926184e-18,
+      "filtered_replay_max_abs_wrapped_rad": 2.0816681711721685e-16,
+      "filtered_replay_rmse_rad": 2.820050618320258e-17,
+      "filter_acceleration_replay_max_abs_rad_s2": 3.552713678800501e-14,
+      "filter_requested_acceleration_replay_max_abs_rad_s2": 3.552713678800501e-14,
+      "filter_acceleration_clamp_count_by_axis": [
+        0,
+        0,
+        0
+      ],
+      "frozen_trajectory_task_command_euler_rmse_rad": [
+        0.030460800378427876,
+        0.03119523334098873,
+        0.0
+      ],
+      "frozen_trajectory_task_SO3_rmse_rad": 0.04359933175276543
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T3_C00_W12",
+      "raw_sha256": "46b70221f1ed7c6b5db6e16baeded0668ccb3b800a5ea202c20f519a31b67fbc",
+      "status_sha256": "6ced6c8281eab2d2b7839d9ca4564b1e1ab0b92e78b583558c7a60b21d272db1",
+      "run_start_sha256": "e037669141742c8951067e6121a9a030c5eca8c9ef45513acea1aad6f4ed5aef",
+      "release_sha256": "4db3fd5462a325e25f1b2de73cd20c5bb7b75e9bbeed284ee87fe43010d5aa20",
+      "source_runtime_scene_id": "DL1018_TRAIN_T3_C00_W12",
+      "command_filter": {
+        "wn_rad_s": [
+          18.0,
+          18.0,
+          12.0
+        ],
+        "damping": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "acceleration_limit_rad_s2": [
+          "Inf",
+          "Inf",
+          6.0
+        ],
+        "dt_s": 0.001,
+        "initial_euler_source": "state[:,0,roll,pitch,yaw]",
+        "initial_rate_rad_s": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "event_count": 1999,
+      "event_time_first_last_s": [
+        0.01,
+        19.99
+      ],
+      "event_to_next_10_transitions_hold_max_abs_mps2": 0.0,
+      "npz_event_action_vs_raw_max_abs_mps2": 5.8204887132262684e-08,
+      "target_reconstruction_max_abs_wrapped_rad": 5.551115123125783e-17,
+      "target_reconstruction_rmse_rad": 5.616466550276303e-18,
+      "filtered_replay_max_abs_wrapped_rad": 2.220446049250313e-16,
+      "filtered_replay_rmse_rad": 3.2937438637413437e-17,
+      "filter_acceleration_replay_max_abs_rad_s2": 3.552713678800501e-14,
+      "filter_requested_acceleration_replay_max_abs_rad_s2": 3.552713678800501e-14,
+      "filter_acceleration_clamp_count_by_axis": [
+        0,
+        0,
+        0
+      ],
+      "frozen_trajectory_task_command_euler_rmse_rad": [
+        0.05871456475990664,
+        0.002543846286179333,
+        0.0
+      ],
+      "frozen_trajectory_task_SO3_rmse_rad": 0.0587696331223262
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T3_C00_W15",
+      "raw_sha256": "68ace1e2ab7d307845b247a3cdef8dac6a9c0923f0d1be3980843bc7197edb9d",
+      "status_sha256": "441a9dc4b47fba627b1f03cf6f863fb630746d865b000f2f5e2dbbd82ca7532b",
+      "run_start_sha256": "92ea3b93856f38a2e6fbe3c468031a73c33e381bcc6b716769c5d3ea1f5e1504",
+      "release_sha256": "7d11e3867e0cb8b7780b15bb9218da9f91c4d41a69a9d20ce6d741fcbd8b6242",
+      "source_runtime_scene_id": "DL1018_TRAIN_T3_C00_W15",
+      "command_filter": {
+        "wn_rad_s": [
+          18.0,
+          18.0,
+          12.0
+        ],
+        "damping": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "acceleration_limit_rad_s2": [
+          "Inf",
+          "Inf",
+          6.0
+        ],
+        "dt_s": 0.001,
+        "initial_euler_source": "state[:,0,roll,pitch,yaw]",
+        "initial_rate_rad_s": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "event_count": 1999,
+      "event_time_first_last_s": [
+        0.01,
+        19.99
+      ],
+      "event_to_next_10_transitions_hold_max_abs_mps2": 0.0,
+      "npz_event_action_vs_raw_max_abs_mps2": 6.851782863304123e-09,
+      "target_reconstruction_max_abs_wrapped_rad": 2.7755575615628914e-17,
+      "target_reconstruction_rmse_rad": 2.485547992713455e-18,
+      "filtered_replay_max_abs_wrapped_rad": 1.457167719820518e-16,
+      "filtered_replay_rmse_rad": 1.7462404886167402e-17,
+      "filter_acceleration_replay_max_abs_rad_s2": 2.4646951146678475e-14,
+      "filter_requested_acceleration_replay_max_abs_rad_s2": 2.4646951146678475e-14,
+      "filter_acceleration_clamp_count_by_axis": [
+        0,
+        0,
+        0
+      ],
+      "frozen_trajectory_task_command_euler_rmse_rad": [
+        0.001175789059032673,
+        0.0018350364508950676,
+        0.0
+      ],
+      "frozen_trajectory_task_SO3_rmse_rad": 0.0021794120156062623
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T3_C15_W00",
+      "raw_sha256": "73e4bdf9e675f4e2b464bdd35eb324bd00450c937ce77d817dd7d75e81666ef1",
+      "status_sha256": "907e4f213586f5756f54bac5e40cac12bed444f6fb572d7788bd8a22ca7cc38e",
+      "run_start_sha256": "3cdf1bbcd3a7a96c458cb288e662e46423448e9c157b304bbda11d0a3ba718b9",
+      "release_sha256": "60655b83467f60257a30a84bab781c0dcb5126eea8b6cde0535b4d31899f340b",
+      "source_runtime_scene_id": "DL1018_TRAIN_T3_C15_W00",
+      "command_filter": {
+        "wn_rad_s": [
+          18.0,
+          18.0,
+          12.0
+        ],
+        "damping": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "acceleration_limit_rad_s2": [
+          "Inf",
+          "Inf",
+          6.0
+        ],
+        "dt_s": 0.001,
+        "initial_euler_source": "state[:,0,roll,pitch,yaw]",
+        "initial_rate_rad_s": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "event_count": 1999,
+      "event_time_first_last_s": [
+        0.01,
+        19.99
+      ],
+      "event_to_next_10_transitions_hold_max_abs_mps2": 0.0,
+      "npz_event_action_vs_raw_max_abs_mps2": 2.976831969814242e-08,
+      "target_reconstruction_max_abs_wrapped_rad": 4.163336342344337e-17,
+      "target_reconstruction_rmse_rad": 5.0654199377112266e-18,
+      "filtered_replay_max_abs_wrapped_rad": 2.498001805406602e-16,
+      "filtered_replay_rmse_rad": 3.1582617046701896e-17,
+      "filter_acceleration_replay_max_abs_rad_s2": 3.297362383136715e-14,
+      "filter_requested_acceleration_replay_max_abs_rad_s2": 3.297362383136715e-14,
+      "filter_acceleration_clamp_count_by_axis": [
+        0,
+        0,
+        0
+      ],
+      "frozen_trajectory_task_command_euler_rmse_rad": [
+        0.042757884900477536,
+        0.038160012735747297,
+        0.0
+      ],
+      "frozen_trajectory_task_SO3_rmse_rad": 0.05730671928200069
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T3_C15_W09",
+      "raw_sha256": "d93ca01a38db3feca5b30728c97fde775a0155d423400f35e81780a3126ea1c1",
+      "status_sha256": "acc12b9d755854e6363b5766772c7befd88eefa270660904aa499841f46592d0",
+      "run_start_sha256": "518f0fc6ae82f548a14c46af11094ac5557121cef235d37669c27bd33cbbc782",
+      "release_sha256": "0b969de028d53f678fcbdf3c40ff31f02a6da0be7d5c69b9d7be0a572dda180c",
+      "source_runtime_scene_id": "DL1018_TRAIN_T3_C15_W09",
+      "command_filter": {
+        "wn_rad_s": [
+          18.0,
+          18.0,
+          12.0
+        ],
+        "damping": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "acceleration_limit_rad_s2": [
+          "Inf",
+          "Inf",
+          6.0
+        ],
+        "dt_s": 0.001,
+        "initial_euler_source": "state[:,0,roll,pitch,yaw]",
+        "initial_rate_rad_s": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "event_count": 1999,
+      "event_time_first_last_s": [
+        0.01,
+        19.99
+      ],
+      "event_to_next_10_transitions_hold_max_abs_mps2": 0.0,
+      "npz_event_action_vs_raw_max_abs_mps2": 5.936859381883153e-08,
+      "target_reconstruction_max_abs_wrapped_rad": 5.551115123125783e-17,
+      "target_reconstruction_rmse_rad": 6.090251659676179e-18,
+      "filtered_replay_max_abs_wrapped_rad": 2.0816681711721685e-16,
+      "filtered_replay_rmse_rad": 3.084729474305556e-17,
+      "filter_acceleration_replay_max_abs_rad_s2": 4.973799150320701e-14,
+      "filter_requested_acceleration_replay_max_abs_rad_s2": 4.973799150320701e-14,
+      "filter_acceleration_clamp_count_by_axis": [
+        0,
+        0,
+        0
+      ],
+      "frozen_trajectory_task_command_euler_rmse_rad": [
+        0.06393642177112753,
+        0.014865773070337474,
+        0.0
+      ],
+      "frozen_trajectory_task_SO3_rmse_rad": 0.06564125496396468
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T3_C15_W12",
+      "raw_sha256": "bd0522181da7bc34bcf6f3b517d5760a36e5058e67ffd7bc946611854cd5668b",
+      "status_sha256": "49720a785590bf267f34748958af69ff6943ff3ace95883d8742645db09b5e6d",
+      "run_start_sha256": "6d4ed5af6b0c1e4508324d7c26d8c1f41c8672e0b52d72117c4499175da27b5f",
+      "release_sha256": "47fb379c36044f4298178284219beec691006fb515aea486666f6dfa8754f66d",
+      "source_runtime_scene_id": "DL1018_TRAIN_T3_C15_W12",
+      "command_filter": {
+        "wn_rad_s": [
+          18.0,
+          18.0,
+          12.0
+        ],
+        "damping": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "acceleration_limit_rad_s2": [
+          "Inf",
+          "Inf",
+          6.0
+        ],
+        "dt_s": 0.001,
+        "initial_euler_source": "state[:,0,roll,pitch,yaw]",
+        "initial_rate_rad_s": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "event_count": 1999,
+      "event_time_first_last_s": [
+        0.01,
+        19.99
+      ],
+      "event_to_next_10_transitions_hold_max_abs_mps2": 0.0,
+      "npz_event_action_vs_raw_max_abs_mps2": 4.034678413589177e-08,
+      "target_reconstruction_max_abs_wrapped_rad": 5.551115123125783e-17,
+      "target_reconstruction_rmse_rad": 5.115789186209872e-18,
+      "filtered_replay_max_abs_wrapped_rad": 2.3592239273284576e-16,
+      "filtered_replay_rmse_rad": 3.158702901946651e-17,
+      "filter_acceleration_replay_max_abs_rad_s2": 3.241851231905457e-14,
+      "filter_requested_acceleration_replay_max_abs_rad_s2": 3.241851231905457e-14,
+      "filter_acceleration_clamp_count_by_axis": [
+        0,
+        0,
+        0
+      ],
+      "frozen_trajectory_task_command_euler_rmse_rad": [
+        0.04110344247699837,
+        0.0365821823539047,
+        0.0
+      ],
+      "frozen_trajectory_task_SO3_rmse_rad": 0.05502280447625019
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T3_C15_W15",
+      "raw_sha256": "6b6a149b56c83a072f42837ed60c2344fc16a1352d48beed209793802fb5aba4",
+      "status_sha256": "14928079a977457674fbc054807786fb6e5289ee46877c290d134badf371e1c5",
+      "run_start_sha256": "11574fee8030b397b783630835c89c0cd04f8c83509f1d5457fdf9a5c26b5edf",
+      "release_sha256": "4562b22582b98dd0af95e125aa2c77a9d545f542ec704195f2858e0ec4077b1d",
+      "source_runtime_scene_id": "DL1018_TRAIN_T3_C15_W15",
+      "command_filter": {
+        "wn_rad_s": [
+          18.0,
+          18.0,
+          12.0
+        ],
+        "damping": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "acceleration_limit_rad_s2": [
+          "Inf",
+          "Inf",
+          6.0
+        ],
+        "dt_s": 0.001,
+        "initial_euler_source": "state[:,0,roll,pitch,yaw]",
+        "initial_rate_rad_s": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "event_count": 1999,
+      "event_time_first_last_s": [
+        0.01,
+        19.99
+      ],
+      "event_to_next_10_transitions_hold_max_abs_mps2": 0.0,
+      "npz_event_action_vs_raw_max_abs_mps2": 1.4852510832330523e-08,
+      "target_reconstruction_max_abs_wrapped_rad": 2.7755575615628914e-17,
+      "target_reconstruction_rmse_rad": 2.7647063787832003e-18,
+      "filtered_replay_max_abs_wrapped_rad": 1.3877787807814457e-16,
+      "filtered_replay_rmse_rad": 2.0058780429052686e-17,
+      "filter_acceleration_replay_max_abs_rad_s2": 2.4646951146678475e-14,
+      "filter_requested_acceleration_replay_max_abs_rad_s2": 2.4646951146678475e-14,
+      "filter_acceleration_clamp_count_by_axis": [
+        0,
+        0,
+        0
+      ],
+      "frozen_trajectory_task_command_euler_rmse_rad": [
+        0.006227170143796824,
+        0.01464045371653423,
+        0.0
+      ],
+      "frozen_trajectory_task_SO3_rmse_rad": 0.015909678323723694
+    }
+  ],
+  "fit_status": "DEFERRED_UNTIL_COSINE_GRU_PARENT_TRAIN24_RAW_AVAILABLE"
+}

@@ -1,0 +1,363 @@
+{
+  "schema": "DL1018_LARGE_GRU_DUAL_LOOP_DEV24_BATCH_PLAN_V1",
+  "status": "FROZEN_DEV24_REMAINING23_READY_FOR_ROOT_REVIEW",
+  "study_id": "large_gru_dual_loop_dev_v1",
+  "phase": "DEV24",
+  "source_split": "TRAIN_C5_24",
+  "scene_count": 24,
+  "ordered_scene_ids": [
+    "DL1018_DEV_T1_C00_W03",
+    "DL1018_DEV_T1_C01_W15",
+    "DL1018_DEV_T1_C04_W00",
+    "DL1018_DEV_T1_C05_W06",
+    "DL1018_DEV_T1_C07_W08",
+    "DL1018_DEV_T1_C10_W09",
+    "DL1018_DEV_T1_C11_W12",
+    "DL1018_DEV_T1_C15_W14",
+    "DL1018_DEV_T2_C00_W04",
+    "DL1018_DEV_T2_C02_W15",
+    "DL1018_DEV_T2_C03_W01",
+    "DL1018_DEV_T2_C06_W07",
+    "DL1018_DEV_T2_C08_W08",
+    "DL1018_DEV_T2_C09_W10",
+    "DL1018_DEV_T2_C12_W13",
+    "DL1018_DEV_T2_C14_W14",
+    "DL1018_DEV_T3_C00_W05",
+    "DL1018_DEV_T3_C03_W15",
+    "DL1018_DEV_T3_C05_W02",
+    "DL1018_DEV_T3_C06_W08",
+    "DL1018_DEV_T3_C09_W09",
+    "DL1018_DEV_T3_C10_W11",
+    "DL1018_DEV_T3_C13_W12",
+    "DL1018_DEV_T3_C15_W14"
+  ],
+  "authoritative_scene_list_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\causal_n4_gate_train24_batch_v2\\TRAIN24_SCORE_SUMMARY_v2.json",
+  "authoritative_scene_list_sha256": "d127fc403a8d456924b7040ce8a329e5130f2b67f5ea8a801490e075085f4b21",
+  "input_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\large_gru_dual_loop_dev24_v1\\BATCH_INPUT_v1.json",
+  "input_sha256": "dd17ec32e0e7fef7f04efdd570795c0c065c59b97995f1a23f92428d5f603716",
+  "release_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\large_gru_dual_loop_dev24_v1\\RELEASE.json",
+  "release_sha256": "c78115de82e80dfa98e6bf9cb61465a976f631213f0decd1c8bc087b567484ec",
+  "source_lock_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\large_gru_dual_loop_dev24_v1\\SOURCE_LOCK_SINGLE_v2.json",
+  "source_lock_sha256": "1665627b8f83e12fe426c991aab2eda11d52051ff22b0919bd037b0e7d32b450",
+  "candidate_identity_sha256": "846c8407c462029ea7ae1b2955556c6ed739710bdeb087136fe8c95c8c01a15e",
+  "candidate_gru": {
+    "model_id": "GRU13_B768_COSINE_S2026102001",
+    "architecture": "GRU(input=13,hidden=32,output=3)",
+    "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\large_gru_b768_v1\\runs\\GRU13_B768_COSINE_S2026102001\\gru_stream_large_b768_weights_v1.mat",
+    "sha256": "4f0724426244d58e283da3f1ebbf6a01a9b39b02d2280eaaa22796eee8f1fd6b",
+    "train_only_normalizer_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\large_gru_b768_v1\\runs\\GRU13_B768_COSINE_S2026102001\\train_only_normalizer.npz",
+    "train_only_normalizer_sha256": "e1c489c49eb5fb34cbf2774092fd1ba1d1caae85664fa502f3657ca3a9e67390",
+    "training_config_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\large_gru_b768_v1\\runs\\GRU13_B768_COSINE_S2026102001\\training_config.json",
+    "training_progress_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\large_gru_b768_v1\\runs\\GRU13_B768_COSINE_S2026102001\\training_progress.json",
+    "MATLAB_PT_stream_parity_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\large_gru_b768_v1\\runs\\GRU13_B768_COSINE_S2026102001\\MATLAB_PARITY_RESULT_v1.json",
+    "old_parent_raw_role": "OLD_COSINE_GRU_COMPARATOR_ONLY; no candidate-model identity or pointwise-equivalence claim"
+  },
+  "controller": {
+    "attitude": "GRU13_B768_COSINE_S2026102001, GRU(13/32/3), TRAIN-only normalizer",
+    "position": "frozen C5 DSSM14 / M110 options",
+    "parent_raw_role": "OLD_COSINE_GRU_COMPARATOR_ONLY",
+    "extra_position_residual_gru_enabled": false,
+    "fixed_J0": true,
+    "inertia_reconstruction_enabled": false,
+    "parameter_tuning": false
+  },
+  "fixed_n4_filter": {
+    "enabled": true,
+    "centers_hz": [
+      2.2,
+      3.2,
+      3.7,
+      4.8
+    ],
+    "quality_factor_each": [
+      4,
+      4,
+      4,
+      4
+    ],
+    "sample_rate_hz": 100,
+    "action_limit_mps2": 3,
+    "b": [
+      [
+        0.9830678494084116,
+        -1.9473815673631925,
+        0.9830678494084116
+      ],
+      [
+        0.9756442629082012,
+        -1.9119799206806107,
+        0.9756442629082012
+      ],
+      [
+        0.972007469545749,
+        -1.8917180425569462,
+        0.972007469545749
+      ],
+      [
+        0.9641990969122544,
+        -1.841359063436488,
+        0.9641990969122544
+      ]
+    ],
+    "a": [
+      [
+        1.0,
+        -1.9473815673631925,
+        0.9661356988168233
+      ],
+      [
+        1.0,
+        -1.9119799206806107,
+        0.9512885258164024
+      ],
+      [
+        1.0,
+        -1.8917180425569462,
+        0.9440149390914979
+      ],
+      [
+        1.0,
+        -1.841359063436488,
+        0.9283981938245087
+      ]
+    ],
+    "gate_bp_sos": [
+      [
+        0.00782020803349719,
+        0.01564041606699438,
+        0.00782020803349719,
+        1.0,
+        -1.765303227856989,
+        0.8375337582790457
+      ],
+      [
+        1.0,
+        -2.0,
+        1.0,
+        1.0,
+        -1.8957260285978639,
+        0.9145978814242006
+      ]
+    ],
+    "gate_lo_sos": [
+      [
+        0.002080567135492293,
+        0.004161134270984586,
+        0.002080567135492293,
+        1.0,
+        -1.8925388671474799,
+        0.9041738508370836
+      ],
+      [
+        1.0,
+        -2.0,
+        1.0,
+        1.0,
+        -1.9667173311097974,
+        0.9679715327350051
+      ]
+    ],
+    "gate_energy_tau_s": 1,
+    "gate_ratio_epsilon": 1e-08,
+    "gate_ratio_low": 0.35,
+    "gate_ratio_span": 0.3,
+    "gate_tau_s": 0.3,
+    "startup_gate_zero_until_s": 2,
+    "event_contract": "1999 events 0.01:0.01:19.99; 31 warmup actions are zero; ZOH at other 1-ms steps",
+    "application_point": "final C5 applied compensation before position_bs_step",
+    "state_initialization": "gate SOS zero; N4 first nonzero input initializes all section histories",
+    "runtime_wind_or_W_code_branching": false
+  },
+  "reuse_scene_ids": [
+    "DL1018_DEV_T3_C09_W09"
+  ],
+  "new_attempt_scene_ids": [
+    "DL1018_DEV_T1_C00_W03",
+    "DL1018_DEV_T1_C01_W15",
+    "DL1018_DEV_T1_C04_W00",
+    "DL1018_DEV_T1_C05_W06",
+    "DL1018_DEV_T1_C07_W08",
+    "DL1018_DEV_T1_C10_W09",
+    "DL1018_DEV_T1_C11_W12",
+    "DL1018_DEV_T1_C15_W14",
+    "DL1018_DEV_T2_C00_W04",
+    "DL1018_DEV_T2_C02_W15",
+    "DL1018_DEV_T2_C03_W01",
+    "DL1018_DEV_T2_C06_W07",
+    "DL1018_DEV_T2_C08_W08",
+    "DL1018_DEV_T2_C09_W10",
+    "DL1018_DEV_T2_C12_W13",
+    "DL1018_DEV_T2_C14_W14",
+    "DL1018_DEV_T3_C00_W05",
+    "DL1018_DEV_T3_C03_W15",
+    "DL1018_DEV_T3_C05_W02",
+    "DL1018_DEV_T3_C06_W08",
+    "DL1018_DEV_T3_C10_W11",
+    "DL1018_DEV_T3_C13_W12",
+    "DL1018_DEV_T3_C15_W14"
+  ],
+  "queue": [
+    {
+      "ordinal": 1,
+      "scene_id": "DL1018_DEV_T1_C00_W03",
+      "attempt_id": "attempt_01",
+      "mode": "NEW_ATTEMPT"
+    },
+    {
+      "ordinal": 2,
+      "scene_id": "DL1018_DEV_T1_C01_W15",
+      "attempt_id": "attempt_01",
+      "mode": "NEW_ATTEMPT"
+    },
+    {
+      "ordinal": 3,
+      "scene_id": "DL1018_DEV_T1_C04_W00",
+      "attempt_id": "attempt_01",
+      "mode": "NEW_ATTEMPT"
+    },
+    {
+      "ordinal": 4,
+      "scene_id": "DL1018_DEV_T1_C05_W06",
+      "attempt_id": "attempt_01",
+      "mode": "NEW_ATTEMPT"
+    },
+    {
+      "ordinal": 5,
+      "scene_id": "DL1018_DEV_T1_C07_W08",
+      "attempt_id": "attempt_01",
+      "mode": "NEW_ATTEMPT"
+    },
+    {
+      "ordinal": 6,
+      "scene_id": "DL1018_DEV_T1_C10_W09",
+      "attempt_id": "attempt_01",
+      "mode": "NEW_ATTEMPT"
+    },
+    {
+      "ordinal": 7,
+      "scene_id": "DL1018_DEV_T1_C11_W12",
+      "attempt_id": "attempt_01",
+      "mode": "NEW_ATTEMPT"
+    },
+    {
+      "ordinal": 8,
+      "scene_id": "DL1018_DEV_T1_C15_W14",
+      "attempt_id": "attempt_01",
+      "mode": "NEW_ATTEMPT"
+    },
+    {
+      "ordinal": 9,
+      "scene_id": "DL1018_DEV_T2_C00_W04",
+      "attempt_id": "attempt_01",
+      "mode": "NEW_ATTEMPT"
+    },
+    {
+      "ordinal": 10,
+      "scene_id": "DL1018_DEV_T2_C02_W15",
+      "attempt_id": "attempt_01",
+      "mode": "NEW_ATTEMPT"
+    },
+    {
+      "ordinal": 11,
+      "scene_id": "DL1018_DEV_T2_C03_W01",
+      "attempt_id": "attempt_01",
+      "mode": "NEW_ATTEMPT"
+    },
+    {
+      "ordinal": 12,
+      "scene_id": "DL1018_DEV_T2_C06_W07",
+      "attempt_id": "attempt_01",
+      "mode": "NEW_ATTEMPT"
+    },
+    {
+      "ordinal": 13,
+      "scene_id": "DL1018_DEV_T2_C08_W08",
+      "attempt_id": "attempt_01",
+      "mode": "NEW_ATTEMPT"
+    },
+    {
+      "ordinal": 14,
+      "scene_id": "DL1018_DEV_T2_C09_W10",
+      "attempt_id": "attempt_01",
+      "mode": "NEW_ATTEMPT"
+    },
+    {
+      "ordinal": 15,
+      "scene_id": "DL1018_DEV_T2_C12_W13",
+      "attempt_id": "attempt_01",
+      "mode": "NEW_ATTEMPT"
+    },
+    {
+      "ordinal": 16,
+      "scene_id": "DL1018_DEV_T2_C14_W14",
+      "attempt_id": "attempt_01",
+      "mode": "NEW_ATTEMPT"
+    },
+    {
+      "ordinal": 17,
+      "scene_id": "DL1018_DEV_T3_C00_W05",
+      "attempt_id": "attempt_01",
+      "mode": "NEW_ATTEMPT"
+    },
+    {
+      "ordinal": 18,
+      "scene_id": "DL1018_DEV_T3_C03_W15",
+      "attempt_id": "attempt_01",
+      "mode": "NEW_ATTEMPT"
+    },
+    {
+      "ordinal": 19,
+      "scene_id": "DL1018_DEV_T3_C05_W02",
+      "attempt_id": "attempt_01",
+      "mode": "NEW_ATTEMPT"
+    },
+    {
+      "ordinal": 20,
+      "scene_id": "DL1018_DEV_T3_C06_W08",
+      "attempt_id": "attempt_01",
+      "mode": "NEW_ATTEMPT"
+    },
+    {
+      "ordinal": 21,
+      "scene_id": "DL1018_DEV_T3_C10_W11",
+      "attempt_id": "attempt_01",
+      "mode": "NEW_ATTEMPT"
+    },
+    {
+      "ordinal": 22,
+      "scene_id": "DL1018_DEV_T3_C13_W12",
+      "attempt_id": "attempt_01",
+      "mode": "NEW_ATTEMPT"
+    },
+    {
+      "ordinal": 23,
+      "scene_id": "DL1018_DEV_T3_C15_W14",
+      "attempt_id": "attempt_01",
+      "mode": "NEW_ATTEMPT"
+    }
+  ],
+  "entries": [],
+  "attempt_policy": {
+    "attempt_id": "attempt_01",
+    "max_attempts_per_scene": 1,
+    "overwrite_or_retry": false,
+    "authorized_new_calls": 23,
+    "pilot_reuse_calls": 0
+  },
+  "scoring": {
+    "phase": "DEV24",
+    "command": "score_large_gru_single_scene_v1.py --phase DEV24 --scene <id> --candidate-dir <studyRoot>",
+    "score_path_pattern": "large_gru_b768_v1/paired_results/DEV24/scores/<scene>.json",
+    "summary_path": "large_gru_b768_v1/paired_results/DEV24/paired_summary_v1.json"
+  },
+  "scope": {
+    "TEST_read": false,
+    "VAL_data_read": false,
+    "inertia_reconstruction_enabled": false,
+    "parameter_tuning": false
+  },
+  "execution_protocol_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\large_gru_dual_loop_dev24_v1\\BATCH_EXECUTION_PROTOCOL_v1.json",
+  "budget_ledger_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\large_gru_dual_loop_dev24_v1\\BUDGET_LEDGER_v1.json",
+  "batch_runner_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\large_gru_dual_loop_dev24_v1\\run_large_gru_dev24_batch_v1.m",
+  "no_plant_preflight_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\large_gru_dual_loop_dev24_v1\\batch_adapter\\run_large_gru_dev24_preflight.m"
+}

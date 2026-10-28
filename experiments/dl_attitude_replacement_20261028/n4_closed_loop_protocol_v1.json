@@ -1,0 +1,127 @@
+{
+  "schema": "STATIC_N4_TRAIN_CLOSED_LOOP_FALSIFIER_PROTOCOL_V1",
+  "study_id": "n4_three_scene_closed_loop_diagnostic_v1",
+  "status": "PREDECLARED_BEFORE_ANY_N4_PLANT_CALL",
+  "purpose": "Fixed three-scene closed-loop falsification diagnostic for the static N4 bank; not a candidate acceptance or threshold change.",
+  "scope": {
+    "physical_split": "TRAIN_C5_24",
+    "scene_count": 3,
+    "scenes": [
+      {
+        "scene_id": "DL1018_DEV_T1_C00_W03",
+        "source_split": "TRAIN_C5_24",
+        "selection_role": "low-frequency control",
+        "wind_peaks_hz": [
+          0.6,
+          0.85
+        ],
+        "study_dir": "n4T1C00_v1"
+      },
+      {
+        "scene_id": "DL1018_DEV_T3_C09_W09",
+        "source_split": "TRAIN_C5_24",
+        "selection_role": "previously tested high-frequency W09 scene; independent N4 filter diagnostic",
+        "wind_peaks_hz": [
+          2.2,
+          3.2
+        ],
+        "study_dir": "n4T3C09_v1"
+      },
+      {
+        "scene_id": "DL1018_DEV_T1_C11_W12",
+        "source_split": "TRAIN_C5_24",
+        "selection_role": "first T1 scene in highest nonzero TRAIN wind-frequency group",
+        "wind_peaks_hz": [
+          3.7,
+          4.8
+        ],
+        "study_dir": "n4T1C11_v1"
+      }
+    ],
+    "no_cross_wind_generalization_claim": true,
+    "no_automatic_scene_expansion_on_failure": true
+  },
+  "controller": {
+    "position": "frozen C5 DSSM14/M110",
+    "attitude": "frozen parent cosine-GRU",
+    "extra_position_residual_gru_enabled": false,
+    "extra_position_gru_weights_loaded_or_forwarded": false,
+    "exact_parent_C5_options_check_required": true
+  },
+  "intervention": {
+    "type": "fixed causal 4-section unity-DC biquad notch cascade",
+    "sample_rate_hz": 100.0,
+    "centers_hz": [
+      2.2,
+      3.2,
+      3.7,
+      4.8
+    ],
+    "quality_factor_each": [
+      4.0,
+      4.0,
+      4.0,
+      4.0
+    ],
+    "application_point": "final held C5 applied position compensation before force injection",
+    "event_update": "only logged 100-Hz C5 position events; zero-order hold between events",
+    "state_initialization": "initialize all sections at first nonzero action event and pass that sample unchanged",
+    "action_limit_mps2": 3.0,
+    "per_scene_frequency_switching": false,
+    "runtime_wind_or_W_code_branching": false,
+    "online_read_wind_or_W_code": false
+  },
+  "call_contract": {
+    "one_closed_loop_call_per_scene": true,
+    "authorized_Plant_calls_per_scene": 1,
+    "retry_or_parameter_change_after_result": false,
+    "MATLAB_release": "R2025b"
+  },
+  "frozen_scoring": {
+    "implementation": "score_full72_candidate_v1.score_raw",
+    "same_scene_comparators": [
+      "B",
+      "C5",
+      "parent cosine-GRU/C5"
+    ],
+    "frequency_metrics": [
+      "task-minus-actual roll/pitch/yaw band RMS and phase",
+      "command target band RMS and phase",
+      "filtered attitude reference band RMS and phase",
+      "applied compensation band RMS",
+      "low band 0.05-0.5 Hz amplitude/phase/group delay"
+    ],
+    "report_notch_centers_hz": [
+      2.2,
+      3.2,
+      3.7,
+      4.8
+    ],
+    "report_scene_train_peaks_hz": true,
+    "phase_method": "single-sided Hann cross-spectrum on the first 20,000 common 1-ms transitions; report circular phase difference target-to-actual at each exact TRAIN peak and notch center"
+  },
+  "predeclared_diagnostic_criteria": {
+    "all_three_scenes": "candidate Q_m <= 1.05 * same-scene C5 Q_m; stable 20,000-transition run; all safety counters zero",
+    "high_frequency_scenes": [
+      "DL1018_DEV_T3_C09_W09",
+      "DL1018_DEV_T1_C11_W12"
+    ],
+    "high_frequency_task": "candidate task_SO3_rad <= same-scene B task_SO3_rad",
+    "failure_action": "report failure and stop; do not auto-expand or tune"
+  },
+  "decision_language": "Any measured pass/fail is restricted to these fixed TRAIN scenes and this one static N4 intervention. The 24-scene replay remains a mechanism-only result, including its low-frequency phase-risk flags.",
+  "prior_evidence": {
+    "two_notch_status": "FAIL_FIXED_FROZEN_REPLAY",
+    "two_notch_report_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\position_compensation_dual_notch_train_replay_v1\\TRAIN_FROZEN_DUAL_NOTCH_REPLAY_v1.json",
+    "two_notch_report_sha256": "92c14d6252818b3c184554763677cf4b26efab470393c07d8f55d55733875f9d",
+    "n4_train24_status": "MEASURED_FIXED_TRAIN24_REPLAY",
+    "n4_train24_report_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\n4_train24_replay\\TRAIN24_STATIC_N4_REPLAY_v1.json",
+    "n4_train24_report_sha256": "dcaa34dc1a02d73337f60dcb53f860831345e2a8400cc2b9b7d47b20a3a98fd9",
+    "preserve_both_without_overwrite": true
+  },
+  "Plant_called_by_protocol_authoring": false,
+  "VAL_read": false,
+  "TEST_read": false,
+  "inertia_reconstruction_enabled": false,
+  "parameter_sweep": false
+}

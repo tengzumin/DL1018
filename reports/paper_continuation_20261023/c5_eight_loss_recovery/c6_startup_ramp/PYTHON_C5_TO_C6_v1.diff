@@ -1,0 +1,11 @@
+--- C:\Users\35326\Desktop\postgraduation\0\Mcode\drone_tcn\DL1018\reports\delayed_prediction_proposal_20261023\construction\delayed_prediction_kernel.py
++++ C:\Users\35326\Desktop\postgraduation\0\Mcode\drone_tcn\DL1018\experiments\c5_eight_loss_recovery_20261024\c6_startup_ramp\delayed_prediction_kernel.py
+@@ -87,7 +87,7 @@
+     raw = W.T @ phi
+     applied = _beta_clip(raw, beta)
+     candidate = (W - H * GAMMA * beta * np.outer(phi, s)
+-                 - H * LAMBDA * W - RHO * pred_grad)
++                 - H * LAMBDA * W - RHO * beta * pred_grad)
+     W_next = np.clip(candidate, -WEIGHT_LIMIT, WEIGHT_LIMIT)
+     if not (np.isfinite(raw).all() and np.isfinite(applied).all()
+             and np.isfinite(W_next).all()):

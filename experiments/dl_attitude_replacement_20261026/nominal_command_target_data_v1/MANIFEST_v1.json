@@ -1,0 +1,2373 @@
+{
+  "schema": "DL1018_NOMINAL_COMMAND_TARGET_DATA_V1",
+  "status": "PASS_OFFLINE_C5_LABEL_PREPARATION",
+  "candidate_for_future_training": "GRU32_STREAM72_COSINE_S2026102001_WITH_NOMINAL_COMMAND_TARGET",
+  "source_lock": {
+    "path": "experiments/dl_attitude_replacement_20261026/gru_stream_c5_teacher_v1/GRU_STREAM_C5_TEACHER_SOURCE_LOCK_v1.json",
+    "sha256": "1b234e231cbc493ffd6e276efc9d4ce60244119d05478dd6f34f8d08158c71dd"
+  },
+  "source_npz": {
+    "path": "experiments/dl_attitude_replacement_20261026/mlp15_c5_teacher_redistill_v1/matched_teacher_data_v1.npz",
+    "sha256": "b3a8ca6446d6bdde0573e6c233aa222a6cfb28d35f13b084e8dd9683c16c111f",
+    "bytes": 9013928,
+    "loaded_members_only": [
+      "c5_train_x",
+      "c5_train_scene_ids",
+      "c5_val_x",
+      "c5_val_scene_ids"
+    ],
+    "B24_arrays_loaded": false,
+    "old_c5_teacher_Y_arrays_loaded": false
+  },
+  "source_dataset_manifest": {
+    "path": "experiments/dl_attitude_replacement_20261026/mlp15_c5_teacher_redistill_v1/DATASET_MANIFEST_v1.json",
+    "sha256": "98766ddac3125b81d4637eeb2576349b6ce181c94564c1a444d1d4cab734d55c"
+  },
+  "source_locked_cfg": {
+    "path": "experiments/dl_attitude_replacement_20261026/gru_stream_dev_v1/LOCKED_CFG.json",
+    "sha256": "55a794e875ca95e5846a29997e01065ab9700e26ac17eb9cb57ce02d7e05df99",
+    "cfg_snapshot_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\C5_DEV72_PREPARED_CFG_OPTS_v3.mat",
+    "cfg_snapshot_sha256": "842ef395569e675db6e139c2684d72b976946915e5e0a58b9b7f24ec10c1d24a",
+    "dmax_source": "p.cfg.rbf.attitude.dmax",
+    "dmax_exact_float64": [
+      45.0,
+      45.0,
+      4.7124
+    ],
+    "J0_kgm2_exact_float64": [
+      [
+        0.003257553333333334,
+        -2.168404344971009E-19,
+        0.0
+      ],
+      [
+        -2.168404344971009E-19,
+        0.0032575533333333334,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.006360648333333333
+      ]
+    ],
+    "J0_sha256": "8cd498cac86940c800e5c4c1e622e19ed2630bebbd3bbe880d3ae4ad1b689f75"
+  },
+  "splits": {
+    "TRAIN_C5_24": {
+      "count": 24,
+      "scene_ids": [
+        "DL1018_DEV_T1_C00_W03",
+        "DL1018_DEV_T1_C01_W15",
+        "DL1018_DEV_T1_C04_W00",
+        "DL1018_DEV_T1_C05_W06",
+        "DL1018_DEV_T1_C07_W08",
+        "DL1018_DEV_T1_C10_W09",
+        "DL1018_DEV_T1_C11_W12",
+        "DL1018_DEV_T1_C15_W14",
+        "DL1018_DEV_T2_C00_W04",
+        "DL1018_DEV_T2_C02_W15",
+        "DL1018_DEV_T2_C03_W01",
+        "DL1018_DEV_T2_C06_W07",
+        "DL1018_DEV_T2_C08_W08",
+        "DL1018_DEV_T2_C09_W10",
+        "DL1018_DEV_T2_C12_W13",
+        "DL1018_DEV_T2_C14_W14",
+        "DL1018_DEV_T3_C00_W05",
+        "DL1018_DEV_T3_C03_W15",
+        "DL1018_DEV_T3_C05_W02",
+        "DL1018_DEV_T3_C06_W08",
+        "DL1018_DEV_T3_C09_W09",
+        "DL1018_DEV_T3_C10_W11",
+        "DL1018_DEV_T3_C13_W12",
+        "DL1018_DEV_T3_C15_W14"
+      ],
+      "X_shape": [
+        24,
+        1999,
+        13
+      ],
+      "X_dtype": "float32",
+      "X_sha256": "268363c04a966c0d001286095703f3042088be3c6f311ae8893862cfb6a777e5"
+    },
+    "C5_VAL48_AS_DEV_TRAIN": {
+      "source_split": "C5_VAL48",
+      "count": 48,
+      "scene_ids": [
+        "DL1018_VAL_T1_C00_W07",
+        "DL1018_VAL_T1_C01_W08",
+        "DL1018_VAL_T1_C02_W09",
+        "DL1018_VAL_T1_C03_W10",
+        "DL1018_VAL_T1_C04_W11",
+        "DL1018_VAL_T1_C05_W12",
+        "DL1018_VAL_T1_C06_W13",
+        "DL1018_VAL_T1_C07_W14",
+        "DL1018_VAL_T1_C08_W15",
+        "DL1018_VAL_T1_C09_W00",
+        "DL1018_VAL_T1_C10_W01",
+        "DL1018_VAL_T1_C11_W02",
+        "DL1018_VAL_T1_C12_W03",
+        "DL1018_VAL_T1_C13_W04",
+        "DL1018_VAL_T1_C14_W05",
+        "DL1018_VAL_T1_C15_W06",
+        "DL1018_VAL_T2_C00_W10",
+        "DL1018_VAL_T2_C01_W11",
+        "DL1018_VAL_T2_C02_W12",
+        "DL1018_VAL_T2_C03_W13",
+        "DL1018_VAL_T2_C04_W14",
+        "DL1018_VAL_T2_C05_W15",
+        "DL1018_VAL_T2_C06_W00",
+        "DL1018_VAL_T2_C07_W01",
+        "DL1018_VAL_T2_C08_W02",
+        "DL1018_VAL_T2_C09_W03",
+        "DL1018_VAL_T2_C10_W04",
+        "DL1018_VAL_T2_C11_W05",
+        "DL1018_VAL_T2_C12_W06",
+        "DL1018_VAL_T2_C13_W07",
+        "DL1018_VAL_T2_C14_W08",
+        "DL1018_VAL_T2_C15_W09",
+        "DL1018_VAL_T3_C00_W13",
+        "DL1018_VAL_T3_C01_W14",
+        "DL1018_VAL_T3_C02_W15",
+        "DL1018_VAL_T3_C03_W00",
+        "DL1018_VAL_T3_C04_W01",
+        "DL1018_VAL_T3_C05_W02",
+        "DL1018_VAL_T3_C06_W03",
+        "DL1018_VAL_T3_C07_W04",
+        "DL1018_VAL_T3_C08_W05",
+        "DL1018_VAL_T3_C09_W06",
+        "DL1018_VAL_T3_C10_W07",
+        "DL1018_VAL_T3_C11_W08",
+        "DL1018_VAL_T3_C12_W09",
+        "DL1018_VAL_T3_C13_W10",
+        "DL1018_VAL_T3_C14_W11",
+        "DL1018_VAL_T3_C15_W12"
+      ],
+      "X_shape": [
+        48,
+        1999,
+        13
+      ],
+      "X_dtype": "float32",
+      "X_sha256": "d40111114f29da2625da3edc2ace55fbe5f04da64a7809ab4f092c1920891913"
+    }
+  },
+  "target_contract": {
+    "name": "nominal requested-command port residual",
+    "equation": "R_cmd[e]=(omega[e+10]-omega[e])/(t[e+10]-t[e])+mean_i solve(J0,cross(omega[i],J0*omega[i])-tau_req[i]); i=e..e+9",
+    "tau_req": "requested_generalized rows MATLAB 2:4 (Python 1:4); realized_generalized is not read or used",
+    "units": "rad/s^2",
+    "post_clip_stage": "post-DMAX/pre-beta",
+    "dmax_clip": "independent axis-wise clip to the exact locked DMAX, then cast to float32",
+    "stored_unclipped_dtype": "float64",
+    "stored_training_dtype": "float32"
+  },
+  "event_schedule": {
+    "zero_based_event_starts": {
+      "start": 10,
+      "step": 10,
+      "end_inclusive": 19990,
+      "count_per_scene": 1999
+    },
+    "interval": "[e,e+10); includes final 19990->20000 interval",
+    "raw_shape_per_scene": {
+      "state": [
+        12,
+        20001
+      ],
+      "time": [
+        20001
+      ],
+      "requested_generalized": [
+        4,
+        20000
+      ]
+    },
+    "time_step_s": 0.001,
+    "endpoint_span_s": 0.01,
+    "first1998_alignment": "matches prior next-event residual convention; per-scene max error in source_records",
+    "final_interval_is_new": true
+  },
+  "phase_definitions": {
+    "all": "all 1999 event starts",
+    "0-5s": "0<=t<5",
+    "5-15s": "5<=t<15",
+    "15-20s": "15<=t<20"
+  },
+  "label_summary_by_split": {
+    "TRAIN_C5_24": {
+      "scene_count": 24,
+      "events_per_scene": 1999,
+      "unclipped_rms_by_axis": [
+        8.020856701429373,
+        7.1227997086113986,
+        0.4822274311675776
+      ],
+      "unclipped_bias_by_axis": [
+        -0.24948625536375987,
+        0.8274547006267373,
+        -0.008473482846953331
+      ],
+      "clipped_float32_rms_by_axis": [
+        8.020856699626254,
+        7.122799706648101,
+        0.48222743119705996
+      ],
+      "clipped_float32_bias_by_axis": [
+        -0.24948625558576423,
+        0.8274547014940161,
+        -0.0084734828187848
+      ],
+      "clip_count_by_axis": [
+        0,
+        0,
+        0
+      ],
+      "clip_ratio_by_axis": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "unclipped_array_sha256": "b916c3ad868b5eaf20a231329b278ffc4237f3b72667800d88b2d66ab8fe50ee",
+      "clipped_float32_array_sha256": "88842c0b2c5c99b92a672cb86ce77f661a20e257057a9f20cd0a95f0806719a3",
+      "scene_id_array_sha256": "22684b5cef9835d248bf0fc97038c1bc3cb307e1f86e0d367e82afd9a0cd1bcd"
+    },
+    "C5_VAL48_AS_DEV_TRAIN": {
+      "scene_count": 48,
+      "events_per_scene": 1999,
+      "unclipped_rms_by_axis": [
+        8.258491229117945,
+        10.384243725341797,
+        0.7401769857880844
+      ],
+      "unclipped_bias_by_axis": [
+        0.3682256157103144,
+        -0.3924816298918908,
+        -0.02299033695880245
+      ],
+      "clipped_float32_rms_by_axis": [
+        8.258491228348941,
+        10.384243728545982,
+        0.732767110875789
+      ],
+      "clipped_float32_bias_by_axis": [
+        0.3682256155029479,
+        -0.3924816301195343,
+        -0.02329289830506514
+      ],
+      "clip_count_by_axis": [
+        0,
+        0,
+        242
+      ],
+      "clip_ratio_by_axis": [
+        0.0,
+        0.0,
+        0.002522094380523595
+      ],
+      "unclipped_array_sha256": "1a4df4f571b311b7561307bdd14cd258659589e25fc422a5c99bec2e368187e4",
+      "clipped_float32_array_sha256": "54390af42e364e44ff74f8fa7b112f89dbd0e0047f5212af2fffeb9b4a29e33b",
+      "scene_id_array_sha256": "d779d70f6793386fa8208c5a3f62fa6dde099d2a386ca03daa979d51cd334eca"
+    }
+  },
+  "source_records": [
+    {
+      "scene_id": "DL1018_DEV_T1_C00_W03",
+      "training_split": "TRAIN_C5_24",
+      "source_split": "TRAIN_C5_24",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T1_C00_W03/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "fa36bf4aa229279d964b40c10cb3579487b5c641d167572383ef49f63196af5d",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T1_C00_W03/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "86696aed73d7cde391378a38ca67b4c4b7ea2f0fbcc2144eabd780fb568fd0e6",
+      "event_count": 1999,
+      "state_shape": [
+        12,
+        20001
+      ],
+      "time_shape": [
+        20001
+      ],
+      "requested_generalized_shape": [
+        4,
+        20000
+      ],
+      "event_indices_zero_based_sha256": "9e419ea70588b365dab819999e08b56a0063255751215c8c111a326d5bf07240",
+      "X_array_sha256": "b5fda729cf07b220df1aeed4b04953c6a77c1fe4b3b125032167d635098a8e5b",
+      "unclipped_R_cmd_sha256": "9ae8ee67fbe82cd3e77b9005d1b8ceb6da588b5c6ad4f87c3faf8a608ba3d9e6",
+      "clipped_R_cmd_float32_sha256": "c4cd2bd4a6efb45bed470fe601e4e8c1bc47067c1e4f0ae0917cce51b9cd6c15",
+      "historical_teacher_comparison_field": "log/rbf_output_raw sampled at attitude_event_flag; not used to construct target",
+      "legacy_next_event_alignment_max_abs_error_first1998": 4.440892098500626E-16,
+      "additional_final_interval": "19990->20000 included"
+    },
+    {
+      "scene_id": "DL1018_DEV_T1_C01_W15",
+      "training_split": "TRAIN_C5_24",
+      "source_split": "TRAIN_C5_24",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T1_C01_W15/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "b61f01ab5920de766b8596512490b596e3959fa87368cd40a3b30758831fe651",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T1_C01_W15/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "b378ce8ff4a5910db082edbb73c9cced00c16a2aa4297295158cbb84e8e3f2a0",
+      "event_count": 1999,
+      "state_shape": [
+        12,
+        20001
+      ],
+      "time_shape": [
+        20001
+      ],
+      "requested_generalized_shape": [
+        4,
+        20000
+      ],
+      "event_indices_zero_based_sha256": "9e419ea70588b365dab819999e08b56a0063255751215c8c111a326d5bf07240",
+      "X_array_sha256": "a09cb256c921d6b1e04ec339b91d77ffbcd88a812d10e8cda82fac0780258d96",
+      "unclipped_R_cmd_sha256": "7b019bb1342ffdffd56a4a8a43bac012cbc958e195e1fa77be8cb7ad2d20ea3a",
+      "clipped_R_cmd_float32_sha256": "f44571e44bc4ea5b79e6c2f7fe5fb55b764cfb770e702dc9b8781b9327551d27",
+      "historical_teacher_comparison_field": "log/rbf_output_raw sampled at attitude_event_flag; not used to construct target",
+      "legacy_next_event_alignment_max_abs_error_first1998": 5.329070518200751E-15,
+      "additional_final_interval": "19990->20000 included"
+    },
+    {
+      "scene_id": "DL1018_DEV_T1_C04_W00",
+      "training_split": "TRAIN_C5_24",
+      "source_split": "TRAIN_C5_24",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T1_C04_W00/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "ac0f403f134db3ea213547889b36f8dc5e81251d5ab03836c912e3a54453527d",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T1_C04_W00/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "ffc3b727a04deeeaed69880f856cbd4f6f013d1acebf73a49f58baee336db7e4",
+      "event_count": 1999,
+      "state_shape": [
+        12,
+        20001
+      ],
+      "time_shape": [
+        20001
+      ],
+      "requested_generalized_shape": [
+        4,
+        20000
+      ],
+      "event_indices_zero_based_sha256": "9e419ea70588b365dab819999e08b56a0063255751215c8c111a326d5bf07240",
+      "X_array_sha256": "304e68065e5ae55c5bb3f1294ec902f74d88fd90809f88ffe390cfaec12cefa1",
+      "unclipped_R_cmd_sha256": "699b070fb9dc3aad14d130888d6a50144480f306d3bdd8ba2e9f785bfaed7d2e",
+      "clipped_R_cmd_float32_sha256": "4be88b037bba7c139ad0b585f852b918628a5431616b24e5656b16b23c940b3f",
+      "historical_teacher_comparison_field": "log/rbf_output_raw sampled at attitude_event_flag; not used to construct target",
+      "legacy_next_event_alignment_max_abs_error_first1998": 5.329070518200751E-15,
+      "additional_final_interval": "19990->20000 included"
+    },
+    {
+      "scene_id": "DL1018_DEV_T1_C05_W06",
+      "training_split": "TRAIN_C5_24",
+      "source_split": "TRAIN_C5_24",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T1_C05_W06/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "727febc0aedbd4f127eb46aec8d103ab5b2b1e4336d8e92882c4447b779b602e",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T1_C05_W06/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "048fcd211b27405b014346e87929e15d50c6469258b35eb732e0ab9a9a014e29",
+      "event_count": 1999,
+      "state_shape": [
+        12,
+        20001
+      ],
+      "time_shape": [
+        20001
+      ],
+      "requested_generalized_shape": [
+        4,
+        20000
+      ],
+      "event_indices_zero_based_sha256": "9e419ea70588b365dab819999e08b56a0063255751215c8c111a326d5bf07240",
+      "X_array_sha256": "19bedb6ef9ebcb110433d4fd8acc0f0cf702dc2f19acd9edbf9e56bd58eae687",
+      "unclipped_R_cmd_sha256": "7f66d30840d33e27da6222eb33f1a943f8570acd6a1aac72d0d00ce57d662f2f",
+      "clipped_R_cmd_float32_sha256": "ead93f9316c0d16684bd43d2aac190fc12b00d03727af727fa5f36102a7cea2f",
+      "historical_teacher_comparison_field": "log/rbf_output_raw sampled at attitude_event_flag; not used to construct target",
+      "legacy_next_event_alignment_max_abs_error_first1998": 1.0658141036401503E-14,
+      "additional_final_interval": "19990->20000 included"
+    },
+    {
+      "scene_id": "DL1018_DEV_T1_C07_W08",
+      "training_split": "TRAIN_C5_24",
+      "source_split": "TRAIN_C5_24",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T1_C07_W08/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "b7fc7c1a8ac1c744429a36ad1ee93e1b4b45d59c82c61808b1f9c4af999483b1",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T1_C07_W08/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "db955418d06234f569cf5206b0b621ac4bd38b89e640aa32a04b4502689afa7a",
+      "event_count": 1999,
+      "state_shape": [
+        12,
+        20001
+      ],
+      "time_shape": [
+        20001
+      ],
+      "requested_generalized_shape": [
+        4,
+        20000
+      ],
+      "event_indices_zero_based_sha256": "9e419ea70588b365dab819999e08b56a0063255751215c8c111a326d5bf07240",
+      "X_array_sha256": "a0adafd27e9764f46c0f37d76a5bcc46323976485c24160c84efd2ef95a15b2c",
+      "unclipped_R_cmd_sha256": "d0b935f052cc329050bf6382dadd579949caa07a84d419822afb9f2c32666e8c",
+      "clipped_R_cmd_float32_sha256": "e04ea1f34fff9a40a36a16170ce06f2edafbe1e2651873e809b28ce66ca9f216",
+      "historical_teacher_comparison_field": "log/rbf_output_raw sampled at attitude_event_flag; not used to construct target",
+      "legacy_next_event_alignment_max_abs_error_first1998": 7.105427357601002E-15,
+      "additional_final_interval": "19990->20000 included"
+    },
+    {
+      "scene_id": "DL1018_DEV_T1_C10_W09",
+      "training_split": "TRAIN_C5_24",
+      "source_split": "TRAIN_C5_24",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T1_C10_W09/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "1e684df2174bc6b754e7798c67acb5c0b4ead218bcc1bd7b1d5cfc1a2fcf4991",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T1_C10_W09/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "d2caf08f0ffba7000de0d407db09905375618b0821c545bf4f5e63d299fa8d83",
+      "event_count": 1999,
+      "state_shape": [
+        12,
+        20001
+      ],
+      "time_shape": [
+        20001
+      ],
+      "requested_generalized_shape": [
+        4,
+        20000
+      ],
+      "event_indices_zero_based_sha256": "9e419ea70588b365dab819999e08b56a0063255751215c8c111a326d5bf07240",
+      "X_array_sha256": "2d05841983d259abb8380f4ba300226f672606463e94e14903b8c158747b60e1",
+      "unclipped_R_cmd_sha256": "e8d68228f62ba497427792f6fc4c1be5020481694284694de80f3fc9bf10c387",
+      "clipped_R_cmd_float32_sha256": "e3a8ee6411412c2754597879fd5a3be3c9a05a986f3333a80fbb1b66ce9237a7",
+      "historical_teacher_comparison_field": "log/rbf_output_raw sampled at attitude_event_flag; not used to construct target",
+      "legacy_next_event_alignment_max_abs_error_first1998": 1.4210854715202004E-14,
+      "additional_final_interval": "19990->20000 included"
+    },
+    {
+      "scene_id": "DL1018_DEV_T1_C11_W12",
+      "training_split": "TRAIN_C5_24",
+      "source_split": "TRAIN_C5_24",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T1_C11_W12/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "996edaae6b20f048468a04d36d1b2af19c1daf5d45e5bc8160f52f3bd35b2aa2",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T1_C11_W12/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "78e067efa8cd1615918dec1cc19bf6f836cb69ec87f5219223850b97f68533b0",
+      "event_count": 1999,
+      "state_shape": [
+        12,
+        20001
+      ],
+      "time_shape": [
+        20001
+      ],
+      "requested_generalized_shape": [
+        4,
+        20000
+      ],
+      "event_indices_zero_based_sha256": "9e419ea70588b365dab819999e08b56a0063255751215c8c111a326d5bf07240",
+      "X_array_sha256": "c75c2d986648174f588bab2f0d67b476cee2959d199bb52e90bb33cbce78362d",
+      "unclipped_R_cmd_sha256": "eb8fa177737c2652db797b3a81b8e6eb9cd549e338bfda350d8ec3c0817b864b",
+      "clipped_R_cmd_float32_sha256": "bf6b73388dc79b3440e5959d5b2d806e3c862ce107b82c4ee5a0bd491d3410b2",
+      "historical_teacher_comparison_field": "log/rbf_output_raw sampled at attitude_event_flag; not used to construct target",
+      "legacy_next_event_alignment_max_abs_error_first1998": 1.0658141036401503E-14,
+      "additional_final_interval": "19990->20000 included"
+    },
+    {
+      "scene_id": "DL1018_DEV_T1_C15_W14",
+      "training_split": "TRAIN_C5_24",
+      "source_split": "TRAIN_C5_24",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T1_C15_W14/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "6c72ae52e3f39af36442935468af7d2a047af460b845223167ee206d0dc96707",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T1_C15_W14/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "506b19b805e55f11a7305df6b6fb5972fbb936aceb4c4f6db62bb4c70f5cbe3c",
+      "event_count": 1999,
+      "state_shape": [
+        12,
+        20001
+      ],
+      "time_shape": [
+        20001
+      ],
+      "requested_generalized_shape": [
+        4,
+        20000
+      ],
+      "event_indices_zero_based_sha256": "9e419ea70588b365dab819999e08b56a0063255751215c8c111a326d5bf07240",
+      "X_array_sha256": "96ec756ea67bd5036d77a568670a51dbbbde2288ce47d975b85011d1ee6f4a5d",
+      "unclipped_R_cmd_sha256": "063d8f54365376ee4b6834798d56a7861bc8af1d15366cee7902bac33c2da8b2",
+      "clipped_R_cmd_float32_sha256": "06184df7d98339550d28897637ad899a2e6486eae602ab177262f87dd382bf31",
+      "historical_teacher_comparison_field": "log/rbf_output_raw sampled at attitude_event_flag; not used to construct target",
+      "legacy_next_event_alignment_max_abs_error_first1998": 1.4210854715202004E-14,
+      "additional_final_interval": "19990->20000 included"
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C00_W04",
+      "training_split": "TRAIN_C5_24",
+      "source_split": "TRAIN_C5_24",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T2_C00_W04/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "9b408641737fe13bcc290d87f0d02176c26701717fc9145e1ca0191be906442f",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T2_C00_W04/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "87cbb9d7f7c3683b3fed5a348c219166f3c6289808f6b0af2c56c5491d7269b3",
+      "event_count": 1999,
+      "state_shape": [
+        12,
+        20001
+      ],
+      "time_shape": [
+        20001
+      ],
+      "requested_generalized_shape": [
+        4,
+        20000
+      ],
+      "event_indices_zero_based_sha256": "9e419ea70588b365dab819999e08b56a0063255751215c8c111a326d5bf07240",
+      "X_array_sha256": "6dfae00eda82a3c5e56740c7748577d1f573329172c6eed9b0ee11220c6fe8d5",
+      "unclipped_R_cmd_sha256": "d20277206b514cfb4990e49dc45d2287a0cbb2b7169433182a81e8347b0ac79f",
+      "clipped_R_cmd_float32_sha256": "e6bb9ba49795367c198abdde3a0d3f6779c369f6c369dd44e90a948f32bfa6d5",
+      "historical_teacher_comparison_field": "log/rbf_output_raw sampled at attitude_event_flag; not used to construct target",
+      "legacy_next_event_alignment_max_abs_error_first1998": 6.661338147750939E-16,
+      "additional_final_interval": "19990->20000 included"
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C02_W15",
+      "training_split": "TRAIN_C5_24",
+      "source_split": "TRAIN_C5_24",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T2_C02_W15/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "f0e524b6bd8bbafc6e6ecccff3879500332371af068421db120cd795944f608b",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T2_C02_W15/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "8122b384edc66cb10579290f1788031c4aabdda0dd4da03e4ba2f2d265fd733f",
+      "event_count": 1999,
+      "state_shape": [
+        12,
+        20001
+      ],
+      "time_shape": [
+        20001
+      ],
+      "requested_generalized_shape": [
+        4,
+        20000
+      ],
+      "event_indices_zero_based_sha256": "9e419ea70588b365dab819999e08b56a0063255751215c8c111a326d5bf07240",
+      "X_array_sha256": "929fb3e80c87bb47bb4d5f1d93132e33c997a1ec4595a7f664dd45e2cb5f6dbe",
+      "unclipped_R_cmd_sha256": "f1a60ebdf8c517bddca588081779f53d8bba6d10b06104b33145299944dec9d1",
+      "clipped_R_cmd_float32_sha256": "88adf449641f508082a3a82e0c0887bf4500156a565d9c36c41772de414b14a1",
+      "historical_teacher_comparison_field": "log/rbf_output_raw sampled at attitude_event_flag; not used to construct target",
+      "legacy_next_event_alignment_max_abs_error_first1998": 5.329070518200751E-15,
+      "additional_final_interval": "19990->20000 included"
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C03_W01",
+      "training_split": "TRAIN_C5_24",
+      "source_split": "TRAIN_C5_24",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T2_C03_W01/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "5bab1c31978d9230c2fa234f2e7623d42ce13fa20b1b99e9d73a7127c4f96b4f",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T2_C03_W01/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "c43bbb7c9d419cf6177bfa78eb388043d3a16548ec626079ca00e1a3248ec21c",
+      "event_count": 1999,
+      "state_shape": [
+        12,
+        20001
+      ],
+      "time_shape": [
+        20001
+      ],
+      "requested_generalized_shape": [
+        4,
+        20000
+      ],
+      "event_indices_zero_based_sha256": "9e419ea70588b365dab819999e08b56a0063255751215c8c111a326d5bf07240",
+      "X_array_sha256": "ef224ce8279b6671388fbd4c64108b651a0a58579abebee1ef0d1b6af167f6cf",
+      "unclipped_R_cmd_sha256": "ac2d3bf4c6284d894811cb99971dc6df0d8ba73187c34e59e9cd1241d7d0e63c",
+      "clipped_R_cmd_float32_sha256": "ff011f5253dc0cafcea7263f92b153222af9f3fd7484656134d2eaf642ac0c35",
+      "historical_teacher_comparison_field": "log/rbf_output_raw sampled at attitude_event_flag; not used to construct target",
+      "legacy_next_event_alignment_max_abs_error_first1998": 5.329070518200751E-15,
+      "additional_final_interval": "19990->20000 included"
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C06_W07",
+      "training_split": "TRAIN_C5_24",
+      "source_split": "TRAIN_C5_24",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T2_C06_W07/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "02869a1271b1a5483b03565cc2e2366fd370392e68e9265ca943251e212a56be",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T2_C06_W07/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "c6b7cd00649d4899be739d43e37093904f7ff566f9a3f5c816d15163d94ed6cc",
+      "event_count": 1999,
+      "state_shape": [
+        12,
+        20001
+      ],
+      "time_shape": [
+        20001
+      ],
+      "requested_generalized_shape": [
+        4,
+        20000
+      ],
+      "event_indices_zero_based_sha256": "9e419ea70588b365dab819999e08b56a0063255751215c8c111a326d5bf07240",
+      "X_array_sha256": "635ec61c9f3589a7103e9660f5e960e00a409051f37b6f331757a8a96488599a",
+      "unclipped_R_cmd_sha256": "6d6e78ee75ffbbd3b674ed537ac5da14bae06bdfe97e0c118e2e6ecefefe5847",
+      "clipped_R_cmd_float32_sha256": "f412b07a257ed22fc73bf4bc0934c1de1acdc64fa16e15916234d664ed3f154e",
+      "historical_teacher_comparison_field": "log/rbf_output_raw sampled at attitude_event_flag; not used to construct target",
+      "legacy_next_event_alignment_max_abs_error_first1998": 7.105427357601002E-15,
+      "additional_final_interval": "19990->20000 included"
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C08_W08",
+      "training_split": "TRAIN_C5_24",
+      "source_split": "TRAIN_C5_24",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T2_C08_W08/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "6a0db67bee5e28cc6d5815e7273e376efc8311aa9c8591b1c238707b2b011d3b",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T2_C08_W08/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "63dbd53dbad9d396295de8dec20a5f5426f50b79e8a32026449182164e7074c2",
+      "event_count": 1999,
+      "state_shape": [
+        12,
+        20001
+      ],
+      "time_shape": [
+        20001
+      ],
+      "requested_generalized_shape": [
+        4,
+        20000
+      ],
+      "event_indices_zero_based_sha256": "9e419ea70588b365dab819999e08b56a0063255751215c8c111a326d5bf07240",
+      "X_array_sha256": "3ef767752b2c0435dea91ac6d98ef8e323a568483cfd2ddae672b6efaea94904",
+      "unclipped_R_cmd_sha256": "fcb67b7e7b08c3b5a6ec548da4c35f1bae90d5dcb9ff24db02c044538e6d4c09",
+      "clipped_R_cmd_float32_sha256": "c02c0daf4875d39b51699bed9c11f7382b15ad92cf8ad65606db264844be3abe",
+      "historical_teacher_comparison_field": "log/rbf_output_raw sampled at attitude_event_flag; not used to construct target",
+      "legacy_next_event_alignment_max_abs_error_first1998": 7.105427357601002E-15,
+      "additional_final_interval": "19990->20000 included"
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C09_W10",
+      "training_split": "TRAIN_C5_24",
+      "source_split": "TRAIN_C5_24",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T2_C09_W10/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "9810e02aa6bede12197eda25dbb0c18335252b1965f055931ea28b2f2dbb505d",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T2_C09_W10/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "7c777b788552c599410dcfe18fbf55908800f52dd41f6a844104af09e60822fe",
+      "event_count": 1999,
+      "state_shape": [
+        12,
+        20001
+      ],
+      "time_shape": [
+        20001
+      ],
+      "requested_generalized_shape": [
+        4,
+        20000
+      ],
+      "event_indices_zero_based_sha256": "9e419ea70588b365dab819999e08b56a0063255751215c8c111a326d5bf07240",
+      "X_array_sha256": "63c83d6f8eebbfc020bc63a6636d49aacccd269d0df69edf19c4ccd838d43ece",
+      "unclipped_R_cmd_sha256": "89012ab060c9ab1780592117b7b9f1e602b2a4d6821b880ea78fde2214955b4b",
+      "clipped_R_cmd_float32_sha256": "8f219657ae0ad3d0e9f481b26554199c11e5b2d2f3f71d5fac4a8565f5bd5a57",
+      "historical_teacher_comparison_field": "log/rbf_output_raw sampled at attitude_event_flag; not used to construct target",
+      "legacy_next_event_alignment_max_abs_error_first1998": 1.0658141036401503E-14,
+      "additional_final_interval": "19990->20000 included"
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C12_W13",
+      "training_split": "TRAIN_C5_24",
+      "source_split": "TRAIN_C5_24",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T2_C12_W13/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "28c004f613cb24fdca025ab73a6a6e7d32863a4a61197ed6d246db65f4e944bb",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T2_C12_W13/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "60dc5109337aea903cae00f3702965c483181b682f2fb1a5a9942e749e402214",
+      "event_count": 1999,
+      "state_shape": [
+        12,
+        20001
+      ],
+      "time_shape": [
+        20001
+      ],
+      "requested_generalized_shape": [
+        4,
+        20000
+      ],
+      "event_indices_zero_based_sha256": "9e419ea70588b365dab819999e08b56a0063255751215c8c111a326d5bf07240",
+      "X_array_sha256": "3debfa6cb61b60bad9ed2507cd72a997d400be5c667b8a5e2ec98d69f582f494",
+      "unclipped_R_cmd_sha256": "5050d1c4f2e93645c4c93eaf9f3ccdd3d01d82a264e18149409e9c9976cfce84",
+      "clipped_R_cmd_float32_sha256": "be55aa2040beb933fa87166909322952990ac0252a4f7abbd995f00c69275506",
+      "historical_teacher_comparison_field": "log/rbf_output_raw sampled at attitude_event_flag; not used to construct target",
+      "legacy_next_event_alignment_max_abs_error_first1998": 7.105427357601002E-15,
+      "additional_final_interval": "19990->20000 included"
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C14_W14",
+      "training_split": "TRAIN_C5_24",
+      "source_split": "TRAIN_C5_24",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T2_C14_W14/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "f863bed7657ef34ad0712ac755999e07dd7b55fed51c57811cdc80fa7421a93e",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T2_C14_W14/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "02900ddb8a9de38f85049322500d0eaf61b5982d8b7f1a4361a341ddf825dc61",
+      "event_count": 1999,
+      "state_shape": [
+        12,
+        20001
+      ],
+      "time_shape": [
+        20001
+      ],
+      "requested_generalized_shape": [
+        4,
+        20000
+      ],
+      "event_indices_zero_based_sha256": "9e419ea70588b365dab819999e08b56a0063255751215c8c111a326d5bf07240",
+      "X_array_sha256": "e0fdc0236a4a7d599b14e5894e6a66a37237370bf2fdf524ec4c312938f67ab7",
+      "unclipped_R_cmd_sha256": "cc2ff37a2433f17724094b312d96fe3b6fbc35fe74c91780ab0aebd9038bd74b",
+      "clipped_R_cmd_float32_sha256": "cd09f1f7c835b12ffe09f8fff81c7e1aab309f81d0ca95f26ccc3f70d81ecb24",
+      "historical_teacher_comparison_field": "log/rbf_output_raw sampled at attitude_event_flag; not used to construct target",
+      "legacy_next_event_alignment_max_abs_error_first1998": 1.4210854715202004E-14,
+      "additional_final_interval": "19990->20000 included"
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C00_W05",
+      "training_split": "TRAIN_C5_24",
+      "source_split": "TRAIN_C5_24",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T3_C00_W05/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "a88c5010bb1e264ddde36f9e1400d0f6947b5a0a7361dede183c59e0f9f634f3",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T3_C00_W05/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "7dcb6ece982bb30dc4a51b8cea678f9de615f0a9c5c3959a697e5ea5116882e4",
+      "event_count": 1999,
+      "state_shape": [
+        12,
+        20001
+      ],
+      "time_shape": [
+        20001
+      ],
+      "requested_generalized_shape": [
+        4,
+        20000
+      ],
+      "event_indices_zero_based_sha256": "9e419ea70588b365dab819999e08b56a0063255751215c8c111a326d5bf07240",
+      "X_array_sha256": "c0111438ee1f19b491041b950ae075fcb7e9587a150ee831a317ad80551911d7",
+      "unclipped_R_cmd_sha256": "9295b8889135c5fa02d522871854fa0459630ccd22755975f39537ac26708bcb",
+      "clipped_R_cmd_float32_sha256": "ca4b4669e1e81f541600c980e9ec730d562d8ef55e48a3057c9e8b86b293393a",
+      "historical_teacher_comparison_field": "log/rbf_output_raw sampled at attitude_event_flag; not used to construct target",
+      "legacy_next_event_alignment_max_abs_error_first1998": 1.3322676295501878E-15,
+      "additional_final_interval": "19990->20000 included"
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C03_W15",
+      "training_split": "TRAIN_C5_24",
+      "source_split": "TRAIN_C5_24",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T3_C03_W15/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "6afcc865b94f06d8e9558f261fa97c1b90aac73d5e4daf985c4f3b4315ce8a58",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T3_C03_W15/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "e20e192c61a9f98a36ba133f6c7d4db7303b28107c4b2780c37cf55d01a48756",
+      "event_count": 1999,
+      "state_shape": [
+        12,
+        20001
+      ],
+      "time_shape": [
+        20001
+      ],
+      "requested_generalized_shape": [
+        4,
+        20000
+      ],
+      "event_indices_zero_based_sha256": "9e419ea70588b365dab819999e08b56a0063255751215c8c111a326d5bf07240",
+      "X_array_sha256": "1b109256fac28cc393bcd0dfe39c5a986e48bdd350ee7173860fbba5c7066d97",
+      "unclipped_R_cmd_sha256": "c56e2c90230e37d154971a3c717f11d97f661d5b4e3b9b9c9117992343d12632",
+      "clipped_R_cmd_float32_sha256": "963c41b7688ce634189b6907dcddcd8ae6efda15541630bbc7a8cdcae9ee8ee3",
+      "historical_teacher_comparison_field": "log/rbf_output_raw sampled at attitude_event_flag; not used to construct target",
+      "legacy_next_event_alignment_max_abs_error_first1998": 3.552713678800501E-15,
+      "additional_final_interval": "19990->20000 included"
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C05_W02",
+      "training_split": "TRAIN_C5_24",
+      "source_split": "TRAIN_C5_24",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T3_C05_W02/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "6c7d83ee79e1549a6ef603739a8922ce73f4b1695237cd9eec94567a8126eb23",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T3_C05_W02/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "6c358f8fd6625e46351ef816846972fce98d0bdf56f0eda508a8a28672c65d77",
+      "event_count": 1999,
+      "state_shape": [
+        12,
+        20001
+      ],
+      "time_shape": [
+        20001
+      ],
+      "requested_generalized_shape": [
+        4,
+        20000
+      ],
+      "event_indices_zero_based_sha256": "9e419ea70588b365dab819999e08b56a0063255751215c8c111a326d5bf07240",
+      "X_array_sha256": "dc677497e016a75cf577b8ba240735b23461a0c051ad8d38657806949d77af04",
+      "unclipped_R_cmd_sha256": "ea3942d4d50922813e7eff39c34ae3d2739f5076872b2af9c262bb06031aac55",
+      "clipped_R_cmd_float32_sha256": "973da6d0e7a37cea55bd12e360557debd31f749a8196835d3d36391a2af23e73",
+      "historical_teacher_comparison_field": "log/rbf_output_raw sampled at attitude_event_flag; not used to construct target",
+      "legacy_next_event_alignment_max_abs_error_first1998": 1.4210854715202004E-14,
+      "additional_final_interval": "19990->20000 included"
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C06_W08",
+      "training_split": "TRAIN_C5_24",
+      "source_split": "TRAIN_C5_24",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T3_C06_W08/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "5acc8772586d329a0ccddfa2f3f4698b26a062612c998d67b201821b45121082",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T3_C06_W08/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "967b79fe5e4dd8ce803d6be8307616e0f25e7e7675db9f40878140201d55de27",
+      "event_count": 1999,
+      "state_shape": [
+        12,
+        20001
+      ],
+      "time_shape": [
+        20001
+      ],
+      "requested_generalized_shape": [
+        4,
+        20000
+      ],
+      "event_indices_zero_based_sha256": "9e419ea70588b365dab819999e08b56a0063255751215c8c111a326d5bf07240",
+      "X_array_sha256": "facac79a720955699583e775c6cd114696bbfe50bd4a776b75e592846ebb4194",
+      "unclipped_R_cmd_sha256": "d67d20f585272f55b3d9f7b07e8ec02d0da37b9c8ed716598fc709a2f76f17f1",
+      "clipped_R_cmd_float32_sha256": "63fcc63e3e50e4a84f582467f047ad889a0e10f599e941c0e1daf5a2e3362518",
+      "historical_teacher_comparison_field": "log/rbf_output_raw sampled at attitude_event_flag; not used to construct target",
+      "legacy_next_event_alignment_max_abs_error_first1998": 1.0658141036401503E-14,
+      "additional_final_interval": "19990->20000 included"
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C09_W09",
+      "training_split": "TRAIN_C5_24",
+      "source_split": "TRAIN_C5_24",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T3_C09_W09/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "fa11a41b18ce9d4c3b7558d3bbb0d230aaef3e7071fc15419df0c6d1fca2f3a4",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T3_C09_W09/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "a64b2e63e26836d78d2e207ff16bd9cce012b95d988f722a5b631f2f79434d10",
+      "event_count": 1999,
+      "state_shape": [
+        12,
+        20001
+      ],
+      "time_shape": [
+        20001
+      ],
+      "requested_generalized_shape": [
+        4,
+        20000
+      ],
+      "event_indices_zero_based_sha256": "9e419ea70588b365dab819999e08b56a0063255751215c8c111a326d5bf07240",
+      "X_array_sha256": "c5d6f38000c8d9fb5a8fff8908d168482fec96dbd757d847117d2d245d6e6e2b",
+      "unclipped_R_cmd_sha256": "69eb2e4f29903a3f6762a2f53d6111128da56d9ff58d393431d7aa77ffa8ea13",
+      "clipped_R_cmd_float32_sha256": "2087dd63aaf47177834c146ba97141e8caba17e79a8e4225a7f3ee02fd1c3ead",
+      "historical_teacher_comparison_field": "log/rbf_output_raw sampled at attitude_event_flag; not used to construct target",
+      "legacy_next_event_alignment_max_abs_error_first1998": 7.105427357601002E-15,
+      "additional_final_interval": "19990->20000 included"
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C10_W11",
+      "training_split": "TRAIN_C5_24",
+      "source_split": "TRAIN_C5_24",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T3_C10_W11/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "493d55f39a7f72da25a27ef44b21c30840c587bd49714a4988edd3383328d56e",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T3_C10_W11/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "9f94050ebfa7c95e2d03a0c8cc23717d99b93ac91d1525828c58b53cf7abb751",
+      "event_count": 1999,
+      "state_shape": [
+        12,
+        20001
+      ],
+      "time_shape": [
+        20001
+      ],
+      "requested_generalized_shape": [
+        4,
+        20000
+      ],
+      "event_indices_zero_based_sha256": "9e419ea70588b365dab819999e08b56a0063255751215c8c111a326d5bf07240",
+      "X_array_sha256": "623f5e80d2706afa8f4509e1fc49815dadffe0eb3d6dd2b861c24cada42afd5f",
+      "unclipped_R_cmd_sha256": "3889e67c944038f0ea26cd4044ac85df0f79d62ea1abc380fbe2fc44650e7f65",
+      "clipped_R_cmd_float32_sha256": "96677401cf5a3c498a062724601eb5abe71f229f9c5cc9bbc4c475d036bc3325",
+      "historical_teacher_comparison_field": "log/rbf_output_raw sampled at attitude_event_flag; not used to construct target",
+      "legacy_next_event_alignment_max_abs_error_first1998": 1.4210854715202004E-14,
+      "additional_final_interval": "19990->20000 included"
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C13_W12",
+      "training_split": "TRAIN_C5_24",
+      "source_split": "TRAIN_C5_24",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T3_C13_W12/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "b6eb8d2a5ee9b0dd91e4b073a1f97e79c6e75cde589714810511a1d450812035",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T3_C13_W12/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "18b5fa595129f1357661e5fe35d72e5e34ffaa35b78b89b476446967523c36dd",
+      "event_count": 1999,
+      "state_shape": [
+        12,
+        20001
+      ],
+      "time_shape": [
+        20001
+      ],
+      "requested_generalized_shape": [
+        4,
+        20000
+      ],
+      "event_indices_zero_based_sha256": "9e419ea70588b365dab819999e08b56a0063255751215c8c111a326d5bf07240",
+      "X_array_sha256": "4e920867dec7c52aaf66166d07aa462d1bf271d864335dbda91f25d97ee90f8c",
+      "unclipped_R_cmd_sha256": "6a539326b463780f8b213c19e955f0f201cd0f31d669e8caadc67d6b47be7f67",
+      "clipped_R_cmd_float32_sha256": "2224bc2950a2a67838887ee318d30fd1976c59900fecdd010b313f1b9b8f63f8",
+      "historical_teacher_comparison_field": "log/rbf_output_raw sampled at attitude_event_flag; not used to construct target",
+      "legacy_next_event_alignment_max_abs_error_first1998": 7.105427357601002E-15,
+      "additional_final_interval": "19990->20000 included"
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C15_W14",
+      "training_split": "TRAIN_C5_24",
+      "source_split": "TRAIN_C5_24",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T3_C15_W14/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "2df0e35d32bff888c3225638d468b2e796d8942387002a48cf53b4242d3c6a27",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T3_C15_W14/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "4255c066e862ba24fac7cae82b52244b79d72a25714dc9618f5d2a864763479c",
+      "event_count": 1999,
+      "state_shape": [
+        12,
+        20001
+      ],
+      "time_shape": [
+        20001
+      ],
+      "requested_generalized_shape": [
+        4,
+        20000
+      ],
+      "event_indices_zero_based_sha256": "9e419ea70588b365dab819999e08b56a0063255751215c8c111a326d5bf07240",
+      "X_array_sha256": "ff7e0a1ccdb4fbb8bda2a55bdc4f1f28af7f92e34cbbcda0ecaca53815cb8cbe",
+      "unclipped_R_cmd_sha256": "994ffa354759c8020af8d72d280aeddfaa4b372f49aaa145b251ae0f5201dbf7",
+      "clipped_R_cmd_float32_sha256": "30b3dc8927a0ff9e6fa18238d275fd5b629e646a822ee5061f73c5c6a382db10",
+      "historical_teacher_comparison_field": "log/rbf_output_raw sampled at attitude_event_flag; not used to construct target",
+      "legacy_next_event_alignment_max_abs_error_first1998": 1.4210854715202004E-14,
+      "additional_final_interval": "19990->20000 included"
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C00_W07",
+      "training_split": "C5_VAL48_AS_DEV_TRAIN",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_20261023/runs_c5_v1/DL1018_VAL_T1_C00_W07/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "27f3d6f19f20edeb3e45c77be25daf4746e41c800fbe6126b12c07fdc52caaa5",
+      "status_path": "experiments/position_axis_coordinate_c5_20261023/runs_c5_v1/DL1018_VAL_T1_C00_W07/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "407c2371ab808530d0e23620848f20a6e5b6318c181998089bbffa715cdb1d49",
+      "event_count": 1999,
+      "state_shape": [
+        12,
+        20001
+      ],
+      "time_shape": [
+        20001
+      ],
+      "requested_generalized_shape": [
+        4,
+        20000
+      ],
+      "event_indices_zero_based_sha256": "9e419ea70588b365dab819999e08b56a0063255751215c8c111a326d5bf07240",
+      "X_array_sha256": "2d91885e96b33e64a36d13cd4f8cdb5493eddc0d27a93e072346744d4b671ef5",
+      "unclipped_R_cmd_sha256": "61484f45111ef0f1bc0d8212933988fa1ed3bbef9e9f56303c431aff46bfdf65",
+      "clipped_R_cmd_float32_sha256": "561cf6017443eccba2c7d6b890005a5eba7fe16b890416dcdef0f1c35d297bdf",
+      "historical_teacher_comparison_field": "log/rbf_output_raw sampled at attitude_event_flag; not used to construct target",
+      "legacy_next_event_alignment_max_abs_error_first1998": 3.552713678800501E-15,
+      "additional_final_interval": "19990->20000 included"
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C01_W08",
+      "training_split": "C5_VAL48_AS_DEV_TRAIN",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T1_C01_W08/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "9a94b2e6e93690d04bfea5f1cac8bbdfd107f779057721671b5fa7bc2c600266",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T1_C01_W08/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "cb569ed35e106402ecfda78f4c9325b457a343d9c78daaff6151d6da8a117de0",
+      "event_count": 1999,
+      "state_shape": [
+        12,
+        20001
+      ],
+      "time_shape": [
+        20001
+      ],
+      "requested_generalized_shape": [
+        4,
+        20000
+      ],
+      "event_indices_zero_based_sha256": "9e419ea70588b365dab819999e08b56a0063255751215c8c111a326d5bf07240",
+      "X_array_sha256": "6ac8d4e73aaa78f22468a0c0f60e92f5c0ae835241c465682b60870709ee3e2e",
+      "unclipped_R_cmd_sha256": "80c5c0fb27f1e9eff66c46cbf597b43e16f24b95f2ab93e9a4ad341adcb42ace",
+      "clipped_R_cmd_float32_sha256": "16afc5c0fa47b83c168582b15cda7c5157c157cfe17a255579aabe237954bdb9",
+      "historical_teacher_comparison_field": "log/rbf_output_raw sampled at attitude_event_flag; not used to construct target",
+      "legacy_next_event_alignment_max_abs_error_first1998": 1.4210854715202004E-14,
+      "additional_final_interval": "19990->20000 included"
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C02_W09",
+      "training_split": "C5_VAL48_AS_DEV_TRAIN",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_20261023/runs_c5_v1/DL1018_VAL_T1_C02_W09/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "a7f3dbe60e9e544e0c55dd5b1ee0afb9b530e37223ce37b84632764c418af8fd",
+      "status_path": "experiments/position_axis_coordinate_c5_20261023/runs_c5_v1/DL1018_VAL_T1_C02_W09/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "cb2545820928c7509672c638abfa5024487dbc6a80fb2996a2b46a3efc0c3686",
+      "event_count": 1999,
+      "state_shape": [
+        12,
+        20001
+      ],
+      "time_shape": [
+        20001
+      ],
+      "requested_generalized_shape": [
+        4,
+        20000
+      ],
+      "event_indices_zero_based_sha256": "9e419ea70588b365dab819999e08b56a0063255751215c8c111a326d5bf07240",
+      "X_array_sha256": "5d1f642cd6638c69d7617d430412adc4430758c7d3c565c8c941e171c2133dbd",
+      "unclipped_R_cmd_sha256": "307ab7e5500d3f05d7d559872832077b463bb0f2f3ed39d9116d0e46fdf23a0d",
+      "clipped_R_cmd_float32_sha256": "8f6dc5e0e8275c1498be58a94d7623ddc04b26909ca3eb84dcc3f7c05a928600",
+      "historical_teacher_comparison_field": "log/rbf_output_raw sampled at attitude_event_flag; not used to construct target",
+      "legacy_next_event_alignment_max_abs_error_first1998": 7.105427357601002E-15,
+      "additional_final_interval": "19990->20000 included"
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C03_W10",
+      "training_split": "C5_VAL48_AS_DEV_TRAIN",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T1_C03_W10/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "747a57d4103f697dfde58237b160f6cb62a018c13ae6cb232946300811337cc7",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T1_C03_W10/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "2911544172e8c8211778522310814a6721540fb881560471949a66622a1a5647",
+      "event_count": 1999,
+      "state_shape": [
+        12,
+        20001
+      ],
+      "time_shape": [
+        20001
+      ],
+      "requested_generalized_shape": [
+        4,
+        20000
+      ],
+      "event_indices_zero_based_sha256": "9e419ea70588b365dab819999e08b56a0063255751215c8c111a326d5bf07240",
+      "X_array_sha256": "9fad801204ee376c71aca79aa3e77ec32d026f3a328db329e9a7065c1af72238",
+      "unclipped_R_cmd_sha256": "8fde883a1b4aeb30f3d11d155e8f846862ec5c36b2fc64d6a91ec17a314a51a6",
+      "clipped_R_cmd_float32_sha256": "feebf3ac0d347a5badd50131c68825255d7d535e45f86ed594dc2e813caca72c",
+      "historical_teacher_comparison_field": "log/rbf_output_raw sampled at attitude_event_flag; not used to construct target",
+      "legacy_next_event_alignment_max_abs_error_first1998": 7.105427357601002E-15,
+      "additional_final_interval": "19990->20000 included"
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C04_W11",
+      "training_split": "C5_VAL48_AS_DEV_TRAIN",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T1_C04_W11/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "bda0123bfe6214e4a39cf27945a3c7f247ac4be796d872dfe523da9a7ec5da9f",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T1_C04_W11/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "7a9a968a37d100b30cd184c5fdd43da34aeff2068c6098b891896fd9ba91b637",
+      "event_count": 1999,
+      "state_shape": [
+        12,
+        20001
+      ],
+      "time_shape": [
+        20001
+      ],
+      "requested_generalized_shape": [
+        4,
+        20000
+      ],
+      "event_indices_zero_based_sha256": "9e419ea70588b365dab819999e08b56a0063255751215c8c111a326d5bf07240",
+      "X_array_sha256": "e0c3b4d76cc87a6c2b266e31ffe354e772ed1fbe8fb26817261114d9eb5e6c09",
+      "unclipped_R_cmd_sha256": "b5f55bf186e03892f0871e4a2a36232346c3ac6e075fc547077a56cf1dc8bffc",
+      "clipped_R_cmd_float32_sha256": "714c9d5ab472f0e88a152f83b972b28be9d0731a6d2e353a214cdfdae7a3be57",
+      "historical_teacher_comparison_field": "log/rbf_output_raw sampled at attitude_event_flag; not used to construct target",
+      "legacy_next_event_alignment_max_abs_error_first1998": 7.105427357601002E-15,
+      "additional_final_interval": "19990->20000 included"
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C05_W12",
+      "training_split": "C5_VAL48_AS_DEV_TRAIN",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_20261023/runs_c5_v1/DL1018_VAL_T1_C05_W12/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "4b14d0a1c390c3275334f76f15b0b358c02e701b58982b404bf4ec8a4f12495d",
+      "status_path": "experiments/position_axis_coordinate_c5_20261023/runs_c5_v1/DL1018_VAL_T1_C05_W12/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "c28a8da41e0c18ab4d353db08046ecb19e33f3cb7718fd644a5d3036e17c318a",
+      "event_count": 1999,
+      "state_shape": [
+        12,
+        20001
+      ],
+      "time_shape": [
+        20001
+      ],
+      "requested_generalized_shape": [
+        4,
+        20000
+      ],
+      "event_indices_zero_based_sha256": "9e419ea70588b365dab819999e08b56a0063255751215c8c111a326d5bf07240",
+      "X_array_sha256": "37b12234e27542d0ab262b85dede9c22221c5cb29cf736e3db587a84a5a68d36",
+      "unclipped_R_cmd_sha256": "68321544f6638f4af50107f8fa1ee50e1b9cd2ef47bd2ecb737ee01798495b1a",
+      "clipped_R_cmd_float32_sha256": "2c894f0b61b7e61d4571d65c7ad82bba455a80b2733c31a4ccc055a716f61076",
+      "historical_teacher_comparison_field": "log/rbf_output_raw sampled at attitude_event_flag; not used to construct target",
+      "legacy_next_event_alignment_max_abs_error_first1998": 1.4210854715202004E-14,
+      "additional_final_interval": "19990->20000 included"
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C06_W13",
+      "training_split": "C5_VAL48_AS_DEV_TRAIN",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T1_C06_W13/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "de018bccce860bc2ab7a2f60c2e327449de54397e357c7d609d1a693d60ad43f",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T1_C06_W13/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "dd03c05db2963734e81df51077208b052dac7e7a14fc9c9cb80c126d6950e39c",
+      "event_count": 1999,
+      "state_shape": [
+        12,
+        20001
+      ],
+      "time_shape": [
+        20001
+      ],
+      "requested_generalized_shape": [
+        4,
+        20000
+      ],
+      "event_indices_zero_based_sha256": "9e419ea70588b365dab819999e08b56a0063255751215c8c111a326d5bf07240",
+      "X_array_sha256": "bb8b243a74507f9deb3b4b2c08315afe1eb3b2fa81fa3c78f5ce56ff362120f7",
+      "unclipped_R_cmd_sha256": "34bdfaa1996e5a4abc0b2978ee475d5c84b1b5c41211d7bcc3e22a1597c183a4",
+      "clipped_R_cmd_float32_sha256": "f120194e91d3b53f9a33ff497fd94eb012150a42aae7053f9f80b9e89160ee56",
+      "historical_teacher_comparison_field": "log/rbf_output_raw sampled at attitude_event_flag; not used to construct target",
+      "legacy_next_event_alignment_max_abs_error_first1998": 1.0658141036401503E-14,
+      "additional_final_interval": "19990->20000 included"
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C07_W14",
+      "training_split": "C5_VAL48_AS_DEV_TRAIN",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T1_C07_W14/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "df07c18cd061aa78e8e1152b73bccc2ae11026a5d54630065c877a5e4ec42dd1",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T1_C07_W14/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "db8c0c9b570048922f063cacb97a7126f147f767ddab6c93b079220083ae96d6",
+      "event_count": 1999,
+      "state_shape": [
+        12,
+        20001
+      ],
+      "time_shape": [
+        20001
+      ],
+      "requested_generalized_shape": [
+        4,
+        20000
+      ],
+      "event_indices_zero_based_sha256": "9e419ea70588b365dab819999e08b56a0063255751215c8c111a326d5bf07240",
+      "X_array_sha256": "3067a162cbd315ebefaf846a6451207cc9a896370c5ae889ade4f16dca4ce8c5",
+      "unclipped_R_cmd_sha256": "0953296525f49282b036addf7d262e8e024b5dd23c2365d39dc73de072e00da7",
+      "clipped_R_cmd_float32_sha256": "7e20c8ba1a74fc193b6309d42b36d5b5e04283fe258909e75d68925a3b741da0",
+      "historical_teacher_comparison_field": "log/rbf_output_raw sampled at attitude_event_flag; not used to construct target",
+      "legacy_next_event_alignment_max_abs_error_first1998": 2.1316282072803006E-14,
+      "additional_final_interval": "19990->20000 included"
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C08_W15",
+      "training_split": "C5_VAL48_AS_DEV_TRAIN",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_20261023/runs_c5_v1/DL1018_VAL_T1_C08_W15/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "c118dd1bd5567e0e7c58b7f5334109187b2cfe743977a6a18a3976d7d0ab23c3",
+      "status_path": "experiments/position_axis_coordinate_c5_20261023/runs_c5_v1/DL1018_VAL_T1_C08_W15/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "428128e922036a215e6b7b30c9de35a28d34f030343deb49ec1b7885d27b4568",
+      "event_count": 1999,
+      "state_shape": [
+        12,
+        20001
+      ],
+      "time_shape": [
+        20001
+      ],
+      "requested_generalized_shape": [
+        4,
+        20000
+      ],
+      "event_indices_zero_based_sha256": "9e419ea70588b365dab819999e08b56a0063255751215c8c111a326d5bf07240",
+      "X_array_sha256": "ff2607a0d6fff2376e3d2c281dd604ff42062f4d7bbf01968a71278ed89ec0a0",
+      "unclipped_R_cmd_sha256": "57842c000e952ad74dc962736edcc4c69df9f015389151fb760747b17f15bf2b",
+      "clipped_R_cmd_float32_sha256": "427d159555eb1f2499b918ee03a9873447f5f54344f9f8397414f5c9da203dfe",
+      "historical_teacher_comparison_field": "log/rbf_output_raw sampled at attitude_event_flag; not used to construct target",
+      "legacy_next_event_alignment_max_abs_error_first1998": 1.4210854715202004E-14,
+      "additional_final_interval": "19990->20000 included"
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C09_W00",
+      "training_split": "C5_VAL48_AS_DEV_TRAIN",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T1_C09_W00/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "f4bd4680c782671bc12af42c005c5676a12fd5089e69c8ffcb2070ed8447ce14",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T1_C09_W00/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "8c51a5a200f61e46f4cee39826c017213514a8633d1e465743bf078f2f75ec37",
+      "event_count": 1999,
+      "state_shape": [
+        12,
+        20001
+      ],
+      "time_shape": [
+        20001
+      ],
+      "requested_generalized_shape": [
+        4,
+        20000
+      ],
+      "event_indices_zero_based_sha256": "9e419ea70588b365dab819999e08b56a0063255751215c8c111a326d5bf07240",
+      "X_array_sha256": "5d5cd9418709a1aecdd207a7c20bb24c29112a27f18f430c312f5e25ab204348",
+      "unclipped_R_cmd_sha256": "9ca6d849916d0f401e5366dc10c77b408662e8d3dd5e32685604090b83ef5cf9",
+      "clipped_R_cmd_float32_sha256": "98a094d02ffb23d5d0cd8abfbb72863c93aa8068eaa8bfd041b0d0a3e17d9f2e",
+      "historical_teacher_comparison_field": "log/rbf_output_raw sampled at attitude_event_flag; not used to construct target",
+      "legacy_next_event_alignment_max_abs_error_first1998": 3.552713678800501E-15,
+      "additional_final_interval": "19990->20000 included"
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C10_W01",
+      "training_split": "C5_VAL48_AS_DEV_TRAIN",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T1_C10_W01/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "6a5276fe9a6bac6e34d87b4a32d5c9defbc4653a708477bb03a85bdebfa9db48",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T1_C10_W01/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "d8aece3c99632c2121b3e8e85208b4b2d4b6cb5cf74d1b753254a28f4fe49806",
+      "event_count": 1999,
+      "state_shape": [
+        12,
+        20001
+      ],
+      "time_shape": [
+        20001
+      ],
+      "requested_generalized_shape": [
+        4,
+        20000
+      ],
+      "event_indices_zero_based_sha256": "9e419ea70588b365dab819999e08b56a0063255751215c8c111a326d5bf07240",
+      "X_array_sha256": "d71c27c6a3263e2e3843780b9976f91e3a99ff68c8113001dcd9fcbf77a8b913",
+      "unclipped_R_cmd_sha256": "24a15efcee7e71c4c1f2fd9e91ecaa414284b2d1a83769a70eb2bc1e0359781f",
+      "clipped_R_cmd_float32_sha256": "15409e0e739edcdfb00eb334f21d84ca77cb6c2d8c4b920d96358ca6b89362c3",
+      "historical_teacher_comparison_field": "log/rbf_output_raw sampled at attitude_event_flag; not used to construct target",
+      "legacy_next_event_alignment_max_abs_error_first1998": 1.4210854715202004E-14,
+      "additional_final_interval": "19990->20000 included"
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C11_W02",
+      "training_split": "C5_VAL48_AS_DEV_TRAIN",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T1_C11_W02/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "1a3519270fa87d15b1a745859ca9a8606351dfeb7dbb50cfc72d5f07087d8df9",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T1_C11_W02/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "c8215990799834b1c60e7cfc9495db58717aba8a04a17a038e5f8d7fe5d89252",
+      "event_count": 1999,
+      "state_shape": [
+        12,
+        20001
+      ],
+      "time_shape": [
+        20001
+      ],
+      "requested_generalized_shape": [
+        4,
+        20000
+      ],
+      "event_indices_zero_based_sha256": "9e419ea70588b365dab819999e08b56a0063255751215c8c111a326d5bf07240",
+      "X_array_sha256": "1a3a7be978681c16145cddf7e7851ce49561ab507d69e5889dbae6ba3b83abc2",
+      "unclipped_R_cmd_sha256": "4dfd61f3e5f2383d1ee16c3810d2c18964790a5171995f08fe40f326fdb201cd",
+      "clipped_R_cmd_float32_sha256": "ffb2f9e328ed065bd775c9b480eac528b9bc00aeabfd790a6b9b9d1c72a2b166",
+      "historical_teacher_comparison_field": "log/rbf_output_raw sampled at attitude_event_flag; not used to construct target",
+      "legacy_next_event_alignment_max_abs_error_first1998": 7.105427357601002E-15,
+      "additional_final_interval": "19990->20000 included"
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C12_W03",
+      "training_split": "C5_VAL48_AS_DEV_TRAIN",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T1_C12_W03/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "b5cbe243985c96f651d10cee9aee301ce638bd42ef3f8dc045d531b2999f51a9",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T1_C12_W03/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "27e434bf5d98a11967d3f692a0b985ea86c2a9a24cef961b099aa61f3c23d3a6",
+      "event_count": 1999,
+      "state_shape": [
+        12,
+        20001
+      ],
+      "time_shape": [
+        20001
+      ],
+      "requested_generalized_shape": [
+        4,
+        20000
+      ],
+      "event_indices_zero_based_sha256": "9e419ea70588b365dab819999e08b56a0063255751215c8c111a326d5bf07240",
+      "X_array_sha256": "1076253596500958a99c90bffe5646d6d5630f202e9e17e6e62927c11be4f9fb",
+      "unclipped_R_cmd_sha256": "444515f11b049057f13890d70457a539168a35f23691b9c5b32b39eedcfd75ea",
+      "clipped_R_cmd_float32_sha256": "e7990da7aed95c1b8de37fef3052e7b015173caf4d5a959201f110e0da081ffb",
+      "historical_teacher_comparison_field": "log/rbf_output_raw sampled at attitude_event_flag; not used to construct target",
+      "legacy_next_event_alignment_max_abs_error_first1998": 1.0658141036401503E-14,
+      "additional_final_interval": "19990->20000 included"
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C13_W04",
+      "training_split": "C5_VAL48_AS_DEV_TRAIN",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T1_C13_W04/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "71a8d1668b4af4983bc59877ee4c27af2edd59f791f7ad8048027c30d8da8894",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T1_C13_W04/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "63a03e9b8b4edcc25b3eff2a737d718f016fcae03722187e7c18405ced3450aa",
+      "event_count": 1999,
+      "state_shape": [
+        12,
+        20001
+      ],
+      "time_shape": [
+        20001
+      ],
+      "requested_generalized_shape": [
+        4,
+        20000
+      ],
+      "event_indices_zero_based_sha256": "9e419ea70588b365dab819999e08b56a0063255751215c8c111a326d5bf07240",
+      "X_array_sha256": "ea364145951dd1d5b0417d60cc6a011f0fe925afb6e3bbdc3ce716ccfc19a537",
+      "unclipped_R_cmd_sha256": "f00aa2e366a3de85eb52496cbb3fdc99f3c7e33e65cc67a810830e29b968c789",
+      "clipped_R_cmd_float32_sha256": "58b64c952e8bc964a981dd4ecdee51d596f100928cef536475b5d4fd8447ca64",
+      "historical_teacher_comparison_field": "log/rbf_output_raw sampled at attitude_event_flag; not used to construct target",
+      "legacy_next_event_alignment_max_abs_error_first1998": 1.0658141036401503E-14,
+      "additional_final_interval": "19990->20000 included"
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C14_W05",
+      "training_split": "C5_VAL48_AS_DEV_TRAIN",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T1_C14_W05/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "711be305adef806852a3ed1ba9953db3ece82315f11145290e1a200697c8fe76",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T1_C14_W05/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "ded19a3eb81dbd86fe4c8f73e7551740b810817085b4f96842d7603dfd81b491",
+      "event_count": 1999,
+      "state_shape": [
+        12,
+        20001
+      ],
+      "time_shape": [
+        20001
+      ],
+      "requested_generalized_shape": [
+        4,
+        20000
+      ],
+      "event_indices_zero_based_sha256": "9e419ea70588b365dab819999e08b56a0063255751215c8c111a326d5bf07240",
+      "X_array_sha256": "788500be9e26f7d67f16ce3f98d6e6de13a42de582d7c27759798af274db250e",
+      "unclipped_R_cmd_sha256": "4fb87e2a581efed953b50db467efcdb173ebdf0087071b6dd1265549f35b2197",
+      "clipped_R_cmd_float32_sha256": "d112f12400ef2a11fe7e92e4fb510d0dbf18aa1a93916e1860e1f97e3042ac39",
+      "historical_teacher_comparison_field": "log/rbf_output_raw sampled at attitude_event_flag; not used to construct target",
+      "legacy_next_event_alignment_max_abs_error_first1998": 1.0658141036401503E-14,
+      "additional_final_interval": "19990->20000 included"
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C15_W06",
+      "training_split": "C5_VAL48_AS_DEV_TRAIN",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T1_C15_W06/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "0576a03a8aeee7cf7508bc47f7d65cbe13b8d9925679fe38067ed7f757d6fcc7",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T1_C15_W06/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "3abd88d69d14e67c7448258e6a6e5d156e38755c885793b97645c5c0aa3c6e6d",
+      "event_count": 1999,
+      "state_shape": [
+        12,
+        20001
+      ],
+      "time_shape": [
+        20001
+      ],
+      "requested_generalized_shape": [
+        4,
+        20000
+      ],
+      "event_indices_zero_based_sha256": "9e419ea70588b365dab819999e08b56a0063255751215c8c111a326d5bf07240",
+      "X_array_sha256": "af570895610ab3de888ed2d88a60c294aab014df7b35c82418b7451b24b4cde9",
+      "unclipped_R_cmd_sha256": "024908d6072d34568f22f82b3d37a01503f474e16d78d8cbed64de3818aa4145",
+      "clipped_R_cmd_float32_sha256": "6553953bbd45750231048441a4d95888a763b3a7a463b4b9285d752e87987592",
+      "historical_teacher_comparison_field": "log/rbf_output_raw sampled at attitude_event_flag; not used to construct target",
+      "legacy_next_event_alignment_max_abs_error_first1998": 7.105427357601002E-15,
+      "additional_final_interval": "19990->20000 included"
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C00_W10",
+      "training_split": "C5_VAL48_AS_DEV_TRAIN",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_20261023/runs_c5_v1/DL1018_VAL_T2_C00_W10/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "9115113229c8fe3add21e1337216ceded2f829e06f4eb1d5a4930eb2e87020c4",
+      "status_path": "experiments/position_axis_coordinate_c5_20261023/runs_c5_v1/DL1018_VAL_T2_C00_W10/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "b70002e2f90de2f93f698a85a5f04eba75cbcf0d32067f4c361a1299670c827f",
+      "event_count": 1999,
+      "state_shape": [
+        12,
+        20001
+      ],
+      "time_shape": [
+        20001
+      ],
+      "requested_generalized_shape": [
+        4,
+        20000
+      ],
+      "event_indices_zero_based_sha256": "9e419ea70588b365dab819999e08b56a0063255751215c8c111a326d5bf07240",
+      "X_array_sha256": "b9d14323f788b7d0f9d1d1ef041502399895857dbc73bcdc4b71c0e443457390",
+      "unclipped_R_cmd_sha256": "4a2ad5b36c1fac3b96338589e9f393a762339b327b3fa1717e3c2a8636acd98c",
+      "clipped_R_cmd_float32_sha256": "ba06685896c4bdb094fe31f7e4b6ead0ad8ce913367e2c8e6d1ca49676105dc6",
+      "historical_teacher_comparison_field": "log/rbf_output_raw sampled at attitude_event_flag; not used to construct target",
+      "legacy_next_event_alignment_max_abs_error_first1998": 7.105427357601002E-15,
+      "additional_final_interval": "19990->20000 included"
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C01_W11",
+      "training_split": "C5_VAL48_AS_DEV_TRAIN",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T2_C01_W11/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "7312795142c94b909180f1791d9251190b999d9c75bc2c16c0845f35af9ec378",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T2_C01_W11/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "3ecd0625df8e738f116e0ab12d28c48ce5f4d95666519faeb74a519e04411d98",
+      "event_count": 1999,
+      "state_shape": [
+        12,
+        20001
+      ],
+      "time_shape": [
+        20001
+      ],
+      "requested_generalized_shape": [
+        4,
+        20000
+      ],
+      "event_indices_zero_based_sha256": "9e419ea70588b365dab819999e08b56a0063255751215c8c111a326d5bf07240",
+      "X_array_sha256": "61673ab8d530e9bb80919e9f0f0b4a0d2d877c5d77d5c5b3df61dd94ab7bcea2",
+      "unclipped_R_cmd_sha256": "ee18e1efb5bd1d515c3431d23752b2813f87c373fbf77953217d9f7e88a517fe",
+      "clipped_R_cmd_float32_sha256": "9d2b1e36fc23fc7b430d1588a35491e995be9757673242c1d1e7f8b4c5a7f18f",
+      "historical_teacher_comparison_field": "log/rbf_output_raw sampled at attitude_event_flag; not used to construct target",
+      "legacy_next_event_alignment_max_abs_error_first1998": 1.4210854715202004E-14,
+      "additional_final_interval": "19990->20000 included"
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C02_W12",
+      "training_split": "C5_VAL48_AS_DEV_TRAIN",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_20261023/runs_c5_v1/DL1018_VAL_T2_C02_W12/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "a9b189771beb2c8212c08ae229cee5adf92d2bb80990dc2e3e15ac0ccb2e760c",
+      "status_path": "experiments/position_axis_coordinate_c5_20261023/runs_c5_v1/DL1018_VAL_T2_C02_W12/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "02911d64176a83a5132a479a547d96e39577ad84fdc18d9b1e4c1e44de7f1d6d",
+      "event_count": 1999,
+      "state_shape": [
+        12,
+        20001
+      ],
+      "time_shape": [
+        20001
+      ],
+      "requested_generalized_shape": [
+        4,
+        20000
+      ],
+      "event_indices_zero_based_sha256": "9e419ea70588b365dab819999e08b56a0063255751215c8c111a326d5bf07240",
+      "X_array_sha256": "47be07f117d0b34916ef41b377b6787d953a02856f3312fd527383edd3201a81",
+      "unclipped_R_cmd_sha256": "8fca3d35973bddeb1c618aa877aa3c16040bb0a12200cd38599fcfc5a42cd418",
+      "clipped_R_cmd_float32_sha256": "121f7e603134bf1aa65ea52c58f025f8143219bf1489f981ea90f4a981be66ad",
+      "historical_teacher_comparison_field": "log/rbf_output_raw sampled at attitude_event_flag; not used to construct target",
+      "legacy_next_event_alignment_max_abs_error_first1998": 7.105427357601002E-15,
+      "additional_final_interval": "19990->20000 included"
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C03_W13",
+      "training_split": "C5_VAL48_AS_DEV_TRAIN",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T2_C03_W13/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "78b8062650df377a7785fe1da324f941f791e85fa83988e682903d25fdb366af",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T2_C03_W13/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "17d047566038e597bec33475ca2e5f7fc7d93bbe833922a6fbdeb98a86428005",
+      "event_count": 1999,
+      "state_shape": [
+        12,
+        20001
+      ],
+      "time_shape": [
+        20001
+      ],
+      "requested_generalized_shape": [
+        4,
+        20000
+      ],
+      "event_indices_zero_based_sha256": "9e419ea70588b365dab819999e08b56a0063255751215c8c111a326d5bf07240",
+      "X_array_sha256": "1309294f0d6d17af6570459ebd86a9f9045c9173550fccf546a59ce7bdd92f74",
+      "unclipped_R_cmd_sha256": "1d9d19f423ccb8fe39fe007a4e657561e9b403e17231037f2ac3e346569b4871",
+      "clipped_R_cmd_float32_sha256": "21f8a231a6aac6ff6cbe3652631d4b44a0f0286166a8271fec0078630744bef9",
+      "historical_teacher_comparison_field": "log/rbf_output_raw sampled at attitude_event_flag; not used to construct target",
+      "legacy_next_event_alignment_max_abs_error_first1998": 1.0658141036401503E-14,
+      "additional_final_interval": "19990->20000 included"
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C04_W14",
+      "training_split": "C5_VAL48_AS_DEV_TRAIN",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T2_C04_W14/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "b3cbe42c3835600cef5b4a5adbafe619cb83c56da94f37fe87669e027e91c6bf",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T2_C04_W14/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "30925b48bfa7925e1fddaf3f2056f8af27f8fdc67fd24135e5753c73e58bf092",
+      "event_count": 1999,
+      "state_shape": [
+        12,
+        20001
+      ],
+      "time_shape": [
+        20001
+      ],
+      "requested_generalized_shape": [
+        4,
+        20000
+      ],
+      "event_indices_zero_based_sha256": "9e419ea70588b365dab819999e08b56a0063255751215c8c111a326d5bf07240",
+      "X_array_sha256": "2d089832ae2d2c7f64d134cc4d5184a36b34b6a0446fc000efb2a5d3853f6cae",
+      "unclipped_R_cmd_sha256": "58f312a89d4114ff8a38f460f4a23c18896a146077f1fd9c3cf132ea1aef0217",
+      "clipped_R_cmd_float32_sha256": "759a5074ba8af477600d9834d842825452897b99097597193256f40caf80a40e",
+      "historical_teacher_comparison_field": "log/rbf_output_raw sampled at attitude_event_flag; not used to construct target",
+      "legacy_next_event_alignment_max_abs_error_first1998": 1.0658141036401503E-14,
+      "additional_final_interval": "19990->20000 included"
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C05_W15",
+      "training_split": "C5_VAL48_AS_DEV_TRAIN",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_20261023/runs_c5_v1/DL1018_VAL_T2_C05_W15/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "b291199298fb4c591478a9c3115323a4299e281b0be447c9fbca0ffe4f640314",
+      "status_path": "experiments/position_axis_coordinate_c5_20261023/runs_c5_v1/DL1018_VAL_T2_C05_W15/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "5a136ce721f4d4a112e398bcb5d4611737c53e79b895023dee6ebf473ea9fb45",
+      "event_count": 1999,
+      "state_shape": [
+        12,
+        20001
+      ],
+      "time_shape": [
+        20001
+      ],
+      "requested_generalized_shape": [
+        4,
+        20000
+      ],
+      "event_indices_zero_based_sha256": "9e419ea70588b365dab819999e08b56a0063255751215c8c111a326d5bf07240",
+      "X_array_sha256": "b1ad111b45487f2198411aa48efb1b5b8826309fcf47297d925fbe983fd2b1cf",
+      "unclipped_R_cmd_sha256": "b3124d95d782b9082a2ae823d13c5252f84d614a4d1d92ec070095b9442e28fc",
+      "clipped_R_cmd_float32_sha256": "2d2cab53f4cca7098bf889307760f5fb2ebcbb3e06be546f03631dc64454b81f",
+      "historical_teacher_comparison_field": "log/rbf_output_raw sampled at attitude_event_flag; not used to construct target",
+      "legacy_next_event_alignment_max_abs_error_first1998": 1.0658141036401503E-14,
+      "additional_final_interval": "19990->20000 included"
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C06_W00",
+      "training_split": "C5_VAL48_AS_DEV_TRAIN",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_20261023/runs_c5_v1/DL1018_VAL_T2_C06_W00/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "6e53de0aa938b4b19c35343b56eff7960a86187dceeb9871c296c4331b7a3b20",
+      "status_path": "experiments/position_axis_coordinate_c5_20261023/runs_c5_v1/DL1018_VAL_T2_C06_W00/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "40b633978b6edd6483c7883cdfc1cca1a5d59df8714cd8d8293bd0f01d2a9e3e",
+      "event_count": 1999,
+      "state_shape": [
+        12,
+        20001
+      ],
+      "time_shape": [
+        20001
+      ],
+      "requested_generalized_shape": [
+        4,
+        20000
+      ],
+      "event_indices_zero_based_sha256": "9e419ea70588b365dab819999e08b56a0063255751215c8c111a326d5bf07240",
+      "X_array_sha256": "90404ddb717be0b24ead6714b352e7e50fe2287765aaf7edd3979e98016bcbd0",
+      "unclipped_R_cmd_sha256": "a6025b242ebf58608299ab34b717426d05d9611221b8465c0c062d4f44d53b24",
+      "clipped_R_cmd_float32_sha256": "52adf9a52af063ed6842f60ad150e5a90981208a20940c25d327ee2fb05a545c",
+      "historical_teacher_comparison_field": "log/rbf_output_raw sampled at attitude_event_flag; not used to construct target",
+      "legacy_next_event_alignment_max_abs_error_first1998": 5.329070518200751E-15,
+      "additional_final_interval": "19990->20000 included"
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C07_W01",
+      "training_split": "C5_VAL48_AS_DEV_TRAIN",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T2_C07_W01/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "fe47d38d003ab95387ffede70f9fed513b1b3481747aac4d823b73f62ff5fb12",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T2_C07_W01/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "1398b96ad527e9d7ff7955b75b9fccf33955f988f68dac12b5624d75f575acae",
+      "event_count": 1999,
+      "state_shape": [
+        12,
+        20001
+      ],
+      "time_shape": [
+        20001
+      ],
+      "requested_generalized_shape": [
+        4,
+        20000
+      ],
+      "event_indices_zero_based_sha256": "9e419ea70588b365dab819999e08b56a0063255751215c8c111a326d5bf07240",
+      "X_array_sha256": "398c2567b04b3f3e24c09d27d2ded0ff54be005fc099e8ce15e1eba69058e34f",
+      "unclipped_R_cmd_sha256": "21df292e5e8357b7832bca5064e22f52611c590d878465019b80649365b83867",
+      "clipped_R_cmd_float32_sha256": "8742be6525b4fef500a5593905a715673061f84670871ea4e27dacc5d038eab8",
+      "historical_teacher_comparison_field": "log/rbf_output_raw sampled at attitude_event_flag; not used to construct target",
+      "legacy_next_event_alignment_max_abs_error_first1998": 1.4210854715202004E-14,
+      "additional_final_interval": "19990->20000 included"
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C08_W02",
+      "training_split": "C5_VAL48_AS_DEV_TRAIN",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T2_C08_W02/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "3a6be9965ff565af1f59900693046be080057ee6d909717df9947aaa0644d22f",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T2_C08_W02/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "6614db678b12d6efa7d89c7a401dfa68f9f44800d745a7c773f59f4401ccc166",
+      "event_count": 1999,
+      "state_shape": [
+        12,
+        20001
+      ],
+      "time_shape": [
+        20001
+      ],
+      "requested_generalized_shape": [
+        4,
+        20000
+      ],
+      "event_indices_zero_based_sha256": "9e419ea70588b365dab819999e08b56a0063255751215c8c111a326d5bf07240",
+      "X_array_sha256": "de1f56e28821ca2189ca9e57eccbdda6039c48e19e4bdf67a3b13e682d89f92d",
+      "unclipped_R_cmd_sha256": "2a1d239102d437df6dba4439fff194689ee579bd9e0350073174f96ab7f96fb8",
+      "clipped_R_cmd_float32_sha256": "7bd0a0b5a3ebbf0ed59fd685ac7f874692aca31592e1b3c0f92e736c266631eb",
+      "historical_teacher_comparison_field": "log/rbf_output_raw sampled at attitude_event_flag; not used to construct target",
+      "legacy_next_event_alignment_max_abs_error_first1998": 1.4210854715202004E-14,
+      "additional_final_interval": "19990->20000 included"
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C09_W03",
+      "training_split": "C5_VAL48_AS_DEV_TRAIN",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T2_C09_W03/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "5b31ab0bbe83039f5c246112c0ac739dc3b8eb68984f4373f80dc0d1fc00bc2c",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T2_C09_W03/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "ea5d1eda4f32db6fa7b801345aa20f4d24465dbacb5251a11cf9379853f62a31",
+      "event_count": 1999,
+      "state_shape": [
+        12,
+        20001
+      ],
+      "time_shape": [
+        20001
+      ],
+      "requested_generalized_shape": [
+        4,
+        20000
+      ],
+      "event_indices_zero_based_sha256": "9e419ea70588b365dab819999e08b56a0063255751215c8c111a326d5bf07240",
+      "X_array_sha256": "dc14155e746afe66d89f172d8b018f27fa2a7822841f7853856438766513785a",
+      "unclipped_R_cmd_sha256": "73480d989bc6d080f9edf082fb2e1d136279797c56b8bce93fbe5890d4c93c75",
+      "clipped_R_cmd_float32_sha256": "6b998cb4318f3ee963f66fb73a7f29dbe49432e10063331333fbdf769b19f80f",
+      "historical_teacher_comparison_field": "log/rbf_output_raw sampled at attitude_event_flag; not used to construct target",
+      "legacy_next_event_alignment_max_abs_error_first1998": 3.552713678800501E-15,
+      "additional_final_interval": "19990->20000 included"
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C10_W04",
+      "training_split": "C5_VAL48_AS_DEV_TRAIN",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T2_C10_W04/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "aca803e783c29ff5f6d4183bdc535f130c8a5d37daabfe77c6a225290f5aa1b5",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T2_C10_W04/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "abed3571afa16311db6ec2d5e23efa13bff6eff71f2622921568f0775b918e88",
+      "event_count": 1999,
+      "state_shape": [
+        12,
+        20001
+      ],
+      "time_shape": [
+        20001
+      ],
+      "requested_generalized_shape": [
+        4,
+        20000
+      ],
+      "event_indices_zero_based_sha256": "9e419ea70588b365dab819999e08b56a0063255751215c8c111a326d5bf07240",
+      "X_array_sha256": "9a30621f579d1e90325b2dff2c8663faab30e1cc640e5b2428ba0b56ec4b468d",
+      "unclipped_R_cmd_sha256": "3bdbf0a3a6c6cede14737a2bb606cd27f5e2a48d5abf85ffefbb46dc502e6a21",
+      "clipped_R_cmd_float32_sha256": "39c841a3f5072dd85350fdf3670da859581a744aac7932de4b14d33bf8e3aee4",
+      "historical_teacher_comparison_field": "log/rbf_output_raw sampled at attitude_event_flag; not used to construct target",
+      "legacy_next_event_alignment_max_abs_error_first1998": 1.0658141036401503E-14,
+      "additional_final_interval": "19990->20000 included"
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C11_W05",
+      "training_split": "C5_VAL48_AS_DEV_TRAIN",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T2_C11_W05/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "6d93f3dfb3eb4a07f6f450fe86735c793d2d6db7cd818789259e610b0de3126d",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T2_C11_W05/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "483fb78ef57db400198e4d11087c988bb8153ab1fbf901776dec8410570af40e",
+      "event_count": 1999,
+      "state_shape": [
+        12,
+        20001
+      ],
+      "time_shape": [
+        20001
+      ],
+      "requested_generalized_shape": [
+        4,
+        20000
+      ],
+      "event_indices_zero_based_sha256": "9e419ea70588b365dab819999e08b56a0063255751215c8c111a326d5bf07240",
+      "X_array_sha256": "24da0e227670d761edd9060a5b39f900055011534055c275ac41b04176613975",
+      "unclipped_R_cmd_sha256": "877c6161e7e4249011a15417a07a42fc99001e6c931ac904060dcc0095046201",
+      "clipped_R_cmd_float32_sha256": "9656724ad69efda69be1b873868ef63571ba5d2991449d0a2ad8e497d63f74f7",
+      "historical_teacher_comparison_field": "log/rbf_output_raw sampled at attitude_event_flag; not used to construct target",
+      "legacy_next_event_alignment_max_abs_error_first1998": 7.105427357601002E-15,
+      "additional_final_interval": "19990->20000 included"
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C12_W06",
+      "training_split": "C5_VAL48_AS_DEV_TRAIN",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T2_C12_W06/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "494f8a9c7c2e79a0cc43a1282870ca269d4dd3e3be5b8d26bfdc092217fb5457",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T2_C12_W06/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "20e1be6a159e04488b1b476583f889a7890e882a8fad1623162b54317ee21787",
+      "event_count": 1999,
+      "state_shape": [
+        12,
+        20001
+      ],
+      "time_shape": [
+        20001
+      ],
+      "requested_generalized_shape": [
+        4,
+        20000
+      ],
+      "event_indices_zero_based_sha256": "9e419ea70588b365dab819999e08b56a0063255751215c8c111a326d5bf07240",
+      "X_array_sha256": "25c384ac4bba02ee62839a583e3df0f42b0706a6ee4026d36d0eba9559e130b8",
+      "unclipped_R_cmd_sha256": "dcb63f7feee526f6702d81ebd0dc80b982f9bfec80326a20ba78dd1b7bb825d5",
+      "clipped_R_cmd_float32_sha256": "fd39d4a3d6a478e0404b776f5d0a946e821fe8d067b5bf47ead02273546594ee",
+      "historical_teacher_comparison_field": "log/rbf_output_raw sampled at attitude_event_flag; not used to construct target",
+      "legacy_next_event_alignment_max_abs_error_first1998": 7.105427357601002E-15,
+      "additional_final_interval": "19990->20000 included"
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C13_W07",
+      "training_split": "C5_VAL48_AS_DEV_TRAIN",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T2_C13_W07/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "4c1b8d3e155df1f3a5f38fb4f6579eff464f7f87d1834cfb0cfd055cf3ad70da",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T2_C13_W07/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "8d6c3c7999053cfaa6f13504fa5357d3b7184e364fa4faf4c7e855d91aff012d",
+      "event_count": 1999,
+      "state_shape": [
+        12,
+        20001
+      ],
+      "time_shape": [
+        20001
+      ],
+      "requested_generalized_shape": [
+        4,
+        20000
+      ],
+      "event_indices_zero_based_sha256": "9e419ea70588b365dab819999e08b56a0063255751215c8c111a326d5bf07240",
+      "X_array_sha256": "311702b1a68063d53c51693f5d4e2c8fcca5db729a371f91cb346746e2d95b19",
+      "unclipped_R_cmd_sha256": "e9654be3eab5f8930c069e1484c299cd9a5bcb5fa625e42a5a6288f86d7ef985",
+      "clipped_R_cmd_float32_sha256": "b35e22dc8f51776ac65c0ee7be8081c1ee51474da5e88820f322dd0a56178af6",
+      "historical_teacher_comparison_field": "log/rbf_output_raw sampled at attitude_event_flag; not used to construct target",
+      "legacy_next_event_alignment_max_abs_error_first1998": 7.105427357601002E-15,
+      "additional_final_interval": "19990->20000 included"
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C14_W08",
+      "training_split": "C5_VAL48_AS_DEV_TRAIN",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T2_C14_W08/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "447bafc202e6c53e7838c19b88e2eb3daa8512d2e9468131b0f73babf4279964",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T2_C14_W08/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "b48a777195ed6465b4a65ef4f8ab1726d9ce23632db85fe2194b1e657d7fb416",
+      "event_count": 1999,
+      "state_shape": [
+        12,
+        20001
+      ],
+      "time_shape": [
+        20001
+      ],
+      "requested_generalized_shape": [
+        4,
+        20000
+      ],
+      "event_indices_zero_based_sha256": "9e419ea70588b365dab819999e08b56a0063255751215c8c111a326d5bf07240",
+      "X_array_sha256": "ead7102eb1abf6b1e5944031a38877094f5d30f4ef3024c3a8d450d0fb15ae40",
+      "unclipped_R_cmd_sha256": "a2db33e0b536de5447933b0adaa289cbf06f6fefd6eeb116cb29871c81d8a982",
+      "clipped_R_cmd_float32_sha256": "ff7ac89ecca9c211d3f99c4598840414144e1941bc834609dea65bea58ff1656",
+      "historical_teacher_comparison_field": "log/rbf_output_raw sampled at attitude_event_flag; not used to construct target",
+      "legacy_next_event_alignment_max_abs_error_first1998": 1.4210854715202004E-14,
+      "additional_final_interval": "19990->20000 included"
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C15_W09",
+      "training_split": "C5_VAL48_AS_DEV_TRAIN",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T2_C15_W09/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "6af25d0ace1feb24deb1891364444ad40973204af8e20ebe400afc673d42d431",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T2_C15_W09/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "a503e1652fbb66d6dbcfeb9526160da46e8c763a8773139bcfa36ee62d998f2e",
+      "event_count": 1999,
+      "state_shape": [
+        12,
+        20001
+      ],
+      "time_shape": [
+        20001
+      ],
+      "requested_generalized_shape": [
+        4,
+        20000
+      ],
+      "event_indices_zero_based_sha256": "9e419ea70588b365dab819999e08b56a0063255751215c8c111a326d5bf07240",
+      "X_array_sha256": "ee3d217a8496525bb643c4bccd99970e1ed8bbfe9cfa5a1afc3e0e1f647aaf2e",
+      "unclipped_R_cmd_sha256": "3c2e667a93cde248f6b4b3b0732588f416da336cc8733484eac44275a3f6c90b",
+      "clipped_R_cmd_float32_sha256": "02ec7fb921e76a4f14e004b927816356df018271b6f81a22bf1356325b88f98c",
+      "historical_teacher_comparison_field": "log/rbf_output_raw sampled at attitude_event_flag; not used to construct target",
+      "legacy_next_event_alignment_max_abs_error_first1998": 7.105427357601002E-15,
+      "additional_final_interval": "19990->20000 included"
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C00_W13",
+      "training_split": "C5_VAL48_AS_DEV_TRAIN",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_20261023/runs_c5_v1/DL1018_VAL_T3_C00_W13/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "fe56d41b82deed388bd90f3e1933d40ba4abb1a33c9a770f85729de9932071f6",
+      "status_path": "experiments/position_axis_coordinate_c5_20261023/runs_c5_v1/DL1018_VAL_T3_C00_W13/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "3429a28ff93d63d28367fbb40cfce9be15c5273039c1c5ab15b10b236a20b67f",
+      "event_count": 1999,
+      "state_shape": [
+        12,
+        20001
+      ],
+      "time_shape": [
+        20001
+      ],
+      "requested_generalized_shape": [
+        4,
+        20000
+      ],
+      "event_indices_zero_based_sha256": "9e419ea70588b365dab819999e08b56a0063255751215c8c111a326d5bf07240",
+      "X_array_sha256": "3d402646eafbdea3cd0e0d9bf6399f0fea3579362473b85eb66e34812f394d13",
+      "unclipped_R_cmd_sha256": "7a097e45a9739079d9f0130f8b4080b22d027b1e054abe7764ee8bc36f358806",
+      "clipped_R_cmd_float32_sha256": "fe3876f4e8ee24b34da73617de22b537a1a1edc26b8e94d3d0dac4522b2f53dd",
+      "historical_teacher_comparison_field": "log/rbf_output_raw sampled at attitude_event_flag; not used to construct target",
+      "legacy_next_event_alignment_max_abs_error_first1998": 7.105427357601002E-15,
+      "additional_final_interval": "19990->20000 included"
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C01_W14",
+      "training_split": "C5_VAL48_AS_DEV_TRAIN",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T3_C01_W14/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "556be0c5cc9ae61c077597fdf474c2fde74f443a848bcd7dcfe0f7f49768db83",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T3_C01_W14/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "8df31342ac90af96069fe489241eaa4a39e0a8b862d46d7a5c4c8e8bd4ace31e",
+      "event_count": 1999,
+      "state_shape": [
+        12,
+        20001
+      ],
+      "time_shape": [
+        20001
+      ],
+      "requested_generalized_shape": [
+        4,
+        20000
+      ],
+      "event_indices_zero_based_sha256": "9e419ea70588b365dab819999e08b56a0063255751215c8c111a326d5bf07240",
+      "X_array_sha256": "bb7786ec296766b30588806ce49e4ce8a84ba34cd430dc6568b96f01b83486b9",
+      "unclipped_R_cmd_sha256": "b5da45af0796f69ec34fdd924dc244232767175d91b24bf741c2e545924a2439",
+      "clipped_R_cmd_float32_sha256": "1c43ff5c0c0bbe1aad8938cb903adf99c1045a192ca478d88ae53533b4f41b2e",
+      "historical_teacher_comparison_field": "log/rbf_output_raw sampled at attitude_event_flag; not used to construct target",
+      "legacy_next_event_alignment_max_abs_error_first1998": 1.4210854715202004E-14,
+      "additional_final_interval": "19990->20000 included"
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C02_W15",
+      "training_split": "C5_VAL48_AS_DEV_TRAIN",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_20261023/runs_c5_v1/DL1018_VAL_T3_C02_W15/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "fdf56c425be3a5dcede1c9fd0abb4d24a081996ec72049b0f0d7a33aad88b911",
+      "status_path": "experiments/position_axis_coordinate_c5_20261023/runs_c5_v1/DL1018_VAL_T3_C02_W15/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "3919b340318c5321ee7293dba53f29c8a82beda867affb361804c9131996dff5",
+      "event_count": 1999,
+      "state_shape": [
+        12,
+        20001
+      ],
+      "time_shape": [
+        20001
+      ],
+      "requested_generalized_shape": [
+        4,
+        20000
+      ],
+      "event_indices_zero_based_sha256": "9e419ea70588b365dab819999e08b56a0063255751215c8c111a326d5bf07240",
+      "X_array_sha256": "ec5d458d49bb66bc454518480576c34758d0ea56b3faca8f0c566da5d08d7a79",
+      "unclipped_R_cmd_sha256": "7369fa3e38c41d1ec60e2a004148d09e199000a707ce62a8a1934b921353992f",
+      "clipped_R_cmd_float32_sha256": "de46cfd157877c7667a053cf33110bf22b1191b1503da40658d7622c12330574",
+      "historical_teacher_comparison_field": "log/rbf_output_raw sampled at attitude_event_flag; not used to construct target",
+      "legacy_next_event_alignment_max_abs_error_first1998": 7.105427357601002E-15,
+      "additional_final_interval": "19990->20000 included"
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C03_W00",
+      "training_split": "C5_VAL48_AS_DEV_TRAIN",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_20261023/runs_c5_v1/DL1018_VAL_T3_C03_W00/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "e119ec1f94986ad18ef0ce69a11b8971b324fd8b4a52c0193e926f5c5ef20634",
+      "status_path": "experiments/position_axis_coordinate_c5_20261023/runs_c5_v1/DL1018_VAL_T3_C03_W00/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "a4886d666b00f0f7429c5e8854af218a7072c57a21325e633e848c7b674f05a5",
+      "event_count": 1999,
+      "state_shape": [
+        12,
+        20001
+      ],
+      "time_shape": [
+        20001
+      ],
+      "requested_generalized_shape": [
+        4,
+        20000
+      ],
+      "event_indices_zero_based_sha256": "9e419ea70588b365dab819999e08b56a0063255751215c8c111a326d5bf07240",
+      "X_array_sha256": "38acff79a87cffffe6a813706513207555516b1ff7d9cbfc91a375b9c02df226",
+      "unclipped_R_cmd_sha256": "65a4d6a1f3f84370e3649622c4425040158f2cf0c7de39f635e3af780915349b",
+      "clipped_R_cmd_float32_sha256": "28630104cac5dc70d3b59c8969ca4c513c0027162dc4eb1bea8e40db63c601e5",
+      "historical_teacher_comparison_field": "log/rbf_output_raw sampled at attitude_event_flag; not used to construct target",
+      "legacy_next_event_alignment_max_abs_error_first1998": 3.552713678800501E-15,
+      "additional_final_interval": "19990->20000 included"
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C04_W01",
+      "training_split": "C5_VAL48_AS_DEV_TRAIN",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T3_C04_W01/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "bb031cfd44b71447c8a5efa013f332857da670326515fed6c026e3db25cbe2a4",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T3_C04_W01/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "e93c5c8dd43b743efc3736763dcd6dad51ca8b34eebc5a3b4cebc0d564735782",
+      "event_count": 1999,
+      "state_shape": [
+        12,
+        20001
+      ],
+      "time_shape": [
+        20001
+      ],
+      "requested_generalized_shape": [
+        4,
+        20000
+      ],
+      "event_indices_zero_based_sha256": "9e419ea70588b365dab819999e08b56a0063255751215c8c111a326d5bf07240",
+      "X_array_sha256": "333a5bf8719b8fd431b0bc1f91cba2e03fc8f39b90457e03b2f8d0707b87203b",
+      "unclipped_R_cmd_sha256": "6085f7664a7033bc39e00b6cf727fbb16577952d13577ee54bb199230ef86810",
+      "clipped_R_cmd_float32_sha256": "7f38666340dd20298920a8bacc87f524140b3dee08ce8aa41501c3865d280e0d",
+      "historical_teacher_comparison_field": "log/rbf_output_raw sampled at attitude_event_flag; not used to construct target",
+      "legacy_next_event_alignment_max_abs_error_first1998": 2.6645352591003757E-15,
+      "additional_final_interval": "19990->20000 included"
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C05_W02",
+      "training_split": "C5_VAL48_AS_DEV_TRAIN",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T3_C05_W02/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "3682bb0e3259a7aa8779abde107875a494ca28459847084057c6f71e38a3bc84",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T3_C05_W02/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "ea677bf32a8208227186aac0863126dbbf3e5d13527430359d45f8a16d2fcf72",
+      "event_count": 1999,
+      "state_shape": [
+        12,
+        20001
+      ],
+      "time_shape": [
+        20001
+      ],
+      "requested_generalized_shape": [
+        4,
+        20000
+      ],
+      "event_indices_zero_based_sha256": "9e419ea70588b365dab819999e08b56a0063255751215c8c111a326d5bf07240",
+      "X_array_sha256": "57bcb60921b3a52b973113ccddb1b4221d9ffc075b5c1afdf4fab8bbef7f0503",
+      "unclipped_R_cmd_sha256": "a6e866d32f3acef010e311f4bd77bcd64b84e370d90cab44a716ad6ac153206c",
+      "clipped_R_cmd_float32_sha256": "95603fe6fdf725ec3eea1f5bde14cb3f2d0925fdda39734bcd15b04b056052e8",
+      "historical_teacher_comparison_field": "log/rbf_output_raw sampled at attitude_event_flag; not used to construct target",
+      "legacy_next_event_alignment_max_abs_error_first1998": 1.4210854715202004E-14,
+      "additional_final_interval": "19990->20000 included"
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C06_W03",
+      "training_split": "C5_VAL48_AS_DEV_TRAIN",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T3_C06_W03/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "2375f9511bde942b12f488b7704a57d1cf98f012452b8332abc0e5cf0636d108",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T3_C06_W03/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "36d9dbbdf38b515932ec06d14e590db100934732a33ba09884d3c06c338eba9a",
+      "event_count": 1999,
+      "state_shape": [
+        12,
+        20001
+      ],
+      "time_shape": [
+        20001
+      ],
+      "requested_generalized_shape": [
+        4,
+        20000
+      ],
+      "event_indices_zero_based_sha256": "9e419ea70588b365dab819999e08b56a0063255751215c8c111a326d5bf07240",
+      "X_array_sha256": "44a5bd3663383063b5ae9d2db048ed81cbf15dba2d2f302336088363d1a6d403",
+      "unclipped_R_cmd_sha256": "01780c41caf851fae953497830287fc5d433b7d60920d67b57773a88a8b2d34b",
+      "clipped_R_cmd_float32_sha256": "9fa74fd441aba2fcfd1fa9497085ee343bc645bb4e87f879601bfc1b39be3d4b",
+      "historical_teacher_comparison_field": "log/rbf_output_raw sampled at attitude_event_flag; not used to construct target",
+      "legacy_next_event_alignment_max_abs_error_first1998": 5.329070518200751E-15,
+      "additional_final_interval": "19990->20000 included"
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C07_W04",
+      "training_split": "C5_VAL48_AS_DEV_TRAIN",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T3_C07_W04/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "7cc4cbf25f3472f421af0b5fdecce4f603db8600cf07979973f00c2f313909ef",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T3_C07_W04/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "c730a079557da710d1dad0eb3a28c2397bc2a617c15936673c44be4825b37506",
+      "event_count": 1999,
+      "state_shape": [
+        12,
+        20001
+      ],
+      "time_shape": [
+        20001
+      ],
+      "requested_generalized_shape": [
+        4,
+        20000
+      ],
+      "event_indices_zero_based_sha256": "9e419ea70588b365dab819999e08b56a0063255751215c8c111a326d5bf07240",
+      "X_array_sha256": "8d96e0a83a0f5847e07bbee952e697004c735fe269a2e1a7aa1eb8a234bb0ae6",
+      "unclipped_R_cmd_sha256": "72d43daf50b93b151cc66a93f54e3ca7805984ae5c5af9364769d4157b266b53",
+      "clipped_R_cmd_float32_sha256": "2cbe42b3d2ebc840beeebd3dba9b72cb04174365ca7b8f2ddb51b8795635506a",
+      "historical_teacher_comparison_field": "log/rbf_output_raw sampled at attitude_event_flag; not used to construct target",
+      "legacy_next_event_alignment_max_abs_error_first1998": 1.4210854715202004E-14,
+      "additional_final_interval": "19990->20000 included"
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C08_W05",
+      "training_split": "C5_VAL48_AS_DEV_TRAIN",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T3_C08_W05/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "66efc5be513728ab6347eda9862ed4e18372800e911069fb99eac1d52bcb36b7",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T3_C08_W05/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "66f6bedf246461f0932c9d7a596769ba017e9763e8e51700cacd39fbcb9a734f",
+      "event_count": 1999,
+      "state_shape": [
+        12,
+        20001
+      ],
+      "time_shape": [
+        20001
+      ],
+      "requested_generalized_shape": [
+        4,
+        20000
+      ],
+      "event_indices_zero_based_sha256": "9e419ea70588b365dab819999e08b56a0063255751215c8c111a326d5bf07240",
+      "X_array_sha256": "9dc54775a6bf656b1bd6da64c605e9f3eda9d40e9e819ca0491947c9901dedfa",
+      "unclipped_R_cmd_sha256": "aed30e352d4cf29a54eb1febc05e343294dd9d740b4c42a6851075bb4c4dee57",
+      "clipped_R_cmd_float32_sha256": "bb23f6830d5fdd249dee13559e88d5d264568cd31bd82deeb8d3ba85a21b75fa",
+      "historical_teacher_comparison_field": "log/rbf_output_raw sampled at attitude_event_flag; not used to construct target",
+      "legacy_next_event_alignment_max_abs_error_first1998": 1.4210854715202004E-14,
+      "additional_final_interval": "19990->20000 included"
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C09_W06",
+      "training_split": "C5_VAL48_AS_DEV_TRAIN",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T3_C09_W06/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "2519a56231716c681041f46d427ab293b092aec837b3dc5c666925c3aab16aca",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T3_C09_W06/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "5bcfbe75ead5979b541bdd51902fe4ede29f19f29d17ac3e4c1a87ff7778fe5f",
+      "event_count": 1999,
+      "state_shape": [
+        12,
+        20001
+      ],
+      "time_shape": [
+        20001
+      ],
+      "requested_generalized_shape": [
+        4,
+        20000
+      ],
+      "event_indices_zero_based_sha256": "9e419ea70588b365dab819999e08b56a0063255751215c8c111a326d5bf07240",
+      "X_array_sha256": "5392a9f93c370c955e4acb5fd6a5afa5a89e80b9e6296fc07325330c4028c3ba",
+      "unclipped_R_cmd_sha256": "ce6f06ee5cde4a78a07b3c89a521ccab488a7b37c41897a8014e1041c24c8a70",
+      "clipped_R_cmd_float32_sha256": "e81a9b9a619a9a7b6f5e0128fd320a006b3d23b1fd2d1de1dba910dd8676db1a",
+      "historical_teacher_comparison_field": "log/rbf_output_raw sampled at attitude_event_flag; not used to construct target",
+      "legacy_next_event_alignment_max_abs_error_first1998": 5.329070518200751E-15,
+      "additional_final_interval": "19990->20000 included"
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C10_W07",
+      "training_split": "C5_VAL48_AS_DEV_TRAIN",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T3_C10_W07/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "564459c991c3710b1c3603e5d7f35286ad9fb5756b80259ca5631fbd65f9050c",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T3_C10_W07/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "bd62fdb2d5f8e4503e117ad3c355bf96caf2792746096505a5377b16cea712ba",
+      "event_count": 1999,
+      "state_shape": [
+        12,
+        20001
+      ],
+      "time_shape": [
+        20001
+      ],
+      "requested_generalized_shape": [
+        4,
+        20000
+      ],
+      "event_indices_zero_based_sha256": "9e419ea70588b365dab819999e08b56a0063255751215c8c111a326d5bf07240",
+      "X_array_sha256": "28a24e7ee6f8c56d634f86532364aa3cf937b6b8497b2478359c374eb3a9b708",
+      "unclipped_R_cmd_sha256": "c4b71abe158d5f89af9b91fada39d1e2bf8c7ed77e6469c78437c6b7043f22cf",
+      "clipped_R_cmd_float32_sha256": "1d8bdccda96a1f60818c5b34bec7406278df9d6b310ad05874d60015fe8c58a4",
+      "historical_teacher_comparison_field": "log/rbf_output_raw sampled at attitude_event_flag; not used to construct target",
+      "legacy_next_event_alignment_max_abs_error_first1998": 1.4210854715202004E-14,
+      "additional_final_interval": "19990->20000 included"
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C11_W08",
+      "training_split": "C5_VAL48_AS_DEV_TRAIN",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T3_C11_W08/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "0cb7d65203f343f27fb9630edf2d654758ffaf49d8feb83d7a81907d363ba54f",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T3_C11_W08/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "c5dcc4db67bfd5d317096ca621d9e9b2afa81ee4bd108a7be0cc3569bcad2499",
+      "event_count": 1999,
+      "state_shape": [
+        12,
+        20001
+      ],
+      "time_shape": [
+        20001
+      ],
+      "requested_generalized_shape": [
+        4,
+        20000
+      ],
+      "event_indices_zero_based_sha256": "9e419ea70588b365dab819999e08b56a0063255751215c8c111a326d5bf07240",
+      "X_array_sha256": "cd46bb8303d43a6aa4b6942756f3fb256ceb365a1aaae606706a002a23604c81",
+      "unclipped_R_cmd_sha256": "c3f6aa8ac1d0e9b79cc5de85b4e8a5dc1578d04e6d78656df014e3f80777f678",
+      "clipped_R_cmd_float32_sha256": "7cdc3309ba4601ec700d89a5560cacdd12b297e7f90990c01771590e1918af86",
+      "historical_teacher_comparison_field": "log/rbf_output_raw sampled at attitude_event_flag; not used to construct target",
+      "legacy_next_event_alignment_max_abs_error_first1998": 7.105427357601002E-15,
+      "additional_final_interval": "19990->20000 included"
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C12_W09",
+      "training_split": "C5_VAL48_AS_DEV_TRAIN",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_20261023/runs_c5_v1/DL1018_VAL_T3_C12_W09/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "5c5aa2cab0fc158c120048cde9b675a6f4ae9d99ff99b5c0baa06dfa1c403b4a",
+      "status_path": "experiments/position_axis_coordinate_c5_20261023/runs_c5_v1/DL1018_VAL_T3_C12_W09/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "ff4e9108edb13db28c0cfa70ba0a55c00faace9d1b7e7a4381a31ce25b61f9e6",
+      "event_count": 1999,
+      "state_shape": [
+        12,
+        20001
+      ],
+      "time_shape": [
+        20001
+      ],
+      "requested_generalized_shape": [
+        4,
+        20000
+      ],
+      "event_indices_zero_based_sha256": "9e419ea70588b365dab819999e08b56a0063255751215c8c111a326d5bf07240",
+      "X_array_sha256": "e3ea094cb0af3d264fc05d12535436c040af9c4101222c41b79f5f4cd0c6b682",
+      "unclipped_R_cmd_sha256": "5d93cbf6fc7df6c44f3cd8e4fee603434519407e979f8245db023127efed858b",
+      "clipped_R_cmd_float32_sha256": "4a362d9286a913b95426ebbd3b625b24450167421c1598a367120321a61dd139",
+      "historical_teacher_comparison_field": "log/rbf_output_raw sampled at attitude_event_flag; not used to construct target",
+      "legacy_next_event_alignment_max_abs_error_first1998": 7.105427357601002E-15,
+      "additional_final_interval": "19990->20000 included"
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C13_W10",
+      "training_split": "C5_VAL48_AS_DEV_TRAIN",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T3_C13_W10/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "7f57c52b2c601a010654768a34d68d6d62a7543d33cbf098f99510573d2abe82",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T3_C13_W10/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "0391f641cfc780cb763ad730051b372803330e6a74eaecd855c4bd524a9d4fb6",
+      "event_count": 1999,
+      "state_shape": [
+        12,
+        20001
+      ],
+      "time_shape": [
+        20001
+      ],
+      "requested_generalized_shape": [
+        4,
+        20000
+      ],
+      "event_indices_zero_based_sha256": "9e419ea70588b365dab819999e08b56a0063255751215c8c111a326d5bf07240",
+      "X_array_sha256": "a190c56a62dd399ffb2f0c68658918843f4c8a46ae2fd8ba104c1d156f1d842e",
+      "unclipped_R_cmd_sha256": "af9475ce8995173d9143742ec047180bc8c7b5f80ebc8820e07352866aa55d17",
+      "clipped_R_cmd_float32_sha256": "a3c1008da47a3fa74198c3dcb39add877cb269e369d832f65885f2a85bb287b5",
+      "historical_teacher_comparison_field": "log/rbf_output_raw sampled at attitude_event_flag; not used to construct target",
+      "legacy_next_event_alignment_max_abs_error_first1998": 1.4210854715202004E-14,
+      "additional_final_interval": "19990->20000 included"
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C14_W11",
+      "training_split": "C5_VAL48_AS_DEV_TRAIN",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T3_C14_W11/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "a2dd1c96069b474bf9f58413c4b3e10d7e6e7042e0d2d11a4251125e3cd9564c",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T3_C14_W11/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "4e91f98b6515391207d13e4a8ba72615a132b582b80f4e2dc7624418fc324f19",
+      "event_count": 1999,
+      "state_shape": [
+        12,
+        20001
+      ],
+      "time_shape": [
+        20001
+      ],
+      "requested_generalized_shape": [
+        4,
+        20000
+      ],
+      "event_indices_zero_based_sha256": "9e419ea70588b365dab819999e08b56a0063255751215c8c111a326d5bf07240",
+      "X_array_sha256": "e7ee6983ead050825c139381e1e43dab1d73a2504c3c173fb0f9ffa1fed2276a",
+      "unclipped_R_cmd_sha256": "5573051f5aad623eff463776f6ad8481db3733a8b2381cc1ef75b11471f3b780",
+      "clipped_R_cmd_float32_sha256": "9cff98e22098ddd3a4b70287d0c0c45517b12021a3e3a50dad8a58577804fe75",
+      "historical_teacher_comparison_field": "log/rbf_output_raw sampled at attitude_event_flag; not used to construct target",
+      "legacy_next_event_alignment_max_abs_error_first1998": 2.1316282072803006E-14,
+      "additional_final_interval": "19990->20000 included"
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C15_W12",
+      "training_split": "C5_VAL48_AS_DEV_TRAIN",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T3_C15_W12/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "e904f0f7a56ddb5cd8ee6960d0c709d7da8271c83640e4f199824b18841fcdb1",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T3_C15_W12/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "974201e9b933f75cbc9c1f98152c92b3bc1ae1a779e8df2cdaaadb6edc9c034e",
+      "event_count": 1999,
+      "state_shape": [
+        12,
+        20001
+      ],
+      "time_shape": [
+        20001
+      ],
+      "requested_generalized_shape": [
+        4,
+        20000
+      ],
+      "event_indices_zero_based_sha256": "9e419ea70588b365dab819999e08b56a0063255751215c8c111a326d5bf07240",
+      "X_array_sha256": "2514b96c84cd3a77b6701cde6da48c294bab46bea25aa8fb0d03cd3a838378c8",
+      "unclipped_R_cmd_sha256": "538f9bf91fa85e0cefa110a4db2da6c362b5982084b8739b64b80c2d1528a11a",
+      "clipped_R_cmd_float32_sha256": "740e42d550555490c6bbe1265ff16c995946835e8f88e58da23d1bb72809cab6",
+      "historical_teacher_comparison_field": "log/rbf_output_raw sampled at attitude_event_flag; not used to construct target",
+      "legacy_next_event_alignment_max_abs_error_first1998": 7.105427357601002E-15,
+      "additional_final_interval": "19990->20000 included"
+    }
+  ],
+  "raw_fields_read": [
+    "log/state",
+    "log/time",
+    "log/requested_generalized",
+    "log/attitude_event_flag",
+    "log/rbf_output_raw (offline comparison only)"
+  ],
+  "prohibited_sources_not_read": [
+    "B24 values",
+    "TEST values",
+    "Jtrue",
+    "Jhat",
+    "Jdot",
+    "Ctrue",
+    "realized_generalized values",
+    "wind",
+    "mass"
+  ],
+  "deploy_input_contract": "X is reused byte-identically from C5 NPZ. Future interval data is label-only and is not a deployment feature.",
+  "approximations_and_limits": [
+    "Finite 10 ms gyro endpoint difference plus interval-mean nominal gyroscopic/requested-torque term; not instantaneous aerodynamic torque.",
+    "Residual lumps allocator/command-port mismatch and unmodelled dynamics relative to fixed J0 command model.",
+    "Ideal noiseless recorded state and requested command; no sensor noise or interpolation model.",
+    "C5_VAL48_AS_DEV_TRAIN is included in training and is not independent validation."
+  ],
+  "outputs": {
+    "target_npz_path": "experiments/dl_attitude_replacement_20261026/nominal_command_target_data_v1/nominal_command_target_v1.npz",
+    "target_npz_sha256": "88df5c2f2088910a9c5650a5c67efdb7f42d30cabc021d0da83b68b72578ffb7",
+    "target_npz_bytes": 4290017,
+    "stats_csv_path": "experiments/dl_attitude_replacement_20261026/nominal_command_target_data_v1/TARGET_STATS_v1.csv",
+    "stats_csv_sha256": "599af4527376b88c0020b255a758586f333ca72151a70f09db48c8e829765344",
+    "train_unclipped_shape": [
+      24,
+      1999,
+      3
+    ],
+    "train_unclipped_dtype": "float64",
+    "train_clipped_shape": [
+      24,
+      1999,
+      3
+    ],
+    "train_clipped_dtype": "float32",
+    "val_unclipped_shape": [
+      48,
+      1999,
+      3
+    ],
+    "val_unclipped_dtype": "float64",
+    "val_clipped_shape": [
+      48,
+      1999,
+      3
+    ],
+    "val_clipped_dtype": "float32",
+    "total_output_bytes": 4536245,
+    "budget_bytes": 1073741824
+  },
+  "builder_source": {
+    "path": "experiments/dl_attitude_replacement_20261026/nominal_command_target_data_v1/build_nominal_command_target_v1.py",
+    "sha256": "1152dcb07f92d4bcc52bd16cbaa96c7c8ec15dd4e34b29653ad7a984f876da64"
+  },
+  "training_started": false,
+  "optimizer_steps": 0,
+  "Plant_called": false,
+  "TEST_read": false,
+  "split_role_interpretation": {
+    "note": "Split names are experiment-array aliases, not original TRAIN768 membership; scene IDs identify the source cohort.",
+    "TRAIN_C5_24": {
+      "array_prefix": "c5_train",
+      "count": 24,
+      "actual_scene_id_prefix": "DL1018_DEV_",
+      "role": "development data; use only as development training, not as an independent validation set."
+    },
+    "C5_VAL48_AS_DEV_TRAIN": {
+      "array_prefix": "c5_val",
+      "count": 48,
+      "actual_scene_id_prefix": "DL1018_VAL_",
+      "role": "development data already assigned to development training; not an independent validation set."
+    },
+    "combined_72": "The target package is DEV24+VAL48 development data, with no held-out generalization cohort."
+  }
+}

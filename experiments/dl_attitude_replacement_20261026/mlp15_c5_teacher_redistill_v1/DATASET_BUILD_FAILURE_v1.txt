@@ -1,0 +1,20 @@
+Approved command (PowerShell 7):
+python experiments/dl_attitude_replacement_20261026/mlp15_c5_teacher_redistill_v1/build_matched_teacher_dataset_v1.py --execute
+
+Outcome:
+Stopped on the first B24 scene, DL1018_DEV_T1_C00_W03. The raw extraction function completed its in-memory checks, then manifest row construction raised KeyError because the B run_status JSON has no run_status_path property. The status file itself had already been verified using the frozen C5 lock path/SHA; the status path fallback is recorded in status_binding, but the row builder still directly indexed the absent property.
+
+Traceback:
+Traceback (most recent call last):
+  File "C:\Users\35326\Desktop\postgraduation\0\Mcode\drone_tcn\DL1018\experiments\dl_attitude_replacement_20261026\mlp15_c5_teacher_redistill_v1\build_matched_teacher_dataset_v1.py", line 520, in <module>
+    main()
+  File "C:\Users\35326\Desktop\postgraduation\0\Mcode\drone_tcn\DL1018\experiments\dl_attitude_replacement_20261026\mlp15_c5_teacher_redistill_v1\build_matched_teacher_dataset_v1.py", line 355, in main
+    bx, by, bmeta = read_teacher_raw(raw_path, sid, status, start_path, "TRAIN_B24", "B72_RBF", raw_sha, status_sha, start_sha, "PENDING_PARENT_AUDIT_STATUS_RETAINED")
+  File "C:\Users\35326\Desktop\postgraduation\0\Mcode\drone_tcn\DL1018\experiments\dl_attitude_replacement_20261026\mlp15_c5_teacher_redistill_v1\build_matched_teacher_dataset_v1.py", line 234, in read_teacher_raw
+    "status_path": str(Path(status["run_status_path"]).resolve()), "status_sha256": status_sha,
+KeyError: 'run_status_path'
+
+No NPZ, dataset manifest, or B24 audit report was produced. No training, Plant, or TEST access occurred. Historical raw/status files were not modified. No automatic fix or retry was made.
+
+Failure log recorded UTC: 2026-10-26T09:36:22.027Z
+Builder SHA at failure (unchanged since failed run): 01103a4cd9ab76a8e97e44b5ebe237f9a345342bc1fbec7620f404f99f62a419

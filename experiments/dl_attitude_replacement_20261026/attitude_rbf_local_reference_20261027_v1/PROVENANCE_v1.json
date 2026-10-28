@@ -1,0 +1,100 @@
+{
+  "schema": "DL1018_C5_RBF_LOCAL_REFERENCE_PROVENANCE_V1",
+  "status": "COMPLETE",
+  "numerical_execution_command": "$env:MKL_THREADING_LAYER='SEQUENTIAL'\n$env:OMP_NUM_THREADS='1'\n$env:MKL_NUM_THREADS='1'\n& python -u 'experiments/dl_attitude_replacement_20261026/attitude_rbf_local_reference_20261027_v1/rbf_replay.py' --phase full --scene all",
+  "numerical_execution_shell": "PowerShell 7",
+  "numerical_execution_exit_code": 0,
+  "numerical_execution_outcome": "six-scene RBF replay PASS, 1200 local Jacobians generated",
+  "postrun_source_lock_validation": "PASS; script now reads expected SHA values directly from v3 SOURCE_LOCK_v3 and C5 active_source_inventory; numerical outputs were not rerun because only the source-lock lookup changed.",
+  "postrun_lock_change_note": "Numerical replay/Jacobians ran with explicit expected source hashes that were subsequently confirmed identical to both audited locks. After the run, the script was changed to read those expected hashes directly from SOURCE_LOCK_v3/C5 input lock; no numeric calculation was rerun because only source-lock lookup changed.",
+  "source_locks": {
+    "C5_input_lock_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_20261023\\C5_AXIS_COORDINATE_INPUT_LOCK_v1.json",
+    "C5_input_lock_sha256": "10a7eea144e3574e05eea7b4f7b56112595eac0c81d27b5e8c7a5a41499f84b0",
+    "V3_source_lock_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\mlp15_composite_dev_v3\\SOURCE_LOCK_v3.json",
+    "V3_source_lock_sha256": "d53f443e5d507c801dbc9d6673d712321b899b8de2ffa83c9fb20b2fcd9f088e",
+    "V3_source_lock_file_count": 56,
+    "verified_sources": {
+      "rbf_basis": {
+        "sha256": "4139c7d08daa5bea6e04702b966ce76cdb6a54ea33d9820cfd9c3a70529248f4",
+        "canonical_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\matlab\\core\\rbf_mimo_basis.m",
+        "v3_copy_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\mlp15_composite_dev_v3\\candidate_runner_work\\matlab\\core\\rbf_mimo_basis.m"
+      },
+      "rbf_update": {
+        "sha256": "dde65f5f3b664ecdbd82a393dde0aea8da3b7401b5f54c8a92fcef5acd17f78a",
+        "canonical_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\matlab\\core\\rbf_mimo_update.m",
+        "v3_copy_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\mlp15_composite_dev_v3\\candidate_runner_work\\matlab\\core\\rbf_mimo_update.m"
+      },
+      "C5_runner": {
+        "sha256": "48350037b66efe00301b138068f187c62cf92583f0f9ba2fabc9b24f248a963c",
+        "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_20261023\\run_dl1018_closed_loop.m"
+      }
+    },
+    "status": "PASS_SOURCE_LOCK_VALIDATION",
+    "validation_timestamp_utc": "2026-10-26T19:00:04.313133+00:00",
+    "validation_artifact_sha256": "34b2753a03328e7e3c6f2f8446e84153a4c4fc88eb52f99f17fbeca5789c9e79"
+  },
+  "analysis_script_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\attitude_rbf_local_reference_20261027_v1\\rbf_replay.py",
+  "analysis_script_sha256_at_report_time": "5a98fe0f041aa30607e9d608b57ac2307d98193ff05ca8c087c7a80d25f68230",
+  "artifacts": {
+    "local_feedback_rbf_replay_all_v1.json": {
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\attitude_rbf_local_reference_20261027_v1\\local_feedback_rbf_replay_all_v1.json",
+      "sha256": "3a3eec084ced34016375c640f5e619681842511db94249181ba8d5c57e626c13"
+    },
+    "local_feedback_rbf_event_replay_all_v1.csv": {
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\attitude_rbf_local_reference_20261027_v1\\local_feedback_rbf_event_replay_all_v1.csv",
+      "sha256": "e8437c11c7f7b4747c0b4501f46c0bc2737a58ba214f927c177ac67f0c28ccd9"
+    },
+    "local_feedback_rbf_local_jacobians_all_v1.csv": {
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\attitude_rbf_local_reference_20261027_v1\\local_feedback_rbf_local_jacobians_all_v1.csv",
+      "sha256": "56a6cb75b6624fb819ce3f358c7c6021cfb801ca1707cc69477815e7d90d1a8d"
+    },
+    "local_feedback_rbf_local_jacobian_summary_all_v1.csv": {
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\attitude_rbf_local_reference_20261027_v1\\local_feedback_rbf_local_jacobian_summary_all_v1.csv",
+      "sha256": "c15a7bb6bdbb3cab23e51884f8320e044f99bfba18db5e659c76e16ab83fad54"
+    },
+    "local_feedback_rbf_local_jacobian_outliers_all_v1.csv": {
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\attitude_rbf_local_reference_20261027_v1\\local_feedback_rbf_local_jacobian_outliers_all_v1.csv",
+      "sha256": "cdfbe4d00877b2952957c244ec8aa5ea7d17e2cd2f9fe6e60f270cea16278edc"
+    },
+    "RESULT_v1.json": {
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\attitude_rbf_local_reference_20261027_v1\\RESULT_v1.json",
+      "sha256": "91843c7fe6ea31fb5b2e8ac3e4e50b272adfe52234a7ee6a1b7537de0c85508e"
+    },
+    "REPORT_v1.md": {
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\attitude_rbf_local_reference_20261027_v1\\REPORT_v1.md",
+      "sha256": "f527970fe310ca85c05f19391bde3297b00863818f7307364f376ab0d94b2588"
+    },
+    "SOURCE_LOCK_VALIDATION_v1.json": {
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\attitude_rbf_local_reference_20261027_v1\\SOURCE_LOCK_VALIDATION_v1.json",
+      "sha256": "34b2753a03328e7e3c6f2f8446e84153a4c4fc88eb52f99f17fbeca5789c9e79"
+    },
+    "local_feedback_rbf_local_jacobian_result_all_v1.json": {
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\attitude_rbf_local_reference_20261027_v1\\local_feedback_rbf_local_jacobian_result_all_v1.json",
+      "sha256": "eebe395fe479a7348647e9f58f40490b05d34e01252ac500600edfeca64b406b"
+    },
+    "STATUS.json": {
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\attitude_rbf_local_reference_20261027_v1\\STATUS.json",
+      "sha256": "796dd33a4058ddfb735517dbc530a468f7c5d1c02137b496a1eb24b4d6355a1c"
+    }
+  },
+  "Plant_calls": 0,
+  "MATLAB_started": false,
+  "training_jobs": 0,
+  "TEST_read": false,
+  "variable_inertia_read_or_reconstructed": false,
+  "initial_numerical_run_source_check_mode": "Explicit expected SHA literals; the exact values were subsequently confirmed against both source locks and live files.",
+  "attempt_history": [
+    {
+      "outcome": "ABORTED_BEFORE_SCENE_REPLAY",
+      "reason": "Initial manually transcribed rbf_mimo_basis SHA literal had a one-character mismatch. The preflight stopped before loading any scene; no replay artifacts were produced by that invocation."
+    },
+    {
+      "outcome": "FULL_DIAGNOSTIC_COMPLETED",
+      "reason": "Corrected literal matched the C5 input lock and live source; six-scene replay and 1200 Jacobians completed with exit code 0."
+    },
+    {
+      "outcome": "POSTRUN_LOCK_LOOKUP_VALIDATED",
+      "reason": "Replaced source SHA literals with direct reads from v3 SOURCE_LOCK_v3.json and C5 active_source_inventory; standalone validation passed. Numerical replay was not repeated because numerical code and bound source bytes were unchanged."
+    }
+  ]
+}

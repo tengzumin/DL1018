@@ -1,0 +1,464 @@
+{
+  "schema": "DL1018_GRU_TAU01_DELAYED_START_ROOT_PILOT_SCORE_V1",
+  "scene_id": "DL1018_VAL_T3_C01_W14",
+  "scope": "One VAL development pilot, not cohort success or independent validation.",
+  "candidate": "GRU32_STREAM72_COSINE_TAU01_DELAYED_START_S2026102001",
+  "study_id": "gru_tau01_delayed_start_v1",
+  "raw_sha256": "565485c4c13024bdbed6320abd992d01a41386ac05ef692e6b0bca9a7f0c4c95",
+  "run_status": {
+    "state": "COMPLETED",
+    "status_value": "STABLE",
+    "transitions": 20000,
+    "state_samples": 20001,
+    "Plant_calls": 1,
+    "safety_stop_reason": "",
+    "test_data_read": false,
+    "release_sha256": "21a8aca976efa6324e471da392932620485dd2fafdbac15c10adfc9823d3d47d",
+    "source_lock_sha256": "e3e0e9d6b8dae8a3315dd9b780742d3fefd5b541cf1f81e15f9376f1c141c8f4"
+  },
+  "rho_schedule": {
+    "rho_before_5_s": 0.01,
+    "rho_at_5_s": 0.01,
+    "ramp_start_s": 5,
+    "ramp_end_s": 6,
+    "rho_final": 0.1,
+    "time_base": "n_zero_based * simulation_sample_time_s",
+    "interpolation": "linear"
+  },
+  "paired": {
+    "Delayed_Start_Candidate": {
+      "Q_m": 0.009957193761168846,
+      "task_SO3_rad": 0.06423495414404491,
+      "inner_SO3_rad": 0.015841808004033998,
+      "safety": {
+        "motor_saturation_samples": 0,
+        "generalized_clip_samples": 0,
+        "tilt_limited_samples": 0,
+        "attitude_head_projection_samples": 0,
+        "attitude_head_output_saturated_samples": 0
+      },
+      "axis_phase": {
+        "ALL": {
+          "state_samples": 20001,
+          "inner_samples": 20000,
+          "position_xyz_rmse_m": [
+            0.008701031876885548,
+            0.00420141494091867,
+            0.0024053823748223678
+          ],
+          "task_wrapped_euler_rmse_rad": [
+            0.02223104870008579,
+            0.06019002397241676,
+            0.0033649740677071612
+          ],
+          "inner_wrapped_euler_rmse_rad": [
+            0.011273336837655672,
+            0.010792329474668945,
+            0.0033650581500682844
+          ]
+        },
+        "0_5s": {
+          "state_samples": 5000,
+          "inner_samples": 5000,
+          "position_xyz_rmse_m": [
+            0.015712161074991,
+            0.0042928159770547585,
+            0.004725242777128451
+          ],
+          "task_wrapped_euler_rmse_rad": [
+            0.017874015913325478,
+            0.06078470130770641,
+            8.130898207763632e-05
+          ],
+          "inner_wrapped_euler_rmse_rad": [
+            0.00035218747216288085,
+            0.0004006722872998767,
+            8.130898207763632e-05
+          ]
+        },
+        "15_20s": {
+          "state_samples": 5001,
+          "inner_samples": 5000,
+          "position_xyz_rmse_m": [
+            0.004328499930418002,
+            0.004682208071884753,
+            0.0004084685053374636
+          ],
+          "task_wrapped_euler_rmse_rad": [
+            0.020867439312099303,
+            0.05606506243480336,
+            0.0016992071429168718
+          ],
+          "inner_wrapped_euler_rmse_rad": [
+            0.00926200826122174,
+            0.008434166814704859,
+            0.0016993767308706353
+          ]
+        }
+      },
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\gru_tau01_delayed_start_v1\\runs\\DL1018_VAL_T3_C01_W14\\raw_run.mat",
+      "raw_sha256": "565485c4c13024bdbed6320abd992d01a41386ac05ef692e6b0bca9a7f0c4c95",
+      "binding_source": "new candidate run_status.json"
+    },
+    "Tau01": {
+      "Q_m": 0.011860590199015692,
+      "task_SO3_rad": 0.06356184722116978,
+      "inner_SO3_rad": 0.016085199361566663,
+      "safety": {
+        "motor_saturation_samples": 0,
+        "generalized_clip_samples": 0,
+        "tilt_limited_samples": 0,
+        "attitude_head_projection_samples": 0,
+        "attitude_head_output_saturated_samples": 0
+      },
+      "axis_phase": {
+        "ALL": {
+          "state_samples": 20001,
+          "inner_samples": 20000,
+          "position_xyz_rmse_m": [
+            0.0106926392424131,
+            0.004702413366856465,
+            0.0020563011520209925
+          ],
+          "task_wrapped_euler_rmse_rad": [
+            0.022012052371348057,
+            0.05954897420688887,
+            0.0034144371842809193
+          ],
+          "inner_wrapped_euler_rmse_rad": [
+            0.011471514110161379,
+            0.01093184334590836,
+            0.0034145225055907777
+          ]
+        },
+        "0_5s": {
+          "state_samples": 5000,
+          "inner_samples": 5000,
+          "position_xyz_rmse_m": [
+            0.019798809876801826,
+            0.005455738085266638,
+            0.0040218574641164755
+          ],
+          "task_wrapped_euler_rmse_rad": [
+            0.017431465475017522,
+            0.06019637386212692,
+            7.585484990511663e-05
+          ],
+          "inner_wrapped_euler_rmse_rad": [
+            0.00045084943859205495,
+            0.0003749191191050084,
+            7.585484990511663e-05
+          ]
+        },
+        "15_20s": {
+          "state_samples": 5001,
+          "inner_samples": 5000,
+          "position_xyz_rmse_m": [
+            0.004376668721559675,
+            0.004638239361006332,
+            0.0004193948008404873
+          ],
+          "task_wrapped_euler_rmse_rad": [
+            0.02081760386208805,
+            0.05591858902197113,
+            0.0017225212409512775
+          ],
+          "inner_wrapped_euler_rmse_rad": [
+            0.009152531439378398,
+            0.008346769523767296,
+            0.001722693178804398
+          ]
+        }
+      },
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\gru_prediction_tau01_v1\\runs\\DL1018_VAL_T3_C01_W14\\raw_run.mat",
+      "raw_sha256": "71b6a0edb3b2cc1ceefca47bc665b3297f71a975cc4f18f7260b83b7d989bdf2",
+      "binding_source": "tau01 formal final12 score"
+    },
+    "Parent_Cosine_GRU": {
+      "Q_m": 0.009620689116816572,
+      "task_SO3_rad": 0.06541727222755461,
+      "inner_SO3_rad": 0.015910360180281174,
+      "safety": {
+        "motor_saturation_samples": 0,
+        "generalized_clip_samples": 0,
+        "tilt_limited_samples": 0,
+        "attitude_head_projection_samples": 0,
+        "attitude_head_output_saturated_samples": 0
+      },
+      "axis_phase": {
+        "ALL": {
+          "state_samples": 20001,
+          "inner_samples": 20000,
+          "position_xyz_rmse_m": [
+            0.00860652857058676,
+            0.003497271969826836,
+            0.0025008826072349527
+          ],
+          "task_wrapped_euler_rmse_rad": [
+            0.022714004459135757,
+            0.0612769505425406,
+            0.0033074012506894707
+          ],
+          "inner_wrapped_euler_rmse_rad": [
+            0.011358180334620948,
+            0.010825387993534882,
+            0.0033074839308963972
+          ]
+        },
+        "0_5s": {
+          "state_samples": 5000,
+          "inner_samples": 5000,
+          "position_xyz_rmse_m": [
+            0.015712161074991,
+            0.0042928159770547585,
+            0.004725242777128451
+          ],
+          "task_wrapped_euler_rmse_rad": [
+            0.017874015913325478,
+            0.06078470130770641,
+            8.130898207763632e-05
+          ],
+          "inner_wrapped_euler_rmse_rad": [
+            0.00035218747216288085,
+            0.0004006722872998767,
+            8.130898207763632e-05
+          ]
+        },
+        "15_20s": {
+          "state_samples": 5001,
+          "inner_samples": 5000,
+          "position_xyz_rmse_m": [
+            0.004160989949319447,
+            0.0033233187536052867,
+            0.0007229504214233205
+          ],
+          "task_wrapped_euler_rmse_rad": [
+            0.0215206496679922,
+            0.0581462733646933,
+            0.0016004743151074763
+          ],
+          "inner_wrapped_euler_rmse_rad": [
+            0.00932360969266479,
+            0.008296880978789804,
+            0.0016006343232047846
+          ]
+        }
+      },
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_full72_v1\\runs\\DL1018_VAL_T3_C01_W14\\raw_run.mat",
+      "raw_sha256": "76afcf331ca14b169977810c74c8a8680f57d9747a9a3b9a46285804a98a0503",
+      "binding_source": "tau01 formal final12 score"
+    },
+    "B": {
+      "Q_m": 0.01140486236088605,
+      "task_SO3_rad": 0.06179200025117218,
+      "inner_SO3_rad": 0.017915416327921475,
+      "safety": {
+        "motor_saturation_samples": 0,
+        "generalized_clip_samples": 0,
+        "tilt_limited_samples": 0,
+        "attitude_head_projection_samples": 0,
+        "attitude_head_output_saturated_samples": 0
+      },
+      "axis_phase": {
+        "ALL": {
+          "state_samples": 20001,
+          "inner_samples": 20000,
+          "position_xyz_rmse_m": [
+            0.009944076526230002,
+            0.005264150532794851,
+            0.0018641208864534967
+          ],
+          "task_wrapped_euler_rmse_rad": [
+            0.021573811693609737,
+            0.05778462613339167,
+            0.0038619185718546884
+          ],
+          "inner_wrapped_euler_rmse_rad": [
+            0.012825273512832382,
+            0.012106494300247855,
+            0.0038620151176300983
+          ]
+        },
+        "0_5s": {
+          "state_samples": 5000,
+          "inner_samples": 5000,
+          "position_xyz_rmse_m": [
+            0.016351126070283734,
+            0.0047658144261823404,
+            0.0032743861965602657
+          ],
+          "task_wrapped_euler_rmse_rad": [
+            0.01714795462210015,
+            0.05803376476194807,
+            2.1095207794126193e-07
+          ],
+          "inner_wrapped_euler_rmse_rad": [
+            1.75804792430604e-05,
+            5.891785708896168e-05,
+            2.1095207794126193e-07
+          ]
+        },
+        "15_20s": {
+          "state_samples": 5001,
+          "inner_samples": 5000,
+          "position_xyz_rmse_m": [
+            0.006115781511369361,
+            0.005526594722904604,
+            0.0008064680737345639
+          ],
+          "task_wrapped_euler_rmse_rad": [
+            0.02088888121776601,
+            0.05472633148431781,
+            0.001872124932140916
+          ],
+          "inner_wrapped_euler_rmse_rad": [
+            0.010300664581712148,
+            0.009470127093547142,
+            0.0018723121271716108
+          ]
+        }
+      },
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\b_traceable_c3core_dev72_20261023\\runs_b\\DL1018_VAL_T3_C01_W14\\B_TRACEABLE_C3CORE_V1\\attempt_01\\raw_run.mat",
+      "raw_sha256": "396496784a14c217d90bcb4566dad275c8602503d6debce6dce63ec50497ae5e",
+      "binding_source": "tau01 formal final12 score"
+    },
+    "C5": {
+      "Q_m": 0.00998956747303222,
+      "task_SO3_rad": 0.0653826067320855,
+      "inner_SO3_rad": 0.01796494791011554,
+      "safety": {
+        "motor_saturation_samples": 0,
+        "generalized_clip_samples": 0,
+        "tilt_limited_samples": 0,
+        "attitude_head_projection_samples": 0,
+        "attitude_head_output_saturated_samples": 0
+      },
+      "axis_phase": {
+        "ALL": {
+          "state_samples": 20001,
+          "inner_samples": 20000,
+          "position_xyz_rmse_m": [
+            0.008847867048268556,
+            0.003901560906728793,
+            0.0025068963850771314
+          ],
+          "task_wrapped_euler_rmse_rad": [
+            0.02268108463084396,
+            0.06122981018653363,
+            0.003745142149958418
+          ],
+          "inner_wrapped_euler_rmse_rad": [
+            0.012874327769407579,
+            0.01218331177994999,
+            0.0037452357768756224
+          ]
+        },
+        "0_5s": {
+          "state_samples": 5000,
+          "inner_samples": 5000,
+          "position_xyz_rmse_m": [
+            0.01571497104525875,
+            0.004283316474052833,
+            0.004725898334076032
+          ],
+          "task_wrapped_euler_rmse_rad": [
+            0.0178325925992614,
+            0.06073994417253829,
+            6.497165418677921e-06
+          ],
+          "inner_wrapped_euler_rmse_rad": [
+            7.83700554516701e-05,
+            0.000273203188903062,
+            6.497165418677921e-06
+          ]
+        },
+        "15_20s": {
+          "state_samples": 5001,
+          "inner_samples": 5000,
+          "position_xyz_rmse_m": [
+            0.0050049475970520485,
+            0.0041097246531109025,
+            0.0007091598544576084
+          ],
+          "task_wrapped_euler_rmse_rad": [
+            0.021471468995177902,
+            0.05816746648072522,
+            0.0018242463686426408
+          ],
+          "inner_wrapped_euler_rmse_rad": [
+            0.010321273537301863,
+            0.009508556453624653,
+            0.0018244287803309324
+          ]
+        }
+      },
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T3_C01_W14\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "556be0c5cc9ae61c077597fdf474c2fde74f443a848bcd7dcfe0f7f49768db83",
+      "binding_source": "tau01 formal final12 score"
+    }
+  },
+  "delta_percent": {
+    "Tau01": {
+      "Q_m": -16.048075229888713,
+      "task_SO3_rad": 1.0589794858116397,
+      "inner_SO3_rad": -1.5131385820073562
+    },
+    "Parent_Cosine_GRU": {
+      "Q_m": 3.4977187212512417,
+      "task_SO3_rad": -1.8073484926075745,
+      "inner_SO3_rad": -0.43086501795313037
+    },
+    "B": {
+      "Q_m": -12.693433326140847,
+      "task_SO3_rad": 3.9535115920226183,
+      "inner_SO3_rad": -11.574435591852383
+    },
+    "C5": {
+      "Q_m": -0.3240752109715528,
+      "task_SO3_rad": -1.7552872933672692,
+      "inner_SO3_rad": -11.818235803990639
+    }
+  },
+  "actuator_safety": {
+    "motor_saturation_samples": 0,
+    "generalized_clip_samples": 0,
+    "tilt_limited_samples": 0,
+    "attitude_head_projection_samples": 0,
+    "attitude_head_output_saturated_samples": 0
+  },
+  "input_bindings": {
+    "Delayed_Start_Candidate": {
+      "raw_sha256": "565485c4c13024bdbed6320abd992d01a41386ac05ef692e6b0bca9a7f0c4c95",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\gru_tau01_delayed_start_v1\\runs\\DL1018_VAL_T3_C01_W14\\raw_run.mat"
+    },
+    "Tau01": {
+      "raw_sha256": "71b6a0edb3b2cc1ceefca47bc665b3297f71a975cc4f18f7260b83b7d989bdf2",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\gru_prediction_tau01_v1\\runs\\DL1018_VAL_T3_C01_W14\\raw_run.mat"
+    },
+    "Parent_Cosine_GRU": {
+      "raw_sha256": "76afcf331ca14b169977810c74c8a8680f57d9747a9a3b9a46285804a98a0503",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_full72_v1\\runs\\DL1018_VAL_T3_C01_W14\\raw_run.mat"
+    },
+    "B": {
+      "raw_sha256": "396496784a14c217d90bcb4566dad275c8602503d6debce6dce63ec50497ae5e",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\b_traceable_c3core_dev72_20261023\\runs_b\\DL1018_VAL_T3_C01_W14\\B_TRACEABLE_C3CORE_V1\\attempt_01\\raw_run.mat"
+    },
+    "C5": {
+      "raw_sha256": "556be0c5cc9ae61c077597fdf474c2fde74f443a848bcd7dcfe0f7f49768db83",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T3_C01_W14\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat"
+    }
+  },
+  "frozen_scoring": {
+    "metric_source_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_full72_v1\\audits\\score_full72_candidate_v1.py",
+    "metric_source_sha256": "6baf689802f4d73ead813449e52a8fe85cb0be92c3185850c93646da2d54dd16",
+    "formal_tau01_score_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\gru_prediction_tau01_v1\\audits\\GRU_PREDICTION_TAU01_SCORE_final12.json",
+    "formal_tau01_score_sha256": "132ac1ccf86f3c2b51a4c89eaebdb23170f62598205e7ce7072a6a7e47759fcb",
+    "gravity_mps2": 9.8,
+    "max_tilt_rad": 0.5235987755982988,
+    "Plant_calls_by_scorer": 0,
+    "training_runs_by_scorer": 0
+  },
+  "inertia_reconstruction": false,
+  "TEST_read": false,
+  "test_data_read": false
+}

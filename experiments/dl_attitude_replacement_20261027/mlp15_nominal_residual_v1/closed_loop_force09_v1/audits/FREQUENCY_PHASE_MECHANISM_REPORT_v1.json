@@ -1,0 +1,117 @@
+{
+  "schema": "DL1018_FREQUENCY_PHASE_MECHANISM_REPORT_V1",
+  "status": "READ_ONLY_DEV_VAL_DIAGNOSTIC_COMPLETE",
+  "scope": {
+    "cohort": "matched HF W09-W14 DEV/VAL raws",
+    "plant_runs": 0,
+    "test_data_read": false,
+    "true_inertia_or_jdot_used": false,
+    "wind_as_deployment_input": false,
+    "phase_correlation_is_causal": false
+  },
+  "command_filter_reference": {
+    "configured_roll_pitch_wn_rad_s": 18.0,
+    "wn_role": "command_filter parameter only; not a measured or inferred closed-loop attitude-inner-loop bandwidth",
+    "single_offline_lp_cutoff_hz": 2.864788975654116,
+    "lp_cutoff_derivation": "18/(2*pi), used only as a nominal command-filter scale anchor; the replay LP is not transfer-function equivalent to the second-order command filter",
+    "one_pole_discrete_retention": {
+      "0p1_to_1_hz": 0.995,
+      "1_to_2p865_hz": 0.832,
+      "2p865_to_10_hz": 0.627,
+      "10_to_50_hz": 0.220,
+      "50_to_500_hz": 0.025
+    },
+    "one_pole_response": {
+      "1_hz_magnitude": 0.9441,
+      "1_hz_phase_deg": -19.06,
+      "2p865_hz_magnitude": 0.7071,
+      "2p865_hz_phase_deg": -44.49,
+      "10_hz_magnitude": 0.2754,
+      "10_hz_phase_deg": -72.22
+    }
+  },
+  "mlp_alpha1_hf6": {
+    "task_to_unfiltered_command_filter_target_same_trace_mrad": 80.929,
+    "task_to_recorded_filtered_reference_same_trace_mrad": 63.832,
+    "actual_task_mrad": 61.355,
+    "B_actual_task_mrad": 57.619,
+    "same_trace_force_lp_filtered_reference_task_mrad": 61.986,
+    "same_trace_force_lp_gap_to_B_mrad": 4.367,
+    "interpretation": "The command filter changes both amplitude and phase. These same-state reference/task comparisons are conditional trace metrics, not achievable-error lower/upper bounds or closed-loop counterfactuals. The unfiltered-target metric does not support increasing command-filter bandwidth as a likely task improvement. The fixed LP gives only modest conditional improvement and is not prioritized for closed-loop evaluation."
+  },
+  "force_scale_screen": {
+    "MLP_alpha1": {"Q_m": 0.010825, "task_mrad": 61.355},
+    "MLP_alpha09": {"Q_m": 0.012250, "task_mrad": 60.502},
+    "GRU_alpha1": {"Q_m": 0.010141, "task_mrad": 61.199},
+    "GRU_alpha09": {"Q_m": 0.011717, "task_mrad": 60.303},
+    "interpretation": "Uniformly scaling the applied position NN force by 0.9 slightly improves HF task error but worsens Q in both attitude-module cohorts; it is not a joint task/position fix."
+  },
+  "compensation_spectrum": {
+    "MLP_alpha1_force_band_rms_N": {
+      "0p1_to_1_hz": 0.04980,
+      "1_to_2p865_hz": 0.10110,
+      "2p865_to_10_hz": 0.27110,
+      "10_to_50_hz": 0.00329,
+      "50_to_500_hz": 0.02002
+    },
+    "interpretation": "Most compensation magnitude lies below 10 Hz; attenuating only high-frequency ripple does not explain the observed position/task tradeoff."
+  },
+  "matched_b_c5_cross_loop_phase": {
+    "band_hz": [1.0, 2.864788975654116],
+    "signals": "yaw-rotated horizontal position error versus task-attitude error, followed by acceleration error versus task-attitude error",
+    "B_position_error_vs_task_attitude": {
+      "mean_coherence_axes_xy": [0.824, 0.814],
+      "phase_deg_axes_xy": [2.5, 8.7]
+    },
+    "C5_position_error_vs_task_attitude": {
+      "mean_coherence_axes_xy": [0.934, 0.915],
+      "phase_deg_axes_xy": [26.9, 37.8]
+    },
+    "acceleration_error_vs_task_attitude_phase_deg_axes_xy": {
+      "B": [3.0, 8.7],
+      "C5": [25.9, 37.1]
+    },
+    "offline_wind_corrected_acceleration_error_vs_task_attitude": {
+      "B_phase_deg_axes_xy": [-0.2, -0.7],
+      "B_coherence_axes_xy": [0.990, 0.989],
+      "C5_phase_deg_axes_xy": [-0.1, -0.4],
+      "C5_coherence_axes_xy": [0.998, 0.998],
+      "note": "Logged wind was used only for offline explanatory subtraction. It is not a proposed runtime input."
+    },
+    "interpretation": "The observed B/C5 phase association is confounded by disturbance and outer-loop response and does not identify a causal controller defect or prove a physical limit."
+  },
+  "gru_tracking_trace": {
+    "audit_path": "../../../gru_tracking_force09_v1/audits/GRU_TRACKING_HF_TRACE_AUDIT_v1.json",
+    "status": "PASS_READ_ONLY_TRACE_REPLAY",
+    "scenes": 6,
+    "updates_per_scene": 1999,
+    "mean_event_dt_s": 0.01,
+    "max_equation_replay_error": 7.105427357601002e-15,
+    "residual_clipping_events": 0,
+    "position_force_alpha_sources": {
+      "RELEASE": 0.9,
+      "run_start": 0.9,
+      "run_status": 0.9,
+      "raw_runIdentity_decoded": 0.9
+    },
+    "tracking_parameters": {
+      "error_reference": "filtered Euler reference minus actual ZYX Euler",
+      "rate_reference": "measured body angular velocity",
+      "surface_map": "actual ZYX T maps body omega to Euler rate; T-transpose maps the clipped tracking surface to body coordinates",
+      "output_sign": "runtime moment = nominal moment - estimateTorque",
+      "residual_limits_rad_s2": [45.0, 45.0, 4.7124],
+      "beta_rise_s": 2.2,
+      "gamma": [2.1, 2.25, 1.1],
+      "sigma_w": [0.11, 0.12, 0.20],
+      "surface_limits_rad_s": [2.3, 2.3, 1.4]
+    },
+    "interpretation": "No sign, coordinate, reference, event-dt, position-scale binding, or attitude-residual clipping mismatch was found. The audit revision decodes MATLAB uint16 text for alpha; the earlier draft's value 48 was the codepoint for character '0'. No runtime, release, or raw data changed."
+  },
+  "next_testable_structure_hypothesis": {
+    "preserve": "C5 nominal BS force path and full position force compensation (alpha=1); frozen metrics",
+    "change": "A causal position DSSM interface that augments the existing 14 inputs with command-filter rate and PCF realization eta (about 20 input features), retains 3D force-residual output, and predicts the next 10-ms residual",
+    "reason": "These deployable states encode filter/realization phase missing from the current inference feature vector; the existing 20D branch makes this a small interface change.",
+    "status": "hypothesis_only; compare against historical C5 HF repair interface before freezing the next candidate"
+  },
+  "c5_context": "A prior C5 HF position regression was mostly repaired by later changes. This report does not claim position-task coupling is physically unfixable; the cross-loop phase metrics are diagnostic associations only."
+}

@@ -1,0 +1,80 @@
+{
+  "schema": "DL1018_LARGE_GRU_DUAL_LOOP_DEV24_BATCH_INPUT_V1",
+  "study_id": "large_gru_dual_loop_dev_v1",
+  "scope": "Only 24 scene IDs from frozen TRAIN24_SCORE_SUMMARY_v2.json; one already-scored B768 pilot reuse plus 23 new DEV attempts.",
+  "cohort_sources": {
+    "batch_bindings": {
+      "path": "experiments/dl_attitude_replacement_20261028/no_position_gru_notch_train24_batch_prepare_v1/BATCH_BINDINGS_v1.json",
+      "sha256": "c6e8cb26ba023e88f4120d702c83708938de2fed22762bb10220d2f8eb586c91"
+    },
+    "batch_input": {
+      "path": "experiments/dl_attitude_replacement_20261028/no_position_gru_notch_train24_batch_prepare_v1/COHORT_INPUT_v1.json",
+      "sha256": "f23c9beb2515cf264471fde9c8ee96745686c5b58b541f79954bcd74f108cae9"
+    },
+    "batch_preparer": {
+      "path": "experiments/dl_attitude_replacement_20261028/no_position_gru_notch_train24_batch_prepare_v1/prepare_train24_batch_v1.py",
+      "sha256": "fdfbf4157585eeeb3bf5768491db47820c1fe64210e13a78f447a6fc0a2cdd99"
+    },
+    "dataset_manifest": {
+      "path": "experiments/dl_attitude_replacement_20261028/position_cosine_gru_train24_causal_v1/DATASET_MANIFEST_v1.json",
+      "sha256": "16856362913e5144add83035b9b767affa02c0719c66971635731d237bb0d91e"
+    },
+    "dataset_source_lock": {
+      "path": "experiments/dl_attitude_replacement_20261028/position_cosine_gru_train24_causal_v1/SOURCE_LOCK_v1.json",
+      "sha256": "10be2c860c042491acfc0cfaad1067c65d848dd5889c177e6ccb8d65c9602fb7"
+    },
+    "physical_manifest": {
+      "path": "experiments/dl_attitude_replacement_20261027/mlp15_nominal_residual_v1/TRAIN_C5_24_PHYSICAL_RESIDUAL_MANIFEST_v1.json",
+      "sha256": "18761c159e003388e7a728132913eaf0b290c0d109d797618986ef87d8fd3bbb"
+    },
+    "authoritative_train24_summary": {
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\causal_n4_gate_train24_batch_v2\\TRAIN24_SCORE_SUMMARY_v2.json",
+      "sha256": "d127fc403a8d456924b7040ce8a329e5130f2b67f5ea8a801490e075085f4b21"
+    }
+  },
+  "n4_gate_v2": {
+    "root": "experiments/dl_attitude_replacement_20261028/n4cg_v2",
+    "release": {
+      "path": "experiments/dl_attitude_replacement_20261028/n4cg_v2/RELEASE.json",
+      "sha256": "300ed5798ff2ff1a9557a128fbb57c29c7ad154d27dc1cea09f3a222d15a12f5"
+    },
+    "protocol": {
+      "path": "experiments/dl_attitude_replacement_20261028/n4cg_v2/CALL_PROTOCOL_v2.json",
+      "sha256": "5cfec030685a180db167cc2488753c7383ac4f73b4e2bb528f40c11270eda7a7"
+    },
+    "source_lock": {
+      "path": "experiments/dl_attitude_replacement_20261028/n4cg_v2/SOURCE_LOCK_v2.json",
+      "sha256": "94301260f83dc097d2fb5b95d71ea081d3c5639163e65cb393cf85655dc3b6bb"
+    },
+    "three_scene_result": {
+      "path": "experiments/dl_attitude_replacement_20261028/n4cg_v2/THREE_SCENE_RESULT_v2.json",
+      "sha256": "d673b80815bb0a63ff57bc79dfdea4d206ab914e5810f6366e2e861a5936e10b"
+    },
+    "shared_runtime_relative": "candidate_runner_work"
+  },
+  "policy": {
+    "attempt_id": "attempt_01",
+    "max_attempts_per_scene": 1,
+    "potential_future_calls_if_approved": 23,
+    "Plant_calls": 0,
+    "authorized_Plant_calls": 0,
+    "potential_budget_calls": 0,
+    "create_attempt_directories": false,
+    "create_marker_files": false,
+    "scoring_path_pattern": "experiments/dl_attitude_replacement_20261028/large_gru_b768_v1/paired_results/DEV24/scores/<scene_id>.json",
+    "attempt_path_pattern": "runs/<scene_id>/attempt_01"
+  },
+  "fixed_controller": {
+    "attitude": "GRU13_B768_COSINE_S2026102001, GRU(13/32/3), TRAIN-only normalizer",
+    "position": "frozen C5 DSSM14 / M110 options",
+    "parent_raw_role": "OLD_COSINE_GRU_COMPARATOR_ONLY",
+    "extra_position_residual_gru_enabled": false,
+    "fixed_J0": true,
+    "inertia_reconstruction_enabled": false,
+    "parameter_tuning": false
+  },
+  "candidate_model_sha256": "4f0724426244d58e283da3f1ebbf6a01a9b39b02d2280eaaa22796eee8f1fd6b",
+  "candidate_identity_sha256": "846c8407c462029ea7ae1b2955556c6ed739710bdeb087136fe8c95c8c01a15e",
+  "authoritative_scene_list_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\causal_n4_gate_train24_batch_v2\\TRAIN24_SCORE_SUMMARY_v2.json",
+  "authoritative_scene_list_sha256": "d127fc403a8d456924b7040ce8a329e5130f2b67f5ea8a801490e075085f4b21"
+}

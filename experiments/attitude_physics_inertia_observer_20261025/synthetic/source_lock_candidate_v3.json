@@ -1,0 +1,111 @@
+{
+  "lock_kind": "source_lock_candidate",
+  "version": 3,
+  "freeze_status": "NOT_FROZEN",
+  "authorization_scope": "isolated synthetic audit only",
+  "closed_loop_runs_authorized": false,
+  "closed_loop_runs_executed": false,
+  "production_runtime_hook_added": false,
+  "training_executed": false,
+  "TEST_MAT_raw_or_scene_data_read": false,
+  "generated_utc": "2026-10-25T05:21:46Z",
+  "matlab_executable": "C:\\Program Files\\MATLAB\\R2025b\\bin\\matlab.exe",
+  "matlab_release_from_path": "R2025b",
+  "launcher_command": "pwsh -NoProfile -File experiments/attitude_physics_inertia_observer_20261025/synthetic/run_matlab_synthetic_v3.ps1",
+  "synthetic_audit_status": "PASS",
+  "matlab_exit_code": 0,
+  "stdout_marker": "PHYS_ATT_SYNTHETIC_AUDIT_PASS",
+  "stderr_empty": true,
+  "forbidden_calls_found": [],
+  "external_data_files_opened": [],
+  "J0_source": "cfg.attitude_replacement.J0_controller_fixed_kgm2; synthetic value from arm_mass_properties(asymmetric initial lengths)",
+  "source_files": [
+    {
+      "path": "experiments/attitude_physics_inertia_observer_20261025/phys_attitude_replacement_candidate_v2.m",
+      "sha256": "fdca20386820f9899a06ade7226902767bbfda2ee3a5ad04af5ab467959c1182"
+    },
+    {
+      "path": "experiments/attitude_physics_inertia_observer_20261025/synthetic/run_phys_attitude_synthetic_audit_v3.m",
+      "sha256": "62a9219eba4b13bfb3501150d395c035c5a0ee655989c3d8f3899f62d5ab7352"
+    },
+    {
+      "path": "experiments/attitude_physics_inertia_observer_20261025/synthetic/run_matlab_synthetic_v3.ps1",
+      "sha256": "c3ce55b22acb53e1f69a1b3dd950168005feac2b6b319913be9b1bd418e3db63"
+    },
+    {
+      "path": "experiments/attitude_physics_inertia_observer_20261025/ATTITUDE_PHYS_OBSERVER_J0_CORRECTION_ADDENDUM_v1.2_ZH.md",
+      "sha256": "48588d27b3db0c54f405ff4fdba1d0f9cefd1a5b73b35b43993797b1a68abfe7"
+    },
+    {
+      "path": "matlab/core/default_config.m",
+      "sha256": "685abb7b72a335fdc826673e6431098fe79af88409f17b1b70ce08edb214dc51"
+    },
+    {
+      "path": "matlab/core/attitude_bs_step.m",
+      "sha256": "cf6b20ffc4df2625d9316a80340d69542e380d14feaed66ef8498e793fdaccbc"
+    },
+    {
+      "path": "matlab/core/arm_mass_properties.m",
+      "sha256": "8ec66e107156b5219f7e41aca2464eef1ec8043eb7f67df313c0f23ef4b551f5"
+    },
+    {
+      "path": "matlab/core/distributed_mass_properties.m",
+      "sha256": "db380b506e4bacc37bc398d5726c5ebd25be8ebc08b6c9e76ff59bc78fd45d3a"
+    },
+    {
+      "path": "matlab/core/arm_directions.m",
+      "sha256": "517bbfcd0df9526b189f64bff067a49551f573ad96e682ee005533ab510e686c"
+    }
+  ],
+  "evidence_artifacts": [
+    {
+      "path": "experiments/attitude_physics_inertia_observer_20261025/synthetic/PHYS_ATT_OBSERVER_SYNTH_AUDIT_v3.json",
+      "sha256": "eba73d2ae849c4b7a39c6c88ca9890ef9c9e092ed3b51c590a16002a0eb9fb57"
+    },
+    {
+      "path": "experiments/attitude_physics_inertia_observer_20261025/synthetic/matlab_command_v3.txt",
+      "sha256": "6168f8235a63c9300155d1bc42b6130e1eb82aff7f6ae7407a100e46a5fd386d"
+    },
+    {
+      "path": "experiments/attitude_physics_inertia_observer_20261025/synthetic/matlab_stdout_v3.log",
+      "sha256": "570b322eea4db9ca22d31329f81989ece1ff4cef04992224b1b876034e132e17"
+    },
+    {
+      "path": "experiments/attitude_physics_inertia_observer_20261025/synthetic/matlab_stderr_v3.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "experiments/attitude_physics_inertia_observer_20261025/synthetic/matlab_exit_code_v3.txt",
+      "sha256": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354"
+    }
+  ],
+  "historical_locks_unchanged": [
+    {
+      "path": "experiments/attitude_physics_inertia_observer_20261025/source_lock_candidate_v1.json",
+      "sha256": "5aba7bb03422a279b3880ff6570dd1141bf5c8f336802132e4364f200b0e5585"
+    },
+    {
+      "path": "experiments/attitude_physics_inertia_observer_20261025/synthetic/source_lock_candidate_v2.json",
+      "sha256": "0245aba9bcfd2f693cf6ec05d8e1dea3a380ff32d2911c949afb9c433ee2b296"
+    }
+  ],
+  "assertion_summary": {
+    "max_torque_interface_error_Nm": 0,
+    "max_synthetic_alpha_error_rads2": 3.552713678800501E-15,
+    "candidate_tau_shape_error_by_axis_Nm": [
+      0,
+      0,
+      0
+    ],
+    "candidate_torque_delta_error_by_axis_Nm": [
+      5.421010862427522E-19,
+      4.119968255444917E-18,
+      1.0842021724855044E-17
+    ],
+    "candidate_torque_mapping_error_Nm": 1.3877787807814457E-17,
+    "max_residual_error_Nm": 4.440892098500626E-16,
+    "max_observer_update_error_rads2": 0,
+    "completed_observer_intervals": 2
+  },
+  "note": "Candidate only; runner/scene/options lock and DEV flight approval remain separate gates."
+}

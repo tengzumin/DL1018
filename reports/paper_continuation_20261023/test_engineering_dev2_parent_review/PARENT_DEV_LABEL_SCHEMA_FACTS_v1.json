@@ -1,0 +1,32 @@
+{
+  "schema": "PARENT_DEV_ENGINEERING_LABEL_SCHEMA_FACTS_V1",
+  "utc": "2026-10-23T15:43:41.273999+00:00",
+  "TEST_accessed": false,
+  "Plant_calls": 0,
+  "wrapper_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\corrected_reference_training_v1\\corrected_pair_eval_v1\\sources\\local_runtime\\run_episode_dl1018.m",
+  "wrapper_sha256": "fcc1f5de659541e692483f8395d93fd2a251256286ebade5e510ed4c7a2e2330",
+  "wrapper_behavior": "Uses fixed B2-RBF-Full-SPLIT nominal core, passes candidate-specific opts, then appends log.scene_id and log.collector. These wrapper identity strings are not numerical dynamics.",
+  "rows": [
+    {
+      "alias": "DSSM",
+      "old_raw_sha256": "e54111ca11559ccb5d1e7c9ca9824db0b225234b2cff3497d5cfe71e1878c8d8",
+      "old_run_start_sha256": "1b6417b4369f5b5618d1ee81ac8595de1bb6d607e0fdd04ad2913748f6986cde",
+      "nominal_log_method": "B2-RBF-Full-SPLIT",
+      "external_run_start_method_id": "DSSM14_G12_R32",
+      "top_level_method_present": false,
+      "log_collector_present": false,
+      "log_scene_id_present": false
+    },
+    {
+      "alias": "KAN",
+      "old_raw_sha256": "977a948da36402f869046782344e9a8231f34cc5d982a1ee8c462170fc695c2d",
+      "old_run_start_sha256": "b10d1de1a0a0307659c3e1bb0f608aa8a4e0da109991493dbc327104404bbda9",
+      "nominal_log_method": "B2-RBF-Full-SPLIT",
+      "external_run_start_method_id": "NEW_KAN14_G12_R32",
+      "top_level_method_present": false,
+      "log_collector_present": false,
+      "log_scene_id_present": false
+    }
+  ],
+  "root_review_erratum": "Parent correctly caught absent old top-level method, but then incorrectly assumed old log.method equaled external collector without reading its value. Current DEV2 failure occurs before Plant; old/new numerical equivalence remains pending."
+}

@@ -1,0 +1,424 @@
+{
+  "schema": "FULL72_TEACHER_FIT_AND_HEAD_GRADIENT_V1",
+  "status": "PASS_READ_ONLY_FULL72_FIXED_HIDDEN_DIAGNOSTIC",
+  "analysis_script_sha256": "52c0c75a70c233f7a87309af8cb76ab0330e1348e404375194df85aadcf1489d",
+  "scope": {
+    "Plant_calls": 0,
+    "training_jobs": 0,
+    "optimizer_updates": 0,
+    "TEST_read": false,
+    "true_inertia_read": false,
+    "Jhat_used": false,
+    "Jdot_used": false
+  },
+  "input_sha256": {
+    "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\mlp15_c5_teacher_redistill_v1\\matched_teacher_data_v1.npz": "b3a8ca6446d6bdde0573e6c233aa222a6cfb28d35f13b084e8dd9683c16c111f",
+    "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\mlp15_c5_teacher_redistill_v1\\DATASET_MANIFEST_v1.json": "98766ddac3125b81d4637eeb2576349b6ce181c94564c1a444d1d4cab734d55c",
+    "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_c5_teacher_v1\\runs\\GRU32_STREAM72_S2026102001\\gru_stream_c5_teacher_weights_v1.mat": "963f7d994e881ac01b4b6d0c713f56ddd9e8d28efb19c800d0a130c781366021",
+    "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_dev_v1\\ROOT_SIX_PYTHON_METRICS_v1.json": "c0eb1b838dac4f8f3c326f81918f0d7512f9e927ec5671332a13ce339b044ac9",
+    "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_dev_v1\\ROOT_SIX_SCENE_DECISION_v1.json": "646ca6c4f33dfa9a70d77e78cc5baae0d494eec6084147cc5cb9e919da94e82d",
+    "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\attitude_target_semantics_diagnosis_20261027_v1\\diagnose_target_semantics.py": "0d8e321861c0f149bea81ce5e99e27470e0ea593c9663c27402cf019e0a8ac32"
+  },
+  "frozen_model_sha256": "963f7d994e881ac01b4b6d0c713f56ddd9e8d28efb19c800d0a130c781366021",
+  "data_source": "C5 teacher matched_teacher_data_v1.npz only; no scene raw or physical run parameters read.",
+  "event_clock": {
+    "sample_indices_zero_based": [
+      10,
+      20,
+      30,
+      19990
+    ],
+    "event_count_per_scene": 1999,
+    "first_last_time_s": [
+      0.01,
+      19.99
+    ],
+    "mature_beta_rule": "min((index+1)*0.001/2.2,1)>=1",
+    "late_window_rule": "event time >= 15 s"
+  },
+  "target_fit_prediction": "Frozen GRU raw pre-DMAX output in rad/s^2 compared with C5 teacher y; output from h=0 reset separately at scene start.",
+  "gradient": {
+    "loss": "mean SmoothL1 over 3 output dimensions; derivative clip(pred_norm-target_norm,-1,1)/3 per output bias component.",
+    "fixed_hidden": true,
+    "readout_bias_only": true,
+    "no_optimizer_or_parameter_update": true
+  },
+  "splits": {
+    "TRAIN24": {
+      "scene_count": 24,
+      "events_per_scene": 1999,
+      "teacher_fit_pre_DMAX": {
+        "all_events": {
+          "valid_n": 47976,
+          "rmse_rad_s2": [
+            1.043558092439175,
+            0.9734576421268426,
+            0.07062811699240401
+          ],
+          "mean_bias_prediction_minus_target_rad_s2": [
+            0.8180338901600275,
+            -0.35282137857378765,
+            -0.03901759908109974
+          ],
+          "target_rms_rad_s2": [
+            7.863984913338955,
+            6.980019019748087,
+            0.4383438799882096
+          ]
+        },
+        "beta_mature_events": {
+          "valid_n": 42720,
+          "rmse_rad_s2": [
+            1.0981437479323628,
+            1.030336101248216,
+            0.07359227732061159
+          ],
+          "mean_bias_prediction_minus_target_rad_s2": [
+            0.8756445504795569,
+            -0.3875371020731418,
+            -0.03928883780171051
+          ],
+          "target_rms_rad_s2": [
+            8.333723119423274,
+            7.396955424270219,
+            0.4645274016345334
+          ]
+        },
+        "late_last_5s_events": {
+          "valid_n": 12000,
+          "rmse_rad_s2": [
+            0.8572041475986314,
+            1.0231865139470473,
+            0.04635406160904771
+          ],
+          "mean_bias_prediction_minus_target_rad_s2": [
+            0.7024854312507945,
+            -0.28130367527966493,
+            -0.02805873546666927
+          ],
+          "target_rms_rad_s2": [
+            0.862905092349179,
+            1.0946843599923215,
+            0.04134632490315226
+          ]
+        }
+      },
+      "head_bias_smoothl1_gradient": {
+        "event_equal": {
+          "head_bias_gradient": [
+            0.03398018822763169,
+            -0.012711200568591973,
+            -0.0212941700550959
+          ],
+          "l2_norm": 0.04206743978679467,
+          "max_abs_component": 0.03398018822763169
+        },
+        "scene_chunk_equal_16_chunks_of_128_then_79": {
+          "head_bias_gradient": [
+            0.03376811572106462,
+            -0.012642256581106093,
+            -0.021177577792244
+          ],
+          "l2_norm": 0.04181628979190141,
+          "max_abs_component": 0.03376811572106462,
+          "scene_chunk_count": 384,
+          "chunk_sizes": [
+            128,
+            128,
+            128,
+            128,
+            128,
+            128,
+            128,
+            128,
+            128,
+            128,
+            128,
+            128,
+            128,
+            128,
+            128,
+            79
+          ]
+        }
+      }
+    },
+    "VAL48": {
+      "scene_count": 48,
+      "events_per_scene": 1999,
+      "teacher_fit_pre_DMAX": {
+        "all_events": {
+          "valid_n": 95952,
+          "rmse_rad_s2": [
+            1.1961150739740434,
+            1.254111095876729,
+            0.08831225914720948
+          ],
+          "mean_bias_prediction_minus_target_rad_s2": [
+            0.8810514837817931,
+            -0.5711914049627612,
+            -0.042131495494946124
+          ],
+          "target_rms_rad_s2": [
+            8.10373768391616,
+            10.200278880469488,
+            0.6808006742000401
+          ]
+        },
+        "beta_mature_events": {
+          "valid_n": 85440,
+          "rmse_rad_s2": [
+            1.2616556892928124,
+            1.328069751087999,
+            0.09257276548449528
+          ],
+          "mean_bias_prediction_minus_target_rad_s2": [
+            0.9494944209045739,
+            -0.6324549786552732,
+            -0.04274259447042458
+          ],
+          "target_rms_rad_s2": [
+            8.587797006339809,
+            10.80957057822829,
+            0.7214668344417856
+          ]
+        },
+        "late_last_5s_events": {
+          "valid_n": 24000,
+          "rmse_rad_s2": [
+            1.1463151400879685,
+            1.3679779855101126,
+            0.0704027512708841
+          ],
+          "mean_bias_prediction_minus_target_rad_s2": [
+            0.8739861664543779,
+            -0.565507333232176,
+            -0.030183228770375853
+          ],
+          "target_rms_rad_s2": [
+            1.349391598253417,
+            1.5167941767941437,
+            0.09350995811680471
+          ]
+        }
+      },
+      "head_bias_smoothl1_gradient": {
+        "event_equal": {
+          "head_bias_gradient": [
+            0.03659786668652916,
+            -0.020578482349586733,
+            -0.022981663792769752
+          ],
+          "l2_norm": 0.04786475375995491,
+          "max_abs_component": 0.03659786668652916
+        },
+        "scene_chunk_equal_16_chunks_of_128_then_79": {
+          "head_bias_gradient": [
+            0.03655509281489611,
+            -0.020576278124304553,
+            -0.022829417987763084
+          ],
+          "l2_norm": 0.047758144413433866,
+          "max_abs_component": 0.03655509281489611,
+          "scene_chunk_count": 768,
+          "chunk_sizes": [
+            128,
+            128,
+            128,
+            128,
+            128,
+            128,
+            128,
+            128,
+            128,
+            128,
+            128,
+            128,
+            128,
+            128,
+            128,
+            79
+          ]
+        }
+      }
+    },
+    "ALL72": {
+      "scene_count": 72,
+      "events_per_scene": 1999,
+      "teacher_fit_pre_DMAX": {
+        "all_events": {
+          "valid_n": 143928,
+          "rmse_rad_s2": [
+            1.1475184868040527,
+            1.1680766331334855,
+            0.08283807727782434
+          ],
+          "mean_bias_prediction_minus_target_rad_s2": [
+            0.8600456192412074,
+            -0.49840139616643486,
+            -0.0410935300236639
+          ],
+          "target_rms_rad_s2": [
+            8.024616036851318,
+            9.252243763807611,
+            0.6107712264303139
+          ]
+        },
+        "beta_mature_events": {
+          "valid_n": 128160,
+          "rmse_rad_s2": [
+            1.2096101090534395,
+            1.236814592551526,
+            0.0867088175065038
+          ],
+          "mean_bias_prediction_minus_target_rad_s2": [
+            0.924877797429562,
+            -0.5508156864612282,
+            -0.041591342247520036
+          ],
+          "target_rms_rad_s2": [
+            8.503949197782854,
+            9.80490662406736,
+            0.6472543274654419
+          ]
+        },
+        "late_last_5s_events": {
+          "valid_n": 36000,
+          "rmse_rad_s2": [
+            1.0587533158468487,
+            1.2635450367918173,
+            0.06340818506753236
+          ],
+          "mean_bias_prediction_minus_target_rad_s2": [
+            0.8168192547198488,
+            -0.47077278058133765,
+            -0.02947506433580666
+          ],
+          "target_rms_rad_s2": [
+            1.2091761064565065,
+            1.3904031786410038,
+            0.07999529802225927
+          ]
+        }
+      },
+      "head_bias_smoothl1_gradient": {
+        "event_equal": {
+          "head_bias_gradient": [
+            0.03572530720022998,
+            -0.017956055089255428,
+            -0.022419165880211794
+          ],
+          "l2_norm": 0.04584033690630592,
+          "max_abs_component": 0.03572530720022998
+        },
+        "scene_chunk_equal_16_chunks_of_128_then_79": {
+          "head_bias_gradient": [
+            0.035626100450285664,
+            -0.017931604276571707,
+            -0.022278804589256712
+          ],
+          "l2_norm": 0.04568486181605122,
+          "max_abs_component": 0.035626100450285664,
+          "scene_chunk_count": 1152,
+          "chunk_sizes": [
+            128,
+            128,
+            128,
+            128,
+            128,
+            128,
+            128,
+            128,
+            128,
+            128,
+            128,
+            128,
+            128,
+            128,
+            128,
+            79
+          ],
+          "training_batch_interpretation": "Per 128-event chunk, loss mean over each 4-scene batch / valid events / 3 outputs; average the resulting fixed-hidden gradients equally over all 72 scenes and 16 time chunks. This is a read-only current-gradient summary, not a replay of historical Adam updates."
+        }
+      }
+    }
+  },
+  "scene_ids": {
+    "TRAIN24": [
+      "DL1018_DEV_T1_C00_W03",
+      "DL1018_DEV_T1_C01_W15",
+      "DL1018_DEV_T1_C04_W00",
+      "DL1018_DEV_T1_C05_W06",
+      "DL1018_DEV_T1_C07_W08",
+      "DL1018_DEV_T1_C10_W09",
+      "DL1018_DEV_T1_C11_W12",
+      "DL1018_DEV_T1_C15_W14",
+      "DL1018_DEV_T2_C00_W04",
+      "DL1018_DEV_T2_C02_W15",
+      "DL1018_DEV_T2_C03_W01",
+      "DL1018_DEV_T2_C06_W07",
+      "DL1018_DEV_T2_C08_W08",
+      "DL1018_DEV_T2_C09_W10",
+      "DL1018_DEV_T2_C12_W13",
+      "DL1018_DEV_T2_C14_W14",
+      "DL1018_DEV_T3_C00_W05",
+      "DL1018_DEV_T3_C03_W15",
+      "DL1018_DEV_T3_C05_W02",
+      "DL1018_DEV_T3_C06_W08",
+      "DL1018_DEV_T3_C09_W09",
+      "DL1018_DEV_T3_C10_W11",
+      "DL1018_DEV_T3_C13_W12",
+      "DL1018_DEV_T3_C15_W14"
+    ],
+    "VAL48": [
+      "DL1018_VAL_T1_C00_W07",
+      "DL1018_VAL_T1_C01_W08",
+      "DL1018_VAL_T1_C02_W09",
+      "DL1018_VAL_T1_C03_W10",
+      "DL1018_VAL_T1_C04_W11",
+      "DL1018_VAL_T1_C05_W12",
+      "DL1018_VAL_T1_C06_W13",
+      "DL1018_VAL_T1_C07_W14",
+      "DL1018_VAL_T1_C08_W15",
+      "DL1018_VAL_T1_C09_W00",
+      "DL1018_VAL_T1_C10_W01",
+      "DL1018_VAL_T1_C11_W02",
+      "DL1018_VAL_T1_C12_W03",
+      "DL1018_VAL_T1_C13_W04",
+      "DL1018_VAL_T1_C14_W05",
+      "DL1018_VAL_T1_C15_W06",
+      "DL1018_VAL_T2_C00_W10",
+      "DL1018_VAL_T2_C01_W11",
+      "DL1018_VAL_T2_C02_W12",
+      "DL1018_VAL_T2_C03_W13",
+      "DL1018_VAL_T2_C04_W14",
+      "DL1018_VAL_T2_C05_W15",
+      "DL1018_VAL_T2_C06_W00",
+      "DL1018_VAL_T2_C07_W01",
+      "DL1018_VAL_T2_C08_W02",
+      "DL1018_VAL_T2_C09_W03",
+      "DL1018_VAL_T2_C10_W04",
+      "DL1018_VAL_T2_C11_W05",
+      "DL1018_VAL_T2_C12_W06",
+      "DL1018_VAL_T2_C13_W07",
+      "DL1018_VAL_T2_C14_W08",
+      "DL1018_VAL_T2_C15_W09",
+      "DL1018_VAL_T3_C00_W13",
+      "DL1018_VAL_T3_C01_W14",
+      "DL1018_VAL_T3_C02_W15",
+      "DL1018_VAL_T3_C03_W00",
+      "DL1018_VAL_T3_C04_W01",
+      "DL1018_VAL_T3_C05_W02",
+      "DL1018_VAL_T3_C06_W03",
+      "DL1018_VAL_T3_C07_W04",
+      "DL1018_VAL_T3_C08_W05",
+      "DL1018_VAL_T3_C09_W06",
+      "DL1018_VAL_T3_C10_W07",
+      "DL1018_VAL_T3_C11_W08",
+      "DL1018_VAL_T3_C12_W09",
+      "DL1018_VAL_T3_C13_W10",
+      "DL1018_VAL_T3_C14_W11",
+      "DL1018_VAL_T3_C15_W12"
+    ]
+  }
+}

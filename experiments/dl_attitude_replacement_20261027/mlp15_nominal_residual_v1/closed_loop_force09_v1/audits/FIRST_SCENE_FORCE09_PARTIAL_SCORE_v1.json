@@ -1,0 +1,58 @@
+{
+  "schema": "DL1018_FORCE09_FIRST_SCENE_PARTIAL_SCORE_AND_TRACE_AUDIT_V1",
+  "status": "PASS_SINGLE_SCENE_SCORE_AND_FORCE_PATH_TRACE_CHECKS",
+  "scope": "one completed DEV scene; not a 12-scene macro/gate or causal comparison",
+  "scene_id": "DL1018_DEV_T1_C10_W09",
+  "release_sha256": "f4a82482d7febb29dddc7c954a1e4e4c07793cecb97756a63b8926232d52f870",
+  "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261027\\mlp15_nominal_residual_v1\\closed_loop_force09_v1\\runs\\DL1018_DEV_T1_C10_W09\\PHYS_RESIDUAL_ATTEMPT_01\\raw_run.mat",
+  "raw_sha256": "f272f364a6e92dcc829ceb3a818f726580e2e1a9a3f15191c6d4b95cde9bb7ea",
+  "run_status_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261027\\mlp15_nominal_residual_v1\\closed_loop_force09_v1\\runs\\DL1018_DEV_T1_C10_W09\\PHYS_RESIDUAL_ATTEMPT_01\\run_status.json",
+  "run_status_sha256": "22f2b1bec9e72dffad163f1f909eb56b4a1d0e25d11046598601081ca118dff7",
+  "force_scale": 0.9,
+  "inferred_mass_kg_from_logged_force_and_acceleration": 0.6949999999999997,
+  "paired_metrics": {
+    "Candidate": {
+      "Q_m": 0.010745991216800626,
+      "task_SO3_rad": 0.04319871007689165,
+      "inner_SO3_rad": 0.019000343359982762
+    },
+    "B": {
+      "Q_m": 0.010984561773262777,
+      "task_SO3_rad": 0.042200801129056116,
+      "inner_SO3_rad": 0.023236953991647456
+    },
+    "C5": {
+      "Q_m": 0.010465882128741399,
+      "task_SO3_rad": 0.04327264903532816,
+      "inner_SO3_rad": 0.023274046930281553
+    }
+  },
+  "candidate_minus_baseline": {
+    "B": {
+      "Q_m": -0.0002385705564621511,
+      "task_SO3_rad": 0.000997908947835531,
+      "inner_SO3_rad": -0.0042366106316646945
+    },
+    "C5": {
+      "Q_m": 0.0002801090880592272,
+      "task_SO3_rad": -7.393895843651327e-05,
+      "inner_SO3_rad": -0.004273703570298791
+    }
+  },
+  "force_path_max_abs_reconstruction_errors": {
+    "applied_vs_scale_times_unscaled_mps2": 0.0,
+    "held_applied_vs_scale_times_unscaled_mps2": 0.0,
+    "held_force_vs_mass_times_held_applied_N": 2.220446049250313e-16,
+    "injected_force_vs_held_force_N": 0.0,
+    "logged_compensation_vs_injected_force_N": 0.0,
+    "commanded_force_nominal_minus_compensation_N": 1.1102230246251565e-16,
+    "nominal_force_vs_mass_times_nominal_accel_N": 2.220446049250313e-16,
+    "pcf_request_vs_commanded_force_over_mass_mps2": 6.661338147750939e-16
+  },
+  "trace_interpretation": {
+    "position_nominal_feedback": "position_bs_nominal_force is logged separately and remains the BS term; the runtime relation commanded_force = nominal_force - applied_compensation is verified.",
+    "pcf": "PCF request equals the applied-force-derived commanded acceleration; PCF filtered acceleration is downstream and is not required to equal the request.",
+    "causality": "logged identities validate this run's implementation path only; they do not establish counterfactual closed-loop causality."
+  },
+  "test_data_read": false
+}

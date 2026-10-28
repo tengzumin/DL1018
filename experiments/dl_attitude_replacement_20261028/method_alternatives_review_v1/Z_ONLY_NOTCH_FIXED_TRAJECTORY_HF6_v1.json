@@ -1,0 +1,302 @@
+{
+  "schema": "DL1018_Z_ONLY_NOTCH_FIXED_TRAJECTORY_HF6_V1",
+  "status": "SUPERSEDED_BY_V2",
+  "superseded_by": "Z_ONLY_NOTCH_FIXED_TRAJECTORY_HF6_v2.json",
+  "scope": "Six existing applied-notch HF6 raws. Z-only 3.5Hz/Q1 causal event filter, XY direct; replayed on fixed recorded notch trajectories. No Plant, TEST, training, or inertia reconstruction.",
+  "Plant_calls_by_replay": 0,
+  "TEST_read": false,
+  "training_runs": 0,
+  "inertia_reconstruction": false,
+  "input_notch_score_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\gru_cosine_c5_applied_notch_35hz_q1_v1\\audits\\NOTCH_HF6_FROZEN_SCORE_v2.json",
+  "input_notch_score_sha256": "54580b4f0caaf1c06be8e503a6ba6d8dd06d10cebba6545c7f019e31e446a16d",
+  "filter_definition": {
+    "type": "causal second-order notch at 100-Hz Stage1 events; Z only; XY straight-through; event ZOH; zero state",
+    "center_hz": 3.5,
+    "Q": 1.0,
+    "sample_rate_hz": 100,
+    "b": [
+      0.9005755352793756,
+      -1.757773520542205,
+      0.9005755352793756
+    ],
+    "a": [
+      1.0,
+      -1.757773520542205,
+      0.8011510705587512
+    ],
+    "parameters_swept": false
+  },
+  "summary_equal_scene_mean_task_to_filtered_reference_mrad": {
+    "full_notch_logged": 61.96103974323558,
+    "full_notch_replayed": 61.96103974323557,
+    "z_only_notch_replayed": 64.51646414461224,
+    "parent_no_notch_logged": 63.136854962852986
+  },
+  "summary_by_HF_group_task_to_filtered_reference_mrad": {
+    "W09": {
+      "full_notch_logged": 52.43424336720244,
+      "full_notch_replayed": 52.43424336720243,
+      "z_only_notch_replayed": 53.817566857156486,
+      "parent_no_notch_logged": 51.72508857078638
+    },
+    "W10": {
+      "full_notch_logged": 77.7372958202125,
+      "full_notch_replayed": 77.73729582021247,
+      "z_only_notch_replayed": 83.48678198883911,
+      "parent_no_notch_logged": 74.99300069681583
+    },
+    "W14": {
+      "full_notch_logged": 63.05348530159872,
+      "full_notch_replayed": 63.0534853015987,
+      "z_only_notch_replayed": 65.32562305484045,
+      "parent_no_notch_logged": 66.7926506462431
+    }
+  },
+  "summary_equal_scene_mean_2_5Hz": {
+    "full_notch_compensation_rms_mps2": 0.20148384907083772,
+    "z_only_notch_compensation_rms_mps2": 0.4178029927655054,
+    "signed_compensation_delta_rms_mps2": 0.3558877741027853,
+    "full_notch_target_RP_rms_mrad": 28.954342974715754,
+    "z_only_target_RP_rms_mrad": 51.57260158489013,
+    "signed_target_RP_delta_rms_mrad": 36.07001737657617,
+    "target_RP_cross_term_mrad2": 333.6439292958693,
+    "target_power_identity_residual_mrad2": 2.371692252312041e-13,
+    "full_notch_filtered_reference_RP_rms_mrad": 15.478106912071318,
+    "z_only_filtered_reference_RP_rms_mrad": 24.636421629721664,
+    "parent_filtered_reference_RP_rms_mrad": 23.354225102448122
+  },
+  "frozen_closed_loop_task_SO3_context_from_notch_score": {
+    "parent_no_notch_mrad": 61.198993366400735,
+    "full_notch_mrad": 60.0331464656356
+  },
+  "scene_results": [
+    {
+      "scene_id": "DL1018_VAL_T3_C01_W14",
+      "split": "archived_generation_1_pilot",
+      "notch_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\gru_cosine_c5_applied_notch_35hz_q1_v1\\runs\\DL1018_VAL_T3_C01_W14\\raw_run.mat",
+      "notch_raw_sha256": "e6e158c2f9a89fa824b0c618dbbf96d486f05a79957b5184e2c1856da844d4b9",
+      "parent_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_full72_v1\\runs\\DL1018_VAL_T3_C01_W14\\raw_run.mat",
+      "parent_raw_sha256": "76afcf331ca14b169977810c74c8a8680f57d9747a9a3b9a46285804a98a0503",
+      "tau_s": 1.0,
+      "rho": 0.01,
+      "notch_events": 1999,
+      "valid_head_events": 1968,
+      "notch_full_XYZ_recurrence_max_abs_mps2": 0.0,
+      "full_target_rebuild_max_abs_rad": 5.551115123125783e-17,
+      "full_filter_replay_max_abs_rad": 1.6653345369377348e-16,
+      "full_event_output_to_logged_compensation_max_abs_mps2": 1.1102230246251565e-16,
+      "actual_command_identity_max_abs_mps2": 4.440892098500626e-16,
+      "parent_reference_match_max_abs": 0.0,
+      "task_to_filtered_reference_SO3_mrad": {
+        "full_notch_logged": 64.95630018535866,
+        "full_notch_replayed": 64.95630018535864,
+        "z_only_notch_replayed": 67.41554866661188,
+        "parent_no_notch_logged": 68.59072723027002
+      },
+      "2_5Hz": {
+        "full_notch_compensation_rms_mps2": 0.1430151652529423,
+        "z_only_notch_compensation_rms_mps2": 0.44275968926453674,
+        "signed_compensation_delta_rms_mps2": 0.4181511553466223,
+        "full_notch_target_RP_rms_mrad": 16.90691061462967,
+        "z_only_target_RP_rms_mrad": 53.49274519470024,
+        "signed_target_RP_delta_rms_mrad": 43.0399572943532,
+        "target_RP_cross_term_mrad2": 723.1922380343028,
+        "target_power_identity_residual_mrad2": -9.75781955236954e-13,
+        "full_notch_filtered_reference_RP_rms_mrad": 5.176168093482178,
+        "z_only_filtered_reference_RP_rms_mrad": 18.387359909228245,
+        "parent_filtered_reference_RP_rms_mrad": 24.46984751400324
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T1_C10_W09",
+      "split": "current_generation_2_continuation",
+      "notch_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\gru_cosine_c5_applied_notch_35hz_q1_v1\\runs\\DL1018_DEV_T1_C10_W09\\raw_run.mat",
+      "notch_raw_sha256": "cf5eb4f98af90ba70a1ed677a783fb85a76979efb44b29bdddf9e075a4c6a3f9",
+      "parent_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_full72_v1\\runs\\DL1018_DEV_T1_C10_W09\\raw_run.mat",
+      "parent_raw_sha256": "c40239f9c9a6cea0f233eabdea3294b20ff4d3384e22a59055dc4e5358f5b541",
+      "tau_s": 1.0,
+      "rho": 0.01,
+      "notch_events": 1999,
+      "valid_head_events": 1968,
+      "notch_full_XYZ_recurrence_max_abs_mps2": 0.0,
+      "full_target_rebuild_max_abs_rad": 5.551115123125783e-17,
+      "full_filter_replay_max_abs_rad": 3.608224830031759e-16,
+      "full_event_output_to_logged_compensation_max_abs_mps2": 1.1102230246251565e-16,
+      "actual_command_identity_max_abs_mps2": 2.220446049250313e-16,
+      "parent_reference_match_max_abs": 0.0,
+      "task_to_filtered_reference_SO3_mrad": {
+        "full_notch_logged": 43.83130472190229,
+        "full_notch_replayed": 43.831304721902285,
+        "z_only_notch_replayed": 45.11225353878804,
+        "parent_no_notch_logged": 43.282898507752314
+      },
+      "2_5Hz": {
+        "full_notch_compensation_rms_mps2": 0.1500794856652807,
+        "z_only_notch_compensation_rms_mps2": 0.22965673459894678,
+        "signed_compensation_delta_rms_mps2": 0.17191125753205969,
+        "full_notch_target_RP_rms_mrad": 23.382941551267443,
+        "z_only_target_RP_rms_mrad": 29.185283236577604,
+        "signed_target_RP_delta_rms_mrad": 17.167309589723562,
+        "target_RP_cross_term_mrad2": 10.302283459853372,
+        "target_power_identity_residual_mrad2": 3.1848438816761693e-13,
+        "full_notch_filtered_reference_RP_rms_mrad": 14.558370065814978,
+        "z_only_filtered_reference_RP_rms_mrad": 17.799405960489953,
+        "parent_filtered_reference_RP_rms_mrad": 13.110409899536654
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C09_W10",
+      "split": "current_generation_2_continuation",
+      "notch_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\gru_cosine_c5_applied_notch_35hz_q1_v1\\runs\\DL1018_DEV_T2_C09_W10\\raw_run.mat",
+      "notch_raw_sha256": "025293f895c6c56c05cbeeee1e36e70a5b97f777a07b4f8eef75e99b0436d891",
+      "parent_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_full72_v1\\runs\\DL1018_DEV_T2_C09_W10\\raw_run.mat",
+      "parent_raw_sha256": "518567b25d19d8e8acd6a74c33eb7c5ed6b78c507d6f022a0cd12ba6bf126e98",
+      "tau_s": 1.0,
+      "rho": 0.01,
+      "notch_events": 1999,
+      "valid_head_events": 1968,
+      "notch_full_XYZ_recurrence_max_abs_mps2": 0.0,
+      "full_target_rebuild_max_abs_rad": 1.1102230246251565e-16,
+      "full_filter_replay_max_abs_rad": 6.938893903907228e-16,
+      "full_event_output_to_logged_compensation_max_abs_mps2": 2.220446049250313e-16,
+      "actual_command_identity_max_abs_mps2": 4.440892098500626e-16,
+      "parent_reference_match_max_abs": 0.0,
+      "task_to_filtered_reference_SO3_mrad": {
+        "full_notch_logged": 77.7372958202125,
+        "full_notch_replayed": 77.73729582021247,
+        "z_only_notch_replayed": 83.48678198883911,
+        "parent_no_notch_logged": 74.99300069681583
+      },
+      "2_5Hz": {
+        "full_notch_compensation_rms_mps2": 0.4420788852387506,
+        "z_only_notch_compensation_rms_mps2": 0.672953625238738,
+        "signed_compensation_delta_rms_mps2": 0.5043151853009681,
+        "full_notch_target_RP_rms_mrad": 70.98287084026457,
+        "z_only_target_RP_rms_mrad": 88.0217000940584,
+        "signed_target_RP_delta_rms_mrad": 51.85421192428228,
+        "target_RP_cross_term_mrad2": 20.392440434299104,
+        "target_power_identity_residual_mrad2": 2.9239577339218448e-12,
+        "full_notch_filtered_reference_RP_rms_mrad": 44.20395442918945,
+        "z_only_filtered_reference_RP_rms_mrad": 53.730648197103356,
+        "parent_filtered_reference_RP_rms_mrad": 39.26511990863362
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C09_W09",
+      "split": "current_generation_2_continuation",
+      "notch_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\gru_cosine_c5_applied_notch_35hz_q1_v1\\runs\\DL1018_DEV_T3_C09_W09\\raw_run.mat",
+      "notch_raw_sha256": "e5c40eb97e0602351c52856fb5f97caef78ea64ae0adef1498c9bb0074498b10",
+      "parent_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_full72_v1\\runs\\DL1018_DEV_T3_C09_W09\\raw_run.mat",
+      "parent_raw_sha256": "14176658aac8e8b69817f71aff748add1b591cee744cd05954184e52e34c2cb2",
+      "tau_s": 1.0,
+      "rho": 0.01,
+      "notch_events": 1999,
+      "valid_head_events": 1968,
+      "notch_full_XYZ_recurrence_max_abs_mps2": 0.0,
+      "full_target_rebuild_max_abs_rad": 5.551115123125783e-17,
+      "full_filter_replay_max_abs_rad": 2.3592239273284576e-16,
+      "full_event_output_to_logged_compensation_max_abs_mps2": 1.1102230246251565e-16,
+      "actual_command_identity_max_abs_mps2": 2.220446049250313e-16,
+      "parent_reference_match_max_abs": 0.0,
+      "task_to_filtered_reference_SO3_mrad": {
+        "full_notch_logged": 61.03718201250258,
+        "full_notch_replayed": 61.03718201250257,
+        "z_only_notch_replayed": 62.52288017552493,
+        "parent_no_notch_logged": 60.167278633820445
+      },
+      "2_5Hz": {
+        "full_notch_compensation_rms_mps2": 0.1949889161912004,
+        "z_only_notch_compensation_rms_mps2": 0.30180286513108484,
+        "signed_compensation_delta_rms_mps2": 0.23023089629503646,
+        "full_notch_target_RP_rms_mrad": 30.561254782710073,
+        "z_only_target_RP_rms_mrad": 37.959711195032185,
+        "signed_target_RP_delta_rms_mrad": 22.988245472537315,
+        "target_RP_cross_term_mrad2": -21.510049789099273,
+        "target_power_identity_residual_mrad2": -7.352245982167327e-13,
+        "full_notch_filtered_reference_RP_rms_mrad": 19.24234608681797,
+        "z_only_filtered_reference_RP_rms_mrad": 23.204832751550608,
+        "parent_filtered_reference_RP_rms_mrad": 17.233139718579135
+      }
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C07_W14",
+      "split": "current_generation_2_continuation",
+      "notch_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\gru_cosine_c5_applied_notch_35hz_q1_v1\\runs\\DL1018_VAL_T1_C07_W14\\raw_run.mat",
+      "notch_raw_sha256": "014a67db63365317b71fee60c8321e2e2cfdbb7fac83406a8e4085905228064f",
+      "parent_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_full72_v1\\runs\\DL1018_VAL_T1_C07_W14\\raw_run.mat",
+      "parent_raw_sha256": "fe85f45de5cb16135840a1cb0a6c9bb8e7ac1c1e7e1bcda274c7b7eb1f1b2c27",
+      "tau_s": 1.0,
+      "rho": 0.01,
+      "notch_events": 1999,
+      "valid_head_events": 1968,
+      "notch_full_XYZ_recurrence_max_abs_mps2": 0.0,
+      "full_target_rebuild_max_abs_rad": 8.326672684688674e-17,
+      "full_filter_replay_max_abs_rad": 4.718447854656915e-16,
+      "full_event_output_to_logged_compensation_max_abs_mps2": 1.1102230246251565e-16,
+      "actual_command_identity_max_abs_mps2": 4.440892098500626e-16,
+      "parent_reference_match_max_abs": 0.0,
+      "task_to_filtered_reference_SO3_mrad": {
+        "full_notch_logged": 71.62579634975774,
+        "full_notch_replayed": 71.62579634975772,
+        "z_only_notch_replayed": 73.84818295425278,
+        "parent_no_notch_logged": 75.30430700404652
+      },
+      "2_5Hz": {
+        "full_notch_compensation_rms_mps2": 0.14893803479114354,
+        "z_only_notch_compensation_rms_mps2": 0.4591602087364778,
+        "signed_compensation_delta_rms_mps2": 0.4326785670138879,
+        "full_notch_target_RP_rms_mrad": 17.33890901565268,
+        "z_only_target_RP_rms_mrad": 54.54688368584761,
+        "signed_target_RP_delta_rms_mrad": 43.849113787043905,
+        "target_RP_cross_term_mrad2": 751.9799740751827,
+        "target_power_identity_residual_mrad2": 1.0842021724855044e-13,
+        "full_notch_filtered_reference_RP_rms_mrad": 5.238139970712191,
+        "z_only_filtered_reference_RP_rms_mrad": 18.673343410604005,
+        "parent_filtered_reference_RP_rms_mrad": 24.48203293291497
+      }
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C04_W14",
+      "split": "current_generation_2_continuation",
+      "notch_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\gru_cosine_c5_applied_notch_35hz_q1_v1\\runs\\DL1018_VAL_T2_C04_W14\\raw_run.mat",
+      "notch_raw_sha256": "d745e1541df44543fc56951910cda4dbef09b6da676f49972ea5859176638c76",
+      "parent_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_full72_v1\\runs\\DL1018_VAL_T2_C04_W14\\raw_run.mat",
+      "parent_raw_sha256": "9b009512da9f08e917f5484d6292066dcbcb731353df72828dc702d76b6a3479",
+      "tau_s": 1.0,
+      "rho": 0.01,
+      "notch_events": 1999,
+      "valid_head_events": 1968,
+      "notch_full_XYZ_recurrence_max_abs_mps2": 0.0,
+      "full_target_rebuild_max_abs_rad": 5.551115123125783e-17,
+      "full_filter_replay_max_abs_rad": 3.3306690738754696e-16,
+      "full_event_output_to_logged_compensation_max_abs_mps2": 1.1102230246251565e-16,
+      "actual_command_identity_max_abs_mps2": 2.220446049250313e-16,
+      "parent_reference_match_max_abs": 0.0,
+      "task_to_filtered_reference_SO3_mrad": {
+        "full_notch_logged": 52.57835936967975,
+        "full_notch_replayed": 52.57835936967973,
+        "z_only_notch_replayed": 54.713137543656714,
+        "parent_no_notch_logged": 56.48291770441278
+      },
+      "2_5Hz": {
+        "full_notch_compensation_rms_mps2": 0.12980260728570872,
+        "z_only_notch_compensation_rms_mps2": 0.4004848336232484,
+        "signed_compensation_delta_rms_mps2": 0.37803958312813746,
+        "full_notch_target_RP_rms_mrad": 14.55317104377009,
+        "z_only_target_RP_rms_mrad": 46.229286103124736,
+        "signed_target_RP_delta_rms_mrad": 37.52126619151673,
+        "target_RP_cross_term_mrad2": 517.5066895606773,
+        "target_power_identity_residual_mrad2": -2.1684043449710089e-13,
+        "full_notch_filtered_reference_RP_rms_mrad": 4.449662826411128,
+        "z_only_filtered_reference_RP_rms_mrad": 16.022939549353833,
+        "parent_filtered_reference_RP_rms_mrad": 21.564800641021105
+      }
+    }
+  ],
+  "interpretation": [
+    "The Z-only condition uses only the actual notch-run Stage1 input event stream and fixed recorded states. XY compensation is passed through; Z is filtered causally; both use the original event timing and logged output limit.",
+    "Task-to-filtered-reference values are same-trajectory command/reference diagnostics, not closed-loop task scores. They cannot be compared as if Z-only had produced those states.",
+    "Parent and full-notch closed-loop task scores are included only as context. No Z-only closed-loop run was executed.",
+    "Frequency metrics are signed target deltas plus cross terms; target power is nonlinear in compensation and the spectra are not additive."
+  ]
+}

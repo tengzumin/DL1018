@@ -1,0 +1,165 @@
+{
+  "schema": "NO_POSITION_GRU_NOTCH_TRAIN24_BATCH_INPUT_V1",
+  "study_id": "no_position_gru_notch_train24_batch_prepare_v1",
+  "scope": "TRAIN_C5_24 only; canonical IDs are DL1018_DEV_*; no TEST/VAL rows are admitted.",
+  "cohort": {
+    "split": "TRAIN_C5_24",
+    "scene_count": 24,
+    "scene_ids": [
+      "DL1018_DEV_T1_C00_W03",
+      "DL1018_DEV_T1_C01_W15",
+      "DL1018_DEV_T1_C04_W00",
+      "DL1018_DEV_T1_C05_W06",
+      "DL1018_DEV_T1_C07_W08",
+      "DL1018_DEV_T1_C10_W09",
+      "DL1018_DEV_T1_C11_W12",
+      "DL1018_DEV_T1_C15_W14",
+      "DL1018_DEV_T2_C00_W04",
+      "DL1018_DEV_T2_C02_W15",
+      "DL1018_DEV_T2_C03_W01",
+      "DL1018_DEV_T2_C06_W07",
+      "DL1018_DEV_T2_C08_W08",
+      "DL1018_DEV_T2_C09_W10",
+      "DL1018_DEV_T2_C12_W13",
+      "DL1018_DEV_T2_C14_W14",
+      "DL1018_DEV_T3_C00_W05",
+      "DL1018_DEV_T3_C03_W15",
+      "DL1018_DEV_T3_C05_W02",
+      "DL1018_DEV_T3_C06_W08",
+      "DL1018_DEV_T3_C09_W09",
+      "DL1018_DEV_T3_C10_W11",
+      "DL1018_DEV_T3_C13_W12",
+      "DL1018_DEV_T3_C15_W14"
+    ],
+    "dataset_manifest": {
+      "path": "experiments/dl_attitude_replacement_20261028/position_cosine_gru_train24_causal_v1/DATASET_MANIFEST_v1.json",
+      "sha256": "16856362913e5144add83035b9b767affa02c0719c66971635731d237bb0d91e"
+    },
+    "dataset_path": {
+      "path": "experiments/dl_attitude_replacement_20261028/position_cosine_gru_train24_causal_v1/COSINE_GRU_C5_TRAIN24_POSITION_CAUSAL_PAIRS_v1.npz",
+      "sha256": "15d689f08fd6d8a53a64c59dbdf62b33f9b8e8a12ce083fb12834cd106df2eeb"
+    },
+    "dataset_source_lock": {
+      "path": "experiments/dl_attitude_replacement_20261028/position_cosine_gru_train24_causal_v1/SOURCE_LOCK_v1.json",
+      "sha256": "10be2c860c042491acfc0cfaad1067c65d848dd5889c177e6ccb8d65c9602fb7"
+    },
+    "physical_manifest": {
+      "path": "experiments/dl_attitude_replacement_20261027/mlp15_nominal_residual_v1/TRAIN_C5_24_PHYSICAL_RESIDUAL_MANIFEST_v1.json",
+      "sha256": "18761c159e003388e7a728132913eaf0b290c0d109d797618986ef87d8fd3bbb"
+    },
+    "c5_input_lock": {
+      "path": "experiments/position_axis_coordinate_c5_dev72_20261023/C5_DEV72_INPUT_LOCK_v3.json",
+      "sha256": "82024c01276cc4bfbd9b7772cf5332dee3fdfcbed422969589b68f1c90ed2d75"
+    }
+  },
+  "single_scene_anchors": [
+    {
+      "scene_id": "DL1018_DEV_T1_C10_W09",
+      "study_id": "position_compensation_dual_notch_no_residual_gru_ablation_T1_single_call_v1",
+      "binding_path": "experiments/dl_attitude_replacement_20261028/no_position_gru_notch_T1_single_v1/TRAIN_SCENE_BINDING_v1.json",
+      "binding_sha256": "57472755dbbeaee0d275b4b63bcaadabf00d6a0b5c7f1b258ba305c022ed0118",
+      "release_path": "experiments/dl_attitude_replacement_20261028/no_position_gru_notch_T1_single_v1/RELEASE.json",
+      "release_sha256": "7ac13c70eb42df956dc6684cde94be7defdf7fb7825a426c6866a1047ffa8c65"
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C09_W09",
+      "study_id": "position_compensation_dual_notch_no_residual_gru_ablation_T3_single_call_v1",
+      "binding_path": "experiments/dl_attitude_replacement_20261028/no_position_gru_notch_T3_single_v1/TRAIN_SCENE_BINDING_v1.json",
+      "binding_sha256": "d050a834ec005282f934537da1e51610e047645f98726b10c93cea38c2e133c0",
+      "release_path": "experiments/dl_attitude_replacement_20261028/no_position_gru_notch_T3_single_v1/RELEASE.json",
+      "release_sha256": "822b113d1cf2a39bcf1b9c5770a729aa519959e260f888639a0c277f8b238717"
+    }
+  ],
+  "shared_model_hashes": {
+    "parent_cosine_model": "b2c462f77a6bb97b8c6bb2b471daef0633d4f9664a7d623b894461a4fa21b567",
+    "position_dssm14_model": "6f3628b10540c617496b2a20f249c4319af79c1a02d5945f1f91f0aead9c9b6e",
+    "c5_snapshot": "842ef395569e675db6e139c2684d72b976946915e5e0a58b9b7f24ec10c1d24a",
+    "c5_receipt": "887c518635fe895c201bbd4c352763e23704efda09521b560d448125100b3cfa",
+    "parent_release": "b453e50d1ef3affce66b0d05dda4848ef0aaf6d58476361d9c3006febd6ef047",
+    "parent_manifest": "97230bcc399d79a4b4785bffe8898880d7e21cd20eb3629c61d6b03a746fd1fe",
+    "parent_source_lock": "30aeddf4888c1afa5a3a012e313c919d58a46f33742e465b80b8e53e49c46ab7"
+  },
+  "fixed_controller": {
+    "attitude": "parent cosine-GRU",
+    "position": "C5 DSSM14 / frozen M110 position options",
+    "position_residual_gru_enabled": false,
+    "position_residual_gru_weights_deserialized": false,
+    "fixed_j0": true,
+    "inertia_reconstruction_enabled": false,
+    "fixed_j0_helper": {
+      "path": "experiments/dl_attitude_replacement_20261028/no_position_gru_notch_T1_single_v1/candidate_runner_work/matlab/runtime/bind_paired_fixed_j0.m",
+      "sha256": "a858a33611cc0ecfca1237a47fe066751484774b43b7ee0a397376736cfb2c9a"
+    }
+  },
+  "fixed_filter": {
+    "enabled": true,
+    "sample_rate_hz": 100.0,
+    "centers_hz": [2.2, 3.2],
+    "quality_factor_each": [4.0, 4.0],
+    "action_limit_mps2": 3.0,
+    "b": [
+      [0.9830678494084116, -1.9473815673631925, 0.9830678494084116],
+      [0.9756442629082012, -1.9119799206806107, 0.9756442629082012]
+    ],
+    "a": [
+      [1.0, -1.9473815673631925, 0.9661356988168233],
+      [1.0, -1.9119799206806107, 0.9512885258164024]
+    ],
+    "filter_location": "post_final_C5_action_pre_force_injection",
+    "event_update_hz": 100.0,
+    "held_between_events": true,
+    "parameter_sweep": false
+  },
+  "attempt_policy": {
+    "attempt_id": "attempt_01",
+    "max_attempts_per_scene": 1,
+    "planned_scene_count": 24,
+    "potential_budget_calls": 24,
+    "Plant_calls": 0,
+    "authorized_Plant_calls": 0,
+    "create_attempt_directories_now": false,
+    "marker_names": ["attempt_started.marker", "first_plant_step.marker"]
+  },
+  "score_contract": {
+    "scorer_path": "experiments/dl_attitude_replacement_20261026/gru_stream_cosine_tracking_head_full72_v1/audits/score_full72_candidate_v1.py",
+    "scorer_sha256": "6baf689802f4d73ead813449e52a8fe85cb0be92c3185850c93646da2d54dd16",
+    "implementation": "score_full72_candidate_v1.score_raw",
+    "metrics": ["Q_m", "task_SO3_rad", "inner_SO3_rad", "safety counters"],
+    "transitions": 20000,
+    "state_samples": 20001,
+    "spectrum_sample_rate_hz": 1000.0,
+    "window": "symmetric Hann",
+    "detrend": "constant per channel",
+    "bands_hz": {"peak_2p2": [1.5, 2.5], "peak_3p2": [2.5, 3.5]},
+    "spectrum_units": "vector RMS mrad",
+    "same_scene_comparators": ["B", "C5", "parent_GRU", "candidate"],
+    "required_raw_checks": [
+      "scene_id and TRAIN_C5_24 source identity match binding",
+      "run_status is complete and stable with 20000 transitions / 20001 samples",
+      "attempt_started.marker and first_plant_step.marker exist for a completed Plant attempt",
+      "TEST_read=false, VAL_data_read=false, inertia_reconstruction_enabled=false",
+      "position_residual_gru_enabled=false, zero residual-GRU events, zero residual correction fields"
+    ]
+  },
+  "runtime_references": {
+    "single_shared_runtime_per_batch": true,
+    "no_runtime_copies_per_scene": true,
+    "source_files": [
+      {"path": "experiments/dl_attitude_replacement_20261028/no_position_gru_notch_T1_single_v1/candidate_runner_work/matlab/runtime/run_mlp15_dev72_closed_loop.m", "sha256": "20a558601c453052f252fcb97592851b44aa5159376ccb4168ab1f109434f7d0"},
+      {"path": "experiments/dl_attitude_replacement_20261028/no_position_gru_notch_T3_single_v1/candidate_runner_work/matlab/runtime/run_mlp15_dev72_closed_loop.m", "sha256": "6e679909097242829fd629e5ef5748a0048c525f43a1b3b2ecde81ba9bd15a9b"},
+      {"path": "experiments/dl_attitude_replacement_20261028/no_position_gru_notch_T1_single_v1/candidate_runner_work/matlab/runtime/prepare_train_scene_no_plant.m", "sha256": "227b201c9531bc688fa1f1cee2074401e89d742aae25deca160d49d4bde64e47"},
+      {"path": "experiments/dl_attitude_replacement_20261028/no_position_gru_notch_T3_single_v1/candidate_runner_work/matlab/runtime/prepare_train_scene_no_plant.m", "sha256": "63ee3a8bda2b273b724572576f0b5073d2ba5d11e05edf03adc9f0d4e2ce7617"},
+      {"path": "experiments/dl_attitude_replacement_20261028/no_position_gru_notch_T1_single_v1/candidate_runner_work/matlab/runtime/validate_train_scene_binding_v1.m", "sha256": "bc6077d56e504736e9a58f66654ec74c8be3597d5a2b67c67a7e628f611b7964"},
+      {"path": "experiments/dl_attitude_replacement_20261028/no_position_gru_notch_T1_single_v1/candidate_runner_work/matlab/runtime/position_compensation_dual_notch_init.m", "sha256": "3ddb911082680747d3aed75ff1a7c26526b51d9e8819b045426590630c83454b"},
+      {"path": "experiments/dl_attitude_replacement_20261028/no_position_gru_notch_T1_single_v1/candidate_runner_work/matlab/runtime/position_compensation_dual_notch_step.m", "sha256": "230e830c2da7eeae628ccb9f4f07f55ea7e38cbc7fbde92dc589d39250119263"},
+      {"path": "experiments/dl_attitude_replacement_20261028/no_position_gru_notch_T1_single_v1/candidate_runner_work/matlab/runtime/position_applied_accel_notch_zoh.m", "sha256": "243c186097781b37b8413845efb416686c0d1342dc97f859d931b2a7fe6465c6"},
+      {"path": "experiments/dl_attitude_replacement_20261028/no_position_gru_notch_T1_single_v1/candidate_runner_work/matlab/runtime/make_gate_holdout_options.m", "sha256": "cad8c5344458e5b376561a48633298fc674afe70814da4ece6f7960fb076b55b"},
+      {"path": "experiments/dl_attitude_replacement_20261028/no_position_gru_notch_T1_single_v1/candidate_runner_work/matlab/runtime/bind_paired_fixed_j0.m", "sha256": "a858a33611cc0ecfca1237a47fe066751484774b43b7ee0a397376736cfb2c9a"},
+      {"path": "experiments/dl_attitude_replacement_20261028/no_position_gru_notch_T1_single_v1/candidate_runner_work/matlab/runtime/run_train_pair_preflight_no_plant.m", "sha256": "3e6c14a417aacd2bcbee357b006005f51988ebedcc975eb15d0a2afbe7dd2955"},
+      {"path": "experiments/dl_attitude_replacement_20261028/no_position_gru_notch_T1_single_v1/candidate_runner_work/matlab/runtime/run_train_scene_single_attempt.m", "sha256": "5b7af160c9ce535dfe13ca2a769fb9b0d65005b6139362537fd7e399ead59d4e"
+      },
+      {"path": "experiments/dl_attitude_replacement_20261028/no_position_gru_notch_T3_single_v1/candidate_runner_work/matlab/runtime/run_train_scene_single_attempt.m", "sha256": "61bf0d759b4b144c6fc3a4d5b9127f723cca6b93854198d1a4c68aec8bdde4c4"}
+    ],
+    "scope_note": "The T1/T3 MATLAB preparers remain one-scene releases. This artifact prepares and binds sources only; it does not make Plant authorization or launch a run. A future runner must consume each scene binding under the shared runtime."
+  }
+}

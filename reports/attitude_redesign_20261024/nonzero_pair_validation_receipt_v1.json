@@ -1,0 +1,81 @@
+{
+  "check": "post-hoc JSON threshold verification; does not rerun MATLAB",
+  "assertions_passed": true,
+  "tolerance_rads2": 1e-08,
+  "matlab_execution": {
+    "executable": "C:\\Program Files\\MATLAB\\R2025b\\bin\\matlab.exe",
+    "command": "& 'C:\\Program Files\\MATLAB\\R2025b\\bin\\matlab.exe' -batch \"run('reports/attitude_redesign_20261024/nonzero_pair_reconstruction_v1.m')\"",
+    "os_exit_code": 0,
+    "output_json": "reports/attitude_redesign_20261024/nonzero_pair_reconstruction_v1.json",
+    "separate_console_log_saved": false,
+    "note": "Exit code and command are recorded from the original exec result; its JSON output is hash-pinned below."
+  },
+  "matlab_result_sha256": "E328C4786231A9EB498CAD05590B145BC80C86A86B449E31FDF36AF4C5F71C77",
+  "matlab_script_sha256": "F455BB80ACE5E2149AB84F56B1330C115C3217212CBB5CF545C4B0873E75C952",
+  "python_validator_sha256": "BFACFADAD2FBF9DC3E10FADBBF7C728AE16450141515FDECFB3A99D4856705F5",
+  "artifact_sha256": {
+    "data/events/attitude/train/DL1018_TRAIN_T1_C01_W00/B.h5": "66D3BACF629CFBDD17545894D6869D61859139A8382D57ADDF92DA02668A44AA",
+    "data/raw/train/DL1018_TRAIN_T1_C01_W00/B/attempt_01/run_start.mat": "5C2A9153DB27CCE87C75207610E988623014F4C8BF41E895EA4B3281EF39163B",
+    "data/raw/train/DL1018_TRAIN_T1_C01_W00/B/attempt_01/raw_run.mat": "C8E763E7BAFEA8E42A5018E05B57C8CE1987C5F97A29D5877839E759A4B03EA5",
+    "data/raw/train/DL1018_TRAIN_T1_C01_W00/B/attempt_01/plant_started.marker": "4BE70A7D8354EC28A1906E1883FFE4CD84B134986A6B28729838902D87C72EFB",
+    "data/events/attitude/val/DL1018_VAL_T1_C01_W08/B.h5": "565E2B5D7AD627CC8DCEE8690C7BDE9381D9EF4C4A275CC012B9B792C278752B",
+    "data/raw/val/DL1018_VAL_T1_C01_W08/B/attempt_01/run_start.mat": "8EA32DF401A11693B38DBEB759207356C2A174B36BBD2A9CBB779B583128FEF5",
+    "data/raw/val/DL1018_VAL_T1_C01_W08/B/attempt_01/raw_run.mat": "9EFC4DFCC21BF8A08A091168BB48B3B39DBB6CD4F371F890E78FB697C78C3685",
+    "data/raw/val/DL1018_VAL_T1_C01_W08/B/attempt_01/plant_started.marker": "4BE70A7D8354EC28A1906E1883FFE4CD84B134986A6B28729838902D87C72EFB"
+  },
+  "source_sha256": {
+    "matlab/core/simulation_parameters.m": "962B5434C23D5AC1A9AC568F136635A8EA651A775165D84B7D95250CA88BB9AE",
+    "matlab/core/controller_parameters.m": "4FAD5E78C0BD4177461647AF167E7C86A7DEFA628B43D523B0B7DA2EF5556398",
+    "matlab/core/arm_mass_properties.m": "8EC66E107156B5219F7E41ACA2464EEF1EC8043EB7F67DF313C0F23EF4B551F5",
+    "matlab/core/distributed_mass_properties.m": "DB380B506E4BACC37BC398D5726C5EBD25BE8EBC08B6C9E76FF59BC78FD45D3A",
+    "matlab/core/arm_directions.m": "517BBFCD0DF9526B189F64BFF067A49551F573AD96E682EE005533AB510E686C",
+    "matlab/core/allocation_matrix.m": "5886C00B3F8800301A324159E534B4C65E857CDD00392A3231AF22C6DBBA517D",
+    "matlab/core/vehicle_derivative.m": "C3258DD5B70268D1465CA7701855B065244AEBFAF5816C85E959D39015CD2786",
+    "matlab/data/export_attitude_events_dl1018.m": "BAECA25A27EE411E900D38333C888A91AA7CE2C5A17AD58CC6989F7AEA684141",
+    "matlab/runtime/run_dl1018_closed_loop.m": "9F6B436C8247C49783EC04EF326B20FC5D7DE2870C9AB972212A0B2E4C432BC2"
+  },
+  "scenes": [
+    {
+      "split": "train",
+      "scene_id": "DL1018_TRAIN_T1_C01_W00",
+      "event_count": 1999,
+      "replay_maxabs_error_rads2": 0,
+      "decomposition_closure_maxabs_rads2": 3.552713678800501e-15,
+      "target_h5_maxabs_rads2": 12.904383753907569,
+      "target_h5_rms_vector_rads2": 11.168699893058744,
+      "maxabs_realized_minus_requested_wrench_by_channel": [
+        1.7763568394002505e-15,
+        0.04196731542030493,
+        0.04196731542030507,
+        8.413408858487514e-17
+      ]
+    },
+    {
+      "split": "val",
+      "scene_id": "DL1018_VAL_T1_C01_W08",
+      "event_count": 1999,
+      "replay_maxabs_error_rads2": 0,
+      "decomposition_closure_maxabs_rads2": 7.105427357601002e-15,
+      "target_h5_maxabs_rads2": 20.405784673103575,
+      "target_h5_rms_vector_rads2": 13.757006986143814,
+      "maxabs_realized_minus_requested_wrench_by_channel": [
+        1.7763568394002505e-15,
+        0.06467500240713836,
+        0.06467500240713844,
+        8.435092901937224e-17
+      ]
+    }
+  ],
+  "python_validation": {
+    "command": "python reports/attitude_redesign_20261024/validate_nonzero_pair_reconstruction_v1.py",
+    "os_exit_code": 0,
+    "assertion_scope": "existing MATLAB JSON replay and decomposition errors <= 1e-8 rad/s^2",
+    "script_sha256_at_execution": "C0290FBEF98639640F92AED8DA328F365593F5C218CBC8295ECB3B6947958DE6",
+    "note": "This hash is the validator source as executed before receipt-command correction; it asserted the stored JSON thresholds and initially wrote the receipt with a malformed quoted-command string."
+  },
+  "receipt_metadata_correction": {
+    "command": "inline Python from pwsh; corrected exact MATLAB command and provenance fields only, reasserted the two stored error thresholds",
+    "os_exit_code": 0,
+    "result_data_unchanged": true
+  }
+}

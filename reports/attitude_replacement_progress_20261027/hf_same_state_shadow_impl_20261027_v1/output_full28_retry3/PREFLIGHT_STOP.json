@@ -1,0 +1,35 @@
+{
+  "scene_id": "DL1018_VAL_T1_C02_W09",
+  "status": "FEASIBILITY_ONLY",
+  "reason": "event/arms arrays do not align with transition/filter rows",
+  "local_checks": [
+    {
+      "check": "candidate_raw_fields",
+      "status": "PASS"
+    },
+    {
+      "check": "c5_raw_fields",
+      "status": "PASS"
+    },
+    {
+      "check": "candidate_raw_gru_model_sha",
+      "status": "PASS"
+    },
+    {
+      "check": "candidate_causal_filter",
+      "status": "PASS"
+    },
+    {
+      "check": "c5_causal_filter",
+      "status": "PASS"
+    },
+    {
+      "check": "candidate_event_features",
+      "status": "FAIL",
+      "detail": "event/arms arrays do not align with transition/filter rows"
+    }
+  ],
+  "weight_snapshot_disclosure": "Only the first eight full C5 weight matrices are stored; later-event matrices are reconstructed, not directly observed.",
+  "candidate_raw_status": "COMPLETED",
+  "c5_raw_status": "RUN_COMPLETE_RAW_PENDING_AUDIT"
+}

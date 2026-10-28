@@ -1,0 +1,64 @@
+{
+  "status": "PASS_DETERMINISTIC_ALGEBRA_ONLY",
+  "cases": [
+    {
+      "name": "PHYSICAL_TARGET_NOT_BETA_SCALED",
+      "weight": 1.5,
+      "physical_ideal_weight": 1.0,
+      "beta": 0.5,
+      "target": 1.0,
+      "residual": -0.25,
+      "gradient": -0.125,
+      "parameter_error_gradient_inner_product": -0.0625,
+      "prediction_loss_derivative_along_minus_gradient": -0.015625,
+      "half_parameter_energy_derivative_along_minus_gradient": 0.0625,
+      "finite_difference_directional_derivative": -0.01562499998657152
+    },
+    {
+      "name": "MATCHED_BETA_SCALED_TARGET_DIFFERENT_ASSUMPTION",
+      "weight": 1.5,
+      "physical_ideal_weight": 1.0,
+      "beta": 0.5,
+      "target": 0.5,
+      "residual": 0.25,
+      "gradient": 0.125,
+      "parameter_error_gradient_inner_product": 0.0625,
+      "prediction_loss_derivative_along_minus_gradient": -0.015625,
+      "half_parameter_energy_derivative_along_minus_gradient": -0.0625,
+      "finite_difference_directional_derivative": -0.01562499998657152
+    },
+    {
+      "name": "SATURATED_ESTIMATE_ZERO_INNOVATION",
+      "weight": 4.0,
+      "physical_ideal_weight": 0.0,
+      "beta": 1.0,
+      "target": 0.0,
+      "residual": 3.0,
+      "gradient": 0.0,
+      "parameter_error_gradient_inner_product": 0.0,
+      "prediction_loss_derivative_along_minus_gradient": -0.0,
+      "half_parameter_energy_derivative_along_minus_gradient": -0.0,
+      "finite_difference_directional_derivative": 0.0
+    }
+  ],
+  "projection_outside_comparator_example": {
+    "box_bound": 60.0,
+    "ideal": 61.0,
+    "unprojected": 61.0,
+    "projected": 60.0,
+    "distance_squared_before": 0.0,
+    "distance_squared_after": 1.0
+  },
+  "script_sha256": "6324037715e7deceb86193ee124418c61a1e274e190997fabb538fc2cbcbb232",
+  "resource_scope": {
+    "Plant": 0,
+    "MATLAB": 0,
+    "training": 0,
+    "optimizer": 0,
+    "gain_search": 0,
+    "accumulated_weight_updates": 0,
+    "raw_reads": 0,
+    "TEST": 0
+  },
+  "limits": "Scalar constructed cases can embed into a unit-feature 33x3 head. They disprove unconditional claims, not establish causes or improvements in logged trajectories."
+}

@@ -1,0 +1,60 @@
+{
+  "schema": "POSITION_COMPENSATION_DUAL_NOTCH_SINGLE_CALL_T1_PLAN_V1",
+  "study_id": "position_compensation_dual_notch_train_diag_single_call_T1_v1",
+  "status": "PREDECLARED_BEFORE_SINGLE_CALL",
+  "scope": {
+    "scene_id": "DL1018_DEV_T1_C10_W09",
+    "split": "TRAIN_C5_24",
+    "fold_id": "holdout_W06_10",
+    "wind_group": "W09, dominant tones 2.2/3.2 Hz",
+    "claim_limit": "Single-scene W09 mechanism falsification only; no cross-wind-spectrum generalization."
+  },
+  "entry_reason": {
+    "prior_frozen_replay_status": "FAIL_FIXED_FROZEN_REPLAY",
+    "why_one_closed_loop_diagnostic_is_authorized": "The same frozen 2.2/3.2-Hz Q=4 action notches reduced both command-target bands by 68.3%/78.3% on T1, but changed low-band action by 2.233%, above the unchanged 2.0% protection limit. This single call checks whether the mechanism signal survives closed-loop coupling; it does not turn the failed replay into a pass.",
+    "parameters_or_thresholds_changed": false
+  },
+  "fixed_intervention": {
+    "sample_rate_hz": 100.0,
+    "notch_centers_hz": [2.2, 3.2],
+    "quality_factor_each": 4.0,
+    "location": "Filter final C5 plus residual-GRU action after both are combined and before conversion to injected force.",
+    "zero_order_hold_between_events": true,
+    "action_limit_mps2": 3.0
+  },
+  "frozen_score": {
+    "implementation": "score_full72_candidate_v1.score_raw",
+    "metrics": ["Q_m", "task_SO3_rad", "inner_SO3_rad", "safety counters"],
+    "same_scene_comparators": ["B", "C5", "parent_GRU", "candidate_pre_dual_notch", "dual_notch_candidate"],
+    "baseline_score_path": "experiments/dl_attitude_replacement_20261028/position_dc_penalty_oof_train_pair_preflight_W09_T1_C10_attempt014_v1/audits/TRAIN_SINGLE_SCENE_PAIRED_SCORE_v1.json",
+    "baseline_score_sha256": ""
+  },
+  "spectrum": {
+    "sample_rate_hz": 1000.0,
+    "transition_count": 20000,
+    "window": "symmetric Hann",
+    "detrend": "constant per channel",
+    "bands_hz": {"peak_2p2": [1.5, 2.5], "peak_3p2": [2.5, 3.5]},
+    "signals": ["task_minus_actual_wrapped_euler", "command_filter_target_euler", "filtered_attitude_reference", "actual_euler", "task_euler"],
+    "units": "vector RMS mrad"
+  },
+  "single_call_falsifier": {
+    "task_minus_actual_band_rms_reduction_percent_min_each_band_vs_candidate_pre_dual_notch": 25.0,
+    "Q_m_relative_worsening_percent_max_vs_candidate_pre_dual_notch": 5.0,
+    "complete_stable_run_required": true,
+    "all_safety_stop_or_clip_counters_must_be_zero": true,
+    "one_plant_call_only": true,
+    "no_parameter_change_after_result": true
+  },
+  "measured_baseline_Q_task_inner": {
+    "B": {"Q_m": 0.010984561773262777, "task_SO3_rad": 0.042200801129056116, "inner_SO3_rad": 0.023236953991647456},
+    "C5": {"Q_m": 0.010465882128741399, "task_SO3_rad": 0.04327264903532816, "inner_SO3_rad": 0.023274046930281553},
+    "parent_GRU": {"Q_m": 0.009492906627253345, "task_SO3_rad": 0.04330835597159727, "inner_SO3_rad": 0.02024501714889525},
+    "candidate_pre_dual_notch": {"Q_m": 0.010603095010428788, "task_SO3_rad": 0.0431684191739434, "inner_SO3_rad": 0.02025526275485956}
+  },
+  "Plant_calls_authorized": 1,
+  "TEST_read": false,
+  "VAL_read": false,
+  "inertia_reconstruction_enabled": false,
+  "parameter_sweep": false
+}

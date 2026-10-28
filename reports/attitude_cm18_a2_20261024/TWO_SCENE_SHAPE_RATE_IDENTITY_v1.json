@@ -1,0 +1,70 @@
+{
+  "schema": "CM18_TWO_SCENE_SHAPE_RATE_IDENTITY_V1",
+  "status": "PASS",
+  "scope": {
+    "scene_ids": ["DL1018_TRAIN_T1_C15_W14", "DL1018_VAL_T2_C15_W09"],
+    "split": ["TRAIN", "VAL"],
+    "raw_fields_read": ["scene.time", "scene.arms.command", "scene.arms.rho_true", "scene.arms.rhoDot_true"],
+    "raw_fields_not_read": ["log", "state", "TEST"],
+    "plant_calls": 0,
+    "optimizer_steps": 0,
+    "scene_meta_present": false
+  },
+  "dataset_manifest": {
+    "path": "reports/attitude_cm18_a1_20261024/data_preparation_v1/events_all816_v1/DATASET_MANIFEST_v1.json",
+    "sha256": "7dd3e1f786f6095ecc2ba56473e5cf0fab6b92cdd42e38a184d6ad1223f36271"
+  },
+  "method": {
+    "command_semantics": "u=scene.arms.command",
+    "integrator": "z[0]=0; z[k+1]=z[k]+diff(time)[k]*u[k]",
+    "rho_model_tested": "rho_true = 0.15 + speed*z",
+    "rhoDot_model_tested": "rhoDot_true = speed*u",
+    "speed_estimator": "median(rhoDot_true/u) over nonzero command entries",
+    "actual_execution_record": "Read-only PowerShell7 invocation of Python/h5py; numerical output captured in the preceding task turn. This file records those observed values; it is not an OS receipt."
+  },
+  "results": [
+    {
+      "scene_id": "DL1018_TRAIN_T1_C15_W14",
+      "raw_path": "data/raw/train/DL1018_TRAIN_T1_C15_W14/B/attempt_01/raw_run.mat",
+      "raw_sha256": "591b0951c906b151ce6db22e53db3ce70d4ceab1d24cfcfd4680dcc1d34be3ff",
+      "run_start_path": "data/raw/train/DL1018_TRAIN_T1_C15_W14/B/attempt_01/run_start.mat",
+      "run_start_sha256": "aebc46bc1b8d036a4b1af4db7ba9af3c78b5dd5dc3ef42ee1e388c0e958719db",
+      "cache_path": "reports/attitude_cm18_a1_20261024/data_preparation_v1/events_all816_v1/TRAIN_DL1018_TRAIN_T1_C15_W14.mat",
+      "cache_sha256_pinned_by_manifest": "2d87ad8962a243d24c2cb1845e3031e62e723dfa8a8ee0435a01cd90c4368f81",
+      "cache_file_opened_in_shape_audit": false,
+      "sample_count": 20001,
+      "dt_min_s": 0.0009999999999976694,
+      "dt_max_s": 0.0010000000000012221,
+      "command_values": [-1.0, 0.0, 1.0],
+      "rho_initial_m": [0.15, 0.15, 0.15, 0.15],
+      "rho_range_m": [0.15, 0.24999999999998898],
+      "speed_mps_inferred": 0.05,
+      "speed_sample_max_abs_deviation_mps": 0.0,
+      "max_abs_rho_minus_0p15_plus_speed_z_m": 1.1046719095020308e-14,
+      "max_abs_rhoDot_minus_speed_u_mps": 0.0,
+      "command_nonzero_entries": 10000
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C15_W09",
+      "raw_path": "data/raw/val/DL1018_VAL_T2_C15_W09/B/attempt_01/raw_run.mat",
+      "raw_sha256": "ae0c318a69bc76e0cd64f50a708d8b768f7cc4077fcd2489e972f28e18de4bb2",
+      "run_start_path": "data/raw/val/DL1018_VAL_T2_C15_W09/B/attempt_01/run_start.mat",
+      "run_start_sha256": "75e94f2773ccb61c4c4a1962346a91d7a16953012db522a2a3f564247c2937f2",
+      "cache_path": "reports/attitude_cm18_a1_20261024/data_preparation_v1/events_all816_v1/VAL_DL1018_VAL_T2_C15_W09.mat",
+      "cache_sha256_pinned_by_manifest": "29fe6f08c5a1349797bc2ea83c51efc389aa99893e71b91767e2733ace813a49",
+      "cache_file_opened_in_shape_audit": false,
+      "sample_count": 20001,
+      "dt_min_s": 0.0009999999999976694,
+      "dt_max_s": 0.0010000000000012221,
+      "command_values": [-1.0, 0.0, 1.0],
+      "rho_initial_m": [0.15, 0.15, 0.15, 0.15],
+      "rho_range_m": [0.15, 0.24999999999998898],
+      "speed_mps_inferred": 0.05,
+      "speed_sample_max_abs_deviation_mps": 0.0,
+      "max_abs_rho_minus_0p15_plus_speed_z_m": 1.1074474670635936e-14,
+      "max_abs_rhoDot_minus_speed_u_mps": 0.0,
+      "command_nonzero_entries": 10000
+    }
+  ],
+  "interpretation_limit": "These two scenes rule out missing morphology information as an explanation for these two X18 records only; they do not establish the same relation for all 816 scenes or physical hardware with actuator lag."
+}

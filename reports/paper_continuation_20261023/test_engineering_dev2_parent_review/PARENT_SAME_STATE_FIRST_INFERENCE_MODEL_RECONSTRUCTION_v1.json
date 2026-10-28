@@ -1,0 +1,67 @@
+{
+  "schema": "PARENT_SAME_STATE_FIRST_INFERENCE_MODEL_RECONSTRUCTION_V1",
+  "TEST_accessed": false,
+  "Plant_calls": 0,
+  "state_exact_equal_through_time_s": 0.32,
+  "first_ready_transition_start_s": 0.32,
+  "shared_input_history_indices_zero_based": [
+    10,
+    20,
+    30,
+    40,
+    50,
+    60,
+    70,
+    80,
+    90,
+    100,
+    110,
+    120,
+    130,
+    140,
+    150,
+    160,
+    170,
+    180,
+    190,
+    200,
+    210,
+    220,
+    230,
+    240,
+    250,
+    260,
+    270,
+    280,
+    290,
+    300,
+    310,
+    320
+  ],
+  "same_feature_history": true,
+  "old_new_phi_max_abs_difference": 0.014804618478432532,
+  "rows": [
+    {
+      "model": "OLD_ACTUAL_EMBEDDED_MODEL",
+      "phi_max_abs_error": 3.642919299551295e-17,
+      "raw_head_max_abs_error": 2.220446049250313e-16,
+      "raw_head_value": [
+        -0.019402028223068832,
+        -0.08110141967762588,
+        0.0021815715052227527
+      ]
+    },
+    {
+      "model": "V6_EXTERNAL_REPLACEMENT_MODEL",
+      "phi_max_abs_error": 2.168404344971009e-17,
+      "raw_head_max_abs_error": 1.1102230246251565e-16,
+      "raw_head_value": [
+        -0.009453146961735152,
+        -0.07910429031657278,
+        0.003566604825922005
+      ]
+    }
+  ],
+  "conclusion": "Different embedded encoder/normalizer/W0 explains first inference/output divergence on exactly equal state and input history; later closed-loop differences are effects, not independent causal component evidence.",
+  "reader_path_erratum": "First unsaved read incorrectly sought new opts in wrapper raw; actual model is in adjacent run_start, corrected here with no MATLAB/Plant."
+}

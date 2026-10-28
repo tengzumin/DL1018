@@ -1,0 +1,3331 @@
+{
+  "schema": "DL1018_HF_C5_PRESERVING_COUPLING_AUDIT_V1",
+  "status": "PASS_READ_ONLY_HF6_RAW_AUDIT",
+  "cohort": [
+    "DL1018_DEV_T1_C10_W09",
+    "DL1018_VAL_T1_C07_W14",
+    "DL1018_DEV_T2_C09_W10",
+    "DL1018_VAL_T2_C04_W14",
+    "DL1018_DEV_T3_C09_W09",
+    "DL1018_VAL_T3_C01_W14"
+  ],
+  "scope": "Bound DEV/VAL raws only; no Plant reruns, TEST, truth oracle, inertia reconstruction, J, or Jdot inputs.",
+  "filter_test": {
+    "type": "single causal first-order low-pass on compensation force",
+    "fc_hz": 2.864788975654116,
+    "derivation": "The single replay LP cutoff is anchored to the configured roll/pitch command_filter.wn=18 rad/s, expressed as 18/(2pi)=2.865 Hz. This is only a nominal command-filter scale; it is not the closed-loop attitude bandwidth or a transfer-function match. No parameter sweep.",
+    "discrete_pole": 0.9821610323583008,
+    "transfer_at_frequencies": [
+      {
+        "frequency_hz": 0.5,
+        "magnitude": 0.9851088992973768,
+        "phase_deg": -9.81054724757632
+      },
+      {
+        "frequency_hz": 1.0,
+        "magnitude": 0.9441345814764597,
+        "phase_deg": -19.06289052715469
+      },
+      {
+        "frequency_hz": 2.864788975654116,
+        "magnitude": 0.7071163270636567,
+        "phase_deg": -44.48588497042914
+      },
+      {
+        "frequency_hz": 5.0,
+        "magnitude": 0.49715930400046043,
+        "phase_deg": -59.29181170314189
+      },
+      {
+        "frequency_hz": 10.0,
+        "magnitude": 0.27544593430104386,
+        "phase_deg": -72.21950992079073
+      }
+    ],
+    "interpretation": "Conditional same-state reference/filter replay only; these comparisons are neither strict achievable lower/upper bounds nor predictions of closed-loop Q."
+  },
+  "feature_gap_from_runtime": {
+    "active_position_feature_dim": 14,
+    "existing_features": "position/rate error surface, Euler attitude, preview thrust, and four arm commands (14 total).",
+    "observed_but_not_in_feature14": "command-filter roll/pitch state and rate, plus PCF realization state eta; these are logged/deployable causal states but are not inputs to the position DSSM inference. The update law uses its PCF-adjusted surface, while inference phi is computed from the 14-D feature history.",
+    "no_true_inertia_used": true
+  },
+  "macro_mean_over_six_scenes": {
+    "GRU_alpha09": {
+      "scene_count": 6,
+      "Q_m": 0.011716514848720517,
+      "task_SO3_rad": 0.060302756106428344,
+      "inner_SO3_rad": 0.01434664302647261,
+      "task_to_command_filter_target_same_state_SO3_rad": 0.07661111642303443,
+      "task_to_filtered_current_same_state_SO3_rad": 0.06223479969505961,
+      "task_to_filtered_fc2p865_same_state_SO3_rad": 0.06080314241791477,
+      "fc2p865_gap_to_B_actual_task_mrad": 3.1845182140982065,
+      "compensation_force_band_rms_N": {
+        "0p1_1Hz": 0.04654598390488588,
+        "1Hz_to_fc": 0.09133961373525375,
+        "fc_to_10Hz": 0.23593000188310012,
+        "10_to_50Hz": 0.0026487469396866904,
+        "50_to_500Hz": 0.017608698981679265
+      },
+      "fc2p865_lp_band_retention_ratio": {
+        "0p1_1Hz": 1.0018074068577747,
+        "1Hz_to_fc": 0.8449622461788245,
+        "fc_to_10Hz": 0.6266740151296176,
+        "10_to_50Hz": 0.21126046660435951,
+        "50_to_500Hz": 0.02460854474422818
+      },
+      "update_same_feature_raw_output_rms_fraction": 0.005861078688750728,
+      "update_same_feature_applied_output_rms_fraction": 0.005894170421021628
+    },
+    "GRU_alpha1": {
+      "scene_count": 6,
+      "Q_m": 0.010141127268856395,
+      "task_SO3_rad": 0.06119899336640073,
+      "inner_SO3_rad": 0.01441020199904845,
+      "task_to_command_filter_target_same_state_SO3_rad": 0.08056348610010476,
+      "task_to_filtered_current_same_state_SO3_rad": 0.06313685496285298,
+      "task_to_filtered_fc2p865_same_state_SO3_rad": 0.06131510609091593,
+      "fc2p865_gap_to_B_actual_task_mrad": 3.6964818870993574,
+      "compensation_force_band_rms_N": {
+        "0p1_1Hz": 0.04824073592295585,
+        "1Hz_to_fc": 0.100739543136682,
+        "fc_to_10Hz": 0.27301908168172206,
+        "10_to_50Hz": 0.0030352544367328363,
+        "50_to_500Hz": 0.020187820343298624
+      },
+      "fc2p865_lp_band_retention_ratio": {
+        "0p1_1Hz": 1.0014484739383132,
+        "1Hz_to_fc": 0.8431830561877134,
+        "fc_to_10Hz": 0.6271392287385928,
+        "10_to_50Hz": 0.21161990972002076,
+        "50_to_500Hz": 0.024606681945498605
+      },
+      "update_same_feature_raw_output_rms_fraction": 0.006347043534092606,
+      "update_same_feature_applied_output_rms_fraction": 0.006395088548668638
+    },
+    "MLP_alpha09": {
+      "scene_count": 6,
+      "Q_m": 0.012249979231740387,
+      "task_SO3_rad": 0.06050237410760406,
+      "inner_SO3_rad": 0.01821848306080506,
+      "task_to_command_filter_target_same_state_SO3_rad": 0.07694864011784533,
+      "task_to_filtered_current_same_state_SO3_rad": 0.06276232888660958,
+      "task_to_filtered_fc2p865_same_state_SO3_rad": 0.0612975205410308,
+      "fc2p865_gap_to_B_actual_task_mrad": 3.6788963372142374,
+      "compensation_force_band_rms_N": {
+        "0p1_1Hz": 0.04633508607922396,
+        "1Hz_to_fc": 0.09123126831209388,
+        "fc_to_10Hz": 0.23428630765357158,
+        "10_to_50Hz": 0.002991912407985103,
+        "50_to_500Hz": 0.017467477001015495
+      },
+      "fc2p865_lp_band_retention_ratio": {
+        "0p1_1Hz": 0.9987396620144756,
+        "1Hz_to_fc": 0.8349456609733868,
+        "fc_to_10Hz": 0.626184609365533,
+        "10_to_50Hz": 0.22008130676981744,
+        "50_to_500Hz": 0.024612297800578737
+      },
+      "update_same_feature_raw_output_rms_fraction": 0.006102207534176164,
+      "update_same_feature_applied_output_rms_fraction": 0.006143805490743437
+    },
+    "MLP_alpha1": {
+      "scene_count": 6,
+      "Q_m": 0.010824909169143871,
+      "task_SO3_rad": 0.061355392252615853,
+      "inner_SO3_rad": 0.018477223537277498,
+      "task_to_command_filter_target_same_state_SO3_rad": 0.0809292471837856,
+      "task_to_filtered_current_same_state_SO3_rad": 0.06383201149011161,
+      "task_to_filtered_fc2p865_same_state_SO3_rad": 0.06198593153650736,
+      "fc2p865_gap_to_B_actual_task_mrad": 4.367307332690792,
+      "compensation_force_band_rms_N": {
+        "0p1_1Hz": 0.049799264132269296,
+        "1Hz_to_fc": 0.10109736722254632,
+        "fc_to_10Hz": 0.2710959771826762,
+        "10_to_50Hz": 0.003293585357255628,
+        "50_to_500Hz": 0.020015922985838583
+      },
+      "fc2p865_lp_band_retention_ratio": {
+        "0p1_1Hz": 0.9947732947937357,
+        "1Hz_to_fc": 0.8316970362825348,
+        "fc_to_10Hz": 0.626657111692848,
+        "10_to_50Hz": 0.21968885061316676,
+        "50_to_500Hz": 0.024608308036059973
+      },
+      "update_same_feature_raw_output_rms_fraction": 0.0065976836911467995,
+      "update_same_feature_applied_output_rms_fraction": 0.0066538970075385485
+    }
+  },
+  "per_scene": [
+    {
+      "scene_id": "DL1018_DEV_T1_C10_W09",
+      "arm": "MLP_alpha1",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261027\\mlp15_nominal_residual_v1\\closed_loop_candidate_v1\\runs\\DL1018_DEV_T1_C10_W09\\PHYS_RESIDUAL_ATTEMPT_01\\raw_run.mat",
+      "raw_sha256_bound": "24120f5064104e1700f03946bfbd7d3b7cab5ff8ed3a86fec54aedcb6049b7c5",
+      "position_feature_input_shape_hdf5": [
+        14,
+        20000
+      ],
+      "position_feature_dim": 14,
+      "logged_scale": 1.0,
+      "mass_kg_from_nominal_force_acceleration": 0.695,
+      "actual_metrics": {
+        "Q_m": 0.009407793207867927,
+        "task_SO3_rad": 0.04379521511993468,
+        "inner_SO3_rad": 0.019930158586487796
+      },
+      "B_task_SO3_rad": 0.042200801129056116,
+      "task_to_command_filter_target_same_state_SO3_rad": 0.05099412991833425,
+      "task_to_filtered_current_same_state_SO3_rad": 0.046971561871184904,
+      "task_to_filtered_fc2p865_same_state_SO3_rad": 0.04627203280572977,
+      "fc2p865_same_state_change_mrad": -0.6995290654551317,
+      "fc2p865_gap_to_B_actual_task_mrad": 4.071231676673656,
+      "force_compensation_rms_N": 0.3489133781076618,
+      "compensation_force_band_rms_N": {
+        "0p1_1Hz": 0.042164885310079815,
+        "1Hz_to_fc": 0.10196620676012165,
+        "fc_to_10Hz": 0.08613523744753779,
+        "10_to_50Hz": 0.0018614470686801473,
+        "50_to_500Hz": 0.006655146745413765
+      },
+      "fc2p865_lp_band_rms_N": {
+        "0p1_1Hz": 0.042045325384518314,
+        "1Hz_to_fc": 0.08089418556502857,
+        "fc_to_10Hz": 0.057114460927688356,
+        "10_to_50Hz": 0.00040326824292592696,
+        "50_to_500Hz": 0.00016385809784426778
+      },
+      "fc2p865_lp_band_retention_ratio": {
+        "0p1_1Hz": 0.9971644669567519,
+        "1Hz_to_fc": 0.7933430901802045,
+        "fc_to_10Hz": 0.6630789282083879,
+        "10_to_50Hz": 0.216642336873894,
+        "50_to_500Hz": 0.024621259922959122
+      },
+      "position_error_rms_xyz_m": [
+        0.004876178927881792,
+        0.00760151955308387,
+        0.0026362963820326826
+      ],
+      "target_minus_task_band_rms_rad": {
+        "0p1_1Hz": 0.010659758472968827,
+        "1Hz_to_fc": 0.01906554121596594,
+        "fc_to_10Hz": 0.014786168646784049,
+        "10_to_50Hz": 0.0002723825947527768,
+        "50_to_500Hz": 0.0009536941161796469
+      },
+      "compensation_vs_nominal_force_cross_phase": {
+        "0p1_1Hz": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.2757057567725705,
+            "phase_deg": 105.61764832352897
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.1907233662128394,
+            "phase_deg": -176.5249150984712
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.5540447737096907,
+            "phase_deg": 74.3752215907494
+          }
+        ],
+        "1Hz_to_fc": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.546409396209448,
+            "phase_deg": -117.18505493239061
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.8225205491859837,
+            "phase_deg": -142.29468866210092
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.879239808878541,
+            "phase_deg": 135.09369222580258
+          }
+        ],
+        "fc_to_10Hz": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.5712678930376458,
+            "phase_deg": -120.09160745269955
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.812567992313477,
+            "phase_deg": -148.93727884096248
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.558284228802475,
+            "phase_deg": 131.60772452784758
+          }
+        ],
+        "10_to_50Hz": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.17717742391709515,
+            "phase_deg": -135.11730832330747
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.24996963577747539,
+            "phase_deg": 113.70755474898294
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.4440161305229853,
+            "phase_deg": 58.25436075079452
+          }
+        ]
+      },
+      "position_update_events": 1968,
+      "update_same_feature_raw_output_rms_fraction": 0.006277973872295352,
+      "update_same_feature_applied_output_rms_fraction": 0.006321889003570751,
+      "update_raw_reconstruction_max_abs_mps2": 2.220446049250313e-16
+    },
+    {
+      "scene_id": "DL1018_DEV_T1_C10_W09",
+      "arm": "MLP_alpha09",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261027\\mlp15_nominal_residual_v1\\closed_loop_force09_v1\\runs\\DL1018_DEV_T1_C10_W09\\PHYS_RESIDUAL_ATTEMPT_01\\raw_run.mat",
+      "raw_sha256_bound": "f272f364a6e92dcc829ceb3a818f726580e2e1a9a3f15191c6d4b95cde9bb7ea",
+      "position_feature_input_shape_hdf5": [
+        14,
+        20000
+      ],
+      "position_feature_dim": 14,
+      "logged_scale": 0.9,
+      "mass_kg_from_nominal_force_acceleration": 0.695,
+      "actual_metrics": {
+        "Q_m": 0.010745991216800626,
+        "task_SO3_rad": 0.04319871007689165,
+        "inner_SO3_rad": 0.019000343359982762
+      },
+      "B_task_SO3_rad": 0.042200801129056116,
+      "task_to_command_filter_target_same_state_SO3_rad": 0.04861647924394586,
+      "task_to_filtered_current_same_state_SO3_rad": 0.045266266441554806,
+      "task_to_filtered_fc2p865_same_state_SO3_rad": 0.04467934263611313,
+      "fc2p865_same_state_change_mrad": -0.5869238054416748,
+      "fc2p865_gap_to_B_actual_task_mrad": 2.4785415070570154,
+      "force_compensation_rms_N": 0.32602403897261734,
+      "compensation_force_band_rms_N": {
+        "0p1_1Hz": 0.04182484401363374,
+        "1Hz_to_fc": 0.08970712298216965,
+        "fc_to_10Hz": 0.07068339320632841,
+        "10_to_50Hz": 0.002025566338312433,
+        "50_to_500Hz": 0.005641553148872128
+      },
+      "fc2p865_lp_band_rms_N": {
+        "0p1_1Hz": 0.04175368567829945,
+        "1Hz_to_fc": 0.07129396717874716,
+        "fc_to_10Hz": 0.04685509218859996,
+        "10_to_50Hz": 0.0004505374400482316,
+        "50_to_500Hz": 0.00013898906262450246
+      },
+      "fc2p865_lp_band_retention_ratio": {
+        "0p1_1Hz": 0.9982986586797289,
+        "1Hz_to_fc": 0.794741429762692,
+        "fc_to_10Hz": 0.6628868545094825,
+        "10_to_50Hz": 0.22242541827763063,
+        "50_to_500Hz": 0.024636666349990777
+      },
+      "position_error_rms_xyz_m": [
+        0.00516337434497589,
+        0.008870883383357049,
+        0.003182458285551717
+      ],
+      "target_minus_task_band_rms_rad": {
+        "0p1_1Hz": 0.01057121017153001,
+        "1Hz_to_fc": 0.017016358212507153,
+        "fc_to_10Hz": 0.01233416274012972,
+        "10_to_50Hz": 0.00029891769774797447,
+        "50_to_500Hz": 0.0008082637363292312
+      },
+      "compensation_vs_nominal_force_cross_phase": {
+        "0p1_1Hz": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.28768749325965065,
+            "phase_deg": 158.73336929770448
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.18651983295290805,
+            "phase_deg": 171.03631986147664
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.4859327040962664,
+            "phase_deg": 80.6935678221512
+          }
+        ],
+        "1Hz_to_fc": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.5713867571139318,
+            "phase_deg": -117.82989357429467
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.7021286017836559,
+            "phase_deg": -139.69714597300367
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.8746782779046283,
+            "phase_deg": 137.12646047266048
+          }
+        ],
+        "fc_to_10Hz": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.5862129748071491,
+            "phase_deg": -124.28150942754966
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.8507168129833905,
+            "phase_deg": -146.61720960304643
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.6929594874649962,
+            "phase_deg": 127.91386156968188
+          }
+        ],
+        "10_to_50Hz": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.14836827792540325,
+            "phase_deg": -178.33437483845876
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.21857769863874887,
+            "phase_deg": 119.14618599918587
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.4218763679774812,
+            "phase_deg": 58.910389801241976
+          }
+        ]
+      },
+      "position_update_events": 1968,
+      "update_same_feature_raw_output_rms_fraction": 0.005787350705839859,
+      "update_same_feature_applied_output_rms_fraction": 0.005816400075095063,
+      "update_raw_reconstruction_max_abs_mps2": 2.914335439641036e-16
+    },
+    {
+      "scene_id": "DL1018_DEV_T1_C10_W09",
+      "arm": "GRU_alpha1",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_full72_v1\\runs\\DL1018_DEV_T1_C10_W09\\raw_run.mat",
+      "raw_sha256_bound": "c40239f9c9a6cea0f233eabdea3294b20ff4d3384e22a59055dc4e5358f5b541",
+      "position_feature_input_shape_hdf5": [
+        14,
+        20000
+      ],
+      "position_feature_dim": 14,
+      "logged_scale": 1.0,
+      "mass_kg_from_nominal_force_acceleration": 0.695,
+      "actual_metrics": {
+        "Q_m": 0.009492906627253345,
+        "task_SO3_rad": 0.04330835597159727,
+        "inner_SO3_rad": 0.02024501714889525
+      },
+      "B_task_SO3_rad": 0.042200801129056116,
+      "task_to_command_filter_target_same_state_SO3_rad": 0.0472783955475924,
+      "task_to_filtered_current_same_state_SO3_rad": 0.04328289850775231,
+      "task_to_filtered_fc2p865_same_state_SO3_rad": 0.04262673390538959,
+      "fc2p865_same_state_change_mrad": -0.656164602362723,
+      "fc2p865_gap_to_B_actual_task_mrad": 0.4259327763334736,
+      "force_compensation_rms_N": 0.328220569060661,
+      "compensation_force_band_rms_N": {
+        "0p1_1Hz": 0.0511413852197152,
+        "1Hz_to_fc": 0.10306142213206076,
+        "fc_to_10Hz": 0.08350142646656648,
+        "10_to_50Hz": 0.0013793824822187683,
+        "50_to_500Hz": 0.0064998483196806785
+      },
+      "fc2p865_lp_band_rms_N": {
+        "0p1_1Hz": 0.05157276248157038,
+        "1Hz_to_fc": 0.08174111894882452,
+        "fc_to_10Hz": 0.055558837094660245,
+        "10_to_50Hz": 0.00026675149491457066,
+        "50_to_500Hz": 0.00016000945547768185
+      },
+      "fc2p865_lp_band_retention_ratio": {
+        "0p1_1Hz": 1.0084349936944783,
+        "1Hz_to_fc": 0.793130128207266,
+        "fc_to_10Hz": 0.6653639278474566,
+        "10_to_50Hz": 0.19338471986790406,
+        "50_to_500Hz": 0.02461741376228649
+      },
+      "position_error_rms_xyz_m": [
+        0.004810284048107168,
+        0.007755662347703117,
+        0.002613545300105427
+      ],
+      "target_minus_task_band_rms_rad": {
+        "0p1_1Hz": 0.009829720579469287,
+        "1Hz_to_fc": 0.01909767874285927,
+        "fc_to_10Hz": 0.014331217670525906,
+        "10_to_50Hz": 0.00019905688183762178,
+        "50_to_500Hz": 0.000931241814405003
+      },
+      "compensation_vs_nominal_force_cross_phase": {
+        "0p1_1Hz": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.292454983684456,
+            "phase_deg": 109.15518736524137
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.27658382767934225,
+            "phase_deg": -166.8403480121844
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.46614686864107174,
+            "phase_deg": 72.03088399320674
+          }
+        ],
+        "1Hz_to_fc": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.4976407484665789,
+            "phase_deg": -110.58710060139018
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.6894524981680222,
+            "phase_deg": -141.78725571341644
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.7397307223208625,
+            "phase_deg": 137.04772303155582
+          }
+        ],
+        "fc_to_10Hz": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.6363895171427898,
+            "phase_deg": -122.38084003920287
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.6290183176693838,
+            "phase_deg": -147.49678548297783
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.5076612480913805,
+            "phase_deg": 132.26701387231643
+          }
+        ],
+        "10_to_50Hz": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.15806360676302728,
+            "phase_deg": -111.19057851954246
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.21761989159019032,
+            "phase_deg": -99.47166040157198
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.4459780137660762,
+            "phase_deg": 67.41735931410676
+          }
+        ]
+      },
+      "position_update_events": 1968,
+      "update_same_feature_raw_output_rms_fraction": 0.006084841569923368,
+      "update_same_feature_applied_output_rms_fraction": 0.006129405947916217,
+      "update_raw_reconstruction_max_abs_mps2": 2.220446049250313e-16
+    },
+    {
+      "scene_id": "DL1018_DEV_T1_C10_W09",
+      "arm": "GRU_alpha09",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261027\\gru_tracking_force09_v1\\runs\\DL1018_DEV_T1_C10_W09\\GRU_FORCE09_ATTEMPT_01\\raw_run.mat",
+      "raw_sha256_bound": "cd9fb82d98b316ac2d0ddd8e0362545742a31341ee71d3b0739e64f33703b1eb",
+      "position_feature_input_shape_hdf5": [
+        14,
+        20000
+      ],
+      "position_feature_dim": 14,
+      "logged_scale": 0.9,
+      "mass_kg_from_nominal_force_acceleration": 0.695,
+      "actual_metrics": {
+        "Q_m": 0.010760563710609187,
+        "task_SO3_rad": 0.04296273984795624,
+        "inner_SO3_rad": 0.020218431709927442
+      },
+      "B_task_SO3_rad": 0.042200801129056116,
+      "task_to_command_filter_target_same_state_SO3_rad": 0.04612334763053396,
+      "task_to_filtered_current_same_state_SO3_rad": 0.042936821374094145,
+      "task_to_filtered_fc2p865_same_state_SO3_rad": 0.04241856999204799,
+      "fc2p865_same_state_change_mrad": -0.518251382046156,
+      "fc2p865_gap_to_B_actual_task_mrad": 0.21776886299187254,
+      "force_compensation_rms_N": 0.3129123276743282,
+      "compensation_force_band_rms_N": {
+        "0p1_1Hz": 0.04932256964667611,
+        "1Hz_to_fc": 0.09302012387675339,
+        "fc_to_10Hz": 0.06990158669115916,
+        "10_to_50Hz": 0.0012426503599577553,
+        "50_to_500Hz": 0.005619767623416825
+      },
+      "fc2p865_lp_band_rms_N": {
+        "0p1_1Hz": 0.04974101164353451,
+        "1Hz_to_fc": 0.07378721389516626,
+        "fc_to_10Hz": 0.04650537286540887,
+        "10_to_50Hz": 0.00024038791325099328,
+        "50_to_500Hz": 0.0001383712159636444
+      },
+      "fc2p865_lp_band_retention_ratio": {
+        "0p1_1Hz": 1.0084837833846843,
+        "1Hz_to_fc": 0.7932392564100464,
+        "fc_to_10Hz": 0.6652978146387436,
+        "10_to_50Hz": 0.19344774765056633,
+        "50_to_500Hz": 0.024622230888528194
+      },
+      "position_error_rms_xyz_m": [
+        0.005333639277029398,
+        0.008793672342026831,
+        0.003165270736368149
+      ],
+      "target_minus_task_band_rms_rad": {
+        "0p1_1Hz": 0.00989499227887865,
+        "1Hz_to_fc": 0.01756900203339465,
+        "fc_to_10Hz": 0.012216046846414615,
+        "10_to_50Hz": 0.00017929760938748739,
+        "50_to_500Hz": 0.0008049921139964275
+      },
+      "compensation_vs_nominal_force_cross_phase": {
+        "0p1_1Hz": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.27386703479129926,
+            "phase_deg": 109.62297239923625
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.2885028410044395,
+            "phase_deg": -168.90062053104202
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.47267632905180357,
+            "phase_deg": 78.09494065660272
+          }
+        ],
+        "1Hz_to_fc": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.50274712757555,
+            "phase_deg": -111.93929101776142
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.6610719419018529,
+            "phase_deg": -139.82435507728812
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.7162599129093165,
+            "phase_deg": 139.0235875579282
+          }
+        ],
+        "fc_to_10Hz": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.5977808113033362,
+            "phase_deg": -124.26329269830765
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.6052587733126102,
+            "phase_deg": -146.40771858314605
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.540374874168572,
+            "phase_deg": 129.0048027515295
+          }
+        ],
+        "10_to_50Hz": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.14892534752457703,
+            "phase_deg": -111.1204366118371
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.21269459152402007,
+            "phase_deg": -98.19647826063243
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.4169299600629567,
+            "phase_deg": 67.56009109890199
+          }
+        ]
+      },
+      "position_update_events": 1968,
+      "update_same_feature_raw_output_rms_fraction": 0.005640305659191349,
+      "update_same_feature_applied_output_rms_fraction": 0.00566802594141774,
+      "update_raw_reconstruction_max_abs_mps2": 3.3306690738754696e-16
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C07_W14",
+      "arm": "MLP_alpha1",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261027\\mlp15_nominal_residual_v1\\closed_loop_candidate_v1\\runs\\DL1018_VAL_T1_C07_W14\\PHYS_RESIDUAL_ATTEMPT_01\\raw_run.mat",
+      "raw_sha256_bound": "a89bd3276fd5d0025d675c76f08032183caf3d464087bcf1022c545b65656688",
+      "position_feature_input_shape_hdf5": [
+        14,
+        20000
+      ],
+      "position_feature_dim": 14,
+      "logged_scale": 1.0,
+      "mass_kg_from_nominal_force_acceleration": 0.695,
+      "actual_metrics": {
+        "Q_m": 0.013651773477396574,
+        "task_SO3_rad": 0.06734177844184251,
+        "inner_SO3_rad": 0.027011818023804205
+      },
+      "B_task_SO3_rad": 0.06450102366959093,
+      "task_to_command_filter_target_same_state_SO3_rad": 0.10351503280103592,
+      "task_to_filtered_current_same_state_SO3_rad": 0.07962826479135916,
+      "task_to_filtered_fc2p865_same_state_SO3_rad": 0.07756086224804205,
+      "fc2p865_same_state_change_mrad": -2.0674025433171095,
+      "fc2p865_gap_to_B_actual_task_mrad": 13.059838578451124,
+      "force_compensation_rms_N": 0.6409403433034195,
+      "compensation_force_band_rms_N": {
+        "0p1_1Hz": 0.07322172072130433,
+        "1Hz_to_fc": 0.032677830343133055,
+        "fc_to_10Hz": 0.41397492532521646,
+        "10_to_50Hz": 0.005503996642205768,
+        "50_to_500Hz": 0.030107072077025253
+      },
+      "fc2p865_lp_band_rms_N": {
+        "0p1_1Hz": 0.07233919392037079,
+        "1Hz_to_fc": 0.028061368479818233,
+        "fc_to_10Hz": 0.24402848421673676,
+        "10_to_50Hz": 0.001259728352097379,
+        "50_to_500Hz": 0.000741359049749767
+      },
+      "fc2p865_lp_band_retention_ratio": {
+        "0p1_1Hz": 0.9879471993796404,
+        "1Hz_to_fc": 0.8587280178996055,
+        "fc_to_10Hz": 0.5894764858645226,
+        "10_to_50Hz": 0.22887520359978514,
+        "50_to_500Hz": 0.024624083266984276
+      },
+      "position_error_rms_xyz_m": [
+        0.012907740483750388,
+        0.0043252294600859545,
+        0.0010309371022295072
+      ],
+      "target_minus_task_band_rms_rad": {
+        "0p1_1Hz": 0.01753787282347921,
+        "1Hz_to_fc": 0.008056286827532068,
+        "fc_to_10Hz": 0.07199968435618476,
+        "10_to_50Hz": 0.0009097107236128482,
+        "50_to_500Hz": 0.004389122512730664
+      },
+      "compensation_vs_nominal_force_cross_phase": {
+        "0p1_1Hz": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.3910087956275915,
+            "phase_deg": -137.342672724632
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.348760653529189,
+            "phase_deg": 36.24380340456884
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.5727435611178906,
+            "phase_deg": 122.31230172029194
+          }
+        ],
+        "1Hz_to_fc": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.6723767318634548,
+            "phase_deg": -158.52688625703559
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.7988241411363352,
+            "phase_deg": 161.07178616032624
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.6789916103516646,
+            "phase_deg": 178.0562378913798
+          }
+        ],
+        "fc_to_10Hz": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.745349720086881,
+            "phase_deg": -146.77633298946884
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.6671451815900571,
+            "phase_deg": -123.64809896497434
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.48448132759107543,
+            "phase_deg": 152.14030721659617
+          }
+        ],
+        "10_to_50Hz": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.18148891154414862,
+            "phase_deg": -121.59965938894898
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.16656375744302498,
+            "phase_deg": -134.0843657881098
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.26012636275113515,
+            "phase_deg": 80.19124779977741
+          }
+        ]
+      },
+      "position_update_events": 1968,
+      "update_same_feature_raw_output_rms_fraction": 0.007186098206696632,
+      "update_same_feature_applied_output_rms_fraction": 0.00721291673879785,
+      "update_raw_reconstruction_max_abs_mps2": 8.881784197001252e-16
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C07_W14",
+      "arm": "MLP_alpha09",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261027\\mlp15_nominal_residual_v1\\closed_loop_force09_v1\\runs\\DL1018_VAL_T1_C07_W14\\PHYS_RESIDUAL_ATTEMPT_01\\raw_run.mat",
+      "raw_sha256_bound": "03f8ee782f0cd144f03512d6fb952769940a53dfa00c7bb85dd045c51ab1d679",
+      "position_feature_input_shape_hdf5": [
+        14,
+        20000
+      ],
+      "position_feature_dim": 14,
+      "logged_scale": 0.9,
+      "mass_kg_from_nominal_force_acceleration": 0.695,
+      "actual_metrics": {
+        "Q_m": 0.015364393585123162,
+        "task_SO3_rad": 0.06644039843947418,
+        "inner_SO3_rad": 0.026055174483228662
+      },
+      "B_task_SO3_rad": 0.06450102366959093,
+      "task_to_command_filter_target_same_state_SO3_rad": 0.09862665642092296,
+      "task_to_filtered_current_same_state_SO3_rad": 0.0789352078256181,
+      "task_to_filtered_fc2p865_same_state_SO3_rad": 0.0772582812224693,
+      "fc2p865_same_state_change_mrad": -1.67692660314879,
+      "fc2p865_gap_to_B_actual_task_mrad": 12.757257552878375,
+      "force_compensation_rms_N": 0.5978429166735383,
+      "compensation_force_band_rms_N": {
+        "0p1_1Hz": 0.0683937377827961,
+        "1Hz_to_fc": 0.02851423629113139,
+        "fc_to_10Hz": 0.36110358753910166,
+        "10_to_50Hz": 0.004688049811497841,
+        "50_to_500Hz": 0.02634627755132739
+      },
+      "fc2p865_lp_band_rms_N": {
+        "0p1_1Hz": 0.06752547587696467,
+        "1Hz_to_fc": 0.024752124730500296,
+        "fc_to_10Hz": 0.21251827261388,
+        "10_to_50Hz": 0.0010690166073575812,
+        "50_to_500Hz": 0.0006487906460832152
+      },
+      "fc2p865_lp_band_retention_ratio": {
+        "0p1_1Hz": 0.9873049502194361,
+        "1Hz_to_fc": 0.8680619911324364,
+        "fc_to_10Hz": 0.5885244011619456,
+        "10_to_50Hz": 0.22803012987100246,
+        "50_to_500Hz": 0.024625514736161563
+      },
+      "position_error_rms_xyz_m": [
+        0.014601621592077113,
+        0.004640501791850636,
+        0.0011535855156469192
+      ],
+      "target_minus_task_band_rms_rad": {
+        "0p1_1Hz": 0.017451876969186854,
+        "1Hz_to_fc": 0.00723725868936632,
+        "fc_to_10Hz": 0.06393415294370959,
+        "10_to_50Hz": 0.0007612834082632753,
+        "50_to_500Hz": 0.0038418163018444943
+      },
+      "compensation_vs_nominal_force_cross_phase": {
+        "0p1_1Hz": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.4099146408047716,
+            "phase_deg": -133.839769060975
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.3466575422713418,
+            "phase_deg": 58.6452100428407
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.5771901358526054,
+            "phase_deg": 122.636389060581
+          }
+        ],
+        "1Hz_to_fc": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.6645198055918689,
+            "phase_deg": -154.86004450796145
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.6667855277736051,
+            "phase_deg": 165.97170947653322
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.6530943031088539,
+            "phase_deg": 179.76414175865193
+          }
+        ],
+        "fc_to_10Hz": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.7397961037341194,
+            "phase_deg": -146.44196937317537
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.6380760603948823,
+            "phase_deg": -125.46436466223149
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.46703078271089593,
+            "phase_deg": 152.6645684514888
+          }
+        ],
+        "10_to_50Hz": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.1714913763684295,
+            "phase_deg": -135.62330838894334
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.167883892691853,
+            "phase_deg": -136.03596648584056
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.26360161062040466,
+            "phase_deg": 80.7634318509409
+          }
+        ]
+      },
+      "position_update_events": 1968,
+      "update_same_feature_raw_output_rms_fraction": 0.006672221209243028,
+      "update_same_feature_applied_output_rms_fraction": 0.00668787694263173,
+      "update_raw_reconstruction_max_abs_mps2": 8.881784197001252e-16
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C07_W14",
+      "arm": "GRU_alpha1",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_full72_v1\\runs\\DL1018_VAL_T1_C07_W14\\raw_run.mat",
+      "raw_sha256_bound": "fe85f45de5cb16135840a1cb0a6c9bb8e7ac1c1e7e1bcda274c7b7eb1f1b2c27",
+      "position_feature_input_shape_hdf5": [
+        14,
+        20000
+      ],
+      "position_feature_dim": 14,
+      "logged_scale": 1.0,
+      "mass_kg_from_nominal_force_acceleration": 0.695,
+      "actual_metrics": {
+        "Q_m": 0.011388629658840289,
+        "task_SO3_rad": 0.06720675169079007,
+        "inner_SO3_rad": 0.022443412728565943
+      },
+      "B_task_SO3_rad": 0.06450102366959093,
+      "task_to_command_filter_target_same_state_SO3_rad": 0.10039300539302158,
+      "task_to_filtered_current_same_state_SO3_rad": 0.07530430700404651,
+      "task_to_filtered_fc2p865_same_state_SO3_rad": 0.07316143208406589,
+      "fc2p865_same_state_change_mrad": -2.1428749199806223,
+      "fc2p865_gap_to_B_actual_task_mrad": 8.660408414474963,
+      "force_compensation_rms_N": 0.6188310494065389,
+      "compensation_force_band_rms_N": {
+        "0p1_1Hz": 0.06566370548818316,
+        "1Hz_to_fc": 0.029976520578930705,
+        "fc_to_10Hz": 0.41562894257668315,
+        "10_to_50Hz": 0.005374743233932167,
+        "50_to_500Hz": 0.03028173376140311
+      },
+      "fc2p865_lp_band_rms_N": {
+        "0p1_1Hz": 0.06566652536033944,
+        "1Hz_to_fc": 0.02659107736568121,
+        "fc_to_10Hz": 0.24466345088654787,
+        "10_to_50Hz": 0.0012231149732461193,
+        "50_to_500Hz": 0.0007456690568776875
+      },
+      "fc2p865_lp_band_retention_ratio": {
+        "0p1_1Hz": 1.0000429441521053,
+        "1Hz_to_fc": 0.8870635034397892,
+        "fc_to_10Hz": 0.5886583580290674,
+        "10_to_50Hz": 0.227567145072954,
+        "50_to_500Hz": 0.02462438454657151
+      },
+      "position_error_rms_xyz_m": [
+        0.010792762167257478,
+        0.003515139293658001,
+        0.0009310055743583063
+      ],
+      "target_minus_task_band_rms_rad": {
+        "0p1_1Hz": 0.013634628248141763,
+        "1Hz_to_fc": 0.007810148394997877,
+        "fc_to_10Hz": 0.07221883618371255,
+        "10_to_50Hz": 0.0008908481817438324,
+        "50_to_500Hz": 0.004417399665619647
+      },
+      "compensation_vs_nominal_force_cross_phase": {
+        "0p1_1Hz": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.2468912801594778,
+            "phase_deg": -93.22864454004586
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.20226569464852456,
+            "phase_deg": -169.81932914818802
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.4947062517594344,
+            "phase_deg": 124.99588833652479
+          }
+        ],
+        "1Hz_to_fc": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.6024320494256034,
+            "phase_deg": -164.11077610891036
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.725130315162544,
+            "phase_deg": -178.9395190633512
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.676056248687894,
+            "phase_deg": -178.07143708051044
+          }
+        ],
+        "fc_to_10Hz": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.7688414832343033,
+            "phase_deg": -146.27316532357668
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.7071551317000835,
+            "phase_deg": -122.8177204186553
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.521392116035654,
+            "phase_deg": 146.85887023301987
+          }
+        ],
+        "10_to_50Hz": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.19124379008087095,
+            "phase_deg": -112.43045224408822
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.19995371072488116,
+            "phase_deg": -91.01205336889322
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.26001318120486316,
+            "phase_deg": 81.88200558906179
+          }
+        ]
+      },
+      "position_update_events": 1968,
+      "update_same_feature_raw_output_rms_fraction": 0.007116605543366706,
+      "update_same_feature_applied_output_rms_fraction": 0.007144277517163245,
+      "update_raw_reconstruction_max_abs_mps2": 4.440892098500626e-16
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C07_W14",
+      "arm": "GRU_alpha09",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261027\\gru_tracking_force09_v1\\runs\\DL1018_VAL_T1_C07_W14\\GRU_FORCE09_ATTEMPT_01\\raw_run.mat",
+      "raw_sha256_bound": "a6b3e928412914221987d60967a656e5b10887db8dc62578997526896a3f197b",
+      "position_feature_input_shape_hdf5": [
+        14,
+        20000
+      ],
+      "position_feature_dim": 14,
+      "logged_scale": 0.9,
+      "mass_kg_from_nominal_force_acceleration": 0.695,
+      "actual_metrics": {
+        "Q_m": 0.013276911994048882,
+        "task_SO3_rad": 0.0662771404555077,
+        "inner_SO3_rad": 0.02232156446762724
+      },
+      "B_task_SO3_rad": 0.06450102366959093,
+      "task_to_command_filter_target_same_state_SO3_rad": 0.09497637864934547,
+      "task_to_filtered_current_same_state_SO3_rad": 0.07432230218974664,
+      "task_to_filtered_fc2p865_same_state_SO3_rad": 0.07262411167148652,
+      "fc2p865_same_state_change_mrad": -1.6981905182601176,
+      "fc2p865_gap_to_B_actual_task_mrad": 8.123088001895596,
+      "force_compensation_rms_N": 0.5738554208731803,
+      "compensation_force_band_rms_N": {
+        "0p1_1Hz": 0.063171509774592,
+        "1Hz_to_fc": 0.027313878178846104,
+        "fc_to_10Hz": 0.3621077729985255,
+        "10_to_50Hz": 0.004662898412991024,
+        "50_to_500Hz": 0.026464388269047116
+      },
+      "fc2p865_lp_band_rms_N": {
+        "0p1_1Hz": 0.06320807192615094,
+        "1Hz_to_fc": 0.024372639716751868,
+        "fc_to_10Hz": 0.21284540103918864,
+        "10_to_50Hz": 0.00105962373548977,
+        "50_to_500Hz": 0.0006517098431872949
+      },
+      "fc2p865_lp_band_retention_ratio": {
+        "0p1_1Hz": 1.0005787759654534,
+        "1Hz_to_fc": 0.8923170688967871,
+        "fc_to_10Hz": 0.5877957252247533,
+        "10_to_50Hz": 0.22724572607835833,
+        "50_to_500Hz": 0.02462591753724903
+      },
+      "position_error_rms_xyz_m": [
+        0.012665295316978928,
+        0.0038382725943969464,
+        0.0010679350914111528
+      ],
+      "target_minus_task_band_rms_rad": {
+        "0p1_1Hz": 0.013581626761409398,
+        "1Hz_to_fc": 0.007502353623807559,
+        "fc_to_10Hz": 0.06405258648440963,
+        "10_to_50Hz": 0.0007589113105492614,
+        "50_to_500Hz": 0.0038612695367852934
+      },
+      "compensation_vs_nominal_force_cross_phase": {
+        "0p1_1Hz": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.25013657205000533,
+            "phase_deg": -98.08769357145444
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.21014251009014845,
+            "phase_deg": -168.52012900158024
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.5110965039704698,
+            "phase_deg": 122.83437649337537
+          }
+        ],
+        "1Hz_to_fc": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.5859612709250369,
+            "phase_deg": -162.00140205508208
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.704500588235268,
+            "phase_deg": -176.21855555352147
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.6542542859637972,
+            "phase_deg": -175.40423970696747
+          }
+        ],
+        "fc_to_10Hz": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.7576777991581496,
+            "phase_deg": -145.9775938762015
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.701788187589916,
+            "phase_deg": -124.54452518407571
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.4997040955075723,
+            "phase_deg": 147.7097375140384
+          }
+        ],
+        "10_to_50Hz": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.1911849520894187,
+            "phase_deg": -120.9575328529638
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.19718658872481365,
+            "phase_deg": -102.10569381715914
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.264663127219108,
+            "phase_deg": 82.86700164509045
+          }
+        ]
+      },
+      "position_update_events": 1968,
+      "update_same_feature_raw_output_rms_fraction": 0.006602474398042928,
+      "update_same_feature_applied_output_rms_fraction": 0.006618372320512472,
+      "update_raw_reconstruction_max_abs_mps2": 4.440892098500626e-16
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C09_W10",
+      "arm": "MLP_alpha1",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261027\\mlp15_nominal_residual_v1\\closed_loop_candidate_v1\\runs\\DL1018_DEV_T2_C09_W10\\PHYS_RESIDUAL_ATTEMPT_01\\raw_run.mat",
+      "raw_sha256_bound": "4e755f55fecba3a348eeeb6d9ae35ec04624a01f412be1afdac6dd88016af026",
+      "position_feature_input_shape_hdf5": [
+        14,
+        20000
+      ],
+      "position_feature_dim": 14,
+      "logged_scale": 1.0,
+      "mass_kg_from_nominal_force_acceleration": 0.695,
+      "actual_metrics": {
+        "Q_m": 0.011847235620547632,
+        "task_SO3_rad": 0.07297860093853316,
+        "inner_SO3_rad": 0.017611233945585395
+      },
+      "B_task_SO3_rad": 0.06360047397520943,
+      "task_to_command_filter_target_same_state_SO3_rad": 0.0959419678780952,
+      "task_to_filtered_current_same_state_SO3_rad": 0.0768281837989019,
+      "task_to_filtered_fc2p865_same_state_SO3_rad": 0.07411714915804904,
+      "fc2p865_same_state_change_mrad": -2.711034640852858,
+      "fc2p865_gap_to_B_actual_task_mrad": 10.516675182839608,
+      "force_compensation_rms_N": 0.5809784167597185,
+      "compensation_force_band_rms_N": {
+        "0p1_1Hz": 0.04499137451684101,
+        "1Hz_to_fc": 0.28721638262410526,
+        "fc_to_10Hz": 0.24527114316475382,
+        "10_to_50Hz": 0.0017835684232107225,
+        "50_to_500Hz": 0.01870385516990798
+      },
+      "fc2p865_lp_band_rms_N": {
+        "0p1_1Hz": 0.04434775886902146,
+        "1Hz_to_fc": 0.22770620186365947,
+        "fc_to_10Hz": 0.16296735062596068,
+        "10_to_50Hz": 0.0003756020662322244,
+        "50_to_500Hz": 0.0004593005356209209
+      },
+      "fc2p865_lp_band_retention_ratio": {
+        "0p1_1Hz": 0.9856946880434019,
+        "1Hz_to_fc": 0.7928036687296846,
+        "fc_to_10Hz": 0.6644375221772096,
+        "10_to_50Hz": 0.2105902197775388,
+        "50_to_500Hz": 0.024556463437541715
+      },
+      "position_error_rms_xyz_m": [
+        0.0038249373414691924,
+        0.010989809187580931,
+        0.0022262914862983137
+      ],
+      "target_minus_task_band_rms_rad": {
+        "0p1_1Hz": 0.010340256819309319,
+        "1Hz_to_fc": 0.055137222687695595,
+        "fc_to_10Hz": 0.04398356587305621,
+        "10_to_50Hz": 0.0002732995219208567,
+        "50_to_500Hz": 0.0027552937952127162
+      },
+      "compensation_vs_nominal_force_cross_phase": {
+        "0p1_1Hz": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.3086445801655491,
+            "phase_deg": 0.6010391119382487
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.29198082702033346,
+            "phase_deg": 0.27249652645416955
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.4828923492641512,
+            "phase_deg": 142.1606958325536
+          }
+        ],
+        "1Hz_to_fc": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.7642282897961862,
+            "phase_deg": 170.97104388167153
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.7415131250136447,
+            "phase_deg": -132.9223010680413
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.8320256573934086,
+            "phase_deg": 160.76046076304112
+          }
+        ],
+        "fc_to_10Hz": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.48124190714674847,
+            "phase_deg": -159.80747781278734
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.47651627797905644,
+            "phase_deg": -142.00166362431835
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.7773779100882584,
+            "phase_deg": 147.67211727184628
+          }
+        ],
+        "10_to_50Hz": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.15749580482643935,
+            "phase_deg": 104.14707869213369
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.13675073712403682,
+            "phase_deg": 99.0835730857433
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.2719823818137881,
+            "phase_deg": 152.65747256037807
+          }
+        ]
+      },
+      "position_update_events": 1968,
+      "update_same_feature_raw_output_rms_fraction": 0.0057884352268217105,
+      "update_same_feature_applied_output_rms_fraction": 0.0058305365310026705,
+      "update_raw_reconstruction_max_abs_mps2": 4.440892098500626e-16
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C09_W10",
+      "arm": "MLP_alpha09",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261027\\mlp15_nominal_residual_v1\\closed_loop_force09_v1\\runs\\DL1018_DEV_T2_C09_W10\\PHYS_RESIDUAL_ATTEMPT_01\\raw_run.mat",
+      "raw_sha256_bound": "e65aa828b6e91243bd49b38e38aae962916509c1eb81e81671b937731ca3ec16",
+      "position_feature_input_shape_hdf5": [
+        14,
+        20000
+      ],
+      "position_feature_dim": 14,
+      "logged_scale": 0.9,
+      "mass_kg_from_nominal_force_acceleration": 0.695,
+      "actual_metrics": {
+        "Q_m": 0.012829471982063082,
+        "task_SO3_rad": 0.07112441468794009,
+        "inner_SO3_rad": 0.016195995584196557
+      },
+      "B_task_SO3_rad": 0.06360047397520943,
+      "task_to_command_filter_target_same_state_SO3_rad": 0.09231088162996005,
+      "task_to_filtered_current_same_state_SO3_rad": 0.07639570934232785,
+      "task_to_filtered_fc2p865_same_state_SO3_rad": 0.07432174271464283,
+      "fc2p865_same_state_change_mrad": -2.0739666276850253,
+      "fc2p865_gap_to_B_actual_task_mrad": 10.721268739433395,
+      "force_compensation_rms_N": 0.5513473383199197,
+      "compensation_force_band_rms_N": {
+        "0p1_1Hz": 0.04186380124245497,
+        "1Hz_to_fc": 0.26166303199114566,
+        "fc_to_10Hz": 0.20819183620047493,
+        "10_to_50Hz": 0.0016347110572857242,
+        "50_to_500Hz": 0.01632271851754445
+      },
+      "fc2p865_lp_band_rms_N": {
+        "0p1_1Hz": 0.04188096764809885,
+        "1Hz_to_fc": 0.20745033681203362,
+        "fc_to_10Hz": 0.1383287731295183,
+        "10_to_50Hz": 0.00034274451868765616,
+        "50_to_500Hz": 0.0004008192377091647
+      },
+      "fc2p865_lp_band_retention_ratio": {
+        "0p1_1Hz": 1.0004100536772678,
+        "1Hz_to_fc": 0.7928148475289909,
+        "fc_to_10Hz": 0.6644293823140925,
+        "10_to_50Hz": 0.20966672804963435,
+        "50_to_500Hz": 0.024555911889207957
+      },
+      "position_error_rms_xyz_m": [
+        0.003549702906497393,
+        0.012045485155084811,
+        0.0026285684480737174
+      ],
+      "target_minus_task_band_rms_rad": {
+        "0p1_1Hz": 0.008889655175384162,
+        "1Hz_to_fc": 0.05131459206765012,
+        "fc_to_10Hz": 0.03806118213856127,
+        "10_to_50Hz": 0.0002507317669176142,
+        "50_to_500Hz": 0.002404719021499461
+      },
+      "compensation_vs_nominal_force_cross_phase": {
+        "0p1_1Hz": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.1693002436191468,
+            "phase_deg": 45.81013573985397
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.26244005060058967,
+            "phase_deg": -27.614348127366377
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.5188428274856784,
+            "phase_deg": 144.7268162158673
+          }
+        ],
+        "1Hz_to_fc": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.7566808586717271,
+            "phase_deg": 172.78393695498164
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.7377799615459294,
+            "phase_deg": -131.5803370056968
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.8617581152132006,
+            "phase_deg": 162.05839770896125
+          }
+        ],
+        "fc_to_10Hz": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.5074178189318863,
+            "phase_deg": -155.69883373580018
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.5241898300717769,
+            "phase_deg": -141.52872672379993
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.7325563731590925,
+            "phase_deg": 149.5696378856837
+          }
+        ],
+        "10_to_50Hz": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.14213475729117006,
+            "phase_deg": 122.6544336518898
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.21077227339137783,
+            "phase_deg": 153.7542050675327
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.17941154624711445,
+            "phase_deg": 170.6978032510815
+          }
+        ]
+      },
+      "position_update_events": 1968,
+      "update_same_feature_raw_output_rms_fraction": 0.00513493652382391,
+      "update_same_feature_applied_output_rms_fraction": 0.005160839888361456,
+      "update_raw_reconstruction_max_abs_mps2": 4.440892098500626e-16
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C09_W10",
+      "arm": "GRU_alpha1",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_full72_v1\\runs\\DL1018_DEV_T2_C09_W10\\raw_run.mat",
+      "raw_sha256_bound": "518567b25d19d8e8acd6a74c33eb7c5ed6b78c507d6f022a0cd12ba6bf126e98",
+      "position_feature_input_shape_hdf5": [
+        14,
+        20000
+      ],
+      "position_feature_dim": 14,
+      "logged_scale": 1.0,
+      "mass_kg_from_nominal_force_acceleration": 0.695,
+      "actual_metrics": {
+        "Q_m": 0.011318527954331283,
+        "task_SO3_rad": 0.07305537062489269,
+        "inner_SO3_rad": 0.010685536204936954
+      },
+      "B_task_SO3_rad": 0.06360047397520943,
+      "task_to_command_filter_target_same_state_SO3_rad": 0.09502292155697027,
+      "task_to_filtered_current_same_state_SO3_rad": 0.07499300069681583,
+      "task_to_filtered_fc2p865_same_state_SO3_rad": 0.07219681826007249,
+      "fc2p865_same_state_change_mrad": -2.796182436743344,
+      "fc2p865_gap_to_B_actual_task_mrad": 8.596344284863056,
+      "force_compensation_rms_N": 0.5734878675630709,
+      "compensation_force_band_rms_N": {
+        "0p1_1Hz": 0.040398782079467364,
+        "1Hz_to_fc": 0.29572552510816985,
+        "fc_to_10Hz": 0.24536658576940493,
+        "10_to_50Hz": 0.0015690343603219298,
+        "50_to_500Hz": 0.018908379839202172
+      },
+      "fc2p865_lp_band_rms_N": {
+        "0p1_1Hz": 0.04041530902766892,
+        "1Hz_to_fc": 0.23443179652279472,
+        "fc_to_10Hz": 0.16307705582569015,
+        "10_to_50Hz": 0.0003144434512546222,
+        "50_to_500Hz": 0.00046429487702301413
+      },
+      "fc2p865_lp_band_retention_ratio": {
+        "0p1_1Hz": 1.0004090952090845,
+        "1Hz_to_fc": 0.7927343993625331,
+        "fc_to_10Hz": 0.6646261768460587,
+        "10_to_50Hz": 0.2004057139896577,
+        "50_to_500Hz": 0.024554979378000732
+      },
+      "position_error_rms_xyz_m": [
+        0.0023102891094246786,
+        0.010844793734395217,
+        0.002273383155353186
+      ],
+      "target_minus_task_band_rms_rad": {
+        "0p1_1Hz": 0.008110435937469017,
+        "1Hz_to_fc": 0.05659790796612328,
+        "fc_to_10Hz": 0.0439733180058121,
+        "10_to_50Hz": 0.00024203178959752221,
+        "50_to_500Hz": 0.0027848678416329945
+      },
+      "compensation_vs_nominal_force_cross_phase": {
+        "0p1_1Hz": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.21100678668245054,
+            "phase_deg": -92.97256428537771
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.23153481457810465,
+            "phase_deg": -15.573058247497979
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.48763643065255363,
+            "phase_deg": 174.79764227679527
+          }
+        ],
+        "1Hz_to_fc": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.7501985446953418,
+            "phase_deg": -176.8016533500045
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.7555801704458415,
+            "phase_deg": -131.83168280136624
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.8770006446912362,
+            "phase_deg": 161.20175552803084
+          }
+        ],
+        "fc_to_10Hz": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.7237363496575232,
+            "phase_deg": -152.92226817565273
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.7206229127283483,
+            "phase_deg": -142.26130008810475
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.7932880545711666,
+            "phase_deg": 146.25846925711653
+          }
+        ],
+        "10_to_50Hz": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.3529907000620721,
+            "phase_deg": -102.46000893851311
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.16087954887050673,
+            "phase_deg": -33.63580051326097
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.24923268979774427,
+            "phase_deg": 164.35854540347742
+          }
+        ]
+      },
+      "position_update_events": 1968,
+      "update_same_feature_raw_output_rms_fraction": 0.00562105098644988,
+      "update_same_feature_applied_output_rms_fraction": 0.005660324939449444,
+      "update_raw_reconstruction_max_abs_mps2": 4.440892098500626e-16
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C09_W10",
+      "arm": "GRU_alpha09",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261027\\gru_tracking_force09_v1\\runs\\DL1018_DEV_T2_C09_W10\\GRU_FORCE09_ATTEMPT_01\\raw_run.mat",
+      "raw_sha256_bound": "bb68d8f3b5c34b1e0472bf5b2864a74a70d773e8862e37718690ec2b9d13d5ee",
+      "position_feature_input_shape_hdf5": [
+        14,
+        20000
+      ],
+      "position_feature_dim": 14,
+      "logged_scale": 0.9,
+      "mass_kg_from_nominal_force_acceleration": 0.695,
+      "actual_metrics": {
+        "Q_m": 0.012533219478631119,
+        "task_SO3_rad": 0.0712657711891065,
+        "inner_SO3_rad": 0.010364222534713023
+      },
+      "B_task_SO3_rad": 0.06360047397520943,
+      "task_to_command_filter_target_same_state_SO3_rad": 0.09006038842756947,
+      "task_to_filtered_current_same_state_SO3_rad": 0.07315449568100053,
+      "task_to_filtered_fc2p865_same_state_SO3_rad": 0.07096456621405518,
+      "fc2p865_same_state_change_mrad": -2.1899294669453506,
+      "fc2p865_gap_to_B_actual_task_mrad": 7.3640922388457515,
+      "force_compensation_rms_N": 0.5340646468384108,
+      "compensation_force_band_rms_N": {
+        "0p1_1Hz": 0.038754220768791446,
+        "1Hz_to_fc": 0.2677683427598795,
+        "fc_to_10Hz": 0.20856388625488664,
+        "10_to_50Hz": 0.0014075074471887542,
+        "50_to_500Hz": 0.016485976147972134
+      },
+      "fc2p865_lp_band_rms_N": {
+        "0p1_1Hz": 0.03880153584406142,
+        "1Hz_to_fc": 0.21226964181052446,
+        "fc_to_10Hz": 0.13861167816580264,
+        "10_to_50Hz": 0.00028021517347677185,
+        "50_to_500Hz": 0.00040480375811982383
+      },
+      "fc2p865_lp_band_retention_ratio": {
+        "0p1_1Hz": 1.0012209012162123,
+        "1Hz_to_fc": 0.7927361375981502,
+        "fc_to_10Hz": 0.6646005722985274,
+        "10_to_50Hz": 0.1990861036198791,
+        "50_to_500Hz": 0.02455443065587699
+      },
+      "position_error_rms_xyz_m": [
+        0.0023558131350873224,
+        0.012020189881020127,
+        0.002656004214907054
+      ],
+      "target_minus_task_band_rms_rad": {
+        "0p1_1Hz": 0.008005348231435807,
+        "1Hz_to_fc": 0.052271145861284375,
+        "fc_to_10Hz": 0.03810883311579342,
+        "10_to_50Hz": 0.00021555397853899595,
+        "50_to_500Hz": 0.0024281058824026248
+      },
+      "compensation_vs_nominal_force_cross_phase": {
+        "0p1_1Hz": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.20688573677448377,
+            "phase_deg": -96.69860604513435
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.23890832179056445,
+            "phase_deg": -26.465268448878017
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.4857920251447001,
+            "phase_deg": 172.16273126349915
+          }
+        ],
+        "1Hz_to_fc": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.7123018177615251,
+            "phase_deg": -175.41719033331748
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.7570356959227057,
+            "phase_deg": -131.03723548323515
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.8837000557790192,
+            "phase_deg": 161.96711355449983
+          }
+        ],
+        "fc_to_10Hz": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.7049125467014484,
+            "phase_deg": -150.8060156736679
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.6836737822979371,
+            "phase_deg": -141.5740952376135
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.7628133809747297,
+            "phase_deg": 148.122242302731
+          }
+        ],
+        "10_to_50Hz": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.33572400112633205,
+            "phase_deg": -103.5707615705839
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.15207035951461775,
+            "phase_deg": -39.136652415195734
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.228443744001126,
+            "phase_deg": 170.64076899668768
+          }
+        ]
+      },
+      "position_update_events": 1968,
+      "update_same_feature_raw_output_rms_fraction": 0.00509305224163714,
+      "update_same_feature_applied_output_rms_fraction": 0.005119261091440066,
+      "update_raw_reconstruction_max_abs_mps2": 4.440892098500626e-16
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C04_W14",
+      "arm": "MLP_alpha1",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261027\\mlp15_nominal_residual_v1\\closed_loop_candidate_v1\\runs\\DL1018_VAL_T2_C04_W14\\PHYS_RESIDUAL_ATTEMPT_01\\raw_run.mat",
+      "raw_sha256_bound": "e97a5efef0c7f968f99ab72b64742c89a1efee7d4c96628011f3044f4518284a",
+      "position_feature_input_shape_hdf5": [
+        14,
+        20000
+      ],
+      "position_feature_dim": 14,
+      "logged_scale": 1.0,
+      "mass_kg_from_nominal_force_acceleration": 0.695,
+      "actual_metrics": {
+        "Q_m": 0.010378032448413253,
+        "task_SO3_rad": 0.05757285232083444,
+        "inner_SO3_rad": 0.0181273804497651
+      },
+      "B_task_SO3_rad": 0.054556189916843495,
+      "task_to_command_filter_target_same_state_SO3_rad": 0.07924837536993345,
+      "task_to_filtered_current_same_state_SO3_rad": 0.05500462689235722,
+      "task_to_filtered_fc2p865_same_state_SO3_rad": 0.052767651902261875,
+      "fc2p865_same_state_change_mrad": -2.2369749900953417,
+      "fc2p865_gap_to_B_actual_task_mrad": -1.7885380145816199,
+      "force_compensation_rms_N": 0.5080195276147358,
+      "compensation_force_band_rms_N": {
+        "0p1_1Hz": 0.05010424173075912,
+        "1Hz_to_fc": 0.021675674264594394,
+        "fc_to_10Hz": 0.3717144020847297,
+        "10_to_50Hz": 0.0035315153248258904,
+        "50_to_500Hz": 0.027095551419516074
+      },
+      "fc2p865_lp_band_rms_N": {
+        "0p1_1Hz": 0.05011235704705038,
+        "1Hz_to_fc": 0.019240209212632964,
+        "fc_to_10Hz": 0.21883562909028073,
+        "10_to_50Hz": 0.0008119393805713813,
+        "50_to_500Hz": 0.0006672250501949778
+      },
+      "fc2p865_lp_band_retention_ratio": {
+        "0p1_1Hz": 1.0001619686479812,
+        "1Hz_to_fc": 0.8876406324328475,
+        "fc_to_10Hz": 0.5887198017159385,
+        "10_to_50Hz": 0.22991246133454377,
+        "50_to_500Hz": 0.024624892841796774
+      },
+      "position_error_rms_xyz_m": [
+        0.00792539510011911,
+        0.0060525001683297205,
+        0.0028747353522072727
+      ],
+      "target_minus_task_band_rms_rad": {
+        "0p1_1Hz": 0.009468818941458753,
+        "1Hz_to_fc": 0.00495613976121236,
+        "fc_to_10Hz": 0.0629634137038273,
+        "10_to_50Hz": 0.0006074256548498067,
+        "50_to_500Hz": 0.003869773556194284
+      },
+      "compensation_vs_nominal_force_cross_phase": {
+        "0p1_1Hz": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.34791017217403325,
+            "phase_deg": 26.548717920311866
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.1397027505218433,
+            "phase_deg": 5.626660430863474
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.43858121126081856,
+            "phase_deg": -105.51148733448065
+          }
+        ],
+        "1Hz_to_fc": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.6588491767017066,
+            "phase_deg": -145.6168288856013
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.6799597978280697,
+            "phase_deg": -156.881765642903
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.6691606573934872,
+            "phase_deg": 163.1681233058976
+          }
+        ],
+        "fc_to_10Hz": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.7675811617045605,
+            "phase_deg": -145.81249095788974
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.6360973743791353,
+            "phase_deg": -116.9350553859433
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.5836630117237471,
+            "phase_deg": 138.97527476960576
+          }
+        ],
+        "10_to_50Hz": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.17375513883781823,
+            "phase_deg": -134.66862632627468
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.16458236742996743,
+            "phase_deg": -153.1858824633906
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.4006154009841554,
+            "phase_deg": 160.62222306387727
+          }
+        ]
+      },
+      "position_update_events": 1968,
+      "update_same_feature_raw_output_rms_fraction": 0.007978436537953623,
+      "update_same_feature_applied_output_rms_fraction": 0.00802403199637495,
+      "update_raw_reconstruction_max_abs_mps2": 4.440892098500626e-16
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C04_W14",
+      "arm": "MLP_alpha09",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261027\\mlp15_nominal_residual_v1\\closed_loop_force09_v1\\runs\\DL1018_VAL_T2_C04_W14\\PHYS_RESIDUAL_ATTEMPT_01\\raw_run.mat",
+      "raw_sha256_bound": "abe44eaca098fc50a659c542b3101733aadc84dd4f96fb6a6482ac208df7bd21",
+      "position_feature_input_shape_hdf5": [
+        14,
+        20000
+      ],
+      "position_feature_dim": 14,
+      "logged_scale": 0.9,
+      "mass_kg_from_nominal_force_acceleration": 0.695,
+      "actual_metrics": {
+        "Q_m": 0.01145641400952889,
+        "task_SO3_rad": 0.05682677647266457,
+        "inner_SO3_rad": 0.016439677860337124
+      },
+      "B_task_SO3_rad": 0.054556189916843495,
+      "task_to_command_filter_target_same_state_SO3_rad": 0.07346290961614771,
+      "task_to_filtered_current_same_state_SO3_rad": 0.05318245563204738,
+      "task_to_filtered_fc2p865_same_state_SO3_rad": 0.05142214528523597,
+      "fc2p865_same_state_change_mrad": -1.7603103468114139,
+      "fc2p865_gap_to_B_actual_task_mrad": -3.1340446316075257,
+      "force_compensation_rms_N": 0.465672942605759,
+      "compensation_force_band_rms_N": {
+        "0p1_1Hz": 0.04471417890407568,
+        "1Hz_to_fc": 0.020101103005296314,
+        "fc_to_10Hz": 0.3240532512931416,
+        "10_to_50Hz": 0.00306606622898504,
+        "50_to_500Hz": 0.02368930560999792
+      },
+      "fc2p865_lp_band_rms_N": {
+        "0p1_1Hz": 0.04482855218377138,
+        "1Hz_to_fc": 0.017910436877114216,
+        "fc_to_10Hz": 0.19052080458754958,
+        "10_to_50Hz": 0.0007040387997399017,
+        "50_to_500Hz": 0.0005833785199966129
+      },
+      "fc2p865_lp_band_retention_ratio": {
+        "0p1_1Hz": 1.0025578749850481,
+        "1Hz_to_fc": 0.8910176159186443,
+        "fc_to_10Hz": 0.587930544832592,
+        "10_to_50Hz": 0.2296228284582619,
+        "50_to_500Hz": 0.024626239772532702
+      },
+      "position_error_rms_xyz_m": [
+        0.009413090261764448,
+        0.005555509263812325,
+        0.00343305482389315
+      ],
+      "target_minus_task_band_rms_rad": {
+        "0p1_1Hz": 0.008527080551476817,
+        "1Hz_to_fc": 0.00493298029142026,
+        "fc_to_10Hz": 0.05581138130293561,
+        "10_to_50Hz": 0.0005178810987615907,
+        "50_to_500Hz": 0.0033825039032911626
+      },
+      "compensation_vs_nominal_force_cross_phase": {
+        "0p1_1Hz": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.3566976580551814,
+            "phase_deg": 26.474160413808924
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.17611104105171693,
+            "phase_deg": -7.518274664975153
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.4517276762096266,
+            "phase_deg": -107.52894932382219
+          }
+        ],
+        "1Hz_to_fc": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.6592821914512458,
+            "phase_deg": -144.1702797542643
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.7225242194429027,
+            "phase_deg": -155.3502837413654
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.7177480728277165,
+            "phase_deg": 172.96928806146093
+          }
+        ],
+        "fc_to_10Hz": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.7636968955590955,
+            "phase_deg": -145.5316148922743
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.6585337003019789,
+            "phase_deg": -118.74355786252323
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.5592708100459112,
+            "phase_deg": 139.44740949333428
+          }
+        ],
+        "10_to_50Hz": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.1772734719181876,
+            "phase_deg": -149.10222455623926
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.1822106230451532,
+            "phase_deg": 141.05630540645237
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.39615562242529595,
+            "phase_deg": 152.28216368868112
+          }
+        ]
+      },
+      "position_update_events": 1968,
+      "update_same_feature_raw_output_rms_fraction": 0.007482858515412524,
+      "update_same_feature_applied_output_rms_fraction": 0.007514255625083631,
+      "update_raw_reconstruction_max_abs_mps2": 6.661338147750939e-16
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C04_W14",
+      "arm": "GRU_alpha1",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_full72_v1\\runs\\DL1018_VAL_T2_C04_W14\\raw_run.mat",
+      "raw_sha256_bound": "9b009512da9f08e917f5484d6292066dcbcb731353df72828dc702d76b6a3479",
+      "position_feature_input_shape_hdf5": [
+        14,
+        20000
+      ],
+      "position_feature_dim": 14,
+      "logged_scale": 1.0,
+      "mass_kg_from_nominal_force_acceleration": 0.695,
+      "actual_metrics": {
+        "Q_m": 0.009607553182099032,
+        "task_SO3_rad": 0.05754340349128814,
+        "inner_SO3_rad": 0.007531592614063327
+      },
+      "B_task_SO3_rad": 0.054556189916843495,
+      "task_to_command_filter_target_same_state_SO3_rad": 0.08049137393657861,
+      "task_to_filtered_current_same_state_SO3_rad": 0.05648291770441278,
+      "task_to_filtered_fc2p865_same_state_SO3_rad": 0.05441077467563471,
+      "fc2p865_same_state_change_mrad": -2.072143028778069,
+      "fc2p865_gap_to_B_actual_task_mrad": -0.14541524120878502,
+      "force_compensation_rms_N": 0.5195673394757925,
+      "compensation_force_band_rms_N": {
+        "0p1_1Hz": 0.039703038749066846,
+        "1Hz_to_fc": 0.0186337824102337,
+        "fc_to_10Hz": 0.37412153793438135,
+        "10_to_50Hz": 0.0035170994563545983,
+        "50_to_500Hz": 0.027252895575850204
+      },
+      "fc2p865_lp_band_rms_N": {
+        "0p1_1Hz": 0.03949505894854207,
+        "1Hz_to_fc": 0.01691399511213735,
+        "fc_to_10Hz": 0.22026543160978318,
+        "10_to_50Hz": 0.0008063382705965355,
+        "50_to_500Hz": 0.0006710874466889178
+      },
+      "fc2p865_lp_band_retention_ratio": {
+        "0p1_1Hz": 0.9947616150532139,
+        "1Hz_to_fc": 0.9077059471751779,
+        "fc_to_10Hz": 0.5887536783525582,
+        "10_to_50Hz": 0.22926228859967715,
+        "50_to_500Hz": 0.02462444567848391
+      },
+      "position_error_rms_xyz_m": [
+        0.007708676639045496,
+        0.005021150117039103,
+        0.0027702021586424883
+      ],
+      "target_minus_task_band_rms_rad": {
+        "0p1_1Hz": 0.007272561756929342,
+        "1Hz_to_fc": 0.004346619010614862,
+        "fc_to_10Hz": 0.06328958048550924,
+        "10_to_50Hz": 0.0006082533946039753,
+        "50_to_500Hz": 0.0038913545556129307
+      },
+      "compensation_vs_nominal_force_cross_phase": {
+        "0p1_1Hz": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.3751235940884594,
+            "phase_deg": 35.8810003190564
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.1947104566819883,
+            "phase_deg": -41.43914068537138
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.3469260921772613,
+            "phase_deg": -112.00531084279127
+          }
+        ],
+        "1Hz_to_fc": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.750891899596784,
+            "phase_deg": -143.12282464395093
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.735509790847356,
+            "phase_deg": -172.28219975608405
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.5681540247992943,
+            "phase_deg": 173.55561403084795
+          }
+        ],
+        "fc_to_10Hz": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.7825872474408457,
+            "phase_deg": -145.47507844896745
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.6733395551531813,
+            "phase_deg": -116.77180131947205
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.5868130256692411,
+            "phase_deg": 138.3775795935901
+          }
+        ],
+        "10_to_50Hz": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.23820165231328524,
+            "phase_deg": -110.70771294975152
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.11021335295630998,
+            "phase_deg": -118.6405511350182
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.44667238942763926,
+            "phase_deg": 156.53919594242063
+          }
+        ]
+      },
+      "position_update_events": 1968,
+      "update_same_feature_raw_output_rms_fraction": 0.0076248468015708065,
+      "update_same_feature_applied_output_rms_fraction": 0.007658440030874743,
+      "update_raw_reconstruction_max_abs_mps2": 4.440892098500626e-16
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C04_W14",
+      "arm": "GRU_alpha09",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261027\\gru_tracking_force09_v1\\runs\\DL1018_VAL_T2_C04_W14\\GRU_FORCE09_ATTEMPT_01\\raw_run.mat",
+      "raw_sha256_bound": "43a3bba35d5e33e4b31bd25d06130934a6bd085d315f6522a60a135d837f9944",
+      "position_feature_input_shape_hdf5": [
+        14,
+        20000
+      ],
+      "position_feature_dim": 14,
+      "logged_scale": 0.9,
+      "mass_kg_from_nominal_force_acceleration": 0.695,
+      "actual_metrics": {
+        "Q_m": 0.011071625508710603,
+        "task_SO3_rad": 0.056621769284788424,
+        "inner_SO3_rad": 0.007577691293769606
+      },
+      "B_task_SO3_rad": 0.054556189916843495,
+      "task_to_command_filter_target_same_state_SO3_rad": 0.07528737622061486,
+      "task_to_filtered_current_same_state_SO3_rad": 0.05559017059578652,
+      "task_to_filtered_fc2p865_same_state_SO3_rad": 0.05398011371067955,
+      "fc2p865_same_state_change_mrad": -1.6100568851069654,
+      "fc2p865_gap_to_B_actual_task_mrad": -0.5760762061639418,
+      "force_compensation_rms_N": 0.47973197333613743,
+      "compensation_force_band_rms_N": {
+        "0p1_1Hz": 0.0383547926617201,
+        "1Hz_to_fc": 0.017394779459610116,
+        "fc_to_10Hz": 0.3250449507740691,
+        "10_to_50Hz": 0.003008398230032275,
+        "50_to_500Hz": 0.023756918691628885
+      },
+      "fc2p865_lp_band_rms_N": {
+        "0p1_1Hz": 0.03818528675973661,
+        "1Hz_to_fc": 0.01582353736961025,
+        "fc_to_10Hz": 0.19106767154784945,
+        "10_to_50Hz": 0.0006890417634120015,
+        "50_to_500Hz": 0.0005850378020196688
+      },
+      "fc2p865_lp_band_retention_ratio": {
+        "0p1_1Hz": 0.9955805809334315,
+        "1Hz_to_fc": 0.9096716291432025,
+        "fc_to_10Hz": 0.5878192265187838,
+        "10_to_50Hz": 0.22903941257956706,
+        "50_to_500Hz": 0.024625996730199523
+      },
+      "position_error_rms_xyz_m": [
+        0.009266619552362921,
+        0.005061263869958342,
+        0.0033316393780396395
+      ],
+      "target_minus_task_band_rms_rad": {
+        "0p1_1Hz": 0.007320173078107569,
+        "1Hz_to_fc": 0.004295357720575688,
+        "fc_to_10Hz": 0.0558923765874783,
+        "10_to_50Hz": 0.0005119421437409361,
+        "50_to_500Hz": 0.003391302517448338
+      },
+      "compensation_vs_nominal_force_cross_phase": {
+        "0p1_1Hz": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.36863222628831405,
+            "phase_deg": 35.908412800934414
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.20945384179389875,
+            "phase_deg": -49.37253042693003
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.3916277622226176,
+            "phase_deg": -112.70888011566743
+          }
+        ],
+        "1Hz_to_fc": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.7418635200242587,
+            "phase_deg": -142.8101562770875
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.7191634393112858,
+            "phase_deg": -169.61132624982037
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.6076714114387916,
+            "phase_deg": -175.89930776158252
+          }
+        ],
+        "fc_to_10Hz": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.7722494540188608,
+            "phase_deg": -145.12806785480717
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.6616097061276778,
+            "phase_deg": -118.10689269362598
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.5441318660394605,
+            "phase_deg": 138.99571980930247
+          }
+        ],
+        "10_to_50Hz": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.2342771878110854,
+            "phase_deg": -120.0079302264172
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.10476474036737193,
+            "phase_deg": -127.70416525117014
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.44518165772320956,
+            "phase_deg": 149.78247120291965
+          }
+        ]
+      },
+      "position_update_events": 1968,
+      "update_same_feature_raw_output_rms_fraction": 0.007116875194049018,
+      "update_same_feature_applied_output_rms_fraction": 0.007135806730740479,
+      "update_raw_reconstruction_max_abs_mps2": 4.440892098500626e-16
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C09_W09",
+      "arm": "MLP_alpha1",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261027\\mlp15_nominal_residual_v1\\closed_loop_candidate_v1\\runs\\DL1018_DEV_T3_C09_W09\\PHYS_RESIDUAL_ATTEMPT_01\\raw_run.mat",
+      "raw_sha256_bound": "6b2c5db192e1799a6cc73531bd7a5c7edd40b332198c04179fc855a223c5b9c0",
+      "position_feature_input_shape_hdf5": [
+        14,
+        20000
+      ],
+      "position_feature_dim": 14,
+      "logged_scale": 1.0,
+      "mass_kg_from_nominal_force_acceleration": 0.695,
+      "actual_metrics": {
+        "Q_m": 0.009578630122266795,
+        "task_SO3_rad": 0.06071862655370285,
+        "inner_SO3_rad": 0.00950710538905928
+      },
+      "B_task_SO3_rad": 0.05906125628102724,
+      "task_to_command_filter_target_same_state_SO3_rad": 0.06406727355742232,
+      "task_to_filtered_current_same_state_SO3_rad": 0.05899870340573001,
+      "task_to_filtered_fc2p865_same_state_SO3_rad": 0.05821050203998189,
+      "fc2p865_same_state_change_mrad": -0.7882013657481215,
+      "fc2p865_gap_to_B_actual_task_mrad": -0.8507542410453526,
+      "force_compensation_rms_N": 0.4324102586685112,
+      "compensation_force_band_rms_N": {
+        "0p1_1Hz": 0.03662251563835237,
+        "1Hz_to_fc": 0.13192195264666154,
+        "fc_to_10Hz": 0.11190104351553373,
+        "10_to_50Hz": 0.0016625934655039802,
+        "50_to_500Hz": 0.008544407211058218
+      },
+      "fc2p865_lp_band_rms_N": {
+        "0p1_1Hz": 0.03669555579552818,
+        "1Hz_to_fc": 0.10472176611263946,
+        "fc_to_10Hz": 0.07446729637331898,
+        "10_to_50Hz": 0.0003363897642610401,
+        "50_to_500Hz": 0.00021017260609471414
+      },
+      "fc2p865_lp_band_retention_ratio": {
+        "0p1_1Hz": 1.001994405788425,
+        "1Hz_to_fc": 0.7938160708788567,
+        "fc_to_10Hz": 0.6654745481706046,
+        "10_to_50Hz": 0.2023283329572516,
+        "50_to_500Hz": 0.024597681372524896
+      },
+      "position_error_rms_xyz_m": [
+        0.008642828202932473,
+        0.00324785379733825,
+        0.002550988573853684
+      ],
+      "target_minus_task_band_rms_rad": {
+        "0p1_1Hz": 0.005862338142071437,
+        "1Hz_to_fc": 0.024960383323016675,
+        "fc_to_10Hz": 0.019124611401455043,
+        "10_to_50Hz": 0.00024147404751940018,
+        "50_to_500Hz": 0.0012268073926251523
+      },
+      "compensation_vs_nominal_force_cross_phase": {
+        "0p1_1Hz": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.13358371358849447,
+            "phase_deg": 59.764174005197475
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.21162227283440072,
+            "phase_deg": -64.37463420515577
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.6292217827668877,
+            "phase_deg": 64.44576197505182
+          }
+        ],
+        "1Hz_to_fc": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.7713389666635665,
+            "phase_deg": -135.1335522585596
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.7622216080195854,
+            "phase_deg": 175.4715096829981
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.9139677123866105,
+            "phase_deg": 104.39861971749437
+          }
+        ],
+        "fc_to_10Hz": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.4563078924217627,
+            "phase_deg": -136.0626302245374
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.3927767295436843,
+            "phase_deg": -172.00106826321877
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.4433752982573106,
+            "phase_deg": -165.85314061396838
+          }
+        ],
+        "10_to_50Hz": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.14809217631981667,
+            "phase_deg": 107.68317610316996
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.13744609217201473,
+            "phase_deg": 110.90762656814893
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.30710276661688357,
+            "phase_deg": 55.56041082089033
+          }
+        ]
+      },
+      "position_update_events": 1968,
+      "update_same_feature_raw_output_rms_fraction": 0.00459063533995475,
+      "update_same_feature_applied_output_rms_fraction": 0.004673446319202268,
+      "update_raw_reconstruction_max_abs_mps2": 4.440892098500626e-16
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C09_W09",
+      "arm": "MLP_alpha09",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261027\\mlp15_nominal_residual_v1\\closed_loop_force09_v1\\runs\\DL1018_DEV_T3_C09_W09\\PHYS_RESIDUAL_ATTEMPT_01\\raw_run.mat",
+      "raw_sha256_bound": "a2cce42e7020514f58646ab43799b248efc55e9dd844535e4bb08b0f6b70b629",
+      "position_feature_input_shape_hdf5": [
+        14,
+        20000
+      ],
+      "position_feature_dim": 14,
+      "logged_scale": 0.9,
+      "mass_kg_from_nominal_force_acceleration": 0.695,
+      "actual_metrics": {
+        "Q_m": 0.011731361007460665,
+        "task_SO3_rad": 0.06037729224048077,
+        "inner_SO3_rad": 0.01455573431284686
+      },
+      "B_task_SO3_rad": 0.05906125628102724,
+      "task_to_command_filter_target_same_state_SO3_rad": 0.06281787662225026,
+      "task_to_filtered_current_same_state_SO3_rad": 0.058697299658988004,
+      "task_to_filtered_fc2p865_same_state_SO3_rad": 0.058066817323924484,
+      "fc2p865_same_state_change_mrad": -0.6304823350635202,
+      "fc2p865_gap_to_B_actual_task_mrad": -0.9944389571027584,
+      "force_compensation_rms_N": 0.4133923899969544,
+      "compensation_force_band_rms_N": {
+        "0p1_1Hz": 0.03648586046803543,
+        "1Hz_to_fc": 0.11903195590735698,
+        "fc_to_10Hz": 0.09520591936349171,
+        "10_to_50Hz": 0.00153730659985126,
+        "50_to_500Hz": 0.007447295635691315
+      },
+      "fc2p865_lp_band_rms_N": {
+        "0p1_1Hz": 0.03671956758888507,
+        "1Hz_to_fc": 0.09447680261134413,
+        "fc_to_10Hz": 0.06335174726290844,
+        "10_to_50Hz": 0.0003094814711764864,
+        "50_to_500Hz": 0.0001832101632895867
+      },
+      "fc2p865_lp_band_retention_ratio": {
+        "0p1_1Hz": 1.0064054161763398,
+        "1Hz_to_fc": 0.7937095706036771,
+        "fc_to_10Hz": 0.6654181555774328,
+        "10_to_50Hz": 0.20131408478076518,
+        "50_to_500Hz": 0.02460089840015861
+      },
+      "position_error_rms_xyz_m": [
+        0.010569586765003611,
+        0.0040560753805032376,
+        0.00307617690916424
+      ],
+      "target_minus_task_band_rms_rad": {
+        "0p1_1Hz": 0.006267914738080611,
+        "1Hz_to_fc": 0.022945045047561587,
+        "fc_to_10Hz": 0.016583330409125546,
+        "10_to_50Hz": 0.00022387142454532543,
+        "50_to_500Hz": 0.0010693310422215244
+      },
+      "compensation_vs_nominal_force_cross_phase": {
+        "0p1_1Hz": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.145252233157846,
+            "phase_deg": 92.99209079259737
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.3972893371231503,
+            "phase_deg": -57.37614905053281
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.629910388047813,
+            "phase_deg": 66.81280547846603
+          }
+        ],
+        "1Hz_to_fc": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.7570577888027327,
+            "phase_deg": -133.97680905024185
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.674591937057515,
+            "phase_deg": 178.00174348066926
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.9031352415351546,
+            "phase_deg": 106.76980113588408
+          }
+        ],
+        "fc_to_10Hz": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.4634025841929777,
+            "phase_deg": -136.47199670176133
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.4199723707080238,
+            "phase_deg": -172.4193551961978
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.403719619498752,
+            "phase_deg": 175.71653992233092
+          }
+        ],
+        "10_to_50Hz": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.147149527020008,
+            "phase_deg": 106.3104688144506
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.14499800195480742,
+            "phase_deg": 137.9959388878505
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.2978556244336887,
+            "phase_deg": 42.38262038581355
+          }
+        ]
+      },
+      "position_update_events": 1968,
+      "update_same_feature_raw_output_rms_fraction": 0.004222961436696983,
+      "update_same_feature_applied_output_rms_fraction": 0.004284240933110998,
+      "update_raw_reconstruction_max_abs_mps2": 4.440892098500626e-16
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C09_W09",
+      "arm": "GRU_alpha1",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_full72_v1\\runs\\DL1018_DEV_T3_C09_W09\\raw_run.mat",
+      "raw_sha256_bound": "14176658aac8e8b69817f71aff748add1b591cee744cd05954184e52e34c2cb2",
+      "position_feature_input_shape_hdf5": [
+        14,
+        20000
+      ],
+      "position_feature_dim": 14,
+      "logged_scale": 1.0,
+      "mass_kg_from_nominal_force_acceleration": 0.695,
+      "actual_metrics": {
+        "Q_m": 0.009418457073797846,
+        "task_SO3_rad": 0.060662806192281635,
+        "inner_SO3_rad": 0.009645293117548056
+      },
+      "B_task_SO3_rad": 0.05906125628102724,
+      "task_to_command_filter_target_same_state_SO3_rad": 0.06523276752513513,
+      "task_to_filtered_current_same_state_SO3_rad": 0.060167278633820445,
+      "task_to_filtered_fc2p865_same_state_SO3_rad": 0.05940869905438376,
+      "fc2p865_same_state_change_mrad": -0.7585795794366884,
+      "fc2p865_gap_to_B_actual_task_mrad": 0.34744277335651413,
+      "force_compensation_rms_N": 0.4404521402819241,
+      "compensation_force_band_rms_N": {
+        "0p1_1Hz": 0.044487919749578324,
+        "1Hz_to_fc": 0.13224628507142164,
+        "fc_to_10Hz": 0.10969933008516226,
+        "10_to_50Hz": 0.0014609474198367168,
+        "50_to_500Hz": 0.008444427929894688
+      },
+      "fc2p865_lp_band_rms_N": {
+        "0p1_1Hz": 0.04437518253257421,
+        "1Hz_to_fc": 0.10491208787038034,
+        "fc_to_10Hz": 0.07304870201649043,
+        "10_to_50Hz": 0.0002793037685364293,
+        "50_to_500Hz": 0.00020770635851455332
+      },
+      "fc2p865_lp_band_retention_ratio": {
+        "0p1_1Hz": 0.9974658914680951,
+        "1Hz_to_fc": 0.7933083928499084,
+        "fc_to_10Hz": 0.6658992535303628,
+        "10_to_50Hz": 0.19117989103786212,
+        "50_to_500Hz": 0.024596853716903434
+      },
+      "position_error_rms_xyz_m": [
+        0.008587315469270421,
+        0.0028899538711556045,
+        0.0025724652108517977
+      ],
+      "target_minus_task_band_rms_rad": {
+        "0p1_1Hz": 0.007548455851156696,
+        "1Hz_to_fc": 0.02508662735820909,
+        "fc_to_10Hz": 0.018754248635484225,
+        "10_to_50Hz": 0.00020968084534199273,
+        "50_to_500Hz": 0.0012124809588214202
+      },
+      "compensation_vs_nominal_force_cross_phase": {
+        "0p1_1Hz": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.15821719656066152,
+            "phase_deg": 20.074554325290702
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.28165703170576006,
+            "phase_deg": -134.77724722224661
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.627102751990155,
+            "phase_deg": 67.15753645009022
+          }
+        ],
+        "1Hz_to_fc": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.7621218266307977,
+            "phase_deg": -134.5815332635695
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.666963073264678,
+            "phase_deg": 173.4398552916953
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.9028792701243635,
+            "phase_deg": 101.7035233868147
+          }
+        ],
+        "fc_to_10Hz": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.3961638702754371,
+            "phase_deg": -136.12735645379402
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.30278160853415864,
+            "phase_deg": -173.13338672789718
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.4100677041630344,
+            "phase_deg": -170.6446079051708
+          }
+        ],
+        "10_to_50Hz": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.1487193882072235,
+            "phase_deg": 78.83393554258603
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.15398768042422878,
+            "phase_deg": 78.59387769426765
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.3187891493819596,
+            "phase_deg": 80.10056684706977
+          }
+        ]
+      },
+      "position_update_events": 1968,
+      "update_same_feature_raw_output_rms_fraction": 0.004306630349321013,
+      "update_same_feature_applied_output_rms_fraction": 0.0043740251057150575,
+      "update_raw_reconstruction_max_abs_mps2": 3.3306690738754696e-16
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C09_W09",
+      "arm": "GRU_alpha09",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261027\\gru_tracking_force09_v1\\runs\\DL1018_DEV_T3_C09_W09\\GRU_FORCE09_ATTEMPT_01\\raw_run.mat",
+      "raw_sha256_bound": "401f2fa9bb8d7f5dcfe912c8dae3ff6762cf034323b0160c181cbc4cad4c77fc",
+      "position_feature_input_shape_hdf5": [
+        14,
+        20000
+      ],
+      "position_feature_dim": 14,
+      "logged_scale": 0.9,
+      "mass_kg_from_nominal_force_acceleration": 0.695,
+      "actual_metrics": {
+        "Q_m": 0.011264919176686445,
+        "task_SO3_rad": 0.060246758750674256,
+        "inner_SO3_rad": 0.009589462785178726
+      },
+      "B_task_SO3_rad": 0.05906125628102724,
+      "task_to_command_filter_target_same_state_SO3_rad": 0.0639091443194659,
+      "task_to_filtered_current_same_state_SO3_rad": 0.0597667814334763,
+      "task_to_filtered_fc2p865_same_state_SO3_rad": 0.05916764038447675,
+      "fc2p865_same_state_change_mrad": -0.5991410489995519,
+      "fc2p865_gap_to_B_actual_task_mrad": 0.10638410344950694,
+      "force_compensation_rms_N": 0.42099808772024455,
+      "compensation_force_band_rms_N": {
+        "0p1_1Hz": 0.042984003828414476,
+        "1Hz_to_fc": 0.1195612126043712,
+        "fc_to_10Hz": 0.09367214385184582,
+        "10_to_50Hz": 0.0013162119644577947,
+        "50_to_500Hz": 0.007380825356074949
+      },
+      "fc2p865_lp_band_rms_N": {
+        "0p1_1Hz": 0.042888170101386965,
+        "1Hz_to_fc": 0.09485582199254362,
+        "fc_to_10Hz": 0.06237924027456687,
+        "10_to_50Hz": 0.0002516858672227758,
+        "50_to_500Hz": 0.0001815609939643904
+      },
+      "fc2p865_lp_band_retention_ratio": {
+        "0p1_1Hz": 0.9977704792831755,
+        "1Hz_to_fc": 0.7933661755875806,
+        "fc_to_10Hz": 0.6659315961981976,
+        "10_to_50Hz": 0.1912198597331975,
+        "50_to_500Hz": 0.024599009623625993
+      },
+      "position_error_rms_xyz_m": [
+        0.010354930879201108,
+        0.0031868485756071075,
+        0.003086067070701507
+      ],
+      "target_minus_task_band_rms_rad": {
+        "0p1_1Hz": 0.007571606225852503,
+        "1Hz_to_fc": 0.023075472642843587,
+        "fc_to_10Hz": 0.016303017262512147,
+        "10_to_50Hz": 0.00018896434866135452,
+        "50_to_500Hz": 0.0010598208819133173
+      },
+      "compensation_vs_nominal_force_cross_phase": {
+        "0p1_1Hz": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.1706115996521088,
+            "phase_deg": 25.74498960249352
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.3126195619887125,
+            "phase_deg": -137.0215609322965
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.6017493169592577,
+            "phase_deg": 69.62161278249242
+          }
+        ],
+        "1Hz_to_fc": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.7538469347017579,
+            "phase_deg": -133.36440150569098
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.6565053391164876,
+            "phase_deg": 174.49252357475157
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.8974410167017035,
+            "phase_deg": 104.0673743931626
+          }
+        ],
+        "fc_to_10Hz": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.39315696510866155,
+            "phase_deg": -136.09124743141732
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.3027084585228981,
+            "phase_deg": -173.8693237940985
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.34260725890324895,
+            "phase_deg": 172.30088988802564
+          }
+        ],
+        "10_to_50Hz": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.14848980651805657,
+            "phase_deg": 78.99570045845495
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.15417424415915512,
+            "phase_deg": 78.80817930355417
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.31491706056161506,
+            "phase_deg": 79.8738304808253
+          }
+        ]
+      },
+      "position_update_events": 1968,
+      "update_same_feature_raw_output_rms_fraction": 0.003933418678471976,
+      "update_same_feature_applied_output_rms_fraction": 0.003980437636280997,
+      "update_raw_reconstruction_max_abs_mps2": 4.440892098500626e-16
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C01_W14",
+      "arm": "MLP_alpha1",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261027\\mlp15_nominal_residual_v1\\closed_loop_candidate_v1\\runs\\DL1018_VAL_T3_C01_W14\\PHYS_RESIDUAL_ATTEMPT_01\\raw_run.mat",
+      "raw_sha256_bound": "e8e1e7974b995aa38f0db917bac2e60772ccfc7cc1cd642c808ead12cfe6c976",
+      "position_feature_input_shape_hdf5": [
+        14,
+        20000
+      ],
+      "position_feature_dim": 14,
+      "logged_scale": 1.0,
+      "mass_kg_from_nominal_force_acceleration": 0.695,
+      "actual_metrics": {
+        "Q_m": 0.010085990138371036,
+        "task_SO3_rad": 0.06572528014084748,
+        "inner_SO3_rad": 0.018675644828963212
+      },
+      "B_task_SO3_rad": 0.06179200025117218,
+      "task_to_command_filter_target_same_state_SO3_rad": 0.09180870357789248,
+      "task_to_filtered_current_same_state_SO3_rad": 0.06556072818113652,
+      "task_to_filtered_fc2p865_same_state_SO3_rad": 0.06298739106497951,
+      "fc2p865_same_state_change_mrad": -2.5733371161570098,
+      "fc2p865_gap_to_B_actual_task_mrad": 1.1953908138073315,
+      "force_compensation_rms_N": 0.5605614633020642,
+      "compensation_force_band_rms_N": {
+        "0p1_1Hz": 0.05169084687627916,
+        "1Hz_to_fc": 0.031126156696662043,
+        "fc_to_10Hz": 0.39757911155828574,
+        "10_to_50Hz": 0.005418391219107262,
+        "50_to_500Hz": 0.028989505292110203
+      },
+      "fc2p865_lp_band_rms_N": {
+        "0p1_1Hz": 0.051467389410086654,
+        "1Hz_to_fc": 0.02688835342025569,
+        "fc_to_10Hz": 0.23407684250399777,
+        "10_to_50Hz": 0.0012450625833249531,
+        "50_to_500Hz": 0.0007138801167752933
+      },
+      "fc2p865_lp_band_retention_ratio": {
+        "0p1_1Hz": 0.9956770399462144,
+        "1Hz_to_fc": 0.8638507375740092,
+        "fc_to_10Hz": 0.5887553840204246,
+        "10_to_50Hz": 0.229784549135987,
+        "50_to_500Hz": 0.024625467374553067
+      },
+      "position_error_rms_xyz_m": [
+        0.00860821854022921,
+        0.004626387755036942,
+        0.002495270372886172
+      ],
+      "target_minus_task_band_rms_rad": {
+        "0p1_1Hz": 0.01191665727610049,
+        "1Hz_to_fc": 0.00808926588105413,
+        "fc_to_10Hz": 0.0704381286320104,
+        "10_to_50Hz": 0.0008688697541782489,
+        "50_to_500Hz": 0.004305015424048203
+      },
+      "compensation_vs_nominal_force_cross_phase": {
+        "0p1_1Hz": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.27425788065962514,
+            "phase_deg": 177.97880400648714
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.33331985532345226,
+            "phase_deg": -134.18395117634665
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.6298591873363019,
+            "phase_deg": 96.17290541414667
+          }
+        ],
+        "1Hz_to_fc": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.7895198215868021,
+            "phase_deg": -152.26417754640437
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.6434703457417166,
+            "phase_deg": -164.88849421454847
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.8445469826657676,
+            "phase_deg": 165.60792873371454
+          }
+        ],
+        "fc_to_10Hz": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.7083909930858572,
+            "phase_deg": -146.9539586171555
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.6139965902006647,
+            "phase_deg": -119.00257896703276
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.5382106466744228,
+            "phase_deg": 160.6038022951095
+          }
+        ],
+        "10_to_50Hz": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.12581835160667243,
+            "phase_deg": -178.22389164543804
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.15893805198151698,
+            "phase_deg": 93.82666347577411
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.25131038742251377,
+            "phase_deg": 39.58564158124603
+          }
+        ]
+      },
+      "position_update_events": 1968,
+      "update_same_feature_raw_output_rms_fraction": 0.007764522963158731,
+      "update_same_feature_applied_output_rms_fraction": 0.007860561456282807,
+      "update_raw_reconstruction_max_abs_mps2": 6.661338147750939e-16
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C01_W14",
+      "arm": "MLP_alpha09",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261027\\mlp15_nominal_residual_v1\\closed_loop_force09_v1\\runs\\DL1018_VAL_T3_C01_W14\\PHYS_RESIDUAL_ATTEMPT_01\\raw_run.mat",
+      "raw_sha256_bound": "7a55615bbc86261a4c9b12bcfcebebf7dc33a12444e93757edad7d07aa94420a",
+      "position_feature_input_shape_hdf5": [
+        14,
+        20000
+      ],
+      "position_feature_dim": 14,
+      "logged_scale": 0.9,
+      "mass_kg_from_nominal_force_acceleration": 0.695,
+      "actual_metrics": {
+        "Q_m": 0.011372243589465893,
+        "task_SO3_rad": 0.06504665272817312,
+        "inner_SO3_rad": 0.01706397276423841
+      },
+      "B_task_SO3_rad": 0.06179200025117218,
+      "task_to_command_filter_target_same_state_SO3_rad": 0.08585703717384514,
+      "task_to_filtered_current_same_state_SO3_rad": 0.06409703441912135,
+      "task_to_filtered_fc2p865_same_state_SO3_rad": 0.062036794063799104,
+      "fc2p865_same_state_change_mrad": -2.0602403553222417,
+      "fc2p865_gap_to_B_actual_task_mrad": 0.24479381262692418,
+      "force_compensation_rms_N": 0.5140192672940666,
+      "compensation_force_band_rms_N": {
+        "0p1_1Hz": 0.0447280940643478,
+        "1Hz_to_fc": 0.028370159695463328,
+        "fc_to_10Hz": 0.3464798583188911,
+        "10_to_50Hz": 0.004999774411978319,
+        "50_to_500Hz": 0.025357711542659766
+      },
+      "fc2p865_lp_band_rms_N": {
+        "0p1_1Hz": 0.0446145302542357,
+        "1Hz_to_fc": 0.024662988681878713,
+        "fc_to_10Hz": 0.20370185545361147,
+        "10_to_50Hz": 0.0011470914995525142,
+        "50_to_500Hz": 0.0006245238100225033
+      },
+      "fc2p865_lp_band_retention_ratio": {
+        "0p1_1Hz": 0.9974610183490331,
+        "1Hz_to_fc": 0.8693285108938802,
+        "fc_to_10Hz": 0.5879183177976526,
+        "10_to_50Hz": 0.22942865118161024,
+        "50_to_500Hz": 0.024628555655420832
+      },
+      "position_error_rms_xyz_m": [
+        0.009825654604408493,
+        0.0049468877047260315,
+        0.0028840637916479543
+      ],
+      "target_minus_task_band_rms_rad": {
+        "0p1_1Hz": 0.011829304216992945,
+        "1Hz_to_fc": 0.007911242632061492,
+        "fc_to_10Hz": 0.06252064802639239,
+        "10_to_50Hz": 0.0007859993144323201,
+        "50_to_500Hz": 0.0037657343052403345
+      },
+      "compensation_vs_nominal_force_cross_phase": {
+        "0p1_1Hz": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.2910234264491161,
+            "phase_deg": -177.88807749273465
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.2563109088602419,
+            "phase_deg": -147.11634706654374
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.6432330832265871,
+            "phase_deg": 87.5868370302202
+          }
+        ],
+        "1Hz_to_fc": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.688250547489716,
+            "phase_deg": -150.03875944564598
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.6929784787424154,
+            "phase_deg": -167.69896811402754
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.7610866585513001,
+            "phase_deg": 168.61331650650052
+          }
+        ],
+        "fc_to_10Hz": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.6909896349378715,
+            "phase_deg": -146.89212260306726
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.6326472190930149,
+            "phase_deg": -122.6489531970153
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.5360438952599741,
+            "phase_deg": 159.61902463842333
+          }
+        ],
+        "10_to_50Hz": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.13061111383906587,
+            "phase_deg": -161.68851264751487
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.18071712231133336,
+            "phase_deg": 96.02190166235266
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.24237259686221774,
+            "phase_deg": 42.57747482285501
+          }
+        ]
+      },
+      "position_update_events": 1968,
+      "update_same_feature_raw_output_rms_fraction": 0.007312916814040686,
+      "update_same_feature_applied_output_rms_fraction": 0.00739921948017774,
+      "update_raw_reconstruction_max_abs_mps2": 4.440892098500626e-16
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C01_W14",
+      "arm": "GRU_alpha1",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_full72_v1\\runs\\DL1018_VAL_T3_C01_W14\\raw_run.mat",
+      "raw_sha256_bound": "76afcf331ca14b169977810c74c8a8680f57d9747a9a3b9a46285804a98a0503",
+      "position_feature_input_shape_hdf5": [
+        14,
+        20000
+      ],
+      "position_feature_dim": 14,
+      "logged_scale": 1.0,
+      "mass_kg_from_nominal_force_acceleration": 0.695,
+      "actual_metrics": {
+        "Q_m": 0.009620689116816572,
+        "task_SO3_rad": 0.06541727222755461,
+        "inner_SO3_rad": 0.015910360180281177
+      },
+      "B_task_SO3_rad": 0.06179200025117218,
+      "task_to_command_filter_target_same_state_SO3_rad": 0.09496245264133056,
+      "task_to_filtered_current_same_state_SO3_rad": 0.06859072723027002,
+      "task_to_filtered_fc2p865_same_state_SO3_rad": 0.0660861785659491,
+      "fc2p865_same_state_change_mrad": -2.504548664320913,
+      "fc2p865_gap_to_B_actual_task_mrad": 4.294178314776922,
+      "force_compensation_rms_N": 0.585183464674751,
+      "compensation_force_band_rms_N": {
+        "0p1_1Hz": 0.04804958425172417,
+        "1Hz_to_fc": 0.024793723519275366,
+        "fc_to_10Hz": 0.4097966672581342,
+        "10_to_50Hz": 0.004910319667732838,
+        "50_to_500Hz": 0.029739636633760894
+      },
+      "fc2p865_lp_band_rms_N": {
+        "0p1_1Hz": 0.04841362251163073,
+        "1Hz_to_fc": 0.02194631229471236,
+        "fc_to_10Hz": 0.24158905934854744,
+        "10_to_50Hz": 0.0011191585843563505,
+        "50_to_500Hz": 0.0007322497671199315
+      },
+      "fc2p865_lp_band_retention_ratio": {
+        "0p1_1Hz": 1.0075763040529013,
+        "1Hz_to_fc": 0.8851559660916061,
+        "fc_to_10Hz": 0.5895339778260533,
+        "10_to_50Hz": 0.2279196997520696,
+        "50_to_500Hz": 0.024622014590745547
+      },
+      "position_error_rms_xyz_m": [
+        0.008606743170965742,
+        0.003497352097831245,
+        0.0025009430627566287
+      ],
+      "target_minus_task_band_rms_rad": {
+        "0p1_1Hz": 0.009658495942754667,
+        "1Hz_to_fc": 0.006488960751842555,
+        "fc_to_10Hz": 0.07245520479687761,
+        "10_to_50Hz": 0.0008021469614080098,
+        "50_to_500Hz": 0.004417758665250586
+      },
+      "compensation_vs_nominal_force_cross_phase": {
+        "0p1_1Hz": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.26751099262235983,
+            "phase_deg": -160.01490997627644
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.37479214154286267,
+            "phase_deg": -159.93308525435006
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.6157646295436777,
+            "phase_deg": 92.39205323656228
+          }
+        ],
+        "1Hz_to_fc": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.6890429258836518,
+            "phase_deg": -163.08061775662296
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.4890078277238275,
+            "phase_deg": 171.63863785786236
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.8213744244099634,
+            "phase_deg": 174.43604983503252
+          }
+        ],
+        "fc_to_10Hz": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.7292740342002283,
+            "phase_deg": -146.36097839164293
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.6381477982806264,
+            "phase_deg": -117.56950558332265
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.534910810400831,
+            "phase_deg": 163.92640943226812
+          }
+        ],
+        "10_to_50Hz": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.13114571665956815,
+            "phase_deg": 127.11130630787986
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.14365613292106436,
+            "phase_deg": -90.14651408832896
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.26829590947793075,
+            "phase_deg": 36.754512122300866
+          }
+        ]
+      },
+      "position_update_events": 1968,
+      "update_same_feature_raw_output_rms_fraction": 0.007328285953923861,
+      "update_same_feature_applied_output_rms_fraction": 0.007404057750893118,
+      "update_raw_reconstruction_max_abs_mps2": 4.440892098500626e-16
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C01_W14",
+      "arm": "GRU_alpha09",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261027\\gru_tracking_force09_v1\\runs\\DL1018_VAL_T3_C01_W14\\GRU_FORCE09_ATTEMPT_01\\raw_run.mat",
+      "raw_sha256_bound": "a1ac56f7d1b751707f2c9785f3c67723000e1dd8ac99992746c838e914de51fe",
+      "position_feature_input_shape_hdf5": [
+        14,
+        20000
+      ],
+      "position_feature_dim": 14,
+      "logged_scale": 0.9,
+      "mass_kg_from_nominal_force_acceleration": 0.695,
+      "actual_metrics": {
+        "Q_m": 0.01139184922363687,
+        "task_SO3_rad": 0.06444235711053695,
+        "inner_SO3_rad": 0.016008485367619632
+      },
+      "B_task_SO3_rad": 0.06179200025117218,
+      "task_to_command_filter_target_same_state_SO3_rad": 0.08931006329067695,
+      "task_to_filtered_current_same_state_SO3_rad": 0.06763822689625357,
+      "task_to_filtered_fc2p865_same_state_SO3_rad": 0.06566385253474263,
+      "fc2p865_same_state_change_mrad": -1.9743743615109333,
+      "fc2p865_gap_to_B_actual_task_mrad": 3.871852283570454,
+      "force_compensation_rms_N": 0.5404572750044984,
+      "compensation_force_band_rms_N": {
+        "0p1_1Hz": 0.04668880674912115,
+        "1Hz_to_fc": 0.02297934553206217,
+        "fc_to_10Hz": 0.35628967072811474,
+        "10_to_50Hz": 0.00425481522349254,
+        "50_to_500Hz": 0.025944317801935683
+      },
+      "fc2p865_lp_band_rms_N": {
+        "0p1_1Hz": 0.04702542932765802,
+        "1Hz_to_fc": 0.02041584349527124,
+        "fc_to_10Hz": 0.2097117994459943,
+        "10_to_50Hz": 0.0009680723660184874,
+        "50_to_500Hz": 0.0006388446579815796
+      },
+      "fc2p865_lp_band_retention_ratio": {
+        "0p1_1Hz": 1.0072099203636897,
+        "1Hz_to_fc": 0.8884432094371801,
+        "fc_to_10Hz": 0.5885991558987006,
+        "10_to_50Hz": 0.2275239499645888,
+        "50_to_500Hz": 0.024623683029889338
+      },
+      "position_error_rms_xyz_m": [
+        0.010200524091758282,
+        0.004158359951755987,
+        0.0029046739497200604
+      ],
+      "target_minus_task_band_rms_rad": {
+        "0p1_1Hz": 0.009707116628573764,
+        "1Hz_to_fc": 0.006363427187011998,
+        "fc_to_10Hz": 0.06412181540290103,
+        "10_to_50Hz": 0.0006815654643869075,
+        "50_to_500Hz": 0.0038533503149970902
+      },
+      "compensation_vs_nominal_force_cross_phase": {
+        "0p1_1Hz": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.27296625141565223,
+            "phase_deg": -163.42362501674637
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.3880469498965614,
+            "phase_deg": -161.97471574466942
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.6081047233315543,
+            "phase_deg": 85.90226820167217
+          }
+        ],
+        "1Hz_to_fc": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.6857982240329774,
+            "phase_deg": -163.74673819381402
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.47764084138062557,
+            "phase_deg": 172.8777436014934
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.8127765800615698,
+            "phase_deg": 176.85475675539712
+          }
+        ],
+        "fc_to_10Hz": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.7196596306484399,
+            "phase_deg": -146.0593900562454
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.6381438055568601,
+            "phase_deg": -118.81354484036812
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.5326461460729687,
+            "phase_deg": 162.96548779908304
+          }
+        ],
+        "10_to_50Hz": [
+          {
+            "axis": 0,
+            "coherence_mean": 0.1311008094899396,
+            "phase_deg": 137.0955083697384
+          },
+          {
+            "axis": 1,
+            "coherence_mean": 0.14228547359651383,
+            "phase_deg": -90.8428629698908
+          },
+          {
+            "axis": 2,
+            "coherence_mean": 0.2622211097627547,
+            "phase_deg": 33.30941688839826
+          }
+        ]
+      },
+      "position_update_events": 1968,
+      "update_same_feature_raw_output_rms_fraction": 0.006780345961111953,
+      "update_same_feature_applied_output_rms_fraction": 0.006843118805738013,
+      "update_raw_reconstruction_max_abs_mps2": 4.440892098500626e-16
+    }
+  ],
+  "conclusion": "Global alpha=.9 reduces the force used both for position correction and tilt generation; it buys small task improvement while losing substantial position accuracy. The dominant compensation spectrum is below 10 Hz, so the >10-Hz ripple is not a sufficient explanation. In the original MLP HF cohort, the command-filter target-to-task conditional metric is 80.93 mrad, the filtered reference-to-task metric is 63.83 mrad, and actual task error is 61.36 mrad; increasing command-filter bandwidth to follow the unfiltered target is therefore not supported as a likely task improvement. The fixed fc=2.865-Hz force LP replay improves the same-state filtered-reference metric but still leaves a 3-4 mrad gap to B; these conditional metrics are not bounds, and this modest replay evidence does not justify a closed-loop LP run. Online same-feature update changes are diagnostic only, not causal replays.",
+  "next_single_candidate": "Keep the original C5 force path at alpha=1 and train/evaluate a phase-conditioned causal 3-force-output residual module whose deployable inputs add measured filter state/rate and PCF eta to the existing 14-D history. Use a 10-ms-ahead residual target so the correction accounts for command-filter realization lag; gate by paired Q <= original C5 and HF task <= B. This targets the observed missing dynamic context without using J/Jdot or changing metrics. It is a hypothesis for the next isolated training/screen, not a proven fix."
+}

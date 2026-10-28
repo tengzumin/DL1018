@@ -1,0 +1,90 @@
+{
+  "schema": "DL1018_GRU_TRACKING_FORCE09_NO_PLANT_PREPARE_RECEIPT_V1",
+  "status": "PASS_NO_PLANT_PREPARE",
+  "scene_id": "DL1018_DEV_T1_C10_W09",
+  "MATLAB": "R2025b",
+  "MATLAB_exit_code": 0,
+  "position_force09_no_plant_test": "PASS_NO_PLANT",
+  "scale_1_exact_parent_restore": true,
+  "scale_09_acceleration_force_units": true,
+  "BS_nominal_feedback_unchanged": true,
+  "prepared_scale": 0.9,
+  "prepared_command_filter_wn_rad_s": [
+    18,
+    18,
+    12
+  ],
+  "gru_model_sha256": "b2c462f77a6bb97b8c6bb2b471daef0633d4f9664a7d623b894461a4fa21b567",
+  "parent_manifest_sha256": "97230bcc399d79a4b4785bffe8898880d7e21cd20eb3629c61d6b03a746fd1fe",
+  "parent_source_lock_sha256": "30aeddf4888c1afa5a3a012e313c919d58a46f33742e465b80b8e53e49c46ab7",
+  "source_hash_manifest_sha256": "148192fcd69ecb5da17157c940556ef1849f941d7b0052d6cd5f32fbbd2c0717",
+  "scene_input_manifest_sha256": "f9e93dded862317c5fd60be6468a08fad27adab1a6a6923ce54d397fb3124f73",
+  "source_file_count": 64,
+  "source_hash_mismatches": 0,
+  "current_entry_sha256": "f835302b646e4971c0545b76ab372e77eada29a4280497b3a692669c5ff81484",
+  "plant_called": false,
+  "plant_calls": 0,
+  "test_data_read": false,
+  "run_directory_created": false,
+  "parent_source_comparison_summary": {
+    "parent_locked_files": 59,
+    "identical": 57,
+    "changed": 2,
+    "missing": 0,
+    "new_matlab_sources": [
+      "matlab/models/position_stage1_scale_compensation_v1.m",
+      "matlab/runtime/position_force09_no_plant_test.m",
+      "matlab/runtime/prepare_gru_tracking_force09_no_plant.m"
+    ]
+  },
+  "freeze_delta": {
+    "prefreeze_expected_entry_sha256": "e1e9de71be9a28262c830e7ca15ad88f810a810e26cbdabdb28448d000357fac",
+    "postfreeze_actual_before_refresh_sha256": "f835302b646e4971c0545b76ab372e77eada29a4280497b3a692669c5ff81484",
+    "changed_content": "Added ;addpath(studyRoot,'-begin') after activate_paired_runner();addpath(runtime,'-begin').",
+    "why": "activate_paired_runner calls restoredefaultpath; restoring studyRoot lets the fixed 12-scene batch resolve its root attempt entry after the first scene.",
+    "reconstructed_prefreeze_sha_after_removing_delta": "e1e9de71be9a28262c830e7ca15ad88f810a810e26cbdabdb28448d000357fac",
+    "refreshed_entry_sha256": "f835302b646e4971c0545b76ab372e77eada29a4280497b3a692669c5ff81484",
+    "postrefresh_source_manifest_sha256": "148192fcd69ecb5da17157c940556ef1849f941d7b0052d6cd5f32fbbd2c0717"
+  },
+  "generic_closed_loop_entry": "run_mlp15_dev72_closed_loop",
+  "active_gate_attitude_arm": "GRU_STREAM",
+  "active_tracking_step": "gru_stream_tracking_head_step_v1",
+  "active_gru_base_weights_fixed": true,
+  "active_tracking_delta_head": true,
+  "causal_head_enabled_guard": true,
+  "mlp15_physical_residual_init_step_branch_active": false,
+  "scale_insert_point": "stage1_position_scale_compensation_v1 after NN unscaled applied acceleration and before BS force injection",
+  "unscaled_scaled_force_logging": true,
+  "parent_source_sha_comparisons": [
+    {
+      "path": "matlab/runtime/gru_stream_tracking_head_step_v1.m",
+      "parent_sha256": "228fba90d1954780a55b42436f2a659030950f684970537d7108566b938f3c67",
+      "candidate_sha256": "228fba90d1954780a55b42436f2a659030950f684970537d7108566b938f3c67",
+      "identical": true
+    },
+    {
+      "path": "matlab/runtime/gru_stream_attitude_step_v1.m",
+      "parent_sha256": "e67d1a1cfebbf943a275fd5e43b0d6d80a3cd72e92e197e5fa894ac7e96c4b26",
+      "candidate_sha256": "e67d1a1cfebbf943a275fd5e43b0d6d80a3cd72e92e197e5fa894ac7e96c4b26",
+      "identical": true
+    },
+    {
+      "path": "matlab/runtime/gru_stream_attitude_forward_v1.m",
+      "parent_sha256": "669f86ac4dabc96a1bceb151d47504ff21e865addb03dcf9e92677ce61d1b47d",
+      "candidate_sha256": "669f86ac4dabc96a1bceb151d47504ff21e865addb03dcf9e92677ce61d1b47d",
+      "identical": true
+    },
+    {
+      "path": "matlab/core/attitude_bs_step.m",
+      "parent_sha256": "cf6b20ffc4df2625d9316a80340d69542e380d14feaed66ef8498e793fdaccbc",
+      "candidate_sha256": "cf6b20ffc4df2625d9316a80340d69542e380d14feaed66ef8498e793fdaccbc",
+      "identical": true
+    },
+    {
+      "path": "matlab/core/position_bs_step.m",
+      "parent_sha256": "ea533c3ae97cbc552208287e7f8d9b0a0f5a018f36fb5c8bd45520e19e73c681",
+      "candidate_sha256": "ea533c3ae97cbc552208287e7f8d9b0a0f5a018f36fb5c8bd45520e19e73c681",
+      "identical": true
+    }
+  ]
+}

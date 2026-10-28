@@ -1,0 +1,1282 @@
+{
+  "schema": "DL1018_CAUSAL_NOTCH_C5_SAME_TRACE_HF6_V1",
+  "status": "COMPLETE_OFFLINE_SAME_TRACE_REPLAY_NOT_CLOSED_LOOP",
+  "scope": "Six locked HF6 DEV/VAL C5 traces; raw, event-rate tau=0.1s LPF, and one fixed causal 3.5Hz Q=1 notch; no Plant, TEST, training, wind-field read, or inertia reconstruction.",
+  "Plant_calls_by_replay": 0,
+  "TEST_read": false,
+  "training_runs": 0,
+  "inertia_reconstruction": false,
+  "wind_field_read": false,
+  "VAL_is_independent_validation": false,
+  "input_score_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\gru_prediction_tau01_v1\\audits\\GRU_PREDICTION_TAU01_SCORE_final12.json",
+  "input_score_sha256": "132ac1ccf86f3c2b51a4c89eaebdb23170f62598205e7ce7072a6a7e47759fcb",
+  "historical_notch_search": {
+    "search_scope": "experiments/ and matlab/ MATLAB/Python/JSON/Markdown source files before this probe was added",
+    "completed_notch_implementation_found": false,
+    "historical_mention_path": "experiments\\dl_attitude_replacement_20261027\\mlp15_nominal_residual_v1\\CONTINUATION_STATE_v2.json",
+    "historical_mention_sha256": "bb03724bb6a4c4633f13d153d53c597f983c055fa0962383ce1ec12cecccdeef",
+    "historical_probe_state": {
+      "status": "OFFLINE_PREPARING",
+      "purpose": "Test fixed causal frequency-selective compensation while retaining low-frequency response; no closed-loop claim."
+    }
+  },
+  "replay_script_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\method_alternatives_review_v1\\causal_notch_replay_hf6_v1.py",
+  "replay_script_sha256": "65322a70c64836a43e070d2e4e767f4f9edceabb00793aa896983752860702fc",
+  "locked_source_bindings": [
+    {
+      "path": "experiments/b_traceable_c3core_dev72_20261023/B_TRACEABLE_DEV72_INPUT_LOCK_v3.json",
+      "sha256": "8d738e5c70ba2fc8697550549d1a0537f08eadb49b99bc5684e5c26f6222f452"
+    },
+    {
+      "path": "experiments/position_axis_coordinate_c5_dev72_20261023/C5_DEV72_INPUT_LOCK_v3.json",
+      "sha256": "82024c01276cc4bfbd9b7772cf5332dee3fdfcbed422969589b68f1c90ed2d75"
+    },
+    {
+      "path": "experiments/position_axis_coordinate_c5_dev72_20261023/run_dl1018_closed_loop.m",
+      "sha256": "48350037b66efe00301b138068f187c62cf92583f0f9ba2fabc9b24f248a963c"
+    },
+    {
+      "path": "matlab/core/baseline_force_to_attitude.m",
+      "sha256": "ef42d1d08af24ed82da307a4d886b0c205e28e754177765a2584e3e9bb0cd039"
+    },
+    {
+      "path": "matlab/core/command_filter_step.m",
+      "sha256": "15c7eb27162e1971a1164304830f4afd3af35eb9bd709291e969dbfefd0d262b"
+    },
+    {
+      "path": "matlab/core/default_config.m",
+      "sha256": "685abb7b72a335fdc826673e6431098fe79af88409f17b1b70ce08edb214dc51"
+    }
+  ],
+  "notch": {
+    "sample_rate_hz": 100.0,
+    "frequency_hz": 3.5,
+    "Q": 1.0,
+    "coeff_b": [
+      0.9005755352793756,
+      -1.757773520542205,
+      0.9005755352793756
+    ],
+    "coeff_a": [
+      1.0,
+      -1.757773520542205,
+      0.8011510705587512
+    ],
+    "poles": [
+      [
+        0.8788867602711026,
+        0.1694376970420597
+      ],
+      [
+        0.8788867602711026,
+        -0.1694376970420597
+      ]
+    ],
+    "stable": true,
+    "minus_3dB_edges_hz_dense_grid": [
+      2.1575927734374996,
+      5.65643310546875
+    ],
+    "response_points": {
+      "0.5_Hz": {
+        "gain_db": -0.0928513260777373,
+        "phase_deg_principal": -8.362776627489973,
+        "notch_zero": false
+      },
+      "1_Hz": {
+        "gain_db": -0.40721404224306246,
+        "phase_deg_principal": -17.407773333470786,
+        "notch_zero": false
+      },
+      "1.5_Hz": {
+        "gain_db": -1.071074529269442,
+        "phase_deg_principal": -27.87278358803626,
+        "notch_zero": false
+      },
+      "2_Hz": {
+        "gain_db": -2.379770449445076,
+        "phase_deg_principal": -40.50525727983211,
+        "notch_zero": false
+      },
+      "2.5_Hz": {
+        "gain_db": -4.986540970639849,
+        "phase_deg_principal": -55.72168410158867,
+        "notch_zero": false
+      },
+      "3_Hz": {
+        "gain_db": -10.624000572965087,
+        "phase_deg_principal": -72.8840384866605,
+        "notch_zero": false
+      },
+      "3.5_Hz": {
+        "gain_db": null,
+        "phase_deg_principal": null,
+        "notch_zero": true
+      },
+      "4_Hz": {
+        "gain_db": -11.76557864761164,
+        "phase_deg_principal": 75.04500630681963,
+        "notch_zero": false
+      },
+      "4.5_Hz": {
+        "gain_db": -6.890258783478904,
+        "phase_deg_principal": 63.10460803872471,
+        "notch_zero": false
+      },
+      "5_Hz": {
+        "gain_db": -4.598771760495881,
+        "phase_deg_principal": 53.91910335861803,
+        "notch_zero": false
+      },
+      "6_Hz": {
+        "gain_db": -2.494052575489665,
+        "phase_deg_principal": 41.37428012380405,
+        "notch_zero": false
+      },
+      "8_Hz": {
+        "gain_db": -1.0893525808247877,
+        "phase_deg_principal": 28.099673401167202,
+        "notch_zero": false
+      },
+      "10_Hz": {
+        "gain_db": -0.6114032029930854,
+        "phase_deg_principal": 21.246518752949974,
+        "notch_zero": false
+      }
+    }
+  },
+  "band_method": "1-ms transition sequences; un-demeaned rectangular-window rFFT, 2x one-sided interior bins, low-inclusive/high-exclusive bands. Angular target signals are signed roll/pitch; target delta and the cross term are reported separately.",
+  "summary_equal_scene_mean": {
+    "raw_C5": {
+      "mean_scene_compensation_rms_mps2": 0.7407983164057139,
+      "mean_scene_task_to_command_target_SO3_rmse_mrad": 81.21305493240473,
+      "mean_scene_task_to_filtered_reference_SO3_rmse_mrad": 63.968890603534874,
+      "mean_scene_signed_command_force_delta_rms_N": 0.0,
+      "bands_equal_scene_mean": {
+        "0_1Hz": {
+          "compensation_rms_mps2": 0.5847155362652202,
+          "signed_compensation_delta_rms_mps2": 0.0,
+          "target_RP_rms_mrad": 77.86255006288849,
+          "signed_target_RP_delta_rms_mrad": 6.523011629176867e-16,
+          "target_RP_delta_cross_term_mrad2": 4.861783667344914e-15,
+          "filtered_reference_RP_rms_mrad": 77.5964201571051
+        },
+        "1_2Hz": {
+          "compensation_rms_mps2": 0.04730634765038447,
+          "signed_compensation_delta_rms_mps2": 0.0,
+          "target_RP_rms_mrad": 8.110401305403629,
+          "signed_target_RP_delta_rms_mrad": 6.641751996102291e-16,
+          "target_RP_delta_cross_term_mrad2": -1.846706178465811e-16,
+          "filtered_reference_RP_rms_mrad": 7.028415721967034
+        },
+        "2_5Hz": {
+          "compensation_rms_mps2": 0.43702335282345334,
+          "signed_compensation_delta_rms_mps2": 0.0,
+          "target_RP_rms_mrad": 53.91740859405355,
+          "signed_target_RP_delta_rms_mrad": 1.100933802728192e-15,
+          "target_RP_delta_cross_term_mrad2": -2.484751571699704e-15,
+          "filtered_reference_RP_rms_mrad": 23.372010077704076
+        },
+        "5_15Hz": {
+          "compensation_rms_mps2": 0.03383724432807244,
+          "signed_compensation_delta_rms_mps2": 0.0,
+          "target_RP_rms_mrad": 3.966516016566139,
+          "signed_target_RP_delta_rms_mrad": 2.091410095825636e-15,
+          "target_RP_delta_cross_term_mrad2": -6.696781869620109e-16,
+          "filtered_reference_RP_rms_mrad": 1.3834825318648762
+        }
+      }
+    },
+    "tau0p1_event100hz": {
+      "mean_scene_compensation_rms_mps2": 0.6166141542668547,
+      "mean_scene_task_to_command_target_SO3_rmse_mrad": 66.9971601193098,
+      "mean_scene_task_to_filtered_reference_SO3_rmse_mrad": 60.86473483996209,
+      "mean_scene_signed_command_force_delta_rms_N": 0.261143968506462,
+      "bands_equal_scene_mean": {
+        "0_1Hz": {
+          "compensation_rms_mps2": 0.5829841330116778,
+          "signed_compensation_delta_rms_mps2": 0.0197068463889222,
+          "target_RP_rms_mrad": 77.71921577087123,
+          "signed_target_RP_delta_rms_mrad": 1.9572379942458513,
+          "target_RP_delta_cross_term_mrad2": -24.128733675411954,
+          "filtered_reference_RP_rms_mrad": 77.46836188877909
+        },
+        "1_2Hz": {
+          "compensation_rms_mps2": 0.039396380557389726,
+          "signed_compensation_delta_rms_mps2": 0.02605394715341172,
+          "target_RP_rms_mrad": 7.223767648530159,
+          "signed_target_RP_delta_rms_mrad": 2.6047678220623474,
+          "target_RP_delta_cross_term_mrad2": -22.165231295268104,
+          "filtered_reference_RP_rms_mrad": 6.37065279574017
+        },
+        "2_5Hz": {
+          "compensation_rms_mps2": 0.19033213827311965,
+          "signed_compensation_delta_rms_mps2": 0.37210362702994554,
+          "target_RP_rms_mrad": 30.747713265961725,
+          "signed_target_RP_delta_rms_mrad": 37.69285502296531,
+          "target_RP_delta_cross_term_mrad2": -3872.439011832997,
+          "filtered_reference_RP_rms_mrad": 14.250873583519693
+        },
+        "5_15Hz": {
+          "compensation_rms_mps2": 0.014700117219395443,
+          "signed_compensation_delta_rms_mps2": 0.028771923345701018,
+          "target_RP_rms_mrad": 1.8622293870621005,
+          "signed_target_RP_delta_rms_mrad": 2.8948423904607044,
+          "target_RP_delta_cross_term_mrad2": -27.285673900195718,
+          "filtered_reference_RP_rms_mrad": 1.0238442147753881
+        }
+      }
+    },
+    "notch_3p5Hz_Q1_event100hz": {
+      "mean_scene_compensation_rms_mps2": 0.6110398913742366,
+      "mean_scene_task_to_command_target_SO3_rmse_mrad": 64.55093131026963,
+      "mean_scene_task_to_filtered_reference_SO3_rmse_mrad": 60.77074156860635,
+      "mean_scene_signed_command_force_delta_rms_N": 0.2791309251626251,
+      "bands_equal_scene_mean": {
+        "0_1Hz": {
+          "compensation_rms_mps2": 0.5839341033392457,
+          "signed_compensation_delta_rms_mps2": 0.010376349970399665,
+          "target_RP_rms_mrad": 77.86366386151514,
+          "signed_target_RP_delta_rms_mrad": 1.058862539181327,
+          "target_RP_delta_cross_term_mrad2": 0.5788992918865402,
+          "filtered_reference_RP_rms_mrad": 77.60989368844568
+        },
+        "1_2Hz": {
+          "compensation_rms_mps2": 0.044299441180458005,
+          "signed_compensation_delta_rms_mps2": 0.01890435348682626,
+          "target_RP_rms_mrad": 7.820278092421396,
+          "signed_target_RP_delta_rms_mrad": 1.9054827566549228,
+          "target_RP_delta_cross_term_mrad2": -8.021160032684202,
+          "filtered_reference_RP_rms_mrad": 6.857262512635304
+        },
+        "2_5Hz": {
+          "compensation_rms_mps2": 0.1644543979648808,
+          "signed_compensation_delta_rms_mps2": 0.3994036797659777,
+          "target_RP_rms_mrad": 23.556090861106174,
+          "signed_target_RP_delta_rms_mrad": 40.4688192138803,
+          "target_RP_delta_cross_term_mrad2": -4517.397455222267,
+          "filtered_reference_RP_rms_mrad": 11.529984173916894
+        },
+        "5_15Hz": {
+          "compensation_rms_mps2": 0.026024609843357017,
+          "signed_compensation_delta_rms_mps2": 0.022380743945679498,
+          "target_RP_rms_mrad": 2.99642330776143,
+          "signed_target_RP_delta_rms_mrad": 2.25943126199765,
+          "target_RP_delta_cross_term_mrad2": -15.666341671119753,
+          "filtered_reference_RP_rms_mrad": 1.1323401643091737
+        }
+      }
+    }
+  },
+  "summary_by_HF_group": {
+    "W09": {
+      "raw_C5": {
+        "n_scenes": 2,
+        "task_to_filtered_reference_SO3_rmse_mrad_mean": 52.43904903050035,
+        "comp_2_5Hz_rms_mps2_mean": 0.21377064662903045,
+        "target_RP_2_5Hz_rms_mrad_mean": 26.903261060342572,
+        "target_RP_delta_2_5Hz_rms_mrad_mean": 8.832879918519731e-16
+      },
+      "tau0p1_event100hz": {
+        "n_scenes": 2,
+        "task_to_filtered_reference_SO3_rmse_mrad_mean": 51.01447674688788,
+        "comp_2_5Hz_rms_mps2_mean": 0.11383977193045011,
+        "target_RP_2_5Hz_rms_mrad_mean": 18.212912812233146,
+        "target_RP_delta_2_5Hz_rms_mrad_mean": 17.13819786388562
+      },
+      "notch_3p5Hz_Q1_event100hz": {
+        "n_scenes": 2,
+        "task_to_filtered_reference_SO3_rmse_mrad_mean": 51.283139463148785,
+        "comp_2_5Hz_rms_mps2_mean": 0.11463104825271969,
+        "target_RP_2_5Hz_rms_mrad_mean": 18.112501037454344,
+        "target_RP_delta_2_5Hz_rms_mrad_mean": 17.89850985453721
+      }
+    },
+    "W10": {
+      "raw_C5": {
+        "n_scenes": 1,
+        "task_to_filtered_reference_SO3_rmse_mrad_mean": 75.27687474360833,
+        "comp_2_5Hz_rms_mps2_mean": 0.5391093710666522,
+        "target_RP_2_5Hz_rms_mrad_mean": 69.97196298632389,
+        "target_RP_delta_2_5Hz_rms_mrad_mean": 1.2889482109034081e-15
+      },
+      "tau0p1_event100hz": {
+        "n_scenes": 1,
+        "task_to_filtered_reference_SO3_rmse_mrad_mean": 69.4867728963694,
+        "comp_2_5Hz_rms_mps2_mean": 0.286964870064237,
+        "target_RP_2_5Hz_rms_mrad_mean": 48.005116263037685,
+        "target_RP_delta_2_5Hz_rms_mrad_mean": 44.322028980106325
+      },
+      "notch_3p5Hz_Q1_event100hz": {
+        "n_scenes": 1,
+        "task_to_filtered_reference_SO3_rmse_mrad_mean": 70.15023147202457,
+        "comp_2_5Hz_rms_mps2_mean": 0.2900403062164779,
+        "target_RP_2_5Hz_rms_mrad_mean": 47.72369706712826,
+        "target_RP_delta_2_5Hz_rms_mrad_mean": 46.362275145246755
+      }
+    },
+    "W14": {
+      "raw_C5": {
+        "n_scenes": 3,
+        "task_to_filtered_reference_SO3_rmse_mrad_mean": 67.8861236055334,
+        "comp_2_5Hz_rms_mps2_mean": 0.5518298175386689,
+        "target_RP_2_5Hz_rms_mrad_mean": 66.57532215243742,
+        "target_RP_delta_2_5Hz_rms_mrad_mean": 1.1833595405872662e-15
+      },
+      "tau0p1_event100hz": {
+        "n_scenes": 3,
+        "task_to_filtered_reference_SO3_rmse_mrad_mean": 64.55756088320912,
+        "comp_2_5Hz_rms_mps2_mean": 0.20911613857119357,
+        "target_RP_2_5Hz_rms_mrad_mean": 33.351779236088795,
+        "target_RP_delta_2_5Hz_rms_mrad_mean": 49.18623514330477
+      },
+      "notch_3p5Hz_Q1_event100hz": {
+        "n_scenes": 3,
+        "task_to_filtered_reference_SO3_rmse_mrad_mean": 63.96931300443862,
+        "comp_2_5Hz_rms_mps2_mean": 0.15580799502245582,
+        "target_RP_2_5Hz_rms_mrad_mean": 19.12928200820003,
+        "target_RP_delta_2_5Hz_rms_mrad_mean": 53.55120680965354
+      }
+    }
+  },
+  "B_comparator_mean_task_to_filtered_reference_mrad_different_trajectory": 60.54975669482574,
+  "scene_results": [
+    {
+      "scene_id": "DL1018_DEV_T1_C10_W09",
+      "split": "DEV",
+      "HF_group": "W09",
+      "C5_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_DEV_T1_C10_W09\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "C5_raw_sha256": "1e684df2174bc6b754e7798c67acb5c0b4ead218bcc1bd7b1d5cfc1a2fcf4991",
+      "event_count": 1999,
+      "event_first_index_zero_based": 10,
+      "event_last_index_zero_based": 19990,
+      "event_period_s": 0.01,
+      "target_reconstruction_max_abs_rad": 5.551115123125783e-17,
+      "command_filter_replay_max_abs_rad": 2.498001805406602e-16,
+      "methods": {
+        "raw_C5": {
+          "compensation_rms_mps2": 0.48166046961728803,
+          "task_to_command_target_SO3_rmse_mrad": 48.51395153937788,
+          "task_to_filtered_reference_SO3_rmse_mrad": 44.56122047310422,
+          "signed_command_force_delta_from_raw_rms_N": 0.0,
+          "command_force_delta_peak_norm_N": 0.0,
+          "bands": {
+            "0_1Hz": {
+              "compensation_rms_mps2": 0.4429837292828963,
+              "signed_compensation_delta_rms_mps2": 0.0,
+              "target_RP_rms_mrad": 68.28678480199551,
+              "signed_target_RP_delta_rms_mrad": 4.1984618973761225e-16,
+              "target_RP_delta_cross_term_mrad2": 8.404572639088824e-15,
+              "target_RP_power_identity_residual_mrad2": -8.404572639088824e-15,
+              "filtered_reference_RP_rms_mrad": 68.05201387717622
+            },
+            "1_2Hz": {
+              "compensation_rms_mps2": 0.023341926169745758,
+              "signed_compensation_delta_rms_mps2": 0.0,
+              "target_RP_rms_mrad": 2.7330203677181526,
+              "signed_target_RP_delta_rms_mrad": 4.52111383403885e-16,
+              "target_RP_delta_cross_term_mrad2": 1.2916469754250043e-16,
+              "target_RP_power_identity_residual_mrad2": -1.2916469754250063e-16,
+              "filtered_reference_RP_rms_mrad": 2.421740413233404
+            },
+            "2_5Hz": {
+              "compensation_rms_mps2": 0.18705767472886542,
+              "signed_compensation_delta_rms_mps2": 0.0,
+              "target_RP_rms_mrad": 23.346589759748856,
+              "signed_target_RP_delta_rms_mrad": 8.848684693834089e-16,
+              "target_RP_delta_cross_term_mrad2": 2.5916073804374518e-15,
+              "target_RP_power_identity_residual_mrad2": -2.5916073804374526e-15,
+              "filtered_reference_RP_rms_mrad": 13.088036602428025
+            },
+            "5_15Hz": {
+              "compensation_rms_mps2": 0.010354845716120754,
+              "signed_compensation_delta_rms_mps2": 0.0,
+              "target_RP_rms_mrad": 1.0971218277628207,
+              "signed_target_RP_delta_rms_mrad": 1.5554888694593573e-15,
+              "target_RP_delta_cross_term_mrad2": 6.989078667365407e-17,
+              "target_RP_power_identity_residual_mrad2": -6.98907866736565e-17,
+              "filtered_reference_RP_rms_mrad": 0.9996423657090264
+            }
+          }
+        },
+        "tau0p1_event100hz": {
+          "compensation_rms_mps2": 0.4530593997698662,
+          "task_to_command_target_SO3_rmse_mrad": 44.95908786000403,
+          "task_to_filtered_reference_SO3_rmse_mrad": 43.24265485891066,
+          "signed_command_force_delta_from_raw_rms_N": 0.10557055561608003,
+          "command_force_delta_peak_norm_N": 0.2631201151253212,
+          "bands": {
+            "0_1Hz": {
+              "compensation_rms_mps2": 0.44132154814137803,
+              "signed_compensation_delta_rms_mps2": 0.020394827306432627,
+              "target_RP_rms_mrad": 67.99763063398332,
+              "signed_target_RP_delta_rms_mrad": 1.9608712034347668,
+              "target_RP_delta_cross_term_mrad2": -43.2522226348786,
+              "target_RP_power_identity_residual_mrad2": -5.082197683525802e-13,
+              "filtered_reference_RP_rms_mrad": 67.77632752940403
+            },
+            "1_2Hz": {
+              "compensation_rms_mps2": 0.019871016593968928,
+              "signed_compensation_delta_rms_mps2": 0.014407344267322273,
+              "target_RP_rms_mrad": 2.1507967889970896,
+              "signed_target_RP_delta_rms_mrad": 1.4403325451683935,
+              "target_RP_delta_cross_term_mrad2": -4.918031343473336,
+              "target_RP_power_identity_residual_mrad2": 8.470329472543003e-16,
+              "filtered_reference_RP_rms_mrad": 2.182557986006754
+            },
+            "2_5Hz": {
+              "compensation_rms_mps2": 0.09972355187111738,
+              "signed_compensation_delta_rms_mps2": 0.14952090774821025,
+              "target_RP_rms_mrad": 15.732862182471187,
+              "signed_target_RP_delta_rms_mrad": 14.895302818935576,
+              "target_RP_delta_cross_term_mrad2": -519.4103470251684,
+              "target_RP_power_identity_residual_mrad2": 3.2526065174565133e-13,
+              "filtered_reference_RP_rms_mrad": 9.086576398721233
+            },
+            "5_15Hz": {
+              "compensation_rms_mps2": 0.00968437644116186,
+              "signed_compensation_delta_rms_mps2": 0.005991344091361744,
+              "target_RP_rms_mrad": 1.0247955994477074,
+              "signed_target_RP_delta_rms_mrad": 0.5849073062525276,
+              "target_RP_delta_cross_term_mrad2": -0.4955868412138342,
+              "target_RP_power_identity_residual_mrad2": -3.1763735522036263e-16,
+              "filtered_reference_RP_rms_mrad": 0.8011774499119806
+            }
+          }
+        },
+        "notch_3p5Hz_Q1_event100hz": {
+          "compensation_rms_mps2": 0.45411316954630804,
+          "task_to_command_target_SO3_rmse_mrad": 45.11954224686671,
+          "task_to_filtered_reference_SO3_rmse_mrad": 43.50295320564465,
+          "signed_command_force_delta_from_raw_rms_N": 0.1093869232871501,
+          "command_force_delta_peak_norm_N": 0.2696709457247576,
+          "bands": {
+            "0_1Hz": {
+              "compensation_rms_mps2": 0.44215931208250847,
+              "signed_compensation_delta_rms_mps2": 0.010869718769329793,
+              "target_RP_rms_mrad": 68.15780108098748,
+              "signed_target_RP_delta_rms_mrad": 1.0496379781880656,
+              "target_RP_delta_cross_term_mrad2": -18.700870283842658,
+              "target_RP_power_identity_residual_mrad2": 8.131516293641283e-14,
+              "filtered_reference_RP_rms_mrad": 67.93912145805133
+            },
+            "1_2Hz": {
+              "compensation_rms_mps2": 0.02171666414870815,
+              "signed_compensation_delta_rms_mps2": 0.012342368292850106,
+              "target_RP_rms_mrad": 2.416698365598664,
+              "signed_target_RP_delta_rms_mrad": 1.236332712767975,
+              "target_RP_delta_cross_term_mrad2": -3.157487916735231,
+              "target_RP_power_identity_residual_mrad2": -8.470329472543003e-16,
+              "filtered_reference_RP_rms_mrad": 2.387236370908458
+            },
+            "2_5Hz": {
+              "compensation_rms_mps2": 0.10025860615760833,
+              "signed_compensation_delta_rms_mps2": 0.15624178506761607,
+              "target_RP_rms_mrad": 15.623837217462683,
+              "signed_target_RP_delta_rms_mrad": 15.568087540559489,
+              "target_RP_delta_cross_term_mrad2": -543.3243136827617,
+              "target_RP_power_identity_residual_mrad2": 2.1684043449710089e-13,
+              "filtered_reference_RP_rms_mrad": 9.471598968947633
+            },
+            "5_15Hz": {
+              "compensation_rms_mps2": 0.011056696464646945,
+              "signed_compensation_delta_rms_mps2": 0.004977575174716647,
+              "target_RP_rms_mrad": 1.1640486887968908,
+              "signed_target_RP_delta_rms_mrad": 0.47988196396262633,
+              "target_RP_delta_cross_term_mrad2": -0.07895365440049867,
+              "target_RP_power_identity_residual_mrad2": -2.514629062161204e-16,
+              "filtered_reference_RP_rms_mrad": 0.7624995921959924
+            }
+          }
+        }
+      },
+      "B_different_trajectory_comparator": {
+        "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\b_traceable_c3core_dev72_20261023\\runs_b\\DL1018_DEV_T1_C10_W09\\B_TRACEABLE_C3CORE_V1\\attempt_01\\raw_run.mat",
+        "raw_sha256": "d1048a81954f856f3d4dac15d510f1cc7130775878bc4677ef76fd088c712a5f",
+        "task_to_logged_filtered_reference_SO3_rmse_mrad": 43.808816233766066
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C09_W10",
+      "split": "DEV",
+      "HF_group": "W10",
+      "C5_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_DEV_T2_C09_W10\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "C5_raw_sha256": "9810e02aa6bede12197eda25dbb0c18335252b1965f055931ea28b2f2dbb505d",
+      "event_count": 1999,
+      "event_first_index_zero_based": 10,
+      "event_last_index_zero_based": 19990,
+      "event_period_s": 0.01,
+      "target_reconstruction_max_abs_rad": 1.1102230246251565e-16,
+      "command_filter_replay_max_abs_rad": 4.440892098500626e-16,
+      "methods": {
+        "raw_C5": {
+          "compensation_rms_mps2": 0.8265146790704999,
+          "task_to_command_target_SO3_rmse_mrad": 95.28251761363613,
+          "task_to_filtered_reference_SO3_rmse_mrad": 75.27687474360833,
+          "signed_command_force_delta_from_raw_rms_N": 0.0,
+          "command_force_delta_peak_norm_N": 0.0,
+          "bands": {
+            "0_1Hz": {
+              "compensation_rms_mps2": 0.623526593276631,
+              "signed_compensation_delta_rms_mps2": 0.0,
+              "target_RP_rms_mrad": 89.83764880178991,
+              "signed_target_RP_delta_rms_mrad": 7.976789701262528e-16,
+              "target_RP_delta_cross_term_mrad2": -7.6221674871661e-16,
+              "target_RP_power_identity_residual_mrad2": 7.622167487166094e-16,
+              "filtered_reference_RP_rms_mrad": 89.52925552822246
+            },
+            "1_2Hz": {
+              "compensation_rms_mps2": 0.046050018771804244,
+              "signed_compensation_delta_rms_mps2": 0.0,
+              "target_RP_rms_mrad": 7.795015524753777,
+              "signed_target_RP_delta_rms_mrad": 8.812351479827757e-16,
+              "target_RP_delta_cross_term_mrad2": -4.887978337656557e-15,
+              "target_RP_power_identity_residual_mrad2": -1.8882852403778472e-15,
+              "filtered_reference_RP_rms_mrad": 6.918763237695771
+            },
+            "2_5Hz": {
+              "compensation_rms_mps2": 0.5391093710666522,
+              "signed_compensation_delta_rms_mps2": 0.0,
+              "target_RP_rms_mrad": 69.97196298632389,
+              "signed_target_RP_delta_rms_mrad": 1.2889482109034081e-15,
+              "target_RP_delta_cross_term_mrad2": -3.483107248081023e-14,
+              "target_RP_power_identity_residual_mrad2": 3.483107248081023e-14,
+              "filtered_reference_RP_rms_mrad": 39.37186315779202
+            },
+            "5_15Hz": {
+              "compensation_rms_mps2": 0.02877179778130975,
+              "signed_compensation_delta_rms_mps2": 0.0,
+              "target_RP_rms_mrad": 3.623396423531734,
+              "signed_target_RP_delta_rms_mrad": 2.434118866989852e-15,
+              "target_RP_delta_cross_term_mrad2": -2.267743558126248e-15,
+              "target_RP_power_identity_residual_mrad2": 2.267743558126242e-15,
+              "filtered_reference_RP_rms_mrad": 1.4826126561546327
+            }
+          }
+        },
+        "tau0p1_event100hz": {
+          "compensation_rms_mps2": 0.6860858092238673,
+          "task_to_command_target_SO3_rmse_mrad": 79.97680267965437,
+          "task_to_filtered_reference_SO3_rmse_mrad": 69.4867728963694,
+          "signed_command_force_delta_from_raw_rms_N": 0.30310456833784705,
+          "command_force_delta_peak_norm_N": 0.812887240581437,
+          "bands": {
+            "0_1Hz": {
+              "compensation_rms_mps2": 0.6217313832115042,
+              "signed_compensation_delta_rms_mps2": 0.01637191224728662,
+              "target_RP_rms_mrad": 89.67443054149003,
+              "signed_target_RP_delta_rms_mrad": 1.6905048888897998,
+              "target_RP_delta_cross_term_mrad2": -32.15745607258712,
+              "target_RP_power_identity_residual_mrad2": -1.3552527156068805e-14,
+              "filtered_reference_RP_rms_mrad": 89.37658728858715
+            },
+            "1_2Hz": {
+              "compensation_rms_mps2": 0.03687330386140943,
+              "signed_compensation_delta_rms_mps2": 0.032450553707926724,
+              "target_RP_rms_mrad": 6.556161759756339,
+              "signed_target_RP_delta_rms_mrad": 3.27979275334401,
+              "target_RP_delta_cross_term_mrad2": -28.536050515948936,
+              "target_RP_power_identity_residual_mrad2": -1.0164395367051604e-14,
+              "filtered_reference_RP_rms_mrad": 6.241310006532486
+            },
+            "2_5Hz": {
+              "compensation_rms_mps2": 0.286964870064237,
+              "signed_compensation_delta_rms_mps2": 0.433369492973642,
+              "target_RP_rms_mrad": 48.005116263037685,
+              "signed_target_RP_delta_rms_mrad": 44.322028980106325,
+              "target_RP_delta_cross_term_mrad2": -4556.0266696451,
+              "target_RP_power_identity_residual_mrad2": 8.673617379884035e-13,
+              "filtered_reference_RP_rms_mrad": 27.896809154348492
+            },
+            "5_15Hz": {
+              "compensation_rms_mps2": 0.014270956311591292,
+              "signed_compensation_delta_rms_mps2": 0.024615215459944547,
+              "target_RP_rms_mrad": 1.8354289847579095,
+              "signed_target_RP_delta_rms_mrad": 2.6871751082005804,
+              "target_RP_delta_cross_term_mrad2": -16.98111214610591,
+              "target_RP_power_identity_residual_mrad2": -3.3881317890172014e-15,
+              "filtered_reference_RP_rms_mrad": 1.1483541104231854
+            }
+          }
+        },
+        "notch_3p5Hz_Q1_event100hz": {
+          "compensation_rms_mps2": 0.6887027565390639,
+          "task_to_command_target_SO3_rmse_mrad": 80.02283819309169,
+          "task_to_filtered_reference_SO3_rmse_mrad": 70.15023147202457,
+          "signed_command_force_delta_from_raw_rms_N": 0.31631773308285166,
+          "command_force_delta_peak_norm_N": 0.857656746688321,
+          "bands": {
+            "0_1Hz": {
+              "compensation_rms_mps2": 0.6225544884150106,
+              "signed_compensation_delta_rms_mps2": 0.008921689638372875,
+              "target_RP_rms_mrad": 89.75632574314312,
+              "signed_target_RP_delta_rms_mrad": 0.9626067166652266,
+              "target_RP_delta_cross_term_mrad2": -15.531743015495218,
+              "target_RP_power_identity_residual_mrad2": -5.624298769768554e-13,
+              "filtered_reference_RP_rms_mrad": 89.45770568676994
+            },
+            "1_2Hz": {
+              "compensation_rms_mps2": 0.04157732041207733,
+              "signed_compensation_delta_rms_mps2": 0.026217157735379575,
+              "target_RP_rms_mrad": 7.242290369983983,
+              "signed_target_RP_delta_rms_mrad": 2.65030873709488,
+              "target_RP_delta_cross_term_mrad2": -15.335633629911134,
+              "target_RP_power_identity_residual_mrad2": 3.3881317890172014e-15,
+              "filtered_reference_RP_rms_mrad": 6.793596873521291
+            },
+            "2_5Hz": {
+              "compensation_rms_mps2": 0.2900403062164779,
+              "signed_compensation_delta_rms_mps2": 0.45323711086423885,
+              "target_RP_rms_mrad": 47.72369706712826,
+              "signed_target_RP_delta_rms_mrad": 46.362275145246755,
+              "target_RP_delta_cross_term_mrad2": -4767.9848990480195,
+              "target_RP_power_identity_residual_mrad2": 8.673617379884035e-13,
+              "filtered_reference_RP_rms_mrad": 29.042203582660395
+            },
+            "5_15Hz": {
+              "compensation_rms_mps2": 0.024699769663241018,
+              "signed_compensation_delta_rms_mps2": 0.020158815851359313,
+              "target_RP_rms_mrad": 2.768377610154542,
+              "signed_target_RP_delta_rms_mrad": 2.1372290793175606,
+              "target_RP_delta_cross_term_mrad2": -10.032835187138176,
+              "target_RP_power_identity_residual_mrad2": 3.3881317890172014e-15,
+              "filtered_reference_RP_rms_mrad": 1.1859928306008038
+            }
+          }
+        }
+      },
+      "B_different_trajectory_comparator": {
+        "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\b_traceable_c3core_dev72_20261023\\runs_b\\DL1018_DEV_T2_C09_W10\\B_TRACEABLE_C3CORE_V1\\attempt_01\\raw_run.mat",
+        "raw_sha256": "61bb549a6afc78326bb6d577cd52c14f0edd52c046f69681f97a2e88adb5751e",
+        "task_to_logged_filtered_reference_SO3_rmse_mrad": 65.98880335726291
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C09_W09",
+      "split": "DEV",
+      "HF_group": "W09",
+      "C5_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_DEV_T3_C09_W09\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "C5_raw_sha256": "fa11a41b18ce9d4c3b7558d3bbb0d230aaef3e7071fc15419df0c6d1fca2f3a4",
+      "event_count": 1999,
+      "event_first_index_zero_based": 10,
+      "event_last_index_zero_based": 19990,
+      "event_period_s": 0.01,
+      "target_reconstruction_max_abs_rad": 2.7755575615628914e-17,
+      "command_filter_replay_max_abs_rad": 2.498001805406602e-16,
+      "methods": {
+        "raw_C5": {
+          "compensation_rms_mps2": 0.6339396510958439,
+          "task_to_command_target_SO3_rmse_mrad": 65.37757847151336,
+          "task_to_filtered_reference_SO3_rmse_mrad": 60.31687758789648,
+          "signed_command_force_delta_from_raw_rms_N": 0.0,
+          "command_force_delta_peak_norm_N": 0.0,
+          "bands": {
+            "0_1Hz": {
+              "compensation_rms_mps2": 0.5849726514275194,
+              "signed_compensation_delta_rms_mps2": 0.0,
+              "target_RP_rms_mrad": 66.96098706121481,
+              "signed_target_RP_delta_rms_mrad": 5.314552323951446e-16,
+              "target_RP_delta_cross_term_mrad2": -1.3214690338788733e-14,
+              "target_RP_power_identity_residual_mrad2": 1.3214690338788733e-14,
+              "filtered_reference_RP_rms_mrad": 66.73709117485836
+            },
+            "1_2Hz": {
+              "compensation_rms_mps2": 0.037360924922859175,
+              "signed_compensation_delta_rms_mps2": 0.0,
+              "target_RP_rms_mrad": 5.2924183924539,
+              "signed_target_RP_delta_rms_mrad": 5.482368244078145e-16,
+              "target_RP_delta_cross_term_mrad2": 1.302430768203088e-15,
+              "target_RP_power_identity_residual_mrad2": -1.3024307682030885e-15,
+              "filtered_reference_RP_rms_mrad": 4.412138403330405
+            },
+            "2_5Hz": {
+              "compensation_rms_mps2": 0.24048361852919545,
+              "signed_compensation_delta_rms_mps2": 0.0,
+              "target_RP_rms_mrad": 30.459932360936293,
+              "signed_target_RP_delta_rms_mrad": 8.817075143205374e-16,
+              "target_RP_delta_cross_term_mrad2": 2.223450838676024e-15,
+              "target_RP_power_identity_residual_mrad2": -2.223450838676025e-15,
+              "filtered_reference_RP_rms_mrad": 17.301770239342154
+            },
+            "5_15Hz": {
+              "compensation_rms_mps2": 0.015402137058054072,
+              "signed_compensation_delta_rms_mps2": 0.0,
+              "target_RP_rms_mrad": 1.4386952505388138,
+              "signed_target_RP_delta_rms_mrad": 1.7427181058363351e-15,
+              "target_RP_delta_cross_term_mrad2": -1.2471236706044494e-17,
+              "target_RP_power_identity_residual_mrad2": 1.2471236706041457e-17,
+              "filtered_reference_RP_rms_mrad": 0.6390350466893167
+            }
+          }
+        },
+        "tau0p1_event100hz": {
+          "compensation_rms_mps2": 0.5982922830835149,
+          "task_to_command_target_SO3_rmse_mrad": 61.097219071256724,
+          "task_to_filtered_reference_SO3_rmse_mrad": 58.78629863486509,
+          "signed_command_force_delta_from_raw_rms_N": 0.13657781592740578,
+          "command_force_delta_peak_norm_N": 0.29868303195035245,
+          "bands": {
+            "0_1Hz": {
+              "compensation_rms_mps2": 0.583436196753453,
+              "signed_compensation_delta_rms_mps2": 0.020867543863419397,
+              "target_RP_rms_mrad": 66.6784283882622,
+              "signed_target_RP_delta_rms_mrad": 2.0044324996297394,
+              "target_RP_delta_cross_term_mrad2": -41.77872552913657,
+              "target_RP_power_identity_residual_mrad2": 1.8973538018496328e-13,
+              "filtered_reference_RP_rms_mrad": 66.44198157499733
+            },
+            "1_2Hz": {
+              "compensation_rms_mps2": 0.03169710086029347,
+              "signed_compensation_delta_rms_mps2": 0.01825133139929694,
+              "target_RP_rms_mrad": 4.405233794201074,
+              "signed_target_RP_delta_rms_mrad": 1.8168651576194117,
+              "target_RP_delta_cross_term_mrad2": -11.904606660184555,
+              "target_RP_power_identity_residual_mrad2": 3.3881317890172014e-15,
+              "filtered_reference_RP_rms_mrad": 3.6566766035892164
+            },
+            "2_5Hz": {
+              "compensation_rms_mps2": 0.12795599198978286,
+              "signed_compensation_delta_rms_mps2": 0.19410956246136474,
+              "target_RP_rms_mrad": 20.692963441995104,
+              "signed_target_RP_delta_rms_mrad": 19.38109290883566,
+              "target_RP_delta_cross_term_mrad2": -875.2355057619882,
+              "target_RP_power_identity_residual_mrad2": 1.0842021724855044e-13,
+              "filtered_reference_RP_rms_mrad": 12.271122888480521
+            },
+            "5_15Hz": {
+              "compensation_rms_mps2": 0.009884912338717335,
+              "signed_compensation_delta_rms_mps2": 0.008287451382967184,
+              "target_RP_rms_mrad": 0.8440425066976422,
+              "signed_target_RP_delta_rms_mrad": 0.8078405313915472,
+              "target_RP_delta_cross_term_mrad2": -2.010042594969478,
+              "target_RP_power_identity_residual_mrad2": 0.0,
+              "filtered_reference_RP_rms_mrad": 0.7572545282847298
+            }
+          }
+        },
+        "notch_3p5Hz_Q1_event100hz": {
+          "compensation_rms_mps2": 0.5997308842432783,
+          "task_to_command_target_SO3_rmse_mrad": 61.26330206961101,
+          "task_to_filtered_reference_SO3_rmse_mrad": 59.06332572065292,
+          "signed_command_force_delta_from_raw_rms_N": 0.14179263603833997,
+          "command_force_delta_peak_norm_N": 0.31596779341317893,
+          "bands": {
+            "0_1Hz": {
+              "compensation_rms_mps2": 0.5844995847175307,
+              "signed_compensation_delta_rms_mps2": 0.011606145882891137,
+              "target_RP_rms_mrad": 66.8667413434208,
+              "signed_target_RP_delta_rms_mrad": 1.127360952514838,
+              "target_RP_delta_cross_term_mrad2": -13.883633041492834,
+              "target_RP_power_identity_residual_mrad2": 2.744386749103933e-13,
+              "filtered_reference_RP_rms_mrad": 66.62957642488882
+            },
+            "1_2Hz": {
+              "compensation_rms_mps2": 0.03502511982723359,
+              "signed_compensation_delta_rms_mps2": 0.01572364874141785,
+              "target_RP_rms_mrad": 4.805236118229109,
+              "signed_target_RP_delta_rms_mrad": 1.5670851530256045,
+              "target_RP_delta_cross_term_mrad2": -7.375154165684058,
+              "target_RP_power_identity_residual_mrad2": 8.470329472543003e-16,
+              "filtered_reference_RP_rms_mrad": 3.9409487359453053
+            },
+            "2_5Hz": {
+              "compensation_rms_mps2": 0.12900349034783104,
+              "signed_compensation_delta_rms_mps2": 0.2026281332956464,
+              "target_RP_rms_mrad": 20.60116485744601,
+              "signed_target_RP_delta_rms_mrad": 20.22893216851493,
+              "target_RP_delta_cross_term_mrad2": -912.6091826275236,
+              "target_RP_power_identity_residual_mrad2": -1.0842021724855044e-13,
+              "filtered_reference_RP_rms_mrad": 12.795770824696561
+            },
+            "5_15Hz": {
+              "compensation_rms_mps2": 0.009928541930754327,
+              "signed_compensation_delta_rms_mps2": 0.008041212853648368,
+              "target_RP_rms_mrad": 0.8903481063960629,
+              "signed_target_RP_delta_rms_mrad": 0.7934466411706298,
+              "target_RP_delta_cross_term_mrad2": -1.9066818457448396,
+              "target_RP_power_identity_residual_mrad2": 2.1175823681357508e-16,
+              "filtered_reference_RP_rms_mrad": 0.7954439923984425
+            }
+          }
+        }
+      },
+      "B_different_trajectory_comparator": {
+        "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\b_traceable_c3core_dev72_20261023\\runs_b\\DL1018_DEV_T3_C09_W09\\B_TRACEABLE_C3CORE_V1\\attempt_01\\raw_run.mat",
+        "raw_sha256": "a8cec3af85c0988622a3582385a44a201aa2d5e796fa73a933277cde0cf85f49",
+        "task_to_logged_filtered_reference_SO3_rmse_mrad": 58.989261083626474
+      }
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C07_W14",
+      "split": "VAL",
+      "HF_group": "W14",
+      "C5_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T1_C07_W14\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "C5_raw_sha256": "df07c18cd061aa78e8e1152b73bccc2ae11026a5d54630065c877a5e4ec42dd1",
+      "event_count": 1999,
+      "event_first_index_zero_based": 10,
+      "event_last_index_zero_based": 19990,
+      "event_period_s": 0.01,
+      "target_reconstruction_max_abs_rad": 5.551115123125783e-17,
+      "command_filter_replay_max_abs_rad": 4.163336342344337e-16,
+      "methods": {
+        "raw_C5": {
+          "compensation_rms_mps2": 0.9080530868949573,
+          "task_to_command_target_SO3_rmse_mrad": 102.11121114393274,
+          "task_to_filtered_reference_SO3_rmse_mrad": 77.56314376043191,
+          "signed_command_force_delta_from_raw_rms_N": 0.0,
+          "command_force_delta_peak_norm_N": 0.0,
+          "bands": {
+            "0_1Hz": {
+              "compensation_rms_mps2": 0.6944429349921747,
+              "signed_compensation_delta_rms_mps2": 0.0,
+              "target_RP_rms_mrad": 90.08376246516269,
+              "signed_target_RP_delta_rms_mrad": 7.065003549023028e-16,
+              "target_RP_delta_cross_term_mrad2": 2.6278762019812543e-14,
+              "target_RP_power_identity_residual_mrad2": -2.6278762019812543e-14,
+              "filtered_reference_RP_rms_mrad": 89.80591311108591
+            },
+            "1_2Hz": {
+              "compensation_rms_mps2": 0.06976265840119092,
+              "signed_compensation_delta_rms_mps2": 0.0,
+              "target_RP_rms_mrad": 13.449838232461854,
+              "signed_target_RP_delta_rms_mrad": 7.019078225240986e-16,
+              "target_RP_delta_cross_term_mrad2": 2.11178355784184e-16,
+              "target_RP_power_identity_residual_mrad2": -2.111783557841845e-16,
+              "filtered_reference_RP_rms_mrad": 11.55763533721057
+            },
+            "2_5Hz": {
+              "compensation_rms_mps2": 0.5763683199897848,
+              "signed_compensation_delta_rms_mps2": 0.0,
+              "target_RP_rms_mrad": 69.7208679999215,
+              "signed_target_RP_delta_rms_mrad": 1.2314330600794166e-15,
+              "target_RP_delta_cross_term_mrad2": 1.6899834898256091e-15,
+              "target_RP_power_identity_residual_mrad2": -8.690517214782291e-13,
+              "filtered_reference_RP_rms_mrad": 24.507790977421354
+            },
+            "5_15Hz": {
+              "compensation_rms_mps2": 0.05653069365445585,
+              "signed_compensation_delta_rms_mps2": 0.0,
+              "target_RP_rms_mrad": 6.720313553160529,
+              "signed_target_RP_delta_rms_mrad": 2.3858127262404013e-15,
+              "target_RP_delta_cross_term_mrad2": -7.556423371894609e-16,
+              "target_RP_power_identity_residual_mrad2": 7.556423371894552e-16,
+              "filtered_reference_RP_rms_mrad": 2.0446548176598123
+            }
+          }
+        },
+        "tau0p1_event100hz": {
+          "compensation_rms_mps2": 0.7286660232207895,
+          "task_to_command_target_SO3_rmse_mrad": 81.69129290088713,
+          "task_to_filtered_reference_SO3_rmse_mrad": 74.3689675703425,
+          "signed_command_force_delta_from_raw_rms_N": 0.35590089914513967,
+          "command_force_delta_peak_norm_N": 0.8877262712713708,
+          "bands": {
+            "0_1Hz": {
+              "compensation_rms_mps2": 0.6923098400904089,
+              "signed_compensation_delta_rms_mps2": 0.024490207997917506,
+              "target_RP_rms_mrad": 90.14678588812562,
+              "signed_target_RP_delta_rms_mrad": 2.496021514272768,
+              "target_RP_delta_cross_term_mrad2": 5.128622679994476,
+              "target_RP_power_identity_residual_mrad2": 2.674083014481826e-12,
+              "filtered_reference_RP_rms_mrad": 89.92894583075076
+            },
+            "1_2Hz": {
+              "compensation_rms_mps2": 0.05803170723586221,
+              "signed_compensation_delta_rms_mps2": 0.035908727527754904,
+              "target_RP_rms_mrad": 12.215943467951977,
+              "signed_target_RP_delta_rms_mrad": 3.587616443840933,
+              "target_RP_delta_cross_term_mrad2": -44.53986541531196,
+              "target_RP_power_identity_residual_mrad2": 3.3881317890172014e-14,
+              "filtered_reference_RP_rms_mrad": 10.518685474990129
+            },
+            "2_5Hz": {
+              "compensation_rms_mps2": 0.21757427834913545,
+              "signed_compensation_delta_rms_mps2": 0.5066937743052059,
+              "target_RP_rms_mrad": 34.911881329230816,
+              "signed_target_RP_delta_rms_mrad": 51.40140365734139,
+              "target_RP_delta_cross_term_mrad2": -6284.264274661134,
+              "target_RP_power_identity_residual_mrad2": 1.734723475976807e-12,
+              "filtered_reference_RP_rms_mrad": 12.65590750338039
+            },
+            "5_15Hz": {
+              "compensation_rms_mps2": 0.02396425098770173,
+              "signed_compensation_delta_rms_mps2": 0.046838253963302275,
+              "target_RP_rms_mrad": 3.3751765323000353,
+              "signed_target_RP_delta_rms_mrad": 4.661417874010397,
+              "target_RP_delta_cross_term_mrad2": -55.499614224747816,
+              "target_RP_power_identity_residual_mrad2": 6.776263578034403e-15,
+              "filtered_reference_RP_rms_mrad": 1.12610143222493
+            }
+          }
+        },
+        "notch_3p5Hz_Q1_event100hz": {
+          "compensation_rms_mps2": 0.7169240446902412,
+          "task_to_command_target_SO3_rmse_mrad": 77.03730325940899,
+          "task_to_filtered_reference_SO3_rmse_mrad": 73.9054873509368,
+          "signed_command_force_delta_from_raw_rms_N": 0.38518890311580006,
+          "command_force_delta_peak_norm_N": 0.9128077266031194,
+          "bands": {
+            "0_1Hz": {
+              "compensation_rms_mps2": 0.6935814071711911,
+              "signed_compensation_delta_rms_mps2": 0.01240607944845485,
+              "target_RP_rms_mrad": 90.28595010644634,
+              "signed_target_RP_delta_rms_mrad": 1.292823512735394,
+              "target_RP_delta_cross_term_mrad2": 34.79713410877861,
+              "target_RP_power_identity_residual_mrad2": 3.2864878353466853e-12,
+              "filtered_reference_RP_rms_mrad": 90.04163889856771
+            },
+            "1_2Hz": {
+              "compensation_rms_mps2": 0.06678951946745061,
+              "signed_compensation_delta_rms_mps2": 0.023052811354780767,
+              "target_RP_rms_mrad": 13.233430182007323,
+              "signed_target_RP_delta_rms_mrad": 2.3190175581358736,
+              "target_RP_delta_cross_term_mrad2": -11.152316532272808,
+              "target_RP_power_identity_residual_mrad2": 6.606856988583543e-14,
+              "filtered_reference_RP_rms_mrad": 11.337639571024955
+            },
+            "2_5Hz": {
+              "compensation_rms_mps2": 0.16360198286098826,
+              "signed_compensation_delta_rms_mps2": 0.5506959064654245,
+              "target_RP_rms_mrad": 20.221572363358284,
+              "signed_target_RP_delta_rms_mrad": 55.88037582346098,
+              "target_RP_delta_cross_term_mrad2": -7574.703847987185,
+              "target_RP_power_identity_residual_mrad2": 0.0,
+              "filtered_reference_RP_rms_mrad": 6.263756489416933
+            },
+            "5_15Hz": {
+              "compensation_rms_mps2": 0.03803521363627398,
+              "signed_compensation_delta_rms_mps2": 0.03941044158456965,
+              "target_RP_rms_mrad": 4.60635724081793,
+              "signed_target_RP_delta_rms_mrad": 3.9498733998427027,
+              "target_RP_delta_cross_term_mrad2": -39.54558709754228,
+              "target_RP_power_identity_residual_mrad2": 1.3552527156068805e-14,
+              "filtered_reference_RP_rms_mrad": 1.6841074667542892
+            }
+          }
+        }
+      },
+      "B_different_trajectory_comparator": {
+        "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\b_traceable_c3core_dev72_20261023\\runs_b\\DL1018_VAL_T1_C07_W14\\B_TRACEABLE_C3CORE_V1\\attempt_01\\raw_run.mat",
+        "raw_sha256": "d1b472b85cb95736eab9f9c05bb74ec24fa1ba52908b19c7897226153793cd26",
+        "task_to_logged_filtered_reference_SO3_rmse_mrad": 74.77484243059767
+      }
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C04_W14",
+      "split": "VAL",
+      "HF_group": "W14",
+      "C5_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T2_C04_W14\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "C5_raw_sha256": "b3cbe42c3835600cef5b4a5adbafe619cb83c56da94f37fe87669e027e91c6bf",
+      "event_count": 1999,
+      "event_first_index_zero_based": 10,
+      "event_last_index_zero_based": 19990,
+      "event_period_s": 0.01,
+      "target_reconstruction_max_abs_rad": 5.551115123125783e-17,
+      "command_filter_replay_max_abs_rad": 4.163336342344337e-16,
+      "methods": {
+        "raw_C5": {
+          "compensation_rms_mps2": 0.7481383018604575,
+          "task_to_command_target_SO3_rmse_mrad": 80.55697744276827,
+          "task_to_filtered_reference_SO3_rmse_mrad": 56.80502372747218,
+          "signed_command_force_delta_from_raw_rms_N": 0.0,
+          "command_force_delta_peak_norm_N": 0.0,
+          "bands": {
+            "0_1Hz": {
+              "compensation_rms_mps2": 0.5366372763702905,
+              "signed_compensation_delta_rms_mps2": 0.0,
+              "target_RP_rms_mrad": 78.66640929017326,
+              "signed_target_RP_delta_rms_mrad": 7.774742550739933e-16,
+              "target_RP_delta_cross_term_mrad2": 5.204336193182457e-15,
+              "target_RP_power_identity_residual_mrad2": -5.204336193182458e-15,
+              "filtered_reference_RP_rms_mrad": 78.41594749727321
+            },
+            "1_2Hz": {
+              "compensation_rms_mps2": 0.04866893006563126,
+              "signed_compensation_delta_rms_mps2": 0.0,
+              "target_RP_rms_mrad": 7.971025533231015,
+              "signed_target_RP_delta_rms_mrad": 7.060523000807106e-16,
+              "target_RP_delta_cross_term_mrad2": -6.346255619063166e-17,
+              "target_RP_power_identity_residual_mrad2": 6.346255619063116e-17,
+              "filtered_reference_RP_rms_mrad": 6.7090415451652206
+            },
+            "2_5Hz": {
+              "compensation_rms_mps2": 0.5152683956075491,
+              "signed_compensation_delta_rms_mps2": 0.0,
+              "target_RP_rms_mrad": 60.65651845836351,
+              "signed_target_RP_delta_rms_mrad": 1.1386228211055734e-15,
+              "target_RP_delta_cross_term_mrad2": -2.2098595001321883e-15,
+              "target_RP_power_identity_residual_mrad2": 1.3032524664827377e-12,
+              "filtered_reference_RP_rms_mrad": 21.522679662890546
+            },
+            "5_15Hz": {
+              "compensation_rms_mps2": 0.04931043592647116,
+              "signed_compensation_delta_rms_mps2": 0.0,
+              "target_RP_rms_mrad": 5.716281246379958,
+              "signed_target_RP_delta_rms_mrad": 2.1625663521622577e-15,
+              "target_RP_delta_cross_term_mrad2": -1.1463182809132173e-15,
+              "target_RP_power_identity_residual_mrad2": 1.1463182809132126e-15,
+              "filtered_reference_RP_rms_mrad": 1.5667225489228374
+            }
+          }
+        },
+        "tau0p1_event100hz": {
+          "compensation_rms_mps2": 0.5719415848206704,
+          "task_to_command_target_SO3_rmse_mrad": 60.826489684053655,
+          "task_to_filtered_reference_SO3_rmse_mrad": 53.71925862282771,
+          "signed_command_force_delta_from_raw_rms_N": 0.3183477488153605,
+          "command_force_delta_peak_norm_N": 0.7530438574166404,
+          "bands": {
+            "0_1Hz": {
+              "compensation_rms_mps2": 0.5354534111183209,
+              "signed_compensation_delta_rms_mps2": 0.016960544039821786,
+              "target_RP_rms_mrad": 78.78583917301357,
+              "signed_target_RP_delta_rms_mrad": 1.6316513160271007,
+              "target_RP_delta_cross_term_mrad2": 16.1422175698089,
+              "target_RP_power_identity_residual_mrad2": 2.1345230270808369e-13,
+              "filtered_reference_RP_rms_mrad": 78.50917157689139
+            },
+            "1_2Hz": {
+              "compensation_rms_mps2": 0.039080847051831825,
+              "signed_compensation_delta_rms_mps2": 0.025076770495074518,
+              "target_RP_rms_mrad": 7.606430552419886,
+              "signed_target_RP_delta_rms_mrad": 2.4759942507757553,
+              "target_RP_delta_cross_term_mrad2": -11.810009832508644,
+              "target_RP_power_identity_residual_mrad2": -2.879912020664621e-14,
+              "filtered_reference_RP_rms_mrad": 6.407490400973951
+            },
+            "2_5Hz": {
+              "compensation_rms_mps2": 0.19620509042375786,
+              "signed_compensation_delta_rms_mps2": 0.45326604511237056,
+              "target_RP_rms_mrad": 30.417121660830883,
+              "signed_target_RP_delta_rms_mrad": 44.97504286230347,
+              "target_RP_delta_cross_term_mrad2": -4776.766421826038,
+              "target_RP_power_identity_residual_mrad2": 0.0,
+              "filtered_reference_RP_rms_mrad": 11.037818149831143
+            },
+            "5_15Hz": {
+              "compensation_rms_mps2": 0.01295615446262812,
+              "signed_compensation_delta_rms_mps2": 0.0479136918713957,
+              "target_RP_rms_mrad": 1.8666705798192211,
+              "signed_target_RP_delta_rms_mrad": 4.63326847267288,
+              "target_RP_delta_cross_term_mrad2": -50.65858897401704,
+              "target_RP_power_identity_residual_mrad2": 0.0,
+              "filtered_reference_RP_rms_mrad": 1.3089519270496137
+            }
+          }
+        },
+        "notch_3p5Hz_Q1_event100hz": {
+          "compensation_rms_mps2": 0.5586117660716676,
+          "task_to_command_target_SO3_rmse_mrad": 55.788596148395484,
+          "task_to_filtered_reference_SO3_rmse_mrad": 53.081314175510784,
+          "signed_command_force_delta_from_raw_rms_N": 0.34503900204598514,
+          "command_force_delta_peak_norm_N": 0.731226825951562,
+          "bands": {
+            "0_1Hz": {
+              "compensation_rms_mps2": 0.5360169456781466,
+              "signed_compensation_delta_rms_mps2": 0.008336793465687723,
+              "target_RP_rms_mrad": 78.90900961629424,
+              "signed_target_RP_delta_rms_mrad": 0.8626111430241187,
+              "target_RP_delta_cross_term_mrad2": 37.48375003129078,
+              "target_RP_power_identity_residual_mrad2": -1.6534083130403943e-12,
+              "filtered_reference_RP_rms_mrad": 78.64677998006105
+            },
+            "1_2Hz": {
+              "compensation_rms_mps2": 0.04362107381561951,
+              "signed_compensation_delta_rms_mps2": 0.016384544619932415,
+              "target_RP_rms_mrad": 8.05840963538028,
+              "signed_target_RP_delta_rms_mrad": 1.6919705981943118,
+              "target_RP_delta_cross_term_mrad2": -1.4620467049850678,
+              "target_RP_power_identity_residual_mrad2": -3.1763735522036263e-15,
+              "filtered_reference_RP_rms_mrad": 6.839081078111246
+            },
+            "2_5Hz": {
+              "compensation_rms_mps2": 0.14548810925618444,
+              "signed_compensation_delta_rms_mps2": 0.4936637622909165,
+              "target_RP_rms_mrad": 17.300905339441098,
+              "signed_target_RP_delta_rms_mrad": 49.02793951332079,
+              "target_RP_delta_cross_term_mrad2": -5783.630758847333,
+              "target_RP_power_identity_residual_mrad2": 8.673617379884035e-13,
+              "filtered_reference_RP_rms_mrad": 5.417194363978376
+            },
+            "5_15Hz": {
+              "compensation_rms_mps2": 0.038039509454814775,
+              "signed_compensation_delta_rms_mps2": 0.03370565864665305,
+              "target_RP_rms_mrad": 4.3517634999485075,
+              "signed_target_RP_delta_rms_mrad": 3.2494156580496085,
+              "target_RP_delta_cross_term_mrad2": -24.296727847009084,
+              "target_RP_power_identity_residual_mrad2": 3.3881317890172014e-15,
+              "filtered_reference_RP_rms_mrad": 1.1443922968230487
+            }
+          }
+        }
+      },
+      "B_different_trajectory_comparator": {
+        "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\b_traceable_c3core_dev72_20261023\\runs_b\\DL1018_VAL_T2_C04_W14\\B_TRACEABLE_C3CORE_V1\\attempt_01\\raw_run.mat",
+        "raw_sha256": "2648d58e27b3d9a00c27ed181a074bf1d5b893768ff74ec18e341508c648689e",
+        "task_to_logged_filtered_reference_SO3_rmse_mrad": 53.882804897667654
+      }
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C01_W14",
+      "split": "VAL",
+      "HF_group": "W14",
+      "C5_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T3_C01_W14\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "C5_raw_sha256": "556be0c5cc9ae61c077597fdf474c2fde74f443a848bcd7dcfe0f7f49768db83",
+      "event_count": 1999,
+      "event_first_index_zero_based": 10,
+      "event_last_index_zero_based": 19990,
+      "event_period_s": 0.01,
+      "target_reconstruction_max_abs_rad": 2.7755575615628914e-17,
+      "command_filter_replay_max_abs_rad": 3.0531133177191805e-16,
+      "methods": {
+        "raw_C5": {
+          "compensation_rms_mps2": 0.846483709895237,
+          "task_to_command_target_SO3_rmse_mrad": 95.43609338319997,
+          "task_to_filtered_reference_SO3_rmse_mrad": 69.29020332869612,
+          "signed_command_force_delta_from_raw_rms_N": 0.0,
+          "command_force_delta_peak_norm_N": 0.0,
+          "bands": {
+            "0_1Hz": {
+              "compensation_rms_mps2": 0.6257300322418096,
+              "signed_compensation_delta_rms_mps2": 0.0,
+              "target_RP_rms_mrad": 73.33970795699479,
+              "signed_target_RP_delta_rms_mrad": 6.808519752708147e-16,
+              "target_RP_delta_cross_term_mrad2": 3.2599382394910027e-15,
+              "target_RP_power_identity_residual_mrad2": 8.641017997489126e-13,
+              "filtered_reference_RP_rms_mrad": 73.03829975401439
+            },
+            "1_2Hz": {
+              "compensation_rms_mps2": 0.05865362757107545,
+              "signed_compensation_delta_rms_mps2": 0.0,
+              "target_RP_rms_mrad": 11.421089781803078,
+              "signed_target_RP_delta_rms_mrad": 6.955077192620907e-16,
+              "target_RP_delta_cross_term_mrad2": 2.2006433652379295e-15,
+              "target_RP_power_identity_residual_mrad2": -2.20064336523793e-15,
+              "filtered_reference_RP_rms_mrad": 10.151175395166833
+            },
+            "2_5Hz": {
+              "compensation_rms_mps2": 0.5638527370186728,
+              "signed_compensation_delta_rms_mps2": 0.0,
+              "target_RP_rms_mrad": 69.34857999902725,
+              "signed_target_RP_delta_rms_mrad": 1.1800227405768079e-15,
+              "target_RP_delta_cross_term_mrad2": 1.5627380841805103e-14,
+              "target_RP_power_identity_residual_mrad2": 8.517343571465985e-13,
+              "filtered_reference_RP_rms_mrad": 24.439919826350344
+            },
+            "5_15Hz": {
+              "compensation_rms_mps2": 0.042653555832023037,
+              "signed_compensation_delta_rms_mps2": 0.0,
+              "target_RP_rms_mrad": 5.2032877980229815,
+              "signed_target_RP_delta_rms_mrad": 2.267755654265611e-15,
+              "target_RP_delta_cross_term_mrad2": 9.42155044892516e-17,
+              "target_RP_power_identity_residual_mrad2": 6.682048073545146e-15,
+              "filtered_reference_RP_rms_mrad": 1.568227756053632
+            }
+          }
+        },
+        "tau0p1_event100hz": {
+          "compensation_rms_mps2": 0.66163982548242,
+          "task_to_command_target_SO3_rmse_mrad": 73.43206852000287,
+          "task_to_filtered_reference_SO3_rmse_mrad": 65.58445645645712,
+          "signed_command_force_delta_from_raw_rms_N": 0.34736222319693894,
+          "command_force_delta_peak_norm_N": 0.7739219318901229,
+          "bands": {
+            "0_1Hz": {
+              "compensation_rms_mps2": 0.623652418755002,
+              "signed_compensation_delta_rms_mps2": 0.019156042878655265,
+              "target_RP_rms_mrad": 73.03218000035255,
+              "signed_target_RP_delta_rms_mrad": 1.9599465432209329,
+              "target_RP_delta_cross_term_mrad2": -48.85483806567283,
+              "target_RP_power_identity_residual_mrad2": 8.809142651444724e-14,
+              "filtered_reference_RP_rms_mrad": 72.77715753204389
+            },
+            "1_2Hz": {
+              "compensation_rms_mps2": 0.05082430774097248,
+              "signed_compensation_delta_rms_mps2": 0.030228955523094958,
+              "target_RP_rms_mrad": 10.40803952785458,
+              "signed_target_RP_delta_rms_mrad": 3.028005781625578,
+              "target_RP_delta_cross_term_mrad2": -31.282824004181183,
+              "target_RP_power_identity_residual_mrad2": -2.710505431213761e-14,
+              "filtered_reference_RP_rms_mrad": 9.217196302348487
+            },
+            "2_5Hz": {
+              "compensation_rms_mps2": 0.21356904694068735,
+              "signed_compensation_delta_rms_mps2": 0.49566197957888014,
+              "target_RP_rms_mrad": 34.7263347182047,
+              "signed_target_RP_delta_rms_mrad": 51.182258910269454,
+              "target_RP_delta_cross_term_mrad2": -6222.9308520785535,
+              "target_RP_power_identity_residual_mrad2": 2.6020852139652106e-12,
+              "filtered_reference_RP_rms_mrad": 12.557007406356385
+            },
+            "5_15Hz": {
+              "compensation_rms_mps2": 0.017440052774572317,
+              "signed_compensation_delta_rms_mps2": 0.038985583305234675,
+              "target_RP_rms_mrad": 2.2272621193500863,
+              "signed_target_RP_delta_rms_mrad": 3.9944450502362954,
+              "target_RP_delta_cross_term_mrad2": -38.069098620120236,
+              "target_RP_power_identity_residual_mrad2": -6.776263578034403e-15,
+              "filtered_reference_RP_rms_mrad": 1.0012258407578896
+            }
+          }
+        },
+        "notch_3p5Hz_Q1_event100hz": {
+          "compensation_rms_mps2": 0.6481567271548605,
+          "task_to_command_target_SO3_rmse_mrad": 68.07400594424395,
+          "task_to_filtered_reference_SO3_rmse_mrad": 64.92113748686829,
+          "signed_command_force_delta_from_raw_rms_N": 0.3770603534056238,
+          "command_force_delta_peak_norm_N": 0.7807488159258246,
+          "bands": {
+            "0_1Hz": {
+              "compensation_rms_mps2": 0.6247928819710865,
+              "signed_compensation_delta_rms_mps2": 0.01011767261766161,
+              "target_RP_rms_mrad": 73.20615527879878,
+              "signed_target_RP_delta_rms_mrad": 1.0581349319603177,
+              "target_RP_delta_cross_term_mrad2": -20.691242047919435,
+              "target_RP_power_identity_residual_mrad2": -1.2637731573034161e-12,
+              "filtered_reference_RP_rms_mrad": 72.94453968233525
+            },
+            "1_2Hz": {
+              "compensation_rms_mps2": 0.05706694941165882,
+              "signed_compensation_delta_rms_mps2": 0.019705590176596843,
+              "target_RP_rms_mrad": 11.16560388332902,
+              "signed_target_RP_delta_rms_mrad": 1.9681817807108921,
+              "target_RP_delta_cross_term_mrad2": -9.644321246516913,
+              "target_RP_power_identity_residual_mrad2": 1.8634724839594607e-14,
+              "filtered_reference_RP_rms_mrad": 9.84507244630057
+            },
+            "2_5Hz": {
+              "compensation_rms_mps2": 0.15833389295019476,
+              "signed_compensation_delta_rms_mps2": 0.5399553806120239,
+              "target_RP_rms_mrad": 19.86536832180071,
+              "signed_target_RP_delta_rms_mrad": 55.74530509217886,
+              "target_RP_delta_cross_term_mrad2": -7522.131729140784,
+              "target_RP_power_identity_residual_mrad2": 1.734723475976807e-12,
+              "filtered_reference_RP_rms_mrad": 6.189380813801457
+            },
+            "5_15Hz": {
+              "compensation_rms_mps2": 0.03438792791041106,
+              "signed_compensation_delta_rms_mps2": 0.027990759563129953,
+              "target_RP_rms_mrad": 4.197644700454644,
+              "signed_target_RP_delta_rms_mrad": 2.946740829642771,
+              "target_RP_delta_cross_term_mrad2": -18.137264394883637,
+              "target_RP_power_identity_residual_mrad2": -6.776263578034403e-15,
+              "filtered_reference_RP_rms_mrad": 1.221604807082466
+            }
+          }
+        }
+      },
+      "B_different_trajectory_comparator": {
+        "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\b_traceable_c3core_dev72_20261023\\runs_b\\DL1018_VAL_T3_C01_W14\\B_TRACEABLE_C3CORE_V1\\attempt_01\\raw_run.mat",
+        "raw_sha256": "396496784a14c217d90bcb4566dad275c8602503d6debce6dce63ec50497ae5e",
+        "task_to_logged_filtered_reference_SO3_rmse_mrad": 65.8540121660337
+      }
+    }
+  ],
+  "interpretation_limits": [
+    "The notch is causal at 100-Hz Stage1 output events and its output is zero-order held; no future samples enter.",
+    "The replay changes the position compensation on fixed C5 states. Q and future states are not recomputed, so all filter results are same-trace signal/command diagnostics, not closed-loop outcomes.",
+    "VAL rows are development diagnostics because the frozen backbone was already exposed to development data; they are not independent validation.",
+    "Command-force delta is the controller command change induced by filtering, not external wind or physical disturbance force.",
+    "The response phase can alter task alignment even where magnitude is preserved; phase risk is part of the fixed Q=1 result, not a negligible detail."
+  ]
+}

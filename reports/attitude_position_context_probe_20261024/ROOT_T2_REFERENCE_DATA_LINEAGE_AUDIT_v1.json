@@ -1,0 +1,254 @@
+{
+  "schema": "ROOT_T2_REFERENCE_DATA_LINEAGE_AUDIT_V1",
+  "status": "PASS_FOR_RECORDED_SOURCE_AND_SAMPLE_COMPARISONS_FULL_C5_VAL_AUDIT_PENDING",
+  "created_local": "2026-10-24",
+  "scope": "Read-only source lineage and MAT/HDF5 scene comparison. No Plant, training, episode or TEST access.",
+  "pins": {
+    "ORIGINAL_GENERATOR": {
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\matlab\\scenes\\make_scenes_dl1018.m",
+      "bytes": 23030,
+      "sha256": "7d11b4ebf63105b016c67f4b3c427282b35dafa53280ef2daf5578a6a16bb9ec"
+    },
+    "FIXED_GENERATOR": {
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\sources\\reference_fixed\\make_scenes_dl1018.m",
+      "bytes": 20580,
+      "sha256": "454106ad22f44ebf5a2210fbd50a7672b5508e550ebfc80c16158e5cdbee544a"
+    },
+    "ORIGINAL_FORMULA_HELPER": {
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\sources\\validation\\audit_reference_original.m",
+      "bytes": 1372,
+      "sha256": "50cf0f0a618acf4546fef1e8a9c99bb837feec45b1ae6e6ad879c37c6fc6ab5c"
+    },
+    "FIXED_FORMULA_HELPER": {
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\sources\\validation\\audit_reference_fixed.m",
+      "bytes": 1370,
+      "sha256": "ce7f1b680155ec0bff8a70dc3794c00898e4c3e7befa7d09c50160b7aabdf26e"
+    },
+    "SCENE_PREFLIGHT": {
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\scene_preflight\\scripts\\scene_input_preflight_72.m",
+      "bytes": 43764,
+      "sha256": "326b892fe3ea4612c8b536b77ac9c1ea9f3865a541cf7d63febec02c13a7d225"
+    },
+    "A1_INPUT_MANIFEST": {
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\reports\\attitude_cm18_a1_20261024\\data_preparation_v1\\INPUT_MANIFEST_v1.json",
+      "bytes": 729382,
+      "sha256": "a5f7fea9b0918c1449af6fa83929177d3bf7d5e70cb3b71711c40f6338d210a5"
+    },
+    "C5_INPUT_LOCK": {
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\C5_DEV72_INPUT_LOCK_v3.json",
+      "bytes": 322185,
+      "sha256": "82024c01276cc4bfbd9b7772cf5332dee3fdfcbed422969589b68f1c90ed2d75"
+    },
+    "C5_BODY_COMPLETE": {
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\C5_DEV72_BODY_COMPLETE_v3.json",
+      "bytes": 141025,
+      "sha256": "ea205a0cdd46026112d5381910887f71f3103d71d495980b504c06be3772b4c5"
+    },
+    "C5_PARENT_AUDIT": {
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\reports\\paper_continuation_20261023\\c5_dev72_parent_review\\C5_DEV72_RAW_PARENT_REVIEW_v3.json",
+      "bytes": 507155,
+      "sha256": "bb34889559d95a1c995d4d420e3b3d7a702908b58b47cce969dc508a1c697fab"
+    },
+    "C5_SCREEN12_SUMMARY": {
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\reports\\paper_continuation_20261023\\c5_axis_coordinate_parent_review\\screen12_parent_review\\SUMMARY.json",
+      "bytes": 84739,
+      "sha256": "fe217ac8b259706b1953e07dd44586b6a64368a6d4f5e0145e8f507863d82ad8"
+    },
+    "CORRECTED_T2_TRAIN_INDEX": {
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\corrected_reference_training_v1\\g3_collection\\reports\\G3_D4_CACHE_INDEX_1632.csv",
+      "bytes": 1643067,
+      "sha256": "3c8291c12628acfb9d950fb67cb84b56fe09cdaeaeac38706e8903291873e84e"
+    },
+    "FULL_TRAIN_RECONSTRUCTION_ROWS": {
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\reports\\train_pcf_contract_reconstruction_20261022\\TRAIN_FIXED_MODEL_5ca776c5f476_RUNS.csv",
+      "bytes": 4541225,
+      "sha256": "4a072c8006042cbffa5e653e450432c748f337fa45790c330b9aa58a8ac32190"
+    },
+    "CORRECTED_TRAIN_STATE": {
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\corrected_reference_training_v1\\state\\PILOT6_STATE.json",
+      "bytes": 613,
+      "sha256": "f367c54cb2c30f1fa120065664ac4f67af8eaa2990aeeaf66cdb1b23e92bcf25"
+    }
+  },
+  "formula": {
+    "parameterization": "theta=2*pi*u; u=10*s^3-15*s^4+6*s^5; s=clip(t/20,0,1); a=puu*(du/dt)^2+pu*d2u/dt2",
+    "old_puu_y": "-8*pi^2*sin(2*theta)",
+    "fixed_puu_y": "-16*pi^2*sin(2*theta)",
+    "old_puu_z": "2.8*pi^2*cos(2*theta)",
+    "fixed_puu_z": "5.6*pi^2*cos(2*theta)",
+    "reason": "p_y=sin(2theta) with theta=2*pi*u, and p_z=.4u+.35(1-cos(2theta)); the old second derivatives are half-sized.",
+    "position_velocity_x_and_yaw_unchanged": true,
+    "preflight_contract": "FIG8 permits only reference.acceleration Y/Z changes and checks original/fixed reference helpers against the generated scene arrays."
+  },
+  "VAL_T2_C15_W09": {
+    "A1_B_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\data\\raw\\val\\DL1018_VAL_T2_C15_W09\\B\\attempt_01\\raw_run.mat",
+    "A1_B_raw_sha256": "ae0c318a69bc76e0cd64f50a708d8b768f7cc4077fcd2489e972f28e18de4bb2",
+    "A1_B_size_bytes": 42026789,
+    "C5_ACC_FIX_B_source_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\runs\\DL1018_VAL_T2_C15_W09_ACC_FIX_V1\\B\\attempt_01\\raw_run.mat",
+    "C5_ACC_FIX_B_source_sha256": "847b8ec237a37bc97f62b37889622bac71eaf9381a2795f5a8e64ce034fd0627",
+    "C5_ACC_FIX_B_source_size_bytes": 42203999,
+    "scene_field_sets_equal": true,
+    "changed_fields": [
+      "reference.acceleration"
+    ],
+    "other_fields_bitwise_equal": [
+      "reference.position",
+      "reference.velocity",
+      "reference.yaw",
+      "reference.yaw_rate",
+      "reference.yaw_acceleration",
+      "time",
+      "environment_wind_I",
+      "arms.command",
+      "arms.rhoDot_hat",
+      "arms.rhoDot_true",
+      "arms.rho_hat",
+      "arms.rho_true",
+      "initial_state",
+      "scene_id"
+    ],
+    "reference_acceleration_shape_hdf5": [
+      3,
+      20001
+    ],
+    "max_abs_delta_xyz": [
+      0.0,
+      0.6475885364464121,
+      0.2428847958080584
+    ],
+    "rms_delta_xyz": [
+      0.0,
+      0.26922985241750774,
+      0.09375720443330839
+    ],
+    "old_formula_residual_max_xyz": [
+      3.2751579226442118e-15,
+      6.841749389252527e-15,
+      2.4980018054066022e-15
+    ],
+    "fixed_formula_residual_max_xyz": [
+      3.2751579226442118e-15,
+      1.3489209749195652e-14,
+      4.218847493575595e-15
+    ],
+    "method": "h5py read-only scene subtree comparison plus independently evaluated helper equations."
+  },
+  "TRAIN_T2_C00_W00": {
+    "A1_original_B_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\data\\raw\\train\\DL1018_TRAIN_T2_C00_W00\\B\\attempt_01\\raw_run.mat",
+    "A1_original_B_raw_sha256": "1d0dfa4663a1b05cb38a13ac605c4885ce1974a88703a947a013b33ecdcdfc70",
+    "corrected_B_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\corrected_reference_training_v1\\g3_collection\\data\\raw\\train\\r007\\raw_run.mat",
+    "corrected_B_raw_sha256": "8306453bc0ae517729f2816c5010866f0269b7f8b1e2e5084a7abc5f797fbc29",
+    "corrected_B_status": "RUN_COMPLETE_STABLE",
+    "corrected_B_formula_old_residual_max_xyz": [
+      3.2751579226442118e-15,
+      6.841749389252527e-15,
+      2.4980018054066022e-15
+    ],
+    "corrected_B_formula_fixed_residual_max_xyz": [
+      3.2751579226442118e-15,
+      1.3489209749195652e-14,
+      4.218847493575595e-15
+    ],
+    "HDF5_scene_changed_only": [
+      "reference.acceleration"
+    ],
+    "scene_field_sets_equal": true,
+    "raw_hashes_independently_checked": true
+  },
+  "corrected_T2_TRAIN_inventory": {
+    "index_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\corrected_reference_training_v1\\g3_collection\\reports\\G3_D4_CACHE_INDEX_1632.csv",
+    "index_sha256": "3c8291c12628acfb9d950fb67cb84b56fe09cdaeaeac38706e8903291873e84e",
+    "rows": 512,
+    "B_rows": 256,
+    "POS_OFF_rows": 256,
+    "run_status_counts": {
+      "RUN_COMPLETE_STABLE": 506,
+      "PILOT6_VALIDATED": 6
+    },
+    "action_counts": {
+      "RUN_PLANT": 506,
+      "PILOT6_IMPORT": 6
+    },
+    "raw_run_start_event_h5_cache_exists": {
+      "raw_path": 512,
+      "run_start_path": 512,
+      "event_h5_path": 512,
+      "cache_path": 512
+    },
+    "reconstruction_runs_csv_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\reports\\train_pcf_contract_reconstruction_20261022\\TRAIN_FIXED_MODEL_5ca776c5f476_RUNS.csv",
+    "reconstruction_runs_csv_sha256": "4a072c8006042cbffa5e653e450432c748f337fa45790c330b9aa58a8ac32190",
+    "T2_reconstruction_rows": 512,
+    "T2_PASS_rows": 512,
+    "cache_identity_true_rows": 512,
+    "raw_hash_before_after_equal_rows": 512,
+    "sidecar_files_present_rows": 512,
+    "overall_reconstruction_status": "PASS_TRAIN_1536",
+    "PILOT6_state_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\corrected_reference_training_v1\\state\\PILOT6_STATE.json",
+    "PILOT6_state_sha256": "f367c54cb2c30f1fa120065664ac4f67af8eaa2990aeeaf66cdb1b23e92bcf25",
+    "PILOT6_transitions_completed": 120000
+  },
+  "corrected_T2_log_required_field_check": {
+    "sample_run_id": "G02_P_TEACHER_DL1018_TRAIN_T2_C00_W00_ACC_FIX_V1_B",
+    "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\corrected_reference_training_v1\\g3_collection\\data\\raw\\train\\r007\\raw_run.mat",
+    "raw_sha256": "8306453bc0ae517729f2816c5010866f0269b7f8b1e2e5084a7abc5f797fbc29",
+    "field_shapes": {
+      "attitude_event_flag": [
+        1,
+        20000
+      ],
+      "attitude_bs_nominal_torque_Nm": [
+        3,
+        20000
+      ],
+      "attitude_compensation_applied_torque_Nm": [
+        3,
+        20000
+      ],
+      "requested_generalized": [
+        4,
+        20000
+      ],
+      "realized_generalized": [
+        4,
+        20000
+      ],
+      "wind_torque_B": [
+        3,
+        20000
+      ],
+      "state": [
+        12,
+        20001
+      ],
+      "time": [
+        1,
+        20001
+      ]
+    },
+    "all_required_arrays_finite": true,
+    "attitude_event_count": 1999,
+    "meaning": "The raw corrected TRAIN run contains the required attitude/physics signals; fixed-position-model sidecars are separate and do not replace these raw channels."
+  },
+  "cfg_opts_check": {
+    "result": "MATLAB_BATCH_OUTPUT_EXACT_MATCH",
+    "C5_snapshot_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\C5_DEV72_PREPARED_CFG_OPTS_v3.mat",
+    "C5_snapshot_sha256": "842ef395569e675db6e139c2684d72b976946915e5e0a58b9b7f24ec10c1d24a",
+    "corrected_T2_TRAIN_run_id": "G02_P_TEACHER_DL1018_TRAIN_T2_C00_W00_ACC_FIX_V1_B",
+    "corrected_T2_TRAIN_run_start_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\corrected_reference_training_v1\\g3_collection\\data\\raw\\train\\r007\\run_start.mat",
+    "corrected_T2_TRAIN_run_start_sha256": "99e686d7eb387d1d97773f5f0e07fa8c8b9623029fc185949322be688b7b6bc8",
+    "cfg_isequaln": true,
+    "shared_attitude_opts": {
+      "formal_rbf_baseline": true,
+      "attitude_rbf_frequency_hz": 100,
+      "rbf_phase_start": -0.1,
+      "rbf_full_phase_start": -0.1,
+      "rbf_attitude_gamma_scale": 19,
+      "rbf_attitude_enabled": true,
+      "rbf_attitude_output_enabled": true,
+      "rbf_attitude_update_enabled": true,
+      "v1_adaptive": false
+    },
+    "command": "C:/Program Files/MATLAB/R2025b/bin/matlab.exe -batch with S=load(C5 snapshot cfg,opts), R=load(corrected run_start runStart); printed CFG_EXACT=1 and exact=1 for each of these 9 shared options; no Plant or episode."
+  },
+  "conclusion": "The original canonical T2 TRAIN/VAL references use the old FIG8 Y/Z acceleration coefficients. Complete corrected T2 TRAIN raw/event/cache material is present; 512 T2 reconstructed sidecars pass their recorded identities. A sampled corrected T2 run_start cfg and shared attitude RBF opts exactly match the current C5 snapshot, and its raw run includes all requested physical X18/label fields. This is a reusable corrected-data candidate, not automatic approval: ROOT must choose the reference protocol, then the training label/cache contract must be regenerated or validated under the selected C5 teacher. This report does not authorize any new collection or training."
+}

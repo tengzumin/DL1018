@@ -1,0 +1,33 @@
+{
+  "schema": "DL1018_POSITION_APPLIED_LOWPASS_PREPLANT_GATE_FAILURE_AUDIT_V1",
+  "status": "VERIFIED_FAILURE_BEFORE_PLANT_DYNAMICS",
+  "scene_id": "DL1018_VAL_T3_C01_W14",
+  "original_attempt_relative_path": "runs/DL1018_VAL_T3_C01_W14",
+  "original_release_sha256": "cc48c60f8dc6a1f86a860a58aab8e2c261f915052ee7252534eedd994240d7d7",
+  "original_source_lock_sha256": "1b7794e9c4439d29d54fdf8082fbce25d52c38677c5b9454aeac5d2298c0b157",
+  "original_source_manifest_sha256": "428f2bf76fae9817f04d3a7b5c2d7cfbb2ed922b856ff7d7dc7644dd4f2da012",
+  "original_runner_sha256": "e9230b290de3e59252ad987c71b4bfe0fa6c06e5f1a4c90823f0ab75c241d223",
+  "entry_wrapper_invoked": true,
+  "runner_invoked": true,
+  "plant_dynamics_started": false,
+  "physical_Plant_calls": 0,
+  "wrapper_reported_Plant_calls": 1,
+  "wrapper_call_flag_preceded_runner_invocation": true,
+  "failure_identifier": "CompositeDEV:BudgetClosed",
+  "failure_stack_top": {
+    "file": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\gru_tau01_position_applied_lowpass_tau01_v1\\candidate_runner_work\\matlab\\runtime\\run_mlp15_dev72_closed_loop.m",
+    "name": "run_mlp15_dev72_closed_loop",
+    "line": 22
+  },
+  "rejected_at": "run_mlp15_dev72_closed_loop.m line 22, before main simulation loop at line 1104 and first rk4_vehicle_step at line 2863",
+  "raw_run_present": false,
+  "first_step_marker_present": false,
+  "immutable_evidence_sha256": {
+    "run_start": "867a50927746672dc2faf9a5c9b189635c5c7cff0a2dcd0ee5aca28c2d97938e",
+    "marker": "bfdbac232b075a1360dcb5b6d06b93d569edb59cf96e7aab45c0cd4c29f390d2",
+    "run_status": "284cef3feca7eb80f8c9b2352cd3ac9910711759396d98453af4aaf37316d6c7",
+    "run_failure": "bd45d7c84f568bd462f01c0e5d5e6f676024ab324d4e6443fe1b317635d84a45"
+  },
+  "correction": "The wrapper set plantCallStarted=true immediately before invoking the runner. The runner then rejected the release at its schema/budget assertion before any Plant integration. Therefore the existing Plant_calls=1 field counts a runner invocation, not executed dynamics; original files remain unchanged.",
+  "test_data_read": false
+}

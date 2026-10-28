@@ -1,0 +1,48 @@
+{
+  "schema": "C2_RUNNER_CHECKCODE_ATTEMPTS_V1",
+  "source_path": "experiments/position_beta_clock_c2_20261023/run_c2_beta.m",
+  "source_sha256": "eace60eb125468476df8b348543e804f9968cb68b917ae66248bf55f17543813",
+  "plant_called": false,
+  "attempts": [
+    {
+      "attempt": 1,
+      "shell": "pwsh login:false",
+      "matlab_executable": "C:\\Program Files\\MATLAB\\R2025b\\bin\\matlab.exe",
+      "operation": "checkcode(path,'-id') followed by a formatter that assumed m(k).severity",
+      "result": "OUTPUT_FORMATTER_ERROR",
+      "exit_code": 1,
+      "wall_time_seconds": 4.93,
+      "observed_error": "MATLAB rejected field 'severity' while formatting checkcode messages; checkcode itself had returned."
+    },
+    {
+      "attempt": 2,
+      "shell": "pwsh login:false",
+      "matlab_executable": "C:\\Program Files\\MATLAB\\R2025b\\bin\\matlab.exe",
+      "operation": "checkcode(path,'-id'); display fieldnames and id/line/message",
+      "result": "CHECKCODE_COMPLETED_WITH_ANALYZER_MESSAGES",
+      "exit_code": 0,
+      "wall_time_seconds": 5.17,
+      "source_target": "experiments/position_beta_clock_c2_20261023/run_c2_beta.m",
+      "observed_powershell_diagnostics": [
+        "A preceding Resolve-Path expression referenced a nonexistent 20261022 path before scriptPath was reset to the correct 20261023 path."
+      ],
+      "checkcode_fields": ["id", "message", "fix", "line", "column"],
+      "checkcode_message_count": 24,
+      "checkcode_ids": [
+        "MSNU", "NASGU", "DATST", "TNOW1", "NASGU", "NASGU", "INUSD", "ISCL",
+        "INUSD", "ISCL", "ISCL", "ISCL", "ISCL", "NOCOMMA", "ALIGN", "ALIGN",
+        "ISCL", "ISCL", "ISCL", "MSNU", "MSNU", "NOCOMMA", "NOCOMMA", "NOCOMMA"
+      ],
+      "parse_or_undefined_local_function_diagnostic_observed": false,
+      "console_output_capture": "The command output is retained in the Codex execution record; no stdout/stderr files were created by these static checks."
+    }
+  ],
+  "scope": {
+    "run_c2_beta_called": false,
+    "run_episode_called": false,
+    "Plant_dynamics_called": false,
+    "optimizer_steps": 0,
+    "gpu_jobs": 0,
+    "TEST_accessed": false
+  }
+}

@@ -1,0 +1,3156 @@
+{
+  "schema": "ROOT_MATCHED_POSITION_LABEL_ARITHMETIC_REVIEW_V1",
+  "status": "PASS",
+  "identity": {
+    "review_source_path": "experiments/attitude_position_context_probe_20261024/review_matched_position_label_decomposition_v1.py",
+    "review_source_sha256": "d735a86e102a838db52053f0641cbf164265de1529c952711ba80799c4167fd6",
+    "decomposition_path": "reports/attitude_position_context_probe_20261024/offline_label_decomposition_v2/MATCHED_POSITION_LABEL_DECOMPOSITION_v2.json",
+    "decomposition_sha256": "2c98a3e6ce6915bb03e00c4a74db1415ac1f71c2515773b48b3e4fa173f60093",
+    "decomposition_source_sha256": "5d26c8d70e0f78c6d54bbf68c9c9cc4c02dbf463ef2cf701e0dfb0ed7aa49742",
+    "frozen_a1_evaluation_path": "reports/attitude_position_context_probe_20261024/frozen_a1_evaluation_v1/ROOT_FROZEN_A1_EVALUATION_v1.json",
+    "frozen_a1_evaluation_sha256": "2631153d3a8e502923617e4de098c8556ffdaa1d80a5e7138fd16e5637968f97",
+    "a1_deployment_sha256": "ee00c46af42cbce83a630ae9b03eaf1a86bfc6047910ed68bc4e7b8b020aa6ae",
+    "a1_checkpoint_sha256": "105585385157da3f1b404ab24606d0717287638e4a1ca710790633cd16d233a4",
+    "a1_selected_step": 30000,
+    "event_export_sha256_by_flight": {
+      "T1_B": "574edcdc35483c6069bd053ae345a2ddee1c61780b7e044dea422b7b01fbf08c",
+      "T1_C5": "6440649b1f6b45b483158d963e34f99ee6d5d47b961860422556f9c450f75749",
+      "T3_B": "bc5e8499347d071f736a5aa7a0a8d1173e3b9633aaeb2182b14256666d2f7594",
+      "T3_C5": "27c5af24ac01f0ea90eb8a1138a8d947c9c568f945c64c05cced3da08117a7f4"
+    }
+  },
+  "scope": {
+    "flights": [
+      "T1_B",
+      "T1_C5",
+      "T3_B",
+      "T3_C5"
+    ],
+    "events_per_flight": 1999,
+    "events_total": 7996,
+    "raw_mat_read": false,
+    "TEST_accessed": false,
+    "training_steps": 0,
+    "optimizer_steps": 0,
+    "plant_calls": 0,
+    "model_forward_calls": 0,
+    "method": "Recompute arithmetic from the final decomposition JSON and compare event export/model references in the frozen A1 evaluator JSON; no raw/cache/model forward is opened or executed.",
+    "interpretation_limit": "RMS values and cross-products are descriptive moment terms; this report does not express them as causal percentages."
+  },
+  "tolerances": {
+    "event_label_sum_abs": 1e-08,
+    "direct_target_all_axis_abs": 1e-08,
+    "summary_stat_abs": 1e-10
+  },
+  "maxima": {
+    "label_sum": 8.881784197001252e-16,
+    "direct_target": 0.0,
+    "summary_stat": 7.771561172376096e-16
+  },
+  "flights": {
+    "T1_B": {
+      "scene_id": "DL1018_TRAIN_T1_C15_W14",
+      "position_mode": "B_POSITION_RBF",
+      "attempt_id": 2,
+      "event_export_sha256": "574edcdc35483c6069bd053ae345a2ddee1c61780b7e044dea422b7b01fbf08c",
+      "raw_sha256": "e44d75f8fb784ed30f7b72057fda2183ad09c9286271b8db15cc3f5aeafd830a",
+      "event_count": 1999,
+      "max_abs_six_term_yaw_label_closure_rad_s2": 4.440892098500626e-16,
+      "max_abs_direct_target_all_axis_difference_rad_s2": 0.0,
+      "groups": [
+        {
+          "group": "ALL",
+          "phase_code": -1,
+          "event_count": 1999,
+          "max_abs_label_closure": 4.440892098500626e-16,
+          "components": [
+            {
+              "name": "nominal_transfer",
+              "mean": 0.0047455769017751065,
+              "second_moment": 0.006238718582859289,
+              "rms": 0.07898555933117958
+            },
+            {
+              "name": "old_compensation_transfer",
+              "mean": 0.1325616935232235,
+              "second_moment": 0.04840655475348962,
+              "rms": 0.22001489666267968
+            },
+            {
+              "name": "gyro_jdot",
+              "mean": 7.947894879777204e-05,
+              "second_moment": 3.2556303867075284e-06,
+              "rms": 0.001804336550288645
+            },
+            {
+              "name": "wind",
+              "mean": 0.18477754449219366,
+              "second_moment": 0.1343633748599619,
+              "rms": 0.36655610056301324
+            },
+            {
+              "name": "request_gap",
+              "mean": 0.0,
+              "second_moment": 0.0,
+              "rms": 0.0
+            },
+            {
+              "name": "realized_gap",
+              "mean": -2.3836995214341457e-15,
+              "second_moment": 1.4638191610626767e-29,
+              "rms": 3.82598897157673e-15
+            }
+          ],
+          "pairwise_mean_products": [
+            {
+              "first": "nominal_transfer",
+              "second": "old_compensation_transfer",
+              "mean_product": 0.0007202251028983369
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "gyro_jdot",
+              "mean_product": 1.8712081647880195e-05
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "wind",
+              "mean_product": 0.007535364755571126
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "realized_gap",
+              "mean_product": -4.917735250429507e-18
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "gyro_jdot",
+              "mean_product": 1.1732641847397933e-05
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "wind",
+              "mean_product": 0.059716770238535576
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "realized_gap",
+              "mean_product": -7.942806012510675e-17
+            },
+            {
+              "first": "gyro_jdot",
+              "second": "wind",
+              "mean_product": 2.3335202211135168e-05
+            },
+            {
+              "first": "gyro_jdot",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "gyro_jdot",
+              "second": "realized_gap",
+              "mean_product": -2.8828223460485735e-19
+            },
+            {
+              "first": "wind",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "wind",
+              "second": "realized_gap",
+              "mean_product": -1.1890074728333026e-16
+            },
+            {
+              "first": "request_gap",
+              "second": "realized_gap",
+              "mean_product": 0.0
+            }
+          ],
+          "target_mean": 0.3221642938659873,
+          "target_second_moment": 0.3250641838721199,
+          "target_rms": 0.5701440027502875,
+          "expanded_sum_second_moment": 0.32506418387212,
+          "second_moment_expansion_error": 1.1102230246251565e-16
+        },
+        {
+          "group": "STATIC",
+          "phase_code": 0,
+          "event_count": 0,
+          "max_abs_label_closure": null,
+          "components": [],
+          "pairwise_mean_products": []
+        },
+        {
+          "group": "PRE",
+          "phase_code": 1,
+          "event_count": 619,
+          "max_abs_label_closure": 2.4434344221026965e-17,
+          "components": [
+            {
+              "name": "nominal_transfer",
+              "mean": 0.0,
+              "second_moment": 0.0,
+              "rms": 0.0
+            },
+            {
+              "name": "old_compensation_transfer",
+              "mean": 0.0,
+              "second_moment": 0.0,
+              "rms": 0.0
+            },
+            {
+              "name": "gyro_jdot",
+              "mean": 0.0,
+              "second_moment": 0.0,
+              "rms": 0.0
+            },
+            {
+              "name": "wind",
+              "mean": -2.550417025501286e-16,
+              "second_moment": 2.2473593352403767e-31,
+              "rms": 4.740632168013435e-16
+            },
+            {
+              "name": "request_gap",
+              "mean": 0.0,
+              "second_moment": 0.0,
+              "rms": 0.0
+            },
+            {
+              "name": "realized_gap",
+              "mean": -3.7961822926644145e-15,
+              "second_moment": 2.3711296777977626e-29,
+              "rms": 4.8694246865494925e-15
+            }
+          ],
+          "pairwise_mean_products": [
+            {
+              "first": "nominal_transfer",
+              "second": "old_compensation_transfer",
+              "mean_product": 0.0
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "gyro_jdot",
+              "mean_product": 0.0
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "wind",
+              "mean_product": 0.0
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "realized_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "gyro_jdot",
+              "mean_product": 0.0
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "wind",
+              "mean_product": 0.0
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "realized_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "gyro_jdot",
+              "second": "wind",
+              "mean_product": 0.0
+            },
+            {
+              "first": "gyro_jdot",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "gyro_jdot",
+              "second": "realized_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "wind",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "wind",
+              "second": "realized_gap",
+              "mean_product": 9.190205763778857e-31
+            },
+            {
+              "first": "request_gap",
+              "second": "realized_gap",
+              "mean_product": 0.0
+            }
+          ],
+          "target_mean": -4.051104025524395e-15,
+          "target_second_moment": 2.5773065709126414e-29,
+          "target_rms": 5.076718005673194e-15,
+          "expanded_sum_second_moment": 2.5774073864257435e-29,
+          "second_moment_expansion_error": 1.0081551310214225e-33
+        },
+        {
+          "group": "EXTEND",
+          "phase_code": 2,
+          "event_count": 200,
+          "max_abs_label_closure": 4.440892098500626e-16,
+          "components": [
+            {
+              "name": "nominal_transfer",
+              "mean": 0.0334069617589854,
+              "second_moment": 0.015102905897362587,
+              "rms": 0.12289388063432038
+            },
+            {
+              "name": "old_compensation_transfer",
+              "mean": 0.15826483981701572,
+              "second_moment": 0.0631801724321248,
+              "rms": 0.25135666379096616
+            },
+            {
+              "name": "gyro_jdot",
+              "mean": 0.0011453455342175186,
+              "second_moment": 8.439294251280604e-06,
+              "rms": 0.0029050463423636813
+            },
+            {
+              "name": "wind",
+              "mean": 0.2698059775761336,
+              "second_moment": 0.19992866692889574,
+              "rms": 0.447133835589408
+            },
+            {
+              "name": "request_gap",
+              "mean": 0.0,
+              "second_moment": 0.0,
+              "rms": 0.0
+            },
+            {
+              "name": "realized_gap",
+              "mean": -2.1520142532519955e-15,
+              "second_moment": 1.092420878725277e-29,
+              "rms": 3.3051790855039563e-15
+            }
+          ],
+          "pairwise_mean_products": [
+            {
+              "first": "nominal_transfer",
+              "second": "old_compensation_transfer",
+              "mean_product": 0.0023187445898509075
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "gyro_jdot",
+              "mean_product": -0.00016075049017156372
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "wind",
+              "mean_product": 0.02456253221388256
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "realized_gap",
+              "mean_product": -7.120125488512223e-17
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "gyro_jdot",
+              "mean_product": 5.708082797844531e-05
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "wind",
+              "mean_product": 0.07902221308376305
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "realized_gap",
+              "mean_product": -1.2492364122572591e-16
+            },
+            {
+              "first": "gyro_jdot",
+              "second": "wind",
+              "mean_product": -0.00020954698953534794
+            },
+            {
+              "first": "gyro_jdot",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "gyro_jdot",
+              "second": "realized_gap",
+              "mean_product": -3.5449309168593575e-18
+            },
+            {
+              "first": "wind",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "wind",
+              "second": "realized_gap",
+              "mean_product": -3.28120523386818e-16
+            },
+            {
+              "first": "request_gap",
+              "second": "realized_gap",
+              "mean_product": 0.0
+            }
+          ],
+          "target_mean": 0.46262312468635014,
+          "target_second_moment": 0.4894007310241695,
+          "target_rms": 0.6995718197756178,
+          "expanded_sum_second_moment": 0.4894007310241694,
+          "second_moment_expansion_error": -5.551115123125783e-17
+        },
+        {
+          "group": "HOLD",
+          "phase_code": 3,
+          "event_count": 580,
+          "max_abs_label_closure": 2.220446049250313e-16,
+          "components": [
+            {
+              "name": "nominal_transfer",
+              "mean": 0.007988072891831037,
+              "second_moment": 0.014451053221855786,
+              "rms": 0.12021253354727944
+            },
+            {
+              "name": "old_compensation_transfer",
+              "mean": 0.3617528544882958,
+              "second_moment": 0.13601527986301734,
+              "rms": 0.3688024943828571
+            },
+            {
+              "name": "gyro_jdot",
+              "mean": 0.00017184217069092053,
+              "second_moment": 4.886026619524878e-07,
+              "rms": 0.0006990011888062049
+            },
+            {
+              "name": "wind",
+              "mean": 0.45736314716409465,
+              "second_moment": 0.33641549518438213,
+              "rms": 0.580013357763752
+            },
+            {
+              "name": "request_gap",
+              "mean": 0.0,
+              "second_moment": 0.0,
+              "rms": 0.0
+            },
+            {
+              "name": "realized_gap",
+              "mean": -5.457541967612885e-16,
+              "second_moment": 3.844328476858184e-30,
+              "rms": 1.9606959164689928e-15
+            }
+          ],
+          "pairwise_mean_products": [
+            {
+              "first": "nominal_transfer",
+              "second": "old_compensation_transfer",
+              "mean_product": 0.002076161600704151
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "gyro_jdot",
+              "mean_product": 3.137956078181472e-06
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "wind",
+              "mean_product": 0.015326141528729879
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "realized_gap",
+              "mean_product": 4.8486937545729456e-18
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "gyro_jdot",
+              "mean_product": 6.583338712429671e-05
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "wind",
+              "mean_product": 0.1618078208574465
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "realized_gap",
+              "mean_product": -2.0253696341876378e-16
+            },
+            {
+              "first": "gyro_jdot",
+              "second": "wind",
+              "mean_product": 7.428628959842128e-05
+            },
+            {
+              "first": "gyro_jdot",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "gyro_jdot",
+              "second": "realized_gap",
+              "mean_product": -9.688717512325078e-20
+            },
+            {
+              "first": "wind",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "wind",
+              "second": "realized_gap",
+              "mean_product": -2.315506424915654e-16
+            },
+            {
+              "first": "request_gap",
+              "second": "realized_gap",
+              "mean_product": 0.0
+            }
+          ],
+          "target_mean": 0.8272759167149125,
+          "target_second_moment": 0.845589080111279,
+          "target_rms": 0.919559177057833,
+          "expanded_sum_second_moment": 0.8455890801112791,
+          "second_moment_expansion_error": 1.1102230246251565e-16
+        },
+        {
+          "group": "RETRACT",
+          "phase_code": 4,
+          "event_count": 200,
+          "max_abs_label_closure": 2.220446049250313e-16,
+          "components": [
+            {
+              "name": "nominal_transfer",
+              "mean": -0.009140332012053198,
+              "second_moment": 0.005345031994934266,
+              "rms": 0.07310972572055148
+            },
+            {
+              "name": "old_compensation_transfer",
+              "mean": 0.117606008931543,
+              "second_moment": 0.026199030726253784,
+              "rms": 0.161861146438093
+            },
+            {
+              "name": "gyro_jdot",
+              "mean": -0.0008492957359874569,
+              "second_moment": 2.268378374419892e-05,
+              "rms": 0.004762749599149521
+            },
+            {
+              "name": "wind",
+              "mean": 0.25069245284746505,
+              "second_moment": 0.16742832876171432,
+              "rms": 0.40918006887153524
+            },
+            {
+              "name": "request_gap",
+              "mean": 0.0,
+              "second_moment": 0.0,
+              "rms": 0.0
+            },
+            {
+              "name": "realized_gap",
+              "mean": -1.4065551127725124e-15,
+              "second_moment": 9.180754422501623e-30,
+              "rms": 3.029975977215269e-15
+            }
+          ],
+          "pairwise_mean_products": [
+            {
+              "first": "nominal_transfer",
+              "second": "old_compensation_transfer",
+              "mean_product": -0.0011409633284240684
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "gyro_jdot",
+              "mean_product": 0.0003386776736154
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "wind",
+              "mean_product": 0.006307628084734193
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "realized_gap",
+              "mean_product": 7.98727916881778e-18
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "gyro_jdot",
+              "mean_product": -0.00013072989537416343
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "wind",
+              "mean_product": 0.04860422496380519
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "realized_gap",
+              "mean_product": -8.160262581030119e-17
+            },
+            {
+              "first": "gyro_jdot",
+              "second": "wind",
+              "mean_product": 0.0002273520958002223
+            },
+            {
+              "first": "gyro_jdot",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "gyro_jdot",
+              "second": "realized_gap",
+              "mean_product": 9.445227898412356e-19
+            },
+            {
+              "first": "wind",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "wind",
+              "second": "realized_gap",
+              "mean_product": -1.8879558248453358e-16
+            },
+            {
+              "first": "request_gap",
+              "second": "realized_gap",
+              "mean_product": 0.0
+            }
+          ],
+          "target_mean": 0.35830883403096614,
+          "target_second_moment": 0.3074074544549596,
+          "target_rms": 0.5544433735332758,
+          "expanded_sum_second_moment": 0.30740745445495954,
+          "second_moment_expansion_error": -5.551115123125783e-17
+        },
+        {
+          "group": "RECOVERY",
+          "phase_code": 5,
+          "event_count": 400,
+          "max_abs_label_closure": 1.2172419352198387e-17,
+          "components": [
+            {
+              "name": "nominal_transfer",
+              "mean": 0.0,
+              "second_moment": 0.0,
+              "rms": 0.0
+            },
+            {
+              "name": "old_compensation_transfer",
+              "mean": 0.0,
+              "second_moment": 0.0,
+              "rms": 0.0
+            },
+            {
+              "name": "gyro_jdot",
+              "mean": 0.0,
+              "second_moment": 0.0,
+              "rms": 0.0
+            },
+            {
+              "name": "wind",
+              "mean": -3.3299517060483383e-16,
+              "second_moment": 2.844855061654541e-31,
+              "rms": 5.333718273076055e-16
+            },
+            {
+              "name": "request_gap",
+              "mean": 0.0,
+              "second_moment": 0.0,
+              "rms": 0.0
+            },
+            {
+              "name": "realized_gap",
+              "mean": -3.4673179921528267e-15,
+              "second_moment": 2.0834372913865255e-29,
+              "rms": 4.5644685247973015e-15
+            }
+          ],
+          "pairwise_mean_products": [
+            {
+              "first": "nominal_transfer",
+              "second": "old_compensation_transfer",
+              "mean_product": 0.0
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "gyro_jdot",
+              "mean_product": 0.0
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "wind",
+              "mean_product": 0.0
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "realized_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "gyro_jdot",
+              "mean_product": 0.0
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "wind",
+              "mean_product": 0.0
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "realized_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "gyro_jdot",
+              "second": "wind",
+              "mean_product": 0.0
+            },
+            {
+              "first": "gyro_jdot",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "gyro_jdot",
+              "second": "realized_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "wind",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "wind",
+              "second": "realized_gap",
+              "mean_product": 1.1800562216092052e-30
+            },
+            {
+              "first": "request_gap",
+              "second": "realized_gap",
+              "mean_product": 0.0
+            }
+          ],
+          "target_mean": -3.800432225051307e-15,
+          "target_second_moment": 2.348012043578879e-29,
+          "target_rms": 4.845629003110823e-15,
+          "expanded_sum_second_moment": 2.3478970863249122e-29,
+          "second_moment_expansion_error": -1.149572539668502e-33
+        }
+      ]
+    },
+    "T1_C5": {
+      "scene_id": "DL1018_TRAIN_T1_C15_W14",
+      "position_mode": "C5_POSITION_M110",
+      "attempt_id": 1,
+      "event_export_sha256": "6440649b1f6b45b483158d963e34f99ee6d5d47b961860422556f9c450f75749",
+      "raw_sha256": "0ed32edca581d98901cf1b92a4816e3c5870a2b4344a10ad4697f1b85c05c01f",
+      "event_count": 1999,
+      "max_abs_six_term_yaw_label_closure_rad_s2": 8.881784197001252e-16,
+      "max_abs_direct_target_all_axis_difference_rad_s2": 0.0,
+      "groups": [
+        {
+          "group": "ALL",
+          "phase_code": -1,
+          "event_count": 1999,
+          "max_abs_label_closure": 8.881784197001252e-16,
+          "components": [
+            {
+              "name": "nominal_transfer",
+              "mean": -0.0036091690577588617,
+              "second_moment": 0.0644518842849635,
+              "rms": 0.2538737565896946
+            },
+            {
+              "name": "old_compensation_transfer",
+              "mean": 0.13807387451579956,
+              "second_moment": 0.05260823466758902,
+              "rms": 0.22936485054948813
+            },
+            {
+              "name": "gyro_jdot",
+              "mean": 0.0007283354918424478,
+              "second_moment": 2.1407832013839227e-05,
+              "rms": 0.004626859843764367
+            },
+            {
+              "name": "wind",
+              "mean": 0.18405348127948526,
+              "second_moment": 0.133112459113702,
+              "rms": 0.36484580183099546
+            },
+            {
+              "name": "request_gap",
+              "mean": 0.0,
+              "second_moment": 0.0,
+              "rms": 0.0
+            },
+            {
+              "name": "realized_gap",
+              "mean": -2.0368398447779497e-15,
+              "second_moment": 1.3320417456804665e-29,
+              "rms": 3.649714708960779e-15
+            }
+          ],
+          "pairwise_mean_products": [
+            {
+              "first": "nominal_transfer",
+              "second": "old_compensation_transfer",
+              "mean_product": -0.005005233656372181
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "gyro_jdot",
+              "mean_product": 3.7627433011844064e-05
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "wind",
+              "mean_product": 0.02316499740826343
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "realized_gap",
+              "mean_product": -2.4163706043026576e-17
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "gyro_jdot",
+              "mean_product": 0.00025197253896899535
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "wind",
+              "mean_product": 0.0613590256096032
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "realized_gap",
+              "mean_product": -1.1935734022034573e-16
+            },
+            {
+              "first": "gyro_jdot",
+              "second": "wind",
+              "mean_product": 0.0003285500847759181
+            },
+            {
+              "first": "gyro_jdot",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "gyro_jdot",
+              "second": "realized_gap",
+              "mean_product": -3.0808130669185987e-19
+            },
+            {
+              "first": "wind",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "wind",
+              "second": "realized_gap",
+              "mean_product": -2.34585020893693e-16
+            },
+            {
+              "first": "request_gap",
+              "second": "realized_gap",
+              "mean_product": 0.0
+            }
+          ],
+          "target_mean": 0.3192465222293664,
+          "target_second_moment": 0.41046786473476987,
+          "target_rms": 0.6406776605554231,
+          "expanded_sum_second_moment": 0.4104678647347701,
+          "second_moment_expansion_error": 2.220446049250313e-16
+        },
+        {
+          "group": "STATIC",
+          "phase_code": 0,
+          "event_count": 0,
+          "max_abs_label_closure": null,
+          "components": [],
+          "pairwise_mean_products": []
+        },
+        {
+          "group": "PRE",
+          "phase_code": 1,
+          "event_count": 619,
+          "max_abs_label_closure": 1.6319798956202712e-16,
+          "components": [
+            {
+              "name": "nominal_transfer",
+              "mean": 0.0,
+              "second_moment": 0.0,
+              "rms": 0.0
+            },
+            {
+              "name": "old_compensation_transfer",
+              "mean": 0.0,
+              "second_moment": 0.0,
+              "rms": 0.0
+            },
+            {
+              "name": "gyro_jdot",
+              "mean": 0.0,
+              "second_moment": 0.0,
+              "rms": 0.0
+            },
+            {
+              "name": "wind",
+              "mean": -2.480913931233101e-16,
+              "second_moment": 2.027331743877443e-31,
+              "rms": 4.502590081139347e-16
+            },
+            {
+              "name": "request_gap",
+              "mean": 0.0,
+              "second_moment": 0.0,
+              "rms": 0.0
+            },
+            {
+              "name": "realized_gap",
+              "mean": -2.9970909340927695e-15,
+              "second_moment": 1.9231457149942382e-29,
+              "rms": 4.385368530687288e-15
+            }
+          ],
+          "pairwise_mean_products": [
+            {
+              "first": "nominal_transfer",
+              "second": "old_compensation_transfer",
+              "mean_product": 0.0
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "gyro_jdot",
+              "mean_product": 0.0
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "wind",
+              "mean_product": 0.0
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "realized_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "gyro_jdot",
+              "mean_product": 0.0
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "wind",
+              "mean_product": 0.0
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "realized_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "gyro_jdot",
+              "second": "wind",
+              "mean_product": 0.0
+            },
+            {
+              "first": "gyro_jdot",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "gyro_jdot",
+              "second": "realized_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "wind",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "wind",
+              "second": "realized_gap",
+              "mean_product": 8.052732823294943e-31
+            },
+            {
+              "first": "request_gap",
+              "second": "realized_gap",
+              "mean_product": 0.0
+            }
+          ],
+          "target_mean": -3.2432631811297592e-15,
+          "target_second_moment": 2.1023215293390396e-29,
+          "target_rms": 4.585107991464366e-15,
+          "expanded_sum_second_moment": 2.1044736888989116e-29,
+          "second_moment_expansion_error": 2.1521595598720097e-32
+        },
+        {
+          "group": "EXTEND",
+          "phase_code": 2,
+          "event_count": 200,
+          "max_abs_label_closure": 4.440892098500626e-16,
+          "components": [
+            {
+              "name": "nominal_transfer",
+              "mean": 0.018703082215518536,
+              "second_moment": 0.17476057549711746,
+              "rms": 0.418043748305267
+            },
+            {
+              "name": "old_compensation_transfer",
+              "mean": 0.16499134134077312,
+              "second_moment": 0.06838048109563351,
+              "rms": 0.26149661775180477
+            },
+            {
+              "name": "gyro_jdot",
+              "mean": 0.0007582059313596303,
+              "second_moment": 0.00010686987419493502,
+              "rms": 0.010337788651105953
+            },
+            {
+              "name": "wind",
+              "mean": 0.2687007120560318,
+              "second_moment": 0.1979145732466823,
+              "rms": 0.444875907694137
+            },
+            {
+              "name": "request_gap",
+              "mean": 0.0,
+              "second_moment": 0.0,
+              "rms": 0.0
+            },
+            {
+              "name": "realized_gap",
+              "mean": -1.780725541976374e-15,
+              "second_moment": 8.820923571381879e-30,
+              "rms": 2.9700039682434567e-15
+            }
+          ],
+          "pairwise_mean_products": [
+            {
+              "first": "nominal_transfer",
+              "second": "old_compensation_transfer",
+              "mean_product": -0.010992770693160306
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "gyro_jdot",
+              "mean_product": -0.00035735777811933447
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "wind",
+              "mean_product": 0.09457420723223268
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "realized_gap",
+              "mean_product": -1.0613624408874441e-16
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "gyro_jdot",
+              "mean_product": -2.512896477533893e-05
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "wind",
+              "mean_product": 0.07991487168996064
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "realized_gap",
+              "mean_product": -1.849433952990321e-16
+            },
+            {
+              "first": "gyro_jdot",
+              "second": "wind",
+              "mean_product": -0.0004381196377058469
+            },
+            {
+              "first": "gyro_jdot",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "gyro_jdot",
+              "second": "realized_gap",
+              "mean_product": 3.918532979702966e-18
+            },
+            {
+              "first": "wind",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "wind",
+              "second": "realized_gap",
+              "mean_product": -3.9864519683180184e-16
+            },
+            {
+              "first": "request_gap",
+              "second": "realized_gap",
+              "mean_product": 0.0
+            }
+          ],
+          "target_mean": 0.4531533415436813,
+          "target_second_moment": 0.766513903410492,
+          "target_rms": 0.875507797458419,
+          "expanded_sum_second_moment": 0.7665139034104919,
+          "second_moment_expansion_error": -1.1102230246251565e-16
+        },
+        {
+          "group": "HOLD",
+          "phase_code": 3,
+          "event_count": 580,
+          "max_abs_label_closure": 8.881784197001252e-16,
+          "components": [
+            {
+              "name": "nominal_transfer",
+              "mean": -0.0153596743585055,
+              "second_moment": 0.14806993389620168,
+              "rms": 0.3847985627522557
+            },
+            {
+              "name": "old_compensation_transfer",
+              "mean": 0.3770985127019983,
+              "second_moment": 0.14812106915336176,
+              "rms": 0.3848650012060875
+            },
+            {
+              "name": "gyro_jdot",
+              "mean": 0.0026530110453686054,
+              "second_moment": 3.0562295222040814e-05,
+              "rms": 0.005528317576084139
+            },
+            {
+              "name": "wind",
+              "mean": 0.4556433450423738,
+              "second_moment": 0.3333978565210928,
+              "rms": 0.5774061452055155
+            },
+            {
+              "name": "request_gap",
+              "mean": 0.0,
+              "second_moment": 0.0,
+              "rms": 0.0
+            },
+            {
+              "name": "realized_gap",
+              "mean": -8.646980805097338e-16,
+              "second_moment": 4.652365348320824e-30,
+              "rms": 2.156934247565471e-15
+            }
+          ],
+          "pairwise_mean_products": [
+            {
+              "first": "nominal_transfer",
+              "second": "old_compensation_transfer",
+              "mean_product": -0.012447846731973179
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "gyro_jdot",
+              "mean_product": 7.434524030650577e-05
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "wind",
+              "mean_product": 0.033395981530808694
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "realized_gap",
+              "mean_product": -2.6580355290985273e-17
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "gyro_jdot",
+              "mean_product": 0.0009640897326416023
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "wind",
+              "mean_product": 0.16699853121435754
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "realized_gap",
+              "mean_product": -3.1984556929151807e-16
+            },
+            {
+              "first": "gyro_jdot",
+              "second": "wind",
+              "mean_product": 0.001200016825435136
+            },
+            {
+              "first": "gyro_jdot",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "gyro_jdot",
+              "second": "realized_gap",
+              "mean_product": -2.1983323015681915e-18
+            },
+            {
+              "first": "wind",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "wind",
+              "second": "realized_gap",
+              "mean_product": -5.575211419043239e-16
+            },
+            {
+              "first": "request_gap",
+              "second": "realized_gap",
+              "mean_product": 0.0
+            }
+          ],
+          "target_mean": 0.8200351944312343,
+          "target_second_moment": 1.0099896574890286,
+          "target_rms": 1.0049824165073877,
+          "expanded_sum_second_moment": 1.009989657489029,
+          "second_moment_expansion_error": 4.440892098500626e-16
+        },
+        {
+          "group": "RETRACT",
+          "phase_code": 4,
+          "event_count": 200,
+          "max_abs_label_closure": 4.440892098500626e-16,
+          "components": [
+            {
+              "name": "nominal_transfer",
+              "mean": -0.010233671308152439,
+              "second_moment": 0.04003319963210794,
+              "rms": 0.20008298186529494
+            },
+            {
+              "name": "old_compensation_transfer",
+              "mean": 0.12147134760884898,
+              "second_moment": 0.02788772386216914,
+              "rms": 0.16699617918434284
+            },
+            {
+              "name": "gyro_jdot",
+              "mean": -0.0011722247219633187,
+              "second_moment": 1.847075063947012e-05,
+              "rms": 0.004297761119405093
+            },
+            {
+              "name": "wind",
+              "mean": 0.24954813270954135,
+              "second_moment": 0.1656906716835997,
+              "rms": 0.40705119049524924
+            },
+            {
+              "name": "request_gap",
+              "mean": 0.0,
+              "second_moment": 0.0,
+              "rms": 0.0
+            },
+            {
+              "name": "realized_gap",
+              "mean": -1.1671687055366822e-15,
+              "second_moment": 1.0849139151147751e-29,
+              "rms": 3.2938031439580222e-15
+            }
+          ],
+          "pairwise_mean_products": [
+            {
+              "first": "nominal_transfer",
+              "second": "old_compensation_transfer",
+              "mean_product": -0.002935784179557416
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "gyro_jdot",
+              "mean_product": 0.0005178427741838493
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "wind",
+              "mean_product": 0.04011159542401509
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "realized_gap",
+              "mean_product": -5.829696746744896e-17
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "gyro_jdot",
+              "mean_product": -0.00025226573289019954
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "wind",
+              "mean_product": 0.04907284875638648
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "realized_gap",
+              "mean_product": -8.048106925792096e-17
+            },
+            {
+              "first": "gyro_jdot",
+              "second": "wind",
+              "mean_product": 0.0002419289412792552
+            },
+            {
+              "first": "gyro_jdot",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "gyro_jdot",
+              "second": "realized_gap",
+              "mean_product": -6.226419655403499e-19
+            },
+            {
+              "first": "wind",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "wind",
+              "second": "realized_gap",
+              "mean_product": -3.2922077547812515e-16
+            },
+            {
+              "first": "request_gap",
+              "second": "realized_gap",
+              "mean_product": 0.0
+            }
+          ],
+          "target_mean": 0.35961358428827334,
+          "target_second_moment": 0.4071423978953493,
+          "target_rms": 0.6380771096782498,
+          "expanded_sum_second_moment": 0.40714239789534945,
+          "second_moment_expansion_error": 1.6653345369377348e-16
+        },
+        {
+          "group": "RECOVERY",
+          "phase_code": 5,
+          "event_count": 400,
+          "max_abs_label_closure": 1.8555375779584428e-16,
+          "components": [
+            {
+              "name": "nominal_transfer",
+              "mean": 0.0,
+              "second_moment": 0.0,
+              "rms": 0.0
+            },
+            {
+              "name": "old_compensation_transfer",
+              "mean": 0.0,
+              "second_moment": 0.0,
+              "rms": 0.0
+            },
+            {
+              "name": "gyro_jdot",
+              "mean": 0.0,
+              "second_moment": 0.0,
+              "rms": 0.0
+            },
+            {
+              "name": "wind",
+              "mean": -2.9569755950696326e-16,
+              "second_moment": 2.3764441193118983e-31,
+              "rms": 4.874878582397616e-16
+            },
+            {
+              "name": "request_gap",
+              "mean": 0.0,
+              "second_moment": 0.0,
+              "rms": 0.0
+            },
+            {
+              "name": "realized_gap",
+              "mean": -2.81334956327357e-15,
+              "second_moment": 2.0227145184515495e-29,
+              "rms": 4.497459859133319e-15
+            }
+          ],
+          "pairwise_mean_products": [
+            {
+              "first": "nominal_transfer",
+              "second": "old_compensation_transfer",
+              "mean_product": 0.0
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "gyro_jdot",
+              "mean_product": 0.0
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "wind",
+              "mean_product": 0.0
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "realized_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "gyro_jdot",
+              "mean_product": 0.0
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "wind",
+              "mean_product": 0.0
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "realized_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "gyro_jdot",
+              "second": "wind",
+              "mean_product": 0.0
+            },
+            {
+              "first": "gyro_jdot",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "gyro_jdot",
+              "second": "realized_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "wind",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "wind",
+              "second": "realized_gap",
+              "mean_product": 9.87122156952345e-31
+            },
+            {
+              "first": "request_gap",
+              "second": "realized_gap",
+              "mean_product": 0.0
+            }
+          ],
+          "target_mean": -3.1103353399786203e-15,
+          "target_second_moment": 2.2465610404832307e-29,
+          "target_rms": 4.73979012244554e-15,
+          "expanded_sum_second_moment": 2.2439033910351375e-29,
+          "second_moment_expansion_error": -2.657649448093279e-32
+        }
+      ]
+    },
+    "T3_B": {
+      "scene_id": "DL1018_TRAIN_T3_C15_W14",
+      "position_mode": "B_POSITION_RBF",
+      "attempt_id": 1,
+      "event_export_sha256": "bc5e8499347d071f736a5aa7a0a8d1173e3b9633aaeb2182b14256666d2f7594",
+      "raw_sha256": "195f48180d180f2760186b11a20170d92febf659a3340cf117eff5431d201aad",
+      "event_count": 1999,
+      "max_abs_six_term_yaw_label_closure_rad_s2": 8.881784197001252e-16,
+      "max_abs_direct_target_all_axis_difference_rad_s2": 0.0,
+      "groups": [
+        {
+          "group": "ALL",
+          "phase_code": -1,
+          "event_count": 1999,
+          "max_abs_label_closure": 8.881784197001252e-16,
+          "components": [
+            {
+              "name": "nominal_transfer",
+              "mean": -0.008796516436436615,
+              "second_moment": 0.00962544590866013,
+              "rms": 0.09810935688638535
+            },
+            {
+              "name": "old_compensation_transfer",
+              "mean": -0.16417765190944,
+              "second_moment": 0.07881574516609426,
+              "rms": 0.28074142046747264
+            },
+            {
+              "name": "gyro_jdot",
+              "mean": 0.00015019757990738548,
+              "second_moment": 8.764105508540999e-06,
+              "rms": 0.002960423197541358
+            },
+            {
+              "name": "wind",
+              "mean": -0.24297718929890308,
+              "second_moment": 0.2728531866819685,
+              "rms": 0.5223535073893623
+            },
+            {
+              "name": "request_gap",
+              "mean": 0.0,
+              "second_moment": 0.0,
+              "rms": 0.0
+            },
+            {
+              "name": "realized_gap",
+              "mean": -2.8655806433560823e-15,
+              "second_moment": 1.6034023142765352e-29,
+              "rms": 4.004250634359112e-15
+            }
+          ],
+          "pairwise_mean_products": [
+            {
+              "first": "nominal_transfer",
+              "second": "old_compensation_transfer",
+              "mean_product": 0.0031473473866469814
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "gyro_jdot",
+              "mean_product": 7.645644687459435e-05
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "wind",
+              "mean_product": 0.015380441033821798
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "realized_gap",
+              "mean_product": 1.6698024711426284e-17
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "gyro_jdot",
+              "mean_product": -2.5095638628905627e-05
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "wind",
+              "mean_product": 0.1031252755108528
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "realized_gap",
+              "mean_product": 3.2684878547884867e-16
+            },
+            {
+              "first": "gyro_jdot",
+              "second": "wind",
+              "mean_product": 0.00012907867159587963
+            },
+            {
+              "first": "gyro_jdot",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "gyro_jdot",
+              "second": "realized_gap",
+              "mean_product": -4.133855239122487e-19
+            },
+            {
+              "first": "wind",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "wind",
+              "second": "realized_gap",
+              "mean_product": 5.522936401479722e-16
+            },
+            {
+              "first": "request_gap",
+              "second": "realized_gap",
+              "mean_product": 0.0
+            }
+          ],
+          "target_mean": -0.4158011600648751,
+          "target_second_moment": 0.6049701486845591,
+          "target_rms": 0.777798269916152,
+          "expanded_sum_second_moment": 0.6049701486845597,
+          "second_moment_expansion_error": 5.551115123125783e-16
+        },
+        {
+          "group": "STATIC",
+          "phase_code": 0,
+          "event_count": 0,
+          "max_abs_label_closure": null,
+          "components": [],
+          "pairwise_mean_products": []
+        },
+        {
+          "group": "PRE",
+          "phase_code": 1,
+          "event_count": 519,
+          "max_abs_label_closure": 1.1456524310181003e-17,
+          "components": [
+            {
+              "name": "nominal_transfer",
+              "mean": 0.0,
+              "second_moment": 0.0,
+              "rms": 0.0
+            },
+            {
+              "name": "old_compensation_transfer",
+              "mean": 0.0,
+              "second_moment": 0.0,
+              "rms": 0.0
+            },
+            {
+              "name": "gyro_jdot",
+              "mean": 0.0,
+              "second_moment": 0.0,
+              "rms": 0.0
+            },
+            {
+              "name": "wind",
+              "mean": 6.42785554958685e-18,
+              "second_moment": 5.347763068690875e-32,
+              "rms": 2.3125230958178287e-16
+            },
+            {
+              "name": "request_gap",
+              "mean": 0.0,
+              "second_moment": 0.0,
+              "rms": 0.0
+            },
+            {
+              "name": "realized_gap",
+              "mean": -3.736539240292751e-15,
+              "second_moment": 2.3933868447581574e-29,
+              "rms": 4.892225306297899e-15
+            }
+          ],
+          "pairwise_mean_products": [
+            {
+              "first": "nominal_transfer",
+              "second": "old_compensation_transfer",
+              "mean_product": 0.0
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "gyro_jdot",
+              "mean_product": 0.0
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "wind",
+              "mean_product": 0.0
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "realized_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "gyro_jdot",
+              "mean_product": 0.0
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "wind",
+              "mean_product": 0.0
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "realized_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "gyro_jdot",
+              "second": "wind",
+              "mean_product": 0.0
+            },
+            {
+              "first": "gyro_jdot",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "gyro_jdot",
+              "second": "realized_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "wind",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "wind",
+              "second": "realized_gap",
+              "mean_product": 2.515551733635412e-32
+            },
+            {
+              "first": "request_gap",
+              "second": "realized_gap",
+              "mean_product": 0.0
+            }
+          ],
+          "target_mean": -3.729767836402013e-15,
+          "target_second_moment": 2.403507306602058e-29,
+          "target_rms": 4.902557808534294e-15,
+          "expanded_sum_second_moment": 2.403765711294119e-29,
+          "second_moment_expansion_error": 2.584046920612408e-33
+        },
+        {
+          "group": "EXTEND",
+          "phase_code": 2,
+          "event_count": 275,
+          "max_abs_label_closure": 2.220446049250313e-16,
+          "components": [
+            {
+              "name": "nominal_transfer",
+              "mean": -0.024013606120615868,
+              "second_moment": 0.006584861676320477,
+              "rms": 0.08114716061773497
+            },
+            {
+              "name": "old_compensation_transfer",
+              "mean": -0.029535704741385543,
+              "second_moment": 0.021119415213573238,
+              "rms": 0.14532520501817034
+            },
+            {
+              "name": "gyro_jdot",
+              "mean": 0.0005651648522290167,
+              "second_moment": 1.2500545757794384e-05,
+              "rms": 0.0035356110868977634
+            },
+            {
+              "name": "wind",
+              "mean": 0.004740016563769747,
+              "second_moment": 0.12896832253441776,
+              "rms": 0.359121598535117
+            },
+            {
+              "name": "request_gap",
+              "mean": 0.0,
+              "second_moment": 0.0,
+              "rms": 0.0
+            },
+            {
+              "name": "realized_gap",
+              "mean": -1.7469529939282194e-15,
+              "second_moment": 9.829842819818106e-30,
+              "rms": 3.1352580148718392e-15
+            }
+          ],
+          "pairwise_mean_products": [
+            {
+              "first": "nominal_transfer",
+              "second": "old_compensation_transfer",
+              "mean_product": 0.006139172967605952
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "gyro_jdot",
+              "mean_product": -5.3643451044423234e-05
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "wind",
+              "mean_product": 0.017421769794914475
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "realized_gap",
+              "mean_product": 6.594806616974681e-17
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "gyro_jdot",
+              "mean_product": -7.521404282761352e-07
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "wind",
+              "mean_product": 0.03559273154963959
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "realized_gap",
+              "mean_product": 1.2020567265175808e-16
+            },
+            {
+              "first": "gyro_jdot",
+              "second": "wind",
+              "mean_product": -0.0001307473979090898
+            },
+            {
+              "first": "gyro_jdot",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "gyro_jdot",
+              "second": "realized_gap",
+              "mean_product": -1.3421446855068308e-18
+            },
+            {
+              "first": "wind",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "wind",
+              "second": "realized_gap",
+              "mean_product": 2.0637257383949274e-16
+            },
+            {
+              "first": "request_gap",
+              "second": "realized_gap",
+              "mean_product": 0.0
+            }
+          ],
+          "target_mean": -0.04824412944600433,
+          "target_second_moment": 0.27462216261562655,
+          "target_rms": 0.5240440464461232,
+          "expanded_sum_second_moment": 0.2746221626156265,
+          "second_moment_expansion_error": -5.551115123125783e-17
+        },
+        {
+          "group": "HOLD",
+          "phase_code": 3,
+          "event_count": 546,
+          "max_abs_label_closure": 8.881784197001252e-16,
+          "components": [
+            {
+              "name": "nominal_transfer",
+              "mean": -0.021329287642227215,
+              "second_moment": 0.02701147942931891,
+              "rms": 0.16435169433053895
+            },
+            {
+              "name": "old_compensation_transfer",
+              "mean": -0.48067024703075145,
+              "second_moment": 0.2375491506792447,
+              "rms": 0.4873901421646161
+            },
+            {
+              "name": "gyro_jdot",
+              "mean": 0.00016489481476692966,
+              "second_moment": 3.4248137836420077e-07,
+              "rms": 0.0005852190857825818
+            },
+            {
+              "name": "wind",
+              "mean": -0.6228409000567966,
+              "second_moment": 0.6279267806899421,
+              "rms": 0.7924183116826252
+            },
+            {
+              "name": "request_gap",
+              "mean": 0.0,
+              "second_moment": 0.0,
+              "rms": 0.0
+            },
+            {
+              "name": "realized_gap",
+              "mean": -1.8971140170880744e-15,
+              "second_moment": 6.147950671110197e-30,
+              "rms": 2.479506134517557e-15
+            }
+          ],
+          "pairwise_mean_products": [
+            {
+              "first": "nominal_transfer",
+              "second": "old_compensation_transfer",
+              "mean_product": 0.00885146029893276
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "gyro_jdot",
+              "mean_product": -1.6115348568260868e-05
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "wind",
+              "mean_product": 0.03910152047914932
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "realized_gap",
+              "mean_product": 3.169549514075666e-17
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "gyro_jdot",
+              "mean_product": -8.406669165922217e-05
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "wind",
+              "mean_product": 0.2870566707553793
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "realized_gap",
+              "mean_product": 9.092593444844007e-16
+            },
+            {
+              "first": "gyro_jdot",
+              "second": "wind",
+              "mean_product": -5.007066206044214e-05
+            },
+            {
+              "first": "gyro_jdot",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "gyro_jdot",
+              "second": "realized_gap",
+              "mean_product": -2.9386005827583453e-19
+            },
+            {
+              "first": "wind",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "wind",
+              "second": "realized_gap",
+              "mean_product": 1.1936824879958078e-15
+            },
+            {
+              "first": "request_gap",
+              "second": "realized_gap",
+              "mean_product": 0.0
+            }
+          ],
+          "target_mean": -1.1246755399150097,
+          "target_second_moment": 1.5622065509422345,
+          "target_rms": 1.2498826148651858,
+          "expanded_sum_second_moment": 1.5622065509422352,
+          "second_moment_expansion_error": 6.661338147750939e-16
+        },
+        {
+          "group": "RETRACT",
+          "phase_code": 4,
+          "event_count": 244,
+          "max_abs_label_closure": 8.881784197001252e-16,
+          "components": [
+            {
+              "name": "nominal_transfer",
+              "mean": 0.0027266245056911287,
+              "second_moment": 0.010992465745964512,
+              "rms": 0.10484496051773072
+            },
+            {
+              "name": "old_compensation_transfer",
+              "mean": -0.2361592314930309,
+              "second_moment": 0.0903401603787797,
+              "rms": 0.30056639928438394
+            },
+            {
+              "name": "gyro_jdot",
+              "mean": 0.00022455761888992164,
+              "second_moment": 5.6945909818004773e-05,
+              "rms": 0.007546251375219671
+            },
+            {
+              "name": "wind",
+              "mean": -0.6022285841497249,
+              "second_moment": 0.6849147918999233,
+              "rms": 0.8275957901656601
+            },
+            {
+              "name": "request_gap",
+              "mean": 0.0,
+              "second_moment": 0.0,
+              "rms": 0.0
+            },
+            {
+              "name": "realized_gap",
+              "mean": -2.7295966749739998e-15,
+              "second_moment": 1.4171821549709407e-29,
+              "rms": 3.764547987436129e-15
+            }
+          ],
+          "pairwise_mean_products": [
+            {
+              "first": "nominal_transfer",
+              "second": "old_compensation_transfer",
+              "mean_product": -0.000941075669678725
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "gyro_jdot",
+              "mean_product": 0.0007228990436795122
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "wind",
+              "mean_product": 0.01887329816144574
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "realized_gap",
+              "mean_product": -8.451258792591653e-18
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "gyro_jdot",
+              "mean_product": -1.663495637488162e-05
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "wind",
+              "mean_product": 0.1624036161377329
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "realized_gap",
+              "mean_product": 5.076170496086159e-16
+            },
+            {
+              "first": "gyro_jdot",
+              "second": "wind",
+              "mean_product": 0.0013168950017629691
+            },
+            {
+              "first": "gyro_jdot",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "gyro_jdot",
+              "second": "realized_gap",
+              "mean_product": -1.2164765654409875e-18
+            },
+            {
+              "first": "wind",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "wind",
+              "second": "realized_gap",
+              "mean_product": 1.6210323377222336e-15
+            },
+            {
+              "first": "request_gap",
+              "second": "realized_gap",
+              "mean_product": 0.0
+            }
+          ],
+          "target_mean": -0.8354366335181778,
+          "target_second_moment": 1.1510223593716244,
+          "target_rms": 1.0728571010957724,
+          "expanded_sum_second_moment": 1.1510223593716251,
+          "second_moment_expansion_error": 6.661338147750939e-16
+        },
+        {
+          "group": "RECOVERY",
+          "phase_code": 5,
+          "event_count": 415,
+          "max_abs_label_closure": 2.4712984414298996e-17,
+          "components": [
+            {
+              "name": "nominal_transfer",
+              "mean": 0.0,
+              "second_moment": 0.0,
+              "rms": 0.0
+            },
+            {
+              "name": "old_compensation_transfer",
+              "mean": 0.0,
+              "second_moment": 0.0,
+              "rms": 0.0
+            },
+            {
+              "name": "gyro_jdot",
+              "mean": 0.0,
+              "second_moment": 0.0,
+              "rms": 0.0
+            },
+            {
+              "name": "wind",
+              "mean": 1.4134388226763072e-17,
+              "second_moment": 4.933780099014634e-32,
+              "rms": 2.2212114034946414e-16
+            },
+            {
+              "name": "request_gap",
+              "mean": 0.0,
+              "second_moment": 0.0,
+              "rms": 0.0
+            },
+            {
+              "name": "realized_gap",
+              "mean": -3.871744397597273e-15,
+              "second_moment": 2.436728250141655e-29,
+              "rms": 4.9363227711948245e-15
+            }
+          ],
+          "pairwise_mean_products": [
+            {
+              "first": "nominal_transfer",
+              "second": "old_compensation_transfer",
+              "mean_product": 0.0
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "gyro_jdot",
+              "mean_product": 0.0
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "wind",
+              "mean_product": 0.0
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "realized_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "gyro_jdot",
+              "mean_product": 0.0
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "wind",
+              "mean_product": 0.0
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "realized_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "gyro_jdot",
+              "second": "wind",
+              "mean_product": 0.0
+            },
+            {
+              "first": "gyro_jdot",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "gyro_jdot",
+              "second": "realized_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "wind",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "wind",
+              "second": "realized_gap",
+              "mean_product": -1.0556170263525386e-31
+            },
+            {
+              "first": "request_gap",
+              "second": "realized_gap",
+              "mean_product": 0.0
+            }
+          ],
+          "target_mean": -3.85742281300883e-15,
+          "target_second_moment": 2.4201637957800734e-29,
+          "target_rms": 4.9195160288183564e-15,
+          "expanded_sum_second_moment": 2.4205496897136188e-29,
+          "second_moment_expansion_error": 3.8589393354547065e-33
+        }
+      ]
+    },
+    "T3_C5": {
+      "scene_id": "DL1018_TRAIN_T3_C15_W14",
+      "position_mode": "C5_POSITION_M110",
+      "attempt_id": 1,
+      "event_export_sha256": "27c5af24ac01f0ea90eb8a1138a8d947c9c568f945c64c05cced3da08117a7f4",
+      "raw_sha256": "aebdb44f6119110c6faf0c87511a5f5b3b9736a1c8d2e7bc007b2c78965cb74a",
+      "event_count": 1999,
+      "max_abs_six_term_yaw_label_closure_rad_s2": 4.440892098500626e-16,
+      "max_abs_direct_target_all_axis_difference_rad_s2": 0.0,
+      "groups": [
+        {
+          "group": "ALL",
+          "phase_code": -1,
+          "event_count": 1999,
+          "max_abs_label_closure": 4.440892098500626e-16,
+          "components": [
+            {
+              "name": "nominal_transfer",
+              "mean": -0.003620026109230311,
+              "second_moment": 0.03872431301483464,
+              "rms": 0.19678494102658017
+            },
+            {
+              "name": "old_compensation_transfer",
+              "mean": -0.16833568658456902,
+              "second_moment": 0.08243488266903232,
+              "rms": 0.28711475522695157
+            },
+            {
+              "name": "gyro_jdot",
+              "mean": 0.0003886685295787183,
+              "second_moment": 2.4357890524681317e-05,
+              "rms": 0.004935371366440556
+            },
+            {
+              "name": "wind",
+              "mean": -0.24470739190198146,
+              "second_moment": 0.27723701733480455,
+              "rms": 0.5265330163767554
+            },
+            {
+              "name": "request_gap",
+              "mean": 0.0,
+              "second_moment": 0.0,
+              "rms": 0.0
+            },
+            {
+              "name": "realized_gap",
+              "mean": -2.488715867222527e-15,
+              "second_moment": 1.445387969234658e-29,
+              "rms": 3.801825836666717e-15
+            }
+          ],
+          "pairwise_mean_products": [
+            {
+              "first": "nominal_transfer",
+              "second": "old_compensation_transfer",
+              "mean_product": -0.0013907279655659042
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "gyro_jdot",
+              "mean_product": -6.68899913269169e-05
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "wind",
+              "mean_product": 0.04000765718703471
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "realized_gap",
+              "mean_product": 5.756024184070262e-19
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "gyro_jdot",
+              "mean_product": -0.00017208310877807033
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "wind",
+              "mean_product": 0.10518395922064386
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "realized_gap",
+              "mean_product": 3.2958035605104515e-16
+            },
+            {
+              "first": "gyro_jdot",
+              "second": "wind",
+              "mean_product": -6.765998202117691e-05
+            },
+            {
+              "first": "gyro_jdot",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "gyro_jdot",
+              "second": "realized_gap",
+              "mean_product": -1.2509174484367216e-18
+            },
+            {
+              "first": "wind",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "wind",
+              "second": "realized_gap",
+              "mean_product": 4.659595222718777e-16
+            },
+            {
+              "first": "request_gap",
+              "second": "realized_gap",
+              "mean_product": 0.0
+            }
+          ],
+          "target_mean": -0.4162744360662047,
+          "target_second_moment": 0.6854090816291705,
+          "target_rms": 0.8278943662262538,
+          "expanded_sum_second_moment": 0.6854090816291707,
+          "second_moment_expansion_error": 2.220446049250313e-16
+        },
+        {
+          "group": "STATIC",
+          "phase_code": 0,
+          "event_count": 0,
+          "max_abs_label_closure": null,
+          "components": [],
+          "pairwise_mean_products": []
+        },
+        {
+          "group": "PRE",
+          "phase_code": 1,
+          "event_count": 519,
+          "max_abs_label_closure": 1.7194749381273004e-16,
+          "components": [
+            {
+              "name": "nominal_transfer",
+              "mean": 0.0,
+              "second_moment": 0.0,
+              "rms": 0.0
+            },
+            {
+              "name": "old_compensation_transfer",
+              "mean": 0.0,
+              "second_moment": 0.0,
+              "rms": 0.0
+            },
+            {
+              "name": "gyro_jdot",
+              "mean": 0.0,
+              "second_moment": 0.0,
+              "rms": 0.0
+            },
+            {
+              "name": "wind",
+              "mean": 5.236646845609452e-18,
+              "second_moment": 5.342938278565206e-32,
+              "rms": 2.3114796729725327e-16
+            },
+            {
+              "name": "request_gap",
+              "mean": 0.0,
+              "second_moment": 0.0,
+              "rms": 0.0
+            },
+            {
+              "name": "realized_gap",
+              "mean": -2.9271926195462118e-15,
+              "second_moment": 2.0268509650872094e-29,
+              "rms": 4.502056158120653e-15
+            }
+          ],
+          "pairwise_mean_products": [
+            {
+              "first": "nominal_transfer",
+              "second": "old_compensation_transfer",
+              "mean_product": 0.0
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "gyro_jdot",
+              "mean_product": 0.0
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "wind",
+              "mean_product": 0.0
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "realized_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "gyro_jdot",
+              "mean_product": 0.0
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "wind",
+              "mean_product": 0.0
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "realized_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "gyro_jdot",
+              "second": "wind",
+              "mean_product": 0.0
+            },
+            {
+              "first": "gyro_jdot",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "gyro_jdot",
+              "second": "realized_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "wind",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "wind",
+              "second": "realized_gap",
+              "mean_product": -7.782864848024223e-32
+            },
+            {
+              "first": "request_gap",
+              "second": "realized_gap",
+              "mean_product": 0.0
+            }
+          ],
+          "target_mean": -2.922553866911068e-15,
+          "target_second_moment": 2.015533829822651e-29,
+          "target_rms": 4.4894697123632e-15,
+          "expanded_sum_second_moment": 2.0166281736697261e-29,
+          "second_moment_expansion_error": 1.0943438470750297e-32
+        },
+        {
+          "group": "EXTEND",
+          "phase_code": 2,
+          "event_count": 275,
+          "max_abs_label_closure": 4.440892098500626e-16,
+          "components": [
+            {
+              "name": "nominal_transfer",
+              "mean": -0.01706476223101971,
+              "second_moment": 0.069047515721698,
+              "rms": 0.26276893979635035
+            },
+            {
+              "name": "old_compensation_transfer",
+              "mean": -0.03324007709081046,
+              "second_moment": 0.02236893675216997,
+              "rms": 0.14956248444101874
+            },
+            {
+              "name": "gyro_jdot",
+              "mean": 0.00031225677915745,
+              "second_moment": 5.85397136527359e-05,
+              "rms": 0.007651124992622713
+            },
+            {
+              "name": "wind",
+              "mean": 0.003921784632790476,
+              "second_moment": 0.13170934236188975,
+              "rms": 0.3629178176418041
+            },
+            {
+              "name": "request_gap",
+              "mean": 0.0,
+              "second_moment": 0.0,
+              "rms": 0.0
+            },
+            {
+              "name": "realized_gap",
+              "mean": -1.842824930145696e-15,
+              "second_moment": 9.37150067954721e-30,
+              "rms": 3.061290688508233e-15
+            }
+          ],
+          "pairwise_mean_products": [
+            {
+              "first": "nominal_transfer",
+              "second": "old_compensation_transfer",
+              "mean_product": 0.0042130045656275225
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "gyro_jdot",
+              "mean_product": -0.00023032888932604376
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "wind",
+              "mean_product": 0.015651370343425612
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "realized_gap",
+              "mean_product": 9.173451583137883e-17
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "gyro_jdot",
+              "mean_product": -2.0138292687187067e-05
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "wind",
+              "mean_product": 0.03679589897647335
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "realized_gap",
+              "mean_product": 8.908986794781365e-17
+            },
+            {
+              "first": "gyro_jdot",
+              "second": "wind",
+              "mean_product": -0.00036592478743313216
+            },
+            {
+              "first": "gyro_jdot",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "gyro_jdot",
+              "second": "realized_gap",
+              "mean_product": -2.632781206976024e-18
+            },
+            {
+              "first": "wind",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "wind",
+              "second": "realized_gap",
+              "mean_product": 8.167003683619799e-17
+            },
+            {
+              "first": "request_gap",
+              "second": "realized_gap",
+              "mean_product": 0.0
+            }
+          ],
+          "target_mean": -0.046070797909884144,
+          "target_second_moment": 0.3352720983815711,
+          "target_rms": 0.5790268546290156,
+          "expanded_sum_second_moment": 0.3352720983815712,
+          "second_moment_expansion_error": 5.551115123125783e-17
+        },
+        {
+          "group": "HOLD",
+          "phase_code": 3,
+          "event_count": 546,
+          "max_abs_label_closure": 4.440892098500626e-16,
+          "components": [
+            {
+              "name": "nominal_transfer",
+              "mean": -0.008058521221402354,
+              "second_moment": 0.09384125226647777,
+              "rms": 0.30633519593164243
+            },
+            {
+              "name": "old_compensation_transfer",
+              "mean": -0.49382058196808076,
+              "second_moment": 0.2500747330813993,
+              "rms": 0.5000747274972005
+            },
+            {
+              "name": "gyro_jdot",
+              "mean": 0.0009237220407443105,
+              "second_moment": 3.8995543995025074e-05,
+              "rms": 0.006244641222282116
+            },
+            {
+              "name": "wind",
+              "mean": -0.6267048046164934,
+              "second_moment": 0.6375298723420738,
+              "rms": 0.7984546777006656
+            },
+            {
+              "name": "request_gap",
+              "mean": 0.0,
+              "second_moment": 0.0,
+              "rms": 0.0
+            },
+            {
+              "name": "realized_gap",
+              "mean": -1.7976217850310096e-15,
+              "second_moment": 6.085902458428305e-30,
+              "rms": 2.4669621923386473e-15
+            }
+          ],
+          "pairwise_mean_products": [
+            {
+              "first": "nominal_transfer",
+              "second": "old_compensation_transfer",
+              "mean_product": -0.004469998123539277
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "gyro_jdot",
+              "mean_product": -0.00034480969737879725
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "wind",
+              "mean_product": 0.11174660184726459
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "realized_gap",
+              "mean_product": -1.625131304165111e-17
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "gyro_jdot",
+              "mean_product": -0.0005235571860397038
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "wind",
+              "mean_product": 0.2941152105020329
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "realized_gap",
+              "mean_product": 8.94901231933408e-16
+            },
+            {
+              "first": "gyro_jdot",
+              "second": "wind",
+              "mean_product": -0.0004128730708580407
+            },
+            {
+              "first": "gyro_jdot",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "gyro_jdot",
+              "second": "realized_gap",
+              "mean_product": -1.7504305092958692e-18
+            },
+            {
+              "first": "wind",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "wind",
+              "second": "realized_gap",
+              "mean_product": 1.062365132315655e-15
+            },
+            {
+              "first": "request_gap",
+              "second": "realized_gap",
+              "mean_product": 0.0
+            }
+          ],
+          "target_mean": -1.127660185765234,
+          "target_second_moment": 1.7817060017769129,
+          "target_rms": 1.3348056044896248,
+          "expanded_sum_second_moment": 1.7817060017769133,
+          "second_moment_expansion_error": 4.440892098500626e-16
+        },
+        {
+          "group": "RETRACT",
+          "phase_code": 4,
+          "event_count": 244,
+          "max_abs_label_closure": 4.440892098500626e-16,
+          "components": [
+            {
+              "name": "nominal_transfer",
+              "mean": 0.007607909869117654,
+              "second_moment": 0.02944471785119131,
+              "rms": 0.17159463234959102
+            },
+            {
+              "name": "old_compensation_transfer",
+              "mean": -0.23662286281970615,
+              "second_moment": 0.09055355977911779,
+              "rms": 0.3009211853278492
+            },
+            {
+              "name": "gyro_jdot",
+              "mean": 0.0007652686152178927,
+              "second_moment": 4.631735607808141e-05,
+              "rms": 0.006805685570027564
+            },
+            {
+              "name": "wind",
+              "mean": -0.6068350158421033,
+              "second_moment": 0.6962517139507473,
+              "rms": 0.8344169904494678
+            },
+            {
+              "name": "request_gap",
+              "mean": 0.0,
+              "second_moment": 0.0,
+              "rms": 0.0
+            },
+            {
+              "name": "realized_gap",
+              "mean": -2.757446041001842e-15,
+              "second_moment": 1.440334257142063e-29,
+              "rms": 3.7951735891024315e-15
+            }
+          ],
+          "pairwise_mean_products": [
+            {
+              "first": "nominal_transfer",
+              "second": "old_compensation_transfer",
+              "mean_product": -0.006139436406808879
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "gyro_jdot",
+              "mean_product": 0.00048316986340564926
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "wind",
+              "mean_product": 0.06007186583538472
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "realized_gap",
+              "mean_product": -6.230797417414766e-17
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "gyro_jdot",
+              "mean_product": -0.00021554869008486832
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "wind",
+              "mean_product": 0.16211867757961848
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "realized_gap",
+              "mean_product": 5.971940386260243e-16
+            },
+            {
+              "first": "gyro_jdot",
+              "second": "wind",
+              "mean_product": 0.0007819906113617579
+            },
+            {
+              "first": "gyro_jdot",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "gyro_jdot",
+              "second": "realized_gap",
+              "mean_product": -3.3640741370125214e-18
+            },
+            {
+              "first": "wind",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "wind",
+              "second": "realized_gap",
+              "mean_product": 1.3481248469146775e-15
+            },
+            {
+              "first": "request_gap",
+              "second": "realized_gap",
+              "mean_product": 0.0
+            }
+          ],
+          "target_mean": -0.835084700177477,
+          "target_second_moment": 1.2504977465228913,
+          "target_rms": 1.1182565656068786,
+          "expanded_sum_second_moment": 1.2504977465228917,
+          "second_moment_expansion_error": 4.440892098500626e-16
+        },
+        {
+          "group": "RECOVERY",
+          "phase_code": 5,
+          "event_count": 415,
+          "max_abs_label_closure": 1.9547475376821572e-16,
+          "components": [
+            {
+              "name": "nominal_transfer",
+              "mean": 0.0,
+              "second_moment": 0.0,
+              "rms": 0.0
+            },
+            {
+              "name": "old_compensation_transfer",
+              "mean": 0.0,
+              "second_moment": 0.0,
+              "rms": 0.0
+            },
+            {
+              "name": "gyro_jdot",
+              "mean": 0.0,
+              "second_moment": 0.0,
+              "rms": 0.0
+            },
+            {
+              "name": "wind",
+              "mean": -1.1558315109153782e-17,
+              "second_moment": 5.603209940328209e-32,
+              "rms": 2.367110039759075e-16
+            },
+            {
+              "name": "request_gap",
+              "mean": 0.0,
+              "second_moment": 0.0,
+              "rms": 0.0
+            },
+            {
+              "name": "realized_gap",
+              "mean": -3.119602083402151e-15,
+              "second_moment": 2.1589079468901834e-29,
+              "rms": 4.6464050048291996e-15
+            }
+          ],
+          "pairwise_mean_products": [
+            {
+              "first": "nominal_transfer",
+              "second": "old_compensation_transfer",
+              "mean_product": 0.0
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "gyro_jdot",
+              "mean_product": 0.0
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "wind",
+              "mean_product": 0.0
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "nominal_transfer",
+              "second": "realized_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "gyro_jdot",
+              "mean_product": 0.0
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "wind",
+              "mean_product": 0.0
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "old_compensation_transfer",
+              "second": "realized_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "gyro_jdot",
+              "second": "wind",
+              "mean_product": 0.0
+            },
+            {
+              "first": "gyro_jdot",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "gyro_jdot",
+              "second": "realized_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "wind",
+              "second": "request_gap",
+              "mean_product": 0.0
+            },
+            {
+              "first": "wind",
+              "second": "realized_gap",
+              "mean_product": -2.2550807088312263e-32
+            },
+            {
+              "first": "request_gap",
+              "second": "realized_gap",
+              "mean_product": 0.0
+            }
+          ],
+          "target_mean": -3.1315912672596434e-15,
+          "target_second_moment": 2.1591601670758404e-29,
+          "target_rms": 4.646676411238295e-15,
+          "expanded_sum_second_moment": 2.1600009954128492e-29,
+          "second_moment_expansion_error": 8.408283370088007e-33
+        }
+      ]
+    }
+  }
+}

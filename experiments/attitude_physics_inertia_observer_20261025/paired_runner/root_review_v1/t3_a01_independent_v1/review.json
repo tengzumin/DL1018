@@ -1,0 +1,251 @@
+{
+  "schema": "ROOT_MORPH_DEV2_T3_A01_RAW_REVIEW_V1",
+  "scope": "offline independent scoring and trace audit of only T3 A01 baseline/candidate raws; no Plant, TEST, or rerun",
+  "scene_id": "DL1018_DEV_T3_C10_W11",
+  "seed": 2026123971,
+  "scene_sha256_expected": "e06aa4dde902603f390554f4d8b022760b44a450b2c9868d68344d44ea5a809f",
+  "batch_status_sha256": "06f442f684ff7e25a96964f291b2f825d09c183740380f9b057bec5b9c11da09",
+  "pair_audit_sha256": "4a7e58b27dd1e7dc3dffeccd8dcc4c77316a87821af371c84dbf28d00624a220",
+  "batch_receipt_sha256": "3767df9495e1a2e80645902d119e55ef93670d029742cdab9853e0c67ca892a6",
+  "runs": [
+    {
+      "arm": "baseline",
+      "raw_path": "experiments\\attitude_physics_inertia_observer_20261025\\paired_runner\\morph_dev2_t3_continuation_v1\\attempts\\MORPH_DEV2_T3_CONT_20261025_A01\\01_DL1018_DEV_T3_C10_W11_baseline\\run_raw.mat",
+      "raw_sha256": "53b8c48b153a79dfa9a0e308cd46d3b8150a4cb78c4d01bbe093129f2adf3b1c",
+      "raw_bytes": 47826554,
+      "run_status_sha256": "13bbe356c344bc4f85c96edc086159c1e95f17d37ef8264fe50ebbd47ab2ea08",
+      "stored_status": "COMPLETED_T3_CONTINUATION",
+      "runner_status": "STABLE",
+      "engineering_gate": {
+        "passed": true,
+        "status": "STABLE",
+        "safety_stop_reason": "",
+        "candidate_trace_checked": false,
+        "trace_errors": []
+      },
+      "safety_gate": {
+        "passed": true,
+        "requirements": [],
+        "reason": ""
+      },
+      "independent_score": {
+        "q_rmse_m": 0.01243109797622718,
+        "q_axis_rmse_m": [
+          0.006388744167302796,
+          0.010223792432578168,
+          0.003031536434693033
+        ],
+        "q_peak_m": 0.03961747694493289,
+        "q_early_rmse_m": 0.02334521705272497,
+        "q_early_axis_rmse_m": [
+          0.011287605650009247,
+          0.01872999076176001,
+          0.008171692847452408
+        ],
+        "q_early_peak_m": 0.03961747694493289,
+        "q_late_rmse_m": 0.010308974068159945,
+        "q_late_axis_rmse_m": [
+          0.005487624748904746,
+          0.008607422501226036,
+          0.0014398607011063937
+        ],
+        "q_late_peak_m": 0.02603736675727892,
+        "so3_rmse_rad": 0.024013465313195266,
+        "so3_peak_rad": 0.06930725903668511,
+        "so3_early_rmse_rad": 0.00021167686595783368,
+        "so3_early_peak_rad": 0.000664966998000127,
+        "so3_late_rmse_rad": 0.025454113540708482,
+        "so3_late_peak_rad": 0.06930725903668511,
+        "motor_saturation_count": 0,
+        "generalized_clip_count": 0,
+        "tilt_limited_count": 0,
+        "state_points": 20001,
+        "transitions": 20000,
+        "controller_call_time_s_mean": 0.00015514055,
+        "controller_call_time_excludes_candidate_post_allocator_commit": true
+      },
+      "stored_score_abs_differences": {
+        "q_rmse_m_abs_diff": 6.938893903907228e-18,
+        "q_peak_m_abs_diff": 0.0,
+        "so3_rmse_rad_abs_diff": 5.204170427930421e-17,
+        "so3_peak_rad_abs_diff": 3.552713678800501e-15,
+        "q_early_rmse_m_abs_diff": 3.469446951953614e-18,
+        "q_late_rmse_m_abs_diff": 3.469446951953614e-18,
+        "so3_early_rmse_rad_abs_diff": 2.4167408525788137e-15,
+        "so3_late_rmse_rad_abs_diff": 5.898059818321144e-17
+      },
+      "trace_audit": null
+    },
+    {
+      "arm": "candidate",
+      "raw_path": "experiments\\attitude_physics_inertia_observer_20261025\\paired_runner\\morph_dev2_t3_continuation_v1\\attempts\\MORPH_DEV2_T3_CONT_20261025_A01\\01_DL1018_DEV_T3_C10_W11_candidate\\run_raw.mat",
+      "raw_sha256": "d19a9ed4cd17876f535d99c8974fce7ac83f9a0ea157f0b4dcb652eedf91a860",
+      "raw_bytes": 439926304,
+      "run_status_sha256": "617f6726d2132d83c5035f9ff76b8fdf1b7abd19f1c4d8154886380a8d266b88",
+      "stored_status": "COMPLETED_T3_CONTINUATION",
+      "runner_status": "STABLE",
+      "engineering_gate": {
+        "passed": true,
+        "status": "STABLE",
+        "safety_stop_reason": "",
+        "candidate_trace_checked": true,
+        "trace_errors": []
+      },
+      "safety_gate": {
+        "passed": true,
+        "requirements": [],
+        "reason": ""
+      },
+      "independent_score": {
+        "q_rmse_m": 0.010107137624483778,
+        "q_axis_rmse_m": [
+          0.005449853981520521,
+          0.007961737387057875,
+          0.003010657788571346
+        ],
+        "q_peak_m": 0.039618131986849464,
+        "q_early_rmse_m": 0.02334530989191056,
+        "q_early_axis_rmse_m": [
+          0.0112877074170017,
+          0.01873002484302217,
+          0.008171739386279712
+        ],
+        "q_early_peak_m": 0.039618131986849464,
+        "q_late_rmse_m": 0.00688644517655395,
+        "q_late_axis_rmse_m": [
+          0.004198201187848866,
+          0.005278908315354866,
+          0.0013897341307260503
+        ],
+        "q_late_peak_m": 0.019363262096736077,
+        "so3_rmse_rad": 0.013969206106471468,
+        "so3_peak_rad": 0.040293851989993405,
+        "so3_early_rmse_rad": 0.00020952356955140753,
+        "so3_early_peak_rad": 0.0006508430271303864,
+        "so3_late_rmse_rad": 0.014807145641801661,
+        "so3_late_peak_rad": 0.040293851989993405,
+        "motor_saturation_count": 0,
+        "generalized_clip_count": 0,
+        "tilt_limited_count": 0,
+        "state_points": 20001,
+        "transitions": 20000,
+        "controller_call_time_s_mean": 0.000504472075,
+        "controller_call_time_excludes_candidate_post_allocator_commit": true
+      },
+      "stored_score_abs_differences": {
+        "q_rmse_m_abs_diff": 3.469446951953614e-18,
+        "q_peak_m_abs_diff": 0.0,
+        "so3_rmse_rad_abs_diff": 1.214306433183765e-17,
+        "so3_peak_rad_abs_diff": 1.7486012637846216e-15,
+        "q_early_rmse_m_abs_diff": 3.469446951953614e-18,
+        "q_late_rmse_m_abs_diff": 3.469446951953614e-18,
+        "so3_early_rmse_rad_abs_diff": 8.805646099438458e-15,
+        "so3_late_rmse_rad_abs_diff": 3.122502256758253e-17
+      },
+      "trace_audit": {
+        "trace_count": 20000,
+        "event_count": 1999,
+        "top_level_rbf_flags": {
+          "attitude_fusion_rbf_output_enabled": {
+            "shape": [
+              1,
+              1
+            ],
+            "values": [
+              0.0
+            ]
+          },
+          "attitude_fusion_rbf_update_enabled": {
+            "shape": [
+              1,
+              1
+            ],
+            "values": [
+              0.0
+            ]
+          }
+        },
+        "rbf_series": {
+          "rbf_output_held": {
+            "shape": [
+              3,
+              20000
+            ],
+            "nonzero_count": 0
+          },
+          "rbf_weight_norm": {
+            "shape": [
+              1,
+              20000
+            ],
+            "nonzero_count": 0
+          },
+          "rbf_weight_max": {
+            "shape": [
+              1,
+              20000
+            ],
+            "nonzero_count": 0
+          },
+          "rbf_weight_derivative_norm": {
+            "shape": [
+              1,
+              20000
+            ],
+            "nonzero_count": 0
+          },
+          "attitude_rbf_estimate_acceleration_rads2": {
+            "shape": [
+              3,
+              20000
+            ],
+            "nonzero_count": 0
+          },
+          "attitude_rbf_compensation_torque_Nm": {
+            "shape": [
+              3,
+              20000
+            ],
+            "nonzero_count": 0
+          }
+        },
+        "mismatch_counts": {
+          "sample_index": 0,
+          "prepare_time": 0,
+          "commit_time": 0,
+          "morph_command": 0,
+          "omega_body": 0,
+          "clipped_torque": 0,
+          "estimate_sign": 0,
+          "event_flag": 0,
+          "rbf_trace_flags": 0,
+          "observer_event": 0,
+          "numeric_nonfinite": 0
+        },
+        "max_abs_reconstruction": {
+          "morph_command": 0.0,
+          "omega_body": 0.0,
+          "clipped_torque": 0.0,
+          "estimate_sign": 0.0
+        },
+        "all_rbf_off": true,
+        "all_trace_checks_pass": true
+      }
+    }
+  ],
+  "candidate_minus_baseline_independent_delta": {
+    "q_rmse_m": -0.0023239603517434017,
+    "q_peak_m": 6.550419165765597e-07,
+    "q_early_rmse_m": 9.283918558922188e-08,
+    "q_late_rmse_m": -0.003422528891605995,
+    "so3_rmse_rad": -0.010044259206723798,
+    "so3_peak_rad": -0.029013407046691704,
+    "so3_early_rmse_rad": -2.1532964064261415e-06,
+    "so3_late_rmse_rad": -0.01064696789890682,
+    "motor_saturation_count": 0,
+    "generalized_clip_count": 0,
+    "tilt_limited_count": 0,
+    "controller_call_time_s_mean": 0.000349331525
+  },
+  "conclusion": "T3 raw scores and full candidate traces are independently recomputed here. The MATLAB batch completed both safe arms; the outer launcher receipt stopped because its success predicate expected two non-complete result rows instead of zero. Preserve both the COMPLETE batch status and STOPPED launcher receipt."
+}

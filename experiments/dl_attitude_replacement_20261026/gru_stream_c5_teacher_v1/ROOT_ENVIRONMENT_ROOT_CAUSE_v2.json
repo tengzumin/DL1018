@@ -1,0 +1,24 @@
+{
+  "status": "ENVIRONMENT_ROOT_CAUSE_VERIFIED_SAFE_LAUNCH_APPROVED",
+  "approved_by": "/root",
+  "approved_utc": "2026-10-26T20:35:43.9853515Z",
+  "evidence": {
+    "after_numpy": null,
+    "diagnostic": "preload original numpy/torch/scipy.io dependencies; pop process variable; runpy without main; require_training_environment",
+    "setting_source": "C:/ProgramData/anaconda3/Lib/site-packages/threadpoolctl.py:48",
+    "fresh_process_after_pop": null,
+    "after_scipy_io": "True",
+    "after_torch": null,
+    "diagnostic_stdout": "ENVIRONMENT_GATE_PASS; optimizer.step=0; Plant=0; KMP_present=False",
+    "diagnostic_exit_code": 0,
+    "statement": "os.environ.setdefault(KMP_DUPLICATE_LIB_OK, True)"
+  },
+  "authorized_fix": "Preload original imports, unset this process variable, then run the same SHA-locked trainer; keep its environment guard intact",
+  "frozen_trainer_sha256": "fa6da81049298b8e2cec5d15bf6dd513485aa65feba88abf5a168e68aa871232",
+  "authorized_optimizer_jobs": 1,
+  "optimizer_steps": 60000,
+  "failed_launches_with_zero_optimizer_steps": 2,
+  "policy_rejected_shell_commands": "record separately; no process created",
+  "source_changes": false,
+  "Plant_calls_authorized": 0
+}

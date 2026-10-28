@@ -1,0 +1,201 @@
+{
+  "schema": "C1_FULL_CYCLE_RESOURCE_LEDGER_V1",
+  "status": "FIXED_12_SCENE_SCREEN_COMPLETE_PENDING_PARENT_INDEPENDENT_Q_REVIEW",
+  "created_utc": "2026-10-22T16:04:24.768Z",
+  "scope": {
+    "gpu_jobs": 0,
+    "fixed_scenes": 12,
+    "actual_sorties_total": 36,
+    "optimizer_steps": 0,
+    "full72_authorized": false,
+    "actual_sorties_v8_completed": 1,
+    "reused_v8_B_in_v9_probe": 1,
+    "actual_sorties_v9_continue_new": 33,
+    "dev_labels_used_for_calibration": false,
+    "development_scores_used_for_screen": true,
+    "second_c_authorized": false,
+    "reused_B_is_not_a_new_sortie": true,
+    "actual_sorties_v9_probe_new": 2,
+    "test_accessed": false,
+    "conditions": [
+      "B",
+      "ON1",
+      "ONC"
+    ]
+  },
+  "scalar_calibration": {
+    "completion_evidence_path": "experiments\\position_prior_calibration_c1_20261022\\C1_CALIBRATION_RESULT.json",
+    "gpu_jobs": 0,
+    "wall_seconds": 16.738344400015194,
+    "completion_evidence_sha256": "4f0ba4a848a179bf4db0d59b7c4fce1ad9a26cf51479a709d262140239140db5",
+    "exit_code_observed": false,
+    "generated_local": "2026-10-22T22:10:31+08:00",
+    "episodes": 1536,
+    "test_accessed": false,
+    "plant_calls": 0,
+    "status": "PASS_C1_TRAIN_CALIBRATION_GATE",
+    "script_sha256": "c5f25a00a7a89c774139f011ab31f252256a3cd73d26d7822eadee40e04d156f",
+    "endpoints": 605184,
+    "launch_record_status_at_start": "RUNNING",
+    "optimizer_steps": 0,
+    "pid": 77004,
+    "launch_record_path": "experiments\\position_prior_calibration_c1_20261022\\C1_FULL_LAUNCH.json",
+    "command": "python -B experiments/position_prior_calibration_c1_20261022/fit_prior_scale.py --fit-train-after-audit"
+  },
+  "plant_runner_history": [
+    {
+      "version": "v7",
+      "pid": 76496,
+      "started_utc": "2026-10-22T14:52:52.816Z",
+      "finished_utc": "2026-10-22T14:53:13.907Z",
+      "status": "PRE_PLANT_ABORT",
+      "failure_stage": "first_frozen_B_scene_validation_before_run_loop",
+      "failure_message": "MATLAB runner valid_scene expected dimensions in HDF5 display orientation rather than MATLAB loaded Nx layout; frozen scene validator failed before attempt directory creation.",
+      "process_exit_code": 1,
+      "actual_plant_starts": 0,
+      "raw_files": 0,
+      "no_retry": true
+    },
+    {
+      "version": "v8",
+      "pid": 76812,
+      "started_utc": "2026-10-22T15:05:16.533Z",
+      "finished_utc": "2026-10-22T15:06:02.552Z",
+      "status": "FAILED_AFTER_ONE_COMPLETE_B",
+      "failure_stage": "runRows heterogeneous struct append after first B attempt; B raw/status already persisted",
+      "failure_identifier": "MATLAB:heterogeneousStrucAssignment",
+      "actual_plant_starts": 1,
+      "raw_files": 1,
+      "on1_started": false,
+      "onc_started": false,
+      "reused_existing_b_read_only_in_v9": true,
+      "process_exit_code_observed": false,
+      "no_rerun": true
+    },
+    {
+      "version": "v9_probe",
+      "pid": 75984,
+      "started_utc": "2026-10-22T15:29:59.184Z",
+      "finished_utc": "2026-10-22T15:31:23.243Z",
+      "status": "PROBE_RECOVERED_COMPLETE",
+      "new_plant_starts": 2,
+      "reused_b": 1,
+      "all_summary_rows": 3,
+      "process_exit_observed": true,
+      "process_exit_code_observed": false,
+      "stderr_bytes": 0,
+      "launch_record_reconstructed_after_post_start_record_error": true,
+      "relaunched": false,
+      "launcher_pid": 75984,
+      "engine_pid": 68756
+    },
+    {
+      "version": "v9_continue",
+      "pid": 68776,
+      "started_utc": "2026-10-22T15:43:08.283Z",
+      "finished_utc": "2026-10-22T16:00:02.245Z",
+      "status": "CONTINUE_COMPLETE",
+      "new_plant_starts": 33,
+      "summary_rows": 33,
+      "elapsed_seconds": 1013.962,
+      "process_absent_after_completion": true,
+      "process_exit_code_observed": false,
+      "stdout_terminal_line": "C1_CONTINUE COMPLETE runs=33/33 c*=0.280297964806146",
+      "stderr_bytes": 0,
+      "summary_sha256": "0dd4da87930528be8c7733f1f82698d510db756cb05edf1858d7cd0a1f925ab1",
+      "launch_record_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_prior_calibration_c1_20261022_v9\\reports\\C1_CONTINUE_V9_LAUNCH.json"
+    }
+  ],
+  "preflight_failures_and_gates": [
+    {
+      "path": "experiments\\position_prior_calibration_c1_20261022\\reports\\C1_PREFLIGHT_DRYRUN_FAILURE_20261022T144049984Z.json",
+      "sha256": "7fdd15459c999d871e3029da263da27836fe76f992fa99e64af7d641f557f7da",
+      "status": "FAILED_DRYRUN_NVIDIA_ROW_PARSE",
+      "phase": "preflight dry-run",
+      "error": "Unparseable nvidia-smi compute-app row: 1900, [Insufficient Permissions], [N/A]",
+      "matlab_started": false,
+      "plant_started": false,
+      "processes_stopped": false
+    },
+    {
+      "path": "experiments\\position_prior_calibration_c1_20261022\\reports\\C1_PREFLIGHT_BLOCKED_20261022T144149713Z.json",
+      "sha256": "1b13a4ab5c2712f4b578fc5d6bb96e0cc60b391ae1bc04655ad43e674be1b304",
+      "status": "BLOCKED_OTHER_HEAVY_JOB",
+      "phase": "pre-v7 formal resource preflight",
+      "note": "Older classifier blocked known desktop load; no MATLAB/Plant was started and no process was stopped.",
+      "processes_stopped": false
+    },
+    {
+      "path": "experiments\\position_prior_calibration_c1_20261022\\reports\\C1_PROBE_EXECUTION_FAILURE_v7.json",
+      "sha256": "951d77a0d1c924b4b80ba73c91467c353dad0b6ab567c316162894a232b9fb8b",
+      "status": "PRE_PLANT_ABORT",
+      "phase": "first_frozen_B_scene_validation_before_run_loop",
+      "actual_plant_starts": 0,
+      "retry_authorized": false
+    },
+    {
+      "path": "experiments\\position_prior_calibration_c1_20261022\\reports\\C1_FAILURE_20261022T230602569.json",
+      "sha256": "497d9b76e7f3aef2b9e54518e6c9b1f1511d4d06ae13f88cd559634eae4f59be",
+      "status": "FAILED_AFTER_ONE_COMPLETE_B",
+      "phase": "MATLAB:heterogeneousStrucAssignment",
+      "actual_plant_starts": 1,
+      "ON1_started": false,
+      "ONC_started": false,
+      "B_raw_preserved": true,
+      "B_rerun": false
+    }
+  ],
+  "actual_file_accounting": {
+    "raw_runs_v8": {
+      "markers": 1,
+      "raw_bytes": 40350167,
+      "status_files": 1,
+      "raw_files": 1
+    },
+    "raw_runs_combined_count": 36,
+    "v9_C1_tree_before_ledger": {
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_prior_calibration_c1_20261022_v9",
+      "file_count": 176,
+      "bytes": 1553897637,
+      "raw_run_count": 35
+    },
+    "combined_tree_bytes_before_ledger": 1595082149,
+    "raw_runs_combined_bytes": 1592680903,
+    "minimum_free_space_gate_bytes": 30000000000,
+    "output_bytes_in_probe_summary": 135384406,
+    "six_GiB_cap_bytes": 6442450944,
+    "original_C1_tree_before_ledger": {
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_prior_calibration_c1_20261022",
+      "file_count": 78,
+      "bytes": 41184512,
+      "raw_run_count": 1
+    },
+    "combined_percent_of_cap": 24.759,
+    "output_bytes_in_continue_summary": 1593914150,
+    "raw_runs_v9": {
+      "markers": 35,
+      "raw_bytes": 1552330736,
+      "status_files": 35,
+      "raw_files": 35
+    },
+    "free_bytes_after_runs_and_scoring_before_ledger": 166002618368,
+    "note": "Tree sizes include reports, sources, snapshots, and raw runs present before this final ledger write. This ledger adds one small JSON; postlaunch record is already included.",
+    "cycle_ledger_file_included_in_preledger_tree_measurement": false,
+    "postlaunch_record_included_in_preledger_tree_measurement": true
+  },
+  "scoring_outputs": {
+    "scoring_script_sha256": "57355760a967b561625d13a9f42fe1eef670b98445797d5f615d366569a69a26",
+    "report_result": "ONC loses to ON1 and B on all twelve fixed development-screen scenes; no performance PASS is inferred until independent review.",
+    "report_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_prior_calibration_c1_20261022_v9\\reports\\C1_SCREEN_REPORT_ZH.md",
+    "audit_sha256": "001a7f3261c8c0f709bd4dd6ca1469a3ddecbad4969334a8df5b0e1e63a48385",
+    "scoring_script": "experiments/position_prior_calibration_c1_20261022_v9/reports/score_c1_screen.py",
+    "independent_H5_recalculation": "Not yet reviewed by parent at ledger creation time.",
+    "report_sha256": "4d2049426fd4816535ad1feb85fd35037ffca6a44c74aa7883be6982f69b6293",
+    "audit_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_prior_calibration_c1_20261022_v9\\reports\\C1_SCREEN_AUDIT.json",
+    "group_csv_sha256": "b79e8d09c5b139825f615ac0afd006708f51284ebeb9bedd3c97d51a5775410d",
+    "paired_delta_csv_sha256": "de25e4b40e62990d5c8b88191eb398c9b27cfc7a316fc6631f7e39557dda40d2",
+    "algorithm_note": "Reuses existing primary raw score helper; it is not a second independent numerical implementation.",
+    "run_csv_sha256": "43aab1c0fa906dfa5e3d7f175339a5607bd4ec2e2cc55687741524d34fa08bac",
+    "losses_csv_sha256": "de25e4b40e62990d5c8b88191eb398c9b27cfc7a316fc6631f7e39557dda40d2"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "schema": "POSITION_C5_RESIDUAL_GRU_PROBE_SOURCE_LOCK_V1",
+  "source_scope": "TRAIN24 only; no TEST reads, no Plant, no inertia reconstruction",
+  "npz_path": "reports/position_c5_train24_causal_dataset_v1/dataset/C5_TRAIN24_POSITION_CAUSAL_PAIRS_v1.npz",
+  "npz_sha256": "fbeaca11080620d2ba217a0ddeb7f4a1a25b6518fa2bb16012780a4c46cb6001",
+  "manifest_sha256": "53026f8b922713c3c4a64cf99adb12abd64fbe74247c58b70b050a8a23e04f73",
+  "label_alignment_sha256": "3be1e4803d85d9b566519eba637a3bac02b4c443546d56225c429553e3a8993d",
+  "builder_sha256": "40a24f260aecc9e101811d40c88bb32544ab5836d176da14ccb04742fc849fc7",
+  "script_sha256": "61168022391e23a1e2fe2bf414947a46def834b908c086724e4afa5827d3da6e",
+  "scene_count": 24,
+  "event_count_per_scene": 1999,
+  "ready_count_per_scene": 1968,
+  "wind_cells": [
+    0,
+    9,
+    12,
+    15
+  ],
+  "folds": "manifest fixed holdout_W00/W09/W12/W15; 18 train scenes / 6 holdout scenes each",
+  "optimizer_steps_per_fold_lambda": 300,
+  "seed_base": 20261028,
+  "lambda_values": [
+    0.0,
+    0.01
+  ],
+  "device": "cuda",
+  "created_utc": "2026-10-27T22:10:34Z"
+}

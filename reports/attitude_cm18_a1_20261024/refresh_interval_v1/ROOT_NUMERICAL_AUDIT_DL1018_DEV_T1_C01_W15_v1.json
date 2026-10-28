@@ -1,0 +1,206 @@
+{
+  "schema": "ROOT_CM18_REFRESH1K_NUMERICAL_RAW_AUDIT_V1",
+  "status": "PASS",
+  "created_utc": "2026-10-24T13:08:08.576187+00:00",
+  "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\attitude_cm18_a1_20261024\\refresh_interval_v1\\runs\\DL1018_DEV_T1_C01_W15\\attempt_01\\raw_run.mat",
+  "raw_sha256": "2ec858f0a2ad39932ad6a0227f1586bf9bec8ce6b1146fa3ff894e3174b3d2f3",
+  "deployment_model_sha256": "ee00c46af42cbce83a630ae9b03eaf1a86bfc6047910ed68bc4e7b8b020aa6ae",
+  "checkpoint_sha256": "105585385157da3f1b404ab24606d0717287638e4a1ca710790633cd16d233a4",
+  "selected_step": 30000,
+  "scope_note": "Numeric raw/model/score audit only; ROOT separately checks run release and source identity.",
+  "sample_alignment": "20,000 transition-left rows; t=20 terminal state excluded from scoring.",
+  "alpha_BS_note": "Recovered using solve(J0, nominal_torque - cross(omega, J0*omega)); this is not an independent attitude_bs_step source re-execution.",
+  "schedule": {
+    "refresh_event_count": 19990,
+    "refresh_matlab_index_first_last": [
+      11,
+      20000
+    ],
+    "first_interval_s": 0.01,
+    "subsequent_interval_s": 0.0009999999999999992,
+    "legacy_position_event_count": 1999,
+    "legacy_attitude_event_count": 1999
+  },
+  "max_abs_deltas": {
+    "refresh_interval_s": {
+      "max_abs": 2.3306009899748403e-15,
+      "matlab_transition_index": 12026,
+      "component_index_1based": null
+    },
+    "X18": {
+      "max_abs": 2.220446049250313e-16,
+      "matlab_transition_index": 7604,
+      "component_index_1based": 4
+    },
+    "z_before": {
+      "max_abs": 0.0,
+      "matlab_transition_index": 11,
+      "component_index_1based": 1
+    },
+    "u_current": {
+      "max_abs": 0.0,
+      "matlab_transition_index": 11,
+      "component_index_1based": 1
+    },
+    "a_previous": {
+      "max_abs": 1.3877787807814457e-17,
+      "matlab_transition_index": 7022,
+      "component_index_1based": 2
+    },
+    "alpha_BS_inverse": {
+      "max_abs": 2.220446049250313e-16,
+      "matlab_transition_index": 7604,
+      "component_index_1based": 1
+    },
+    "forward_raw": {
+      "max_abs": 8.881784197001252e-15,
+      "matlab_transition_index": 13371,
+      "component_index_1based": 1
+    },
+    "forward_clip": {
+      "max_abs": 8.881784197001252e-15,
+      "matlab_transition_index": 13371,
+      "component_index_1based": 1
+    },
+    "held_acceleration": {
+      "max_abs": 8.881784197001252e-15,
+      "matlab_transition_index": 13371,
+      "component_index_1based": 1
+    },
+    "held_beta": {
+      "max_abs": 0.0,
+      "matlab_transition_index": 1,
+      "component_index_1based": null
+    },
+    "held_torque": {
+      "max_abs": 2.7755575615628914e-17,
+      "matlab_transition_index": 7368,
+      "component_index_1based": 1
+    },
+    "applied_compensation_torque": {
+      "max_abs": 2.7755575615628914e-17,
+      "matlab_transition_index": 7368,
+      "component_index_1based": 1
+    },
+    "nominal_minus_compensation": {
+      "max_abs": 2.7755575615628914e-17,
+      "matlab_transition_index": 7368,
+      "component_index_1based": 1
+    }
+  },
+  "failure_indices": {},
+  "scores": {
+    "ALL_0_20": {
+      "samples": 20000,
+      "position_Q_rmse_m": 0.003563098269306403,
+      "position_axis_rmse_m": [
+        0.0026869348275880803,
+        0.0023280159260708638,
+        0.00023747074975433944
+      ],
+      "position_peak_m": 0.010717349941167532,
+      "SO3_rmse_rad": 0.004972889549759266,
+      "SO3_peak_rad": 0.010390156098067435,
+      "SO3_rmse_deg": 0.28492558318591815,
+      "SO3_peak_deg": 0.5953120929013795,
+      "Euler_axis_rmse_rad": [
+        0.003470133054933966,
+        0.0012020595911546212,
+        0.0033496667013300217
+      ],
+      "transported_body_rate_rmse_rad_s": [
+        0.002459233778060618,
+        0.0029363077650325113,
+        0.005932470860356112
+      ],
+      "transported_body_rate_vector_rmse_rad_s": 0.007061440686936263,
+      "transported_body_rate_peak_rad_s": 0.027359115875949448
+    },
+    "PRE_0_5": {
+      "samples": 5000,
+      "position_Q_rmse_m": 0.0009250959172325197,
+      "position_axis_rmse_m": [
+        0.0005919059169356447,
+        0.0007096167636479057,
+        4.351885024587837e-05
+      ],
+      "position_peak_m": 0.0012643167444539283,
+      "SO3_rmse_rad": 3.1522908220426323e-06,
+      "SO3_peak_rad": 6.660299970887195e-06,
+      "SO3_rmse_deg": 0.0001806129599008677,
+      "SO3_peak_deg": 0.00038160707862294134,
+      "Euler_axis_rmse_rad": [
+        2.856390779518908e-06,
+        1.3334003975164539e-06,
+        2.1268366228123656e-09
+      ],
+      "transported_body_rate_rmse_rad_s": [
+        4.057798062105155e-06,
+        1.8673431847938815e-06,
+        2.8431273160527824e-08
+      ],
+      "transported_body_rate_vector_rmse_rad_s": 4.4669345215610735e-06,
+      "transported_body_rate_peak_rad_s": 8.802011888975085e-06
+    },
+    "POST_5_20": {
+      "samples": 15000,
+      "position_Q_rmse_m": 0.004079496482445551,
+      "position_axis_rmse_m": [
+        0.0030837273148102075,
+        0.002656757212399369,
+        0.00027305404692650706
+      ],
+      "position_peak_m": 0.010717349941167532,
+      "SO3_rmse_rad": 0.005742197951989065,
+      "SO3_peak_rad": 0.010390156098067435,
+      "SO3_rmse_deg": 0.3290037077776383,
+      "SO3_peak_deg": 0.5953120929013795,
+      "Euler_axis_rmse_rad": [
+        0.004006964167413741,
+        0.0013880186435816391,
+        0.003867861943416633
+      ],
+      "transported_body_rate_rmse_rad_s": [
+        0.0028396776011190717,
+        0.003390555985724186,
+        0.006850227296352759
+      ],
+      "transported_body_rate_vector_rmse_rad_s": 0.008153848955083963,
+      "transported_body_rate_peak_rad_s": 0.027359115875949448
+    }
+  },
+  "safety": {
+    "position_error_peak_m": 0.010717349941167532,
+    "thrust_axis_tilt_peak_rad": 0.09489908374978451,
+    "actual_body_rate_peak_rad_s": 0.14619192494238062,
+    "position_error_max_consecutive_s": 0.0,
+    "tilt_max_consecutive_s": 0.0,
+    "body_rate_max_consecutive_s": 0.0,
+    "logged_trailing_persistence_s": {
+      "position": 0.0,
+      "tilt": 0.0,
+      "body_rate": 0.0
+    }
+  },
+  "actuator_counts": {
+    "motor_saturated_count_by_motor": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "motor_saturated_transition_count": 0,
+    "generalized_clipped_count_by_axis": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "generalized_clipped_transition_count": 0,
+    "tilt_limited_transition_count": 0,
+    "cm18_clipped_event_count": 0,
+    "cm18_clip_held_transition_count": 0
+  },
+  "terminal_status": "STABLE",
+  "safety_stop_reason": ""
+}

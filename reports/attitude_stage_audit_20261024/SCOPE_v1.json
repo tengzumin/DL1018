@@ -1,0 +1,34 @@
+{
+  "schema": "ATTITUDE_RBF_REPLACEMENT_SCOPE_V1",
+  "user_intent": "Replace the existing attitude-loop RBF residual compensator with a learned model, building on C5 position compensation.",
+  "current_stage": "READ_ONLY_INTERFACE_AND_DATA_AUDIT",
+  "fixed_components": [
+    "C5 position model/normalizer/initial W0/update law/parameters",
+    "Nominal attitude backstepping controller and command filter",
+    "Control allocator, actuator and physical Plant",
+    "All frozen historical DEV72/TEST48/ablation/manuscript evidence"
+  ],
+  "replacement_boundary": "Only attitude residual-estimation/adaptation block currently implemented by the B attitude RBF; not an entire new attitude controller.",
+  "current_facts": [
+    "Frozen C5 snapshot enables attitude RBF output and online update.",
+    "cfg attitude and position RBF update frequency both100Hz; actual opts/scheduler still must be verified.",
+    "Existing X29 exporter and learned attitude-head interfaces exist, but usable model/data files and their identities are unconfirmed.",
+    "Existing learned head includes body angularacc-to-torque mapping J0 and Euler tracking drive T-transpose."
+  ],
+  "first_audit_requirements": [
+    "Actual scheduler and enabled flags; compensation units/frame/sign and timing",
+    "Causal deployable feature definition; no true geometry/wind inference inputs",
+    "Train-only normalizer, model/checkpoint provenance and split integrity",
+    "Supervision actual-minus-virtual body angularacc residual and offline-only truth use",
+    "Same-input/offline MATLAB-Python consistency before any isolated flight",
+    "Fair DEV comparison against existing RBF with identical C5 position algorithm/initialization",
+    "Attitude command-following metric distinct from mission yaw; position/safety/actuator effects also reported"
+  ],
+  "fairness_note": "Keeping the C5 algorithm fixed does not imply identical position trajectories or online weight histories after the attitude controller changes; no reuse of old C5 trajectory as a causal component counterfactual.",
+  "current_new_training_authorized": false,
+  "current_new_Plant_authorized": false,
+  "next_step": "Root reviews the interface/data findings and freezes one executable replacement task before modifications or experiments.",
+  "C7": "Still paused; this attitude task does not authorize C7 resumption.",
+  "TEST48": "Frozen C5 evidence; not used for attitude development or model selection. Any changed final controller needs freshly sealed independent evaluation.",
+  "research_framing": "Application innovation for actively morphing quadrotors; no requirement to invent a new general adaptive-control theory."
+}

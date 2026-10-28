@@ -1,0 +1,197 @@
+{
+  "status": "PASS_C1_TRAIN_CALIBRATION_GATE",
+  "generated_local": "2026-10-22T22:10:31+08:00",
+  "command": "python -B experiments/position_prior_calibration_c1_20261022/fit_prior_scale.py --fit-train-after-audit",
+  "script_sha256": "c5f25a00a7a89c774139f011ab31f252256a3cd73d26d7822eadee40e04d156f",
+  "replay_script_sha256": "9e6d3a43b89ed6ecffd01519b6162ee67397b47ff25c2e32685c099a9fdad9a5",
+  "runs_sha256": "4a072c8006042cbffa5e653e450432c748f337fa45790c330b9aa58a8ac32190",
+  "training_index_sha256": "257089f1dc455b7bc97bf1c772be31d1d8ae83079e7ec41f591d96e31fed39ca",
+  "phase_state_sha256": "b5fb66aafc7f934ae199037bd318c85974d1e41724bc54c805ed14900beaf002",
+  "model_source_sha256": "f6fc258dbee1d33dbac608d94f690b23e5329d375d2806d9bb0601a667506ea5",
+  "model_id": "CORRECTED_DSSM14_SEED2026102001_FINAL60000",
+  "episodes": 1536,
+  "endpoints": 605184,
+  "endpoint_recipe": "31+5*k, k=0..393",
+  "p_definition": "raw unclipped frozen W0 sidecar endpoint prediction; not beta/clip deployment output",
+  "y_definition": "same-endpoint exact cache float32 training label",
+  "q_definition": "original per-run phase weights returned by replay helper, renormalized per run",
+  "group_coefficients": {
+    "W00_W08": {
+      "runs": 864,
+      "A_equal_run_mean": 0.8319710959089625,
+      "B_equal_run_mean": 0.844070856730845
+    },
+    "W09_W14": {
+      "runs": 576,
+      "A_equal_run_mean": 0.7996511212442442,
+      "B_equal_run_mean": 0.7941182474247233
+    },
+    "W15": {
+      "runs": 96,
+      "A_equal_run_mean": 3.0650459052084558,
+      "B_equal_run_mean": 0.8591261292673428
+    }
+  },
+  "solver": {
+    "c_star": 0.2802979648061464,
+    "selected_candidate": {
+      "c": 0.2802979648061464,
+      "sources": [
+        "stationary:W15"
+      ],
+      "risk_by_band": {
+        "W00_W08": 0.5921827441360361,
+        "W09_W14": 0.61764669178299,
+        "W15": 0.7591886944545816
+      },
+      "worst_risk": 0.7591886944545816,
+      "worst_band": "W15"
+    },
+    "candidates": [
+      {
+        "c": 0.0,
+        "sources": [
+          "endpoint:0"
+        ],
+        "risk_by_band": {
+          "W00_W08": 1.0,
+          "W09_W14": 1.0,
+          "W15": 1.0
+        },
+        "worst_risk": 1.0,
+        "worst_band": "W00_W08"
+      },
+      {
+        "c": 0.013483894470351867,
+        "sources": [
+          "intersection:W00_W08|W15"
+        ],
+        "risk_by_band": {
+          "W00_W08": 0.9773885404506673,
+          "W09_W14": 0.9787297756060246,
+          "W15": 0.9773885404506673
+        },
+        "worst_risk": 0.9787297756060246,
+        "worst_band": "W09_W14"
+      },
+      {
+        "c": 0.05739209986955325,
+        "sources": [
+          "intersection:W09_W14|W15"
+        ],
+        "risk_by_band": {
+          "W00_W08": 0.9058543927832446,
+          "W09_W14": 0.9114817058177,
+          "W15": 0.9114817058177
+        },
+        "worst_risk": 0.9114817058177,
+        "worst_band": "W09_W14"
+      },
+      {
+        "c": 0.2802979648061464,
+        "sources": [
+          "stationary:W15"
+        ],
+        "risk_by_band": {
+          "W00_W08": 0.5921827441360361,
+          "W09_W14": 0.61764669178299,
+          "W15": 0.7591886944545816
+        },
+        "worst_risk": 0.7591886944545816,
+        "worst_band": "W15"
+      },
+      {
+        "c": 0.9930808903126255,
+        "sources": [
+          "stationary:W09_W14"
+        ],
+        "risk_by_band": {
+          "W00_W08": 0.14403665144176725,
+          "W09_W14": 0.21137634383395398,
+          "W15": 2.3164143811405937
+        },
+        "worst_risk": 2.3164143811405937,
+        "worst_band": "W15"
+      },
+      {
+        "c": 1.0,
+        "sources": [
+          "endpoint:1"
+        ],
+        "risk_by_band": {
+          "W00_W08": 0.1438293824472724,
+          "W09_W14": 0.2114146263947977,
+          "W15": 2.3467936466737704
+        },
+        "worst_risk": 2.3467936466737704,
+        "worst_band": "W15"
+      }
+    ],
+    "candidate_generation_details": [
+      {
+        "kind": "stationary",
+        "group": "W00_W08",
+        "c": 1.0145434870049939,
+        "in_interval": false
+      },
+      {
+        "kind": "stationary",
+        "group": "W09_W14",
+        "c": 0.9930808903126255,
+        "in_interval": true
+      },
+      {
+        "kind": "stationary",
+        "group": "W15",
+        "c": 0.2802979648061464,
+        "in_interval": true
+      },
+      {
+        "kind": "pair_intersection",
+        "pair": [
+          "W00_W08",
+          "W09_W14"
+        ],
+        "c": 3.0911292365988143,
+        "in_interval": false
+      },
+      {
+        "kind": "pair_intersection",
+        "pair": [
+          "W00_W08",
+          "W15"
+        ],
+        "c": 0.013483894470351867,
+        "in_interval": true
+      },
+      {
+        "kind": "pair_intersection",
+        "pair": [
+          "W09_W14",
+          "W15"
+        ],
+        "c": 0.05739209986955325,
+        "in_interval": true
+      }
+    ],
+    "minimum_worst_risk": 0.7591886944545816,
+    "tie_tolerance": 1e-12,
+    "tie_rule": "within 1e-12, choose largest c",
+    "worst_risk_c1": 2.3467936466737704,
+    "worst_risk_cstar": 0.7591886944545816,
+    "worst_risk_reduction_vs_c1": 1.5876049522191888,
+    "gate_1_minus_c_at_least_0_01": true,
+    "gate_risk_reduction_at_least_0_01": true,
+    "train_gate_pass": true
+  },
+  "fit_scope": "one analytic TRAIN-only scalar calibration; no VAL fit, optimizer, encoder/normalizer update, seed search, or candidate search",
+  "next_action": "separate review required; this script launches no Plant",
+  "optimizer_steps": 0,
+  "plant_calls": 0,
+  "gpu_jobs": 0,
+  "test_accessed": false,
+  "dev_labels_used": false,
+  "wall_seconds": 16.738344400015194,
+  "run_coefficients_sha256": "d482063cfbc06c6fd5aae7a1e29c6d00fdf7cb85a4bb38408837d6ed15bd47b3",
+  "group_coefficients_sha256": "b1261bddb93096e0e20e702e0c8343a750c770f2b3b5c003768469f35662adca"
+}

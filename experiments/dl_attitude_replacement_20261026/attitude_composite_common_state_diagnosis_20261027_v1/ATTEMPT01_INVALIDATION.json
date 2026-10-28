@@ -1,0 +1,3 @@
+# Attempt 1 is preserved as failure evidence. It used sigmoid instead of SiLU,
+# compared current outputs to the previous-interval target, and had no independent RLS-only head.
+{"status":"INVALID_DIAGNOSTIC_IMPLEMENTATION","reason":["both MLP hidden layers used sigmoid instead of SiLU","one-step target paired with current rather than previous event output","no independent RLS-only W/P state"],"artifacts_preserved":["common_state_shadow_diagnosis.py","RESULT.json","shadow_event_errors.csv","shadow_summary.csv","shadow_update_events.csv"]}

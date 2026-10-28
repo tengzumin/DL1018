@@ -1,0 +1,46 @@
+{
+  "status": "PASS",
+  "trainer_path": "experiments/attitude_cm18_a1_20261024/train_cm18_a1_v1.py",
+  "trainer_sha256": "7544a04329bc1e06ff5d7a113a077033a65f0b7c2de8a6f1b25ac54710e62c76",
+  "scope": "_check_release only; all release/audit/manifest objects and file hashes are in-memory mocks",
+  "all816_manifest_or_cache_read": false,
+  "release_file_created": false,
+  "optimizer_calls": 0,
+  "cases": [
+    {
+      "case": "valid_nested_ALL816",
+      "result": "ACCEPTED_AS_EXPECTED",
+      "dataset_scenes": 816
+    },
+    {
+      "case": "SCREEN4_audit",
+      "result": "REJECTED_AS_EXPECTED",
+      "error": "ValueError: independent data audit must be PASS for ALL816"
+    },
+    {
+      "case": "failed_cache_count",
+      "result": "REJECTED_AS_EXPECTED",
+      "error": "ValueError: independent ALL816 audit must pass all 816 cache audits"
+    },
+    {
+      "case": "wrong_dataset_manifest_SHA",
+      "result": "REJECTED_AS_EXPECTED",
+      "error": "ValueError: independent ALL816 audit dataset manifest identity mismatch"
+    },
+    {
+      "case": "wrong_release_input_SHA",
+      "result": "REJECTED_AS_EXPECTED",
+      "error": "ValueError: ROOT release input manifest SHA does not match the frozen identity"
+    },
+    {
+      "case": "wrong_audit_input_SHA",
+      "result": "REJECTED_AS_EXPECTED",
+      "error": "ValueError: independent ALL816 audit input manifest identity mismatch"
+    },
+    {
+      "case": "wrong_split_event_count",
+      "result": "REJECTED_AS_EXPECTED",
+      "error": "ValueError: independent ALL816 audit event counts do not match the frozen split totals"
+    }
+  ]
+}

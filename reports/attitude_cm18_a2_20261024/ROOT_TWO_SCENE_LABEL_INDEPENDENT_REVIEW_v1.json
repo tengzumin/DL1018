@@ -1,0 +1,59 @@
+{
+  "schema": "ROOT_TWO_SCENE_LABEL_INDEPENDENT_REVIEW_V1",
+  "status": "PASS",
+  "v2_sha256": "77e25178d0f091be4913736bc33f58d9018efa00ae9ee239c29311177a9a1c00",
+  "all_event_numeric_records_identical_to_v1": true,
+  "v1_clip_flag_metadata_rejected": true,
+  "v2_clip_metadata_pass": true,
+  "rows": [
+    {
+      "scene_id": "DL1018_TRAIN_T1_C15_W14",
+      "events": 1999,
+      "closure_max": 4.440892098500626e-16,
+      "rms_target": 0.5701440027502875,
+      "simple_formula_applicable": true,
+      "component_rms": {
+        "nominal_transfer": 0.07898555933117962,
+        "old_compensation_transfer": 0.22001489666267965,
+        "gyro_jdot": 0.0018043365502886457,
+        "wind": 0.36655610056301313,
+        "request_gap": 0.0,
+        "realized_gap": 3.825988971576731e-15
+      },
+      "remove_component_delta_MSE_original_minus_removed": {
+        "nominal_transfer": 0.02278732246309395,
+        "old_compensation_transfer": 0.16930401072005208,
+        "gyro_jdot": 0.00011081548179953105,
+        "wind": 0.26891431525259724,
+        "request_gap": 0.0,
+        "realized_gap": -3.885780586188048e-16
+      }
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C15_W09",
+      "events": 1999,
+      "closure_max": 2.220446049250313e-16,
+      "rms_target": 0.46082498832955937,
+      "simple_formula_applicable": true,
+      "component_rms": {
+        "nominal_transfer": 0.04413641331171753,
+        "old_compensation_transfer": 0.18503703119473508,
+        "gyro_jdot": 0.0011706620381603952,
+        "wind": 0.266092880421122,
+        "request_gap": 0.0,
+        "realized_gap": 4.056698428922412e-15
+      },
+      "remove_component_delta_MSE_original_minus_removed": {
+        "nominal_transfer": 0.01601168608554751,
+        "old_compensation_transfer": 0.12982174199222363,
+        "gyro_jdot": 0.0002113420815938738,
+        "wind": 0.17168105222471208,
+        "request_gap": 0.0,
+        "realized_gap": -1.1379786002407855e-15
+      }
+    }
+  ],
+  "interpretation": "Component removal is an algebraic label intervention, not a closed-loop causal effect; RMS terms are not additive",
+  "Plant_calls": 0,
+  "optimizer_steps": 0
+}

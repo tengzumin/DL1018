@@ -1,0 +1,21 @@
+{
+  "scope": "audit scripts only; no source raw/run_start/status/scene/config files were modified",
+  "entries": [
+    {
+      "attempt": "sample-01",
+      "time_local": "2026-10-23T00:22:30+08:00",
+      "script": "audit_b_on1_records.py --sample",
+      "failure": "KeyError('run_start_path')",
+      "cause": "C1_SCREEN_PER_RUN.csv contains run_start_sha256 but no run_start_path column; derive run_start.mat beside raw_path.",
+      "disposition": "fixed in audit script; original failure snapshot retained as FIRST_PAIR_FAILED_ATTEMPT_01.json; subsequent sample and full audit PASS"
+    },
+    {
+      "attempt": "status-metadata-01",
+      "time_local": "unknown; observed before 2026-10-23T00:27:57.6288321+08:00",
+      "script": "audit_record_status.py",
+      "failure": "JSONDecodeError while parsing FILE_IDENTITY.csv before/after columns",
+      "cause": "Those audit CSV cells are Python dict representations, not JSON text.",
+      "disposition": "fixed comparison to use sha_and_stat_unchanged plus expected SHA; no source files were modified; rerun status metadata audit"
+    }
+  ]
+}

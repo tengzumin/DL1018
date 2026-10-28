@@ -1,0 +1,16 @@
+{
+  "schema": "POSITION_TEACHER_DISTILL_FULL24_INITIAL_PREFLIGHT_ATTEMPT_V1",
+  "attempt": 1,
+  "status": "FAILED_PARITY_TOLERANCE_ASSERT",
+  "matlab_release_sha256": "686a47d08b3607c96e785131db3363b41cb9bac9f10742c4f46c22e7f0a25117",
+  "source_lock_sha256": "c1c0e4a2e52fc9fd80d4202cbdcaeaca2321f4e886b5bc889973722ba64ff9b1",
+  "failure": "The first parity script required exact equality for beta computed from float32 event times; the check stopped before parent scene preparation and runner boundary.",
+  "diagnostic_rerun": {
+    "max_abs_raw_delta_action_error": 9.451039589825072e-8,
+    "max_abs_beta_error": 5.29819065e-8,
+    "plant_called": false,
+    "scene_preparation_reached": false
+  },
+  "correction": "Use a fixed 2e-7 beta parity tolerance while retaining 2e-5 output tolerance; no runtime math or model weights changed.",
+  "scope": "TRAIN24 offline parity only; no Plant, TEST, wind or inertia reconstruction"
+}

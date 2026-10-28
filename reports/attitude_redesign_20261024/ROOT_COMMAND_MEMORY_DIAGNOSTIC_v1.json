@@ -1,0 +1,31 @@
+{
+  "schema": "ROOT_CAUSAL_COMMAND_MEMORY_DIAGNOSTIC_V1",
+  "definition": "z[k]=sum(i<k) (t[i+1]-t[i])*command[i]; zero initial state",
+  "scope": "Two existing TRAIN/VAL records only. Diagnostic of ideal command execution, not hardware validation or approved model input.",
+  "scenes": [
+    {
+      "split": "train",
+      "scene": "DL1018_TRAIN_T1_C01_W00",
+      "raw_sha256": "c8e763e7bafea8e42a5018e05b57c8ce1987c5f97a29d5877839e759a4b03ea5",
+      "maxabs_rho_diagnostic_error_m": 7.771561172376096e-15,
+      "hold_command_zero_nonzero_memory_samples": 6801,
+      "hold_memory_peak_s": 1.4000000000000004,
+      "input_channels": 4,
+      "internal_state_channels": 4,
+      "assumptions": "Known initial arm length 0.15m and prescribed ideal speed 0.05m/s. No measured/true shape used by predictor; truth used offline only."
+    },
+    {
+      "split": "val",
+      "scene": "DL1018_VAL_T1_C01_W08",
+      "raw_sha256": "9efc4dfcc21bf8a08a091168bb48b3b39dbb6cd4f371f890e78fb697c78c3685",
+      "maxabs_rho_diagnostic_error_m": 1.1046719095020308e-14,
+      "hold_command_zero_nonzero_memory_samples": 5800,
+      "hold_memory_peak_s": 1.9999999999999991,
+      "input_channels": 4,
+      "internal_state_channels": 4,
+      "assumptions": "Known initial arm length 0.15m and prescribed ideal speed 0.05m/s. No measured/true shape used by predictor; truth used offline only."
+    }
+  ],
+  "new_rollouts": 0,
+  "training_steps": 0
+}

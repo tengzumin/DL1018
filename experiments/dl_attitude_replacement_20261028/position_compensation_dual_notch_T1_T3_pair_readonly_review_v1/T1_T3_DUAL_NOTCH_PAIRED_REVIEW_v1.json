@@ -1,0 +1,837 @@
+{
+  "schema": "T1_T3_DUAL_NOTCH_READONLY_PAIRED_REVIEW_V1",
+  "status": "PASS_SCOPE_TRAIN_ONLY",
+  "scope": {
+    "scenes": [
+      "DL1018_DEV_T1_C10_W09",
+      "DL1018_DEV_T3_C09_W09"
+    ],
+    "split": "TRAIN_C5_24",
+    "folds": [
+      "holdout_W06_10",
+      "holdout_W06_10"
+    ],
+    "same_W_group": "W09",
+    "TEST_or_VAL_raw_or_score_read": false,
+    "new_Plant_call": false,
+    "inertia_reconstruction": false,
+    "aggregation": "unweighted arithmetic mean of exactly these two same-scene score records; not a 72-scene macro"
+  },
+  "dual_notch_raw_sha256": {
+    "T1": "ab14472c4fa827f087c3de6b40741a9868015df8117fee81c765c7ddbf289fb4",
+    "T3": "598829bb583b7dd5869037e91bcf01c0ffbcffe02ec8e36e63dc3a8f59ee8a1e"
+  },
+  "per_scene_score_artifacts": {
+    "T1": {
+      "B": {
+        "Q_m": 0.010984561773262777,
+        "task_SO3_rad": 0.042200801129056116,
+        "inner_SO3_rad": 0.023236953991647456,
+        "axis_phase": {
+          "ALL": {
+            "state_samples": 20001,
+            "inner_samples": 20000,
+            "position_xyz_rmse_m": [
+              0.00496302247509703,
+              0.009369263154655529,
+              0.0028715698147741
+            ],
+            "task_wrapped_euler_rmse_rad": [
+              0.03577920610303439,
+              0.022343428389633907,
+              0.0010732126672141267
+            ],
+            "inner_wrapped_euler_rmse_rad": [
+              0.02067338822607068,
+              0.010592818681036358,
+              0.0010732394971674193
+            ]
+          },
+          "0_5s": {
+            "state_samples": 5000,
+            "inner_samples": 5000,
+            "position_xyz_rmse_m": [
+              0.006099145909730794,
+              0.009743843240584946,
+              0.00424152736521791
+            ],
+            "task_wrapped_euler_rmse_rad": [
+              0.034994075131511045,
+              0.020827258460717465,
+              1.15427122745867e-07
+            ],
+            "inner_wrapped_euler_rmse_rad": [
+              2.4114321832280877e-05,
+              1.5201216452555074e-05,
+              1.15427122745867e-07
+            ]
+          },
+          "15_20s": {
+            "state_samples": 5001,
+            "inner_samples": 5000,
+            "position_xyz_rmse_m": [
+              0.004084469264337545,
+              0.006023337096353722,
+              0.000580660547945143
+            ],
+            "task_wrapped_euler_rmse_rad": [
+              0.032740635397993705,
+              0.021056022734947312,
+              0.00023697411342141238
+            ],
+            "inner_wrapped_euler_rmse_rad": [
+              0.012359741114772341,
+              0.009591789655793565,
+              0.00023699780914050294
+            ]
+          }
+        },
+        "safety": {
+          "motor_saturation_samples": 0,
+          "generalized_clip_samples": 0,
+          "tilt_limited_samples": 0,
+          "attitude_head_projection_samples": 0,
+          "attitude_head_output_saturated_samples": 0
+        }
+      },
+      "C5": {
+        "Q_m": 0.010465882128741399,
+        "task_SO3_rad": 0.04327264903532816,
+        "inner_SO3_rad": 0.023274046930281553,
+        "axis_phase": {
+          "ALL": {
+            "state_samples": 20001,
+            "inner_samples": 20000,
+            "position_xyz_rmse_m": [
+              0.005048674831173281,
+              0.008781396619409989,
+              0.002632991567476155
+            ],
+            "task_wrapped_euler_rmse_rad": [
+              0.03691471396228582,
+              0.02254539740426749,
+              0.0010817130494126098
+            ],
+            "inner_wrapped_euler_rmse_rad": [
+              0.02069913584982733,
+              0.010623942905339967,
+              0.001081740091810532
+            ]
+          },
+          "0_5s": {
+            "state_samples": 5000,
+            "inner_samples": 5000,
+            "position_xyz_rmse_m": [
+              0.00675713608035835,
+              0.010447018819163035,
+              0.004652716550457582
+            ],
+            "task_wrapped_euler_rmse_rad": [
+              0.035792324532101176,
+              0.020634968869267252,
+              5.649000465802872e-07
+            ],
+            "inner_wrapped_euler_rmse_rad": [
+              9.122973677857423e-05,
+              3.200438124651045e-05,
+              5.649000465802872e-07
+            ]
+          },
+          "15_20s": {
+            "state_samples": 5001,
+            "inner_samples": 5000,
+            "position_xyz_rmse_m": [
+              0.003828420429330187,
+              0.005972092326944373,
+              0.0005466335240905344
+            ],
+            "task_wrapped_euler_rmse_rad": [
+              0.03384895059086466,
+              0.021638279431522193,
+              0.00022202317052307083
+            ],
+            "inner_wrapped_euler_rmse_rad": [
+              0.012350784348069112,
+              0.009582587115441951,
+              0.00022204536997072526
+            ]
+          }
+        },
+        "safety": {
+          "motor_saturation_samples": 0,
+          "generalized_clip_samples": 0,
+          "tilt_limited_samples": 0,
+          "attitude_head_projection_samples": 0,
+          "attitude_head_output_saturated_samples": 0
+        }
+      },
+      "parent_GRU": {
+        "Q_m": 0.009492906627253345,
+        "task_SO3_rad": 0.04330835597159727,
+        "inner_SO3_rad": 0.02024501714889525,
+        "axis_phase": {
+          "ALL": {
+            "state_samples": 20001,
+            "inner_samples": 20000,
+            "position_xyz_rmse_m": [
+              0.0048101639519351844,
+              0.007755470019069011,
+              0.002613481159789549
+            ],
+            "task_wrapped_euler_rmse_rad": [
+              0.03695115634300336,
+              0.0225596685631296,
+              0.0009489010102024806
+            ],
+            "inner_wrapped_euler_rmse_rad": [
+              0.017754644218408545,
+              0.009706216474406016,
+              0.000948924239287413
+            ]
+          },
+          "0_5s": {
+            "state_samples": 5000,
+            "inner_samples": 5000,
+            "position_xyz_rmse_m": [
+              0.006754699476409263,
+              0.010448273581945503,
+              0.004653600089510371
+            ],
+            "task_wrapped_euler_rmse_rad": [
+              0.03583573618583017,
+              0.020642628530078998,
+              2.508001703195582e-05
+            ],
+            "inner_wrapped_euler_rmse_rad": [
+              0.00017625917417297304,
+              0.00010874170344367486,
+              2.508001703195582e-05
+            ]
+          },
+          "15_20s": {
+            "state_samples": 5001,
+            "inner_samples": 5000,
+            "position_xyz_rmse_m": [
+              0.00340998285414824,
+              0.005078524628434261,
+              0.0005223469701892162
+            ],
+            "task_wrapped_euler_rmse_rad": [
+              0.034175381191325925,
+              0.02163327394436095,
+              0.00017440467480919964
+            ],
+            "inner_wrapped_euler_rmse_rad": [
+              0.010764539699032072,
+              0.008443234823736177,
+              0.00017441138249443017
+            ]
+          }
+        },
+        "safety": {
+          "motor_saturation_samples": 0,
+          "generalized_clip_samples": 0,
+          "tilt_limited_samples": 0,
+          "attitude_head_projection_samples": 0,
+          "attitude_head_output_saturated_samples": 0
+        }
+      },
+      "candidate_pre_dual_notch": {
+        "Q_m": 0.010603095010428788,
+        "task_SO3_rad": 0.0431684191739434,
+        "inner_SO3_rad": 0.02025526275485956,
+        "axis_phase": {
+          "ALL": {
+            "state_samples": 20001,
+            "inner_samples": 20000,
+            "position_xyz_rmse_m": [
+              0.005343518427260399,
+              0.008774998572392806,
+              0.0026214184466072372
+            ],
+            "task_wrapped_euler_rmse_rad": [
+              0.036802565103563625,
+              0.02253445794092469,
+              0.0009457035459644245
+            ],
+            "inner_wrapped_euler_rmse_rad": [
+              0.01776834598543007,
+              0.009702741083024288,
+              0.0009457267064626741
+            ]
+          },
+          "0_5s": {
+            "state_samples": 5000,
+            "inner_samples": 5000,
+            "position_xyz_rmse_m": [
+              0.006991102906404151,
+              0.011210410397775313,
+              0.0046518540567714985
+            ],
+            "task_wrapped_euler_rmse_rad": [
+              0.03576272742372929,
+              0.020629333047659768,
+              2.4724200994014627e-05
+            ],
+            "inner_wrapped_euler_rmse_rad": [
+              0.0001717028615050071,
+              0.00010764805759394827,
+              2.4724200994014627e-05
+            ]
+          },
+          "15_20s": {
+            "state_samples": 5001,
+            "inner_samples": 5000,
+            "position_xyz_rmse_m": [
+              0.004166358041684146,
+              0.005935944434084503,
+              0.0005337483311555222
+            ],
+            "task_wrapped_euler_rmse_rad": [
+              0.03403754672292974,
+              0.02174846782852841,
+              0.00017150310212793544
+            ],
+            "inner_wrapped_euler_rmse_rad": [
+              0.010839120103044846,
+              0.008463775333966094,
+              0.00017150962518513725
+            ]
+          }
+        },
+        "safety": {
+          "motor_saturation_samples": 0,
+          "generalized_clip_samples": 0,
+          "tilt_limited_samples": 0,
+          "attitude_head_projection_samples": 0,
+          "attitude_head_output_saturated_samples": 0
+        }
+      },
+      "dual_notch_candidate": {
+        "Q_m": 0.010808845540183576,
+        "task_SO3_rad": 0.04152745721843126,
+        "inner_SO3_rad": 0.020117283294356688,
+        "axis_phase": {
+          "ALL": {
+            "state_samples": 20001,
+            "inner_samples": 20000,
+            "position_xyz_rmse_m": [
+              0.005446384095611258,
+              0.00893495511981088,
+              0.0027082502102989733
+            ],
+            "task_wrapped_euler_rmse_rad": [
+              0.03506984929656027,
+              0.02221047782899356,
+              0.0009416972334553989
+            ],
+            "inner_wrapped_euler_rmse_rad": [
+              0.017655878996422816,
+              0.009620413326874357,
+              0.0009417203401559583
+            ]
+          },
+          "0_5s": {
+            "state_samples": 5000,
+            "inner_samples": 5000,
+            "position_xyz_rmse_m": [
+              0.0072109927242941406,
+              0.011564740541916621,
+              0.004813599346824602
+            ],
+            "task_wrapped_euler_rmse_rad": [
+              0.03447753864913223,
+              0.02049244266808058,
+              2.192493032074226e-05
+            ],
+            "inner_wrapped_euler_rmse_rad": [
+              7.91318082687145e-05,
+              9.85155437624275e-05,
+              2.192493032074226e-05
+            ]
+          },
+          "15_20s": {
+            "state_samples": 5001,
+            "inner_samples": 5000,
+            "position_xyz_rmse_m": [
+              0.004215624571629298,
+              0.006066611668019734,
+              0.0005645367881301678
+            ],
+            "task_wrapped_euler_rmse_rad": [
+              0.032275487256595445,
+              0.02137496768910861,
+              0.00017417278693449248
+            ],
+            "inner_wrapped_euler_rmse_rad": [
+              0.010905524813441075,
+              0.00842208398190292,
+              0.0001741807867365884
+            ]
+          }
+        },
+        "safety": {
+          "motor_saturation_samples": 0,
+          "generalized_clip_samples": 0,
+          "tilt_limited_samples": 0,
+          "attitude_head_projection_samples": 0,
+          "attitude_head_output_saturated_samples": 0
+        }
+      }
+    },
+    "T3": {
+      "B": {
+        "Q_m": 0.011022185804672962,
+        "task_SO3_rad": 0.05906125628102724,
+        "inner_SO3_rad": 0.010703248504488942,
+        "axis_phase": {
+          "ALL": {
+            "state_samples": 20001,
+            "inner_samples": 20000,
+            "position_xyz_rmse_m": [
+              0.009368749961655138,
+              0.005113100480133717,
+              0.002751600906522914
+            ],
+            "task_wrapped_euler_rmse_rad": [
+              0.00811778801452394,
+              0.05848658863507317,
+              0.0011527675549867695
+            ],
+            "inner_wrapped_euler_rmse_rad": [
+              0.007766739975193769,
+              0.007333683967433057,
+              0.0011527963728630354
+            ]
+          },
+          "0_5s": {
+            "state_samples": 5000,
+            "inner_samples": 5000,
+            "position_xyz_rmse_m": [
+              0.016815019779556253,
+              0.0003474146475250237,
+              0.005135502270114357
+            ],
+            "task_wrapped_euler_rmse_rad": [
+              0.0012089207854773442,
+              0.059626329364555086,
+              1.1602672868099735e-08
+            ],
+            "inner_wrapped_euler_rmse_rad": [
+              8.550924676619844e-07,
+              4.38495569696313e-05,
+              1.1602672868099735e-08
+            ]
+          },
+          "15_20s": {
+            "state_samples": 5001,
+            "inner_samples": 5000,
+            "position_xyz_rmse_m": [
+              0.006141737514498981,
+              0.008501999755914941,
+              0.0014363452309705765
+            ],
+            "task_wrapped_euler_rmse_rad": [
+              0.008863748276149403,
+              0.05669217067867286,
+              0.0008446068968245782
+            ],
+            "inner_wrapped_euler_rmse_rad": [
+              0.010083101283671429,
+              0.009339995374705857,
+              0.0008446913480926003
+            ]
+          }
+        },
+        "safety": {
+          "motor_saturation_samples": 0,
+          "generalized_clip_samples": 0,
+          "tilt_limited_samples": 0,
+          "attitude_head_projection_samples": 0,
+          "attitude_head_output_saturated_samples": 0
+        }
+      },
+      "C5": {
+        "Q_m": 0.009644971109702142,
+        "task_SO3_rad": 0.06070477770565968,
+        "inner_SO3_rad": 0.01078549330228452,
+        "axis_phase": {
+          "ALL": {
+            "state_samples": 20001,
+            "inner_samples": 20000,
+            "position_xyz_rmse_m": [
+              0.008702643206983739,
+              0.003263498060523639,
+              0.002576635272576815
+            ],
+            "task_wrapped_euler_rmse_rad": [
+              0.00893294596043864,
+              0.06002964924445119,
+              0.0011706114803629963
+            ],
+            "inner_wrapped_euler_rmse_rad": [
+              0.007818619760886039,
+              0.007400467492271075,
+              0.0011706407445292435
+            ]
+          },
+          "0_5s": {
+            "state_samples": 5000,
+            "inner_samples": 5000,
+            "position_xyz_rmse_m": [
+              0.01630065633493053,
+              0.0022059884374677407,
+              0.004981604515355696
+            ],
+            "task_wrapped_euler_rmse_rad": [
+              0.006109689848092718,
+              0.060535456125330164,
+              1.0489022366224365e-06
+            ],
+            "inner_wrapped_euler_rmse_rad": [
+              4.738417446226664e-05,
+              0.00012372173041921754,
+              1.0489022366224365e-06
+            ]
+          },
+          "15_20s": {
+            "state_samples": 5001,
+            "inner_samples": 5000,
+            "position_xyz_rmse_m": [
+              0.004102277203557514,
+              0.004549321893828415,
+              0.0008997653638514915
+            ],
+            "task_wrapped_euler_rmse_rad": [
+              0.006232875093072047,
+              0.057831822990945525,
+              0.0008394776555379428
+            ],
+            "inner_wrapped_euler_rmse_rad": [
+              0.010098084146165387,
+              0.00935890663542406,
+              0.0008395615948958499
+            ]
+          }
+        },
+        "safety": {
+          "motor_saturation_samples": 0,
+          "generalized_clip_samples": 0,
+          "tilt_limited_samples": 0,
+          "attitude_head_projection_samples": 0,
+          "attitude_head_output_saturated_samples": 0
+        }
+      },
+      "parent_GRU": {
+        "Q_m": 0.009418457073797846,
+        "task_SO3_rad": 0.060662806192281635,
+        "inner_SO3_rad": 0.009645293117548056,
+        "axis_phase": {
+          "ALL": {
+            "state_samples": 20001,
+            "inner_samples": 20000,
+            "position_xyz_rmse_m": [
+              0.008587115166488211,
+              0.0028899031723777138,
+              0.0025724009062977555
+            ],
+            "task_wrapped_euler_rmse_rad": [
+              0.009135958814512403,
+              0.05995950918284867,
+              0.0010255469838564258
+            ],
+            "inner_wrapped_euler_rmse_rad": [
+              0.007001607202799309,
+              0.006608671087764679,
+              0.0010255724676493242
+            ]
+          },
+          "0_5s": {
+            "state_samples": 5000,
+            "inner_samples": 5000,
+            "position_xyz_rmse_m": [
+              0.01628798363156523,
+              0.0021455538992506697,
+              0.004984071976456406
+            ],
+            "task_wrapped_euler_rmse_rad": [
+              0.006213753045798875,
+              0.06055682104273861,
+              4.8999276321368154e-05
+            ],
+            "inner_wrapped_euler_rmse_rad": [
+              0.00016975325650952873,
+              0.0001980037981267338,
+              4.8999276321368154e-05
+            ]
+          },
+          "15_20s": {
+            "state_samples": 5001,
+            "inner_samples": 5000,
+            "position_xyz_rmse_m": [
+              0.003484787447628652,
+              0.004050273868100809,
+              0.0008355205320793453
+            ],
+            "task_wrapped_euler_rmse_rad": [
+              0.006306247928117196,
+              0.05789600507858553,
+              0.0007962468799288117
+            ],
+            "inner_wrapped_euler_rmse_rad": [
+              0.00934307037249887,
+              0.0083230941358105,
+              0.0007963257044106731
+            ]
+          }
+        },
+        "safety": {
+          "motor_saturation_samples": 0,
+          "generalized_clip_samples": 0,
+          "tilt_limited_samples": 0,
+          "attitude_head_projection_samples": 0,
+          "attitude_head_output_saturated_samples": 0
+        }
+      },
+      "candidate_pre_dual_notch": {
+        "Q_m": 0.009859266808724274,
+        "task_SO3_rad": 0.06062071519434056,
+        "inner_SO3_rad": 0.009642771638575982,
+        "axis_phase": {
+          "ALL": {
+            "state_samples": 20001,
+            "inner_samples": 20000,
+            "position_xyz_rmse_m": [
+              0.008823676816318618,
+              0.003481757342055467,
+              0.002687979772583115
+            ],
+            "task_wrapped_euler_rmse_rad": [
+              0.0088455221441757,
+              0.05996054062646252,
+              0.0010262622990700842
+            ],
+            "inner_wrapped_euler_rmse_rad": [
+              0.007003496919471115,
+              0.006602833595512152,
+              0.0010262877947407993
+            ]
+          },
+          "0_5s": {
+            "state_samples": 5000,
+            "inner_samples": 5000,
+            "position_xyz_rmse_m": [
+              0.016720899953912818,
+              0.002248703455815255,
+              0.00523707114431822
+            ],
+            "task_wrapped_euler_rmse_rad": [
+              0.0058639445040634,
+              0.06057967658017599,
+              4.886617213910497e-05
+            ],
+            "inner_wrapped_euler_rmse_rad": [
+              0.00016939724873825618,
+              0.00020181161224720368,
+              4.886617213910497e-05
+            ]
+          },
+          "15_20s": {
+            "state_samples": 5001,
+            "inner_samples": 5000,
+            "position_xyz_rmse_m": [
+              0.0035689098394294785,
+              0.004943632193670588,
+              0.0007144277386480253
+            ],
+            "task_wrapped_euler_rmse_rad": [
+              0.006073451098566173,
+              0.057869456884045836,
+              0.0007965125928654065
+            ],
+            "inner_wrapped_euler_rmse_rad": [
+              0.009336770556021758,
+              0.008300285750008416,
+              0.0007965914126823523
+            ]
+          }
+        },
+        "safety": {
+          "motor_saturation_samples": 0,
+          "generalized_clip_samples": 0,
+          "tilt_limited_samples": 0,
+          "attitude_head_projection_samples": 0,
+          "attitude_head_output_saturated_samples": 0
+        }
+      },
+      "dual_notch_candidate": {
+        "Q_m": 0.010133588615393667,
+        "task_SO3_rad": 0.058429055025224594,
+        "inner_SO3_rad": 0.00928588351865008,
+        "axis_phase": {
+          "ALL": {
+            "state_samples": 20001,
+            "inner_samples": 20000,
+            "position_xyz_rmse_m": [
+              0.009129447898952703,
+              0.0033969255653572557,
+              0.002793509618699438
+            ],
+            "task_wrapped_euler_rmse_rad": [
+              0.005895713799848953,
+              0.05812016041774844,
+              0.0010066830772905457
+            ],
+            "inner_wrapped_euler_rmse_rad": [
+              0.0066997270717825425,
+              0.006403112052556403,
+              0.0010067081883069677
+            ]
+          },
+          "0_5s": {
+            "state_samples": 5000,
+            "inner_samples": 5000,
+            "position_xyz_rmse_m": [
+              0.017325298800969613,
+              0.0022198414496545174,
+              0.005451033431945968
+            ],
+            "task_wrapped_euler_rmse_rad": [
+              0.0021684970086949195,
+              0.05921107413795879,
+              4.818319889521774e-05
+            ],
+            "inner_wrapped_euler_rmse_rad": [
+              0.00011329092015393029,
+              0.00012471554326700534,
+              4.818319889521774e-05
+            ]
+          },
+          "15_20s": {
+            "state_samples": 5001,
+            "inner_samples": 5000,
+            "position_xyz_rmse_m": [
+              0.0036213552502753024,
+              0.004772039449286959,
+              0.0007202152811059698
+            ],
+            "task_wrapped_euler_rmse_rad": [
+              0.002985386688438601,
+              0.055977707137987276,
+              0.0007986629604976547
+            ],
+            "inner_wrapped_euler_rmse_rad": [
+              0.009092365182449866,
+              0.008310291900639873,
+              0.0007987425417596648
+            ]
+          }
+        },
+        "safety": {
+          "motor_saturation_samples": 0,
+          "generalized_clip_samples": 0,
+          "tilt_limited_samples": 0,
+          "attitude_head_projection_samples": 0,
+          "attitude_head_output_saturated_samples": 0
+        }
+      }
+    }
+  },
+  "paired_means": {
+    "B": {
+      "Q_m": 0.01100337378896787,
+      "task_SO3_rad": 0.05063102870504168,
+      "inner_SO3_rad": 0.0169701012480682,
+      "task_f1_band_error_mrad": 3.9099536411942974,
+      "task_f2_band_error_mrad": 1.066029641817027
+    },
+    "C5": {
+      "Q_m": 0.01005542661922177,
+      "task_SO3_rad": 0.05198871337049392,
+      "inner_SO3_rad": 0.01702977011628304,
+      "task_f1_band_error_mrad": 14.529843707599822,
+      "task_f2_band_error_mrad": 7.569825163082972
+    },
+    "parent_GRU": {
+      "Q_m": 0.009455681850525595,
+      "task_SO3_rad": 0.05198558108193945,
+      "inner_SO3_rad": 0.014945155133221654,
+      "task_f1_band_error_mrad": 14.352043687724953,
+      "task_f2_band_error_mrad": 7.51819665898275
+    },
+    "candidate_pre_dual_notch": {
+      "Q_m": 0.010231180909576532,
+      "task_SO3_rad": 0.05189456718414198,
+      "inner_SO3_rad": 0.01494901719671777,
+      "task_f1_band_error_mrad": 13.88234884382781,
+      "task_f2_band_error_mrad": 7.650730416817181
+    },
+    "dual_notch_candidate": {
+      "Q_m": 0.01047121707778862,
+      "task_SO3_rad": 0.04997825612182793,
+      "inner_SO3_rad": 0.014701583406503384,
+      "task_f1_band_error_mrad": 4.318258093125398,
+      "task_f2_band_error_mrad": 1.1409516713429848
+    }
+  },
+  "dual_vs_percent": {
+    "B": {
+      "Q_m": -4.83630494960371,
+      "task_SO3_rad": -1.2892737910117802
+    },
+    "C5": {
+      "Q_m": 4.134985757561327,
+      "task_SO3_rad": -3.8671032967071306
+    },
+    "parent_GRU": {
+      "Q_m": 10.73994708490089,
+      "task_SO3_rad": -3.8613109988086647
+    },
+    "candidate_pre_dual_notch": {
+      "Q_m": 2.3461237791955414,
+      "task_SO3_rad": -3.692700732071319
+    }
+  },
+  "paired_frequency_error_percent_vs_B": {
+    "f1": 10.442692916593854,
+    "f2": 7.028137547681568
+  },
+  "single_call_falsifier_status": {
+    "T1": "PASS_T1_SINGLE_CALL_FALSIFIER",
+    "T3": "PASS_T3_SINGLE_CALL_FALSIFIER",
+    "frozen_replay_status_preserved": [
+      "FAIL_FIXED_FROZEN_REPLAY",
+      "FAIL_FIXED_FROZEN_REPLAY"
+    ]
+  },
+  "scope_limit": "Two W09 TRAIN scenes cannot establish an all72 average or a ~32% full72 position improvement.",
+  "t3_action_chain_review": {
+    "scene_id": "DL1018_DEV_T3_C09_W09",
+    "fold_id": "holdout_W06_10",
+    "source_split": "TRAIN_C5_24",
+    "dual_notch_raw_sha256": "598829bb583b7dd5869037e91bcf01c0ffbcffe02ec8e36e63dc3a8f59ee8a1e",
+    "source_lock_files": 101,
+    "source_lock_hash_matches": 101,
+    "run_status": "COMPLETED_STABLE",
+    "recorded_Plant_calls": 1,
+    "event_count": 1999,
+    "event_period_s": 0.01,
+    "first_nonzero_input_s": 0.32,
+    "input_equals_logged_post_residual_gru_action_max_abs_mps2": 0.0,
+    "centers_hz": [
+      2.2,
+      3.2
+    ],
+    "quality_factors": [
+      4.0,
+      4.0
+    ],
+    "event_clip_count": 0,
+    "logged_raw_output_replay_max_abs_error_mps2": 0.0,
+    "logged_applied_output_replay_max_abs_error_mps2": 0.0,
+    "held_output_replay_max_abs_error_mps2": 0.0,
+    "injected_force_equals_held_force_max_abs_error_N": 0.0,
+    "held_force_equals_0p695kg_times_action_max_abs_error_N": 1.11e-16,
+    "action_location": "After final C5 plus residual-GRU action and clipping, before conversion to injected force; held between 100-Hz stage-1 events."
+  }
+}

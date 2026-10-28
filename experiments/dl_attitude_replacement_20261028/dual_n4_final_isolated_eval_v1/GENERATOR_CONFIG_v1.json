@@ -1,0 +1,140 @@
+{
+  "controller_input_policy": {
+    "environment_wind_exposed_to_controller": false,
+    "environment_wind_role": "Plant environment only; consumers must keep it outside controller inputs.",
+    "future_samples_exposed_to_controller": false,
+    "model_weights_in_scene_payload": false
+  },
+  "dt_s": 0.001,
+  "duration_s": 20.0,
+  "id_namespace": "DUALN4_EVAL72_V1",
+  "morphology": {
+    "minimum_hold_s": 5.0,
+    "morph_speed_mps": 0.05,
+    "retract": true,
+    "target_lengths_m": [
+      0.18,
+      0.2,
+      0.22,
+      0.24
+    ],
+    "topology_arms": {
+      "12": [
+        1,
+        2
+      ],
+      "123": [
+        1,
+        2,
+        3
+      ],
+      "1234": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "24": [
+        2,
+        4
+      ]
+    },
+    "variants": [
+      {
+        "morph_id": "M01",
+        "retract_base_s": 13.4,
+        "retract_step_s": 0.0,
+        "start_base_s": 5.8,
+        "start_step_s": 0.0,
+        "topology": "12"
+      },
+      {
+        "morph_id": "M02",
+        "retract_base_s": 13.2,
+        "retract_step_s": 0.2,
+        "start_base_s": 5.4,
+        "start_step_s": 0.3,
+        "topology": "24"
+      },
+      {
+        "morph_id": "M03",
+        "retract_base_s": 14.0,
+        "retract_step_s": 0.15,
+        "start_base_s": 6.1,
+        "start_step_s": 0.15,
+        "topology": "123"
+      },
+      {
+        "morph_id": "M04",
+        "retract_base_s": 13.6,
+        "retract_step_s": 0.25,
+        "start_base_s": 5.3,
+        "start_step_s": 0.25,
+        "topology": "1234"
+      }
+    ]
+  },
+  "reference_contract_id": "DL1018_SCENE_REF_FIG8_A2_V2",
+  "schema": "DUALN4_EVAL72_GENERATOR_CONFIG_V1",
+  "seed_rule": "2026102800 + 10000*task_index + 100*wind_index + morphology_index; NumPy PCG64",
+  "state_samples": 20001,
+  "study_id": "dual_n4_final_isolated_eval_v1",
+  "wind": {
+    "CdArm": 1.0,
+    "CdBody": 1.0,
+    "V0_mps": 9.0,
+    "model": "biased_dual_sine",
+    "rho_air_kg_m3": 1.225,
+    "rise_time_s": 0.8
+  },
+  "wind_spectra": [
+    {
+      "A1_mps": 1.2,
+      "A2_mps": 0.8,
+      "f1_hz": 0.23,
+      "f2_hz": 0.43,
+      "meaning": "low-frequency / low-amplitude",
+      "wind_class": "LOW"
+    },
+    {
+      "A1_mps": 3.0,
+      "A2_mps": 2.1,
+      "f1_hz": 0.63,
+      "f2_hz": 0.96,
+      "meaning": "mid-frequency / mid-amplitude",
+      "wind_class": "MID"
+    },
+    {
+      "A1_mps": 4.2,
+      "A2_mps": 3.1,
+      "f1_hz": 1.35,
+      "f2_hz": 2.05,
+      "meaning": "high-frequency / high-amplitude",
+      "wind_class": "HIGH"
+    },
+    {
+      "A1_mps": 0.0,
+      "A2_mps": 0.0,
+      "f1_hz": 0.23,
+      "f2_hz": 0.43,
+      "meaning": "9 m/s after the fixed startup ramp",
+      "wind_class": "CONSTANT"
+    },
+    {
+      "A1_mps": 3.0,
+      "A2_mps": 2.1,
+      "f1_hz": 0.756,
+      "f2_hz": 1.152,
+      "meaning": "prelisted frequency shift: 1.20x MID frequencies",
+      "wind_class": "FREQ_SHIFT"
+    },
+    {
+      "A1_mps": 3.75,
+      "A2_mps": 2.625,
+      "f1_hz": 0.63,
+      "f2_hz": 0.96,
+      "meaning": "prelisted amplitude shift: 1.25x MID amplitudes",
+      "wind_class": "AMP_SHIFT"
+    }
+  ]
+}

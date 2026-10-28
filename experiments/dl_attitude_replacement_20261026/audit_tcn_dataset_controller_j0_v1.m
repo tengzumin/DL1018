@@ -1,0 +1,53 @@
+function audit_tcn_dataset_controller_j0_v1()
+% Read-only: reconstruct the fixed controller J0 from each VAL run-start cfg.
+% This computes only model parameters; it does not invoke a Plant or runner.
+taskDir=fileparts(mfilename('fullpath'));
+projectRoot=fileparts(fileparts(taskDir));
+addpath(fullfile(projectRoot,'matlab','core'));
+manifestPath=fullfile(taskDir,'dataset_v3_corrected','DATASET_MANIFEST_v1.json');
+manifest=jsondecode(fileread(manifestPath));
+assert(strcmp(manifest.status,'PASS')&&~manifest.test_data_read&& ...
+    manifest.split_counts.TRAIN==768&&manifest.split_counts.VAL==48, ...
+    'TCNJ0:Manifest','Expected frozen TRAIN/VAL-only dataset manifest.');
+rows=manifest.rows(strcmpi({manifest.rows.split},'VAL'));
+assert(numel(rows)==48,'TCNJ0:VALCount','Expected VAL48 run-start rows.');
+record=repmat(struct('scene_id','','cfg_plant_inertia',zeros(3), ...
+    'controller_fixed_J0',zeros(3),'beta_rise_time_s',0, ...
+    'run_start_sha256_expected',''),1,numel(rows));
+for i=1:numel(rows)
+    d=load(rows(i).run_start_path);
+    if isfield(d,'runStart')
+        cfg=d.runStart.cfg;
+    elseif isfield(d,'cfg')
+        cfg=d.cfg;
+    else
+        error('TCNJ0:RunStart','No cfg group in %s.',rows(i).run_start_path);
+    end
+    assert(strcmpi(char(string(cfg.controller_morphology_mode)),'fixed'), ...
+        'TCNJ0:Morphology','Run-start controller morphology must be fixed.');
+    plant=simulation_parameters(cfg,cfg.plant.arm_initial,zeros(4,1));
+    controller=controller_parameters(cfg,plant,'fixed');
+    assert(strcmp(controller.role,'controller')&&strcmp(controller.morphology_mode,'fixed')&& ...
+        all(isfinite(controller.inertia),'all')&&all(eig(controller.inertia)>0), ...
+        'TCNJ0:Controller','Fixed controller inertia is invalid.');
+    record(i)=struct('scene_id',rows(i).scene_id, ...
+        'cfg_plant_inertia',double(cfg.plant.inertia), ...
+        'controller_fixed_J0',double(controller.inertia), ...
+        'beta_rise_time_s',double(cfg.rbf.attitude.beta_rise_time), ...
+        'run_start_sha256_expected',rows(i).run_start_sha256);
+end
+J0=cat(3,record.controller_fixed_J0);
+delta=max(sqrt(sum((J0-J0(:,:,1)).^2,[1,2])),[],'all');
+result=struct('schema','DL1018_TCN_CONTROLLER_J0_AUDIT_V1', ...
+    'status','PASS','split','VAL48','scene_count',numel(rows), ...
+    'test_data_read',false,'plant_invoked',false, ...
+    'calculation','simulation_parameters at nominal arm lengths, then controller_parameters(...,''fixed'')', ...
+    'max_controller_J0_cohort_delta_fro',delta, ...
+    'records',record);
+outPath=fullfile(taskDir,'CONTROLLER_J0_AUDIT_VAL48_v1.json');
+fid=fopen(outPath,'w');
+assert(fid>=0,'TCNJ0:Output','Cannot create controller J0 audit receipt.');
+cleanup=onCleanup(@()fclose(fid));
+fwrite(fid,[jsonencode(result,'PrettyPrint',true) newline],'char');
+fprintf('CONTROLLER_J0_AUDIT_VAL48_PASS %s\n',outPath);
+end

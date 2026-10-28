@@ -1,0 +1,46 @@
+{
+  "status": "PASS",
+  "cohort_contract": "B-only; TRAIN768/VAL48; all 768 independent TRAIN scenes",
+  "architecture": "GRU(13,32,batch_first=True)+Linear(32,3)",
+  "seed": 2026102001,
+  "steps": 60000,
+  "batch_scenes": 4,
+  "tbptt_events": 128,
+  "optimizer": "Adam",
+  "weight_decay": 1e-05,
+  "loss": "SmoothL1(beta=1)",
+  "lr": "cosine 1e-3 to 1e-5 per optimizer update",
+  "normalizer_fit_split": "TRAIN only",
+  "validation_use": "final diagnostic only; no fit or selection",
+  "train_episodes": 768,
+  "train_events": 1535232,
+  "val_episodes": 48,
+  "train_role_counts": {
+    "B": 768
+  },
+  "train_task_counts": {
+    "FIG8_3D": 256,
+    "HELIX": 256,
+    "SQUARE": 256
+  },
+  "val_role_counts": {
+    "B": 48
+  },
+  "val_task_counts": {
+    "FIG8_3D": 16,
+    "HELIX": 16,
+    "SQUARE": 16
+  },
+  "dataset": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\large_attitude_b768_root_v1\\DATASET.npz",
+  "dataset_sha256": "ad9b767cf881a5a9acd5db60a86b3610f563a8e66e7b64592b7e803b7ea4ff68",
+  "created_utc": "2026-10-28T13:50:49.880185+00:00",
+  "device": "cuda:0",
+  "final_validation_diagnostic": {
+    "val_rmse_raw_rad_s2_by_axis": [
+      1.2911564805193505,
+      1.0490624882353847,
+      0.10491992443186228
+    ],
+    "val_events": 95952
+  }
+}

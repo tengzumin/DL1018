@@ -1,0 +1,26 @@
+{
+  "schema": "CM18_A1R_ZERO_STEP_ATTEMPT_RECORD_V1",
+  "attempt": 1,
+  "source_path": "experiments/attitude_cm18_datarepair_20261024/train_cm18_a1r_v1.py",
+  "source_sha256": "e3bc08816f47b273ba693a4e4c84d807cf3e3959da16fdbd191cf184bd1cda55",
+  "command": [
+    "python",
+    "experiments/attitude_cm18_datarepair_20261024/train_cm18_a1r_v1.py",
+    "--repo-root",
+    ".",
+    "--self-check",
+    "--manifest-sha256",
+    "3f51a1cd0e2e8c3eae79a16df363f2f8d47b0d5dbd876ecd95f1571d9e70a5e0"
+  ],
+  "exit_code": 1,
+  "status": "FAILED",
+  "stage": "_training_arrays",
+  "error": "ValueError: TRAIN-only canonical normalizer differs from independent audit",
+  "computed_normalizer_sha256": "faf8748f640c944c745406247ab8486825966abd763088ad1f4e0cde626ad14c",
+  "previous_expected_normalizer_sha256": "20a1429bd5838faed700f01287ba30f3872d6b0bd5e119e6119179b8dddc1671",
+  "optimizer_steps": 0,
+  "optimizer_step_calls": 0,
+  "Plant_calls": 0,
+  "formal_run_directory_created": false,
+  "notes": "Failed before model initialization/training; source copy and record preserve the original attempt."
+}

@@ -1,0 +1,29 @@
+{
+  "schema": "DL1018_C5_RBF_LOCAL_REFERENCE_STATUS_V1",
+  "status": "COMPLETE_PASS_OFFLINE_DIAGNOSTIC",
+  "Plant_calls": 0,
+  "training_jobs": 0,
+  "TEST_read": false,
+  "MATLAB_started": false,
+  "source_modified": false,
+  "variable_inertia_read_or_reconstructed": false,
+  "scenes": [
+    "DL1018_VAL_T1_C05_W12",
+    "DL1018_VAL_T1_C08_W15",
+    "DL1018_VAL_T2_C02_W12",
+    "DL1018_VAL_T2_C05_W15",
+    "DL1018_VAL_T3_C00_W13",
+    "DL1018_VAL_T3_C02_W15"
+  ],
+  "RBF_events_replayed": 11994,
+  "mature_uniform_samples_per_scene": 200,
+  "local_jacobians": 1200,
+  "replay_status": "PASS_RBF_FULL_EVENT_REPLAY",
+  "local_jacobian_status": "PASS_OFFLINE_LOCAL_JACOBIANS",
+  "analysis_script_sha256_at_report_time": "5a98fe0f041aa30607e9d608b57ac2307d98193ff05ca8c087c7a80d25f68230",
+  "report": "REPORT_v1.md",
+  "result": "RESULT_v1.json",
+  "provenance": "PROVENANCE_v1.json",
+  "source_lock_validation": "SOURCE_LOCK_VALIDATION_v1.json",
+  "execution_command": "$env:MKL_THREADING_LAYER='SEQUENTIAL'\n$env:OMP_NUM_THREADS='1'\n$env:MKL_NUM_THREADS='1'\n& python -u 'experiments/dl_attitude_replacement_20261026/attitude_rbf_local_reference_20261027_v1/rbf_replay.py' --phase full --scene all"
+}

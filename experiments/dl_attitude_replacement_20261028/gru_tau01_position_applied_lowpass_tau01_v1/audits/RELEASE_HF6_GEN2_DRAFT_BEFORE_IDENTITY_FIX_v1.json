@@ -1,0 +1,84 @@
+{
+  "schema": "DL1018_POSITION_APPLIED_LOWPASS_RELEASE_V1",
+  "study_id": "gru_tau01_position_applied_lowpass_tau01_v1",
+  "status": "RELEASED",
+  "parent_study_id": "gru_tau01_delayed_start_v1",
+  "parent_locked_cfg_sha256": "42b2163d16836fdd4a9822eb48139dbac7e392ad9d88648e24f550224ae73d81",
+  "source_hash_manifest_path": "SOURCE_HASH_MANIFEST_v1.json",
+  "source_hash_manifest_sha256": "26ab4be02d2e84395b1d7ad0b056b974691291e6e431569d8e61eaae045208f6",
+  "source_lock_path": "SOURCE_LOCK_v1.json",
+  "source_lock_sha256": "336726a6d3749b4454619a7b80d1d97bab3306f9f98b9273017f8bbb17695c82",
+  "allowed_parent_source_changes": [
+    "matlab/runtime/run_mlp15_dev72_closed_loop.m"
+  ],
+  "allowed_added_source_files": [
+    "matlab/models/position_applied_accel_lowpass_zoh.m"
+  ],
+  "applied_acceleration_lowpass": {
+    "event_period_s": 0.01,
+    "input": "post-beta, post-head-clipped position NN applied acceleration",
+    "enabled": true,
+    "tau_s": 0.1,
+    "discretization": "exact first-order low-pass under zero-order-held input",
+    "update_rate_hz": 100,
+    "initial_state_mps2": [
+      0,
+      0,
+      0
+    ],
+    "output": "held applied acceleration and P.mass*output force used by the existing position/PCF path"
+  },
+  "parent_comparison": "The only changed inherited source is the Stage-1 event runtime; the only added runner source is the low-pass helper.",
+  "Plant_calls": 1,
+  "plant_called": false,
+  "TEST_data_read": false,
+  "inertia_reconstruction_enabled": false,
+  "fixed_scene_id": "DL1018_VAL_T3_C01_W14",
+  "authorized_scenes": [
+    "DL1018_VAL_T3_C01_W14",
+    "DL1018_DEV_T1_C10_W09",
+    "DL1018_DEV_T2_C09_W10",
+    "DL1018_DEV_T3_C09_W09",
+    "DL1018_VAL_T1_C07_W14",
+    "DL1018_VAL_T2_C04_W14"
+  ],
+  "authorized_Plant_calls": 6,
+  "authorization_note": "Root authorized one physical dynamics call; four wrapper attempts failed before Plant dynamics and remain immutable; clean retry 005 is prepared pending root review.",
+  "prior_gate_failure_audit_path": "audits/FAILED_ATTEMPT_GATE_CORRECTION_v1.json",
+  "prior_gate_failure_audit_sha256": "a4acad420aa78dd31a7301cf05d3350a42ff1d1cfebc3e3006fda147c58a4596",
+  "clean_retry_relative_path": "runs/DL1018_VAL_T3_C01_W14_retry_005",
+  "retry_sequence": 5,
+  "runtime_dependency_manifest_path": "RUNTIME_DEPENDENCY_MANIFEST_v1.json",
+  "runtime_dependency_manifest_sha256": "69f3e5cff94ed889da04068bb6a2f1fe71745b915b08970832a485b60f4ef890",
+  "parent_dev72_payload_manifest_path": "MLP15_DEV72_PAYLOAD_MANIFEST_v2.json",
+  "parent_dev72_payload_manifest_sha256": "8c6bae8a0ed4d94b30b9e9ac466d8a46ed1a1d955c9592eccabaf4c4987a3991",
+  "prior_dependency_failure_audit_path": "audits/FAILED_ATTEMPT_DEPENDENCY_CORRECTION_v1.json",
+  "prior_dependency_failure_audit_sha256": "5d32a1309a741c0d8dad155e67d9183de008feeca45e1f20930ab2c9a6a05d7b",
+  "prior_identity_failure_audit_path": "audits/FAILED_ATTEMPT_IDENTITY_FAILURE_CORRECTION_v1.json",
+  "prior_identity_failure_audit_sha256": "12d4f3de878c0573b962db4bee5a2e42ec70032175c8372c813c2b0dbec3ece7",
+  "retry_of_relative_path": "runs/DL1018_VAL_T3_C01_W14_retry_004",
+  "prior_exact_options_failure_audit_path": "audits/FAILED_ATTEMPT_EXACT_OPTIONS_FAILURE_CORRECTION_v1.json",
+  "prior_exact_options_failure_audit_sha256": "38527ebcbe55e83364c63f3fbb1741807bb842c5231764fa23fb5f35b0d1f5de",
+  "release_generation": 2,
+  "previous_release_sha256": "7aa3010ad8876cde8804c6632f82f5b1647fb7daec2a1bf15d676a39b35afd55",
+  "previous_release_archive_path": "audits/RELEASE_PILOT_ARCHIVE_v1.json",
+  "previous_release_archive_sha256": "7aa3010ad8876cde8804c6632f82f5b1647fb7daec2a1bf15d676a39b35afd55",
+  "pilot_release_sha256": "7aa3010ad8876cde8804c6632f82f5b1647fb7daec2a1bf15d676a39b35afd55",
+  "Plant_calls_completed_before_continuation": 1,
+  "remaining_authorized_Plant_calls": 5,
+  "continuation_scene_ids": [
+    "DL1018_DEV_T1_C10_W09",
+    "DL1018_DEV_T2_C09_W10",
+    "DL1018_DEV_T3_C09_W09",
+    "DL1018_VAL_T1_C07_W14",
+    "DL1018_VAL_T2_C04_W14"
+  ],
+  "prior_completed_scene_ids": [
+    "DL1018_VAL_T3_C01_W14"
+  ],
+  "release_notes": "Fixed HF6 continuation of the reviewed low-pass pilot. One stable pilot Plant call is bound to the byte-identical archived generation-1 release; this generation authorizes the remaining five fixed HF scenes, for a total budget of six. Only the Stage-1 applied-acceleration low-pass candidate is under evaluation; controller math and frozen C5 options are unchanged. No TEST data or inertia reconstruction.",
+  "pilot_retry_history_path": "audits/FAILED_ATTEMPT_GATE_CORRECTION_v1.json",
+  "pilot_retry_history_sha256": "a4acad420aa78dd31a7301cf05d3350a42ff1d1cfebc3e3006fda147c58a4596",
+  "pilot_source_lock_archive_gap_report": "audits/PILOT_SOURCE_LOCK_ARCHIVE_GAP_v1.json",
+  "pilot_source_lock_archive_gap_report_sha256": "2fa5e824ed142550423835198dff01f2f6e810308aef3792ff64af434c113659"
+}

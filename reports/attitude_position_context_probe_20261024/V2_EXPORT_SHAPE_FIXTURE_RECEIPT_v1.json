@@ -1,0 +1,20 @@
+{
+  "schema": "MATCHED_POSITION_EXPORT_V2_SHAPE_FIXTURE_RECEIPT_V1",
+  "source_path": "experiments/attitude_position_context_probe_20261024/export_matched_position_probe_events_v2.m",
+  "source_sha256": "ddb1684b1d720d9bee80b3bcda2c95bf855faee1220fc54e9ba764695c5a54a9",
+  "matlab": "C:\\Program Files\\MATLAB\\R2025b\\bin\\matlab.exe",
+  "command": "& 'C:\\Program Files\\MATLAB\\R2025b\\bin\\matlab.exe' -batch \"p=fullfile(pwd,'experiments','attitude_position_context_probe_20261024','export_matched_position_probe_events_v2.m'); issues=checkcode(p,'-id'); N=1999; phase=repmat({'PRE'},N,1); phase_code=ones(N,1,'uint8'); X18=zeros(N,18); target=zeros(N,3); e=struct('schema','MATCHED_POSITION_PROBE_EVENT_EXPORT_V2','feature_names',{{'x','y'}},'event_index',(1:N).','phase',{phase},'phase_code',phase_code,'X18',X18,'target_raw',target); assert(isscalar(e)); assert(numel(e.phase)==N); encoded=jsonencode(e,'PrettyPrint',true); bytes=unicode2native(encoded,'UTF-8'); assert(numel(bytes)<=16*1024^2); d=jsondecode(encoded); assert(numel(d.phase)==N); fprintf('V2_SCALAR_PHASE_JSON_SIZECHECK_PASS nissues=%d bytes=%d\\n',numel(issues),numel(bytes));\"",
+  "exit_code": 0,
+  "stdout": "V2_SCALAR_PHASE_JSON_SIZECHECK_PASS nissues=5 bytes=480850",
+  "assertions": [
+    "isscalar(export)",
+    "numel(export.phase)==1999",
+    "numel(jsondecode(jsonencode(export)).phase)==1999",
+    "encoded UTF-8 bytes <= 16 MiB"
+  ],
+  "checkcode_diagnostic_count": 5,
+  "plant_calls": 0,
+  "raw_files_read": 0,
+  "exporter_invoked": false,
+  "matlab_batch_script": "p=fullfile(pwd,'experiments','attitude_position_context_probe_20261024','export_matched_position_probe_events_v2.m'); issues=checkcode(p,'-id'); N=1999; phase=repmat({'PRE'},N,1); phase_code=ones(N,1,'uint8'); X18=zeros(N,18); target=zeros(N,3); e=struct('schema','MATCHED_POSITION_PROBE_EVENT_EXPORT_V2','feature_names',{{'x','y'}},'event_index',(1:N).','phase',{phase},'phase_code',phase_code,'X18',X18,'target_raw',target); assert(isscalar(e)); assert(numel(e.phase)==N); encoded=jsonencode(e,'PrettyPrint',true); bytes=unicode2native(encoded,'UTF-8'); assert(numel(bytes)<=16*1024^2); d=jsondecode(encoded); assert(numel(d.phase)==N); fprintf('V2_SCALAR_PHASE_JSON_SIZECHECK_PASS nissues=%d bytes=%d\\n',numel(issues),numel(bytes));"
+}

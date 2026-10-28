@@ -1,0 +1,96 @@
+{
+  "schema": "CM18_A1T_TRAINING_RECEIPT_V1",
+  "status": "COMPLETED",
+  "started_at_utc": "2026-10-24T18:49:20Z",
+  "ended_at_utc": "2026-10-24T18:55:28Z",
+  "command": [
+    "experiments/attitude_cm18_datarepair_20261024/train_cm18_a1t_v1.py",
+    "--repo-root",
+    ".",
+    "--release",
+    "reports/attitude_cm18_datarepair_20261024/ROOT_A1T_TRAINING_RELEASE_v1.json",
+    "--release-sha256",
+    "b9758c7f1e75ce9cc9a2f25e9a756fa15f6da950d461cb58c24073118414840b"
+  ],
+  "cwd": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018",
+  "run_directory": "experiments/attitude_cm18_datarepair_20261024/training_a1t_v1",
+  "release": {
+    "release_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\reports\\attitude_cm18_datarepair_20261024\\ROOT_A1T_TRAINING_RELEASE_v1.json",
+    "release_sha256": "b9758c7f1e75ce9cc9a2f25e9a756fa15f6da950d461cb58c24073118414840b",
+    "taskbook_sha256": "2fe158fd370019bfe9e3d95e6b3222e1f4d7829cfa1681bd8dd85d06615102e9",
+    "source_manifest_sha256": "0f86b47d01940e7b556b78a9664470531572809aa6857a59fc77d88a33681ec5",
+    "dataset_manifest_path": "reports/attitude_cm18_datarepair_20261024/cstar_all816_v1/CSTAR_RELABEL_ALL816_v1.json",
+    "dataset_manifest_sha256": "421298399aacf2d7f82031f2bdecc39eacacc28196c7b872b925866655d211a6",
+    "normalizer_audit_path": "reports/attitude_cm18_datarepair_20261024/ROOT_CSTAR_ALL816_INDEPENDENT_AUDIT_v1.json",
+    "normalizer_audit_sha256": "f8db2f1fa13447db4fd5b91b5b945391f437de56a2d8cf3ee01cab7c59f75a06",
+    "a1r_normalizer_sha256": "712627125bf48c3d07cc71de10b13efcb4560b7c31673a179b371cc91d1fe48c",
+    "a1r_initial_parameters_sha256": "ba39ca088db1eddd9f0f029ab1b051f601f6861e33203bdea8a747d2d433dc26",
+    "source_files": {
+      "experiments/attitude_cm18_datarepair_20261024/train_cm18_a1t_v1.py": "2a5ea2ba6d0ccba1e0bf30a7d84f8a07723144fb44a070a63ca7fd6d68ade88b",
+      "experiments/attitude_cm18_datarepair_20261024/read_cstar_split_v1.py": "ced4251719f986d762f29ccced04fb80208a28e7aed1e2fe12d3b504955a4096",
+      "experiments/attitude_cm18_a1_20261024/model_cm18_v1.py": "ad32c4f97bf96c63172547c944d80c45062502f1062b774934e0f7a868720cf6",
+      "experiments/attitude_cm18_a1_20261024/torch_model_cm18_v1.py": "bc9fe34fe957cb624438eeccfdfe2ddd38ad40cc9a4e706ce58863c9271d5aa0"
+    }
+  },
+  "runtime_preflight": {
+    "free_disk_bytes_at_start": 213779513344,
+    "compute_process_rows_recorded_for_root_review": [
+      "1116, [Insufficient Permissions]",
+      "13616, C:\\Windows\\SystemApps\\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\\CrossDeviceResume.exe",
+      "13056, C:\\Windows\\explorer.exe",
+      "14360, C:\\Windows\\SystemApps\\Microsoft.Windows.StartMenuExperienceHost_cw5n1h2txyewy\\StartMenuExperienceHost.exe",
+      "13492, C:\\Windows\\SystemApps\\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\\SearchHost.exe",
+      "16728, C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\155.0.4283.62\\msedgewebview2.exe",
+      "15296, C:\\Windows\\SystemApps\\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\\TextInputHost.exe",
+      "13172, [Insufficient Permissions]",
+      "7948, C:\\Program Files\\WindowsApps\\AppUp.IntelGraphicsExperience_1.100.5688.0_x64__8j3eq9eme6ctt\\IGCC.exe",
+      "11080, C:\\Program Files\\Athena\\一元机场.VIP.exe",
+      "8960, C:\\Program Files\\WindowsApps\\Microsoft.YourPhone_1.26082.121.0_x64__8wekyb3d8bbwe\\PhoneExperienceHost.exe",
+      "24276, C:\\Program Files\\WindowsApps\\9426MICRO-STARINTERNATION.MSICenter_2.0.74.0_x64__kzh8wxbdkxb8p\\DCv2\\DCv2.exe",
+      "10092, C:\\Program Files\\WindowsApps\\OpenAI.Codex_26.1016.8622.0_x64__2p2nqsd0c76g0\\app\\ChatGPT.exe",
+      "18036, C:\\Users\\35326\\AppData\\Local\\OpenAI\\Codex\\runtimes\\cua_node\\2b841c3d44b123ec\\bin\\node_modules\\@oai\\sky\\bin\\windows\\swift\\x64\\codex-computer-use-swift.exe",
+      "12128, C:\\Windows\\System32\\ShellHost.exe",
+      "17924, C:\\Windows\\SystemApps\\ShellExperienceHost_cw5n1h2txyewy\\ShellExperienceHost.exe",
+      "13272, C:\\Users\\35326\\AppData\\Local\\Kingsoft\\WPS Office\\12.1.0.29161\\office6\\promecefpluginhost.exe"
+    ],
+    "gpu_utilization_rows": [
+      "0, 0"
+    ],
+    "gpu_utilization_percent": [
+      0.0
+    ]
+  },
+  "environment": {
+    "MKL_THREADING_LAYER": "SEQUENTIAL",
+    "OMP_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1",
+    "CUBLAS_WORKSPACE_CONFIG": ":4096:8"
+  },
+  "optimizer_steps_completed": 60000,
+  "optimizer_step_calls_attempted": 60000,
+  "active_stage": null,
+  "failure_reason": null,
+  "label_semantics": "direct compensation C*: raw network target is C*/beta; unchanged runtime clip then beta",
+  "B_VAL48_selects_checkpoint": true,
+  "C5_VAL48_used_for_training_or_selection": false,
+  "TEST_accessed": false,
+  "runtime": {
+    "python": "3.12.7 | packaged by Anaconda, Inc. | (main, Oct  4 2024, 13:17:27) [MSC v.1929 64 bit (AMD64)]",
+    "numpy": "1.26.4",
+    "torch": "2.6.0+cu124",
+    "cuda_runtime": "12.4",
+    "gpu_name": "NVIDIA GeForce RTX 3070 Laptop GPU",
+    "device": "cuda:0",
+    "dtype": "float32",
+    "amp": false,
+    "tf32": false,
+    "deterministic_algorithms": true
+  },
+  "best_step": 40000,
+  "best_score": 0.2961815934068728,
+  "best_checkpoint_sha256": "58c72450fcc1e9aaa04f7454ad2a8aa551f161a95e52bb9946f0c99c23957cea",
+  "final_checkpoint_sha256": "e2b0912757ecfafc85fa9f6e62f4193151add8a9afc4bbf9e6a53278f75eb0a6",
+  "candidate_frozen": true,
+  "C5_VAL48_post_selection_diagnostic_pending": true
+}

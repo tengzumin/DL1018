@@ -1,0 +1,181 @@
+{
+  "schema": "DL1018_CAUSAL_N4_GATE_SINGLE_CALL_V2",
+  "study_id": "large_gru_dual_loop_dev_v1",
+  "status": "RELEASED",
+  "authorized_scenes": [
+    "DL1018_DEV_T1_C00_W03"
+  ],
+  "authorized_Plant_calls": 1,
+  "Plant_calls": 1,
+  "potential_budget_calls": 1,
+  "source_lock_sha256": "1665627b8f83e12fe426c991aab2eda11d52051ff22b0919bd037b0e7d32b450",
+  "candidate_gru": {
+    "model_id": "GRU13_B768_COSINE_S2026102001",
+    "architecture": "GRU(input=13,hidden=32,output=3)",
+    "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\large_gru_b768_v1\\runs\\GRU13_B768_COSINE_S2026102001\\gru_stream_large_b768_weights_v1.mat",
+    "sha256": "4f0724426244d58e283da3f1ebbf6a01a9b39b02d2280eaaa22796eee8f1fd6b",
+    "train_only_normalizer_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\large_gru_b768_v1\\runs\\GRU13_B768_COSINE_S2026102001\\train_only_normalizer.npz",
+    "train_only_normalizer_sha256": "e1c489c49eb5fb34cbf2774092fd1ba1d1caae85664fa502f3657ca3a9e67390",
+    "training_config_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\large_gru_b768_v1\\runs\\GRU13_B768_COSINE_S2026102001\\training_config.json",
+    "training_progress_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\large_gru_b768_v1\\runs\\GRU13_B768_COSINE_S2026102001\\training_progress.json",
+    "MATLAB_PT_stream_parity_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\large_gru_b768_v1\\runs\\GRU13_B768_COSINE_S2026102001\\MATLAB_PARITY_RESULT_v1.json",
+    "old_parent_raw_role": "OLD_COSINE_GRU_COMPARATOR_ONLY; no candidate-model identity or pointwise-equivalence claim"
+  },
+  "applied_acceleration_static_n4": {
+    "enabled": true,
+    "centers_hz": [
+      2.2,
+      3.2,
+      3.7,
+      4.8
+    ],
+    "quality_factor_each": [
+      4,
+      4,
+      4,
+      4
+    ],
+    "sample_rate_hz": 100,
+    "action_limit_mps2": 3,
+    "b": [
+      [
+        0.98306784940841163,
+        -1.9473815673631925,
+        0.98306784940841163
+      ],
+      [
+        0.97564426290820117,
+        -1.9119799206806107,
+        0.97564426290820117
+      ],
+      [
+        0.972007469545749,
+        -1.8917180425569462,
+        0.972007469545749
+      ],
+      [
+        0.96419909691225436,
+        -1.841359063436488,
+        0.96419909691225436
+      ]
+    ],
+    "a": [
+      [
+        1,
+        -1.9473815673631925,
+        0.96613569881682326
+      ],
+      [
+        1,
+        -1.9119799206806107,
+        0.95128852581640244
+      ],
+      [
+        1,
+        -1.8917180425569462,
+        0.94401493909149792
+      ],
+      [
+        1,
+        -1.841359063436488,
+        0.92839819382450872
+      ]
+    ],
+    "gate_bp_sos": [
+      [
+        0.00782020803349719,
+        0.01564041606699438,
+        0.00782020803349719,
+        1,
+        -1.7653032278569889,
+        0.83753375827904575
+      ],
+      [
+        1,
+        -2,
+        1,
+        1,
+        -1.8957260285978639,
+        0.91459788142420062
+      ]
+    ],
+    "gate_lo_sos": [
+      [
+        0.0020805671354922929,
+        0.0041611342709845858,
+        0.0020805671354922929,
+        1,
+        -1.8925388671474799,
+        0.90417385083708357
+      ],
+      [
+        1,
+        -2,
+        1,
+        1,
+        -1.9667173311097974,
+        0.96797153273500514
+      ]
+    ],
+    "gate_energy_tau_s": 1,
+    "gate_ratio_epsilon": 1E-8,
+    "gate_ratio_low": 0.35,
+    "gate_ratio_span": 0.3,
+    "gate_tau_s": 0.3,
+    "startup_gate_zero_until_s": 2,
+    "event_contract": "1999 events 0.01:0.01:19.99; 31 warmup actions are zero; ZOH at other 1-ms steps",
+    "application_point": "final C5 applied compensation before position_bs_step",
+    "state_initialization": "gate SOS zero; N4 first nonzero input initializes all section histories",
+    "runtime_wind_or_W_code_branching": false
+  },
+  "extra_position_residual_gru_enabled": false,
+  "TEST_read": false,
+  "VAL_data_read": false,
+  "inertia_reconstruction_enabled": false,
+  "Plant_truth_deployment_input": false,
+  "source_lock_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\large_gru_dual_loop_dev24_v1\\SOURCE_LOCK_SINGLE_v2.json",
+  "candidate_identity_sha256": "846c8407c462029ea7ae1b2955556c6ed739710bdeb087136fe8c95c8c01a15e",
+  "phase": "DEV24",
+  "reuse_scene_ids": [
+    "DL1018_DEV_T3_C09_W09"
+  ],
+  "new_attempt_scene_ids": [
+    "DL1018_DEV_T1_C00_W03",
+    "DL1018_DEV_T1_C01_W15",
+    "DL1018_DEV_T1_C04_W00",
+    "DL1018_DEV_T1_C05_W06",
+    "DL1018_DEV_T1_C07_W08",
+    "DL1018_DEV_T1_C10_W09",
+    "DL1018_DEV_T1_C11_W12",
+    "DL1018_DEV_T1_C15_W14",
+    "DL1018_DEV_T2_C00_W04",
+    "DL1018_DEV_T2_C02_W15",
+    "DL1018_DEV_T2_C03_W01",
+    "DL1018_DEV_T2_C06_W07",
+    "DL1018_DEV_T2_C08_W08",
+    "DL1018_DEV_T2_C09_W10",
+    "DL1018_DEV_T2_C12_W13",
+    "DL1018_DEV_T2_C14_W14",
+    "DL1018_DEV_T3_C00_W05",
+    "DL1018_DEV_T3_C03_W15",
+    "DL1018_DEV_T3_C05_W02",
+    "DL1018_DEV_T3_C06_W08",
+    "DL1018_DEV_T3_C10_W11",
+    "DL1018_DEV_T3_C13_W12",
+    "DL1018_DEV_T3_C15_W14"
+  ],
+  "authoritative_scene_list_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\causal_n4_gate_train24_batch_v2\\TRAIN24_SCORE_SUMMARY_v2.json",
+  "authoritative_scene_list_sha256": "d127fc403a8d456924b7040ce8a329e5130f2b67f5ea8a801490e075085f4b21",
+  "source_split": "TRAIN_C5_24",
+  "controller_identity": {
+    "attitude": "candidate GRU13_B768_COSINE_S2026102001 (GRU 13/32/3), TRAIN-only normalizer",
+    "position": "frozen C5 DSSM14 / M110 options",
+    "extra_position_residual_gru_enabled": false,
+    "fixed_J0": true,
+    "inertia_reconstruction_enabled": false,
+    "parameter_tuning": false,
+    "parent_raw_role": "OLD_COSINE_GRU_COMPARATOR_ONLY"
+  },
+  "call_protocol_sha256": "5cfec030685a180db167cc2488753c7383ac4f73b4e2bb528f40c11270eda7a7",
+  "fixed_scene_id": "DL1018_DEV_T1_C00_W03"
+}

@@ -1,0 +1,1122 @@
+{
+  "schema": "C5_TRAIN24_POSITION_CAUSAL_DATASET_V1",
+  "status": "PASS_READ_ONLY_DATASET_BUILT",
+  "data_path": "reports/position_c5_train24_causal_dataset_v1/dataset/C5_TRAIN24_POSITION_CAUSAL_PAIRS_v1.npz",
+  "data_sha256": "fbeaca11080620d2ba217a0ddeb7f4a1a25b6518fa2bb16012780a4c46cb6001",
+  "shape": {
+    "scene_ids": [
+      24
+    ],
+    "wind_cells": [
+      24
+    ],
+    "x14_logged": [
+      24,
+      1999,
+      14
+    ],
+    "x14_model_input": [
+      24,
+      1999,
+      14
+    ],
+    "target_interval_raw_mps2": [
+      24,
+      1999,
+      3
+    ],
+    "target_interval_clip_mps2": [
+      24,
+      1999,
+      3
+    ],
+    "delta_target_post_clip_mps2": [
+      24,
+      1999,
+      3
+    ],
+    "applied_acceleration_event_mps2": [
+      24,
+      1999,
+      3
+    ],
+    "applied_acceleration_interval_mean_mps2": [
+      24,
+      1999,
+      3
+    ],
+    "applied_acceleration_interval_span_mps2": [
+      24,
+      1999,
+      3
+    ],
+    "actual_acceleration_interval_mean_mps2": [
+      24,
+      1999,
+      3
+    ],
+    "nominal_acceleration_interval_mean_mps2": [
+      24,
+      1999,
+      3
+    ],
+    "event_time_s": [
+      24,
+      1999
+    ],
+    "interval_end_time_s": [
+      24,
+      1999
+    ],
+    "ready_mask": [
+      24,
+      1999
+    ]
+  },
+  "created_by": "reports/position_c5_train24_causal_dataset_v1/build_position_c5_train24_dataset_v1.py",
+  "builder_sha256": "40a24f260aecc9e101811d40c88bb32544ab5836d176da14ccb04742fc849fc7",
+  "scope": {
+    "scene_count": 24,
+    "event_count_per_scene": 1999,
+    "ready_event_count_per_scene": 1968,
+    "source": "C5 matched DSSM14/M110/PCF TRAIN24 raw trajectories",
+    "position_features": "logged stage1_position_feature_14 and stage1_position_feature_input (X14), read at event t",
+    "target_interval": "measured velocity 10ms difference minus mean logged nominal-minus-applied acceleration",
+    "current_applied": "logged position_compensation_applied_acceleration_mps2 at event t",
+    "delta_target": "clip(target_interval_raw,-3,3)-current_applied, only for 1968 ready events",
+    "units": "position feature mixed physical units; targets/actions m/s^2",
+    "no_inertia_reconstruction": true,
+    "TEST_accessed": false,
+    "Plant_calls": 0,
+    "optimizer_steps": 0
+  },
+  "teacher_label_alignment_path": "reports/position_c5_train24_causal_dataset_v1/POSITION_TRAIN24_LABEL_ALIGNMENT_v1.json",
+  "teacher_label_alignment_sha256": "3be1e4803d85d9b566519eba637a3bac02b4c443546d56225c429553e3a8993d",
+  "teacher_label_alignment_pooled_stats": {
+    "bias_by_axis_mps2": [
+      9.137933527883861e-06,
+      -4.819226909500595e-06,
+      -2.5810635694973395e-05
+    ],
+    "rmse_by_axis_mps2": [
+      0.007382543974681073,
+      0.007731617028760769,
+      0.002329600637970455
+    ],
+    "abs_error_p95_by_axis_mps2": [
+      0.018083911049032002,
+      0.018369444833774447,
+      0.005484393648901239
+    ],
+    "corr_by_axis": [
+      0.9997636402100645,
+      0.9997634223221185,
+      0.9998183177878697
+    ],
+    "target_rms_by_axis_mps2": [
+      0.340520148400928,
+      0.3557945885187033,
+      0.12273605730476411
+    ],
+    "interval_target_rms_by_axis_mps2": [
+      0.3403206786301231,
+      0.3554904928102147,
+      0.12273389974693671
+    ],
+    "n_events": 53973
+  },
+  "teacher_label_alignment_raw_available_by_role": {
+    "B": 24,
+    "POS_OFF": 3
+  },
+  "teacher_label_alignment_raw_missing_by_role": {
+    "B": 0,
+    "POS_OFF": 21
+  },
+  "teacher_B_POS_OFF_exact_scene_pairs": {
+    "episodes": 48,
+    "scenes": 24,
+    "roles": [
+      "B",
+      "POS_OFF"
+    ],
+    "same_canonical_ids_as_C5": true
+  },
+  "scene_folds": {
+    "holdout_W00": {
+      "train_scene_ids": [
+        "DL1018_TRAIN_T1_C00_W09",
+        "DL1018_TRAIN_T1_C00_W12",
+        "DL1018_TRAIN_T1_C00_W15",
+        "DL1018_TRAIN_T1_C15_W09",
+        "DL1018_TRAIN_T1_C15_W12",
+        "DL1018_TRAIN_T1_C15_W15",
+        "DL1018_TRAIN_T2_C00_W09",
+        "DL1018_TRAIN_T2_C00_W12",
+        "DL1018_TRAIN_T2_C00_W15",
+        "DL1018_TRAIN_T2_C15_W09",
+        "DL1018_TRAIN_T2_C15_W12",
+        "DL1018_TRAIN_T2_C15_W15",
+        "DL1018_TRAIN_T3_C00_W09",
+        "DL1018_TRAIN_T3_C00_W12",
+        "DL1018_TRAIN_T3_C00_W15",
+        "DL1018_TRAIN_T3_C15_W09",
+        "DL1018_TRAIN_T3_C15_W12",
+        "DL1018_TRAIN_T3_C15_W15"
+      ],
+      "validation_scene_ids": [
+        "DL1018_TRAIN_T1_C00_W00",
+        "DL1018_TRAIN_T1_C15_W00",
+        "DL1018_TRAIN_T2_C00_W00",
+        "DL1018_TRAIN_T2_C15_W00",
+        "DL1018_TRAIN_T3_C00_W00",
+        "DL1018_TRAIN_T3_C15_W00"
+      ],
+      "train_scene_count": 18,
+      "validation_scene_count": 6
+    },
+    "holdout_W09": {
+      "train_scene_ids": [
+        "DL1018_TRAIN_T1_C00_W00",
+        "DL1018_TRAIN_T1_C00_W12",
+        "DL1018_TRAIN_T1_C00_W15",
+        "DL1018_TRAIN_T1_C15_W00",
+        "DL1018_TRAIN_T1_C15_W12",
+        "DL1018_TRAIN_T1_C15_W15",
+        "DL1018_TRAIN_T2_C00_W00",
+        "DL1018_TRAIN_T2_C00_W12",
+        "DL1018_TRAIN_T2_C00_W15",
+        "DL1018_TRAIN_T2_C15_W00",
+        "DL1018_TRAIN_T2_C15_W12",
+        "DL1018_TRAIN_T2_C15_W15",
+        "DL1018_TRAIN_T3_C00_W00",
+        "DL1018_TRAIN_T3_C00_W12",
+        "DL1018_TRAIN_T3_C00_W15",
+        "DL1018_TRAIN_T3_C15_W00",
+        "DL1018_TRAIN_T3_C15_W12",
+        "DL1018_TRAIN_T3_C15_W15"
+      ],
+      "validation_scene_ids": [
+        "DL1018_TRAIN_T1_C00_W09",
+        "DL1018_TRAIN_T1_C15_W09",
+        "DL1018_TRAIN_T2_C00_W09",
+        "DL1018_TRAIN_T2_C15_W09",
+        "DL1018_TRAIN_T3_C00_W09",
+        "DL1018_TRAIN_T3_C15_W09"
+      ],
+      "train_scene_count": 18,
+      "validation_scene_count": 6
+    },
+    "holdout_W12": {
+      "train_scene_ids": [
+        "DL1018_TRAIN_T1_C00_W00",
+        "DL1018_TRAIN_T1_C00_W09",
+        "DL1018_TRAIN_T1_C00_W15",
+        "DL1018_TRAIN_T1_C15_W00",
+        "DL1018_TRAIN_T1_C15_W09",
+        "DL1018_TRAIN_T1_C15_W15",
+        "DL1018_TRAIN_T2_C00_W00",
+        "DL1018_TRAIN_T2_C00_W09",
+        "DL1018_TRAIN_T2_C00_W15",
+        "DL1018_TRAIN_T2_C15_W00",
+        "DL1018_TRAIN_T2_C15_W09",
+        "DL1018_TRAIN_T2_C15_W15",
+        "DL1018_TRAIN_T3_C00_W00",
+        "DL1018_TRAIN_T3_C00_W09",
+        "DL1018_TRAIN_T3_C00_W15",
+        "DL1018_TRAIN_T3_C15_W00",
+        "DL1018_TRAIN_T3_C15_W09",
+        "DL1018_TRAIN_T3_C15_W15"
+      ],
+      "validation_scene_ids": [
+        "DL1018_TRAIN_T1_C00_W12",
+        "DL1018_TRAIN_T1_C15_W12",
+        "DL1018_TRAIN_T2_C00_W12",
+        "DL1018_TRAIN_T2_C15_W12",
+        "DL1018_TRAIN_T3_C00_W12",
+        "DL1018_TRAIN_T3_C15_W12"
+      ],
+      "train_scene_count": 18,
+      "validation_scene_count": 6
+    },
+    "holdout_W15": {
+      "train_scene_ids": [
+        "DL1018_TRAIN_T1_C00_W00",
+        "DL1018_TRAIN_T1_C00_W09",
+        "DL1018_TRAIN_T1_C00_W12",
+        "DL1018_TRAIN_T1_C15_W00",
+        "DL1018_TRAIN_T1_C15_W09",
+        "DL1018_TRAIN_T1_C15_W12",
+        "DL1018_TRAIN_T2_C00_W00",
+        "DL1018_TRAIN_T2_C00_W09",
+        "DL1018_TRAIN_T2_C00_W12",
+        "DL1018_TRAIN_T2_C15_W00",
+        "DL1018_TRAIN_T2_C15_W09",
+        "DL1018_TRAIN_T2_C15_W12",
+        "DL1018_TRAIN_T3_C00_W00",
+        "DL1018_TRAIN_T3_C00_W09",
+        "DL1018_TRAIN_T3_C00_W12",
+        "DL1018_TRAIN_T3_C15_W00",
+        "DL1018_TRAIN_T3_C15_W09",
+        "DL1018_TRAIN_T3_C15_W12"
+      ],
+      "validation_scene_ids": [
+        "DL1018_TRAIN_T1_C00_W15",
+        "DL1018_TRAIN_T1_C15_W15",
+        "DL1018_TRAIN_T2_C00_W15",
+        "DL1018_TRAIN_T2_C15_W15",
+        "DL1018_TRAIN_T3_C00_W15",
+        "DL1018_TRAIN_T3_C15_W15"
+      ],
+      "train_scene_count": 18,
+      "validation_scene_count": 6
+    }
+  },
+  "scenes": [
+    {
+      "scene_id": "DL1018_TRAIN_T1_C00_W00",
+      "task": "T1",
+      "class_index": 0,
+      "wind_cell": 0,
+      "validation_fold": "holdout_W00",
+      "raw_path": "reports/attitude_position_context_probe_20261024/c5_matched_train24_v1/runs/DL1018_TRAIN_T1_C00_W00/attempt_01/raw_run.mat",
+      "raw_sha256": "249d40351fa3503b8889ad3141317ffb641bed9360c1ad8c3156a2bc6a6af3e5",
+      "status_path": "reports/attitude_position_context_probe_20261024/c5_matched_train24_v1/runs/DL1018_TRAIN_T1_C00_W00/attempt_01/run_status.json",
+      "status_sha256": "f92d58be42ecd91174021aa794451bc6aa943583e31b92157b646e8a954abc8f",
+      "run_start_path": "reports/attitude_position_context_probe_20261024/c5_matched_train24_v1/runs/DL1018_TRAIN_T1_C00_W00/attempt_01/run_start.mat",
+      "run_start_sha256": "060dcf42948cc278d928c468197a407deaf60a2abb0894579bda66c50c9848d8",
+      "release_sha256": "a90675ea6f17b512a2ee01cf21510fb06d1dd86b50d282583283d0f08cb76e97",
+      "plant_calls": 1,
+      "feature_shape": [
+        1999,
+        14
+      ],
+      "valid_events": 1968,
+      "stage1_event_count": 1999,
+      "coordinate_mask": [
+        1.0,
+        1.0,
+        0.0
+      ],
+      "stage1_vs_actual_action_max_abs_mps2": 1.1102230246251565e-16,
+      "feature_input_vs_logged_feature_max_abs": 0.0,
+      "event_applied_vs_following_10ms_mean_max_abs_mps2": 2.220446049250313e-16,
+      "max_within_interval_applied_action_span_mps2": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "label_clip_fraction": 0.0
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T1_C00_W09",
+      "task": "T1",
+      "class_index": 0,
+      "wind_cell": 9,
+      "validation_fold": "holdout_W09",
+      "raw_path": "reports/attitude_position_context_probe_20261024/c5_matched_train24_v1/runs/DL1018_TRAIN_T1_C00_W09/attempt_01/raw_run.mat",
+      "raw_sha256": "edcbe77d12c0e5258e74fb18a2ab6ee87e37982d6373292c75db77ba528322ce",
+      "status_path": "reports/attitude_position_context_probe_20261024/c5_matched_train24_v1/runs/DL1018_TRAIN_T1_C00_W09/attempt_01/run_status.json",
+      "status_sha256": "95308c41d5f505b2ff354b256d8deb0c9c59ca6b22e46bfcb525ab81c26d0953",
+      "run_start_path": "reports/attitude_position_context_probe_20261024/c5_matched_train24_v1/runs/DL1018_TRAIN_T1_C00_W09/attempt_01/run_start.mat",
+      "run_start_sha256": "4d89b48a4a51b1fb70a8ec3e47d846981a2485415f3f9f1860eed4c9d2a76abb",
+      "release_sha256": "0c2244dae5b7ea5cb59c0b87b7f1b11d06466a29a934e2ef6330149abc7615db",
+      "plant_calls": 1,
+      "feature_shape": [
+        1999,
+        14
+      ],
+      "valid_events": 1968,
+      "stage1_event_count": 1999,
+      "coordinate_mask": [
+        1.0,
+        1.0,
+        0.0
+      ],
+      "stage1_vs_actual_action_max_abs_mps2": 5.551115123125783e-17,
+      "feature_input_vs_logged_feature_max_abs": 0.0,
+      "event_applied_vs_following_10ms_mean_max_abs_mps2": 1.1102230246251565e-16,
+      "max_within_interval_applied_action_span_mps2": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "label_clip_fraction": 0.0
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T1_C00_W12",
+      "task": "T1",
+      "class_index": 0,
+      "wind_cell": 12,
+      "validation_fold": "holdout_W12",
+      "raw_path": "reports/attitude_position_context_probe_20261024/c5_matched_train24_v1/runs/DL1018_TRAIN_T1_C00_W12/attempt_01/raw_run.mat",
+      "raw_sha256": "439ee639ab9e2d3653e743487989afc7dff2889e0a18399a6331e69abe27a6a0",
+      "status_path": "reports/attitude_position_context_probe_20261024/c5_matched_train24_v1/runs/DL1018_TRAIN_T1_C00_W12/attempt_01/run_status.json",
+      "status_sha256": "10e40598afe7bbbb6539c26d5b82f5b9c26cf00ea52e55ac4c1eb406404eecbd",
+      "run_start_path": "reports/attitude_position_context_probe_20261024/c5_matched_train24_v1/runs/DL1018_TRAIN_T1_C00_W12/attempt_01/run_start.mat",
+      "run_start_sha256": "a86508eb96fe9eb9062bd015b1b0f152ca0e36dce81dc97a6a1c352d3e81d61d",
+      "release_sha256": "7ec49784000eb64bb3b9a9d3371503583d03ffb3f8825d4673b17b5dddfc3c00",
+      "plant_calls": 1,
+      "feature_shape": [
+        1999,
+        14
+      ],
+      "valid_events": 1968,
+      "stage1_event_count": 1999,
+      "coordinate_mask": [
+        1.0,
+        1.0,
+        0.0
+      ],
+      "stage1_vs_actual_action_max_abs_mps2": 1.1102230246251565e-16,
+      "feature_input_vs_logged_feature_max_abs": 0.0,
+      "event_applied_vs_following_10ms_mean_max_abs_mps2": 2.220446049250313e-16,
+      "max_within_interval_applied_action_span_mps2": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "label_clip_fraction": 0.0
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T1_C00_W15",
+      "task": "T1",
+      "class_index": 0,
+      "wind_cell": 15,
+      "validation_fold": "holdout_W15",
+      "raw_path": "reports/attitude_position_context_probe_20261024/c5_matched_train24_v1/runs/DL1018_TRAIN_T1_C00_W15/attempt_01/raw_run.mat",
+      "raw_sha256": "b50b8ca81f53723bcdeda2bf1157832796ceee07dae1e7e0a4a3e5fe2303f976",
+      "status_path": "reports/attitude_position_context_probe_20261024/c5_matched_train24_v1/runs/DL1018_TRAIN_T1_C00_W15/attempt_01/run_status.json",
+      "status_sha256": "98a328b8825a8b4e6fc3f868b91f2b476164a97f4ebd03e361ce5e4cbb4553f0",
+      "run_start_path": "reports/attitude_position_context_probe_20261024/c5_matched_train24_v1/runs/DL1018_TRAIN_T1_C00_W15/attempt_01/run_start.mat",
+      "run_start_sha256": "48f5fb9e879105ac1b6085a3304427d52c3c2935571cc517fafd1e9a0f53c208",
+      "release_sha256": "e7eda2ac7f0128d368e1cddd1f530eb1fcdbf246b7984888418ed31e41722f0e",
+      "plant_calls": 1,
+      "feature_shape": [
+        1999,
+        14
+      ],
+      "valid_events": 1968,
+      "stage1_event_count": 1999,
+      "coordinate_mask": [
+        1.0,
+        1.0,
+        0.0
+      ],
+      "stage1_vs_actual_action_max_abs_mps2": 1.3877787807814457e-17,
+      "feature_input_vs_logged_feature_max_abs": 0.0,
+      "event_applied_vs_following_10ms_mean_max_abs_mps2": 2.7755575615628914e-17,
+      "max_within_interval_applied_action_span_mps2": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "label_clip_fraction": 0.0
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T1_C15_W00",
+      "task": "T1",
+      "class_index": 15,
+      "wind_cell": 0,
+      "validation_fold": "holdout_W00",
+      "raw_path": "reports/attitude_position_context_probe_20261024/c5_matched_train24_v1/runs/DL1018_TRAIN_T1_C15_W00/attempt_01/raw_run.mat",
+      "raw_sha256": "cbffafaf965dc519c61717f5854803d2a5be27f702e1fac3dd40bca7c0734f0e",
+      "status_path": "reports/attitude_position_context_probe_20261024/c5_matched_train24_v1/runs/DL1018_TRAIN_T1_C15_W00/attempt_01/run_status.json",
+      "status_sha256": "8d852fbd744fdfa131537ca041d9033d967e594c84e03f976c2c69d67e9db51f",
+      "run_start_path": "reports/attitude_position_context_probe_20261024/c5_matched_train24_v1/runs/DL1018_TRAIN_T1_C15_W00/attempt_01/run_start.mat",
+      "run_start_sha256": "f91f11dbad8148bad8975c9a6b23fcdc5ba4950bf6c746155d9f8efb157936a9",
+      "release_sha256": "32f9280a4fb943055333208a31ffca45ffa526254f64107dcd3059d9462499c1",
+      "plant_calls": 1,
+      "feature_shape": [
+        1999,
+        14
+      ],
+      "valid_events": 1968,
+      "stage1_event_count": 1999,
+      "coordinate_mask": [
+        1.0,
+        1.0,
+        0.0
+      ],
+      "stage1_vs_actual_action_max_abs_mps2": 5.551115123125783e-17,
+      "feature_input_vs_logged_feature_max_abs": 0.0,
+      "event_applied_vs_following_10ms_mean_max_abs_mps2": 1.1102230246251565e-16,
+      "max_within_interval_applied_action_span_mps2": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "label_clip_fraction": 0.0
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T1_C15_W09",
+      "task": "T1",
+      "class_index": 15,
+      "wind_cell": 9,
+      "validation_fold": "holdout_W09",
+      "raw_path": "reports/attitude_position_context_probe_20261024/c5_matched_train24_v1/runs/DL1018_TRAIN_T1_C15_W09/attempt_01/raw_run.mat",
+      "raw_sha256": "c4b1fa3cfe41d1c50bbd521118839b6d5f098ea8c866c3859f46b3f93d5225ca",
+      "status_path": "reports/attitude_position_context_probe_20261024/c5_matched_train24_v1/runs/DL1018_TRAIN_T1_C15_W09/attempt_01/run_status.json",
+      "status_sha256": "f1a7f5e6ab0a299d3d1ecccc7d16b8536218f67280e05521bb7a2a327884a91b",
+      "run_start_path": "reports/attitude_position_context_probe_20261024/c5_matched_train24_v1/runs/DL1018_TRAIN_T1_C15_W09/attempt_01/run_start.mat",
+      "run_start_sha256": "dcb0c38e76bb453f5fa244b8d0dea05e6035959d5d9f6e6a5eb2946ea2bfcc7a",
+      "release_sha256": "9b815befd424b8498bb2b4a75805106a3423a8d0da740d0f4022a9ce05b2990b",
+      "plant_calls": 1,
+      "feature_shape": [
+        1999,
+        14
+      ],
+      "valid_events": 1968,
+      "stage1_event_count": 1999,
+      "coordinate_mask": [
+        1.0,
+        1.0,
+        0.0
+      ],
+      "stage1_vs_actual_action_max_abs_mps2": 1.1102230246251565e-16,
+      "feature_input_vs_logged_feature_max_abs": 0.0,
+      "event_applied_vs_following_10ms_mean_max_abs_mps2": 2.220446049250313e-16,
+      "max_within_interval_applied_action_span_mps2": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "label_clip_fraction": 0.0
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T1_C15_W12",
+      "task": "T1",
+      "class_index": 15,
+      "wind_cell": 12,
+      "validation_fold": "holdout_W12",
+      "raw_path": "reports/attitude_position_context_probe_20261024/c5_matched_train24_v1/runs/DL1018_TRAIN_T1_C15_W12/attempt_01/raw_run.mat",
+      "raw_sha256": "c6cd2cb578036965501a27b4fda7671f279408c2dd085af11f1a6ede63379e13",
+      "status_path": "reports/attitude_position_context_probe_20261024/c5_matched_train24_v1/runs/DL1018_TRAIN_T1_C15_W12/attempt_01/run_status.json",
+      "status_sha256": "76863eee69e36cfb639c9d6ea3d8464e54add7e3dc1fa0830d74ba026a4846c1",
+      "run_start_path": "reports/attitude_position_context_probe_20261024/c5_matched_train24_v1/runs/DL1018_TRAIN_T1_C15_W12/attempt_01/run_start.mat",
+      "run_start_sha256": "d1d1f8a01aa9a4aa53cd6436eb52550e4ff0d9f2b57366b3544d751259d60af9",
+      "release_sha256": "bfaca47a2fc7369afbb0cff288399997bec740e0038f9505fc473976cf406dba",
+      "plant_calls": 1,
+      "feature_shape": [
+        1999,
+        14
+      ],
+      "valid_events": 1968,
+      "stage1_event_count": 1999,
+      "coordinate_mask": [
+        1.0,
+        1.0,
+        0.0
+      ],
+      "stage1_vs_actual_action_max_abs_mps2": 1.1102230246251565e-16,
+      "feature_input_vs_logged_feature_max_abs": 0.0,
+      "event_applied_vs_following_10ms_mean_max_abs_mps2": 1.1102230246251565e-16,
+      "max_within_interval_applied_action_span_mps2": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "label_clip_fraction": 0.0
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T1_C15_W15",
+      "task": "T1",
+      "class_index": 15,
+      "wind_cell": 15,
+      "validation_fold": "holdout_W15",
+      "raw_path": "reports/attitude_position_context_probe_20261024/c5_matched_train24_v1/runs/DL1018_TRAIN_T1_C15_W15/attempt_01/raw_run.mat",
+      "raw_sha256": "77193ab5a215f5ec94f55db83acfaf03137cdfa4b04f2783dfc7b7ed9e0d6884",
+      "status_path": "reports/attitude_position_context_probe_20261024/c5_matched_train24_v1/runs/DL1018_TRAIN_T1_C15_W15/attempt_01/run_status.json",
+      "status_sha256": "ea70bcf3d6aa37e50a9962d5231875e0c61a54bef6b7436bb673f89ea3993567",
+      "run_start_path": "reports/attitude_position_context_probe_20261024/c5_matched_train24_v1/runs/DL1018_TRAIN_T1_C15_W15/attempt_01/run_start.mat",
+      "run_start_sha256": "e63da9dff66751bd2f7025d47d5086a6ffae8824ad61cd25ffbbc275be71c059",
+      "release_sha256": "e2354243e56718360d908c3731f769e0ef93c055358705f1e928a8195c45bb6b",
+      "plant_calls": 1,
+      "feature_shape": [
+        1999,
+        14
+      ],
+      "valid_events": 1968,
+      "stage1_event_count": 1999,
+      "coordinate_mask": [
+        1.0,
+        1.0,
+        0.0
+      ],
+      "stage1_vs_actual_action_max_abs_mps2": 5.551115123125783e-17,
+      "feature_input_vs_logged_feature_max_abs": 0.0,
+      "event_applied_vs_following_10ms_mean_max_abs_mps2": 1.1102230246251565e-16,
+      "max_within_interval_applied_action_span_mps2": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "label_clip_fraction": 0.0
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T2_C00_W00",
+      "task": "T2",
+      "class_index": 0,
+      "wind_cell": 0,
+      "validation_fold": "holdout_W00",
+      "raw_path": "reports/attitude_position_context_probe_20261024/c5_matched_train24_v1/runs/DL1018_TRAIN_T2_C00_W00/attempt_01/raw_run.mat",
+      "raw_sha256": "751d4c2dfb7e969e0552836583c974c6fb8a6a25b261aa2cbf2d3b6c97e9922c",
+      "status_path": "reports/attitude_position_context_probe_20261024/c5_matched_train24_v1/runs/DL1018_TRAIN_T2_C00_W00/attempt_01/run_status.json",
+      "status_sha256": "8a630bfc8b327bf7f25a1a9f125d12063e4d16458023e8e6f9a94258571051db",
+      "run_start_path": "reports/attitude_position_context_probe_20261024/c5_matched_train24_v1/runs/DL1018_TRAIN_T2_C00_W00/attempt_01/run_start.mat",
+      "run_start_sha256": "a9563992bf80932f06cef3a0ec796176a71d4c212aa4410bdd4749ec0fb13466",
+      "release_sha256": "d28631e315519e04d476db1c154acb393be4fb37aa482dcadbc09c75a1024a3f",
+      "plant_calls": 1,
+      "feature_shape": [
+        1999,
+        14
+      ],
+      "valid_events": 1968,
+      "stage1_event_count": 1999,
+      "coordinate_mask": [
+        1.0,
+        1.0,
+        0.0
+      ],
+      "stage1_vs_actual_action_max_abs_mps2": 5.551115123125783e-17,
+      "feature_input_vs_logged_feature_max_abs": 0.0,
+      "event_applied_vs_following_10ms_mean_max_abs_mps2": 1.1102230246251565e-16,
+      "max_within_interval_applied_action_span_mps2": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "label_clip_fraction": 0.0
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T2_C00_W09",
+      "task": "T2",
+      "class_index": 0,
+      "wind_cell": 9,
+      "validation_fold": "holdout_W09",
+      "raw_path": "reports/attitude_position_context_probe_20261024/c5_matched_train24_v1/runs/DL1018_TRAIN_T2_C00_W09/attempt_01/raw_run.mat",
+      "raw_sha256": "55ea1baeb32c127f8fa56e5c85be622336563827918e99ff9ab47305c11d9f56",
+      "status_path": "reports/attitude_position_context_probe_20261024/c5_matched_train24_v1/runs/DL1018_TRAIN_T2_C00_W09/attempt_01/run_status.json",
+      "status_sha256": "b495535fa9c5b8483fdacb15c496e32ca9e76cadc77e59316ca7274c670d0217",
+      "run_start_path": "reports/attitude_position_context_probe_20261024/c5_matched_train24_v1/runs/DL1018_TRAIN_T2_C00_W09/attempt_01/run_start.mat",
+      "run_start_sha256": "eb5ae3c695aa84d40c4f3374429c8a166138f13df2b96e68ec646fc9dd270c1f",
+      "release_sha256": "ee999cb00ea1355fe7911c5b3c35d19d79df5253a9f04408224b0fecc12b685f",
+      "plant_calls": 1,
+      "feature_shape": [
+        1999,
+        14
+      ],
+      "valid_events": 1968,
+      "stage1_event_count": 1999,
+      "coordinate_mask": [
+        1.0,
+        1.0,
+        0.0
+      ],
+      "stage1_vs_actual_action_max_abs_mps2": 1.1102230246251565e-16,
+      "feature_input_vs_logged_feature_max_abs": 0.0,
+      "event_applied_vs_following_10ms_mean_max_abs_mps2": 2.220446049250313e-16,
+      "max_within_interval_applied_action_span_mps2": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "label_clip_fraction": 0.0
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T2_C00_W12",
+      "task": "T2",
+      "class_index": 0,
+      "wind_cell": 12,
+      "validation_fold": "holdout_W12",
+      "raw_path": "reports/attitude_position_context_probe_20261024/c5_matched_train24_v1/runs/DL1018_TRAIN_T2_C00_W12/attempt_01/raw_run.mat",
+      "raw_sha256": "5b6ad72f12eeaa2820f7b30982a5d5b50b58395aa6983ad640249b7faa041dbb",
+      "status_path": "reports/attitude_position_context_probe_20261024/c5_matched_train24_v1/runs/DL1018_TRAIN_T2_C00_W12/attempt_01/run_status.json",
+      "status_sha256": "3b124508679435904710dc1267e874d135e5d5197b7d9d31ad1adcd454c334cd",
+      "run_start_path": "reports/attitude_position_context_probe_20261024/c5_matched_train24_v1/runs/DL1018_TRAIN_T2_C00_W12/attempt_01/run_start.mat",
+      "run_start_sha256": "59d4f6a45b86797bc6dd2ba9296eefc5f7c7d62b14a91eab71d1cbc661966b1e",
+      "release_sha256": "f80ce93e07943f9cd0b70f525ef86b2642566a9a37dffd8d480af485d0c854f7",
+      "plant_calls": 1,
+      "feature_shape": [
+        1999,
+        14
+      ],
+      "valid_events": 1968,
+      "stage1_event_count": 1999,
+      "coordinate_mask": [
+        1.0,
+        1.0,
+        0.0
+      ],
+      "stage1_vs_actual_action_max_abs_mps2": 5.551115123125783e-17,
+      "feature_input_vs_logged_feature_max_abs": 0.0,
+      "event_applied_vs_following_10ms_mean_max_abs_mps2": 1.1102230246251565e-16,
+      "max_within_interval_applied_action_span_mps2": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "label_clip_fraction": 0.0
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T2_C00_W15",
+      "task": "T2",
+      "class_index": 0,
+      "wind_cell": 15,
+      "validation_fold": "holdout_W15",
+      "raw_path": "reports/attitude_position_context_probe_20261024/c5_matched_train24_v1/runs/DL1018_TRAIN_T2_C00_W15/attempt_01/raw_run.mat",
+      "raw_sha256": "a1dbb66f36986117514c06c953b7b2fb55ec5311f10256853a33ddbcb4291859",
+      "status_path": "reports/attitude_position_context_probe_20261024/c5_matched_train24_v1/runs/DL1018_TRAIN_T2_C00_W15/attempt_01/run_status.json",
+      "status_sha256": "1f81c24b540947d52adb1fc9d7cd54a40b6e53bbabcea3aee46ea531cce9f2f2",
+      "run_start_path": "reports/attitude_position_context_probe_20261024/c5_matched_train24_v1/runs/DL1018_TRAIN_T2_C00_W15/attempt_01/run_start.mat",
+      "run_start_sha256": "50a299a4fd832e41d48419409c9b89d0baeae3a410ed071b713d42740c24657a",
+      "release_sha256": "083f589072c78236df3062ddecc8ad9e0e872e571195c8d9367781c3c98acfdb",
+      "plant_calls": 1,
+      "feature_shape": [
+        1999,
+        14
+      ],
+      "valid_events": 1968,
+      "stage1_event_count": 1999,
+      "coordinate_mask": [
+        1.0,
+        1.0,
+        0.0
+      ],
+      "stage1_vs_actual_action_max_abs_mps2": 1.3877787807814457e-17,
+      "feature_input_vs_logged_feature_max_abs": 0.0,
+      "event_applied_vs_following_10ms_mean_max_abs_mps2": 2.7755575615628914e-17,
+      "max_within_interval_applied_action_span_mps2": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "label_clip_fraction": 0.0
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T2_C15_W00",
+      "task": "T2",
+      "class_index": 15,
+      "wind_cell": 0,
+      "validation_fold": "holdout_W00",
+      "raw_path": "reports/attitude_position_context_probe_20261024/c5_matched_train24_v1/runs/DL1018_TRAIN_T2_C15_W00/attempt_01/raw_run.mat",
+      "raw_sha256": "6ba84b11f08e6ab3216685b10b7cde2c81a5130e673563b3bde0a1eb600dcb89",
+      "status_path": "reports/attitude_position_context_probe_20261024/c5_matched_train24_v1/runs/DL1018_TRAIN_T2_C15_W00/attempt_01/run_status.json",
+      "status_sha256": "7a4a45192d38e75ae49017d89294bfa9b25097b5d274dea701ccd5a7c43350ec",
+      "run_start_path": "reports/attitude_position_context_probe_20261024/c5_matched_train24_v1/runs/DL1018_TRAIN_T2_C15_W00/attempt_01/run_start.mat",
+      "run_start_sha256": "bb272f3dc1b0aa4c004862caa2564789b142a74b55de9c644cb432fe78b8bdf9",
+      "release_sha256": "86369455a61aa0373a29589bed94ce52a75737ad039172472e88883d828e9f9e",
+      "plant_calls": 1,
+      "feature_shape": [
+        1999,
+        14
+      ],
+      "valid_events": 1968,
+      "stage1_event_count": 1999,
+      "coordinate_mask": [
+        1.0,
+        1.0,
+        0.0
+      ],
+      "stage1_vs_actual_action_max_abs_mps2": 1.1102230246251565e-16,
+      "feature_input_vs_logged_feature_max_abs": 0.0,
+      "event_applied_vs_following_10ms_mean_max_abs_mps2": 2.220446049250313e-16,
+      "max_within_interval_applied_action_span_mps2": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "label_clip_fraction": 0.0
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T2_C15_W09",
+      "task": "T2",
+      "class_index": 15,
+      "wind_cell": 9,
+      "validation_fold": "holdout_W09",
+      "raw_path": "reports/attitude_position_context_probe_20261024/c5_matched_train24_v1/runs/DL1018_TRAIN_T2_C15_W09/attempt_01/raw_run.mat",
+      "raw_sha256": "58654b6124b5f8ce7333e855acab5f644e0cdbdcc221fa55f6643fd286331546",
+      "status_path": "reports/attitude_position_context_probe_20261024/c5_matched_train24_v1/runs/DL1018_TRAIN_T2_C15_W09/attempt_01/run_status.json",
+      "status_sha256": "0c174bff156fc686531b81554cdc3e5368a002652e7753d951f7253f865be0eb",
+      "run_start_path": "reports/attitude_position_context_probe_20261024/c5_matched_train24_v1/runs/DL1018_TRAIN_T2_C15_W09/attempt_01/run_start.mat",
+      "run_start_sha256": "b8c9d5741b6b0c30d8da3691659b69d9c3b0b530eed4fac7e79eab8359efda86",
+      "release_sha256": "755ba36ab23b42a043c35ae55432214c64805ec51a7d166d361d6e1fb5712ae9",
+      "plant_calls": 1,
+      "feature_shape": [
+        1999,
+        14
+      ],
+      "valid_events": 1968,
+      "stage1_event_count": 1999,
+      "coordinate_mask": [
+        1.0,
+        1.0,
+        0.0
+      ],
+      "stage1_vs_actual_action_max_abs_mps2": 1.1102230246251565e-16,
+      "feature_input_vs_logged_feature_max_abs": 0.0,
+      "event_applied_vs_following_10ms_mean_max_abs_mps2": 1.1102230246251565e-16,
+      "max_within_interval_applied_action_span_mps2": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "label_clip_fraction": 0.0
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T2_C15_W12",
+      "task": "T2",
+      "class_index": 15,
+      "wind_cell": 12,
+      "validation_fold": "holdout_W12",
+      "raw_path": "reports/attitude_position_context_probe_20261024/c5_matched_train24_v1/runs/DL1018_TRAIN_T2_C15_W12/attempt_01/raw_run.mat",
+      "raw_sha256": "34c9162512a9bbe1e94d16d911315b0c75501192e25fc829c7cf030c13d3f878",
+      "status_path": "reports/attitude_position_context_probe_20261024/c5_matched_train24_v1/runs/DL1018_TRAIN_T2_C15_W12/attempt_01/run_status.json",
+      "status_sha256": "67d138d66cd49e20ece3f2149cf40101228b1562520061366a40371444bab51b",
+      "run_start_path": "reports/attitude_position_context_probe_20261024/c5_matched_train24_v1/runs/DL1018_TRAIN_T2_C15_W12/attempt_01/run_start.mat",
+      "run_start_sha256": "239ad07d847f8931c2e71b671b0a61eba3971a96fd5e2a23e16017ec0a4363f1",
+      "release_sha256": "86f32ebe6c87cb6794cdabdff220ee606ebe1264dab06831aaba3c14b6229ee6",
+      "plant_calls": 1,
+      "feature_shape": [
+        1999,
+        14
+      ],
+      "valid_events": 1968,
+      "stage1_event_count": 1999,
+      "coordinate_mask": [
+        1.0,
+        1.0,
+        0.0
+      ],
+      "stage1_vs_actual_action_max_abs_mps2": 1.1102230246251565e-16,
+      "feature_input_vs_logged_feature_max_abs": 0.0,
+      "event_applied_vs_following_10ms_mean_max_abs_mps2": 2.220446049250313e-16,
+      "max_within_interval_applied_action_span_mps2": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "label_clip_fraction": 0.0
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T2_C15_W15",
+      "task": "T2",
+      "class_index": 15,
+      "wind_cell": 15,
+      "validation_fold": "holdout_W15",
+      "raw_path": "reports/attitude_position_context_probe_20261024/c5_matched_train24_v1/runs/DL1018_TRAIN_T2_C15_W15/attempt_01/raw_run.mat",
+      "raw_sha256": "6fe6dfccb7284b94154f0ca87ebde99b3bb3425a78a2170e6b867e8d8a32ee37",
+      "status_path": "reports/attitude_position_context_probe_20261024/c5_matched_train24_v1/runs/DL1018_TRAIN_T2_C15_W15/attempt_01/run_status.json",
+      "status_sha256": "3d025df8769404cd45d4d14bd05237ef6011eda6a25e746031a077d238a07c49",
+      "run_start_path": "reports/attitude_position_context_probe_20261024/c5_matched_train24_v1/runs/DL1018_TRAIN_T2_C15_W15/attempt_01/run_start.mat",
+      "run_start_sha256": "7416d50cea0e36a6834ff08cfb485cb738161e422be590a3ef964da51e92d363",
+      "release_sha256": "d7636030a5d985cc71ce3107e7b522e267daf669fec0e98204b8123e912ac903",
+      "plant_calls": 1,
+      "feature_shape": [
+        1999,
+        14
+      ],
+      "valid_events": 1968,
+      "stage1_event_count": 1999,
+      "coordinate_mask": [
+        1.0,
+        1.0,
+        0.0
+      ],
+      "stage1_vs_actual_action_max_abs_mps2": 5.551115123125783e-17,
+      "feature_input_vs_logged_feature_max_abs": 0.0,
+      "event_applied_vs_following_10ms_mean_max_abs_mps2": 5.551115123125783e-17,
+      "max_within_interval_applied_action_span_mps2": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "label_clip_fraction": 0.0
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T3_C00_W00",
+      "task": "T3",
+      "class_index": 0,
+      "wind_cell": 0,
+      "validation_fold": "holdout_W00",
+      "raw_path": "reports/attitude_position_context_probe_20261024/c5_matched_train24_v1/runs/DL1018_TRAIN_T3_C00_W00/attempt_01/raw_run.mat",
+      "raw_sha256": "a2444321dcb97f7401e203dc5583d606558e2da3be7decca814279ad904d76ce",
+      "status_path": "reports/attitude_position_context_probe_20261024/c5_matched_train24_v1/runs/DL1018_TRAIN_T3_C00_W00/attempt_01/run_status.json",
+      "status_sha256": "d75a69a66f3e93585f63dc04172ded174faefc023f84288846d60dcfbaf8eeee",
+      "run_start_path": "reports/attitude_position_context_probe_20261024/c5_matched_train24_v1/runs/DL1018_TRAIN_T3_C00_W00/attempt_01/run_start.mat",
+      "run_start_sha256": "0d0bd0e3e5e85cfdc383ab047448fe2be97519f7d2f5596ae67aa33fb164c2d1",
+      "release_sha256": "d0b967c856c45736fe2b9f2b89775c2efa1bef3e43de1567cca57d5d36847429",
+      "plant_calls": 1,
+      "feature_shape": [
+        1999,
+        14
+      ],
+      "valid_events": 1968,
+      "stage1_event_count": 1999,
+      "coordinate_mask": [
+        1.0,
+        1.0,
+        0.0
+      ],
+      "stage1_vs_actual_action_max_abs_mps2": 1.1102230246251565e-16,
+      "feature_input_vs_logged_feature_max_abs": 0.0,
+      "event_applied_vs_following_10ms_mean_max_abs_mps2": 2.220446049250313e-16,
+      "max_within_interval_applied_action_span_mps2": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "label_clip_fraction": 0.0
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T3_C00_W09",
+      "task": "T3",
+      "class_index": 0,
+      "wind_cell": 9,
+      "validation_fold": "holdout_W09",
+      "raw_path": "reports/attitude_position_context_probe_20261024/c5_matched_train24_v1/runs/DL1018_TRAIN_T3_C00_W09/attempt_01/raw_run.mat",
+      "raw_sha256": "ba37417cf86ded3dacadcd0ca6cb2469c74161e3677aa86b8ef9f12287c1b962",
+      "status_path": "reports/attitude_position_context_probe_20261024/c5_matched_train24_v1/runs/DL1018_TRAIN_T3_C00_W09/attempt_01/run_status.json",
+      "status_sha256": "dcd68b81a5bbb4ae19c1451f2137f43e83bc270d19567f6c9338e8da725ecc26",
+      "run_start_path": "reports/attitude_position_context_probe_20261024/c5_matched_train24_v1/runs/DL1018_TRAIN_T3_C00_W09/attempt_01/run_start.mat",
+      "run_start_sha256": "d487ed4d211c22e14aa6cdba1e7b2319960dc9b059b8c52491dee7467566ef88",
+      "release_sha256": "d469c7849db104590c45a54dafd2b23ca2e1f7d9cf7036abcac114acc7121713",
+      "plant_calls": 1,
+      "feature_shape": [
+        1999,
+        14
+      ],
+      "valid_events": 1968,
+      "stage1_event_count": 1999,
+      "coordinate_mask": [
+        1.0,
+        1.0,
+        0.0
+      ],
+      "stage1_vs_actual_action_max_abs_mps2": 5.551115123125783e-17,
+      "feature_input_vs_logged_feature_max_abs": 0.0,
+      "event_applied_vs_following_10ms_mean_max_abs_mps2": 1.1102230246251565e-16,
+      "max_within_interval_applied_action_span_mps2": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "label_clip_fraction": 0.0
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T3_C00_W12",
+      "task": "T3",
+      "class_index": 0,
+      "wind_cell": 12,
+      "validation_fold": "holdout_W12",
+      "raw_path": "reports/attitude_position_context_probe_20261024/c5_matched_train24_v1/runs/DL1018_TRAIN_T3_C00_W12/attempt_01/raw_run.mat",
+      "raw_sha256": "46b70221f1ed7c6b5db6e16baeded0668ccb3b800a5ea202c20f519a31b67fbc",
+      "status_path": "reports/attitude_position_context_probe_20261024/c5_matched_train24_v1/runs/DL1018_TRAIN_T3_C00_W12/attempt_01/run_status.json",
+      "status_sha256": "6ced6c8281eab2d2b7839d9ca4564b1e1ab0b92e78b583558c7a60b21d272db1",
+      "run_start_path": "reports/attitude_position_context_probe_20261024/c5_matched_train24_v1/runs/DL1018_TRAIN_T3_C00_W12/attempt_01/run_start.mat",
+      "run_start_sha256": "e037669141742c8951067e6121a9a030c5eca8c9ef45513acea1aad6f4ed5aef",
+      "release_sha256": "4db3fd5462a325e25f1b2de73cd20c5bb7b75e9bbeed284ee87fe43010d5aa20",
+      "plant_calls": 1,
+      "feature_shape": [
+        1999,
+        14
+      ],
+      "valid_events": 1968,
+      "stage1_event_count": 1999,
+      "coordinate_mask": [
+        1.0,
+        1.0,
+        0.0
+      ],
+      "stage1_vs_actual_action_max_abs_mps2": 1.1102230246251565e-16,
+      "feature_input_vs_logged_feature_max_abs": 0.0,
+      "event_applied_vs_following_10ms_mean_max_abs_mps2": 2.220446049250313e-16,
+      "max_within_interval_applied_action_span_mps2": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "label_clip_fraction": 0.0
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T3_C00_W15",
+      "task": "T3",
+      "class_index": 0,
+      "wind_cell": 15,
+      "validation_fold": "holdout_W15",
+      "raw_path": "reports/attitude_position_context_probe_20261024/c5_matched_train24_v1/runs/DL1018_TRAIN_T3_C00_W15/attempt_01/raw_run.mat",
+      "raw_sha256": "68ace1e2ab7d307845b247a3cdef8dac6a9c0923f0d1be3980843bc7197edb9d",
+      "status_path": "reports/attitude_position_context_probe_20261024/c5_matched_train24_v1/runs/DL1018_TRAIN_T3_C00_W15/attempt_01/run_status.json",
+      "status_sha256": "441a9dc4b47fba627b1f03cf6f863fb630746d865b000f2f5e2dbbd82ca7532b",
+      "run_start_path": "reports/attitude_position_context_probe_20261024/c5_matched_train24_v1/runs/DL1018_TRAIN_T3_C00_W15/attempt_01/run_start.mat",
+      "run_start_sha256": "92ea3b93856f38a2e6fbe3c468031a73c33e381bcc6b716769c5d3ea1f5e1504",
+      "release_sha256": "7d11e3867e0cb8b7780b15bb9218da9f91c4d41a69a9d20ce6d741fcbd8b6242",
+      "plant_calls": 1,
+      "feature_shape": [
+        1999,
+        14
+      ],
+      "valid_events": 1968,
+      "stage1_event_count": 1999,
+      "coordinate_mask": [
+        1.0,
+        1.0,
+        0.0
+      ],
+      "stage1_vs_actual_action_max_abs_mps2": 1.3877787807814457e-17,
+      "feature_input_vs_logged_feature_max_abs": 0.0,
+      "event_applied_vs_following_10ms_mean_max_abs_mps2": 2.7755575615628914e-17,
+      "max_within_interval_applied_action_span_mps2": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "label_clip_fraction": 0.0
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T3_C15_W00",
+      "task": "T3",
+      "class_index": 15,
+      "wind_cell": 0,
+      "validation_fold": "holdout_W00",
+      "raw_path": "reports/attitude_position_context_probe_20261024/c5_matched_train24_v1/runs/DL1018_TRAIN_T3_C15_W00/attempt_01/raw_run.mat",
+      "raw_sha256": "73e4bdf9e675f4e2b464bdd35eb324bd00450c937ce77d817dd7d75e81666ef1",
+      "status_path": "reports/attitude_position_context_probe_20261024/c5_matched_train24_v1/runs/DL1018_TRAIN_T3_C15_W00/attempt_01/run_status.json",
+      "status_sha256": "907e4f213586f5756f54bac5e40cac12bed444f6fb572d7788bd8a22ca7cc38e",
+      "run_start_path": "reports/attitude_position_context_probe_20261024/c5_matched_train24_v1/runs/DL1018_TRAIN_T3_C15_W00/attempt_01/run_start.mat",
+      "run_start_sha256": "3cdf1bbcd3a7a96c458cb288e662e46423448e9c157b304bbda11d0a3ba718b9",
+      "release_sha256": "60655b83467f60257a30a84bab781c0dcb5126eea8b6cde0535b4d31899f340b",
+      "plant_calls": 1,
+      "feature_shape": [
+        1999,
+        14
+      ],
+      "valid_events": 1968,
+      "stage1_event_count": 1999,
+      "coordinate_mask": [
+        1.0,
+        1.0,
+        0.0
+      ],
+      "stage1_vs_actual_action_max_abs_mps2": 1.1102230246251565e-16,
+      "feature_input_vs_logged_feature_max_abs": 0.0,
+      "event_applied_vs_following_10ms_mean_max_abs_mps2": 2.220446049250313e-16,
+      "max_within_interval_applied_action_span_mps2": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "label_clip_fraction": 0.0
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T3_C15_W09",
+      "task": "T3",
+      "class_index": 15,
+      "wind_cell": 9,
+      "validation_fold": "holdout_W09",
+      "raw_path": "reports/attitude_position_context_probe_20261024/c5_matched_train24_v1/runs/DL1018_TRAIN_T3_C15_W09/attempt_01/raw_run.mat",
+      "raw_sha256": "d93ca01a38db3feca5b30728c97fde775a0155d423400f35e81780a3126ea1c1",
+      "status_path": "reports/attitude_position_context_probe_20261024/c5_matched_train24_v1/runs/DL1018_TRAIN_T3_C15_W09/attempt_01/run_status.json",
+      "status_sha256": "acc12b9d755854e6363b5766772c7befd88eefa270660904aa499841f46592d0",
+      "run_start_path": "reports/attitude_position_context_probe_20261024/c5_matched_train24_v1/runs/DL1018_TRAIN_T3_C15_W09/attempt_01/run_start.mat",
+      "run_start_sha256": "518f0fc6ae82f548a14c46af11094ac5557121cef235d37669c27bd33cbbc782",
+      "release_sha256": "0b969de028d53f678fcbdf3c40ff31f02a6da0be7d5c69b9d7be0a572dda180c",
+      "plant_calls": 1,
+      "feature_shape": [
+        1999,
+        14
+      ],
+      "valid_events": 1968,
+      "stage1_event_count": 1999,
+      "coordinate_mask": [
+        1.0,
+        1.0,
+        0.0
+      ],
+      "stage1_vs_actual_action_max_abs_mps2": 1.1102230246251565e-16,
+      "feature_input_vs_logged_feature_max_abs": 0.0,
+      "event_applied_vs_following_10ms_mean_max_abs_mps2": 2.220446049250313e-16,
+      "max_within_interval_applied_action_span_mps2": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "label_clip_fraction": 0.0
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T3_C15_W12",
+      "task": "T3",
+      "class_index": 15,
+      "wind_cell": 12,
+      "validation_fold": "holdout_W12",
+      "raw_path": "reports/attitude_position_context_probe_20261024/c5_matched_train24_v1/runs/DL1018_TRAIN_T3_C15_W12/attempt_01/raw_run.mat",
+      "raw_sha256": "bd0522181da7bc34bcf6f3b517d5760a36e5058e67ffd7bc946611854cd5668b",
+      "status_path": "reports/attitude_position_context_probe_20261024/c5_matched_train24_v1/runs/DL1018_TRAIN_T3_C15_W12/attempt_01/run_status.json",
+      "status_sha256": "49720a785590bf267f34748958af69ff6943ff3ace95883d8742645db09b5e6d",
+      "run_start_path": "reports/attitude_position_context_probe_20261024/c5_matched_train24_v1/runs/DL1018_TRAIN_T3_C15_W12/attempt_01/run_start.mat",
+      "run_start_sha256": "6d4ed5af6b0c1e4508324d7c26d8c1f41c8672e0b52d72117c4499175da27b5f",
+      "release_sha256": "47fb379c36044f4298178284219beec691006fb515aea486666f6dfa8754f66d",
+      "plant_calls": 1,
+      "feature_shape": [
+        1999,
+        14
+      ],
+      "valid_events": 1968,
+      "stage1_event_count": 1999,
+      "coordinate_mask": [
+        1.0,
+        1.0,
+        0.0
+      ],
+      "stage1_vs_actual_action_max_abs_mps2": 1.1102230246251565e-16,
+      "feature_input_vs_logged_feature_max_abs": 0.0,
+      "event_applied_vs_following_10ms_mean_max_abs_mps2": 2.220446049250313e-16,
+      "max_within_interval_applied_action_span_mps2": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "label_clip_fraction": 0.0
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T3_C15_W15",
+      "task": "T3",
+      "class_index": 15,
+      "wind_cell": 15,
+      "validation_fold": "holdout_W15",
+      "raw_path": "reports/attitude_position_context_probe_20261024/c5_matched_train24_v1/runs/DL1018_TRAIN_T3_C15_W15/attempt_01/raw_run.mat",
+      "raw_sha256": "6b6a149b56c83a072f42837ed60c2344fc16a1352d48beed209793802fb5aba4",
+      "status_path": "reports/attitude_position_context_probe_20261024/c5_matched_train24_v1/runs/DL1018_TRAIN_T3_C15_W15/attempt_01/run_status.json",
+      "status_sha256": "14928079a977457674fbc054807786fb6e5289ee46877c290d134badf371e1c5",
+      "run_start_path": "reports/attitude_position_context_probe_20261024/c5_matched_train24_v1/runs/DL1018_TRAIN_T3_C15_W15/attempt_01/run_start.mat",
+      "run_start_sha256": "11574fee8030b397b783630835c89c0cd04f8c83509f1d5457fdf9a5c26b5edf",
+      "release_sha256": "4562b22582b98dd0af95e125aa2c77a9d545f542ec704195f2858e0ec4077b1d",
+      "plant_calls": 1,
+      "feature_shape": [
+        1999,
+        14
+      ],
+      "valid_events": 1968,
+      "stage1_event_count": 1999,
+      "coordinate_mask": [
+        1.0,
+        1.0,
+        0.0
+      ],
+      "stage1_vs_actual_action_max_abs_mps2": 5.551115123125783e-17,
+      "feature_input_vs_logged_feature_max_abs": 0.0,
+      "event_applied_vs_following_10ms_mean_max_abs_mps2": 5.551115123125783e-17,
+      "max_within_interval_applied_action_span_mps2": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "label_clip_fraction": 0.0
+    }
+  ],
+  "interpretation_limits": [
+    "The C5 interval target is a measured 10 ms average; the original B/POS_OFF H5 target is an instantaneous physical derivative. Their observed difference is reported, not assumed zero.",
+    "A held-out scene in this manifest is held out by the new dataset fold only; any baseline model trained on all original TRAIN data must be disclosed when claiming independent validation.",
+    "This package contains inputs, logged actions, and empirical interval labels; it does not establish a closed-loop performance gain."
+  ]
+}

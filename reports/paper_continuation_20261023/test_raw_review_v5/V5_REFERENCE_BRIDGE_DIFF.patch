@@ -1,0 +1,33 @@
+--- reports/paper_continuation_20261023/test_raw_review_v4/audit_test48_raw_v4.py
++++ reports/paper_continuation_20261023/test_raw_review_v5/audit_test48_raw_v5.py
+@@ -229,7 +229,20 @@
+                 == refs_map(new.get("model_refs", []), v1, f"v4 {mid} model refs"),
+                 f"v3/v4 {mid} model or normalizer identity changed")
+         if mid in {"CORRECTED_DSSM14_G12_R32", "CORRECTED_KAN14_G12_R32"}:
+-            assert_only_filter_helper_added(old.get("source_refs", []), new.get("source_refs", []), v1, mid)
++            old_refs, new_refs = old.get("source_refs", []), new.get("source_refs", [])
++            old_snapshot_refs = [ref for ref in old_refs if ref.get("role") == "cfg_opts_snapshot"]
++            new_snapshot_refs = [ref for ref in new_refs if ref.get("role") == "cfg_opts_snapshot"]
++            require(len(old_snapshot_refs) == len(new_snapshot_refs) == 1,
++                    f"Historical source snapshot reference must be unique: {mid}")
++            for ref, method_row in ((old_snapshot_refs[0], old), (new_snapshot_refs[0], new)):
++                require(ref.get("role") == "cfg_opts_snapshot"
++                        and canonical_path(ref.get("path", ""), v1)
++                            == canonical_path(method_row["cfg_opts_snapshot_path"], v1)
++                        and ref.get("sha256", "").lower() == method_row["cfg_opts_snapshot_sha256"].lower(),
++                        f"Historical source snapshot reference differs from its exact method binding: {mid}")
++            # Replace only this already-verified metadata reference in a temporary list.
++            bridged_old_refs = [new_snapshot_refs[0] if ref is old_snapshot_refs[0] else ref for ref in old_refs]
++            assert_only_filter_helper_added(bridged_old_refs, new_refs, v1, mid)
+         else:
+             require(refs_map(old.get("source_refs", []), v1, f"v3 {mid} sources")
+                     == refs_map(new.get("source_refs", []), v1, f"v4 {mid} sources"),
+@@ -1501,7 +1514,7 @@
+     parser = argparse.ArgumentParser(description=__doc__)
+     group = parser.add_mutually_exclusive_group(required=True)
+     group.add_argument("--self-check", action="store_true", help="run only the synthetic/in-memory check")
+-    group.add_argument("--output-json", type=Path, help="new final raw-audit JSON path inside the v4 reader folder")
++    group.add_argument("--output-json", type=Path, help="new final raw-audit JSON path inside the v5 reader folder")
+     args = parser.parse_args()
+     output_dir = Path(__file__).resolve().parent
+     output_path = output_dir / "SELF_CHECK_DEV_OR_SYNTHETIC_v1.json" if args.self_check else args.output_json

@@ -1,0 +1,22 @@
+{
+  "status": "FROZEN_BEFORE_ANY_CAUSAL_GATE_PLANT_CALL",
+  "study_id": "causal_n4_gate_v2",
+  "source_split": "TRAIN_C5_24",
+  "call_order": ["DL1018_DEV_T1_C00_W03", "DL1018_DEV_T3_C09_W09", "DL1018_DEV_T1_C11_W12"],
+  "one_call_per_scene": true,
+  "release_next_only_if_prior_passed": true,
+  "retry_after_a_call": false,
+  "controller": "frozen DSSM14/C5 position and parent cosine-GRU attitude; no extra position-GRU; fixed J0",
+  "intervention": "the fixed 100 Hz v2 AC-denominator causal gate and fixed N4 SOS as frozen in the no-Plant release; no parameter adjustment",
+  "application": "final C5 applied compensation passed to position_bs_step, where the estimated residual force is subtracted from nominal commanded force",
+  "scoring": "score_full72_candidate_v1.score_raw with frozen gravity/max_tilt and same-scene B, C5, and parent baselines",
+  "all_scenes": "stable 20000 transitions, 20001 states, Q_m/C5_Q_m <= 1.05, all recorded safety counters zero, action/gate chain replay succeeds",
+  "high_wind_scenes": "candidate task_SO3_rad <= same-scene B task_SO3_rad",
+  "low_control": "gate exactly zero and state/action max absolute difference from parent <= 2e-10, checked before releasing W09",
+  "replay_tolerance_max_abs": 2e-10,
+  "gate_reporting": "event energies, ratio, g and target summaries, 0.5 threshold crossings, time-window summaries, and comparison with parent trajectories; observations alone do not prove self-excitation",
+  "on_failure": "stop all later scenes and report, with no tuning or retry",
+  "TEST_read": false,
+  "VAL_read": false,
+  "inertia_reconstruction_enabled": false
+}

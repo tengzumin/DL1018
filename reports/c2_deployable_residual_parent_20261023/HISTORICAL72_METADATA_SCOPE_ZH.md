@@ -1,0 +1,9 @@
+# 补充范围：原72场对照的配置快照
+
+当前用户要求先核控制器比较，不能只用新C1十二场同源运行替代旧72场审核。主审增加一次轻量离线扫描：根据已有baseline_b_raw_rescore.csv和mechanism_run_start_lineage.csv列出的72对实际run_start，读取完整cfg/opts并保留shape、值、字段存在性差异。不重读整批raw，不运行Plant，不访问TEST，不改旧文件。
+
+输入表身份沿已有audit_w15_position_replay.py的冻结表SHA；该helper只读MAT v5/v7.3及结构转换可复用，但不得执行其main或场景筛选函数。候选run_start已有SHA必须匹配；B run_start已知三份SHA照核，其余只记录本次观测SHA和读前后stat，不能编造历史绑定。原B逐运行runtime SHA缺口仍保留。
+
+全cfg包括未使用训练/模型相关字段也列差异；先区分数值实际不一致、字符序列化shape差异、匹配NaN（非有限配置保留而非自动当有效）、字段缺失。opts按共有项与仅一方字段分别报告，原位置RBF→DSSM/PCF/readiness属于明确的算法差异，不能将整套opts相同作为错误要求。不同状态轨迹不参与配置不公平判定。
+
+输出仅在本目录，新增≤20MiB，CPU单线程。该扫描不能补写旧运行执行环境，也不自动批准β对齐或残差机制实验。先发现具体差异，主审解释生效分支后再决定。

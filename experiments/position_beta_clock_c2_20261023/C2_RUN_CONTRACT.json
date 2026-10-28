@@ -1,0 +1,109 @@
+{
+  "schema": "C2_BETA_CLOCK_RUN_CONTRACT_V1",
+  "candidate_condition_id": "C2_ON1_BETA_ALIGNED",
+  "candidate": {
+    "head": "FEATURE",
+    "gamma": 12,
+    "kappa": 1,
+    "initial_weight": "locked W0",
+    "beta": "min(max(k*dt/T,0),1)",
+    "plant_or_controller_changes": 0
+  },
+  "run_directory_template": "runs_c2/<scene_id>/C2_ON1_BETA_ALIGNED/attempt_01/",
+  "files_per_attempt": [
+    "attempt_started.marker",
+    "run_start.mat",
+    "r2e_first_plant_step.marker",
+    "raw_run.mat",
+    "run_status.json"
+  ],
+  "run_start_mat": {
+    "variable": "runStart",
+    "top_level_fields": [
+      "schema", "scene_id", "condition", "method", "started_utc",
+      "source_lock_sha256", "release_sha256", "user_budget_authorization_sha256",
+      "preflight_sha256", "scene_source_raw_path", "scene_source_raw_sha256",
+      "c1_b_comparator_raw_path", "c1_b_comparator_raw_sha256",
+      "c1_on1_comparator_raw_path", "c1_on1_comparator_raw_sha256",
+      "model_mat_path", "model_mat_sha256", "model_id", "model_W0_sha256",
+      "normalizer_npz_path", "normalizer_npz_sha256", "normalizer_arrays_sha256",
+      "source_paths", "source_sha256", "cfg", "opts", "r2e_first_plant_step_marker_path",
+      "timing_isolated", "formal_timing_qualified", "optimizer_steps", "gpu_jobs", "TEST_accessed"
+    ]
+  },
+  "raw_mat": {
+    "variables": ["log", "scene", "method", "runIdentity"],
+    "writer": "locked C2 wrapper first writes log/scene/method; runner appends runIdentity after successful return; save is not claimed atomic"
+  },
+  "run_status_json": {
+    "top_level_fields": [
+      "status", "scene_id", "condition", "method", "completed_transition",
+      "raw_path", "raw_sha256", "run_start_path", "run_start_sha256",
+      "scene_source_raw_sha256", "c1_b_comparator_raw_sha256", "c1_on1_comparator_raw_sha256",
+      "source_lock_sha256", "release_sha256", "user_budget_authorization_sha256", "preflight_sha256",
+      "model_mat_sha256", "normalizer_npz_sha256", "timing_isolated", "formal_timing_qualified",
+      "plant_invocation_entered", "plant_start_confirmed", "output_before_update_validation",
+      "r2e_first_plant_step_marker_path", "r2e_first_plant_step_marker_sha256", "r2e_first_plant_step_marker_mtime_utc",
+      "output_before_update_max_abs_error", "initial_weight_max_abs_error", "beta_max_abs_error",
+      "attempt_runtime_seconds", "attempt_bytes_projected",
+      "c2_directory_bytes_projected_after_status",
+      "optimizer_steps", "gpu_jobs", "TEST_accessed"
+    ]
+  },
+  "summaries": {
+    "probe_path": "reports/C2_PROBE_SUMMARY.json",
+    "probe_rows": 1,
+    "continue_path": "reports/C2_CONTINUE_SUMMARY.json",
+    "continue_rows": 11,
+    "common_fields": [
+      "status", "mode", "candidate_condition_id", "scene_ids", "completed_runs", "expected_runs",
+      "run_rows", "source_lock_sha256", "release_sha256", "user_budget_authorization_sha256",
+      "approval_sha256", "preflight_sha256", "started_utc", "finished_utc",
+      "formal_timing_authorized", "timing_isolated", "formal_timing_qualified",
+      "optimizer_steps", "gpu_jobs", "TEST_accessed", "output_bytes", "output_bytes_snapshot_utc"
+    ],
+    "continue_probe_binding": "probe_summary_sha256"
+  },
+  "approval": {
+    "probe_path": "reports/C2_PROBE_APPROVAL.json",
+    "continue_path": "reports/C2_CONTINUE_APPROVAL.json",
+    "required_fields": [
+      "status", "mode", "candidate_condition_id", "source_lock_sha256", "release_sha256",
+      "user_budget_authorization_sha256", "expected_new_runs", "scene_ids",
+      "probe_summary_sha256"
+    ],
+    "probe_status": "APPROVED_PROBE",
+    "continue_status": "APPROVED_CONTINUE"
+  },
+  "preflight": {
+    "probe_path": "reports/preflight_c2_probe.json",
+    "continue_path": "reports/preflight_c2_continue.json",
+    "required_fields": [
+      "status", "mode", "created_utc", "source_lock_sha256", "release_sha256",
+      "approval_sha256", "user_budget_authorization_sha256", "fixed_step_screen_allowed",
+      "matlab_process_count", "other_heavy_job_count", "gpu_compute_rows",
+      "gpu_compute_counter_active_rows", "free_bytes_before", "minimum_free_bytes",
+      "existing_c2_bytes", "projected_reserved_bytes", "max_output_bytes",
+      "remaining_attempt_count", "timing_isolated", "formal_timing_qualified",
+      "plant_started", "optimizer_steps", "gpu_jobs", "TEST_accessed"
+    ],
+    "freshness_seconds_max": 300,
+    "formal_timing_qualified": false
+  },
+  "limits": {
+    "max_new_sorties": 12,
+    "probe_sorties": 1,
+    "continue_sorties": 11,
+    "output_cap_bytes": 1073741824,
+    "minimum_free_bytes": 30000000000,
+    "per_attempt_reserve_bytes": 80000000,
+    "per_attempt_hard_cap_bytes": 80000000,
+    "byte_count_note": "run_status records pre-write projected bytes; run_rows record actual attempt and C2-directory snapshots after the status write; summary output_bytes is the pre-summary directory snapshot. The runner checks actual attempt and directory caps after each write without requiring equality to a forecast that may include active stdout/stderr files.",
+    "automatic_retry": false,
+    "training": false,
+    "optimizer": false,
+    "gpu_jobs": false,
+    "TEST": false,
+    "full72": false
+  }
+}

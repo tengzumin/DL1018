@@ -1,0 +1,178 @@
+{
+  "status": "PASS_READ_ONLY_SINGLE_HF_TRACE_DIAGNOSTIC",
+  "scene_id": "DL1018_DEV_T1_C10_W09",
+  "sample_count": 1999,
+  "valid_observation_count": 1998,
+  "target_contract": "DL1018_MLP15_TRAIN_C5_24_FIXED_J0_RESIDUAL_V1",
+  "source_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261027\\mlp15_nominal_residual_v1\\closed_loop_candidate_v1\\runs\\DL1018_DEV_T1_C10_W09\\PHYS_RESIDUAL_ATTEMPT_01\\raw_run.mat",
+  "timing_contract": {
+    "training": "feature x_k predicts measured physical residual over [k-10ms,k]",
+    "runtime": "at event k, output uses W_before and phi_k for [k,k+10ms]; current y_k then updates W for a later event",
+    "head_observation_previous_sample_delta": 10,
+    "valid_observation_interval_s": [
+      0.00999999999999801,
+      0.010000000000001563
+    ]
+  },
+  "same_record_observation_errors_rad_s2": {
+    "current_event_feature_base_vs_y_k": {
+      "n": 1998,
+      "axis_rmse": [
+        7.6954118504077655,
+        4.439291804949397,
+        0.2516526372683355
+      ],
+      "vector_rmse": 8.887632098975027
+    },
+    "current_event_feature_base_plus_RLS_vs_y_k": {
+      "n": 1998,
+      "axis_rmse": [
+        2.5923974507506995,
+        1.2337144292688444,
+        0.07817848454416004
+      ],
+      "vector_rmse": 2.872052874006763
+    },
+    "previous_event_issued_base_vs_y_k": {
+      "n": 1998,
+      "axis_rmse": [
+        7.7065259137620465,
+        4.440664191180368,
+        0.25252118234519305
+      ],
+      "vector_rmse": 8.897966456772616
+    },
+    "previous_event_issued_base_plus_RLS_vs_y_k": {
+      "n": 1998,
+      "axis_rmse": [
+        2.591597392166706,
+        1.2397125145084906,
+        0.0789586468660572
+      ],
+      "vector_rmse": 2.8739343467847602
+    },
+    "previous_event_actually_applied_beta_clipped_vs_y_k": {
+      "n": 1998,
+      "axis_rmse": [
+        2.5853902390132784,
+        1.238310540923514,
+        0.07889379756072683
+      ],
+      "vector_rmse": 2.8677307954271036
+    }
+  },
+  "update_order_replay_rad_s2": {
+    "description": "same current x_k and base_k; compare logged W_before output, RLS-only W_after replay, and full W_after replay against next measured interval y_(k+1); paired same-record counterfactual only",
+    "eligible_updates_after_beta_ramp": 1778,
+    "projected_updates_skipped_for_RLS_reconstruction": 0,
+    "weight_after_to_next_event_weight_before_max_abs": 0.0,
+    "before_output_vs_next_interval": {
+      "n": 1778,
+      "axis_rmse": [
+        2.7442074968774604,
+        1.3103336518296371,
+        0.08359012718425217
+      ],
+      "vector_rmse": 3.0421433849176673
+    },
+    "after_RLS_only_replay_vs_next_interval": {
+      "n": 1778,
+      "axis_rmse": [
+        2.4124486096740125,
+        1.1950630977741543,
+        0.07550479933564368
+      ],
+      "vector_rmse": 2.6932851829508047
+    },
+    "after_full_update_replay_vs_next_interval": {
+      "n": 1778,
+      "axis_rmse": [
+        2.408587671704267,
+        1.1944610244657379,
+        0.07550455025469463
+      ],
+      "vector_rmse": 2.689559935818996
+    },
+    "relative_vector_rmse_change_RLS_only_vs_before": -0.11467513454376643,
+    "relative_vector_rmse_change_full_update_vs_before": -0.11589968140446927,
+    "same_observation_fit_before_RLS": {
+      "n": 1778,
+      "axis_rmse": [
+        2.406377887708453,
+        1.1940412800567086,
+        0.07534739406620576
+      ],
+      "vector_rmse": 2.687390248312333
+    },
+    "same_observation_fit_after_RLS_only": {
+      "n": 1778,
+      "axis_rmse": [
+        2.0440684702337015,
+        1.0507464863352451,
+        0.06700013782063173
+      ],
+      "vector_rmse": 2.299298394732053
+    },
+    "RLS_fit_pairs_without_projection": 1778
+  },
+  "runtime_vs_training_input_distribution": {
+    "feature_order": [
+      "attitude_error_xyz",
+      "body_rate_xyz",
+      "nominal_torque_xyz",
+      "morph_command_4"
+    ],
+    "runtime_abs_z_gt3_fraction_by_feature": [
+      0.0080040020010005,
+      0.0,
+      0.0,
+      0.0015007503751875938,
+      0.0,
+      0.0,
+      0.0005002501250625312,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.2001000500250125,
+      0.060030015007503754
+    ],
+    "runtime_abs_z_gt4_fraction_by_feature": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.060030015007503754
+    ],
+    "runtime_abs_z_gt3_fraction_all": 0.02077962057952053,
+    "runtime_abs_z_gt4_fraction_all": 0.004617693462115673,
+    "train_abs_z_gt3_fraction_all": 0.03511691743307551,
+    "runtime_raw_feature_p99_abs": [
+      0.034116445069552706,
+      0.02445812198487134,
+      0.0035696062067423697,
+      0.5515416521203639,
+      0.1970858211307669,
+      0.0203458428550385,
+      0.038388941803258754,
+      0.015317963162254365,
+      0.0022940894283491413,
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ]
+  },
+  "limitations": [
+    "one authorized W09 scene only; this is a timing screen, not a closed-loop counterfactual",
+    "no TEST data, true inertia, Jdot, or oracle input read"
+  ]
+}

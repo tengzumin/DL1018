@@ -1,0 +1,53 @@
+{
+  "schema": "DL1018_GRU_TRACKING_HEAD_SIX_SCENE_DECISION_V1",
+  "status": "SCREEN_COMPLETE_INNER_LOOP_GAIN_TASK_HF_UNRESOLVED",
+  "reviewed_utc": "2026-10-27T00:08:07Z",
+  "candidate": "GRU32_STREAM72_COSINE_TRACKING_HEAD_S2026102001",
+  "candidate_model_sha256": "b2c462f77a6bb97b8c6bb2b471daef0633d4f9664a7d623b894461a4fa21b567",
+  "six_scene_summary_path": "experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_dev_v1\\audits\\ROOT_TRACKING_HEAD_SIX_SCENE_REVIEW_v1.json",
+  "six_scene_summary_sha256": "01f989e837552885bbadd53b8996fd01f7dee098171d31c1b507469fcbb1f388",
+  "paired_table_path": "experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_dev_v1\\audits\\ROOT_TRACKING_HEAD_SIX_SCENE_PAIRED_v1.csv",
+  "paired_table_sha256": "71b67bce51dbbeda921319468a6b93e6146b1e9291f5d8227decc80bcdb65c1e",
+  "hf_command_path_diagnostic_path": "experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_dev_v1\\audits\\ROOT_HF_COMMAND_PATH_DIAGNOSTIC_v1.json",
+  "hf_command_path_diagnostic_sha256": "fe15bd82bc5491f886ca99d6677179d68e2e573f9688f53f2906ca87c09bc0c5",
+  "key_results": {
+    "ALL6_candidate_vs_B": {
+      "Q_percent": -16.02931373284576,
+      "task_SO3_percent": -4.233050789735049,
+      "inner_SO3_percent": -12.524468458175498
+    },
+    "ALL6_candidate_vs_C5": {
+      "Q_percent": -8.124005975036608,
+      "task_SO3_percent": 0.06344986972097733,
+      "inner_SO3_percent": -12.699125809281908
+    },
+    "HF_candidate_vs_B": {
+      "Q_percent": -8.873901453067212,
+      "task_SO3_percent": 2.1601992551556704,
+      "inner_SO3_percent": -12.362754807360886
+    },
+    "HF_candidate_vs_C5": {
+      "Q_percent": -4.299466984943323,
+      "task_SO3_percent": 0.014281904234558773,
+      "inner_SO3_percent": -12.823380238005576
+    },
+    "HF_SO3_wins_vs_B": 1,
+    "HF_SO3_losses_vs_B": 2,
+    "HF_SO3_wins_vs_C5": 1,
+    "HF_SO3_losses_vs_C5": 2
+  },
+  "engineering": {
+    "six_candidate_calls": 6,
+    "all_raw_audits_pass": true,
+    "all_20k_runs_stable": true,
+    "motor_saturation_samples": 0,
+    "generalized_clip_samples": 0,
+    "new_training_calls": 0,
+    "B_reruns": 0,
+    "C5_reruns": 0,
+    "TEST_read": false,
+    "candidate_raw_bytes": 541371015
+  },
+  "interpretation": "Tracking against the filtered inner reference improved about 12.8% in the HF group, but task-reference SO3 did not. Pairwise path diagnostics show about 59.5 mrad task-to-command-target gap and 37.0 mrad command-to-filtered-reference gap for candidate, versus 12.0 mrad filtered-reference-to-state tracking error. Pairwise geodesic RMSEs are not additive; these numbers indicate a large upstream command/reference mismatch but do not establish its causal source.",
+  "decision": "Continue with a separate full DEV72 validation using the exact frozen candidate; do not retrain or rerun B/C5. Keep TEST sealed. In parallel, target the task-command/filter path gap in the next root-approved one-factor study. This six-scene result is not paper evidence completion."
+}

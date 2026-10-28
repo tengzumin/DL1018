@@ -1,0 +1,611 @@
+{
+  "schema": "CM18_A1_CSTAR_RELABEL_SCREEN4_V1",
+  "status": "PASS",
+  "source_manifest_path": "reports/attitude_cm18_datarepair_20261024/B_REF_REPAIRED_SOURCE_MANIFEST_v1.json",
+  "source_manifest_sha256": "0f86b47d01940e7b556b78a9664470531572809aa6857a59fc77d88a33681ec5",
+  "dataset_manifest_path": "reports/attitude_cm18_datarepair_20261024/repaired_all816_v1/DATASET_MANIFEST_v1.json",
+  "dataset_manifest_sha256": "3f51a1cd0e2e8c3eae79a16df363f2f8d47b0d5dbd876ecd95f1571d9e70a5e0",
+  "extractor_path": "experiments/attitude_cm18_datarepair_20261024/extract_cm18_events_v1.m",
+  "extractor_sha256": "15d8fb369b93e3a251d70c7eb7a590f732da839d35a5bebfb2011f25123e37c1",
+  "model_source_path": "experiments/attitude_cm18_a1_20261024/model_cm18_v1.py",
+  "model_source_sha256": "ad32c4f97bf96c63172547c944d80c45062502f1062b774934e0f7a868720cf6",
+  "deployment_path": "experiments/attitude_cm18_a1_20261024/deployment_v1/deployment_parameters_v1.json",
+  "deployment_sha256": "ee00c46af42cbce83a630ae9b03eaf1a86bfc6047910ed68bc4e7b8b020aa6ae",
+  "target_contract": "target_applied_acceleration is c*=G\\E0 after beta; target_raw_output is c*/beta before output clip; target_after_clip_beta records the runtime-applied value.",
+  "G_storage": "Each cache stores reshape(G,1,9), MATLAB column-major order, under G_column_major.",
+  "scope": {
+    "scene_count": 4,
+    "events_per_scene": 1999,
+    "plant_calls": 0,
+    "engine_calls": 0,
+    "training_steps": 0,
+    "optimizer_steps": 0,
+    "TEST_accessed": false,
+    "full816_relabel": false,
+    "X18_copied_to_new_cache": false
+  },
+  "nominal_inertia_J0_kg_m2": [
+    [
+      0.0032575533333333339,
+      -2.1684043449710089E-19,
+      0
+    ],
+    [
+      -2.1684043449710089E-19,
+      0.0032575533333333334,
+      0
+    ],
+    [
+      0,
+      0,
+      0.0063606483333333332
+    ]
+  ],
+  "nominal_allocation_C0": [
+    [
+      1.7E-6,
+      1.7E-6,
+      1.7E-6,
+      1.7E-6
+    ],
+    [
+      1.8031222920256959E-7,
+      1.8031222920256961E-7,
+      -1.8031222920256959E-7,
+      -1.8031222920256967E-7
+    ],
+    [
+      -1.8031222920256961E-7,
+      1.8031222920256959E-7,
+      1.8031222920256967E-7,
+      -1.8031222920256956E-7
+    ],
+    [
+      3.2E-8,
+      -3.2E-8,
+      3.2E-8,
+      -3.2E-8
+    ]
+  ],
+  "zero_morphology_basis_definition": "Model output is A*[z/2;u], so exact X18 columns 8:15 zero force exact zero physical output.",
+  "dmax_rad_s2": [
+    45,
+    45,
+    4.7124
+  ],
+  "beta_rise_time_s": 2.2,
+  "scenes": [
+    {
+      "flight_id": "DL1018_TRAIN_T1_C15_W14",
+      "scene_id": "DL1018_TRAIN_T1_C15_W14",
+      "split": "TRAIN",
+      "source_action": "REUSE_A1_CERTIFIED_CACHE",
+      "cache_schema": "CM18_A1_EVENT_CACHE_V1",
+      "raw_path": "data/raw/train/DL1018_TRAIN_T1_C15_W14/B/attempt_01/raw_run.mat",
+      "raw_sha256": "591b0951c906b151ce6db22e53db3ce70d4ceab1d24cfcfd4680dcc1d34be3ff",
+      "run_start_path": "data/raw/train/DL1018_TRAIN_T1_C15_W14/B/attempt_01/run_start.mat",
+      "run_start_sha256": "aebc46bc1b8d036a4b1af4db7ba9af3c78b5dd5dc3ef42ee1e388c0e958719db",
+      "old_cache_path": "reports/attitude_cm18_a1_20261024/data_preparation_v1/events_all816_v1/TRAIN_DL1018_TRAIN_T1_C15_W14.mat",
+      "old_cache_sha256": "2d87ad8962a243d24c2cb1845e3031e62e723dfa8a8ee0435a01cd90c4368f81",
+      "event_count": 1999,
+      "extractor_cache_max_abs_X18_delta": 0,
+      "extractor_cache_max_abs_behavior_target_delta_rad_s2": 0,
+      "max_abs_request_closure_mixed_units": 0,
+      "max_abs_allocator_vs_raw_realized_mixed_units": 0,
+      "max_abs_no_comp_allocator_vs_linear_wrench_mixed_units": 1.7763568394002505E-15,
+      "max_abs_behavior_target_vs_raw_physics_rad_s2": 0,
+      "max_abs_behavior_target_vs_E0_matrix_relation_rad_s2": 9.9475983006414026E-14,
+      "max_abs_E0_identity_rad_s2": 9.9475983006414026E-14,
+      "max_abs_cstar_linear_solve_rad_s2": 1.7763568394002505E-15,
+      "max_G_condition_number": 4.0481227387193517,
+      "min_G_reciprocal_condition": 0.14357728177917412,
+      "minimum_rank_G": 3,
+      "current_generalized_clip_count_by_channel": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "current_motor_saturation_count_by_motor": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "zero_comp_nominal_generalized_clip_count_by_channel": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "zero_comp_nominal_motor_saturation_count_by_motor": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "cstar_beta1_allocator_clip_count_by_channel": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "cstar_beta1_motor_saturation_count_by_motor": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "cstar_actual_beta_allocator_clip_count_by_channel": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "cstar_actual_beta_motor_saturation_count_by_motor": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "linear_matrix_preconditions_satisfied": true,
+      "beta_first_last": [
+        0.0049999999999999992,
+        1
+      ],
+      "beta_zero_count": 0,
+      "beta_below_one_count": 219,
+      "phase_event_count": {
+        "STATIC": 0,
+        "PRE": 619,
+        "EXTEND": 200,
+        "HOLD": 580,
+        "RETRACT": 200,
+        "RECOVERY": 400
+      },
+      "zero_morphology_basis_event_count": 619,
+      "zero_basis_nonzero_applied_target_count_gt_1e_8": 0,
+      "zero_basis_target_applied_max_abs_rad_s2": 6.7779115653365807E-14,
+      "axis_summary": [
+        {
+          "axis": "roll",
+          "old_label_minus_cstar_rms": 0.12276767471435231,
+          "old_label_exact_deployed_error_rms": 0.10310196585269725,
+          "cstar_linear_error_rms": 2.4008408176267859E-16,
+          "cstar_beta1_allocator_error_rms": 2.5651172448274615E-14,
+          "cstar_actual_beta_allocator_error_rms": 2.5651172448274615E-14,
+          "old_label_clip_count": 0,
+          "cstar_beta1_clip_count": 0,
+          "cstar_raw_output_clip_count": 0,
+          "beta_zero_unreachable_count": 0
+        },
+        {
+          "axis": "pitch",
+          "old_label_minus_cstar_rms": 0.51111452614704567,
+          "old_label_exact_deployed_error_rms": 0.22846386812720482,
+          "cstar_linear_error_rms": 1.8620795023174132E-16,
+          "cstar_beta1_allocator_error_rms": 2.9930180725842383E-14,
+          "cstar_actual_beta_allocator_error_rms": 2.9930180725842383E-14,
+          "old_label_clip_count": 0,
+          "cstar_beta1_clip_count": 0,
+          "cstar_raw_output_clip_count": 0,
+          "beta_zero_unreachable_count": 0
+        },
+        {
+          "axis": "yaw",
+          "old_label_minus_cstar_rms": 0.2119141850190514,
+          "old_label_exact_deployed_error_rms": 0.11968318487775956,
+          "cstar_linear_error_rms": 2.1263087405835478E-17,
+          "cstar_beta1_allocator_error_rms": 3.32286907533831E-15,
+          "cstar_actual_beta_allocator_error_rms": 3.32286907533831E-15,
+          "old_label_clip_count": 0,
+          "cstar_beta1_clip_count": 0,
+          "cstar_raw_output_clip_count": 0,
+          "beta_zero_unreachable_count": 0
+        }
+      ],
+      "new_cache_path": "reports\\attitude_cm18_datarepair_20261024\\cstar_screen4_attempt02_v1\\TRAIN_DL1018_TRAIN_T1_C15_W14_CSTAR_V1.mat",
+      "new_cache_sha256": "b540953957539130650089aa83c0ef3c28b43665900b7ee8203d589b1ad09203",
+      "new_cache_bytes": 147054
+    },
+    {
+      "flight_id": "DL1018_TRAIN_T2_C15_W14",
+      "scene_id": "DL1018_TRAIN_T2_C15_W14",
+      "split": "TRAIN",
+      "source_action": "REBUILD_FROM_CORRECTED_T2_B_RAW",
+      "cache_schema": "CM18_REPAIRED_EVENT_CACHE_V1",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\corrected_reference_training_v1\\g3_collection\\data\\raw\\train\\r511\\raw_run.mat",
+      "raw_sha256": "6c6dcdd334d78ae29b4b73aa7446b23ceac1c9cafa9d2d4b56ec16a9dda63c94",
+      "run_start_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\corrected_reference_training_v1\\g3_collection\\data\\raw\\train\\r511\\run_start.mat",
+      "run_start_sha256": "de4b78e9a450ef4002bf7357aedc9cb9c0e704f3e642ca3c1df62dfdbde7f306",
+      "old_cache_path": "data/events/attitude_cm18_datarepair_20261024/TRAIN_DL1018_TRAIN_T2_C15_W14.mat",
+      "old_cache_sha256": "8e83bc7a71763d1f2d2332b57acdac947bd5a307ae4ce99463848fe7651fcb90",
+      "event_count": 1999,
+      "extractor_cache_max_abs_X18_delta": 0,
+      "extractor_cache_max_abs_behavior_target_delta_rad_s2": 0,
+      "max_abs_request_closure_mixed_units": 0,
+      "max_abs_allocator_vs_raw_realized_mixed_units": 0,
+      "max_abs_no_comp_allocator_vs_linear_wrench_mixed_units": 1.7763568394002505E-15,
+      "max_abs_behavior_target_vs_raw_physics_rad_s2": 0,
+      "max_abs_behavior_target_vs_E0_matrix_relation_rad_s2": 1.034987733929401E-13,
+      "max_abs_E0_identity_rad_s2": 1.034987733929401E-13,
+      "max_abs_cstar_linear_solve_rad_s2": 3.5527136788005009E-15,
+      "max_G_condition_number": 4.048122738719349,
+      "min_G_reciprocal_condition": 0.14357728177917425,
+      "minimum_rank_G": 3,
+      "current_generalized_clip_count_by_channel": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "current_motor_saturation_count_by_motor": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "zero_comp_nominal_generalized_clip_count_by_channel": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "zero_comp_nominal_motor_saturation_count_by_motor": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "cstar_beta1_allocator_clip_count_by_channel": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "cstar_beta1_motor_saturation_count_by_motor": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "cstar_actual_beta_allocator_clip_count_by_channel": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "cstar_actual_beta_motor_saturation_count_by_motor": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "linear_matrix_preconditions_satisfied": true,
+      "beta_first_last": [
+        0.0049999999999999992,
+        1
+      ],
+      "beta_zero_count": 0,
+      "beta_below_one_count": 219,
+      "phase_event_count": {
+        "STATIC": 0,
+        "PRE": 519,
+        "EXTEND": 200,
+        "HOLD": 580,
+        "RETRACT": 200,
+        "RECOVERY": 500
+      },
+      "zero_morphology_basis_event_count": 519,
+      "zero_basis_nonzero_applied_target_count_gt_1e_8": 0,
+      "zero_basis_target_applied_max_abs_rad_s2": 6.572520305780928E-14,
+      "axis_summary": [
+        {
+          "axis": "roll",
+          "old_label_minus_cstar_rms": 0.2783807064955951,
+          "old_label_exact_deployed_error_rms": 0.14819636415483492,
+          "cstar_linear_error_rms": 7.6583213130181354E-17,
+          "cstar_beta1_allocator_error_rms": 2.7002572514744453E-14,
+          "cstar_actual_beta_allocator_error_rms": 2.7002572514744453E-14,
+          "old_label_clip_count": 0,
+          "cstar_beta1_clip_count": 0,
+          "cstar_raw_output_clip_count": 0,
+          "beta_zero_unreachable_count": 0
+        },
+        {
+          "axis": "pitch",
+          "old_label_minus_cstar_rms": 0.16519931678091104,
+          "old_label_exact_deployed_error_rms": 0.13078231779575178,
+          "cstar_linear_error_rms": 8.7957883483817406E-16,
+          "cstar_beta1_allocator_error_rms": 2.3584121559981236E-14,
+          "cstar_actual_beta_allocator_error_rms": 2.3584121559981236E-14,
+          "old_label_clip_count": 0,
+          "cstar_beta1_clip_count": 0,
+          "cstar_raw_output_clip_count": 0,
+          "beta_zero_unreachable_count": 0
+        },
+        {
+          "axis": "yaw",
+          "old_label_minus_cstar_rms": 0.089044958058020651,
+          "old_label_exact_deployed_error_rms": 0.049672171087750544,
+          "cstar_linear_error_rms": 1.4505257811829753E-17,
+          "cstar_beta1_allocator_error_rms": 2.9776418968640803E-15,
+          "cstar_actual_beta_allocator_error_rms": 2.9776418968640803E-15,
+          "old_label_clip_count": 0,
+          "cstar_beta1_clip_count": 0,
+          "cstar_raw_output_clip_count": 0,
+          "beta_zero_unreachable_count": 0
+        }
+      ],
+      "new_cache_path": "reports\\attitude_cm18_datarepair_20261024\\cstar_screen4_attempt02_v1\\TRAIN_DL1018_TRAIN_T2_C15_W14_CSTAR_V1.mat",
+      "new_cache_sha256": "1f49d3da54f55972128d44837c7980fca5850554f24585af3c420cb426e9c0ea",
+      "new_cache_bytes": 148623
+    },
+    {
+      "flight_id": "DL1018_TRAIN_T3_C15_W14",
+      "scene_id": "DL1018_TRAIN_T3_C15_W14",
+      "split": "TRAIN",
+      "source_action": "REUSE_A1_CERTIFIED_CACHE",
+      "cache_schema": "CM18_A1_EVENT_CACHE_V1",
+      "raw_path": "data/raw/train/DL1018_TRAIN_T3_C15_W14/B/attempt_01/raw_run.mat",
+      "raw_sha256": "2cd53ea890a5c0c7697310b994fdb280abf6d4a0a26b71a9e64a5a458cc53804",
+      "run_start_path": "data/raw/train/DL1018_TRAIN_T3_C15_W14/B/attempt_01/run_start.mat",
+      "run_start_sha256": "73ec9ebc35a7f26706d4126df9a29aa2b4444fce6f3648a688b8e043392764b7",
+      "old_cache_path": "reports/attitude_cm18_a1_20261024/data_preparation_v1/events_all816_v1/TRAIN_DL1018_TRAIN_T3_C15_W14.mat",
+      "old_cache_sha256": "732ae4aa1ef2c70af7daebeda5285097e82d8dbd845772b3bc70efb8b36ff893",
+      "event_count": 1999,
+      "extractor_cache_max_abs_X18_delta": 0,
+      "extractor_cache_max_abs_behavior_target_delta_rad_s2": 0,
+      "max_abs_request_closure_mixed_units": 0,
+      "max_abs_allocator_vs_raw_realized_mixed_units": 0,
+      "max_abs_no_comp_allocator_vs_linear_wrench_mixed_units": 1.7763568394002505E-15,
+      "max_abs_behavior_target_vs_raw_physics_rad_s2": 0,
+      "max_abs_behavior_target_vs_E0_matrix_relation_rad_s2": 1.2256862191861728E-13,
+      "max_abs_E0_identity_rad_s2": 1.2256862191861728E-13,
+      "max_abs_cstar_linear_solve_rad_s2": 3.5527136788005009E-15,
+      "max_G_condition_number": 5.71385400744591,
+      "min_G_reciprocal_condition": 0.10611565592067482,
+      "minimum_rank_G": 3,
+      "current_generalized_clip_count_by_channel": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "current_motor_saturation_count_by_motor": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "zero_comp_nominal_generalized_clip_count_by_channel": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "zero_comp_nominal_motor_saturation_count_by_motor": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "cstar_beta1_allocator_clip_count_by_channel": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "cstar_beta1_motor_saturation_count_by_motor": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "cstar_actual_beta_allocator_clip_count_by_channel": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "cstar_actual_beta_motor_saturation_count_by_motor": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "linear_matrix_preconditions_satisfied": true,
+      "beta_first_last": [
+        0.0049999999999999992,
+        1
+      ],
+      "beta_zero_count": 0,
+      "beta_below_one_count": 219,
+      "phase_event_count": {
+        "STATIC": 0,
+        "PRE": 519,
+        "EXTEND": 275,
+        "HOLD": 546,
+        "RETRACT": 244,
+        "RECOVERY": 415
+      },
+      "zero_morphology_basis_event_count": 934,
+      "zero_basis_nonzero_applied_target_count_gt_1e_8": 0,
+      "zero_basis_target_applied_max_abs_rad_s2": 6.7723604502134562E-14,
+      "axis_summary": [
+        {
+          "axis": "roll",
+          "old_label_minus_cstar_rms": 0.20914617841270811,
+          "old_label_exact_deployed_error_rms": 0.15268058856106756,
+          "cstar_linear_error_rms": 3.1150731879077222E-16,
+          "cstar_beta1_allocator_error_rms": 2.6544310793523995E-14,
+          "cstar_actual_beta_allocator_error_rms": 2.6544310793523995E-14,
+          "old_label_clip_count": 0,
+          "cstar_beta1_clip_count": 0,
+          "cstar_raw_output_clip_count": 0,
+          "beta_zero_unreachable_count": 0
+        },
+        {
+          "axis": "pitch",
+          "old_label_minus_cstar_rms": 0.81548119008458619,
+          "old_label_exact_deployed_error_rms": 0.40099560152423097,
+          "cstar_linear_error_rms": 2.6544561213425076E-16,
+          "cstar_beta1_allocator_error_rms": 2.4479066554479246E-14,
+          "cstar_actual_beta_allocator_error_rms": 2.4479066554479246E-14,
+          "old_label_clip_count": 0,
+          "cstar_beta1_clip_count": 0,
+          "cstar_raw_output_clip_count": 0,
+          "beta_zero_unreachable_count": 0
+        },
+        {
+          "axis": "yaw",
+          "old_label_minus_cstar_rms": 0.280670424439715,
+          "old_label_exact_deployed_error_rms": 0.15925364761122413,
+          "cstar_linear_error_rms": 2.855464428145132E-17,
+          "cstar_beta1_allocator_error_rms": 3.001195094675084E-15,
+          "cstar_actual_beta_allocator_error_rms": 3.001195094675084E-15,
+          "old_label_clip_count": 0,
+          "cstar_beta1_clip_count": 0,
+          "cstar_raw_output_clip_count": 0,
+          "beta_zero_unreachable_count": 0
+        }
+      ],
+      "new_cache_path": "reports\\attitude_cm18_datarepair_20261024\\cstar_screen4_attempt02_v1\\TRAIN_DL1018_TRAIN_T3_C15_W14_CSTAR_V1.mat",
+      "new_cache_sha256": "6e28fa073e8e4b7ff76117ad59d078c9440587ea7831cfcb76d3e988e8634892",
+      "new_cache_bytes": 158887
+    },
+    {
+      "flight_id": "DL1018_VAL_T2_C00_W10",
+      "scene_id": "DL1018_VAL_T2_C00_W10",
+      "split": "VAL",
+      "source_action": "REBUILD_FROM_CORRECTED_T2_B_RAW",
+      "cache_schema": "CM18_REPAIRED_EVENT_CACHE_V1",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\runs\\DL1018_VAL_T2_C00_W10_ACC_FIX_V1\\B\\attempt_01\\raw_run.mat",
+      "raw_sha256": "05ad0e797ca10ce164747709bca2f87967c4b928283e7eaaae7839de43e059b7",
+      "run_start_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\runs\\DL1018_VAL_T2_C00_W10_ACC_FIX_V1\\B\\attempt_01\\run_start.mat",
+      "run_start_sha256": "0be63325ada2392ff04f825b067fb3f0e9a6385e8e27e746daf65f2d6a77c806",
+      "old_cache_path": "data/events/attitude_cm18_datarepair_20261024/VAL_DL1018_VAL_T2_C00_W10.mat",
+      "old_cache_sha256": "d8099a209eebe699eaf071094164436a4e2ffa37d15e3606f7a7e746fe26eec9",
+      "event_count": 1999,
+      "extractor_cache_max_abs_X18_delta": 0,
+      "extractor_cache_max_abs_behavior_target_delta_rad_s2": 0,
+      "max_abs_request_closure_mixed_units": 0,
+      "max_abs_allocator_vs_raw_realized_mixed_units": 0,
+      "max_abs_no_comp_allocator_vs_linear_wrench_mixed_units": 1.7763568394002505E-15,
+      "max_abs_behavior_target_vs_raw_physics_rad_s2": 0,
+      "max_abs_behavior_target_vs_E0_matrix_relation_rad_s2": 9.2814638671173267E-14,
+      "max_abs_E0_identity_rad_s2": 9.2814638671173267E-14,
+      "max_abs_cstar_linear_solve_rad_s2": 1.5777218104420236E-30,
+      "max_G_condition_number": 1.0000000000000007,
+      "min_G_reciprocal_condition": 0.99999999999999933,
+      "minimum_rank_G": 3,
+      "current_generalized_clip_count_by_channel": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "current_motor_saturation_count_by_motor": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "zero_comp_nominal_generalized_clip_count_by_channel": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "zero_comp_nominal_motor_saturation_count_by_motor": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "cstar_beta1_allocator_clip_count_by_channel": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "cstar_beta1_motor_saturation_count_by_motor": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "cstar_actual_beta_allocator_clip_count_by_channel": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "cstar_actual_beta_motor_saturation_count_by_motor": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "linear_matrix_preconditions_satisfied": true,
+      "beta_first_last": [
+        0.0049999999999999992,
+        1
+      ],
+      "beta_zero_count": 0,
+      "beta_below_one_count": 219,
+      "phase_event_count": {
+        "STATIC": 1999,
+        "PRE": 0,
+        "EXTEND": 0,
+        "HOLD": 0,
+        "RETRACT": 0,
+        "RECOVERY": 0
+      },
+      "zero_morphology_basis_event_count": 1999,
+      "zero_basis_nonzero_applied_target_count_gt_1e_8": 0,
+      "zero_basis_target_applied_max_abs_rad_s2": 7.5273121069585626E-14,
+      "axis_summary": [
+        {
+          "axis": "roll",
+          "old_label_minus_cstar_rms": 2.6098433191611854E-14,
+          "old_label_exact_deployed_error_rms": 2.7971060138211811E-14,
+          "cstar_linear_error_rms": 1.2777067851215851E-32,
+          "cstar_beta1_allocator_error_rms": 2.5904170216253112E-14,
+          "cstar_actual_beta_allocator_error_rms": 2.5904170216253112E-14,
+          "old_label_clip_count": 0,
+          "cstar_beta1_clip_count": 0,
+          "cstar_raw_output_clip_count": 0,
+          "beta_zero_unreachable_count": 0
+        },
+        {
+          "axis": "pitch",
+          "old_label_minus_cstar_rms": 2.419658544231206E-14,
+          "old_label_exact_deployed_error_rms": 2.5890804549504759E-14,
+          "cstar_linear_error_rms": 6.208253355550257E-32,
+          "cstar_beta1_allocator_error_rms": 2.299000239272268E-14,
+          "cstar_actual_beta_allocator_error_rms": 2.299000239272268E-14,
+          "old_label_clip_count": 0,
+          "cstar_beta1_clip_count": 0,
+          "cstar_raw_output_clip_count": 0,
+          "beta_zero_unreachable_count": 0
+        },
+        {
+          "axis": "yaw",
+          "old_label_minus_cstar_rms": 3.63895131658165E-15,
+          "old_label_exact_deployed_error_rms": 3.8091502393626193E-15,
+          "cstar_linear_error_rms": 2.2967856976939016E-31,
+          "cstar_beta1_allocator_error_rms": 3.3380052865232104E-15,
+          "cstar_actual_beta_allocator_error_rms": 3.3380052865232104E-15,
+          "old_label_clip_count": 0,
+          "cstar_beta1_clip_count": 0,
+          "cstar_raw_output_clip_count": 0,
+          "beta_zero_unreachable_count": 0
+        }
+      ],
+      "new_cache_path": "reports\\attitude_cm18_datarepair_20261024\\cstar_screen4_attempt02_v1\\VAL_DL1018_VAL_T2_C00_W10_CSTAR_V1.mat",
+      "new_cache_sha256": "4a44234db3662578734764ea0404a421b577900539f25fce1257ab3c90129c70",
+      "new_cache_bytes": 75397
+    }
+  ]
+}

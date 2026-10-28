@@ -1,0 +1,65 @@
+{
+  "schema": "DL1018_GRU_POSITION_APPLIED_NOTCH_NOPLANT_V1",
+  "study_id": "gru_cosine_c5_applied_notch_35hz_q1_v1",
+  "status": "RELEASED",
+  "fixed_scene_id": "DL1018_VAL_T3_C01_W14",
+  "authorized_scenes": [
+    "DL1018_VAL_T3_C01_W14"
+  ],
+  "authorized_Plant_calls": 1,
+  "Plant_calls": 0,
+  "TEST_read": false,
+  "test_data_read": false,
+  "training_runs": 0,
+  "inertia_reconstruction_enabled": false,
+  "position_method_id": "C5_AXIS_MIXED_COORDINATE_M110",
+  "position_delayed_prediction_h_s": 0.01,
+  "position_delayed_prediction_tau_s": 1.0,
+  "position_delayed_prediction_rho": 0.01,
+  "parent_study_id": "gru_stream_cosine_tracking_head_full72_v1",
+  "parent_cosine_release_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_full72_v1\\RELEASE.json",
+  "parent_cosine_release_sha256": "b453e50d1ef3affce66b0d05dda4848ef0aaf6d58476361d9c3006febd6ef047",
+  "parent_tau01_release_sha256": "05cad3e876221979e329ed6212ed36e4068d2a97c24a59b8c02f0322171b4817",
+  "parent_tau1_helper_sha256": "48feebf934b8eb90b4424f2286aa857c48213d229714f30af99aacf53329549d",
+  "source_lock_sha256": "f2159df0f9aea6506a1da8aee86cbde1f1d132eb9030df4b84ce3310a26a610c",
+  "applied_acceleration_notch": {
+    "enabled": true,
+    "center_hz": 3.5,
+    "quality_factor": 1,
+    "sample_rate_hz": 100,
+    "b": [
+      0.9005755352793756,
+      -1.757773520542205,
+      0.9005755352793756
+    ],
+    "a": [
+      1.0,
+      -1.757773520542205,
+      0.8011510705587512
+    ],
+    "initial_state": [
+      [
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0
+      ]
+    ],
+    "update": "causal scipy.signal.iirnotch recurrence once per 10-ms Stage1 event; hold output between events",
+    "output_limit": "existing beta-scaled cfg.rbf.position.dmax, elementwise clip is logged"
+  },
+  "release_notes": "No Plant authorized. This isolated candidate resets the parent delayed predictor to tau=1 s, rho=.01 and changes only applied Stage1 acceleration through a causal 3.5-Hz Q=1 notch; root review required before any execution.",
+  "parent_payload_manifest_sha256": "8c6bae8a0ed4d94b30b9e9ac466d8a46ed1a1d955c9592eccabaf4c4987a3991"
+}

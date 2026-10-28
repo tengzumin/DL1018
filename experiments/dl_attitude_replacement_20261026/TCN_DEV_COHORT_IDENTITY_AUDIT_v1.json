@@ -1,0 +1,115 @@
+{
+  "schema": "DL1018_TCN_DEV_COHORT_IDENTITY_AUDIT_V1",
+  "created_local": "2026-10-26T05:54:19+08:00",
+  "scope": "Metadata-only identity audit; no metric values or TEST data read.",
+  "sources": [
+    {
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\C5_DEV72_INPUT_LOCK_v3.json",
+      "sha256": "82024c01276cc4bfbd9b7772cf5332dee3fdfcbed422969589b68f1c90ed2d75"
+    },
+    {
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\reports\\paper_continuation_20261023\\c5_axis_coordinate_parent_review\\C5_B72_SCORING_MANIFEST_v1.json",
+      "sha256": "7c1c17c1168e918f3796bb78ba1a5acc8fcee19d9a0ee96d971d9ec0f4fd7355"
+    },
+    {
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\dataset_v4_teacher_distill\\DATASET_MANIFEST_v2.json",
+      "sha256": "4a98548618d799b01b96809ea274b6a4ffcf5eded0e24f2fde5401619ffc442d"
+    }
+  ],
+  "c5_development_cohort": {
+    "scene_count": 72,
+    "split_counts": [
+      {
+        "source_split": "DEV",
+        "count": 24
+      },
+      {
+        "source_split": "VAL",
+        "count": 48
+      }
+    ],
+    "tcn_dataset": {
+      "train_scene_count": 768,
+      "val_scene_count": 48,
+      "test_data_read": false,
+      "plant_truth_read": false,
+      "inertia_config_read": null,
+      "feature_order": [
+        "attitude_error_euler_rad_x3",
+        "body_rate_rad_s_x3",
+        "nominal_bs_body_torque_Nm_x3",
+        "morph_command_x4"
+      ],
+      "target": "logged rbf_output_raw at event k, pre-beta, rad/s^2"
+    },
+    "tcn_val_overlap_count": 48,
+    "tcn_val_overlap_scene_ids": [
+      "DL1018_VAL_T1_C00_W07",
+      "DL1018_VAL_T1_C01_W08",
+      "DL1018_VAL_T1_C02_W09",
+      "DL1018_VAL_T1_C03_W10",
+      "DL1018_VAL_T1_C04_W11",
+      "DL1018_VAL_T1_C05_W12",
+      "DL1018_VAL_T1_C06_W13",
+      "DL1018_VAL_T1_C07_W14",
+      "DL1018_VAL_T1_C08_W15",
+      "DL1018_VAL_T1_C09_W00",
+      "DL1018_VAL_T1_C10_W01",
+      "DL1018_VAL_T1_C11_W02",
+      "DL1018_VAL_T1_C12_W03",
+      "DL1018_VAL_T1_C13_W04",
+      "DL1018_VAL_T1_C14_W05",
+      "DL1018_VAL_T1_C15_W06",
+      "DL1018_VAL_T2_C00_W10",
+      "DL1018_VAL_T2_C01_W11",
+      "DL1018_VAL_T2_C02_W12",
+      "DL1018_VAL_T2_C03_W13",
+      "DL1018_VAL_T2_C04_W14",
+      "DL1018_VAL_T2_C05_W15",
+      "DL1018_VAL_T2_C06_W00",
+      "DL1018_VAL_T2_C07_W01",
+      "DL1018_VAL_T2_C08_W02",
+      "DL1018_VAL_T2_C09_W03",
+      "DL1018_VAL_T2_C10_W04",
+      "DL1018_VAL_T2_C11_W05",
+      "DL1018_VAL_T2_C12_W06",
+      "DL1018_VAL_T2_C13_W07",
+      "DL1018_VAL_T2_C14_W08",
+      "DL1018_VAL_T2_C15_W09",
+      "DL1018_VAL_T3_C00_W13",
+      "DL1018_VAL_T3_C01_W14",
+      "DL1018_VAL_T3_C02_W15",
+      "DL1018_VAL_T3_C03_W00",
+      "DL1018_VAL_T3_C04_W01",
+      "DL1018_VAL_T3_C05_W02",
+      "DL1018_VAL_T3_C06_W03",
+      "DL1018_VAL_T3_C07_W04",
+      "DL1018_VAL_T3_C08_W05",
+      "DL1018_VAL_T3_C09_W06",
+      "DL1018_VAL_T3_C10_W07",
+      "DL1018_VAL_T3_C11_W08",
+      "DL1018_VAL_T3_C12_W09",
+      "DL1018_VAL_T3_C13_W10",
+      "DL1018_VAL_T3_C14_W11",
+      "DL1018_VAL_T3_C15_W12"
+    ],
+    "interpretation": "All 48 TCN checkpoint-selection VAL scenes are included in the 72-scene C5 development cohort. Treat the 72 as development evidence, not independent evaluation; sealed TEST remains required."
+  },
+  "c5_b72_reference_identity": {
+    "compared_scene_count": 72,
+    "all_canonical_rows_present": true,
+    "raw_path_match_count": 72,
+    "raw_sha256_match_count": 72,
+    "run_status_path_match_count": 72,
+    "run_status_sha256_match_count": 72,
+    "special_reused_scene": {
+      "scene_id": "DL1018_VAL_T2_C00_W10",
+      "canonical_row_present": true,
+      "raw_path_match": true,
+      "raw_sha256_match": true,
+      "status_path_match": true,
+      "status_sha256_match": true
+    },
+    "metadata_only": true
+  }
+}

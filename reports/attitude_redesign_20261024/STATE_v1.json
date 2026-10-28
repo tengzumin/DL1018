@@ -1,0 +1,39 @@
+{
+  "schema": "ATTITUDE_REDESIGN_STATE_V1",
+  "goal_status": "ACTIVE_NOT_ACHIEVED",
+  "scope": "New compact learned replacement for attitude RBF; C5 position frozen; no reuse of old KAN29 design",
+  "C7": "PAUSED",
+  "completed_evidence": [
+    "All 816 TRAIN/VAL H5 metadata, shape and label-scale checks",
+    "Two C00 and two C01 sample raw/label reconstruction audits",
+    "Causal command integral diagnostic and reproducible script, CPU exit 0",
+    "Frozen C5 development-pool attitude baseline: DEV24 plus VAL48; raw SHA verified",
+    "Independent dynamic-scene attitude metric and alignment recheck",
+    "Fixed five-group offline information-probe taskbook",
+    "48 TRAIN plus 48 VAL scene lock; root independently verified all 288 input-file and 16 source hashes"
+  ],
+  "current_stage": "OFFLINE_PROBE_IMPLEMENTATION_AND_SOURCE_REVIEW_BEFORE_FITTING",
+  "next_entry": "reports/attitude_redesign_20261024/OFFLINE_INPUT_PROBE_TASKBOOK_v1_ZH.md",
+  "input_lock": "reports/attitude_redesign_20261024/offline_input_probe_v1/INPUT_SCENE_LOCK_v1.json",
+  "input_lock_sha256": "2711d5ebc3c8c0463633a6d65b59c3333508ce6352c0ba62c942c2ff6547348d",
+  "fitting_release": "NOT_YET_GRANTED_WAIT_IMPLEMENTATION_REVIEW",
+  "diagnostic_fit_limit": 5,
+  "new_closed_loop_sorties_this_attitude_stage": 0,
+  "new_neural_training_runs_this_attitude_stage": 0,
+  "new_matlab_offline_physics_replay_runs": 1,
+  "limitations": [
+    "Exact historical B producing-source identity remains unverified",
+    "Only selected sample physical labels replayed; full H5 metadata does not certify all labels",
+    "Command-integral proxy assumes known initial state and ideal prescribed motion",
+    "Finite VAL is development data and cannot be called independent test",
+    "No new deployable attitude model or closed-loop performance result exists yet"
+  ],
+  "remaining": [
+    "Review and execute fixed offline input probe",
+    "Freeze new model, data exporter, training and fair development validation protocol",
+    "Implement and verify runtime parity, units, coordinate frame and causal timing",
+    "Train new model and evaluate attitude, position, safety and actuator performance",
+    "Freeze final system for a freshly sealed independent evaluation",
+    "Complete application-level paper evidence and writing with honest boundaries"
+  ]
+}

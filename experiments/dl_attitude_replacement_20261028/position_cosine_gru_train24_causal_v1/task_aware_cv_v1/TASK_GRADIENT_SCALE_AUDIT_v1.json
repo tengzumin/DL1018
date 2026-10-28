@@ -1,0 +1,653 @@
+{
+  "schema": "COSINE_GRU_POSITION_TASK_INITIAL_GRADIENT_SCALE_AUDIT_V1",
+  "scope": "TRAIN_C5_24 only; no VAL/TEST raw, Plant, wind fields, or inertia reconstruction/use; diagnostics only, no optimizer updates.",
+  "dataset_sha256": "15d689f08fd6d8a53a64c59dbdf62b33f9b8e8a12ce083fb12834cd106df2eeb",
+  "manifest_sha256": "16856362913e5144add83035b9b767affa02c0719c66971635731d237bb0d91e",
+  "dataset_source_lock_sha256": "10be2c860c042491acfc0cfaad1067c65d848dd5889c177e6ccb8d65c9602fb7",
+  "task_aware_script_sha256": "f47f3df5dd62cf49a4c85677e23b886ef53d5abc9777dea535af1c45179a0a41",
+  "no_task_control_sha256": "9dc29cc2d94b990bafc2bdf77cc8c704fb14e2c0582987e3057cd6464e177d0f",
+  "gradient_definition": "Per-scene initial model gradients of the exact fixed training losses; position SmoothL1, unweighted smoothing mean(d2(delta)^2), frozen-trajectory SO3 mean(theta^2). The task gradient is additionally reported multiplied by lambda_task=0.1.",
+  "selection": "For each of four manifest folds, use the first and last scene in that fold's TRAIN scene list; chosen before inspecting gradient results. Each fold uses the training-only normalizer and seed=20261028+fold index.",
+  "architecture_and_init": "GRU(14,32)->Linear(32,3); zero head; zero delta at initialization; scene hidden reset.",
+  "clipping_and_filter": {
+    "delta_clip_mps2": 0.5,
+    "total_action_clip_mps2": 3.0,
+    "task_filter_limits_rad_s2": [
+      "Inf",
+      "Inf",
+      6
+    ],
+    "filter_transition_dt_s": 0.001,
+    "action_event_dt_s": 0.01
+  },
+  "summary": {
+    "selected_evaluation_count": 8,
+    "unique_selected_scene_count": 4,
+    "selected_scenes_with_exact_clip_activity": 0,
+    "weighted_task_to_position_gradient_ratio_median": 0.06474963575601578,
+    "weighted_task_to_position_gradient_ratio_min_max": [
+      0.021165043115615845,
+      0.14651861786842346
+    ],
+    "target_weighted_task_to_position_gradient_ratio": 0.1,
+    "lambda_for_median_gradient_ratio_10pct": 0.15444102323109854,
+    "median_scene_specific_lambda_for_10pct_ratio": 0.23118316754698753,
+    "scene_specific_lambda_for_10pct_ratio_min_max": [
+      0.06825070828199387,
+      0.4724772274494171
+    ]
+  },
+  "folds": {
+    "holdout_W00_05": {
+      "seed": 20261028,
+      "train_scene_count": 18,
+      "normalizer_scope": "manifest TRAIN scenes only",
+      "normalizer_mean_sha256": "f23b97f4e8466aa26d5af3e1ed1b3c4ed448d2ae3cd279a8f92c1d5349985220",
+      "normalizer_std_sha256": "ca955f824f76f39174b8d5ab6608e82954c3270f27aac8f3219934533e1eaea3",
+      "selected_scene_rule": "first and last TRAIN IDs in manifest order",
+      "scenes": [
+        {
+          "scene_id": "DL1018_DEV_T1_C01_W15",
+          "initial_model_output_abs_max": 0.0,
+          "position_smooth_l1": 0.00036345492117106915,
+          "smoothness_mean_d2_sq": 0.0,
+          "task_mean_so3_sq_rad2": 0.0002434432681184262,
+          "gradient_norm_by_parameter_group": {
+            "position": {
+              "gru": 0.0,
+              "head": 0.00801206286996603,
+              "all": 0.00801206286996603
+            },
+            "smoothing_unweighted": {
+              "gru": 0.0,
+              "head": 0.0,
+              "all": 0.0
+            },
+            "task_unweighted": {
+              "gru": 0.0,
+              "head": 0.001987857511267066,
+              "all": 0.001987857511267066
+            },
+            "task_weighted_lambda_0_1": {
+              "gru": 0.0,
+              "head": 0.00019878573948517442,
+              "all": 0.00019878573948517442
+            },
+            "position_plus_0_01_smoothing": {
+              "gru": 0.0,
+              "head": 0.00801206286996603,
+              "all": 0.00801206286996603
+            },
+            "total_objective": {
+              "gru": 0.0,
+              "head": 0.007841495797038078,
+              "all": 0.007841495797038078
+            }
+          },
+          "vector_norms": {
+            "position": 0.00801206286996603,
+            "smoothing_unweighted": 0.0,
+            "task_unweighted": 0.001987857511267066,
+            "task_weighted_lambda_0_1": 0.00019878573948517442,
+            "position_plus_0_01_smoothing": 0.00801206286996603,
+            "total_objective": 0.007841495797038078
+          },
+          "direction": {
+            "cos_position_vs_unweighted_task": -0.86131751537323,
+            "cos_position_plus_smoothing_vs_weighted_task": -0.8613176345825195,
+            "cos_total_vs_position_plus_smoothing": 0.9999170899391174,
+            "weighted_task_to_position_gradient_norm_ratio": 0.024810805916786194,
+            "suggested_lambda_for_10pct_initial_norm": 0.40305015444755554
+          },
+          "clip_activity": {
+            "raw_delta_abs_ge_0_5_fraction": 0.0,
+            "predicted_delta_clip_saturated_fraction": 0.0,
+            "total_action_preclip_abs_ge_3_fraction": 0.0,
+            "total_action_clip_saturated_fraction": 0.0,
+            "task_filter_request_abs_gt_limit_by_axis": [
+              0,
+              0,
+              0
+            ],
+            "task_filter_transition_count": 20000,
+            "task_filter_applied_acceleration_max_abs_by_axis": [
+              1.2289629481114779,
+              1.053991343088021,
+              0.0
+            ]
+          }
+        },
+        {
+          "scene_id": "DL1018_DEV_T3_C15_W14",
+          "initial_model_output_abs_max": 0.0,
+          "position_smooth_l1": 0.06683288514614105,
+          "smoothness_mean_d2_sq": 0.0,
+          "task_mean_so3_sq_rad2": 0.0038027153350412846,
+          "gradient_norm_by_parameter_group": {
+            "position": {
+              "gru": 0.0,
+              "head": 0.05999240279197693,
+              "all": 0.05999240279197693
+            },
+            "smoothing_unweighted": {
+              "gru": 0.0,
+              "head": 0.0,
+              "all": 0.0
+            },
+            "task_unweighted": {
+              "gru": 0.0,
+              "head": 0.012697417289018631,
+              "all": 0.012697417289018631
+            },
+            "task_weighted_lambda_0_1": {
+              "gru": 0.0,
+              "head": 0.0012697417987510562,
+              "all": 0.0012697417987510562
+            },
+            "position_plus_0_01_smoothing": {
+              "gru": 0.0,
+              "head": 0.05999240279197693,
+              "all": 0.05999240279197693
+            },
+            "total_objective": {
+              "gru": 0.0,
+              "head": 0.0603957436978817,
+              "all": 0.0603957436978817
+            }
+          },
+          "vector_norms": {
+            "position": 0.05999240279197693,
+            "smoothing_unweighted": 0.0,
+            "task_unweighted": 0.012697417289018631,
+            "task_weighted_lambda_0_1": 0.0012697417987510562,
+            "position_plus_0_01_smoothing": 0.05999240279197693,
+            "total_objective": 0.0603957436978817
+          },
+          "direction": {
+            "cos_position_vs_unweighted_task": 0.3081419765949249,
+            "cos_position_plus_smoothing_vs_weighted_task": 0.30814194679260254,
+            "cos_total_vs_position_plus_smoothing": 0.9998000860214233,
+            "weighted_task_to_position_gradient_norm_ratio": 0.021165043115615845,
+            "suggested_lambda_for_10pct_initial_norm": 0.4724772274494171
+          },
+          "clip_activity": {
+            "raw_delta_abs_ge_0_5_fraction": 0.0,
+            "predicted_delta_clip_saturated_fraction": 0.0,
+            "total_action_preclip_abs_ge_3_fraction": 0.0,
+            "total_action_clip_saturated_fraction": 0.0,
+            "task_filter_request_abs_gt_limit_by_axis": [
+              0,
+              0,
+              0
+            ],
+            "task_filter_transition_count": 20000,
+            "task_filter_applied_acceleration_max_abs_by_axis": [
+              32.5491495185133,
+              19.91679290250533,
+              0.0
+            ]
+          }
+        }
+      ]
+    },
+    "holdout_W06_10": {
+      "seed": 20261029,
+      "train_scene_count": 16,
+      "normalizer_scope": "manifest TRAIN scenes only",
+      "normalizer_mean_sha256": "df35bb951cd1ae0c9ac0bce28aec541f0ffa4525f04e0cd5a8556a0db175142c",
+      "normalizer_std_sha256": "f4b595bfd290a1fefa9ec0d5eace371ade361cb9107a51c5bdc15908594e897b",
+      "selected_scene_rule": "first and last TRAIN IDs in manifest order",
+      "scenes": [
+        {
+          "scene_id": "DL1018_DEV_T1_C00_W03",
+          "initial_model_output_abs_max": 0.0,
+          "position_smooth_l1": 0.002048927592113614,
+          "smoothness_mean_d2_sq": 0.0,
+          "task_mean_so3_sq_rad2": 0.0021580986212939024,
+          "gradient_norm_by_parameter_group": {
+            "position": {
+              "gru": 0.0,
+              "head": 0.009186492301523685,
+              "all": 0.009186492301523685
+            },
+            "smoothing_unweighted": {
+              "gru": 0.0,
+              "head": 0.0,
+              "all": 0.0
+            },
+            "task_unweighted": {
+              "gru": 0.0,
+              "head": 0.011402999050915241,
+              "all": 0.011402999050915241
+            },
+            "task_weighted_lambda_0_1": {
+              "gru": 0.0,
+              "head": 0.001140299835242331,
+              "all": 0.001140299835242331
+            },
+            "position_plus_0_01_smoothing": {
+              "gru": 0.0,
+              "head": 0.009186492301523685,
+              "all": 0.009186492301523685
+            },
+            "total_objective": {
+              "gru": 0.0,
+              "head": 0.008740496821701527,
+              "all": 0.008740496821701527
+            }
+          },
+          "vector_norms": {
+            "position": 0.009186492301523685,
+            "smoothing_unweighted": 0.0,
+            "task_unweighted": 0.011402999050915241,
+            "task_weighted_lambda_0_1": 0.001140299835242331,
+            "position_plus_0_01_smoothing": 0.009186492301523685,
+            "total_objective": 0.008740496821701527
+          },
+          "direction": {
+            "cos_position_vs_unweighted_task": -0.44369080662727356,
+            "cos_position_plus_smoothing_vs_weighted_task": -0.44369080662727356,
+            "cos_total_vs_position_plus_smoothing": 0.9931417107582092,
+            "weighted_task_to_position_gradient_norm_ratio": 0.12412787973880768,
+            "suggested_lambda_for_10pct_initial_norm": 0.08056207746267319
+          },
+          "clip_activity": {
+            "raw_delta_abs_ge_0_5_fraction": 0.0,
+            "predicted_delta_clip_saturated_fraction": 0.0,
+            "total_action_preclip_abs_ge_3_fraction": 0.0,
+            "total_action_clip_saturated_fraction": 0.0,
+            "task_filter_request_abs_gt_limit_by_axis": [
+              0,
+              0,
+              0
+            ],
+            "task_filter_transition_count": 20000,
+            "task_filter_applied_acceleration_max_abs_by_axis": [
+              1.3254821319886263,
+              0.869006269028105,
+              0.0
+            ]
+          }
+        },
+        {
+          "scene_id": "DL1018_DEV_T3_C15_W14",
+          "initial_model_output_abs_max": 0.0,
+          "position_smooth_l1": 0.06683288514614105,
+          "smoothness_mean_d2_sq": 0.0,
+          "task_mean_so3_sq_rad2": 0.0038027153350412846,
+          "gradient_norm_by_parameter_group": {
+            "position": {
+              "gru": 0.0,
+              "head": 0.05127757415175438,
+              "all": 0.05127757415175438
+            },
+            "smoothing_unweighted": {
+              "gru": 0.0,
+              "head": 0.0,
+              "all": 0.0
+            },
+            "task_unweighted": {
+              "gru": 0.0,
+              "head": 0.0140725402161479,
+              "all": 0.0140725402161479
+            },
+            "task_weighted_lambda_0_1": {
+              "gru": 0.0,
+              "head": 0.00140725402161479,
+              "all": 0.00140725402161479
+            },
+            "position_plus_0_01_smoothing": {
+              "gru": 0.0,
+              "head": 0.05127757415175438,
+              "all": 0.05127757415175438
+            },
+            "total_objective": {
+              "gru": 0.0,
+              "head": 0.05176727846264839,
+              "all": 0.05176727846264839
+            }
+          },
+          "vector_norms": {
+            "position": 0.05127757415175438,
+            "smoothing_unweighted": 0.0,
+            "task_unweighted": 0.0140725402161479,
+            "task_weighted_lambda_0_1": 0.00140725402161479,
+            "position_plus_0_01_smoothing": 0.05127757415175438,
+            "total_objective": 0.05176727846264839
+          },
+          "direction": {
+            "cos_position_vs_unweighted_task": 0.335926353931427,
+            "cos_position_plus_smoothing_vs_weighted_task": 0.3359263837337494,
+            "cos_total_vs_position_plus_smoothing": 0.9996722340583801,
+            "weighted_task_to_position_gradient_norm_ratio": 0.02744384855031967,
+            "suggested_lambda_for_10pct_initial_norm": 0.3643803596496582
+          },
+          "clip_activity": {
+            "raw_delta_abs_ge_0_5_fraction": 0.0,
+            "predicted_delta_clip_saturated_fraction": 0.0,
+            "total_action_preclip_abs_ge_3_fraction": 0.0,
+            "total_action_clip_saturated_fraction": 0.0,
+            "task_filter_request_abs_gt_limit_by_axis": [
+              0,
+              0,
+              0
+            ],
+            "task_filter_transition_count": 20000,
+            "task_filter_applied_acceleration_max_abs_by_axis": [
+              32.5491495185133,
+              19.91679290250533,
+              0.0
+            ]
+          }
+        }
+      ]
+    },
+    "holdout_W11_13": {
+      "seed": 20261030,
+      "train_scene_count": 20,
+      "normalizer_scope": "manifest TRAIN scenes only",
+      "normalizer_mean_sha256": "6a9852cb7018382baf7898cc155691149614d667e5c303eaba5e7dba3b7fbf88",
+      "normalizer_std_sha256": "126831c63dca78b8be955111c376accd0837f82e343f9300f7339c98f30b6ada",
+      "selected_scene_rule": "first and last TRAIN IDs in manifest order",
+      "scenes": [
+        {
+          "scene_id": "DL1018_DEV_T1_C00_W03",
+          "initial_model_output_abs_max": 0.0,
+          "position_smooth_l1": 0.002048927592113614,
+          "smoothness_mean_d2_sq": 0.0,
+          "task_mean_so3_sq_rad2": 0.0021580986212939024,
+          "gradient_norm_by_parameter_group": {
+            "position": {
+              "gru": 0.0,
+              "head": 0.0074910372495651245,
+              "all": 0.0074910372495651245
+            },
+            "smoothing_unweighted": {
+              "gru": 0.0,
+              "head": 0.0,
+              "all": 0.0
+            },
+            "task_unweighted": {
+              "gru": 0.0,
+              "head": 0.010975765064358711,
+              "all": 0.010975765064358711
+            },
+            "task_weighted_lambda_0_1": {
+              "gru": 0.0,
+              "head": 0.0010975764598697424,
+              "all": 0.0010975764598697424
+            },
+            "position_plus_0_01_smoothing": {
+              "gru": 0.0,
+              "head": 0.0074910372495651245,
+              "all": 0.0074910372495651245
+            },
+            "total_objective": {
+              "gru": 0.0,
+              "head": 0.007309571839869022,
+              "all": 0.007309571839869022
+            }
+          },
+          "vector_norms": {
+            "position": 0.0074910372495651245,
+            "smoothing_unweighted": 0.0,
+            "task_unweighted": 0.010975765064358711,
+            "task_weighted_lambda_0_1": 0.0010975764598697424,
+            "position_plus_0_01_smoothing": 0.0074910372495651245,
+            "total_objective": 0.007309571839869022
+          },
+          "direction": {
+            "cos_position_vs_unweighted_task": -0.23658914864063263,
+            "cos_position_plus_smoothing_vs_weighted_task": -0.23658916354179382,
+            "cos_total_vs_position_plus_smoothing": 0.9893004298210144,
+            "weighted_task_to_position_gradient_norm_ratio": 0.14651861786842346,
+            "suggested_lambda_for_10pct_initial_norm": 0.06825070828199387
+          },
+          "clip_activity": {
+            "raw_delta_abs_ge_0_5_fraction": 0.0,
+            "predicted_delta_clip_saturated_fraction": 0.0,
+            "total_action_preclip_abs_ge_3_fraction": 0.0,
+            "total_action_clip_saturated_fraction": 0.0,
+            "task_filter_request_abs_gt_limit_by_axis": [
+              0,
+              0,
+              0
+            ],
+            "task_filter_transition_count": 20000,
+            "task_filter_applied_acceleration_max_abs_by_axis": [
+              1.3254821319886263,
+              0.869006269028105,
+              0.0
+            ]
+          }
+        },
+        {
+          "scene_id": "DL1018_DEV_T3_C15_W14",
+          "initial_model_output_abs_max": 0.0,
+          "position_smooth_l1": 0.06683288514614105,
+          "smoothness_mean_d2_sq": 0.0,
+          "task_mean_so3_sq_rad2": 0.0038027153350412846,
+          "gradient_norm_by_parameter_group": {
+            "position": {
+              "gru": 0.0,
+              "head": 0.05340117961168289,
+              "all": 0.05340117961168289
+            },
+            "smoothing_unweighted": {
+              "gru": 0.0,
+              "head": 0.0,
+              "all": 0.0
+            },
+            "task_unweighted": {
+              "gru": 0.0,
+              "head": 0.013477843254804611,
+              "all": 0.013477843254804611
+            },
+            "task_weighted_lambda_0_1": {
+              "gru": 0.0,
+              "head": 0.0013477843021973968,
+              "all": 0.0013477843021973968
+            },
+            "position_plus_0_01_smoothing": {
+              "gru": 0.0,
+              "head": 0.05340117961168289,
+              "all": 0.05340117961168289
+            },
+            "total_objective": {
+              "gru": 0.0,
+              "head": 0.05366218835115433,
+              "all": 0.05366218835115433
+            }
+          },
+          "vector_norms": {
+            "position": 0.05340117961168289,
+            "smoothing_unweighted": 0.0,
+            "task_unweighted": 0.013477843254804611,
+            "task_weighted_lambda_0_1": 0.0013477843021973968,
+            "position_plus_0_01_smoothing": 0.05340117961168289,
+            "total_objective": 0.05366218835115433
+          },
+          "direction": {
+            "cos_position_vs_unweighted_task": 0.18150877952575684,
+            "cos_position_plus_smoothing_vs_weighted_task": 0.18150877952575684,
+            "cos_total_vs_position_plus_smoothing": 0.9996950626373291,
+            "weighted_task_to_position_gradient_norm_ratio": 0.025238849222660065,
+            "suggested_lambda_for_10pct_initial_norm": 0.3962145745754242
+          },
+          "clip_activity": {
+            "raw_delta_abs_ge_0_5_fraction": 0.0,
+            "predicted_delta_clip_saturated_fraction": 0.0,
+            "total_action_preclip_abs_ge_3_fraction": 0.0,
+            "total_action_clip_saturated_fraction": 0.0,
+            "task_filter_request_abs_gt_limit_by_axis": [
+              0,
+              0,
+              0
+            ],
+            "task_filter_transition_count": 20000,
+            "task_filter_applied_acceleration_max_abs_by_axis": [
+              32.5491495185133,
+              19.91679290250533,
+              0.0
+            ]
+          }
+        }
+      ]
+    },
+    "holdout_W14_15": {
+      "seed": 20261031,
+      "train_scene_count": 18,
+      "normalizer_scope": "manifest TRAIN scenes only",
+      "normalizer_mean_sha256": "272bd0520d27efa52318be87268cc1af144e584ba7ca960b1139c38b0a1b4fe4",
+      "normalizer_std_sha256": "03908c92c917bebcbcda008bf8678dbb18d90b30c0cfab42d92252eb91e32543",
+      "selected_scene_rule": "first and last TRAIN IDs in manifest order",
+      "scenes": [
+        {
+          "scene_id": "DL1018_DEV_T1_C00_W03",
+          "initial_model_output_abs_max": 0.0,
+          "position_smooth_l1": 0.002048927592113614,
+          "smoothness_mean_d2_sq": 0.0,
+          "task_mean_so3_sq_rad2": 0.0021580986212939024,
+          "gradient_norm_by_parameter_group": {
+            "position": {
+              "gru": 0.0,
+              "head": 0.00784318707883358,
+              "all": 0.00784318707883358
+            },
+            "smoothing_unweighted": {
+              "gru": 0.0,
+              "head": 0.0,
+              "all": 0.0
+            },
+            "task_unweighted": {
+              "gru": 0.0,
+              "head": 0.0102737657725811,
+              "all": 0.0102737657725811
+            },
+            "task_weighted_lambda_0_1": {
+              "gru": 0.0,
+              "head": 0.001027376507408917,
+              "all": 0.001027376507408917
+            },
+            "position_plus_0_01_smoothing": {
+              "gru": 0.0,
+              "head": 0.00784318707883358,
+              "all": 0.00784318707883358
+            },
+            "total_objective": {
+              "gru": 0.0,
+              "head": 0.0074921343475580215,
+              "all": 0.0074921343475580215
+            }
+          },
+          "vector_norms": {
+            "position": 0.00784318707883358,
+            "smoothing_unweighted": 0.0,
+            "task_unweighted": 0.0102737657725811,
+            "task_weighted_lambda_0_1": 0.001027376507408917,
+            "position_plus_0_01_smoothing": 0.00784318707883358,
+            "total_objective": 0.0074921343475580215
+          },
+          "direction": {
+            "cos_position_vs_unweighted_task": -0.3995462954044342,
+            "cos_position_plus_smoothing_vs_weighted_task": -0.3995462954044342,
+            "cos_total_vs_position_plus_smoothing": 0.9920675158500671,
+            "weighted_task_to_position_gradient_norm_ratio": 0.130989670753479,
+            "suggested_lambda_for_10pct_initial_norm": 0.0763418897986412
+          },
+          "clip_activity": {
+            "raw_delta_abs_ge_0_5_fraction": 0.0,
+            "predicted_delta_clip_saturated_fraction": 0.0,
+            "total_action_preclip_abs_ge_3_fraction": 0.0,
+            "total_action_clip_saturated_fraction": 0.0,
+            "task_filter_request_abs_gt_limit_by_axis": [
+              0,
+              0,
+              0
+            ],
+            "task_filter_transition_count": 20000,
+            "task_filter_applied_acceleration_max_abs_by_axis": [
+              1.3254821319886263,
+              0.869006269028105,
+              0.0
+            ]
+          }
+        },
+        {
+          "scene_id": "DL1018_DEV_T3_C13_W12",
+          "initial_model_output_abs_max": 0.0,
+          "position_smooth_l1": 0.007079395931214094,
+          "smoothness_mean_d2_sq": 0.0,
+          "task_mean_so3_sq_rad2": 0.002182275289669633,
+          "gradient_norm_by_parameter_group": {
+            "position": {
+              "gru": 0.0,
+              "head": 0.011289739049971104,
+              "all": 0.011289739049971104
+            },
+            "smoothing_unweighted": {
+              "gru": 0.0,
+              "head": 0.0,
+              "all": 0.0
+            },
+            "task_unweighted": {
+              "gru": 0.0,
+              "head": 0.011521791107952595,
+              "all": 0.011521791107952595
+            },
+            "task_weighted_lambda_0_1": {
+              "gru": 0.0,
+              "head": 0.0011521790875121951,
+              "all": 0.0011521790875121951
+            },
+            "position_plus_0_01_smoothing": {
+              "gru": 0.0,
+              "head": 0.011289739049971104,
+              "all": 0.011289739049971104
+            },
+            "total_objective": {
+              "gru": 0.0,
+              "head": 0.011060050688683987,
+              "all": 0.011060050688683987
+            }
+          },
+          "vector_norms": {
+            "position": 0.011289739049971104,
+            "smoothing_unweighted": 0.0,
+            "task_unweighted": 0.011521791107952595,
+            "task_weighted_lambda_0_1": 0.0011521790875121951,
+            "position_plus_0_01_smoothing": 0.011289739049971104,
+            "total_objective": 0.011060050688683987
+          },
+          "direction": {
+            "cos_position_vs_unweighted_task": -0.24835088849067688,
+            "cos_position_plus_smoothing_vs_weighted_task": -0.24835090339183807,
+            "cos_total_vs_position_plus_smoothing": 0.9948955178260803,
+            "weighted_task_to_position_gradient_norm_ratio": 0.10205542296171188,
+            "suggested_lambda_for_10pct_initial_norm": 0.09798597544431686
+          },
+          "clip_activity": {
+            "raw_delta_abs_ge_0_5_fraction": 0.0,
+            "predicted_delta_clip_saturated_fraction": 0.0,
+            "total_action_preclip_abs_ge_3_fraction": 0.0,
+            "total_action_clip_saturated_fraction": 0.0,
+            "task_filter_request_abs_gt_limit_by_axis": [
+              0,
+              0,
+              0
+            ],
+            "task_filter_transition_count": 20000,
+            "task_filter_applied_acceleration_max_abs_by_axis": [
+              10.53839875079263,
+              6.991462801449317,
+              0.0
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "interpretation_limit": "Initial, per-selected-scene gradient diagnostics are not full-batch training gradients and do not establish closed-loop effects. Any rescaling is a train-only design choice requiring root review before a separate run.",
+  "audit_script_sha256": "8e4dcfcf726526427a1e882b6cc301aa1a6900056a2d580924b003ed79fad439",
+  "summary_note": "Scale-normalized lambda uses target ratio divided by the median observed weighted-task/position gradient ratio. The separate median of per-scene lambdas is also reported; these differ because inversion is nonlinear."
+}

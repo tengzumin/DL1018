@@ -1,0 +1,71 @@
+{
+  "schema": "DL1018_MLP15_FORCE09_NO_PLANT_RECEIPT_V1",
+  "study_id": "mlp15_nominal_residual_v1_closed_loop_force09_v1",
+  "status": "PASS_NO_PLANT",
+  "Plant_calls_completed": 0,
+  "test_data_read": false,
+  "training_runs": 0,
+  "candidate_raw_count": 0,
+  "parent_variant": "closed_loop_candidate_v1",
+  "candidate_arm_id": "DL_MLP15_PHYSICAL_RESIDUAL_FORCE09",
+  "position_nn_compensation_scale": 0.9,
+  "position_path_changed": true,
+  "C5_position_physical_equivalence_claimed": false,
+  "release_sha256": "be16bb3b9f159665af9dcec11be428254f95cf0502d2067a58dfc8de1792d9fa",
+  "source_hash_manifest_sha256": "f30cdbe311208153c5dbf2b1cf3ad5f7e6e12cbe96a5817952afa5715447d909",
+  "source_file_count": 67,
+  "parent_MLP_order_bindings": {
+    "candidate_runner_work/matlab/runtime/mlp15_physical_residual_step_v1.m": {
+      "sha256": "45771212559e1fce443d1f36f0bfeb22efbf9239b0d1f88e7f82dbccaa9fa154",
+      "parent_sha256": "45771212559e1fce443d1f36f0bfeb22efbf9239b0d1f88e7f82dbccaa9fa154",
+      "identical": true
+    },
+    "candidate_runner_work/matlab/runtime/mlp15_attitude_step_v1.m": {
+      "sha256": "4fb2c3a06c0c2287b65dced4e9ddab220ebab710846a960ec6ea4acdf36474f9",
+      "parent_sha256": "4fb2c3a06c0c2287b65dced4e9ddab220ebab710846a960ec6ea4acdf36474f9",
+      "identical": true
+    },
+    "candidate_runner_work/matlab/runtime/mlp15_attitude_forward_v1.m": {
+      "sha256": "ae762e03e2e286b0aa82b5f96ed0d03b8c46657c2685e150a633b581f92169f2",
+      "parent_sha256": "ae762e03e2e286b0aa82b5f96ed0d03b8c46657c2685e150a633b581f92169f2",
+      "identical": true
+    }
+  },
+  "scale_and_BS_no_plant_test": {
+    "status": "PASS_NO_PLANT",
+    "plant_called": false,
+    "test_data_read": false,
+    "scale_1_exact_parent_restore": true,
+    "scale_09_acceleration_mps2": [
+      0.54,
+      -0.36000000000000004,
+      0.18000000000000002
+    ],
+    "scale_09_force_N": [
+      0.3753,
+      -0.25020000000000003,
+      0.12510000000000002
+    ],
+    "BS_nominal_force_unchanged": true,
+    "PCF_command_acceleration_uses_scaled_force": true
+  },
+  "first_scene_preflight": {
+    "status": "PASS_NO_PLANT",
+    "scene_id": "DL1018_DEV_T1_C10_W09",
+    "scene_payload_sha256": "cfad88b0a71601c97bc4955ab1ab57246ab2241dae4e32cbdbc10546d3e161f2",
+    "physical_residual_model_sha256": "dfbad11dbc7ed19b42d3b536bb4b019cbf29209d69c904b0b5000a168af58819",
+    "position_nn_compensation_scale": 0.9,
+    "position_path_changed": true,
+    "C5_position_physical_equivalence_claimed": false,
+    "source_hash_manifest_sha256": "f30cdbe311208153c5dbf2b1cf3ad5f7e6e12cbe96a5817952afa5715447d909",
+    "c5_position_identity": {
+      "model_sha256": "2c51989030077d3ba47a94f454fbc0cdc1823a6012c5d328c487b6e3c4dd25e6",
+      "normalizer_sha256": "f574827a3a56266f57d7b7ee96bcc236ec7ddc363ea914bbf25aff719d86730a",
+      "W0_sha256": "88f8c4f2495438c3797655c48bab1bf0c11ac2e27bff1f5f2a7423a8f0a2cf53",
+      "position_options_sha256": "0218d3dc3c591b07ed6f7328de2c36276c4f51c2a0d56966bdff62d68d6a6b21"
+    },
+    "plant_called": false,
+    "test_data_read": false
+  },
+  "release_state": "PREPARED_NO_PLANT_PENDING_ROOT_LAUNCH"
+}

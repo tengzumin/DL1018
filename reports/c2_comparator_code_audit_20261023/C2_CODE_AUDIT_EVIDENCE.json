@@ -1,0 +1,109 @@
+{
+  "schema": "C2_B_ON1_CODE_AUDIT_EVIDENCE_V1",
+  "source_lock_sha256": "02668f6268944715e65e6d2cffa52b395417506132212b00e7d273d88df164e5",
+  "release_v9_sha256": "7aa072835b0e633f9e40d0e471a17870735d32ddf079eafc61ac6790ea7974d0",
+  "source_files": [
+    {
+      "name": "run_dl1018_closed_loop.m",
+      "sha256": "01d83dec95aea5d30feef3afd0628a2ce0911f70465f0773a4f568a01b08450b"
+    },
+    {
+      "name": "run_episode_dl1018.m",
+      "sha256": "fcc1f5de659541e692483f8395d93fd2a251256286ebade5e510ed4c7a2e2330"
+    },
+    {
+      "name": "position_only_search_options.m",
+      "sha256": "4e8322934ddb524961fa762426800564f6c758e00b943b622c9143ed734f19bf"
+    },
+    {
+      "name": "position_only_search_head_step.m",
+      "sha256": "3bd0fe9686c3b75793575e517d4cc5f08de58ab6a26a2bc7516aa690422bb7dc"
+    },
+    {
+      "name": "controller_options_dl1018.m",
+      "sha256": "93633a5fd95f73d33982045c2fa372d49b1a0df8ea0cfb5ca4461208ca9d53b1"
+    },
+    {
+      "name": "position_bs_step.m",
+      "sha256": "ea533c3ae97cbc552208287e7f8d9b0a0f5a018f36fb5c8bd45520e19e73c681"
+    },
+    {
+      "name": "command_filter_step.m",
+      "sha256": "15c7eb27162e1971a1164304830f4afd3af35eb9bd709291e969dbfefd0d262b"
+    },
+    {
+      "name": "attitude_bs_step.m",
+      "sha256": "cf6b20ffc4df2625d9316a80340d69542e380d14feaed66ef8498e793fdaccbc"
+    },
+    {
+      "name": "allocate_control.m",
+      "sha256": "5ac26d8c5ba6243f755bcf6ad3a07e98e503c213e4c95edbee7dd2c2627f3d53"
+    },
+    {
+      "name": "rk4_vehicle_step.m",
+      "sha256": "7e10a8c77b2740f2f9f222f3b06c6c021cb3a9342070ad7f3ebaba3c47395ef5"
+    },
+    {
+      "name": "default_config.m",
+      "sha256": "685abb7b72a335fdc826673e6431098fe79af88409f17b1b70ce08edb214dc51"
+    },
+    {
+      "name": "init_dl1018.m",
+      "sha256": "df1cfe9fdbfd61da9636427784852d1fa72a6d3b2aa6a941a094967322afda1c"
+    },
+    {
+      "name": "effective_config.mat",
+      "sha256": "cec90417369c7a44580b0315b2473ae86eb62550012188340b1dd5f3a796522f"
+    }
+  ],
+  "sample_pair": {
+    "B": {
+      "raw_sha256": "0ae9e49ecfd7db099090a6d9c65b56988e91076c2302e5dd8da6d03a6d896b7a",
+      "path": "experiments/position_prior_calibration_c1_20261022/runs_v8/DL1018_VAL_T2_C00_W10/B/attempt_01/raw_run.mat",
+      "release": "v8 exact reuse"
+    },
+    "scene_id": "DL1018_VAL_T2_C00_W10",
+    "ON1": {
+      "raw_sha256": "2377ee61ec67f15012256502e28f008c26b61af78d0964995ec2f2d8678e854e",
+      "path": "experiments/position_prior_calibration_c1_20261022_v9/runs_v9/DL1018_VAL_T2_C00_W10/ON1/attempt_01/raw_run.mat",
+      "release": "v9"
+    }
+  },
+  "beta_observation": {
+    "formula_ON1": "min(t(k)/T,1)",
+    "T_position_s": 1.8,
+    "ON1_active_stage1_beta": 0.17777777777777778,
+    "absolute_difference": 0.000555555555555558,
+    "formula_B": "min(k*dt/T,1)",
+    "pre_readiness_note": "position_event_beta reflects disabled legacy RBF branch until active stage1 inference valid",
+    "B_beta": 0.17833333333333334,
+    "first_active_stage1_valid_one_based_row": 321,
+    "transition_time_s": 0.32
+  },
+  "sample_raw_flags": {
+    "B": {
+      "stage1_position_event_inference_valid_sum": 0,
+      "stage1_position_pcf_coordination_enabled": 0,
+      "stage1_position_replacement_enabled": 0,
+      "formal_rbf_baseline": 1,
+      "motor_time_constant_s": 0,
+      "rbf_position_update_flag_sum": 1999
+    },
+    "ON1": {
+      "stage1_position_search_kappa": 1,
+      "stage1_position_event_inference_valid_sum": 1968,
+      "stage1_position_pcf_coordination_enabled": 1,
+      "stage1_position_search_gamma": 12,
+      "motor_time_constant_s": 0,
+      "formal_rbf_baseline": 1,
+      "rbf_position_update_flag_sum": 0,
+      "stage1_position_replacement_enabled": 1
+    }
+  },
+  "scope_limits": [
+    "No Plant, MATLAB, training, GPU, optimizer, or TEST started.",
+    "run_start lacks serialized full cfg/opts; reconstruction is source-based, not a historical snapshot.",
+    "Static finding is a one-timestep beta-index mismatch; it does not establish C1 performance causality.",
+    "Parent independent 24-raw physical force chain and scene pairing checks are external to this report."
+  ]
+}

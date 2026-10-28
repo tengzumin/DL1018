@@ -1,0 +1,161 @@
+{
+  "schema": "COSINE_GRU_TRAIN24_TEACHER_POSITION_DC_PENALTY_PREDECLARED_V1",
+  "scope": "Causal X14; fixed scene-group OOF on locked TRAIN_C5_24 only. No VAL/TEST read, Plant call, inertia reconstruction, or model selection from holdout folds.",
+  "model": "Same ResidualGRU(14,32)->Linear(32,3) as the DC-free teacher+position student.",
+  "source_hashes": {
+    "dataset_sha256": "15d689f08fd6d8a53a64c59dbdf62b33f9b8e8a12ce083fb12834cd106df2eeb",
+    "dataset_manifest_sha256": "16856362913e5144add83035b9b767affa02c0719c66971635731d237bb0d91e",
+    "dataset_source_lock_sha256": "10be2c860c042491acfc0cfaad1067c65d848dd5889c177e6ccb8d65c9602fb7",
+    "teacher_npz_sha256": "e0519bc87a977d1349da3fdb0f582273bffaa61eb24ea380fb44e4a56791634a",
+    "teacher_manifest_sha256": "9ceaac9566f7dcd7b093d7d71b6396eb294a56ac156a5b3d16d063d53ac84a8c",
+    "previous_dc_free_oof_sha256": "1dcc509b2bd6beb1729b872440ef69846bd053b3334a44fd1a8df621871cc8ff",
+    "previous_dc_free_results_sha256": "1312cccbd886578972f0542e0d2d032ed5982b81e00b1842f1f34d1693fd0266"
+  },
+  "fixed_training": {
+    "seed_base": 20261028,
+    "steps_per_fold": 300,
+    "optimizer": "Adam",
+    "learning_rate": 0.001,
+    "normalizer": "Per-fold X14 mean/std from training scene rows only; all causal event rows.",
+    "base_objective": "0.5*mean(((delta-teacher_delta)/teacher_train_RMS)^2) + 0.5*mean(((student_action-position_target)/C5_position_error_train_RMS)^2), ready rows only.",
+    "dc_penalty": "0.5*mean_scene,axis((mean_ready(student_action-C5_action)/(0.1*teacher_train_RMS))^2).",
+    "dc_scale": "0.1 times the current fold's teacher delta RMS from training scenes only; fixed ratio, no heldout-based fitting.",
+    "reason": "Directly penalize the scene-level DC action change flagged by the predeclared TRAIN24 audit; track one-second means as a diagnostic.",
+    "action": "clip(C5_action + clip(t/1.8,0,1)*clip(delta,-0.5,0.5), -3,3); non-ready residual masked to zero."
+  },
+  "folds": [
+    {
+      "fold_id": "holdout_W00_05",
+      "train_scene_ids": [
+        "DL1018_DEV_T1_C01_W15",
+        "DL1018_DEV_T1_C05_W06",
+        "DL1018_DEV_T1_C07_W08",
+        "DL1018_DEV_T1_C10_W09",
+        "DL1018_DEV_T1_C11_W12",
+        "DL1018_DEV_T1_C15_W14",
+        "DL1018_DEV_T2_C02_W15",
+        "DL1018_DEV_T2_C06_W07",
+        "DL1018_DEV_T2_C08_W08",
+        "DL1018_DEV_T2_C09_W10",
+        "DL1018_DEV_T2_C12_W13",
+        "DL1018_DEV_T2_C14_W14",
+        "DL1018_DEV_T3_C03_W15",
+        "DL1018_DEV_T3_C06_W08",
+        "DL1018_DEV_T3_C09_W09",
+        "DL1018_DEV_T3_C10_W11",
+        "DL1018_DEV_T3_C13_W12",
+        "DL1018_DEV_T3_C15_W14"
+      ],
+      "holdout_scene_ids": [
+        "DL1018_DEV_T1_C00_W03",
+        "DL1018_DEV_T1_C04_W00",
+        "DL1018_DEV_T2_C00_W04",
+        "DL1018_DEV_T2_C03_W01",
+        "DL1018_DEV_T3_C00_W05",
+        "DL1018_DEV_T3_C05_W02"
+      ],
+      "train_count": 18,
+      "holdout_count": 6
+    },
+    {
+      "fold_id": "holdout_W06_10",
+      "train_scene_ids": [
+        "DL1018_DEV_T1_C00_W03",
+        "DL1018_DEV_T1_C01_W15",
+        "DL1018_DEV_T1_C04_W00",
+        "DL1018_DEV_T1_C11_W12",
+        "DL1018_DEV_T1_C15_W14",
+        "DL1018_DEV_T2_C00_W04",
+        "DL1018_DEV_T2_C02_W15",
+        "DL1018_DEV_T2_C03_W01",
+        "DL1018_DEV_T2_C12_W13",
+        "DL1018_DEV_T2_C14_W14",
+        "DL1018_DEV_T3_C00_W05",
+        "DL1018_DEV_T3_C03_W15",
+        "DL1018_DEV_T3_C05_W02",
+        "DL1018_DEV_T3_C10_W11",
+        "DL1018_DEV_T3_C13_W12",
+        "DL1018_DEV_T3_C15_W14"
+      ],
+      "holdout_scene_ids": [
+        "DL1018_DEV_T1_C05_W06",
+        "DL1018_DEV_T1_C07_W08",
+        "DL1018_DEV_T1_C10_W09",
+        "DL1018_DEV_T2_C06_W07",
+        "DL1018_DEV_T2_C08_W08",
+        "DL1018_DEV_T2_C09_W10",
+        "DL1018_DEV_T3_C06_W08",
+        "DL1018_DEV_T3_C09_W09"
+      ],
+      "train_count": 16,
+      "holdout_count": 8
+    },
+    {
+      "fold_id": "holdout_W11_13",
+      "train_scene_ids": [
+        "DL1018_DEV_T1_C00_W03",
+        "DL1018_DEV_T1_C01_W15",
+        "DL1018_DEV_T1_C04_W00",
+        "DL1018_DEV_T1_C05_W06",
+        "DL1018_DEV_T1_C07_W08",
+        "DL1018_DEV_T1_C10_W09",
+        "DL1018_DEV_T1_C15_W14",
+        "DL1018_DEV_T2_C00_W04",
+        "DL1018_DEV_T2_C02_W15",
+        "DL1018_DEV_T2_C03_W01",
+        "DL1018_DEV_T2_C06_W07",
+        "DL1018_DEV_T2_C08_W08",
+        "DL1018_DEV_T2_C09_W10",
+        "DL1018_DEV_T2_C14_W14",
+        "DL1018_DEV_T3_C00_W05",
+        "DL1018_DEV_T3_C03_W15",
+        "DL1018_DEV_T3_C05_W02",
+        "DL1018_DEV_T3_C06_W08",
+        "DL1018_DEV_T3_C09_W09",
+        "DL1018_DEV_T3_C15_W14"
+      ],
+      "holdout_scene_ids": [
+        "DL1018_DEV_T1_C11_W12",
+        "DL1018_DEV_T2_C12_W13",
+        "DL1018_DEV_T3_C10_W11",
+        "DL1018_DEV_T3_C13_W12"
+      ],
+      "train_count": 20,
+      "holdout_count": 4
+    },
+    {
+      "fold_id": "holdout_W14_15",
+      "train_scene_ids": [
+        "DL1018_DEV_T1_C00_W03",
+        "DL1018_DEV_T1_C04_W00",
+        "DL1018_DEV_T1_C05_W06",
+        "DL1018_DEV_T1_C07_W08",
+        "DL1018_DEV_T1_C10_W09",
+        "DL1018_DEV_T1_C11_W12",
+        "DL1018_DEV_T2_C00_W04",
+        "DL1018_DEV_T2_C03_W01",
+        "DL1018_DEV_T2_C06_W07",
+        "DL1018_DEV_T2_C08_W08",
+        "DL1018_DEV_T2_C09_W10",
+        "DL1018_DEV_T2_C12_W13",
+        "DL1018_DEV_T3_C00_W05",
+        "DL1018_DEV_T3_C05_W02",
+        "DL1018_DEV_T3_C06_W08",
+        "DL1018_DEV_T3_C09_W09",
+        "DL1018_DEV_T3_C10_W11",
+        "DL1018_DEV_T3_C13_W12"
+      ],
+      "holdout_scene_ids": [
+        "DL1018_DEV_T1_C01_W15",
+        "DL1018_DEV_T1_C15_W14",
+        "DL1018_DEV_T2_C02_W15",
+        "DL1018_DEV_T2_C14_W14",
+        "DL1018_DEV_T3_C03_W15",
+        "DL1018_DEV_T3_C15_W14"
+      ],
+      "train_count": 18,
+      "holdout_count": 6
+    }
+  ],
+  "created_before_optimization": true
+}

@@ -1,0 +1,49 @@
+{
+  "schema": "DL1018_POSITION_APPLIED_LOWPASS_PREPLANT_DEPENDENCY_FAILURE_AUDIT_V1",
+  "status": "VERIFIED_FAILURE_BEFORE_PLANT_DYNAMICS",
+  "scene_id": "DL1018_VAL_T3_C01_W14",
+  "original_attempt_relative_path": "runs/DL1018_VAL_T3_C01_W14_retry_002",
+  "original_release_sha256": "eef6fc70c981c94ad293574236ca3ca41eface3897a726ff086aa7b8c5b5d619",
+  "original_source_lock_sha256": "f05ff54c06f64b90935d36ca6c40b8c5ebed29061bd82ee8945d1110cabc38bb",
+  "original_source_manifest_sha256": "0c0dfdb8cc9dad4b419235013786a52ce4acb84d2d7f4900507358392145b312",
+  "runner_entry_invoked": true,
+  "plant_dynamics_started": false,
+  "physical_Plant_calls": 0,
+  "wrapper_reported_Plant_calls": 0,
+  "failure_identifier": "MATLAB:fileread:cannotOpenFile",
+  "failure_stack": [
+    {
+      "file": "C:\\Program Files\\MATLAB\\R2025b\\toolbox\\matlab\\io\\filesystem\\fileread.m",
+      "name": "fileread",
+      "line": 10
+    },
+    {
+      "file": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\gru_tau01_position_applied_lowpass_tau01_v1\\candidate_runner_work\\matlab\\runtime\\gate_holdout_validate_dev72_scene.m",
+      "name": "gate_holdout_validate_dev72_scene",
+      "line": 6
+    },
+    {
+      "file": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\gru_tau01_position_applied_lowpass_tau01_v1\\candidate_runner_work\\matlab\\runtime\\run_mlp15_dev72_closed_loop.m",
+      "name": "run_mlp15_dev72_closed_loop",
+      "line": 77
+    },
+    {
+      "file": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\gru_tau01_position_applied_lowpass_tau01_v1\\run_position_applied_lowpass_attempt.m",
+      "name": "run_position_applied_lowpass_attempt",
+      "line": 91
+    }
+  ],
+  "rejected_at": "gate_holdout_validate_dev72_scene.m line 6, called from run_mlp15_dev72_closed_loop.m line 77, before main simulation loop and first rk4_vehicle_step",
+  "missing_study_root_dependency": "MLP15_DEV72_PAYLOAD_MANIFEST_v2.json",
+  "raw_run_present": false,
+  "first_step_marker_present": false,
+  "immutable_evidence_sha256": {
+    "run_start": "a99e633ac92c126e997b6d9e6579b63e547cb905a312d3f3d0041f20d5fd1f53",
+    "run_failure": "dcf3955d873dc8216060971e587f21e586dcb40a958fe811346949b9b07ec930",
+    "run_status": "47017e466cf05f62dbb107ed6125bafafcdf4cafff3bf43f70741ace6d8eaa5e",
+    "marker": "a8679f3832724b08a54e18a3c2a01077acfd0117dfca9708bc1253a5f9e02977"
+  },
+  "prior_gate_failure_audit_sha256": "a4acad420aa78dd31a7301cf05d3350a42ff1d1cfebc3e3006fda147c58a4596",
+  "prior_failure_physical_Plant_calls": 0,
+  "test_data_read": false
+}

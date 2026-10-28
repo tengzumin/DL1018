@@ -1,0 +1,46 @@
+{
+  "task": "CURRENT_GRU_SAME_STATE_LOCAL_FEEDBACK_DIAGNOSTIC",
+  "status": "APPROVED_IMPLEMENT_AND_RUN_0PLANT",
+  "approved_by": "/root",
+  "utc": "2026-10-26T23:02:49.911856+00:00",
+  "executor": "Luna xhigh /root/composite_dev_integration_repair",
+  "hypothesis": "Frozen neural compensation introduces materially different instantaneous feedback damping from C5 RBF; not proven by olderMLP results.",
+  "basis": "NCMD better matches NCMD targets on72teacher traces but loses cosine Q/SO3 all6; no positive expansion gate.",
+  "models": [
+    "GRU32_STREAM72_COSINE_S2026102001",
+    "GRU32_STREAM72_NCMD_S2026102001"
+  ],
+  "scenes": "Existing exact six C5 records; reuse1200 RBF cached scene/sample points,200 each",
+  "epsilons_rad_s": [
+    1e-05,
+    5e-06
+  ],
+  "fixed": [
+    "eta",
+    "reference and derivatives",
+    "arms command",
+    "past GRU hidden_before",
+    "beta",
+    "J0",
+    "dmax"
+  ],
+  "perturbed": "current omega with full BS nominal torque recomputed and current GRU forward; hidden_after not carried to other perturbations",
+  "comparators": [
+    "BS only analytic/FD",
+    "C5 RBF samepoint cachedJacobian"
+  ],
+  "checks": [
+    "one-based sample/time/event agreement",
+    "center BS tau raw parity <=1e-10Nm",
+    "doubleepsilon agreement",
+    "1200point cache join/BS agreement",
+    "current deployment gateorder/clip/beta/J0 exact"
+  ],
+  "output": "new isolateddiagnostic script, perpointCSV, groups W15/HF and timebands, negative eigenvalue fractions, derivative gain ratios, source/inputhashes and exitreceipt",
+  "Plant_calls": 0,
+  "optimizer_steps": 0,
+  "TEST_read": false,
+  "inertia_reconstruction": false,
+  "interpretation": "oneevent frozenhistory local sensitivity only; not full closedloop causality or stability proof",
+  "failure_action": "preserve failure and report smallest technical cause; no candidate/parameter sweep"
+}

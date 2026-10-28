@@ -1,0 +1,27 @@
+{
+  "schema": "ROOT_LOCAL_GAIN_DIAGNOSTIC_TASKBOOK_V1",
+  "decision": "IMPLEMENTATION_ONLY_ROOT_REVIEW_BEFORE_EXECUTION",
+  "hypothesis": "Test whether frozen model conditional BS-acceleration response differs from ideal physical local response on existing recorded states; not a closed-loop instability verdict",
+  "input_taskbook_path": "reports/attitude_cm18_datarepair_20261024/ROOT_SAME_INPUT_MAP_COMPARISON_TASKBOOK_v1.json",
+  "input_taskbook_sha256": "cf54be549a7853280309fe35592559382c412f1c490523b5746275cb4a9340ff",
+  "math_path": "reports/attitude_cm18_datarepair_20261024/ROOT_LOCAL_COMPENSATION_GAIN_DERIVATION_v1_ZH.md",
+  "math_sha256": "17b022613ed42b50c9542499c3d97fe0e81de3651218223bb6a7c065ab728181",
+  "scope": "Same fixed12 A1T event X18, beta, G and both pinned deployments; no new raw state trajectory/physics rebuild",
+  "algorithm": [
+    "Analytic raw physical output Jacobian wrt raw alphaBS features indices3:6 zero-based, conditioning omega/T/u/z/past torques. Respect input_std and per-axis train RMS and coefficient row-major/basis contraction.",
+    "Verify analytic derivative using central differences on fixed event ordinals0/499/999/1499/1998 in each scene/model. Fixed per-component h=1e-4*max(1,abs(xa)); numeric agreement atol1e-6 rtol1e-4; stop on mismatch. This finite difference is model forward only.",
+    "Compute Jy, unconstrained response G*(I-beta*Jy), and applied response G*(I-beta*Dclip*Jy). Also ideal raw derivative (I-invG)/beta, G invertibility required.",
+    "Mark abs(abs(y)-dmax)<=1e-9 as clip kink and exclude only applied derivative metric there; report exact counts, no silent filtering. Keep all other samples and map matrices.",
+    "All/pre/post, all12/task/HF/W15 equal-scene summaries. Report Frobenius response-minus-I, raw Jacobian-minus-ideal norms, singular-value extrema, means; no stability/winner threshold or training.",
+    "New isolated source/output only, firstfixed T1C01W15 parity check thenRootreview before remainder. Retain physical truth G offline only."
+  ],
+  "bounds": {
+    "Plant_calls": 0,
+    "training_steps": 0,
+    "TEST_access": false,
+    "maximum_output_GiB": 1,
+    "modify_models": false
+  },
+  "interpretation": "Conditional local Jacobians cannot establish full discrete closed-loop poles/stability or prove cause. Do not change structure/gains based solely on this diagnostic.",
+  "created_at": "2026-10-25T04:41:53.0993094+08:00"
+}

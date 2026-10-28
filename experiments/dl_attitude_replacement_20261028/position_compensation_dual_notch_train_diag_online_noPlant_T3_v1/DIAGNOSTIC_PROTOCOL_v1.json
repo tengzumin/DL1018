@@ -1,0 +1,73 @@
+{
+  "schema": "POSITION_COMPENSATION_DUAL_NOTCH_TRAIN_DIAGNOSTIC_NOPLANT_PROTOCOL_V1",
+  "study_id": "position_compensation_dual_notch_train_diag_online_noPlant_T3_v1",
+  "purpose": "Prepare and verify the fixed dual-notch online helper for a future W09 closed-loop falsification diagnostic.",
+  "entry_reason": {
+    "prior_frozen_replay_status": "FAIL_FIXED_FROZEN_REPLAY",
+    "reason_to_continue_as_diagnostic": "The exact fixed filter reduced both command-target high-frequency bands by 68.3-79.0% on both bound physical TRAIN W09 scenes, while the predeclared low-band action-change limit was exceeded (2.233% and 3.116% versus 2.0%). This is a mechanism signal only, not a pass or a basis to relax a threshold.",
+    "no_parameter_change": true
+  },
+  "scope": {
+    "scenes": [
+      "DL1018_DEV_T1_C10_W09",
+      "DL1018_DEV_T3_C09_W09"
+    ],
+    "split": "TRAIN_C5_24",
+    "fold_id": "holdout_W06_10",
+    "frequency_peaks_hz": [
+      2.2,
+      3.2
+    ],
+    "event_sample_rate_hz": 100.0,
+    "notch_centers_hz": [
+      2.2,
+      3.2
+    ],
+    "quality_factor_each": 4.0,
+    "action_limit_mps2": 3.0,
+    "filter_location": "After the final C5 plus residual-GRU action is formed, immediately before that action is converted to injected force.",
+    "held_between_events": true,
+    "initialization": "At first nonzero event, seed each biquad's x/y histories with the current action and pass that sample unchanged."
+  },
+  "diagnostic_baseline_measured": {
+    "T1": {
+      "scene_id": "DL1018_DEV_T1_C10_W09",
+      "candidate_Q_m": 0.010603095010428788,
+      "candidate_task_SO3_rad": 0.0431684191739434
+    },
+    "T3": {
+      "scene_id": "DL1018_DEV_T3_C09_W09",
+      "candidate_Q_m": 0.009859266808724274,
+      "candidate_task_SO3_rad": 0.06062071519434056
+    }
+  },
+  "frozen_replay_results": {
+    "T1_high_band_command_target_reduction_percent": [
+      68.30695919030525,
+      78.34217649971993
+    ],
+    "T1_low_band_action_delta_percent": 2.232913880565635,
+    "T3_high_band_command_target_reduction_percent": [
+      70.582208677497,
+      79.01790254612416
+    ],
+    "T3_low_band_action_delta_percent": 3.115828360924641,
+    "predeclared_low_band_action_delta_limit_percent": 2.0,
+    "interpretation": "The fixed frozen replay remains FAIL. Baseline Q/task above are measured current-candidate results; the dual-notch intervention has no measured closed-loop Q/task because this preparation does not call Plant."
+  },
+  "future_closed_loop_falsifier": {
+    "minimum_task_minus_actual_rms_reduction_percent_per_high_band_on_each_scene": 25.0,
+    "maximum_position_Q_relative_worsening_percent_per_scene": 5.0
+  },
+  "parity_contract": {
+    "max_abs_action_error_mps2": 1e-10,
+    "max_abs_coefficient_error": 1e-12,
+    "clip_count_must_match": true
+  },
+  "plant_calls_allowed": 0,
+  "plant_calls_made": 0,
+  "TEST_read": false,
+  "VAL_read": false,
+  "inertia_reconstruction_enabled": false,
+  "parameter_sweep": false
+}

@@ -1,0 +1,1149 @@
+{
+  "schema": "POSITION_COMPENSATION_WIND_BAND_TRAIN24_PROFILE_V1",
+  "status": "PASS_READ_ONLY_TRAIN24_RAW_PROFILE",
+  "scope": {
+    "physical_split": "TRAIN_C5_24",
+    "canonical_prefix": "DL1018_DEV",
+    "scene_count": 24,
+    "scene_ids": [
+      "DL1018_DEV_T1_C00_W03",
+      "DL1018_DEV_T1_C01_W15",
+      "DL1018_DEV_T1_C04_W00",
+      "DL1018_DEV_T1_C05_W06",
+      "DL1018_DEV_T1_C07_W08",
+      "DL1018_DEV_T1_C10_W09",
+      "DL1018_DEV_T1_C11_W12",
+      "DL1018_DEV_T1_C15_W14",
+      "DL1018_DEV_T2_C00_W04",
+      "DL1018_DEV_T2_C02_W15",
+      "DL1018_DEV_T2_C03_W01",
+      "DL1018_DEV_T2_C06_W07",
+      "DL1018_DEV_T2_C08_W08",
+      "DL1018_DEV_T2_C09_W10",
+      "DL1018_DEV_T2_C12_W13",
+      "DL1018_DEV_T2_C14_W14",
+      "DL1018_DEV_T3_C00_W05",
+      "DL1018_DEV_T3_C03_W15",
+      "DL1018_DEV_T3_C05_W02",
+      "DL1018_DEV_T3_C06_W08",
+      "DL1018_DEV_T3_C09_W09",
+      "DL1018_DEV_T3_C10_W11",
+      "DL1018_DEV_T3_C13_W12",
+      "DL1018_DEV_T3_C15_W14"
+    ],
+    "raw_method": "C5_AXIS_MASK_M110",
+    "C5_raw_count": 24,
+    "other_split_raws_read": false,
+    "TEST_raw_or_score_read": false,
+    "Plant_called": false,
+    "inertia_reconstruction": false
+  },
+  "method": {
+    "sample_rate_hz": 1000.0,
+    "transitions": 20000,
+    "periodogram": "one-sided Hann PSD; constant detrend; 20 s; approx 0.05 Hz bins",
+    "wind_field": "log/environment_wind_I (vector AC spectrum)",
+    "C5_filter_target": "log/stage1_position_applied_acceleration_mps2 (final applied stage-1 position compensation)",
+    "peak_search": "DEV configuration f1/f2 neighborhoods ±0.12 Hz; each local maximum reported; C5 exact match criterion ±0.05 Hz",
+    "fixed_notch": "cascade of iirnotch(2.2Hz,Q=4) and iirnotch(3.2Hz,Q=4), fs=100Hz; response evaluated at observed wind peak bin"
+  },
+  "source_sha256": {
+    "physical_train24_manifest": "16856362913e5144add83035b9b767affa02c0719c66971635731d237bb0d91e",
+    "scene_generation": "7d11b4ebf63105b016c67f4b3c427282b35dafa53280ef2daf5578a6a16bb9ec",
+    "wind_profile": "88b500b0016225e21cde55fce0fbd6d54d0ffd2b34bed7a58f36d57e25b04f66"
+  },
+  "group_summary": [
+    {
+      "w_range": "W00-W02",
+      "scene_count": 3,
+      "config_f1_hz": 0.25,
+      "config_f2_hz": 0.45,
+      "observed_wind_f1_hz_range": [
+        0.25000000000002753,
+        0.25000000000002753
+      ],
+      "observed_wind_f2_hz_range": [
+        0.4500000000000495,
+        0.4500000000000495
+      ],
+      "c5_action_peak_f1_hz_range": [
+        0.25000000000002753,
+        0.25000000000002753
+      ],
+      "c5_action_peak_f2_hz_range": [
+        0.4500000000000495,
+        0.4500000000000495
+      ],
+      "action_peak_pair_matches": 3,
+      "variable_wind_scene_count": 3,
+      "wind_ac_rms_range_mps": [
+        1.7076067879611463,
+        4.0960284438630135
+      ],
+      "fixed_q4_100hz_response_at_observed_peaks_db": [
+        -0.00529671134815124,
+        -0.01801474148388346
+      ]
+    },
+    {
+      "w_range": "W03-W05",
+      "scene_count": 3,
+      "config_f1_hz": 0.58,
+      "config_f2_hz": 0.87,
+      "observed_wind_f1_hz_range": [
+        0.600000000000066,
+        0.600000000000066
+      ],
+      "observed_wind_f2_hz_range": [
+        0.8500000000000936,
+        0.8500000000000936
+      ],
+      "c5_action_peak_f1_hz_range": [
+        0.600000000000066,
+        0.600000000000066
+      ],
+      "c5_action_peak_f2_hz_range": [
+        0.8500000000000936,
+        0.8500000000000936
+      ],
+      "action_peak_pair_matches": 3,
+      "variable_wind_scene_count": 3,
+      "wind_ac_rms_range_mps": [
+        1.662046586415574,
+        4.169322862894469
+      ],
+      "fixed_q4_100hz_response_at_observed_peaks_db": [
+        -0.033884240646399305,
+        -0.07805045753088563
+      ]
+    },
+    {
+      "w_range": "W06-W08",
+      "scene_count": 5,
+      "config_f1_hz": 1.15,
+      "config_f2_hz": 1.75,
+      "observed_wind_f1_hz_range": [
+        1.1500000000001267,
+        1.1500000000001267
+      ],
+      "observed_wind_f2_hz_range": [
+        1.7500000000001927,
+        1.7500000000001927
+      ],
+      "c5_action_peak_f1_hz_range": [
+        1.1500000000001267,
+        1.1500000000001267
+      ],
+      "c5_action_peak_f2_hz_range": [
+        1.7500000000001927,
+        1.7500000000001927
+      ],
+      "action_peak_pair_matches": 5,
+      "variable_wind_scene_count": 5,
+      "wind_ac_rms_range_mps": [
+        1.6637847882239472,
+        4.1782750653461695
+      ],
+      "fixed_q4_100hz_response_at_observed_peaks_db": [
+        -0.18481179750032778,
+        -1.2810356014841253
+      ]
+    },
+    {
+      "w_range": "W09-W11",
+      "scene_count": 4,
+      "config_f1_hz": 2.2,
+      "config_f2_hz": 3.2,
+      "observed_wind_f1_hz_range": [
+        2.200000000000242,
+        2.200000000000242
+      ],
+      "observed_wind_f2_hz_range": [
+        3.2000000000003523,
+        3.2000000000003523
+      ],
+      "c5_action_peak_f1_hz_range": [
+        2.200000000000242,
+        2.200000000000242
+      ],
+      "c5_action_peak_f2_hz_range": [
+        3.2000000000003523,
+        3.2000000000003523
+      ],
+      "action_peak_pair_matches": 4,
+      "variable_wind_scene_count": 4,
+      "wind_ac_rms_range_mps": [
+        1.6633225184470175,
+        4.137318471501083
+      ],
+      "fixed_q4_100hz_response_at_observed_peaks_db": [
+        -226.65778600372707,
+        -229.2321389943944
+      ]
+    },
+    {
+      "w_range": "W12-W14",
+      "scene_count": 6,
+      "config_f1_hz": 3.7,
+      "config_f2_hz": 4.8,
+      "observed_wind_f1_hz_range": [
+        3.7000000000004074,
+        3.7000000000004074
+      ],
+      "observed_wind_f2_hz_range": [
+        4.800000000000528,
+        4.800000000000528
+      ],
+      "c5_action_peak_f1_hz_range": [
+        3.7000000000004074,
+        3.7000000000004074
+      ],
+      "c5_action_peak_f2_hz_range": [
+        4.800000000000528,
+        4.800000000000528
+      ],
+      "action_peak_pair_matches": 6,
+      "variable_wind_scene_count": 6,
+      "wind_ac_rms_range_mps": [
+        1.663617244759636,
+        4.147012908628354
+      ],
+      "fixed_q4_100hz_response_at_observed_peaks_db": [
+        -2.614902291223253,
+        -0.4607672421410028
+      ]
+    },
+    {
+      "w_range": "W15",
+      "scene_count": 3,
+      "config_f1_hz": null,
+      "config_f2_hz": null,
+      "observed_wind_f1_hz_range": null,
+      "observed_wind_f2_hz_range": null,
+      "c5_action_peak_f1_hz_range": null,
+      "c5_action_peak_f2_hz_range": null,
+      "action_peak_pair_matches": 0,
+      "variable_wind_scene_count": 0,
+      "wind_ac_rms_range_mps": [
+        0.0,
+        0.0
+      ],
+      "fixed_q4_100hz_response_at_observed_peaks_db": null
+    }
+  ],
+  "scene_records": [
+    {
+      "scene_id": "DL1018_DEV_T1_C00_W03",
+      "wind_code": 3,
+      "topology": "T1",
+      "configured_f1_hz": 0.58,
+      "configured_f2_hz": 0.87,
+      "wind_peak_f1_hz": 0.600000000000066,
+      "wind_peak_f2_hz": 0.8500000000000936,
+      "wind_ac_rms_mps": 1.662046586415574,
+      "wind_f1_peak_psd_m2ps2_per_hz": 12.137788060782144,
+      "wind_f2_peak_psd_m2ps2_per_hz": 5.365139796456905,
+      "c5_stage1_applied_action_f1_peak_hz": 0.600000000000066,
+      "c5_stage1_applied_action_f2_peak_hz": 0.8500000000000936,
+      "c5_action_f1_peak_psd_m4ps4_per_hz": 0.0005827827906756727,
+      "c5_action_f2_peak_psd_m4ps4_per_hz": 0.00022030106813595134,
+      "c5_action_top_peaks_0p05_10hz": [
+        {
+          "hz": 0.600000000000066,
+          "psd": 0.0005827827906756727
+        },
+        {
+          "hz": 0.8500000000000936,
+          "psd": 0.00022030106813595134
+        },
+        {
+          "hz": 0.7500000000000826,
+          "psd": 3.37551962423617e-05
+        },
+        {
+          "hz": 1.0000000000001101,
+          "psd": 5.637322349784255e-06
+        }
+      ],
+      "fixed_notch_q4_100hz_response_f1_db": -0.033884240646399305,
+      "fixed_notch_q4_100hz_response_f2_db": -0.07805045753088563,
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T1_C00_W03/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "fa36bf4aa229279d964b40c10cb3579487b5c641d167572383ef49f63196af5d"
+    },
+    {
+      "scene_id": "DL1018_DEV_T1_C01_W15",
+      "wind_code": 15,
+      "topology": "T1",
+      "configured_f1_hz": 0.0,
+      "configured_f2_hz": 0.0,
+      "wind_peak_f1_hz": null,
+      "wind_peak_f2_hz": null,
+      "wind_ac_rms_mps": 0.0,
+      "wind_f1_peak_psd_m2ps2_per_hz": null,
+      "wind_f2_peak_psd_m2ps2_per_hz": null,
+      "c5_stage1_applied_action_f1_peak_hz": null,
+      "c5_stage1_applied_action_f2_peak_hz": null,
+      "c5_action_f1_peak_psd_m4ps4_per_hz": null,
+      "c5_action_f2_peak_psd_m4ps4_per_hz": null,
+      "c5_action_top_peaks_0p05_10hz": [
+        {
+          "hz": 0.20000000000002202,
+          "psd": 0.0016282955402879583
+        },
+        {
+          "hz": 0.4500000000000495,
+          "psd": 5.90519953863855e-05
+        },
+        {
+          "hz": 0.9500000000001046,
+          "psd": 1.3861768561189256e-05
+        },
+        {
+          "hz": 1.100000000000121,
+          "psd": 1.229331017407123e-05
+        }
+      ],
+      "fixed_notch_q4_100hz_response_f1_db": null,
+      "fixed_notch_q4_100hz_response_f2_db": null,
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T1_C01_W15/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "b61f01ab5920de766b8596512490b596e3959fa87368cd40a3b30758831fe651"
+    },
+    {
+      "scene_id": "DL1018_DEV_T1_C04_W00",
+      "wind_code": 0,
+      "topology": "T1",
+      "configured_f1_hz": 0.25,
+      "configured_f2_hz": 0.45,
+      "wind_peak_f1_hz": 0.25000000000002753,
+      "wind_peak_f2_hz": 0.4500000000000495,
+      "wind_ac_rms_mps": 1.7076067879611463,
+      "wind_f1_peak_psd_m2ps2_per_hz": 15.019071881738023,
+      "wind_f2_peak_psd_m2ps2_per_hz": 6.678007588163434,
+      "c5_stage1_applied_action_f1_peak_hz": 0.25000000000002753,
+      "c5_stage1_applied_action_f2_peak_hz": 0.4500000000000495,
+      "c5_action_f1_peak_psd_m4ps4_per_hz": 0.0017617062414688413,
+      "c5_action_f2_peak_psd_m4ps4_per_hz": 0.0005793699179704688,
+      "c5_action_top_peaks_0p05_10hz": [
+        {
+          "hz": 0.25000000000002753,
+          "psd": 0.0017617062414688413
+        },
+        {
+          "hz": 0.4500000000000495,
+          "psd": 0.0005793699179704688
+        },
+        {
+          "hz": 0.7000000000000771,
+          "psd": 1.2682430274894353e-05
+        },
+        {
+          "hz": 0.8500000000000936,
+          "psd": 5.44564024861372e-06
+        }
+      ],
+      "fixed_notch_q4_100hz_response_f1_db": -0.00529671134815124,
+      "fixed_notch_q4_100hz_response_f2_db": -0.01801474148388346,
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T1_C04_W00/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "ac0f403f134db3ea213547889b36f8dc5e81251d5ab03836c912e3a54453527d"
+    },
+    {
+      "scene_id": "DL1018_DEV_T1_C05_W06",
+      "wind_code": 6,
+      "topology": "T1",
+      "configured_f1_hz": 1.15,
+      "configured_f2_hz": 1.75,
+      "wind_peak_f1_hz": 1.1500000000001267,
+      "wind_peak_f2_hz": 1.7500000000001927,
+      "wind_ac_rms_mps": 1.6637847882239472,
+      "wind_f1_peak_psd_m2ps2_per_hz": 14.987341078118753,
+      "wind_f2_peak_psd_m2ps2_per_hz": 6.667858317196987,
+      "c5_stage1_applied_action_f1_peak_hz": 1.1500000000001267,
+      "c5_stage1_applied_action_f2_peak_hz": 1.7500000000001927,
+      "c5_action_f1_peak_psd_m4ps4_per_hz": 0.001490007835602375,
+      "c5_action_f2_peak_psd_m4ps4_per_hz": 0.001156736465808186,
+      "c5_action_top_peaks_0p05_10hz": [
+        {
+          "hz": 1.1500000000001267,
+          "psd": 0.001490007835602375
+        },
+        {
+          "hz": 0.20000000000002202,
+          "psd": 0.0014153308479593826
+        },
+        {
+          "hz": 1.7500000000001927,
+          "psd": 0.001156736465808186
+        },
+        {
+          "hz": 0.300000000000033,
+          "psd": 0.00035803144806752186
+        }
+      ],
+      "fixed_notch_q4_100hz_response_f1_db": -0.18481179750032778,
+      "fixed_notch_q4_100hz_response_f2_db": -1.2810356014841253,
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T1_C05_W06/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "727febc0aedbd4f127eb46aec8d103ab5b2b1e4336d8e92882c4447b779b602e"
+    },
+    {
+      "scene_id": "DL1018_DEV_T1_C07_W08",
+      "wind_code": 8,
+      "topology": "T1",
+      "configured_f1_hz": 1.15,
+      "configured_f2_hz": 1.75,
+      "wind_peak_f1_hz": 1.1500000000001267,
+      "wind_peak_f2_hz": 1.7500000000001927,
+      "wind_ac_rms_mps": 4.115975719665095,
+      "wind_f1_peak_psd_m2ps2_per_hz": 134.97367311575212,
+      "wind_f2_peak_psd_m2ps2_per_hz": 81.63442683750885,
+      "c5_stage1_applied_action_f1_peak_hz": 1.1500000000001267,
+      "c5_stage1_applied_action_f2_peak_hz": 1.7500000000001927,
+      "c5_action_f1_peak_psd_m4ps4_per_hz": 0.010815409052303944,
+      "c5_action_f2_peak_psd_m4ps4_per_hz": 0.01224159442184112,
+      "c5_action_top_peaks_0p05_10hz": [
+        {
+          "hz": 1.7500000000001927,
+          "psd": 0.01224159442184112
+        },
+        {
+          "hz": 1.1500000000001267,
+          "psd": 0.010815409052303944
+        },
+        {
+          "hz": 2.900000000000319,
+          "psd": 0.0011659398200892616
+        },
+        {
+          "hz": 0.20000000000002202,
+          "psd": 0.0010477596541175228
+        }
+      ],
+      "fixed_notch_q4_100hz_response_f1_db": -0.18481179750032778,
+      "fixed_notch_q4_100hz_response_f2_db": -1.2810356014841253,
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T1_C07_W08/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "b7fc7c1a8ac1c744429a36ad1ee93e1b4b45d59c82c61808b1f9c4af999483b1"
+    },
+    {
+      "scene_id": "DL1018_DEV_T1_C10_W09",
+      "wind_code": 9,
+      "topology": "T1",
+      "configured_f1_hz": 2.2,
+      "configured_f2_hz": 3.2,
+      "wind_peak_f1_hz": 2.200000000000242,
+      "wind_peak_f2_hz": 3.2000000000003523,
+      "wind_ac_rms_mps": 1.6633225184470175,
+      "wind_f1_peak_psd_m2ps2_per_hz": 14.995250340549276,
+      "wind_f2_peak_psd_m2ps2_per_hz": 6.66501971256264,
+      "c5_stage1_applied_action_f1_peak_hz": 2.200000000000242,
+      "c5_stage1_applied_action_f2_peak_hz": 3.2000000000003523,
+      "c5_action_f1_peak_psd_m4ps4_per_hz": 0.0029532602627496693,
+      "c5_action_f2_peak_psd_m4ps4_per_hz": 0.0020296989128460226,
+      "c5_action_top_peaks_0p05_10hz": [
+        {
+          "hz": 2.200000000000242,
+          "psd": 0.0029532602627496693
+        },
+        {
+          "hz": 3.2000000000003523,
+          "psd": 0.0020296989128460226
+        },
+        {
+          "hz": 0.20000000000002202,
+          "psd": 0.001520308567278651
+        },
+        {
+          "hz": 0.300000000000033,
+          "psd": 0.00025793832822322007
+        }
+      ],
+      "fixed_notch_q4_100hz_response_f1_db": -226.65778600372707,
+      "fixed_notch_q4_100hz_response_f2_db": -229.2321389943944,
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T1_C10_W09/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "1e684df2174bc6b754e7798c67acb5c0b4ead218bcc1bd7b1d5cfc1a2fcf4991"
+    },
+    {
+      "scene_id": "DL1018_DEV_T1_C11_W12",
+      "wind_code": 12,
+      "topology": "T1",
+      "configured_f1_hz": 3.7,
+      "configured_f2_hz": 4.8,
+      "wind_peak_f1_hz": 3.7000000000004074,
+      "wind_peak_f2_hz": 4.800000000000528,
+      "wind_ac_rms_mps": 1.663617244759636,
+      "wind_f1_peak_psd_m2ps2_per_hz": 14.998554988610799,
+      "wind_f2_peak_psd_m2ps2_per_hz": 6.666391801336169,
+      "c5_stage1_applied_action_f1_peak_hz": 3.7000000000004074,
+      "c5_stage1_applied_action_f2_peak_hz": 4.800000000000528,
+      "c5_action_f1_peak_psd_m4ps4_per_hz": 0.003764641309271082,
+      "c5_action_f2_peak_psd_m4ps4_per_hz": 0.0007736225770673653,
+      "c5_action_top_peaks_0p05_10hz": [
+        {
+          "hz": 3.7000000000004074,
+          "psd": 0.003764641309271082
+        },
+        {
+          "hz": 0.20000000000002202,
+          "psd": 0.0011962593678333314
+        },
+        {
+          "hz": 4.800000000000528,
+          "psd": 0.0007736225770673653
+        },
+        {
+          "hz": 0.300000000000033,
+          "psd": 0.0005551244473256572
+        }
+      ],
+      "fixed_notch_q4_100hz_response_f1_db": -2.614902291223253,
+      "fixed_notch_q4_100hz_response_f2_db": -0.4607672421410028,
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T1_C11_W12/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "996edaae6b20f048468a04d36d1b2af19c1daf5d45e5bc8160f52f3bd35b2aa2"
+    },
+    {
+      "scene_id": "DL1018_DEV_T1_C15_W14",
+      "wind_code": 14,
+      "topology": "T1",
+      "configured_f1_hz": 3.7,
+      "configured_f2_hz": 4.8,
+      "wind_peak_f1_hz": 3.7000000000004074,
+      "wind_peak_f2_hz": 4.800000000000528,
+      "wind_ac_rms_mps": 4.107911539203095,
+      "wind_f1_peak_psd_m2ps2_per_hz": 134.9774901351079,
+      "wind_f2_peak_psd_m2ps2_per_hz": 81.65379240467642,
+      "c5_stage1_applied_action_f1_peak_hz": 3.7000000000004074,
+      "c5_stage1_applied_action_f2_peak_hz": 4.800000000000528,
+      "c5_action_f1_peak_psd_m4ps4_per_hz": 0.03312575491713284,
+      "c5_action_f2_peak_psd_m4ps4_per_hz": 0.010515415345208884,
+      "c5_action_top_peaks_0p05_10hz": [
+        {
+          "hz": 3.7000000000004074,
+          "psd": 0.03312575491713284
+        },
+        {
+          "hz": 4.800000000000528,
+          "psd": 0.010515415345208884
+        },
+        {
+          "hz": 0.20000000000002202,
+          "psd": 0.0011192591472140162
+        },
+        {
+          "hz": 1.100000000000121,
+          "psd": 0.0005086225009087155
+        }
+      ],
+      "fixed_notch_q4_100hz_response_f1_db": -2.614902291223253,
+      "fixed_notch_q4_100hz_response_f2_db": -0.4607672421410028,
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T1_C15_W14/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "6c72ae52e3f39af36442935468af7d2a047af460b845223167ee206d0dc96707"
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C00_W04",
+      "wind_code": 4,
+      "topology": "T2",
+      "configured_f1_hz": 0.58,
+      "configured_f2_hz": 0.87,
+      "wind_peak_f1_hz": 0.600000000000066,
+      "wind_peak_f2_hz": 0.8500000000000936,
+      "wind_ac_rms_mps": 3.1736562065626335,
+      "wind_f1_peak_psd_m2ps2_per_hz": 66.43453581963854,
+      "wind_f2_peak_psd_m2ps2_per_hz": 32.57793926312318,
+      "c5_stage1_applied_action_f1_peak_hz": 0.600000000000066,
+      "c5_stage1_applied_action_f2_peak_hz": 0.8500000000000936,
+      "c5_action_f1_peak_psd_m4ps4_per_hz": 0.0039179820595584385,
+      "c5_action_f2_peak_psd_m4ps4_per_hz": 0.0017799492053099009,
+      "c5_action_top_peaks_0p05_10hz": [
+        {
+          "hz": 0.600000000000066,
+          "psd": 0.0039179820595584385
+        },
+        {
+          "hz": 0.8500000000000936,
+          "psd": 0.0017799492053099009
+        },
+        {
+          "hz": 0.300000000000033,
+          "psd": 0.00017709345017799224
+        },
+        {
+          "hz": 0.20000000000002202,
+          "psd": 0.00017196907449688927
+        }
+      ],
+      "fixed_notch_q4_100hz_response_f1_db": -0.033884240646399305,
+      "fixed_notch_q4_100hz_response_f2_db": -0.07805045753088563,
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T2_C00_W04/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "9b408641737fe13bcc290d87f0d02176c26701717fc9145e1ca0191be906442f"
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C02_W15",
+      "wind_code": 15,
+      "topology": "T2",
+      "configured_f1_hz": 0.0,
+      "configured_f2_hz": 0.0,
+      "wind_peak_f1_hz": null,
+      "wind_peak_f2_hz": null,
+      "wind_ac_rms_mps": 0.0,
+      "wind_f1_peak_psd_m2ps2_per_hz": null,
+      "wind_f2_peak_psd_m2ps2_per_hz": null,
+      "c5_stage1_applied_action_f1_peak_hz": null,
+      "c5_stage1_applied_action_f2_peak_hz": null,
+      "c5_action_f1_peak_psd_m4ps4_per_hz": null,
+      "c5_action_f2_peak_psd_m4ps4_per_hz": null,
+      "c5_action_top_peaks_0p05_10hz": [
+        {
+          "hz": 0.20000000000002202,
+          "psd": 0.0010915676602933513
+        },
+        {
+          "hz": 0.300000000000033,
+          "psd": 0.00019933335784291087
+        },
+        {
+          "hz": 0.6500000000000715,
+          "psd": 2.7230126429190784e-05
+        },
+        {
+          "hz": 0.8000000000000881,
+          "psd": 1.4758451467182525e-05
+        }
+      ],
+      "fixed_notch_q4_100hz_response_f1_db": null,
+      "fixed_notch_q4_100hz_response_f2_db": null,
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T2_C02_W15/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "f0e524b6bd8bbafc6e6ecccff3879500332371af068421db120cd795944f608b"
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C03_W01",
+      "wind_code": 1,
+      "topology": "T2",
+      "configured_f1_hz": 0.25,
+      "configured_f2_hz": 0.45,
+      "wind_peak_f1_hz": 0.25000000000002753,
+      "wind_peak_f2_hz": 0.4500000000000495,
+      "wind_ac_rms_mps": 3.2017446221042007,
+      "wind_f1_peak_psd_m2ps2_per_hz": 81.7059212492979,
+      "wind_f2_peak_psd_m2ps2_per_hz": 39.97087046732115,
+      "c5_stage1_applied_action_f1_peak_hz": 0.25000000000002753,
+      "c5_stage1_applied_action_f2_peak_hz": 0.4500000000000495,
+      "c5_action_f1_peak_psd_m4ps4_per_hz": 0.006369948993187725,
+      "c5_action_f2_peak_psd_m4ps4_per_hz": 0.0028556765492981284,
+      "c5_action_top_peaks_0p05_10hz": [
+        {
+          "hz": 0.25000000000002753,
+          "psd": 0.006369948993187725
+        },
+        {
+          "hz": 0.4500000000000495,
+          "psd": 0.0028556765492981284
+        },
+        {
+          "hz": 0.7000000000000771,
+          "psd": 5.9610818646555256e-05
+        },
+        {
+          "hz": 0.900000000000099,
+          "psd": 8.01700680382422e-06
+        }
+      ],
+      "fixed_notch_q4_100hz_response_f1_db": -0.00529671134815124,
+      "fixed_notch_q4_100hz_response_f2_db": -0.01801474148388346,
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T2_C03_W01/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "5bab1c31978d9230c2fa234f2e7623d42ce13fa20b1b99e9d73a7127c4f96b4f"
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C06_W07",
+      "wind_code": 7,
+      "topology": "T2",
+      "configured_f1_hz": 1.15,
+      "configured_f2_hz": 1.75,
+      "wind_peak_f1_hz": 1.1500000000001267,
+      "wind_peak_f2_hz": 1.7500000000001927,
+      "wind_ac_rms_mps": 3.1358881489213486,
+      "wind_f1_peak_psd_m2ps2_per_hz": 81.6310210208976,
+      "wind_f2_peak_psd_m2ps2_per_hz": 39.99800443088648,
+      "c5_stage1_applied_action_f1_peak_hz": 1.1500000000001267,
+      "c5_stage1_applied_action_f2_peak_hz": 1.7500000000001927,
+      "c5_action_f1_peak_psd_m4ps4_per_hz": 0.010402646005816588,
+      "c5_action_f2_peak_psd_m4ps4_per_hz": 0.00752522156699967,
+      "c5_action_top_peaks_0p05_10hz": [
+        {
+          "hz": 1.1500000000001267,
+          "psd": 0.010402646005816588
+        },
+        {
+          "hz": 1.7500000000001927,
+          "psd": 0.00752522156699967
+        },
+        {
+          "hz": 0.10000000000001101,
+          "psd": 0.0010340664930482367
+        },
+        {
+          "hz": 2.900000000000319,
+          "psd": 0.0004737165866852355
+        }
+      ],
+      "fixed_notch_q4_100hz_response_f1_db": -0.18481179750032778,
+      "fixed_notch_q4_100hz_response_f2_db": -1.2810356014841253,
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T2_C06_W07/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "02869a1271b1a5483b03565cc2e2366fd370392e68e9265ca943251e212a56be"
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C08_W08",
+      "wind_code": 8,
+      "topology": "T2",
+      "configured_f1_hz": 1.15,
+      "configured_f2_hz": 1.75,
+      "wind_peak_f1_hz": 1.1500000000001267,
+      "wind_peak_f2_hz": 1.7500000000001927,
+      "wind_ac_rms_mps": 4.152283530214872,
+      "wind_f1_peak_psd_m2ps2_per_hz": 134.99920427046442,
+      "wind_f2_peak_psd_m2ps2_per_hz": 81.64465540512435,
+      "c5_stage1_applied_action_f1_peak_hz": 1.1500000000001267,
+      "c5_stage1_applied_action_f2_peak_hz": 1.7500000000001927,
+      "c5_action_f1_peak_psd_m4ps4_per_hz": 0.0106127088915079,
+      "c5_action_f2_peak_psd_m4ps4_per_hz": 0.010818349667252005,
+      "c5_action_top_peaks_0p05_10hz": [
+        {
+          "hz": 1.7500000000001927,
+          "psd": 0.010818349667252005
+        },
+        {
+          "hz": 1.1500000000001267,
+          "psd": 0.0106127088915079
+        },
+        {
+          "hz": 2.900000000000319,
+          "psd": 0.0010282629734784377
+        },
+        {
+          "hz": 0.600000000000066,
+          "psd": 0.0005209649469509793
+        }
+      ],
+      "fixed_notch_q4_100hz_response_f1_db": -0.18481179750032778,
+      "fixed_notch_q4_100hz_response_f2_db": -1.2810356014841253,
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T2_C08_W08/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "6a0db67bee5e28cc6d5815e7273e376efc8311aa9c8591b1c238707b2b011d3b"
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C09_W10",
+      "wind_code": 10,
+      "topology": "T2",
+      "configured_f1_hz": 2.2,
+      "configured_f2_hz": 3.2,
+      "wind_peak_f1_hz": 2.200000000000242,
+      "wind_peak_f2_hz": 3.2000000000003523,
+      "wind_ac_rms_mps": 3.1632746788178543,
+      "wind_f1_peak_psd_m2ps2_per_hz": 81.64457879065067,
+      "wind_f2_peak_psd_m2ps2_per_hz": 40.005371927332114,
+      "c5_stage1_applied_action_f1_peak_hz": 2.200000000000242,
+      "c5_stage1_applied_action_f2_peak_hz": 3.2000000000003523,
+      "c5_action_f1_peak_psd_m4ps4_per_hz": 0.02486251802182969,
+      "c5_action_f2_peak_psd_m4ps4_per_hz": 0.016811110289871246,
+      "c5_action_top_peaks_0p05_10hz": [
+        {
+          "hz": 2.200000000000242,
+          "psd": 0.02486251802182969
+        },
+        {
+          "hz": 3.2000000000003523,
+          "psd": 0.016811110289871246
+        },
+        {
+          "hz": 2.3500000000002585,
+          "psd": 0.0003190152847065697
+        },
+        {
+          "hz": 3.0000000000003304,
+          "psd": 0.0001993733013136703
+        }
+      ],
+      "fixed_notch_q4_100hz_response_f1_db": -226.65778600372707,
+      "fixed_notch_q4_100hz_response_f2_db": -229.2321389943944,
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T2_C09_W10/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "9810e02aa6bede12197eda25dbb0c18335252b1965f055931ea28b2f2dbb505d"
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C12_W13",
+      "wind_code": 13,
+      "topology": "T2",
+      "configured_f1_hz": 3.7,
+      "configured_f2_hz": 4.8,
+      "wind_peak_f1_hz": 3.7000000000004074,
+      "wind_peak_f2_hz": 4.800000000000528,
+      "wind_ac_rms_mps": 3.1691501105593183,
+      "wind_f1_peak_psd_m2ps2_per_hz": 81.6481957375245,
+      "wind_f2_peak_psd_m2ps2_per_hz": 40.004662005739576,
+      "c5_stage1_applied_action_f1_peak_hz": 3.7000000000004074,
+      "c5_stage1_applied_action_f2_peak_hz": 4.800000000000528,
+      "c5_action_f1_peak_psd_m4ps4_per_hz": 0.03325412923609983,
+      "c5_action_f2_peak_psd_m4ps4_per_hz": 0.008387258699397231,
+      "c5_action_top_peaks_0p05_10hz": [
+        {
+          "hz": 3.7000000000004074,
+          "psd": 0.03325412923609983
+        },
+        {
+          "hz": 4.800000000000528,
+          "psd": 0.008387258699397231
+        },
+        {
+          "hz": 0.20000000000002202,
+          "psd": 0.0005958741965703881
+        },
+        {
+          "hz": 0.300000000000033,
+          "psd": 0.0003248037430985652
+        }
+      ],
+      "fixed_notch_q4_100hz_response_f1_db": -2.614902291223253,
+      "fixed_notch_q4_100hz_response_f2_db": -0.4607672421410028,
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T2_C12_W13/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "28c004f613cb24fdca025ab73a6a6e7d32863a4a61197ed6d246db65f4e944bb"
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C14_W14",
+      "wind_code": 14,
+      "topology": "T2",
+      "configured_f1_hz": 3.7,
+      "configured_f2_hz": 4.8,
+      "wind_peak_f1_hz": 3.7000000000004074,
+      "wind_peak_f2_hz": 4.800000000000528,
+      "wind_ac_rms_mps": 4.147012908628354,
+      "wind_f1_peak_psd_m2ps2_per_hz": 134.97619584530665,
+      "wind_f2_peak_psd_m2ps2_per_hz": 81.65161393097881,
+      "c5_stage1_applied_action_f1_peak_hz": 3.7000000000004074,
+      "c5_stage1_applied_action_f2_peak_hz": 4.800000000000528,
+      "c5_action_f1_peak_psd_m4ps4_per_hz": 0.03296645308125627,
+      "c5_action_f2_peak_psd_m4ps4_per_hz": 0.00894010231840536,
+      "c5_action_top_peaks_0p05_10hz": [
+        {
+          "hz": 3.7000000000004074,
+          "psd": 0.03296645308125627
+        },
+        {
+          "hz": 4.800000000000528,
+          "psd": 0.00894010231840536
+        },
+        {
+          "hz": 0.300000000000033,
+          "psd": 0.0004458230622092316
+        },
+        {
+          "hz": 1.100000000000121,
+          "psd": 0.00036970345406847816
+        }
+      ],
+      "fixed_notch_q4_100hz_response_f1_db": -2.614902291223253,
+      "fixed_notch_q4_100hz_response_f2_db": -0.4607672421410028,
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T2_C14_W14/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "f863bed7657ef34ad0712ac755999e07dd7b55fed51c57811cdc80fa7421a93e"
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C00_W05",
+      "wind_code": 5,
+      "topology": "T3",
+      "configured_f1_hz": 0.58,
+      "configured_f2_hz": 0.87,
+      "wind_peak_f1_hz": 0.600000000000066,
+      "wind_peak_f2_hz": 0.8500000000000936,
+      "wind_ac_rms_mps": 4.169322862894469,
+      "wind_f1_peak_psd_m2ps2_per_hz": 109.30891544856554,
+      "wind_f2_peak_psd_m2ps2_per_hz": 65.941316730765,
+      "c5_stage1_applied_action_f1_peak_hz": 0.600000000000066,
+      "c5_stage1_applied_action_f2_peak_hz": 0.8500000000000936,
+      "c5_action_f1_peak_psd_m4ps4_per_hz": 0.007210049193623631,
+      "c5_action_f2_peak_psd_m4ps4_per_hz": 0.0041068326897841295,
+      "c5_action_top_peaks_0p05_10hz": [
+        {
+          "hz": 0.600000000000066,
+          "psd": 0.007210049193623631
+        },
+        {
+          "hz": 0.8500000000000936,
+          "psd": 0.0041068326897841295
+        },
+        {
+          "hz": 0.300000000000033,
+          "psd": 0.0009507571230198645
+        },
+        {
+          "hz": 1.4500000000001596,
+          "psd": 0.0007459403813528584
+        }
+      ],
+      "fixed_notch_q4_100hz_response_f1_db": -0.033884240646399305,
+      "fixed_notch_q4_100hz_response_f2_db": -0.07805045753088563,
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T3_C00_W05/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "a88c5010bb1e264ddde36f9e1400d0f6947b5a0a7361dede183c59e0f9f634f3"
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C03_W15",
+      "wind_code": 15,
+      "topology": "T3",
+      "configured_f1_hz": 0.0,
+      "configured_f2_hz": 0.0,
+      "wind_peak_f1_hz": null,
+      "wind_peak_f2_hz": null,
+      "wind_ac_rms_mps": 0.0,
+      "wind_f1_peak_psd_m2ps2_per_hz": null,
+      "wind_f2_peak_psd_m2ps2_per_hz": null,
+      "c5_stage1_applied_action_f1_peak_hz": null,
+      "c5_stage1_applied_action_f2_peak_hz": null,
+      "c5_action_f1_peak_psd_m4ps4_per_hz": null,
+      "c5_action_f2_peak_psd_m4ps4_per_hz": null,
+      "c5_action_top_peaks_0p05_10hz": [
+        {
+          "hz": 0.20000000000002202,
+          "psd": 0.0003212846950989321
+        },
+        {
+          "hz": 0.4500000000000495,
+          "psd": 0.00011179491847835775
+        },
+        {
+          "hz": 0.35000000000003856,
+          "psd": 3.0261855139835906e-05
+        },
+        {
+          "hz": 0.8500000000000936,
+          "psd": 2.2242846547147362e-05
+        }
+      ],
+      "fixed_notch_q4_100hz_response_f1_db": null,
+      "fixed_notch_q4_100hz_response_f2_db": null,
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T3_C03_W15/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "6afcc865b94f06d8e9558f261fa97c1b90aac73d5e4daf985c4f3b4315ce8a58"
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C05_W02",
+      "wind_code": 2,
+      "topology": "T3",
+      "configured_f1_hz": 0.25,
+      "configured_f2_hz": 0.45,
+      "wind_peak_f1_hz": 0.25000000000002753,
+      "wind_peak_f2_hz": 0.4500000000000495,
+      "wind_ac_rms_mps": 4.0960284438630135,
+      "wind_f1_peak_psd_m2ps2_per_hz": 134.9355206308223,
+      "wind_f2_peak_psd_m2ps2_per_hz": 81.68813364885939,
+      "c5_stage1_applied_action_f1_peak_hz": 0.25000000000002753,
+      "c5_stage1_applied_action_f2_peak_hz": 0.4500000000000495,
+      "c5_action_f1_peak_psd_m4ps4_per_hz": 0.010805614747057966,
+      "c5_action_f2_peak_psd_m4ps4_per_hz": 0.00650900844381297,
+      "c5_action_top_peaks_0p05_10hz": [
+        {
+          "hz": 0.25000000000002753,
+          "psd": 0.010805614747057966
+        },
+        {
+          "hz": 0.4500000000000495,
+          "psd": 0.00650900844381297
+        },
+        {
+          "hz": 0.7000000000000771,
+          "psd": 0.0003991248388799845
+        },
+        {
+          "hz": 1.0000000000001101,
+          "psd": 5.305001533459203e-05
+        }
+      ],
+      "fixed_notch_q4_100hz_response_f1_db": -0.00529671134815124,
+      "fixed_notch_q4_100hz_response_f2_db": -0.01801474148388346,
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T3_C05_W02/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "6c7d83ee79e1549a6ef603739a8922ce73f4b1695237cd9eec94567a8126eb23"
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C06_W08",
+      "wind_code": 8,
+      "topology": "T3",
+      "configured_f1_hz": 1.15,
+      "configured_f2_hz": 1.75,
+      "wind_peak_f1_hz": 1.1500000000001267,
+      "wind_peak_f2_hz": 1.7500000000001927,
+      "wind_ac_rms_mps": 4.1782750653461695,
+      "wind_f1_peak_psd_m2ps2_per_hz": 135.03901118792493,
+      "wind_f2_peak_psd_m2ps2_per_hz": 81.65350593087906,
+      "c5_stage1_applied_action_f1_peak_hz": 1.1500000000001267,
+      "c5_stage1_applied_action_f2_peak_hz": 1.7500000000001927,
+      "c5_action_f1_peak_psd_m4ps4_per_hz": 0.01977517347032927,
+      "c5_action_f2_peak_psd_m4ps4_per_hz": 0.021477070584230096,
+      "c5_action_top_peaks_0p05_10hz": [
+        {
+          "hz": 1.7500000000001927,
+          "psd": 0.021477070584230096
+        },
+        {
+          "hz": 1.1500000000001267,
+          "psd": 0.01977517347032927
+        },
+        {
+          "hz": 2.900000000000319,
+          "psd": 0.0022137313522190318
+        },
+        {
+          "hz": 2.3000000000002534,
+          "psd": 0.0007659596559733927
+        }
+      ],
+      "fixed_notch_q4_100hz_response_f1_db": -0.18481179750032778,
+      "fixed_notch_q4_100hz_response_f2_db": -1.2810356014841253,
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T3_C06_W08/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "5acc8772586d329a0ccddfa2f3f4698b26a062612c998d67b201821b45121082"
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C09_W09",
+      "wind_code": 9,
+      "topology": "T3",
+      "configured_f1_hz": 2.2,
+      "configured_f2_hz": 3.2,
+      "wind_peak_f1_hz": 2.200000000000242,
+      "wind_peak_f2_hz": 3.2000000000003523,
+      "wind_ac_rms_mps": 1.67010113834842,
+      "wind_f1_peak_psd_m2ps2_per_hz": 14.997727522093935,
+      "wind_f2_peak_psd_m2ps2_per_hz": 6.665062890060982,
+      "c5_stage1_applied_action_f1_peak_hz": 2.200000000000242,
+      "c5_stage1_applied_action_f2_peak_hz": 3.2000000000003523,
+      "c5_action_f1_peak_psd_m4ps4_per_hz": 0.005034429302520342,
+      "c5_action_f2_peak_psd_m4ps4_per_hz": 0.003575071050230816,
+      "c5_action_top_peaks_0p05_10hz": [
+        {
+          "hz": 2.200000000000242,
+          "psd": 0.005034429302520342
+        },
+        {
+          "hz": 3.2000000000003523,
+          "psd": 0.003575071050230816
+        },
+        {
+          "hz": 0.300000000000033,
+          "psd": 0.0001328039767163301
+        },
+        {
+          "hz": 0.6500000000000715,
+          "psd": 6.097784282642619e-05
+        }
+      ],
+      "fixed_notch_q4_100hz_response_f1_db": -226.65778600372707,
+      "fixed_notch_q4_100hz_response_f2_db": -229.2321389943944,
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T3_C09_W09/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "fa11a41b18ce9d4c3b7558d3bbb0d230aaef3e7071fc15419df0c6d1fca2f3a4"
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C10_W11",
+      "wind_code": 11,
+      "topology": "T3",
+      "configured_f1_hz": 2.2,
+      "configured_f2_hz": 3.2,
+      "wind_peak_f1_hz": 2.200000000000242,
+      "wind_peak_f2_hz": 3.2000000000003523,
+      "wind_ac_rms_mps": 4.137318471501083,
+      "wind_f1_peak_psd_m2ps2_per_hz": 134.99253834778466,
+      "wind_f2_peak_psd_m2ps2_per_hz": 81.6653013888681,
+      "c5_stage1_applied_action_f1_peak_hz": 2.200000000000242,
+      "c5_stage1_applied_action_f2_peak_hz": 3.2000000000003523,
+      "c5_action_f1_peak_psd_m4ps4_per_hz": 0.025266587440527864,
+      "c5_action_f2_peak_psd_m4ps4_per_hz": 0.019350018577419272,
+      "c5_action_top_peaks_0p05_10hz": [
+        {
+          "hz": 2.200000000000242,
+          "psd": 0.025266587440527864
+        },
+        {
+          "hz": 3.2000000000003523,
+          "psd": 0.019350018577419272
+        },
+        {
+          "hz": 0.20000000000002202,
+          "psd": 0.0013713131510451574
+        },
+        {
+          "hz": 0.300000000000033,
+          "psd": 0.000457615800566913
+        }
+      ],
+      "fixed_notch_q4_100hz_response_f1_db": -226.65778600372707,
+      "fixed_notch_q4_100hz_response_f2_db": -229.2321389943944,
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T3_C10_W11/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "493d55f39a7f72da25a27ef44b21c30840c587bd49714a4988edd3383328d56e"
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C13_W12",
+      "wind_code": 12,
+      "topology": "T3",
+      "configured_f1_hz": 3.7,
+      "configured_f2_hz": 4.8,
+      "wind_peak_f1_hz": 3.7000000000004074,
+      "wind_peak_f2_hz": 4.800000000000528,
+      "wind_ac_rms_mps": 1.6646258256916084,
+      "wind_f1_peak_psd_m2ps2_per_hz": 14.998651620322022,
+      "wind_f2_peak_psd_m2ps2_per_hz": 6.666537849017655,
+      "c5_stage1_applied_action_f1_peak_hz": 3.7000000000004074,
+      "c5_stage1_applied_action_f2_peak_hz": 4.800000000000528,
+      "c5_action_f1_peak_psd_m4ps4_per_hz": 0.0032794094329639833,
+      "c5_action_f2_peak_psd_m4ps4_per_hz": 0.0006738515058957869,
+      "c5_action_top_peaks_0p05_10hz": [
+        {
+          "hz": 3.7000000000004074,
+          "psd": 0.0032794094329639833
+        },
+        {
+          "hz": 0.20000000000002202,
+          "psd": 0.0010303928471007632
+        },
+        {
+          "hz": 4.800000000000528,
+          "psd": 0.0006738515058957869
+        },
+        {
+          "hz": 0.300000000000033,
+          "psd": 0.0004930648778679316
+        }
+      ],
+      "fixed_notch_q4_100hz_response_f1_db": -2.614902291223253,
+      "fixed_notch_q4_100hz_response_f2_db": -0.4607672421410028,
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T3_C13_W12/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "b6eb8d2a5ee9b0dd91e4b073a1f97e79c6e75cde589714810511a1d450812035"
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C15_W14",
+      "wind_code": 14,
+      "topology": "T3",
+      "configured_f1_hz": 3.7,
+      "configured_f2_hz": 4.8,
+      "wind_peak_f1_hz": 3.7000000000004074,
+      "wind_peak_f2_hz": 4.800000000000528,
+      "wind_ac_rms_mps": 4.106416973601979,
+      "wind_f1_peak_psd_m2ps2_per_hz": 134.97043029880518,
+      "wind_f2_peak_psd_m2ps2_per_hz": 81.64583701751712,
+      "c5_stage1_applied_action_f1_peak_hz": 3.7000000000004074,
+      "c5_stage1_applied_action_f2_peak_hz": 4.800000000000528,
+      "c5_action_f1_peak_psd_m4ps4_per_hz": 0.0337955798667193,
+      "c5_action_f2_peak_psd_m4ps4_per_hz": 0.009162012466650361,
+      "c5_action_top_peaks_0p05_10hz": [
+        {
+          "hz": 3.7000000000004074,
+          "psd": 0.0337955798667193
+        },
+        {
+          "hz": 4.800000000000528,
+          "psd": 0.009162012466650361
+        },
+        {
+          "hz": 1.100000000000121,
+          "psd": 0.00037695174199079063
+        },
+        {
+          "hz": 0.20000000000002202,
+          "psd": 0.0003561879519701954
+        }
+      ],
+      "fixed_notch_q4_100hz_response_f1_db": -2.614902291223253,
+      "fixed_notch_q4_100hz_response_f2_db": -0.4607672421410028,
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T3_C15_W14/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "2df0e35d32bff888c3225638d468b2e796d8942387002a48cf53b4242d3c6a27"
+    }
+  ],
+  "interpretation_limit": "Frequency co-occurrence in paired TRAIN raws is not a causal intervention; it must not be used as runtime wind truth."
+}

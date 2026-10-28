@@ -1,0 +1,57 @@
+{
+  "schema": "COMPOSITE_HEAD_PEER_REVIEW_V1",
+  "review_date": "2026-10-27",
+  "scope": "specified files only; read-only static review",
+  "overall": "FORMULA_CORRECT_ONLY_FOR_IDEAL_UNCLIPPED_TERM; NO_PLANT_RELEASE_AUTHORIZED",
+  "findings": [
+    {
+      "id": "tracking_sign_coordinates",
+      "class": "math_consistent_with_conditions",
+      "summary": "For Dtilde = D - D*, the negative update cancels z' T beta S Dtilde' phi in the unsaturated continuous ideal model."
+    },
+    {
+      "id": "event_dt_and_beta_semantics",
+      "class": "specification_clarification_before_plant",
+      "summary": "Use elapsed attitude-event time, clarify beta-ramp gating, and apply one final projection after combining both updates."
+    },
+    {
+      "id": "output_saturation",
+      "class": "design_boundary",
+      "summary": "dmax clipping breaks exact cancellation on saturated axes; prior v1 traces include clipping events."
+    },
+    {
+      "id": "known_signals_and_fixed_j0",
+      "class": "consistent",
+      "summary": "P.inertia is fixed J0 in the formal candidate path; verify the inertia_dot_for_bs/inertia_dot source. Do not use Jhat/Jdot_hat or Plant truth."
+    },
+    {
+      "id": "stability",
+      "class": "conditional_only",
+      "summary": "No unconditional or composite closed-loop stability guarantee is established."
+    },
+    {
+      "id": "single_factor_controls",
+      "class": "adequate_for_matched_policy_effect_only",
+      "summary": "Matched v1 prediction-only comparisons can estimate total treatment effect, not prove the proposed Lyapunov mechanism or generalization."
+    },
+    {
+      "id": "combined_projection_order",
+      "class": "pre_plant_implementation_requirement",
+      "summary": "Existing v1 projects immediately after RLS; composite implementation must add tracking delta before the single final projection."
+    },
+    {
+      "id": "bs_inertia_dot_source",
+      "class": "pre_plant_invariant_check",
+      "summary": "Authorized sources lock BS P.inertia to J0 in formal mode but do not assert inertia_dot_for_bs is zero or disclose its source."
+    }
+  ],
+  "plant_or_matlab_run": false,
+  "test_read": false,
+  "control_code_modified": false,
+  "root_release_decision": "not_made",
+  "independent_reviewer": {
+    "model": "GPT-6-Luna",
+    "reasoning_effort": "xhigh",
+    "service_tier": "default"
+  }
+}

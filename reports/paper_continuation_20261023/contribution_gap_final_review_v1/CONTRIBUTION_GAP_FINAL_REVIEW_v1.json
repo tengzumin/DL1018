@@ -1,0 +1,133 @@
+{
+  "schema": "C5_CONTRIBUTION_GAP_FINAL_REVIEW_V1",
+  "overall_verdict": "LIMITED_MECHANISM_DESCRIPTION_ACCEPTED_NOVELTY_UNRESOLVED",
+  "scope": {
+    "read_only": true,
+    "MATLAB_started": false,
+    "Plant_started": false,
+    "TEST_raw_or_score_read": false,
+    "external_code_executed": false,
+    "candidate_or_parameter_changed": false
+  },
+  "summary": {
+    "not_just_software_fix": "C5 changes the online residual target, event-time gradient, and fixed coordinate mask in a mathematically explicit way.",
+    "novelty_not_passed": "Pretrained representations, linear online adaptation, composite tracking/prediction/leakage, history integrals, command filtering, and weight projection have primary-source precedents. The exact C5 coordinate/time realization may remain a constrained contribution, but priority and sufficiency are unresolved.",
+    "publication_position": "A fixed-chain discrete mechanism and conditional finite-path analysis, not a new general adaptive-control theory."
+  },
+  "items": [
+    {
+      "item": "PCF_coordinate_label",
+      "classification": "explicit_algorithmic_difference; causal_value_not_isolated",
+      "c5_definition": "a_M = M a_f + (I-M) a_req = a_req - M r_f; y_j = ((v_n-v_j) - integral_[j,n] a_M dt)/0.01; M=diag(1,1,0).",
+      "source_anchors": [
+        "experiments/position_axis_coordinate_c5_dev72_20261023/run_dl1018_closed_loop.m:717,2014-2048,2257-2270",
+        "reports/paper_continuation_20261023/DEV72_METHOD_RESULTS_INCREMENT_ZH.md:29-33"
+      ],
+      "prior_coverage": "Neural-Fly uses measured aerodynamic residual prediction in a composite update; Jiang et al. use an exponentially forgotten history-regression prediction error. Neither reviewed source gives this exact mixed PCF reference and completed-interval label.",
+      "evidence": "72-scene numerical physical bridge and conditional finite-path forcing decomposition (F) support the mapping. C5-vs-C3 changes the complete fixed mask, not the label alone; NO_PRED retains the target.",
+      "judgment": "Describe as a coordinate-matched target for this fixed PCF chain. Do not claim first use or a label-only causal benefit."
+    },
+    {
+      "item": "completed_interval_prediction_gradient",
+      "classification": "specific_discrete_algorithmic_realization_with_existing_composite_learning_precedent",
+      "c5_definition": "At event q, use phi_(q-1) and the now-completed interval target y_(q-1) to form phi_(q-1)(W_q^T phi_(q-1)-y_(q-1))^T; the event output uses W_q before update; n=320 has no previous interval and j=n-10 thereafter.",
+      "source_anchors": [
+        "experiments/position_axis_coordinate_c5_dev72_20261023/run_dl1018_closed_loop.m:2023-2048",
+        "experiments/position_axis_coordinate_c5_dev72_20261023/delayed_prediction_step_candidate.m:19-43"
+      ],
+      "prior_coverage": "Neural-Fly main Eq. (8) and discrete S4 Eqs. (18)-(19) use composite tracking/prediction adaptation; Jiang et al. Eqs. (44)-(48) use history-integral prediction plus tracking/leakage. The exact C5 10-ms velocity-increment/PCF label and event ordering differ.",
+      "evidence": {
+        "C5_vs_NO_PRED": {
+          "C5_Q_mm": 11.558928371025633,
+          "NO_PRED_Q_mm": 12.110170832282906,
+          "C5_wins_losses_ties": [54, 18, 0],
+          "C5_minus_NO_PRED_Q_mm": -0.5512424612572701,
+          "C5_minus_NO_PRED_descriptive_95pct_scene_bootstrap_mm": [-0.725159908212817, -0.37442253940696236],
+          "T2_C5_wins_losses": [13, 11],
+          "T2_C5_mean_advantage_um": 1.0671202672301614,
+          "T2_descriptive_95pct_interval_crosses_zero": true
+        }
+      },
+      "judgment": "The predictive term has finite closed-loop evidence in this fixed DEV set, with 18 regressions and a near-zero T2 mean difference. No ablation compares interval duration or alternative completed-label constructions."
+    },
+    {
+      "item": "fixed_M110",
+      "classification": "fixed_design_choice_with_matched_development_evidence",
+      "c5_definition": "M=diag(1,1,0), changing only the Z coordinate relative to C3/M111 while using the same control/plant chain.",
+      "source_anchors": [
+        "experiments/position_axis_coordinate_c5_dev72_20261023/run_dl1018_closed_loop.m:717,2014-2020,2264-2270",
+        "reports/paper_continuation_20261023/DEV72_FINAL_SCIENCE_SCOPE_DECISION_v2_ZH.md"
+      ],
+      "evidence": {
+        "C5_vs_C3_wins_losses": [53, 19],
+        "mean_Q_improvement_mm": 0.200316542212958
+      },
+      "judgment": "Supports the fixed M110 intervention on these development scenes, not global optimality, arbitrary-axis generalization, or attribution of all C5-vs-B gains."
+    },
+    {
+      "item": "joint_box_projection",
+      "classification": "common_constraint_handling_choice; exact_update_is_mathematically_audited",
+      "c5_definition": "Apply elementwise Pi_[-60,60] once to the sum of current tracking, leakage, and delayed prediction terms.",
+      "source_anchors": [
+        "experiments/position_axis_coordinate_c5_dev72_20261023/delayed_prediction_step_candidate.m:41-43",
+        "reports/paper_continuation_20261023/BOX_PROJECTION_FINITE_PATH_BOUND_ZH.md",
+        "reports/paper_continuation_20261023/BOX_PROJECTION_BOUND_NUMERIC_SCOPE_ADDENDUM_ZH.md"
+      ],
+      "prior_coverage": "Jiang et al. Eq. (49) use a norm-ball weight projection. Projection-set shape is a concrete operator difference but not novelty by itself. Neural-Fly's discrete covariance update is a different stability mechanism.",
+      "evidence": "The accepted finite-path bound covers the single projected step and its numeric residual. No DEV ablation removes projection.",
+      "judgment": "Report the exact implementation and analysis scope; do not claim the projection is a novel or separately validated performance mechanism."
+    },
+    {
+      "item": "finite_path_analysis",
+      "classification": "application_specific_conditional_analysis_candidate",
+      "evidence": "Accepted (B/H/F) bound, ordinary floating-point post-hoc mapping over all 72 DEV trajectories. Does not establish prior Plant stability, parameter convergence, future performance, or interval-arithmetic certification.",
+      "judgment": "Can accompany the mechanism as a scoped analysis contribution; derivation's priority and sufficiency against related discrete adaptive-control literature remain unverified."
+    }
+  ],
+  "prior_sources": [
+    {
+      "id": "neural_fly_paper",
+      "citation": "O'Connell et al., Neural-Fly Enables Rapid Learning for Agile Flight in Strong Winds, Science Robotics 7(66), eabm6597 (2022), DOI 10.1126/scirobotics.abm6597.",
+      "url": "https://arxiv.org/html/2205.06908",
+      "reviewed_parts": "Main Eqs. (7)-(9): linear coefficient control, prediction/tracking/leakage composite update; Supplement S4 Eqs. (18)-(19): discrete adaptation/covariance update."
+    },
+    {
+      "id": "neural_fly_official_code",
+      "citation": "aerorobotics/neural-fly, pinned commit 0ed50246b1f1db194e8f0726749351636d3501bf.",
+      "readme_url": "https://github.com/aerorobotics/neural-fly/blob/0ed50246b1f1db194e8f0726749351636d3501bf/README.md",
+      "model_url": "https://github.com/aerorobotics/neural-fly/blob/0ed50246b1f1db194e8f0726749351636d3501bf/mlmodel.py",
+      "scope": "README describes the notebook as offline DAIML training/validation; code is useful for representation and linear-fit precedent but does not expose the complete online controller."
+    },
+    {
+      "id": "jiang_tnnls",
+      "citation": "Jiang et al., Composite-Learning-Based Adaptive Neural Control for Dual-Arm Robots With Relative Motion, IEEE TNNLS 33(3):1010-1021 (2022; online 2020), DOI 10.1109/TNNLS.2020.3037795.",
+      "url": "https://doi.org/10.1109/TNNLS.2020.3037795",
+      "author_pdf_url": "https://robot.hnu.edu.cn/__local/9/ED/C7/44E36AB21A4F7DFA03929198159_5CECB4EB_308954.pdf",
+      "reviewed_parts": "Printed p.5 Eq. (37); p.6 Eqs. (44)-(49); p.6-7 PPE-conditioned Theorem 1. Its theorem is not transferable to DL1018."
+    },
+    {
+      "id": "quadrotor_2024_access_gap",
+      "citation": "Zhao et al., Discrete-Time Adaptive Fuzzy Command Filtered Backstepping Control for Quadrotor Unmanned Aerial Vehicle Systems: Theory and Experiments, IEEE TFS 32(6):3618-3628 (2024), DOI 10.1109/TFUZZ.2024.3379510.",
+      "url": "https://doi.org/10.1109/TFUZZ.2024.3379510",
+      "status": "Author full text not obtained. Coverage of PCF-coordinate target and completed-interval labels is unknown; no inference of absence is made."
+    }
+  ],
+  "prohibited_claims": [
+    "first or novel composite learning, integral supervision, tracking-plus-prediction, projection, or command filtering",
+    "global stability, prior Plant stability, parameter convergence, cross-seed generalization, or real flight",
+    "all C5-vs-B benefit is due to prediction or M110",
+    "T2 universally benefits from prediction",
+    "FREEZE_TRAINED_W0 is a no-network ablation"
+  ],
+  "source_sha256": {
+    "c5_core": "48350037b66efe00301b138068f187c62cf92583f0f9ba2fabc9b24f248a963c",
+    "c5_helper": "48feebf934b8eb90b4424f2286aa857c48213d229714f30af99aacf53329549d",
+    "c5_input_lock": "82024c01276cc4bfbd9b7772cf5332dee3fdfcbed422969589b68f1c90ed2d75",
+    "matched_ablation_independent_summary": "71b5b437b4d2515ef9abf1fa8ab19379a9e6e5520813ca5b499caed749fab9bd",
+    "physical_bridge_dev72_check": "381685296211cbdaf16dafe6e5593711abeb17d6764a11703d09f143d5d91c2c",
+    "box_projection_finite_path_bound": "48b63a205f27d4ef595fcf6a25ef1c8b45c8169c11251a77d244bc0c66b85406",
+    "box_projection_numeric_addendum": "0acccfb690f4757b90b8aa435f8e03ec31a9fb2fe691df45a7673d162244ef2a",
+    "jiang_author_pdf_local_only": "5d4ee22934c86e3cda4dbd7bb354f87cadf75a931f3d00589d37ee0a3fe5fe2a",
+    "neural_fly_code_inspection_record": "2e985e360e0b411a9630f82ca14794e8598f9f02a1fe3acdd4062189a42f752e"
+  }
+}

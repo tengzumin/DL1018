@@ -1,0 +1,43 @@
+{
+  "schema": "POSITION_DUAL_NOTCH_NO_POSITION_RESIDUAL_GRU_ABLATION_NOPLANT_V1",
+  "study_id": "position_compensation_dual_notch_no_residual_gru_ablation_v1",
+  "status": "PREDECLARED_NOPLANT_ONLY",
+  "purpose": "Isolate the incremental position residual-GRU effect while retaining the parent cosine-attitude-GRU, frozen C5 position controller, and the fixed W09 dual-notch action filter.",
+  "scenes": [
+    {"scene_id": "DL1018_DEV_T1_C10_W09", "source_study": "position_dc_penalty_oof_train_pair_preflight_W09_T1_C10_attempt014_v1", "fold_id": "holdout_W06_10"},
+    {"scene_id": "DL1018_DEV_T3_C09_W09", "source_study": "position_dc_penalty_oof_train_pair_preflight_W09_T3_C09_attempt015_v1", "fold_id": "holdout_W06_10"}
+  ],
+  "fixed_controls": {
+    "attitude_controller": "same parent cosine-GRU controller and model as the bound same-scene baseline",
+    "position_controller": "same frozen C5 position model/options as the bound same-scene baseline",
+    "position_residual_gru_runtime": "disabled; no residual_gru runtime field is passed",
+    "applied_position_action_filter": {
+      "centers_hz": [2.2, 3.2],
+      "quality_factor_each": [4.0, 4.0],
+      "sample_rate_hz": 100.0,
+      "action_limit_mps2": 3.0,
+      "location": "after final C5 action and before force injection",
+      "held_between_events": true
+    }
+  },
+  "invariants": {
+    "exact_options_check": "After removing only the dual-notch runtime payload, the runner must assert equality with the frozen C5 baseline options; residual GRU is absent, not removed from the comparison.",
+    "model_reference_only": "The former residual-GRU model, fold and checkpoint stay hash-bound for lineage only; this ablation must not deserialize or evaluate those weights.",
+    "disabled_model_parity": "Position residual-GRU forward parity is intentionally not run because that model is absent from the runtime.",
+    "notch_helper_parity": "R2025b recurrence and coefficient parity must pass for both frozen TRAIN W09 action sequences.",
+    "no_plant_boundary": "Stop before the first main-loop transition; zero attempt and first-Plant markers.",
+    "forbidden_scope": "No TEST/VAL reads, no inertia reconstruction, no Plant calls."
+  },
+  "future_raw_contract_not_run_here": {
+    "stage1_position_residual_gru_enabled": false,
+    "stage1_position_residual_gru_event_count": 0,
+    "stage1_position_residual_gru_event": "all zero",
+    "stage1_position_residual_gru_raw_delta_mps2": "all zero",
+    "stage1_position_residual_gru_clipped_delta_mps2": "all zero",
+    "stage1_position_residual_gru_applied_correction_mps2": "all zero",
+    "stage1_position_applied_dual_notch_enabled": true,
+    "stage1_position_applied_dual_notch_centers_hz": [2.2, 3.2],
+    "stage1_position_applied_dual_notch_q": [4.0, 4.0]
+  },
+  "interpretation_limit": "No closed-loop effect or position-Q cost is measured by this no-Plant ablation. Any future comparison requires a separately authorized one-call run per scene and must preserve the original frozen replay FAIL."
+}

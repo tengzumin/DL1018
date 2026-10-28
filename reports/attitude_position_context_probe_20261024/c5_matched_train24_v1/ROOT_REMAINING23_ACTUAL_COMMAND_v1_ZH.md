@@ -1,0 +1,18 @@
+# TRAIN24 剩余23场：实际启动命令与续跑规则
+
+实际批处理 session：55485。启动时核实脚本 SHA256 为 e5f7d083b878ce3fec50e8c651ed15d2a21275805036077d8cebd3ddbbf41bdd。
+
+```powershell
+pwsh -NoProfile -File reports/attitude_position_context_probe_20261024/c5_matched_train24_v1/root_run_remaining23_train24_v1.ps1 -CampaignReleasePath reports/attitude_position_context_probe_20261024/c5_matched_train24_v1/releases/ROOT_REMAINING23_CAMPAIGN_RELEASE_v1.json -ExpectedCampaignReleaseSha256 4ace2b131f01cd024a0234a3888a8a75980acd6b97a93b5c1f072f8ed4dc667b -FirstAuditPath reports/attitude_position_context_probe_20261024/c5_matched_train24_v1/ROOT_FIRST_CSTAR_EXPORT_INDEPENDENT_AUDIT_v1.json -ExpectedFirstAuditSha256 ec18d16f769143097206996c4e3d2ff31578fd42e8e1d833c0371bd6567f85a2 -Execute
+```
+
+此命令为已发生启动的记录，不是重新运行指令。批处理目录已存在时会拒绝再次启动；观察超时不得视为失败或重启依据。恢复对话时先poll session55485并读 remaining23_campaign_4ace2b131f01/execution_ledger.jsonl，再按真实terminal状态决定。若失败，保留真实启动及产物，不能覆盖或静默重跑。
+
+完成后（且源码SHA审核通过）独立检查入口：
+
+```powershell
+python reports/attitude_cm18_datarepair_20261024/root_audit_train24_cstar_batch_v1.py
+python reports/attitude_cm18_datarepair_20261024/root_audit_train24_causal_inputs_v1.py
+```
+
+两审计输出采用新建、不覆盖。Cstar审计独立复算导出G/E0的算术和文件身份；因果输入审计独立覆盖15/18列，alphaBS不在其范围，不能夸大为原始物理方程全独立重建。另对T3非平凡场景检查实际覆盖。数据通过不等于模型训练或闭环通过。当前无新增optimizer、无TEST访问。

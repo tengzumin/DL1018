@@ -1,0 +1,353 @@
+{
+  "schema": "DL1018_GRU_TRACKING_HF_TRACE_AUDIT_V1",
+  "status": "PASS_READ_ONLY_TRACE_REPLAY",
+  "cohort": [
+    "DL1018_DEV_T1_C10_W09",
+    "DL1018_VAL_T1_C07_W14",
+    "DL1018_DEV_T2_C09_W10",
+    "DL1018_VAL_T2_C04_W14",
+    "DL1018_DEV_T3_C09_W09",
+    "DL1018_VAL_T3_C01_W14"
+  ],
+  "scope": "Six DEV/VAL GRU force09 raws are independently replayed; parent WN18 raw replay audit results are inherited as locked references. Trace replay uses only fixed controller J0, never plant truth J/Jdot; no Plant/TEST.",
+  "runtime_source_hash_comparison": {
+    "candidate_runner_work/matlab/runtime/gru_stream_tracking_head_step_v1.m": {
+      "parent_sha256": "228fba90d1954780a55b42436f2a659030950f684970537d7108566b938f3c67",
+      "force09_sha256": "228fba90d1954780a55b42436f2a659030950f684970537d7108566b938f3c67",
+      "identical": true
+    },
+    "candidate_runner_work/matlab/core/attitude_bs_step.m": {
+      "parent_sha256": "cf6b20ffc4df2625d9316a80340d69542e380d14feaed66ef8498e793fdaccbc",
+      "force09_sha256": "cf6b20ffc4df2625d9316a80340d69542e380d14feaed66ef8498e793fdaccbc",
+      "identical": true
+    }
+  },
+  "law_constants_from_frozen_runtime": {
+    "K1_attitude": [
+      1.5,
+      1.5,
+      1.3
+    ],
+    "dmax_rad_s2": [
+      45.0,
+      45.0,
+      4.7124
+    ],
+    "beta_rise_time_s": 2.2,
+    "gamma": [
+      2.1,
+      2.25,
+      1.1
+    ],
+    "sigma_w": [
+      0.11,
+      0.12,
+      0.2
+    ],
+    "s_limit": [
+      2.3,
+      2.3,
+      1.4
+    ],
+    "wmax": 60.0
+  },
+  "trace_interpretation": {
+    "error_reference": "feature[0:3] reconstructs wrap(filtered_attitude_reference - actual_Euler); feature[3:6] is measured body omega; feature[6:9] is logged BS nominal torque; feature[9:13] is the current arm command.",
+    "T_coordinates": "T is recomputed from actual ZYX Euler angles and maps body omega to Euler rates; T^T surface is the body-coordinate tracking drive. Trace replay checks both.",
+    "sign": "The fixed law outputs estimateTorque=J0*(beta*clip(q)); the runtime subtracts that residual torque from nominal torque. The trace is tested against that exact equation.",
+    "time_order": "Each event output uses DeltaW_before, then updates DeltaW for the next event; event dt is checked against successive event times and held torque against the 1-ms log.",
+    "scale_and_clip": "position_nn_compensation_scale=.9 is a separate position-force path change; the GRU attitude residual keeps the same beta ramp, dmax, and fixed J0 mapping."
+  },
+  "per_scene": [
+    {
+      "scene_id": "DL1018_DEV_T1_C10_W09",
+      "method": "GRU_alpha09",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261027\\gru_tracking_force09_v1\\runs\\DL1018_DEV_T1_C10_W09\\GRU_FORCE09_ATTEMPT_01\\raw_run.mat",
+      "raw_sha256": "cd9fb82d98b316ac2d0ddd8e0362545742a31341ee71d3b0739e64f33703b1eb",
+      "position_scale": 0.9,
+      "position_scale_source_bindings": {
+        "release": 0.9,
+        "run_start": 0.9,
+        "run_status": 0.9,
+        "raw_runIdentity_decoded": 0.9
+      },
+      "event_count": 1999,
+      "first_sample_index": 11,
+      "last_sample_index": 19991,
+      "event_interval_mean_s": 0.009999999999999998,
+      "trace_clip_count": 0,
+      "weight_update_event_count": 1999,
+      "max_raw_residual_abs_rad_s2": 25.944854230476867,
+      "max_clipped_residual_abs_rad_s2": 25.944854230476867,
+      "max_abs_trace_replay_error": {
+        "feature": 1.3877787807814457e-17,
+        "T_map": 1.1102230246251565e-16,
+        "surface": 5.551115123125783e-17,
+        "drive": 5.551115123125783e-17,
+        "event_dt": 0.0,
+        "beta": 0.0,
+        "raw_equation": 3.552713678800501e-15,
+        "clip": 3.552713678800501e-15,
+        "beta_scale": 3.552713678800501e-15,
+        "torque": 1.3877787807814457e-17,
+        "deltaW_dot": 1.6653345369377348e-16,
+        "deltaW_step": 5.551115123125783e-17,
+        "update_params": 0.0,
+        "sample_hold": 1.3877787807814457e-17,
+        "torque_sign": 2.7755575615628914e-17
+      },
+      "max_abs_error": 3.552713678800501e-15
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C07_W14",
+      "method": "GRU_alpha09",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261027\\gru_tracking_force09_v1\\runs\\DL1018_VAL_T1_C07_W14\\GRU_FORCE09_ATTEMPT_01\\raw_run.mat",
+      "raw_sha256": "a6b3e928412914221987d60967a656e5b10887db8dc62578997526896a3f197b",
+      "position_scale": 0.9,
+      "position_scale_source_bindings": {
+        "release": 0.9,
+        "run_start": 0.9,
+        "run_status": 0.9,
+        "raw_runIdentity_decoded": 0.9
+      },
+      "event_count": 1999,
+      "first_sample_index": 11,
+      "last_sample_index": 19991,
+      "event_interval_mean_s": 0.009999999999999998,
+      "trace_clip_count": 0,
+      "weight_update_event_count": 1999,
+      "max_raw_residual_abs_rad_s2": 32.78195838701671,
+      "max_clipped_residual_abs_rad_s2": 32.78195838701671,
+      "max_abs_trace_replay_error": {
+        "feature": 1.3877787807814457e-17,
+        "T_map": 2.220446049250313e-16,
+        "surface": 1.1102230246251565e-16,
+        "drive": 1.1102230246251565e-16,
+        "event_dt": 0.0,
+        "beta": 0.0,
+        "raw_equation": 7.105427357601002e-15,
+        "clip": 7.105427357601002e-15,
+        "beta_scale": 7.105427357601002e-15,
+        "torque": 2.7755575615628914e-17,
+        "deltaW_dot": 2.7755575615628914e-16,
+        "deltaW_step": 5.551115123125783e-17,
+        "update_params": 0.0,
+        "sample_hold": 2.7755575615628914e-17,
+        "torque_sign": 2.7755575615628914e-17
+      },
+      "max_abs_error": 7.105427357601002e-15
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C09_W10",
+      "method": "GRU_alpha09",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261027\\gru_tracking_force09_v1\\runs\\DL1018_DEV_T2_C09_W10\\GRU_FORCE09_ATTEMPT_01\\raw_run.mat",
+      "raw_sha256": "bb68d8f3b5c34b1e0472bf5b2864a74a70d773e8862e37718690ec2b9d13d5ee",
+      "position_scale": 0.9,
+      "position_scale_source_bindings": {
+        "release": 0.9,
+        "run_start": 0.9,
+        "run_status": 0.9,
+        "raw_runIdentity_decoded": 0.9
+      },
+      "event_count": 1999,
+      "first_sample_index": 11,
+      "last_sample_index": 19991,
+      "event_interval_mean_s": 0.009999999999999998,
+      "trace_clip_count": 0,
+      "weight_update_event_count": 1999,
+      "max_raw_residual_abs_rad_s2": 9.804285314522012,
+      "max_clipped_residual_abs_rad_s2": 9.804285314522012,
+      "max_abs_trace_replay_error": {
+        "feature": 3.469446951953614e-18,
+        "T_map": 1.1102230246251565e-16,
+        "surface": 1.1102230246251565e-16,
+        "drive": 1.1102230246251565e-16,
+        "event_dt": 0.0,
+        "beta": 0.0,
+        "raw_equation": 1.7763568394002505e-15,
+        "clip": 1.7763568394002505e-15,
+        "beta_scale": 1.7763568394002505e-15,
+        "torque": 6.938893903907228e-18,
+        "deltaW_dot": 2.3592239273284576e-16,
+        "deltaW_step": 1.3877787807814457e-17,
+        "update_params": 0.0,
+        "sample_hold": 6.938893903907228e-18,
+        "torque_sign": 1.3877787807814457e-17
+      },
+      "max_abs_error": 1.7763568394002505e-15
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C04_W14",
+      "method": "GRU_alpha09",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261027\\gru_tracking_force09_v1\\runs\\DL1018_VAL_T2_C04_W14\\GRU_FORCE09_ATTEMPT_01\\raw_run.mat",
+      "raw_sha256": "43a3bba35d5e33e4b31bd25d06130934a6bd085d315f6522a60a135d837f9944",
+      "position_scale": 0.9,
+      "position_scale_source_bindings": {
+        "release": 0.9,
+        "run_start": 0.9,
+        "run_status": 0.9,
+        "raw_runIdentity_decoded": 0.9
+      },
+      "event_count": 1999,
+      "first_sample_index": 11,
+      "last_sample_index": 19991,
+      "event_interval_mean_s": 0.009999999999999998,
+      "trace_clip_count": 0,
+      "weight_update_event_count": 1999,
+      "max_raw_residual_abs_rad_s2": 7.186392411848479,
+      "max_clipped_residual_abs_rad_s2": 7.186392411848479,
+      "max_abs_trace_replay_error": {
+        "feature": 3.469446951953614e-18,
+        "T_map": 2.220446049250313e-16,
+        "surface": 1.1102230246251565e-16,
+        "drive": 1.1015494072452725e-16,
+        "event_dt": 0.0,
+        "beta": 0.0,
+        "raw_equation": 8.881784197001252e-16,
+        "clip": 8.881784197001252e-16,
+        "beta_scale": 8.881784197001252e-16,
+        "torque": 3.469446951953614e-18,
+        "deltaW_dot": 2.480654570646834e-16,
+        "deltaW_step": 1.3877787807814457e-17,
+        "update_params": 0.0,
+        "sample_hold": 3.469446951953614e-18,
+        "torque_sign": 1.3877787807814457e-17
+      },
+      "max_abs_error": 8.881784197001252e-16
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C09_W09",
+      "method": "GRU_alpha09",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261027\\gru_tracking_force09_v1\\runs\\DL1018_DEV_T3_C09_W09\\GRU_FORCE09_ATTEMPT_01\\raw_run.mat",
+      "raw_sha256": "401f2fa9bb8d7f5dcfe912c8dae3ff6762cf034323b0160c181cbc4cad4c77fc",
+      "position_scale": 0.9,
+      "position_scale_source_bindings": {
+        "release": 0.9,
+        "run_start": 0.9,
+        "run_status": 0.9,
+        "raw_runIdentity_decoded": 0.9
+      },
+      "event_count": 1999,
+      "first_sample_index": 11,
+      "last_sample_index": 19991,
+      "event_interval_mean_s": 0.009999999999999998,
+      "trace_clip_count": 0,
+      "weight_update_event_count": 1999,
+      "max_raw_residual_abs_rad_s2": 9.234106428005575,
+      "max_clipped_residual_abs_rad_s2": 9.234106428005575,
+      "max_abs_trace_replay_error": {
+        "feature": 3.469446951953614e-18,
+        "T_map": 2.220446049250313e-16,
+        "surface": 5.551115123125783e-17,
+        "drive": 5.551115123125783e-17,
+        "event_dt": 0.0,
+        "beta": 0.0,
+        "raw_equation": 1.7763568394002505e-15,
+        "clip": 1.7763568394002505e-15,
+        "beta_scale": 1.7763568394002505e-15,
+        "torque": 6.938893903907228e-18,
+        "deltaW_dot": 1.249000902703301e-16,
+        "deltaW_step": 1.3877787807814457e-17,
+        "update_params": 0.0,
+        "sample_hold": 6.938893903907228e-18,
+        "torque_sign": 1.3877787807814457e-17
+      },
+      "max_abs_error": 1.7763568394002505e-15
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C01_W14",
+      "method": "GRU_alpha09",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261027\\gru_tracking_force09_v1\\runs\\DL1018_VAL_T3_C01_W14\\GRU_FORCE09_ATTEMPT_01\\raw_run.mat",
+      "raw_sha256": "a1ac56f7d1b751707f2c9785f3c67723000e1dd8ac99992746c838e914de51fe",
+      "position_scale": 0.9,
+      "position_scale_source_bindings": {
+        "release": 0.9,
+        "run_start": 0.9,
+        "run_status": 0.9,
+        "raw_runIdentity_decoded": 0.9
+      },
+      "event_count": 1999,
+      "first_sample_index": 11,
+      "last_sample_index": 19991,
+      "event_interval_mean_s": 0.009999999999999998,
+      "trace_clip_count": 0,
+      "weight_update_event_count": 1999,
+      "max_raw_residual_abs_rad_s2": 16.563164118355285,
+      "max_clipped_residual_abs_rad_s2": 16.563164118355285,
+      "max_abs_trace_replay_error": {
+        "feature": 6.938893903907228e-18,
+        "T_map": 2.220446049250313e-16,
+        "surface": 2.220446049250313e-16,
+        "drive": 2.0816681711721685e-16,
+        "event_dt": 0.0,
+        "beta": 0.0,
+        "raw_equation": 3.552713678800501e-15,
+        "clip": 3.552713678800501e-15,
+        "beta_scale": 3.552713678800501e-15,
+        "torque": 1.3877787807814457e-17,
+        "deltaW_dot": 4.718447854656915e-16,
+        "deltaW_step": 2.7755575615628914e-17,
+        "update_params": 0.0,
+        "sample_hold": 1.3877787807814457e-17,
+        "torque_sign": 1.3877787807814457e-17
+      },
+      "max_abs_error": 3.552713678800501e-15
+    }
+  ],
+  "parent_WN18_trace_audits": [
+    {
+      "scene_id": "DL1018_DEV_T1_C10_W09",
+      "status": "PASS_INDEPENDENT_GRU_STREAM_TRACKING_HEAD_RAW_REPLAY",
+      "max_actual_event_dt_error_s": 0,
+      "max_feature_rebuild_error": 0,
+      "max_euler_rate_map_rebuild_error": 0,
+      "max_q_raw_replay_error_rad_s2": 0,
+      "max_torque_equation_error_Nm": 0
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C07_W14",
+      "status": "PASS_INDEPENDENT_GRU_STREAM_TRACKING_HEAD_RAW_REPLAY",
+      "max_actual_event_dt_error_s": 0,
+      "max_feature_rebuild_error": 0,
+      "max_euler_rate_map_rebuild_error": 0,
+      "max_q_raw_replay_error_rad_s2": 0,
+      "max_torque_equation_error_Nm": 0
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C09_W10",
+      "status": "PASS_INDEPENDENT_GRU_STREAM_TRACKING_HEAD_RAW_REPLAY",
+      "max_actual_event_dt_error_s": 0,
+      "max_feature_rebuild_error": 0,
+      "max_euler_rate_map_rebuild_error": 0,
+      "max_q_raw_replay_error_rad_s2": 0,
+      "max_torque_equation_error_Nm": 0
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C04_W14",
+      "status": "PASS_INDEPENDENT_GRU_STREAM_TRACKING_HEAD_RAW_REPLAY",
+      "max_actual_event_dt_error_s": 0,
+      "max_feature_rebuild_error": 0,
+      "max_euler_rate_map_rebuild_error": 0,
+      "max_q_raw_replay_error_rad_s2": 0,
+      "max_torque_equation_error_Nm": 0
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C09_W09",
+      "status": "PASS_INDEPENDENT_GRU_STREAM_TRACKING_HEAD_RAW_REPLAY",
+      "max_actual_event_dt_error_s": 0,
+      "max_feature_rebuild_error": 0,
+      "max_euler_rate_map_rebuild_error": 0,
+      "max_q_raw_replay_error_rad_s2": 0,
+      "max_torque_equation_error_Nm": 0
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C01_W14",
+      "status": "PASS_INDEPENDENT_GRU_STREAM_TRACKING_HEAD_RAW_REPLAY",
+      "max_actual_event_dt_error_s": 0,
+      "max_feature_rebuild_error": 0,
+      "max_euler_rate_map_rebuild_error": 0,
+      "max_q_raw_replay_error_rad_s2": 0,
+      "max_torque_equation_error_Nm": 0
+    }
+  ]
+}

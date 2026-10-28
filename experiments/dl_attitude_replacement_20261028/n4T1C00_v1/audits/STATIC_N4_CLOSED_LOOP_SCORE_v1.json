@@ -1,0 +1,1322 @@
+{
+  "status": "FAIL_FIXED_SCENE_N4_DIAGNOSTIC",
+  "study_id": "static_n4_T1C00_no_position_gru_v1",
+  "scene_id": "DL1018_DEV_T1_C00_W03",
+  "source_split": "TRAIN_C5_24",
+  "wind_peaks_hz": [
+    0.6,
+    0.85
+  ],
+  "MATLAB_release": "R2025b",
+  "Plant_calls": 1,
+  "TEST_read": false,
+  "VAL_read": false,
+  "inertia_reconstruction_enabled": false,
+  "prior_two_notch_status_preserved": "FAIL_FIXED_FROZEN_REPLAY",
+  "n4_train24_replay_status_preserved": "MEASURED_FIXED_TRAIN24_REPLAY",
+  "fixed_intervention": {
+    "centers_hz": [
+      2.2,
+      3.2,
+      3.7,
+      4.8
+    ],
+    "quality_factor_each": [
+      4,
+      4,
+      4,
+      4
+    ],
+    "sample_rate_hz": 100.0,
+    "action_limit_mps2": 3.0,
+    "application_point": "final held C5 compensation before force injection",
+    "runtime_wind_or_W_code_branching": false
+  },
+  "frozen_score_source_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_full72_v1\\audits\\score_full72_candidate_v1.py",
+  "frozen_score_source_sha256": "6baf689802f4d73ead813449e52a8fe85cb0be92c3185850c93646da2d54dd16",
+  "score_constants_sha256": "507f9a13af2d20aca64a08ea7846991198112bd97ca8456dccb9402ec9424862",
+  "same_scene_inputs": {
+    "B": {
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\b_traceable_c3core_dev72_20261023\\runs_b\\DL1018_DEV_T1_C00_W03\\B_TRACEABLE_C3CORE_V1\\attempt_01\\raw_run.mat",
+      "raw_sha256": "8fa0964a04f9c12cb1511d465198b540000eb0956d992b8f956769350e87fb40",
+      "status_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\b_traceable_c3core_dev72_20261023\\runs_b\\DL1018_DEV_T1_C00_W03\\B_TRACEABLE_C3CORE_V1\\attempt_01\\run_status.json",
+      "status_sha256": "fca4ffb310096cdb9888be7958d2773b5bc22283ada19d1c0f3f1620e51b7477"
+    },
+    "C5": {
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_DEV_T1_C00_W03\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "fa36bf4aa229279d964b40c10cb3579487b5c641d167572383ef49f63196af5d",
+      "status_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_DEV_T1_C00_W03\\C5_AXIS_MASK_M110\\attempt_01\\run_status.json",
+      "status_sha256": "86696aed73d7cde391378a38ca67b4c4b7ea2f0fbcc2144eabd780fb568fd0e6"
+    },
+    "parent_C5_cosine_GRU_pre_filter": {
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_full72_v1\\runs\\DL1018_DEV_T1_C00_W03\\raw_run.mat",
+      "raw_sha256": "eb3f514139227d4d6d145265c1eae817b1bf49a9d612c221cdde7f4869b9bf85",
+      "status_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_full72_v1\\runs\\DL1018_DEV_T1_C00_W03\\run_status.json",
+      "status_sha256": "d886f63f8cf07e8e9a26d7921e6421531da49feb9546c4e2d79422e5cb83c432"
+    },
+    "candidate_static_N4": {
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\n4T1C00_v1\\runs\\DL1018_DEV_T1_C00_W03\\attempt_01\\raw_run.mat",
+      "raw_sha256": "aa19c16c836014b60bb53df0feea061e4a33668a928a055706a2e4fbadc3da3d",
+      "status_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\n4T1C00_v1\\runs\\DL1018_DEV_T1_C00_W03\\attempt_01\\run_status.json",
+      "status_sha256": "7a223fda157f601cb51b30a9585ceba3408d541aac95f782699e44507c7bc80a"
+    }
+  },
+  "scores": {
+    "candidate_static_N4": {
+      "Q_m": 0.008808586108462463,
+      "task_SO3_rad": 0.04698846744344412,
+      "inner_SO3_rad": 0.00024841106102429107,
+      "axis_phase": {
+        "ALL": {
+          "state_samples": 20001,
+          "inner_samples": 20000,
+          "position_xyz_rmse_m": [
+            0.005168120832225944,
+            0.007107172310122407,
+            0.0006081266709653841
+          ],
+          "task_wrapped_euler_rmse_rad": [
+            0.03956544282217632,
+            0.025347882745768897,
+            5.320353746052064e-05
+          ],
+          "inner_wrapped_euler_rmse_rad": [
+            0.00018971666277159464,
+            0.0001508348076063217,
+            5.320485781960149e-05
+          ]
+        },
+        "0_5s": {
+          "state_samples": 5000,
+          "inner_samples": 5000,
+          "position_xyz_rmse_m": [
+            0.008426784111131081,
+            0.012837049009658033,
+            0.000720710533494409
+          ],
+          "task_wrapped_euler_rmse_rad": [
+            0.03956720806868409,
+            0.02382127117788426,
+            3.685840966302968e-05
+          ],
+          "inner_wrapped_euler_rmse_rad": [
+            0.00019457266616129643,
+            0.00011376255621837514,
+            3.685840966302968e-05
+          ]
+        },
+        "15_20s": {
+          "state_samples": 5001,
+          "inner_samples": 5000,
+          "position_xyz_rmse_m": [
+            0.0030760876329866006,
+            0.003144122674315866,
+            0.0004170295629951191
+          ],
+          "task_wrapped_euler_rmse_rad": [
+            0.037537292074489324,
+            0.025370867093098427,
+            2.850616407268864e-05
+          ],
+          "inner_wrapped_euler_rmse_rad": [
+            0.00018615799787877104,
+            0.00017617763914300828,
+            2.8508942041074724e-05
+          ]
+        }
+      },
+      "safety": {
+        "motor_saturation_samples": 0,
+        "generalized_clip_samples": 0,
+        "tilt_limited_samples": 0,
+        "attitude_head_projection_samples": 0,
+        "attitude_head_output_saturated_samples": 0
+      }
+    },
+    "B": {
+      "Q_m": 0.013272613791615871,
+      "task_SO3_rad": 0.053701576151397666,
+      "inner_SO3_rad": 7.112784469975055e-05,
+      "axis_phase": {
+        "ALL": {
+          "state_samples": 20001,
+          "inner_samples": 20000,
+          "position_xyz_rmse_m": [
+            0.007074285888826002,
+            0.011200656366777723,
+            0.0008136663799810402
+          ],
+          "task_wrapped_euler_rmse_rad": [
+            0.045501246977614,
+            0.028526823688067488,
+            4.930040160312636e-07
+          ],
+          "inner_wrapped_euler_rmse_rad": [
+            5.982692448216723e-05,
+            3.84532689011626e-05,
+            4.930113097419876e-07
+          ]
+        },
+        "0_5s": {
+          "state_samples": 5000,
+          "inner_samples": 5000,
+          "position_xyz_rmse_m": [
+            0.008363410795252681,
+            0.013392742968296302,
+            0.0007033129501470507
+          ],
+          "task_wrapped_euler_rmse_rad": [
+            0.04402595421764206,
+            0.02635588945703822,
+            4.148616884069554e-07
+          ],
+          "inner_wrapped_euler_rmse_rad": [
+            5.518977178820604e-05,
+            3.443390027781014e-05,
+            4.148616884069554e-07
+          ]
+        },
+        "15_20s": {
+          "state_samples": 5001,
+          "inner_samples": 5000,
+          "position_xyz_rmse_m": [
+            0.0068782038194956634,
+            0.010643940573095137,
+            0.0007087898856137543
+          ],
+          "task_wrapped_euler_rmse_rad": [
+            0.04477610976550095,
+            0.029327442463774125,
+            4.869713446148642e-07
+          ],
+          "inner_wrapped_euler_rmse_rad": [
+            6.247486736515057e-05,
+            4.0094766694492906e-05,
+            4.869996662671973e-07
+          ]
+        }
+      },
+      "safety": {
+        "motor_saturation_samples": 0,
+        "generalized_clip_samples": 0,
+        "tilt_limited_samples": 0,
+        "attitude_head_projection_samples": 0,
+        "attitude_head_output_saturated_samples": 0
+      }
+    },
+    "C5": {
+      "Q_m": 0.00824325789252723,
+      "task_SO3_rad": 0.046463290235808995,
+      "inner_SO3_rad": 3.5885983843013744e-05,
+      "axis_phase": {
+        "ALL": {
+          "state_samples": 20001,
+          "inner_samples": 20000,
+          "position_xyz_rmse_m": [
+            0.004781460494613293,
+            0.006688815963909969,
+            0.0005904889686591545
+          ],
+          "task_wrapped_euler_rmse_rad": [
+            0.03917110909185303,
+            0.024991611225383938,
+            1.8455405133962808e-07
+          ],
+          "inner_wrapped_euler_rmse_rad": [
+            2.7985983835085805e-05,
+            2.2457588964863335e-05,
+            1.8455829182312526e-07
+          ]
+        },
+        "0_5s": {
+          "state_samples": 5000,
+          "inner_samples": 5000,
+          "position_xyz_rmse_m": [
+            0.007938971883681503,
+            0.012152834574893419,
+            0.0006965971424891523
+          ],
+          "task_wrapped_euler_rmse_rad": [
+            0.039138592920653574,
+            0.02347175698356954,
+            2.268513214568914e-07
+          ],
+          "inner_wrapped_euler_rmse_rad": [
+            3.192972583002401e-05,
+            2.24742239100664e-05,
+            2.268513214568914e-07
+          ]
+        },
+        "15_20s": {
+          "state_samples": 5001,
+          "inner_samples": 5000,
+          "position_xyz_rmse_m": [
+            0.002626106713346212,
+            0.0028917028143298127,
+            0.00040723957952131754
+          ],
+          "task_wrapped_euler_rmse_rad": [
+            0.03718250991099412,
+            0.024988282934523803,
+            1.2158524346837856e-07
+          ],
+          "inner_wrapped_euler_rmse_rad": [
+            2.519867975680484e-05,
+            2.006780177532849e-05,
+            1.2159513494863472e-07
+          ]
+        }
+      },
+      "safety": {
+        "motor_saturation_samples": 0,
+        "generalized_clip_samples": 0,
+        "tilt_limited_samples": 0,
+        "attitude_head_projection_samples": 0,
+        "attitude_head_output_saturated_samples": 0
+      }
+    },
+    "parent_C5_cosine_GRU_pre_filter": {
+      "Q_m": 0.008246852595541972,
+      "task_SO3_rad": 0.04644264267496933,
+      "inner_SO3_rad": 0.000235046630000763,
+      "axis_phase": {
+        "ALL": {
+          "state_samples": 20001,
+          "inner_samples": 20000,
+          "position_xyz_rmse_m": [
+            0.00477004946640667,
+            0.0067013348042443644,
+            0.0005910310161521741
+          ],
+          "task_wrapped_euler_rmse_rad": [
+            0.039151741093362766,
+            0.024981416220902206,
+            5.1667568171367944e-05
+          ],
+          "inner_wrapped_euler_rmse_rad": [
+            0.00017506369664824136,
+            0.00014758429049407514,
+            5.166885270137049e-05
+          ]
+        },
+        "0_5s": {
+          "state_samples": 5000,
+          "inner_samples": 5000,
+          "position_xyz_rmse_m": [
+            0.007939932341114442,
+            0.01215676214887494,
+            0.0006968755864782596
+          ],
+          "task_wrapped_euler_rmse_rad": [
+            0.039121161071600366,
+            0.023476116609625616,
+            3.3990979493682904e-05
+          ],
+          "inner_wrapped_euler_rmse_rad": [
+            0.00017669312269762448,
+            0.00010692800646059325,
+            3.3990979493682904e-05
+          ]
+        },
+        "15_20s": {
+          "state_samples": 5001,
+          "inner_samples": 5000,
+          "position_xyz_rmse_m": [
+            0.002603089203878905,
+            0.0029259992580025697,
+            0.0004084313250453998
+          ],
+          "task_wrapped_euler_rmse_rad": [
+            0.03716757950292524,
+            0.024972028823639112,
+            2.6172575305796576e-05
+          ],
+          "inner_wrapped_euler_rmse_rad": [
+            0.0001722662793121537,
+            0.00017253859709637673,
+            2.6175136031908935e-05
+          ]
+        }
+      },
+      "safety": {
+        "motor_saturation_samples": 0,
+        "generalized_clip_samples": 0,
+        "tilt_limited_samples": 0,
+        "attitude_head_projection_samples": 0,
+        "attitude_head_output_saturated_samples": 0
+      }
+    }
+  },
+  "frequency_metrics": {
+    "candidate_static_N4": {
+      "bands": {
+        "2.2Hz": {
+          "band_hz": [
+            1.7000000000000002,
+            2.7
+          ],
+          "task_minus_actual_wrapped_euler_vector_rms_mrad": 0.48570621297989786,
+          "command_filter_target_vector_rms_mrad": 0.6616563257857369,
+          "filtered_attitude_reference_vector_rms_mrad": 0.4804573805175216,
+          "actual_euler_vector_rms_mrad": 0.48570760996895135,
+          "task_euler_vector_rms_mrad": 5.1748531681179775e-05,
+          "applied_compensation_vector_rms_mps2": 0.004120551092102041
+        },
+        "3.2Hz": {
+          "band_hz": [
+            2.7,
+            3.7
+          ],
+          "task_minus_actual_wrapped_euler_vector_rms_mrad": 0.006256221134438221,
+          "command_filter_target_vector_rms_mrad": 0.012169702593988072,
+          "filtered_attitude_reference_vector_rms_mrad": 0.00625246131669968,
+          "actual_euler_vector_rms_mrad": 0.006255154223948929,
+          "task_euler_vector_rms_mrad": 9.681952426011804e-06,
+          "applied_compensation_vector_rms_mps2": 0.00010201732960077088
+        },
+        "3.7Hz": {
+          "band_hz": [
+            3.2,
+            4.2
+          ],
+          "task_minus_actual_wrapped_euler_vector_rms_mrad": 0.0007038785112370734,
+          "command_filter_target_vector_rms_mrad": 0.0016938099247443888,
+          "filtered_attitude_reference_vector_rms_mrad": 0.0006993714856014788,
+          "actual_euler_vector_rms_mrad": 0.0007042256253339001,
+          "task_euler_vector_rms_mrad": 5.198361777826823e-06,
+          "applied_compensation_vector_rms_mps2": 1.5124306686448994e-05
+        },
+        "4.8Hz": {
+          "band_hz": [
+            4.3,
+            5.3
+          ],
+          "task_minus_actual_wrapped_euler_vector_rms_mrad": 0.00026571922832566717,
+          "command_filter_target_vector_rms_mrad": 0.000873957237138285,
+          "filtered_attitude_reference_vector_rms_mrad": 0.00026407804048909385,
+          "actual_euler_vector_rms_mrad": 0.00026581236608709487,
+          "task_euler_vector_rms_mrad": 1.7444961677021674e-06,
+          "applied_compensation_vector_rms_mps2": 8.337510747488172e-06
+        }
+      },
+      "exact_tones": {
+        "2.2Hz": {
+          "task_to_actual": {
+            "frequency_hz": 2.2,
+            "signal_axis_rms_amplitude": [
+              1.6557119053177364e-06,
+              1.5293674344076714e-06,
+              6.800882681108442e-08
+            ],
+            "signal_vector_rms_amplitude": 2.254988218009534e-06,
+            "phase_signal_minus_target_deg_per_axis": [
+              -166.15143994206446,
+              -157.76017730187877,
+              -0.0
+            ]
+          },
+          "command_to_filtered": {
+            "frequency_hz": 2.2,
+            "signal_axis_rms_amplitude": [
+              1.7325262792143227e-06,
+              1.3585454608252506e-06,
+              0.0
+            ],
+            "signal_vector_rms_amplitude": 2.201656893636499e-06,
+            "phase_signal_minus_target_deg_per_axis": [
+              -68.48242012104723,
+              -76.0412755830276,
+              0.0
+            ]
+          },
+          "filtered_to_actual": {
+            "frequency_hz": 2.2,
+            "signal_axis_rms_amplitude": [
+              1.6557119053177364e-06,
+              1.5293674344076714e-06,
+              6.800882681108442e-08
+            ],
+            "signal_vector_rms_amplitude": 2.254988218009534e-06,
+            "phase_signal_minus_target_deg_per_axis": [
+              0.4707219849017414,
+              -3.1785732030329603,
+              -0.0
+            ]
+          }
+        },
+        "3.2Hz": {
+          "task_to_actual": {
+            "frequency_hz": 3.2,
+            "signal_axis_rms_amplitude": [
+              2.496215183280268e-07,
+              1.9426060107752506e-07,
+              5.339084065789813e-09
+            ],
+            "signal_vector_rms_amplitude": 3.1634884125289966e-07,
+            "phase_signal_minus_target_deg_per_axis": [
+              100.33483995726941,
+              -173.18171075021655,
+              0.0
+            ]
+          },
+          "command_to_filtered": {
+            "frequency_hz": 3.2,
+            "signal_axis_rms_amplitude": [
+              2.3582771101209568e-07,
+              2.0713825485710605e-07,
+              0.0
+            ],
+            "signal_vector_rms_amplitude": 3.138804962186277e-07,
+            "phase_signal_minus_target_deg_per_axis": [
+              -99.05697947583874,
+              -98.18985506925156,
+              0.0
+            ]
+          },
+          "filtered_to_actual": {
+            "frequency_hz": 3.2,
+            "signal_axis_rms_amplitude": [
+              2.496215183280268e-07,
+              1.9426060107752506e-07,
+              5.339084065789813e-09
+            ],
+            "signal_vector_rms_amplitude": 3.1634884125289966e-07,
+            "phase_signal_minus_target_deg_per_axis": [
+              -2.220495421336282,
+              1.7446303752735906,
+              0.0
+            ]
+          }
+        },
+        "3.7Hz": {
+          "task_to_actual": {
+            "frequency_hz": 3.7,
+            "signal_axis_rms_amplitude": [
+              9.550045708681912e-08,
+              5.3242448933446724e-08,
+              5.176064356293475e-10
+            ],
+            "signal_vector_rms_amplitude": 1.0934058527666783e-07,
+            "phase_signal_minus_target_deg_per_axis": [
+              -124.76426562014277,
+              -37.7417727872951,
+              0.0
+            ]
+          },
+          "command_to_filtered": {
+            "frequency_hz": 3.7,
+            "signal_axis_rms_amplitude": [
+              9.717195497199344e-08,
+              5.342298828310857e-08,
+              0.0
+            ],
+            "signal_vector_rms_amplitude": 1.1088915415935085e-07,
+            "phase_signal_minus_target_deg_per_axis": [
+              -94.92623510974876,
+              -97.30322142684179,
+              0.0
+            ]
+          },
+          "filtered_to_actual": {
+            "frequency_hz": 3.7,
+            "signal_axis_rms_amplitude": [
+              9.550045708681912e-08,
+              5.3242448933446724e-08,
+              5.176064356293475e-10
+            ],
+            "signal_vector_rms_amplitude": 1.0934058527666783e-07,
+            "phase_signal_minus_target_deg_per_axis": [
+              -0.25513820822486366,
+              2.2652688129337335,
+              0.0
+            ]
+          }
+        },
+        "4.8Hz": {
+          "task_to_actual": {
+            "frequency_hz": 4.8,
+            "signal_axis_rms_amplitude": [
+              3.79421986565314e-08,
+              2.184340196188291e-08,
+              9.185309951261115e-11
+            ],
+            "signal_vector_rms_amplitude": 4.378073874607386e-08,
+            "phase_signal_minus_target_deg_per_axis": [
+              -121.44301020857884,
+              -44.427918888813224,
+              0.0
+            ]
+          },
+          "command_to_filtered": {
+            "frequency_hz": 4.8,
+            "signal_axis_rms_amplitude": [
+              3.751081447243341e-08,
+              2.1662601699312815e-08,
+              0.0
+            ],
+            "signal_vector_rms_amplitude": 4.33166193829619e-08,
+            "phase_signal_minus_target_deg_per_axis": [
+              -107.05990752373162,
+              -108.7323407058601,
+              0.0
+            ]
+          },
+          "filtered_to_actual": {
+            "frequency_hz": 4.8,
+            "signal_axis_rms_amplitude": [
+              3.79421986565314e-08,
+              2.184340196188291e-08,
+              9.185309951261115e-11
+            ],
+            "signal_vector_rms_amplitude": 4.378073874607386e-08,
+            "phase_signal_minus_target_deg_per_axis": [
+              -1.584780074518982,
+              -1.4600463764023326,
+              0.0
+            ]
+          }
+        }
+      }
+    },
+    "B": {
+      "bands": {
+        "2.2Hz": {
+          "band_hz": [
+            1.7000000000000002,
+            2.7
+          ],
+          "task_minus_actual_wrapped_euler_vector_rms_mrad": 0.09090631540502424,
+          "command_filter_target_vector_rms_mrad": 0.12467491419208138,
+          "filtered_attitude_reference_vector_rms_mrad": 0.09083129439874954,
+          "actual_euler_vector_rms_mrad": 0.09090652607929717,
+          "task_euler_vector_rms_mrad": 5.1748531681179775e-05,
+          "applied_compensation_vector_rms_mps2": 0.0
+        },
+        "3.2Hz": {
+          "band_hz": [
+            2.7,
+            3.7
+          ],
+          "task_minus_actual_wrapped_euler_vector_rms_mrad": 0.0007794723670574552,
+          "command_filter_target_vector_rms_mrad": 0.0015728627502303385,
+          "filtered_attitude_reference_vector_rms_mrad": 0.0007784478719180506,
+          "actual_euler_vector_rms_mrad": 0.0007795106309796533,
+          "task_euler_vector_rms_mrad": 9.681952426011804e-06,
+          "applied_compensation_vector_rms_mps2": 0.0
+        },
+        "3.7Hz": {
+          "band_hz": [
+            3.2,
+            4.2
+          ],
+          "task_minus_actual_wrapped_euler_vector_rms_mrad": 0.0004846566080319646,
+          "command_filter_target_vector_rms_mrad": 0.0011490679830353297,
+          "filtered_attitude_reference_vector_rms_mrad": 0.0004852586282994451,
+          "actual_euler_vector_rms_mrad": 0.00048564207104545527,
+          "task_euler_vector_rms_mrad": 5.198361777826823e-06,
+          "applied_compensation_vector_rms_mps2": 0.0
+        },
+        "4.8Hz": {
+          "band_hz": [
+            4.3,
+            5.3
+          ],
+          "task_minus_actual_wrapped_euler_vector_rms_mrad": 0.0001844084270668918,
+          "command_filter_target_vector_rms_mrad": 0.0006521096846667937,
+          "filtered_attitude_reference_vector_rms_mrad": 0.0001844394796275227,
+          "actual_euler_vector_rms_mrad": 0.00018452386716735815,
+          "task_euler_vector_rms_mrad": 1.7444961677021674e-06,
+          "applied_compensation_vector_rms_mps2": 0.0
+        }
+      },
+      "exact_tones": {
+        "2.2Hz": {
+          "task_to_actual": {
+            "frequency_hz": 2.2,
+            "signal_axis_rms_amplitude": [
+              1.5051990159989355e-06,
+              6.169656801386126e-07,
+              1.9711239670679407e-09
+            ],
+            "signal_vector_rms_amplitude": 1.6267374138325947e-06,
+            "phase_signal_minus_target_deg_per_axis": [
+              -4.813557543491592,
+              106.38764288706375,
+              0.0
+            ]
+          },
+          "command_to_filtered": {
+            "frequency_hz": 2.2,
+            "signal_axis_rms_amplitude": [
+              1.5027515729472873e-06,
+              6.168919869420884e-07,
+              0.0
+            ],
+            "signal_vector_rms_amplitude": 1.6244439090189922e-06,
+            "phase_signal_minus_target_deg_per_axis": [
+              -76.51669847217995,
+              -78.8776522214054,
+              0.0
+            ]
+          },
+          "filtered_to_actual": {
+            "frequency_hz": 2.2,
+            "signal_axis_rms_amplitude": [
+              1.5051990159989355e-06,
+              6.169656801386126e-07,
+              1.9711239670679407e-09
+            ],
+            "signal_vector_rms_amplitude": 1.6267374138325947e-06,
+            "phase_signal_minus_target_deg_per_axis": [
+              -0.368411577318402,
+              -0.40021815484649603,
+              0.0
+            ]
+          }
+        },
+        "3.2Hz": {
+          "task_to_actual": {
+            "frequency_hz": 3.2,
+            "signal_axis_rms_amplitude": [
+              2.538076308699345e-07,
+              1.5141028427401717e-07,
+              1.2694960351833696e-10
+            ],
+            "signal_vector_rms_amplitude": 2.955391747094612e-07,
+            "phase_signal_minus_target_deg_per_axis": [
+              2.180668741522767,
+              80.38017422906249,
+              180.0
+            ]
+          },
+          "command_to_filtered": {
+            "frequency_hz": 3.2,
+            "signal_axis_rms_amplitude": [
+              2.534143759585895e-07,
+              1.5133110968253803e-07,
+              0.0
+            ],
+            "signal_vector_rms_amplitude": 2.9516088951659856e-07,
+            "phase_signal_minus_target_deg_per_axis": [
+              -96.86306509698417,
+              -95.09297185504788,
+              0.0
+            ]
+          },
+          "filtered_to_actual": {
+            "frequency_hz": 3.2,
+            "signal_axis_rms_amplitude": [
+              2.538076308699345e-07,
+              1.5141028427401717e-07,
+              1.2694960351833696e-10
+            ],
+            "signal_vector_rms_amplitude": 2.955391747094612e-07,
+            "phase_signal_minus_target_deg_per_axis": [
+              -0.5431991688363148,
+              -0.5969884631340462,
+              180.0
+            ]
+          }
+        },
+        "3.7Hz": {
+          "task_to_actual": {
+            "frequency_hz": 3.7,
+            "signal_axis_rms_amplitude": [
+              9.519858963157892e-08,
+              5.432501191070662e-08,
+              2.1893049397211694e-11
+            ],
+            "signal_vector_rms_amplitude": 1.0960829743338682e-07,
+            "phase_signal_minus_target_deg_per_axis": [
+              -0.08658779014556517,
+              89.42428253809865,
+              0.0
+            ]
+          },
+          "command_to_filtered": {
+            "frequency_hz": 3.7,
+            "signal_axis_rms_amplitude": [
+              9.509288001230308e-08,
+              5.426646341068701e-08,
+              0.0
+            ],
+            "signal_vector_rms_amplitude": 1.0948746448857834e-07,
+            "phase_signal_minus_target_deg_per_axis": [
+              -105.9871206840299,
+              -105.37416731260204,
+              0.0
+            ]
+          },
+          "filtered_to_actual": {
+            "frequency_hz": 3.7,
+            "signal_axis_rms_amplitude": [
+              9.519858963157892e-08,
+              5.432501191070662e-08,
+              2.1893049397211694e-11
+            ],
+            "signal_vector_rms_amplitude": 1.0960829743338682e-07,
+            "phase_signal_minus_target_deg_per_axis": [
+              -0.6438522983537406,
+              -0.6396047313905454,
+              0.0
+            ]
+          }
+        },
+        "4.8Hz": {
+          "task_to_actual": {
+            "frequency_hz": 4.8,
+            "signal_axis_rms_amplitude": [
+              4.5909530002811145e-08,
+              2.6626317856901988e-08,
+              5.8617161293619326e-12
+            ],
+            "signal_vector_rms_amplitude": 5.307208100362666e-08,
+            "phase_signal_minus_target_deg_per_axis": [
+              -2.7020531928255846,
+              84.26405548674566,
+              0.0
+            ]
+          },
+          "command_to_filtered": {
+            "frequency_hz": 4.8,
+            "signal_axis_rms_amplitude": [
+              4.585918287167981e-08,
+              2.6597862264443792e-08,
+              0.0
+            ],
+            "signal_vector_rms_amplitude": 5.3014252146913234e-08,
+            "phase_signal_minus_target_deg_per_axis": [
+              -121.1047985867822,
+              -120.90492234418167,
+              0.0
+            ]
+          },
+          "filtered_to_actual": {
+            "frequency_hz": 4.8,
+            "signal_axis_rms_amplitude": [
+              4.5909530002811145e-08,
+              2.6626317856901988e-08,
+              5.8617161293619326e-12
+            ],
+            "signal_vector_rms_amplitude": 5.307208100362666e-08,
+            "phase_signal_minus_target_deg_per_axis": [
+              -0.8339638956894463,
+              -0.8304476966974895,
+              0.0
+            ]
+          }
+        }
+      }
+    },
+    "C5": {
+      "bands": {
+        "2.2Hz": {
+          "band_hz": [
+            1.7000000000000002,
+            2.7
+          ],
+          "task_minus_actual_wrapped_euler_vector_rms_mrad": 0.21160060673423214,
+          "command_filter_target_vector_rms_mrad": 0.29293829809781613,
+          "filtered_attitude_reference_vector_rms_mrad": 0.21142373793304417,
+          "actual_euler_vector_rms_mrad": 0.2116019573268462,
+          "task_euler_vector_rms_mrad": 5.1748531681179775e-05,
+          "applied_compensation_vector_rms_mps2": 0.0021247264984817966
+        },
+        "3.2Hz": {
+          "band_hz": [
+            2.7,
+            3.7
+          ],
+          "task_minus_actual_wrapped_euler_vector_rms_mrad": 0.0076131695987097245,
+          "command_filter_target_vector_rms_mrad": 0.01534486203000812,
+          "filtered_attitude_reference_vector_rms_mrad": 0.007607048977751908,
+          "actual_euler_vector_rms_mrad": 0.007611870579098543,
+          "task_euler_vector_rms_mrad": 9.681952426011804e-06,
+          "applied_compensation_vector_rms_mps2": 0.00013076874274653893
+        },
+        "3.7Hz": {
+          "band_hz": [
+            3.2,
+            4.2
+          ],
+          "task_minus_actual_wrapped_euler_vector_rms_mrad": 0.0029972082656888,
+          "command_filter_target_vector_rms_mrad": 0.006841625797198748,
+          "filtered_attitude_reference_vector_rms_mrad": 0.00299552535917703,
+          "actual_euler_vector_rms_mrad": 0.0029977093882532753,
+          "task_euler_vector_rms_mrad": 5.198361777826823e-06,
+          "applied_compensation_vector_rms_mps2": 6.061205921106414e-05
+        },
+        "4.8Hz": {
+          "band_hz": [
+            4.3,
+            5.3
+          ],
+          "task_minus_actual_wrapped_euler_vector_rms_mrad": 0.0005552688550434842,
+          "command_filter_target_vector_rms_mrad": 0.0019131832383976414,
+          "filtered_attitude_reference_vector_rms_mrad": 0.0005548292973186883,
+          "actual_euler_vector_rms_mrad": 0.0005551539753658785,
+          "task_euler_vector_rms_mrad": 1.7444961677021674e-06,
+          "applied_compensation_vector_rms_mps2": 1.8113483201775644e-05
+        }
+      },
+      "exact_tones": {
+        "2.2Hz": {
+          "task_to_actual": {
+            "frequency_hz": 2.2,
+            "signal_axis_rms_amplitude": [
+              1.8416549504096157e-05,
+              3.0587249940049546e-06,
+              2.325426905452945e-09
+            ],
+            "signal_vector_rms_amplitude": 1.8668826948509254e-05,
+            "phase_signal_minus_target_deg_per_axis": [
+              22.2896147751811,
+              -122.21220003053052,
+              180.0
+            ]
+          },
+          "command_to_filtered": {
+            "frequency_hz": 2.2,
+            "signal_axis_rms_amplitude": [
+              1.8400963296247318e-05,
+              3.0578910829385786e-06,
+              0.0
+            ],
+            "signal_vector_rms_amplitude": 1.8653314668041074e-05,
+            "phase_signal_minus_target_deg_per_axis": [
+              -76.11338639756055,
+              -74.17553105377361,
+              0.0
+            ]
+          },
+          "filtered_to_actual": {
+            "frequency_hz": 2.2,
+            "signal_axis_rms_amplitude": [
+              1.8416549504096157e-05,
+              3.0587249940049546e-06,
+              2.325426905452945e-09
+            ],
+            "signal_vector_rms_amplitude": 1.8668826948509254e-05,
+            "phase_signal_minus_target_deg_per_axis": [
+              -0.421497900792647,
+              -0.43610021567046303,
+              180.0
+            ]
+          }
+        },
+        "3.2Hz": {
+          "task_to_actual": {
+            "frequency_hz": 3.2,
+            "signal_axis_rms_amplitude": [
+              2.306570708837288e-06,
+              1.1384090529854106e-06,
+              5.982207851036671e-10
+            ],
+            "signal_vector_rms_amplitude": 2.5722060501937624e-06,
+            "phase_signal_minus_target_deg_per_axis": [
+              -11.099128358863128,
+              121.13212629004143,
+              -0.0
+            ]
+          },
+          "command_to_filtered": {
+            "frequency_hz": 3.2,
+            "signal_axis_rms_amplitude": [
+              2.3048530372965263e-06,
+              1.1374573158010977e-06,
+              0.0
+            ],
+            "signal_vector_rms_amplitude": 2.570244476466093e-06,
+            "phase_signal_minus_target_deg_per_axis": [
+              -97.68454652182943,
+              -97.99478098824673,
+              0.0
+            ]
+          },
+          "filtered_to_actual": {
+            "frequency_hz": 3.2,
+            "signal_axis_rms_amplitude": [
+              2.306570708837288e-06,
+              1.1384090529854106e-06,
+              5.982207851036671e-10
+            ],
+            "signal_vector_rms_amplitude": 2.5722060501937624e-06,
+            "phase_signal_minus_target_deg_per_axis": [
+              -0.6036349320628794,
+              -0.6087319904565235,
+              -0.0
+            ]
+          }
+        },
+        "3.7Hz": {
+          "task_to_actual": {
+            "frequency_hz": 3.7,
+            "signal_axis_rms_amplitude": [
+              3.365398509866986e-07,
+              1.3540624020426082e-07,
+              8.99730804008579e-11
+            ],
+            "signal_vector_rms_amplitude": 3.6275877561205664e-07,
+            "phase_signal_minus_target_deg_per_axis": [
+              -6.112952995648291,
+              145.76267057219374,
+              0.0
+            ]
+          },
+          "command_to_filtered": {
+            "frequency_hz": 3.7,
+            "signal_axis_rms_amplitude": [
+              3.3599998827146945e-07,
+              1.3522668261740526e-07,
+              0.0
+            ],
+            "signal_vector_rms_amplitude": 3.6219089967879656e-07,
+            "phase_signal_minus_target_deg_per_axis": [
+              -111.09738023873517,
+              -111.14916741542832,
+              0.0
+            ]
+          },
+          "filtered_to_actual": {
+            "frequency_hz": 3.7,
+            "signal_axis_rms_amplitude": [
+              3.365398509866986e-07,
+              1.3540624020426082e-07,
+              8.99730804008579e-11
+            ],
+            "signal_vector_rms_amplitude": 3.6275877561205664e-07,
+            "phase_signal_minus_target_deg_per_axis": [
+              -0.6891085172765157,
+              -0.7420851665246175,
+              0.0
+            ]
+          }
+        },
+        "4.8Hz": {
+          "task_to_actual": {
+            "frequency_hz": 4.8,
+            "signal_axis_rms_amplitude": [
+              1.2636637000418103e-07,
+              7.658747146428523e-08,
+              1.4827898016668866e-11
+            ],
+            "signal_vector_rms_amplitude": 1.4776366425205098e-07,
+            "phase_signal_minus_target_deg_per_axis": [
+              -34.02655749704787,
+              81.61246717927557,
+              180.0
+            ]
+          },
+          "command_to_filtered": {
+            "frequency_hz": 4.8,
+            "signal_axis_rms_amplitude": [
+              1.2617400535490105e-07,
+              7.647668106681016e-08,
+              0.0
+            ],
+            "signal_vector_rms_amplitude": 1.4754173095871282e-07,
+            "phase_signal_minus_target_deg_per_axis": [
+              -124.53339404317671,
+              -124.46709584570443,
+              0.0
+            ]
+          },
+          "filtered_to_actual": {
+            "frequency_hz": 4.8,
+            "signal_axis_rms_amplitude": [
+              1.2636637000418103e-07,
+              7.658747146428523e-08,
+              1.4827898016668866e-11
+            ],
+            "signal_vector_rms_amplitude": 1.4776366425205098e-07,
+            "phase_signal_minus_target_deg_per_axis": [
+              -0.8593596040006706,
+              -0.888279847338918,
+              180.0
+            ]
+          }
+        }
+      }
+    },
+    "parent_C5_cosine_GRU_pre_filter": {
+      "bands": {
+        "2.2Hz": {
+          "band_hz": [
+            1.7000000000000002,
+            2.7
+          ],
+          "task_minus_actual_wrapped_euler_vector_rms_mrad": 0.217836654947117,
+          "command_filter_target_vector_rms_mrad": 0.2982601340618348,
+          "filtered_attitude_reference_vector_rms_mrad": 0.21533558073202055,
+          "actual_euler_vector_rms_mrad": 0.21783806947025616,
+          "task_euler_vector_rms_mrad": 5.1748531681179775e-05,
+          "applied_compensation_vector_rms_mps2": 0.002154673411340434
+        },
+        "3.2Hz": {
+          "band_hz": [
+            2.7,
+            3.7
+          ],
+          "task_minus_actual_wrapped_euler_vector_rms_mrad": 0.007601578537958118,
+          "command_filter_target_vector_rms_mrad": 0.015255309934956286,
+          "filtered_attitude_reference_vector_rms_mrad": 0.007560611373726472,
+          "actual_euler_vector_rms_mrad": 0.007600275059335419,
+          "task_euler_vector_rms_mrad": 9.681952426011804e-06,
+          "applied_compensation_vector_rms_mps2": 0.00013001152149806129
+        },
+        "3.7Hz": {
+          "band_hz": [
+            3.2,
+            4.2
+          ],
+          "task_minus_actual_wrapped_euler_vector_rms_mrad": 0.003022854468017803,
+          "command_filter_target_vector_rms_mrad": 0.006860114195438213,
+          "filtered_attitude_reference_vector_rms_mrad": 0.0030059250170969515,
+          "actual_euler_vector_rms_mrad": 0.003023351951726441,
+          "task_euler_vector_rms_mrad": 5.198361777826823e-06,
+          "applied_compensation_vector_rms_mps2": 6.076216384992783e-05
+        },
+        "4.8Hz": {
+          "band_hz": [
+            4.3,
+            5.3
+          ],
+          "task_minus_actual_wrapped_euler_vector_rms_mrad": 0.0005542532742250825,
+          "command_filter_target_vector_rms_mrad": 0.0019062058963944073,
+          "filtered_attitude_reference_vector_rms_mrad": 0.000552936332877223,
+          "actual_euler_vector_rms_mrad": 0.0005541347817932295,
+          "task_euler_vector_rms_mrad": 1.7444961677021674e-06,
+          "applied_compensation_vector_rms_mps2": 1.804942130720992e-05
+        }
+      },
+      "exact_tones": {
+        "2.2Hz": {
+          "task_to_actual": {
+            "frequency_hz": 2.2,
+            "signal_axis_rms_amplitude": [
+              1.8605522563523607e-05,
+              2.9563716799334223e-06,
+              3.667418431441782e-08
+            ],
+            "signal_vector_rms_amplitude": 1.8838974185647517e-05,
+            "phase_signal_minus_target_deg_per_axis": [
+              19.404593339828622,
+              -122.74131448304459,
+              -0.0
+            ]
+          },
+          "command_to_filtered": {
+            "frequency_hz": 2.2,
+            "signal_axis_rms_amplitude": [
+              1.8433752319596812e-05,
+              2.8191817995095604e-06,
+              0.0
+            ],
+            "signal_vector_rms_amplitude": 1.8648083295580992e-05,
+            "phase_signal_minus_target_deg_per_axis": [
+              -76.0722203044797,
+              -74.03678051832422,
+              0.0
+            ]
+          },
+          "filtered_to_actual": {
+            "frequency_hz": 2.2,
+            "signal_axis_rms_amplitude": [
+              1.8605522563523607e-05,
+              2.9563716799334223e-06,
+              3.667418431441782e-08
+            ],
+            "signal_vector_rms_amplitude": 1.8838974185647517e-05,
+            "phase_signal_minus_target_deg_per_axis": [
+              -0.6071582804668297,
+              -1.6854346604677988,
+              -0.0
+            ]
+          }
+        },
+        "3.2Hz": {
+          "task_to_actual": {
+            "frequency_hz": 3.2,
+            "signal_axis_rms_amplitude": [
+              2.3350531373181782e-06,
+              1.1405608719991024e-06,
+              2.5941457241027763e-09
+            ],
+            "signal_vector_rms_amplitude": 2.5987225681913137e-06,
+            "phase_signal_minus_target_deg_per_axis": [
+              -12.70202858314068,
+              119.9279485877273,
+              0.0
+            ]
+          },
+          "command_to_filtered": {
+            "frequency_hz": 3.2,
+            "signal_axis_rms_amplitude": [
+              2.3195706639741067e-06,
+              1.1443532986547321e-06,
+              0.0
+            ],
+            "signal_vector_rms_amplitude": 2.5864942561914274e-06,
+            "phase_signal_minus_target_deg_per_axis": [
+              -97.64852560740971,
+              -97.99824774453022,
+              0.0
+            ]
+          },
+          "filtered_to_actual": {
+            "frequency_hz": 3.2,
+            "signal_axis_rms_amplitude": [
+              2.3350531373181782e-06,
+              1.1405608719991024e-06,
+              2.5941457241027763e-09
+            ],
+            "signal_vector_rms_amplitude": 2.5987225681913137e-06,
+            "phase_signal_minus_target_deg_per_axis": [
+              -0.7959870526227827,
+              -0.9864262922554066,
+              0.0
+            ]
+          }
+        },
+        "3.7Hz": {
+          "task_to_actual": {
+            "frequency_hz": 3.7,
+            "signal_axis_rms_amplitude": [
+              3.3967773177680884e-07,
+              1.390424974695844e-07,
+              4.085526868923439e-10
+            ],
+            "signal_vector_rms_amplitude": 3.670339827358157e-07,
+            "phase_signal_minus_target_deg_per_axis": [
+              -6.3263815060752275,
+              146.2644937630956,
+              0.0
+            ]
+          },
+          "command_to_filtered": {
+            "frequency_hz": 3.7,
+            "signal_axis_rms_amplitude": [
+              3.366019594610394e-07,
+              1.372529821850125e-07,
+              0.0
+            ],
+            "signal_vector_rms_amplitude": 3.635096425566873e-07,
+            "phase_signal_minus_target_deg_per_axis": [
+              -111.07002912595206,
+              -111.05389416877611,
+              0.0
+            ]
+          },
+          "filtered_to_actual": {
+            "frequency_hz": 3.7,
+            "signal_axis_rms_amplitude": [
+              3.3967773177680884e-07,
+              1.390424974695844e-07,
+              4.085526868923439e-10
+            ],
+            "signal_vector_rms_amplitude": 3.670339827358157e-07,
+            "phase_signal_minus_target_deg_per_axis": [
+              -0.9945147208880744,
+              -1.3619419417100642,
+              0.0
+            ]
+          }
+        },
+        "4.8Hz": {
+          "task_to_actual": {
+            "frequency_hz": 4.8,
+            "signal_axis_rms_amplitude": [
+              1.2590065075452423e-07,
+              7.653595895120462e-08,
+              2.351908682065072e-11
+            ],
+            "signal_vector_rms_amplitude": 1.4733881846322987e-07,
+            "phase_signal_minus_target_deg_per_axis": [
+              -34.59349275415968,
+              81.30590262638134,
+              0.0
+            ]
+          },
+          "command_to_filtered": {
+            "frequency_hz": 4.8,
+            "signal_axis_rms_amplitude": [
+              1.2558380975644798e-07,
+              7.642966840248612e-08,
+              0.0
+            ],
+            "signal_vector_rms_amplitude": 1.4701288203779185e-07,
+            "phase_signal_minus_target_deg_per_axis": [
+              -124.52525870511812,
+              -124.53115967575451,
+              0.0
+            ]
+          },
+          "filtered_to_actual": {
+            "frequency_hz": 4.8,
+            "signal_axis_rms_amplitude": [
+              1.2590065075452423e-07,
+              7.653595895120462e-08,
+              2.351908682065072e-11
+            ],
+            "signal_vector_rms_amplitude": 1.4733881846322987e-07,
+            "phase_signal_minus_target_deg_per_axis": [
+              -1.2818880059584612,
+              -0.9277435175601766,
+              0.0
+            ]
+          }
+        }
+      }
+    }
+  },
+  "low_band_applied_action_transfer_candidate_vs_parent": {
+    "band_hz": [
+      0.05,
+      0.5
+    ],
+    "applied_action_vector_rms_mps2": 0.040686264330547214,
+    "parent_action_vector_rms_mps2": 0.04013613726468864,
+    "vector_amplitude_ratio": 1.0137065274176886,
+    "phase_deg_candidate_minus_parent_by_axis": [
+      -1.3204605427448166,
+      -0.7311832036022242,
+      -1.3116825118128341
+    ],
+    "group_delay_s_by_axis": [
+      0.015728581354274438,
+      0.0031880262825301677,
+      0.001430961956113137
+    ],
+    "median_gain_by_axis": [
+      1.0165212362360707,
+      1.0257018359201475,
+      1.0388602397001665
+    ]
+  },
+  "predeclared_criteria": {
+    "candidate_Q_le_1p05x_C5": false,
+    "candidate_task_not_worse_than_B": null,
+    "stable_20k_one_call": true,
+    "safety_counters_zero": true,
+    "candidate_task_criterion_applicable": false
+  },
+  "decision_values": {
+    "candidate_Q_m": 0.008808586108462463,
+    "same_scene_C5_Q_m": 0.00824325789252723,
+    "candidate_Q_over_C5": 1.06858067808939,
+    "candidate_task_SO3_rad": 0.04698846744344412,
+    "same_scene_B_task_SO3_rad": 0.053701576151397666,
+    "candidate_safety": {
+      "motor_saturation_samples": 0,
+      "generalized_clip_samples": 0,
+      "tilt_limited_samples": 0,
+      "attitude_head_projection_samples": 0,
+      "attitude_head_output_saturated_samples": 0
+    }
+  },
+  "raw_validation_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\n4T1C00_v1\\audits\\RAW_VALIDATION_v1.json",
+  "raw_validation_sha256": "fc56636d1cd8203bbed3ba9d3d7b8ab977d0021a565fa42dd1f360949cac7882",
+  "interpretation_limit": "One fixed W09 TRAIN scene and static N4 diagnostic only; no cross-wind generalization or candidate acceptance claim.",
+  "scoring_script_sha256": "45ab61baa0bc21e196b77ce9813361d29a4946f21ed9b1fec52ced5a6ad25fd5",
+  "raw_validation_script_sha256": "84a4be3a494e1fed3f15af9adadd8acc6b855c511ccaa0483ed13277ebf23bbc"
+}

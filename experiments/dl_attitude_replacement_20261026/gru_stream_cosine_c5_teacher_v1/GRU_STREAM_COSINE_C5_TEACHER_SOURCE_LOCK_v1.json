@@ -1,0 +1,1891 @@
+{
+  "schema": "DL1018_GRU32_STREAM72_COSINE_C5_TEACHER_SOURCE_LOCK_V1",
+  "candidate": "GRU32_STREAM72_COSINE_S2026102001",
+  "status": "APPROVED_FOR_TRAINING",
+  "source_file_sha256": {
+    "experiments/dl_attitude_replacement_20261026/luna_xhigh_dispatch_20261027_v1/ROOT_GRU_STREAM_COSINE_TASKBOOK_v1.md": "b02b80f47cc2e76026c1b893ec93e2f21ffc3118082e9c51c2a251c49111e4ec",
+    "experiments/dl_attitude_replacement_20261026/gru_stream_cosine_c5_teacher_v1/ACTUAL_REPRODUCIBLE_COMMAND_v1.md": "dce1afa7017fe6eb5ab424075f892c5db10053898961fa7e90cbdcf186f66155",
+    "experiments/dl_attitude_replacement_20261026/gru_stream_cosine_c5_teacher_v1/train_gru_stream_cosine_c5_teacher_v1.py": "0edeb24a320f75a5d34946d4625daad262dca78b2bea643488d33899cb7107cd",
+    "experiments/dl_attitude_replacement_20261026/gru_stream_cosine_c5_teacher_v1/self_check_gru_stream_cosine_c5_teacher_v1.py": "4cb1ba2c7165cf5c27bb0c5b83b88dcd6faa3b34a533d98b44f2e50014942ea9",
+    "experiments/dl_attitude_replacement_20261026/gru15_c5_teacher_full72_v1/train_gru15_c5_full72_v1.py": "b84a5c9f0c928b2d456f219b442a6cc0c63343529f9b4ca714e21a037780da07",
+    "experiments/dl_attitude_replacement_20261026/architecture_screen_v1/screen_attitude_architectures_v1.py": "66816f8b04776aca47440008bda96523055c70fc0b68700df07ea30c06357700"
+  },
+  "references": {
+    "base_source_lock": {
+      "path": "experiments/dl_attitude_replacement_20261026/gru15_c5_teacher_full72_v1/GRU15_C5_TEACHER_FULL72_SOURCE_LOCK_v1.json",
+      "sha256": "d169d6f6f83e127148f050f93f1d9994d3e3f2adbf8eb5753d0e4945bc42eb4e"
+    },
+    "constant_learning_rate_source_lock": {
+      "path": "experiments/dl_attitude_replacement_20261026/gru_stream_c5_teacher_v1/GRU_STREAM_C5_TEACHER_SOURCE_LOCK_v1.json",
+      "sha256": "1b234e231cbc493ffd6e276efc9d4ce60244119d05478dd6f34f8d08158c71dd"
+    },
+    "dataset": {
+      "path": "experiments/dl_attitude_replacement_20261026/mlp15_c5_teacher_redistill_v1/matched_teacher_data_v1.npz",
+      "sha256": "b3a8ca6446d6bdde0573e6c233aa222a6cfb28d35f13b084e8dd9683c16c111f"
+    },
+    "manifest": {
+      "path": "experiments/dl_attitude_replacement_20261026/mlp15_c5_teacher_redistill_v1/DATASET_MANIFEST_v1.json",
+      "sha256": "98766ddac3125b81d4637eeb2576349b6ce181c94564c1a444d1d4cab734d55c"
+    },
+    "reused_normalizer": {
+      "path": "experiments/dl_attitude_replacement_20261026/gru15_c5_teacher_full72_v1/runs/C5_GRU15_FULL72_SEED2026102001/normalizer.npz",
+      "sha256": "612c39d7fd113571f2935eae1e42d3fb4d33705bf9a230c75e5c274db1bfb693"
+    }
+  },
+  "runtime_versions": {
+    "python": "3.12.7",
+    "numpy": "1.26.4",
+    "torch": "2.6.0+cu124"
+  },
+  "dataset": {
+    "path": "experiments/dl_attitude_replacement_20261026/mlp15_c5_teacher_redistill_v1/matched_teacher_data_v1.npz",
+    "sha256": "b3a8ca6446d6bdde0573e6c233aa222a6cfb28d35f13b084e8dd9683c16c111f",
+    "bytes": 9013928,
+    "manifest_path": "experiments/dl_attitude_replacement_20261026/mlp15_c5_teacher_redistill_v1/DATASET_MANIFEST_v1.json",
+    "manifest_sha256": "98766ddac3125b81d4637eeb2576349b6ce181c94564c1a444d1d4cab734d55c",
+    "manifest_inertia_config_read": false,
+    "teacher_source": "C5_RBF",
+    "feature_order": [
+      "wrapped_attitude_error_euler_rad_x3",
+      "body_rate_rad_s_x3",
+      "nominal_bs_body_torque_Nm_x3",
+      "morph_command_x4"
+    ],
+    "target": "logged rbf_output_raw at attitude event k; post-dmax/pre-beta; rad/s^2",
+    "allowed_array_members": [
+      "c5_train_x",
+      "c5_train_y",
+      "c5_train_scene_ids",
+      "c5_val_x",
+      "c5_val_y",
+      "c5_val_scene_ids"
+    ],
+    "selected_array_sha256": {
+      "c5_train_x": "268363c04a966c0d001286095703f3042088be3c6f311ae8893862cfb6a777e5",
+      "c5_train_y": "3534cfb547373a30aaa6d4746027b3ac4caceaf2a2f70081b822f0c8bce83340",
+      "c5_val_x": "d40111114f29da2625da3edc2ace55fbe5f04da64a7809ab4f092c1920891913",
+      "c5_val_y": "d1e44fa35ee67e0a380b3670bb1cf7b2fa1439fec7d2382d27a99bce93391b4c"
+    },
+    "selected_array_shapes": {
+      "c5_train_x": [
+        24,
+        1999,
+        13
+      ],
+      "c5_train_y": [
+        24,
+        1999,
+        3
+      ],
+      "c5_val_x": [
+        48,
+        1999,
+        13
+      ],
+      "c5_val_y": [
+        48,
+        1999,
+        3
+      ]
+    },
+    "selected_array_dtypes": {
+      "c5_train_x": "float32",
+      "c5_train_y": "float32",
+      "c5_val_x": "float32",
+      "c5_val_y": "float32"
+    },
+    "full72_x_sha256": "b11f39f47146dc74f977ed813d59323f067d250a07c0ffde3ecc35eb4db70fea",
+    "full72_y_sha256": "fb3f98fd5bc366f0712db3929f06b9cf2f75ca54ee02d0c3dec0712281725622",
+    "scenes": 72,
+    "events_per_scene": 1999,
+    "unique_training_events": 143928,
+    "train_split": "TRAIN_C5_24",
+    "development_split_reclassified_as_train": "C5_VAL48_AS_DEV_TRAIN",
+    "TEST48_read": false,
+    "B24_values_read": false
+  },
+  "feature_contract": {
+    "input_dim": 13,
+    "allowed_feature_groups": [
+      "wrapped_attitude_error_euler_rad_x3",
+      "body_rate_rad_s_x3",
+      "nominal_bs_body_torque_Nm_x3",
+      "morph_command_x4"
+    ],
+    "feature_units": [
+      "rad x3",
+      "rad/s x3",
+      "N*m x3",
+      "dimensionless normalized morph command x4"
+    ],
+    "wrapped_attitude_error_formula": "atan2(sin(filtered_attitude_reference - state_euler), cos(filtered_attitude_reference - state_euler)) at each attitude event",
+    "body_rate_source": "body rates in logged state at the same attitude event",
+    "nominal_torque_source": "logged attitude_bs_nominal_torque_Nm at the same attitude event",
+    "morph_command_source": "logged dimensionless morph_command x4 at the same attitude event",
+    "prohibited_inputs": [
+      "Jhat",
+      "Jdot_hat",
+      "inertia or mass properties",
+      "Plant truth",
+      "RBF weights or hidden state",
+      "observer",
+      "physical feedforward"
+    ]
+  },
+  "normalizer": {
+    "source_path": "experiments/dl_attitude_replacement_20261026/gru15_c5_teacher_full72_v1/runs/C5_GRU15_FULL72_SEED2026102001/normalizer.npz",
+    "source_candidate": "C5_GRU15_FULL72_SEED2026102001",
+    "sha256": "612c39d7fd113571f2935eae1e42d3fb4d33705bf9a230c75e5c274db1bfb693",
+    "array_sha256": {
+      "input_mean": "91dd25f6957d86914ac3e4ea4a080176b70d8daba0b353985e231da7c730d350",
+      "input_std": "6cd66ad507bd45dfcfaf220b8bd2969cf72d7c5083f9cbc4ca760ce4ad6e41a2",
+      "target_rms": "90df4290dad299285127c395a82dc42d12b683f97bac419a67c56d304f3a6d26"
+    },
+    "fitted_splits": [
+      "TRAIN_C5_24",
+      "C5_VAL48_AS_DEV_TRAIN"
+    ],
+    "refit_for_stream_candidate": false
+  },
+  "initialization": {
+    "seed": 2026102001,
+    "construction": "torch.manual_seed(seed), CPU GRU15 construction, then move to cuda:0",
+    "state_dict_sha256": "82d952ce8f150388015bc2776b8acceb9c9da59814470eb036ec9ca99420e06e",
+    "parameter_sha256": {
+      "gru.bias_hh_l0": "7252ba114c52e0c955de233602455d4f6aae3c3a6ef7c24cc1beabd3453a346f",
+      "gru.bias_ih_l0": "70f3975178bdc9bb9716383c09b07efcc214556971c0f70eb00cb91db24ec465",
+      "gru.weight_hh_l0": "960119e675b8c08a581f03af2b66c4957dfd9cc35e128f39ecf6c9a84711d5ef",
+      "gru.weight_ih_l0": "daa7d665c029234a536b0f322cc2064689701c053e469229697a40e567c60921",
+      "head.bias": "c8c6fa47bc92b6475a1f68bb2b066d99a85404a2baa67693a2fecbc986393261",
+      "head.weight": "1c66eb05a0c25def62e61b7a87f73989c0dae8dd46f4e41cad79d0225b5839cd"
+    },
+    "reference_candidate": "GRU32_STREAM72_S2026102001",
+    "reference_source_lock_sha256": "1b234e231cbc493ffd6e276efc9d4ce60244119d05478dd6f34f8d08158c71dd"
+  },
+  "scene_ids_in_training_order": [
+    "DL1018_DEV_T1_C00_W03",
+    "DL1018_DEV_T1_C01_W15",
+    "DL1018_DEV_T1_C04_W00",
+    "DL1018_DEV_T1_C05_W06",
+    "DL1018_DEV_T1_C07_W08",
+    "DL1018_DEV_T1_C10_W09",
+    "DL1018_DEV_T1_C11_W12",
+    "DL1018_DEV_T1_C15_W14",
+    "DL1018_DEV_T2_C00_W04",
+    "DL1018_DEV_T2_C02_W15",
+    "DL1018_DEV_T2_C03_W01",
+    "DL1018_DEV_T2_C06_W07",
+    "DL1018_DEV_T2_C08_W08",
+    "DL1018_DEV_T2_C09_W10",
+    "DL1018_DEV_T2_C12_W13",
+    "DL1018_DEV_T2_C14_W14",
+    "DL1018_DEV_T3_C00_W05",
+    "DL1018_DEV_T3_C03_W15",
+    "DL1018_DEV_T3_C05_W02",
+    "DL1018_DEV_T3_C06_W08",
+    "DL1018_DEV_T3_C09_W09",
+    "DL1018_DEV_T3_C10_W11",
+    "DL1018_DEV_T3_C13_W12",
+    "DL1018_DEV_T3_C15_W14",
+    "DL1018_VAL_T1_C00_W07",
+    "DL1018_VAL_T1_C01_W08",
+    "DL1018_VAL_T1_C02_W09",
+    "DL1018_VAL_T1_C03_W10",
+    "DL1018_VAL_T1_C04_W11",
+    "DL1018_VAL_T1_C05_W12",
+    "DL1018_VAL_T1_C06_W13",
+    "DL1018_VAL_T1_C07_W14",
+    "DL1018_VAL_T1_C08_W15",
+    "DL1018_VAL_T1_C09_W00",
+    "DL1018_VAL_T1_C10_W01",
+    "DL1018_VAL_T1_C11_W02",
+    "DL1018_VAL_T1_C12_W03",
+    "DL1018_VAL_T1_C13_W04",
+    "DL1018_VAL_T1_C14_W05",
+    "DL1018_VAL_T1_C15_W06",
+    "DL1018_VAL_T2_C00_W10",
+    "DL1018_VAL_T2_C01_W11",
+    "DL1018_VAL_T2_C02_W12",
+    "DL1018_VAL_T2_C03_W13",
+    "DL1018_VAL_T2_C04_W14",
+    "DL1018_VAL_T2_C05_W15",
+    "DL1018_VAL_T2_C06_W00",
+    "DL1018_VAL_T2_C07_W01",
+    "DL1018_VAL_T2_C08_W02",
+    "DL1018_VAL_T2_C09_W03",
+    "DL1018_VAL_T2_C10_W04",
+    "DL1018_VAL_T2_C11_W05",
+    "DL1018_VAL_T2_C12_W06",
+    "DL1018_VAL_T2_C13_W07",
+    "DL1018_VAL_T2_C14_W08",
+    "DL1018_VAL_T2_C15_W09",
+    "DL1018_VAL_T3_C00_W13",
+    "DL1018_VAL_T3_C01_W14",
+    "DL1018_VAL_T3_C02_W15",
+    "DL1018_VAL_T3_C03_W00",
+    "DL1018_VAL_T3_C04_W01",
+    "DL1018_VAL_T3_C05_W02",
+    "DL1018_VAL_T3_C06_W03",
+    "DL1018_VAL_T3_C07_W04",
+    "DL1018_VAL_T3_C08_W05",
+    "DL1018_VAL_T3_C09_W06",
+    "DL1018_VAL_T3_C10_W07",
+    "DL1018_VAL_T3_C11_W08",
+    "DL1018_VAL_T3_C12_W09",
+    "DL1018_VAL_T3_C13_W10",
+    "DL1018_VAL_T3_C14_W11",
+    "DL1018_VAL_T3_C15_W12"
+  ],
+  "ordered_scene_ids_sha256": "4e4908ac7881d5a20d73607613fe061ab0e5244f68fa75bb9f952396a96428b3",
+  "scene_sources": [
+    {
+      "scene_id": "DL1018_DEV_T1_C00_W03",
+      "teacher_source": "C5_RBF",
+      "raw_sha256": "fa36bf4aa229279d964b40c10cb3579487b5c641d167572383ef49f63196af5d",
+      "status_sha256": "86696aed73d7cde391378a38ca67b4c4b7ea2f0fbcc2144eabd780fb568fd0e6",
+      "run_start_sha256": "98af3bdf6d9c822bc5840875afe162bce6fc6ac296769822743f9501407a3421",
+      "scene_identity_sha256": "bda2440b2fceb1d49b4eb2fcd43052fdd28a534d1b40f00405f3a46a63f620fa",
+      "event_count": 1999,
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "status_trace_audit_state": "RUN_COMPLETE_RAW_PENDING_AUDIT",
+      "source_split": "TRAIN_C5_24",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T1_C00_W03/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T1_C00_W03/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "run_start_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T1_C00_W03/C5_AXIS_MASK_M110/attempt_01/run_start.mat"
+    },
+    {
+      "scene_id": "DL1018_DEV_T1_C01_W15",
+      "teacher_source": "C5_RBF",
+      "raw_sha256": "b61f01ab5920de766b8596512490b596e3959fa87368cd40a3b30758831fe651",
+      "status_sha256": "b378ce8ff4a5910db082edbb73c9cced00c16a2aa4297295158cbb84e8e3f2a0",
+      "run_start_sha256": "dbe73195429475fb7956a585abfc081b7ceffc8c1e1193741c9acc0c8d9eb7e9",
+      "scene_identity_sha256": "fdbd606ddd32f11044a96c128782c5381d2aae902ee8c5edde40bd6466750671",
+      "event_count": 1999,
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "status_trace_audit_state": "RUN_COMPLETE_RAW_PENDING_AUDIT",
+      "source_split": "TRAIN_C5_24",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T1_C01_W15/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T1_C01_W15/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "run_start_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T1_C01_W15/C5_AXIS_MASK_M110/attempt_01/run_start.mat"
+    },
+    {
+      "scene_id": "DL1018_DEV_T1_C04_W00",
+      "teacher_source": "C5_RBF",
+      "raw_sha256": "ac0f403f134db3ea213547889b36f8dc5e81251d5ab03836c912e3a54453527d",
+      "status_sha256": "ffc3b727a04deeeaed69880f856cbd4f6f013d1acebf73a49f58baee336db7e4",
+      "run_start_sha256": "e68246ede01aa82ae76438d9e3d87300566690e9472fc4e1fb9846d72d499e73",
+      "scene_identity_sha256": "447660dc0b9b9da5959ceac2d9ce91fcf333a677ca949018347ad96baf2f6ac5",
+      "event_count": 1999,
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "status_trace_audit_state": "RUN_COMPLETE_RAW_PENDING_AUDIT",
+      "source_split": "TRAIN_C5_24",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T1_C04_W00/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T1_C04_W00/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "run_start_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T1_C04_W00/C5_AXIS_MASK_M110/attempt_01/run_start.mat"
+    },
+    {
+      "scene_id": "DL1018_DEV_T1_C05_W06",
+      "teacher_source": "C5_RBF",
+      "raw_sha256": "727febc0aedbd4f127eb46aec8d103ab5b2b1e4336d8e92882c4447b779b602e",
+      "status_sha256": "048fcd211b27405b014346e87929e15d50c6469258b35eb732e0ab9a9a014e29",
+      "run_start_sha256": "ab4fdb55cf5833f951439cc9908064bea9643d0bc121be2503fa88e1f7b0da31",
+      "scene_identity_sha256": "d53f354f8f4e97eca1cbca47147da6396e9d62a80923aa567f6e2eea072fb807",
+      "event_count": 1999,
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "status_trace_audit_state": "RUN_COMPLETE_RAW_PENDING_AUDIT",
+      "source_split": "TRAIN_C5_24",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T1_C05_W06/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T1_C05_W06/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "run_start_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T1_C05_W06/C5_AXIS_MASK_M110/attempt_01/run_start.mat"
+    },
+    {
+      "scene_id": "DL1018_DEV_T1_C07_W08",
+      "teacher_source": "C5_RBF",
+      "raw_sha256": "b7fc7c1a8ac1c744429a36ad1ee93e1b4b45d59c82c61808b1f9c4af999483b1",
+      "status_sha256": "db955418d06234f569cf5206b0b621ac4bd38b89e640aa32a04b4502689afa7a",
+      "run_start_sha256": "c54b009bba13c21cd867b40b0b941d25f0353c09c1677567f1a8ff247719910c",
+      "scene_identity_sha256": "2acd39b098764c8ebaa6f2f13575198a2ff626a4580373839e4d11452f23db97",
+      "event_count": 1999,
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "status_trace_audit_state": "RUN_COMPLETE_RAW_PENDING_AUDIT",
+      "source_split": "TRAIN_C5_24",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T1_C07_W08/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T1_C07_W08/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "run_start_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T1_C07_W08/C5_AXIS_MASK_M110/attempt_01/run_start.mat"
+    },
+    {
+      "scene_id": "DL1018_DEV_T1_C10_W09",
+      "teacher_source": "C5_RBF",
+      "raw_sha256": "1e684df2174bc6b754e7798c67acb5c0b4ead218bcc1bd7b1d5cfc1a2fcf4991",
+      "status_sha256": "d2caf08f0ffba7000de0d407db09905375618b0821c545bf4f5e63d299fa8d83",
+      "run_start_sha256": "78638ac884ebee7fd03bfd5258a2f34754208b8a08fb78763f9e7908a3768a71",
+      "scene_identity_sha256": "f99325407f9dd8f106e1647487961dc6bd1250d7e0e3b84c68a1360ad20c2046",
+      "event_count": 1999,
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "status_trace_audit_state": "RUN_COMPLETE_RAW_PENDING_AUDIT",
+      "source_split": "TRAIN_C5_24",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T1_C10_W09/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T1_C10_W09/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "run_start_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T1_C10_W09/C5_AXIS_MASK_M110/attempt_01/run_start.mat"
+    },
+    {
+      "scene_id": "DL1018_DEV_T1_C11_W12",
+      "teacher_source": "C5_RBF",
+      "raw_sha256": "996edaae6b20f048468a04d36d1b2af19c1daf5d45e5bc8160f52f3bd35b2aa2",
+      "status_sha256": "78e067efa8cd1615918dec1cc19bf6f836cb69ec87f5219223850b97f68533b0",
+      "run_start_sha256": "9db720d28df37a849c03b6bf7687a926e84de8417d390685d04f97983f38bb39",
+      "scene_identity_sha256": "002e9e3e465161cf7eda76ca6e17cbadcfb51a9025cdf879a63bf598eb61ee17",
+      "event_count": 1999,
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "status_trace_audit_state": "RUN_COMPLETE_RAW_PENDING_AUDIT",
+      "source_split": "TRAIN_C5_24",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T1_C11_W12/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T1_C11_W12/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "run_start_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T1_C11_W12/C5_AXIS_MASK_M110/attempt_01/run_start.mat"
+    },
+    {
+      "scene_id": "DL1018_DEV_T1_C15_W14",
+      "teacher_source": "C5_RBF",
+      "raw_sha256": "6c72ae52e3f39af36442935468af7d2a047af460b845223167ee206d0dc96707",
+      "status_sha256": "506b19b805e55f11a7305df6b6fb5972fbb936aceb4c4f6db62bb4c70f5cbe3c",
+      "run_start_sha256": "90872432275d3ec63618d38382557b1339075bff8435354c541d31c72ff5f278",
+      "scene_identity_sha256": "e5cde50eea4e41a6f4811401a6225cef6625317dad4178097df78df259245896",
+      "event_count": 1999,
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "status_trace_audit_state": "RUN_COMPLETE_RAW_PENDING_AUDIT",
+      "source_split": "TRAIN_C5_24",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T1_C15_W14/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T1_C15_W14/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "run_start_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T1_C15_W14/C5_AXIS_MASK_M110/attempt_01/run_start.mat"
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C00_W04",
+      "teacher_source": "C5_RBF",
+      "raw_sha256": "9b408641737fe13bcc290d87f0d02176c26701717fc9145e1ca0191be906442f",
+      "status_sha256": "87cbb9d7f7c3683b3fed5a348c219166f3c6289808f6b0af2c56c5491d7269b3",
+      "run_start_sha256": "6cc662bf670d73b5105487a344c4e66101baaf56015d139e49adecc70ef1a507",
+      "scene_identity_sha256": "137cb10df1d093075b7d900b7a106be055af4f0ebbb60a1065d2e72d45e10a86",
+      "event_count": 1999,
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "status_trace_audit_state": "RUN_COMPLETE_RAW_PENDING_AUDIT",
+      "source_split": "TRAIN_C5_24",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T2_C00_W04/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T2_C00_W04/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "run_start_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T2_C00_W04/C5_AXIS_MASK_M110/attempt_01/run_start.mat"
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C02_W15",
+      "teacher_source": "C5_RBF",
+      "raw_sha256": "f0e524b6bd8bbafc6e6ecccff3879500332371af068421db120cd795944f608b",
+      "status_sha256": "8122b384edc66cb10579290f1788031c4aabdda0dd4da03e4ba2f2d265fd733f",
+      "run_start_sha256": "9d41cba15e568b6f3355e3ada797e4b65f232e8a03cde22084b915f064e45504",
+      "scene_identity_sha256": "1e76f88eb0d3a7f87c8fcd1a187d71aa1a2a695592e9fd25859dc655052a060f",
+      "event_count": 1999,
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "status_trace_audit_state": "RUN_COMPLETE_RAW_PENDING_AUDIT",
+      "source_split": "TRAIN_C5_24",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T2_C02_W15/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T2_C02_W15/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "run_start_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T2_C02_W15/C5_AXIS_MASK_M110/attempt_01/run_start.mat"
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C03_W01",
+      "teacher_source": "C5_RBF",
+      "raw_sha256": "5bab1c31978d9230c2fa234f2e7623d42ce13fa20b1b99e9d73a7127c4f96b4f",
+      "status_sha256": "c43bbb7c9d419cf6177bfa78eb388043d3a16548ec626079ca00e1a3248ec21c",
+      "run_start_sha256": "8f466803f435e473e953d0cf09c87de3166a58b457355751ec466b6cc71bf14a",
+      "scene_identity_sha256": "99e6a759bd4f6e8bae72793d72c4c0753c01b900f9e0a3f1a12f8a253553b00f",
+      "event_count": 1999,
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "status_trace_audit_state": "RUN_COMPLETE_RAW_PENDING_AUDIT",
+      "source_split": "TRAIN_C5_24",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T2_C03_W01/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T2_C03_W01/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "run_start_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T2_C03_W01/C5_AXIS_MASK_M110/attempt_01/run_start.mat"
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C06_W07",
+      "teacher_source": "C5_RBF",
+      "raw_sha256": "02869a1271b1a5483b03565cc2e2366fd370392e68e9265ca943251e212a56be",
+      "status_sha256": "c6b7cd00649d4899be739d43e37093904f7ff566f9a3f5c816d15163d94ed6cc",
+      "run_start_sha256": "29117c61aab4889a33b8efc6c43ff4437e42eea0543cb244ab787f9b103ff7d1",
+      "scene_identity_sha256": "23fbad1173ab561ea06e3fc233d2240512623d8784f63ad746ab187cd3569268",
+      "event_count": 1999,
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "status_trace_audit_state": "RUN_COMPLETE_RAW_PENDING_AUDIT",
+      "source_split": "TRAIN_C5_24",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T2_C06_W07/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T2_C06_W07/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "run_start_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T2_C06_W07/C5_AXIS_MASK_M110/attempt_01/run_start.mat"
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C08_W08",
+      "teacher_source": "C5_RBF",
+      "raw_sha256": "6a0db67bee5e28cc6d5815e7273e376efc8311aa9c8591b1c238707b2b011d3b",
+      "status_sha256": "63dbd53dbad9d396295de8dec20a5f5426f50b79e8a32026449182164e7074c2",
+      "run_start_sha256": "eac50ab6e9c42018be2eb9c247c3eabecb5b0f34a7af4da3e458d9dd54897bb7",
+      "scene_identity_sha256": "9a338a3faf61065992a98d86efba35251fa2fbc1476ff8428633d8707da5543e",
+      "event_count": 1999,
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "status_trace_audit_state": "RUN_COMPLETE_RAW_PENDING_AUDIT",
+      "source_split": "TRAIN_C5_24",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T2_C08_W08/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T2_C08_W08/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "run_start_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T2_C08_W08/C5_AXIS_MASK_M110/attempt_01/run_start.mat"
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C09_W10",
+      "teacher_source": "C5_RBF",
+      "raw_sha256": "9810e02aa6bede12197eda25dbb0c18335252b1965f055931ea28b2f2dbb505d",
+      "status_sha256": "7c777b788552c599410dcfe18fbf55908800f52dd41f6a844104af09e60822fe",
+      "run_start_sha256": "957c89a63893cb4c8802298f27f36e9ef9a23fbd5c6cf1f98139ec882578ab9e",
+      "scene_identity_sha256": "c1355853abeb373412d69be869b54897a85e07011d94a22e8d3c777893a93720",
+      "event_count": 1999,
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "status_trace_audit_state": "RUN_COMPLETE_RAW_PENDING_AUDIT",
+      "source_split": "TRAIN_C5_24",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T2_C09_W10/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T2_C09_W10/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "run_start_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T2_C09_W10/C5_AXIS_MASK_M110/attempt_01/run_start.mat"
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C12_W13",
+      "teacher_source": "C5_RBF",
+      "raw_sha256": "28c004f613cb24fdca025ab73a6a6e7d32863a4a61197ed6d246db65f4e944bb",
+      "status_sha256": "60dc5109337aea903cae00f3702965c483181b682f2fb1a5a9942e749e402214",
+      "run_start_sha256": "4f1ad375e7516a09d868c2ecab231210cb416b1ed80b7d12e428e36cde33ca05",
+      "scene_identity_sha256": "60781d7800f0bd5229dc4d974385931674f9815f8868f3edb52f0e2b8410a8f9",
+      "event_count": 1999,
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "status_trace_audit_state": "RUN_COMPLETE_RAW_PENDING_AUDIT",
+      "source_split": "TRAIN_C5_24",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T2_C12_W13/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T2_C12_W13/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "run_start_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T2_C12_W13/C5_AXIS_MASK_M110/attempt_01/run_start.mat"
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C14_W14",
+      "teacher_source": "C5_RBF",
+      "raw_sha256": "f863bed7657ef34ad0712ac755999e07dd7b55fed51c57811cdc80fa7421a93e",
+      "status_sha256": "02900ddb8a9de38f85049322500d0eaf61b5982d8b7f1a4361a341ddf825dc61",
+      "run_start_sha256": "24b92d07e67620881d401aac2e0441a06480ef481b0056f12c90d1d78a90dc48",
+      "scene_identity_sha256": "6549a05f5f113ce211c9602d270d91780711dfd03b9a04b8a616742e80c114d6",
+      "event_count": 1999,
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "status_trace_audit_state": "RUN_COMPLETE_RAW_PENDING_AUDIT",
+      "source_split": "TRAIN_C5_24",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T2_C14_W14/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T2_C14_W14/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "run_start_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T2_C14_W14/C5_AXIS_MASK_M110/attempt_01/run_start.mat"
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C00_W05",
+      "teacher_source": "C5_RBF",
+      "raw_sha256": "a88c5010bb1e264ddde36f9e1400d0f6947b5a0a7361dede183c59e0f9f634f3",
+      "status_sha256": "7dcb6ece982bb30dc4a51b8cea678f9de615f0a9c5c3959a697e5ea5116882e4",
+      "run_start_sha256": "396f3872fb96f56f841ac5a30fbe76b15afe6b612c8f4a6b48d70087c1a1dd0b",
+      "scene_identity_sha256": "221b0f89f9f0bde22d67af17bc32622dbdb53e1f64ef35884bc5cfa22f9682b2",
+      "event_count": 1999,
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "status_trace_audit_state": "RUN_COMPLETE_RAW_PENDING_AUDIT",
+      "source_split": "TRAIN_C5_24",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T3_C00_W05/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T3_C00_W05/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "run_start_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T3_C00_W05/C5_AXIS_MASK_M110/attempt_01/run_start.mat"
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C03_W15",
+      "teacher_source": "C5_RBF",
+      "raw_sha256": "6afcc865b94f06d8e9558f261fa97c1b90aac73d5e4daf985c4f3b4315ce8a58",
+      "status_sha256": "e20e192c61a9f98a36ba133f6c7d4db7303b28107c4b2780c37cf55d01a48756",
+      "run_start_sha256": "714afe1df296bc345c2a43b5624f591af0ba60d36b64c58dcabba6652affae68",
+      "scene_identity_sha256": "c2fe3f426ed9d57a46c612a5cd6fb214d94ef8be3c5100c9ddb46d324153c419",
+      "event_count": 1999,
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "status_trace_audit_state": "RUN_COMPLETE_RAW_PENDING_AUDIT",
+      "source_split": "TRAIN_C5_24",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T3_C03_W15/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T3_C03_W15/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "run_start_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T3_C03_W15/C5_AXIS_MASK_M110/attempt_01/run_start.mat"
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C05_W02",
+      "teacher_source": "C5_RBF",
+      "raw_sha256": "6c7d83ee79e1549a6ef603739a8922ce73f4b1695237cd9eec94567a8126eb23",
+      "status_sha256": "6c358f8fd6625e46351ef816846972fce98d0bdf56f0eda508a8a28672c65d77",
+      "run_start_sha256": "f7ff4106fca1df137f5908aae6f14ff11cdac3658f931059983e895a7ae2f53c",
+      "scene_identity_sha256": "e5bc2811f1ebb48e573875a82c0ec3df8650529f12b133b8582fb137aca7d437",
+      "event_count": 1999,
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "status_trace_audit_state": "RUN_COMPLETE_RAW_PENDING_AUDIT",
+      "source_split": "TRAIN_C5_24",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T3_C05_W02/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T3_C05_W02/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "run_start_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T3_C05_W02/C5_AXIS_MASK_M110/attempt_01/run_start.mat"
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C06_W08",
+      "teacher_source": "C5_RBF",
+      "raw_sha256": "5acc8772586d329a0ccddfa2f3f4698b26a062612c998d67b201821b45121082",
+      "status_sha256": "967b79fe5e4dd8ce803d6be8307616e0f25e7e7675db9f40878140201d55de27",
+      "run_start_sha256": "938c1c9dd22d01facd09a71ef18911bac5382883d6737031fd5899ca3ce7796c",
+      "scene_identity_sha256": "39e1a267902793395fdc4fd1bb738bcab3e36829a423f5e16c294876cde241c2",
+      "event_count": 1999,
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "status_trace_audit_state": "RUN_COMPLETE_RAW_PENDING_AUDIT",
+      "source_split": "TRAIN_C5_24",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T3_C06_W08/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T3_C06_W08/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "run_start_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T3_C06_W08/C5_AXIS_MASK_M110/attempt_01/run_start.mat"
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C09_W09",
+      "teacher_source": "C5_RBF",
+      "raw_sha256": "fa11a41b18ce9d4c3b7558d3bbb0d230aaef3e7071fc15419df0c6d1fca2f3a4",
+      "status_sha256": "a64b2e63e26836d78d2e207ff16bd9cce012b95d988f722a5b631f2f79434d10",
+      "run_start_sha256": "3c466f1462caa20e2059605ed5a5dbb05c6c8171b9036661cbb76c074a4c4c83",
+      "scene_identity_sha256": "6831076c62315c9334b38a4b72307f80bc87ed185dd560da141708d8e2761652",
+      "event_count": 1999,
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "status_trace_audit_state": "RUN_COMPLETE_RAW_PENDING_AUDIT",
+      "source_split": "TRAIN_C5_24",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T3_C09_W09/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T3_C09_W09/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "run_start_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T3_C09_W09/C5_AXIS_MASK_M110/attempt_01/run_start.mat"
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C10_W11",
+      "teacher_source": "C5_RBF",
+      "raw_sha256": "493d55f39a7f72da25a27ef44b21c30840c587bd49714a4988edd3383328d56e",
+      "status_sha256": "9f94050ebfa7c95e2d03a0c8cc23717d99b93ac91d1525828c58b53cf7abb751",
+      "run_start_sha256": "ad6f70eadda2654ea5d3f854154eeb220a0921b24df3019013774272f218ec9f",
+      "scene_identity_sha256": "493004adb5b15efa23315f33746f71efd356b17f95d3e22aa749489b3a10ee87",
+      "event_count": 1999,
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "status_trace_audit_state": "RUN_COMPLETE_RAW_PENDING_AUDIT",
+      "source_split": "TRAIN_C5_24",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T3_C10_W11/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T3_C10_W11/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "run_start_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T3_C10_W11/C5_AXIS_MASK_M110/attempt_01/run_start.mat"
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C13_W12",
+      "teacher_source": "C5_RBF",
+      "raw_sha256": "b6eb8d2a5ee9b0dd91e4b073a1f97e79c6e75cde589714810511a1d450812035",
+      "status_sha256": "18b5fa595129f1357661e5fe35d72e5e34ffaa35b78b89b476446967523c36dd",
+      "run_start_sha256": "a7926c631b4b4241054645905bb39e0aab706f113fd2c43795c0a31a930eff4b",
+      "scene_identity_sha256": "5277a248e344194570074f2b071f8af59b11552ab948fe4c2fbdb53c1b59bd7d",
+      "event_count": 1999,
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "status_trace_audit_state": "RUN_COMPLETE_RAW_PENDING_AUDIT",
+      "source_split": "TRAIN_C5_24",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T3_C13_W12/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T3_C13_W12/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "run_start_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T3_C13_W12/C5_AXIS_MASK_M110/attempt_01/run_start.mat"
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C15_W14",
+      "teacher_source": "C5_RBF",
+      "raw_sha256": "2df0e35d32bff888c3225638d468b2e796d8942387002a48cf53b4242d3c6a27",
+      "status_sha256": "4255c066e862ba24fac7cae82b52244b79d72a25714dc9618f5d2a864763479c",
+      "run_start_sha256": "ac60586c3b0abc72b02a65d4d0e67e4c2b81bfff00c8e27927a7085f8cd3f8d0",
+      "scene_identity_sha256": "a695ba3dd53d12afb55e9d018368c1c0f27d7f8810d98f36e664e4d2f41eab6c",
+      "event_count": 1999,
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "status_trace_audit_state": "RUN_COMPLETE_RAW_PENDING_AUDIT",
+      "source_split": "TRAIN_C5_24",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T3_C15_W14/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T3_C15_W14/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "run_start_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T3_C15_W14/C5_AXIS_MASK_M110/attempt_01/run_start.mat"
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C00_W07",
+      "teacher_source": "C5_RBF",
+      "raw_sha256": "27f3d6f19f20edeb3e45c77be25daf4746e41c800fbe6126b12c07fdc52caaa5",
+      "status_sha256": "407c2371ab808530d0e23620848f20a6e5b6318c181998089bbffa715cdb1d49",
+      "run_start_sha256": "73a3bc0e26ec3dc8e56d2796d115b226c584753262f430b007df6f678301a8a7",
+      "scene_identity_sha256": "25da4a97c98d1fb69f4270da159ca906925b0cd51fcbbe0710699fca8ef986c3",
+      "event_count": 1999,
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "status_trace_audit_state": "PASS_C5_RAW_ALL_EVENTS",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_20261023/runs_c5_v1/DL1018_VAL_T1_C00_W07/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "status_path": "experiments/position_axis_coordinate_c5_20261023/runs_c5_v1/DL1018_VAL_T1_C00_W07/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "run_start_path": "experiments/position_axis_coordinate_c5_20261023/runs_c5_v1/DL1018_VAL_T1_C00_W07/C5_AXIS_MASK_M110/attempt_01/run_start.mat"
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C01_W08",
+      "teacher_source": "C5_RBF",
+      "raw_sha256": "9a94b2e6e93690d04bfea5f1cac8bbdfd107f779057721671b5fa7bc2c600266",
+      "status_sha256": "cb569ed35e106402ecfda78f4c9325b457a343d9c78daaff6151d6da8a117de0",
+      "run_start_sha256": "28de0f2d5ae14d78b5ea5c8d1ded347a23be385d25d7e2231c07a074f21e3412",
+      "scene_identity_sha256": "cdf3799d042ea616f20ded7ae263cb6c0931c866c3a0cb42d679d1f77650a712",
+      "event_count": 1999,
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "status_trace_audit_state": "RUN_COMPLETE_RAW_PENDING_AUDIT",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T1_C01_W08/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T1_C01_W08/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "run_start_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T1_C01_W08/C5_AXIS_MASK_M110/attempt_01/run_start.mat"
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C02_W09",
+      "teacher_source": "C5_RBF",
+      "raw_sha256": "a7f3dbe60e9e544e0c55dd5b1ee0afb9b530e37223ce37b84632764c418af8fd",
+      "status_sha256": "cb2545820928c7509672c638abfa5024487dbc6a80fb2996a2b46a3efc0c3686",
+      "run_start_sha256": "612bf8fde9c0d57429805d0549b0cec129405def5e54ef65c1fc1d876cb3e2b1",
+      "scene_identity_sha256": "525edbe289e405ffdeafbf86bfa37f616d2360a0518eef56ce6eb374e0c92598",
+      "event_count": 1999,
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "status_trace_audit_state": "PASS_C5_RAW_ALL_EVENTS",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_20261023/runs_c5_v1/DL1018_VAL_T1_C02_W09/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "status_path": "experiments/position_axis_coordinate_c5_20261023/runs_c5_v1/DL1018_VAL_T1_C02_W09/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "run_start_path": "experiments/position_axis_coordinate_c5_20261023/runs_c5_v1/DL1018_VAL_T1_C02_W09/C5_AXIS_MASK_M110/attempt_01/run_start.mat"
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C03_W10",
+      "teacher_source": "C5_RBF",
+      "raw_sha256": "747a57d4103f697dfde58237b160f6cb62a018c13ae6cb232946300811337cc7",
+      "status_sha256": "2911544172e8c8211778522310814a6721540fb881560471949a66622a1a5647",
+      "run_start_sha256": "0c28b8d8d0553fd74d8610f069bf309cd2eb3db4ddc61820ee179db26d8097f0",
+      "scene_identity_sha256": "c4695642870b614d80bcf024873084b2a0984863e15cee7f849ecd633c896944",
+      "event_count": 1999,
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "status_trace_audit_state": "RUN_COMPLETE_RAW_PENDING_AUDIT",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T1_C03_W10/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T1_C03_W10/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "run_start_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T1_C03_W10/C5_AXIS_MASK_M110/attempt_01/run_start.mat"
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C04_W11",
+      "teacher_source": "C5_RBF",
+      "raw_sha256": "bda0123bfe6214e4a39cf27945a3c7f247ac4be796d872dfe523da9a7ec5da9f",
+      "status_sha256": "7a9a968a37d100b30cd184c5fdd43da34aeff2068c6098b891896fd9ba91b637",
+      "run_start_sha256": "5924ca5a7450e166645cd1f5e3c2ea1c668960b2d972903dc0e371b2e4aa9364",
+      "scene_identity_sha256": "c0c679a0880676d235c655f59270c6663bc330ea6ce2c66dbd2c0860f3a033fa",
+      "event_count": 1999,
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "status_trace_audit_state": "RUN_COMPLETE_RAW_PENDING_AUDIT",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T1_C04_W11/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T1_C04_W11/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "run_start_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T1_C04_W11/C5_AXIS_MASK_M110/attempt_01/run_start.mat"
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C05_W12",
+      "teacher_source": "C5_RBF",
+      "raw_sha256": "4b14d0a1c390c3275334f76f15b0b358c02e701b58982b404bf4ec8a4f12495d",
+      "status_sha256": "c28a8da41e0c18ab4d353db08046ecb19e33f3cb7718fd644a5d3036e17c318a",
+      "run_start_sha256": "789955d9563dab699121556d96254809efc5aa9bb81260fc54ca18e2d17a8be8",
+      "scene_identity_sha256": "6843fcc446407240abcbc3510aa99b8a9afdc0006ca2b81996e73a220e7180af",
+      "event_count": 1999,
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "status_trace_audit_state": "PASS_C5_RAW_ALL_EVENTS",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_20261023/runs_c5_v1/DL1018_VAL_T1_C05_W12/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "status_path": "experiments/position_axis_coordinate_c5_20261023/runs_c5_v1/DL1018_VAL_T1_C05_W12/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "run_start_path": "experiments/position_axis_coordinate_c5_20261023/runs_c5_v1/DL1018_VAL_T1_C05_W12/C5_AXIS_MASK_M110/attempt_01/run_start.mat"
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C06_W13",
+      "teacher_source": "C5_RBF",
+      "raw_sha256": "de018bccce860bc2ab7a2f60c2e327449de54397e357c7d609d1a693d60ad43f",
+      "status_sha256": "dd03c05db2963734e81df51077208b052dac7e7a14fc9c9cb80c126d6950e39c",
+      "run_start_sha256": "de97608aa7291e8c0c00534a516f4f25fb14392bded4d9a04d2e2c082a10f048",
+      "scene_identity_sha256": "42a894a04838420429fa7d0377ef9ab417f621301ff41892e03c7e74948d6737",
+      "event_count": 1999,
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "status_trace_audit_state": "RUN_COMPLETE_RAW_PENDING_AUDIT",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T1_C06_W13/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T1_C06_W13/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "run_start_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T1_C06_W13/C5_AXIS_MASK_M110/attempt_01/run_start.mat"
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C07_W14",
+      "teacher_source": "C5_RBF",
+      "raw_sha256": "df07c18cd061aa78e8e1152b73bccc2ae11026a5d54630065c877a5e4ec42dd1",
+      "status_sha256": "db8c0c9b570048922f063cacb97a7126f147f767ddab6c93b079220083ae96d6",
+      "run_start_sha256": "60a16de29012c20c82a700be27862846c69c8467165710e2941f254c88197d07",
+      "scene_identity_sha256": "bc40ff5475211edc5c905e142a76c549d86c5d939fc2c8458d974006801e474f",
+      "event_count": 1999,
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "status_trace_audit_state": "RUN_COMPLETE_RAW_PENDING_AUDIT",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T1_C07_W14/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T1_C07_W14/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "run_start_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T1_C07_W14/C5_AXIS_MASK_M110/attempt_01/run_start.mat"
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C08_W15",
+      "teacher_source": "C5_RBF",
+      "raw_sha256": "c118dd1bd5567e0e7c58b7f5334109187b2cfe743977a6a18a3976d7d0ab23c3",
+      "status_sha256": "428128e922036a215e6b7b30c9de35a28d34f030343deb49ec1b7885d27b4568",
+      "run_start_sha256": "cd7f145f1ba2cffa2e48fb26336364602400fe6271ea17628246338a02c1cc49",
+      "scene_identity_sha256": "8fd28a68dd7784e90cccf6e296d75621e44f731cb5c954fc12234c9757745e39",
+      "event_count": 1999,
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "status_trace_audit_state": "PASS_C5_RAW_ALL_EVENTS",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_20261023/runs_c5_v1/DL1018_VAL_T1_C08_W15/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "status_path": "experiments/position_axis_coordinate_c5_20261023/runs_c5_v1/DL1018_VAL_T1_C08_W15/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "run_start_path": "experiments/position_axis_coordinate_c5_20261023/runs_c5_v1/DL1018_VAL_T1_C08_W15/C5_AXIS_MASK_M110/attempt_01/run_start.mat"
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C09_W00",
+      "teacher_source": "C5_RBF",
+      "raw_sha256": "f4bd4680c782671bc12af42c005c5676a12fd5089e69c8ffcb2070ed8447ce14",
+      "status_sha256": "8c51a5a200f61e46f4cee39826c017213514a8633d1e465743bf078f2f75ec37",
+      "run_start_sha256": "f6e7f88e8201e3289e1f03df084b2d7af5d2aec4a72eb6090403eee9b21f96b9",
+      "scene_identity_sha256": "2aefa85e5f7387d21fe8ec7f080e441cb95738bff5aff314399587fb6164c5da",
+      "event_count": 1999,
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "status_trace_audit_state": "RUN_COMPLETE_RAW_PENDING_AUDIT",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T1_C09_W00/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T1_C09_W00/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "run_start_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T1_C09_W00/C5_AXIS_MASK_M110/attempt_01/run_start.mat"
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C10_W01",
+      "teacher_source": "C5_RBF",
+      "raw_sha256": "6a5276fe9a6bac6e34d87b4a32d5c9defbc4653a708477bb03a85bdebfa9db48",
+      "status_sha256": "d8aece3c99632c2121b3e8e85208b4b2d4b6cb5cf74d1b753254a28f4fe49806",
+      "run_start_sha256": "ff452f88320ae1ee9528a59ebdc66fd7c9ec7d2e99585e3b11c1679bb28d92fa",
+      "scene_identity_sha256": "dd7bd95f1a34015180f599801b058bc29cbde1f84ee1e99652df372b8ef98f2f",
+      "event_count": 1999,
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "status_trace_audit_state": "RUN_COMPLETE_RAW_PENDING_AUDIT",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T1_C10_W01/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T1_C10_W01/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "run_start_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T1_C10_W01/C5_AXIS_MASK_M110/attempt_01/run_start.mat"
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C11_W02",
+      "teacher_source": "C5_RBF",
+      "raw_sha256": "1a3519270fa87d15b1a745859ca9a8606351dfeb7dbb50cfc72d5f07087d8df9",
+      "status_sha256": "c8215990799834b1c60e7cfc9495db58717aba8a04a17a038e5f8d7fe5d89252",
+      "run_start_sha256": "309e82f3ea7792d9cd4294be8361bf0b0db702a71cb5eef0bfb59daa0c6bcead",
+      "scene_identity_sha256": "852d3f9d8f69a2356d78691dacd5597e33b305d6be5c5e47d495c08f66c73ebb",
+      "event_count": 1999,
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "status_trace_audit_state": "RUN_COMPLETE_RAW_PENDING_AUDIT",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T1_C11_W02/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T1_C11_W02/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "run_start_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T1_C11_W02/C5_AXIS_MASK_M110/attempt_01/run_start.mat"
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C12_W03",
+      "teacher_source": "C5_RBF",
+      "raw_sha256": "b5cbe243985c96f651d10cee9aee301ce638bd42ef3f8dc045d531b2999f51a9",
+      "status_sha256": "27e434bf5d98a11967d3f692a0b985ea86c2a9a24cef961b099aa61f3c23d3a6",
+      "run_start_sha256": "013e017da39f9ab55886fff89d3b80cfb44039d36dc67e55a873920538ae37ac",
+      "scene_identity_sha256": "b764d5f25e613d45be3b1095aa0063a32028d33ff00a3f16f05ad0d2c03de316",
+      "event_count": 1999,
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "status_trace_audit_state": "RUN_COMPLETE_RAW_PENDING_AUDIT",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T1_C12_W03/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T1_C12_W03/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "run_start_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T1_C12_W03/C5_AXIS_MASK_M110/attempt_01/run_start.mat"
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C13_W04",
+      "teacher_source": "C5_RBF",
+      "raw_sha256": "71a8d1668b4af4983bc59877ee4c27af2edd59f791f7ad8048027c30d8da8894",
+      "status_sha256": "63a03e9b8b4edcc25b3eff2a737d718f016fcae03722187e7c18405ced3450aa",
+      "run_start_sha256": "ef59f9ba55c05c7c026b4a65f074ec26a745e7b07c4393fe547ac84ff56432e3",
+      "scene_identity_sha256": "9f709d325f4735d9a0db8be9ab6a834d17a9b4cf98efcac96bb0ee05d8107466",
+      "event_count": 1999,
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "status_trace_audit_state": "RUN_COMPLETE_RAW_PENDING_AUDIT",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T1_C13_W04/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T1_C13_W04/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "run_start_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T1_C13_W04/C5_AXIS_MASK_M110/attempt_01/run_start.mat"
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C14_W05",
+      "teacher_source": "C5_RBF",
+      "raw_sha256": "711be305adef806852a3ed1ba9953db3ece82315f11145290e1a200697c8fe76",
+      "status_sha256": "ded19a3eb81dbd86fe4c8f73e7551740b810817085b4f96842d7603dfd81b491",
+      "run_start_sha256": "6160e228926deaefda9fac25ff8969142932f8ff81bd0a235416cf1661084fb3",
+      "scene_identity_sha256": "22d35d91050d64a5301c8aeeff3b0c00f3362e82df48cd4dc200df43eca6bcfd",
+      "event_count": 1999,
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "status_trace_audit_state": "RUN_COMPLETE_RAW_PENDING_AUDIT",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T1_C14_W05/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T1_C14_W05/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "run_start_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T1_C14_W05/C5_AXIS_MASK_M110/attempt_01/run_start.mat"
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C15_W06",
+      "teacher_source": "C5_RBF",
+      "raw_sha256": "0576a03a8aeee7cf7508bc47f7d65cbe13b8d9925679fe38067ed7f757d6fcc7",
+      "status_sha256": "3abd88d69d14e67c7448258e6a6e5d156e38755c885793b97645c5c0aa3c6e6d",
+      "run_start_sha256": "35894a4e373ee05514dfcdb756889f949ee573040556ea03b9b97b93365f635d",
+      "scene_identity_sha256": "e783f63d32e2ecd71cdc5d3ceb08fb408787d29afe112a3b2cba644627d4f8c4",
+      "event_count": 1999,
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "status_trace_audit_state": "RUN_COMPLETE_RAW_PENDING_AUDIT",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T1_C15_W06/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T1_C15_W06/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "run_start_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T1_C15_W06/C5_AXIS_MASK_M110/attempt_01/run_start.mat"
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C00_W10",
+      "teacher_source": "C5_RBF",
+      "raw_sha256": "9115113229c8fe3add21e1337216ceded2f829e06f4eb1d5a4930eb2e87020c4",
+      "status_sha256": "b70002e2f90de2f93f698a85a5f04eba75cbcf0d32067f4c361a1299670c827f",
+      "run_start_sha256": "633ae447e07fb8b58714c77930c9dd5d730e812bee85aff1798f296bcdb382f8",
+      "scene_identity_sha256": "954cddfbe68c7682dc176ac98cfe9d7936e61101805a8cf4316c6fba4b10809a",
+      "event_count": 1999,
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "status_trace_audit_state": "PASS_C5_RAW_ALL_EVENTS",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_20261023/runs_c5_v1/DL1018_VAL_T2_C00_W10/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "status_path": "experiments/position_axis_coordinate_c5_20261023/runs_c5_v1/DL1018_VAL_T2_C00_W10/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "run_start_path": "experiments/position_axis_coordinate_c5_20261023/runs_c5_v1/DL1018_VAL_T2_C00_W10/C5_AXIS_MASK_M110/attempt_01/run_start.mat"
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C01_W11",
+      "teacher_source": "C5_RBF",
+      "raw_sha256": "7312795142c94b909180f1791d9251190b999d9c75bc2c16c0845f35af9ec378",
+      "status_sha256": "3ecd0625df8e738f116e0ab12d28c48ce5f4d95666519faeb74a519e04411d98",
+      "run_start_sha256": "13594c3955165810e28f02b1bd2d15edf6af7d3c1ed71ef0a6c5941bfaf95eec",
+      "scene_identity_sha256": "75778ef177724b1b77c6282a203f029edb6b90a0576283dbd7d187a899f10e8b",
+      "event_count": 1999,
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "status_trace_audit_state": "RUN_COMPLETE_RAW_PENDING_AUDIT",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T2_C01_W11/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T2_C01_W11/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "run_start_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T2_C01_W11/C5_AXIS_MASK_M110/attempt_01/run_start.mat"
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C02_W12",
+      "teacher_source": "C5_RBF",
+      "raw_sha256": "a9b189771beb2c8212c08ae229cee5adf92d2bb80990dc2e3e15ac0ccb2e760c",
+      "status_sha256": "02911d64176a83a5132a479a547d96e39577ad84fdc18d9b1e4c1e44de7f1d6d",
+      "run_start_sha256": "a4f25034f23ec4708de077405df06454e8e90121439b9a6f2dabf738b7b81277",
+      "scene_identity_sha256": "49dfe3335c445b4279974cfe4400702ade93eef95872bc637db45a34f29872c9",
+      "event_count": 1999,
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "status_trace_audit_state": "PASS_C5_RAW_ALL_EVENTS",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_20261023/runs_c5_v1/DL1018_VAL_T2_C02_W12/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "status_path": "experiments/position_axis_coordinate_c5_20261023/runs_c5_v1/DL1018_VAL_T2_C02_W12/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "run_start_path": "experiments/position_axis_coordinate_c5_20261023/runs_c5_v1/DL1018_VAL_T2_C02_W12/C5_AXIS_MASK_M110/attempt_01/run_start.mat"
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C03_W13",
+      "teacher_source": "C5_RBF",
+      "raw_sha256": "78b8062650df377a7785fe1da324f941f791e85fa83988e682903d25fdb366af",
+      "status_sha256": "17d047566038e597bec33475ca2e5f7fc7d93bbe833922a6fbdeb98a86428005",
+      "run_start_sha256": "82bccf504c71ecd5c5f554bee3112ecac3e24b9da0aac4521940fd88ab8a6552",
+      "scene_identity_sha256": "74d932a3ece2c9baf4835098442ebb0cbcc5ff7727d0771000e517ea467c7773",
+      "event_count": 1999,
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "status_trace_audit_state": "RUN_COMPLETE_RAW_PENDING_AUDIT",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T2_C03_W13/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T2_C03_W13/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "run_start_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T2_C03_W13/C5_AXIS_MASK_M110/attempt_01/run_start.mat"
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C04_W14",
+      "teacher_source": "C5_RBF",
+      "raw_sha256": "b3cbe42c3835600cef5b4a5adbafe619cb83c56da94f37fe87669e027e91c6bf",
+      "status_sha256": "30925b48bfa7925e1fddaf3f2056f8af27f8fdc67fd24135e5753c73e58bf092",
+      "run_start_sha256": "fd7d4f7cdf009cae16daf0c83122f273beb403fe58fb76ed3839c3b3d4f525f6",
+      "scene_identity_sha256": "41bbf5541272df61398b8dbc2d9aac99a8a498c2afd9961b352728a53beed984",
+      "event_count": 1999,
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "status_trace_audit_state": "RUN_COMPLETE_RAW_PENDING_AUDIT",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T2_C04_W14/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T2_C04_W14/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "run_start_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T2_C04_W14/C5_AXIS_MASK_M110/attempt_01/run_start.mat"
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C05_W15",
+      "teacher_source": "C5_RBF",
+      "raw_sha256": "b291199298fb4c591478a9c3115323a4299e281b0be447c9fbca0ffe4f640314",
+      "status_sha256": "5a136ce721f4d4a112e398bcb5d4611737c53e79b895023dee6ebf473ea9fb45",
+      "run_start_sha256": "5de4006eb6b998545051b03feebfe88a2f8f0d345eb55cb6e937545cb448d055",
+      "scene_identity_sha256": "3694afa92533a03e56fb201de39e98f8b86a5f7c32f494bc05cad6fe993516d5",
+      "event_count": 1999,
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "status_trace_audit_state": "PASS_C5_RAW_ALL_EVENTS",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_20261023/runs_c5_v1/DL1018_VAL_T2_C05_W15/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "status_path": "experiments/position_axis_coordinate_c5_20261023/runs_c5_v1/DL1018_VAL_T2_C05_W15/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "run_start_path": "experiments/position_axis_coordinate_c5_20261023/runs_c5_v1/DL1018_VAL_T2_C05_W15/C5_AXIS_MASK_M110/attempt_01/run_start.mat"
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C06_W00",
+      "teacher_source": "C5_RBF",
+      "raw_sha256": "6e53de0aa938b4b19c35343b56eff7960a86187dceeb9871c296c4331b7a3b20",
+      "status_sha256": "40b633978b6edd6483c7883cdfc1cca1a5d59df8714cd8d8293bd0f01d2a9e3e",
+      "run_start_sha256": "8240b4d420a8031657b1d844460eba48f3604e2c14e9432e0fcdadc0238a52d9",
+      "scene_identity_sha256": "2e4bb5053e178843b1012983008d5170ded0ea9e4ad7a9001f8d76f2da1083df",
+      "event_count": 1999,
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "status_trace_audit_state": "PASS_C5_RAW_ALL_EVENTS",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_20261023/runs_c5_v1/DL1018_VAL_T2_C06_W00/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "status_path": "experiments/position_axis_coordinate_c5_20261023/runs_c5_v1/DL1018_VAL_T2_C06_W00/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "run_start_path": "experiments/position_axis_coordinate_c5_20261023/runs_c5_v1/DL1018_VAL_T2_C06_W00/C5_AXIS_MASK_M110/attempt_01/run_start.mat"
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C07_W01",
+      "teacher_source": "C5_RBF",
+      "raw_sha256": "fe47d38d003ab95387ffede70f9fed513b1b3481747aac4d823b73f62ff5fb12",
+      "status_sha256": "1398b96ad527e9d7ff7955b75b9fccf33955f988f68dac12b5624d75f575acae",
+      "run_start_sha256": "fa919937388549cc594c9ff34251c1044fe8ccc9152d3bd511002add89bb3e6b",
+      "scene_identity_sha256": "8fa0f87e414cfdb7d8a1b685355368ec200d86f794c5df66e77d800dc45edbc2",
+      "event_count": 1999,
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "status_trace_audit_state": "RUN_COMPLETE_RAW_PENDING_AUDIT",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T2_C07_W01/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T2_C07_W01/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "run_start_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T2_C07_W01/C5_AXIS_MASK_M110/attempt_01/run_start.mat"
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C08_W02",
+      "teacher_source": "C5_RBF",
+      "raw_sha256": "3a6be9965ff565af1f59900693046be080057ee6d909717df9947aaa0644d22f",
+      "status_sha256": "6614db678b12d6efa7d89c7a401dfa68f9f44800d745a7c773f59f4401ccc166",
+      "run_start_sha256": "1b03b05ba919be7fa7b0c60d9ebe7a24c9fcfb0c62a828e51daf1c59e8e2ce59",
+      "scene_identity_sha256": "e37327f9064c645b9c3736c426a7a944007a07693a6aec2af852b97c0d8361b9",
+      "event_count": 1999,
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "status_trace_audit_state": "RUN_COMPLETE_RAW_PENDING_AUDIT",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T2_C08_W02/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T2_C08_W02/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "run_start_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T2_C08_W02/C5_AXIS_MASK_M110/attempt_01/run_start.mat"
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C09_W03",
+      "teacher_source": "C5_RBF",
+      "raw_sha256": "5b31ab0bbe83039f5c246112c0ac739dc3b8eb68984f4373f80dc0d1fc00bc2c",
+      "status_sha256": "ea5d1eda4f32db6fa7b801345aa20f4d24465dbacb5251a11cf9379853f62a31",
+      "run_start_sha256": "30b98771aaa167f35bc27bd4c4ff2fd4533c5536300c04926ae2a905600f9384",
+      "scene_identity_sha256": "f7ecf1c6bc929ca2a2724cc41d3ccfd740e442efe0b125c2072e84da584fba99",
+      "event_count": 1999,
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "status_trace_audit_state": "RUN_COMPLETE_RAW_PENDING_AUDIT",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T2_C09_W03/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T2_C09_W03/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "run_start_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T2_C09_W03/C5_AXIS_MASK_M110/attempt_01/run_start.mat"
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C10_W04",
+      "teacher_source": "C5_RBF",
+      "raw_sha256": "aca803e783c29ff5f6d4183bdc535f130c8a5d37daabfe77c6a225290f5aa1b5",
+      "status_sha256": "abed3571afa16311db6ec2d5e23efa13bff6eff71f2622921568f0775b918e88",
+      "run_start_sha256": "586e3ed0566fa7a6cee471946cb112c07fd56da2eebbe67bb3784c3432003e90",
+      "scene_identity_sha256": "f405f902b11d02eff02497995405570f8a2474d101c9ccedbc1275fd1b08d80e",
+      "event_count": 1999,
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "status_trace_audit_state": "RUN_COMPLETE_RAW_PENDING_AUDIT",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T2_C10_W04/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T2_C10_W04/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "run_start_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T2_C10_W04/C5_AXIS_MASK_M110/attempt_01/run_start.mat"
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C11_W05",
+      "teacher_source": "C5_RBF",
+      "raw_sha256": "6d93f3dfb3eb4a07f6f450fe86735c793d2d6db7cd818789259e610b0de3126d",
+      "status_sha256": "483fb78ef57db400198e4d11087c988bb8153ab1fbf901776dec8410570af40e",
+      "run_start_sha256": "46b8bcbc0d8f2dde181d6a83752b15d9fe89bcf59127a9675bbfba9aad3fab25",
+      "scene_identity_sha256": "2e22ea205ae04f673e0ff7e2c8e9172bfa1e59c044095a3453b131e60e2e5279",
+      "event_count": 1999,
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "status_trace_audit_state": "RUN_COMPLETE_RAW_PENDING_AUDIT",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T2_C11_W05/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T2_C11_W05/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "run_start_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T2_C11_W05/C5_AXIS_MASK_M110/attempt_01/run_start.mat"
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C12_W06",
+      "teacher_source": "C5_RBF",
+      "raw_sha256": "494f8a9c7c2e79a0cc43a1282870ca269d4dd3e3be5b8d26bfdc092217fb5457",
+      "status_sha256": "20e1be6a159e04488b1b476583f889a7890e882a8fad1623162b54317ee21787",
+      "run_start_sha256": "5107f953e17b0fb78e297d5c80a212a8491e72163d3bf1197ae26cb44293e7c5",
+      "scene_identity_sha256": "98cf12499d1b047a5088df7ae588a5ca473a91fe5d12dcd6a3d3fc17b8d67613",
+      "event_count": 1999,
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "status_trace_audit_state": "RUN_COMPLETE_RAW_PENDING_AUDIT",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T2_C12_W06/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T2_C12_W06/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "run_start_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T2_C12_W06/C5_AXIS_MASK_M110/attempt_01/run_start.mat"
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C13_W07",
+      "teacher_source": "C5_RBF",
+      "raw_sha256": "4c1b8d3e155df1f3a5f38fb4f6579eff464f7f87d1834cfb0cfd055cf3ad70da",
+      "status_sha256": "8d6c3c7999053cfaa6f13504fa5357d3b7184e364fa4faf4c7e855d91aff012d",
+      "run_start_sha256": "4a3c77fd5f8589fce0d4eb8b50cd345a6799c765aac868154e70d5a2ca33f268",
+      "scene_identity_sha256": "358f35ad2e16e7432431e3e03c245b531f79ebb98bc9600688ec9b1979d7bb1a",
+      "event_count": 1999,
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "status_trace_audit_state": "RUN_COMPLETE_RAW_PENDING_AUDIT",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T2_C13_W07/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T2_C13_W07/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "run_start_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T2_C13_W07/C5_AXIS_MASK_M110/attempt_01/run_start.mat"
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C14_W08",
+      "teacher_source": "C5_RBF",
+      "raw_sha256": "447bafc202e6c53e7838c19b88e2eb3daa8512d2e9468131b0f73babf4279964",
+      "status_sha256": "b48a777195ed6465b4a65ef4f8ab1726d9ce23632db85fe2194b1e657d7fb416",
+      "run_start_sha256": "a17c2bcfd04033f0e61700813c202e16c955feee2da3b5e69814ed8ee9f3413e",
+      "scene_identity_sha256": "6cec49c9ce69dd88fc469e9a3c899c6c19b2a25c7b486cc9a87fd7e710fc8d79",
+      "event_count": 1999,
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "status_trace_audit_state": "RUN_COMPLETE_RAW_PENDING_AUDIT",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T2_C14_W08/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T2_C14_W08/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "run_start_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T2_C14_W08/C5_AXIS_MASK_M110/attempt_01/run_start.mat"
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C15_W09",
+      "teacher_source": "C5_RBF",
+      "raw_sha256": "6af25d0ace1feb24deb1891364444ad40973204af8e20ebe400afc673d42d431",
+      "status_sha256": "a503e1652fbb66d6dbcfeb9526160da46e8c763a8773139bcfa36ee62d998f2e",
+      "run_start_sha256": "2b7e2926e2abc547ef8509f641166907f61a980321aa27e9658a32fe67c219d6",
+      "scene_identity_sha256": "b1f78506fa3e9c0b0619cef3ccb89ee5d38ab52bfba667ec7ff9ea26accc2174",
+      "event_count": 1999,
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "status_trace_audit_state": "RUN_COMPLETE_RAW_PENDING_AUDIT",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T2_C15_W09/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T2_C15_W09/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "run_start_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T2_C15_W09/C5_AXIS_MASK_M110/attempt_01/run_start.mat"
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C00_W13",
+      "teacher_source": "C5_RBF",
+      "raw_sha256": "fe56d41b82deed388bd90f3e1933d40ba4abb1a33c9a770f85729de9932071f6",
+      "status_sha256": "3429a28ff93d63d28367fbb40cfce9be15c5273039c1c5ab15b10b236a20b67f",
+      "run_start_sha256": "c6795bed2d5155c291ae8d02079b745d6dac66962fbc24a38853e57e848ab986",
+      "scene_identity_sha256": "9a413cc39fe425995ab3b83b123461948122778f49e88d14a4e7072ea74a62b7",
+      "event_count": 1999,
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "status_trace_audit_state": "PASS_C5_RAW_ALL_EVENTS",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_20261023/runs_c5_v1/DL1018_VAL_T3_C00_W13/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "status_path": "experiments/position_axis_coordinate_c5_20261023/runs_c5_v1/DL1018_VAL_T3_C00_W13/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "run_start_path": "experiments/position_axis_coordinate_c5_20261023/runs_c5_v1/DL1018_VAL_T3_C00_W13/C5_AXIS_MASK_M110/attempt_01/run_start.mat"
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C01_W14",
+      "teacher_source": "C5_RBF",
+      "raw_sha256": "556be0c5cc9ae61c077597fdf474c2fde74f443a848bcd7dcfe0f7f49768db83",
+      "status_sha256": "8df31342ac90af96069fe489241eaa4a39e0a8b862d46d7a5c4c8e8bd4ace31e",
+      "run_start_sha256": "487ba213d1e5e03b26a6e958d668befedb61e8ab712eab11fd53730eae9af2a5",
+      "scene_identity_sha256": "619b306fb34db86fb1538e14c207ba599f5f2760730f95c2b644ce079dfdcf7c",
+      "event_count": 1999,
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "status_trace_audit_state": "RUN_COMPLETE_RAW_PENDING_AUDIT",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T3_C01_W14/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T3_C01_W14/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "run_start_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T3_C01_W14/C5_AXIS_MASK_M110/attempt_01/run_start.mat"
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C02_W15",
+      "teacher_source": "C5_RBF",
+      "raw_sha256": "fdf56c425be3a5dcede1c9fd0abb4d24a081996ec72049b0f0d7a33aad88b911",
+      "status_sha256": "3919b340318c5321ee7293dba53f29c8a82beda867affb361804c9131996dff5",
+      "run_start_sha256": "18022adb9713f8dca6acaba51ebe4868e874366e8bf884e4ce739695cb078ada",
+      "scene_identity_sha256": "77f5d729d2a480e59ce68aa52f647a0f6969b0be017455b9b42b6f888c771536",
+      "event_count": 1999,
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "status_trace_audit_state": "PASS_C5_RAW_ALL_EVENTS",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_20261023/runs_c5_v1/DL1018_VAL_T3_C02_W15/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "status_path": "experiments/position_axis_coordinate_c5_20261023/runs_c5_v1/DL1018_VAL_T3_C02_W15/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "run_start_path": "experiments/position_axis_coordinate_c5_20261023/runs_c5_v1/DL1018_VAL_T3_C02_W15/C5_AXIS_MASK_M110/attempt_01/run_start.mat"
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C03_W00",
+      "teacher_source": "C5_RBF",
+      "raw_sha256": "e119ec1f94986ad18ef0ce69a11b8971b324fd8b4a52c0193e926f5c5ef20634",
+      "status_sha256": "a4886d666b00f0f7429c5e8854af218a7072c57a21325e633e848c7b674f05a5",
+      "run_start_sha256": "369d5a35ece9e15dc37a29f1d76d3f6f5ce7b4b96cbdc9a08e6babb41194866b",
+      "scene_identity_sha256": "e4835f475d182a76de2a7a82afe3d93057f5a4589b96218778fbd2b2f15a29ee",
+      "event_count": 1999,
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "status_trace_audit_state": "PASS_C5_RAW_ALL_EVENTS",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_20261023/runs_c5_v1/DL1018_VAL_T3_C03_W00/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "status_path": "experiments/position_axis_coordinate_c5_20261023/runs_c5_v1/DL1018_VAL_T3_C03_W00/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "run_start_path": "experiments/position_axis_coordinate_c5_20261023/runs_c5_v1/DL1018_VAL_T3_C03_W00/C5_AXIS_MASK_M110/attempt_01/run_start.mat"
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C04_W01",
+      "teacher_source": "C5_RBF",
+      "raw_sha256": "bb031cfd44b71447c8a5efa013f332857da670326515fed6c026e3db25cbe2a4",
+      "status_sha256": "e93c5c8dd43b743efc3736763dcd6dad51ca8b34eebc5a3b4cebc0d564735782",
+      "run_start_sha256": "9cd0c12443dbd38696b44c32c8b04ac4397ab87c44ad179e912487584b6fefb0",
+      "scene_identity_sha256": "ce0bc5601561813216a4eae0af2f0642da22299a88839aff798a6105ee24b9be",
+      "event_count": 1999,
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "status_trace_audit_state": "RUN_COMPLETE_RAW_PENDING_AUDIT",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T3_C04_W01/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T3_C04_W01/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "run_start_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T3_C04_W01/C5_AXIS_MASK_M110/attempt_01/run_start.mat"
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C05_W02",
+      "teacher_source": "C5_RBF",
+      "raw_sha256": "3682bb0e3259a7aa8779abde107875a494ca28459847084057c6f71e38a3bc84",
+      "status_sha256": "ea677bf32a8208227186aac0863126dbbf3e5d13527430359d45f8a16d2fcf72",
+      "run_start_sha256": "ed6c3bbde6b32c1014022fa4c654f143b4d720f268fb80cfc3c82c1d6f65deb2",
+      "scene_identity_sha256": "ae31ec27bee5ab039d91668ae25b7e14844b4138908bd24c11da61794859bbca",
+      "event_count": 1999,
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "status_trace_audit_state": "RUN_COMPLETE_RAW_PENDING_AUDIT",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T3_C05_W02/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T3_C05_W02/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "run_start_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T3_C05_W02/C5_AXIS_MASK_M110/attempt_01/run_start.mat"
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C06_W03",
+      "teacher_source": "C5_RBF",
+      "raw_sha256": "2375f9511bde942b12f488b7704a57d1cf98f012452b8332abc0e5cf0636d108",
+      "status_sha256": "36d9dbbdf38b515932ec06d14e590db100934732a33ba09884d3c06c338eba9a",
+      "run_start_sha256": "73170939454dac5e43afb9a58a4e98103d6366fa9d4fd147f7c3037846e19113",
+      "scene_identity_sha256": "d57839262a8de7aa849b3d1bfb945129087ac71d2a19cc3ce6edd1517746ec1f",
+      "event_count": 1999,
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "status_trace_audit_state": "RUN_COMPLETE_RAW_PENDING_AUDIT",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T3_C06_W03/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T3_C06_W03/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "run_start_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T3_C06_W03/C5_AXIS_MASK_M110/attempt_01/run_start.mat"
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C07_W04",
+      "teacher_source": "C5_RBF",
+      "raw_sha256": "7cc4cbf25f3472f421af0b5fdecce4f603db8600cf07979973f00c2f313909ef",
+      "status_sha256": "c730a079557da710d1dad0eb3a28c2397bc2a617c15936673c44be4825b37506",
+      "run_start_sha256": "4c6cadb3a4316a5e7dcd16ca4e62cebb861f07c91934cb497fd62bf2701ac64a",
+      "scene_identity_sha256": "a064ff76218ad53bd645168a92feadec21531bf76bdd7b29073a07d86834d08d",
+      "event_count": 1999,
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "status_trace_audit_state": "RUN_COMPLETE_RAW_PENDING_AUDIT",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T3_C07_W04/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T3_C07_W04/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "run_start_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T3_C07_W04/C5_AXIS_MASK_M110/attempt_01/run_start.mat"
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C08_W05",
+      "teacher_source": "C5_RBF",
+      "raw_sha256": "66efc5be513728ab6347eda9862ed4e18372800e911069fb99eac1d52bcb36b7",
+      "status_sha256": "66f6bedf246461f0932c9d7a596769ba017e9763e8e51700cacd39fbcb9a734f",
+      "run_start_sha256": "c7acb9e6646f19e1cb9ea6b2e35ea4fb4a14bc4adbb09a5d30bb1744a3aa89af",
+      "scene_identity_sha256": "532bd665166bc9f369ff11562686bdd1eb1843ccf2edaffda9cde693fcc165bb",
+      "event_count": 1999,
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "status_trace_audit_state": "RUN_COMPLETE_RAW_PENDING_AUDIT",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T3_C08_W05/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T3_C08_W05/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "run_start_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T3_C08_W05/C5_AXIS_MASK_M110/attempt_01/run_start.mat"
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C09_W06",
+      "teacher_source": "C5_RBF",
+      "raw_sha256": "2519a56231716c681041f46d427ab293b092aec837b3dc5c666925c3aab16aca",
+      "status_sha256": "5bcfbe75ead5979b541bdd51902fe4ede29f19f29d17ac3e4c1a87ff7778fe5f",
+      "run_start_sha256": "1ab798e455f8a66be838db58595e018dd5405721453a7efece4cae83c9cefefe",
+      "scene_identity_sha256": "110328e78d282b14c2d30ca60d580220fb433ac9a7ebbd50081232842ac7131f",
+      "event_count": 1999,
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "status_trace_audit_state": "RUN_COMPLETE_RAW_PENDING_AUDIT",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T3_C09_W06/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T3_C09_W06/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "run_start_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T3_C09_W06/C5_AXIS_MASK_M110/attempt_01/run_start.mat"
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C10_W07",
+      "teacher_source": "C5_RBF",
+      "raw_sha256": "564459c991c3710b1c3603e5d7f35286ad9fb5756b80259ca5631fbd65f9050c",
+      "status_sha256": "bd62fdb2d5f8e4503e117ad3c355bf96caf2792746096505a5377b16cea712ba",
+      "run_start_sha256": "487333a254597a7a58801fefd056035597dcaeabefec9a99d49a380b23cc90c5",
+      "scene_identity_sha256": "0ea5ef797dd77b0df8d0ab480d7222f2a44a95c8f649244141871fde662c6db6",
+      "event_count": 1999,
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "status_trace_audit_state": "RUN_COMPLETE_RAW_PENDING_AUDIT",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T3_C10_W07/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T3_C10_W07/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "run_start_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T3_C10_W07/C5_AXIS_MASK_M110/attempt_01/run_start.mat"
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C11_W08",
+      "teacher_source": "C5_RBF",
+      "raw_sha256": "0cb7d65203f343f27fb9630edf2d654758ffaf49d8feb83d7a81907d363ba54f",
+      "status_sha256": "c5dcc4db67bfd5d317096ca621d9e9b2afa81ee4bd108a7be0cc3569bcad2499",
+      "run_start_sha256": "e408d04b9fd6191cc03a461473a86fd4108f00daca968505f93760d8eb67a9ce",
+      "scene_identity_sha256": "74e0f77b89403c3ebc822043f1cb797c34379d64c1219ddb9719d268d01fdaec",
+      "event_count": 1999,
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "status_trace_audit_state": "RUN_COMPLETE_RAW_PENDING_AUDIT",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T3_C11_W08/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T3_C11_W08/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "run_start_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T3_C11_W08/C5_AXIS_MASK_M110/attempt_01/run_start.mat"
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C12_W09",
+      "teacher_source": "C5_RBF",
+      "raw_sha256": "5c5aa2cab0fc158c120048cde9b675a6f4ae9d99ff99b5c0baa06dfa1c403b4a",
+      "status_sha256": "ff4e9108edb13db28c0cfa70ba0a55c00faace9d1b7e7a4381a31ce25b61f9e6",
+      "run_start_sha256": "faba61671b36e3145b9e61e8880534cc121d2f392445514b264779e053b8e2ad",
+      "scene_identity_sha256": "e86f663ac731ce6173a3e1c19839e88fd8cc0b83518724c96dc0abeec540a719",
+      "event_count": 1999,
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "status_trace_audit_state": "PASS_C5_RAW_ALL_EVENTS",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_20261023/runs_c5_v1/DL1018_VAL_T3_C12_W09/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "status_path": "experiments/position_axis_coordinate_c5_20261023/runs_c5_v1/DL1018_VAL_T3_C12_W09/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "run_start_path": "experiments/position_axis_coordinate_c5_20261023/runs_c5_v1/DL1018_VAL_T3_C12_W09/C5_AXIS_MASK_M110/attempt_01/run_start.mat"
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C13_W10",
+      "teacher_source": "C5_RBF",
+      "raw_sha256": "7f57c52b2c601a010654768a34d68d6d62a7543d33cbf098f99510573d2abe82",
+      "status_sha256": "0391f641cfc780cb763ad730051b372803330e6a74eaecd855c4bd524a9d4fb6",
+      "run_start_sha256": "66e113fdfe3178868f07e5cc67156ae5c6e59a0c44e51365e811cc34bd46294e",
+      "scene_identity_sha256": "62094fa2cd74f1527c98ecb6bbd26fa4c3ee7e0cd3967c16cf8d03914c95369d",
+      "event_count": 1999,
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "status_trace_audit_state": "RUN_COMPLETE_RAW_PENDING_AUDIT",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T3_C13_W10/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T3_C13_W10/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "run_start_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T3_C13_W10/C5_AXIS_MASK_M110/attempt_01/run_start.mat"
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C14_W11",
+      "teacher_source": "C5_RBF",
+      "raw_sha256": "a2dd1c96069b474bf9f58413c4b3e10d7e6e7042e0d2d11a4251125e3cd9564c",
+      "status_sha256": "4e91f98b6515391207d13e4a8ba72615a132b582b80f4e2dc7624418fc324f19",
+      "run_start_sha256": "aa0764d8062c728ca6031f22ca73c98c9bfa1548e16b840430099f427632f2d3",
+      "scene_identity_sha256": "3bf81c09c32bc60246929acf62ce530c14ec4b23cc7769eba2f209dfc982f853",
+      "event_count": 1999,
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "status_trace_audit_state": "RUN_COMPLETE_RAW_PENDING_AUDIT",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T3_C14_W11/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T3_C14_W11/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "run_start_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T3_C14_W11/C5_AXIS_MASK_M110/attempt_01/run_start.mat"
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C15_W12",
+      "teacher_source": "C5_RBF",
+      "raw_sha256": "e904f0f7a56ddb5cd8ee6960d0c709d7da8271c83640e4f199824b18841fcdb1",
+      "status_sha256": "974201e9b933f75cbc9c1f98152c92b3bc1ae1a779e8df2cdaaadb6edc9c034e",
+      "run_start_sha256": "91ad2ee815f4924335a11913e77ecd6e88a671178776c448cda7893501698439",
+      "scene_identity_sha256": "e976af5fca2c22286c6a2343cff698ecd270af24f1693c0f5e383f4cb28b7810",
+      "event_count": 1999,
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "status_trace_audit_state": "RUN_COMPLETE_RAW_PENDING_AUDIT",
+      "source_split": "C5_VAL48",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T3_C15_W12/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T3_C15_W12/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "run_start_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_VAL_T3_C15_W12/C5_AXIS_MASK_M110/attempt_01/run_start.mat"
+    }
+  ],
+  "training_contract": {
+    "seed": 2026102001,
+    "optimizer_steps": 60000,
+    "authorized_jobs": 1,
+    "architecture": "single-layer GRU(13,32)+Linear(32,3)",
+    "hidden_size": 32,
+    "input_dim": 13,
+    "output_dim": 3,
+    "pytorch_gate_order": "reset,update,new",
+    "optimizer": "Adam",
+    "learning_rate_schedule": {
+      "kind": "fixed_cosine_per_optimizer_update",
+      "formula": "lr(s)=1e-5+(1e-3-1e-5)*(1+cos(pi*(s-1)/59999))/2; s=1..60000",
+      "set_before_optimizer_step": true,
+      "first_update_lr": 0.001,
+      "last_update_lr": 1E-05,
+      "warmup": false,
+      "restarts": false
+    },
+    "weight_decay": 1E-05,
+    "loss": "SmoothL1(beta=1.0)",
+    "gradient_clip": null,
+    "batch_scenes": 4,
+    "tbptt_events": 128,
+    "cohort_schedule": "fixed-seed shuffle, disjoint groups of four scenes, each cohort from event 0 to 1998",
+    "hidden_state": "scene-local carry across chunks, detach every 128 events, reset after event 1998",
+    "last_chunk_valid_events": 79,
+    "padding_events": 0,
+    "training_events_per_optimizer_step": "record actual valid events; padding excluded",
+    "normalizer_policy": "reuse source GRU15 full72 bytes and values; no refit",
+    "learning_rate_ledger": "record applied learning rate on every optimizer-step history row",
+    "schedule_accounting": {
+      "chunks_per_scene": 16,
+      "steps_per_cohort": 16,
+      "cohorts_per_epoch": 18,
+      "steps_per_epoch": 288,
+      "full_epochs": 208,
+      "remaining_steps": 96,
+      "full_cohorts_in_partial_epoch": 6,
+      "partial_cohort_steps": 0,
+      "expected_valid_samples": 29985000
+    },
+    "checkpoint_policy": "final_step@60000 only; no validation, selection, resume, or extension",
+    "plant_called": false,
+    "TEST48_read": false,
+    "B24_values_read": false
+  },
+  "data_read_flags": {
+    "C5_arrays_only": true,
+    "B24_values_read": false,
+    "TEST48_read": false,
+    "J_or_Jdot_read": false
+  },
+  "training_release": {
+    "approved": true,
+    "authorized_jobs": 1,
+    "approved_by": "/root",
+    "approval_reference": "experiments/dl_attitude_replacement_20261026/gru_stream_cosine_c5_teacher_v1/ROOT_TRAINING_APPROVAL_v1.json"
+  },
+  "plant_calls_authorized": 0,
+  "claims_prohibited": [
+    "generalization",
+    "independent validation passed",
+    "paper passed"
+  ]
+}

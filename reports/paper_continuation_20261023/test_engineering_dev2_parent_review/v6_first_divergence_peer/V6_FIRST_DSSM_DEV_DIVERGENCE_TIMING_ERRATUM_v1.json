@@ -1,0 +1,42 @@
+{
+  "schema": "V6_DSSM_DEV_DIVERGENCE_TIMING_ERRATUM_V1",
+  "scope": "Correct the threshold-crossing interpretation in peer v1 for v6 versus the mistakenly selected legacy DSSM raw only. This does not describe v6 versus the true corrected r002 run.",
+  "preserved_sources": {
+    "peer_v1_md_sha256": "5bfebfe97faf3e725ab5ed173919ce09f53ba5e3514c16168dd10437e642d3dd",
+    "peer_v1_json_sha256": "4b6677bea60ec5ef42060c43538cc3600765a51d2f0ee5c682bebb776f78bc91",
+    "peer_v2_md_sha256": "256848ddea5f1de4226e8a6481a6e717662bc99f1a2498f13c25654d75bb6140",
+    "peer_v2_json_sha256": "02ba3c8626069f1ce66c8200367d1183d1ecbada93b65c145fe55ee522881c38"
+  },
+  "correction": {
+    "state_abs_difference_vector_at_t_s_0_321": [
+      4.95e-14,
+      3.675e-13,
+      1.25055e-10,
+      1.469e-10,
+      7.453e-10,
+      2.5011e-07,
+      5.839e-09,
+      2.9222e-08,
+      3.806e-13,
+      1.1678e-05,
+      5.8444e-05,
+      1.6915e-07
+    ],
+    "vector_order": "Root independent 12-state field order; this erratum does not relabel individual components.",
+    "first_nonzero_state_difference_time_s": 0.321,
+    "first_state_component_difference_over_1e-12_m_time_s": 0.321,
+    "first_position_component_difference_over_1e-12_m_time_s": 0.321,
+    "x_position_first_difference_over_1e-12_m_time_s": 0.323,
+    "x_position_difference_at_t_s_0_323_m": 2.15e-12,
+    "full_state_max_abs_difference_m": 0.13140362151790552,
+    "reason_for_prior_error": "np.argwhere returned [0,323] while inspecting the X-position field; this is the first threshold crossing for X position only, not the first threshold crossing over all state or position dimensions.",
+    "same_state_first_inference_t_s_0_320_unchanged": true,
+    "v6_vs_true_corrected_r002_377_non_timer_numeric_arrays_exact_match_unchanged": true
+  },
+  "limits": {
+    "no_raw_reopened": true,
+    "no_TEST_read": true,
+    "no_MATLAB_or_Plant_or_training": true,
+    "root_independent_numeric_check": "Parent-supplied independent state-difference vector and crossing audit; no fresh raw recomputation performed for this erratum."
+  }
+}

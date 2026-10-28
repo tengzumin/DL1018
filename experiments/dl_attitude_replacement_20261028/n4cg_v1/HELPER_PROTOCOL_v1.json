@@ -1,0 +1,92 @@
+{
+  "schema": "CAUSAL_N4_GATE_HELPER_PROTOCOL_V1",
+  "status": "PREDECLARED_HELPER_ONLY_NO_PLANT",
+  "study": "fixed causal gate blended with static N4; helper parity only",
+  "scope": {
+    "Plant_called": false,
+    "full_runner_called": false,
+    "TEST_read": false,
+    "VAL_read": false,
+    "inertia_reconstruction": false,
+    "wind_or_W_used_by_helper": false,
+    "additional_position_GRU": false
+  },
+  "event_contract": "100-Hz event updates only; event time from transition_time; 1999 events; all 31 pre-ready all-NaN action rows become zero and still update every filter/N4 state; non-event outputs are ZOH.",
+  "signal_filters": {
+    "designer": "scipy 1.13.1 scipy.signal.butter",
+    "sample_rate_hz": 100.0,
+    "bandpass": {
+      "order": 2,
+      "cutoff_hz": [
+        2.0,
+        5.0
+      ],
+      "sos": [
+        [
+          0.00782020803349719,
+          0.01564041606699438,
+          0.00782020803349719,
+          1.0,
+          -1.765303227856989,
+          0.8375337582790457
+        ],
+        [
+          1.0,
+          -2.0,
+          1.0,
+          1.0,
+          -1.8957260285978639,
+          0.9145978814242006
+        ]
+      ]
+    },
+    "lowpass": {
+      "order": 2,
+      "cutoff_hz": 2.0,
+      "sos": [
+        [
+          0.0036216815149286417,
+          0.007243363029857283,
+          0.0036216815149286417,
+          1.0,
+          -1.822694925196308,
+          0.8371816512560226
+        ]
+      ]
+    },
+    "initial_state": "zero SOS DF-II-transposed state, each raw; update once at each position event"
+  },
+  "gate": {
+    "energy": "E[k]=exp(-dt/tau)*E[k-1]+(1-exp(-dt/tau))*sum(filtered[k,:]^2), E[0]=0",
+    "energy_tau_s": 1.0,
+    "ratio": "Ebp/(Ebp+Elp+1e-8)",
+    "target": "clip((ratio-0.35)/0.30,0,1)",
+    "gate_tau_s": 0.3,
+    "startup": "for event time t<2.0s force exported gtarget=0 and g state=0; first t>=2.0s sample starts tau=0.3 EMA from zero"
+  },
+  "blend": {
+    "N4_centers_hz": [
+      2.2,
+      3.2,
+      3.7,
+      4.8
+    ],
+    "N4_Q_each": 4.0,
+    "N4_state": "same static N4 helper as n4T3C09_v1; update every event from startup; first nonzero action initializes/bypasses as before",
+    "output": "clip(u_C5 + g*(u_N4_raw-u_C5), -3, 3) per axis at every event",
+    "between_events": "zero-order hold output and all state"
+  },
+  "parity": {
+    "fixture": "deterministic 700-event 3-axis signal; compares full output, raw N4, and Ebp/Elp/ratio/gtarget/g",
+    "max_abs_tolerance": 2e-10
+  },
+  "linked_train24_audit": {
+    "json": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\causal_n4_gate_train24_audit_v1\\CAUSAL_N4_GATE_TRAIN24_AUDIT_v1.json",
+    "json_sha256": "15d660b5a5139f3b5d5cd131a9d49917d9353512de32ca136f9b099a2ebd5c3c",
+    "script": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\causal_n4_gate_train24_audit_v1\\audit_causal_n4_gate_train24_v1.py",
+    "script_sha256": "793771872a3efc970c088bb7f86618c100cc3de24a82de0ec269cc9abf598ad3",
+    "status": "PASS_TRAIN_ONLY_READONLY_GATE_AUDIT_NO_MODEL_TRAINED_NO_PLANT",
+    "binding_sha256": "c6e8cb26ba023e88f4120d702c83708938de2fed22762bb10220d2f8eb586c91"
+  },
+  "interpretation": "helper-level numerical parity does not establish full-runner boundary parity or closed-loop efficacy; TRAIN24 gate audit shows underactivation on multiple high-group scenes."
+}

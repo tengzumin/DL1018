@@ -1,0 +1,20 @@
+{
+  "status": "ACCEPTED_DIAGNOSIS_SCOPE_NOT_ROOT_CAUSE_PROVEN",
+  "root_review_utc": "2026-10-26T23:01:36.356746+00:00",
+  "report_sha256": "0c88c6c8f5af86c8ac0399ac95da4f1a305e92bbdf5fd24a90f84b77a598c122",
+  "root_evidence": [
+    "Source confirms frozen attitude GRU weights and teacher RBF tracking-surface updates",
+    "All6 NCMD taskSO3 worse than C5; independent18raw recomputation",
+    "Same72fit NCMD matches NCMD target better than cosine, yet all6 closed-loop Q/SO3 worse than cosine"
+  ],
+  "priority": "Current GRU local feedback Jacobian on fixed C5 state/hidden, with actual BS feature chain recomputed; cross-check own-trajectory label prediction errors.",
+  "rejected_priority": "Algebraic request replacement while freezing observed future omega is not a causal Plant counterfactual.",
+  "not_concluded": [
+    "Lack of online head is sole cause",
+    "NCMD target algebra is incorrect",
+    "GRU or deep learning cannot work",
+    "Spectral normalization or simple online head will necessarily fix it"
+  ],
+  "training_or_Plant_authorized": false,
+  "next_step": "Review concrete0Plant diagnostic implementation, then authorize bounded execution."
+}

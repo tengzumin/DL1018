@@ -1,0 +1,140 @@
+{
+  "schema": "T1_C08_W15_0PLANT_NCMD_RECURRENCE_CHECK_V1",
+  "status": "PASS",
+  "exit_code": 0,
+  "scope": {
+    "Plant_calls": 0,
+    "MATLAB_started": false,
+    "training_updates": 0,
+    "TEST_read": false,
+    "true_inertia_reconstruction": false,
+    "inputs_used_for_dh": [
+      "raw log/state omega",
+      "raw log/requested_generalized torque",
+      "locked J0"
+    ]
+  },
+  "inputs": {
+    "locked_cfg_relpath": "experiments/dl_attitude_replacement_20261026/gru_stream_cosine_dev_v1/LOCKED_CFG.json",
+    "locked_cfg_sha256": "55a794e875ca95e5846a29997e01065ab9700e26ac17eb9cb57ce02d7e05df99",
+    "prepared_cfg_relpath": "experiments/position_axis_coordinate_c5_dev72_20261023/C5_DEV72_PREPARED_CFG_OPTS_v3.mat",
+    "prepared_cfg_sha256": "842ef395569e675db6e139c2684d72b976946915e5e0a58b9b7f24ec10c1d24a",
+    "raw_relpath": "experiments/position_axis_coordinate_c5_20261023/runs_c5_v1/DL1018_VAL_T1_C08_W15/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+    "raw_sha256": "c118dd1bd5567e0e7c58b7f5334109187b2cfe743977a6a18a3976d7d0ab23c3",
+    "script_sha256": "b285ee237dc9d77ff5f08c6ca9ca2805e53a9a3481c34c0c1d77b390b08ebf24"
+  },
+  "parameters": {
+    "J0_kgm2": [
+      [
+        0.003257553333333334,
+        -2.168404344971009e-19,
+        0.0
+      ],
+      [
+        -2.168404344971009e-19,
+        0.0032575533333333334,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.006360648333333333
+      ]
+    ],
+    "J0_sha256": "8cd498cac86940c800e5c4c1e622e19ed2630bebbd3bbe880d3ae4ad1b689f75",
+    "K1": [
+      1.5,
+      1.5,
+      1.3
+    ],
+    "K2": [
+      22.5,
+      22.5,
+      12.7
+    ],
+    "sample_time_s": 0.001,
+    "attitude_update_hz": 100.0,
+    "scheduler_phase_start": -0.1,
+    "event_period_s": 0.01,
+    "beta_rise_time_s": 2.2,
+    "dmax_rad_s2": [
+      45.0,
+      45.0,
+      4.7124
+    ],
+    "first_event_matlab_sample_index": 11,
+    "first_event_zero_based_state_index": 10,
+    "first_event_time_s": 0.01,
+    "first_event_beta_from_source_index": 0.004999999999999999
+  },
+  "metrics": {
+    "aligned_filter_pairs": 19999,
+    "filter_rate_update_max_abs_by_axis": [
+      6.938893903907228e-18,
+      1.3877787807814457e-17,
+      0.0
+    ],
+    "filter_rate_update_max_abs": 1.3877787807814457e-17,
+    "filter_semiimplicit_angle_max_abs_by_axis": [
+      2.0795929404513955e-17,
+      2.0800164569250226e-17,
+      0.0
+    ],
+    "filter_semiimplicit_angle_max_abs": 2.0800164569250226e-17,
+    "d_h_identity_max_abs_by_axis": [
+      4.440892098500626e-16,
+      3.552713678800501e-15,
+      1.734723475976807e-18
+    ],
+    "d_h_identity_max_abs": 3.552713678800501e-15,
+    "rho_e_alternate_identity_max_abs": 4.356237592872958e-14,
+    "surface_recurrence_max_abs_by_axis": [
+      3.0113715340784886e-17,
+      5.590417451878382e-17,
+      2.489853348454016e-18
+    ],
+    "surface_recurrence_max_abs": 5.590417451878382e-17,
+    "surface_recurrence_rms_by_axis": [
+      4.214181460155488e-18,
+      6.3732884832842555e-18,
+      2.6943436780551344e-19
+    ],
+    "command_sign_max_abs_by_axis_Nm": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "command_sign_max_abs_Nm": 0.0,
+    "pitch_clamp_active_samples": 0,
+    "event_count": 1999,
+    "first_event_time_s": 0.01,
+    "last_event_time_s": 19.99,
+    "event_spacing_min_s": 0.00999999999999801,
+    "event_spacing_max_s": 0.010000000000001563,
+    "event_update_dt_max_abs_error_s": 1.9897278269453977e-15,
+    "nominal_Phi_2_norm_exact_float": 0.9987005035245451,
+    "nominal_Phi_2_norm_upper_bound_qbar": 0.998701,
+    "nominal_Phi_eigenvalues": [
+      0.9775477275198166,
+      0.9775477275198166,
+      0.9873884048613607,
+      0.9984522724801835,
+      0.9984522724801835,
+      0.9986115951386393
+    ]
+  },
+  "checks": {
+    "locked_cfg_hash_matches_expected": true,
+    "prepared_cfg_hash_matches_lock": true,
+    "raw_hash_matches_expected": true,
+    "filter_rate_update": true,
+    "filter_semiimplicit_angle_update": true,
+    "d_h_body_rate_identity": true,
+    "rho_e_alternate_identity": true,
+    "full_surface_recurrence": true,
+    "command_torque_sign": true,
+    "pitch_clamp_inactive": true,
+    "100_hz_event_clock": true,
+    "nominal_phi_contractive": true
+  }
+}

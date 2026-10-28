@@ -1,0 +1,30 @@
+MLP15 no-Plant MATLAB fixture parity v1
+Status: PASS
+MATLAB version: 25.2.0.2998904 (R2025b)
+MATLAB release: 2025b
+MATLAB command: "C:\Program Files\MATLAB\R2025b\bin\matlab.exe" -batch "cd('C:\Users\35326\Desktop\postgraduation\0\Mcode\drone_tcn\DL1018\experiments\dl_attitude_replacement_20261027\mlp15_nominal_residual_v1\C5_VAL48_OFFLINE_DIAGNOSTIC_v1\matlab_parity'); run_mlp15_parity_v1"
+
+Plant called: false
+External runner called: false
+Dynamics called: false
+Actuator called: false
+Weights file: C:\Users\35326\Desktop\postgraduation\0\Mcode\drone_tcn\DL1018\experiments\dl_attitude_replacement_20261027\mlp15_nominal_residual_v1\C5_VAL48_OFFLINE_DIAGNOSTIC_v1\matlab_parity\..\..\runs\MLP15_TRAIN_C5_24_PHYSICAL_RESIDUAL_SEED2026102001_REPAIR01\mlp15_attitude_weights_v1.mat
+Weights SHA-256: dfbad11dbc7ed19b42d3b536bb4b019cbf29209d69c904b0b5000a168af58819
+Parity fixture: C:\Users\35326\Desktop\postgraduation\0\Mcode\drone_tcn\DL1018\experiments\dl_attitude_replacement_20261027\mlp15_nominal_residual_v1\C5_VAL48_OFFLINE_DIAGNOSTIC_v1\matlab_parity\..\..\runs\MLP15_TRAIN_C5_24_PHYSICAL_RESIDUAL_SEED2026102001_REPAIR01\parity_vector_v1.mat
+Parity fixture SHA-256: 2d64707297f1108939e6d788b65f59b74dd3a4b88e9377a43b9e7515db34ff9a
+Forward function SHA-256: 70c6f83994256a25181fb12623f06d8d6df3b431227ff4f99b28c093d18acd2f
+Entry point SHA-256: bfd4f0db34528d2e1206e159738f647dc11b30bb8b64491adddff0bf56ea59d6
+Fixture input: input_normalized_window, used directly (features/normalization are already in the fixture).
+Flattening: MATLAB window(:); each chronological event column contributes its 13 features in order.
+Forward path: fc1 affine + SiLU, fc2 affine + SiLU, head affine, then elementwise target_rms.
+Output clipping: none (raw physical residual parity).
+Input shape: [13 15]
+Layer weight shapes: fc1=[64 195], fc2=[32 64], head=[3 32]
+Expected residual (rad/s^2): [0.16808602213859558 -0.039762526750564575 -0.0052967127412557602]
+MATLAB residual (rad/s^2): [0.1680855793014201 -0.039761909622940496 -0.0052967075466952137]
+Absolute error by axis (rad/s^2): [4.4283717548498913e-07 6.1712762407933885e-07 5.1945605464634448e-09]
+Maximum absolute error (rad/s^2): 6.1712762407933885e-07
+Absolute tolerance (rad/s^2): 9.9999999999999995e-07
+MATLAB Code Analyzer result for mlp15_parity_forward_v1.m:
+Command: "C:\Program Files\MATLAB\R2025b\bin\matlab.exe" -batch "cd('C:\Users\35326\Desktop\postgraduation\0\Mcode\drone_tcn\DL1018\experiments\dl_attitude_replacement_20261027\mlp15_nominal_residual_v1\C5_VAL48_OFFLINE_DIAGNOSTIC_v1\matlab_parity'); issues=checkcode('mlp15_parity_forward_v1.m'); if isempty(issues), fprintf('CHECKCODE: PASS (0 issues)\n'); else, disp(issues); fprintf('CHECKCODE: FAIL (%d issues)\n',numel(issues)); error('DLMLP:Checkcode','Code Analyzer reported issues.'); end" Result: CHECKCODE: PASS (0 issues)
+

@@ -1,0 +1,96 @@
+{
+  "status": "COMPLETE_SIX_FLIGHTS_TWO_SERIAL_MATLAB_BATCHES",
+  "recorded_by": "/root",
+  "recorded_utc": "2026-10-26T22:03:17.055332+00:00",
+  "code_changes_by": "Luna xhigh; runtime remains byte-identical to constant-GRU parent",
+  "launch_supervision_by": "/root",
+  "matlab_executable": "C:/Program Files/MATLAB/R2025b/bin/matlab.exe",
+  "shell": "PowerShell 7",
+  "first_batch": {
+    "session_id": 26858,
+    "wrapper_pid": 32496,
+    "matlab_pid": 35136,
+    "exit_code": 0,
+    "log": "audits/FIRST_FLIGHT_T1_C08_W15_MATLAB_R2025b.log",
+    "scenes": [
+      "DL1018_VAL_T1_C08_W15"
+    ],
+    "exact_powershell_command": "& 'C:/Program Files/MATLAB/R2025b/bin/matlab.exe' -logfile 'C:/Users/35326/Desktop/postgraduation/0/Mcode/drone_tcn/DL1018/experiments/dl_attitude_replacement_20261026/gru_stream_cosine_dev_v1/audits/FIRST_FLIGHT_T1_C08_W15_MATLAB_R2025b.log' -batch \"cd('C:/Users/35326/Desktop/postgraduation/0/Mcode/drone_tcn/DL1018'); addpath('experiments/dl_attitude_replacement_20261026/gru_stream_cosine_dev_v1'); run_gru_stream_dev_attempt('DL1018_VAL_T1_C08_W15'); addpath('experiments/dl_attitude_replacement_20261026/gru_stream_cosine_dev_v1/audits'); audit_gru_stream_raw('DL1018_VAL_T1_C08_W15','C:/Users/35326/Desktop/postgraduation/0/Mcode/drone_tcn/DL1018/experiments/dl_attitude_replacement_20261026/gru_stream_cosine_dev_v1/runs/DL1018_VAL_T1_C08_W15/raw_run.mat');\"\nexit $LASTEXITCODE"
+  },
+  "remaining_batch": {
+    "session_id": 91284,
+    "wrapper_pid": 36648,
+    "matlab_pid": 8944,
+    "exit_code": 0,
+    "log": "audits/REMAINING_FIVE_MATLAB_R2025b.log",
+    "scenes": [
+      "DL1018_VAL_T2_C05_W15",
+      "DL1018_VAL_T3_C02_W15",
+      "DL1018_VAL_T1_C05_W12",
+      "DL1018_VAL_T2_C02_W12",
+      "DL1018_VAL_T3_C00_W13"
+    ],
+    "exact_powershell_command": "& 'C:/Program Files/MATLAB/R2025b/bin/matlab.exe' -logfile 'C:/Users/35326/Desktop/postgraduation/0/Mcode/drone_tcn/DL1018/experiments/dl_attitude_replacement_20261026/gru_stream_cosine_dev_v1/audits/REMAINING_FIVE_MATLAB_R2025b.log' -batch \"cd('C:/Users/35326/Desktop/postgraduation/0/Mcode/drone_tcn/DL1018'); study='experiments/dl_attitude_replacement_20261026/gru_stream_cosine_dev_v1'; ids={'DL1018_VAL_T2_C05_W15','DL1018_VAL_T3_C02_W15','DL1018_VAL_T1_C05_W12','DL1018_VAL_T2_C02_W12','DL1018_VAL_T3_C00_W13'}; for j=1:numel(ids), addpath(study); attempt=run_gru_stream_dev_attempt(ids{j}); addpath(fullfile(study,'audits')); audit_gru_stream_raw(ids{j},fullfile(attempt,'raw_run.mat')); end;\"\nexit $LASTEXITCODE"
+  },
+  "command_pattern": "& '<matlab_executable>' -logfile '<absolute_log_path>' -batch \"cd('C:/Users/35326/Desktop/postgraduation/0/Mcode/drone_tcn/DL1018'); study='experiments/dl_attitude_replacement_20261026/gru_stream_cosine_dev_v1'; ids={<released_scenes_in_recorded_order>}; for j=1:numel(ids), addpath(study); attempt=run_gru_stream_dev_attempt(ids{j}); addpath(fullfile(study,'audits')); audit_gru_stream_raw(ids{j},fullfile(attempt,'raw_run.mat')); end;\"; exit $LASTEXITCODE",
+  "actual_Plant_calls": 6,
+  "repeated_flights": 0,
+  "new_B_or_C5_flights": 0,
+  "TEST_read": false,
+  "raw_bytes_total": 404607812,
+  "runs": [
+    {
+      "scene_id": "DL1018_VAL_T1_C05_W12",
+      "state": "COMPLETED",
+      "raw_sha256": "2eda61e013ab73d6188b93decefeda83b795e87814bca30a88381287bdd818b6",
+      "finished_utc": "2026-10-26T21:49:34.625Z",
+      "raw_bytes": 68946085,
+      "release_sha256": "ee6d19bd0e7be032fa11caad94c33dd17311881fd52b096ba609e3bd38ff055d"
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C08_W15",
+      "state": "COMPLETED",
+      "raw_sha256": "b1efb162f7b489a33b370407d08da96f05757400f9df25b592711bc521a31df1",
+      "finished_utc": "2026-10-26T21:46:21.836Z",
+      "raw_bytes": 67350838,
+      "release_sha256": "52fcd85caa801c00d5e81207132236b17b3eded6a1f772d208d67e03523665dd"
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C02_W12",
+      "state": "COMPLETED",
+      "raw_sha256": "954400fb55f241beb8004e08c02293369138c0dc62a112cdf4fbcc00daccfc93",
+      "finished_utc": "2026-10-26T21:50:14.865Z",
+      "raw_bytes": 69015271,
+      "release_sha256": "ee6d19bd0e7be032fa11caad94c33dd17311881fd52b096ba609e3bd38ff055d"
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C05_W15",
+      "state": "COMPLETED",
+      "raw_sha256": "936b9f2445a6705fc71bdabd9835efbbc6eec955a799582dcaab57b7c95039a5",
+      "finished_utc": "2026-10-26T21:48:13.160Z",
+      "raw_bytes": 67557986,
+      "release_sha256": "ee6d19bd0e7be032fa11caad94c33dd17311881fd52b096ba609e3bd38ff055d"
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C00_W13",
+      "state": "COMPLETED",
+      "raw_sha256": "081d69a03d301561724cec2ba062fb1968b96550ca14de94ee4b41c86287a5d5",
+      "finished_utc": "2026-10-26T21:50:55.581Z",
+      "raw_bytes": 66614500,
+      "release_sha256": "ee6d19bd0e7be032fa11caad94c33dd17311881fd52b096ba609e3bd38ff055d"
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C02_W15",
+      "state": "COMPLETED",
+      "raw_sha256": "c3189d46719e644a417cfb90d63bcc60e69280d138ebe6fb370a9a3897253012",
+      "finished_utc": "2026-10-26T21:48:54.220Z",
+      "raw_bytes": 65123132,
+      "release_sha256": "ee6d19bd0e7be032fa11caad94c33dd17311881fd52b096ba609e3bd38ff055d"
+    }
+  ],
+  "source_model_bound_files_unchanged_during_execution": true,
+  "stage_snapshots": [
+    "ROOT_RELEASE_STAGE1_SNAPSHOT_v1.json",
+    "ROOT_RELEASE_STAGE2_SNAPSHOT_v1.json"
+  ]
+}

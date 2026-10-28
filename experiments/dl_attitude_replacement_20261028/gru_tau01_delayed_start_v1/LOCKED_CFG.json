@@ -1,0 +1,158 @@
+{
+  "schema": "DL1018_GRU_TAU01_DELAYED_START_LOCKED_CFG_V1",
+  "capture_status": "PASS_REAL_PREPARED_CFG",
+  "cfg_binding_source": "prepare_mlp15_dev72_no_plant(record.payload_path).cfg",
+  "cfg_snapshot_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\C5_DEV72_PREPARED_CFG_OPTS_v3.mat",
+  "cfg_snapshot_sha256": "842ef395569e675db6e139c2684d72b976946915e5e0a58b9b7f24ec10c1d24a",
+  "controller_morphology_mode": "fixed",
+  "K1": [
+    1.5,
+    1.5,
+    1.3
+  ],
+  "K1_source": "p.cfg.control.bs.attitude.k1",
+  "J0_kgm2": [
+    [
+      0.003257553333333334,
+      -2.168404344971009e-19,
+      0
+    ],
+    [
+      -2.168404344971009e-19,
+      0.0032575533333333334,
+      0
+    ],
+    [
+      0,
+      0,
+      0.006360648333333333
+    ]
+  ],
+  "J0_sha256": "8cd498cac86940c800e5c4c1e622e19ed2630bebbd3bbe880d3ae4ad1b689f75",
+  "Pfixed_inertia_kgm2": [
+    [
+      0.003257553333333334,
+      -2.168404344971009e-19,
+      0
+    ],
+    [
+      -2.168404344971009e-19,
+      0.0032575533333333334,
+      0
+    ],
+    [
+      0,
+      0,
+      0.006360648333333333
+    ]
+  ],
+  "Pfixed_inertia_dot_for_bs_kgm2_s": [
+    [
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0
+    ]
+  ],
+  "morphology_mode": "fixed",
+  "dmax": [
+    45,
+    45,
+    4.7124
+  ],
+  "dmax_source": "p.cfg.rbf.attitude.dmax",
+  "beta_rise_time_s": 2.2,
+  "beta_source": "p.cfg.rbf.attitude.beta_rise_time",
+  "command_filter": {
+    "wn": [
+      18,
+      18,
+      12
+    ],
+    "damping": [
+      1,
+      1,
+      1
+    ],
+    "acceleration_limit": [
+      "Inf (unbounded)",
+      "Inf (unbounded)",
+      6
+    ],
+    "acceleration_limit_numeric_labels": [
+      "Inf",
+      "Inf",
+      6
+    ],
+    "Inf_label": "Inf = unbounded"
+  },
+  "simulation_sample_time_s": 0.001,
+  "forgetting_factor": 0.999,
+  "P0_scalar": 10,
+  "weight_projection_fro": 20,
+  "tracking_gain": 1,
+  "c5_input_lock_sha256": "82024c01276cc4bfbd9b7772cf5332dee3fdfcbed422969589b68f1c90ed2d75",
+  "c5_snapshot_sha256": "842ef395569e675db6e139c2684d72b976946915e5e0a58b9b7f24ec10c1d24a",
+  "position_model_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\corrected_reference_training_v1\\corrected_pair_training\\models\\DSSM14\\matlab_model_and_parity.mat",
+  "position_model_sha256": "6f3628b10540c617496b2a20f249c4319af79c1a02d5945f1f91f0aead9c9b6e",
+  "common_position_options_sha256": "0218d3dc3c591b07ed6f7328de2c36276c4f51c2a0d56966bdff62d68d6a6b21",
+  "mlp15_full72_model_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\mlp15_c5_teacher_full72_v1\\runs\\C5_MLP15_FULL72_SEED2026102001\\mlp15_attitude_weights_v1.mat",
+  "mlp15_full72_model_sha256": "67a6564148ba8c1988d7457c04a5d3271516ff4010da18e61e29fd7da13be46b",
+  "P0_note": "The unchanged head step initializes P=10*eye(33).",
+  "Plant_truth_read": false,
+  "TEST_read": false,
+  "provenance": {
+    "inherited_from": "gru_stream_cosine_dev_v1/LOCKED_CFG.json",
+    "inherited_sha256": "53c1c8f9781dee2e11e731d8c4a6d8d51f4a2fc922faa8b36a76071e3a40101b",
+    "capture_not_recomputed_in_this_study": true,
+    "actual_prepared_cfg_recheck_required": true
+  },
+  "tracking_head_gamma": [
+    2.1,
+    2.25,
+    1.1
+  ],
+  "tracking_head_sigma_w": [
+    0.11,
+    0.12,
+    0.2
+  ],
+  "tracking_head_s_limit": [
+    2.3,
+    2.3,
+    1.4
+  ],
+  "tracking_head_wmax": 60,
+  "tracking_head_parameter_source": "p.cfg.rbf.attitude.gamma/sigma_w/s_limit/wmax captured from real prepare cfg; rechecked before any later authorization",
+  "candidate_attitude_model_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_c5_teacher_v1\\runs\\GRU32_STREAM72_COSINE_S2026102001\\gru_stream_c5_teacher_weights_v1.mat",
+  "candidate_attitude_model_sha256": "b2c462f77a6bb97b8c6bb2b471daef0633d4f9664a7d623b894461a4fa21b567",
+  "candidate_attitude_model_id": "GRU32_STREAM72_COSINE_S2026102001",
+  "candidate_target_rms_source": "cosine model target_rms; loaded from the SHA-locked cosine MAT",
+  "parent_study_id": "gru_stream_cosine_tracking_head_full72_v1",
+  "parent_manifest_sha256": "97230bcc399d79a4b4785bffe8898880d7e21cd20eb3629c61d6b03a746fd1fe",
+  "position_method_id": "C5_AXIS_MIXED_COORDINATE_M110",
+  "position_nn_compensation_scale": 1,
+  "position_path_changed": true,
+  "position_delayed_prediction_h_s": 0.01,
+  "position_delayed_prediction_gamma": 12,
+  "position_delayed_prediction_lambda": 0.002,
+  "position_delayed_prediction_target": "C5 M110 filtered-PCF delayed velocity increment; normalizer/model unchanged",
+  "position_delayed_prediction_rho_schedule": {
+    "rho_before_5_s": 0.01,
+    "rho_at_5_s": 0.01,
+    "ramp_start_s": 5.0,
+    "ramp_end_s": 6.0,
+    "rho_final": 0.1,
+    "time_base": "n_zero_based * simulation_sample_time_s",
+    "interpolation": "linear"
+  }
+}

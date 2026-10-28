@@ -1,0 +1,140 @@
+{
+  "schema": "PEER_CORRECTED144_RAW_LINEAGE_REVIEW_V1",
+  "status": "CONFIRMED_144_RAW_LINEAGE_AND_SCORE_COVERAGE",
+  "scope": "Read-only DEV/VAL raw lineage and independent score-count recalc; no TEST raw/score, MATLAB, Plant, training, or new experiment run.",
+  "sources": {
+    "result_table_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\reports\\corrected14_full72_benchmark_20261021\\PAIR14_SCENE_RESULTS_VS_B.csv",
+    "result_table_sha256": "b2264145e9d18896f5764ffe38302576dd08c80e7cce1c277323246092169137",
+    "validation_summary_sha256": "e3759ba831ce8dd71f41846c49f9f7068b1e93b065afcf43c656d358a02c5bac",
+    "active_pair_manifest_sha256": "ef978326d7d8e585514c0261e2ddd280876c9d3002114188bc14a08691759b7d",
+    "pair_composed_report_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\corrected_reference_training_v1\\corrected_pair_eval_tail21_v1\\reports\\composed_postrun\\PAIR_EVAL_COMPOSED_144_20261021T135503Z_56556.json",
+    "pair_composed_report_sha256": "b15b7bbb812d5407b8878e86bfe6b5e96298789f3dd817d9c6389f9f8d185e22",
+    "offline_comparison_report_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\corrected_reference_training_v1\\corrected_pair_eval_tail21_v1\\reports\\b_comparison_offline_v1\\B_COMPARISON_OFFLINE_RESULT_V1.json",
+    "offline_comparison_report_sha256": "650df8ceab164220114b9dd476dc26046be9a2253d5368b9d9f6447720d594bf",
+    "raw_scan_helper_sha256": "680c9a3fe95d9c3b4fb9c7702343078fc679c3f64a41a44865aa4aa7435100d4",
+    "rescore_runner_sha256": "1cc28fadd6e49e4324493a90d64cd231ae27f23c97dbbeea45685af6af0d5714",
+    "main_raw_index_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\corrected_reference_training_v1\\corrected_pair_eval_v1\\reports\\RAW_INDEX.csv",
+    "main_raw_index_sha256": "364367e46ae8e3eb3335efd34a834b984a2a87fc1cef0dd5bf4991bbf342d8b4",
+    "tail21_raw_index_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\corrected_reference_training_v1\\corrected_pair_eval_tail21_v1\\reports\\RAW_INDEX.csv",
+    "tail21_raw_index_sha256": "3527883329ec23f51928d3967071d307a42683adc831cee8958822c7b732d116",
+    "pair_model_acceptance_sha256": "d2443465fac3d3f407798458b1cb8eb5432a245df80dd7068053bf3888ebbb44",
+    "dssm_independent_rescore_csv_sha256": "cf0a4dc078f0cb751877695cabc58aba05bd0933b022d948410d376133a974e0",
+    "dssm_independent_rescore_json_sha256": "8c98f81acc429101b53aae50495082c17b64caff583168c2886c8fe8e998acb1",
+    "dssm_independent_rescore_scope": "selected corrected DSSM14 G12/R32 VAL48 + DEV24 raws only; no simulation or write to raw files"
+  },
+  "session_partition": {
+    "main_session": {
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\corrected_reference_training_v1\\corrected_pair_eval_v1",
+      "raw_index_rows": 144,
+      "run_complete_stable_rows": 123,
+      "stable_manifest_indices": [
+        1,
+        123
+      ],
+      "state_sha256": "b7a5e22da58f930c8ab74cf8a55c8dfb0d43ff634bd927695931442d46fde311"
+    },
+    "tail21_session": {
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\corrected_reference_training_v1\\corrected_pair_eval_tail21_v1",
+      "raw_index_rows": 144,
+      "run_complete_stable_rows": 21,
+      "stable_manifest_indices": [
+        124,
+        144
+      ],
+      "state_sha256": "a1c96e03067331a9a81ab978dd2b8e2af2adff81dc876e46c57f13e50d3c8b06"
+    },
+    "composition": "original indices 1..123 + isolated tail indices 124..144",
+    "combined_stable_rows": 144,
+    "composed_status": "PASS_COMPOSED_144_ALL_STABLE_TWO_SESSIONS",
+    "composed_report_index_sha_matches": true
+  },
+  "raw_file_verification": {
+    "expected_rows": 144,
+    "unique_scene_method_keys": 144,
+    "files_exist": 144,
+    "raw_disk_sha_verified_against_index_table_and_composed_replay": 144,
+    "raw_disk_hash_mismatches": 0,
+    "missing_paths": 0,
+    "total_bytes_hashed": 6997255661,
+    "all_run_statuses_complete_finite_20000_transitions": true,
+    "all_runtime_replays_valid_1968_events": true,
+    "all_B_external_arrays_match": true
+  },
+  "models_and_W0": {
+    "CORRECTED_TRAIN_DSSM14_G12_R32": {
+      "n": 72,
+      "wins": 46,
+      "ties": 0,
+      "losses": 26,
+      "mean_candidate_Q_mm": 12.387217899198617,
+      "mean_B_Q_mm": 17.058080675350787,
+      "mean_delta_candidate_minus_B_mm": -4.670862776152168,
+      "model_id": "CORRECTED_DSSM14_SEED2026102001_FINAL60000",
+      "model_export_sha256": "6f3628b10540c617496b2a20f249c4319af79c1a02d5945f1f91f0aead9c9b6e",
+      "index_model_identity_all_rows_match": true,
+      "replay_model_identity_all_rows_match": true,
+      "unique_model_W0_sha256": [
+        "87fa03a567ced9f144eca26eceadebba59269cbebf800a0eb72c1a755fe7bbd0"
+      ],
+      "unique_model_arrays_sha256": [
+        "9d0021dd28cb22d13cad43267300e3e5aab88b63dab294585fccd64092ac0416"
+      ],
+      "W0_error_max": 0.0,
+      "replay_valid_rows": 72
+    },
+    "CORRECTED_TRAIN_KAN14_G12_R32": {
+      "n": 72,
+      "wins": 28,
+      "ties": 0,
+      "losses": 44,
+      "mean_candidate_Q_mm": 15.041578553598642,
+      "mean_B_Q_mm": 17.058080675350787,
+      "mean_delta_candidate_minus_B_mm": -2.016502121752143,
+      "model_id": "CORRECTED_KAN14_SEED2026102001_FINAL60000",
+      "model_export_sha256": "0a24606ff8fccc3b51503874c36063a7f2b648b36109368ea184d5bcbb8219c9",
+      "index_model_identity_all_rows_match": true,
+      "replay_model_identity_all_rows_match": true,
+      "unique_model_W0_sha256": [
+        "b729a81fe67456a70bb25ebd3240682019bff21641ba597dcd92772080e6833d"
+      ],
+      "unique_model_arrays_sha256": [
+        "de35861d0ea70d3c8ae6e9821aec033ca4c4de62b60a0df1720759d0762a1553"
+      ],
+      "W0_error_max": 0.0,
+      "replay_valid_rows": 72
+    }
+  },
+  "independent_score_recalculation": {
+    "win_tie_rule": "win if Q_candidate < Q_B - 1e-12 m; tie if |Q_candidate-Q_B| <= 1e-12 m; otherwise loss",
+    "source": "Final per-scene table cross-linked to composed raw_metrics.Q_0_20 and indexed raw file SHA; all Q differences are within 1e-12 m.",
+    "method_results": {
+      "CORRECTED_TRAIN_DSSM14_G12_R32": {
+        "n": 72,
+        "wins": 46,
+        "ties": 0,
+        "losses": 26,
+        "mean_candidate_Q_mm": 12.387217899198617,
+        "mean_B_Q_mm": 17.058080675350787
+      },
+      "CORRECTED_TRAIN_KAN14_G12_R32": {
+        "n": 72,
+        "wins": 28,
+        "ties": 0,
+        "losses": 44,
+        "mean_candidate_Q_mm": 15.041578553598642,
+        "mean_B_Q_mm": 17.058080675350787
+      }
+    },
+    "all_result_vs_B_labels_match_recalculation": true,
+    "max_abs_candidate_table_vs_rawscan_Q_m": 4.85722573273506e-17
+  },
+  "formal_gate_caveat": {
+    "composed_144_status": "PASS_COMPOSED_144_ALL_STABLE_TWO_SESSIONS",
+    "offline_comparison_status": "PASS_OFFLINE_144_PAIRED_ROWS",
+    "offline_formal_v2_gate_status": "BLOCKED_SCHEMA_AND_STALE_MANIFEST_PIN",
+    "offline_formal_v2_gate_note": "V2 expected hash c21… points to pre-release manifest whose model gate is MISSING; active EF… manifest keeps all 144 physical/method/contract identities and adds verified final model/checkpoint/parity evidence. A versioned plan revision and composed-report support are required; no official current14 PASS is claimed.",
+    "interpretation": "Raw lineage, completion coverage and 46/72 + 28/72 table counts are independently supported; the distinct offline v2 schema/stale-manifest gate caveat remains."
+  },
+  "detailed_rows_csv": "PEER_CORRECTED144_RAW_LINEAGE_v1.csv",
+  "detailed_rows_csv_sha256": "8313507b1a1947730be8f681e409194a4ee0415501f7661b28a8ebb101361865"
+}

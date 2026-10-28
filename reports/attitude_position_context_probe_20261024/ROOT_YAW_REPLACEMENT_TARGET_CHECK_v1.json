@@ -1,0 +1,75 @@
+{
+  "schema": "ROOT_YAW_REPLACEMENT_TARGET_CHECK_V1",
+  "status": "PASS_DIAGNOSTIC_ONLY",
+  "source_sha256": "2c98a3e6ce6915bb03e00c4a74db1415ac1f71c2515773b48b3e4fa173f60093",
+  "rows": [
+    {
+      "flight_id": "T1_B",
+      "event_count": 1999,
+      "g_range": [
+        0.5525195850746046,
+        1.0
+      ],
+      "behavior_label_RMS_rad_s2": 0.5701440027502875,
+      "ideal_same_state_compensation_RMS_rad_s2": 0.6930824859660711,
+      "label_vs_ideal_gap_RMS_rad_s2": 0.21191418501905154,
+      "same_state_alpha_error_if_output_exact_behavior_label_RMS_rad_s2": 0.11968318487775961,
+      "ideal_output_above_existing_yaw_clip_count": 0,
+      "ideal_same_state_equation_closure_max_abs_rad_s2": 2.220446049250313e-16
+    },
+    {
+      "flight_id": "T1_C5",
+      "event_count": 1999,
+      "g_range": [
+        0.5525195850746046,
+        1.0
+      ],
+      "behavior_label_RMS_rad_s2": 0.6406776605554231,
+      "ideal_same_state_compensation_RMS_rad_s2": 0.8638692539824412,
+      "label_vs_ideal_gap_RMS_rad_s2": 0.3211128520325932,
+      "same_state_alpha_error_if_output_exact_behavior_label_RMS_rad_s2": 0.1819858672179704,
+      "ideal_output_above_existing_yaw_clip_count": 0,
+      "ideal_same_state_equation_closure_max_abs_rad_s2": 2.220446049250313e-16
+    },
+    {
+      "flight_id": "T3_B",
+      "event_count": 1999,
+      "g_range": [
+        0.5525195850746046,
+        1.0
+      ],
+      "behavior_label_RMS_rad_s2": 0.777798269916152,
+      "ideal_same_state_compensation_RMS_rad_s2": 0.9466005078231735,
+      "label_vs_ideal_gap_RMS_rad_s2": 0.28067042443971535,
+      "same_state_alpha_error_if_output_exact_behavior_label_RMS_rad_s2": 0.1592536476112242,
+      "ideal_output_above_existing_yaw_clip_count": 0,
+      "ideal_same_state_equation_closure_max_abs_rad_s2": 2.220446049250313e-16
+    },
+    {
+      "flight_id": "T3_C5",
+      "event_count": 1999,
+      "g_range": [
+        0.5525195850746046,
+        1.0
+      ],
+      "behavior_label_RMS_rad_s2": 0.8278943662262538,
+      "ideal_same_state_compensation_RMS_rad_s2": 1.072206591445371,
+      "label_vs_ideal_gap_RMS_rad_s2": 0.3665554424279009,
+      "same_state_alpha_error_if_output_exact_behavior_label_RMS_rad_s2": 0.2069775182184962,
+      "ideal_output_above_existing_yaw_clip_count": 0,
+      "ideal_same_state_equation_closure_max_abs_rad_s2": 4.440892098500626e-16
+    }
+  ],
+  "interpretation": "Perfect prediction of a behavior residual need not cancel nominal acceleration error after replacing that behavior action. The ideal action is a same-state offline diagnostic, not a demonstrated closed-loop solution.",
+  "limits": [
+    "Yaw only under each source's verified decoupling/no clipping/no actuator-lag preconditions.",
+    "Changes to future state, requested thrust, reference filters and feedback are outside this algebraic check.",
+    "True inertia and wind are offline label quantities, forbidden as extra deployment inputs.",
+    "No new target, model, training, Plant run or success criterion is released by this diagnostic."
+  ],
+  "scope": {
+    "Plant_calls": 0,
+    "optimizer_steps": 0,
+    "TEST_accessed": false
+  }
+}

@@ -1,0 +1,194 @@
+{
+  "status": "PASS_C1_SYNTHETIC_AND_TRAIN_SMOKE",
+  "generated_local": "2026-10-22T22:09:13+08:00",
+  "command": "python -B experiments/position_prior_calibration_c1_20261022/fit_prior_scale.py --smoke",
+  "script_sha256": "c5f25a00a7a89c774139f011ab31f252256a3cd73d26d7822eadee40e04d156f",
+  "replay_script_sha256": "9e6d3a43b89ed6ecffd01519b6162ee67397b47ff25c2e32685c099a9fdad9a5",
+  "runs_sha256": "4a072c8006042cbffa5e653e450432c748f337fa45790c330b9aa58a8ac32190",
+  "training_index_sha256": "257089f1dc455b7bc97bf1c772be31d1d8ae83079e7ec41f591d96e31fed39ca",
+  "synthetic": {
+    "group_coefficients": {
+      "W00_W08": [
+        4.0,
+        0.8
+      ],
+      "W09_W14": [
+        0.1,
+        0.2
+      ],
+      "W15": [
+        0.05,
+        0.2
+      ]
+    },
+    "expected_crossing": 0.30769230769230776,
+    "solver": {
+      "c_star": 0.30769230769230776,
+      "selected_candidate": {
+        "c": 0.30769230769230776,
+        "sources": [
+          "intersection:W00_W08|W09_W14"
+        ],
+        "risk_by_band": {
+          "W00_W08": 0.8863905325443787,
+          "W09_W14": 0.8863905325443786,
+          "W15": 0.8816568047337278
+        },
+        "worst_risk": 0.8863905325443787,
+        "worst_band": "W00_W08"
+      },
+      "candidates": [
+        {
+          "c": 0.0,
+          "sources": [
+            "endpoint:0",
+            "intersection:W09_W14|W15"
+          ],
+          "risk_by_band": {
+            "W00_W08": 1.0,
+            "W09_W14": 1.0,
+            "W15": 1.0
+          },
+          "worst_risk": 1.0,
+          "worst_band": "W00_W08"
+        },
+        {
+          "c": 0.2,
+          "sources": [
+            "stationary:W00_W08"
+          ],
+          "risk_by_band": {
+            "W00_W08": 0.84,
+            "W09_W14": 0.9239999999999999,
+            "W15": 0.9219999999999999
+          },
+          "worst_risk": 0.9239999999999999,
+          "worst_band": "W09_W14"
+        },
+        {
+          "c": 0.3037974683544304,
+          "sources": [
+            "intersection:W00_W08|W15"
+          ],
+          "risk_by_band": {
+            "W00_W08": 0.8830956577471558,
+            "W09_W14": 0.887710302836084,
+            "W15": 0.8830956577471559
+          },
+          "worst_risk": 0.887710302836084,
+          "worst_band": "W09_W14"
+        },
+        {
+          "c": 0.30769230769230776,
+          "sources": [
+            "intersection:W00_W08|W09_W14"
+          ],
+          "risk_by_band": {
+            "W00_W08": 0.8863905325443787,
+            "W09_W14": 0.8863905325443786,
+            "W15": 0.8816568047337278
+          },
+          "worst_risk": 0.8863905325443787,
+          "worst_band": "W00_W08"
+        },
+        {
+          "c": 1.0,
+          "sources": [
+            "endpoint:1"
+          ],
+          "risk_by_band": {
+            "W00_W08": 3.4,
+            "W09_W14": 0.7,
+            "W15": 0.6499999999999999
+          },
+          "worst_risk": 3.4,
+          "worst_band": "W00_W08"
+        }
+      ],
+      "candidate_generation_details": [
+        {
+          "kind": "stationary",
+          "group": "W00_W08",
+          "c": 0.2,
+          "in_interval": true
+        },
+        {
+          "kind": "stationary",
+          "group": "W09_W14",
+          "c": 2.0,
+          "in_interval": false
+        },
+        {
+          "kind": "stationary",
+          "group": "W15",
+          "c": 4.0,
+          "in_interval": false
+        },
+        {
+          "kind": "pair_intersection",
+          "pair": [
+            "W00_W08",
+            "W09_W14"
+          ],
+          "c": 0.30769230769230776,
+          "in_interval": true
+        },
+        {
+          "kind": "pair_intersection",
+          "pair": [
+            "W00_W08",
+            "W15"
+          ],
+          "c": 0.3037974683544304,
+          "in_interval": true
+        },
+        {
+          "kind": "pair_intersection",
+          "pair": [
+            "W09_W14",
+            "W15"
+          ],
+          "c": 0.0,
+          "in_interval": true
+        }
+      ],
+      "minimum_worst_risk": 0.8863905325443787,
+      "tie_tolerance": 1e-12,
+      "tie_rule": "within 1e-12, choose largest c",
+      "worst_risk_c1": 3.4,
+      "worst_risk_cstar": 0.8863905325443787,
+      "worst_risk_reduction_vs_c1": 2.513609467455621,
+      "gate_1_minus_c_at_least_0_01": true,
+      "gate_risk_reduction_at_least_0_01": true,
+      "train_gate_pass": true
+    }
+  },
+  "train_run": {
+    "run_id": "G02_P_TEACHER_DL1018_TRAIN_T1_C00_W00_B",
+    "task": "HELIX",
+    "role": "B",
+    "wind_band": "W00_W08",
+    "wind_cell": "0",
+    "endpoints": 394,
+    "endpoint_recipe": "31+5*k, k=0..393",
+    "phase_n": 1,
+    "phase_code_counts": {
+      "0": 394
+    },
+    "q_sum": 1.0000000000000002,
+    "E_y": 0.4079561871734455,
+    "A": 0.4981800019778063,
+    "B": 0.5679165617535715,
+    "fixed_smoke_c_not_fit": 0.5,
+    "direct_mse_ratio": 0.55662843874088,
+    "polynomial_mse_ratio": 0.5566284387408801,
+    "absolute_identity_error": 1.1102230246251565e-16
+  },
+  "definitions": "p is unclipped raw W0 sidecar output; y is same-endpoint exact cache float32; q is this run's original phase weight normalized to one.",
+  "optimizer_steps": 0,
+  "plant_calls": 0,
+  "gpu_jobs": 0,
+  "test_accessed": false,
+  "dev_labels_used": false,
+  "wall_seconds": 0.42657849995885044
+}

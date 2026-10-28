@@ -1,0 +1,68 @@
+{
+  "schema": "ROOT_CM18_TORCH_PARITY_V1",
+  "source_sha256": {
+    "torch_model_cm18_v1.py": "bc9fe34fe957cb624438eeccfdfe2ddd38ad40cc9a4e706ce58863c9271d5aa0",
+    "check_cm18_torch_parity_v1.py": "4e43e080a454a0a580a74883e6297d343af95efe071461d2b3c85135bfaed008",
+    "model_cm18_v1.py": "ad32c4f97bf96c63172547c944d80c45062502f1062b774934e0f7a868720cf6"
+  },
+  "cases": [
+    {
+      "schema": "CM18_TORCH_PARITY_RESULT_V1",
+      "status": "PASS",
+      "parameter_count": 2456,
+      "parameter_load_exact": true,
+      "maximum_numpy_torch_absolute_error": {
+        "coefficients_3x8": 1.942890293094024e-16,
+        "basis_8": 0.0,
+        "normalized_output": 2.220446049250313e-16,
+        "physical_output_rad_s2": 1.7763568394002505e-15
+      },
+      "batch_and_exact_zero_pass": true,
+      "input_gradcheck_pass": true,
+      "coefficient_bias_gradient_abs_error": 0.0,
+      "device": "cpu",
+      "optimizer_steps": 0,
+      "fixture": "ROOT_RANDOM_FIXTURE_v1.json"
+    },
+    {
+      "schema": "CM18_TORCH_PARITY_RESULT_V1",
+      "status": "PASS",
+      "parameter_count": 2456,
+      "parameter_load_exact": true,
+      "maximum_numpy_torch_absolute_error": {
+        "coefficients_3x8": 0.0,
+        "basis_8": 0.0,
+        "normalized_output": 0.0,
+        "physical_output_rad_s2": 0.0
+      },
+      "batch_and_exact_zero_pass": true,
+      "input_gradcheck_pass": true,
+      "coefficient_bias_gradient_abs_error": 0.0,
+      "device": "cpu",
+      "optimizer_steps": 0,
+      "fixture": "ROOT_Z_BASIS_FIXTURE_v1.json"
+    },
+    {
+      "schema": "CM18_TORCH_PARITY_RESULT_V1",
+      "status": "PASS",
+      "parameter_count": 2456,
+      "parameter_load_exact": true,
+      "maximum_numpy_torch_absolute_error": {
+        "coefficients_3x8": 0.0,
+        "basis_8": 0.0,
+        "normalized_output": 0.0,
+        "physical_output_rad_s2": 0.0
+      },
+      "batch_and_exact_zero_pass": true,
+      "input_gradcheck_pass": true,
+      "coefficient_bias_gradient_abs_error": 0.0,
+      "device": "cpu",
+      "optimizer_steps": 0,
+      "fixture": "ROOT_U_BASIS_FIXTURE_v1.json"
+    }
+  ],
+  "optimizer_steps": 0,
+  "device": "cpu",
+  "new_rollouts": 0,
+  "MKL_THREADING_LAYER": "SEQUENTIAL"
+}

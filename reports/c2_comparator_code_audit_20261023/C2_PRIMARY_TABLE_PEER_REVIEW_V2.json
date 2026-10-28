@@ -1,0 +1,141 @@
+{
+  "schema": "C2_PRIMARY_TABLE_CROSSCHECK_V2",
+  "created_utc": "2026-10-22T17:49:29.706Z",
+  "scope": "Read-only cross-check of frozen full-primary JSON against its CSV exports, plus independent table-level aggregation from per-run CSV. No raw MAT reread or scorer rerun.",
+  "inputs_before_after": {
+    "before": {
+      "full_primary_json": {
+        "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\reports\\c2_deployable_residual_parent_20261023\\C2_FULL_PRIMARY_RAW_REVIEW.json",
+        "sha256": "2484f168569b91a33581fadca4a5d4e5e89bf572d68e17b8d5d75f10f5b6a0ed",
+        "size_bytes": 53203,
+        "mtime_ns": 1792690914872398000
+      },
+      "per_run_csv": {
+        "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\reports\\c2_deployable_residual_parent_20261023\\C2_ALL_36_PER_RUN.csv",
+        "sha256": "8287d3bc1b80f0756d512ffd8db87edc98eb09155f3ee884520bfccabc185c83",
+        "size_bytes": 21624,
+        "mtime_ns": 1792690914972497700
+      },
+      "paired_csv": {
+        "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\reports\\c2_deployable_residual_parent_20261023\\C2_ALL_24_PAIRED.csv",
+        "sha256": "6cfe654ec67f3f13afa32d756e6033702e31f9c5d0e185aee974437627f993ff",
+        "size_bytes": 1962,
+        "mtime_ns": 1792690914972497700
+      },
+      "group_csv": {
+        "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\reports\\c2_deployable_residual_parent_20261023\\C2_GROUP_Q.csv",
+        "sha256": "b69cff5d48a4e70e5c2d929d3f4c1cead024cd05992a1b6b2aba6d8eb5cb48bb",
+        "size_bytes": 740,
+        "mtime_ns": 1792690914974217000
+      },
+      "losses_csv": {
+        "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\reports\\c2_deployable_residual_parent_20261023\\C2_ALL_LOSSES.csv",
+        "sha256": "9af701222807b13766bd0098952a7d527d0bd35bf67adec5a9289a28f23c0f8e",
+        "size_bytes": 473,
+        "mtime_ns": 1792690914973506200
+      }
+    },
+    "after": {
+      "full_primary_json": {
+        "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\reports\\c2_deployable_residual_parent_20261023\\C2_FULL_PRIMARY_RAW_REVIEW.json",
+        "sha256": "2484f168569b91a33581fadca4a5d4e5e89bf572d68e17b8d5d75f10f5b6a0ed",
+        "size_bytes": 53203,
+        "mtime_ns": 1792690914872398000
+      },
+      "per_run_csv": {
+        "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\reports\\c2_deployable_residual_parent_20261023\\C2_ALL_36_PER_RUN.csv",
+        "sha256": "8287d3bc1b80f0756d512ffd8db87edc98eb09155f3ee884520bfccabc185c83",
+        "size_bytes": 21624,
+        "mtime_ns": 1792690914972497700
+      },
+      "paired_csv": {
+        "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\reports\\c2_deployable_residual_parent_20261023\\C2_ALL_24_PAIRED.csv",
+        "sha256": "6cfe654ec67f3f13afa32d756e6033702e31f9c5d0e185aee974437627f993ff",
+        "size_bytes": 1962,
+        "mtime_ns": 1792690914972497700
+      },
+      "group_csv": {
+        "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\reports\\c2_deployable_residual_parent_20261023\\C2_GROUP_Q.csv",
+        "sha256": "b69cff5d48a4e70e5c2d929d3f4c1cead024cd05992a1b6b2aba6d8eb5cb48bb",
+        "size_bytes": 740,
+        "mtime_ns": 1792690914974217000
+      },
+      "losses_csv": {
+        "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\reports\\c2_deployable_residual_parent_20261023\\C2_ALL_LOSSES.csv",
+        "sha256": "9af701222807b13766bd0098952a7d527d0bd35bf67adec5a9289a28f23c0f8e",
+        "size_bytes": 473,
+        "mtime_ns": 1792690914973506200
+      }
+    },
+    "identical": true
+  },
+  "counts": {
+    "unique_scenes": 12,
+    "per_run_json_and_csv_rows": 36,
+    "paired_json_and_csv_rows": 24,
+    "group_csv_rows": 18,
+    "loss_csv_rows": 5,
+    "candidate_collection_status": {
+      "STABLE": 11,
+      "FAILED_NO_RETRY_raw_usable_scoring": 1
+    }
+  },
+  "full_json_to_per_run_csv": {
+    "identity_and_raw_sha_match": true,
+    "max_abs_metric_error": 0.0,
+    "max_abs_Q_error_m": 0.0
+  },
+  "full_json_to_paired_csv": {
+    "all_keys_result_flags_and_deltas_match": true,
+    "max_abs_delta_error_m": 0.0,
+    "losses_csv_matches_json_LOSS_rows": true,
+    "paired_sign_tolerance_m": 1e-12,
+    "micro_thresholds_m": {
+      "1_um": 1e-06,
+      "10_um": 1e-05
+    },
+    "outcomes": {
+      "B": {
+        "WIN": 7,
+        "LOSS": 5,
+        "TIE": 0,
+        "wins_ge_1um": 7,
+        "wins_ge_10um": 7,
+        "minimum_abs_delta_m": 0.0001718429304239568,
+        "minimum_abs_delta_scene": "DL1018_VAL_T2_C00_W10"
+      },
+      "ON1": {
+        "WIN": 12,
+        "LOSS": 0,
+        "TIE": 0,
+        "wins_ge_1um": 9,
+        "wins_ge_10um": 0,
+        "minimum_abs_delta_m": 1.619865862799441e-08,
+        "minimum_abs_delta_scene": "DL1018_VAL_T2_C05_W15"
+      }
+    }
+  },
+  "full_json_to_group_csv": {
+    "all_n_and_means_match": true,
+    "max_abs_mean_error_m": 0.0,
+    "selected_group_delta_um": {
+      "ALL": {
+        "C2_minus_B_um": -565.7363756122746,
+        "C2_minus_ON1_um": -3.3394663579086603
+      },
+      "HF_W09_W14": {
+        "C2_minus_B_um": 75.55217387749182,
+        "C2_minus_ON1_um": -4.523672824097852
+      },
+      "W15": {
+        "C2_minus_B_um": 355.76540516049636,
+        "C2_minus_ON1_um": -0.07909125168854836
+      }
+    }
+  },
+  "limits": [
+    "Validation concerns score exports and grouping/bookkeeping; it is not a new physical-Q rescore.",
+    "The scene with FAILED_NO_RETRY remains a collection failure despite its raw being usable and separately bound for scoring.",
+    "Sub-micrometre wins remain numerically distinct from the 1e-12 m sign tolerance but are reported separately from >=1/10 um thresholds."
+  ]
+}

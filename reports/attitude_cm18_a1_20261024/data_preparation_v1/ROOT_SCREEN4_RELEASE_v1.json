@@ -1,0 +1,25 @@
+{
+  "schema": "ROOT_CM18_OFFLINE_DATA_RELEASE_V1",
+  "approved_actions": [
+    "Create the full TRAIN768 + VAL48 input hash manifest with the reviewed Python source",
+    "Run SCREEN4 offline event reconstruction after pinning the generated manifest"
+  ],
+  "source_sha256": {
+    "prepare_input_manifest_v1.py": "8be5a22a45192ab3651702067a95940317a5e8f26000e8e8d1b341ecc2113ba0",
+    "export_cm18_events_v1.m": "5264586d5e2120cdaf5f5cf6a42c07e21e1ed9afd244b92ef7a7f89bbedfc6d6",
+    "run_cm18_export_v1.m": "ca2dd97ad636a65c0afb880da2f43fbd89fc260491264348659d26d49b42409b"
+  },
+  "reference_source_hashes_independently_verified": 11,
+  "expected_screen4": [
+    "DL1018_TRAIN_T1_C00_W00",
+    "DL1018_TRAIN_T1_C01_W00",
+    "DL1018_VAL_T1_C00_W07",
+    "DL1018_VAL_T1_C01_W08"
+  ],
+  "output_cache_limit_bytes": 1073741824,
+  "ALL816_export_release": false,
+  "neural_training_release": false,
+  "closed_loop_Plant_release": false,
+  "TEST_access": false,
+  "failure_rule": "Keep all failure records; require receipt status PASS and four qualified scenes before considering ALL816."
+}

@@ -1,0 +1,11 @@
+--- C:\Users\35326\Desktop\postgraduation\0\Mcode\drone_tcn\REFERENCE_FIX_FULL72_20261021_022342_313\corrected_reference_training_v1\corrected_pair_eval_v1\sources\local_runtime\run_dl1018_closed_loop.m
++++ C:\Users\35326\Desktop\postgraduation\0\Mcode\drone_tcn\DL1018\experiments\position_beta_clock_c2_20261023\runtime\run_dl1018_closed_loop.m
+@@ -1945,7 +1945,7 @@
+                             if stage1PositionHistoryFill>=stage1ModelReadinessEvents
+                                 inferenceTimer=tic;
+                                 phi=position_stage1_model_forward_v2(stage1PositionRuntime.model,stage1PositionHistory);
+-                                betaOriginal=min(max(t(k)/cfg.rbf.position.beta_rise_time,0),1);
++                                betaOriginal=min(max(k*dt/cfg.rbf.position.beta_rise_time,0),1);
+                                 beta=betaOriginal*stage1PositionBetaScale;
+                                 positionEventBetaLog(k)=beta;
+                                 weightBefore=stage1PositionWeight;

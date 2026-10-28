@@ -1,0 +1,1227 @@
+{
+  "schema": "DL1018_PHYSICAL_RESIDUAL_CONTINUATION_V2",
+  "status": "LARGE_DATA_B768_ATTITUDE_GRU_TRAINING_RUNNING",
+  "user_objective": "Paper-level dual-loop results: high-frequency task attitude must not be worse than B; preserve position advantage over B and allow small degradation relative to C5. Report task attitude and inner tracking separately; the current persistent user goal permits some attitude degradation relative to C5.",
+  "authorization": "Current user authorized continued comparisons, implementation, experiments and improvement with Luna xhigh subagents; this supersedes historical preparation-only taskbook limits.",
+  "github_pushed": false,
+  "training": {
+    "scenes": 24,
+    "events": 47976,
+    "steps": 60000,
+    "validation_used_for_fit": false
+  },
+  "offline_val48": {
+    "status": "COMPLETED",
+    "scenes": 48,
+    "events": 95952,
+    "candidate_macro_rmse_rad_s2": 4.778399249166749,
+    "zero_baseline_macro_rmse_rad_s2": 6.9572671013547875,
+    "scene_wins": 41,
+    "scene_losses": 7,
+    "risk": "W08 loses all three scenes; yaw loses 28/48; independent NumPy recompute matches saved metrics within 1.8e-15.",
+    "report": "C5_VAL48_OFFLINE_DIAGNOSTIC_REPAIR03/REPAIR03_RESULT_v1.md",
+    "details": "C5_VAL48_OFFLINE_DIAGNOSTIC_REPAIR03/C5_VAL48_SUMMARY_REPAIR03_v1.json"
+  },
+  "closed_loop": {
+    "root": "closed_loop_candidate_v1",
+    "configuration": "ACTUAL: C5 DSSM14 M110 position, WN18 [18,18,12], fixed J0, physical residual MLP15 plus Joseph RLS AND a tracking-drive update inherited from the composite GRU runner; RBF attitude disabled.",
+    "design_deviation": "Initial taskbook requested causal-head-v1 RLS only and explicitly excluded a tracking-drive term. The first deployed candidate contains that extra term. Preserve its real results, but do not claim it isolates only the supervised-label change. Update-first variant isolates RLS timing relative to this ACTUAL deployed baseline; a proper tracking-term ablation remains required.",
+    "cohort": "Fixed 12 DEV/VAL scenes reused from WN12 screen; B and C5 raw results reused by identity.",
+    "first_scene": "DL1018_DEV_T1_C10_W09",
+    "first_scene_status": "STABLE_20000_TRANSITIONS_ZERO_SAFETY_COUNTERS",
+    "first_scene_candidate": {
+      "Q_m": 0.009407793207867927,
+      "task_SO3_rad": 0.04379521511993468,
+      "inner_SO3_rad": 0.019930158586487796
+    },
+    "first_scene_note": "Position and inner tracking beat B/C5; task attitude loses to both. One scene does not establish cohort performance.",
+    "completed_scene_count": 12,
+    "paired_score": "closed_loop_candidate_v1/audits/CLOSED_LOOP_SCORE_v1.json",
+    "all12_candidate": {
+      "Q_m": 0.010360107,
+      "task_SO3_rad": 0.047260161,
+      "inner_SO3_rad": 0.013741772
+    },
+    "all12_B": {
+      "Q_m": 0.014306172,
+      "task_SO3_rad": 0.050158211,
+      "inner_SO3_rad": 0.01276075
+    },
+    "all12_C5": {
+      "Q_m": 0.010079641,
+      "task_SO3_rad": 0.04651093,
+      "inner_SO3_rad": 0.012864783
+    },
+    "hf6_candidate": {
+      "Q_m": 0.010824909,
+      "task_SO3_rad": 0.061355392,
+      "inner_SO3_rad": 0.018477224
+    },
+    "hf6_B": {
+      "Q_m": 0.01126577,
+      "task_SO3_rad": 0.057618624,
+      "inner_SO3_rad": 0.016192997
+    },
+    "decision": "User objective NOT met: HF task attitude remains about 6.5% worse than B despite position improvement. Do not expand this unchanged candidate or claim paper success.",
+    "remaining_scenes_exec_session": null,
+    "resume_matlab_function": "run_mlp15_physical_residual_screen",
+    "resume_note": "Original12 complete and rejected for HF task gap; do not rerun unchanged. Update-first, globalforce0.9, NCMD+tracking, yaw mapping and measured-pose PCF have all been evaluated separately. Current active work is prediction-tau01 fixed12 and TRAIN24-only H110 forecast probe."
+  },
+  "paper_completion_requirements": [
+    "No declaration of success from ALL12 macro alone; HF task attitude relative to B is a required outcome.",
+    "Freeze a candidate only after an informative screen; then verify full development coverage including wind groups and trajectories, paired uncertainty, all losing scenes and safety.",
+    "Preserve current TEST sealing; final generalization requires an audited independent frozen evaluation cohort, not reused DEV/VAL diagnostics.",
+    "Document deployable inputs, timing, units, source/model/data identities, ablations, compute cost, limited theory claims and reproducible paper tables/figures."
+  ],
+  "next_variant": {
+    "root": "closed_loop_update_first_v1",
+    "change": "Only current compensation output uses post-RLS/pre-tracking weights from the completed past interval; tracking and stored-state evolution remain in original order.",
+    "no_plant_status": "PASS state-machine assertions and complete first-scene preparation",
+    "source_hash_manifest": "closed_loop_update_first_v1/SOURCE_HASH_MANIFEST_v1.json",
+    "first_scene_session": null,
+    "remaining_scenes_session": null,
+    "completed_scene_count": 12,
+    "score": "closed_loop_update_first_v1/audits/CLOSED_LOOP_SCORE_v1.json",
+    "all12_candidate": {
+      "Q_m": 0.010629122388151937,
+      "task_SO3_rad": 0.04738498703250127,
+      "inner_SO3_rad": 0.014617253308475082
+    },
+    "hf6_candidate": {
+      "Q_m": 0.010915751439399594,
+      "task_SO3_rad": 0.061364099052004815,
+      "inner_SO3_rad": 0.01898679702551896
+    },
+    "decision": "REJECT_UPDATE_FIRST: same-record prediction improvement did not translate into closed-loop improvement. Do not expand or carry this timing change into the next candidate.",
+    "first_scene_candidate": {
+      "Q_m": 0.009590744,
+      "task_SO3_rad": 0.04346601,
+      "inner_SO3_rad": 0.020975201
+    },
+    "first_scene_raw_audit": "1999 event outputs match post-RLS/pre-tracking formula; torque conversion and applied trace agree; past endpoints valid; actual MLP output/state norm projection 30 events, residual dmax clipping zero.",
+    "safety_counter_scope": "Frozen scorer head counters refer to legacy v39 log fields and do not prove no MLP projection. Use independent MLP-trace counters; actuator saturation/generalized clip/tilt counters remain applicable.",
+    "attempt_subdirectory": "PHYS_RESIDUAL_ATTEMPT_01",
+    "resume": "Update-first completed12 and rejected. Preserve historical raw/score; no further unchanged runs."
+  },
+  "actual_mlp_head_counts": {
+    "audit": "closed_loop_candidate_v1/audits/MLP15_TRACE_SAFETY_COUNTS_v1.json",
+    "original_12": {
+      "final_weight_projection_events": 952,
+      "residual_clip_events": 38
+    },
+    "update_first_12": {
+      "final_weight_projection_events": 786,
+      "output_weight_projection_events": 785,
+      "residual_clip_events": 33
+    },
+    "causality_output_torque_checks": "PASS across both full 12-scene cohorts"
+  },
+  "force09_variant": {
+    "root": "closed_loop_force09_v1",
+    "parent": "closed_loop_candidate_v1",
+    "change": "Only actual NN position compensation acceleration/force is multiplied by pre-fixed 0.9 after the existing prediction/clip/beta; BS nominal feedback, original MLP output-before-RLS and tracking are preserved.",
+    "position_path_changed": true,
+    "C5_position_physical_equivalence_claimed": false,
+    "no_plant_status": "PASS alpha1 exact restoration, alpha0.9 units and BS/PCF wiring, full scene preflight; MLP source equals original parent.",
+    "release_status": "RELEASED with 12 fixed scenes by root after inspection; preflight receipt retains historical pre-release hash.",
+    "first_scene_session": null,
+    "remaining_scenes_session": null,
+    "first_scene_candidate": {
+      "Q_m": 0.010745991216800626,
+      "task_SO3_rad": 0.04319871007689165,
+      "inner_SO3_rad": 0.019000343359982762
+    },
+    "attempt_subdirectory": "PHYS_RESIDUAL_ATTEMPT_01",
+    "next_action": "Completed12 formal score and actual MLP trace audit; HF position/task fail B. Closed for expansion. OlderGRU force09 comparison also completed12 and failed required HF gate.",
+    "interrupted_attempt_receipt": "closed_loop_force09_v1/INTERRUPTED_ATTEMPT_RECOVERY_v1.json",
+    "completed_scene_count": 12,
+    "independent_macro": {
+      "ALL12": {
+        "Q_m": 0.011618898714770294,
+        "task_SO3_rad": 0.04690536933506928,
+        "inner_SO3_rad": 0.013796096432153813
+      },
+      "HF6": {
+        "Q_m": 0.012249979231740387,
+        "task_SO3_rad": 0.06050237410760406,
+        "inner_SO3_rad": 0.01821848306080506
+      },
+      "decision": "REJECT confirmed by formal score: HF task +5.0048919835% vs B; HF position +8.7362677% vs B. No expansion."
+    },
+    "score": "closed_loop_force09_v1/audits/CLOSED_LOOP_SCORE_v1.json",
+    "actual_mlp_head_audit": {
+      "residual_clip_events": 34,
+      "future_endpoint_violations": 0,
+      "final_state_projection_events": 902,
+      "path": "closed_loop_force09_v1/audits/MLP15_TRACE_SAFETY_COUNTS_v1.json",
+      "applied_torque_max_error": 0,
+      "audited_scenes": 12
+    }
+  },
+  "TEST_read_this_continuation": false,
+  "historical_status_file": "STATUS_ROOT_v1.json is preserved as historical pre-recovery state.",
+  "historical_audit": {
+    "root": "reports/attitude_experiment_reconciliation_20261027",
+    "status": "BOUNDED_INVENTORY_COMPLETE_AND_ROOT_REVIEWED",
+    "confirmed_new_issue": "Current scorer corrected wind grouping from actual raw: 3 zero environmental wind W15, 9 nonzero. Historical labels preserved with new erratum; metric values unchanged.",
+    "bounded_contract_audit": "reports/attitude_experiment_reconciliation_20261027/HISTORY_CONTRACT_FINDINGS_v1.json: no additional confirmed defect in bounded source audit; not blanket validation of all historical copies."
+  },
+  "gru_force09_reference": {
+    "model_scope": "72-scene DEV24+VAL48 development fit, not independent validation",
+    "root": "../gru_tracking_force09_v1",
+    "first_scene_session": null,
+    "status": "COMPLETE_12_SCREEN_HF_GATE_FAIL",
+    "failure": "Historical pre-Plant stale root-entry hash repaired by reviewed path-restoration line; new manifest148192fc...2d0717 noPlant rerun PASS, root64 SHA PASS, first actual run completed.",
+    "Plant_calls": 0,
+    "remaining_scenes_session": null,
+    "first_scene": {
+      "task_SO3_rad": 0.04296273984795624,
+      "state": "STABLE_20000_TRANSITIONS_20001_SAMPLES",
+      "Q_m": 0.010760563710609187,
+      "scene": "DL1018_DEV_T1_C10_W09",
+      "decision": "Do not infer success; task still above paired B on first scene. Complete fixed12.",
+      "inner_SO3_rad": 0.020218431709927442
+    },
+    "hf6_independent_macro": {
+      "decision": "HF gate FAIL; finish fixed12 for complete development record, no expansion of scalar0.9 intervention.",
+      "task_SO3_rad": 0.060302756106428344,
+      "completed": 6,
+      "inner_SO3_rad": 0.01434664302647261,
+      "Q_m": 0.011716514848720517
+    },
+    "score": "../gru_tracking_force09_v1/audits/GRU_TRACKING_FORCE09_SCORE_final12.json",
+    "all12_macro": {
+      "inner_SO3_rad": 0.011441750215265091,
+      "task_SO3_rad": 0.045987372457253206,
+      "Q_m": 0.01092007225657242
+    },
+    "decision": "Reject scalar0.9 expansion. HF6 task loses B all6, macro+4.66%; Q+4.00%B. ALL12/inner improvements cannot replace required task-HF gate."
+  },
+  "hard_constraints": [
+    "No inertia reconstruction or identification: no Jhat/Jdot estimator, no predicted inertia outputs, no true inertia deployment input. Fixed nominal J0 algebra is permitted.",
+    "DL module may be chosen from actual input/output dimension and temporal needs; user delegates choices."
+  ],
+  "strengthened_position_requirement": {
+    "evidence": "Full72 frozen ALL72 macro B Q=.017057913104666485m,C5 Q=.01155871797362272m =>32.23838% improvement.",
+    "rejected": "Global0.9 MLP/GRU; conditional LP fc18/(2pi) insufficient, no closed-loop expansion.",
+    "allowed_design": "May change DL module/control coupling/training objectives as necessary; no inertia reconstruction. Position benefit preservation is performance requirement, not prohibition on outer architecture changes.",
+    "selection": "Retain approximately C5 position performance and its substantial average advantage over B while passing HF task attitude against B. Compare matched cohorts: do not demand 30% HF advantage where C5 itself has only about6%.",
+    "user_instruction": "C5平均位置超过B三十多百分比；只超过B一点点没有价值。"
+  },
+  "next_design_audit": {
+    "goal": "Preserve C5 substantial32.24% average position advantage while resolving HF task-attitude deficit to B, no inertia reconstruction.",
+    "mechanism_agent": "/root/hf_mechanism",
+    "status": "TAU01_FIXED12_RUNNING_FORECAST_PROBE_OFFLINE",
+    "excluded_repeats": [
+      "Global force scale0.9 failed both MLP andGRU HF gate.",
+      "2.865Hz causal LP same-state conditional task insufficient; no blind lower-cutoff sweep.",
+      "Past/future label timing alone only~0.2% W09 effect; update-first improves offline RMSE yet worsens actual closedloop."
+    ],
+    "next_evidence": "Audit NCMD future-label GRU+online tracking combination history/HF subgroup, and force-target-position spectral phase with no inertia features.",
+    "model_agent": "/root/model_diagnosis",
+    "candidate": {
+      "parent": "Original WN18 cosine GRUtracking with unchanged C5 DSSM14 alpha1",
+      "rationale": "Old frozen NCMD lacks trackingdelta; interface13→32→3 compatible; no claim expected win, actual closedloop required.",
+      "change": "Only frozen attitude base weights change to existing NCMD future10ms residual GRU; retain actual beta ramp, DMAX, trackingdelta, fixed J0 and outerposition gains.",
+      "root": "experiments/dl_attitude_replacement_20261028/gru_ncmd_tracking_v1",
+      "user_latest": "Investigate methods/interfaces/parameters and C5 historical high-frequency fix; do not infer HF cannot improve.",
+      "first_scene_session": null,
+      "launch_note": "cd studyRoot; addpath(fullfile(pwd,candidate_runner_work,matlab,runtime)) before attempt. Prior missing-helper launch stopped pre-Plant with no marker. Source unchanged.",
+      "remaining_scenes_session": null,
+      "first_scene": {
+        "scene": "DL1018_DEV_T1_C10_W09",
+        "state": "COMPLETED_STABLE_20000_TRANSITIONS",
+        "inner_SO3_rad": 0.01690392246574014,
+        "paired_cosine_parent": {
+          "inner_SO3_rad": 0.02024501714889525,
+          "task_SO3_rad": 0.04330835597159727,
+          "Q_m": 0.009492906627253345
+        },
+        "decision": "Position and inner improve versus parent; task slightly worsens and still loses B; not success. Complete fixed12.",
+        "Q_m": 0.009161947454458712,
+        "task_SO3_rad": 0.043392928667812386
+      },
+      "formal_score": "experiments/dl_attitude_replacement_20261028/gru_ncmd_tracking_v1/audits/GRU_NCMD_TRACKING_SCORE_final12.json",
+      "decision": {
+        "schema": "ROOT_NCMD_TRACKING_SCREEN_DECISION_V1",
+        "status": "REJECT_UNCHANGED_EXPANSION_HF_TASK_GATE_FAIL",
+        "completed_scenes": 12,
+        "score": "audits/GRU_NCMD_TRACKING_SCORE_final12.json",
+        "hf6": {
+          "Q_m": 0.010205363348339234,
+          "task_SO3_rad": 0.061350468373992294,
+          "inner_SO3_rad": 0.0137046559820321,
+          "task_losses_B": 6,
+          "task_wins_B": 0
+        },
+        "all12": {
+          "Q_m": 0.009774294084629013,
+          "task_SO3_rad": 0.04688171796163689,
+          "inner_SO3_rad": 0.010995108840328748
+        },
+        "interpretation": "Position benefit retained on this screen; NCMD changes improve inner tracking but not required HF task attitude. No full72/TEST expansion of this unchanged candidate. Not a conclusion that GRU or physical residual labels cannot work.",
+        "test_read": false,
+        "github_pushed": false
+      }
+    },
+    "interface_hypothesis": {
+      "required_evidence": "Measure prefilter force-direction closure residual vs same-yaw construction on6HF, target SO3 difference, PCF compensation context. Do not attribute observed gap merely from nonzero discrepancy.",
+      "status": "SOURCE_CONFIRMED_MIXED_YAW_CONSTRUCTION_IMPACT_NOT_PROVEN",
+      "source": "Original GRU runtime2384 computes RP using actual state yaw;2385 replaces yaw with desired; PCF uses filtered resulting Euler.",
+      "known_correct": "C5 M110/PCF/delayed10ms correction is active; tracking head sign matches surface alpha-etaRate, T transpose/event dt/clip beta torque identity audit passed.",
+      "evidence": "reports/attitude_experiment_reconciliation_20261027/C5_HF_INTERFACE_LINEAGE_AUDIT_v1.json; original GRU6HF yaw-consistency target difference pooled0.2977mrad versus taskgap3.5804mrad, prefilter force closure pool0.002930m/s2; impact not causal."
+    },
+    "yaw_consistency_variant": {
+      "status": "SINGLE_PILOT_COMPLETE_NO_MATERIAL_IMPROVEMENT_CLOSED",
+      "scope": "Coordinate-consistency test, not proven performance root cause; actual-yaw mapping may have transient tradeoffs and PCF absorbs some mismatch.",
+      "change": "Only force-to-RP mapping uses desired yaw consistently; retain original cosineGRUtracking and C5alpha1. Separate from NCMD factor.",
+      "root": "experiments/dl_attitude_replacement_20261028/gru_yaw_consistent_v1",
+      "session": null,
+      "scene": "DL1018_VAL_T3_C01_W14"
+    },
+    "measured_pose_pcf_candidate": {
+      "status": "SINGLE_PILOT_COMPLETE_POSITION3X_WORSE_CLOSED",
+      "no_inertia_reconstruction": true,
+      "change": "PCF helper attitude argument ir.euler replaced by causal measured x(k,7:9). This consistently changes af/rf/eta and XY delayed target, retains Z a_req and all neural/gain parameters.",
+      "parent": "Original cosineGRU tracking alpha1; not NCMD",
+      "evidence": "Actualpose-issuedthrust versus filteredpose af contributes about0.14m/s2 (~22% of XY label RMS) with 1–3Hz coherence~.75. Correlation only; actual-label RMS falls only2%, useful compensation may be lost.",
+      "root": "experiments/dl_attitude_replacement_20261028/gru_measured_pose_pcf_v1",
+      "session": null,
+      "scene": "DL1018_VAL_T3_C01_W14",
+      "actual_interface_audit": "Logged af matches issuedT/m*R(actualEuler)e3-g within1.78e-15m/s2; position NN and update enabled true; negative result is not an inactive-interface artefact."
+    },
+    "prediction_tau_candidate": {
+      "root": "experiments/dl_attitude_replacement_20261028/gru_prediction_tau01_v1",
+      "hypothesis": "Prediction gradient relaxation may be too slow relative to observed1–3Hz crossloop structure; preserve DC compensation rather than globally weakening it.",
+      "caveat": "Unit-phi gradient contraction does not prove closed-loop stability or superior task score; offline improvements have failed before. History checked by bounded rg; HF agent investigating duplicates and off-policy head replay.",
+      "Plant_calls": 12,
+      "status": "FIXED12_FORMAL_COMPLETE_HF_TASK_FAIL_NO_EXPANSION",
+      "change": "Only position delayed prediction relaxation tau1s→0.1s, rho=h/tau .01→.1. gamma12/leak/beta/limits/all networks unchanged.",
+      "parent": "Original cosineGRUtracking/C5M110 filtered-pose PCF, alpha1",
+      "first_scene": {
+        "decision": "Not successful: task still above B2.86%, position aboveB4.00%. Stable with zero actuator counters; complete fixed12 to quantify phase/position tradeoff and zero-wind cohort before closing.",
+        "Q_m": 0.011860590199015692,
+        "position_change_vs_parent_percent": 23.28212724682959,
+        "task_SO3_rad": 0.06356184722116978,
+        "task_change_vs_parent_percent": -2.8362922255925294,
+        "inner_SO3_rad": 0.016085199361566663,
+        "scene_id": "DL1018_VAL_T3_C01_W14"
+      },
+      "source_manifest_sha256": "88a5b971ecb469e3564b25252c76a56885c2cff2990ca6fbba4c02c299cd416b",
+      "remaining_scenes_session": null,
+      "completed_scene_count": 12,
+      "score": "experiments\\dl_attitude_replacement_20261028\\gru_prediction_tau01_v1\\audits\\GRU_PREDICTION_TAU01_SCORE_final12.json",
+      "decision": "experiments\\dl_attitude_replacement_20261028\\gru_prediction_tau01_v1\\ROOT_SCREEN_DECISION_v1.json",
+      "all12": {
+        "Candidate": {
+          "Q_m": 0.01108167170228666,
+          "task_SO3_rad": 0.04578779646826858,
+          "inner_SO3_rad": 0.011439825380650907
+        },
+        "Parent_Cosine_GRU": {
+          "Q_m": 0.009690773134102975,
+          "task_SO3_rad": 0.04652544104754486,
+          "inner_SO3_rad": 0.011475037325128766
+        },
+        "B": {
+          "Q_m": 0.014306172002230118,
+          "task_SO3_rad": 0.05015821143759538,
+          "inner_SO3_rad": 0.012760749616712747
+        },
+        "C5": {
+          "Q_m": 0.01007964053689707,
+          "task_SO3_rad": 0.04651092973102475,
+          "inner_SO3_rad": 0.012864782934979892
+        }
+      },
+      "hf6": {
+        "Candidate": {
+          "Q_m": 0.012174884655242213,
+          "task_SO3_rad": 0.059609709081245,
+          "inner_SO3_rad": 0.014335959964635159
+        },
+        "Parent_Cosine_GRU": {
+          "Q_m": 0.010141127268856395,
+          "task_SO3_rad": 0.06119899336640073,
+          "inner_SO3_rad": 0.01441020199904845
+        },
+        "B": {
+          "Q_m": 0.011265769659882808,
+          "task_SO3_rad": 0.05761862420381656,
+          "inner_SO3_rad": 0.0161929970971191
+        },
+        "C5": {
+          "Q_m": 0.010583787811063094,
+          "task_SO3_rad": 0.06120409735941579,
+          "inner_SO3_rad": 0.01642475008073765
+        }
+      }
+    }
+  },
+  "forecast_probe": {
+    "scope": "Frozen positionalSSM phi33, fixed ridge priorW0 lambda1e-3, H0 and commandfilter-delay H110ms predetermined. Fit onlyTRAIN24, evaluate reusedVAL48 as development diagnostic; no controller integration/Plant or inertia reconstruction.",
+    "status": "COMPLETE_OFFLINE_H110_WORSE_PERSISTENCE_NO_DEPLOYMENT",
+    "root": "experiments/dl_attitude_replacement_20261028/position_forecast_h110_probe_v1",
+    "purpose": "Test causal predictability before changing architecture. Forecast RMSE is not closed-loop performance.",
+    "result": "experiments/dl_attitude_replacement_20261028/position_forecast_h110_probe_v1/POSITION_FORECAST_H110_RESULTS_v1.json",
+    "val48_pooled_xy_rmse": {
+      "H110": 0.502946,
+      "persistence": 0.386474,
+      "online_raw": 0.447172
+    },
+    "caveat": "VAL is development diagnostic, not independent; no closed loop conclusion."
+  },
+  "method_alternatives_review": {
+    "status": "ACTIVE_READ_ONLY_LOCAL_AND_PRIMARY_LITERATURE_REVIEW",
+    "root": "experiments/dl_attitude_replacement_20261028/method_alternatives_review_v1",
+    "scope": "Question 0-C5 assumptions; propose falsifiable alternatives without inertia reconstruction or changed evaluation targets."
+  },
+  "active_delegation": {
+    "implementation": "Luna max",
+    "root_role": "source/data/timing audit and experimental decisions",
+    "agents": [
+      "val48_result_audit",
+      "lead_pilot_finish",
+      "startup_spectral_audit"
+    ]
+  },
+  "delayed_tau_candidate": {
+    "status": "HF6_COMPLETE_TASK_FAIL_NO_UNCHANGED_EXPANSION",
+    "root": "experiments/dl_attitude_replacement_20261028/gru_tau01_delayed_start_v1",
+    "hypothesis": "Keep rho=.01 first 5s, transition to .1 over 5-6s to test whether tau01 startup position loss can be reduced while preserving later task benefit. Single bounded pilot pending root QA.",
+    "no_inertia_reconstruction": true,
+    "session": null,
+    "scene": "DL1018_VAL_T3_C01_W14",
+    "no_plant": "PASS",
+    "authorized_calls": 6,
+    "pilot_score": "experiments/dl_attitude_replacement_20261028/gru_tau01_delayed_start_v1/audits/ROOT_PILOT_SCORE_v1.json",
+    "pilot_Q_m": 0.009957193761,
+    "pilot_task_SO3_rad": 0.064234954144,
+    "completed_scene_count": 6,
+    "Plant_calls": 6,
+    "macro": {
+      "Delayed_Start_Candidate": {
+        "Q_m": 0.010998613226066135,
+        "task_SO3_rad": 0.060214107287298924,
+        "inner_SO3_rad": 0.014322359742087848
+      },
+      "B": {
+        "Q_m": 0.011265769659882808,
+        "task_SO3_rad": 0.05761862420381656,
+        "inner_SO3_rad": 0.0161929970971191
+      },
+      "C5": {
+        "Q_m": 0.010583787811063094,
+        "task_SO3_rad": 0.06120409735941579,
+        "inner_SO3_rad": 0.01642475008073765
+      },
+      "Parent_Cosine_GRU": {
+        "Q_m": 0.010141127268856395,
+        "task_SO3_rad": 0.06119899336640073,
+        "inner_SO3_rad": 0.01441020199904845
+      },
+      "Tau01": {
+        "Q_m": 0.012174884655242213,
+        "task_SO3_rad": 0.059609709081245,
+        "inner_SO3_rad": 0.014335959964635159
+      }
+    },
+    "score": "experiments/dl_attitude_replacement_20261028/gru_tau01_delayed_start_v1/audits/ROOT_HF6_SCORE_v1.json"
+  },
+  "governor_replay": {
+    "status": "OFFLINE_COMPLETE_NOT_RELEASED",
+    "report": "experiments/dl_attitude_replacement_20261028/method_alternatives_review_v1/METHOD_ALTERNATIVES_REVIEW_v1.md",
+    "reason": "One-step bound has negligible authority on filtered output; six HF6 force closure P95 rises; development budget not independent, no closed-loop evidence."
+  },
+  "position_lowpass_candidate": {
+    "status": "HF6_COMPLETE_FAIL_NO_UNCHANGED_EXPANSION",
+    "root": "experiments/dl_attitude_replacement_20261028/gru_tau01_position_applied_lowpass_tau01_v1",
+    "session": null,
+    "scene": "DL1018_VAL_T3_C01_W14",
+    "change": "100 Hz applied acceleration lowpass tau .1s, delayed-tau parent",
+    "no_inertia_reconstruction": true,
+    "first_attempt": "SCHEMA_GATE_REJECTED_BEFORE_DYNAMICS_PRESERVED",
+    "previous_attempts": "PRE_DYNAMICS_FAILURES_PRESERVED",
+    "first_plant_step_marker": true,
+    "pilot_Q_m": 0.0111632651,
+    "pilot_task_SO3_rad": 0.0621343889,
+    "pilot_inner_SO3_rad": 0.0164223938,
+    "pilot_B_Q_m": 0.0114048624,
+    "pilot_B_task_SO3_rad": 0.0617920003,
+    "agent_session": null,
+    "first_new_dynamics_marker": true,
+    "scope": "fixed6 development screen",
+    "completed_scene_count": 6,
+    "Plant_calls": 6,
+    "pilot_source_lock_snapshot": "MISSING_OLD_HASH_RECORDED",
+    "macro": {
+      "Position_Applied_Lowpass_tau0p1": {
+        "Q_m": 0.012188693644754979,
+        "task_SO3_rad": 0.05877224433713423,
+        "inner_SO3_rad": 0.014366223380734547
+      },
+      "B": {
+        "Q_m": 0.011265769659882808,
+        "task_SO3_rad": 0.05761862420381656,
+        "inner_SO3_rad": 0.016192997097119105
+      },
+      "C5": {
+        "Q_m": 0.010583787811063096,
+        "task_SO3_rad": 0.06120409735941579,
+        "inner_SO3_rad": 0.01642475008073765
+      },
+      "Parent_Cosine_GRU": {
+        "Q_m": 0.010141127268856395,
+        "task_SO3_rad": 0.06119899336640074,
+        "inner_SO3_rad": 0.01441020199904845
+      },
+      "Delayed_Start_Candidate": {
+        "Q_m": 0.010998613226066135,
+        "task_SO3_rad": 0.06021410728729893,
+        "inner_SO3_rad": 0.014322359742087844
+      }
+    },
+    "score": "experiments\\dl_attitude_replacement_20261028\\gru_tau01_position_applied_lowpass_tau01_v1\\audits\\ROOT_POSITION_APPLIED_LOWPASS_HF6_SCORE_v1.json"
+  },
+  "notch_probe": {
+    "status": "HF6_COMPLETE_TASK_FAIL",
+    "purpose": "Test fixed causal frequency-selective compensation while retaining low-frequency response; no closed-loop claim.",
+    "root": "experiments/dl_attitude_replacement_20261028/gru_cosine_c5_applied_notch_35hz_q1_v1",
+    "session": null,
+    "scene": "DL1018_VAL_T3_C01_W14",
+    "completed_scene_count": 6,
+    "Plant_calls": 6,
+    "binding": "experiments/dl_attitude_replacement_20261028/gru_cosine_c5_applied_notch_35hz_q1_v1/audits/NOTCH_HF6_RUN_BINDING_v1.json",
+    "score": "experiments/dl_attitude_replacement_20261028/gru_cosine_c5_applied_notch_35hz_q1_v1/audits/NOTCH_HF6_FROZEN_SCORE_v2.json",
+    "hf6_notch": {
+      "Q_m": 0.010609,
+      "task_SO3_rad": 0.060033,
+      "inner_SO3_rad": 0.014471
+    },
+    "interpretation": "Position close to C5 on HF6; task remains above B; no unchanged expansion."
+  },
+  "notch_tau01_candidate": {
+    "status": "PILOT_POSITION_FAIL_NO_UNCHANGED_EXPANSION",
+    "root": "experiments/dl_attitude_replacement_20261028/gru_cosine_c5_notch35_tau01_v1",
+    "session": null,
+    "scene": "DL1018_VAL_T3_C01_W14",
+    "change": "notch35/Q1 plus rho=.1 fixed",
+    "no_inertia_reconstruction": true,
+    "pilot_Q_m": 0.012587,
+    "pilot_task_SO3_rad": 0.06151,
+    "reason": "Q +24.6% vs notch, task improvement ~0.039mrad; Q worse B."
+  },
+  "position_residual_gru": {
+    "status": "PILOT_TASK_FAIL_NO_UNCHANGED_EXPANSION",
+    "root": "experiments/dl_attitude_replacement_20261028/position_c5_residual_gru_single_pilot_v1",
+    "session": null,
+    "scene": "DL1018_VAL_T3_C01_W14",
+    "training": "TRAIN24 4fold wind OOF; full24 fit λ=.01, 300 steps; existing C5 backbone not independently validated",
+    "no_inertia_reconstruction": true,
+    "pilot_Q_m": 0.008733,
+    "pilot_task_SO3_rad": 0.074522,
+    "pilot_inner_SO3_rad": 0.015723
+  },
+  "matched_position_residual_training": {
+    "status": "CV_COMPLETE_NO_CLOSED_LOOP_CLAIM",
+    "data_sha256": "15d689f08fd6d8a53a64c59dbdf62b33f9b8e8a12ce083fb12834cd106df2eeb",
+    "task_aware_oof_position_macro_mps2": 0.098978,
+    "no_task_oof_position_macro_mps2": 0.099114,
+    "baseline_oof_position_macro_mps2": 0.200214,
+    "frozen_task_mrad": {
+      "baseline": 57.216,
+      "no_task": 64.556,
+      "task_aware": 64.407
+    },
+    "next": "TRAIN24 noncausal constrained teacher followed by fourfold causal X14 student; evaluate against baseline and previous OOF. Offline surrogate only, not closed-loop evidence."
+  },
+  "teacher_distillation": {
+    "status": "TRAIN24_FOURFOLD_OOF_COMPLETE",
+    "script": "experiments/dl_attitude_replacement_20261028/position_cosine_gru_train24_causal_v1/task_aware_cv_v1/fit_teacher_distillation_oof_v1.py",
+    "cohort": "24 matched cosine-GRU development scenes, scene-group fourfold",
+    "restriction": "No TEST, no inertia reconstruction; teacher future information only for training labels",
+    "interpretation": "Constraint is on acceleration residual prediction RMSE, not closed-loop position Q; parent attitude model has seen DEV24 and VAL48.",
+    "teacher_npz_sha256": "e0519bc87a977d1349da3fdb0f582273bffaa61eb24ea380fb44e4a56791634a",
+    "student_oof_sha256": "dc714b61b97f4026f2655794a96330df05b68dfdf1b13209e92724a0934fb0cd",
+    "result": "experiments/dl_attitude_replacement_20261028/position_cosine_gru_train24_causal_v1/task_aware_cv_v1/TRAIN24_TEACHER_DISTILLATION_RESULTS_v1.json",
+    "frozen_task_macro_mrad": {
+      "C5": 57.216,
+      "teacher_oracle": 47.988,
+      "student_oof": 51.667
+    },
+    "position_residual_macro_mps2": {
+      "C5": 0.200214,
+      "teacher_oracle": 0.199788,
+      "student_oof": 0.209101
+    },
+    "student_vs_C5_position_wins": "7/24",
+    "student_vs_C5_task_wins": "24/24",
+    "independent_audit": "float32 teacher cap 24/24 verified; student fails 17/24; all fold IDs matched. No closed-loop inference.",
+    "next": "Prepare all-24 deployment pilot; concurrent train-only position/task tradeoff OOF.",
+    "unbalanced_runtime_preflight": "PASS 24x1999 parity and VAL pilot preflight; 0 Plant; balanced weights require separate preflight."
+  },
+  "balanced_student": {
+    "status": "SINGLE_PILOT_FAIL_NO_UNCHANGED_EXPANSION",
+    "report": "experiments/dl_attitude_replacement_20261028/position_cosine_gru_train24_causal_v1/teacher_position_balanced_cv_v1/REPORT_v1.md",
+    "weights_sha256": "1400a1ac72a57deedb6a7584811d9a6fa49f62cd0ce23a7318f9c8ee90b0a546",
+    "position_residual_macro_mps2": {
+      "C5": 0.200214,
+      "student": 0.196671
+    },
+    "frozen_task_macro_mrad": {
+      "C5": 57.216,
+      "student": 53.238
+    },
+    "wins_position": "14/24",
+    "wins_task": "24/24",
+    "limitations": "Soft loss, head OOF on parent-seen scenes; residual is not Q; task replay is not closed loop.",
+    "next": "Train-only predeclared low-frequency bias penalty OOF; no VAL tuning; seek closed-loop-aware objective.",
+    "pilot_scene": "DL1018_VAL_T3_C01_W14",
+    "pilot_score": "experiments/dl_attitude_replacement_20261028/position_teacher_position_balanced_full24_pilot_v1/audits/SINGLE_PILOT_SCORE_v1.json",
+    "pilot_Q_m": 0.0136975,
+    "pilot_task_rad": 0.0656075,
+    "B_Q_m": 0.0114049,
+    "B_task_rad": 0.061792,
+    "C5_Q_m": 0.0099896,
+    "parent_Q_m": 0.0096207,
+    "pilot_plant_calls": 1,
+    "audit": "Event action and injected force match, no saturation; x correction ready mean +0.1107 m/s2; discrepancy begins ~1s, closed-loop mismatch is candidate explanation, not proven cause."
+  },
+  "dc_penalty_student": {
+    "status": "SINGLE_PILOT_TASK_FAIL",
+    "report": "experiments/dl_attitude_replacement_20261028/position_teacher_dc_penalty_full24_preflight_v1/audits/DC_PENALTY_SINGLE_PILOT_SCORE_v1.json",
+    "cohort": "single reused VAL diagnostic, not independent",
+    "Q_m": 0.0108046,
+    "task_rad": 0.0658387,
+    "B_Q_m": 0.0114049,
+    "B_task_rad": 0.061792,
+    "C5_Q_m": 0.0099896,
+    "parent_Q_m": 0.0096207,
+    "balanced_Q_m": 0.0136975,
+    "dc_ready_mean_mps2": [
+      0.002705,
+      0.001524,
+      -0.002186
+    ],
+    "previous_ready_mean_mps2": [
+      0.112405,
+      -0.036188,
+      -0.015452
+    ],
+    "plant_calls": 1,
+    "safety": "stable 20000 transitions, safety and saturation counts zero",
+    "next": "Investigate train-only frequency-dependent supervision and independent literature; preserve TEST."
+  },
+  "train_only_followups": {
+    "washout_tau05": "3/4 predefined criteria pass, task proxy fails; no expansion",
+    "teacher_centered_dc": "OOF frozen task 50.522 mrad vs C5 57.216; action residual .214596 vs C5 .200214, worse than zero-DC in 24/24 scenes; no expansion",
+    "interpretation": "Teacher frozen-state task improvements are predominantly slow/DC action; large closed-loop offset harmed position in pilot. Need closed-loop-aware evidence rather than relying on frozen proxy.",
+    "centered_report": "experiments/dl_attitude_replacement_20261028/position_cosine_gru_train24_causal_v1/teacher_centered_dc_match_cv_v1/REPORT_v1.md",
+    "next": "Investigate train-only paired closed-loop identification; no VAL selection, no TEST, no inertia reconstruction."
+  },
+  "train_oof_closed_loop": {
+    "status": "THREE_SCENES_COMPLETE_SAME_FOLD",
+    "scene": "DL1018_DEV_T1_C00_W03",
+    "fold": "holdout_W00_05",
+    "candidate_Q_m": 0.008870885,
+    "candidate_task_rad": 0.0463462,
+    "B_Q_m": 0.013272614,
+    "B_task_rad": 0.0537016,
+    "C5_Q_m": 0.008243258,
+    "C5_task_rad": 0.0464633,
+    "parent_Q_m": 0.008246853,
+    "parent_task_rad": 0.0464426,
+    "plant_calls": 3,
+    "scope": "3 TRAIN scenes same heldout position fold, parent saw DEV24; T1 audited low-frequency; not independent or proof HF",
+    "next": "Audit T2/T3 and evaluate two fixed W09 TRAIN scenes under holdout_W06_10.",
+    "scenes": [
+      {
+        "id": "DL1018_DEV_T1_C00_W03",
+        "candidate_Q_mm": 8.870885,
+        "candidate_task_mrad": 46.3462,
+        "B_Q_mm": 13.272614,
+        "B_task_mrad": 53.7016,
+        "C5_Q_mm": 8.243258,
+        "C5_task_mrad": 46.4633
+      },
+      {
+        "id": "DL1018_DEV_T2_C00_W04",
+        "candidate_Q_mm": 13.136302,
+        "candidate_task_mrad": 53.040017,
+        "B_Q_mm": 27.851545,
+        "B_task_mrad": 75.658941,
+        "C5_Q_mm": 12.736632,
+        "C5_task_mrad": 53.725359
+      },
+      {
+        "id": "DL1018_DEV_T3_C00_W05",
+        "candidate_Q_mm": 15.343436,
+        "candidate_task_mrad": 64.112224,
+        "B_Q_mm": 37.850891,
+        "B_task_mrad": 98.29965,
+        "C5_Q_mm": 15.507292,
+        "C5_task_mrad": 64.386188
+      }
+    ]
+  },
+  "w09_oof": {
+    "T1": {
+      "id": "DL1018_DEV_T1_C10_W09",
+      "candidate_Q_m": 0.0106031,
+      "candidate_task_rad": 0.04316842,
+      "B_Q_m": 0.01098456,
+      "B_task_rad": 0.0422008,
+      "C5_Q_m": 0.01046588,
+      "C5_task_rad": 0.04327265,
+      "parent_Q_m": 0.00949291,
+      "parent_task_rad": 0.04330836,
+      "decision": "FAIL_TASK_VS_B",
+      "Plant_calls": 1,
+      "stable": true
+    },
+    "T3": {
+      "id": "DL1018_DEV_T3_C09_W09",
+      "candidate_Q_m": 0.00985927,
+      "candidate_task_rad": 0.06062072,
+      "B_Q_m": 0.01102219,
+      "B_task_rad": 0.05906126,
+      "C5_Q_m": 0.00964497,
+      "C5_task_rad": 0.06070478,
+      "parent_Q_m": 0.00941846,
+      "parent_task_rad": 0.06066281,
+      "decision": "FAIL_TASK_VS_B",
+      "Plant_calls": 1,
+      "stable": true
+    },
+    "frequency_finding": "Correct DEV physical TRAIN24 candidates: command-to-actual chain transmits amplified 2.2/3.2Hz bands relative B; DC similar; legacy cohort diagnosis withdrawn.",
+    "wind_frequency_hz": [
+      2.2,
+      3.2
+    ],
+    "next": "Luna max fixed dual-notch f0=2.2/3.2Hz Q=4 at applied position compensation, first train frozen replay, no sweep; W09 mechanism diagnostic only, not a general candidate yet.",
+    "frequency_report": "experiments/dl_attitude_replacement_20261028/hf_definition_train24_dev_pairs_audit_v1/TRAIN24_W09_PAIRED_AUDIT_v1.md"
+  },
+  "dual_notch_diagnostic": {
+    "fixed_parameters": {
+      "sample_hz": 100,
+      "notch_hz": [
+        2.2,
+        3.2
+      ],
+      "Q_each": 4
+    },
+    "report": "experiments/dl_attitude_replacement_20261028/position_compensation_dual_notch_train_replay_v1/TRAIN_FROZEN_DUAL_NOTCH_REPLAY_v1.json",
+    "replay_decision": "FAIL_FIXED_FROZEN_REPLAY",
+    "command_band_reductions_pct": [
+      68.3,
+      78.3,
+      70.6,
+      79.0
+    ],
+    "low_frequency_target_change_pct": [
+      0.5,
+      0.83
+    ],
+    "low_frequency_action_change_pct": [
+      2.233,
+      3.116
+    ],
+    "failed_requirement": "action low-frequency difference <=2%",
+    "root_decision": "Keep original FAIL and threshold. Separate causal closed-loop diagnostic warranted to measure actual Q, not claim candidate pass. Online implementation/parity/noPlant preparation only so far.",
+    "next": "Prepare fixed parent+C5+dual-notch with extra position GRU disabled, same T1/T3 W09; noPlant first. Need cross-wind generalization, full position advantage and independent evidence before paper completion.",
+    "T1_actual": {
+      "Q_mm": 10.809,
+      "task_mrad": 41.527,
+      "inner_mrad": 20.117,
+      "pre_Q_mm": 10.6031,
+      "pre_task_mrad": 43.16842,
+      "B_Q_mm": 10.98456,
+      "B_task_mrad": 42.2008,
+      "windband_task_error_reductions_pct": [
+        64.79,
+        84.8
+      ],
+      "plant_calls": 1,
+      "stable": true,
+      "safety_and_clip_counts": 0
+    },
+    "score": "experiments/dl_attitude_replacement_20261028/position_compensation_dual_notch_train_diag_single_call_T1_v1/audits/DUAL_NOTCH_SINGLE_CALL_T1_SCORE_v1.json",
+    "scope": "Single W09 TRAIN diagnostic, original frozen replay FAIL retained; no independent/generalization/paper completion claim.",
+    "T3_actual": {
+      "Q_mm": 10.134,
+      "task_mrad": 58.429,
+      "inner_mrad": 9.286,
+      "B_Q_mm": 11.02219,
+      "B_task_mrad": 59.06126,
+      "C5_Q_mm": 9.64497,
+      "C5_task_mrad": 60.70478,
+      "pre_Q_mm": 9.85927,
+      "pre_task_mrad": 60.62072,
+      "windband_reductions_pct": [
+        71.884,
+        85.297
+      ],
+      "stable": true,
+      "plant_calls": 1,
+      "safety_counts": 0,
+      "score": "experiments/dl_attitude_replacement_20261028/position_compensation_dual_notch_train_diag_single_call_T3_v1/audits/DUAL_NOTCH_SINGLE_CALL_T3_SCORE_v1.json"
+    }
+  },
+  "no_position_gru_ablation": {
+    "T1": {
+      "Q_m": 0.0097026921,
+      "task_rad": 0.0415393791,
+      "inner_rad": 0.020117024,
+      "score": "experiments/dl_attitude_replacement_20261028/no_position_gru_notch_T1_single_v1/audits/NO_RESIDUAL_GRU_DUAL_NOTCH_SCORE_v1.json"
+    },
+    "T3": {
+      "Q_m": 0.0097014171,
+      "task_rad": 0.05843775,
+      "inner_rad": 0.009287238,
+      "score": "experiments/dl_attitude_replacement_20261028/no_position_gru_notch_T3_single_v1/audits/NO_RESIDUAL_GRU_DUAL_NOTCH_SCORE_v1.json"
+    },
+    "plant_calls": 2,
+    "actual_GRU_event_and_correction": "zero",
+    "decision": "Additional position residual GRU increases Q without material attitude benefit on two W09 TRAIN scenes; retain original C5 DSSM position and cosineGRU attitude. Independent audit pending.",
+    "next": "Fixed unified four-notch bank [2.2,3.2,3.7,4.8]Hz Q4 TRAIN24 replay, no per-scene selection, no new Plant yet.",
+    "independent_pair_review": "experiments/dl_attitude_replacement_20261028/no_position_gru_notch_T1_T3_readonly_review_v1/NO_POSITION_GRU_NOTCH_T1_T3_REVIEW_v1.md",
+    "audited_pair": {
+      "Q_m": 0.00970205,
+      "Q_improvement_vs_B_pct": 11.83,
+      "Q_improvement_vs_C5_pct": 3.51,
+      "Q_degradation_vs_parent_pct": 2.61,
+      "task_rad": 0.04998856
+    }
+  },
+  "n4_bank": {
+    "replay": "experiments/dl_attitude_replacement_20261028/n4_train24_replay/TRAIN24_STATIC_N4_REPLAY_v1.json",
+    "low_frequency_delay_ms": [
+      49.4,
+      54.1
+    ],
+    "replay_decision": "phase risk, lowband gates fail; no retuning",
+    "next": "TRAIN24 causal high-frequency-energy gate observability audit, no W/wind/future inputs; no Plant yet.",
+    "T3_C09_actual": {
+      "Q_m": 0.00990825,
+      "C5_Q_m": 0.00964497,
+      "Q_ratio_vs_C5": 1.0273,
+      "task_rad": 0.0584946,
+      "B_task_rad": 0.0590613,
+      "stable": true,
+      "transitions": 20000,
+      "plant_calls": 1,
+      "safety_counts": 0,
+      "position_residual_GRU": "disabled/allzero",
+      "report": "experiments/dl_attitude_replacement_20261028/n4T3C09_v1/audits/STATIC_N4_CLOSED_LOOP_SCORE_v1.json"
+    },
+    "T1_C00_actual": {
+      "Q_m": 0.00880859,
+      "C5_Q_m": 0.00824326,
+      "Q_ratio_vs_C5": 1.06858,
+      "decision": "FAIL_PREDECLARED_POSITION_RATIO_1_05",
+      "stable": true,
+      "safety_counts": 0,
+      "plant_calls": 1,
+      "report": "experiments/dl_attitude_replacement_20261028/n4T1C00_v1/audits/STATIC_N4_CLOSED_LOOP_SCORE_v1.json"
+    },
+    "decision": "Stop always-on N4 expansion. T1_C11 not run per failure-action; no threshold relaxation."
+  },
+  "causal_gate_v1": {
+    "report_dir": "experiments/dl_attitude_replacement_20261028/causal_n4_gate_train24_audit_v1",
+    "fixed": "butter N2 BP2-5 vs LP2; energy tau1s; ratio thresholds .35/.65; g tau.3s; off before2s",
+    "scenes": 24,
+    "low_W00_08_and_W15": "all gates zero",
+    "high_W09_14_gate_mean_median": 0.0867,
+    "high_max_scene_gate_mean": 0.4298,
+    "high_some_zero": true,
+    "reference_gate": "all zero",
+    "decision": "No Plant: high-group underactivation. Preserve first audit, diagnose DC/slow-energy denominator before next fixed design. No threshold sweep."
+  },
+  "causal_gate_v2": {
+    "report_dir": "experiments/dl_attitude_replacement_20261028/causal_n4_gate_train24_acden_v2",
+    "fixed": "butter N2 BP2-5 vs BP.5-2; energy tau1s; ratio thresholds .35/.65; g tau.3s; off before2s",
+    "high_W09_14_scenes": 10,
+    "high_gate_mean_approx": 0.9836,
+    "low_W00_08_scenes": 11,
+    "low_gate": "all zero",
+    "W15_gate_mean_median": 0.0147,
+    "reference_accel_gate": "all <.1",
+    "npz_sha256": "a5d6654654da3a7d3ccee4864c91491e47a501d859dc64096567dfda429f66da",
+    "scope": "TRAIN recorded-state gate observability only, no N4 replay or closed-loop evidence",
+    "next": "Freeze v2 baseline. Luna max prepare exact remaining VAL48 development evaluation, no tuning; independent TRAIN24 audit plus HF error-budget analysis to target further improvement. New independent72 scene payloads being constructed without evaluation. No TEST/inertia reconstruction.",
+    "three_scene_actual": [
+      {
+        "id": "DL1018_DEV_T1_C00_W03",
+        "status": "PASS_FIXED_CAUSAL_GATE_SCENE",
+        "scores": {
+          "candidate": {
+            "Q_m": 0.008246852595541972,
+            "task_SO3_rad": 0.04644264267496933,
+            "inner_SO3_rad": 0.000235046630000763
+          },
+          "B": {
+            "Q_m": 0.013272613791615871,
+            "task_SO3_rad": 0.053701576151397666,
+            "inner_SO3_rad": 7.112784469975055e-05
+          },
+          "C5": {
+            "Q_m": 0.00824325789252723,
+            "task_SO3_rad": 0.046463290235808995,
+            "inner_SO3_rad": 3.5885983843013744e-05
+          },
+          "parent": {
+            "Q_m": 0.008246852595541972,
+            "task_SO3_rad": 0.04644264267496933,
+            "inner_SO3_rad": 0.000235046630000763
+          }
+        },
+        "Q_over_C5": 1.000436077951413,
+        "raw_sha256": "31ef2ae1116227ecb62948dd43e82f640819183abfcb268c09893137dc0450d6",
+        "g_mean": 0.0,
+        "report": "experiments\\dl_attitude_replacement_20261028\\n4cg_v2\\r0\\SCORE_v2.json"
+      },
+      {
+        "id": "DL1018_DEV_T3_C09_W09",
+        "status": "PASS_FIXED_CAUSAL_GATE_SCENE",
+        "scores": {
+          "candidate": {
+            "Q_m": 0.009419903990149256,
+            "task_SO3_rad": 0.058582949357324283,
+            "inner_SO3_rad": 0.009296617821105147
+          },
+          "B": {
+            "Q_m": 0.011022185804672962,
+            "task_SO3_rad": 0.05906125628102724,
+            "inner_SO3_rad": 0.010703248504488942
+          },
+          "C5": {
+            "Q_m": 0.009644971109702142,
+            "task_SO3_rad": 0.06070477770565968,
+            "inner_SO3_rad": 0.01078549330228452
+          },
+          "parent": {
+            "Q_m": 0.009418457073797846,
+            "task_SO3_rad": 0.060662806192281635,
+            "inner_SO3_rad": 0.009645293117548056
+          }
+        },
+        "Q_over_C5": 0.9766648218026818,
+        "raw_sha256": "7c14e5bb271a4141983075ef4cbddef169ff3cff97147d295ab02bb9b757f11e",
+        "g_mean": 0.9779533647508214,
+        "report": "experiments\\dl_attitude_replacement_20261028\\n4cg_v2\\r1\\SCORE_v2.json"
+      },
+      {
+        "id": "DL1018_DEV_T1_C11_W12",
+        "status": "PASS_FIXED_CAUSAL_GATE_SCENE",
+        "scores": {
+          "candidate": {
+            "Q_m": 0.009166662627211684,
+            "task_SO3_rad": 0.04415323720549651,
+            "inner_SO3_rad": 0.016670307011381506
+          },
+          "B": {
+            "Q_m": 0.010506671852475221,
+            "task_SO3_rad": 0.044442067944485256,
+            "inner_SO3_rad": 0.019631776223090577
+          },
+          "C5": {
+            "Q_m": 0.009861516033879681,
+            "task_SO3_rad": 0.04453664278670274,
+            "inner_SO3_rad": 0.019672974378198326
+          },
+          "parent": {
+            "Q_m": 0.009036513638974173,
+            "task_SO3_rad": 0.04452455479737677,
+            "inner_SO3_rad": 0.01661459413739696
+          }
+        },
+        "Q_over_C5": 0.9295388858791289,
+        "raw_sha256": "e4839cfcfab82f32e3fc21c56add89c524b0257030173cc8c79ac697ff6abac4",
+        "g_mean": 0.9836095679298111,
+        "report": "experiments\\dl_attitude_replacement_20261028\\n4cg_v2\\r2\\SCORE_v2.json"
+      }
+    ],
+    "independent_audit": {
+      "status": "PASS_THREE_SCENES",
+      "lock_records": 798,
+      "unique_source_paths": 401,
+      "score_recompute": "exact",
+      "gate_N4_hold_compensation_replay_max_error": 0,
+      "decision": "Fixed candidate approved to separate TRAIN24 diagnostic; not paper/generalization completion."
+    },
+    "train24_dryrun": {
+      "status": "PASS_TRAIN24_DYNAMIC_PREPARE_DRY_RUN",
+      "scenes": 24,
+      "source_hashes_checked": 374,
+      "Plant_calls": 0,
+      "report": "experiments\\dl_attitude_replacement_20261028\\causal_n4_gate_train24_batch_v2\\DRY_RUN_PREPARED_v2.json",
+      "next": "Verify execution_identity excluding only noPlant boundary flag for three-scene reuse; freeze remaining21 execution."
+    },
+    "train24_reuse": {
+      "status": "PASS_3_OF_3",
+      "evidence": "experiments/dl_attitude_replacement_20261028/causal_n4_gate_train24_batch_v2/REUSE_IDENTITIES_v2.json",
+      "only_option_difference": "no_plant_boundary_check true vs false; execution hash matches raw",
+      "new_Plant_calls_authorized": 21,
+      "policy": "fixed manifest order, skip 3 verified; no tuning; continue metric failures for complete diagnosis; halt on stability/safety/nonfinite failures"
+    },
+    "batch_launch": {
+      "session": 63107,
+      "status": "RUNNING",
+      "completed_new_scenes": [
+        "DL1018_DEV_T1_C01_W15",
+        "DL1018_DEV_T1_C04_W00",
+        "DL1018_DEV_T1_C05_W06",
+        "DL1018_DEV_T1_C07_W08",
+        "DL1018_DEV_T1_C10_W09",
+        "DL1018_DEV_T1_C15_W14",
+        "DL1018_DEV_T2_C00_W04",
+        "DL1018_DEV_T2_C02_W15",
+        "DL1018_DEV_T2_C03_W01"
+      ],
+      "calls_reserved": 10,
+      "actual_Plant_calls_reported": 9,
+      "progress_path": "experiments\\dl_attitude_replacement_20261028\\causal_n4_gate_train24_batch_v2\\BATCH_PROGRESS_v2.json",
+      "policy": "frozen parameters, sequential, no reruns, continue metric misses but stop fatal safety/stability"
+    },
+    "train24_result": {
+      "Q_improvement_vs_B_pct": 31.84,
+      "Q_improvement_vs_C5_pct": 3.47,
+      "HF_task_improvement_vs_B_pct": 0.81,
+      "HF_scene_wins_vs_B": "10/10",
+      "new_Plant_calls": 21,
+      "reused_Plant_scenes": 3,
+      "safety_faults": 0,
+      "summary": "experiments/dl_attitude_replacement_20261028/causal_n4_gate_train24_batch_v2/TRAIN24_SCORE_SUMMARY_v2.json"
+    },
+    "user_latest": "0.8% HF gain considered too small; seek further optimization, also evaluate full scenarios."
+  },
+  "current_assignments": {
+    "val48_continue": "Luna max: frozen baseline remaining48 source/dryrun then batch, no VAL tuning",
+    "lead_ablation_continue": "Luna max: fixed lead after N4 within same gate, helper/noPlant first",
+    "hf_budget_continue": "Luna max: SO3 log exact error energy budget on HF10 TRAIN only"
+  },
+  "external_process_check": "No MATLAB or experiment Python process at resumption; prior agents absent. Existing TRAIN24 complete retained.",
+  "val48_current": {
+    "binding_generation": "PASS_VAL48_BINDING_GENERATION",
+    "bindings": 48,
+    "script": "experiments/dl_attitude_replacement_20261028/cg48_v2/prepare_cg48_v2.py",
+    "executed_by": "root, TCN0906 python",
+    "session": 75946,
+    "exit_code": 0,
+    "Plant_calls": 48,
+    "TEST_read": false,
+    "val_used_for_tuning": false,
+    "next": "Audit completed VAL48 and full72 development; no restart. Optimize separate TRAIN candidate.",
+    "binding_schema": "explicit VAL48, no fold; legacy bindings retained",
+    "first_MATLAB_prepare": "PASS_FIRST_VAL48_PREPARE_NO_PLANT",
+    "scene_id": "DL1018_VAL_T1_C00_W07",
+    "Matlab_release": "2025b",
+    "runner_invoked": true,
+    "log": "experiments/dl_attitude_replacement_20261028/cg48_v2/runtime/val48_batch.log",
+    "full_runner_boundary": "PASS_FIRST_VAL48_FULL_RUNNER_NOPLANT_BOUNDARY",
+    "runner_root": "experiments/dl_attitude_replacement_20261028/cg48_v2/candidate_runner_work",
+    "batch_session_id": 74962,
+    "MATLAB_pids": [],
+    "actual_launch_verified": true,
+    "Plant_calls_completed": 48,
+    "policy": "fixed candidate48, no tuning, no TEST/inertia; sequential; do not restart live process",
+    "completed_scene_ids": [
+      "DL1018_VAL_T1_C00_W07",
+      "DL1018_VAL_T1_C01_W08",
+      "DL1018_VAL_T1_C02_W09",
+      "DL1018_VAL_T1_C03_W10",
+      "DL1018_VAL_T1_C04_W11",
+      "DL1018_VAL_T1_C05_W12",
+      "DL1018_VAL_T1_C06_W13",
+      "DL1018_VAL_T1_C07_W14",
+      "DL1018_VAL_T1_C08_W15",
+      "DL1018_VAL_T1_C09_W00",
+      "DL1018_VAL_T1_C10_W01",
+      "DL1018_VAL_T1_C11_W02",
+      "DL1018_VAL_T1_C12_W03",
+      "DL1018_VAL_T1_C13_W04",
+      "DL1018_VAL_T1_C14_W05",
+      "DL1018_VAL_T1_C15_W06",
+      "DL1018_VAL_T2_C00_W10",
+      "DL1018_VAL_T2_C01_W11",
+      "DL1018_VAL_T2_C02_W12",
+      "DL1018_VAL_T2_C03_W13",
+      "DL1018_VAL_T2_C04_W14",
+      "DL1018_VAL_T2_C05_W15",
+      "DL1018_VAL_T2_C06_W00",
+      "DL1018_VAL_T2_C07_W01",
+      "DL1018_VAL_T2_C08_W02",
+      "DL1018_VAL_T2_C09_W03",
+      "DL1018_VAL_T2_C10_W04",
+      "DL1018_VAL_T2_C11_W05",
+      "DL1018_VAL_T2_C12_W06",
+      "DL1018_VAL_T2_C13_W07",
+      "DL1018_VAL_T2_C14_W08",
+      "DL1018_VAL_T2_C15_W09",
+      "DL1018_VAL_T3_C00_W13",
+      "DL1018_VAL_T3_C01_W14",
+      "DL1018_VAL_T3_C02_W15",
+      "DL1018_VAL_T3_C03_W00",
+      "DL1018_VAL_T3_C04_W01",
+      "DL1018_VAL_T3_C05_W02",
+      "DL1018_VAL_T3_C06_W03",
+      "DL1018_VAL_T3_C07_W04",
+      "DL1018_VAL_T3_C08_W05",
+      "DL1018_VAL_T3_C09_W06",
+      "DL1018_VAL_T3_C10_W07",
+      "DL1018_VAL_T3_C11_W08",
+      "DL1018_VAL_T3_C12_W09",
+      "DL1018_VAL_T3_C13_W10",
+      "DL1018_VAL_T3_C14_W11",
+      "DL1018_VAL_T3_C15_W12"
+    ],
+    "calls_reserved": 48,
+    "actual_calls_reported": 48,
+    "progress": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\cg48_v2\\VAL48_BATCH_PROGRESS_v1.json",
+    "completed_count": 48,
+    "status": "COMPLETE_VAL48_48_SCENES"
+  },
+  "hf_error_budget_actual": {
+    "report": "experiments/dl_attitude_replacement_20261028/hfbudget_v1/HF_TRAIN10_WITH_B_ROOT_v1.json",
+    "scope": "TRAIN HF10 candidate+same-scene B, exact SO3log/Parseval; raw/scorer consistency confirmed",
+    "total_task_improvement_vs_B_pct": 0.8105712917,
+    "candidate_DC_energy_fraction": 0.9112357432,
+    "demeaned_AC_pooled_RMSE_improvement_vs_B_pct": 7.5167472286,
+    "band_2_5_Hz_pooled_RMSE_improvement_vs_B_pct": -41.3262565783,
+    "interpretation": "Total task score leading B does not imply 2-5Hz attitude suppression leading B; residual band deficit remains and needs optimization. Finite-window spectral leakage and noncausal descriptive decomposition only.",
+    "time_window_report": "experiments/dl_attitude_replacement_20261028/hfbudget_v1/HF_TRAIN10_TIME_WINDOWS_ROOT_v1.json",
+    "candidate_over_B_2_5Hz_RMS_by_window": {
+      "0_2s": 2.903807,
+      "2_5s": 1.890069,
+      "5_20s": 1.023553
+    },
+    "startup_gate_note": "Exploratory TRAIN ratio1-2s lowmax .4028 >.35, HF minimum median .3919; earlier enablement may misactivate low band, no safety claim or policy change."
+  },
+  "current_verified_checkpoint_20261028": {
+    "verified_utc": "2026-10-28T12:17:09.158477+00:00",
+    "authoritative_progress": "experiments/dl_attitude_replacement_20261028/cg48_v2/VAL48_BATCH_PROGRESS_v1.json",
+    "VAL48_completed": 48,
+    "Plant_calls": 48,
+    "fatal_stop_count": 0,
+    "MATLAB_process_live_at_checkpoint": false,
+    "VAL48_improvement_over_B_percent": {
+      "position": 35.83778631887294,
+      "task_attitude": 10.262191092953366,
+      "inner_tracking": 12.154577626961105
+    },
+    "HF_scene_count": 18,
+    "HF_task_improvement_over_B_percent": 0.6718530677719547,
+    "HF_task_scene_misses": [
+      "DL1018_VAL_T1_C04_W11",
+      "DL1018_VAL_T2_C00_W10",
+      "DL1018_VAL_T3_C01_W14",
+      "DL1018_VAL_T3_C13_W10"
+    ],
+    "goal_achieved": false,
+    "next": "Independent full72 development audit; isolated TRAIN lead pilot after source review; check spectral startup diagnosis for finite-window leakage.",
+    "spectrum_diagnosis": "Original rectangular DFT startup interpretation is provisional, pending independent Hann/Welch audit.",
+    "constraints": {
+      "TEST_read": false,
+      "inertia_reconstruction_enabled": false,
+      "github_pushed": false
+    },
+    "evaluation_caveat": "Parent trained on original DEV24+VAL48; these 72 are development comparisons, not independent generalization evidence."
+  },
+  "frozen_baseline_v1": {
+    "path": "experiments/dl_attitude_replacement_20261028/gated_n4_baseline_frozen_v1",
+    "status": "ARCHIVED_AND_ZIP_INTEGRITY_VERIFIED",
+    "text_code_result_files": 1138,
+    "model_payload_files": 59,
+    "code_manifest": "FREEZE_MANIFEST_v1.json",
+    "model_manifest": "MODEL_PAYLOAD_SUPPLEMENT_v2.json",
+    "raw_retained_in_place": true,
+    "baseline_is_final_acceptance": false
+  },
+  "dataset_provenance_verified_v1": {
+    "status": "VERIFIED_FROM_FROZEN_MODEL_TRAINING_PROTOCOL_AND_COHORT",
+    "source": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\corrected_reference_training_v1\\g3_collection\\manifests\\G3_COHORT_1632.csv",
+    "position": {
+      "TRAIN": {
+        "episodes": 1536,
+        "unique_source_scenes": 768,
+        "episodes_by_task": {
+          "FIG8_3D": 512,
+          "HELIX": 512,
+          "SQUARE": 512
+        },
+        "episodes_by_role": {
+          "B": 768,
+          "POS_OFF": 768
+        }
+      },
+      "VAL": {
+        "episodes": 96,
+        "unique_source_scenes": 48,
+        "episodes_by_task": {
+          "FIG8_3D": 32,
+          "HELIX": 32,
+          "SQUARE": 32
+        },
+        "episodes_by_role": {
+          "B": 48,
+          "POS_OFF": 48
+        }
+      }
+    },
+    "attitude": {
+      "architecture": "GRU(13,32)+Linear(32,3)",
+      "training_scenes": 72,
+      "train_splits": [
+        "TRAIN_C5_24",
+        "C5_VAL48_AS_DEV_TRAIN"
+      ],
+      "independent_validation_on_original_VAL48": false
+    },
+    "comparison": {
+      "DEV": 24,
+      "VAL": 48,
+      "interpretation": "72 development scenes; not independent test"
+    },
+    "correction": "1536 is episode count, not count of distinct physical scene conditions."
+  },
+  "lead_pilot_current": {
+    "root": "experiments/dl_attitude_replacement_20261028/lead_n4_train_single_v1",
+    "scene_id": "DL1018_DEV_T3_C09_W09",
+    "status": "FIRST_PASSED_OTHER_TWO_COMPLETED_SCORING_PENDING",
+    "session_id": 32791,
+    "MATLAB_pids": [
+      27088,
+      5552
+    ],
+    "no_plant_preflight": "PASS_FULL_RUNNER_NOPLANT_BOUNDARY",
+    "additional_authorized_calls": 1,
+    "freeze_baseline_modified": false
+  },
+  "current_mainline": {
+    "user_clarification": "Like C5: train using large dataset, adjust parameters, then large comparison. New generated scenarios are not current requested validation.",
+    "taskbook": "experiments/dl_attitude_replacement_20261028/LARGE_DATA_DUAL_LOOP_TASKBOOK_v1.md",
+    "train_episodes": 1536,
+    "train_unique_scenes": 768,
+    "val_episodes": 96,
+    "fit_normalizer": "large TRAIN only",
+    "new_generated_eval_controller_runs_authorized_now": false,
+    "formal_large_attitude_training_started": true,
+    "gpu_verified": "TCN0906 Torch2.5.1 CUDA available RTX3070 Laptop",
+    "large_cohort_raw_missing": 540,
+    "missing_roles": "POS_OFF HELIX/SQUARE: TRAIN510 VAL30",
+    "missing_raw_inventory": "experiments/dl_attitude_replacement_20261028/large_attitude_data_root_v1/MISSING_RAW_INVENTORY.json",
+    "initial_large_attitude_fit_cohort": "B-only TRAIN768 VAL48; all physical scene IDs covered; not equivalent to full1536 episodes",
+    "dataset_extraction_session": 29130,
+    "dataset_extraction_root": "experiments/dl_attitude_replacement_20261028/large_attitude_b768_root_v1",
+    "raw_recovery_parallel": true,
+    "dataset_extraction_status": "COMPLETE_B_ONLY_TRAIN768_VAL48",
+    "dataset_sha256": "ad9b767cf881a5a9acd5db60a86b3610f563a8e66e7b64592b7e803b7ea4ff68",
+    "array_check": "large_attitude_b768_root_v1/ROOT_ARRAY_CHECK_v1.json",
+    "unit_sample_check": "3 task C15: fixed mode, dmax45/45/4.7124, clip error0; beta logs nonfinite, independent formula audit pending",
+    "training_session": 17864,
+    "training_pid": 7592,
+    "training_root": "experiments\\dl_attitude_replacement_20261028\\large_gru_b768_v1",
+    "training_progress": "experiments\\dl_attitude_replacement_20261028\\large_gru_b768_v1\\runs\\GRU13_B768_COSINE_S2026102001\\training_progress.json"
+  },
+  "agent_resume_note": "If agents pending_init, send_message alone did not start their turn; use followup_task, then verify running. Current lead_pilot_finish writes trainer; startup_spectral_audit audits B768 teacher contract."
+}

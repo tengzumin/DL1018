@@ -1,0 +1,22 @@
+{
+  "schema": "DL1018_GRU_YAW_CONSISTENT_SOURCE_DIFF_V1",
+  "parent_study": "gru_stream_cosine_tracking_head_full72_v1",
+  "parent_source_lock_sha256": "30aeddf4888c1afa5a3a012e313c919d58a46f33742e465b80b8e53e49c46ab7",
+  "active_control_source_change_count": 1,
+  "active_control_change": {
+    "path": "candidate_runner_work/matlab/runtime/run_mlp15_dev72_closed_loop.m",
+    "line": 2384,
+    "before": "[thrust,eul,limited]=baseline_force_to_attitude(positionInfo.commanded_acceleration,x(k,9),P);",
+    "after": "[thrust,eul,limited]=baseline_force_to_attitude(positionInfo.commanded_acceleration,r.euler(3),P);"
+  },
+  "parent_file_sha256": "a1b9e47992da41b49373f409d9333048b6130698d80614817d64bbc1a652ddcc",
+  "variant_file_sha256": "661cf5b4da3472b29186ff8115a3dd95cea058374881d5934299698447989103",
+  "wn18_filter_unchanged": true,
+  "cosine_gru_weights_unchanged": true,
+  "inertia_reconstruction_enabled": false,
+  "TEST_read": false,
+  "Plant_calls": 0,
+  "position_nn_model_and_learning_parameters_unchanged": true,
+  "c5_options_and_model_identity_unchanged": true,
+  "force_to_reference_mapping_changed": true
+}

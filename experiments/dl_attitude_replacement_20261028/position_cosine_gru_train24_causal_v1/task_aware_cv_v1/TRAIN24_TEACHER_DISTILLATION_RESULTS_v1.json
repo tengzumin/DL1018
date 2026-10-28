@@ -1,0 +1,779 @@
+{
+  "schema": "COSINE_GRU_TRAIN_C5_24_TEACHER_DISTILLATION_OOF_RESULTS_V1",
+  "scope": "TRAIN_C5_24 development only; parent model has seen these scenes; no VAL/TEST, Plant, wind field, or inertia reconstruction/use.",
+  "recovery": {
+    "initial_driver_failure": "Teacher loop completed and wrote the full NPZ and manifest, then the batch driver exited at its status print because flush=True was passed to json.dumps; student training had not started.",
+    "recovery_action": "Did not rerun or overwrite teachers; verified teacher NPZ SHA, 24-scene inventory/order, generation script SHA, dataset/manifest/source-lock SHA, warmup, bounds, per-scene residual cap, and SO3 replay; resumed student OOF from saved labels."
+  },
+  "teacher": {
+    "npz_sha256": "e0519bc87a977d1349da3fdb0f582273bffaa61eb24ea380fb44e4a56791634a",
+    "manifest_sha256": "9ceaac9566f7dcd7b093d7d71b6396eb294a56ac156a5b3d16d063d53ac84a8c",
+    "generation_script_sha256": "5ee07b65e305fef99720b5a7b905100275509ffbb1609368999da09ba5c6ed22",
+    "runtime": {
+      "all_24_teacher_seconds_excluding_locked_input_load": 302.8980991999997,
+      "all_24_elapsed_seconds_including_input_load": 311.32162419999804,
+      "median_per_scene_seconds": 12.59030155000437,
+      "max_per_scene_seconds": 13.063544500000717
+    },
+    "per_scene_recheck": {
+      "DL1018_DEV_T1_C00_W03": {
+        "c5_position_residual_rmse_mps2": 0.06401449038794034,
+        "teacher_position_residual_rmse_mps2": 0.06400587676770468,
+        "task_so3_rmse_rad_recomputed": 0.042192218406912875,
+        "teacher_constraint_pass": true
+      },
+      "DL1018_DEV_T1_C01_W15": {
+        "c5_position_residual_rmse_mps2": 0.026961264113196343,
+        "teacher_position_residual_rmse_mps2": 0.02695647171009832,
+        "task_so3_rmse_rad_recomputed": 0.013849723896443013,
+        "teacher_constraint_pass": true
+      },
+      "DL1018_DEV_T1_C04_W00": {
+        "c5_position_residual_rmse_mps2": 0.0524153577383237,
+        "teacher_position_residual_rmse_mps2": 0.05238241191099445,
+        "task_so3_rmse_rad_recomputed": 0.06047591853560035,
+        "teacher_constraint_pass": true
+      },
+      "DL1018_DEV_T1_C05_W06": {
+        "c5_position_residual_rmse_mps2": 0.10066960325894228,
+        "teacher_position_residual_rmse_mps2": 0.10061711379583656,
+        "task_so3_rmse_rad_recomputed": 0.0464055886198358,
+        "teacher_constraint_pass": true
+      },
+      "DL1018_DEV_T1_C07_W08": {
+        "c5_position_residual_rmse_mps2": 0.2857226613680396,
+        "teacher_position_residual_rmse_mps2": 0.2849083542309262,
+        "task_so3_rmse_rad_recomputed": 0.06565811922949127,
+        "teacher_constraint_pass": true
+      },
+      "DL1018_DEV_T1_C10_W09": {
+        "c5_position_residual_rmse_mps2": 0.12671044080630547,
+        "teacher_position_residual_rmse_mps2": 0.1266760837422405,
+        "task_so3_rmse_rad_recomputed": 0.034172742984866875,
+        "teacher_constraint_pass": true
+      },
+      "DL1018_DEV_T1_C11_W12": {
+        "c5_position_residual_rmse_mps2": 0.12078306868555799,
+        "teacher_position_residual_rmse_mps2": 0.12077760406457212,
+        "task_so3_rmse_rad_recomputed": 0.04015229809167312,
+        "teacher_constraint_pass": true
+      },
+      "DL1018_DEV_T1_C15_W14": {
+        "c5_position_residual_rmse_mps2": 0.3709339080936783,
+        "teacher_position_residual_rmse_mps2": 0.3698584714328993,
+        "task_so3_rmse_rad_recomputed": 0.04991447792444446,
+        "teacher_constraint_pass": true
+      },
+      "DL1018_DEV_T2_C00_W04": {
+        "c5_position_residual_rmse_mps2": 0.14097312364063647,
+        "teacher_position_residual_rmse_mps2": 0.14093024179956973,
+        "task_so3_rmse_rad_recomputed": 0.04412956609372387,
+        "teacher_constraint_pass": true
+      },
+      "DL1018_DEV_T2_C02_W15": {
+        "c5_position_residual_rmse_mps2": 0.02694750727480627,
+        "teacher_position_residual_rmse_mps2": 0.026943171693303413,
+        "task_so3_rmse_rad_recomputed": 0.010427779396157346,
+        "teacher_constraint_pass": true
+      },
+      "DL1018_DEV_T2_C03_W01": {
+        "c5_position_residual_rmse_mps2": 0.0745113586458364,
+        "teacher_position_residual_rmse_mps2": 0.07449707401556466,
+        "task_so3_rmse_rad_recomputed": 0.05277170722020661,
+        "teacher_constraint_pass": true
+      },
+      "DL1018_DEV_T2_C06_W07": {
+        "c5_position_residual_rmse_mps2": 0.27053687824148737,
+        "teacher_position_residual_rmse_mps2": 0.2697519739041431,
+        "task_so3_rmse_rad_recomputed": 0.06318567259604053,
+        "teacher_constraint_pass": true
+      },
+      "DL1018_DEV_T2_C08_W08": {
+        "c5_position_residual_rmse_mps2": 0.2925719384214326,
+        "teacher_position_residual_rmse_mps2": 0.2917378088174499,
+        "task_so3_rmse_rad_recomputed": 0.06239861149002342,
+        "teacher_constraint_pass": true
+      },
+      "DL1018_DEV_T2_C09_W10": {
+        "c5_position_residual_rmse_mps2": 0.35293964509850384,
+        "teacher_position_residual_rmse_mps2": 0.35193325848983054,
+        "task_so3_rmse_rad_recomputed": 0.06266658667426177,
+        "teacher_constraint_pass": true
+      },
+      "DL1018_DEV_T2_C12_W13": {
+        "c5_position_residual_rmse_mps2": 0.37076905617154393,
+        "teacher_position_residual_rmse_mps2": 0.369686053556473,
+        "task_so3_rmse_rad_recomputed": 0.057490336492306726,
+        "teacher_constraint_pass": true
+      },
+      "DL1018_DEV_T2_C14_W14": {
+        "c5_position_residual_rmse_mps2": 0.3765621332124873,
+        "teacher_position_residual_rmse_mps2": 0.3755021053279236,
+        "task_so3_rmse_rad_recomputed": 0.0477528564916948,
+        "teacher_constraint_pass": true
+      },
+      "DL1018_DEV_T3_C00_W05": {
+        "c5_position_residual_rmse_mps2": 0.18126478134638882,
+        "teacher_position_residual_rmse_mps2": 0.18110732210794514,
+        "task_so3_rmse_rad_recomputed": 0.05380514886580359,
+        "teacher_constraint_pass": true
+      },
+      "DL1018_DEV_T3_C03_W15": {
+        "c5_position_residual_rmse_mps2": 0.026987725898965892,
+        "teacher_position_residual_rmse_mps2": 0.026980527707388492,
+        "task_so3_rmse_rad_recomputed": 0.007895079461073717,
+        "teacher_constraint_pass": true
+      },
+      "DL1018_DEV_T3_C05_W02": {
+        "c5_position_residual_rmse_mps2": 0.12085519090384547,
+        "teacher_position_residual_rmse_mps2": 0.12084759376549206,
+        "task_so3_rmse_rad_recomputed": 0.06286448182921107,
+        "teacher_constraint_pass": true
+      },
+      "DL1018_DEV_T3_C06_W08": {
+        "c5_position_residual_rmse_mps2": 0.39846512422812164,
+        "teacher_position_residual_rmse_mps2": 0.39746979678105787,
+        "task_so3_rmse_rad_recomputed": 0.09114362819018045,
+        "teacher_constraint_pass": true
+      },
+      "DL1018_DEV_T3_C09_W09": {
+        "c5_position_residual_rmse_mps2": 0.16245472474544248,
+        "teacher_position_residual_rmse_mps2": 0.16241303646342653,
+        "task_so3_rmse_rad_recomputed": 0.04733888446765281,
+        "teacher_constraint_pass": true
+      },
+      "DL1018_DEV_T3_C10_W11": {
+        "c5_position_residual_rmse_mps2": 0.37587132900512427,
+        "teacher_position_residual_rmse_mps2": 0.37483159969363994,
+        "task_so3_rmse_rad_recomputed": 0.05095270993160942,
+        "teacher_constraint_pass": true
+      },
+      "DL1018_DEV_T3_C13_W12": {
+        "c5_position_residual_rmse_mps2": 0.11899072514711802,
+        "teacher_position_residual_rmse_mps2": 0.11894409908078075,
+        "task_so3_rmse_rad_recomputed": 0.03766445065686238,
+        "teacher_constraint_pass": true
+      },
+      "DL1018_DEV_T3_C15_W14": {
+        "c5_position_residual_rmse_mps2": 0.366229077584363,
+        "teacher_position_residual_rmse_mps2": 0.3651527993963394,
+        "task_so3_rmse_rad_recomputed": 0.04641270462587112,
+        "teacher_constraint_pass": true
+      }
+    },
+    "scope_limit": "Full future scene used only for offline per-scene teacher label, never a student input."
+  },
+  "distillation": {
+    "architecture": "GRU(14,32)->Linear(32,3), zero output head, hidden reset per scene",
+    "loss": "SmoothL1(clipped student delta, teacher delta) on ready events only",
+    "seed_base": 20261028,
+    "steps_per_fold": 300,
+    "learning_rate": 0.001,
+    "normalizer": "fold training scenes only",
+    "folds": {
+      "holdout_W00_05": {
+        "train_scene_ids": [
+          "DL1018_DEV_T1_C01_W15",
+          "DL1018_DEV_T1_C05_W06",
+          "DL1018_DEV_T1_C07_W08",
+          "DL1018_DEV_T1_C10_W09",
+          "DL1018_DEV_T1_C11_W12",
+          "DL1018_DEV_T1_C15_W14",
+          "DL1018_DEV_T2_C02_W15",
+          "DL1018_DEV_T2_C06_W07",
+          "DL1018_DEV_T2_C08_W08",
+          "DL1018_DEV_T2_C09_W10",
+          "DL1018_DEV_T2_C12_W13",
+          "DL1018_DEV_T2_C14_W14",
+          "DL1018_DEV_T3_C03_W15",
+          "DL1018_DEV_T3_C06_W08",
+          "DL1018_DEV_T3_C09_W09",
+          "DL1018_DEV_T3_C10_W11",
+          "DL1018_DEV_T3_C13_W12",
+          "DL1018_DEV_T3_C15_W14"
+        ],
+        "holdout_scene_ids": [
+          "DL1018_DEV_T1_C00_W03",
+          "DL1018_DEV_T1_C04_W00",
+          "DL1018_DEV_T2_C00_W04",
+          "DL1018_DEV_T2_C03_W01",
+          "DL1018_DEV_T3_C00_W05",
+          "DL1018_DEV_T3_C05_W02"
+        ],
+        "train_count": 18,
+        "holdout_count": 6,
+        "seed": 20261028,
+        "normalizer_fit_scope": "training fold scenes only, all causal X14 rows",
+        "training_loss_log": [
+          {
+            "step": 1,
+            "train_teacher_delta_smooth_l1": 0.002843524096533656
+          },
+          {
+            "step": 50,
+            "train_teacher_delta_smooth_l1": 0.0010902128415182233
+          },
+          {
+            "step": 100,
+            "train_teacher_delta_smooth_l1": 0.0008988087647594512
+          },
+          {
+            "step": 150,
+            "train_teacher_delta_smooth_l1": 0.0006280245142988861
+          },
+          {
+            "step": 200,
+            "train_teacher_delta_smooth_l1": 0.0003966913791373372
+          },
+          {
+            "step": 250,
+            "train_teacher_delta_smooth_l1": 0.0003661921073216945
+          },
+          {
+            "step": 300,
+            "train_teacher_delta_smooth_l1": 0.00022884471400175244
+          }
+        ],
+        "checkpoint_sha256": "9d36ec08cafbbe31f7361011f9ad08bd5754fda3214bc4c5c2530f7bc3fffb6a"
+      },
+      "holdout_W06_10": {
+        "train_scene_ids": [
+          "DL1018_DEV_T1_C00_W03",
+          "DL1018_DEV_T1_C01_W15",
+          "DL1018_DEV_T1_C04_W00",
+          "DL1018_DEV_T1_C11_W12",
+          "DL1018_DEV_T1_C15_W14",
+          "DL1018_DEV_T2_C00_W04",
+          "DL1018_DEV_T2_C02_W15",
+          "DL1018_DEV_T2_C03_W01",
+          "DL1018_DEV_T2_C12_W13",
+          "DL1018_DEV_T2_C14_W14",
+          "DL1018_DEV_T3_C00_W05",
+          "DL1018_DEV_T3_C03_W15",
+          "DL1018_DEV_T3_C05_W02",
+          "DL1018_DEV_T3_C10_W11",
+          "DL1018_DEV_T3_C13_W12",
+          "DL1018_DEV_T3_C15_W14"
+        ],
+        "holdout_scene_ids": [
+          "DL1018_DEV_T1_C05_W06",
+          "DL1018_DEV_T1_C07_W08",
+          "DL1018_DEV_T1_C10_W09",
+          "DL1018_DEV_T2_C06_W07",
+          "DL1018_DEV_T2_C08_W08",
+          "DL1018_DEV_T2_C09_W10",
+          "DL1018_DEV_T3_C06_W08",
+          "DL1018_DEV_T3_C09_W09"
+        ],
+        "train_count": 16,
+        "holdout_count": 8,
+        "seed": 20261029,
+        "normalizer_fit_scope": "training fold scenes only, all causal X14 rows",
+        "training_loss_log": [
+          {
+            "step": 1,
+            "train_teacher_delta_smooth_l1": 0.0022818513680249453
+          },
+          {
+            "step": 50,
+            "train_teacher_delta_smooth_l1": 0.001037229667417705
+          },
+          {
+            "step": 100,
+            "train_teacher_delta_smooth_l1": 0.0007402079645544291
+          },
+          {
+            "step": 150,
+            "train_teacher_delta_smooth_l1": 0.0003843024023808539
+          },
+          {
+            "step": 200,
+            "train_teacher_delta_smooth_l1": 0.0002055382647085935
+          },
+          {
+            "step": 250,
+            "train_teacher_delta_smooth_l1": 0.00015049469948280603
+          },
+          {
+            "step": 300,
+            "train_teacher_delta_smooth_l1": 0.00012804883590433747
+          }
+        ],
+        "checkpoint_sha256": "6700289cc7df18e88919f084c71987463972e47239fd47d5ffb4b6f08055fc7b"
+      },
+      "holdout_W11_13": {
+        "train_scene_ids": [
+          "DL1018_DEV_T1_C00_W03",
+          "DL1018_DEV_T1_C01_W15",
+          "DL1018_DEV_T1_C04_W00",
+          "DL1018_DEV_T1_C05_W06",
+          "DL1018_DEV_T1_C07_W08",
+          "DL1018_DEV_T1_C10_W09",
+          "DL1018_DEV_T1_C15_W14",
+          "DL1018_DEV_T2_C00_W04",
+          "DL1018_DEV_T2_C02_W15",
+          "DL1018_DEV_T2_C03_W01",
+          "DL1018_DEV_T2_C06_W07",
+          "DL1018_DEV_T2_C08_W08",
+          "DL1018_DEV_T2_C09_W10",
+          "DL1018_DEV_T2_C14_W14",
+          "DL1018_DEV_T3_C00_W05",
+          "DL1018_DEV_T3_C03_W15",
+          "DL1018_DEV_T3_C05_W02",
+          "DL1018_DEV_T3_C06_W08",
+          "DL1018_DEV_T3_C09_W09",
+          "DL1018_DEV_T3_C15_W14"
+        ],
+        "holdout_scene_ids": [
+          "DL1018_DEV_T1_C11_W12",
+          "DL1018_DEV_T2_C12_W13",
+          "DL1018_DEV_T3_C10_W11",
+          "DL1018_DEV_T3_C13_W12"
+        ],
+        "train_count": 20,
+        "holdout_count": 4,
+        "seed": 20261030,
+        "normalizer_fit_scope": "training fold scenes only, all causal X14 rows",
+        "training_loss_log": [
+          {
+            "step": 1,
+            "train_teacher_delta_smooth_l1": 0.0024247055407613516
+          },
+          {
+            "step": 50,
+            "train_teacher_delta_smooth_l1": 0.0010074212914332747
+          },
+          {
+            "step": 100,
+            "train_teacher_delta_smooth_l1": 0.0008092989446595311
+          },
+          {
+            "step": 150,
+            "train_teacher_delta_smooth_l1": 0.0005088449106551707
+          },
+          {
+            "step": 200,
+            "train_teacher_delta_smooth_l1": 0.00031521855271421373
+          },
+          {
+            "step": 250,
+            "train_teacher_delta_smooth_l1": 0.00020880126976408064
+          },
+          {
+            "step": 300,
+            "train_teacher_delta_smooth_l1": 0.00014451720926444978
+          }
+        ],
+        "checkpoint_sha256": "a9b821b6479ee8c33b0b5917b40575400dfa9b0e160da8fb5d452a5264e84910"
+      },
+      "holdout_W14_15": {
+        "train_scene_ids": [
+          "DL1018_DEV_T1_C00_W03",
+          "DL1018_DEV_T1_C04_W00",
+          "DL1018_DEV_T1_C05_W06",
+          "DL1018_DEV_T1_C07_W08",
+          "DL1018_DEV_T1_C10_W09",
+          "DL1018_DEV_T1_C11_W12",
+          "DL1018_DEV_T2_C00_W04",
+          "DL1018_DEV_T2_C03_W01",
+          "DL1018_DEV_T2_C06_W07",
+          "DL1018_DEV_T2_C08_W08",
+          "DL1018_DEV_T2_C09_W10",
+          "DL1018_DEV_T2_C12_W13",
+          "DL1018_DEV_T3_C00_W05",
+          "DL1018_DEV_T3_C05_W02",
+          "DL1018_DEV_T3_C06_W08",
+          "DL1018_DEV_T3_C09_W09",
+          "DL1018_DEV_T3_C10_W11",
+          "DL1018_DEV_T3_C13_W12"
+        ],
+        "holdout_scene_ids": [
+          "DL1018_DEV_T1_C01_W15",
+          "DL1018_DEV_T1_C15_W14",
+          "DL1018_DEV_T2_C02_W15",
+          "DL1018_DEV_T2_C14_W14",
+          "DL1018_DEV_T3_C03_W15",
+          "DL1018_DEV_T3_C15_W14"
+        ],
+        "train_count": 18,
+        "holdout_count": 6,
+        "seed": 20261031,
+        "normalizer_fit_scope": "training fold scenes only, all causal X14 rows",
+        "training_loss_log": [
+          {
+            "step": 1,
+            "train_teacher_delta_smooth_l1": 0.0026076806243509054
+          },
+          {
+            "step": 50,
+            "train_teacher_delta_smooth_l1": 0.0010636714287102222
+          },
+          {
+            "step": 100,
+            "train_teacher_delta_smooth_l1": 0.0008319797925651073
+          },
+          {
+            "step": 150,
+            "train_teacher_delta_smooth_l1": 0.0005656505818478763
+          },
+          {
+            "step": 200,
+            "train_teacher_delta_smooth_l1": 0.0003518237208481878
+          },
+          {
+            "step": 250,
+            "train_teacher_delta_smooth_l1": 0.000209200254175812
+          },
+          {
+            "step": 300,
+            "train_teacher_delta_smooth_l1": 0.00014826931874267757
+          }
+        ],
+        "checkpoint_sha256": "8f1ae955d21e152c516a5a8d16ffdcc38366919c37356c7a5da65df8e63de36e"
+      }
+    },
+    "oof_teacher_delta_fit": {
+      "oof_delta_mae_mps2": 0.03757986891775793,
+      "oof_delta_rmse_mps2": 0.05520910401760729,
+      "oof_delta_pearson_r": 0.6299923492737722,
+      "oof_delta_rmse_per_scene_mps2": {
+        "DL1018_DEV_T1_C00_W03": 0.035829510539770126,
+        "DL1018_DEV_T1_C01_W15": 0.03003094159066677,
+        "DL1018_DEV_T1_C04_W00": 0.036685287952423096,
+        "DL1018_DEV_T1_C05_W06": 0.03306540101766586,
+        "DL1018_DEV_T1_C07_W08": 0.05172131583094597,
+        "DL1018_DEV_T1_C10_W09": 0.03548656776547432,
+        "DL1018_DEV_T1_C11_W12": 0.06472638994455338,
+        "DL1018_DEV_T1_C15_W14": 0.08309910446405411,
+        "DL1018_DEV_T2_C00_W04": 0.05573946610093117,
+        "DL1018_DEV_T2_C02_W15": 0.03462069109082222,
+        "DL1018_DEV_T2_C03_W01": 0.041603244841098785,
+        "DL1018_DEV_T2_C06_W07": 0.06193557381629944,
+        "DL1018_DEV_T2_C08_W08": 0.0473652146756649,
+        "DL1018_DEV_T2_C09_W10": 0.08600147068500519,
+        "DL1018_DEV_T2_C12_W13": 0.09639336913824081,
+        "DL1018_DEV_T2_C14_W14": 0.04258931800723076,
+        "DL1018_DEV_T3_C00_W05": 0.06512292474508286,
+        "DL1018_DEV_T3_C03_W15": 0.030914297327399254,
+        "DL1018_DEV_T3_C05_W02": 0.06757773458957672,
+        "DL1018_DEV_T3_C06_W08": 0.05015411600470543,
+        "DL1018_DEV_T3_C09_W09": 0.06266006827354431,
+        "DL1018_DEV_T3_C10_W11": 0.03759954124689102,
+        "DL1018_DEV_T3_C13_W12": 0.05085216090083122,
+        "DL1018_DEV_T3_C15_W14": 0.05173570290207863
+      },
+      "teacher_ready_abs_ge_0_5_fraction": 0.0,
+      "student_raw_ready_abs_ge_0_5_fraction": 0.0,
+      "student_clipped_ready_abs_ge_0_5_fraction": 0.0,
+      "student_total_action_ready_abs_ge_3_fraction": 0.0
+    },
+    "method_metrics": {
+      "C5_baseline": {
+        "position_residual_rmse_scene_macro_mps2": 0.20021421308408702,
+        "position_residual_rmse_pooled_mps2": 0.23972851022767383,
+        "task_frozen_SO3_rmse_scene_macro_rad": 0.05721551111127302,
+        "task_frozen_SO3_rmse_pooled_rad": 0.06090823027503882,
+        "per_scene_position_residual_rmse_mps2": {
+          "DL1018_DEV_T1_C00_W03": 0.06401449038794034,
+          "DL1018_DEV_T1_C01_W15": 0.026961264113196343,
+          "DL1018_DEV_T1_C04_W00": 0.0524153577383237,
+          "DL1018_DEV_T1_C05_W06": 0.10066960325894228,
+          "DL1018_DEV_T1_C07_W08": 0.2857226613680396,
+          "DL1018_DEV_T1_C10_W09": 0.12671044080630547,
+          "DL1018_DEV_T1_C11_W12": 0.12078306868555799,
+          "DL1018_DEV_T1_C15_W14": 0.3709339080936783,
+          "DL1018_DEV_T2_C00_W04": 0.14097312364063647,
+          "DL1018_DEV_T2_C02_W15": 0.02694750727480627,
+          "DL1018_DEV_T2_C03_W01": 0.0745113586458364,
+          "DL1018_DEV_T2_C06_W07": 0.27053687824148737,
+          "DL1018_DEV_T2_C08_W08": 0.2925719384214326,
+          "DL1018_DEV_T2_C09_W10": 0.35293964509850384,
+          "DL1018_DEV_T2_C12_W13": 0.37076905617154393,
+          "DL1018_DEV_T2_C14_W14": 0.3765621332124873,
+          "DL1018_DEV_T3_C00_W05": 0.18126478134638882,
+          "DL1018_DEV_T3_C03_W15": 0.026987725898965892,
+          "DL1018_DEV_T3_C05_W02": 0.12085519090384547,
+          "DL1018_DEV_T3_C06_W08": 0.39846512422812164,
+          "DL1018_DEV_T3_C09_W09": 0.16245472474544248,
+          "DL1018_DEV_T3_C10_W11": 0.37587132900512427,
+          "DL1018_DEV_T3_C13_W12": 0.11899072514711802,
+          "DL1018_DEV_T3_C15_W14": 0.366229077584363
+        },
+        "per_scene_task_frozen_SO3_rmse_rad": {
+          "DL1018_DEV_T1_C00_W03": 0.04645534126799029,
+          "DL1018_DEV_T1_C01_W15": 0.015602669159477575,
+          "DL1018_DEV_T1_C04_W00": 0.06421769690218014,
+          "DL1018_DEV_T1_C05_W06": 0.053774325743943044,
+          "DL1018_DEV_T1_C07_W08": 0.07587220893965547,
+          "DL1018_DEV_T1_C10_W09": 0.043282898497156046,
+          "DL1018_DEV_T1_C11_W12": 0.049786182619191315,
+          "DL1018_DEV_T1_C15_W14": 0.0644263092871111,
+          "DL1018_DEV_T2_C00_W04": 0.053653766557662415,
+          "DL1018_DEV_T2_C02_W15": 0.01211605512837213,
+          "DL1018_DEV_T2_C03_W01": 0.05823310103169952,
+          "DL1018_DEV_T2_C06_W07": 0.07515825466945403,
+          "DL1018_DEV_T2_C08_W08": 0.07401982627000897,
+          "DL1018_DEV_T2_C09_W10": 0.0749930006362029,
+          "DL1018_DEV_T2_C12_W13": 0.07357984225420079,
+          "DL1018_DEV_T2_C14_W14": 0.06106868886542962,
+          "DL1018_DEV_T3_C00_W05": 0.06440935219733351,
+          "DL1018_DEV_T3_C03_W15": 0.009494842932910235,
+          "DL1018_DEV_T3_C05_W02": 0.0714392029130559,
+          "DL1018_DEV_T3_C06_W08": 0.1016305077611482,
+          "DL1018_DEV_T3_C09_W09": 0.060167278638559245,
+          "DL1018_DEV_T3_C10_W11": 0.06140992228381615,
+          "DL1018_DEV_T3_C13_W12": 0.046714828820061206,
+          "DL1018_DEV_T3_C15_W14": 0.06166616329393264
+        }
+      },
+      "ordinary_head_lambda_0_01": {
+        "position_residual_rmse_scene_macro_mps2": 0.0991144052875864,
+        "position_residual_rmse_pooled_mps2": 0.12486377992156716,
+        "task_frozen_SO3_rmse_scene_macro_rad": 0.06455618847366468,
+        "task_frozen_SO3_rmse_pooled_rad": 0.06919320852509223,
+        "per_scene_position_residual_rmse_mps2": {
+          "DL1018_DEV_T1_C00_W03": 0.029482043074743794,
+          "DL1018_DEV_T1_C01_W15": 0.009175260939946523,
+          "DL1018_DEV_T1_C04_W00": 0.033862427657026496,
+          "DL1018_DEV_T1_C05_W06": 0.03830093422299294,
+          "DL1018_DEV_T1_C07_W08": 0.11630235309685948,
+          "DL1018_DEV_T1_C10_W09": 0.03301462733758232,
+          "DL1018_DEV_T1_C11_W12": 0.06734249762254918,
+          "DL1018_DEV_T1_C15_W14": 0.22224803505221447,
+          "DL1018_DEV_T2_C00_W04": 0.06589429901780909,
+          "DL1018_DEV_T2_C02_W15": 0.007600439297145989,
+          "DL1018_DEV_T2_C03_W01": 0.022819732679508084,
+          "DL1018_DEV_T2_C06_W07": 0.11857228104092887,
+          "DL1018_DEV_T2_C08_W08": 0.12121759716790885,
+          "DL1018_DEV_T2_C09_W10": 0.19092072311121483,
+          "DL1018_DEV_T2_C12_W13": 0.22248700412075406,
+          "DL1018_DEV_T2_C14_W14": 0.18285004689964798,
+          "DL1018_DEV_T3_C00_W05": 0.10794715435453203,
+          "DL1018_DEV_T3_C03_W15": 0.009085340427090785,
+          "DL1018_DEV_T3_C05_W02": 0.06020130744404046,
+          "DL1018_DEV_T3_C06_W08": 0.2483185292578817,
+          "DL1018_DEV_T3_C09_W09": 0.04698295005766562,
+          "DL1018_DEV_T3_C10_W11": 0.18249418568160217,
+          "DL1018_DEV_T3_C13_W12": 0.06045059531042721,
+          "DL1018_DEV_T3_C15_W14": 0.1811753620300007
+        },
+        "per_scene_task_frozen_SO3_rmse_rad": {
+          "DL1018_DEV_T1_C00_W03": 0.049324838212057014,
+          "DL1018_DEV_T1_C01_W15": 0.018318187389940364,
+          "DL1018_DEV_T1_C04_W00": 0.0639650425037047,
+          "DL1018_DEV_T1_C05_W06": 0.058322894034939406,
+          "DL1018_DEV_T1_C07_W08": 0.09254290821995168,
+          "DL1018_DEV_T1_C10_W09": 0.04890390050855333,
+          "DL1018_DEV_T1_C11_W12": 0.052504730310324564,
+          "DL1018_DEV_T1_C15_W14": 0.06701095156037794,
+          "DL1018_DEV_T2_C00_W04": 0.06144987292427441,
+          "DL1018_DEV_T2_C02_W15": 0.014784684373438575,
+          "DL1018_DEV_T2_C03_W01": 0.06239321560119537,
+          "DL1018_DEV_T2_C06_W07": 0.08900412041913865,
+          "DL1018_DEV_T2_C08_W08": 0.09272667220918583,
+          "DL1018_DEV_T2_C09_W10": 0.0868269960203291,
+          "DL1018_DEV_T2_C12_W13": 0.08020705825572104,
+          "DL1018_DEV_T2_C14_W14": 0.06458827040545938,
+          "DL1018_DEV_T3_C00_W05": 0.0788343790375815,
+          "DL1018_DEV_T3_C03_W15": 0.012284742158971351,
+          "DL1018_DEV_T3_C05_W02": 0.07973288817344266,
+          "DL1018_DEV_T3_C06_W08": 0.12101155293289326,
+          "DL1018_DEV_T3_C09_W09": 0.06555820761531232,
+          "DL1018_DEV_T3_C10_W11": 0.07438684514958618,
+          "DL1018_DEV_T3_C13_W12": 0.049695921717681404,
+          "DL1018_DEV_T3_C15_W14": 0.06496964363389235
+        }
+      },
+      "task_head_lambda_0_1": {
+        "position_residual_rmse_scene_macro_mps2": 0.09897802099131121,
+        "position_residual_rmse_pooled_mps2": 0.1251311959383617,
+        "task_frozen_SO3_rmse_scene_macro_rad": 0.06440699211129054,
+        "task_frozen_SO3_rmse_pooled_rad": 0.06905182282796915,
+        "per_scene_position_residual_rmse_mps2": {
+          "DL1018_DEV_T1_C00_W03": 0.029625941873826896,
+          "DL1018_DEV_T1_C01_W15": 0.009454410769484202,
+          "DL1018_DEV_T1_C04_W00": 0.03394574945234555,
+          "DL1018_DEV_T1_C05_W06": 0.03770582645740314,
+          "DL1018_DEV_T1_C07_W08": 0.1162366003093739,
+          "DL1018_DEV_T1_C10_W09": 0.03201723843551052,
+          "DL1018_DEV_T1_C11_W12": 0.06388961908745922,
+          "DL1018_DEV_T1_C15_W14": 0.2229845881921999,
+          "DL1018_DEV_T2_C00_W04": 0.0664182328132935,
+          "DL1018_DEV_T2_C02_W15": 0.008098261028146592,
+          "DL1018_DEV_T2_C03_W01": 0.02295857840315697,
+          "DL1018_DEV_T2_C06_W07": 0.11679092499154287,
+          "DL1018_DEV_T2_C08_W08": 0.12089932087909507,
+          "DL1018_DEV_T2_C09_W10": 0.19454105771647404,
+          "DL1018_DEV_T2_C12_W13": 0.22526677785560903,
+          "DL1018_DEV_T2_C14_W14": 0.18179218673386316,
+          "DL1018_DEV_T3_C00_W05": 0.10630106990378509,
+          "DL1018_DEV_T3_C03_W15": 0.009539227967913922,
+          "DL1018_DEV_T3_C05_W02": 0.05835209516301005,
+          "DL1018_DEV_T3_C06_W08": 0.2486024904945629,
+          "DL1018_DEV_T3_C09_W09": 0.04639999535270408,
+          "DL1018_DEV_T3_C10_W11": 0.18525127008958142,
+          "DL1018_DEV_T3_C13_W12": 0.057888885853593634,
+          "DL1018_DEV_T3_C15_W14": 0.1805121539675335
+        },
+        "per_scene_task_frozen_SO3_rmse_rad": {
+          "DL1018_DEV_T1_C00_W03": 0.04911543979809915,
+          "DL1018_DEV_T1_C01_W15": 0.01817133988154361,
+          "DL1018_DEV_T1_C04_W00": 0.063737198962064,
+          "DL1018_DEV_T1_C05_W06": 0.058252485936774484,
+          "DL1018_DEV_T1_C07_W08": 0.0923768836648624,
+          "DL1018_DEV_T1_C10_W09": 0.048611421611397886,
+          "DL1018_DEV_T1_C11_W12": 0.05236045157275426,
+          "DL1018_DEV_T1_C15_W14": 0.06672776688409132,
+          "DL1018_DEV_T2_C00_W04": 0.06120459706161655,
+          "DL1018_DEV_T2_C02_W15": 0.014821407713600195,
+          "DL1018_DEV_T2_C03_W01": 0.06215467729187098,
+          "DL1018_DEV_T2_C06_W07": 0.08827830286909998,
+          "DL1018_DEV_T2_C08_W08": 0.09283546627009238,
+          "DL1018_DEV_T2_C09_W10": 0.08706208025064559,
+          "DL1018_DEV_T2_C12_W13": 0.08003335696450484,
+          "DL1018_DEV_T2_C14_W14": 0.06429151216214599,
+          "DL1018_DEV_T3_C00_W05": 0.07845035129437776,
+          "DL1018_DEV_T3_C03_W15": 0.012355337571429663,
+          "DL1018_DEV_T3_C05_W02": 0.07970279137010447,
+          "DL1018_DEV_T3_C06_W08": 0.12109910274750921,
+          "DL1018_DEV_T3_C09_W09": 0.06536413239419693,
+          "DL1018_DEV_T3_C10_W11": 0.07448823698945026,
+          "DL1018_DEV_T3_C13_W12": 0.04962345886040333,
+          "DL1018_DEV_T3_C15_W14": 0.06465001054833762
+        }
+      },
+      "offline_teacher_sample": {
+        "position_residual_rmse_scene_macro_mps2": 0.19978795209398334,
+        "position_residual_rmse_pooled_mps2": 0.23912245891631326,
+        "task_frozen_SO3_rmse_scene_macro_rad": 0.04798838717383114,
+        "task_frozen_SO3_rmse_pooled_rad": 0.05132866768326811,
+        "per_scene_position_residual_rmse_mps2": {
+          "DL1018_DEV_T1_C00_W03": 0.06400587676770468,
+          "DL1018_DEV_T1_C01_W15": 0.02695647171009832,
+          "DL1018_DEV_T1_C04_W00": 0.05238241191099445,
+          "DL1018_DEV_T1_C05_W06": 0.10061711379583656,
+          "DL1018_DEV_T1_C07_W08": 0.2849083542309262,
+          "DL1018_DEV_T1_C10_W09": 0.1266760837422405,
+          "DL1018_DEV_T1_C11_W12": 0.12077760406457212,
+          "DL1018_DEV_T1_C15_W14": 0.3698584714328993,
+          "DL1018_DEV_T2_C00_W04": 0.14093024179956973,
+          "DL1018_DEV_T2_C02_W15": 0.026943171693303413,
+          "DL1018_DEV_T2_C03_W01": 0.07449707401556466,
+          "DL1018_DEV_T2_C06_W07": 0.2697519739041431,
+          "DL1018_DEV_T2_C08_W08": 0.2917378088174499,
+          "DL1018_DEV_T2_C09_W10": 0.35193325848983054,
+          "DL1018_DEV_T2_C12_W13": 0.369686053556473,
+          "DL1018_DEV_T2_C14_W14": 0.3755021053279236,
+          "DL1018_DEV_T3_C00_W05": 0.18110732210794514,
+          "DL1018_DEV_T3_C03_W15": 0.026980527707388492,
+          "DL1018_DEV_T3_C05_W02": 0.12084759376549206,
+          "DL1018_DEV_T3_C06_W08": 0.39746979678105787,
+          "DL1018_DEV_T3_C09_W09": 0.16241303646342653,
+          "DL1018_DEV_T3_C10_W11": 0.37483159969363994,
+          "DL1018_DEV_T3_C13_W12": 0.11894409908078075,
+          "DL1018_DEV_T3_C15_W14": 0.3651527993963394
+        },
+        "per_scene_task_frozen_SO3_rmse_rad": {
+          "DL1018_DEV_T1_C00_W03": 0.042192218406912875,
+          "DL1018_DEV_T1_C01_W15": 0.013849723896443013,
+          "DL1018_DEV_T1_C04_W00": 0.06047591853560035,
+          "DL1018_DEV_T1_C05_W06": 0.0464055886198358,
+          "DL1018_DEV_T1_C07_W08": 0.06565811922949127,
+          "DL1018_DEV_T1_C10_W09": 0.034172742984866875,
+          "DL1018_DEV_T1_C11_W12": 0.04015229809167312,
+          "DL1018_DEV_T1_C15_W14": 0.04991447792444446,
+          "DL1018_DEV_T2_C00_W04": 0.04412956609372387,
+          "DL1018_DEV_T2_C02_W15": 0.010427779396157346,
+          "DL1018_DEV_T2_C03_W01": 0.05277170722020661,
+          "DL1018_DEV_T2_C06_W07": 0.06318567259604053,
+          "DL1018_DEV_T2_C08_W08": 0.06239861149002342,
+          "DL1018_DEV_T2_C09_W10": 0.06266658667426177,
+          "DL1018_DEV_T2_C12_W13": 0.057490336492306726,
+          "DL1018_DEV_T2_C14_W14": 0.0477528564916948,
+          "DL1018_DEV_T3_C00_W05": 0.05380514886580359,
+          "DL1018_DEV_T3_C03_W15": 0.007895079461073717,
+          "DL1018_DEV_T3_C05_W02": 0.06286448182921107,
+          "DL1018_DEV_T3_C06_W08": 0.09114362819018045,
+          "DL1018_DEV_T3_C09_W09": 0.04733888446765281,
+          "DL1018_DEV_T3_C10_W11": 0.05095270993160942,
+          "DL1018_DEV_T3_C13_W12": 0.03766445065686238,
+          "DL1018_DEV_T3_C15_W14": 0.04641270462587112
+        }
+      },
+      "causal_student_OOF": {
+        "position_residual_rmse_scene_macro_mps2": 0.20910119172485173,
+        "position_residual_rmse_pooled_mps2": 0.24255551271742348,
+        "task_frozen_SO3_rmse_scene_macro_rad": 0.051666559180418514,
+        "task_frozen_SO3_rmse_pooled_rad": 0.05527259066434987,
+        "per_scene_position_residual_rmse_mps2": {
+          "DL1018_DEV_T1_C00_W03": 0.08419366180608415,
+          "DL1018_DEV_T1_C01_W15": 0.04786318284879873,
+          "DL1018_DEV_T1_C04_W00": 0.07255780880675848,
+          "DL1018_DEV_T1_C05_W06": 0.11514061687961495,
+          "DL1018_DEV_T1_C07_W08": 0.2944267449325008,
+          "DL1018_DEV_T1_C10_W09": 0.13559832180629924,
+          "DL1018_DEV_T1_C11_W12": 0.1261883454062362,
+          "DL1018_DEV_T1_C15_W14": 0.3704442122655196,
+          "DL1018_DEV_T2_C00_W04": 0.15430900106522083,
+          "DL1018_DEV_T2_C02_W15": 0.04646394585346953,
+          "DL1018_DEV_T2_C03_W01": 0.1045845723301872,
+          "DL1018_DEV_T2_C06_W07": 0.28299096490286185,
+          "DL1018_DEV_T2_C08_W08": 0.2965877501086341,
+          "DL1018_DEV_T2_C09_W10": 0.352349524590794,
+          "DL1018_DEV_T2_C12_W13": 0.36675371154190917,
+          "DL1018_DEV_T2_C14_W14": 0.3652009372098062,
+          "DL1018_DEV_T3_C00_W05": 0.19301580206196636,
+          "DL1018_DEV_T3_C03_W15": 0.04549445830306662,
+          "DL1018_DEV_T3_C05_W02": 0.14365914957367343,
+          "DL1018_DEV_T3_C06_W08": 0.39838601183826267,
+          "DL1018_DEV_T3_C09_W09": 0.17120317918374944,
+          "DL1018_DEV_T3_C10_W11": 0.3738602030914513,
+          "DL1018_DEV_T3_C13_W12": 0.12177384974525714,
+          "DL1018_DEV_T3_C15_W14": 0.3553826452443193
+        },
+        "per_scene_task_frozen_SO3_rmse_rad": {
+          "DL1018_DEV_T1_C00_W03": 0.03988822297094101,
+          "DL1018_DEV_T1_C01_W15": 0.012359973410154391,
+          "DL1018_DEV_T1_C04_W00": 0.057370996214939976,
+          "DL1018_DEV_T1_C05_W06": 0.046914325289310006,
+          "DL1018_DEV_T1_C07_W08": 0.0679549817502579,
+          "DL1018_DEV_T1_C10_W09": 0.03672753981258134,
+          "DL1018_DEV_T1_C11_W12": 0.04856346167606304,
+          "DL1018_DEV_T1_C15_W14": 0.06036189255320473,
+          "DL1018_DEV_T2_C00_W04": 0.04776261668122425,
+          "DL1018_DEV_T2_C02_W15": 0.011394757024207927,
+          "DL1018_DEV_T2_C03_W01": 0.049492865247599264,
+          "DL1018_DEV_T2_C06_W07": 0.0673163469654744,
+          "DL1018_DEV_T2_C08_W08": 0.06565565356136818,
+          "DL1018_DEV_T2_C09_W10": 0.07172104414614389,
+          "DL1018_DEV_T2_C12_W13": 0.07210013345715764,
+          "DL1018_DEV_T2_C14_W14": 0.05331847326264717,
+          "DL1018_DEV_T3_C00_W05": 0.05883320962043485,
+          "DL1018_DEV_T3_C03_W15": 0.008501920179266228,
+          "DL1018_DEV_T3_C05_W02": 0.06730747865908511,
+          "DL1018_DEV_T3_C06_W08": 0.09424637013173472,
+          "DL1018_DEV_T3_C09_W09": 0.054007544561287826,
+          "DL1018_DEV_T3_C10_W11": 0.050560120354048624,
+          "DL1018_DEV_T3_C13_W12": 0.04421170269249597,
+          "DL1018_DEV_T3_C15_W14": 0.05342579010841594
+        }
+      }
+    },
+    "student_vs_teacher_scene_counts": {
+      "position_residual_rmse": [
+        4,
+        0,
+        20
+      ],
+      "task_frozen_SO3": [
+        5,
+        0,
+        19
+      ]
+    },
+    "metric_limit": "Position values are predicted-acceleration residual RMSE, not physical position Q. SO3 uses frozen raw state/yaw/reference and fixed command filter; not closed-loop."
+  },
+  "runtime_student_seconds": 52.74717669999518,
+  "oof_path": "experiments/dl_attitude_replacement_20261028/position_cosine_gru_train24_causal_v1/task_aware_cv_v1/TRAIN24_TEACHER_DISTILLATION_OOF_v1.npz",
+  "oof_sha256": "dc714b61b97f4026f2655794a96330df05b68dfdf1b13209e92724a0934fb0cd"
+}

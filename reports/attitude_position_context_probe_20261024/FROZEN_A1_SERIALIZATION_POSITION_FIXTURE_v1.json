@@ -1,0 +1,36 @@
+{
+  "schema": "FROZEN_A1_EVALUATOR_FIXTURE_RECEIPT_V1",
+  "source_path": "experiments/attitude_position_context_probe_20261024/evaluate_frozen_a1_matched_position_probe_v1.py",
+  "source_sha256": "eef17013190f4f9b7272afda3dc1929164ac46839f5d94e9e75a6126dce03425",
+  "exit_code": 0,
+  "checks": [
+    "AST_PARSE_PASS",
+    "JSON_EVENT_SERIALIZATION_FIXTURE_PASS"
+  ],
+  "fixture_events": 1999,
+  "fixture_array_fields": [
+    "event_index",
+    "plant_index",
+    "event_time_s",
+    "phase_code",
+    "X18",
+    "target"
+  ],
+  "fixture_x18_shape": [
+    1999,
+    18
+  ],
+  "fixture_target_shape": [
+    1999,
+    3
+  ],
+  "serialized_utf8_bytes": 226158,
+  "position_q_all_source_samples": 20001,
+  "so3_all_left_transition_samples": 20000,
+  "position_q_audit_tolerance_m": 1E-10,
+  "command": "Python AST parse, import evaluator module without executing main, call json_ready_event on synthetic 1999-row NumPy fixture, then json.dumps(..., allow_nan=False) and json.loads round-trip",
+  "raw_files_read": 0,
+  "full_evaluator_run": false,
+  "training_steps": 0,
+  "plant_calls": 0
+}

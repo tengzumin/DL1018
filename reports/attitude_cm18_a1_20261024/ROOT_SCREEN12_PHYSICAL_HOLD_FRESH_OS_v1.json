@@ -1,0 +1,19 @@
+{
+  "schema": "ROOT_OFFLINE_DIAGNOSTIC_OS_RECEIPT_V1",
+  "status": "PASS",
+  "exit_code": 0,
+  "shell": "pwsh",
+  "login": false,
+  "matlab": "C:/Program Files/MATLAB/R2025b/bin/matlab.exe",
+  "command": "& 'C:/Program Files/MATLAB/R2025b/bin/matlab.exe' -batch \"addpath('reports/attitude_cm18_a1_20261024'); R=root_screen12_physical_hold_fresh_v1(); disp(R.status); for q=1:numel(R.scenes), disp(R.scenes(q).scene_id); disp(jsonencode(R.scenes(q).effective_G)); disp(jsonencode(R.scenes(q).same_state_actions)); disp(jsonencode(R.scenes(q).phase_summaries)); end\"",
+  "source_path": "reports/attitude_cm18_a1_20261024/root_screen12_physical_hold_fresh_v1.m",
+  "source_sha256": "f2751b16c22c4e932cbef9776e7760cd43db4085e14c3c2411a97d7e64757e3c",
+  "result_path": "reports/attitude_cm18_a1_20261024/ROOT_SCREEN12_PHYSICAL_HOLD_FRESH_DIAGNOSTIC_v1.json",
+  "result_sha256": "9575a2d9b6c8b6d030181f79ac6cb50051febb4fd3af840602bddb68199d164a",
+  "raw_sha256": [
+    "23150766d0b5e2888c35bc5bf96af30f9cc516ffca61e124f0d3d6e4f5ac9476",
+    "9887fe6425d6868b75e6209fd343d66275ee99dd258efa039477cf8c22d82114"
+  ],
+  "deployment_sha256": "ee00c46af42cbce83a630ae9b03eaf1a86bfc6047910ed68bc4e7b8b020aa6ae",
+  "scope": "Read-only same-state calculations; no engine/episode/Plant/state integration/training/optimizer."
+}

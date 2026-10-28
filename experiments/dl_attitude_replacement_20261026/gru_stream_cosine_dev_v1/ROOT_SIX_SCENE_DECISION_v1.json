@@ -1,0 +1,42 @@
+{
+  "status": "SCREEN_FAIL_TEACHER_FIT_IMPROVEMENT_NOT_SUFFICIENT",
+  "reviewer": "/root",
+  "reviewed_utc": "2026-10-26T21:55:50.376378+00:00",
+  "metrics_source": "ROOT_SIX_PYTHON_METRICS_v1.json",
+  "engineering": "6_OF_6_STABLE_RAW_AUDIT_PASS",
+  "actual_Plant_calls": 6,
+  "formal_training_jobs": 1,
+  "optimizer_steps": 60000,
+  "Q_change_pct_vs_B": -5.868931202011418,
+  "Q_change_pct_vs_C5": 2.992912156659333,
+  "task_SO3_change_pct_vs_B": -3.1946418205094584,
+  "task_SO3_change_pct_vs_C5": 1.1484461517687006,
+  "wins_out_of_6": {
+    "b": {
+      "Q_m": 5,
+      "SO3_rad": 3,
+      "inner_tracking_rad": 0
+    },
+    "c5": {
+      "Q_m": 0,
+      "SO3_rad": 0,
+      "inner_tracking_rad": 0
+    },
+    "constant_GRU": {
+      "Q_m": 2,
+      "SO3_rad": 6,
+      "inner_tracking_rad": 2
+    }
+  },
+  "preregistered_screen_gates": {
+    "Q_better_B": true,
+    "Q_within_110pct_C5": true,
+    "SO3_better_B": true,
+    "SO3_better_C5": false,
+    "W15_Q_no_worse_B": true,
+    "HF_Q_no_worse_B": true
+  },
+  "decision": "Do not expand DEV72 or TEST. Optimization fixes fitting bias but does not fix closed-loop C5 gap; do not continue lr/seed/model-capacity searches without new evidence. Audit command-port nominal residual target before authorizing any relabeling/training.",
+  "source_model_frozen": true,
+  "TEST_read": false
+}

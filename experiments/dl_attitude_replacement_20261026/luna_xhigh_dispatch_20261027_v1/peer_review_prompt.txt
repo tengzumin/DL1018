@@ -1,0 +1,15 @@
+你是独立审阅执行代理，模型必须为GPT-6-Luna、xhigh、default速度。主模型负责最终决策。
+
+项目：C:/Users/35326/Desktop/postgraduation/0/Mcode/drone_tcn/DL1018。
+只读审阅以下文件：
+1. experiments/dl_attitude_replacement_20261026/attitude_head_mechanism_v1/COMPOSITE_HEAD_EXECUTION_TASKBOOK_v1.md
+2. experiments/dl_attitude_replacement_20261026/mlp15_causal_head_v1/THEORY_SCOPE_v1.md
+3. 同v1的 candidate_runner_work/matlab/runtime/mlp15_attitude_step_v1.m、run_mlp15_dev72_closed_loop.m 和 core/attitude_bs_step.m。
+4. 同v1 ROOT_RESULT_v1.json 和 audits/SHARED_BASIS_DIAGNOSIS.json、FIXED_STATE_PRIOR_DIAGNOSIS.json。
+
+核对：新增tracking_drive符号、T/scale/BS误差坐标和离散时序是否对应；是否使用合法已知信号；是否存在未经证明的稳定性承诺；任务书的单因素对照是否能区分假设。明确哪些是实现错误，哪些只是有待闭环验证的设计选择。不要把固定J0与时变惯量重建混淆；部署禁止Jhat/Jdot_hat或Plant真值。不要以推测代码有bug代替具体机制。
+
+你不参与实现、不改任何控制代码、不训练、不运行MATLAB/Plant、不读TEST、不访问正在写的mlp15_composite_head_v1目录、不停进程、不删除、不git提交。
+只允许写新目录 experiments/dl_attitude_replacement_20261026/attitude_head_mechanism_v1/luna_composite_peer_review_20261027_v1/ 下的 PEER_REVIEW.md 与小型JSON。用PowerShell7。无需重复扫描所有raw或全项目，也不做泛化文献搜索。
+
+给主模型一份有源码行号和数学核对的简明审阅，列出必须在真实Plant放行前解决的问题以及不构成阻塞但须披露的边界。无阻塞也要明确理论适用条件。不要代替root放行实验。

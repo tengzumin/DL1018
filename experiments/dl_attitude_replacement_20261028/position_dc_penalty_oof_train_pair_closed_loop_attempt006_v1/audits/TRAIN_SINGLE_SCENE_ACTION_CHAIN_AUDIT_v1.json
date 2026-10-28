@@ -1,0 +1,54 @@
+{
+  "schema": "POSITION_DC_OOF_TRAIN_ACTION_CHAIN_AUDIT_V1",
+  "scene_id": "DL1018_DEV_T1_C00_W03",
+  "source_split": "TRAIN_C5_24",
+  "fold_id": "holdout_W00_05",
+  "raw_sha256": "eff35293d5720d944d017171c1c52ad593ba9443181319576e36b3dcf315ac57",
+  "run_status_sha256": "251d19ebb310849661589027a046ab1ea0e2f39f0b3981b4fae3af1f885244d8",
+  "state": "COMPLETED",
+  "status_value": "STABLE",
+  "Plant_calls": 1,
+  "weights_release_sha256": "5251a0a7fa3c0d691de556452d85dd84724f218d4ea35ee16111b22b95c1cd94",
+  "weights_raw_log_sha256": "5251a0a7fa3c0d691de556452d85dd84724f218d4ea35ee16111b22b95c1cd94",
+  "weight_identity_match": true,
+  "events": 1999,
+  "ready_events": 1968,
+  "first_event_time_s": 0.01,
+  "first_ready_row_zero_based": 320,
+  "first_ready_time_s": 0.32,
+  "model_replay": {
+    "feature14_finite": true,
+    "max_abs_raw_delta_error_mps2": 4.925082639634093e-08,
+    "max_abs_clipped_delta_error_mps2_after_readiness_mask": 4.925082639634093e-08
+  },
+  "action_checks": {
+    "beta_max_abs_error": 0.0,
+    "action_formula_max_abs_error_mps2": 0.0,
+    "correction_equals_action_minus_base_max_abs_error_mps2": 0.0,
+    "warmup_delta_max_abs_mps2": 0.0,
+    "warmup_action_max_abs_mps2": 0.0,
+    "raw_delta_over_0_5_fraction_ready": 0.0,
+    "total_action_clip_samples": 0,
+    "max_abs_final_action_mps2": 0.5290600036134907
+  },
+  "downstream": {
+    "held_applied_equals_100Hz_action_ZOH_max_abs_mps2": 0.0,
+    "force_equals_mass_times_held_action_max_abs_N": 0.0,
+    "mass_kg_inferred_from_force_to_action": 0.695,
+    "pcf_coordination_enabled": true,
+    "pcf_fields_finite": true,
+    "pcf_rms_mps2": {
+      "stage1_position_pcf_a_req_mps2": 0.4023518363561014,
+      "stage1_position_pcf_a_f_mps2": 0.4003371463137384,
+      "stage1_position_pcf_r_f_mps2": 0.051978312050861966
+    }
+  },
+  "safety_and_scope": {
+    "safety_stop_reason": "",
+    "Plant_calls": 1,
+    "VAL_data_read": false,
+    "TEST_read": false,
+    "inertia_reconstruction_enabled": false
+  },
+  "interpretation": "TRAIN paired closed-loop implementation diagnostic; not independent validation and no causal attribution."
+}

@@ -1,0 +1,139 @@
+{
+  "schema": "DL1018_GRU_TAU01_DELAYED_START_NO_PLANT_PREPARE_RECEIPT_V1",
+  "status": "PASS_NO_PLANT_PREPARE",
+  "scene_id": "DL1018_VAL_T3_C01_W14",
+  "MATLAB": "25.2.0.2998904 (R2025b)",
+  "scene_payload_sha256": "ed1235f954a9488b0935b8342e2f7435815ed805f96659fbcf19f98f2957b53b",
+  "gru_model_sha256": "b2c462f77a6bb97b8c6bb2b471daef0633d4f9664a7d623b894461a4fa21b567",
+  "source_hash_manifest_sha256": "a703a3de58c3bdb15452854d5839540d4573e5392946e5c92100b14580ecb191",
+  "source_lock_sha256": "e3e0e9d6b8dae8a3315dd9b780742d3fefd5b541cf1f81e15f9376f1c141c8f4",
+  "release_sha256": "503c8aadc69fe69516f20b17231bf20c0eac736e4849abe423e22edb9faf684b",
+  "scene_input_manifest_sha256": "40ca4f0587e0ac425da067b38dd7ecdfc51040902269a639c22060f9593e4aa5",
+  "position_model_sha256": "6f3628b10540c617496b2a20f249c4319af79c1a02d5945f1f91f0aead9c9b6e",
+  "common_position_options_sha256": "0218d3dc3c591b07ed6f7328de2c36276c4f51c2a0d56966bdff62d68d6a6b21",
+  "position_method_id": "C5_AXIS_MIXED_COORDINATE_M110",
+  "position_path_changed": true,
+  "position_delayed_prediction_h_s": 0.01,
+  "position_delayed_prediction_rho_schedule": {
+    "rho_before_5_s": 0.01,
+    "rho_at_5_s": 0.01,
+    "ramp_start_s": 5,
+    "ramp_end_s": 6,
+    "rho_final": 0.1,
+    "time_base": "n_zero_based * simulation_sample_time_s",
+    "interpolation": "linear"
+  },
+  "position_runtime_enabled": true,
+  "position_runtime_update_enabled": true,
+  "position_head_gamma": 12,
+  "position_head_kappa": 1,
+  "position_coordination_enabled": true,
+  "position_delayed_prediction_enabled": true,
+  "rho_schedule_check": {
+    "status": "PASS",
+    "simulation_dt_s": 0.001,
+    "event_stride_steps": 10,
+    "event_indices_zero_based": [
+      330,
+      4990,
+      5000,
+      5500,
+      5990,
+      6000,
+      6010,
+      19990
+    ],
+    "event_times_s": [
+      0.33,
+      4.99,
+      5,
+      5.5,
+      5.99,
+      6,
+      6.01,
+      19.990000000000002
+    ],
+    "rho_values": [
+      0.01,
+      0.01,
+      0.01,
+      0.055,
+      0.099100000000000008,
+      0.099999999999999992,
+      0.099999999999999992,
+      0.099999999999999992
+    ],
+    "rho_before_5s": 0.01,
+    "rho_at_5s": 0.01,
+    "rho_at_5_5s": 0.055,
+    "rho_at_6s_and_later": 0.1,
+    "gradient_units": "unchanged coefficient on delayed prediction gradient",
+    "prediction_h_s": 0.01,
+    "gamma": 12,
+    "lambda": 0.002,
+    "Plant_calls": 0
+  },
+  "command_filter_wn_rad_s": [
+    18,
+    18,
+    12
+  ],
+  "fixed_J0": [
+    [
+      0.0032575533333333339,
+      -2.1684043449710089E-19,
+      0
+    ],
+    [
+      -2.1684043449710089E-19,
+      0.0032575533333333334,
+      0
+    ],
+    [
+      0,
+      0,
+      0.0063606483333333332
+    ]
+  ],
+  "beta_rise_time_s": 2.2,
+  "dmax": [
+    45,
+    45,
+    4.7124
+  ],
+  "tracking_gamma": [
+    2.1,
+    2.25,
+    1.1
+  ],
+  "tracking_sigma_w": [
+    0.11,
+    0.12,
+    0.2
+  ],
+  "tracking_s_limit": [
+    2.3,
+    2.3,
+    1.4
+  ],
+  "tracking_wmax": 60,
+  "gru_init_status": "PASS",
+  "gru_forward_raw_residual_rad_s2": [
+    0.37253385391438593,
+    -0.52324959234945057,
+    -0.074619994820852617
+  ],
+  "gru_forward_hidden_norm": 0.33348356281674857,
+  "cosine_target_rms": [
+    8.0246160368513184,
+    9.2522437638076109,
+    0.6107712264303139
+  ],
+  "controller_arm": "GRU_STREAM",
+  "geometry_arm": "ACTIVE",
+  "inertia_reconstruction_enabled": false,
+  "Plant_calls": 0,
+  "plant_called": false,
+  "test_data_read": false,
+  "run_directory_created": false
+}

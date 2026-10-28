@@ -1,0 +1,1739 @@
+{
+  "schema": "DL1018_MLP15_TRAIN_C5_24_FIXED_J0_RESIDUAL_V1",
+  "status": "PASS_TRAIN_ONLY_SOURCE_AND_CAUSALITY_AUDIT",
+  "dataset_path": "experiments/dl_attitude_replacement_20261027/mlp15_nominal_residual_v1/TRAIN_C5_24_PHYSICAL_RESIDUAL_v1.npz",
+  "dataset_sha256": "242c86426f48cfe6d37afc25994d67a6c8ff3f0ea25246d50765a831e4458566",
+  "dataset_bytes": 2272771,
+  "source_lock_path": "experiments/dl_attitude_replacement_20261026/mlp15_c5_teacher_full72_v1/MLP15_C5_TEACHER_FULL72_SOURCE_LOCK_v1.json",
+  "source_lock_sha256": "2c733dd093ab2ea1ff74f6cf2828a130345f022b3439456bf22abff8961edc8a",
+  "legacy_training_config_path": "experiments/dl_attitude_replacement_20261026/mlp15_c5_teacher_full72_v1/runs/C5_MLP15_FULL72_SEED2026102001/training_config.json",
+  "legacy_training_config_sha256": "b4b186299a87e8167fc8c7c0f1e0d0ea06239a7430d0f2463ad7a6bde9dcce76",
+  "legacy_config_split_note": "legacy full72 model fit used TRAIN_C5_24 plus C5_VAL48_AS_DEV_TRAIN; it is identity metadata only here",
+  "feature_code_sha256": {
+    "experiments/dl_attitude_replacement_20261026/mlp15_c5_teacher_redistill_v1/build_matched_teacher_dataset_v1.py": "303eff1c2f0cbe2c76b431948995992c0c7286a50976d8dd9cbbaa020f6b96d9",
+    "experiments/dl_attitude_replacement_20261026/prepare_tcn_teacher_dataset_v2.py": "7d01c722f1881096a61df28b48cd7bba9cfe57671d84e870f335c37290513fc2",
+    "experiments/dl_attitude_replacement_20261026/architecture_screen_v1/screen_attitude_architectures_v1.py": "66816f8b04776aca47440008bda96523055c70fc0b68700df07ea30c06357700"
+  },
+  "reference_c5_data_manifest_sha256": "98766ddac3125b81d4637eeb2576349b6ce181c94564c1a444d1d4cab734d55c",
+  "reference_feature_members_read": [
+    "c5_train_x",
+    "c5_train_scene_ids"
+  ],
+  "reference_val_members_read": false,
+  "reference_rbf_target_members_read": false,
+  "train_split": "TRAIN_C5_24",
+  "train_scene_count": 24,
+  "events_per_scene": 1999,
+  "train_event_count": 47976,
+  "ordered_train_scene_ids_sha256": "f3f70c47c5bef1d29181246a9d53fb8e90c3ec3d163bb6d67b18793756656616",
+  "scene_ids": [
+    "DL1018_DEV_T1_C00_W03",
+    "DL1018_DEV_T1_C01_W15",
+    "DL1018_DEV_T1_C04_W00",
+    "DL1018_DEV_T1_C05_W06",
+    "DL1018_DEV_T1_C07_W08",
+    "DL1018_DEV_T1_C10_W09",
+    "DL1018_DEV_T1_C11_W12",
+    "DL1018_DEV_T1_C15_W14",
+    "DL1018_DEV_T2_C00_W04",
+    "DL1018_DEV_T2_C02_W15",
+    "DL1018_DEV_T2_C03_W01",
+    "DL1018_DEV_T2_C06_W07",
+    "DL1018_DEV_T2_C08_W08",
+    "DL1018_DEV_T2_C09_W10",
+    "DL1018_DEV_T2_C12_W13",
+    "DL1018_DEV_T2_C14_W14",
+    "DL1018_DEV_T3_C00_W05",
+    "DL1018_DEV_T3_C03_W15",
+    "DL1018_DEV_T3_C05_W02",
+    "DL1018_DEV_T3_C06_W08",
+    "DL1018_DEV_T3_C09_W09",
+    "DL1018_DEV_T3_C10_W11",
+    "DL1018_DEV_T3_C13_W12",
+    "DL1018_DEV_T3_C15_W14"
+  ],
+  "feature_order": [
+    "wrapped_attitude_error_euler_rad_x3",
+    "body_rate_rad_s_x3",
+    "nominal_bs_body_torque_Nm_x3",
+    "morph_command_x4"
+  ],
+  "feature_definition": "At each event: wrapped(filtered_attitude_reference - state Euler), body omega, logged nominal BS body torque, scene/arms/command.",
+  "feature_shape": [
+    24,
+    1999,
+    13
+  ],
+  "target_shape": [
+    24,
+    1999,
+    3
+  ],
+  "target_definition": "For each event endpoint e: mean over transitions i=e-10..e-1 of J0^-1*(J0*delta_omega_i/dt_i + omega_i x (J0*omega_i) - tau_issued_i).",
+  "target_units": "rad/s^2; compensation acceleration, subtracted through the existing fixed-J0 path",
+  "fixed_J0_kg_m2": [
+    [
+      0.003257553333333334,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0032575533333333334,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.006360648333333333
+    ]
+  ],
+  "fixed_J0_source_audit_path": "experiments\\dl_attitude_replacement_20261026\\mlp15_c5_teacher_redistill_v1\\audits\\C5_TEACHER_RAW_AND_MLP15_SAME_STATE_AUDIT_v1.md",
+  "fixed_J0_source_audit_sha256": "fe577e5530a949472c319eb9adfee9d81c3c130fea95def57d474b8735c6edf4",
+  "target_rms_from_train_only_rad_s2": [
+    8.020856699626222,
+    7.122799706648014,
+    0.48222743119705996
+  ],
+  "target_rms_rule": "sqrt(mean(y_train**2, axes=(scene,event))); TRAIN_C5_24 only",
+  "event_schedule": {
+    "sample_dt_s": 0.001,
+    "event_stride_transitions": 10,
+    "zero_based_state_indices_first_last": [
+      10,
+      19990
+    ],
+    "matlab_state_indices_first_last": [
+      11,
+      19991
+    ],
+    "event_time_s_first_last": [
+      0.01,
+      19.99
+    ],
+    "event_timestamp_sha256_per_scene": [
+      "2ae4917d6e34b17c4469dbfca94163c49bbe19a3e02d7f10c6e7e84e048f9489",
+      "2ae4917d6e34b17c4469dbfca94163c49bbe19a3e02d7f10c6e7e84e048f9489",
+      "2ae4917d6e34b17c4469dbfca94163c49bbe19a3e02d7f10c6e7e84e048f9489",
+      "2ae4917d6e34b17c4469dbfca94163c49bbe19a3e02d7f10c6e7e84e048f9489",
+      "2ae4917d6e34b17c4469dbfca94163c49bbe19a3e02d7f10c6e7e84e048f9489",
+      "2ae4917d6e34b17c4469dbfca94163c49bbe19a3e02d7f10c6e7e84e048f9489",
+      "2ae4917d6e34b17c4469dbfca94163c49bbe19a3e02d7f10c6e7e84e048f9489",
+      "2ae4917d6e34b17c4469dbfca94163c49bbe19a3e02d7f10c6e7e84e048f9489",
+      "2ae4917d6e34b17c4469dbfca94163c49bbe19a3e02d7f10c6e7e84e048f9489",
+      "2ae4917d6e34b17c4469dbfca94163c49bbe19a3e02d7f10c6e7e84e048f9489",
+      "2ae4917d6e34b17c4469dbfca94163c49bbe19a3e02d7f10c6e7e84e048f9489",
+      "2ae4917d6e34b17c4469dbfca94163c49bbe19a3e02d7f10c6e7e84e048f9489",
+      "2ae4917d6e34b17c4469dbfca94163c49bbe19a3e02d7f10c6e7e84e048f9489",
+      "2ae4917d6e34b17c4469dbfca94163c49bbe19a3e02d7f10c6e7e84e048f9489",
+      "2ae4917d6e34b17c4469dbfca94163c49bbe19a3e02d7f10c6e7e84e048f9489",
+      "2ae4917d6e34b17c4469dbfca94163c49bbe19a3e02d7f10c6e7e84e048f9489",
+      "2ae4917d6e34b17c4469dbfca94163c49bbe19a3e02d7f10c6e7e84e048f9489",
+      "2ae4917d6e34b17c4469dbfca94163c49bbe19a3e02d7f10c6e7e84e048f9489",
+      "2ae4917d6e34b17c4469dbfca94163c49bbe19a3e02d7f10c6e7e84e048f9489",
+      "2ae4917d6e34b17c4469dbfca94163c49bbe19a3e02d7f10c6e7e84e048f9489",
+      "2ae4917d6e34b17c4469dbfca94163c49bbe19a3e02d7f10c6e7e84e048f9489",
+      "2ae4917d6e34b17c4469dbfca94163c49bbe19a3e02d7f10c6e7e84e048f9489",
+      "2ae4917d6e34b17c4469dbfca94163c49bbe19a3e02d7f10c6e7e84e048f9489",
+      "2ae4917d6e34b17c4469dbfca94163c49bbe19a3e02d7f10c6e7e84e048f9489"
+    ]
+  },
+  "label_causality": {
+    "state_window_per_event": "[e-10, e], endpoint equals feature event sample e",
+    "issued_torque_transition_indices": "[e-10, e-1]; row e is excluded because it is issued at feature time",
+    "max_label_state_index": 19990,
+    "max_issued_torque_index": 19989,
+    "future_samples_used": false
+  },
+  "feature_reconstruction_max_abs_error_vs_locked_train_x_float32": 0.0,
+  "synthetic_sign_and_units_check": {
+    "known_disturbance_torque_Nm": [
+      0.0022802873333333334,
+      -0.0013030213333333335,
+      0.0012721296666666666
+    ],
+    "known_compensation_acceleration_rad_s2": [
+      0.7,
+      -0.4,
+      0.2
+    ],
+    "recovered_residual_rad_s2": [
+      0.6999999999999998,
+      -0.3999999999999998,
+      0.1999999999999998
+    ],
+    "zero_disturbance_residual_rad_s2": [
+      -3.195140582766874e-16,
+      -3.1951405827668745e-16,
+      -2.181819695185337e-16
+    ],
+    "sign": "positive disturbance gives positive compensation-acceleration label; controller subtracts J0*estimate"
+  },
+  "records": [
+    {
+      "scene_id": "DL1018_DEV_T1_C00_W03",
+      "split": "TRAIN_C5_24",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T1_C00_W03/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "fa36bf4aa229279d964b40c10cb3579487b5c641d167572383ef49f63196af5d",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T1_C00_W03/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "86696aed73d7cde391378a38ca67b4c4b7ea2f0fbcc2144eabd780fb568fd0e6",
+      "run_start_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T1_C00_W03/C5_AXIS_MASK_M110/attempt_01/run_start.mat",
+      "run_start_sha256": "98af3bdf6d9c822bc5840875afe162bce6fc6ac296769822743f9501407a3421",
+      "scene_identity_sha256": "bda2440b2fceb1d49b4eb2fcd43052fdd28a534d1b40f00405f3a46a63f620fa",
+      "candidate": "C5_AXIS_MIXED_COORDINATE_M110",
+      "coordinate_mask": [
+        1,
+        1,
+        0
+      ],
+      "event_count": 1999,
+      "event_index_zero_based_first_last": [
+        10,
+        19990
+      ],
+      "event_time_s_first_last": [
+        0.01,
+        19.99
+      ],
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "requested_torque_source": "log/requested_generalized[:,1:4], command issued at transition start",
+      "requested_torque_static_contract": "runtime sets command=[thrust; moments], requested_generalized=command, and attitude_bs_step sets moments=nominalMoment-estimateTorque",
+      "generalized_clipped_true_count": 0,
+      "motor_saturated_true_count": 0,
+      "controller_clip_command_max_abs_error": 0.0,
+      "max_endpoint_formula_equivalence_abs_error_rad_s2": 2.325566877292939e-14,
+      "label_endpoint_max_state_sample_index": 19990,
+      "label_endpoint_max_issued_torque_transition_index": 19989,
+      "max_label_time_s": 19.99,
+      "morph_command_min_max": [
+        0.0,
+        0.0
+      ],
+      "status": "RUN_COMPLETE_RAW_PENDING_AUDIT",
+      "status_source_scene_id": "DL1018_DEV_T1_C00_W03",
+      "identity": {
+        "raw": {
+          "scene_id": "DL1018_DEV_T1_C00_W03",
+          "candidate": "C5_AXIS_MIXED_COORDINATE_M110",
+          "external_identity_sha256": "bda2440b2fceb1d49b4eb2fcd43052fdd28a534d1b40f00405f3a46a63f620fa",
+          "coordinate_mask": [
+            1.0,
+            1.0,
+            0.0
+          ]
+        },
+        "run_start": {
+          "source_scene_id": "DL1018_DEV_T1_C00_W03",
+          "external_identity_sha256": "bda2440b2fceb1d49b4eb2fcd43052fdd28a534d1b40f00405f3a46a63f620fa"
+        }
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T1_C01_W15",
+      "split": "TRAIN_C5_24",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T1_C01_W15/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "b61f01ab5920de766b8596512490b596e3959fa87368cd40a3b30758831fe651",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T1_C01_W15/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "b378ce8ff4a5910db082edbb73c9cced00c16a2aa4297295158cbb84e8e3f2a0",
+      "run_start_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T1_C01_W15/C5_AXIS_MASK_M110/attempt_01/run_start.mat",
+      "run_start_sha256": "dbe73195429475fb7956a585abfc081b7ceffc8c1e1193741c9acc0c8d9eb7e9",
+      "scene_identity_sha256": "fdbd606ddd32f11044a96c128782c5381d2aae902ee8c5edde40bd6466750671",
+      "candidate": "C5_AXIS_MIXED_COORDINATE_M110",
+      "coordinate_mask": [
+        1,
+        1,
+        0
+      ],
+      "event_count": 1999,
+      "event_index_zero_based_first_last": [
+        10,
+        19990
+      ],
+      "event_time_s_first_last": [
+        0.01,
+        19.99
+      ],
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "requested_torque_source": "log/requested_generalized[:,1:4], command issued at transition start",
+      "requested_torque_static_contract": "runtime sets command=[thrust; moments], requested_generalized=command, and attitude_bs_step sets moments=nominalMoment-estimateTorque",
+      "generalized_clipped_true_count": 0,
+      "motor_saturated_true_count": 0,
+      "controller_clip_command_max_abs_error": 0.0,
+      "max_endpoint_formula_equivalence_abs_error_rad_s2": 1.9539925233402755e-14,
+      "label_endpoint_max_state_sample_index": 19990,
+      "label_endpoint_max_issued_torque_transition_index": 19989,
+      "max_label_time_s": 19.99,
+      "morph_command_min_max": [
+        -1.0,
+        1.0
+      ],
+      "status": "RUN_COMPLETE_RAW_PENDING_AUDIT",
+      "status_source_scene_id": "DL1018_DEV_T1_C01_W15",
+      "identity": {
+        "raw": {
+          "scene_id": "DL1018_DEV_T1_C01_W15",
+          "candidate": "C5_AXIS_MIXED_COORDINATE_M110",
+          "external_identity_sha256": "fdbd606ddd32f11044a96c128782c5381d2aae902ee8c5edde40bd6466750671",
+          "coordinate_mask": [
+            1.0,
+            1.0,
+            0.0
+          ]
+        },
+        "run_start": {
+          "source_scene_id": "DL1018_DEV_T1_C01_W15",
+          "external_identity_sha256": "fdbd606ddd32f11044a96c128782c5381d2aae902ee8c5edde40bd6466750671"
+        }
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T1_C04_W00",
+      "split": "TRAIN_C5_24",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T1_C04_W00/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "ac0f403f134db3ea213547889b36f8dc5e81251d5ab03836c912e3a54453527d",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T1_C04_W00/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "ffc3b727a04deeeaed69880f856cbd4f6f013d1acebf73a49f58baee336db7e4",
+      "run_start_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T1_C04_W00/C5_AXIS_MASK_M110/attempt_01/run_start.mat",
+      "run_start_sha256": "e68246ede01aa82ae76438d9e3d87300566690e9472fc4e1fb9846d72d499e73",
+      "scene_identity_sha256": "447660dc0b9b9da5959ceac2d9ce91fcf333a677ca949018347ad96baf2f6ac5",
+      "candidate": "C5_AXIS_MIXED_COORDINATE_M110",
+      "coordinate_mask": [
+        1,
+        1,
+        0
+      ],
+      "event_count": 1999,
+      "event_index_zero_based_first_last": [
+        10,
+        19990
+      ],
+      "event_time_s_first_last": [
+        0.01,
+        19.99
+      ],
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "requested_torque_source": "log/requested_generalized[:,1:4], command issued at transition start",
+      "requested_torque_static_contract": "runtime sets command=[thrust; moments], requested_generalized=command, and attitude_bs_step sets moments=nominalMoment-estimateTorque",
+      "generalized_clipped_true_count": 0,
+      "motor_saturated_true_count": 0,
+      "controller_clip_command_max_abs_error": 0.0,
+      "max_endpoint_formula_equivalence_abs_error_rad_s2": 2.0799621272887998e-14,
+      "label_endpoint_max_state_sample_index": 19990,
+      "label_endpoint_max_issued_torque_transition_index": 19989,
+      "max_label_time_s": 19.99,
+      "morph_command_min_max": [
+        -1.0,
+        1.0
+      ],
+      "status": "RUN_COMPLETE_RAW_PENDING_AUDIT",
+      "status_source_scene_id": "DL1018_DEV_T1_C04_W00",
+      "identity": {
+        "raw": {
+          "scene_id": "DL1018_DEV_T1_C04_W00",
+          "candidate": "C5_AXIS_MIXED_COORDINATE_M110",
+          "external_identity_sha256": "447660dc0b9b9da5959ceac2d9ce91fcf333a677ca949018347ad96baf2f6ac5",
+          "coordinate_mask": [
+            1.0,
+            1.0,
+            0.0
+          ]
+        },
+        "run_start": {
+          "source_scene_id": "DL1018_DEV_T1_C04_W00",
+          "external_identity_sha256": "447660dc0b9b9da5959ceac2d9ce91fcf333a677ca949018347ad96baf2f6ac5"
+        }
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T1_C05_W06",
+      "split": "TRAIN_C5_24",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T1_C05_W06/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "727febc0aedbd4f127eb46aec8d103ab5b2b1e4336d8e92882c4447b779b602e",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T1_C05_W06/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "048fcd211b27405b014346e87929e15d50c6469258b35eb732e0ab9a9a014e29",
+      "run_start_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T1_C05_W06/C5_AXIS_MASK_M110/attempt_01/run_start.mat",
+      "run_start_sha256": "ab4fdb55cf5833f951439cc9908064bea9643d0bc121be2503fa88e1f7b0da31",
+      "scene_identity_sha256": "d53f354f8f4e97eca1cbca47147da6396e9d62a80923aa567f6e2eea072fb807",
+      "candidate": "C5_AXIS_MIXED_COORDINATE_M110",
+      "coordinate_mask": [
+        1,
+        1,
+        0
+      ],
+      "event_count": 1999,
+      "event_index_zero_based_first_last": [
+        10,
+        19990
+      ],
+      "event_time_s_first_last": [
+        0.01,
+        19.99
+      ],
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "requested_torque_source": "log/requested_generalized[:,1:4], command issued at transition start",
+      "requested_torque_static_contract": "runtime sets command=[thrust; moments], requested_generalized=command, and attitude_bs_step sets moments=nominalMoment-estimateTorque",
+      "generalized_clipped_true_count": 0,
+      "motor_saturated_true_count": 0,
+      "controller_clip_command_max_abs_error": 0.0,
+      "max_endpoint_formula_equivalence_abs_error_rad_s2": 9.947598300641403e-14,
+      "label_endpoint_max_state_sample_index": 19990,
+      "label_endpoint_max_issued_torque_transition_index": 19989,
+      "max_label_time_s": 19.99,
+      "morph_command_min_max": [
+        -1.0,
+        1.0
+      ],
+      "status": "RUN_COMPLETE_RAW_PENDING_AUDIT",
+      "status_source_scene_id": "DL1018_DEV_T1_C05_W06",
+      "identity": {
+        "raw": {
+          "scene_id": "DL1018_DEV_T1_C05_W06",
+          "candidate": "C5_AXIS_MIXED_COORDINATE_M110",
+          "external_identity_sha256": "d53f354f8f4e97eca1cbca47147da6396e9d62a80923aa567f6e2eea072fb807",
+          "coordinate_mask": [
+            1.0,
+            1.0,
+            0.0
+          ]
+        },
+        "run_start": {
+          "source_scene_id": "DL1018_DEV_T1_C05_W06",
+          "external_identity_sha256": "d53f354f8f4e97eca1cbca47147da6396e9d62a80923aa567f6e2eea072fb807"
+        }
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T1_C07_W08",
+      "split": "TRAIN_C5_24",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T1_C07_W08/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "b7fc7c1a8ac1c744429a36ad1ee93e1b4b45d59c82c61808b1f9c4af999483b1",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T1_C07_W08/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "db955418d06234f569cf5206b0b621ac4bd38b89e640aa32a04b4502689afa7a",
+      "run_start_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T1_C07_W08/C5_AXIS_MASK_M110/attempt_01/run_start.mat",
+      "run_start_sha256": "c54b009bba13c21cd867b40b0b941d25f0353c09c1677567f1a8ff247719910c",
+      "scene_identity_sha256": "2acd39b098764c8ebaa6f2f13575198a2ff626a4580373839e4d11452f23db97",
+      "candidate": "C5_AXIS_MIXED_COORDINATE_M110",
+      "coordinate_mask": [
+        1,
+        1,
+        0
+      ],
+      "event_count": 1999,
+      "event_index_zero_based_first_last": [
+        10,
+        19990
+      ],
+      "event_time_s_first_last": [
+        0.01,
+        19.99
+      ],
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "requested_torque_source": "log/requested_generalized[:,1:4], command issued at transition start",
+      "requested_torque_static_contract": "runtime sets command=[thrust; moments], requested_generalized=command, and attitude_bs_step sets moments=nominalMoment-estimateTorque",
+      "generalized_clipped_true_count": 0,
+      "motor_saturated_true_count": 0,
+      "controller_clip_command_max_abs_error": 0.0,
+      "max_endpoint_formula_equivalence_abs_error_rad_s2": 4.125890709812119e-13,
+      "label_endpoint_max_state_sample_index": 19990,
+      "label_endpoint_max_issued_torque_transition_index": 19989,
+      "max_label_time_s": 19.99,
+      "morph_command_min_max": [
+        -1.0,
+        1.0
+      ],
+      "status": "RUN_COMPLETE_RAW_PENDING_AUDIT",
+      "status_source_scene_id": "DL1018_DEV_T1_C07_W08",
+      "identity": {
+        "raw": {
+          "scene_id": "DL1018_DEV_T1_C07_W08",
+          "candidate": "C5_AXIS_MIXED_COORDINATE_M110",
+          "external_identity_sha256": "2acd39b098764c8ebaa6f2f13575198a2ff626a4580373839e4d11452f23db97",
+          "coordinate_mask": [
+            1.0,
+            1.0,
+            0.0
+          ]
+        },
+        "run_start": {
+          "source_scene_id": "DL1018_DEV_T1_C07_W08",
+          "external_identity_sha256": "2acd39b098764c8ebaa6f2f13575198a2ff626a4580373839e4d11452f23db97"
+        }
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T1_C10_W09",
+      "split": "TRAIN_C5_24",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T1_C10_W09/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "1e684df2174bc6b754e7798c67acb5c0b4ead218bcc1bd7b1d5cfc1a2fcf4991",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T1_C10_W09/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "d2caf08f0ffba7000de0d407db09905375618b0821c545bf4f5e63d299fa8d83",
+      "run_start_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T1_C10_W09/C5_AXIS_MASK_M110/attempt_01/run_start.mat",
+      "run_start_sha256": "78638ac884ebee7fd03bfd5258a2f34754208b8a08fb78763f9e7908a3768a71",
+      "scene_identity_sha256": "f99325407f9dd8f106e1647487961dc6bd1250d7e0e3b84c68a1360ad20c2046",
+      "candidate": "C5_AXIS_MIXED_COORDINATE_M110",
+      "coordinate_mask": [
+        1,
+        1,
+        0
+      ],
+      "event_count": 1999,
+      "event_index_zero_based_first_last": [
+        10,
+        19990
+      ],
+      "event_time_s_first_last": [
+        0.01,
+        19.99
+      ],
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "requested_torque_source": "log/requested_generalized[:,1:4], command issued at transition start",
+      "requested_torque_static_contract": "runtime sets command=[thrust; moments], requested_generalized=command, and attitude_bs_step sets moments=nominalMoment-estimateTorque",
+      "generalized_clipped_true_count": 0,
+      "motor_saturated_true_count": 0,
+      "controller_clip_command_max_abs_error": 0.0,
+      "max_endpoint_formula_equivalence_abs_error_rad_s2": 2.2934803809251426e-13,
+      "label_endpoint_max_state_sample_index": 19990,
+      "label_endpoint_max_issued_torque_transition_index": 19989,
+      "max_label_time_s": 19.99,
+      "morph_command_min_max": [
+        -1.0,
+        1.0
+      ],
+      "status": "RUN_COMPLETE_RAW_PENDING_AUDIT",
+      "status_source_scene_id": "DL1018_DEV_T1_C10_W09",
+      "identity": {
+        "raw": {
+          "scene_id": "DL1018_DEV_T1_C10_W09",
+          "candidate": "C5_AXIS_MIXED_COORDINATE_M110",
+          "external_identity_sha256": "f99325407f9dd8f106e1647487961dc6bd1250d7e0e3b84c68a1360ad20c2046",
+          "coordinate_mask": [
+            1.0,
+            1.0,
+            0.0
+          ]
+        },
+        "run_start": {
+          "source_scene_id": "DL1018_DEV_T1_C10_W09",
+          "external_identity_sha256": "f99325407f9dd8f106e1647487961dc6bd1250d7e0e3b84c68a1360ad20c2046"
+        }
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T1_C11_W12",
+      "split": "TRAIN_C5_24",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T1_C11_W12/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "996edaae6b20f048468a04d36d1b2af19c1daf5d45e5bc8160f52f3bd35b2aa2",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T1_C11_W12/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "78e067efa8cd1615918dec1cc19bf6f836cb69ec87f5219223850b97f68533b0",
+      "run_start_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T1_C11_W12/C5_AXIS_MASK_M110/attempt_01/run_start.mat",
+      "run_start_sha256": "9db720d28df37a849c03b6bf7687a926e84de8417d390685d04f97983f38bb39",
+      "scene_identity_sha256": "002e9e3e465161cf7eda76ca6e17cbadcfb51a9025cdf879a63bf598eb61ee17",
+      "candidate": "C5_AXIS_MIXED_COORDINATE_M110",
+      "coordinate_mask": [
+        1,
+        1,
+        0
+      ],
+      "event_count": 1999,
+      "event_index_zero_based_first_last": [
+        10,
+        19990
+      ],
+      "event_time_s_first_last": [
+        0.01,
+        19.99
+      ],
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "requested_torque_source": "log/requested_generalized[:,1:4], command issued at transition start",
+      "requested_torque_static_contract": "runtime sets command=[thrust; moments], requested_generalized=command, and attitude_bs_step sets moments=nominalMoment-estimateTorque",
+      "generalized_clipped_true_count": 0,
+      "motor_saturated_true_count": 0,
+      "controller_clip_command_max_abs_error": 0.0,
+      "max_endpoint_formula_equivalence_abs_error_rad_s2": 2.467070432221174e-13,
+      "label_endpoint_max_state_sample_index": 19990,
+      "label_endpoint_max_issued_torque_transition_index": 19989,
+      "max_label_time_s": 19.99,
+      "morph_command_min_max": [
+        -1.0,
+        1.0
+      ],
+      "status": "RUN_COMPLETE_RAW_PENDING_AUDIT",
+      "status_source_scene_id": "DL1018_DEV_T1_C11_W12",
+      "identity": {
+        "raw": {
+          "scene_id": "DL1018_DEV_T1_C11_W12",
+          "candidate": "C5_AXIS_MIXED_COORDINATE_M110",
+          "external_identity_sha256": "002e9e3e465161cf7eda76ca6e17cbadcfb51a9025cdf879a63bf598eb61ee17",
+          "coordinate_mask": [
+            1.0,
+            1.0,
+            0.0
+          ]
+        },
+        "run_start": {
+          "source_scene_id": "DL1018_DEV_T1_C11_W12",
+          "external_identity_sha256": "002e9e3e465161cf7eda76ca6e17cbadcfb51a9025cdf879a63bf598eb61ee17"
+        }
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T1_C15_W14",
+      "split": "TRAIN_C5_24",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T1_C15_W14/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "6c72ae52e3f39af36442935468af7d2a047af460b845223167ee206d0dc96707",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T1_C15_W14/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "506b19b805e55f11a7305df6b6fb5972fbb936aceb4c4f6db62bb4c70f5cbe3c",
+      "run_start_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T1_C15_W14/C5_AXIS_MASK_M110/attempt_01/run_start.mat",
+      "run_start_sha256": "90872432275d3ec63618d38382557b1339075bff8435354c541d31c72ff5f278",
+      "scene_identity_sha256": "e5cde50eea4e41a6f4811401a6225cef6625317dad4178097df78df259245896",
+      "candidate": "C5_AXIS_MIXED_COORDINATE_M110",
+      "coordinate_mask": [
+        1,
+        1,
+        0
+      ],
+      "event_count": 1999,
+      "event_index_zero_based_first_last": [
+        10,
+        19990
+      ],
+      "event_time_s_first_last": [
+        0.01,
+        19.99
+      ],
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "requested_torque_source": "log/requested_generalized[:,1:4], command issued at transition start",
+      "requested_torque_static_contract": "runtime sets command=[thrust; moments], requested_generalized=command, and attitude_bs_step sets moments=nominalMoment-estimateTorque",
+      "generalized_clipped_true_count": 0,
+      "motor_saturated_true_count": 0,
+      "controller_clip_command_max_abs_error": 0.0,
+      "max_endpoint_formula_equivalence_abs_error_rad_s2": 6.180440003094451e-13,
+      "label_endpoint_max_state_sample_index": 19990,
+      "label_endpoint_max_issued_torque_transition_index": 19989,
+      "max_label_time_s": 19.99,
+      "morph_command_min_max": [
+        -1.0,
+        1.0
+      ],
+      "status": "RUN_COMPLETE_RAW_PENDING_AUDIT",
+      "status_source_scene_id": "DL1018_DEV_T1_C15_W14",
+      "identity": {
+        "raw": {
+          "scene_id": "DL1018_DEV_T1_C15_W14",
+          "candidate": "C5_AXIS_MIXED_COORDINATE_M110",
+          "external_identity_sha256": "e5cde50eea4e41a6f4811401a6225cef6625317dad4178097df78df259245896",
+          "coordinate_mask": [
+            1.0,
+            1.0,
+            0.0
+          ]
+        },
+        "run_start": {
+          "source_scene_id": "DL1018_DEV_T1_C15_W14",
+          "external_identity_sha256": "e5cde50eea4e41a6f4811401a6225cef6625317dad4178097df78df259245896"
+        }
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C00_W04",
+      "split": "TRAIN_C5_24",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T2_C00_W04/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "9b408641737fe13bcc290d87f0d02176c26701717fc9145e1ca0191be906442f",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T2_C00_W04/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "87cbb9d7f7c3683b3fed5a348c219166f3c6289808f6b0af2c56c5491d7269b3",
+      "run_start_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T2_C00_W04/C5_AXIS_MASK_M110/attempt_01/run_start.mat",
+      "run_start_sha256": "6cc662bf670d73b5105487a344c4e66101baaf56015d139e49adecc70ef1a507",
+      "scene_identity_sha256": "137cb10df1d093075b7d900b7a106be055af4f0ebbb60a1065d2e72d45e10a86",
+      "candidate": "C5_AXIS_MIXED_COORDINATE_M110",
+      "coordinate_mask": [
+        1,
+        1,
+        0
+      ],
+      "event_count": 1999,
+      "event_index_zero_based_first_last": [
+        10,
+        19990
+      ],
+      "event_time_s_first_last": [
+        0.01,
+        19.99
+      ],
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "requested_torque_source": "log/requested_generalized[:,1:4], command issued at transition start",
+      "requested_torque_static_contract": "runtime sets command=[thrust; moments], requested_generalized=command, and attitude_bs_step sets moments=nominalMoment-estimateTorque",
+      "generalized_clipped_true_count": 0,
+      "motor_saturated_true_count": 0,
+      "controller_clip_command_max_abs_error": 0.0,
+      "max_endpoint_formula_equivalence_abs_error_rad_s2": 6.028555154131152e-14,
+      "label_endpoint_max_state_sample_index": 19990,
+      "label_endpoint_max_issued_torque_transition_index": 19989,
+      "max_label_time_s": 19.99,
+      "morph_command_min_max": [
+        0.0,
+        0.0
+      ],
+      "status": "RUN_COMPLETE_RAW_PENDING_AUDIT",
+      "status_source_scene_id": "DL1018_DEV_T2_C00_W04_ACC_FIX_V1",
+      "identity": {
+        "raw": {
+          "scene_id": "DL1018_DEV_T2_C00_W04",
+          "candidate": "C5_AXIS_MIXED_COORDINATE_M110",
+          "external_identity_sha256": "137cb10df1d093075b7d900b7a106be055af4f0ebbb60a1065d2e72d45e10a86",
+          "coordinate_mask": [
+            1.0,
+            1.0,
+            0.0
+          ]
+        },
+        "run_start": {
+          "source_scene_id": "DL1018_DEV_T2_C00_W04_ACC_FIX_V1",
+          "external_identity_sha256": "137cb10df1d093075b7d900b7a106be055af4f0ebbb60a1065d2e72d45e10a86"
+        }
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C02_W15",
+      "split": "TRAIN_C5_24",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T2_C02_W15/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "f0e524b6bd8bbafc6e6ecccff3879500332371af068421db120cd795944f608b",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T2_C02_W15/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "8122b384edc66cb10579290f1788031c4aabdda0dd4da03e4ba2f2d265fd733f",
+      "run_start_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T2_C02_W15/C5_AXIS_MASK_M110/attempt_01/run_start.mat",
+      "run_start_sha256": "9d41cba15e568b6f3355e3ada797e4b65f232e8a03cde22084b915f064e45504",
+      "scene_identity_sha256": "1e76f88eb0d3a7f87c8fcd1a187d71aa1a2a695592e9fd25859dc655052a060f",
+      "candidate": "C5_AXIS_MIXED_COORDINATE_M110",
+      "coordinate_mask": [
+        1,
+        1,
+        0
+      ],
+      "event_count": 1999,
+      "event_index_zero_based_first_last": [
+        10,
+        19990
+      ],
+      "event_time_s_first_last": [
+        0.01,
+        19.99
+      ],
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "requested_torque_source": "log/requested_generalized[:,1:4], command issued at transition start",
+      "requested_torque_static_contract": "runtime sets command=[thrust; moments], requested_generalized=command, and attitude_bs_step sets moments=nominalMoment-estimateTorque",
+      "generalized_clipped_true_count": 0,
+      "motor_saturated_true_count": 0,
+      "controller_clip_command_max_abs_error": 0.0,
+      "max_endpoint_formula_equivalence_abs_error_rad_s2": 2.562688779852171e-14,
+      "label_endpoint_max_state_sample_index": 19990,
+      "label_endpoint_max_issued_torque_transition_index": 19989,
+      "max_label_time_s": 19.99,
+      "morph_command_min_max": [
+        -1.0,
+        1.0
+      ],
+      "status": "RUN_COMPLETE_RAW_PENDING_AUDIT",
+      "status_source_scene_id": "DL1018_DEV_T2_C02_W15_ACC_FIX_V1",
+      "identity": {
+        "raw": {
+          "scene_id": "DL1018_DEV_T2_C02_W15",
+          "candidate": "C5_AXIS_MIXED_COORDINATE_M110",
+          "external_identity_sha256": "1e76f88eb0d3a7f87c8fcd1a187d71aa1a2a695592e9fd25859dc655052a060f",
+          "coordinate_mask": [
+            1.0,
+            1.0,
+            0.0
+          ]
+        },
+        "run_start": {
+          "source_scene_id": "DL1018_DEV_T2_C02_W15_ACC_FIX_V1",
+          "external_identity_sha256": "1e76f88eb0d3a7f87c8fcd1a187d71aa1a2a695592e9fd25859dc655052a060f"
+        }
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C03_W01",
+      "split": "TRAIN_C5_24",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T2_C03_W01/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "5bab1c31978d9230c2fa234f2e7623d42ce13fa20b1b99e9d73a7127c4f96b4f",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T2_C03_W01/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "c43bbb7c9d419cf6177bfa78eb388043d3a16548ec626079ca00e1a3248ec21c",
+      "run_start_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T2_C03_W01/C5_AXIS_MASK_M110/attempt_01/run_start.mat",
+      "run_start_sha256": "8f466803f435e473e953d0cf09c87de3166a58b457355751ec466b6cc71bf14a",
+      "scene_identity_sha256": "99e6a759bd4f6e8bae72793d72c4c0753c01b900f9e0a3f1a12f8a253553b00f",
+      "candidate": "C5_AXIS_MIXED_COORDINATE_M110",
+      "coordinate_mask": [
+        1,
+        1,
+        0
+      ],
+      "event_count": 1999,
+      "event_index_zero_based_first_last": [
+        10,
+        19990
+      ],
+      "event_time_s_first_last": [
+        0.01,
+        19.99
+      ],
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "requested_torque_source": "log/requested_generalized[:,1:4], command issued at transition start",
+      "requested_torque_static_contract": "runtime sets command=[thrust; moments], requested_generalized=command, and attitude_bs_step sets moments=nominalMoment-estimateTorque",
+      "generalized_clipped_true_count": 0,
+      "motor_saturated_true_count": 0,
+      "controller_clip_command_max_abs_error": 0.0,
+      "max_endpoint_formula_equivalence_abs_error_rad_s2": 3.013350711263043e-14,
+      "label_endpoint_max_state_sample_index": 19990,
+      "label_endpoint_max_issued_torque_transition_index": 19989,
+      "max_label_time_s": 19.99,
+      "morph_command_min_max": [
+        -1.0,
+        1.0
+      ],
+      "status": "RUN_COMPLETE_RAW_PENDING_AUDIT",
+      "status_source_scene_id": "DL1018_DEV_T2_C03_W01_ACC_FIX_V1",
+      "identity": {
+        "raw": {
+          "scene_id": "DL1018_DEV_T2_C03_W01",
+          "candidate": "C5_AXIS_MIXED_COORDINATE_M110",
+          "external_identity_sha256": "99e6a759bd4f6e8bae72793d72c4c0753c01b900f9e0a3f1a12f8a253553b00f",
+          "coordinate_mask": [
+            1.0,
+            1.0,
+            0.0
+          ]
+        },
+        "run_start": {
+          "source_scene_id": "DL1018_DEV_T2_C03_W01_ACC_FIX_V1",
+          "external_identity_sha256": "99e6a759bd4f6e8bae72793d72c4c0753c01b900f9e0a3f1a12f8a253553b00f"
+        }
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C06_W07",
+      "split": "TRAIN_C5_24",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T2_C06_W07/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "02869a1271b1a5483b03565cc2e2366fd370392e68e9265ca943251e212a56be",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T2_C06_W07/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "c6b7cd00649d4899be739d43e37093904f7ff566f9a3f5c816d15163d94ed6cc",
+      "run_start_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T2_C06_W07/C5_AXIS_MASK_M110/attempt_01/run_start.mat",
+      "run_start_sha256": "29117c61aab4889a33b8efc6c43ff4437e42eea0543cb244ab787f9b103ff7d1",
+      "scene_identity_sha256": "23fbad1173ab561ea06e3fc233d2240512623d8784f63ad746ab187cd3569268",
+      "candidate": "C5_AXIS_MIXED_COORDINATE_M110",
+      "coordinate_mask": [
+        1,
+        1,
+        0
+      ],
+      "event_count": 1999,
+      "event_index_zero_based_first_last": [
+        10,
+        19990
+      ],
+      "event_time_s_first_last": [
+        0.01,
+        19.99
+      ],
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "requested_torque_source": "log/requested_generalized[:,1:4], command issued at transition start",
+      "requested_torque_static_contract": "runtime sets command=[thrust; moments], requested_generalized=command, and attitude_bs_step sets moments=nominalMoment-estimateTorque",
+      "generalized_clipped_true_count": 0,
+      "motor_saturated_true_count": 0,
+      "controller_clip_command_max_abs_error": 0.0,
+      "max_endpoint_formula_equivalence_abs_error_rad_s2": 3.3709791685473944e-13,
+      "label_endpoint_max_state_sample_index": 19990,
+      "label_endpoint_max_issued_torque_transition_index": 19989,
+      "max_label_time_s": 19.99,
+      "morph_command_min_max": [
+        -1.0,
+        1.0
+      ],
+      "status": "RUN_COMPLETE_RAW_PENDING_AUDIT",
+      "status_source_scene_id": "DL1018_DEV_T2_C06_W07_ACC_FIX_V1",
+      "identity": {
+        "raw": {
+          "scene_id": "DL1018_DEV_T2_C06_W07",
+          "candidate": "C5_AXIS_MIXED_COORDINATE_M110",
+          "external_identity_sha256": "23fbad1173ab561ea06e3fc233d2240512623d8784f63ad746ab187cd3569268",
+          "coordinate_mask": [
+            1.0,
+            1.0,
+            0.0
+          ]
+        },
+        "run_start": {
+          "source_scene_id": "DL1018_DEV_T2_C06_W07_ACC_FIX_V1",
+          "external_identity_sha256": "23fbad1173ab561ea06e3fc233d2240512623d8784f63ad746ab187cd3569268"
+        }
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C08_W08",
+      "split": "TRAIN_C5_24",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T2_C08_W08/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "6a0db67bee5e28cc6d5815e7273e376efc8311aa9c8591b1c238707b2b011d3b",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T2_C08_W08/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "63dbd53dbad9d396295de8dec20a5f5426f50b79e8a32026449182164e7074c2",
+      "run_start_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T2_C08_W08/C5_AXIS_MASK_M110/attempt_01/run_start.mat",
+      "run_start_sha256": "eac50ab6e9c42018be2eb9c247c3eabecb5b0f34a7af4da3e458d9dd54897bb7",
+      "scene_identity_sha256": "9a338a3faf61065992a98d86efba35251fa2fbc1476ff8428633d8707da5543e",
+      "candidate": "C5_AXIS_MIXED_COORDINATE_M110",
+      "coordinate_mask": [
+        1,
+        1,
+        0
+      ],
+      "event_count": 1999,
+      "event_index_zero_based_first_last": [
+        10,
+        19990
+      ],
+      "event_time_s_first_last": [
+        0.01,
+        19.99
+      ],
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "requested_torque_source": "log/requested_generalized[:,1:4], command issued at transition start",
+      "requested_torque_static_contract": "runtime sets command=[thrust; moments], requested_generalized=command, and attitude_bs_step sets moments=nominalMoment-estimateTorque",
+      "generalized_clipped_true_count": 0,
+      "motor_saturated_true_count": 0,
+      "controller_clip_command_max_abs_error": 0.0,
+      "max_endpoint_formula_equivalence_abs_error_rad_s2": 4.946073119214273e-13,
+      "label_endpoint_max_state_sample_index": 19990,
+      "label_endpoint_max_issued_torque_transition_index": 19989,
+      "max_label_time_s": 19.99,
+      "morph_command_min_max": [
+        -1.0,
+        1.0
+      ],
+      "status": "RUN_COMPLETE_RAW_PENDING_AUDIT",
+      "status_source_scene_id": "DL1018_DEV_T2_C08_W08_ACC_FIX_V1",
+      "identity": {
+        "raw": {
+          "scene_id": "DL1018_DEV_T2_C08_W08",
+          "candidate": "C5_AXIS_MIXED_COORDINATE_M110",
+          "external_identity_sha256": "9a338a3faf61065992a98d86efba35251fa2fbc1476ff8428633d8707da5543e",
+          "coordinate_mask": [
+            1.0,
+            1.0,
+            0.0
+          ]
+        },
+        "run_start": {
+          "source_scene_id": "DL1018_DEV_T2_C08_W08_ACC_FIX_V1",
+          "external_identity_sha256": "9a338a3faf61065992a98d86efba35251fa2fbc1476ff8428633d8707da5543e"
+        }
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C09_W10",
+      "split": "TRAIN_C5_24",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T2_C09_W10/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "9810e02aa6bede12197eda25dbb0c18335252b1965f055931ea28b2f2dbb505d",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T2_C09_W10/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "7c777b788552c599410dcfe18fbf55908800f52dd41f6a844104af09e60822fe",
+      "run_start_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T2_C09_W10/C5_AXIS_MASK_M110/attempt_01/run_start.mat",
+      "run_start_sha256": "957c89a63893cb4c8802298f27f36e9ef9a23fbd5c6cf1f98139ec882578ab9e",
+      "scene_identity_sha256": "c1355853abeb373412d69be869b54897a85e07011d94a22e8d3c777893a93720",
+      "candidate": "C5_AXIS_MIXED_COORDINATE_M110",
+      "coordinate_mask": [
+        1,
+        1,
+        0
+      ],
+      "event_count": 1999,
+      "event_index_zero_based_first_last": [
+        10,
+        19990
+      ],
+      "event_time_s_first_last": [
+        0.01,
+        19.99
+      ],
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "requested_torque_source": "log/requested_generalized[:,1:4], command issued at transition start",
+      "requested_torque_static_contract": "runtime sets command=[thrust; moments], requested_generalized=command, and attitude_bs_step sets moments=nominalMoment-estimateTorque",
+      "generalized_clipped_true_count": 0,
+      "motor_saturated_true_count": 0,
+      "controller_clip_command_max_abs_error": 0.0,
+      "max_endpoint_formula_equivalence_abs_error_rad_s2": 7.026055068017024e-13,
+      "label_endpoint_max_state_sample_index": 19990,
+      "label_endpoint_max_issued_torque_transition_index": 19989,
+      "max_label_time_s": 19.99,
+      "morph_command_min_max": [
+        -1.0,
+        1.0
+      ],
+      "status": "RUN_COMPLETE_RAW_PENDING_AUDIT",
+      "status_source_scene_id": "DL1018_DEV_T2_C09_W10_ACC_FIX_V1",
+      "identity": {
+        "raw": {
+          "scene_id": "DL1018_DEV_T2_C09_W10",
+          "candidate": "C5_AXIS_MIXED_COORDINATE_M110",
+          "external_identity_sha256": "c1355853abeb373412d69be869b54897a85e07011d94a22e8d3c777893a93720",
+          "coordinate_mask": [
+            1.0,
+            1.0,
+            0.0
+          ]
+        },
+        "run_start": {
+          "source_scene_id": "DL1018_DEV_T2_C09_W10_ACC_FIX_V1",
+          "external_identity_sha256": "c1355853abeb373412d69be869b54897a85e07011d94a22e8d3c777893a93720"
+        }
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C12_W13",
+      "split": "TRAIN_C5_24",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T2_C12_W13/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "28c004f613cb24fdca025ab73a6a6e7d32863a4a61197ed6d246db65f4e944bb",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T2_C12_W13/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "60dc5109337aea903cae00f3702965c483181b682f2fb1a5a9942e749e402214",
+      "run_start_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T2_C12_W13/C5_AXIS_MASK_M110/attempt_01/run_start.mat",
+      "run_start_sha256": "4f1ad375e7516a09d868c2ecab231210cb416b1ed80b7d12e428e36cde33ca05",
+      "scene_identity_sha256": "60781d7800f0bd5229dc4d974385931674f9815f8868f3edb52f0e2b8410a8f9",
+      "candidate": "C5_AXIS_MIXED_COORDINATE_M110",
+      "coordinate_mask": [
+        1,
+        1,
+        0
+      ],
+      "event_count": 1999,
+      "event_index_zero_based_first_last": [
+        10,
+        19990
+      ],
+      "event_time_s_first_last": [
+        0.01,
+        19.99
+      ],
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "requested_torque_source": "log/requested_generalized[:,1:4], command issued at transition start",
+      "requested_torque_static_contract": "runtime sets command=[thrust; moments], requested_generalized=command, and attitude_bs_step sets moments=nominalMoment-estimateTorque",
+      "generalized_clipped_true_count": 0,
+      "motor_saturated_true_count": 0,
+      "controller_clip_command_max_abs_error": 0.0,
+      "max_endpoint_formula_equivalence_abs_error_rad_s2": 8.188343996652788e-13,
+      "label_endpoint_max_state_sample_index": 19990,
+      "label_endpoint_max_issued_torque_transition_index": 19989,
+      "max_label_time_s": 19.99,
+      "morph_command_min_max": [
+        -1.0,
+        1.0
+      ],
+      "status": "RUN_COMPLETE_RAW_PENDING_AUDIT",
+      "status_source_scene_id": "DL1018_DEV_T2_C12_W13_ACC_FIX_V1",
+      "identity": {
+        "raw": {
+          "scene_id": "DL1018_DEV_T2_C12_W13",
+          "candidate": "C5_AXIS_MIXED_COORDINATE_M110",
+          "external_identity_sha256": "60781d7800f0bd5229dc4d974385931674f9815f8868f3edb52f0e2b8410a8f9",
+          "coordinate_mask": [
+            1.0,
+            1.0,
+            0.0
+          ]
+        },
+        "run_start": {
+          "source_scene_id": "DL1018_DEV_T2_C12_W13_ACC_FIX_V1",
+          "external_identity_sha256": "60781d7800f0bd5229dc4d974385931674f9815f8868f3edb52f0e2b8410a8f9"
+        }
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C14_W14",
+      "split": "TRAIN_C5_24",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T2_C14_W14/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "f863bed7657ef34ad0712ac755999e07dd7b55fed51c57811cdc80fa7421a93e",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T2_C14_W14/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "02900ddb8a9de38f85049322500d0eaf61b5982d8b7f1a4361a341ddf825dc61",
+      "run_start_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T2_C14_W14/C5_AXIS_MASK_M110/attempt_01/run_start.mat",
+      "run_start_sha256": "24b92d07e67620881d401aac2e0441a06480ef481b0056f12c90d1d78a90dc48",
+      "scene_identity_sha256": "6549a05f5f113ce211c9602d270d91780711dfd03b9a04b8a616742e80c114d6",
+      "candidate": "C5_AXIS_MIXED_COORDINATE_M110",
+      "coordinate_mask": [
+        1,
+        1,
+        0
+      ],
+      "event_count": 1999,
+      "event_index_zero_based_first_last": [
+        10,
+        19990
+      ],
+      "event_time_s_first_last": [
+        0.01,
+        19.99
+      ],
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "requested_torque_source": "log/requested_generalized[:,1:4], command issued at transition start",
+      "requested_torque_static_contract": "runtime sets command=[thrust; moments], requested_generalized=command, and attitude_bs_step sets moments=nominalMoment-estimateTorque",
+      "generalized_clipped_true_count": 0,
+      "motor_saturated_true_count": 0,
+      "controller_clip_command_max_abs_error": 0.0,
+      "max_endpoint_formula_equivalence_abs_error_rad_s2": 7.916662253049447e-13,
+      "label_endpoint_max_state_sample_index": 19990,
+      "label_endpoint_max_issued_torque_transition_index": 19989,
+      "max_label_time_s": 19.99,
+      "morph_command_min_max": [
+        -1.0,
+        1.0
+      ],
+      "status": "RUN_COMPLETE_RAW_PENDING_AUDIT",
+      "status_source_scene_id": "DL1018_DEV_T2_C14_W14_ACC_FIX_V1",
+      "identity": {
+        "raw": {
+          "scene_id": "DL1018_DEV_T2_C14_W14",
+          "candidate": "C5_AXIS_MIXED_COORDINATE_M110",
+          "external_identity_sha256": "6549a05f5f113ce211c9602d270d91780711dfd03b9a04b8a616742e80c114d6",
+          "coordinate_mask": [
+            1.0,
+            1.0,
+            0.0
+          ]
+        },
+        "run_start": {
+          "source_scene_id": "DL1018_DEV_T2_C14_W14_ACC_FIX_V1",
+          "external_identity_sha256": "6549a05f5f113ce211c9602d270d91780711dfd03b9a04b8a616742e80c114d6"
+        }
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C00_W05",
+      "split": "TRAIN_C5_24",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T3_C00_W05/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "a88c5010bb1e264ddde36f9e1400d0f6947b5a0a7361dede183c59e0f9f634f3",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T3_C00_W05/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "7dcb6ece982bb30dc4a51b8cea678f9de615f0a9c5c3959a697e5ea5116882e4",
+      "run_start_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T3_C00_W05/C5_AXIS_MASK_M110/attempt_01/run_start.mat",
+      "run_start_sha256": "396f3872fb96f56f841ac5a30fbe76b15afe6b612c8f4a6b48d70087c1a1dd0b",
+      "scene_identity_sha256": "221b0f89f9f0bde22d67af17bc32622dbdb53e1f64ef35884bc5cfa22f9682b2",
+      "candidate": "C5_AXIS_MIXED_COORDINATE_M110",
+      "coordinate_mask": [
+        1,
+        1,
+        0
+      ],
+      "event_count": 1999,
+      "event_index_zero_based_first_last": [
+        10,
+        19990
+      ],
+      "event_time_s_first_last": [
+        0.01,
+        19.99
+      ],
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "requested_torque_source": "log/requested_generalized[:,1:4], command issued at transition start",
+      "requested_torque_static_contract": "runtime sets command=[thrust; moments], requested_generalized=command, and attitude_bs_step sets moments=nominalMoment-estimateTorque",
+      "generalized_clipped_true_count": 0,
+      "motor_saturated_true_count": 0,
+      "controller_clip_command_max_abs_error": 0.0,
+      "max_endpoint_formula_equivalence_abs_error_rad_s2": 1.152048143602364e-13,
+      "label_endpoint_max_state_sample_index": 19990,
+      "label_endpoint_max_issued_torque_transition_index": 19989,
+      "max_label_time_s": 19.99,
+      "morph_command_min_max": [
+        0.0,
+        0.0
+      ],
+      "status": "RUN_COMPLETE_RAW_PENDING_AUDIT",
+      "status_source_scene_id": "DL1018_DEV_T3_C00_W05",
+      "identity": {
+        "raw": {
+          "scene_id": "DL1018_DEV_T3_C00_W05",
+          "candidate": "C5_AXIS_MIXED_COORDINATE_M110",
+          "external_identity_sha256": "221b0f89f9f0bde22d67af17bc32622dbdb53e1f64ef35884bc5cfa22f9682b2",
+          "coordinate_mask": [
+            1.0,
+            1.0,
+            0.0
+          ]
+        },
+        "run_start": {
+          "source_scene_id": "DL1018_DEV_T3_C00_W05",
+          "external_identity_sha256": "221b0f89f9f0bde22d67af17bc32622dbdb53e1f64ef35884bc5cfa22f9682b2"
+        }
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C03_W15",
+      "split": "TRAIN_C5_24",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T3_C03_W15/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "6afcc865b94f06d8e9558f261fa97c1b90aac73d5e4daf985c4f3b4315ce8a58",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T3_C03_W15/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "e20e192c61a9f98a36ba133f6c7d4db7303b28107c4b2780c37cf55d01a48756",
+      "run_start_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T3_C03_W15/C5_AXIS_MASK_M110/attempt_01/run_start.mat",
+      "run_start_sha256": "714afe1df296bc345c2a43b5624f591af0ba60d36b64c58dcabba6652affae68",
+      "scene_identity_sha256": "c2fe3f426ed9d57a46c612a5cd6fb214d94ef8be3c5100c9ddb46d324153c419",
+      "candidate": "C5_AXIS_MIXED_COORDINATE_M110",
+      "coordinate_mask": [
+        1,
+        1,
+        0
+      ],
+      "event_count": 1999,
+      "event_index_zero_based_first_last": [
+        10,
+        19990
+      ],
+      "event_time_s_first_last": [
+        0.01,
+        19.99
+      ],
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "requested_torque_source": "log/requested_generalized[:,1:4], command issued at transition start",
+      "requested_torque_static_contract": "runtime sets command=[thrust; moments], requested_generalized=command, and attitude_bs_step sets moments=nominalMoment-estimateTorque",
+      "generalized_clipped_true_count": 0,
+      "motor_saturated_true_count": 0,
+      "controller_clip_command_max_abs_error": 0.0,
+      "max_endpoint_formula_equivalence_abs_error_rad_s2": 4.1744385725905886e-14,
+      "label_endpoint_max_state_sample_index": 19990,
+      "label_endpoint_max_issued_torque_transition_index": 19989,
+      "max_label_time_s": 19.99,
+      "morph_command_min_max": [
+        -1.0,
+        1.0
+      ],
+      "status": "RUN_COMPLETE_RAW_PENDING_AUDIT",
+      "status_source_scene_id": "DL1018_DEV_T3_C03_W15",
+      "identity": {
+        "raw": {
+          "scene_id": "DL1018_DEV_T3_C03_W15",
+          "candidate": "C5_AXIS_MIXED_COORDINATE_M110",
+          "external_identity_sha256": "c2fe3f426ed9d57a46c612a5cd6fb214d94ef8be3c5100c9ddb46d324153c419",
+          "coordinate_mask": [
+            1.0,
+            1.0,
+            0.0
+          ]
+        },
+        "run_start": {
+          "source_scene_id": "DL1018_DEV_T3_C03_W15",
+          "external_identity_sha256": "c2fe3f426ed9d57a46c612a5cd6fb214d94ef8be3c5100c9ddb46d324153c419"
+        }
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C05_W02",
+      "split": "TRAIN_C5_24",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T3_C05_W02/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "6c7d83ee79e1549a6ef603739a8922ce73f4b1695237cd9eec94567a8126eb23",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T3_C05_W02/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "6c358f8fd6625e46351ef816846972fce98d0bdf56f0eda508a8a28672c65d77",
+      "run_start_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T3_C05_W02/C5_AXIS_MASK_M110/attempt_01/run_start.mat",
+      "run_start_sha256": "f7ff4106fca1df137f5908aae6f14ff11cdac3658f931059983e895a7ae2f53c",
+      "scene_identity_sha256": "e5bc2811f1ebb48e573875a82c0ec3df8650529f12b133b8582fb137aca7d437",
+      "candidate": "C5_AXIS_MIXED_COORDINATE_M110",
+      "coordinate_mask": [
+        1,
+        1,
+        0
+      ],
+      "event_count": 1999,
+      "event_index_zero_based_first_last": [
+        10,
+        19990
+      ],
+      "event_time_s_first_last": [
+        0.01,
+        19.99
+      ],
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "requested_torque_source": "log/requested_generalized[:,1:4], command issued at transition start",
+      "requested_torque_static_contract": "runtime sets command=[thrust; moments], requested_generalized=command, and attitude_bs_step sets moments=nominalMoment-estimateTorque",
+      "generalized_clipped_true_count": 0,
+      "motor_saturated_true_count": 0,
+      "controller_clip_command_max_abs_error": 0.0,
+      "max_endpoint_formula_equivalence_abs_error_rad_s2": 4.720276492910919e-14,
+      "label_endpoint_max_state_sample_index": 19990,
+      "label_endpoint_max_issued_torque_transition_index": 19989,
+      "max_label_time_s": 19.99,
+      "morph_command_min_max": [
+        -1.0,
+        1.0
+      ],
+      "status": "RUN_COMPLETE_RAW_PENDING_AUDIT",
+      "status_source_scene_id": "DL1018_DEV_T3_C05_W02",
+      "identity": {
+        "raw": {
+          "scene_id": "DL1018_DEV_T3_C05_W02",
+          "candidate": "C5_AXIS_MIXED_COORDINATE_M110",
+          "external_identity_sha256": "e5bc2811f1ebb48e573875a82c0ec3df8650529f12b133b8582fb137aca7d437",
+          "coordinate_mask": [
+            1.0,
+            1.0,
+            0.0
+          ]
+        },
+        "run_start": {
+          "source_scene_id": "DL1018_DEV_T3_C05_W02",
+          "external_identity_sha256": "e5bc2811f1ebb48e573875a82c0ec3df8650529f12b133b8582fb137aca7d437"
+        }
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C06_W08",
+      "split": "TRAIN_C5_24",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T3_C06_W08/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "5acc8772586d329a0ccddfa2f3f4698b26a062612c998d67b201821b45121082",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T3_C06_W08/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "967b79fe5e4dd8ce803d6be8307616e0f25e7e7675db9f40878140201d55de27",
+      "run_start_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T3_C06_W08/C5_AXIS_MASK_M110/attempt_01/run_start.mat",
+      "run_start_sha256": "938c1c9dd22d01facd09a71ef18911bac5382883d6737031fd5899ca3ce7796c",
+      "scene_identity_sha256": "39e1a267902793395fdc4fd1bb738bcab3e36829a423f5e16c294876cde241c2",
+      "candidate": "C5_AXIS_MIXED_COORDINATE_M110",
+      "coordinate_mask": [
+        1,
+        1,
+        0
+      ],
+      "event_count": 1999,
+      "event_index_zero_based_first_last": [
+        10,
+        19990
+      ],
+      "event_time_s_first_last": [
+        0.01,
+        19.99
+      ],
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "requested_torque_source": "log/requested_generalized[:,1:4], command issued at transition start",
+      "requested_torque_static_contract": "runtime sets command=[thrust; moments], requested_generalized=command, and attitude_bs_step sets moments=nominalMoment-estimateTorque",
+      "generalized_clipped_true_count": 0,
+      "motor_saturated_true_count": 0,
+      "controller_clip_command_max_abs_error": 0.0,
+      "max_endpoint_formula_equivalence_abs_error_rad_s2": 5.027089855502709e-13,
+      "label_endpoint_max_state_sample_index": 19990,
+      "label_endpoint_max_issued_torque_transition_index": 19989,
+      "max_label_time_s": 19.99,
+      "morph_command_min_max": [
+        -1.0,
+        1.0
+      ],
+      "status": "RUN_COMPLETE_RAW_PENDING_AUDIT",
+      "status_source_scene_id": "DL1018_DEV_T3_C06_W08",
+      "identity": {
+        "raw": {
+          "scene_id": "DL1018_DEV_T3_C06_W08",
+          "candidate": "C5_AXIS_MIXED_COORDINATE_M110",
+          "external_identity_sha256": "39e1a267902793395fdc4fd1bb738bcab3e36829a423f5e16c294876cde241c2",
+          "coordinate_mask": [
+            1.0,
+            1.0,
+            0.0
+          ]
+        },
+        "run_start": {
+          "source_scene_id": "DL1018_DEV_T3_C06_W08",
+          "external_identity_sha256": "39e1a267902793395fdc4fd1bb738bcab3e36829a423f5e16c294876cde241c2"
+        }
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C09_W09",
+      "split": "TRAIN_C5_24",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T3_C09_W09/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "fa11a41b18ce9d4c3b7558d3bbb0d230aaef3e7071fc15419df0c6d1fca2f3a4",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T3_C09_W09/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "a64b2e63e26836d78d2e207ff16bd9cce012b95d988f722a5b631f2f79434d10",
+      "run_start_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T3_C09_W09/C5_AXIS_MASK_M110/attempt_01/run_start.mat",
+      "run_start_sha256": "3c466f1462caa20e2059605ed5a5dbb05c6c8171b9036661cbb76c074a4c4c83",
+      "scene_identity_sha256": "6831076c62315c9334b38a4b72307f80bc87ed185dd560da141708d8e2761652",
+      "candidate": "C5_AXIS_MIXED_COORDINATE_M110",
+      "coordinate_mask": [
+        1,
+        1,
+        0
+      ],
+      "event_count": 1999,
+      "event_index_zero_based_first_last": [
+        10,
+        19990
+      ],
+      "event_time_s_first_last": [
+        0.01,
+        19.99
+      ],
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "requested_torque_source": "log/requested_generalized[:,1:4], command issued at transition start",
+      "requested_torque_static_contract": "runtime sets command=[thrust; moments], requested_generalized=command, and attitude_bs_step sets moments=nominalMoment-estimateTorque",
+      "generalized_clipped_true_count": 0,
+      "motor_saturated_true_count": 0,
+      "controller_clip_command_max_abs_error": 0.0,
+      "max_endpoint_formula_equivalence_abs_error_rad_s2": 2.7168757288408354e-13,
+      "label_endpoint_max_state_sample_index": 19990,
+      "label_endpoint_max_issued_torque_transition_index": 19989,
+      "max_label_time_s": 19.99,
+      "morph_command_min_max": [
+        -1.0,
+        1.0
+      ],
+      "status": "RUN_COMPLETE_RAW_PENDING_AUDIT",
+      "status_source_scene_id": "DL1018_DEV_T3_C09_W09",
+      "identity": {
+        "raw": {
+          "scene_id": "DL1018_DEV_T3_C09_W09",
+          "candidate": "C5_AXIS_MIXED_COORDINATE_M110",
+          "external_identity_sha256": "6831076c62315c9334b38a4b72307f80bc87ed185dd560da141708d8e2761652",
+          "coordinate_mask": [
+            1.0,
+            1.0,
+            0.0
+          ]
+        },
+        "run_start": {
+          "source_scene_id": "DL1018_DEV_T3_C09_W09",
+          "external_identity_sha256": "6831076c62315c9334b38a4b72307f80bc87ed185dd560da141708d8e2761652"
+        }
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C10_W11",
+      "split": "TRAIN_C5_24",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T3_C10_W11/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "493d55f39a7f72da25a27ef44b21c30840c587bd49714a4988edd3383328d56e",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T3_C10_W11/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "9f94050ebfa7c95e2d03a0c8cc23717d99b93ac91d1525828c58b53cf7abb751",
+      "run_start_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T3_C10_W11/C5_AXIS_MASK_M110/attempt_01/run_start.mat",
+      "run_start_sha256": "ad6f70eadda2654ea5d3f854154eeb220a0921b24df3019013774272f218ec9f",
+      "scene_identity_sha256": "493004adb5b15efa23315f33746f71efd356b17f95d3e22aa749489b3a10ee87",
+      "candidate": "C5_AXIS_MIXED_COORDINATE_M110",
+      "coordinate_mask": [
+        1,
+        1,
+        0
+      ],
+      "event_count": 1999,
+      "event_index_zero_based_first_last": [
+        10,
+        19990
+      ],
+      "event_time_s_first_last": [
+        0.01,
+        19.99
+      ],
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "requested_torque_source": "log/requested_generalized[:,1:4], command issued at transition start",
+      "requested_torque_static_contract": "runtime sets command=[thrust; moments], requested_generalized=command, and attitude_bs_step sets moments=nominalMoment-estimateTorque",
+      "generalized_clipped_true_count": 0,
+      "motor_saturated_true_count": 0,
+      "controller_clip_command_max_abs_error": 0.0,
+      "max_endpoint_formula_equivalence_abs_error_rad_s2": 6.76719151635613e-13,
+      "label_endpoint_max_state_sample_index": 19990,
+      "label_endpoint_max_issued_torque_transition_index": 19989,
+      "max_label_time_s": 19.99,
+      "morph_command_min_max": [
+        -1.0,
+        1.0
+      ],
+      "status": "RUN_COMPLETE_RAW_PENDING_AUDIT",
+      "status_source_scene_id": "DL1018_DEV_T3_C10_W11",
+      "identity": {
+        "raw": {
+          "scene_id": "DL1018_DEV_T3_C10_W11",
+          "candidate": "C5_AXIS_MIXED_COORDINATE_M110",
+          "external_identity_sha256": "493004adb5b15efa23315f33746f71efd356b17f95d3e22aa749489b3a10ee87",
+          "coordinate_mask": [
+            1.0,
+            1.0,
+            0.0
+          ]
+        },
+        "run_start": {
+          "source_scene_id": "DL1018_DEV_T3_C10_W11",
+          "external_identity_sha256": "493004adb5b15efa23315f33746f71efd356b17f95d3e22aa749489b3a10ee87"
+        }
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C13_W12",
+      "split": "TRAIN_C5_24",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T3_C13_W12/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "b6eb8d2a5ee9b0dd91e4b073a1f97e79c6e75cde589714810511a1d450812035",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T3_C13_W12/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "18b5fa595129f1357661e5fe35d72e5e34ffaa35b78b89b476446967523c36dd",
+      "run_start_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T3_C13_W12/C5_AXIS_MASK_M110/attempt_01/run_start.mat",
+      "run_start_sha256": "a7926c631b4b4241054645905bb39e0aab706f113fd2c43795c0a31a930eff4b",
+      "scene_identity_sha256": "5277a248e344194570074f2b071f8af59b11552ab948fe4c2fbdb53c1b59bd7d",
+      "candidate": "C5_AXIS_MIXED_COORDINATE_M110",
+      "coordinate_mask": [
+        1,
+        1,
+        0
+      ],
+      "event_count": 1999,
+      "event_index_zero_based_first_last": [
+        10,
+        19990
+      ],
+      "event_time_s_first_last": [
+        0.01,
+        19.99
+      ],
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "requested_torque_source": "log/requested_generalized[:,1:4], command issued at transition start",
+      "requested_torque_static_contract": "runtime sets command=[thrust; moments], requested_generalized=command, and attitude_bs_step sets moments=nominalMoment-estimateTorque",
+      "generalized_clipped_true_count": 0,
+      "motor_saturated_true_count": 0,
+      "controller_clip_command_max_abs_error": 0.0,
+      "max_endpoint_formula_equivalence_abs_error_rad_s2": 2.5292178833062617e-13,
+      "label_endpoint_max_state_sample_index": 19990,
+      "label_endpoint_max_issued_torque_transition_index": 19989,
+      "max_label_time_s": 19.99,
+      "morph_command_min_max": [
+        -1.0,
+        1.0
+      ],
+      "status": "RUN_COMPLETE_RAW_PENDING_AUDIT",
+      "status_source_scene_id": "DL1018_DEV_T3_C13_W12",
+      "identity": {
+        "raw": {
+          "scene_id": "DL1018_DEV_T3_C13_W12",
+          "candidate": "C5_AXIS_MIXED_COORDINATE_M110",
+          "external_identity_sha256": "5277a248e344194570074f2b071f8af59b11552ab948fe4c2fbdb53c1b59bd7d",
+          "coordinate_mask": [
+            1.0,
+            1.0,
+            0.0
+          ]
+        },
+        "run_start": {
+          "source_scene_id": "DL1018_DEV_T3_C13_W12",
+          "external_identity_sha256": "5277a248e344194570074f2b071f8af59b11552ab948fe4c2fbdb53c1b59bd7d"
+        }
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C15_W14",
+      "split": "TRAIN_C5_24",
+      "raw_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T3_C15_W14/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "raw_sha256": "2df0e35d32bff888c3225638d468b2e796d8942387002a48cf53b4242d3c6a27",
+      "status_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T3_C15_W14/C5_AXIS_MASK_M110/attempt_01/run_status.json",
+      "status_sha256": "4255c066e862ba24fac7cae82b52244b79d72a25714dc9618f5d2a864763479c",
+      "run_start_path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T3_C15_W14/C5_AXIS_MASK_M110/attempt_01/run_start.mat",
+      "run_start_sha256": "ac60586c3b0abc72b02a65d4d0e67e4c2b81bfff00c8e27927a7085f8cd3f8d0",
+      "scene_identity_sha256": "a695ba3dd53d12afb55e9d018368c1c0f27d7f8810d98f36e664e4d2f41eab6c",
+      "candidate": "C5_AXIS_MIXED_COORDINATE_M110",
+      "coordinate_mask": [
+        1,
+        1,
+        0
+      ],
+      "event_count": 1999,
+      "event_index_zero_based_first_last": [
+        10,
+        19990
+      ],
+      "event_time_s_first_last": [
+        0.01,
+        19.99
+      ],
+      "feature_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "requested_torque_source": "log/requested_generalized[:,1:4], command issued at transition start",
+      "requested_torque_static_contract": "runtime sets command=[thrust; moments], requested_generalized=command, and attitude_bs_step sets moments=nominalMoment-estimateTorque",
+      "generalized_clipped_true_count": 0,
+      "motor_saturated_true_count": 0,
+      "controller_clip_command_max_abs_error": 0.0,
+      "max_endpoint_formula_equivalence_abs_error_rad_s2": 7.232831954889773e-13,
+      "label_endpoint_max_state_sample_index": 19990,
+      "label_endpoint_max_issued_torque_transition_index": 19989,
+      "max_label_time_s": 19.99,
+      "morph_command_min_max": [
+        -1.0,
+        1.0
+      ],
+      "status": "RUN_COMPLETE_RAW_PENDING_AUDIT",
+      "status_source_scene_id": "DL1018_DEV_T3_C15_W14",
+      "identity": {
+        "raw": {
+          "scene_id": "DL1018_DEV_T3_C15_W14",
+          "candidate": "C5_AXIS_MIXED_COORDINATE_M110",
+          "external_identity_sha256": "a695ba3dd53d12afb55e9d018368c1c0f27d7f8810d98f36e664e4d2f41eab6c",
+          "coordinate_mask": [
+            1.0,
+            1.0,
+            0.0
+          ]
+        },
+        "run_start": {
+          "source_scene_id": "DL1018_DEV_T3_C15_W14",
+          "external_identity_sha256": "a695ba3dd53d12afb55e9d018368c1c0f27d7f8810d98f36e664e4d2f41eab6c"
+        }
+      }
+    }
+  ],
+  "C5_VAL48_loaded_for_training": false,
+  "TEST_read": false,
+  "Plant_called": false,
+  "Plant_truth_read": false,
+  "RBF_outputs_or_hidden_states_read_for_target_or_features": false
+}

@@ -1,0 +1,136 @@
+diff --git a/experiments/c5_test48_v1/test48_entry_v1.m b/experiments/c5_test48_v2/test48_entry_v1.m
+index 9dedcde..c192c6e 100644
+--- a/experiments/c5_test48_v1/test48_entry_v1.m
++++ b/experiments/c5_test48_v2/test48_entry_v1.m
+@@ -7,5 +7,5 @@ allowed={'DEV_INPUT_EQUIVALENCE_ONLY','TEST_INPUT_FREEZE_ONLY','LOCKED_TEST48_PA
+ assert(any(strcmp(mode,allowed)),'TEST48:Mode','Unsupported TEST48 mode.');
+ here=fileparts(mfilename('fullpath')); root=fileparts(fileparts(here));
+-reportDir=fullfile(root,'reports','paper_continuation_20261023','test_entry_v1');
++reportDir=fullfile(root,'reports','paper_continuation_20261023','test_entry_v2');
+ contractPath=fullfile(here,'TEST48_RUN_CONTRACT_v1.json');
+ manifestPath=fullfile(reportDir,'TEST_METHOD_SOURCE_MANIFEST_v1.json');
+@@ -75,5 +75,6 @@ assert(strcmp(codeRelease.status,'APPROVED_CODE_IMPLEMENTATION_ONLY')&& ...
+     ~logical(codeRelease.training_authorized), ...
+     'TEST48:CodeOnlyRelease','The parent release authorizes code only; no execution mode is permitted by it.');
+-assert(numel(c.method_order)==6&&numel(m.methods)==6&&c.execution.max_unique_plant_calls==288&& ...
++assert(isstruct(c.method_order)&&numel(c.method_order)==6&&numel(m.methods)==6&& ...
++    c.execution.max_unique_plant_calls==288&& ...
+     c.execution.scene_count==48&&c.execution.test_accessed_flag_for_TEST_freeze_and_run, ...
+     'TEST48:MethodCount','The frozen six-method/48-scene contract changed.');
+@@ -112,7 +113,7 @@ assert(strcmpi(char(c.source_contract.dev_input_equivalence_metadata_erratum_sha
+     'TEST48:SharedContract','Manifest shared sources differ from the exact generator/statistics/error-note contract.');
+ % All new path lengths are checked before any scene generation or Plant call.
+-assert_short(fullfile(root,'experiments','c5_test48_v1','input','TEST_SCENES_SHARED_v1.mat'));
+-assert_short(fullfile(root,'experiments','c5_test48_v1','input','TEST_METHOD_CFG_OPTS_v1.mat'));
+-assert_short(fullfile(root,'experiments','c5_test48_v1','input','TEST_INPUT_INDEX_v1.json'));
++assert_short(fullfile(root,'experiments','c5_test48_v2','input','TEST_SCENES_SHARED_v1.mat'));
++assert_short(fullfile(root,'experiments','c5_test48_v2','input','TEST_METHOD_CFG_OPTS_v1.mat'));
++assert_short(fullfile(root,'experiments','c5_test48_v2','input','TEST_INPUT_INDEX_v1.json'));
+ end
+ 
+
+diff --git a/experiments/c5_test48_v1/RUN_TEST48_EXACT_v1.ps1 b/experiments/c5_test48_v2/RUN_TEST48_EXACT_v1.ps1
+index ce2bfac..b2b0ec7 100644
+--- a/experiments/c5_test48_v1/RUN_TEST48_EXACT_v1.ps1
++++ b/experiments/c5_test48_v2/RUN_TEST48_EXACT_v1.ps1
+@@ -7,5 +7,5 @@ $ErrorActionPreference = 'Stop'
+ $taskDir = [IO.Path]::GetDirectoryName($PSCommandPath)
+ $repoRoot = [IO.Path]::GetFullPath((Join-Path $taskDir '..\..'))
+-$reportDir = Join-Path $repoRoot 'reports/paper_continuation_20261023/test_entry_v1'
++$reportDir = Join-Path $repoRoot 'reports/paper_continuation_20261023/test_entry_v2'
+ $contractPath = Join-Path $taskDir 'TEST48_RUN_CONTRACT_v1.json'
+ $manifestPath = Join-Path $reportDir 'TEST_METHOD_SOURCE_MANIFEST_v1.json'
+@@ -148,5 +148,5 @@ function Invoke-MatlabStage([string]$Stage,[string]$Method,[string]$ReceiptPath,
+     $modeForMatlab = $Stage.Replace("'","''")
+     $methodForMatlab = $Method.Replace("'","''")
+-    $expr = "try; cd('$rootForMatlab'); addpath('experiments/c5_test48_v1'); test48_entry_v1('$modeForMatlab','$methodForMatlab'); quit(0,'force'); catch ME; fprintf(2,'%s\n',getReport(ME,'extended','hyperlinks','off')); quit(1,'force'); end"
++    $expr = "try; cd('$rootForMatlab'); addpath('experiments/c5_test48_v2'); test48_entry_v1('$modeForMatlab','$methodForMatlab'); quit(0,'force'); catch ME; fprintf(2,'%s\n',getReport(ME,'extended','hyperlinks','off')); quit(1,'force'); end"
+     $argLine = '-singleCompThread -wait -batch "' + $expr + '"'
+     $started = [DateTime]::UtcNow.ToString('o')
+
+diff --git a/experiments/c5_test48_v1/TEST48_RUN_CONTRACT_v1.json b/experiments/c5_test48_v2/TEST48_RUN_CONTRACT_v1.json
+index de38368..c5b542c 100644
+--- a/experiments/c5_test48_v1/TEST48_RUN_CONTRACT_v1.json
++++ b/experiments/c5_test48_v2/TEST48_RUN_CONTRACT_v1.json
+@@ -4,5 +4,5 @@
+   "taskbook_sha256": "e0b58545fda8d779f2672afa50de976596ac510f82f6aa83493ed7583216130b",
+   "code_only_release_sha256": "75f32b259ab3fe901b52ac1f4162f0ea04ee3bb1145c9b958fb5e311a24f1b58",
+-  "method_source_manifest_path": "reports/paper_continuation_20261023/test_entry_v1/TEST_METHOD_SOURCE_MANIFEST_v1.json",
++  "method_source_manifest_path": "reports/paper_continuation_20261023/test_entry_v2/TEST_METHOD_SOURCE_MANIFEST_v1.json",
+   "method_source_manifest_sha256": "66f6d2e0c042dff9aa07e75f6d0443d38d694097495b30d551dfd94f2c90919c",
+   "method_order": [
+@@ -11,5 +11,8 @@
+       "alias": "BTR",
+       "source": "frozen C3 core; controller_options_dl1018(cfg,'B')",
+-      "uses_learned_model": false
++      "uses_learned_model": false,
++      "model_id": null,
++      "actual_weight_update": null,
++      "actual_prediction_gradient": null
+     },
+     {
+@@ -17,5 +20,8 @@
+       "alias": "DSSM",
+       "source": "corrected pair runtime; DSSM14",
+-      "model_id": "DSSM14"
++      "uses_learned_model": null,
++      "model_id": "DSSM14",
++      "actual_weight_update": null,
++      "actual_prediction_gradient": null
+     },
+     {
+@@ -23,5 +29,8 @@
+       "alias": "KAN",
+       "source": "corrected pair runtime; KAN14",
+-      "model_id": "KAN14"
++      "uses_learned_model": null,
++      "model_id": "KAN14",
++      "actual_weight_update": null,
++      "actual_prediction_gradient": null
+     },
+     {
+@@ -29,4 +38,6 @@
+       "alias": "C5M110",
+       "source": "C5 core and delayed_prediction_step_candidate",
++      "uses_learned_model": null,
++      "model_id": null,
+       "actual_weight_update": true,
+       "actual_prediction_gradient": true
+@@ -36,4 +47,6 @@
+       "alias": "C5FREEZE",
+       "source": "C5 core and freeze helper",
++      "uses_learned_model": null,
++      "model_id": null,
+       "actual_weight_update": false,
+       "actual_prediction_gradient": false
+@@ -43,4 +56,6 @@
+       "alias": "C5NOPRED",
+       "source": "C5 core and no-pred helper",
++      "uses_learned_model": null,
++      "model_id": null,
+       "actual_weight_update": true,
+       "actual_prediction_gradient": false
+@@ -71,7 +86,7 @@
+     "current_TEST_generation_authorized": false,
+     "dev_mode": "DEV_INPUT_EQUIVALENCE_ONLY",
+-    "dev_release": "reports/paper_continuation_20261023/test_entry_v1/DEV_INPUT_EQUIVALENCE_PARENT_RELEASE_v1.json",
+-    "run_release": "reports/paper_continuation_20261023/test_entry_v1/LOCKED_TEST48_PARENT_RELEASE_v1.json",
+-    "freeze_release": "reports/paper_continuation_20261023/test_entry_v1/TEST_INPUT_FREEZE_PARENT_RELEASE_v1.json"
++    "dev_release": "reports/paper_continuation_20261023/test_entry_v2/DEV_INPUT_EQUIVALENCE_PARENT_RELEASE_v1.json",
++    "run_release": "reports/paper_continuation_20261023/test_entry_v2/LOCKED_TEST48_PARENT_RELEASE_v1.json",
++    "freeze_release": "reports/paper_continuation_20261023/test_entry_v2/TEST_INPUT_FREEZE_PARENT_RELEASE_v1.json"
+   },
+   "limits": {
+
+diff --git a/reports/paper_continuation_20261023/test_entry_v1/build_test48_method_manifest_v1.ps1 b/reports/paper_continuation_20261023/test_entry_v2/build_test48_method_manifest_v1.ps1
+index b902384..ba22620 100644
+--- a/reports/paper_continuation_20261023/test_entry_v1/build_test48_method_manifest_v1.ps1
++++ b/reports/paper_continuation_20261023/test_entry_v2/build_test48_method_manifest_v1.ps1
+@@ -1,5 +1,5 @@
+ $ErrorActionPreference = 'Stop'
+ $root = (Get-Location).Path
+-$outPath = Join-Path $root 'reports/paper_continuation_20261023/test_entry_v1/TEST_METHOD_SOURCE_MANIFEST_v1.json'
++$outPath = Join-Path $root 'reports/paper_continuation_20261023/test_entry_v2/TEST_METHOD_SOURCE_MANIFEST_v1.json'
+ $sha = { param([string]$Path) (Get-FileHash -LiteralPath $Path -Algorithm SHA256).Hash.ToLowerInvariant() }
+ $legacyManifestShas = @(
+

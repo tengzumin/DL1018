@@ -1,0 +1,111 @@
+{
+  "schema": "DL1018_NCMD_ON_POLICY_LABEL_FIT_V1",
+  "status": "PASS_OFFLINE_SIX_RAW_DIAGNOSTIC",
+  "created_utc": "2026-10-26T23:09:29.146304+00:00",
+  "scope": {
+    "new_training": false,
+    "optimizer_updates": 0,
+    "new_Plant_calls": 0,
+    "TEST_read": false,
+    "no_true_inertia_or_mass_or_wind_fields_read": true,
+    "raw_source_note": "six already completed NCMD closed-loop raw files; this script made no Plant call"
+  },
+  "target_definition": {
+    "equation": "Rcmd[e]=(omega[e+10]-omega[e])/(t[e+10]-t[e])+mean_i solve(J0,cross(omega[i],J0*omega[i])-tau_req[i]); i=e..e+9",
+    "e_zero_based": "10,20,...,19990",
+    "events_per_scene": 1999,
+    "requested_torque_source": "raw log requested_generalized rows 2:4 MATLAB / rows 1:4 HDF5",
+    "J0_source": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_ncmd_dev_v1\\LOCKED_CFG.json",
+    "J0_sha256": "55a794e875ca95e5846a29997e01065ab9700e26ac17eb9cb57ce02d7e05df99",
+    "output_comparison": "logged raw residual and exact DMAX-clipped residual vs own forward 10ms target"
+  },
+  "data_identity": {
+    "feature_npz_sha256": "b3a8ca6446d6bdde0573e6c233aa222a6cfb28d35f13b084e8dd9683c16c111f",
+    "ncmd_target_npz_sha256": "88df5c2f2088910a9c5650a5c67efdb7f42d30cabc021d0da83b68b72578ffb7",
+    "target_manifest_sha256": "fc5ed29cfd0a5260a2992f28b8ada21ccd72f7d25c7bbe00831dca7a10e9e0ab",
+    "model_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_ncmd_v1\\runs\\GRU32_STREAM72_NCMD_S2026102001\\gru_stream_c5_teacher_weights_v1.mat",
+    "model_sha256": "cd5870a48deac9eb3540c3662c59ec4212965c333669b730cdd4f6519d364de6",
+    "locked_dmax": [
+      45.0,
+      45.0,
+      4.7124
+    ],
+    "c5_comparison": "same NCMD model re-inferred on original 13-D C5 X; target is stored clipped NCMD label"
+  },
+  "raws": {
+    "DL1018_VAL_T1_C08_W15": {
+      "events": 1999,
+      "output_clip_replay_max_abs": 0.0,
+      "interval_first_zero_based": 10,
+      "interval_last_zero_based": 19990,
+      "raw_sha256": "74824224e7ef6353c9a87e587c8cf84aadcd1c1743ba7c0a46933567bd8399fb",
+      "status_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_ncmd_dev_v1\\runs\\DL1018_VAL_T1_C08_W15\\run_status.json",
+      "audit_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_ncmd_dev_v1\\audits\\DL1018_VAL_T1_C08_W15_GRU_STREAM_RAW_AUDIT.json",
+      "model_replay_max_abs": 1.7763568394002505e-14
+    },
+    "DL1018_VAL_T2_C05_W15": {
+      "events": 1999,
+      "output_clip_replay_max_abs": 0.0,
+      "interval_first_zero_based": 10,
+      "interval_last_zero_based": 19990,
+      "raw_sha256": "acec0905ba7eab5fbb1def3d287188197ff87062f45fc0609ba631fc2c8fc2da",
+      "status_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_ncmd_dev_v1\\runs\\DL1018_VAL_T2_C05_W15\\run_status.json",
+      "audit_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_ncmd_dev_v1\\audits\\DL1018_VAL_T2_C05_W15_GRU_STREAM_RAW_AUDIT.json",
+      "model_replay_max_abs": 1.4210854715202004e-14
+    },
+    "DL1018_VAL_T3_C02_W15": {
+      "events": 1999,
+      "output_clip_replay_max_abs": 0.0,
+      "interval_first_zero_based": 10,
+      "interval_last_zero_based": 19990,
+      "raw_sha256": "511e2a764df614b556a782196d0516126f8063c3108459ea49c9df11eff82061",
+      "status_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_ncmd_dev_v1\\runs\\DL1018_VAL_T3_C02_W15\\run_status.json",
+      "audit_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_ncmd_dev_v1\\audits\\DL1018_VAL_T3_C02_W15_GRU_STREAM_RAW_AUDIT.json",
+      "model_replay_max_abs": 8.881784197001252e-15
+    },
+    "DL1018_VAL_T1_C05_W12": {
+      "events": 1999,
+      "output_clip_replay_max_abs": 0.0,
+      "interval_first_zero_based": 10,
+      "interval_last_zero_based": 19990,
+      "raw_sha256": "a8988418d5815f10b45dd5909f5e068fbf77943efd2a8c13c493f7f1bf7a4626",
+      "status_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_ncmd_dev_v1\\runs\\DL1018_VAL_T1_C05_W12\\run_status.json",
+      "audit_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_ncmd_dev_v1\\audits\\DL1018_VAL_T1_C05_W12_GRU_STREAM_RAW_AUDIT.json",
+      "model_replay_max_abs": 1.0658141036401503e-14
+    },
+    "DL1018_VAL_T2_C02_W12": {
+      "events": 1999,
+      "output_clip_replay_max_abs": 0.0,
+      "interval_first_zero_based": 10,
+      "interval_last_zero_based": 19990,
+      "raw_sha256": "edf28564338809b410159931f35df86c14dec347d02151fda1d9b851c4b38d90",
+      "status_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_ncmd_dev_v1\\runs\\DL1018_VAL_T2_C02_W12\\run_status.json",
+      "audit_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_ncmd_dev_v1\\audits\\DL1018_VAL_T2_C02_W12_GRU_STREAM_RAW_AUDIT.json",
+      "model_replay_max_abs": 8.881784197001252e-15
+    },
+    "DL1018_VAL_T3_C00_W13": {
+      "events": 1999,
+      "output_clip_replay_max_abs": 0.0,
+      "interval_first_zero_based": 10,
+      "interval_last_zero_based": 19990,
+      "raw_sha256": "76ac6cef970257d1916462e47e5a4eb54c56c11f329a50cfef9947be7dd18000",
+      "status_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_ncmd_dev_v1\\runs\\DL1018_VAL_T3_C00_W13\\run_status.json",
+      "audit_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_ncmd_dev_v1\\audits\\DL1018_VAL_T3_C00_W13_GRU_STREAM_RAW_AUDIT.json",
+      "model_replay_max_abs": 5.467848396278896e-15
+    }
+  },
+  "metrics": {
+    "scene_csv": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\ncmd_label_predictability_diagnostic_v1\\onpolicy_scene_metrics_v1.csv",
+    "scene_csv_sha256": "5265ab382f3252c5e1607db562d719a65757916cee3c4cb9e48da8656308d699",
+    "group_csv": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\ncmd_label_predictability_diagnostic_v1\\onpolicy_group_metrics_v1.csv",
+    "group_csv_sha256": "caa1098dd2dfb20c154b383d46f425ef3427c4b806daaf7b212534747b944832",
+    "event_csv": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\ncmd_label_predictability_diagnostic_v1\\onpolicy_event_values_v1.csv",
+    "event_csv_sha256": "cd09064369715e06870e4ff186406c5a10fbb68a87421affb073a5083fba00ff",
+    "lag_csv": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\ncmd_label_predictability_diagnostic_v1\\onpolicy_event_lag_scan_v1.csv",
+    "lag_csv_sha256": "b6303445ca5567cfac3317b483161c9f121dc890ed32bef7d92a2bd7279751b0",
+    "scene_metric_rows": 225,
+    "event_axis_rows": 35982
+  },
+  "interpretation_boundary": "Historical C5 input and NCMD self-closed-loop trajectories are different states. On/off-policy fit difference is descriptive, not a causal estimate. The 72-scene C5 cohort is development material, not independent validation.",
+  "script_sha256": "3c03664fc0d058d22a61f681fefc5e59caa8b3d44a30ddeca8629f50b43e5e91"
+}

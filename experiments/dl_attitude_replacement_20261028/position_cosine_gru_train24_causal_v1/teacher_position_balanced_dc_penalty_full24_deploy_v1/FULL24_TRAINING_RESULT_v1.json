@@ -1,0 +1,95 @@
+{
+  "schema": "COSINE_GRU_TRAIN24_TEACHER_POSITION_DC_PENALTY_FULL24_TRAINING_RESULT_V1",
+  "role": "Full24 deployment fit only; no validation or OOF evaluation was performed.",
+  "config_sha256": "8801805e327761e663d1e0bf4487576ba82097c1fd45e216518d83e3f0520380",
+  "script_sha256": "e4a4c5562de4ee9e6d4d2a2c717d1f3787269ee46bf7bd676e3eda3014942fb0",
+  "checkpoint_sha256": "4da29824058e47217876f26e68889000b32a8a9efafc3f4f2f281c66b39aaa79",
+  "weights_export_npz_sha256": "b250b8122c8ca23f7740a1bb2039f7afb4784b52f92c9dd2ffb9a76ead2ae756",
+  "dataset_sha256": "15d689f08fd6d8a53a64c59dbdf62b33f9b8e8a12ce083fb12834cd106df2eeb",
+  "teacher_npz_sha256": "e0519bc87a977d1349da3fdb0f582273bffaa61eb24ea380fb44e4a56791634a",
+  "cv_experiment_oof_sha256": "0b7b37e777a88af864482f60c2d9f531da7b86d243a725c3a10354c9e4734288",
+  "training_scene_count": 24,
+  "training_scene_ids": [
+    "DL1018_DEV_T1_C00_W03",
+    "DL1018_DEV_T1_C01_W15",
+    "DL1018_DEV_T1_C04_W00",
+    "DL1018_DEV_T1_C05_W06",
+    "DL1018_DEV_T1_C07_W08",
+    "DL1018_DEV_T1_C10_W09",
+    "DL1018_DEV_T1_C11_W12",
+    "DL1018_DEV_T1_C15_W14",
+    "DL1018_DEV_T2_C00_W04",
+    "DL1018_DEV_T2_C02_W15",
+    "DL1018_DEV_T2_C03_W01",
+    "DL1018_DEV_T2_C06_W07",
+    "DL1018_DEV_T2_C08_W08",
+    "DL1018_DEV_T2_C09_W10",
+    "DL1018_DEV_T2_C12_W13",
+    "DL1018_DEV_T2_C14_W14",
+    "DL1018_DEV_T3_C00_W05",
+    "DL1018_DEV_T3_C03_W15",
+    "DL1018_DEV_T3_C05_W02",
+    "DL1018_DEV_T3_C06_W08",
+    "DL1018_DEV_T3_C09_W09",
+    "DL1018_DEV_T3_C10_W11",
+    "DL1018_DEV_T3_C13_W12",
+    "DL1018_DEV_T3_C15_W14"
+  ],
+  "teacher_scale_train_all24_mps2": 0.07132192797560409,
+  "position_scale_train_all24_mps2": 0.23972851022767383,
+  "dc_scale_train_all24_mps2": 0.007132192797560409,
+  "train_loss_log": [
+    {
+      "step": 1,
+      "teacher_normalized_mse": 1.0,
+      "position_normalized_mse": 1.0,
+      "scene_dc_bias_normalized_mse": 0.0,
+      "weighted_total": 1.0
+    },
+    {
+      "step": 50,
+      "teacher_normalized_mse": 0.8779906034469604,
+      "position_normalized_mse": 0.9876499772071838,
+      "scene_dc_bias_normalized_mse": 0.013505642302334309,
+      "weighted_total": 0.9395731687545776
+    },
+    {
+      "step": 100,
+      "teacher_normalized_mse": 0.8692207932472229,
+      "position_normalized_mse": 0.9344643354415894,
+      "scene_dc_bias_normalized_mse": 0.010472397319972515,
+      "weighted_total": 0.9070788025856018
+    },
+    {
+      "step": 150,
+      "teacher_normalized_mse": 0.8657405376434326,
+      "position_normalized_mse": 0.8800775408744812,
+      "scene_dc_bias_normalized_mse": 0.007485348265618086,
+      "weighted_total": 0.8766517639160156
+    },
+    {
+      "step": 200,
+      "teacher_normalized_mse": 0.8605546355247498,
+      "position_normalized_mse": 0.8513025641441345,
+      "scene_dc_bias_normalized_mse": 0.00996872503310442,
+      "weighted_total": 0.8609129786491394
+    },
+    {
+      "step": 250,
+      "teacher_normalized_mse": 0.8599256873130798,
+      "position_normalized_mse": 0.8356533646583557,
+      "scene_dc_bias_normalized_mse": 0.009086821228265762,
+      "weighted_total": 0.8523329496383667
+    },
+    {
+      "step": 300,
+      "teacher_normalized_mse": 0.856893002986908,
+      "position_normalized_mse": 0.8260546326637268,
+      "scene_dc_bias_normalized_mse": 0.00953526608645916,
+      "weighted_total": 0.8462414741516113
+    }
+  ],
+  "runtime_seconds": 2.7305820000037784,
+  "teacher_used_at_inference": false,
+  "scope": "No VAL/TEST read; no Plant call; no inertia reconstruction."
+}

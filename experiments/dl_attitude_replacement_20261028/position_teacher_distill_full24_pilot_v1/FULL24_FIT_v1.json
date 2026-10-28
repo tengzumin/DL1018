@@ -1,0 +1,52 @@
+{
+  "schema": "POSITION_C5_TEACHER_DISTILL_FULL24_FIT_V1",
+  "scope": "TRAIN_C5_24 only; no VAL/TEST raw, Plant, wind fields, or inertia reconstruction/use.",
+  "teacher_npz_sha256": "e0519bc87a977d1349da3fdb0f582273bffaa61eb24ea380fb44e4a56791634a",
+  "teacher_manifest_sha256": "9ceaac9566f7dcd7b093d7d71b6396eb294a56ac156a5b3d16d063d53ac84a8c",
+  "fit": {
+    "training_scene_count": 24,
+    "ready_events": 47232,
+    "optimizer_steps": 300,
+    "seed": 20261032,
+    "device": "cuda",
+    "normalizer_scope": "all 24 TRAIN scenes, all 1999 causal X14 events",
+    "loss_log": [
+      {
+        "step": 1,
+        "teacher_delta_smooth_l1": 0.002543408889323473
+      },
+      {
+        "step": 50,
+        "teacher_delta_smooth_l1": 0.0010992418974637985
+      },
+      {
+        "step": 100,
+        "teacher_delta_smooth_l1": 0.0008800911018624902
+      },
+      {
+        "step": 150,
+        "teacher_delta_smooth_l1": 0.0006331130862236023
+      },
+      {
+        "step": 200,
+        "teacher_delta_smooth_l1": 0.000417551607824862
+      },
+      {
+        "step": 250,
+        "teacher_delta_smooth_l1": 0.00028763909358531237
+      },
+      {
+        "step": 300,
+        "teacher_delta_smooth_l1": 0.00020359615155030042
+      }
+    ],
+    "in_sample_teacher_delta_rmse_mps2": 0.020042036984128462,
+    "in_sample_teacher_delta_mae_mps2": 0.014295677514146997,
+    "in_sample_position_residual_rmse_mps2": 0.24116740857931135,
+    "raw_delta_clip_fraction_ready": 0.0,
+    "teacher_delta_abs_ge_0_5_fraction_ready": 0.0,
+    "action_abs_ge_3_fraction_ready": 0.0,
+    "runtime_seconds": 2.123640099998738
+  },
+  "note": "All-24 fit is for pilot preparation. Metrics are in-sample teacher/residual diagnostics, not independent validation, physical Q, or closed-loop evidence."
+}

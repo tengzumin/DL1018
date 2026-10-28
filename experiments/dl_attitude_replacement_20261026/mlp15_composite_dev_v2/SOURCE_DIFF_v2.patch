@@ -1,0 +1,155 @@
+diff --git "a/experiments\\dl_attitude_replacement_20261026\\mlp15_causal_head_v1\\candidate_runner_work\\matlab\\runtime\\mlp15_attitude_step_v1.m" "b/experiments\\dl_attitude_replacement_20261026\\mlp15_composite_dev_v2\\candidate_runner_work\\matlab\\runtime\\mlp15_attitude_step_v1.m"
+index 6e531b4..f5f3f85 100644
+--- "a/experiments\\dl_attitude_replacement_20261026\\mlp15_causal_head_v1\\candidate_runner_work\\matlab\\runtime\\mlp15_attitude_step_v1.m"
++++ "b/experiments\\dl_attitude_replacement_20261026\\mlp15_composite_dev_v2\\candidate_runner_work\\matlab\\runtime\\mlp15_attitude_step_v1.m"
+@@ -58,15 +58,33 @@ d=struct('enabled',logical(enabled),'update_executed',false, ...
+     'previous_feature_time_s',memory.previous_time_s,'issued_torque_max_sample_index',0, ...
+     'projection_active',false,'covariance_min_cholesky_diagonal',sqrt(10), ...
+     'covariance_diagonal_after',diag(P),'weight_norm_before',norm(before,'fro'), ...
+-    'weight_norm_after',norm(before,'fro'));
++    'weight_norm_after',norm(before,'fro'),'tracking_drive',zeros(33,3), ...
++    'tracking_surface',zeros(3,1),'tracking_euler_rate_map',eye(3), ...
++    'actual_event_dt',0,'tracking_update_executed',false);
+ if ~enabled,return;end
+-assert(all(isfield(in,{'sample_index','time_s'}))&&isscalar(in.sample_index)&& ...
++assert(all(isfield(in,{'sample_index','time_s','tracking_surface', ...
++    'tracking_euler_rate_map','actual_event_dt'}))&&isscalar(in.sample_index)&& ...
+     in.sample_index==round(in.sample_index)&&in.sample_index>memory.previous_sample_index&& ...
+-    isfinite(in.time_s)&&in.time_s>memory.previous_time_s, ...
+-    'DLMLP:HeadTime','Head events must be strictly ordered.');
++    isfinite(in.time_s)&&in.time_s>memory.previous_time_s&& ...
++    isscalar(in.actual_event_dt)&&isfinite(in.actual_event_dt)&&in.actual_event_dt>=0&& ...
++    isequal(size(in.tracking_euler_rate_map),[3,3])&& ...
++    all(isfinite(in.tracking_euler_rate_map),'all')&&numel(in.tracking_surface)==3&& ...
++    all(isfinite(in.tracking_surface)), ...
++    'DLMLP:HeadTime','Head events or tracking inputs are invalid.');
++T=double(in.tracking_euler_rate_map);surface=double(in.tracking_surface(:));
++if memory.previous_sample_index>0
++    assert(abs(double(in.actual_event_dt)-(double(in.time_s)-memory.previous_time_s))<1e-10, ...
++        'DLMLP:EventDt','Tracking dt must equal the interval between actual head events.');
++else
++    assert(double(in.actual_event_dt)==0,'DLMLP:EventDt', ...
++        'The first head event has no preceding event interval.');
++end
++d.tracking_surface=surface;d.tracking_euler_rate_map=T;
++d.actual_event_dt=double(in.actual_event_dt);
+ J0=double(in.J0);
+ if isempty(memory.fixed_J0),memory.fixed_J0=J0;end
+ assert(isequal(J0,memory.fixed_J0),'DLMLP:FixedJ0','The nominal J0 must remain constant.');
++after=before;
+ if memory.previous_sample_index>0
+     assert(all(isfield(in,{'omega_history','torque_history','history_time','history_sample_indices'})), ...
+         'DLMLP:HistoryFields','Missing measured past interval.');
+@@ -93,14 +111,20 @@ if memory.previous_sample_index>0
+         A=eye(33)-gain*previousPhi.';
+         P=A*Pprior*A.'+gain*gain.';P=(P+P.')/2;
+         [factor,flag]=chol(P);assert(flag==0,'DLMLP:HeadSPD','RLS covariance lost positive definiteness.');
+-        magnitude=norm(after,'fro');
+-        if magnitude>20,after=after*(20/magnitude);d.projection_active=true;end
+-        memory.head_weight=after;memory.head_covariance=P;
+-        d.update_executed=true;d.weight_after=after;d.weight_norm_after=norm(after,'fro');
++        d.update_executed=true;
+         d.covariance_min_cholesky_diagonal=min(diag(factor));
+         d.covariance_diagonal_after=diag(P);
+     end
+ end
++if memory.previous_sample_index>0&&double(in.beta)>=1
++    trackingDrive=-(P*phi)*(double(in.beta)*(scale.*(T.'*surface))).';
++    after=after+double(in.actual_event_dt)*trackingDrive;
++    d.tracking_drive=trackingDrive;d.tracking_update_executed=true;
++end
++magnitude=norm(after,'fro');
++if magnitude>20,after=after*(20/magnitude);d.projection_active=true;end
++memory.head_weight=after;memory.head_covariance=P;
++d.weight_after=after;d.weight_norm_after=norm(after,'fro');
+ memory.previous_phi=phi;memory.previous_base_normalized=base./scale;
+ memory.previous_sample_index=double(in.sample_index);memory.previous_time_s=double(in.time_s);
+ memory.previous_beta=double(in.beta);
+
+diff --git "a/experiments\\dl_attitude_replacement_20261026\\mlp15_causal_head_v1\\candidate_runner_work\\matlab\\runtime\\run_mlp15_dev72_closed_loop.m" "b/experiments\\dl_attitude_replacement_20261026\\mlp15_composite_dev_v2\\candidate_runner_work\\matlab\\runtime\\run_mlp15_dev72_closed_loop.m"
+index 3d2acaf..b97c6f5 100644
+--- "a/experiments\\dl_attitude_replacement_20261026\\mlp15_causal_head_v1\\candidate_runner_work\\matlab\\runtime\\run_mlp15_dev72_closed_loop.m"
++++ "b/experiments\\dl_attitude_replacement_20261026\\mlp15_composite_dev_v2\\candidate_runner_work\\matlab\\runtime\\run_mlp15_dev72_closed_loop.m"
+@@ -12,6 +12,25 @@ function log=run_mlp15_dev72_closed_loop(s,cfg,opts)
+     %   log: 闭环时序与诊断日志。
+     %RUN_GATE_HOLDOUT_CLOSED_LOOP Derived shared C5 loop; Plant advances here.
+     if nargin<3,opts=struct;end
++    entry=fileparts(mfilename('fullpath'));
++    studyRoot=fileparts(fileparts(fileparts(entry)));
++    releasePath=fullfile(studyRoot,'RELEASE.json');
++    assert(isfile(releasePath),'CompositeDEV:ReleaseMissing','No composite DEV release exists.');
++    release=jsondecode(fileread(releasePath));
++    sceneId=char(string(field_or(s,'scene_id','')));
++    authorizedScenes=cellstr(string(field_or(release,'authorized_scenes',{})));
++    assert(strcmp(char(field_or(release,'schema','')),'DL1018_MLP15_COMPOSITE_DEV_RELEASE_V2')&& ...
++        strcmp(char(field_or(release,'status','')),'RELEASED')&& ...
++        double(field_or(release,'authorized_Plant_calls',0))>0&& ...
++        any(strcmp(authorizedScenes,sceneId)), ...
++        'CompositeDEV:BudgetClosed','Composite DEV Plant budget is zero or this scene is not authorized.');
++    markerPath=char(string(field_or(opts,'composite_attempt_marker','')));
++    assert(isfile(markerPath),'CompositeDEV:AttemptMarker','A unique running attempt marker is required.');
++    marker=jsondecode(fileread(markerPath));
++    assert(strcmp(char(field_or(marker,'scene_id','')),sceneId)&& ...
++        strcmp(char(field_or(marker,'stage','')),'RUNNING'), ...
++        'CompositeDEV:AttemptMarker','Attempt marker does not bind the authorized scene.');
++
+     assert(isstruct(opts)&&all(isfield(opts,{'gate_attitude_arm','gate_geometry_arm','gate_identity_lock'})), ...
+         'GATE:Options','Missing gate arm, geometry arm, or identity lock.');
+     gateAttitudeArm=upper(char(opts.gate_attitude_arm));
+@@ -94,7 +113,9 @@ function log=run_mlp15_dev72_closed_loop(s,cfg,opts)
+     else
+         expected=expectedBaseline;
+     end
+-    effectiveOptions=rmfield(opts,{'gate_attitude_arm','gate_geometry_arm','gate_identity_lock'});
++    optionExclusions={'gate_attitude_arm','gate_geometry_arm','gate_identity_lock'};
++    if isfield(opts,'composite_attempt_marker'),optionExclusions{end+1}='composite_attempt_marker';end
++    effectiveOptions=rmfield(opts,optionExclusions);
+     assert(isequaln(effectiveOptions,expected),'GATE:ExactOptions', ...
+         'Effective C5 options differ from the frozen paired C5 builder.');
+     gateIdentityHashes=gate_holdout_identity_hashes( ...
+@@ -2424,9 +2445,13 @@ function log=run_mlp15_dev72_closed_loop(s,cfg,opts)
+                                 mlpInput=struct('feature',feature, ...
+                                     'J0',double(cfg.attitude_replacement.J0_controller_fixed_kgm2), ...
+                                     'beta',beta,'dmax',double(cfg.rbf.attitude.dmax(:)), ...
+-                                    'head_enabled',true,'sample_index',k,'time_s',t(k));
++                                    'head_enabled',true,'sample_index',k,'time_s',t(k), ...
++                                    'tracking_surface',double(ai0.surface(:)), ...
++                                    'tracking_euler_rate_map',double(ai0.euler_rate_map), ...
++                                    'actual_event_dt',0);
+                                 previousMlpIndex=mlp15Memory.previous_sample_index;
+                                 if previousMlpIndex>0
++                                    mlpInput.actual_event_dt=t(k)-mlp15Memory.previous_time_s;
+                                     mlpInput.omega_history=double(x(previousMlpIndex:k,10:12));
+                                     mlpInput.torque_history=double(requested(previousMlpIndex:k-1,2:4));
+                                     mlpInput.history_time=double(t(previousMlpIndex:k));
+@@ -2443,8 +2468,15 @@ function log=run_mlp15_dev72_closed_loop(s,cfg,opts)
+                                     'clipped_residual_rad_s2',mlpOut.clipped_residual_rad_s2, ...
+                                     'beta',beta,'estimateTorque_Nm',heldMlp15Torque, ...
+                                     'history_count',mlpOut.history_count, ...
++                                    'causal_head',mlpOut.head, ...
++                                    'tracking_drive',mlpOut.head.tracking_drive, ...
++                                    'tracking_surface',mlpOut.head.tracking_surface, ...
++                                    'tracking_euler_rate_map',mlpOut.head.tracking_euler_rate_map, ...
++                                    'actual_event_dt',mlpOut.head.actual_event_dt, ...
++                                    'weight_before',mlpOut.head.weight_before, ...
++                                    'weight_after',mlpOut.head.weight_after, ...
+                                     'rbf_output_enabled',false,'rbf_update_enabled',false, ...
+-                                    'time_varying_inertia_reconstruction_used',false,'causal_head',mlpOut.head);
++                                    'time_varying_inertia_reconstruction_used',false);
+                             end
+                         elseif attitudeEvent
+                             assert(dtUpdate>0,'TCN0901:RbfDt','RBF update dt must be positive.');
+@@ -3103,6 +3135,7 @@ function log=run_mlp15_dev72_closed_loop(s,cfg,opts)
+          log.mlp15_variable_inertia_reconstruction_used=false;
+          log.mlp15_causal_head_enabled=true;
+          log.mlp15_causal_head_protocol='PAST_10MS_RESIDUAL_RLS_JOSEPH_OUTPUT_BEFORE_UPDATE_V1';
++         log.mlp15_composite_head_protocol='PAST_10MS_RESIDUAL_RLS_JOSEPH_AND_TRACKING_OUTPUT_BEFORE_UPDATE_V1';
+      end
+      log.safety_position_error_persistence_s=safetyPositionErrorTime;
+      log.safety_tilt_persistence_s=safetyTiltTime;
+@@ -3671,3 +3704,4 @@ function y=limit_vector_norm(x,limit)
+     end
+ end
+ 
++
+

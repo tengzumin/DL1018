@@ -1,0 +1,68 @@
+{
+  "schema": "C5_QUADROTOR_CFB_PRIMARY_ACCESS_CHECK_V1",
+  "assessment": "FULL_TEXT_NOT_FOUND_COVERAGE_UNRESOLVED",
+  "checked_date": "2026-10-23",
+  "target": {
+    "authors": ["Yang Zhao", "Lin Zhao", "Jinpeng Yu", "Qing-Guo Wang"],
+    "title": "Discrete-Time Adaptive Fuzzy Command Filtered Backstepping Control for Quadrotor Unmanned Aerial Vehicle Systems: Theory and Experiments",
+    "journal": "IEEE Transactions on Fuzzy Systems",
+    "volume_issue_pages": "32(6):3618-3628",
+    "year": 2024,
+    "doi": "10.1109/TFUZZ.2024.3379510",
+    "publisher_doi_url": "https://doi.org/10.1109/TFUZZ.2024.3379510"
+  },
+  "source_checks": [
+    {
+      "type": "author_institution_repository_metadata",
+      "url": "https://repository.uic.edu.cn/simple-search?advanced=false&field1=dc.contributor.author&query1=Yu%2C+Jinpeng",
+      "observed": "Search index lists title, authors, journal, volume, issue, pages; displayed browse/download count was 15/0.",
+      "full_text": false,
+      "limitations": "Institutional record only. Web open returned 502 and direct HTTPS request failed; no paper body or attachment was read."
+    },
+    {
+      "type": "author_orcid_metadata",
+      "url": "https://orcid.org/0009-0005-1268-4440",
+      "observed": "ORCID works record links the title and DOI to Yang Zhao, Lin Zhao, Jinpeng Yu, and Qing-Guo Wang.",
+      "full_text": false
+    },
+    {
+      "type": "publisher_landing_page",
+      "url": "https://doi.org/10.1109/TFUZZ.2024.3379510",
+      "observed": "The DOI/publisher page was not accessible through this session's web reader.",
+      "full_text": false
+    },
+    {
+      "type": "secondary_platform_availability_check",
+      "url": "https://www.researchgate.net/publication/379126524_Discrete-Time_Adaptive_Fuzzy_Command_Filtered_Backstepping_Control_for_Quadrotor_Unmanned_Aerial_Vehicle_Systems_Theory_and_Experiments",
+      "observed": "The listing says no full text is available there and offers a request-to-author action.",
+      "full_text": false,
+      "limitations": "Not a primary source; does not prove global unavailability. No request was sent."
+    }
+  ],
+  "primary_text_review": {
+    "legal_public_author_full_text_found": false,
+    "downloaded_or_saved": false,
+    "body_pages_or_equations_reviewed": [],
+    "abstract_used_as_body_evidence": false
+  },
+  "coverage_question": {
+    "question": "Does the paper explicitly discuss connecting a pretrained physical residual head to PCF-aligned target coordinates or forming labels from completed physical intervals?",
+    "status": "UNRESOLVED_NO_PRIMARY_TEXT",
+    "covered": null,
+    "not_covered": null,
+    "page_equation_citations": [],
+    "note": "Do not infer absence from inaccessible text or infer novelty from sampling rate, network type, or projection shape."
+  },
+  "raw_source_facts_vs_gap": {
+    "facts_from_public_bibliographic_records": [
+      "The work is a 2024 IEEE TFS paper on discrete-time adaptive fuzzy command-filtered backstepping for quadrotor UAV systems.",
+      "The title, author set, DOI, and volume/issue/page metadata are listed in the author-institution repository record and ORCID work record."
+    ],
+    "not_verified_from_primary_text": [
+      "Any explicit PCF target-coordinate matching discussion",
+      "Any completed-interval physical label construction",
+      "Any direct algorithmic or theorem-level relation to the C5 implementation"
+    ]
+  },
+  "decision_note": "The broad discrete-time quadrotor command-filtered adaptive-control area is established by the bibliographic record. The specific C5 coverage comparison remains open pending legitimate full-text access. No TEST/MAT/results were read and no experiment or method was changed."
+}

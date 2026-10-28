@@ -1,0 +1,165 @@
+{
+  "status": "PASS_B768_TRAINING_TEACHER_CONTRACT",
+  "dataset_npz": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\large_attitude_b768_root_v1\\DATASET.npz",
+  "dataset_sha256": "ad9b767cf881a5a9acd5db60a86b3610f563a8e66e7b64592b7e803b7ea4ff68",
+  "rows": {
+    "train": 768,
+    "val": 48,
+    "all_roles": "B only",
+    "physical_scene_overlap": false,
+    "train_task_counts": {
+      "FIG8_3D": 256,
+      "HELIX": 256,
+      "SQUARE": 256
+    },
+    "val_task_counts": {
+      "FIG8_3D": 16,
+      "HELIX": 16,
+      "SQUARE": 16
+    }
+  },
+  "source_path_resolution": {
+    "status": "PASS_816_OF_816",
+    "policy": "RUN_PLANT uses g3_raw_path/g3_run_start_path; all other recognized actions use raw_source_path/input_run_start_path",
+    "action_counts": {
+      "PILOT6_IMPORT": 3,
+      "REUSE_FULL72_B_REBUILD_D2_D4": 16,
+      "REUSE_HS_ACCEPTED": 544,
+      "RUN_PLANT": 253
+    }
+  },
+  "run_start_contract": {
+    "status": "PASS_816_OF_816",
+    "formats": {
+      "mat_v5_scipy": 544,
+      "mat_v73_hdf5": 272
+    },
+    "controller_morphology_mode": "fixed",
+    "dmax_rad_s2": [
+      45.0,
+      45.0,
+      4.7124
+    ],
+    "beta_rise_time_s": 2.2
+  },
+  "feature_contract": {
+    "status": "PASS_3_TASK_SPOTCHECK",
+    "order": [
+      "wrapped(filtered_attitude_reference-state_euler) rad x3",
+      "state body_rate rad/s x3",
+      "attitude_bs_nominal_torque Nm x3",
+      "scene arms command unitless x4"
+    ],
+    "event_alignment": "input[k] and rbf_output_raw[k] at same current 100-Hz transition event; events at 0.01..19.99s; no future fields",
+    "matches": "C5 teacher FEATURE_ORDER and online trace feature_raw contract"
+  },
+  "target_contract": {
+    "status": "PASS_3_TASK_SPOTCHECK",
+    "field": "/log/rbf_output_raw",
+    "meaning": "post-output-limit/pre-beta attitude RBF disturbance estimate",
+    "unit": "rad/s^2 (RBF acceleration estimate; runtime applies beta then maps through plant inertia to torque)",
+    "checks": "raw==clip(rbf_output_unclipped, +/- dmax); logged applied acceleration==cfg beta ramp * raw target",
+    "existing_C5_fixed_J0_reference_kg_m2": [
+      0.003257553333333334,
+      0.0032575533333333334,
+      0.006360648333333333
+    ],
+    "J0_audit_status": "reference copied from existing C5 builder constant only; not re-derived or verified against these B768 raws"
+  },
+  "sample_checks": [
+    {
+      "episode_id": "G02_P_TEACHER_DL1018_TRAIN_T2_C15_W00_ACC_FIX_V1_B",
+      "task": "FIG8_3D",
+      "g3_action": "RUN_PLANT",
+      "event_count": 1999,
+      "event_time_s_first_last": [
+        0.01,
+        19.990000000000002
+      ],
+      "input_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "input_npz_max_abs_error": 0.0,
+      "target_npz_max_abs_error": 0.0,
+      "target_clip_max_abs_error_rad_s2": 0.0,
+      "applied_beta_formula_max_abs_error_rad_s2": 0.0,
+      "beta_formula": "min((zero_based_transition_index+1)*0.001/beta_rise_time_s,1)",
+      "logged_attitude_event_beta_used": false,
+      "target_max_abs_rad_s2": [
+        10.256709738143947,
+        18.03588023054556,
+        0.8968689502252626
+      ]
+    },
+    {
+      "episode_id": "G02_P_TEACHER_DL1018_TRAIN_T1_C15_W00_B",
+      "task": "HELIX",
+      "g3_action": "REUSE_HS_ACCEPTED",
+      "event_count": 1999,
+      "event_time_s_first_last": [
+        0.01,
+        19.990000000000002
+      ],
+      "input_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "input_npz_max_abs_error": 0.0,
+      "target_npz_max_abs_error": 0.0,
+      "target_clip_max_abs_error_rad_s2": 0.0,
+      "applied_beta_formula_max_abs_error_rad_s2": 0.0,
+      "beta_formula": "min((zero_based_transition_index+1)*0.001/beta_rise_time_s,1)",
+      "logged_attitude_event_beta_used": false,
+      "target_max_abs_rad_s2": [
+        17.35158483486457,
+        6.109645058206002,
+        1.6674296497537278
+      ]
+    },
+    {
+      "episode_id": "G02_P_TEACHER_DL1018_TRAIN_T3_C15_W00_B",
+      "task": "SQUARE",
+      "g3_action": "REUSE_HS_ACCEPTED",
+      "event_count": 1999,
+      "event_time_s_first_last": [
+        0.01,
+        19.990000000000002
+      ],
+      "input_shape": [
+        1999,
+        13
+      ],
+      "target_shape": [
+        1999,
+        3
+      ],
+      "input_npz_max_abs_error": 0.0,
+      "target_npz_max_abs_error": 0.0,
+      "target_clip_max_abs_error_rad_s2": 0.0,
+      "applied_beta_formula_max_abs_error_rad_s2": 0.0,
+      "beta_formula": "min((zero_based_transition_index+1)*0.001/beta_rise_time_s,1)",
+      "logged_attitude_event_beta_used": false,
+      "target_max_abs_rad_s2": [
+        17.228501503609742,
+        6.253339381835723,
+        1.1700626208758338
+      ]
+    }
+  ],
+  "limitations": [
+    "Raw full-file SHA-256 was not checked by extractor or this spot audit.",
+    "Raw feature/label alignment and target/applied-ramp were independently checked on one TRAIN B episode per task; run_start cfg contract was checked for all 816 B episodes.",
+    "attitude_event_beta log is not used because it is nonfinite on sampled raws; beta is recomputed from run_start cfg and runtime equation.",
+    "No inertia fields or torque reconstruction were read.",
+    "No TEST rows or raw files were read; no training was started."
+  ]
+}

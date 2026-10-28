@@ -1,0 +1,131 @@
+{
+  "schema": "DL1018_CAUSAL_N4_TRAIN24_BATCH_INPUT_V2",
+  "study_id": "causal_n4_gate_train24_batch_v2",
+  "scope": "Fixed v2 evaluation on the exact VAL48 cohort; no tuning, TEST, Plant, or inertia reconstruction.",
+  "cohort": {
+    "source_split": "VAL48",
+    "scene_count": 48,
+    "source_scene_ids": [
+      "DL1018_VAL_T1_C00_W07",
+      "DL1018_VAL_T1_C01_W08",
+      "DL1018_VAL_T1_C02_W09",
+      "DL1018_VAL_T1_C03_W10",
+      "DL1018_VAL_T1_C04_W11",
+      "DL1018_VAL_T1_C05_W12",
+      "DL1018_VAL_T1_C06_W13",
+      "DL1018_VAL_T1_C07_W14",
+      "DL1018_VAL_T1_C08_W15",
+      "DL1018_VAL_T1_C09_W00",
+      "DL1018_VAL_T1_C10_W01",
+      "DL1018_VAL_T1_C11_W02",
+      "DL1018_VAL_T1_C12_W03",
+      "DL1018_VAL_T1_C13_W04",
+      "DL1018_VAL_T1_C14_W05",
+      "DL1018_VAL_T1_C15_W06",
+      "DL1018_VAL_T2_C00_W10",
+      "DL1018_VAL_T2_C01_W11",
+      "DL1018_VAL_T2_C02_W12",
+      "DL1018_VAL_T2_C03_W13",
+      "DL1018_VAL_T2_C04_W14",
+      "DL1018_VAL_T2_C05_W15",
+      "DL1018_VAL_T2_C06_W00",
+      "DL1018_VAL_T2_C07_W01",
+      "DL1018_VAL_T2_C08_W02",
+      "DL1018_VAL_T2_C09_W03",
+      "DL1018_VAL_T2_C10_W04",
+      "DL1018_VAL_T2_C11_W05",
+      "DL1018_VAL_T2_C12_W06",
+      "DL1018_VAL_T2_C13_W07",
+      "DL1018_VAL_T2_C14_W08",
+      "DL1018_VAL_T2_C15_W09",
+      "DL1018_VAL_T3_C00_W13",
+      "DL1018_VAL_T3_C01_W14",
+      "DL1018_VAL_T3_C02_W15",
+      "DL1018_VAL_T3_C03_W00",
+      "DL1018_VAL_T3_C04_W01",
+      "DL1018_VAL_T3_C05_W02",
+      "DL1018_VAL_T3_C06_W03",
+      "DL1018_VAL_T3_C07_W04",
+      "DL1018_VAL_T3_C08_W05",
+      "DL1018_VAL_T3_C09_W06",
+      "DL1018_VAL_T3_C10_W07",
+      "DL1018_VAL_T3_C11_W08",
+      "DL1018_VAL_T3_C12_W09",
+      "DL1018_VAL_T3_C13_W10",
+      "DL1018_VAL_T3_C14_W11",
+      "DL1018_VAL_T3_C15_W12"
+    ],
+    "val_used_for_tuning": false,
+    "TEST_read": false,
+    "Plant_calls": 0
+  },
+  "cohort_sources": {
+    "source_manifest_v1": {
+      "path": "experiments/dl_attitude_replacement_20261026/mlp15_dev72_v1/MLP15_DEV72_PAYLOAD_MANIFEST_v1.json",
+      "sha256": "4163c7c5bbb418c67dc05c887ae753852e1a453c0f56dc74ae029927c9e5fcc9"
+    },
+    "parent_full72_manifest_v2": {
+      "path": "experiments/dl_attitude_replacement_20261026/gru_stream_cosine_tracking_head_full72_v1/MLP15_DEV72_PAYLOAD_MANIFEST_v2.json",
+      "sha256": "8c6bae8a0ed4d94b30b9e9ac466d8a46ed1a1d955c9592eccabaf4c4987a3991"
+    },
+    "parent_reuse_manifest_v2": {
+      "path": "experiments/dl_attitude_replacement_20261026/gru_stream_cosine_tracking_head_dev_v1/MLP15_DEV72_PAYLOAD_MANIFEST_v2.json",
+      "sha256": "8c6bae8a0ed4d94b30b9e9ac466d8a46ed1a1d955c9592eccabaf4c4987a3991"
+    },
+    "c5_input_lock_v3": {
+      "path": "experiments/position_axis_coordinate_c5_dev72_20261023/C5_DEV72_INPUT_LOCK_v3.json",
+      "sha256": "82024c01276cc4bfbd9b7772cf5332dee3fdfcbed422969589b68f1c90ed2d75"
+    },
+    "train24_batch_input": {
+      "path": "experiments/dl_attitude_replacement_20261028/causal_n4_gate_train24_batch_v2/BATCH_INPUT_v2.json",
+      "sha256": "0fb4e111ab9147183911b3b27a0b403ecb9b131528aae1b1616cc1aa521d5ae7"
+    },
+    "train24_batch_plan": {
+      "path": "experiments/dl_attitude_replacement_20261028/causal_n4_gate_train24_batch_v2/BATCH_PLAN_v2.json",
+      "sha256": "c783cd31b7b4b9c4800266c6dd5017085fedf454c18e7fe6879d0367cdc210e4"
+    },
+    "train24_binding_template": {
+      "path": "experiments/dl_attitude_replacement_20261028/causal_n4_gate_train24_batch_v2/bindings/DL1018_DEV_T1_C05_W06.json",
+      "sha256": "5cc66191e647114d70a48aac21da2d8b9d0e606cbc5cf99d0c4118c1495989d5"
+    }
+  },
+  "n4_gate_v2": {
+    "root": "experiments/dl_attitude_replacement_20261028/n4cg_v2",
+    "release": {
+      "path": "experiments/dl_attitude_replacement_20261028/n4cg_v2/RELEASE.json",
+      "sha256": "300ed5798ff2ff1a9557a128fbb57c29c7ad154d27dc1cea09f3a222d15a12f5"
+    },
+    "protocol": {
+      "path": "experiments/dl_attitude_replacement_20261028/n4cg_v2/CALL_PROTOCOL_v2.json",
+      "sha256": "5cfec030685a180db167cc2488753c7383ac4f73b4e2bb528f40c11270eda7a7"
+    },
+    "source_lock": {
+      "path": "experiments/dl_attitude_replacement_20261028/n4cg_v2/SOURCE_LOCK_v2.json",
+      "sha256": "94301260f83dc097d2fb5b95d71ea081d3c5639163e65cb393cf85655dc3b6bb"
+    },
+    "three_scene_result": {
+      "path": "experiments/dl_attitude_replacement_20261028/n4cg_v2/THREE_SCENE_RESULT_v2.json",
+      "sha256": "d673b80815bb0a63ff57bc79dfdea4d206ab914e5810f6366e2e861a5936e10b"
+    },
+    "shared_runtime_relative": "candidate_runner_work"
+  },
+  "policy": {
+    "attempt_id": "attempt_01",
+    "max_attempts_per_scene": 1,
+    "Plant_calls": 0,
+    "authorized_Plant_calls": 0,
+    "potential_budget_calls": 0,
+    "create_attempt_directories": false,
+    "create_marker_files": false,
+    "scoring_path_pattern": "scores/<scene_id>/SCORE_v2.json",
+    "attempt_path_pattern": "runs/<scene_id>/attempt_01"
+  },
+  "fixed_controller": {
+    "attitude": "frozen parent cosine-GRU",
+    "position": "frozen C5 DSSM14 / M110 options",
+    "extra_position_residual_gru_enabled": false,
+    "fixed_J0": true,
+    "inertia_reconstruction_enabled": false,
+    "parameter_tuning": false
+  }
+}

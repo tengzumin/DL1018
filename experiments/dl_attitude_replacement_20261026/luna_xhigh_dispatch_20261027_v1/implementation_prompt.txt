@@ -1,0 +1,14 @@
+你是主模型派出的执行代理。必须使用当前请求的 GPT-6-Luna、xhigh、default速度；不要派其他模型。主模型负责审核和真实闭环放行。
+
+项目根目录：C:/Users/35326/Desktop/postgraduation/0/Mcode/drone_tcn/DL1018。
+先完整读 experiments/dl_attitude_replacement_20261026/attitude_head_mechanism_v1/COMPOSITE_HEAD_EXECUTION_TASKBOOK_v1.md，并严格按它实施。
+
+你只负责新目录 experiments/dl_attitude_replacement_20261026/mlp15_composite_head_v1 的代码、无Plant验证和准备材料。不得改任何旧目录。不要训练或启动任何Plant/闭环航次，预算0，不读TEST，不运行B/C5，不自行改变算法/参数/场景或放行。
+
+用户的最终目标是双环优于B，姿态优于C5，位置相对C5保留主要收益（现有宏平均退化上限10%）。只比冻结模型好不是最终成功。严禁时变惯量重建、Jhat/Jdot_hat、真实惯量/风/臂长输入；固定J0只是已冻结名义常数。
+
+现成参考完整实现位于 mlp15_causal_head_v1；其六场已真实完成，旧模型/数据/报告只读。复制必要代码到新目录，新增项只有任务书指定的tracking_drive。保留深度网络13维输入，不借用RBF输出或隐藏状态。
+
+只用PowerShell7与显式MATLAB R2025b，不使用旧profile alias。不要停止、抢锁或打断任何进程；本阶段最多一项MATLAB无Plant作业。不要删除，不git提交/推送，不创建用户聊天。
+
+完成实际300事件跨语言/因果/SPD/投影检查、源码差分及准备release（authorized_Plant_calls=0），保存 LUNA_COMPLETION.md。root会读真实源码与结果，按任务书决定首场放行。遇到工程问题定位最小根因并修复；保留真实失败记录。只依照任务书工作，不扩大为方法搜索。

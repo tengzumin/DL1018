@@ -1,0 +1,24 @@
+{
+  "approved_at_local": "2026-10-22T20:16:26.4563157+08:00",
+  "decision": "APPROVE_FIRST_TRAIN_OFFLINE_RUN",
+  "scope": "Fixed-model inference and target reconstruction only; no optimizer/Plant/GPU/TEST",
+  "release_file": "18_RELEASE_core-d2e2c807b811_worker-5ca776c5f476.json",
+  "release_sha256": "7c0b9f100b89a7badf352b4cea90c4a39861c1b14f33f32d144760c9eb24bbb9",
+  "core_sha256": "d2e2c807b8119b32eddba8f765c6c566bee40d5e37c0590363f9091d30a47f70",
+  "worker_sha256": "5ca776c5f476c8e7ad824c11ab1381d48b6fdf0b385f9471522a8f5826a8021a",
+  "TRAIN_expected": 1536,
+  "VAL_expected": 96,
+  "VAL_condition": "Only after main reviewer confirms matching PASS_TRAIN_1536 and complete source/sidecar/metric counts; then matching immutable worker/core",
+  "resume_authorized": false,
+  "source_edits_authorized": false,
+  "derived_storage_limit_bytes": 2147483648,
+  "additional_conditions": [
+    "Execute only first normal TRAIN path without --resume.",
+    "Set OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 for this process.",
+    "All original sources remain read-only; no deletion or process interruption.",
+    "Unexpected failure stops the audit job and is reported, without tuning or unreviewed retries."
+  ],
+  "review": "Primary source/data review plus independent Luna reviewer PASS; parent independently recalculated three raw records and final smoke's 16 metrics.",
+  "smoke_note": "An attempted duplicate parent --smoke call was rejected by existing-output guard; frozen release ledger hash is a historical snapshot before this append.",
+  "paper_status": "NOT_QUALIFIED; old 3-round research cycle not reopened"
+}

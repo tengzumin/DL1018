@@ -1,0 +1,26 @@
+{
+  "schema": "POSITION_COMPENSATION_DUAL_NOTCH_RUNNER_INTEGRATION_CONTRACT_V1",
+  "study_id": "position_compensation_dual_notch_no_residual_gru_ablation_T1_noPlant_v1",
+  "reference_runner_path": "experiments/dl_attitude_replacement_20261028/position_dc_penalty_oof_train_pair_preflight_W09_T1_C10_attempt014_v1/candidate_runner_work/matlab/runtime/run_mlp15_dev72_closed_loop.m",
+  "isolated_runner_copy_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\position_compensation_dual_notch_no_residual_gru_ablation_v1\\T1\\candidate_runner_work\\matlab\\runtime\\run_mlp15_dev72_closed_loop.m",
+  "reference_event_block_anchor": "Immediately after the stage1PositionResidualGruEnabled block updates stage1PositionHeldAppliedCache and stage1PositionHeldForce, before dF=stage1PositionHeldForce and position_bs_step.",
+  "filter_input": "Final stage1PositionHeldAppliedCache after C5 and residual-GRU combination/clipping.",
+  "filter_output": "Replace stage1PositionHeldAppliedCache and set stage1PositionHeldForce=P.mass*filteredAction; preserve the held force until the next stage-1 event.",
+  "event_contract": "Update once per stage1PositionEvent at 100 Hz; no update between events.",
+  "fixed_parameters": {
+    "sample_rate_hz": 100.0,
+    "notch_centers_hz": [
+      2.2,
+      3.2
+    ],
+    "quality_factor_each": 4.0,
+    "action_limit_mps2": 3.0
+  },
+  "existing_filter_not_reused": "Current runner's 3.5-Hz/Q1 filter is applied before residual-GRU addition and does not implement this contract.",
+  "runner_copy_modified_in_this_study": true,
+  "original_runner_modified": false,
+  "plant_invoked": false,
+  "position_residual_gru_enabled": false,
+  "exact_options_check_preserved": true,
+  "position_residual_gru_weights_deserialized": false
+}

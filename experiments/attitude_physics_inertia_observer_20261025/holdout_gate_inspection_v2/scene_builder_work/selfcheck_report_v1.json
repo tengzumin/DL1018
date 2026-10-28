@@ -1,0 +1,598 @@
+{
+  "status": "PASS_NO_PLANT_STATIC_SELF_CHECK",
+  "plant_calls": 0,
+  "holdout_payloads_generated": false,
+  "manifest_status": "DRAFT_UNAUDITED_ID_SEED_ONLY",
+  "holdout_id_seed_count": 48,
+  "pilot_id_seed_count": 6,
+  "time_samples": 20001,
+  "dt_s": 0.001,
+  "max_reference_speed_mps": 0.9375,
+  "max_reference_acceleration_mps2": 3.4543615403812753,
+  "max_nominal_tilt_rad": 0.33888768539539105,
+  "max_nominal_thrust_N": 7.2217360592239608,
+  "configured_total_thrust_limit_N": 24.548000000000002,
+  "rho_star_m": 0.20718228688765847,
+  "analytic_outer_width_m": [
+    0.33913203435596423,
+    0.42000000000000004,
+    0.48055339059327373
+  ],
+  "analytic_side_clearance_m": [
+    0.055433982822017891,
+    0.014999999999999986,
+    -0.015276695296636861
+  ],
+  "synthetic_geometry_reports": [
+    {
+      "status": "GEOMETRY_PROXY_CHECKED",
+      "clearance_basis": "configured-component proxy; exact configured box/cylinder support extents with conservative x-slab overlap test",
+      "battery_envelope": "point mass at body origin; physical battery dimensions are not configured",
+      "rotor_radius_m": 0.0635,
+      "rotor_radius_status": "5_INCH_PROP_GEOMETRY_ESTIMATE",
+      "max_abs_cog_offset_body_m": 5.5564009049266026E-18,
+      "wall": {
+        "x": [
+          -0.1,
+          0.1
+        ],
+        "y": [
+          -0.225,
+          0.225
+        ],
+        "z": [
+          0.9,
+          1.5
+        ]
+      },
+      "events": [
+        {
+          "direction": 1,
+          "entry_time_s": 2.894,
+          "far_plane_time_s": 3.107,
+          "complete": true,
+          "start_index": 2712,
+          "end_index": 3290,
+          "minimum_clearance_m": 0.055433982822017863,
+          "minimum_clearance_time_s": 2.711
+        },
+        {
+          "direction": -1,
+          "entry_time_s": 16.894,
+          "far_plane_time_s": 17.107,
+          "complete": true,
+          "start_index": 16712,
+          "end_index": 17290,
+          "minimum_clearance_m": 0.055433982822017863,
+          "minimum_clearance_time_s": 16.711
+        }
+      ],
+      "component_minimum_clearance": [
+        {
+          "name": "body",
+          "clearance_m": 0.166,
+          "time_s": 2.831
+        },
+        {
+          "name": "battery_point",
+          "clearance_m": 0.225,
+          "time_s": 2.894
+        },
+        {
+          "name": "arm1",
+          "clearance_m": 0.11009514805718604,
+          "time_s": 2.77
+        },
+        {
+          "name": "arm2",
+          "clearance_m": 0.11009514805718602,
+          "time_s": 2.9290000000000003
+        },
+        {
+          "name": "arm3",
+          "clearance_m": 0.11009514805718604,
+          "time_s": 2.9290000000000003
+        },
+        {
+          "name": "arm4",
+          "clearance_m": 0.11009514805718601,
+          "time_s": 2.77
+        },
+        {
+          "name": "motor1",
+          "clearance_m": 0.10393398282201789,
+          "time_s": 2.7640000000000002
+        },
+        {
+          "name": "motor2",
+          "clearance_m": 0.10393398282201788,
+          "time_s": 2.991
+        },
+        {
+          "name": "motor3",
+          "clearance_m": 0.10393398282201789,
+          "time_s": 2.991
+        },
+        {
+          "name": "motor4",
+          "clearance_m": 0.10393398282201785,
+          "time_s": 2.7640000000000002
+        },
+        {
+          "name": "rotor_disk1",
+          "clearance_m": 0.055433982822017891,
+          "time_s": 2.711
+        },
+        {
+          "name": "rotor_disk2",
+          "clearance_m": 0.055433982822017863,
+          "time_s": 2.939
+        },
+        {
+          "name": "rotor_disk3",
+          "clearance_m": 0.055433982822017891,
+          "time_s": 2.939
+        },
+        {
+          "name": "rotor_disk4",
+          "clearance_m": 0.055433982822017863,
+          "time_s": 2.711
+        },
+        {
+          "name": "servo1",
+          "clearance_m": 0.15676419561549818,
+          "time_s": 2.821
+        },
+        {
+          "name": "servo2",
+          "clearance_m": 0.15676419561549818,
+          "time_s": 2.9330000000000003
+        },
+        {
+          "name": "servo3",
+          "clearance_m": 0.15676419561549818,
+          "time_s": 2.9330000000000003
+        },
+        {
+          "name": "servo4",
+          "clearance_m": 0.15676419561549815,
+          "time_s": 2.821
+        }
+      ],
+      "minimum_clearance_m": 0.055433982822017863,
+      "pass_bidirectional": true,
+      "pass_nonnegative_clearance": true,
+      "pass_15mm_proxy": true,
+      "contact_response_modelled": false,
+      "no_plant_invocations": 0
+    },
+    {
+      "status": "GEOMETRY_PROXY_CHECKED",
+      "clearance_basis": "configured-component proxy; exact configured box/cylinder support extents with conservative x-slab overlap test",
+      "battery_envelope": "point mass at body origin; physical battery dimensions are not configured",
+      "rotor_radius_m": 0.0635,
+      "rotor_radius_status": "5_INCH_PROP_GEOMETRY_ESTIMATE",
+      "max_abs_cog_offset_body_m": 6.6596107721226921E-18,
+      "wall": {
+        "x": [
+          -0.1,
+          0.1
+        ],
+        "y": [
+          -0.225,
+          0.225
+        ],
+        "z": [
+          0.9,
+          1.5
+        ]
+      },
+      "events": [
+        {
+          "direction": 1,
+          "entry_time_s": 2.894,
+          "far_plane_time_s": 3.107,
+          "complete": true,
+          "start_index": 2668,
+          "end_index": 3334,
+          "minimum_clearance_m": 0.01499999999999993,
+          "minimum_clearance_time_s": 2.6670000000000003
+        },
+        {
+          "direction": -1,
+          "entry_time_s": 16.894,
+          "far_plane_time_s": 17.107,
+          "complete": true,
+          "start_index": 16668,
+          "end_index": 17334,
+          "minimum_clearance_m": 0.01499999999999993,
+          "minimum_clearance_time_s": 16.982
+        }
+      ],
+      "component_minimum_clearance": [
+        {
+          "name": "body",
+          "clearance_m": 0.166,
+          "time_s": 2.831
+        },
+        {
+          "name": "battery_point",
+          "clearance_m": 0.225,
+          "time_s": 2.894
+        },
+        {
+          "name": "arm1",
+          "clearance_m": 0.06966116523516816,
+          "time_s": 2.727
+        },
+        {
+          "name": "arm2",
+          "clearance_m": 0.069661165235168132,
+          "time_s": 2.9290000000000003
+        },
+        {
+          "name": "arm3",
+          "clearance_m": 0.06966116523516816,
+          "time_s": 2.9290000000000003
+        },
+        {
+          "name": "arm4",
+          "clearance_m": 0.0696611652351681,
+          "time_s": 2.727
+        },
+        {
+          "name": "motor1",
+          "clearance_m": 0.063499999999999973,
+          "time_s": 2.72
+        },
+        {
+          "name": "motor2",
+          "clearance_m": 0.063499999999999973,
+          "time_s": 3.0340000000000003
+        },
+        {
+          "name": "motor3",
+          "clearance_m": 0.063499999999999973,
+          "time_s": 3.0340000000000003
+        },
+        {
+          "name": "motor4",
+          "clearance_m": 0.063499999999999918,
+          "time_s": 2.72
+        },
+        {
+          "name": "rotor_disk1",
+          "clearance_m": 0.014999999999999986,
+          "time_s": 2.6670000000000003
+        },
+        {
+          "name": "rotor_disk2",
+          "clearance_m": 0.014999999999999958,
+          "time_s": 2.982
+        },
+        {
+          "name": "rotor_disk3",
+          "clearance_m": 0.014999999999999986,
+          "time_s": 2.982
+        },
+        {
+          "name": "rotor_disk4",
+          "clearance_m": 0.01499999999999993,
+          "time_s": 2.6670000000000003
+        },
+        {
+          "name": "servo1",
+          "clearance_m": 0.15676419561549818,
+          "time_s": 2.821
+        },
+        {
+          "name": "servo2",
+          "clearance_m": 0.15676419561549815,
+          "time_s": 2.9330000000000003
+        },
+        {
+          "name": "servo3",
+          "clearance_m": 0.15676419561549818,
+          "time_s": 2.9330000000000003
+        },
+        {
+          "name": "servo4",
+          "clearance_m": 0.15676419561549818,
+          "time_s": 2.821
+        }
+      ],
+      "minimum_clearance_m": 0.01499999999999993,
+      "pass_bidirectional": true,
+      "pass_nonnegative_clearance": true,
+      "pass_15mm_proxy": true,
+      "contact_response_modelled": false,
+      "no_plant_invocations": 0
+    },
+    {
+      "status": "GEOMETRY_PROXY_CHECKED",
+      "clearance_basis": "configured-component proxy; exact configured box/cylinder support extents with conservative x-slab overlap test",
+      "battery_envelope": "point mass at body origin; physical battery dimensions are not configured",
+      "rotor_radius_m": 0.0635,
+      "rotor_radius_status": "5_INCH_PROP_GEOMETRY_ESTIMATE",
+      "max_abs_cog_offset_body_m": 8.7911833221892831E-18,
+      "wall": {
+        "x": [
+          -0.1,
+          0.1
+        ],
+        "y": [
+          -0.225,
+          0.225
+        ],
+        "z": [
+          0.9,
+          1.5
+        ]
+      },
+      "events": [
+        {
+          "direction": 1,
+          "entry_time_s": 2.894,
+          "far_plane_time_s": 3.107,
+          "complete": true,
+          "start_index": 2635,
+          "end_index": 3367,
+          "minimum_clearance_m": -0.015276695296636916,
+          "minimum_clearance_time_s": 2.634
+        },
+        {
+          "direction": -1,
+          "entry_time_s": 16.894,
+          "far_plane_time_s": 17.107,
+          "complete": true,
+          "start_index": 16635,
+          "end_index": 17367,
+          "minimum_clearance_m": -0.015276695296636916,
+          "minimum_clearance_time_s": 17.015
+        }
+      ],
+      "component_minimum_clearance": [
+        {
+          "name": "body",
+          "clearance_m": 0.166,
+          "time_s": 2.831
+        },
+        {
+          "name": "battery_point",
+          "clearance_m": 0.225,
+          "time_s": 2.894
+        },
+        {
+          "name": "arm1",
+          "clearance_m": 0.039384469938531314,
+          "time_s": 2.694
+        },
+        {
+          "name": "arm2",
+          "clearance_m": 0.039384469938531258,
+          "time_s": 2.9290000000000003
+        },
+        {
+          "name": "arm3",
+          "clearance_m": 0.039384469938531314,
+          "time_s": 2.9290000000000003
+        },
+        {
+          "name": "arm4",
+          "clearance_m": 0.039384469938531258,
+          "time_s": 2.694
+        },
+        {
+          "name": "motor1",
+          "clearance_m": 0.033223304703363127,
+          "time_s": 2.6870000000000003
+        },
+        {
+          "name": "motor2",
+          "clearance_m": 0.033223304703363127,
+          "time_s": 3.0660000000000003
+        },
+        {
+          "name": "motor3",
+          "clearance_m": 0.033223304703363127,
+          "time_s": 3.0660000000000003
+        },
+        {
+          "name": "motor4",
+          "clearance_m": 0.033223304703363071,
+          "time_s": 2.6870000000000003
+        },
+        {
+          "name": "rotor_disk1",
+          "clearance_m": -0.015276695296636861,
+          "time_s": 2.634
+        },
+        {
+          "name": "rotor_disk2",
+          "clearance_m": -0.015276695296636889,
+          "time_s": 3.015
+        },
+        {
+          "name": "rotor_disk3",
+          "clearance_m": -0.015276695296636861,
+          "time_s": 3.015
+        },
+        {
+          "name": "rotor_disk4",
+          "clearance_m": -0.015276695296636916,
+          "time_s": 2.634
+        },
+        {
+          "name": "servo1",
+          "clearance_m": 0.15676419561549818,
+          "time_s": 2.821
+        },
+        {
+          "name": "servo2",
+          "clearance_m": 0.15676419561549815,
+          "time_s": 2.9330000000000003
+        },
+        {
+          "name": "servo3",
+          "clearance_m": 0.15676419561549818,
+          "time_s": 2.9330000000000003
+        },
+        {
+          "name": "servo4",
+          "clearance_m": 0.15676419561549818,
+          "time_s": 2.821
+        }
+      ],
+      "minimum_clearance_m": -0.015276695296636916,
+      "pass_bidirectional": true,
+      "pass_nonnegative_clearance": false,
+      "pass_15mm_proxy": false,
+      "contact_response_modelled": false,
+      "no_plant_invocations": 0
+    }
+  ],
+  "rotated_asymmetric_cog_geometry": {
+    "status": "GEOMETRY_PROXY_CHECKED",
+    "clearance_basis": "configured-component proxy; exact configured box/cylinder support extents with conservative x-slab overlap test",
+    "battery_envelope": "point mass at body origin; physical battery dimensions are not configured",
+    "rotor_radius_m": 0.0635,
+    "rotor_radius_status": "5_INCH_PROP_GEOMETRY_ESTIMATE",
+    "max_abs_cog_offset_body_m": 0.0024418075897089443,
+    "wall": {
+      "x": [
+        -0.1,
+        0.1
+      ],
+      "y": [
+        -0.225,
+        0.225
+      ],
+      "z": [
+        0.9,
+        1.5
+      ]
+    },
+    "events": [
+      {
+        "direction": 1,
+        "entry_time_s": 2.894,
+        "far_plane_time_s": 3.107,
+        "complete": true,
+        "start_index": 2664,
+        "end_index": 3321,
+        "minimum_clearance_m": 0.021175100318246737,
+        "minimum_clearance_time_s": 2.926
+      },
+      {
+        "direction": -1,
+        "entry_time_s": 16.894,
+        "far_plane_time_s": 17.107,
+        "complete": true,
+        "start_index": 16681,
+        "end_index": 17338,
+        "minimum_clearance_m": 0.021175100318246737,
+        "minimum_clearance_time_s": 16.724
+      }
+    ],
+    "component_minimum_clearance": [
+      {
+        "name": "body",
+        "clearance_m": 0.15000921862552305,
+        "time_s": 2.818
+      },
+      {
+        "name": "battery_point",
+        "clearance_m": 0.22261645750963416,
+        "time_s": 2.894
+      },
+      {
+        "name": "arm1",
+        "clearance_m": 0.090499839430942142,
+        "time_s": 2.794
+      },
+      {
+        "name": "arm2",
+        "clearance_m": 0.12358438474819669,
+        "time_s": 2.939
+      },
+      {
+        "name": "arm3",
+        "clearance_m": 0.078656143480426238,
+        "time_s": 2.9170000000000003
+      },
+      {
+        "name": "arm4",
+        "clearance_m": 0.11735288348010495,
+        "time_s": 2.725
+      },
+      {
+        "name": "motor1",
+        "clearance_m": 0.081991343215118612,
+        "time_s": 2.789
+      },
+      {
+        "name": "motor2",
+        "clearance_m": 0.11858351020888824,
+        "time_s": 3.02
+      },
+      {
+        "name": "motor3",
+        "clearance_m": 0.070147647264602681,
+        "time_s": 2.978
+      },
+      {
+        "name": "motor4",
+        "clearance_m": 0.11235200894079654,
+        "time_s": 2.716
+      },
+      {
+        "name": "rotor_disk1",
+        "clearance_m": 0.03301879626876264,
+        "time_s": 2.737
+      },
+      {
+        "name": "rotor_disk2",
+        "clearance_m": 0.069610963262532272,
+        "time_s": 2.968
+      },
+      {
+        "name": "rotor_disk3",
+        "clearance_m": 0.021175100318246737,
+        "time_s": 2.926
+      },
+      {
+        "name": "rotor_disk4",
+        "clearance_m": 0.063379461994440583,
+        "time_s": 2.6630000000000003
+      },
+      {
+        "name": "servo1",
+        "clearance_m": 0.14369181960384608,
+        "time_s": 2.835
+      },
+      {
+        "name": "servo2",
+        "clearance_m": 0.1665615129347246,
+        "time_s": 2.942
+      },
+      {
+        "name": "servo3",
+        "clearance_m": 0.14845890458457772,
+        "time_s": 2.922
+      },
+      {
+        "name": "servo4",
+        "clearance_m": 0.17132859791545627,
+        "time_s": 2.81
+      }
+    ],
+    "minimum_clearance_m": 0.021175100318246737,
+    "pass_bidirectional": true,
+    "pass_nonnegative_clearance": true,
+    "pass_15mm_proxy": true,
+    "contact_response_modelled": false,
+    "no_plant_invocations": 0
+  },
+  "battery_geometry_gap": "battery is point mass; no physical battery dimensions configured",
+  "rotor_geometry_status": "5_INCH_PROP_GEOMETRY_ESTIMATE"
+}

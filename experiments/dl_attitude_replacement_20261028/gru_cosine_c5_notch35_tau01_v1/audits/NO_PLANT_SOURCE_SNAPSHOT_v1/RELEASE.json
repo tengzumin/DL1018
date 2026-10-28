@@ -1,0 +1,72 @@
+{
+  "schema": "DL1018_GRU_POSITION_APPLIED_NOTCH_TAU01_NOPLANT_V1",
+  "study_id": "gru_cosine_c5_notch35_tau01_v1",
+  "status": "PREPARED_NO_PLANT_PENDING_ROOT_AUDIT",
+  "authorization_phase": "ROOT_REVIEW_REQUIRED_SINGLE_SCENE_NO_PLANT_PREFLIGHT_ONLY",
+  "fixed_scene_id": "DL1018_VAL_T3_C01_W14",
+  "authorized_scenes": [
+    "DL1018_VAL_T3_C01_W14"
+  ],
+  "authorized_Plant_calls": 0,
+  "Plant_calls": 0,
+  "TEST_read": false,
+  "test_data_read": false,
+  "training_runs": 0,
+  "inertia_reconstruction_enabled": false,
+  "position_method_id": "C5_AXIS_MIXED_COORDINATE_M110",
+  "position_delayed_prediction_h_s": 0.01,
+  "position_delayed_prediction_tau_s": 0.1,
+  "position_delayed_prediction_rho": 0.1,
+  "position_delayed_prediction_mode": "FIXED_NO_RAMP",
+  "parent_notch_hf6_release_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\gru_cosine_c5_applied_notch_35hz_q1_v1\\RELEASE.json",
+  "parent_notch_hf6_release_sha256": "7ae9a1d48619650fcfe353d0bba9d1bf601c39703a3398821d3b690c05d9b341",
+  "parent_notch_hf6_source_lock_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\gru_cosine_c5_applied_notch_35hz_q1_v1\\SOURCE_LOCK_v1.json",
+  "parent_notch_hf6_source_lock_sha256": "cea7057cc62c0dd6b4f688c90b7017d5918914cd7511929a87e89d4fecab9219",
+  "parent_notch_hf6_run_binding_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\gru_cosine_c5_applied_notch_35hz_q1_v1\\audits\\NOTCH_HF6_RUN_BINDING_v1.json",
+  "parent_notch_hf6_run_binding_sha256": "59f54d662126bbbc153c606bbc6615ea72f0be72b118409428ba082b68a4298f",
+  "parent_cosine_release_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_full72_v1\\RELEASE.json",
+  "parent_cosine_release_sha256": "b453e50d1ef3affce66b0d05dda4848ef0aaf6d58476361d9c3006febd6ef047",
+  "parent_tau01_release_sha256": "05cad3e876221979e329ed6212ed36e4068d2a97c24a59b8c02f0322171b4817",
+  "parent_tau1_helper_sha256": "48feebf934b8eb90b4424f2286aa857c48213d229714f30af99aacf53329549d",
+  "parent_payload_manifest_sha256": "8c6bae8a0ed4d94b30b9e9ac466d8a46ed1a1d955c9592eccabaf4c4987a3991",
+  "source_lock_sha256": "a9860f0b0f2dd7a5232044c43ec3ed39f9523db221c04c8722cf7b7bbdea2447",
+  "applied_acceleration_notch": {
+    "enabled": true,
+    "center_hz": 3.5,
+    "quality_factor": 1,
+    "sample_rate_hz": 100,
+    "b": [
+      0.9005755352793756,
+      -1.757773520542205,
+      0.9005755352793756
+    ],
+    "a": [
+      1.0,
+      -1.757773520542205,
+      0.8011510705587512
+    ],
+    "initial_state": [
+      [
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0
+      ]
+    ],
+    "update": "causal scipy.signal.iirnotch recurrence once per 10-ms Stage1 event; hold between events",
+    "output_limit": "existing beta-scaled cfg.rbf.position.dmax with explicit per-axis clipping"
+  },
+  "release_notes": "Single-factor interaction probe relative to the completed notch HF6: retain exact notch math, C5, GRU weights, normalization, limits and PCF path; change only delayed-prediction tau from 1 s to fixed 0.1 s (h=0.01 s, rho=0.1), with no ramp/delayed start. Prior tau=0.1 evidence improved task attitude while worsening position error; this no-Plant prep does not assert a benefit. TEST excluded; inertia reconstruction disabled."
+}

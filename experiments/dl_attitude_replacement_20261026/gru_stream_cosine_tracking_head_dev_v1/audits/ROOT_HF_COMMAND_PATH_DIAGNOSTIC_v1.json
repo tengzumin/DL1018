@@ -1,0 +1,320 @@
+{
+  "schema": "DL1018_GRU_TRACKING_HEAD_COMMAND_PATH_DIAGNOSTIC_V1",
+  "status": "PASS_READ_ONLY_PATH_DIAGNOSTIC",
+  "created_utc": "2026-10-27T00:06:07.415519+00:00",
+  "scope": "Existing six VAL raw files only; no new runs, no TEST, no training, no Plant truth.",
+  "method": "For each of the first 20,000 transitions, compute pairwise SO(3) geodesic RMSE among task Euler target derived from reference acceleration/yaw, command_filter_target_euler, filtered_attitude_reference, and actual state Euler. Pairwise geodesic RMSEs are nonadditive; do not sum as an error decomposition.",
+  "gravity_mps2": 9.8,
+  "max_tilt_rad": 0.5235987755982988,
+  "metric_constants_sha256": "507f9a13af2d20aca64a08ea7846991198112bd97ca8456dccb9402ec9424862",
+  "group_summaries": {
+    "HF": {
+      "n_scenes": 3,
+      "macro_mean_rad": {
+        "B": {
+          "task_to_command": 0.05074466221521759,
+          "command_to_filtered_reference": 0.0089383238347911,
+          "filtered_reference_to_state": 0.013695651169935952,
+          "task_to_state": 0.048600326342612715
+        },
+        "C5": {
+          "task_to_command": 0.06001679999522108,
+          "command_to_filtered_reference": 0.03694946898098526,
+          "filtered_reference_to_state": 0.013768016504074103,
+          "task_to_state": 0.04964295871445021
+        },
+        "candidate": {
+          "task_to_command": 0.05948434058519352,
+          "command_to_filtered_reference": 0.03700452192912546,
+          "filtered_reference_to_state": 0.012002491396525318,
+          "task_to_state": 0.04965004605040574
+        }
+      },
+      "candidate_delta_vs_C5_mrad": {
+        "task_to_command": -0.5324594100275595,
+        "command_to_filtered_reference": 0.055052948140205116,
+        "filtered_reference_to_state": -1.7655251075487846,
+        "task_to_state": 0.007087335955530127
+      },
+      "candidate_delta_vs_B_mrad": {
+        "task_to_command": 8.739678369975932,
+        "command_to_filtered_reference": 28.06619809433436,
+        "filtered_reference_to_state": -1.6931597734106338,
+        "task_to_state": 1.0497197077930231
+      }
+    },
+    "W15": {
+      "n_scenes": 3,
+      "macro_mean_rad": {
+        "B": {
+          "task_to_command": 0.024492767556657274,
+          "command_to_filtered_reference": 0.007456644942373342,
+          "filtered_reference_to_state": 0.021437865259647665,
+          "task_to_state": 0.006626240267483236
+        },
+        "C5": {
+          "task_to_command": 0.023190063344674567,
+          "command_to_filtered_reference": 0.007144443747118757,
+          "filtered_reference_to_state": 0.021435789335226527,
+          "task_to_state": 0.003212087865034836
+        },
+        "candidate": {
+          "task_to_command": 0.02051166204712829,
+          "command_to_filtered_reference": 0.007106616113723248,
+          "filtered_reference_to_state": 0.018730738849587193,
+          "task_to_state": 0.00323853508677892
+        }
+      },
+      "candidate_delta_vs_C5_mrad": {
+        "task_to_command": -2.678401297546276,
+        "command_to_filtered_reference": -0.03782763339550861,
+        "filtered_reference_to_state": -2.705050485639335,
+        "task_to_state": 0.026447221744083788
+      },
+      "candidate_delta_vs_B_mrad": {
+        "task_to_command": -3.981105509528984,
+        "command_to_filtered_reference": -0.3500288286500935,
+        "filtered_reference_to_state": -2.7071264100604724,
+        "task_to_state": -3.3877051807043164
+      }
+    },
+    "ALL6": {
+      "n_scenes": 6,
+      "macro_mean_rad": {
+        "B": {
+          "task_to_command": 0.03761871488593743,
+          "command_to_filtered_reference": 0.008197484388582222,
+          "filtered_reference_to_state": 0.017566758214791808,
+          "task_to_state": 0.027613283305047975
+        },
+        "C5": {
+          "task_to_command": 0.04160343166994782,
+          "command_to_filtered_reference": 0.022046956364052007,
+          "filtered_reference_to_state": 0.017601902919650313,
+          "task_to_state": 0.026427523289742526
+        },
+        "candidate": {
+          "task_to_command": 0.0399980013161609,
+          "command_to_filtered_reference": 0.02205556902142436,
+          "filtered_reference_to_state": 0.015366615123056255,
+          "task_to_state": 0.02644429056859233
+        }
+      },
+      "candidate_delta_vs_C5_mrad": {
+        "task_to_command": -1.6054303537869212,
+        "command_to_filtered_reference": 0.008612657372352589,
+        "filtered_reference_to_state": -2.2352877965940587,
+        "task_to_state": 0.016767278849805223
+      },
+      "candidate_delta_vs_B_mrad": {
+        "task_to_command": 2.3792864302234693,
+        "command_to_filtered_reference": 13.858084632842138,
+        "filtered_reference_to_state": -2.200143091735553,
+        "task_to_state": -1.1689927364556436
+      }
+    }
+  },
+  "per_scene": [
+    {
+      "scene_id": "DL1018_VAL_T1_C08_W15",
+      "group": "W15",
+      "method": "B",
+      "task_to_command_rmse_rad": 0.02716810269964359,
+      "command_to_filtered_reference_rmse_rad": 0.007388709112965781,
+      "filtered_reference_to_state_rmse_rad": 0.025478213345243004,
+      "task_to_state_rmse_rad": 0.00602454060249231,
+      "raw_sha256": "9df671a6fc9bfc9b8580376c5b7bd049b282917427fa238a7a0c7c9636592013"
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C08_W15",
+      "group": "W15",
+      "method": "C5",
+      "task_to_command_rmse_rad": 0.02625244726162359,
+      "command_to_filtered_reference_rmse_rad": 0.00731866502650585,
+      "filtered_reference_to_state_rmse_rad": 0.025475786117778496,
+      "task_to_state_rmse_rad": 0.0029947531803637285,
+      "raw_sha256": "c118dd1bd5567e0e7c58b7f5334109187b2cfe743977a6a18a3976d7d0ab23c3"
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C08_W15",
+      "group": "W15",
+      "method": "candidate",
+      "task_to_command_rmse_rad": 0.022469044919059912,
+      "command_to_filtered_reference_rmse_rad": 0.0071181134368121105,
+      "filtered_reference_to_state_rmse_rad": 0.021739885911459533,
+      "task_to_state_rmse_rad": 0.0030164666888791566,
+      "raw_sha256": "cb4fb0e1137586cf5869df769183a60344614bf5b639688e076ca43ca6a42219"
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C05_W15",
+      "group": "W15",
+      "method": "B",
+      "task_to_command_rmse_rad": 0.027297739189214305,
+      "command_to_filtered_reference_rmse_rad": 0.008574630419138739,
+      "filtered_reference_to_state_rmse_rad": 0.022223049968596992,
+      "task_to_state_rmse_rad": 0.007834648119102764,
+      "raw_sha256": "2c14ebe842b519c5b4f482785232db08d9afe675c5633dc2b0ce36c5806b7da6"
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C05_W15",
+      "group": "W15",
+      "method": "C5",
+      "task_to_command_rmse_rad": 0.02556178787397567,
+      "command_to_filtered_reference_rmse_rad": 0.00802602252387869,
+      "filtered_reference_to_state_rmse_rad": 0.02222175454784215,
+      "task_to_state_rmse_rad": 0.0036832760706384284,
+      "raw_sha256": "b291199298fb4c591478a9c3115323a4299e281b0be447c9fbca0ffe4f640314"
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C05_W15",
+      "group": "W15",
+      "method": "candidate",
+      "task_to_command_rmse_rad": 0.0237747110060677,
+      "command_to_filtered_reference_rmse_rad": 0.008121056010993919,
+      "filtered_reference_to_state_rmse_rad": 0.020373157800004767,
+      "task_to_state_rmse_rad": 0.0037747358432588082,
+      "raw_sha256": "67a84f5df34fb5d19e398c51f2f53778a61d27c69cfa90d45487765abb4dab4f"
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C02_W15",
+      "group": "W15",
+      "method": "B",
+      "task_to_command_rmse_rad": 0.019012460781113932,
+      "command_to_filtered_reference_rmse_rad": 0.006406595295015506,
+      "filtered_reference_to_state_rmse_rad": 0.016612332465103002,
+      "task_to_state_rmse_rad": 0.006019532080854636,
+      "raw_sha256": "d42cdea90a8e0ab00ec7718f6429ba17ff1f14444fc2abdd186a0172d8588014"
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C02_W15",
+      "group": "W15",
+      "method": "C5",
+      "task_to_command_rmse_rad": 0.017755954898424443,
+      "command_to_filtered_reference_rmse_rad": 0.006088643690971732,
+      "filtered_reference_to_state_rmse_rad": 0.016609827340058943,
+      "task_to_state_rmse_rad": 0.0029582343441023513,
+      "raw_sha256": "fdf56c425be3a5dcede1c9fd0abb4d24a081996ec72049b0f0d7a33aad88b911"
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C02_W15",
+      "group": "W15",
+      "method": "candidate",
+      "task_to_command_rmse_rad": 0.01529123021625726,
+      "command_to_filtered_reference_rmse_rad": 0.0060806788933637146,
+      "filtered_reference_to_state_rmse_rad": 0.014079172837297272,
+      "task_to_state_rmse_rad": 0.0029244027281987942,
+      "raw_sha256": "b2c5640994f32b028ab633056700c61774b8747d0db818ffde158de27cbed1cb"
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C05_W12",
+      "group": "HF",
+      "method": "B",
+      "task_to_command_rmse_rad": 0.0560806020171041,
+      "command_to_filtered_reference_rmse_rad": 0.008282815136316577,
+      "filtered_reference_to_state_rmse_rad": 0.024874824452372872,
+      "task_to_state_rmse_rad": 0.0507350812992619,
+      "raw_sha256": "775e936bdb16e704e22e64e8f18cdaaf84229875b4dd508e045f5ac77bc0a3e5"
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C05_W12",
+      "group": "HF",
+      "method": "C5",
+      "task_to_command_rmse_rad": 0.05995328699483951,
+      "command_to_filtered_reference_rmse_rad": 0.02832927609301204,
+      "filtered_reference_to_state_rmse_rad": 0.024898713355346866,
+      "task_to_state_rmse_rad": 0.050719327469394365,
+      "raw_sha256": "4b14d0a1c390c3275334f76f15b0b358c02e701b58982b404bf4ec8a4f12495d"
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C05_W12",
+      "group": "HF",
+      "method": "candidate",
+      "task_to_command_rmse_rad": 0.05853002303619225,
+      "command_to_filtered_reference_rmse_rad": 0.02829407280583818,
+      "filtered_reference_to_state_rmse_rad": 0.02185792229974822,
+      "task_to_state_rmse_rad": 0.05068673015686549,
+      "raw_sha256": "a0f37694e56cce6ff88f92a4cb83f0a92da28417476111acf062ceb53855436c"
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C02_W12",
+      "group": "HF",
+      "method": "B",
+      "task_to_command_rmse_rad": 0.048430260094738706,
+      "command_to_filtered_reference_rmse_rad": 0.008800148471867074,
+      "filtered_reference_to_state_rmse_rad": 0.01617396349031914,
+      "task_to_state_rmse_rad": 0.04803642711541739,
+      "raw_sha256": "d6f6a92e2f70850e60d898eb997f3446e8f74c8fc44920b0ec00f1c988860b16"
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C02_W12",
+      "group": "HF",
+      "method": "C5",
+      "task_to_command_rmse_rad": 0.05282997216771232,
+      "command_to_filtered_reference_rmse_rad": 0.027005305492648762,
+      "filtered_reference_to_state_rmse_rad": 0.016189328521631487,
+      "task_to_state_rmse_rad": 0.048322490219525206,
+      "raw_sha256": "a9b189771beb2c8212c08ae229cee5adf92d2bb80990dc2e3e15ac0ccb2e760c"
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C02_W12",
+      "group": "HF",
+      "method": "candidate",
+      "task_to_command_rmse_rad": 0.05248396945826797,
+      "command_to_filtered_reference_rmse_rad": 0.02704371433758188,
+      "filtered_reference_to_state_rmse_rad": 0.013759379137579415,
+      "task_to_state_rmse_rad": 0.04832703572697633,
+      "raw_sha256": "c9d2401f2a15559ef8c54be6c301320b4f86b135cdfef6fe619544640a8cecb4"
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C00_W13",
+      "group": "HF",
+      "method": "B",
+      "task_to_command_rmse_rad": 0.04772312453380995,
+      "command_to_filtered_reference_rmse_rad": 0.009732007896189651,
+      "filtered_reference_to_state_rmse_rad": 3.8165567115844673e-05,
+      "task_to_state_rmse_rad": 0.04702947061315884,
+      "raw_sha256": "237ff85f87a17ff722b7868fb18dd1c86f4a83bb03f7d93a4e8a8578ebb255be"
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C00_W13",
+      "group": "HF",
+      "method": "C5",
+      "task_to_command_rmse_rad": 0.0672671408231114,
+      "command_to_filtered_reference_rmse_rad": 0.05551382535729498,
+      "filtered_reference_to_state_rmse_rad": 0.00021600763524395005,
+      "task_to_state_rmse_rad": 0.04988705845443106,
+      "raw_sha256": "fe56d41b82deed388bd90f3e1933d40ba4abb1a33c9a770f85729de9932071f6"
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C00_W13",
+      "group": "HF",
+      "method": "candidate",
+      "task_to_command_rmse_rad": 0.06743902926112033,
+      "command_to_filtered_reference_rmse_rad": 0.05567577864395634,
+      "filtered_reference_to_state_rmse_rad": 0.00039017275224831956,
+      "task_to_state_rmse_rad": 0.04993637226737539,
+      "raw_sha256": "7530d758351ddadaffb7a2396a8c8520c511b788d2d0aee4fc1d5a154536b0bb"
+    }
+  ],
+  "input_raw_sha256": {
+    "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\b_traceable_c3core_dev72_20261023\\runs_b\\DL1018_VAL_T1_C08_W15\\B_TRACEABLE_C3CORE_V1\\attempt_01\\raw_run.mat": "9df671a6fc9bfc9b8580376c5b7bd049b282917427fa238a7a0c7c9636592013",
+    "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_20261023\\runs_c5_v1\\DL1018_VAL_T1_C08_W15\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat": "c118dd1bd5567e0e7c58b7f5334109187b2cfe743977a6a18a3976d7d0ab23c3",
+    "experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_dev_v1\\runs\\DL1018_VAL_T1_C08_W15\\raw_run.mat": "cb4fb0e1137586cf5869df769183a60344614bf5b639688e076ca43ca6a42219",
+    "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\b_traceable_c3core_dev72_20261023\\runs_b\\DL1018_VAL_T2_C05_W15\\B_TRACEABLE_C3CORE_V1\\attempt_01\\raw_run.mat": "2c14ebe842b519c5b4f482785232db08d9afe675c5633dc2b0ce36c5806b7da6",
+    "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_20261023\\runs_c5_v1\\DL1018_VAL_T2_C05_W15\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat": "b291199298fb4c591478a9c3115323a4299e281b0be447c9fbca0ffe4f640314",
+    "experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_dev_v1\\runs\\DL1018_VAL_T2_C05_W15\\raw_run.mat": "67a84f5df34fb5d19e398c51f2f53778a61d27c69cfa90d45487765abb4dab4f",
+    "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\b_traceable_c3core_dev72_20261023\\runs_b\\DL1018_VAL_T3_C02_W15\\B_TRACEABLE_C3CORE_V1\\attempt_01\\raw_run.mat": "d42cdea90a8e0ab00ec7718f6429ba17ff1f14444fc2abdd186a0172d8588014",
+    "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_20261023\\runs_c5_v1\\DL1018_VAL_T3_C02_W15\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat": "fdf56c425be3a5dcede1c9fd0abb4d24a081996ec72049b0f0d7a33aad88b911",
+    "experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_dev_v1\\runs\\DL1018_VAL_T3_C02_W15\\raw_run.mat": "b2c5640994f32b028ab633056700c61774b8747d0db818ffde158de27cbed1cb",
+    "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\b_traceable_c3core_dev72_20261023\\runs_b\\DL1018_VAL_T1_C05_W12\\B_TRACEABLE_C3CORE_V1\\attempt_01\\raw_run.mat": "775e936bdb16e704e22e64e8f18cdaaf84229875b4dd508e045f5ac77bc0a3e5",
+    "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_20261023\\runs_c5_v1\\DL1018_VAL_T1_C05_W12\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat": "4b14d0a1c390c3275334f76f15b0b358c02e701b58982b404bf4ec8a4f12495d",
+    "experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_dev_v1\\runs\\DL1018_VAL_T1_C05_W12\\raw_run.mat": "a0f37694e56cce6ff88f92a4cb83f0a92da28417476111acf062ceb53855436c",
+    "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\b_traceable_c3core_dev72_20261023\\runs_b\\DL1018_VAL_T2_C02_W12\\B_TRACEABLE_C3CORE_V1\\attempt_01\\raw_run.mat": "d6f6a92e2f70850e60d898eb997f3446e8f74c8fc44920b0ec00f1c988860b16",
+    "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_20261023\\runs_c5_v1\\DL1018_VAL_T2_C02_W12\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat": "a9b189771beb2c8212c08ae229cee5adf92d2bb80990dc2e3e15ac0ccb2e760c",
+    "experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_dev_v1\\runs\\DL1018_VAL_T2_C02_W12\\raw_run.mat": "c9d2401f2a15559ef8c54be6c301320b4f86b135cdfef6fe619544640a8cecb4",
+    "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\b_traceable_c3core_dev72_20261023\\runs_b\\DL1018_VAL_T3_C00_W13\\B_TRACEABLE_C3CORE_V1\\attempt_01\\raw_run.mat": "237ff85f87a17ff722b7868fb18dd1c86f4a83bb03f7d93a4e8a8578ebb255be",
+    "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_20261023\\runs_c5_v1\\DL1018_VAL_T3_C00_W13\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat": "fe56d41b82deed388bd90f3e1933d40ba4abb1a33c9a770f85729de9932071f6",
+    "experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_dev_v1\\runs\\DL1018_VAL_T3_C00_W13\\raw_run.mat": "7530d758351ddadaffb7a2396a8c8520c511b788d2d0aee4fc1d5a154536b0bb"
+  },
+  "interpretation": "In HF, candidate improves filtered-reference-to-state tracking vs C5 by about 1.77 mrad while task-to-state changes little. Candidate and C5 have roughly 59–60 mrad task-to-command discrepancy and about 37 mrad command-to-filtered-reference discrepancy. These pairwise gaps are much larger than inner tracking error; this is evidence that the weak task attitude is not explained by inner tracking alone. It does not prove which upstream controller/filter causes the gap."
+}

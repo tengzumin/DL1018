@@ -1,0 +1,341 @@
+{
+  "schema": "HF_W09_TRAIN_BASELINE_SPECTRAL_AUDIT_V1",
+  "status": "PASS_READ_ONLY_TRAIN_RAW_AUDIT",
+  "scope": {
+    "records": [
+      "DL1018_TRAIN_T1_C10_W09",
+      "DL1018_TRAIN_T3_C09_W09"
+    ],
+    "role": "B baseline raw",
+    "split": "TRAIN",
+    "Plant_calls": 0,
+    "TEST_read": false,
+    "inertia_reconstruction": false
+  },
+  "method": {
+    "sample_rate_hz": 1000.0,
+    "periodogram": "SciPy one-sided Hann periodogram, constant-detrended, density integrated in fixed bands; 20 s horizon gives 0.05 Hz nominal bins",
+    "bands_hz": {
+      "0.05–0.5Hz": [
+        0.05,
+        0.5
+      ],
+      "0.5–1.5Hz": [
+        0.5,
+        1.5
+      ],
+      "1.5–2.5Hz": [
+        1.5,
+        2.5
+      ],
+      "2.5–3.5Hz": [
+        2.5,
+        3.5
+      ],
+      "3.5–10Hz": [
+        3.5,
+        10.0
+      ],
+      "10–50Hz": [
+        10.0,
+        50.0
+      ]
+    },
+    "task_formula": "Frozen scorer: add g=9.8 to reference acceleration z; derive roll/pitch using reference yaw; scale roll/pitch together to max tilt 30 deg; retain reference yaw.",
+    "path_error": "wrapped Euler differences for axis diagnostics; exact SO(3) geodesic RMSE via SciPy Rotation for the stage summary."
+  },
+  "source_sha256": {
+    "experiments/dl_attitude_replacement_20261026/gru_stream_cosine_tracking_head_full72_v1/audits/score_full72_candidate_v1.py": "6baf689802f4d73ead813449e52a8fe85cb0be92c3185850c93646da2d54dd16",
+    "matlab/scenes/make_scenes_dl1018.m": "7d11b4ebf63105b016c67f4b3c427282b35dafa53280ef2daf5578a6a16bb9ec",
+    "matlab/core/wind_velocity_profile.m": "88b500b0016225e21cde55fce0fbd6d54d0ffd2b34bed7a58f36d57e25b04f66",
+    "configs/scene_specs.csv": "d116b74dc6d9ce3c21a40fcd48b4153a0adc09e98a6c8d341c0f1b6ba680b4e3",
+    "reports/position_c5_train24_causal_dataset_v1/C5_TRAIN24_POSITION_CAUSAL_MANIFEST_v1.json": "53026f8b922713c3c4a64cf99adb12abd64fbe74247c58b70b050a8a23e04f73",
+    "experiments/dl_attitude_replacement_20261027/task_attitude_filter_wn12_hf_screen_v1/TASKBOOK_v1.md": "c280ae2ce1384e5bfdee871ff74d412092566c019fc794050165e9b1cf7deb28"
+  },
+  "scene_summary": {
+    "DL1018_TRAIN_T1_C10_W09": {
+      "scene_spec": {
+        "task": "HELIX",
+        "class_id": "34",
+        "C": 10,
+        "W": 9,
+        "wind_band": 3,
+        "f1_hz": 2.0,
+        "f2_hz": 3.0,
+        "A1_mps": 1.5,
+        "A2_mps": 1.0,
+        "azimuth_deg": 225.0,
+        "elevation_deg": 15.0
+      },
+      "raw_path": "data/raw/train/DL1018_TRAIN_T1_C10_W09/B/attempt_01/raw_run.mat",
+      "raw_sha256": "17611b24f0d75df24b275b4262bec29bebeaf83fadbfaf97eb854e96210de967",
+      "sample_rate_hz": 1000.0,
+      "state_samples": 20001,
+      "transition_samples": 20000,
+      "wind_velocity_mean_I_mps": [
+        -6.029772804379493,
+        -6.029772804379491,
+        2.2849063203233326
+      ],
+      "wind_velocity_rms_I_mps": 8.982309699276437,
+      "wind_velocity_peak_norm_mps": 11.07017708705531,
+      "ref_acceleration_rms_xyz_mps2": [
+        0.37090786866007736,
+        0.37284652644203775,
+        0.020701449250508406
+      ],
+      "task_attitude_mean_mrad": [
+        0.014145003133212715,
+        -0.0005503284662368851,
+        0.0
+      ],
+      "task_attitude_rms_mrad": [
+        37.955420858980915,
+        37.78646102551633,
+        0.0
+      ],
+      "actual_attitude_mean_mrad": [
+        -30.837803458870063,
+        31.51493728048949,
+        -1.2406707198315718
+      ],
+      "actual_attitude_rms_mrad": [
+        51.41443107373913,
+        50.697464870878065,
+        3.744050855316358
+      ],
+      "task_minus_actual_mean_mrad": [
+        30.85194846200321,
+        -31.515487608955777,
+        1.2406707198315812
+      ],
+      "task_minus_actual_axis_rms_mrad": [
+        32.47095246511134,
+        33.42022138920047,
+        3.744050855316361
+      ],
+      "scorer_task_so3_rmse_mrad_all_20001": 46.723589074990784,
+      "small_angle_bias_squared_fraction_approx": 0.8916812528725181,
+      "path_gaps": {
+        "task_to_command": {
+          "mean_error_mrad": [
+            25.364614991305693,
+            -31.80231685747481,
+            0.0
+          ],
+          "axis_rmse_mrad": [
+            36.74058439025142,
+            33.89883551174869,
+            0.0
+          ],
+          "axis_ac_rms_mrad": [
+            26.580196532005175,
+            11.736425842196438,
+            0.0
+          ],
+          "geodesic_so3_rmse_mrad": 49.988545823284355,
+          "mean_error_vector_norm_mrad": 40.67863138258705
+        },
+        "command_to_filtered": {
+          "mean_error_mrad": [
+            -0.16376161492593658,
+            0.17207981231242966,
+            0.0
+          ],
+          "axis_rmse_mrad": [
+            7.594985562393125,
+            7.214802029218872,
+            0.0
+          ],
+          "axis_ac_rms_mrad": [
+            7.593219858955544,
+            7.212749604624805,
+            0.0
+          ],
+          "geodesic_so3_rmse_mrad": 10.47553547207491,
+          "mean_error_vector_norm_mrad": 0.23754858098635687
+        },
+        "filtered_to_actual": {
+          "mean_error_mrad": [
+            5.651239477888704,
+            0.11464189747017012,
+            1.2407346064259142
+          ],
+          "axis_rmse_mrad": [
+            25.899170790839115,
+            4.955117355282585,
+            3.744144446246566
+          ],
+          "axis_ac_rms_mrad": [
+            25.275097230606377,
+            4.953790996799028,
+            3.532590447642655
+          ],
+          "geodesic_so3_rmse_mrad": 26.421399283949775,
+          "mean_error_vector_norm_mrad": 5.786974405048481
+        },
+        "task_to_actual": {
+          "mean_error_mrad": [
+            30.852092854268253,
+            -31.515595147692157,
+            1.2407346064259233
+          ],
+          "axis_rmse_mrad": [
+            32.471162168544865,
+            33.420411860791404,
+            3.744144446246569
+          ],
+          "axis_ac_rms_mrad": [
+            10.125450068394057,
+            11.121654167959596,
+            3.5325904476426544
+          ],
+          "geodesic_so3_rmse_mrad": 46.723877387106164,
+          "mean_error_vector_norm_mrad": 44.12055975806756
+        }
+      }
+    },
+    "DL1018_TRAIN_T3_C09_W09": {
+      "scene_spec": {
+        "task": "SQUARE",
+        "class_id": "24",
+        "C": 9,
+        "W": 9,
+        "wind_band": 3,
+        "f1_hz": 2.0,
+        "f2_hz": 3.0,
+        "A1_mps": 1.5,
+        "A2_mps": 1.0,
+        "azimuth_deg": 180.0,
+        "elevation_deg": 15.0
+      },
+      "raw_path": "data/raw/train/DL1018_TRAIN_T3_C09_W09/B/attempt_01/raw_run.mat",
+      "raw_sha256": "37f4099f300ab7896b1fa0142e6db5ca7acf4d57666e53a918bdf0f503143bb7",
+      "sample_rate_hz": 1000.0,
+      "state_samples": 20001,
+      "transition_samples": 20000,
+      "wind_velocity_mean_I_mps": [
+        -8.521060494636005,
+        1.0435289460096946e-15,
+        2.2832112781944605
+      ],
+      "wind_velocity_rms_I_mps": 8.975575036153403,
+      "wind_velocity_peak_norm_mps": 11.16760441478807,
+      "ref_acceleration_rms_xyz_mps2": [
+        0.2342101623267747,
+        0.2342101623267747,
+        0.0
+      ],
+      "task_attitude_mean_mrad": [
+        -1.1256620234478754e-15,
+        1.0658821046529646e-15,
+        0.0
+      ],
+      "task_attitude_rms_mrad": [
+        23.885646923110606,
+        23.885646923110606,
+        0.0
+      ],
+      "actual_attitude_mean_mrad": [
+        -1.501836548408341,
+        60.07619586769466,
+        0.19443277744197102
+      ],
+      "actual_attitude_rms_mrad": [
+        24.470042331750793,
+        66.2822233995071,
+        0.6921699458375891
+      ],
+      "task_minus_actual_mean_mrad": [
+        1.501836548408349,
+        -60.0761958676946,
+        -0.19443277744197052
+      ],
+      "task_minus_actual_axis_rms_mrad": [
+        5.693374770002113,
+        61.97714271344053,
+        0.6921699458375887
+      ],
+      "scorer_task_so3_rmse_mrad_all_20001": 62.242885670768366,
+      "small_angle_bias_squared_fraction_approx": 0.9321962795224265,
+      "path_gaps": {
+        "task_to_command": {
+          "mean_error_mrad": [
+            2.8179499771850547,
+            -59.012306717641735,
+            0.0
+          ],
+          "axis_rmse_mrad": [
+            11.420585736590644,
+            61.23561971804557,
+            0.0
+          ],
+          "axis_ac_rms_mrad": [
+            11.067472000999079,
+            16.35080359236422,
+            0.0
+          ],
+          "geodesic_so3_rmse_mrad": 62.291125142180796,
+          "mean_error_vector_norm_mrad": 59.079549644618496
+        },
+        "command_to_filtered": {
+          "mean_error_mrad": [
+            0.01417544203143084,
+            0.2906412293679238,
+            0.0
+          ],
+          "axis_rmse_mrad": [
+            4.963449606539461,
+            10.600979419445189,
+            0.0
+          ],
+          "axis_ac_rms_mrad": [
+            4.963429364209784,
+            10.596994495010932,
+            0.0
+          ],
+          "geodesic_so3_rmse_mrad": 11.70539586311814,
+          "mean_error_vector_norm_mrad": 0.2909867133827326
+        },
+        "filtered_to_actual": {
+          "mean_error_mrad": [
+            -1.3302192483493112,
+            -1.3549496345689676,
+            -0.19444254933342553
+          ],
+          "axis_rmse_mrad": [
+            7.468365779280563,
+            7.033201202067348,
+            0.692187249833454
+          ],
+          "axis_ac_rms_mrad": [
+            7.348945785923989,
+            6.90145134276429,
+            0.664315650757017
+          ],
+          "geodesic_so3_rmse_mrad": 10.253446163164854,
+          "mean_error_vector_norm_mrad": 1.9087115198187667
+        },
+        "task_to_actual": {
+          "mean_error_mrad": [
+            1.5019061708671864,
+            -60.07661512284268,
+            -0.19444254933342503
+          ],
+          "axis_rmse_mrad": [
+            5.693517050051782,
+            61.9776143359748,
+            0.6921872498334538
+          ],
+          "axis_ac_rms_mrad": [
+            5.49184980249293,
+            15.232366663149591,
+            0.6643156507570203
+          ],
+          "geodesic_so3_rmse_mrad": 62.243368533627496,
+          "mean_error_vector_norm_mrad": 60.095700467414886
+        }
+      }
+    }
+  }
+}

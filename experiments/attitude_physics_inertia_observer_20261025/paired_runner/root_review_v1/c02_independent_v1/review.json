@@ -1,0 +1,255 @@
+{
+  "schema": "ROOT_MORPH_DEV2_C02_RAW_REVIEW_V1",
+  "scope": "offline independent scoring and trace audit of only A02 T2 baseline/candidate raws; no MATLAB, Plant, TEST, or rerun",
+  "scene_id": "DL1018_DEV_T2_C02_W15",
+  "seed": 2026122847,
+  "scene_sha256_expected": "f3d28311289d25b3faea55d92f9a47214418d5dadc57c107818c592126e87188",
+  "batch_status_sha256": "8fb5c7580a7fa2846569a3ccfedd28e30b421fb32210e7b8632d7dc8a31e1e00",
+  "pair_audit_sha256": "7faa7a44ae3986bfe8f7ff0705e5d5bcd004bdcc1878ef77327a6221cfdd6efe",
+  "batch_receipt_sha256": "686ba00fc7e0a0723714f68329999d1a90bdb6989f9f454efcf470d5fad4e770",
+  "runs": [
+    {
+      "arm": "baseline",
+      "raw_path": "experiments\\attitude_physics_inertia_observer_20261025\\paired_runner\\morph_dev2_diagnostic_v1\\attempts\\MORPH_DEV2_20261025_A02\\01_DL1018_DEV_T2_C02_W15_baseline\\run_raw.mat",
+      "raw_sha256": "6e5866127b76631bbc860c38ff09898d79a8227984310d570945a0d121c881c4",
+      "raw_bytes": 47863421,
+      "run_status_sha256": "27114714c1b0f58e8b3862667ce112c08e6502ec8d63f40bdfacdb7c6f8f8059",
+      "stored_status": "COMPLETED_DIAGNOSTIC",
+      "runner_status": "STABLE",
+      "engineering_gate": {
+        "passed": true,
+        "status": "STABLE",
+        "safety_stop_reason": "",
+        "candidate_trace_checked": false,
+        "trace_errors": []
+      },
+      "safety_gate": {
+        "passed": true,
+        "requirements": [],
+        "reason": ""
+      },
+      "independent_score": {
+        "q_rmse_m": 0.0054129689086669175,
+        "q_axis_rmse_m": [
+          0.003223767122520209,
+          0.004341942153071016,
+          0.00023472597925566159
+        ],
+        "q_peak_m": 0.01566058598230125,
+        "q_early_rmse_m": 0.0008348415105156754,
+        "q_early_axis_rmse_m": [
+          0.00047378956601192864,
+          0.000686369300993375,
+          3.716150524655067e-05
+        ],
+        "q_early_peak_m": 0.001318538955682493,
+        "q_late_rmse_m": 0.005730206774715524,
+        "q_late_axis_rmse_m": [
+          0.0034131140359243703,
+          0.004596105674998565,
+          0.0002484650539163307
+        ],
+        "q_late_peak_m": 0.01566058598230125,
+        "so3_rmse_rad": 0.013187128978901154,
+        "so3_peak_rad": 0.04527922953621705,
+        "so3_early_rmse_rad": 2.8611545162422514e-06,
+        "so3_early_peak_rad": 8.742787925329095e-06,
+        "so3_late_rmse_rad": 0.013978328724814701,
+        "so3_late_peak_rad": 0.04527922953621705,
+        "motor_saturation_count": 0,
+        "generalized_clip_count": 0,
+        "tilt_limited_count": 0,
+        "state_points": 20001,
+        "transitions": 20000,
+        "controller_call_time_s_mean": 0.000134557485,
+        "controller_call_time_excludes_candidate_post_allocator_commit": true
+      },
+      "stored_score_abs_differences": {
+        "q_rmse_m_abs_diff": 1.734723475976807e-18,
+        "q_peak_m_abs_diff": 0.0,
+        "so3_rmse_rad_abs_diff": 1.214306433183765e-16,
+        "so3_peak_rad_abs_diff": 5.016820292524926e-15,
+        "q_early_rmse_m_abs_diff": 1.0842021724855044e-19,
+        "q_late_rmse_m_abs_diff": 2.6020852139652106e-18,
+        "so3_early_rmse_rad_abs_diff": 1.2491979450132056e-12,
+        "so3_late_rmse_rad_abs_diff": 9.540979117872439e-17
+      },
+      "trace_audit": null
+    },
+    {
+      "arm": "candidate",
+      "raw_path": "experiments\\attitude_physics_inertia_observer_20261025\\paired_runner\\morph_dev2_diagnostic_v1\\attempts\\MORPH_DEV2_20261025_A02\\01_DL1018_DEV_T2_C02_W15_candidate\\run_raw.mat",
+      "raw_sha256": "99523fa5c1dc69a3daeed2f7f23ecc24d04e37e0ede2c0c49e7058156eead0ff",
+      "raw_bytes": 439928125,
+      "run_status_sha256": "36d26c1b471ec3d76c9f0cfcb4b2b995b736f69de7f0b24722100db40fa5a11f",
+      "stored_status": "FAILED_ENGINEERING",
+      "runner_status": "STABLE",
+      "engineering_gate": {
+        "passed": false,
+        "status": "STABLE",
+        "safety_stop_reason": "",
+        "candidate_trace_checked": true,
+        "trace_errors": [
+          "Candidate attitude RBF was active or its trace shape differed."
+        ]
+      },
+      "safety_gate": {
+        "passed": false,
+        "requirements": [
+          "Full stable run contract failed."
+        ],
+        "reason": "Full stable run contract failed."
+      },
+      "independent_score": {
+        "q_rmse_m": 0.004270442964114403,
+        "q_axis_rmse_m": [
+          0.002076809865184679,
+          0.0037218994314098764,
+          0.0002664742315809189
+        ],
+        "q_peak_m": 0.010670216565732395,
+        "q_early_rmse_m": 0.0008348465041967197,
+        "q_early_axis_rmse_m": [
+          0.00047380118175505717,
+          0.0006863673780750184,
+          3.716110939435731e-05
+        ],
+        "q_early_peak_m": 0.0013185466088625865,
+        "q_late_rmse_m": 0.0045171220042249036,
+        "q_late_axis_rmse_m": [
+          0.002195096762479782,
+          0.00393780747590153,
+          0.00028215897493711874
+        ],
+        "q_late_peak_m": 0.010670216565732395,
+        "so3_rmse_rad": 0.008521352290526581,
+        "so3_peak_rad": 0.030856030439951027,
+        "so3_early_rmse_rad": 2.876502752364367e-06,
+        "so3_early_peak_rad": 8.790842173555511e-06,
+        "so3_late_rmse_rad": 0.00903261530613609,
+        "so3_late_peak_rad": 0.030856030439951027,
+        "motor_saturation_count": 0,
+        "generalized_clip_count": 0,
+        "tilt_limited_count": 0,
+        "state_points": 20001,
+        "transitions": 20000,
+        "controller_call_time_s_mean": 0.000429896225,
+        "controller_call_time_excludes_candidate_post_allocator_commit": true
+      },
+      "stored_score_abs_differences": {
+        "q_rmse_m_abs_diff": 0.0,
+        "q_peak_m_abs_diff": 0.0,
+        "so3_rmse_rad_abs_diff": 1.7694179454963432e-16,
+        "so3_peak_rad_abs_diff": 1.835337437583462e-15,
+        "q_early_rmse_m_abs_diff": 0.0,
+        "q_late_rmse_m_abs_diff": 0.0,
+        "so3_early_rmse_rad_abs_diff": 1.5885002430903177e-12,
+        "so3_late_rmse_rad_abs_diff": 1.249000902703301e-16
+      },
+      "trace_audit": {
+        "trace_count": 20000,
+        "event_count": 1999,
+        "top_level_rbf_flags": {
+          "attitude_fusion_rbf_output_enabled": {
+            "shape": [
+              1,
+              1
+            ],
+            "values": [
+              0.0
+            ]
+          },
+          "attitude_fusion_rbf_update_enabled": {
+            "shape": [
+              1,
+              1
+            ],
+            "values": [
+              0.0
+            ]
+          }
+        },
+        "rbf_series": {
+          "rbf_output_held": {
+            "shape": [
+              3,
+              20000
+            ],
+            "nonzero_count": 0
+          },
+          "rbf_weight_norm": {
+            "shape": [
+              1,
+              20000
+            ],
+            "nonzero_count": 0
+          },
+          "rbf_weight_max": {
+            "shape": [
+              1,
+              20000
+            ],
+            "nonzero_count": 0
+          },
+          "rbf_weight_derivative_norm": {
+            "shape": [
+              1,
+              20000
+            ],
+            "nonzero_count": 0
+          },
+          "attitude_rbf_estimate_acceleration_rads2": {
+            "shape": [
+              3,
+              20000
+            ],
+            "nonzero_count": 0
+          },
+          "attitude_rbf_compensation_torque_Nm": {
+            "shape": [
+              3,
+              20000
+            ],
+            "nonzero_count": 0
+          }
+        },
+        "mismatch_counts": {
+          "sample_index": 0,
+          "prepare_time": 0,
+          "commit_time": 0,
+          "morph_command": 0,
+          "omega_body": 0,
+          "clipped_torque": 0,
+          "estimate_sign": 0,
+          "event_flag": 0,
+          "rbf_trace_flags": 0,
+          "observer_event": 0,
+          "numeric_nonfinite": 0
+        },
+        "max_abs_reconstruction": {
+          "morph_command": 0.0,
+          "omega_body": 0.0,
+          "clipped_torque": 0.0,
+          "estimate_sign": 0.0
+        },
+        "all_rbf_off": true,
+        "all_trace_checks_pass": true
+      }
+    }
+  ],
+  "candidate_minus_baseline_independent_delta": {
+    "q_rmse_m": -0.0011425259445525145,
+    "q_peak_m": -0.004990369416568854,
+    "q_early_rmse_m": 4.993681044303429e-09,
+    "q_late_rmse_m": -0.0012130847704906206,
+    "so3_rmse_rad": -0.004665776688374573,
+    "so3_peak_rad": -0.01442319909626602,
+    "so3_early_rmse_rad": 1.5348236122115624e-08,
+    "so3_late_rmse_rad": -0.004945713418678612,
+    "motor_saturation_count": 0,
+    "generalized_clip_count": 0,
+    "tilt_limited_count": 0,
+    "controller_call_time_s_mean": 0.00029533874
+  },
+  "conclusion": "Wrapper shape assumptions are erroneous: RBF enabled toggles are scalar run-level false values, and the logged vector RBF traces are 3xN. No performance pass is assigned until root independently validates all score and trace conditions."
+}

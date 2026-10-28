@@ -1,0 +1,12 @@
+{
+  "status": "FAILED_PARENT_SYNTHETIC_EXPECTATION_ONLY",
+  "command": "python -B reports/delayed_prediction_proposal_20261023/parent_check_kernel.py",
+  "exit_code": 1,
+  "source_sha256": "38a1efc1cc118c43baa6726c75c0e2988a11bb6eb2b7e4d6049c46e344ac84a9",
+  "failure": "assert out[beta] == 331/1800",
+  "cause": "C2 multiply-then-divide floating evaluation and independent rational evaluation differ at floating roundoff; exact equality in parent expectation was too strict",
+  "correction": "Use absolute 1e-16 only for beta expected-value comparison; no controller code or scientific metric tolerance changes",
+  "real_data_used": false,
+  "Plant": 0,
+  "training": 0
+}

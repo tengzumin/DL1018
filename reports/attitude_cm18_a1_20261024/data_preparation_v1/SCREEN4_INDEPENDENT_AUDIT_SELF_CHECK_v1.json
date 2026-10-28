@@ -1,0 +1,594 @@
+{
+  "schema": "CM18_A1_INDEPENDENT_DATA_AUDIT_V1",
+  "audit_mode": "SCREEN4_SELF_CHECK",
+  "status": "PASS",
+  "dataset_manifest_sha256": "b36a9027202a15408d69676c5e16f7993652c4c7a82c6a8695a64eb77961ef7c",
+  "input_manifest_sha256_actual": "a5f7fea9b0918c1449af6fa83929177d3bf7d5e70cb3b71711c40f6338d210a5",
+  "screen4_manifest_sha256_actual": "b36a9027202a15408d69676c5e16f7993652c4c7a82c6a8695a64eb77961ef7c",
+  "dataset_counts": {
+    "scenes": 4,
+    "passed_cache_audits": 4,
+    "failed_cache_audits": 0,
+    "event_count_by_split": {
+      "TRAIN": 3998,
+      "VAL": 3998
+    },
+    "phase_counts_by_split": {
+      "TRAIN": {
+        "STATIC": 1999,
+        "PRE": 519,
+        "EXTEND": 140,
+        "HOLD": 681,
+        "RETRACT": 140,
+        "RECOVERY": 519
+      },
+      "VAL": {
+        "STATIC": 1999,
+        "PRE": 619,
+        "EXTEND": 200,
+        "HOLD": 580,
+        "RETRACT": 200,
+        "RECOVERY": 400
+      }
+    }
+  },
+  "target_summary": {
+    "TRAIN": {
+      "events": 3998,
+      "axis_rms_rad_s2_all_events": [
+        5.571345463418237,
+        5.57134546341825,
+        0.5386539752968651
+      ],
+      "axis_min_rad_s2": [
+        -0.0038272195981135237,
+        -12.904383753907553,
+        -1.515194220091942e-14
+      ],
+      "axis_max_rad_s2": [
+        12.904383753907569,
+        0.0038272195981288518,
+        1.9516387896609437
+      ]
+    },
+    "VAL": {
+      "events": 3998,
+      "axis_rms_rad_s2_all_events": [
+        6.841513309854563,
+        6.841513309854576,
+        1.007477975228424
+      ],
+      "axis_min_rad_s2": [
+        -0.003031062346557256,
+        -20.405784673103575,
+        -0.2923072109182653
+      ],
+      "axis_max_rad_s2": [
+        20.40578467310357,
+        0.0030310623465785724,
+        6.174919792045823
+      ]
+    },
+    "dmax_diagnostic": {
+      "dmax_rad_s2": [
+        45.0,
+        45.0,
+        4.7124
+      ],
+      "meaning": "absolute label exceedance only; diagnostic, no clipping or limit change",
+      "by_split": {
+        "TRAIN": {
+          "events": 3998,
+          "counts_by_axis": [
+            0,
+            0,
+            0
+          ],
+          "rates_by_axis": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "VAL": {
+          "events": 3998,
+          "counts_by_axis": [
+            0,
+            0,
+            33
+          ],
+          "rates_by_axis": [
+            0.0,
+            0.0,
+            0.008254127063531767
+          ]
+        }
+      }
+    }
+  },
+  "train_only_normalizer_preview": {
+    "source": "TRAIN only, event row offsets 0,5,...,1995; float64; input std ddof=0",
+    "fit_rows": 800,
+    "input_mean_float64": [
+      0.0007126744132049112,
+      5.7732784736623246e-05,
+      -0.0011286908576795419,
+      -0.03847598769753575,
+      0.04225127449387266,
+      -0.010347674221881566,
+      9.916265013475666,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.28703500000000004,
+      0.0,
+      0.0,
+      0.0,
+      -0.00852208494620052,
+      0.00852722293076568,
+      -0.0015283752946691816
+    ],
+    "input_std_raw_float64": [
+      0.04173079260347721,
+      0.0524193375267614,
+      0.0032335627065833384,
+      0.38308331193455547,
+      0.3628774952543738,
+      0.06845473656264649,
+      0.12861362678826646,
+      0.2645751311064591,
+      0.0,
+      0.0,
+      0.0,
+      0.5446058150396488,
+      0.0,
+      0.0,
+      0.0,
+      0.016035037573725573,
+      0.01602343565148589,
+      0.003074414620702712
+    ],
+    "input_std_after_1e-6_floor_float64": [
+      0.04173079260347721,
+      0.0524193375267614,
+      0.0032335627065833384,
+      0.38308331193455547,
+      0.3628774952543738,
+      0.06845473656264649,
+      0.12861362678826646,
+      0.2645751311064591,
+      1e-06,
+      1e-06,
+      1e-06,
+      0.5446058150396488,
+      1e-06,
+      1e-06,
+      1e-06,
+      0.016035037573725573,
+      0.01602343565148589,
+      0.003074414620702712
+    ],
+    "target_axis_rms_rad_s2_float64": [
+      5.569953668532837,
+      5.569953668532852,
+      0.5385193259875102
+    ],
+    "target_axis_rms_all_strictly_positive": true,
+    "zero_morphology_output_scale_rad_s2": [
+      5.569953668532837,
+      5.569953668532852,
+      0.5385193259875102
+    ],
+    "zero_morphology_basis": "[z/2,u]=0 implies model physical output exactly [0,0,0] rad/s^2; axis RMS is its physical output multiplier"
+  },
+  "closure_summary": {
+    "label_vs_h5_max_abs_rad_s2_metadata": 0.0,
+    "label_vs_h5_max_abs_by_axis_rad_s2_metadata": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "requested_torque_closure_max_abs_Nm_metadata": 0.0,
+    "true_dynamics_equation_residual_max_abs_Nm_metadata": 6.938893903907228e-18,
+    "physical_feature_crosscheck_maxima_metadata": {
+      "omega_B_max_abs": 0.0,
+      "alpha_BS_max_abs": 1.7763568394002505e-15,
+      "thrust_over_mass_max_abs": 0.0
+    },
+    "interpretation": "These are export_meta closure claims audited against recorded tolerances; this script does not reopen H5/raw inputs or independently prove physical dynamics. The true-dynamics residual is the same linear solve residual, not independent physical evidence."
+  },
+  "legacy_B_source_gap": {
+    "disclosed": true,
+    "note": "Original B-data production source is unavailable. This is current-equation relabeling of behavior data, not new acquisition or independent testing."
+  },
+  "source_sha256": {
+    "cache_reader_cm18_v1.py": "a2867cbf516d7ed655a6f50e05b8600ffb7582e0f2164b1ce21d5e647adf2b47",
+    "model_cm18_v1.py": "ad32c4f97bf96c63172547c944d80c45062502f1062b774934e0f7a868720cf6",
+    "torch_model_cm18_v1.py": "bc9fe34fe957cb624438eeccfdfe2ddd38ad40cc9a4e706ce58863c9271d5aa0"
+  },
+  "execution_scope": {
+    "cache_reads": 4,
+    "all816_cache_reads": 0,
+    "screen4_cache_reads": 4,
+    "raw_or_h5_numeric_data_read": false,
+    "TEST_accessed": false,
+    "optimizer_steps": 0,
+    "training_runs": 0,
+    "Plant_calls": 0
+  },
+  "scenes": [
+    {
+      "scene_id": "DL1018_TRAIN_T1_C00_W00",
+      "split": "TRAIN",
+      "cache_path": "reports/attitude_cm18_a1_20261024/data_preparation_v1/events_screen4_v1/TRAIN_DL1018_TRAIN_T1_C00_W00.mat",
+      "cache_bytes": 185971,
+      "cache_sha256_actual": "bf8a3867519a0ebb475fc1075b93f2a50e878cc37a1774e44de5ab9c0875708c",
+      "cache_sha256_matches_manifest": true,
+      "input_identity_matches_INPUT_MANIFEST": true,
+      "X18_shape": [
+        1999,
+        18
+      ],
+      "target_raw_shape": [
+        1999,
+        3
+      ],
+      "event_time_s_shape": [
+        1999,
+        1
+      ],
+      "phase_code_shape": [
+        1999,
+        1
+      ],
+      "plant_index_shape": [
+        1999,
+        1
+      ],
+      "all_required_arrays_finite": true,
+      "event_count": 1999,
+      "event_time_s_first": 0.01,
+      "event_time_s_last": 19.99,
+      "max_time_alignment_error_s": 3.552713678800501e-15,
+      "phase_event_counts": {
+        "STATIC": 1999,
+        "PRE": 0,
+        "EXTEND": 0,
+        "HOLD": 0,
+        "RETRACT": 0,
+        "RECOVERY": 0
+      },
+      "target_axis_rms_rad_s2_actual": [
+        2.261667126765981e-14,
+        2.6927051203106174e-14,
+        4.7944988763815766e-15
+      ],
+      "phase_target_axis_rms_rad_s2_actual": {
+        "STATIC": [
+          2.261667126765981e-14,
+          2.6927051203106174e-14,
+          4.7944988763815766e-15
+        ],
+        "PRE": null,
+        "EXTEND": null,
+        "HOLD": null,
+        "RETRACT": null,
+        "RECOVERY": null
+      },
+      "label_vs_h5_max_abs_rad_s2_metadata": 0.0,
+      "label_vs_h5_max_abs_by_axis_rad_s2_metadata": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "label_vs_h5_tolerance_rad_s2": 1e-08,
+      "requested_torque_closure_max_abs_Nm_metadata": 0.0,
+      "requested_torque_closure_tolerance_Nm": 1e-08,
+      "true_dynamics_equation_residual_max_abs_Nm_metadata": 2.168404344971009e-19,
+      "true_dynamics_equation_residual_tolerance_Nm": 1e-12,
+      "physical_feature_crosscheck_metadata": {
+        "omega_B_max_abs": 0.0,
+        "alpha_BS_max_abs": 5.551115123125783e-17,
+        "thrust_over_mass_max_abs": 0.0
+      },
+      "target_abs_exceedance_counts_by_axis_dmax_45_45_4p7124": [
+        0,
+        0,
+        0
+      ],
+      "target_abs_exceedance_rates_by_axis_dmax_45_45_4p7124": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T1_C01_W00",
+      "split": "TRAIN",
+      "cache_path": "reports/attitude_cm18_a1_20261024/data_preparation_v1/events_screen4_v1/TRAIN_DL1018_TRAIN_T1_C01_W00.mat",
+      "cache_bytes": 198095,
+      "cache_sha256_actual": "6ea8ad64bba6a86dbd81d41d1625db4909119fcf152953a883643d0122ffb9e8",
+      "cache_sha256_matches_manifest": true,
+      "input_identity_matches_INPUT_MANIFEST": true,
+      "X18_shape": [
+        1999,
+        18
+      ],
+      "target_raw_shape": [
+        1999,
+        3
+      ],
+      "event_time_s_shape": [
+        1999,
+        1
+      ],
+      "phase_code_shape": [
+        1999,
+        1
+      ],
+      "plant_index_shape": [
+        1999,
+        1
+      ],
+      "all_required_arrays_finite": true,
+      "event_count": 1999,
+      "event_time_s_first": 0.01,
+      "event_time_s_last": 19.99,
+      "max_time_alignment_error_s": 3.552713678800501e-15,
+      "phase_event_counts": {
+        "STATIC": 0,
+        "PRE": 519,
+        "EXTEND": 140,
+        "HOLD": 681,
+        "RETRACT": 140,
+        "RECOVERY": 519
+      },
+      "target_axis_rms_rad_s2_actual": [
+        7.879072315031887,
+        7.879072315031906,
+        0.7617717572910089
+      ],
+      "phase_target_axis_rms_rad_s2_actual": {
+        "STATIC": null,
+        "PRE": [
+          2.2183931840510676e-14,
+          2.6127902040197982e-14,
+          5.055934707588134e-15
+        ],
+        "EXTEND": [
+          7.698370049700869,
+          7.698370049700888,
+          0.7968118679931667
+        ],
+        "HOLD": [
+          12.530861190632484,
+          12.530861190632514,
+          1.240046991698206
+        ],
+        "RETRACT": [
+          7.9588606271472155,
+          7.958860627147212,
+          0.41352040839882925
+        ],
+        "RECOVERY": [
+          2.2325420161889958e-14,
+          2.4823505373274537e-14,
+          4.846167078223161e-15
+        ]
+      },
+      "label_vs_h5_max_abs_rad_s2_metadata": 0.0,
+      "label_vs_h5_max_abs_by_axis_rad_s2_metadata": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "label_vs_h5_tolerance_rad_s2": 1e-08,
+      "requested_torque_closure_max_abs_Nm_metadata": 0.0,
+      "requested_torque_closure_tolerance_Nm": 1e-08,
+      "true_dynamics_equation_residual_max_abs_Nm_metadata": 2.168404344971009e-19,
+      "true_dynamics_equation_residual_tolerance_Nm": 1e-12,
+      "physical_feature_crosscheck_metadata": {
+        "omega_B_max_abs": 0.0,
+        "alpha_BS_max_abs": 2.220446049250313e-16,
+        "thrust_over_mass_max_abs": 0.0
+      },
+      "target_abs_exceedance_counts_by_axis_dmax_45_45_4p7124": [
+        0,
+        0,
+        0
+      ],
+      "target_abs_exceedance_rates_by_axis_dmax_45_45_4p7124": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C00_W07",
+      "split": "VAL",
+      "cache_path": "reports/attitude_cm18_a1_20261024/data_preparation_v1/events_screen4_v1/VAL_DL1018_VAL_T1_C00_W07.mat",
+      "cache_bytes": 181468,
+      "cache_sha256_actual": "d76b23f7268bde4e259dcf06d67c8b67fd2a4312862e2f9239567e212342b5ab",
+      "cache_sha256_matches_manifest": true,
+      "input_identity_matches_INPUT_MANIFEST": true,
+      "X18_shape": [
+        1999,
+        18
+      ],
+      "target_raw_shape": [
+        1999,
+        3
+      ],
+      "event_time_s_shape": [
+        1999,
+        1
+      ],
+      "phase_code_shape": [
+        1999,
+        1
+      ],
+      "plant_index_shape": [
+        1999,
+        1
+      ],
+      "all_required_arrays_finite": true,
+      "event_count": 1999,
+      "event_time_s_first": 0.01,
+      "event_time_s_last": 19.99,
+      "max_time_alignment_error_s": 3.552713678800501e-15,
+      "phase_event_counts": {
+        "STATIC": 1999,
+        "PRE": 0,
+        "EXTEND": 0,
+        "HOLD": 0,
+        "RETRACT": 0,
+        "RECOVERY": 0
+      },
+      "target_axis_rms_rad_s2_actual": [
+        2.2361455106402624e-14,
+        2.6082056000907367e-14,
+        4.757139029381048e-15
+      ],
+      "phase_target_axis_rms_rad_s2_actual": {
+        "STATIC": [
+          2.2361455106402624e-14,
+          2.6082056000907367e-14,
+          4.757139029381048e-15
+        ],
+        "PRE": null,
+        "EXTEND": null,
+        "HOLD": null,
+        "RETRACT": null,
+        "RECOVERY": null
+      },
+      "label_vs_h5_max_abs_rad_s2_metadata": 0.0,
+      "label_vs_h5_max_abs_by_axis_rad_s2_metadata": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "label_vs_h5_tolerance_rad_s2": 1e-08,
+      "requested_torque_closure_max_abs_Nm_metadata": 0.0,
+      "requested_torque_closure_tolerance_Nm": 1e-08,
+      "true_dynamics_equation_residual_max_abs_Nm_metadata": 1.734723475976807e-18,
+      "true_dynamics_equation_residual_tolerance_Nm": 1e-12,
+      "physical_feature_crosscheck_metadata": {
+        "omega_B_max_abs": 0.0,
+        "alpha_BS_max_abs": 4.440892098500626e-16,
+        "thrust_over_mass_max_abs": 0.0
+      },
+      "target_abs_exceedance_counts_by_axis_dmax_45_45_4p7124": [
+        0,
+        0,
+        0
+      ],
+      "target_abs_exceedance_rates_by_axis_dmax_45_45_4p7124": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C01_W08",
+      "split": "VAL",
+      "cache_path": "reports/attitude_cm18_a1_20261024/data_preparation_v1/events_screen4_v1/VAL_DL1018_VAL_T1_C01_W08.mat",
+      "cache_bytes": 200602,
+      "cache_sha256_actual": "f0092fb70c8d64f05d8298845e96beeef6e2c76445cb0fbdb98bafb66c432d1e",
+      "cache_sha256_matches_manifest": true,
+      "input_identity_matches_INPUT_MANIFEST": true,
+      "X18_shape": [
+        1999,
+        18
+      ],
+      "target_raw_shape": [
+        1999,
+        3
+      ],
+      "event_time_s_shape": [
+        1999,
+        1
+      ],
+      "phase_code_shape": [
+        1999,
+        1
+      ],
+      "plant_index_shape": [
+        1999,
+        1
+      ],
+      "all_required_arrays_finite": true,
+      "event_count": 1999,
+      "event_time_s_first": 0.01,
+      "event_time_s_last": 19.99,
+      "max_time_alignment_error_s": 3.552713678800501e-15,
+      "phase_event_counts": {
+        "STATIC": 0,
+        "PRE": 619,
+        "EXTEND": 200,
+        "HOLD": 580,
+        "RETRACT": 200,
+        "RECOVERY": 400
+      },
+      "target_axis_rms_rad_s2_actual": [
+        9.675360909952367,
+        9.675360909952383,
+        1.4247890163602221
+      ],
+      "phase_target_axis_rms_rad_s2_actual": {
+        "STATIC": null,
+        "PRE": [
+          2.186295074284507e-14,
+          2.5427646009447158e-14,
+          4.953950413133967e-15
+        ],
+        "EXTEND": [
+          9.96944941687267,
+          9.969449416872695,
+          1.3985713734303948
+        ],
+        "HOLD": [
+          15.976284182085084,
+          15.976284182085113,
+          2.3277223027922957
+        ],
+        "RETRACT": [
+          9.801392731929411,
+          9.801392731929425,
+          1.6189629894671012
+        ],
+        "RECOVERY": [
+          2.3239005925879642e-14,
+          2.5675093809543132e-14,
+          4.873617331363037e-15
+        ]
+      },
+      "label_vs_h5_max_abs_rad_s2_metadata": 0.0,
+      "label_vs_h5_max_abs_by_axis_rad_s2_metadata": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "label_vs_h5_tolerance_rad_s2": 1e-08,
+      "requested_torque_closure_max_abs_Nm_metadata": 0.0,
+      "requested_torque_closure_tolerance_Nm": 1e-08,
+      "true_dynamics_equation_residual_max_abs_Nm_metadata": 6.938893903907228e-18,
+      "true_dynamics_equation_residual_tolerance_Nm": 1e-12,
+      "physical_feature_crosscheck_metadata": {
+        "omega_B_max_abs": 0.0,
+        "alpha_BS_max_abs": 1.7763568394002505e-15,
+        "thrust_over_mass_max_abs": 0.0
+      },
+      "target_abs_exceedance_counts_by_axis_dmax_45_45_4p7124": [
+        0,
+        0,
+        33
+      ],
+      "target_abs_exceedance_rates_by_axis_dmax_45_45_4p7124": [
+        0.0,
+        0.0,
+        0.016508254127063533
+      ]
+    }
+  ]
+}

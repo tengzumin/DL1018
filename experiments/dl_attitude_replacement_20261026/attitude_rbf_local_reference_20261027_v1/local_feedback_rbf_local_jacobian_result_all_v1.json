@@ -1,0 +1,128 @@
+{
+  "schema": "DL1018_C5_RBF_LOCAL_JACOBIAN_DIAGNOSIS_V1",
+  "status": "PASS_OFFLINE_LOCAL_JACOBIANS",
+  "replay_parity_report": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\attitude_rbf_local_reference_20261027_v1\\local_feedback_rbf_replay_all_v1.json",
+  "replay_parity_sha256": "3a3eec084ced34016375c640f5e619681842511db94249181ba8d5c57e626c13",
+  "scene_count": 6,
+  "events_per_scene": 200,
+  "event_selection": "200 uniformly spaced mature RBF events from the full mature-event index list using rounded linspace positions; no score-based selection",
+  "comparison_modes": [
+    "BS-alone",
+    "replayed C5 RBF with frozen W_before",
+    "full72 frozen MLP evaluated hypothetically on the same C5 state/history"
+  ],
+  "MLP_scope": "hypothetical local evaluation on C5 logged states; not a C5 MLP flight or closed-loop counterfactual",
+  "frozen_variables": [
+    "state eta",
+    "reference and derivatives",
+    "arms command",
+    "past 14 MLP feature columns",
+    "RBF W_before"
+  ],
+  "perturbed_variables": [
+    "current body omega",
+    "nominal BS torque recomputed from omega",
+    "current RBF surface/input recomputed from omega"
+  ],
+  "epsilon_rad_s": [
+    1e-05,
+    5e-06
+  ],
+  "derivative_interpretation": "local frozen-memory torque Jacobian only; negative symmetric-part eigenvalues are not a full stability proof or Plant counterfactual",
+  "Plant_calls": 0,
+  "MATLAB_started": false,
+  "training_jobs": 0,
+  "TEST_read": false,
+  "variable_inertia_read_or_reconstructed": false,
+  "jacobian_csv": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\attitude_rbf_local_reference_20261027_v1\\local_feedback_rbf_local_jacobians_all_v1.csv",
+  "summary_csv": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\attitude_rbf_local_reference_20261027_v1\\local_feedback_rbf_local_jacobian_summary_all_v1.csv",
+  "outlier_csv": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\attitude_rbf_local_reference_20261027_v1\\local_feedback_rbf_local_jacobian_outliers_all_v1.csv",
+  "jacobian_event_count": 1200,
+  "negative_eigenvalue_event_count": 711,
+  "source_hashes": {
+    "dataset_manifest_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\mlp15_c5_teacher_redistill_v1\\DATASET_MANIFEST_v1.json",
+    "dataset_manifest_sha256": "98766ddac3125b81d4637eeb2576349b6ce181c94564c1a444d1d4cab734d55c",
+    "C5_input_lock_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_20261023\\C5_AXIS_COORDINATE_INPUT_LOCK_v1.json",
+    "C5_input_lock_sha256": "10a7eea144e3574e05eea7b4f7b56112595eac0c81d27b5e8c7a5a41499f84b0",
+    "C5_runner_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_20261023\\run_dl1018_closed_loop.m",
+    "rbf_basis_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\matlab\\core\\rbf_mimo_basis.m",
+    "rbf_update_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\matlab\\core\\rbf_mimo_update.m",
+    "C5_runner_sha256": "48350037b66efe00301b138068f187c62cf92583f0f9ba2fabc9b24f248a963c",
+    "rbf_basis_sha256": "4139c7d08daa5bea6e04702b966ce76cdb6a54ea33d9820cfd9c3a70529248f4",
+    "rbf_update_sha256": "dde65f5f3b664ecdbd82a393dde0aea8da3b7401b5f54c8a92fcef5acd17f78a",
+    "BS_helper_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\attitude_local_feedback_diagnosis_20261027_v1\\local_feedback_sensitivity.py",
+    "BS_helper_sha256": "1bfd76421192b8bc2240b700f27e93d38a8cb277d8741d4491559d4465c4820a",
+    "local_feedback_lock_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\mlp15_composite_dev_v3\\LOCKED_CFG.json",
+    "local_feedback_lock_sha256": "53c1c8f9781dee2e11e731d8c4a6d8d51f4a2fc922faa8b36a76071e3a40101b",
+    "fixed_constants": {
+      "K1": [
+        1.5,
+        1.5,
+        1.3
+      ],
+      "K2": [
+        22.5,
+        22.5,
+        12.7
+      ],
+      "J0": [
+        [
+          0.003257553333333334,
+          -2.168404344971009e-19,
+          0.0
+        ],
+        [
+          -2.168404344971009e-19,
+          0.0032575533333333334,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.006360648333333333
+        ]
+      ],
+      "Jdot0": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "dmax": [
+        45.0,
+        45.0,
+        4.7124
+      ]
+    },
+    "fixed_model_sha256": "67a6564148ba8c1988d7457c04a5d3271516ff4010da18e61e29fd7da13be46b",
+    "helper_sources": {
+      "locked_cfg_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\mlp15_composite_dev_v3\\LOCKED_CFG.json",
+      "locked_cfg_sha256": "53c1c8f9781dee2e11e731d8c4a6d8d51f4a2fc922faa8b36a76071e3a40101b",
+      "fixed_cfg_snapshot_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\C5_DEV72_PREPARED_CFG_OPTS_v3.mat",
+      "fixed_cfg_snapshot_sha256": "842ef395569e675db6e139c2684d72b976946915e5e0a58b9b7f24ec10c1d24a",
+      "full72_model_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\mlp15_c5_teacher_full72_v1\\runs\\C5_MLP15_FULL72_SEED2026102001\\mlp15_attitude_weights_v1.mat",
+      "full72_model_sha256": "67a6564148ba8c1988d7457c04a5d3271516ff4010da18e61e29fd7da13be46b",
+      "locked_controller_core_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\mlp15_composite_dev_v3\\candidate_runner_work\\matlab\\core\\attitude_bs_step.m",
+      "locked_controller_core_sha256": "cf6b20ffc4df2625d9316a80340d69542e380d14feaed66ef8498e793fdaccbc",
+      "mlp_forward_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\mlp15_composite_dev_v3\\candidate_runner_work\\matlab\\runtime\\mlp15_attitude_forward_v1.m",
+      "mlp_forward_sha256": "ae762e03e2e286b0aa82b5f96ed0d03b8c46657c2685e150a633b581f92169f2",
+      "mlp_step_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\mlp15_composite_dev_v3\\candidate_runner_work\\matlab\\runtime\\mlp15_attitude_step_v1.m",
+      "mlp_step_sha256": "4fb2c3a06c0c2287b65dced4e9ddab220ebab710846a960ec6ea4acdf36474f9"
+    }
+  },
+  "source_lock_validation_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\attitude_rbf_local_reference_20261027_v1\\SOURCE_LOCK_VALIDATION_v1.json",
+  "source_lock_validation_sha256": "34b2753a03328e7e3c6f2f8446e84153a4c4fc88eb52f99f17fbeca5789c9e79",
+  "source_lock_validation_status": "PASS_SOURCE_LOCK_VALIDATION",
+  "postrun_source_lock_validation_note": "Numerical replay/Jacobians ran with explicit expected source hashes that were subsequently confirmed identical to both audited locks. After the run, the script was changed to read those expected hashes directly from SOURCE_LOCK_v3/C5 input lock; no numeric calculation was rerun because only source-lock lookup changed."
+}

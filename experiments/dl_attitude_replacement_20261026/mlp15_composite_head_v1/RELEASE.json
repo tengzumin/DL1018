@@ -1,0 +1,92 @@
+{
+  "schema": "DL1018_MLP15_COMPOSITE_HEAD_RELEASE_V1",
+  "status": "PREPARED_ROOT_REVIEW_REQUIRED",
+  "prepared_utc": "2026-10-26T16:55:51Z",
+  "authorized_Plant_calls": 0,
+  "Plant_calls": 0,
+  "authorized_scenes": [],
+  "candidate_arm_id": "DL_MLP15",
+  "geometry_arm": "ACTIVE",
+  "test_data_read": false,
+  "TEST_read": false,
+  "training_jobs_authorized": 0,
+  "DEV72_runs_authorized": 0,
+  "model_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\mlp15_c5_teacher_full72_v1\\runs\\C5_MLP15_FULL72_SEED2026102001\\mlp15_attitude_weights_v1.mat",
+  "model_sha256": "67a6564148ba8c1988d7457c04a5d3271516ff4010da18e61e29fd7da13be46b",
+  "locked_cfg_path": "LOCKED_CFG.json",
+  "locked_cfg_sha256": "30d3af4efc4bd17c4f0672c6f98b06334b07131aa64b7145cb0b42c1a45dcb74",
+  "python_fixture_path": "audits/fixtures/composite_head_fixture.mat",
+  "python_fixture_sha256": "090abe7683298ae581840ec2614d3832cedcd3b1fcdd50efaf69a27ee4b9e27a",
+  "python_reference_report_sha256": "d9bd8b6014e947c8704c7988f881ab54cfaba377d406ba62102fab2457926a02",
+  "locked_cfg": {
+    "K1": [
+      1.5,
+      1.5,
+      1.3
+    ],
+    "J0_kgm2": [
+      [
+        0.003257553333333334,
+        -2.168404344971009E-19,
+        0
+      ],
+      [
+        -2.168404344971009E-19,
+        0.0032575533333333334,
+        0
+      ],
+      [
+        0,
+        0,
+        0.006360648333333333
+      ]
+    ],
+    "dmax": [
+      45,
+      45,
+      4.7124
+    ],
+    "beta_rise_time_s": 2.2,
+    "forgetting_factor": 0.999,
+    "P0_scalar": 10,
+    "weight_projection_fro": 20,
+    "tracking_gain": 1
+  },
+  "fixed_J0_kgm2": [
+    [
+      0.003257553333333334,
+      -2.168404344971009E-19,
+      0
+    ],
+    [
+      -2.168404344971009E-19,
+      0.0032575533333333334,
+      0
+    ],
+    [
+      0,
+      0,
+      0.006360648333333333
+    ]
+  ],
+  "manifest_sha256": "7febc68d57d5425d34d30e9bb72382080eda6fa9fb587e9c4715d17dc86ddccd",
+  "prediction_only_report_path": "PREDICTION_ONLY_BASELINE_REPORT.json",
+  "prediction_only_report_sha256": "3c02118b39d782ca467e305a2e69796ce5d7107a6413bb0374fc1f6cc2678d41",
+  "source_lock_sha256": "098a4c5c1ea1d9d75ac4554c030c160487617e77d674a344b4ba45553349b12c",
+  "source_diff_json_sha256": "4b0bbf562ca163d14db730edc629045e2446987cc7347d46b5e63c1967d400e4",
+  "source_diff_patch_path": "SOURCE_DIFF.patch",
+  "no_plant_check_path": "audits/NO_PLANT_CHECK_v7.json",
+  "no_plant_check_sha256": "c361e6a625983a181bfd0be1031d2f5a5a6d585bb9b164d32dda1d347c691add",
+  "preparation_script_sha256": "e0634c77c362d0181cccb4e97479fd6374516084716cef7377148b83ac9cb5f2",
+  "raw_audit_script_sha256": "2ec4db098d8d5f1ae32f571cfe8f8625b159425641e9c5ec3c93771d08feaf9a",
+  "required_first_scene": "DL1018_VAL_T1_C08_W15",
+  "required_second_scene_after_root_review": "DL1018_VAL_T2_C05_W15",
+  "required_third_scene_after_root_review": "DL1018_VAL_T3_C02_W15",
+  "W12_W13_extension_condition": "All three W15 scenes safe and macro Q, outer SO3, and inner tracking error each beat prediction_only.",
+  "final_gate": "Compare against B and C5; macro position degradation versus C5 must be <=10%.",
+  "Plant_budget_note": "This prepared release hard-rejects the Plant runner until root changes status, budget, and authorized_scenes.",
+  "historical_v1_Plant_calls": 6,
+  "Plant_calls_by_preparer": 0,
+  "source_diff_patch_sha256": "52b39613d618668bfa1007e842f5d981555b4bfd05fd64ab777428be0a9175e7",
+  "source_diff_finalize_script_sha256": "fbbfc72a7d14c994631aff44d63faac1ce6fd6b0452d7cbf84306fe8e4550946"
+}

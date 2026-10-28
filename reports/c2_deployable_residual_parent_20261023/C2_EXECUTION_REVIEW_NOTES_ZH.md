@@ -1,0 +1,14 @@
+# C2β 执行入口审核记录
+
+用户已明确批准新增最多12航次。此授权单独记录，不改写旧C1、三轮预算或TEST封存状态。冻结release为9f50b902fb5eaee390a0c5eae017603ae1bcfd0382cb27f73289145993e963b3。
+
+主审核对唯一科学改动、实际配置记录、31项共享源码身份、W0/c=1、场景次序、一次性attempt、输出先于更新、共享作业锁、磁盘和字节上限；独立审核者核对runner及PowerShell预检。PROBE只按身份、实现、安全和完整性放行后续11场，不用单场性能决定是否保留场景。
+
+审核保留两项入口限制：
+
+- runner检查启动时尚未过截止，但缺少逐场截止余量检查。本次由主审逐阶段核当前时间及保守30分钟运行余量覆盖；启动距原截止超过47小时。此入口不能因此视为可在截止前任意时刻自动续跑的通用入口。
+- MATLAB checkcode记录绑定较早runner版本；冻结版本后的字节预算guard变动经源码审核，未声称存在当前SHA的checkcode结果。无Plant head smoke独立完成，动态共享源码身份仍须由真实run_start验证。
+
+PowerShell预检对WDDM/N/A记录不单独判为GPU计算；另采集实际GPU engine counter及进程CPU，禁止结束其他作业。首次launcher错误额外要求compute counter总数大于0，实际在Start-Process前退出。该启动前失败原样保存，0 Plant；更正本地聚合条件后使用仍在300秒内的原PASS预检启动一次PROBE，没有覆盖预检。正式计时资格始终为false。
+
+本记录不是性能结论。最终决定须读取实际raw、run_start和完整配对表。

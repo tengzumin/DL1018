@@ -1,0 +1,74 @@
+{
+  "schema": "V6_FIRST_DSSM_DEV_DIVERGENCE_SOURCE_ANCHOR_ERRATUM_V2",
+  "supersedes_scope": "source_code_anchors only",
+  "preserved_v1_json_path": "reports/paper_continuation_20261023/test_engineering_dev2_parent_review/v6_first_divergence_peer/V6_FIRST_DSSM_DEV_DIVERGENCE_PEER_v1.json",
+  "preserved_v1_json_sha256": "4b6677bea60ec5ef42060c43538cc3600765a51d2f0ee5c682bebb776f78bc91",
+  "preserved_v1_report_sha256": "5bfebfe97faf3e725ab5ed173919ce09f53ba5e3514c16168dd10437e642d3dd",
+  "this_peer_accessed_test_results": false,
+  "this_peer_started_matlab_plant_or_training_or_retry": false,
+  "parent_recorded_run_status": {
+    "v6_dssm_engineering_attempt_natural_os": 1,
+    "v6_dssm_engineering_attempt_plant_count": 1,
+    "v6_kan_engineering_attempt_started": false,
+    "new_test_method_result_added": false,
+    "preexisting_b48_test_scores_opened": false
+  },
+  "correction": "The v1 numeric comparisons remain unchanged. Its runtime code anchors mistakenly pointed at the C3 DEV core; the DSSM method source manifest binds the archived corrected local_runtime core below.",
+  "actual_locked_dssm_sources": [
+    {
+      "role": "corrected_runtime_m",
+      "path": "REFERENCE_FIX_FULL72_20261021_022342_313/corrected_reference_training_v1/corrected_pair_eval_v1/sources/local_runtime/run_dl1018_closed_loop.m",
+      "sha256": "01d83dec95aea5d30feef3afd0628a2ce0911f70465f0773a4f568a01b08450b",
+      "actual_file_sha256_rechecked": "01d83dec95aea5d30feef3afd0628a2ce0911f70465f0773a4f568a01b08450b",
+      "line_anchors": {
+        "initial_weight": "659-660",
+        "search_W0": "668,673",
+        "X14_history_and_forward": "1928-1947",
+        "head_update_and_outputs": "2009,2015-2016",
+        "held_force": "2029",
+        "PCF_call_and_commanded_acceleration_input": "2153-2156"
+      }
+    },
+    {
+      "role": "corrected_runtime_m",
+      "path": "REFERENCE_FIX_FULL72_20261021_022342_313/corrected_reference_training_v1/corrected_pair_eval_v1/sources/local_runtime/position_stage1_model_forward_v2.m",
+      "sha256": "dc803aa102c49d67dd687ae941f8a60bb0c465f74fd01e5ae93ad1ea1a293676",
+      "actual_file_sha256_rechecked": "dc803aa102c49d67dd687ae941f8a60bb0c465f74fd01e5ae93ad1ea1a293676",
+      "line_anchors": {
+        "DSSM_recurrence": "54-64",
+        "normalized_feature": "136"
+      }
+    },
+    {
+      "role": "corrected_runtime_m",
+      "path": "REFERENCE_FIX_FULL72_20261021_022342_313/corrected_reference_training_v1/corrected_pair_eval_v1/sources/local_runtime/position_only_search_head_step.m",
+      "sha256": "3bd0fe9686c3b75793575e517d4cc5f08de58ab6a26a2bc7516aa690422bb7dc",
+      "actual_file_sha256_rechecked": "3bd0fe9686c3b75793575e517d4cc5f08de58ab6a26a2bc7516aa690422bb7dc",
+      "line_anchors": {
+        "FEATURE_output_and_update": "12-18"
+      }
+    },
+    {
+      "role": "engineering_entry",
+      "path": "experiments/c5_test48_v6/test48_entry_v4.m",
+      "line_anchors": {
+        "historical_opts_then_frozen_model_overwrite": "503-517"
+      }
+    }
+  ],
+  "unchanged_numeric_facts": {
+    "old_raw_sha256": "e54111ca11559ccb5d1e7c9ca9824db0b225234b2cff3497d5cfe71e1878c8d8",
+    "new_raw_sha256": "c3305039bbcae69c59051236e13a02295831c676984cebedad7772f7fc51fa81",
+    "old_new_W0_max_abs": 0.4603508599102497,
+    "first_ready_event_time_s": 0.32,
+    "first_exact_state_mismatch_time_s": 0.321,
+    "first_state_mismatch_gt_1e-12_time_s": 0.323,
+    "state_max_abs_mismatch": 0.13140362151790552
+  },
+  "restoration_path_assessment": {
+    "compatible_with_five_unstarted_test_blocks": "Yes, conditionally: freeze a versioned release that explicitly preserves B48's existing v3 identity and binds the remaining unstarted methods under the corrected identities; retain the failed v6 engineering attempt as excluded history.",
+    "must_not_claim": "Do not represent the new release as the existing v6 release, or claim current external model.mat/W0 identity if historical embedded arrays are restored.",
+    "cross_method_causal_attribution": "Restoring historical D/K identity fixes historical raw reproducibility only. If C5 uses a different representation/initialization, C5-versus-D/K performance remains a method-bundle comparison; causal attribution to a controller mechanism needs matched representation/initialization evidence. Existing C5-internal FREEZE/NO_PRED contrasts support only their bounded within-C5 claims.",
+    "additional_144_dev_required_for_identity_fix": false
+  }
+}

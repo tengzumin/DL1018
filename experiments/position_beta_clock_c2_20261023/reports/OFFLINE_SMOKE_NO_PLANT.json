@@ -1,0 +1,320 @@
+{
+  "status": "PASS_NO_PLANT_SMOKE",
+  "created_utc": "2026-10-22T16:41:16.316Z",
+  "source_lock_sha256": "390888537a0138f36a0d9b3a1e1fc607ecdc57939a38dabb66db79c0887aca87",
+  "c1_source_lock_sha256": "02668f6268944715e65e6d2cffa52b395417506132212b00e7d273d88df164e5",
+  "candidate_core_sha256": "62943c0247afd94295776916a1d5370d4be2b5f93984ff4e52ce734f7f772992",
+  "candidate_wrapper_sha256": "fcc1f5de659541e692483f8395d93fd2a251256286ebade5e510ed4c7a2e2330",
+  "taskbook_sha256": "321d06bf086f9b291b9dd78c0e27edee4dfa545bdf3f819c6c46d651752487f8",
+  "parent_same_state_quantification_sha256": "8b3067b0217ff1be2efc2015b834b1c8fe137ea6847b950bad984cc2a25cdf3b",
+  "parent_quantification_summary": {
+    "scene_count": 12,
+    "valid_events_per_scene": 1968,
+    "different_beta_events_per_scene": 148,
+    "max_same_state_applied_delta_mps2": 0.00082205675362801323,
+    "plant_called": false
+  },
+  "candidate_model_id": "DSSM14",
+  "candidate_initial_W_sha256": "88f8c4f2495438c3797655c48bab1bf0c11ac2e27bff1f5f2a7423a8f0a2cf53",
+  "normalizer_arrays_sha256": "533aad9a2c66874cfa67f5d268661835e81e58b797cba7d6fc1c12d4013de5f0",
+  "resolved_paths": {
+    "init_dl1018": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\matlab\\runtime\\init_dl1018.m",
+    "run_dl1018_closed_loop": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_beta_clock_c2_20261023\\runtime\\run_dl1018_closed_loop.m",
+    "run_episode_dl1018": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_beta_clock_c2_20261023\\runtime\\run_episode_dl1018.m",
+    "position_only_search_options": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\corrected_reference_training_v1\\corrected_pair_eval_v1\\sources\\local_runtime\\position_only_search_options.m",
+    "position_only_search_head_step": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\corrected_reference_training_v1\\corrected_pair_eval_v1\\sources\\local_runtime\\position_only_search_head_step.m"
+  },
+  "beta_check": {
+    "dt_s": 0.001,
+    "rise_time_s": 1.8,
+    "tested_fixed_steps": 20000,
+    "old_expression": "betaOriginal=min(max(t(k)/cfg.rbf.position.beta_rise_time,0),1);",
+    "candidate_expression": "betaOriginal=min(max(k*dt/cfg.rbf.position.beta_rise_time,0),1);",
+    "step_1800_old": 0.99944444444444436,
+    "step_1800_candidate": 1,
+    "step_1801_both": 1
+  },
+  "head_check": {
+    "raw_output_before_update_max_abs_error": 0,
+    "beta_scaled_applied_output_max_abs_error": 0,
+    "weight_update_max_abs_error": 0,
+    "beta_old": 0.13833333333333334,
+    "beta_candidate": 0.1388888888888889,
+    "state_next_fro_difference": 8.955569341023694E-6
+  },
+  "fixed_controller_parameters_reconstructed": {
+    "source": "simulation_parameters(cfg,cfg.plant.arm_initial,zeros(4,1)) -> controller_parameters(...,'fixed')",
+    "is_historical_runtime_snapshot": false,
+    "plant_dynamics_called": false,
+    "mass_kg": 0.695,
+    "J0_kg_m2": [
+      [
+        0.0032575533333333339,
+        -2.1684043449710089E-19,
+        0
+      ],
+      [
+        -2.1684043449710089E-19,
+        0.0032575533333333334,
+        0
+      ],
+      [
+        0,
+        0,
+        0.0063606483333333332
+      ]
+    ],
+    "C0_allocation_matrix": [
+      [
+        1.7E-6,
+        1.7E-6,
+        1.7E-6,
+        1.7E-6
+      ],
+      [
+        1.8031222920256959E-7,
+        1.8031222920256961E-7,
+        -1.8031222920256959E-7,
+        -1.8031222920256967E-7
+      ],
+      [
+        -1.8031222920256961E-7,
+        1.8031222920256959E-7,
+        1.8031222920256967E-7,
+        -1.8031222920256956E-7
+      ],
+      [
+        3.2E-8,
+        -3.2E-8,
+        3.2E-8,
+        -3.2E-8
+      ]
+    ],
+    "cog_m": [
+      -4.7424095026704077E-18,
+      -2.8953658016303544E-18,
+      0
+    ],
+    "cfg_declared_inertia_not_used_as_actual": [
+      [
+        0.012,
+        0,
+        0
+      ],
+      [
+        0,
+        0.012,
+        0
+      ],
+      [
+        0,
+        0,
+        0.022
+      ]
+    ]
+  },
+  "checkcode": {
+    "core": {
+      "message_count": 25,
+      "messages": [
+        {
+          "id": "NASGU",
+          "line": 248,
+          "severity": "",
+          "message": "赋给变量的值可能未使用。"
+        },
+        {
+          "id": "NASGU",
+          "line": 457,
+          "severity": "",
+          "message": "赋给变量的值可能未使用。"
+        },
+        {
+          "id": "NASGU",
+          "line": 530,
+          "severity": "",
+          "message": "赋给变量的值可能未使用。"
+        },
+        {
+          "id": "NASGU",
+          "line": 582,
+          "severity": "",
+          "message": "赋给变量的值可能未使用。"
+        },
+        {
+          "id": "NASGU",
+          "line": 582,
+          "severity": "",
+          "message": "赋给变量的值可能未使用。"
+        },
+        {
+          "id": "PREALL",
+          "line": 629,
+          "severity": "",
+          "message": "赋给变量的预分配值可能未使用。"
+        },
+        {
+          "id": "NASGU",
+          "line": 690,
+          "severity": "",
+          "message": "赋给变量的值可能未使用。"
+        },
+        {
+          "id": "ALIGN",
+          "line": 900,
+          "severity": "",
+          "message": "此关键字可能未与其在第 2552 行上的匹配 END 对齐。"
+        },
+        {
+          "id": "ALIGN",
+          "line": 1082,
+          "severity": "",
+          "message": "此关键字可能未与其在第 2418 行上的匹配 END 对齐。"
+        },
+        {
+          "id": "ALIGN",
+          "line": 1163,
+          "severity": "",
+          "message": "此关键字可能未与其在第 1565 行上的匹配 END 对齐。"
+        },
+        {
+          "id": "NASGU",
+          "line": 1188,
+          "severity": "",
+          "message": "赋给变量的值可能未使用。"
+        },
+        {
+          "id": "AGROW",
+          "line": 1282,
+          "severity": "",
+          "message": "变量的大小似乎在每个循环迭代都会更改。请考虑进行预分配以提升速度。"
+        },
+        {
+          "id": "ALIGN",
+          "line": 1505,
+          "severity": "",
+          "message": "此关键字可能未与其在第 1507 行上的匹配 END 对齐。"
+        },
+        {
+          "id": "NASGU",
+          "line": 1786,
+          "severity": "",
+          "message": "赋给变量的值可能未使用。"
+        },
+        {
+          "id": "NASGU",
+          "line": 1830,
+          "severity": "",
+          "message": "赋给变量的值可能未使用。"
+        },
+        {
+          "id": "NASGU",
+          "line": 1835,
+          "severity": "",
+          "message": "赋给变量的值可能未使用。"
+        },
+        {
+          "id": "NASGU",
+          "line": 2898,
+          "severity": "",
+          "message": "赋给变量的值可能未使用。"
+        },
+        {
+          "id": "NASGU",
+          "line": 2898,
+          "severity": "",
+          "message": "赋给变量的值可能未使用。"
+        },
+        {
+          "id": "NASGU",
+          "line": 2898,
+          "severity": "",
+          "message": "赋给变量的值可能未使用。"
+        },
+        {
+          "id": "NASGU",
+          "line": 2898,
+          "severity": "",
+          "message": "赋给变量的值可能未使用。"
+        },
+        {
+          "id": "ALIGN",
+          "line": 2962,
+          "severity": "",
+          "message": "此关键字可能未与其在第 2964 行上的匹配 END 对齐。"
+        },
+        {
+          "id": "DEFNU",
+          "line": 3034,
+          "severity": "",
+          "message": "可能未使用函数。"
+        },
+        {
+          "id": "DEFNU",
+          "line": 3177,
+          "severity": "",
+          "message": "可能未使用函数。"
+        },
+        {
+          "id": "ALIGN",
+          "line": 3293,
+          "severity": "",
+          "message": "此关键字可能未与其在第 3295 行上的匹配 END 对齐。"
+        },
+        {
+          "id": "ALIGN",
+          "line": 3309,
+          "severity": "",
+          "message": "此关键字可能未与其在第 3313 行上的匹配 END 对齐。"
+        }
+      ]
+    },
+    "wrapper": {
+      "message_count": 0,
+      "messages": []
+    },
+    "smoke": {
+      "message_count": 5,
+      "messages": [
+        {
+          "id": "ISCL",
+          "line": 202,
+          "severity": "",
+          "message": "要提高性能，请使用 'isscalar' 而不是长度比较。"
+        },
+        {
+          "id": "ISCL",
+          "line": 202,
+          "severity": "",
+          "message": "要提高性能，请使用 'isscalar' 而不是长度比较。"
+        },
+        {
+          "id": "ISCL",
+          "line": 212,
+          "severity": "",
+          "message": "要提高性能，请使用 'isscalar' 而不是长度比较。"
+        },
+        {
+          "id": "MSNU",
+          "line": 231,
+          "severity": "",
+          "message": "此处之前隐藏了一条代码分析器消息，但该消息不再产生。"
+        },
+        {
+          "id": "MSNU",
+          "line": 275,
+          "severity": "",
+          "message": "此处之前隐藏了一条代码分析器消息，但该消息不再产生。"
+        }
+      ]
+    }
+  },
+  "execution_scope": {
+    "run_episode_called": false,
+    "Plant_dynamics_called": false,
+    "optimizer_steps": 0,
+    "gpu_jobs": 0,
+    "TEST_accessed": false,
+    "new_closed_loop_authorized": false
+  }
+}

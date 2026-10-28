@@ -1,0 +1,7 @@
+已按任务书完成新目录的实现与无 Plant 准备，未改旧目录，也未启动训练、Plant 或闭环航次，未读 TEST、未运行 B/C5。
+
+- 只改了两处候选源码：[姿态头更新](C:/Users/35326/Desktop/postgraduation/0/Mcode/drone_tcn/DL1018/experiments/dl_attitude_replacement_20261026/mlp15_composite_head_v1/candidate_runner_work/matlab/runtime/mlp15_attitude_step_v1.m)和[闭环入口](C:/Users/35326/Desktop/postgraduation/0/Mcode/drone_tcn/DL1018/experiments/dl_attitude_replacement_20261026/mlp15_composite_head_v1/candidate_runner_work/matlab/runtime/run_gate_holdout_closed_loop.m)。差分仅含这两项。
+- R2025b 无 Plant 检查通过：300 个合成事件覆盖残差更新、tracking drive、SPD/Joseph 更新、投影和 dmax 限幅；旧/新源码 Code Analyzer 诊断数均为 102。Plant 预算为 0 的硬门禁检查通过。
+- release 已准备，状态为 `PREPARED_ROOT_REVIEW_REQUIRED`，授权 Plant 调用数为 0。真实 tracking 效果尚未评估，因此不宣称已达到最终性能目标。
+
+交付材料：[LUNA_COMPLETION.md](C:/Users/35326/Desktop/postgraduation/0/Mcode/drone_tcn/DL1018/experiments/dl_attitude_replacement_20261026/mlp15_composite_head_v1/LUNA_COMPLETION.md)、[RELEASE.json](C:/Users/35326/Desktop/postgraduation/0/Mcode/drone_tcn/DL1018/experiments/dl_attitude_replacement_20261026/mlp15_composite_head_v1/RELEASE.json)、[无 Plant 检查报告](C:/Users/35326/Desktop/postgraduation/0/Mcode/drone_tcn/DL1018/experiments/dl_attitude_replacement_20261026/mlp15_composite_head_v1/audits/NO_PLANT_CHECK_v7.json)、[源码差分](C:/Users/35326/Desktop/postgraduation/0/Mcode/drone_tcn/DL1018/experiments/dl_attitude_replacement_20261026/mlp15_composite_head_v1/SOURCE_DIFF.patch)。哈希绑定核对通过，准备交 root 审核。

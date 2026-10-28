@@ -1,0 +1,118 @@
+{
+  "schema": "DL1018_CAUSAL_N4_TRAIN24_BATCH_SCORE_CONTRACT_V2",
+  "status": "FROZEN_BEFORE_REMAINING21_PLANT_CALLS",
+  "scene_source": "All 24 rows in the pinned DATASET_MANIFEST_v1 physical TRAIN_C5_24 prefix-DL1018_DEV cohort, in manifest order.",
+  "reuse_scene_ids": [
+    "DL1018_DEV_T1_C00_W03",
+    "DL1018_DEV_T3_C09_W09",
+    "DL1018_DEV_T1_C11_W12"
+  ],
+  "new_attempt_scene_ids": [
+    "DL1018_DEV_T1_C01_W15",
+    "DL1018_DEV_T1_C04_W00",
+    "DL1018_DEV_T1_C05_W06",
+    "DL1018_DEV_T1_C07_W08",
+    "DL1018_DEV_T1_C10_W09",
+    "DL1018_DEV_T1_C15_W14",
+    "DL1018_DEV_T2_C00_W04",
+    "DL1018_DEV_T2_C02_W15",
+    "DL1018_DEV_T2_C03_W01",
+    "DL1018_DEV_T2_C06_W07",
+    "DL1018_DEV_T2_C08_W08",
+    "DL1018_DEV_T2_C09_W10",
+    "DL1018_DEV_T2_C12_W13",
+    "DL1018_DEV_T2_C14_W14",
+    "DL1018_DEV_T3_C00_W05",
+    "DL1018_DEV_T3_C03_W15",
+    "DL1018_DEV_T3_C05_W02",
+    "DL1018_DEV_T3_C06_W08",
+    "DL1018_DEV_T3_C10_W11",
+    "DL1018_DEV_T3_C13_W12",
+    "DL1018_DEV_T3_C15_W14"
+  ],
+  "scorer": "score_full72_candidate_v1.score_raw, frozen gravity/max-tilt constants, same-scene B/C5/parent raw comparators.",
+  "scene_metrics": [
+    "candidate/B/C5/parent Q_m",
+    "candidate/B/C5/parent task_SO3_rad",
+    "candidate/B/C5/parent inner_SO3_rad",
+    "candidate/C5 Q ratio",
+    "candidate/B Q ratio",
+    "safety counters",
+    "N4 gate ratio/g/target summaries",
+    "event clip count",
+    "event action-chain replay errors",
+    "per-scene PASS/diagnostic flags"
+  ],
+  "groups": {
+    "all_24": [
+      "DL1018_DEV_T1_C00_W03",
+      "DL1018_DEV_T1_C01_W15",
+      "DL1018_DEV_T1_C04_W00",
+      "DL1018_DEV_T1_C05_W06",
+      "DL1018_DEV_T1_C07_W08",
+      "DL1018_DEV_T1_C10_W09",
+      "DL1018_DEV_T1_C11_W12",
+      "DL1018_DEV_T1_C15_W14",
+      "DL1018_DEV_T2_C00_W04",
+      "DL1018_DEV_T2_C02_W15",
+      "DL1018_DEV_T2_C03_W01",
+      "DL1018_DEV_T2_C06_W07",
+      "DL1018_DEV_T2_C08_W08",
+      "DL1018_DEV_T2_C09_W10",
+      "DL1018_DEV_T2_C12_W13",
+      "DL1018_DEV_T2_C14_W14",
+      "DL1018_DEV_T3_C00_W05",
+      "DL1018_DEV_T3_C03_W15",
+      "DL1018_DEV_T3_C05_W02",
+      "DL1018_DEV_T3_C06_W08",
+      "DL1018_DEV_T3_C09_W09",
+      "DL1018_DEV_T3_C10_W11",
+      "DL1018_DEV_T3_C13_W12",
+      "DL1018_DEV_T3_C15_W14"
+    ],
+    "HF_W09_W14": [
+      "DL1018_DEV_T1_C10_W09",
+      "DL1018_DEV_T1_C11_W12",
+      "DL1018_DEV_T1_C15_W14",
+      "DL1018_DEV_T2_C09_W10",
+      "DL1018_DEV_T2_C12_W13",
+      "DL1018_DEV_T2_C14_W14",
+      "DL1018_DEV_T3_C09_W09",
+      "DL1018_DEV_T3_C10_W11",
+      "DL1018_DEV_T3_C13_W12",
+      "DL1018_DEV_T3_C15_W14"
+    ],
+    "task_groups": [
+      "T1",
+      "T2",
+      "T3"
+    ],
+    "wind_groups": "Every W00-W15 group present in the fixed cohort; report scene count and per-method mean/median."
+  },
+  "targets": {
+    "all24_ratio_of_summed_Q_candidate_over_C5_at_most": 1.05,
+    "retain_B_position_advantage": "Report paired candidate/B Q and task ratios overall and by fixed groups.",
+    "HF_W09_W14_candidate_task_SO3_rad_at_most_B": "Target, report paired aggregate and per-scene flags."
+  },
+  "aggregation": "Report ratio of sums, mean and median paired ratios, plus each scene; do not omit misses or select scenes after outcomes.",
+  "stop_rule": "Score-target misses alone never stop the batch. Stop only for nonzero safety counters, non-STABLE/incomplete run, non-finite values, or execution/source-integrity failure.",
+  "scope": {
+    "TEST_read": false,
+    "VAL_data_read": false,
+    "inertia_reconstruction_enabled": false
+  },
+  "candidate_identity_sha256": "7cdb682030f86a5d2adf4264907c9f4fb0f72385a71c42749a650d55b3a12479",
+  "n4_call_protocol_sha256": "5cfec030685a180db167cc2488753c7383ac4f73b4e2bb528f40c11270eda7a7",
+  "score_program_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\causal_n4_gate_train24_batch_v2\\score_train24_batch_v2.py",
+  "score_program_sha256": "57896da399b1b2976616387fa4a83a0c6ff8b428900af4bce815f9b362dd8318",
+  "score_source_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_full72_v1\\audits\\score_full72_candidate_v1.py",
+  "score_source_sha256": "6baf689802f4d73ead813449e52a8fe85cb0be92c3185850c93646da2d54dd16",
+  "score_constants_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\mlp15_composite_dev_v3\\RELEASE.json",
+  "score_constants_sha256": "507f9a13af2d20aca64a08ea7846991198112bd97ca8456dccb9402ec9424862",
+  "python_executable_path": "C:\\Users\\35326\\.conda\\envs\\TCN0906\\python.exe",
+  "python_executable_sha256": "97493ee1fa62a377ff6077a1f8d3441eed7d3ea9dd91d63b09bda42c9763e835",
+  "python_packages": {
+    "numpy": "2.2.6",
+    "h5py": "3.16.0"
+  }
+}

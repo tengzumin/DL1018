@@ -1,0 +1,12 @@
+{
+  "status": "OFFLINE_CHECK_FIXTURE_FAILURE_RETAINED",
+  "script": "experiments/c5_eight_loss_recovery_20261024/same_state_replay_v1.py",
+  "exit_code": 1,
+  "source_host": "DL1018_DEV_T2_C09_W10 / C5",
+  "exception": "AssertionError: X14 preview thrust differs by about 0.01 m/s^2",
+  "cause": "Audit script used assumed gravity 9.81; frozen contract is 9.8. This was an audit fixture error, not a C5 deployment bug.",
+  "other_source_checks_max_abs_error": 4.98434626905464e-13,
+  "correction": "v2 reads gravity from configs/contract_dl1018.json and uses a separate output directory. v1 retained.",
+  "new_Plant": 0,
+  "MATLAB_invocations": 0
+}

@@ -1,0 +1,744 @@
+{
+  "schema": "DL1018_FILTER_WN12_SINGLE_ENGINEERING_GATE_RAW_AUDIT_V1",
+  "scene_id": "DL1018_DEV_T1_C10_W09",
+  "audit_scope": "candidate raw plus same-scene locked B/C5 raws only; no TEST, no reruns",
+  "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261027\\task_attitude_filter_wn12_hf_screen_v1\\runs\\DL1018_DEV_T1_C10_W09\\raw_run.mat",
+  "raw_sha256": "01f826a970865eaa2596b01866321d2341749133872d30b16d4f408c22410190",
+  "raw_bytes": 91594483,
+  "run_status_sha256": "b51b6079613bf68742290fe59a69112b7c3dd6ef489446e52194c099a68163a4",
+  "run_start_sha256": "59e4a691e1d9a2723ae79319603a1c61ff9d0aac60ebfe16d223f064e36bd0ef",
+  "release_current_sha256": "e369ba5adfead47bff0333cb9ac5a4e832d06d963ae09afcff48958f17c6d335",
+  "run_release_sha256": "06c8aba11fbaec0fc35d7e23397a362b38d0583decd99182793b912d4b43118e",
+  "run_identity": {
+    "Plant_truth_deployment_input": false,
+    "TEST_read": false,
+    "attitude_arm": "GRU_STREAM",
+    "authorization_phase": "ENGINEERING_GATE",
+    "b_raw_sha256": "d1048a81954f856f3d4dac15d510f1cc7130775878bc4677ef76fd088c712a5f",
+    "base_model_weights_fixed": true,
+    "c5_input_lock_sha256": "82024c01276cc4bfbd9b7772cf5332dee3fdfcbed422969589b68f1c90ed2d75",
+    "c5_raw_sha256": "1e684df2174bc6b754e7798c67acb5c0b4ead218bcc1bd7b1d5cfc1a2fcf4991",
+    "c5_snapshot_sha256": "842ef395569e675db6e139c2684d72b976946915e5e0a58b9b7f24ec10c1d24a",
+    "candidate": "GRU32_STREAM72_COSINE_TRACKING_HEAD_FILTER_WN12_S20261027",
+    "cfg_binding_source": "prepare_mlp15_dev72_no_plant(record.payload_path).cfg",
+    "closed_loop_entry": "run_mlp15_dev72_closed_loop(scene,cfg,opts)",
+    "common_position_options_sha256": "0218d3dc3c591b07ed6f7328de2c36276c4f51c2a0d56966bdff62d68d6a6b21",
+    "controller_inputs": "current wrapped Euler error, body rate, nominal BS torque, arms command",
+    "frozen_model_candidate": "GRU32_STREAM72_COSINE_S2026102001",
+    "geometry_arm": "ACTIVE",
+    "gru_model_sha256": "b2c462f77a6bb97b8c6bb2b471daef0633d4f9664a7d623b894461a4fa21b567",
+    "hidden_state_reset_per_scene": true,
+    "inertia_reconstruction_enabled": false,
+    "learning_rate_schedule": "INHERITED_FROZEN_MODEL_NO_TRAINING",
+    "locked_cfg_sha256": "3c4646124eb961ec29e4b7b008bcbd90990f0dac182963025c0341cb44566f20",
+    "manifest_sha256": "3ecf79b0735744dda63a20fbfeef53634d35c7d8f738f6e005b1e24e34d020a2",
+    "payload_sha256": "cfad88b0a71601c97bc4955ab1ab57246ab2241dae4e32cbdbc10546d3e161f2",
+    "position_model_sha256": "6f3628b10540c617496b2a20f249c4319af79c1a02d5945f1f91f0aead9c9b6e",
+    "rbf_attitude_output_enabled": false,
+    "rbf_attitude_update_enabled": false,
+    "release_sha256": "06c8aba11fbaec0fc35d7e23397a362b38d0583decd99182793b912d4b43118e",
+    "scene_id": "DL1018_DEV_T1_C10_W09",
+    "schema": "DL1018_GRU_STREAM_COSINE_TRACKING_HEAD_RUN_START_V1",
+    "source_diff_sha256": "c2160d488a19fdaa3adc44e4cbc231a488ef9564914666101cc353eb191e4c23",
+    "source_lock_sha256": "afd4c4727f1b7d84df5991033f227d38bba0cb86e553182640f855527cc239b2",
+    "started_utc": "2026-10-27T09:46:52.994Z",
+    "tracking_delta_weights_online": true,
+    "tracking_head_protocol": "GRU_H_AFTER_PLUS_DELTAW33_OUTPUT_BEFORE_UPDATE_T_CLIP_SURFACE_BETA_J0_V1"
+  },
+  "manifest_candidate_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261027\\task_attitude_filter_wn12_hf_screen_v1\\runs\\DL1018_DEV_T1_C10_W09\\attempt_01\\raw_run.mat",
+  "actual_candidate_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261027\\task_attitude_filter_wn12_hf_screen_v1\\runs\\DL1018_DEV_T1_C10_W09\\raw_run.mat",
+  "raw_counts": {
+    "transitions": 20000,
+    "state_samples": 20001,
+    "status_value": "STABLE",
+    "complete_transitions": true,
+    "timebase_max_abs_dt_error_s": 2.3306009899748403e-15,
+    "state_shape": [
+      20001,
+      12
+    ],
+    "state_finite": true,
+    "hard_finite_fields": {
+      "log/state": true,
+      "log/time": true,
+      "scene/reference/position": true,
+      "scene/reference/acceleration": true,
+      "scene/reference/yaw": true,
+      "log/command_filter_target_euler": true,
+      "log/command_filter_acceleration_applied_rads2": true,
+      "log/filtered_attitude_reference": true,
+      "log/filtered_attitude_rate": true
+    },
+    "diagnostic_nonfinite_fields": {
+      "log": {
+        "datasets_checked": 462,
+        "floating_datasets_checked": 295,
+        "nonfinite_dataset_paths": [
+          "a3s_v2_Wmax",
+          "a3s_v2_c_phi",
+          "a3s_v2_deltaW_excursion",
+          "a3s_v2_deltaW_norm",
+          "a3s_v2_driving_norm",
+          "a3s_v2_fast_update_dt",
+          "a3s_v2_force_off_parity_max_abs",
+          "a3s_v2_gamma",
+          "a3s_v2_per_event_deltaW",
+          "a3s_v2_phi_bounded_norm",
+          "a3s_v2_phi_raw_norm",
+          "a3s_v2_sigma",
+          "attitude_event_beta",
+          "context_error_deltaW_norm",
+          "context_error_feature_dim",
+          "context_error_feature_norm",
+          "context_error_first_event_time_s",
+          "context_error_update_dt",
+          "context_error_weight_derivative_norm",
+          "context_error_weight_norm",
+          "context_error_z1",
+          "context_error_z1_bar",
+          "context_error_z2",
+          "context_error_z2_bar",
+          "diagnostic_fallback_time_s",
+          "diagnostic_force_bound_N",
+          "diagnostic_force_fallback_threshold_N",
+          "divergence_time_s",
+          "guard_command_growth",
+          "guard_dynamic_support_score",
+          "guard_force_growth_N",
+          "guard_force_growth_smooth_N",
+          "guard_force_norm_N",
+          "guard_support_parts",
+          "guard_support_score",
+          "guard_trigger_time_s",
+          "observer_z3_native",
+          "oracle_force_rate_hz",
+          "position_event_beta",
+          "predictive_force_horizon_ms",
+          "rbf_attitude_mod_feature",
+          "rbf_attitude_surface_learn",
+          "rbf_attitude_surface_original",
+          "rbf_output_unclipped",
+          "rbf_position_output_unclipped",
+          "rbf_position_width_feature",
+          "stage1_position_delayed_prediction_event_af_integral_mps",
+          "stage1_position_delayed_prediction_event_reference_integral_mps",
+          "stage1_position_delayed_prediction_event_velocity_mps",
+          "stage1_position_delayed_prediction_prev_index_zero_based",
+          "stage1_position_delayed_prediction_target_mps2",
+          "stage1_position_delayed_prediction_term_norm",
+          "stage1_position_effective_update_dt_s",
+          "stage1_position_event_applied_acceleration_mps2",
+          "stage1_position_event_beta",
+          "stage1_position_event_bias_projection",
+          "stage1_position_event_inference_time_s",
+          "stage1_position_event_phi_33",
+          "stage1_position_event_projection",
+          "stage1_position_event_raw_acceleration_mps2",
+          "stage1_position_event_weight_delta_fro",
+          "stage1_position_feature_14",
+          "stage1_position_feature_input",
+          "stage1_position_last_event_time_s",
+          "stage1_position_pcf_event_eta_before_mps",
+          "stage1_position_pcf_event_s_coord_eff_mps",
+          "stage1_position_pcf_event_s_coord_mps",
+          "stage1_position_pcf_event_s_original_mps",
+          "stage1_position_phi_33",
+          "state_perturbation_applied_time_s",
+          "state_perturbation_requested_time_s",
+          "truth_oracle_horizon_samples",
+          "truth_oracle_rate_hz",
+          "truth_oracle_zoh_end_s",
+          "truth_oracle_zoh_start_s",
+          "v1_bounded_force_output",
+          "v1_bounded_phi_norm",
+          "v1_command_state8",
+          "v1_first_adaptation_time_s",
+          "v1_force_off_parity_max_abs",
+          "v1_history_maturity",
+          "v1_learner_event_time",
+          "v1_normalized_driving_magnitude",
+          "v1_phi32_norm",
+          "v1_phi_norm",
+          "v1_q_phi",
+          "v1_raw_driving_magnitude",
+          "v1_raw_force_diagnostic",
+          "v1_relative_weight_update",
+          "v1_update_dt",
+          "v1_weight_delta_norm",
+          "v1_weight_derivative_norm",
+          "v1_weight_norm",
+          "v1_z2_norm"
+        ]
+      },
+      "scene": {
+        "datasets_checked": 16,
+        "floating_datasets_checked": 14,
+        "nonfinite_dataset_paths": []
+      }
+    }
+  },
+  "safety_counts": {
+    "motor_saturation_samples": 0,
+    "generalized_clip_samples": 0,
+    "tilt_limited_samples": 0,
+    "attitude_head_projection_samples": 0,
+    "attitude_head_output_saturated_samples": 0
+  },
+  "resource_ledger": {
+    "MATLAB_processes_started": 5,
+    "MATLAB_runs": 5,
+    "pre_marker_failed_launches": 2,
+    "prepare_only_runs": 2,
+    "closed_loop_runs_started": 1,
+    "Plant_calls_completed": 1,
+    "authorized_Plant_calls": 0,
+    "RELEASE_status": "DRAFT"
+  },
+  "binding_hashes": {
+    "manifest": {
+      "actual": "3ecf79b0735744dda63a20fbfeef53634d35c7d8f738f6e005b1e24e34d020a2",
+      "run_start": "3ecf79b0735744dda63a20fbfeef53634d35c7d8f738f6e005b1e24e34d020a2"
+    },
+    "source_lock": {
+      "actual": "afd4c4727f1b7d84df5991033f227d38bba0cb86e553182640f855527cc239b2",
+      "run_start": "afd4c4727f1b7d84df5991033f227d38bba0cb86e553182640f855527cc239b2",
+      "files": {
+        "count": 59,
+        "pass_count": 59,
+        "mismatches": []
+      }
+    },
+    "source_diff": {
+      "actual": "c2160d488a19fdaa3adc44e4cbc231a488ef9564914666101cc353eb191e4c23",
+      "run_start": "c2160d488a19fdaa3adc44e4cbc231a488ef9564914666101cc353eb191e4c23"
+    },
+    "locked_cfg": {
+      "actual": "3c4646124eb961ec29e4b7b008bcbd90990f0dac182963025c0341cb44566f20",
+      "run_start": "3c4646124eb961ec29e4b7b008bcbd90990f0dac182963025c0341cb44566f20"
+    },
+    "path_reconciliation_addendum": {
+      "actual": "09dde45e49a55bfd8a4649a91d0a513ea20d0e36db0f0f418d5ef17f8c99bc6b",
+      "release": "09dde45e49a55bfd8a4649a91d0a513ea20d0e36db0f0f418d5ef17f8c99bc6b"
+    },
+    "payload": {
+      "actual": "cfad88b0a71601c97bc4955ab1ab57246ab2241dae4e32cbdbc10546d3e161f2",
+      "manifest": "cfad88b0a71601c97bc4955ab1ab57246ab2241dae4e32cbdbc10546d3e161f2"
+    },
+    "gru_model": {
+      "actual": "b2c462f77a6bb97b8c6bb2b471daef0633d4f9664a7d623b894461a4fa21b567",
+      "release": "b2c462f77a6bb97b8c6bb2b471daef0633d4f9664a7d623b894461a4fa21b567",
+      "run_start": "b2c462f77a6bb97b8c6bb2b471daef0633d4f9664a7d623b894461a4fa21b567"
+    },
+    "parent_model_lineage": {
+      "parent_release_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_full72_v1\\RELEASE.json",
+      "parent_release_sha256": "b453e50d1ef3affce66b0d05dda4848ef0aaf6d58476361d9c3006febd6ef047",
+      "parent_arm_candidate": "GRU32_STREAM72_COSINE_TRACKING_HEAD_S2026102001",
+      "locked_model_id_from_model_path": "GRU32_STREAM72_COSINE_S2026102001",
+      "locked_model_sha256": "b2c462f77a6bb97b8c6bb2b471daef0633d4f9664a7d623b894461a4fa21b567"
+    },
+    "B_raw": {
+      "actual": "d1048a81954f856f3d4dac15d510f1cc7130775878bc4677ef76fd088c712a5f",
+      "manifest": "d1048a81954f856f3d4dac15d510f1cc7130775878bc4677ef76fd088c712a5f",
+      "run_start": "d1048a81954f856f3d4dac15d510f1cc7130775878bc4677ef76fd088c712a5f"
+    },
+    "C5_raw": {
+      "actual": "1e684df2174bc6b754e7798c67acb5c0b4ead218bcc1bd7b1d5cfc1a2fcf4991",
+      "manifest": "1e684df2174bc6b754e7798c67acb5c0b4ead218bcc1bd7b1d5cfc1a2fcf4991",
+      "run_start": "1e684df2174bc6b754e7798c67acb5c0b4ead218bcc1bd7b1d5cfc1a2fcf4991"
+    },
+    "external_dependencies": {
+      "count": 12,
+      "pass_count": 12,
+      "mismatches": []
+    },
+    "J0": {
+      "matrix": [
+        [
+          0.003257553333333334,
+          -2.168404344971009e-19,
+          0.0
+        ],
+        [
+          -2.168404344971009e-19,
+          0.0032575533333333334,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.006360648333333333
+        ]
+      ],
+      "symmetric": true,
+      "principal_values_positive": true,
+      "sha256_recorded": "8cd498cac86940c800e5c4c1e622e19ed2630bebbd3bbe880d3ae4ad1b689f75",
+      "fixed_inertia_matches": true,
+      "fixed_inertia_dot_is_zero": true
+    },
+    "position_model_sha256": {
+      "locked_cfg": "6f3628b10540c617496b2a20f249c4319af79c1a02d5945f1f91f0aead9c9b6e",
+      "run_start": "6f3628b10540c617496b2a20f249c4319af79c1a02d5945f1f91f0aead9c9b6e"
+    },
+    "common_position_options_sha256": {
+      "locked_cfg": "0218d3dc3c591b07ed6f7328de2c36276c4f51c2a0d56966bdff62d68d6a6b21",
+      "run_start": "0218d3dc3c591b07ed6f7328de2c36276c4f51c2a0d56966bdff62d68d6a6b21"
+    },
+    "C5_input_lock_sha256": {
+      "locked_cfg": "82024c01276cc4bfbd9b7772cf5332dee3fdfcbed422969589b68f1c90ed2d75",
+      "run_start": "82024c01276cc4bfbd9b7772cf5332dee3fdfcbed422969589b68f1c90ed2d75"
+    },
+    "C5_snapshot_sha256": {
+      "locked_cfg": "842ef395569e675db6e139c2684d72b976946915e5e0a58b9b7f24ec10c1d24a",
+      "run_start": "842ef395569e675db6e139c2684d72b976946915e5e0a58b9b7f24ec10c1d24a"
+    },
+    "source_identity_fields": {
+      "scene_id": {
+        "actual": "DL1018_DEV_T1_C10_W09",
+        "expected": "DL1018_DEV_T1_C10_W09",
+        "pass": true
+      },
+      "candidate": {
+        "actual": "GRU32_STREAM72_COSINE_TRACKING_HEAD_FILTER_WN12_S20261027",
+        "expected": "GRU32_STREAM72_COSINE_TRACKING_HEAD_FILTER_WN12_S20261027",
+        "pass": true
+      },
+      "authorization_phase": {
+        "actual": "ENGINEERING_GATE",
+        "expected": "ENGINEERING_GATE",
+        "pass": true
+      },
+      "frozen_model_candidate": {
+        "actual": "GRU32_STREAM72_COSINE_S2026102001",
+        "expected": "GRU32_STREAM72_COSINE_S2026102001",
+        "pass": true
+      },
+      "release_sha256": {
+        "actual": "06c8aba11fbaec0fc35d7e23397a362b38d0583decd99182793b912d4b43118e",
+        "expected": "06c8aba11fbaec0fc35d7e23397a362b38d0583decd99182793b912d4b43118e",
+        "pass": true
+      },
+      "manifest_sha256": {
+        "actual": "3ecf79b0735744dda63a20fbfeef53634d35c7d8f738f6e005b1e24e34d020a2",
+        "expected": "3ecf79b0735744dda63a20fbfeef53634d35c7d8f738f6e005b1e24e34d020a2",
+        "pass": true
+      },
+      "source_lock_sha256": {
+        "actual": "afd4c4727f1b7d84df5991033f227d38bba0cb86e553182640f855527cc239b2",
+        "expected": "afd4c4727f1b7d84df5991033f227d38bba0cb86e553182640f855527cc239b2",
+        "pass": true
+      },
+      "source_diff_sha256": {
+        "actual": "c2160d488a19fdaa3adc44e4cbc231a488ef9564914666101cc353eb191e4c23",
+        "expected": "c2160d488a19fdaa3adc44e4cbc231a488ef9564914666101cc353eb191e4c23",
+        "pass": true
+      },
+      "locked_cfg_sha256": {
+        "actual": "3c4646124eb961ec29e4b7b008bcbd90990f0dac182963025c0341cb44566f20",
+        "expected": "3c4646124eb961ec29e4b7b008bcbd90990f0dac182963025c0341cb44566f20",
+        "pass": true
+      },
+      "b_raw_sha256": {
+        "actual": "d1048a81954f856f3d4dac15d510f1cc7130775878bc4677ef76fd088c712a5f",
+        "expected": "d1048a81954f856f3d4dac15d510f1cc7130775878bc4677ef76fd088c712a5f",
+        "pass": true
+      },
+      "c5_raw_sha256": {
+        "actual": "1e684df2174bc6b754e7798c67acb5c0b4ead218bcc1bd7b1d5cfc1a2fcf4991",
+        "expected": "1e684df2174bc6b754e7798c67acb5c0b4ead218bcc1bd7b1d5cfc1a2fcf4991",
+        "pass": true
+      },
+      "payload_sha256": {
+        "actual": "cfad88b0a71601c97bc4955ab1ab57246ab2241dae4e32cbdbc10546d3e161f2",
+        "expected": "cfad88b0a71601c97bc4955ab1ab57246ab2241dae4e32cbdbc10546d3e161f2",
+        "pass": true
+      },
+      "gru_model_sha256": {
+        "actual": "b2c462f77a6bb97b8c6bb2b471daef0633d4f9664a7d623b894461a4fa21b567",
+        "expected": "b2c462f77a6bb97b8c6bb2b471daef0633d4f9664a7d623b894461a4fa21b567",
+        "pass": true
+      },
+      "c5_input_lock_sha256": {
+        "actual": "82024c01276cc4bfbd9b7772cf5332dee3fdfcbed422969589b68f1c90ed2d75",
+        "expected": "82024c01276cc4bfbd9b7772cf5332dee3fdfcbed422969589b68f1c90ed2d75",
+        "pass": true
+      },
+      "c5_snapshot_sha256": {
+        "actual": "842ef395569e675db6e139c2684d72b976946915e5e0a58b9b7f24ec10c1d24a",
+        "expected": "842ef395569e675db6e139c2684d72b976946915e5e0a58b9b7f24ec10c1d24a",
+        "pass": true
+      },
+      "position_model_sha256": {
+        "actual": "6f3628b10540c617496b2a20f249c4319af79c1a02d5945f1f91f0aead9c9b6e",
+        "expected": "6f3628b10540c617496b2a20f249c4319af79c1a02d5945f1f91f0aead9c9b6e",
+        "pass": true
+      },
+      "common_position_options_sha256": {
+        "actual": "0218d3dc3c591b07ed6f7328de2c36276c4f51c2a0d56966bdff62d68d6a6b21",
+        "expected": "0218d3dc3c591b07ed6f7328de2c36276c4f51c2a0d56966bdff62d68d6a6b21",
+        "pass": true
+      },
+      "TEST_read": {
+        "actual": false,
+        "expected": false,
+        "pass": true
+      },
+      "Plant_truth_deployment_input": {
+        "actual": false,
+        "expected": false,
+        "pass": true
+      },
+      "base_model_weights_fixed": {
+        "actual": true,
+        "expected": true,
+        "pass": true
+      },
+      "tracking_delta_weights_online": {
+        "actual": true,
+        "expected": true,
+        "pass": true
+      },
+      "hidden_state_reset_per_scene": {
+        "actual": true,
+        "expected": true,
+        "pass": true
+      }
+    }
+  },
+  "same_scene_reference_identity": {
+    "scene_id": {
+      "candidate": "DL1018_DEV_T1_C10_W09",
+      "B": "DL1018_DEV_T1_C10_W09",
+      "C5": "DL1018_DEV_T1_C10_W09"
+    },
+    "reference_position": true,
+    "reference_acceleration": true,
+    "reference_yaw": true,
+    "all_equal": true
+  },
+  "score_definition": {
+    "scorer_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_full72_v1\\audits\\score_full72_candidate_v1.py",
+    "scorer_sha256": "6baf689802f4d73ead813449e52a8fe85cb0be92c3185850c93646da2d54dd16",
+    "gravity_mps2": 9.8,
+    "max_tilt_rad": 0.5235987755982988,
+    "constants_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\mlp15_composite_dev_v3\\RELEASE.json",
+    "constants_sha256": "507f9a13af2d20aca64a08ea7846991198112bd97ca8456dccb9402ec9424862",
+    "Q_m": "sqrt(mean over state samples of sum_xyz((position-reference)^2))",
+    "task_SO3_rad": "RMSE geodesic SO(3) between Euler xyz state and tilt-limited acceleration+yaw task reference",
+    "inner_SO3_rad": "RMSE geodesic SO(3) between Euler xyz state and filtered attitude reference over 20,000 transitions"
+  },
+  "scores": {
+    "candidate": {
+      "Q_m": 0.011659207740143177,
+      "task_SO3_rad": 0.042501692808074205,
+      "inner_SO3_rad": 0.02014038950272562,
+      "axis_phase": {
+        "ALL": {
+          "state_samples": 20001,
+          "inner_samples": 20000,
+          "position_xyz_rmse_m": [
+            0.005339484042990227,
+            0.010035675595856762,
+            0.002590801153541614
+          ],
+          "task_wrapped_euler_rmse_rad": [
+            0.03598137095636821,
+            0.022592639477970536,
+            0.0009540877802440833
+          ],
+          "inner_wrapped_euler_rmse_rad": [
+            0.01766132862341477,
+            0.009658968903646044,
+            0.0009541111561276899
+          ]
+        },
+        "0_5s": {
+          "state_samples": 5000,
+          "inner_samples": 5000,
+          "position_xyz_rmse_m": [
+            0.007566597125831836,
+            0.01214289792305588,
+            0.0046116107136484116
+          ],
+          "task_wrapped_euler_rmse_rad": [
+            0.03515792265128666,
+            0.02071298507362331,
+            2.44970121468946e-05
+          ],
+          "inner_wrapped_euler_rmse_rad": [
+            0.0001257555838885146,
+            0.00010073930014751558,
+            2.44970121468946e-05
+          ]
+        },
+        "15_20s": {
+          "state_samples": 5001,
+          "inner_samples": 5000,
+          "position_xyz_rmse_m": [
+            0.005108760195545548,
+            0.005898012035397031,
+            0.0005068715920405106
+          ],
+          "task_wrapped_euler_rmse_rad": [
+            0.03325859518572265,
+            0.021639442547218106,
+            0.0001636060460533672
+          ],
+          "inner_wrapped_euler_rmse_rad": [
+            0.010834349044153351,
+            0.008409317521774094,
+            0.00016361130260264723
+          ]
+        }
+      },
+      "safety": {
+        "motor_saturation_samples": 0,
+        "generalized_clip_samples": 0,
+        "tilt_limited_samples": 0,
+        "attitude_head_projection_samples": 0,
+        "attitude_head_output_saturated_samples": 0
+      }
+    },
+    "B": {
+      "Q_m": 0.010984561773262777,
+      "task_SO3_rad": 0.042200801129056116,
+      "inner_SO3_rad": 0.023236953991647456,
+      "axis_phase": {
+        "ALL": {
+          "state_samples": 20001,
+          "inner_samples": 20000,
+          "position_xyz_rmse_m": [
+            0.00496302247509703,
+            0.009369263154655529,
+            0.0028715698147741
+          ],
+          "task_wrapped_euler_rmse_rad": [
+            0.03577920610303439,
+            0.022343428389633907,
+            0.0010732126672141267
+          ],
+          "inner_wrapped_euler_rmse_rad": [
+            0.02067338822607068,
+            0.010592818681036358,
+            0.0010732394971674193
+          ]
+        },
+        "0_5s": {
+          "state_samples": 5000,
+          "inner_samples": 5000,
+          "position_xyz_rmse_m": [
+            0.006099145909730794,
+            0.009743843240584946,
+            0.00424152736521791
+          ],
+          "task_wrapped_euler_rmse_rad": [
+            0.034994075131511045,
+            0.020827258460717465,
+            1.15427122745867e-07
+          ],
+          "inner_wrapped_euler_rmse_rad": [
+            2.4114321832280877e-05,
+            1.5201216452555074e-05,
+            1.15427122745867e-07
+          ]
+        },
+        "15_20s": {
+          "state_samples": 5001,
+          "inner_samples": 5000,
+          "position_xyz_rmse_m": [
+            0.004084469264337545,
+            0.006023337096353722,
+            0.000580660547945143
+          ],
+          "task_wrapped_euler_rmse_rad": [
+            0.032740635397993705,
+            0.021056022734947312,
+            0.00023697411342141238
+          ],
+          "inner_wrapped_euler_rmse_rad": [
+            0.012359741114772341,
+            0.009591789655793565,
+            0.00023699780914050294
+          ]
+        }
+      },
+      "safety": {
+        "motor_saturation_samples": 0,
+        "generalized_clip_samples": 0,
+        "tilt_limited_samples": 0,
+        "attitude_head_projection_samples": 0,
+        "attitude_head_output_saturated_samples": 0
+      }
+    },
+    "C5": {
+      "Q_m": 0.010465882128741399,
+      "task_SO3_rad": 0.04327264903532816,
+      "inner_SO3_rad": 0.023274046930281553,
+      "axis_phase": {
+        "ALL": {
+          "state_samples": 20001,
+          "inner_samples": 20000,
+          "position_xyz_rmse_m": [
+            0.005048674831173281,
+            0.008781396619409989,
+            0.002632991567476155
+          ],
+          "task_wrapped_euler_rmse_rad": [
+            0.03691471396228582,
+            0.02254539740426749,
+            0.0010817130494126098
+          ],
+          "inner_wrapped_euler_rmse_rad": [
+            0.02069913584982733,
+            0.010623942905339967,
+            0.001081740091810532
+          ]
+        },
+        "0_5s": {
+          "state_samples": 5000,
+          "inner_samples": 5000,
+          "position_xyz_rmse_m": [
+            0.00675713608035835,
+            0.010447018819163035,
+            0.004652716550457582
+          ],
+          "task_wrapped_euler_rmse_rad": [
+            0.035792324532101176,
+            0.020634968869267252,
+            5.649000465802872e-07
+          ],
+          "inner_wrapped_euler_rmse_rad": [
+            9.122973677857423e-05,
+            3.200438124651045e-05,
+            5.649000465802872e-07
+          ]
+        },
+        "15_20s": {
+          "state_samples": 5001,
+          "inner_samples": 5000,
+          "position_xyz_rmse_m": [
+            0.003828420429330187,
+            0.005972092326944373,
+            0.0005466335240905344
+          ],
+          "task_wrapped_euler_rmse_rad": [
+            0.03384895059086466,
+            0.021638279431522193,
+            0.00022202317052307083
+          ],
+          "inner_wrapped_euler_rmse_rad": [
+            0.012350784348069112,
+            0.009582587115441951,
+            0.00022204536997072526
+          ]
+        }
+      },
+      "safety": {
+        "motor_saturation_samples": 0,
+        "generalized_clip_samples": 0,
+        "tilt_limited_samples": 0,
+        "attitude_head_projection_samples": 0,
+        "attitude_head_output_saturated_samples": 0
+      }
+    }
+  },
+  "comparisons": {
+    "Q_m": {
+      "candidate": 0.011659207740143177,
+      "B": 0.010984561773262777,
+      "C5": 0.010465882128741399
+    },
+    "task_SO3_rad": {
+      "candidate": 0.042501692808074205,
+      "B": 0.042200801129056116,
+      "C5": 0.04327264903532816
+    },
+    "inner_SO3_rad": {
+      "candidate": 0.02014038950272562,
+      "B": 0.023236953991647456,
+      "C5": 0.023274046930281553
+    },
+    "candidate_minus_B": {
+      "Q_m": 0.0006746459668804002,
+      "task_SO3_rad": 0.00030089167901808933,
+      "inner_SO3_rad": -0.0030965644889218366
+    },
+    "candidate_minus_C5": {
+      "Q_m": 0.0011933256114017785,
+      "task_SO3_rad": -0.000770956227253955,
+      "inner_SO3_rad": -0.003133657427555933
+    }
+  },
+  "checks": {
+    "raw_scene_identity": true,
+    "raw_sha_matches_run_status": true,
+    "status_raw_path_matches_produced_raw": true,
+    "run_status_completed_stable": true,
+    "run_status_counts": true,
+    "complete_transition_flag": true,
+    "status_safety_stop_empty": true,
+    "timebase_1ms": true,
+    "state_shape_20001x12": true,
+    "state_finite": true,
+    "scorer_filter_and_output_arrays_finite": true,
+    "scorer_metrics_finite": true,
+    "filter_target_output_shapes": true,
+    "filter_target_output_finite": true,
+    "status_and_identity_run_release_sha_agree": true,
+    "run_start_manifest_sha_matches_current": true,
+    "run_start_source_lock_sha_matches_current": true,
+    "run_start_source_diff_sha_matches_current": true,
+    "run_start_locked_cfg_sha_matches_current": true,
+    "run_start_model_sha_matches_current": true,
+    "run_start_candidate_matches_release_candidate": true,
+    "release_base_candidate_matches_locked_parent_arm": true,
+    "locked_parent_model_sha_matches_candidate_model": true,
+    "run_start_frozen_model_candidate_matches_locked_parent_model_id": true,
+    "B_C5_sha_matches_manifest": true,
+    "payload_sha_matches_manifest": true,
+    "scene_references_match_across_candidate_B_C5": true,
+    "source_files_match_lock": true,
+    "external_dependencies_match_lock": true,
+    "locked_cfg_filter_is_12_12_12": true,
+    "J0_binding_sane": true,
+    "current_release_is_postrun_DRAFT": true,
+    "release_resource_ledger_matches_record": true,
+    "path_addendum_matches_release_lock": true,
+    "run_identity_scene_id": true,
+    "run_identity_candidate": true,
+    "run_identity_authorization_phase": true,
+    "run_identity_frozen_model_candidate": true,
+    "run_identity_release_sha256": true,
+    "run_identity_manifest_sha256": true,
+    "run_identity_source_lock_sha256": true,
+    "run_identity_source_diff_sha256": true,
+    "run_identity_locked_cfg_sha256": true,
+    "run_identity_b_raw_sha256": true,
+    "run_identity_c5_raw_sha256": true,
+    "run_identity_payload_sha256": true,
+    "run_identity_gru_model_sha256": true,
+    "run_identity_c5_input_lock_sha256": true,
+    "run_identity_c5_snapshot_sha256": true,
+    "run_identity_position_model_sha256": true,
+    "run_identity_common_position_options_sha256": true,
+    "run_identity_TEST_read": true,
+    "run_identity_Plant_truth_deployment_input": true,
+    "run_identity_base_model_weights_fixed": true,
+    "run_identity_tracking_delta_weights_online": true,
+    "run_identity_hidden_state_reset_per_scene": true
+  },
+  "candidate_path_reconciliation": {
+    "manifest_and_input_lock_paths_agree": true,
+    "locked_planned_candidate_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261027\\task_attitude_filter_wn12_hf_screen_v1\\runs\\DL1018_DEV_T1_C10_W09\\attempt_01\\raw_run.mat",
+    "actual_first_candidate_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261027\\task_attitude_filter_wn12_hf_screen_v1\\runs\\DL1018_DEV_T1_C10_W09\\raw_run.mat",
+    "actual_status_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261027\\task_attitude_filter_wn12_hf_screen_v1\\runs\\DL1018_DEV_T1_C10_W09\\raw_run.mat",
+    "planned_candidate_path_matches_first_output": false,
+    "raw_sha_matches_status_and_identity_scene_matches_run_start": true,
+    "resolution": "First raw remains in its original wrapper-created location; subsequent scene outputs follow record.candidate_raw_path after in-study canonical path validation."
+  },
+  "result": "PASS_METRICS_AND_IDENTITY_WITH_FIRST_OUTPUT_PATH_MISMATCH",
+  "limitations": [
+    "This Python audit does not execute the MATLAB independent GRU replay auditor.",
+    "The historic run-time RELEASE bytes are not preserved as a separate file; run_start/runIdentity carry the same SHA, while the current RELEASE is a post-run DRAFT with authorization withdrawn.",
+    "The first raw was written at the scene root rather than its planned attempt_01 directory; status SHA and run identity bind the produced raw, and the addendum records the location. The wrapper now routes remaining scene outputs to the locked record path."
+  ]
+}

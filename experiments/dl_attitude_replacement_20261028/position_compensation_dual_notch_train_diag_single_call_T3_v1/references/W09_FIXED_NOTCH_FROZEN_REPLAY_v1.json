@@ -1,0 +1,178 @@
+{
+  "schema": "POSITION_COMPENSATION_DUAL_NOTCH_TRAIN_FROZEN_REPLAY_V1",
+  "status": "FAIL_FIXED_FROZEN_REPLAY",
+  "scope": "Two exact physical TRAIN_C5_24 W09 scenes; frozen logged trajectory only.",
+  "filter": {
+    "event_sample_rate_hz": 100.0,
+    "notch_centers_hz": [
+      2.2,
+      3.2
+    ],
+    "quality_factor_each": 4.0,
+    "b_a_coefficients": {
+      "2.2": {
+        "b": [
+          0.9830678494084116,
+          -1.9473815673631925,
+          0.9830678494084116
+        ],
+        "a": [
+          1.0,
+          -1.9473815673631925,
+          0.9661356988168233
+        ]
+      },
+      "3.2": {
+        "b": [
+          0.9756442629082012,
+          -1.9119799206806107,
+          0.9756442629082012
+        ],
+        "a": [
+          1.0,
+          -1.9119799206806107,
+          0.9512885258164024
+        ]
+      }
+    },
+    "update_rule": "Stage-1 event updates at 100 Hz; zero-order hold between events.",
+    "state_initialization": "Initialize at first nonzero action event to preserve the observed action value.",
+    "scope": "Filter final stage-1 applied position compensation only; nominal acceleration, yaw and shared command filter unchanged.",
+    "action_limit_mps2": 3.0
+  },
+  "predeclared_protocol_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\position_compensation_dual_notch_train_replay_v1\\PREDECLARED_PROTOCOL_v1.json",
+  "predeclared_protocol_sha256": "a53022cd54deb0213ca0322cbfddca164ca660dfecee8afd1e100e0c01db95de",
+  "results": [
+    {
+      "scene_id": "DL1018_DEV_T1_C10_W09",
+      "split": "TRAIN_C5_24",
+      "fold_id": "holdout_W06_10",
+      "binding_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\position_dc_penalty_oof_train_pair_preflight_W09_T1_C10_attempt014_v1\\TRAIN_SCENE_BINDING_v1.json",
+      "binding_sha256": "57472755dbbeaee0d275b4b63bcaadabf00d6a0b5c7f1b258ba305c022ed0118",
+      "parent_manifest_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_full72_v1\\MANIFEST.json",
+      "parent_manifest_scene_row_count": 1,
+      "source_raws": {
+        "B": {
+          "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\b_traceable_c3core_dev72_20261023\\runs_b\\DL1018_DEV_T1_C10_W09\\B_TRACEABLE_C3CORE_V1\\attempt_01\\raw_run.mat",
+          "raw_sha256": "d1048a81954f856f3d4dac15d510f1cc7130775878bc4677ef76fd088c712a5f"
+        },
+        "C5": {
+          "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_DEV_T1_C10_W09\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+          "raw_sha256": "1e684df2174bc6b754e7798c67acb5c0b4ead218bcc1bd7b1d5cfc1a2fcf4991"
+        },
+        "parent": {
+          "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_full72_v1\\runs\\DL1018_DEV_T1_C10_W09\\raw_run.mat",
+          "raw_sha256": "c40239f9c9a6cea0f233eabdea3294b20ff4d3384e22a59055dc4e5358f5b541"
+        }
+      },
+      "candidate_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\position_dc_penalty_oof_train_pair_preflight_W09_T1_C10_attempt014_v1\\runs\\DL1018_DEV_T1_C10_W09\\attempt_01\\raw_run.mat",
+      "candidate_raw_sha256": "5323d0330de6734b37b2f5f5c9cfd872a5e32aa2a3b220510b73c775692a451a",
+      "transitions": 20000,
+      "state_samples": 20001,
+      "event_count": 1999,
+      "event_stride_samples": 10,
+      "derived_mass_kg": 0.695,
+      "baseline_force_chain_max_abs_residual_N": 0.0,
+      "baseline_target_reconstruction_max_abs_error_rad": 2.7755575615628914e-17,
+      "action_limit_clip_count": 0,
+      "high_frequency": {
+        "1p5_2p5_hz": {
+          "command_target_before_mrad": 19.08526795106923,
+          "command_target_after_frozen_replay_mrad": 6.048701760371967,
+          "command_target_reduction_percent": 68.30695919030525,
+          "stage1_action_before_mps2": 0.1519360283952441,
+          "stage1_action_after_mps2": 0.014571092748165586,
+          "stage1_action_reduction_percent": 90.40971854926958
+        },
+        "2p5_3p5_hz": {
+          "command_target_before_mrad": 15.244587661640466,
+          "command_target_after_frozen_replay_mrad": 3.301645889103565,
+          "command_target_reduction_percent": 78.34217649971993,
+          "stage1_action_before_mps2": 0.13057385583409137,
+          "stage1_action_after_mps2": 0.011397320757707352,
+          "stage1_action_reduction_percent": 91.2713608058041
+        }
+      },
+      "low_frequency": {
+        "band_hz": [
+          0.05,
+          0.5
+        ],
+        "stage1_action_before_mps2": 0.19559964328299448,
+        "stage1_action_delta_mps2": 0.004367571585202851,
+        "stage1_action_delta_percent_of_before": 2.232913880565635,
+        "command_target_before_mrad": 78.29603107988665,
+        "command_target_delta_mrad": 0.39177450781767215,
+        "command_target_delta_percent_of_before": 0.5003759480706482
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C09_W09",
+      "split": "TRAIN_C5_24",
+      "fold_id": "holdout_W06_10",
+      "binding_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\position_dc_penalty_oof_train_pair_preflight_W09_T3_C09_attempt015_v1\\TRAIN_SCENE_BINDING_v1.json",
+      "binding_sha256": "d050a834ec005282f934537da1e51610e047645f98726b10c93cea38c2e133c0",
+      "parent_manifest_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_full72_v1\\MANIFEST.json",
+      "parent_manifest_scene_row_count": 1,
+      "source_raws": {
+        "B": {
+          "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\b_traceable_c3core_dev72_20261023\\runs_b\\DL1018_DEV_T3_C09_W09\\B_TRACEABLE_C3CORE_V1\\attempt_01\\raw_run.mat",
+          "raw_sha256": "a8cec3af85c0988622a3582385a44a201aa2d5e796fa73a933277cde0cf85f49"
+        },
+        "C5": {
+          "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_DEV_T3_C09_W09\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+          "raw_sha256": "fa11a41b18ce9d4c3b7558d3bbb0d230aaef3e7071fc15419df0c6d1fca2f3a4"
+        },
+        "parent": {
+          "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_full72_v1\\runs\\DL1018_DEV_T3_C09_W09\\raw_run.mat",
+          "raw_sha256": "14176658aac8e8b69817f71aff748add1b591cee744cd05954184e52e34c2cb2"
+        }
+      },
+      "candidate_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\position_dc_penalty_oof_train_pair_preflight_W09_T3_C09_attempt015_v1\\runs\\DL1018_DEV_T3_C09_W09\\attempt_01\\raw_run.mat",
+      "candidate_raw_sha256": "16c72ff78e7dfd298ae6157af9c98f6b77ef781162bd05dca07c564241b42963",
+      "transitions": 20000,
+      "state_samples": 20001,
+      "event_count": 1999,
+      "event_stride_samples": 10,
+      "derived_mass_kg": 0.695,
+      "baseline_force_chain_max_abs_residual_N": 0.0,
+      "baseline_target_reconstruction_max_abs_error_rad": 5.551115123125783e-17,
+      "action_limit_clip_count": 0,
+      "high_frequency": {
+        "1p5_2p5_hz": {
+          "command_target_before_mrad": 25.520258433142217,
+          "command_target_after_frozen_replay_mrad": 7.50749637082525,
+          "command_target_reduction_percent": 70.582208677497,
+          "stage1_action_before_mps2": 0.19889814783717724,
+          "stage1_action_after_mps2": 0.015176030739908489,
+          "stage1_action_reduction_percent": 92.36994868733925
+        },
+        "2p5_3p5_hz": {
+          "command_target_before_mrad": 20.28704725335563,
+          "command_target_after_frozen_replay_mrad": 4.256648025212922,
+          "command_target_reduction_percent": 79.01790254612416,
+          "stage1_action_before_mps2": 0.1727600695300898,
+          "stage1_action_after_mps2": 0.009181457054602918,
+          "stage1_action_reduction_percent": 94.68542871071038
+        }
+      },
+      "low_frequency": {
+        "band_hz": [
+          0.05,
+          0.5
+        ],
+        "stage1_action_before_mps2": 0.09200408918614682,
+        "stage1_action_delta_mps2": 0.0028666895040723632,
+        "stage1_action_delta_percent_of_before": 3.115828360924641,
+        "command_target_before_mrad": 33.555532622635475,
+        "command_target_delta_mrad": 0.27907958948877204,
+        "command_target_delta_percent_of_before": 0.8316947092668526
+      }
+    }
+  ],
+  "plant_called_by_this_replay": false,
+  "TEST_read": false,
+  "inertia_reconstruction_enabled": false,
+  "parameter_sweep": false,
+  "interpretation": "This is a same-trajectory command-chain screen. It does not predict closed-loop actual-attitude or position-error changes and does not establish cross-wind generalization."
+}

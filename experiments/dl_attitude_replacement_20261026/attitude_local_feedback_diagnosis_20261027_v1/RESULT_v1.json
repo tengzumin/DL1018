@@ -1,0 +1,77 @@
+{
+  "schema": "DL1018_LOCAL_FEEDBACK_DIAGNOSIS_RESULT_V1",
+  "status": "COMPLETED_LOCAL_JACOBIAN_DIAGNOSTIC",
+  "parity_report_sha256": "ef143a543b73895408d8c29573fcf8a696cd37aac3ae38faa8bcf29e613e71ab",
+  "parity_status": "PASS_ORIGINAL_POINT_PARITY",
+  "max_abs_original_point_parity_error": 2.886579864025407e-14,
+  "scene_reports": [
+    {
+      "scene_id": "DL1018_VAL_T1_C08_W15",
+      "raw_sha256": "ff498fa12044f032b944f79cb9e44d0e0ae89258a8b82eadc3e19035a37e8242",
+      "audit_sha256": "2779f13d2c6bd7b7e6e464be48700119c805824ff468d7d34c2fa9fe3699b21e",
+      "event_count": 1999,
+      "mature_event_count": 1780,
+      "selected_event_count": 200,
+      "selection": "rounded linspace positions 0..N-1 over mature events"
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C05_W15",
+      "raw_sha256": "51580fbd2da4d223cbb07f69039eea0ec15e40902f08fc34a06b785f971af66a",
+      "audit_sha256": "d6a668944d0e7a692026162adc77f6d5f7ff73e31843979fe3b0a6703815ca68",
+      "event_count": 1999,
+      "mature_event_count": 1780,
+      "selected_event_count": 200,
+      "selection": "rounded linspace positions 0..N-1 over mature events"
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C02_W15",
+      "raw_sha256": "4d042e39a31f878cc0f3548dbf5ba7ebd0f045e97ab5f849f3dd5c0f77ab91b3",
+      "audit_sha256": "2eb754767aafc38e1f7793a981b6d0f106d20da5a1d932f55b250c605d41ec12",
+      "event_count": 1999,
+      "mature_event_count": 1780,
+      "selected_event_count": 200,
+      "selection": "rounded linspace positions 0..N-1 over mature events"
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C05_W12",
+      "raw_sha256": "e62f2b50b3974bfefc137397ff8aa0d5b3076e6b44ce2439da00472ee5ac61c3",
+      "audit_sha256": "c3ee8df566ae3111959435fce10debb3f0059e77af05abef745febe44f16e601",
+      "event_count": 1999,
+      "mature_event_count": 1780,
+      "selected_event_count": 200,
+      "selection": "rounded linspace positions 0..N-1 over mature events"
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C02_W12",
+      "raw_sha256": "7cc5e1e091ede25e0cffbcd59baf4fa8147d64f063491c2ae1c24809e221ae05",
+      "audit_sha256": "fdfdd21ec63769200ddbfed9e50beab9076f6eb0f797f1674ad42a2ae7957b0f",
+      "event_count": 1999,
+      "mature_event_count": 1780,
+      "selected_event_count": 200,
+      "selection": "rounded linspace positions 0..N-1 over mature events"
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C00_W13",
+      "raw_sha256": "fa966a087069fad62f1c777044b940daf54b3768c27f35f5b34b4dfc2a43663c",
+      "audit_sha256": "6809c04bb8257121a199659b2e06c1a43ea67817faf23e21d5c261ca448da4bd",
+      "event_count": 1999,
+      "mature_event_count": 1780,
+      "selected_event_count": 200,
+      "selection": "rounded linspace positions 0..N-1 over mature events"
+    }
+  ],
+  "sample_count_per_scene": 200,
+  "total_selected_events": 1200,
+  "epsilon_primary": 1e-05,
+  "epsilon_numeric_check": 5e-06,
+  "local_damping_definition": "Sym(-d tau_net / d omega) = -(J+J.T)/2; negative eigenvalues indicate a locally antidamping direction only under frozen-memory assumptions.",
+  "nn_increment_definition": "Frobenius/column norm of J_variant - J_BS divided by corresponding J_BS norm; output clipping included.",
+  "selection_rule": "Exactly 200 rounded-linspace-position mature events per scene, with no outcome-based selection.",
+  "limitations": "Local frozen-state/reference/history/weight sensitivity only; not a stability proof or Plant/closed-loop counterfactual.",
+  "report_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\attitude_local_feedback_diagnosis_20261027_v1\\REPORT_v1.md",
+  "execution_command": "$env:MKL_THREADING_LAYER='SEQUENTIAL'; $env:OMP_NUM_THREADS='1'; $env:MKL_NUM_THREADS='1'; & python -u 'experiments\\dl_attitude_replacement_20261026\\attitude_local_feedback_diagnosis_20261027_v1\\local_feedback_sensitivity.py' --phase full",
+  "Plant_started": false,
+  "MATLAB_started": false,
+  "training_started": false,
+  "TEST_read": false
+}

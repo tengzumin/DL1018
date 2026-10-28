@@ -1,0 +1,177 @@
+{
+  "schema": "DL1018_POSITION_APPLIED_LOWPASS_RUNTIME_DEPENDENCIES_V1",
+  "status": "PASS_LOCKED_ACTIVE_RUNNER_DEPENDENCIES",
+  "study_id": "gru_tau01_position_applied_lowpass_tau01_v1",
+  "fixed_scene_id": "DL1018_VAL_T3_C01_W14",
+  "study_root_file_reads": [
+    {
+      "path": "RELEASE.json",
+      "reader": "run_mlp15_dev72_closed_loop",
+      "access": "fileread",
+      "source_path": "candidate_runner_work/matlab/runtime/run_mlp15_dev72_closed_loop.m",
+      "source_line": 17,
+      "binding": "per-attempt release_sha256 in run_start.json",
+      "path_scope": "candidate study root",
+      "parent_source_path": "",
+      "parent_sha256": "",
+      "candidate_relative_path": "RELEASE.json",
+      "candidate_sha256": ""
+    },
+    {
+      "path": "attempt_started.marker",
+      "reader": "run_mlp15_dev72_closed_loop",
+      "access": "fileread",
+      "source_path": "candidate_runner_work/matlab/runtime/run_mlp15_dev72_closed_loop.m",
+      "source_line": 40,
+      "binding": "marker scene/stage validation",
+      "path_scope": "opts.composite_attempt_marker under per-attempt directory",
+      "parent_source_path": "",
+      "parent_sha256": "",
+      "candidate_relative_path": "",
+      "candidate_sha256": ""
+    },
+    {
+      "path": "MLP15_DEV72_PAYLOAD_MANIFEST_v2.json",
+      "reader": "gate_holdout_validate_dev72_scene",
+      "access": "fileread",
+      "source_path": "candidate_runner_work/matlab/runtime/gate_holdout_validate_dev72_scene.m",
+      "source_line": 6,
+      "binding": "locked 72 DEV/VAL scene whitelist",
+      "path_scope": "candidate study root; byte-identical parent reuse",
+      "parent_source_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\gru_tau01_delayed_start_v1\\MLP15_DEV72_PAYLOAD_MANIFEST_v2.json",
+      "parent_sha256": "8c6bae8a0ed4d94b30b9e9ac466d8a46ed1a1d955c9592eccabaf4c4987a3991",
+      "candidate_relative_path": "MLP15_DEV72_PAYLOAD_MANIFEST_v2.json",
+      "candidate_sha256": "8c6bae8a0ed4d94b30b9e9ac466d8a46ed1a1d955c9592eccabaf4c4987a3991"
+    },
+    {
+      "path": "audits/RELEASE_PILOT_ARCHIVE_v1.json",
+      "reader": "run_position_applied_lowpass_hf6_remaining",
+      "access": "sha256_file",
+      "source_path": "run_position_applied_lowpass_hf6_remaining.m",
+      "source_line": 7,
+      "binding": "generation-1 pilot release archive matches the continuation release",
+      "path_scope": "candidate study root",
+      "parent_source_path": "",
+      "parent_sha256": "",
+      "candidate_relative_path": "audits/RELEASE_PILOT_ARCHIVE_v1.json",
+      "candidate_sha256": "7aa3010ad8876cde8804c6632f82f5b1647fb7daec2a1bf15d676a39b35afd55"
+    },
+    {
+      "path": "audits/PILOT_SOURCE_LOCK_ARCHIVE_GAP_v1.json",
+      "reader": "run_position_applied_lowpass_hf6_remaining",
+      "access": "fileread",
+      "source_path": "run_position_applied_lowpass_hf6_remaining.m",
+      "source_line": null,
+      "binding": "documents missing prior generation source lock bytes",
+      "path_scope": "candidate study root",
+      "parent_source_path": "",
+      "parent_sha256": "",
+      "candidate_relative_path": "audits/PILOT_SOURCE_LOCK_ARCHIVE_GAP_v1.json",
+      "candidate_sha256": "2fa5e824ed142550423835198dff01f2f6e810308aef3792ff64af434c113659"
+    },
+    {
+      "path": "audits/HF6_RUN_IDENTITY_FAILURE_CORRECTION_v1.json",
+      "reader": "run_position_applied_lowpass_hf6_remaining",
+      "access": "fileread",
+      "source_path": "run_position_applied_lowpass_hf6_remaining.m",
+      "source_line": 52,
+      "binding": "preserved pre-Plant identity-construction failure for first continuation scene",
+      "path_scope": "candidate study root",
+      "parent_source_path": "",
+      "parent_sha256": "",
+      "candidate_relative_path": "audits/HF6_RUN_IDENTITY_FAILURE_CORRECTION_v1.json",
+      "candidate_sha256": "a8ac17f908b5d9ca98f0d3d0ada783143da84383674dc324f559cc18d9d8b1d2"
+    },
+    {
+      "path": "audits/RELEASE_HF6_GEN2_DRAFT_BEFORE_IDENTITY_FIX_v1.json",
+      "reader": "run_position_applied_lowpass_hf6_remaining",
+      "access": "sha256_file",
+      "source_path": "run_position_applied_lowpass_hf6_remaining.m",
+      "source_line": null,
+      "binding": "hash-locked draft release that authorized the marker-only failed wrapper",
+      "path_scope": "candidate study root",
+      "parent_source_path": "",
+      "parent_sha256": "",
+      "candidate_relative_path": "audits/RELEASE_HF6_GEN2_DRAFT_BEFORE_IDENTITY_FIX_v1.json",
+      "candidate_sha256": "64721f131e0396a9fcb2f3335df2189aca798147074d0667200b224f0f101af7"
+    }
+  ],
+  "source_bindings": [
+    {
+      "path": "audits/build_position_applied_lowpass_run_identity.m",
+      "sha256": "db317ab9a62c72ce990de0040571749e35ef6ca85c6af9fca05ab63bdde9e388"
+    },
+    {
+      "path": "audits/prepare_position_applied_lowpass_candidate_no_plant.m",
+      "sha256": "e7cdd33ee4cb72cdea1c38a6d32fdcd808d8a87ac8c026fb0b1585da025734a6"
+    },
+    {
+      "path": "audits/prepare_position_applied_lowpass_no_plant.m",
+      "sha256": "791d7951ef434e384d2d140dee12d0a3b9ec236541792095d0b022d7549e8937"
+    },
+    {
+      "path": "candidate_runner_work/matlab/runtime/activate_paired_runner.m",
+      "sha256": "62332aad9e0034071b12fc7cf8a9e6c2f75a3f1b93f8b59eab637cdca0acd132"
+    },
+    {
+      "path": "candidate_runner_work/matlab/runtime/gate_holdout_validate_dev72_scene.m",
+      "sha256": "b3033211a284362061fa4c9f3ca3b972b2355a3468a65e50ff9d2519f23656b6"
+    },
+    {
+      "path": "candidate_runner_work/matlab/runtime/run_mlp15_dev72_closed_loop.m",
+      "sha256": "21daa47f1e6424122285aeae2f5f52e13e44a96e3e15cb503001e4e85736f74b"
+    },
+    {
+      "path": "run_position_applied_lowpass_attempt.m",
+      "sha256": "022eb3e612aa501ec286e3c93ddc346f27720e981620b051b9ea554ecee5ddac"
+    },
+    {
+      "path": "run_position_applied_lowpass_hf6_remaining.m",
+      "sha256": "f7381bb5eab1cee08416a288867f75dfcb969a4451728e7f41192222f4c9b14b"
+    },
+    {
+      "path": "run_position_applied_lowpass_prepare.m",
+      "sha256": "ffa22750d6793f1a2f5141581c505ca2f3f899687892761cc40f41e204ac55b5"
+    }
+  ],
+  "parent_payload_manifest_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\gru_tau01_delayed_start_v1\\MLP15_DEV72_PAYLOAD_MANIFEST_v2.json",
+  "parent_payload_manifest_sha256": "8c6bae8a0ed4d94b30b9e9ac466d8a46ed1a1d955c9592eccabaf4c4987a3991",
+  "parent_payload_manifest_schema": "DL1018_MLP15_DEV72_PAYLOAD_MANIFEST_V2",
+  "parent_payload_manifest_records": 72,
+  "parent_payload_manifest_status": "PASS_NO_PLANT_REUSE",
+  "parent_test_data_read": false,
+  "caller_chain": [
+    "run_position_applied_lowpass_attempt -> prepare_position_applied_lowpass_candidate_no_plant",
+    "candidate preparation -> parent prepare_gru_tau01_delayed_start_no_plant; then activate candidate_runner_work",
+    "candidate attempt -> run_mlp15_dev72_closed_loop",
+    "run_mlp15_dev72_closed_loop -> gate_holdout_validate_dev72_scene -> MLP15_DEV72_PAYLOAD_MANIFEST_v2.json"
+  ],
+  "parent_preparation": {
+    "study_id": "gru_tau01_delayed_start_v1",
+    "parent_source_lock_sha256": "e3e0e9d6b8dae8a3315dd9b780742d3fefd5b541cf1f81e15f9376f1c141c8f4",
+    "parent_source_manifest_sha256": "a703a3de58c3bdb15452854d5839540d4573e5392946e5c92100b14580ecb191",
+    "parent_scene_input_manifest_sha256": "40ca4f0587e0ac425da067b38dd7ecdfc51040902269a639c22060f9593e4aa5",
+    "parent_manifest_sha256": "97230bcc399d79a4b4785bffe8898880d7e21cd20eb3629c61d6b03a746fd1fe",
+    "parent_no_plant_receipt_sha256": "87398836ed950b6c1f91330ea342e9d2fbc1609177f4a44d576541e246b6879f"
+  },
+  "authorized_scene_ids": [
+    "DL1018_VAL_T3_C01_W14",
+    "DL1018_DEV_T1_C10_W09",
+    "DL1018_DEV_T2_C09_W10",
+    "DL1018_DEV_T3_C09_W09",
+    "DL1018_VAL_T1_C07_W14",
+    "DL1018_VAL_T2_C04_W14"
+  ],
+  "continuation_scene_ids": [
+    "DL1018_DEV_T1_C10_W09",
+    "DL1018_DEV_T2_C09_W10",
+    "DL1018_DEV_T3_C09_W09",
+    "DL1018_VAL_T1_C07_W14",
+    "DL1018_VAL_T2_C04_W14"
+  ],
+  "total_authorized_Plant_calls": 6,
+  "Plant_calls_completed_before_continuation": 1,
+  "pilot_release_archive_path": "audits/RELEASE_PILOT_ARCHIVE_v1.json",
+  "pilot_release_archive_sha256": "7aa3010ad8876cde8804c6632f82f5b1647fb7daec2a1bf15d676a39b35afd55",
+  "pilot_source_lock_archive_gap_report": "audits/PILOT_SOURCE_LOCK_ARCHIVE_GAP_v1.json"
+}

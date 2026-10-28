@@ -1,0 +1,33 @@
+--- v7/preflight_c1.ps1
++++ v8/preflight_c1.ps1
+@@ -3,7 +3,7 @@
+ $Here=$PSScriptRoot
+ $Root=[System.IO.Path]::GetFullPath((Join-Path $Here '..\..'))
+ $LockPath=Join-Path $Here 'C1_SOURCE_LOCK_v2.json'
+-$ReleasePath=Join-Path $Here 'C1_RELEASE_v7.json'
++$ReleasePath=Join-Path $Here 'C1_RELEASE_v8.json'
+ $Lock=Get-Content -LiteralPath $LockPath -Raw | ConvertFrom-Json
+ $Release=Get-Content -LiteralPath $ReleasePath -Raw | ConvertFrom-Json
+ if($Lock.schema -ne 'C1_PRIOR_SCALE_SCREEN_V1' -or [System.IO.Path]::GetFullPath($Lock.repo_root) -ne $Root){throw 'C1 lock/root mismatch.'}
+@@ -133,11 +133,11 @@
+     throw "Other heavy CPU/GPU job detected; no process was stopped. Evidence=$BlockedPath"
+ }
+ $Drive=[System.IO.DriveInfo]::new([System.IO.Path]::GetPathRoot($Root)); $Free=[int64]$Drive.AvailableFreeSpace
+-$Floor=[int64]30000000000; $Cap=[int64]6442450944; $Runs=Join-Path $Here 'runs'; $ExistingBytes=[int64]0
++$Floor=[int64]30000000000; $Cap=[int64]6442450944; $Runs=Join-Path $Here 'runs_v8'; $ExistingBytes=[int64]0
+ if(Test-Path -LiteralPath $Runs){$ExistingBytes=[int64](Get-ChildItem -LiteralPath $Runs -File -Recurse | Measure-Object -Property Length -Sum).Sum}
+ if($Mode -eq 'PROBE'){$Count=36;$MaxSeconds=30.0;$MaxBytes=[int64]55000000}
+ else{
+-    $ProbePath=Join-Path $Here 'reports/probe_c1.json'; if(!(Test-Path -LiteralPath $ProbePath)){throw 'CONTINUE requires probe evidence.'}
++    $ProbePath=Join-Path $Here 'reports/probe_c1_v8.json'; if(!(Test-Path -LiteralPath $ProbePath)){throw 'CONTINUE requires probe evidence.'}
+     $Probe=Get-Content -LiteralPath $ProbePath -Raw|ConvertFrom-Json
+     if($Probe.status -ne 'PROBE_COMPLETE' -or $Probe.completed_runs -ne 3 -or $Probe.run_rows.Count -ne 3){throw 'CONTINUE probe gate failed.'}
+     if($Probe.source_lock_sha256 -ne $LockSha -or $Probe.release_sha256 -ne $ReleaseSha){throw 'Probe source identity mismatch.'}
+@@ -164,6 +164,6 @@
+     estimated_max_attempt_seconds=$MaxSeconds;estimated_stage_seconds=$ProjectedSeconds;remaining_attempt_count=$Count
+     expected_total_runs=36;probe_runs=3;remaining_runs_after_probe=33;optimizer_steps=0;gpu_jobs=0;Plant_started=$false;TEST_accessed=$false
+ }
+-$ReportPath=Join-Path $Here ("reports/preflight_c1_{0}.json" -f $Mode.ToLowerInvariant())
++$ReportPath=Join-Path $Here ("reports/preflight_c1_{0}_v8.json" -f $Mode.ToLowerInvariant())
+ if($DryRun){$Report.status='PASS_DRY_RUN';$Report|ConvertTo-Json -Depth 7|Write-Output;Write-Output "C1_PREFLIGHT DRY_RUN mode=$Mode free_bytes=$Free reserve=$ProjectedBytes duration_s=$ProjectedSeconds compute_counters=$($GpuEngineRows.Count) active=$($Report.gpu_compute_counter_active_rows) timing_isolated=$($Report.timing_isolated)"}
+ else{if(Test-Path -LiteralPath $ReportPath){throw "Refusing to overwrite preflight record: $ReportPath"};$ReportsDir=Split-Path -Parent $ReportPath;if(!(Test-Path -LiteralPath $ReportsDir)){New-Item -ItemType Directory -Path $ReportsDir|Out-Null};$Report|ConvertTo-Json -Depth 7|Set-Content -LiteralPath $ReportPath -Encoding utf8;Write-Output "C1_PREFLIGHT PASS mode=$Mode free_bytes=$Free reserve=$ProjectedBytes duration_s=$ProjectedSeconds compute_counters=$($GpuEngineRows.Count) active=$($Report.gpu_compute_counter_active_rows) timing_isolated=$($Report.timing_isolated)"}

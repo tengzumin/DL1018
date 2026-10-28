@@ -1,0 +1,18 @@
+Approved command (PowerShell 7):
+python experiments/dl_attitude_replacement_20261026/mlp15_c5_teacher_redistill_v1/build_matched_teacher_dataset_v1.py --execute
+
+Failure:
+The repair-approved retry stopped at scene DL1018_VAL_T2_C00_W10. Builder raised ValueError because C5 run_status scoring_B72_raw_sha256 did not equal the same-scene B72 raw SHA from the frozen lock. No further inspection, repair, or retry was performed after this scene failure.
+
+Traceback:
+Traceback (most recent call last):
+  File "C:\Users\35326\Desktop\postgraduation\0\Mcode\drone_tcn\DL1018\experiments\dl_attitude_replacement_20261026\mlp15_c5_teacher_redistill_v1\build_matched_teacher_dataset_v1.py", line 520, in <module>
+    main()
+  File "C:\Users\35326\Desktop\postgraduation\0\Mcode\drone_tcn\DL1018\experiments\dl_attitude_replacement_20261026\mlp15_c5_teacher_redistill_v1\build_matched_teacher_dataset_v1.py", line 368, in main
+    raise ValueError(f"C5 status is not bound to locked same-scene B72 raw: {sid}")
+ValueError: C5 status is not bound to locked same-scene B72 raw: DL1018_VAL_T2_C00_W10
+
+Execution boundary:
+No training, Plant, or TEST access. The builder writes NPZ/manifest/audit only after all scene loops; this failure occurred before those writes. Historical raw/status files were not modified.
+Failure log recorded UTC: 2026-10-26T09:37:50.339Z
+Builder SHA-256: 4361a5728ad7a1e44780bcd7335ccadcf7bdc1fd947fa14bba00f11efad1c346

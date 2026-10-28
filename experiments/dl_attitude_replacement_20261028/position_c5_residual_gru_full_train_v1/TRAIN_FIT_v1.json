@@ -1,0 +1,52 @@
+{
+  "scope": "TRAIN24 only; no TEST reads, Plant calls, or inertia reconstruction",
+  "model": "GRU(14,32) -> zero-initialized Linear(32,3)",
+  "training": {
+    "seed": 20261028,
+    "steps": 300,
+    "lr": 0.001,
+    "lambda": 0.01,
+    "normalizer": "mean/std over all 24 TRAIN scenes and all causal event X14 rows",
+    "hidden_state": "independently reset per scene",
+    "device": "cuda",
+    "loss_log_every_50_steps": [
+      {
+        "step": 50,
+        "objective": 0.0042735859751701355
+      },
+      {
+        "step": 100,
+        "objective": 0.0016437293961644173
+      },
+      {
+        "step": 150,
+        "objective": 0.0006351929041557014
+      },
+      {
+        "step": 200,
+        "objective": 0.0003788687754422426
+      },
+      {
+        "step": 250,
+        "objective": 0.00031029689125716686
+      },
+      {
+        "step": 300,
+        "objective": 0.00027823730488307774
+      }
+    ]
+  },
+  "fit_metrics": {
+    "training_only_in_sample": true,
+    "ready_events": 47232,
+    "baseline_pooled_rmse_mps2": 0.10469023906872005,
+    "model_pooled_rmse_mps2": 0.023560074716523476,
+    "baseline_scene_macro_rmse_mps2": 0.09049779763978233,
+    "model_scene_macro_rmse_mps2": 0.020853836460985622,
+    "final_objective": 0.00027823730488307774,
+    "final_action_clip_fraction": 0.0,
+    "head_delta_clip_fraction": 0.005278906955736224
+  },
+  "runtime_seconds": 2.907870292663574,
+  "limit": "In-sample fit only. The frozen C5 backbone has seen more data; this package does not establish independent validation or closed-loop success."
+}

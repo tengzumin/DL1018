@@ -1,0 +1,19 @@
+{
+  "schema": "ROOT_OFFLINE_DIAGNOSTIC_OS_RECEIPT_V1",
+  "status": "PASS",
+  "exit_code": 0,
+  "shell": "pwsh",
+  "login": false,
+  "matlab": "C:/Program Files/MATLAB/R2025b/bin/matlab.exe",
+  "command": "& 'C:/Program Files/MATLAB/R2025b/bin/matlab.exe' -batch \"addpath('reports/attitude_cm18_a1_20261024'); R=root_screen12_c5_vs_cm18_same_state_v1(); disp(R.status); for q=1:numel(R.scenes), disp(R.scenes(q).scene_id); disp(jsonencode(R.scenes(q).reconstruction)); disp(jsonencode(R.scenes(q).same_state_actions)); disp(jsonencode(R.scenes(q).phase_summaries)); end\"",
+  "source_path": "reports/attitude_cm18_a1_20261024/root_screen12_c5_vs_cm18_same_state_v1.m",
+  "source_sha256": "df1840ee625fc453fbfad18ba9455e926ad4b1ebb1c3ade59483e8a7ade13b19",
+  "result_path": "reports/attitude_cm18_a1_20261024/ROOT_SCREEN12_C5_VS_CM18_SAME_STATE_DIAGNOSTIC_v1.json",
+  "result_sha256": "3a559e99e8799d624f13acdd67dc617cb1d0f3e1635ca6bff2b4f660134b7727",
+  "raw_sha256": [
+    "6c72ae52e3f39af36442935468af7d2a047af460b845223167ee206d0dc96707",
+    "2df0e35d32bff888c3225638d468b2e796d8942387002a48cf53b4242d3c6a27"
+  ],
+  "deployment_sha256": "ee00c46af42cbce83a630ae9b03eaf1a86bfc6047910ed68bc4e7b8b020aa6ae",
+  "scope": "Read-only same-state calculations on actual old C5 raw states; no engine/episode/Plant/state integration/training/optimizer."
+}

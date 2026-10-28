@@ -1,0 +1,21 @@
+# CM18-A1训练入口：主审核记录 v1
+
+当前决定：源码主体满足冻结的单次训练协议，等待完整数据审计及实际 CUDA 零步前后向核验，尚未放行正式训练。被审trainer SHA256为 `05535dc973c3ce27ddeb50c9ac15ad17d465b897c0a421b37cbdea2eb67ea06c`；reader/NumPy/Torch模型源码未改。
+
+主审核逐段读取trainer、reader、初始化与Torch forward。正式入口在创建模型前核ROOT release、四个源码、taskbook、input manifest、最终ALL816 manifest及独立审计SHA；检查816行768/48、全PASS、场景唯一和TEST隔离。TRAIN抽样为下标0至1995步长5，每场400行；normalizer只拟合TRAIN。初始化来自固定种子的fresh NumPy Xavier，复制后才转float32/CUDA，保存canonical和实际起点。Adam/损失/batch/60000步/1000步VAL规则与任务书相符；VAL分数按先每场vector RMSE、再等权平均，step0可入选best。训练模式恢复、有限梯度/参数检查、未覆盖运行目录、失败保留和实际step账本均已读源确认。
+
+审核中发现并在训练启动前处理了三项问题：
+
+1. float32的标准差下界升回double可能低于推理器的1e-6检查。现在保存canonical double归一化和实际float32 buffer两套身份，部署前另核输出偏差；未放宽推理阈值。
+2. 确定性CUDA矩阵操作需要在CUDA初始化前设置CUBLAS workspace环境。已在trainer导入数值模块前设置并记录，后续须实际CUDA验证。
+3. Windows WDDM的compute-apps列表实测含桌面C+G进程。原“列表非空即拒绝”会误停；现改为ROOT当次审核背景快照，拒绝未知新增GPU行及高利用率，不终止任何进程。快照只能证明启动前资源判断，不能声称环境无GPU后台活动。
+
+实现者报告SCREEN4修正后自检exit0，64个非零形态basis前后向、0 optimizer，初始float32与canonical-double输出最大差5.160418660832278e-6 rad/s²。该结果仅限SCREEN4合成初始化和CPU路径；主审核仍待独立脚本、实际CUDA与最终best权重复核。不能据此宣称学到了有效补偿或替代RBF成功。
+
+同一状态下改变补偿也会改变分配后的实际力矩及残差，已在独立运行准备任务书列为部署前诊断。旧B轨迹上的离线误差、训练VAL和闭环优势分别报告，不能混用。
+
+## 后续实际核验与门控修订
+
+独立审查补充发现：仅验证data_audit.status为PASS，不足以绑定审计模式、完整816场和最终缓存manifest。trainer已补充ALL816模式、dataset_counts内816通过/0失败、768×1999与48×1999事件数、dataset manifest及input manifest身份。第一次门控修订误读了嵌套层级，在正式启动前由ROOT读源发现并纠正；没有创建训练目录、没有消耗optimizer步。当前修订后trainer SHA256为 `7544a04329bc1e06ff5d7a113a077033a65f0b7c2de8a6f1b25ac54710e62c76`，还需独立内存gate测试，不把它混作数学实现变更。
+
+ROOT已实际执行独立checker的CUDA版本，OS exit 0：ROOT_CUDA_ZERO_STEP_RESULT_v1.json与ROOT_CUDA_ZERO_STEP_OS_RECEIPT_v1.json。RTX3070上64个非零basis事件前后向通过，梯度有限且非零，backward前后所有parameters/buffers相同，0 optimizer实例/调用；初始float32与canonical-double输出最大差6.43385188747736e-6 rad/s²。此检查只覆盖固定数学模型和CUDA环境，不执行trainer正式训练入口，也不替代实际best权重部署复核。完整816缓存仍在导出，正式训练继续等待实际数据审计。

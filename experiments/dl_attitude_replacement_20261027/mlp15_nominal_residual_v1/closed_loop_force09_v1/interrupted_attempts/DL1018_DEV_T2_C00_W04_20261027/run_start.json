@@ -1,0 +1,44 @@
+{
+  "schema": "DL1018_MLP15_PHYSICAL_RESIDUAL_FORCE09_RUN_START_V1",
+  "scene_id": "DL1018_DEV_T2_C00_W04",
+  "attitude_arm": "DL_MLP15_PHYSICAL_RESIDUAL_FORCE09",
+  "geometry_arm": "ACTIVE",
+  "started_utc": "2026-10-27T15:25:44.837Z",
+  "release_sha256": "f4a82482d7febb29dddc7c954a1e4e4c07793cecb97756a63b8926232d52f870",
+  "source_hash_manifest_sha256": "f30cdbe311208153c5dbf2b1cf3ad5f7e6e12cbe96a5817952afa5715447d909",
+  "position_nn_compensation_scale": "0.90000000000000002",
+  "scene_payload_sha256": "b9d45f46c7c02166acb5d09b9cf9359cd3d6df5761fcaae6bb1e9540db4931d9",
+  "external_identity_sha256": "137cb10df1d093075b7d900b7a106be055af4f0ebbb60a1065d2e72d45e10a86",
+  "b_raw_sha256": "91ca98d4b3d0fd77cd775cb20a8f3c33f7ba795c0197a566c4d3b82c2e4220d1",
+  "c5_input_lock_sha256": "82024c01276cc4bfbd9b7772cf5332dee3fdfcbed422969589b68f1c90ed2d75",
+  "c5_snapshot_sha256": "842ef395569e675db6e139c2684d72b976946915e5e0a58b9b7f24ec10c1d24a",
+  "position_model_sha256": "6f3628b10540c617496b2a20f249c4319af79c1a02d5945f1f91f0aead9c9b6e",
+  "physical_residual_model_sha256": "dfbad11dbc7ed19b42d3b536bb4b019cbf29209d69c904b0b5000a168af58819",
+  "physical_residual_target_contract": "DL1018_MLP15_TRAIN_C5_24_FIXED_J0_RESIDUAL_V1",
+  "fixed_J0_kg_m2": [
+    [
+      0.0032575533333333339,
+      0,
+      0
+    ],
+    [
+      0,
+      0.0032575533333333334,
+      0
+    ],
+    [
+      0,
+      0,
+      0.0063606483333333332
+    ]
+  ],
+  "causal_update_head_enabled": true,
+  "command_filter_wn_rad_s": [
+    18,
+    18,
+    12
+  ],
+  "controller_inputs": "13 causal runtime features; requested-torque past-10ms observer",
+  "test_data_read": false,
+  "runner_entry": "run_mlp15_physical_residual_closed_loop(scene,cfg,opts)"
+}

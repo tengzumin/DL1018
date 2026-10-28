@@ -1,0 +1,9 @@
+# ROOT：SCREEN12放行与理论边界审核
+
+首航实际1999事件逐项闭合为零，性能初审改善，允许固定SCREEN12余11场，不调参、不改模型、不训练、不碰TEST。ROOT已完整读prepare与runner，修复错误首航SHA、ledger起止配对及raw scene保存；合成ledger真实MATLAB OS0覆盖空/成功/失败/未完成/第11场容量。无Plant准备实际OS0、11场身份封存。manifest SHA手抄错误已更正为工具实际值，历史失败日志保留。
+
+实际ROOT release SHA：ac0f6625980ecfe44992d70c45e3de535a30a36df6ed345368e93071df79b360。runner SHA：4751636fb60dd5198877c4ec7977719220a6dbcc4e1909e6f6d9065b475dce1d。ROOT外层PowerShell串行11个独立MATLAB进程，每场OS与真实status/marker/转移数/event数通过才继续。当前session56536，不因轮询超时重启。
+
+理论v2 ROOT审核：e,z2连续Lyapunov代数和M映射恒等式成立于明确的局部假设。分段命令跳变已补total-variation/jump及stale-output项。新策略状态分布统一模型误差、前向不变性、离散Lyapunov界和位置—姿态小增益未证明，故理论仍属条件分析，不批准“完整闭环已证明稳定”的表述。不得把有限仿真或输出裁剪当该证明。
+
+批次结束后必须复算全部12场配对表、逐轴/分时段/输场和新raw事件审核，依据实际结果决定完整DEV扩展；不得只挑赢场形成应用结论。

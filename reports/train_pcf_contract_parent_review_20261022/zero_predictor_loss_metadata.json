@@ -1,0 +1,15 @@
+{
+  "status": "PASS_TRAIN_ZERO_PREDICTOR_LOSS_SCALE_AUDIT",
+  "TRAIN_episodes": 1536,
+  "windows": 605184,
+  "formula": "SmoothL1(0,y_clip/3), averaged across 3 axes; because abs(y_clip/3)<=1, each axis contributes y_clip^2/54.",
+  "sample_weights": "Original role/task/class/scene/present-phase hierarchy, evaluated in double arithmetic; not a bitwise replay of Torch training.",
+  "zero_predictor_total_loss": 0.011446234678752231,
+  "script_sha256": "db4cd87826cecac126a5032f622845d68def8f89adacbfa52644e4028fbaedde",
+  "index_sha256": "257089f1dc455b7bc97bf1c772be31d1d8ae83079e7ec41f591d96e31fed39ca",
+  "all_cache_sha_and_stat_unchanged": true,
+  "optimizer_steps": 0,
+  "plant_calls": 0,
+  "TEST_accessed": false,
+  "limitation": "Zero-predictor objective scale is not trained loss, gradient importance, evidence of a weighting bug, or proof of closed-loop causality."
+}

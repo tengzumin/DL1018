@@ -1,0 +1,81 @@
+{
+  "schema": "CM18_B24_C524_TRAINING_CONFIG_V1",
+  "branch": "B24",
+  "seed": 2026102001,
+  "optimizer_steps": 60000,
+  "batch_size": 512,
+  "optimizer": {
+    "name": "Adam",
+    "lr": 0.001,
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "eps": 1e-08,
+    "weight_decay": 1e-05
+  },
+  "loss": "SmoothL1(beta=1.0), mean over batch and 3 axes; output/target normalized by shared A1T axis RMS",
+  "sampling": "NumPy default_rng(seed); uniform with replacement over 9600 ordered rows",
+  "selection": "none; only fixed final step 60000 is retained",
+  "scene_count": 24,
+  "fit_rows": 9600,
+  "paired_row_map_sha256": "d40280c9ae7e7bb8123e06a9fb9deff0e15d3a0e63fc99261b623980aaca7a9d",
+  "sample_index_stream_sha256": "b9da498e78a53c2643d109fa0dea88190095cacf6f05a416843c68cb365e1986",
+  "normalizer_sha256": "23e8432f4a1c3f71bfaaa4e3a7b07c4b9f6b0201842e35ba3bcb032ac61fd781",
+  "canonical_normalizer_sha256": "12c864b9c2404235e0ea3f313bb0801a99902eca7cfdfbf43f0d8d584d5d609a",
+  "initial_parameters_sha256": "1f3a469eeb648345bacf6f6aa3be906e10efebc91e24442914fd32e880439cb2",
+  "standardized_ranges": {
+    "input_min": [
+      -1.5097493044887753,
+      -1.2275555078001021,
+      -1.419636957618214,
+      -2.8924770924276957,
+      -2.2986599541412573,
+      -1.9150002900790513,
+      -2.6228456264030164,
+      -4.0,
+      -4.0,
+      -4.0,
+      -4.0,
+      -0.4714616008326002,
+      -0.4709461549999395,
+      -0.47023725053598014,
+      -0.46971220885926823,
+      -2.161252592496429,
+      -2.2023826454518165,
+      -0.7155286999274963
+    ],
+    "input_max": [
+      1.190248748160663,
+      1.5096825714897966,
+      2.179582778292533,
+      2.419350339636889,
+      3.1519375493941775,
+      2.5412312118333773,
+      3.44863521173916,
+      4.0,
+      4.0,
+      4.0,
+      4.0,
+      3.3356148084890753,
+      3.3340411718305196,
+      3.3365105878680206,
+      3.3446179341612816,
+      2.6060752109206007,
+      2.0300539445008288,
+      2.968168084073726
+    ],
+    "target_min_normalized": [
+      -2.6019157730075073,
+      -2.05281356271963,
+      -3.2551617633195877
+    ],
+    "target_max_normalized": [
+      2.0912211487515338,
+      2.1549234853778185,
+      0.6399146698057561
+    ]
+  },
+  "target_scale_source": "A1T B TRAIN768 canonical target RMS; shared for both branches",
+  "E0_note": "B24 E0 is derived from G*cStar and is not a stored B cache field"
+}

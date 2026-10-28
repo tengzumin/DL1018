@@ -1,0 +1,78 @@
+{
+  "schema": "STATIC_N4_C5_PARENT_GRU_TRAIN24_FROZEN_REPLAY_PROTOCOL_V1",
+  "study_id": "static_n4_train24_replay_v1",
+  "status": "PREDECLARED_BEFORE_REPLAY",
+  "scope": "Exact 24-scene physical TRAIN_C5_24 cohort only; canonical IDs have DEV prefix and are in-sample for the frozen parent model.",
+  "purpose": "Screen one shared fixed four-notch bank on final applied C5 position compensation while retaining the parent cosine-GRU attitude arm; no added position residual GRU.",
+  "filter": {
+    "type": "four causal unity-DC biquad notches, cascaded in ascending listed order",
+    "sample_rate_hz": 100.0,
+    "centers_hz": [
+      2.2,
+      3.2,
+      3.7,
+      4.8
+    ],
+    "quality_factor_each": [
+      4.0,
+      4.0,
+      4.0,
+      4.0
+    ],
+    "application_point": "final held applied position-compensation acceleration, after frozen C5 action and before conversion to injected force",
+    "update_rule": "Only at the logged 100-Hz position events; zero-order hold between events",
+    "state_initialization": "At the first nonzero action event, initialize every section's input/output history to that current action and pass it unchanged",
+    "final_action_clip_mps2": [
+      -3.0,
+      3.0
+    ],
+    "nominal_acceleration_yaw_and_shared_command_filter_changed": false,
+    "wind_code_or_wind_truth_used_by_filter": false,
+    "per_scene_frequency_switching": false
+  },
+  "frequency_source": {
+    "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\position_compensation_windband_train24_audit_v1\\TRAIN24_C5_WIND_BAND_PROFILE_v1.json",
+    "sha256": "753faf9705ddc72a45efa01c90e4711113e4f5930325cdbcd0da5aafa5a723cc",
+    "use": "offline TRAIN24 group reporting only; fixed bank is identical for all 24 scenes"
+  },
+  "frozen_replay_metrics": {
+    "transition_count": 20000,
+    "target_definition": "Reconstruct logged command_filter_target_euler from commanded force; replay replaces only the final applied compensation, retaining logged yaw and nominal force",
+    "low_frequency_band_hz": [
+      0.05,
+      0.5
+    ],
+    "low_frequency_amplitude": "Per-scene action and command-target RMS before/after plus RMS delta percentage",
+    "low_frequency_phase": "Exact cascade response phase/equivalent delay and numeric group delay over 0.05-0.5 Hz; point response at 0.05, 0.10, 0.25, 0.45, 0.50 Hz",
+    "wind_group_target_bands": "For each nonzero TRAIN24 wind group's fixed measured f1/f2, command-target and action vector RMS in center +/-0.10-Hz windows; report each scene and group median/range",
+    "zero_wind_group": "W15 has no configured tone bands; report the fixed 0.05-10-Hz command-target RMS change",
+    "additional_outputs": [
+      "action clipping counts",
+      "force-chain and baseline command reconstruction residuals",
+      "group-wise broadband target RMS change"
+    ]
+  },
+  "predeclared_risk_flags_not_pass_gates": {
+    "low_band_rms_delta_percent_max": 2.0,
+    "low_band_group_delay_ms_max": 10.0,
+    "rationale": "2% reuses the prior frozen low-band screen; 10 ms is one 100-Hz filter update interval.",
+    "also_flag": "Any scene/group wind-tone command-target band whose RMS increases; report as counterevidence without tuning."
+  },
+  "source_binding_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\n4_train24_replay\\SOURCE_BINDING_v1.json",
+  "source_binding_sha256": "171a01ad25939bd7192002fd1b7a08f82e39661593f094476e951cbc30971c32",
+  "replay_script_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\n4_train24_replay\\replay_static_n4_train24_v1.py",
+  "replay_script_sha256": "4828326ea12b4b57f4c2e9082d5e29e47ac6af39d86abd3727cc64c9ce4edd76",
+  "prior_two_notch_result": {
+    "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\position_compensation_dual_notch_train_replay_v1\\TRAIN_FROZEN_DUAL_NOTCH_REPLAY_v1.json",
+    "sha256": "92c14d6252818b3c184554763677cf4b26efab470393c07d8f55d55733875f9d",
+    "status": "FAIL_FIXED_FROZEN_REPLAY",
+    "preserve_without_overwrite": true
+  },
+  "Plant_called_by_this_replay": false,
+  "VAL_read": false,
+  "TEST_read": false,
+  "inertia_reconstruction_enabled": false,
+  "parameter_sweep": false,
+  "candidate_pass_claim": false,
+  "interpretation_limit": "Frozen same-trajectory TRAIN replay only; no closed-loop actual-attitude/position prediction and no cross-wind generalization claim."
+}

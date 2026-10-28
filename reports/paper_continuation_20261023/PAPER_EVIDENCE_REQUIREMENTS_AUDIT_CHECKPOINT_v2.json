@@ -1,0 +1,121 @@
+{
+  "schema": "PAPER_EVIDENCE_REQUIREMENTS_AUDIT_CHECKPOINT_V2",
+  "utc": "2026-10-23T18:26:58.687635+00:00",
+  "paper_status": "NOT_QUALIFIED",
+  "goal_complete": false,
+  "TEST_scores_accessed": false,
+  "checks": [
+    {
+      "requirement": "DEV_performance",
+      "status": "PROVEN",
+      "evidence": "c5_dev72_parent_review/C5_DEV72_RAW_PARENT_REVIEW_v3.json",
+      "qualification": "72 raw: 64 wins, macro Q/HF/W15 below paired B; preserve 8 losses.",
+      "evidence_sha256": "bb34889559d95a1c995d4d420e3b3d7a702908b58b47cce969dc508a1c697fab"
+    },
+    {
+      "requirement": "matched_ablations_DEV72",
+      "status": "PROVEN",
+      "evidence": "c5_matched_ablation_dev72_parent_review/C5_MATCHED_ABLATION_DEV72_BOTH_RAW_PARENT_AUDIT_v3.json",
+      "qualification": "144 flights, 283392 events; full C5 vs NO_PRED54/18; T2 only13/11, descriptive CI crosses zero.",
+      "evidence_sha256": "ec696b9e80a1f22af26b8ef58cb3fcc0a275102ee68b82b286ddf6d54d0a75ba"
+    },
+    {
+      "requirement": "six_method_input_source_identity",
+      "status": "PROVEN",
+      "evidence": "test_entry_v3/PARENT_DEV_INPUT_EQUIVALENCE_REVIEW_v2.json",
+      "qualification": "72 DEV/VAL: 1008 physical arrays independently rehashed; 5616 field rows. 24 text-ID representation differences disclosed.",
+      "evidence_sha256": "cae19929e7a99d58059fdff450d46ef5c6930859a3a74e9f0d11514000fc8560"
+    },
+    {
+      "requirement": "TEST_shared_input_integrity",
+      "status": "PROVEN",
+      "evidence": "test_input_review_v1/PARENT_FROZEN_TEST_INPUT_REVIEW_v1.json",
+      "qualification": "48 original IDs; 672 independent physical array hashes; true MATLAB load roundtrip; six cfg/opts preflight identities.",
+      "evidence_sha256": "98a93686a1bdd00b64031fa5c1518fd63b62847cfad2e31019b27845e2eb8da1"
+    },
+    {
+      "requirement": "limited_theory_requirement",
+      "status": "PROVEN_ONLY_WITH_DECLARED_SCOPE",
+      "evidence": "THEORY_FINITE_PATH_SCOPE_ACCEPTANCE_v2_ZH.md",
+      "qualification": "Conditional finite-path error bound only; actual code recurrence and physics bridge, nonauthor check and numeric instantiation. No prior Plant stability/PE/parameter convergence/interval certificate.",
+      "evidence_sha256": "a7d29ad6bd8cb6f5175cced87b181b2ff22317dfb0303428dfd3efa59aaff7ec"
+    },
+    {
+      "requirement": "contribution_and_literature",
+      "status": "LIMITED_SCOPE_ACCEPTED_FOR_TEST",
+      "evidence": "DEV72_FINAL_SCIENCE_SCOPE_DECISION_v2_ZH.md",
+      "qualification": "PCF target coordinates and causal completed-interval update, matched ablations; no first composite/integral/projection/network claim. Fulltext gaps and novelty limits retained.",
+      "evidence_sha256": "2436548d60c675e5ac64d2c83a061902f40c02975c726d40bbddcf27a91a97f5"
+    },
+    {
+      "requirement": "TEST_performance_41_wins_macro_HF_W15",
+      "status": "PENDING",
+      "evidence": null,
+      "qualification": "PENDING; no performance score accessed. Original DSSM process exited without known OS code after32; fixed208 remaining flights recovering. Evaluate full288 with transparent original OS/scene32 identity gap, never mark original six-OS0 gate PASS."
+    },
+    {
+      "requirement": "TEST_all_methods_and_ablations",
+      "status": "RUNNING_RECOVERY",
+      "evidence": null,
+      "qualification": "B48 original reused; DSSM original32 preserved, tail16 completed naturalOS0 and metadata reviewed; KAN48 now running, then fixedC5+twoablations144. No tuning/retry based on TEST outcomes."
+    },
+    {
+      "requirement": "TEST_all_groups_axes_phases_peaks_losses",
+      "status": "PENDING",
+      "evidence": null,
+      "qualification": "ALL48, T1-T3, W00-W15, frequency bands, XYZ and0-5/5-20, peak,p95, all per-scene and method-to-B loss lists."
+    },
+    {
+      "requirement": "TEST_scene_paired_intervals_and_sensitivity",
+      "status": "PENDING",
+      "evidence": null,
+      "qualification": "Unrounded1e-12 tie tolerance,1/10um sensitivity; 10000 bootstrap scene pairs, seed2026102301. No within-flight pseudoreplication or cross-seed inference."
+    },
+    {
+      "requirement": "TEST_safety_actuators_integrity",
+      "status": "PENDING",
+      "evidence": null,
+      "qualification": "All288 full20k transitions,20k+1 states; physical finite/safety/saturation/clipping; C5+ablations144x1968 event equations."
+    },
+    {
+      "requirement": "actual_controller_timing_resources",
+      "status": "PENDING",
+      "evidence": null,
+      "qualification": "All JIT calls retained, common ready/nonready and native telemetry, mean/p50/p95/p99/max/>1ms; six sequential method blocks, worker/launcher observation. Not a complete1kHz loop or hard-real-time claim."
+    },
+    {
+      "requirement": "paper_figures_and_method_experiment_text",
+      "status": "PARTIAL_DEV_DRAFT_ONLY",
+      "evidence": "PAPER_DEV_DRAFT_PARENT_REVIEW_v1_ZH.md",
+      "qualification": "DEV5-page draft and figure reviewed. Must integrate actualTEST, all6 comparisons, losses, timing, scope limits, final compiled/rendered artifact.",
+      "evidence_sha256": "ed3b9752a90f82513e5c54d4940d77956c327dc324c7e7bbfeac75dbbf00ae3c"
+    },
+    {
+      "requirement": "final_reproducibility_and_DL1018_Git",
+      "status": "PARTIAL",
+      "evidence": "test_entry_v3/LOCKED_TEST48_PARENT_RELEASE_v1.json",
+      "qualification": "Frozen commands/source/models/normalizer/scene IDs/stat rules/releases exist. Need final reviewed reports/tables/figures/code push to DL1018; no MAT/checkpoint/cache/fixtures or bulk stage.",
+      "evidence_sha256": "a9cc07df9b3604190072adc83872cf878b75ee74a53c684f51c9f94bfcd2967a"
+    },
+    {
+      "requirement": "original_constraints_and_terminal_decision",
+      "status": "ONGOING",
+      "evidence": null,
+      "qualification": "User 2026-10-24 autonomous continuation removes global time/round/flight ceilings; current immutable TEST batch keeps frozen deadline and finite208 scope. Preserve PS7, no interruption/deletion, disk floor and provenance. Paper remains NOT_QUALIFIED."
+    }
+  ],
+  "note": "No completion claim. Prior proven evidence hashes independently rechecked now; semantic evidence scope remains exactly prior declared scope. Final TEST integrity and independence requires separate recovery-protocol review.",
+  "prior_checkpoint_sha256": "287047ec2d7992dbf9187f57d5acd63d358d00d6e15182b727c6fe2577b857ba",
+  "unchanged_prior_evidence_rehashed": [
+    "DEV_performance",
+    "matched_ablations_DEV72",
+    "six_method_input_source_identity",
+    "TEST_shared_input_integrity",
+    "limited_theory_requirement",
+    "contribution_and_literature",
+    "paper_figures_and_method_experiment_text",
+    "final_reproducibility_and_DL1018_Git"
+  ],
+  "novelty_status": "UNPROVEN; performance cannot establish priority. Full-text comparison gap remains.",
+  "C6": "DEV-only fixed12 not run; single beta-scaled prediction hypothesis under source review. Must not use frozenC5 TEST for C6 selection."
+}

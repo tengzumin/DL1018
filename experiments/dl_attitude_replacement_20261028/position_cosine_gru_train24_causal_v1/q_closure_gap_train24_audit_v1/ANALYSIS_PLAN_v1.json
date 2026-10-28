@@ -1,0 +1,18 @@
+{
+  "schema": "COSINE_GRU_TRAIN24_Q_CLOSURE_GAP_DIAGNOSTIC_PLAN_V1",
+  "question": "Why can a student selected on 10-ms acceleration residual and frozen-task replay fail to improve closed-loop position Q?",
+  "scope": "Read only the hash-locked TRAIN_C5_24 dataset, its 24 bound parent TRAIN raw runs, and already-computed scene-group OOF predictions. This analysis makes no new Plant call; no VAL/TEST data or inertia reconstruction.",
+  "source_bindings": {
+    "dataset_sha256": "15d689f08fd6d8a53a64c59dbdf62b33f9b8e8a12ce083fb12834cd106df2eeb",
+    "dataset_manifest_sha256": "16856362913e5144add83035b9b767affa02c0719c66971635731d237bb0d91e",
+    "dataset_source_lock_sha256": "10be2c860c042491acfc0cfaad1067c65d848dd5889c177e6ccb8d65c9602fb7",
+    "oof_sha256": "1dcc509b2bd6beb1729b872440ef69846bd053b3334a44fd1a8df621871cc8ff"
+  },
+  "predeclared_diagnostics": [
+    "Recompute C5 baseline position Q from each locked TRAIN raw run as RMS Euclidean position error over its 20,001 logged states.",
+    "Compare scene-group OOF candidate vs C5 on the existing 10-ms clipped acceleration-residual target; report scene-macro and pooled RMSE.",
+    "Measure candidate-minus-C5 event-action bias, RMS, one-second-bin mean, and terminal velocity/position under an explicitly no-feedback unit double-integrator proxy.",
+    "Describe whether baseline TRAIN Q ranks with held-out one-step residual gain and action bias; treat n=24 correlations as descriptive only."
+  ],
+  "interpretation_limit": "No counterfactual closed-loop trajectory is simulated. The no-feedback double-integrator output is a sensitivity proxy, never a Q prediction. No parameters or model are selected from this analysis."
+}

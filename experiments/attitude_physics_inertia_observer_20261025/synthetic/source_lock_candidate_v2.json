@@ -1,0 +1,204 @@
+{
+  "lock_kind": "source_lock_candidate",
+  "version": 2,
+  "freeze_status": "NOT_FROZEN",
+  "authorization_scope": "isolated synthetic audit only",
+  "closed_loop_runs_authorized": false,
+  "closed_loop_runs_executed": false,
+  "production_runtime_hook_added": false,
+  "training_executed": false,
+  "TEST_MAT_raw_or_scene_data_read": false,
+  "generated_utc": "2026-10-25T05:10:05Z",
+  "matlab_executable": "C:\\Program Files\\MATLAB\\R2025b\\bin\\matlab.exe",
+  "matlab_release_from_path": "R2025b",
+  "synthetic_audit_status": "PASS",
+  "matlab_exit_code": 0,
+  "stdout_marker": "PHYS_ATT_SYNTHETIC_AUDIT_PASS",
+  "stderr_empty": true,
+  "forbidden_calls_found": [],
+  "external_data_files_opened": [],
+  "production_diff": "none in this v2 task; git diff --name-only -- matlab and candidate helper returned empty",
+  "v1_lock_history": {
+    "lock": {
+      "path": "experiments/attitude_physics_inertia_observer_20261025/source_lock_candidate_v1.json",
+      "sha256": "5aba7bb03422a279b3880ff6570dd1141bf5c8f336802132e4364f200b0e5585"
+    },
+    "listed_sha256_match_current_files": true,
+    "note": "Historical v1 snapshot only; it does not cover the new v2 tau_shape and estimateTorque-to-BS assertions. The current v1 script is named run_phys_attitude_synthetic_audit.m and its SHA matches the historical lock; no run_phys_attitude_synthetic_audit_v1.m exists. A pre-final v2 audit script had SHA256 4ccf3e4861efd87788f8eb8497204f0ba786f374d8beb62d17c25bda1cd431ae, before changing its default output away from v1."
+  },
+  "source_files": [
+    {
+      "path": "experiments/attitude_physics_inertia_observer_20261025/phys_attitude_replacement_candidate.m",
+      "sha256": "1c27937d45bca8c1dbd1a96ff99a9a7a1089c249c274ae968d1a7e2cf6d756cb"
+    },
+    {
+      "path": "experiments/attitude_physics_inertia_observer_20261025/synthetic/run_phys_attitude_synthetic_audit_v2.m",
+      "sha256": "89653a1dddf6ff9cc80e650117715bf76d855b20af96a42041b23b0878a90872"
+    },
+    {
+      "path": "experiments/attitude_physics_inertia_observer_20261025/synthetic/run_matlab_synthetic_v2_final.ps1",
+      "sha256": "08c8e185f60b6572aa8ebb8028963cc84b8506049612ad1c85b42eb69826fd14"
+    },
+    {
+      "path": "matlab/core/default_config.m",
+      "sha256": "685abb7b72a335fdc826673e6431098fe79af88409f17b1b70ce08edb214dc51"
+    },
+    {
+      "path": "matlab/core/attitude_bs_step.m",
+      "sha256": "cf6b20ffc4df2625d9316a80340d69542e380d14feaed66ef8498e793fdaccbc"
+    },
+    {
+      "path": "matlab/core/arm_mass_properties.m",
+      "sha256": "8ec66e107156b5219f7e41aca2464eef1ec8043eb7f67df313c0f23ef4b551f5"
+    },
+    {
+      "path": "matlab/core/distributed_mass_properties.m",
+      "sha256": "db380b506e4bacc37bc398d5726c5ebd25be8ebc08b6c9e76ff59bc78fd45d3a"
+    },
+    {
+      "path": "matlab/core/arm_directions.m",
+      "sha256": "517bbfcd0df9526b189f64bff067a49551f573ad96e682ee005533ab510e686c"
+    }
+  ],
+  "taskbooks": [
+    {
+      "path": "experiments/attitude_physics_inertia_observer_20261025/PHYS_ATT_OBSERVER_DEV3_TASKBOOK_v1_ZH.md",
+      "sha256": "aec49ce3c1e1e62943602aee63fb26913a9c9e09992ea2ae518736def83e089e"
+    },
+    {
+      "path": "experiments/attitude_physics_inertia_observer_20261025/PHYS_ATT_OBSERVER_DEV3_TASKBOOK_ADDENDUM_v1.1_ZH.md",
+      "sha256": "b00280ab32aeab22721890f8979518f928d5ab411cba3026a6171c0b92ec3ad0"
+    },
+    {
+      "path": "experiments/attitude_physics_inertia_observer_20261025/PAIRED_RUNNER_TASKBOOK_DRAFT_v1_ZH.md",
+      "sha256": "48fe5f1d5f1cc6ed144fee506443d9e54a0c42ac99bb636556e8fc2c21b761eb"
+    }
+  ],
+  "evidence_artifacts": [
+    {
+      "path": "experiments/attitude_physics_inertia_observer_20261025/synthetic/PHYS_ATT_OBSERVER_SYNTH_AUDIT_v2_final.json",
+      "sha256": "7c4f7bc73cd72ed6a19bc66fa7ba8d0b34595042b292869eada6ea5ad4fd9da5"
+    },
+    {
+      "path": "experiments/attitude_physics_inertia_observer_20261025/synthetic/matlab_command_v2_final.txt",
+      "sha256": "f4e07f9d3dfb3830f2654683dd8878ebedbff9f15167366b3aaf4fcd22daae57"
+    },
+    {
+      "path": "experiments/attitude_physics_inertia_observer_20261025/synthetic/matlab_stdout_v2_final.log",
+      "sha256": "570b322eea4db9ca22d31329f81989ece1ff4cef04992224b1b876034e132e17"
+    },
+    {
+      "path": "experiments/attitude_physics_inertia_observer_20261025/synthetic/matlab_stderr_v2_final.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "experiments/attitude_physics_inertia_observer_20261025/synthetic/matlab_exit_code_v2_final.txt",
+      "sha256": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354"
+    }
+  ],
+  "historical_artifacts": [
+    {
+      "path": "experiments/attitude_physics_inertia_observer_20261025/synthetic/matlab_command_v2_attempt01.txt",
+      "sha256": "bad7dd360e27c52291e441a91f38f57316c7cf86caa6733f56d9bf1bd0cfb166",
+      "status": "HISTORICAL_ATTEMPT01_FAILED_PRECONDITION"
+    },
+    {
+      "path": "experiments/attitude_physics_inertia_observer_20261025/synthetic/matlab_command_v2_attempt02.txt",
+      "sha256": "e6ee092952390c739a4f3b1c5d707e8fa2ce7081f58986e0b83fb84eda1edf9e",
+      "status": "HISTORICAL_V2_ATTEMPT02_PASS"
+    },
+    {
+      "path": "experiments/attitude_physics_inertia_observer_20261025/synthetic/matlab_command.txt",
+      "sha256": "bad7dd360e27c52291e441a91f38f57316c7cf86caa6733f56d9bf1bd0cfb166",
+      "status": "HISTORICAL_V1_SNAPSHOT"
+    },
+    {
+      "path": "experiments/attitude_physics_inertia_observer_20261025/synthetic/matlab_exit_code_v2_attempt01.txt",
+      "sha256": "f1b2f662800122bed0ff255693df89c4487fbdcf453d3524a42d4ec20c3d9c04",
+      "status": "HISTORICAL_ATTEMPT01_FAILED_PRECONDITION"
+    },
+    {
+      "path": "experiments/attitude_physics_inertia_observer_20261025/synthetic/matlab_exit_code_v2_attempt02.txt",
+      "sha256": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354",
+      "status": "HISTORICAL_V2_ATTEMPT02_PASS"
+    },
+    {
+      "path": "experiments/attitude_physics_inertia_observer_20261025/synthetic/matlab_exit_code.txt",
+      "sha256": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354",
+      "status": "HISTORICAL_V1_SNAPSHOT"
+    },
+    {
+      "path": "experiments/attitude_physics_inertia_observer_20261025/synthetic/matlab_stderr_v2_attempt01.log",
+      "sha256": "1b6186aeef52a86b5283d2e423ac88d7d9c21e46f58614ddfeab5b1e50f197ee",
+      "status": "HISTORICAL_ATTEMPT01_FAILED_PRECONDITION"
+    },
+    {
+      "path": "experiments/attitude_physics_inertia_observer_20261025/synthetic/matlab_stderr_v2_attempt02.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "status": "HISTORICAL_V2_ATTEMPT02_PASS"
+    },
+    {
+      "path": "experiments/attitude_physics_inertia_observer_20261025/synthetic/matlab_stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "status": "HISTORICAL_V1_SNAPSHOT"
+    },
+    {
+      "path": "experiments/attitude_physics_inertia_observer_20261025/synthetic/matlab_stdout_v2_attempt01.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "status": "HISTORICAL_ATTEMPT01_FAILED_PRECONDITION"
+    },
+    {
+      "path": "experiments/attitude_physics_inertia_observer_20261025/synthetic/matlab_stdout_v2_attempt02.log",
+      "sha256": "570b322eea4db9ca22d31329f81989ece1ff4cef04992224b1b876034e132e17",
+      "status": "HISTORICAL_V2_ATTEMPT02_PASS"
+    },
+    {
+      "path": "experiments/attitude_physics_inertia_observer_20261025/synthetic/matlab_stdout.log",
+      "sha256": "570b322eea4db9ca22d31329f81989ece1ff4cef04992224b1b876034e132e17",
+      "status": "HISTORICAL_V1_SNAPSHOT"
+    },
+    {
+      "path": "experiments/attitude_physics_inertia_observer_20261025/synthetic/PHYS_ATT_OBSERVER_SYNTH_AUDIT_v1.json",
+      "sha256": "2c8b2ea29ff43312c27f77d19a8bd3a2049dbcee9bbff20ea993d068be651acd",
+      "status": "HISTORICAL_V1_SNAPSHOT"
+    },
+    {
+      "path": "experiments/attitude_physics_inertia_observer_20261025/synthetic/PHYS_ATT_OBSERVER_SYNTH_AUDIT_v2.json",
+      "sha256": "d663d4692d504787378d8dca9a0801e36d4304e581f836e1993954a5b9cf7a80",
+      "status": "HISTORICAL_V2_ATTEMPT02_PASS"
+    },
+    {
+      "path": "experiments/attitude_physics_inertia_observer_20261025/synthetic/run_matlab_synthetic_v2.ps1",
+      "sha256": "541fbdaa697a90b5635c0c2619dfc92b631258cb54aae32e93a463ffe84a0319",
+      "status": "HISTORICAL_V2_ATTEMPT02_PASS"
+    },
+    {
+      "path": "experiments/attitude_physics_inertia_observer_20261025/synthetic/run_matlab_synthetic.ps1",
+      "sha256": "25fd7a1b51057e45581cf84e03119061aea982552394b8668d315858eca909cd",
+      "status": "HISTORICAL_V1_SNAPSHOT"
+    },
+    {
+      "path": "experiments/attitude_physics_inertia_observer_20261025/synthetic/run_phys_attitude_synthetic_audit.m",
+      "sha256": "009d080e608bfa167df163e7b0f4bc9c139875b8554d6ce5207d155168f63425",
+      "status": "HISTORICAL_V1_SNAPSHOT"
+    }
+  ],
+  "assertion_summary": {
+    "candidate_tau_shape_error_by_axis_Nm": [
+      0,
+      0,
+      0
+    ],
+    "candidate_torque_delta_error_by_axis_Nm": [
+      0,
+      0,
+      1.3877787807814457E-17
+    ],
+    "candidate_torque_mapping_error_Nm": 8.881784197001252E-16,
+    "max_torque_interface_error_Nm": 0,
+    "max_synthetic_alpha_error_rads2": 7.105427357601002E-15,
+    "max_residual_error_Nm": 8.881784197001252E-16,
+    "max_observer_update_error_rads2": 0
+  },
+  "note": "Candidate only. No closed-loop flight, Plant, scene, TEST/MAT/raw read, or training was authorized or executed."
+}

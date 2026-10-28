@@ -1,0 +1,42 @@
+{
+  "schema": "DL1018_GRU32_STREAM72_PREPARATION_RECEIPT_V1",
+  "status": "SELF_CHECK_PASS_RELEASE0_PENDING",
+  "command": "$env:MKL_THREADING_LAYER = 'SEQUENTIAL'; $env:OMP_NUM_THREADS = '1'; $env:MKL_NUM_THREADS = '1'; $env:CUBLAS_WORKSPACE_CONFIG = ':4096:8'; python .\\experiments\\dl_attitude_replacement_20261026\\gru_stream_c5_teacher_v1\\train_gru_stream_c5_teacher_v1.py --self-check",
+  "stdout": "SELF_CHECK=PASS (C5 identity + reused normalizer + GRU stream/reset/future/padding/detach; optimizer.step=0)",
+  "exit_code": 0,
+  "source_lock_sha256": "776477be56d3f58914c2ce1b4fb5ed3f2880ac9c5548aac1f3ade726e7500889",
+  "release0_sha256": "470d6ffa873d13cc7242bdbde54c60ec96c9e9f22e5be0687c1f722d2e2dd2b6",
+  "trainer_sha256": "fa6da81049298b8e2cec5d15bf6dd513485aa65feba88abf5a168e68aa871232",
+  "self_check_sha256": "1e3ae603c22dcd8e214ea47d621011c17e61d162d859cf979a6c931a291ca39a",
+  "model_source_sha256": "66816f8b04776aca47440008bda96523055c70fc0b68700df07ea30c06357700",
+  "reused_normalizer_sha256": "612c39d7fd113571f2935eae1e42d3fb4d33705bf9a230c75e5c274db1bfb693",
+  "initialization_state_dict_sha256": "82d952ce8f150388015bc2776b8acceb9c9da59814470eb036ec9ca99420e06e",
+  "initialization_parameter_sha256": {
+    "gru.bias_hh_l0": "7252ba114c52e0c955de233602455d4f6aae3c3a6ef7c24cc1beabd3453a346f",
+    "gru.bias_ih_l0": "70f3975178bdc9bb9716383c09b07efcc214556971c0f70eb00cb91db24ec465",
+    "gru.weight_hh_l0": "960119e675b8c08a581f03af2b66c4957dfd9cc35e128f39ecf6c9a84711d5ef",
+    "gru.weight_ih_l0": "daa7d665c029234a536b0f322cc2064689701c053e469229697a40e567c60921",
+    "head.bias": "c8c6fa47bc92b6475a1f68bb2b066d99a85404a2baa67693a2fecbc986393261",
+    "head.weight": "1c66eb05a0c25def62e61b7a87f73989c0dae8dd46f4e41cad79d0225b5839cd"
+  },
+  "runtime_versions": {
+    "python": "3.12.7",
+    "numpy": "1.26.4",
+    "torch": "2.6.0+cu124"
+  },
+  "schedule_accounting": {
+    "chunks_per_scene": 16,
+    "steps_per_cohort": 16,
+    "cohorts_per_epoch": 18,
+    "steps_per_epoch": 288,
+    "full_epochs": 208,
+    "remaining_steps": 96,
+    "full_cohorts_in_partial_epoch": 6,
+    "partial_cohort_steps": 0,
+    "expected_valid_samples": 29985000
+  },
+  "optimizer_step_calls": 0,
+  "plant_calls": 0,
+  "test48_read": false,
+  "b24_values_read": false
+}

@@ -1,0 +1,1099 @@
+{
+  "schema": "DL1018_FILTER_PCF_CAUSAL_GOVERNOR_REPLAY_DEVHF6_V1",
+  "status": "DIAGNOSTIC_ONLY_NO_PLANT",
+  "input_raw_root": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_full72_v1\\runs",
+  "allowlisted_log_fields": [
+    "state",
+    "command_filter_target_euler",
+    "filtered_attitude_reference",
+    "filtered_attitude_rate",
+    "command_filter_acceleration_request_unclamped_rads2",
+    "command_filter_acceleration_applied_rads2",
+    "stage1_position_pcf_a_req_mps2",
+    "stage1_position_pcf_a_f_mps2",
+    "stage1_position_pcf_r_f_mps2",
+    "stage1_position_pcf_eta_after_mps"
+  ],
+  "allowlisted_scene_fields": [
+    "scene/time",
+    "scene/reference/yaw",
+    "scene/reference/acceleration"
+  ],
+  "explicitly_not_read": [
+    "TEST",
+    "wind_force_I",
+    "environment_wind_I",
+    "Plant truth",
+    "future parent residuals"
+  ],
+  "replay_scope": "Current parent stage1 a_req is replayed as an exogenous input; this is not a changed-state closed loop.",
+  "calibration": {
+    "scene_ids": [
+      "DL1018_DEV_T1_C00_W03",
+      "DL1018_DEV_T1_C01_W15",
+      "DL1018_DEV_T1_C04_W00",
+      "DL1018_DEV_T1_C05_W06",
+      "DL1018_DEV_T1_C07_W08",
+      "DL1018_DEV_T1_C11_W12",
+      "DL1018_DEV_T1_C15_W14",
+      "DL1018_DEV_T2_C00_W04",
+      "DL1018_DEV_T2_C02_W15",
+      "DL1018_DEV_T2_C03_W01",
+      "DL1018_DEV_T2_C06_W07",
+      "DL1018_DEV_T2_C08_W08",
+      "DL1018_DEV_T2_C12_W13",
+      "DL1018_DEV_T2_C14_W14",
+      "DL1018_DEV_T3_C00_W05",
+      "DL1018_DEV_T3_C03_W15",
+      "DL1018_DEV_T3_C05_W02",
+      "DL1018_DEV_T3_C06_W08",
+      "DL1018_DEV_T3_C10_W11",
+      "DL1018_DEV_T3_C13_W12",
+      "DL1018_DEV_T3_C15_W14"
+    ],
+    "scene_count": 21,
+    "sample_count": 420000,
+    "fixed_closure_budget_epsilon_mps2": 1.0727297110858518,
+    "role": "Development calibration from 21 distinct parent-GRU DEV scene IDs; excludes the exact 3 DEV HF6 target IDs and uses no VAL scene IDs. It is not C5 TRAIN and is not a frequency-family holdout; other T1/T2/T3 profiles may be reused across conditions, and the HF6 cohort was known when this diagnostic was specified.",
+    "rule": "One pooled 95th percentile of baseline sequential-replay ||r_f|| over these 21 DEV scenes; fixed before the sequential HF replay. No per-time parent residual enters governor decisions.",
+    "exact_scene_id_overlap_with_hf6": false,
+    "hf6_validation_scene_count": 3,
+    "baseline_replay_parity": [
+      {
+        "scene_id": "DL1018_DEV_T1_C00_W03",
+        "max_abs_parity_error": 2.1649348980190553e-14
+      },
+      {
+        "scene_id": "DL1018_DEV_T1_C01_W15",
+        "max_abs_parity_error": 1.3627987627273797e-14
+      },
+      {
+        "scene_id": "DL1018_DEV_T1_C04_W00",
+        "max_abs_parity_error": 1.6681100944992977e-14
+      },
+      {
+        "scene_id": "DL1018_DEV_T1_C05_W06",
+        "max_abs_parity_error": 4.707345624410664e-14
+      },
+      {
+        "scene_id": "DL1018_DEV_T1_C07_W08",
+        "max_abs_parity_error": 1.4577228313328305e-13
+      },
+      {
+        "scene_id": "DL1018_DEV_T1_C11_W12",
+        "max_abs_parity_error": 4.3522477288782113e-14
+      },
+      {
+        "scene_id": "DL1018_DEV_T1_C15_W14",
+        "max_abs_parity_error": 1.3278267374516872e-13
+      },
+      {
+        "scene_id": "DL1018_DEV_T2_C00_W04",
+        "max_abs_parity_error": 4.674038933671909e-14
+      },
+      {
+        "scene_id": "DL1018_DEV_T2_C02_W15",
+        "max_abs_parity_error": 2.1288526497187377e-14
+      },
+      {
+        "scene_id": "DL1018_DEV_T2_C03_W01",
+        "max_abs_parity_error": 2.3869795029440866e-14
+      },
+      {
+        "scene_id": "DL1018_DEV_T2_C06_W07",
+        "max_abs_parity_error": 1.0158540675320182e-13
+      },
+      {
+        "scene_id": "DL1018_DEV_T2_C08_W08",
+        "max_abs_parity_error": 1.1868284133242923e-13
+      },
+      {
+        "scene_id": "DL1018_DEV_T2_C12_W13",
+        "max_abs_parity_error": 1.3511414209688155e-13
+      },
+      {
+        "scene_id": "DL1018_DEV_T2_C14_W14",
+        "max_abs_parity_error": 1.3089529460330596e-13
+      },
+      {
+        "scene_id": "DL1018_DEV_T3_C00_W05",
+        "max_abs_parity_error": 5.445643935786393e-14
+      },
+      {
+        "scene_id": "DL1018_DEV_T3_C03_W15",
+        "max_abs_parity_error": 1.5029644195863057e-14
+      },
+      {
+        "scene_id": "DL1018_DEV_T3_C05_W02",
+        "max_abs_parity_error": 3.5638159090467525e-14
+      },
+      {
+        "scene_id": "DL1018_DEV_T3_C06_W08",
+        "max_abs_parity_error": 1.716404796070492e-13
+      },
+      {
+        "scene_id": "DL1018_DEV_T3_C10_W11",
+        "max_abs_parity_error": 1.5115686480271506e-13
+      },
+      {
+        "scene_id": "DL1018_DEV_T3_C13_W12",
+        "max_abs_parity_error": 5.1611492857261965e-14
+      },
+      {
+        "scene_id": "DL1018_DEV_T3_C15_W14",
+        "max_abs_parity_error": 1.2040368702059823e-13
+      }
+    ]
+  },
+  "parameters": {
+    "dt_s": 0.001,
+    "mass_kg": 0.695,
+    "gravity_mps2": 9.8,
+    "command_filter_wn_rads": [
+      18.0,
+      18.0,
+      12.0
+    ],
+    "command_filter_damping": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "command_filter_acceleration_limit_rads2": [
+      "unbounded",
+      "unbounded",
+      6.0
+    ],
+    "pcf_k2_per_s": [
+      4.0,
+      4.0,
+      4.0
+    ],
+    "max_tilt_deg": 29.999999999999996,
+    "governor_grid_step": 0.01,
+    "runtime_yaw_order": "Position roll/pitch are solved with current measured yaw, then command yaw is replaced by current task yaw, exactly as the source does; candidate keeps that mapping to isolate task/position coordination.",
+    "task_reference_reconstruction": "baseline_force_to_attitude(scene.reference.acceleration, scene.reference.yaw, P), matching frozen score reference.",
+    "governor_target_path": "Spherical interpolation from the existing force target (with its 30 deg cap and source yaw mixing) toward the reconstructed task attitude.",
+    "causal_decision": "At k, choose greatest alpha whose one-step predicted filtered-reference closure against current a_req[k] is <= fixed epsilon; choose alpha=0 if no grid point is feasible. Apply normal second-order filter update; PCF at k uses the pre-update filter output, current thrust/a_req, and current eta."
+  },
+  "hf6": [
+    {
+      "scene_id": "DL1018_DEV_T1_C10_W09",
+      "n_samples": 20000,
+      "dt_s": 0.0009999999999998899,
+      "baseline_replay_max_abs_parity_error": 5.762057497804562e-14,
+      "baseline_command_task_error_deg": {
+        "rms": 2.4799274095872788,
+        "p50": 2.118477884240658,
+        "p95": 4.1724343276334075,
+        "max": 5.207279793260492
+      },
+      "governor_command_task_error_deg": {
+        "rms": 0.31526284109727043,
+        "p50": 0.16867604030451602,
+        "p95": 0.557996926979434,
+        "max": 1.3421738777680565
+      },
+      "governor_minus_baseline_task_error_p95_deg": -0.06624510771888444,
+      "baseline_post_filter_closure_mps2": {
+        "rms": 0.25878857473338407,
+        "p50": 0.19277623874706926,
+        "p95": 0.48450107401199477,
+        "max": 0.6760252341030863
+      },
+      "governor_post_filter_closure_mps2": {
+        "rms": 0.47059887298180925,
+        "p50": 0.3680298584873747,
+        "p95": 0.8466119312214954,
+        "max": 1.1480189611783558
+      },
+      "baseline_post_filter_closure_fraction_above_epsilon": 0.0,
+      "governor_post_filter_closure_fraction_above_epsilon": 0.0032,
+      "governor_eta_delta_from_baseline_mps": {
+        "rms": 0.09946655429076524,
+        "p50": 0.09402613534067236,
+        "p95": 0.1695530464609128,
+        "max": 0.20248514302156953
+      },
+      "governor_target_shift_from_original_deg": {
+        "rms": 2.686830723108465,
+        "p50": 2.0844527972023634,
+        "p95": 4.870397814183883,
+        "max": 6.915430016541798
+      },
+      "governor_filtered_reference_shift_from_original_deg": {
+        "rms": 2.4277239197949534,
+        "p50": 2.0436511124031393,
+        "p95": 4.157040172541802,
+        "max": 5.293556248125183
+      },
+      "governor": {
+        "alpha_task_mean": 0.997132,
+        "alpha_task_fraction": {
+          "rms": 0.9985450415479514,
+          "p50": 1.0,
+          "p95": 1.0,
+          "max": 1.0
+        },
+        "fraction_alpha_positive": 0.99725,
+        "fraction_alpha_full": 0.99705,
+        "fallback_no_feasible_grid_point_fraction": 0.00275,
+        "target_shift_from_existing_position_command_deg": {
+          "rms": 2.686830723108465,
+          "p50": 2.0844527972023634,
+          "p95": 4.870397814183883,
+          "max": 6.915430016541798
+        },
+        "one_step_filter_output_shift_vs_position_target_deg": {
+          "rms": 0.0008705600400416696,
+          "p50": 0.0006753700253315804,
+          "p95": 0.0015780665319879586,
+          "max": 0.0022406840009646864
+        },
+        "commanded_task_attitude_error_deg": {
+          "rms": 0.31526284109727043,
+          "p50": 0.16867604030451602,
+          "p95": 0.557996926979434,
+          "max": 1.3421738777680565
+        },
+        "post_filter_closure_mps2": {
+          "rms": 0.47059887298180925,
+          "p50": 0.3680298584873747,
+          "p95": 0.8466119312214954,
+          "max": 1.1480189611783558
+        },
+        "post_filter_closure_fraction_above_fixed_epsilon": 0.0032,
+        "governor_predicted_closure_mps2": {
+          "rms": 0.47052355233594934,
+          "p50": 0.3680363638228316,
+          "p95": 0.8467310614735994,
+          "max": 1.144257845227996
+        },
+        "predicted_closure_fraction_above_fixed_epsilon": 0.00275,
+        "eta_norm_mps": {
+          "rms": 0.10124015807526071,
+          "p50": 0.09208705979711002,
+          "p95": 0.18131924067893698,
+          "max": 0.212335345987897
+        },
+        "eta_component_rms_mps": [
+          0.05138910662222607,
+          0.0871245709829722,
+          0.0042471706707281195
+        ],
+        "max_target_tilt_deg": 6.282369434010948,
+        "max_filtered_reference_tilt_deg": 5.444571863869996,
+        "fraction_target_over_30deg": 0.0,
+        "fraction_filtered_reference_over_30deg": 0.0,
+        "filter_acceleration_request_max_abs_rads2": [
+          32.690926750848604,
+          16.807322790796732,
+          0.0
+        ],
+        "filter_acceleration_clipped_fraction": 0.0,
+        "filter_rate_max_abs_rads": [
+          0.696996446009753,
+          0.25773985656033294,
+          0.0
+        ],
+        "static_task_pose_closure_mps2": {
+          "rms": 0.47298103672516767,
+          "p50": 0.36612749163707936,
+          "p95": 0.857450900293933,
+          "max": 1.2050845712833484
+        },
+        "static_force_cone_min_task_axis_error_lower_bound_deg": {
+          "rms": 0.034890699787146845,
+          "p50": 0.0,
+          "p95": 0.0,
+          "max": 0.760579097704197
+        },
+        "static_force_cone_contains_task_axis_fraction": 0.99365,
+        "actual_to_task_yaw_gap_deg": {
+          "rms": 0.054369353988831075,
+          "p50": 0.007780694410079816,
+          "p95": 0.12370112984619916,
+          "max": 0.2262122833125558
+        },
+        "task_reference_acceleration_mps2": {
+          "rms": 0.5263359954452967,
+          "p50": 0.3375677814107696,
+          "p95": 0.9277567288506342,
+          "max": 0.936841355259654
+        },
+        "task_reference_tilt_deg": {
+          "rms": 3.0687086932889778,
+          "p50": 1.9660334141738662,
+          "p95": 5.409277303959769,
+          "max": 5.460677767260698
+        },
+        "task_reference_acceleration_zero_fraction": 5e-05
+      }
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C07_W14",
+      "n_samples": 20000,
+      "dt_s": 0.0009999999999998899,
+      "baseline_replay_max_abs_parity_error": 1.5076828674409626e-13,
+      "baseline_command_task_error_deg": {
+        "rms": 4.314618970489243,
+        "p50": 3.669087230659298,
+        "p95": 7.469266001641097,
+        "max": 9.7363190405969
+      },
+      "governor_command_task_error_deg": {
+        "rms": 2.4350183595899937,
+        "p50": 1.3811078083760888,
+        "p95": 5.004631836278068,
+        "max": 7.192695317908639
+      },
+      "governor_minus_baseline_task_error_p95_deg": -0.28907824202694077,
+      "baseline_post_filter_closure_mps2": {
+        "rms": 0.7978555539311609,
+        "p50": 0.6172033318720713,
+        "p95": 1.433449906114717,
+        "max": 1.936838341002484
+      },
+      "governor_post_filter_closure_mps2": {
+        "rms": 0.8238546346239042,
+        "p50": 0.6146659243971979,
+        "p95": 1.584759255196692,
+        "max": 2.1176532591809316
+      },
+      "baseline_post_filter_closure_fraction_above_epsilon": 0.19935,
+      "governor_post_filter_closure_fraction_above_epsilon": 0.19365,
+      "governor_eta_delta_from_baseline_mps": {
+        "rms": 0.09151087089179233,
+        "p50": 0.08282848589988517,
+        "p95": 0.14955338128014187,
+        "max": 0.18214704042876131
+      },
+      "governor_target_shift_from_original_deg": {
+        "rms": 3.7201808107915575,
+        "p50": 2.1015069230243544,
+        "p95": 7.513844147379679,
+        "max": 12.71151382217709
+      },
+      "governor_filtered_reference_shift_from_original_deg": {
+        "rms": 2.350331991626637,
+        "p50": 1.9698199988298786,
+        "p95": 4.156079154853833,
+        "max": 5.459338301550467
+      },
+      "governor": {
+        "alpha_task_mean": 0.8091855,
+        "alpha_task_fraction": {
+          "rms": 0.8995232598437908,
+          "p50": 1.0,
+          "p95": 1.0,
+          "max": 1.0
+        },
+        "fraction_alpha_positive": 0.8093,
+        "fraction_alpha_full": 0.80905,
+        "fallback_no_feasible_grid_point_fraction": 0.1907,
+        "target_shift_from_existing_position_command_deg": {
+          "rms": 3.7201808107915575,
+          "p50": 2.1015069230243544,
+          "p95": 7.513844147379679,
+          "max": 12.71151382217709
+        },
+        "one_step_filter_output_shift_vs_position_target_deg": {
+          "rms": 0.0012053838679352692,
+          "p50": 0.0006808886233882153,
+          "p95": 0.002434555663949228,
+          "max": 0.004119244704784487
+        },
+        "commanded_task_attitude_error_deg": {
+          "rms": 2.4350183595899937,
+          "p50": 1.3811078083760888,
+          "p95": 5.004631836278068,
+          "max": 7.192695317908639
+        },
+        "post_filter_closure_mps2": {
+          "rms": 0.8238546346239042,
+          "p50": 0.6146659243971979,
+          "p95": 1.584759255196692,
+          "max": 2.1176532591809316
+        },
+        "post_filter_closure_fraction_above_fixed_epsilon": 0.19365,
+        "governor_predicted_closure_mps2": {
+          "rms": 0.8204197924786301,
+          "p50": 0.6131277257013203,
+          "p95": 1.5757972667929105,
+          "max": 2.106469444457577
+        },
+        "predicted_closure_fraction_above_fixed_epsilon": 0.1907,
+        "eta_norm_mps": {
+          "rms": 0.09915186875062262,
+          "p50": 0.08498128068081301,
+          "p95": 0.1682323811842123,
+          "max": 0.23584246086818156
+        },
+        "eta_component_rms_mps": [
+          0.09353428670584786,
+          0.03057278061335389,
+          0.01215464408103718
+        ],
+        "max_target_tilt_deg": 17.647282176455594,
+        "max_filtered_reference_tilt_deg": 10.460108957630355,
+        "fraction_target_over_30deg": 0.0,
+        "fraction_filtered_reference_over_30deg": 0.0,
+        "filter_acceleration_request_max_abs_rads2": [
+          34.22414128693071,
+          80.27842179285403,
+          0.0
+        ],
+        "filter_acceleration_clipped_fraction": 0.0,
+        "filter_rate_max_abs_rads": [
+          0.7134088193151862,
+          1.445582498848941,
+          0.0
+        ],
+        "static_task_pose_closure_mps2": {
+          "rms": 0.990028454601273,
+          "p50": 0.6116969156808123,
+          "p95": 1.9528727982689593,
+          "max": 2.6416206027929414
+        },
+        "static_force_cone_min_task_axis_error_lower_bound_deg": {
+          "rms": 1.9848255272669928,
+          "p50": 0.0,
+          "p95": 5.076961795327485,
+          "max": 9.112791324199769
+        },
+        "static_force_cone_contains_task_axis_fraction": 0.70705,
+        "actual_to_task_yaw_gap_deg": {
+          "rms": 0.2111167482410204,
+          "p50": 0.043610075584969765,
+          "p95": 0.4823931896023948,
+          "max": 0.8550690688752137
+        },
+        "task_reference_acceleration_mps2": {
+          "rms": 0.5263359954452967,
+          "p50": 0.3375677814107696,
+          "p95": 0.9277567288506342,
+          "max": 0.936841355259654
+        },
+        "task_reference_tilt_deg": {
+          "rms": 3.0687086932889778,
+          "p50": 1.9660334141738662,
+          "p95": 5.409277303959769,
+          "max": 5.460677767260698
+        },
+        "task_reference_acceleration_zero_fraction": 5e-05
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C09_W10",
+      "n_samples": 20000,
+      "dt_s": 0.0009999999999998899,
+      "baseline_replay_max_abs_parity_error": 1.596500709410975e-13,
+      "baseline_command_task_error_deg": {
+        "rms": 4.296782432949081,
+        "p50": 3.3114774946702923,
+        "p95": 7.557058166330889,
+        "max": 9.900591358974179
+      },
+      "governor_command_task_error_deg": {
+        "rms": 2.144939859135114,
+        "p50": 0.677889619741239,
+        "p95": 4.868638230935938,
+        "max": 7.584659981814829
+      },
+      "governor_minus_baseline_task_error_p95_deg": -0.4266333576785075,
+      "baseline_post_filter_closure_mps2": {
+        "rms": 0.7355900324873661,
+        "p50": 0.5058961222437146,
+        "p95": 1.3761638072047626,
+        "max": 2.0281002947995614
+      },
+      "governor_post_filter_closure_mps2": {
+        "rms": 0.7428169103557019,
+        "p50": 0.5605789068840501,
+        "p95": 1.3963143569260665,
+        "max": 1.7052629021781534
+      },
+      "baseline_post_filter_closure_fraction_above_epsilon": 0.16815,
+      "governor_post_filter_closure_fraction_above_epsilon": 0.15945,
+      "governor_eta_delta_from_baseline_mps": {
+        "rms": 0.09744257675946058,
+        "p50": 0.09261065405509215,
+        "p95": 0.13924284410775908,
+        "max": 0.17334975675479367
+      },
+      "governor_target_shift_from_original_deg": {
+        "rms": 3.97521036396295,
+        "p50": 2.483473165073527,
+        "p95": 8.573870145397475,
+        "max": 12.605013478340593
+      },
+      "governor_filtered_reference_shift_from_original_deg": {
+        "rms": 2.6909897619637957,
+        "p50": 2.2225860386918157,
+        "p95": 4.440535098884794,
+        "max": 5.177586037845788
+      },
+      "governor": {
+        "alpha_task_mean": 0.843031,
+        "alpha_task_fraction": {
+          "rms": 0.9181563810157831,
+          "p50": 1.0,
+          "p95": 1.0,
+          "max": 1.0
+        },
+        "fraction_alpha_positive": 0.84315,
+        "fraction_alpha_full": 0.84295,
+        "fallback_no_feasible_grid_point_fraction": 0.15685,
+        "target_shift_from_existing_position_command_deg": {
+          "rms": 3.97521036396295,
+          "p50": 2.483473165073527,
+          "p95": 8.573870145397475,
+          "max": 12.605013478340593
+        },
+        "one_step_filter_output_shift_vs_position_target_deg": {
+          "rms": 0.0012879990895274336,
+          "p50": 0.0008046530132461348,
+          "p95": 0.002778020695736506,
+          "max": 0.004084458478460707
+        },
+        "commanded_task_attitude_error_deg": {
+          "rms": 2.144939859135114,
+          "p50": 0.677889619741239,
+          "p95": 4.868638230935938,
+          "max": 7.584659981814829
+        },
+        "post_filter_closure_mps2": {
+          "rms": 0.7428169103557019,
+          "p50": 0.5605789068840501,
+          "p95": 1.3963143569260665,
+          "max": 1.7052629021781534
+        },
+        "post_filter_closure_fraction_above_fixed_epsilon": 0.15945,
+        "governor_predicted_closure_mps2": {
+          "rms": 0.7399371952226496,
+          "p50": 0.5600225275597595,
+          "p95": 1.3857974909255382,
+          "max": 1.6941724158881333
+        },
+        "predicted_closure_fraction_above_fixed_epsilon": 0.15685,
+        "eta_norm_mps": {
+          "rms": 0.10539224014332974,
+          "p50": 0.0928085783856279,
+          "p95": 0.16881648790747625,
+          "max": 0.20217127570086701
+        },
+        "eta_component_rms_mps": [
+          0.01646567403016025,
+          0.10339625377071662,
+          0.012067334724095736
+        ],
+        "max_target_tilt_deg": 19.084637233640183,
+        "max_filtered_reference_tilt_deg": 13.249050290683268,
+        "fraction_target_over_30deg": 0.0,
+        "fraction_filtered_reference_over_30deg": 0.0,
+        "filter_acceleration_request_max_abs_rads2": [
+          81.7872611065408,
+          17.429295771830798,
+          0.0
+        ],
+        "filter_acceleration_clipped_fraction": 0.0,
+        "filter_rate_max_abs_rads": [
+          1.4020768273242934,
+          0.3282722120479577,
+          0.0
+        ],
+        "static_task_pose_closure_mps2": {
+          "rms": 0.9172908526402379,
+          "p50": 0.5915456232245595,
+          "p95": 1.7918844860843264,
+          "max": 2.349975427190766
+        },
+        "static_force_cone_min_task_axis_error_lower_bound_deg": {
+          "rms": 1.6330873518695697,
+          "p50": 0.0,
+          "p95": 4.333608650363108,
+          "max": 7.3806524094464745
+        },
+        "static_force_cone_contains_task_axis_fraction": 0.7506,
+        "actual_to_task_yaw_gap_deg": {
+          "rms": 0.04855283611330371,
+          "p50": 0.009347768917476986,
+          "p95": 0.1235074977775042,
+          "max": 0.22992326546154523
+        },
+        "task_reference_acceleration_mps2": {
+          "rms": 0.616484019365824,
+          "p50": 0.3894188582507008,
+          "p95": 1.298529514928602,
+          "max": 1.3501308608649503
+        },
+        "task_reference_tilt_deg": {
+          "rms": 3.424434933979074,
+          "p50": 1.7398569040875664,
+          "p95": 7.500887692031719,
+          "max": 7.835083620191269
+        },
+        "task_reference_acceleration_zero_fraction": 5e-05
+      }
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C04_W14",
+      "n_samples": 20000,
+      "dt_s": 0.0009999999999998899,
+      "baseline_replay_max_abs_parity_error": 1.2173595465014841e-13,
+      "baseline_command_task_error_deg": {
+        "rms": 3.236232799047543,
+        "p50": 2.842517537302591,
+        "p95": 5.29177054351952,
+        "max": 6.751311306540793
+      },
+      "governor_command_task_error_deg": {
+        "rms": 1.706404995845308,
+        "p50": 0.9804033292781285,
+        "p95": 3.5013552902157676,
+        "max": 4.761831008986945
+      },
+      "governor_minus_baseline_task_error_p95_deg": -0.1879998163086265,
+      "baseline_post_filter_closure_mps2": {
+        "rms": 0.7110781416184493,
+        "p50": 0.5453580407768266,
+        "p95": 1.2748865663521036,
+        "max": 1.655194447667119
+      },
+      "governor_post_filter_closure_mps2": {
+        "rms": 0.7254106495301192,
+        "p50": 0.5505522374424552,
+        "p95": 1.395700381576358,
+        "max": 1.7992144170565598
+      },
+      "baseline_post_filter_closure_fraction_above_epsilon": 0.1393,
+      "governor_post_filter_closure_fraction_above_epsilon": 0.1378,
+      "governor_eta_delta_from_baseline_mps": {
+        "rms": 0.07667869143534127,
+        "p50": 0.07452907385504823,
+        "p95": 0.10336274857027528,
+        "max": 0.12795236848390104
+      },
+      "governor_target_shift_from_original_deg": {
+        "rms": 3.2693296220174943,
+        "p50": 1.9758430954524413,
+        "p95": 6.61866465981586,
+        "max": 10.34045506301506
+      },
+      "governor_filtered_reference_shift_from_original_deg": {
+        "rms": 1.9783008768267965,
+        "p50": 1.6911881125144737,
+        "p95": 3.372894878472837,
+        "max": 4.0160270563493095
+      },
+      "governor": {
+        "alpha_task_mean": 0.8636715,
+        "alpha_task_fraction": {
+          "rms": 0.929311871763188,
+          "p50": 1.0,
+          "p95": 1.0,
+          "max": 1.0
+        },
+        "fraction_alpha_positive": 0.8638,
+        "fraction_alpha_full": 0.86355,
+        "fallback_no_feasible_grid_point_fraction": 0.1362,
+        "target_shift_from_existing_position_command_deg": {
+          "rms": 3.2693296220174943,
+          "p50": 1.9758430954524413,
+          "p95": 6.61866465981586,
+          "max": 10.34045506301506
+        },
+        "one_step_filter_output_shift_vs_position_target_deg": {
+          "rms": 0.001059287042860608,
+          "p50": 0.0006401765351174483,
+          "p95": 0.0021445437963511713,
+          "max": 0.0033505682946938144
+        },
+        "commanded_task_attitude_error_deg": {
+          "rms": 1.706404995845308,
+          "p50": 0.9804033292781285,
+          "p95": 3.5013552902157676,
+          "max": 4.761831008986945
+        },
+        "post_filter_closure_mps2": {
+          "rms": 0.7254106495301192,
+          "p50": 0.5505522374424552,
+          "p95": 1.395700381576358,
+          "max": 1.7992144170565598
+        },
+        "post_filter_closure_fraction_above_fixed_epsilon": 0.1378,
+        "governor_predicted_closure_mps2": {
+          "rms": 0.7228506151029769,
+          "p50": 0.5494357184749248,
+          "p95": 1.388265484483403,
+          "max": 1.7895136149268007
+        },
+        "predicted_closure_fraction_above_fixed_epsilon": 0.1362,
+        "eta_norm_mps": {
+          "rms": 0.08551494010410704,
+          "p50": 0.08019033391401224,
+          "p95": 0.1312892828636539,
+          "max": 0.1591208097863071
+        },
+        "eta_component_rms_mps": [
+          0.07782523189587214,
+          0.034517371039024,
+          0.008036750457558538
+        ],
+        "max_target_tilt_deg": 15.447519925628281,
+        "max_filtered_reference_tilt_deg": 9.942271947657037,
+        "fraction_target_over_30deg": 0.0,
+        "fraction_filtered_reference_over_30deg": 0.0,
+        "filter_acceleration_request_max_abs_rads2": [
+          22.515480755505145,
+          63.6807711044178,
+          0.0
+        ],
+        "filter_acceleration_clipped_fraction": 0.0,
+        "filter_rate_max_abs_rads": [
+          0.49587716752859873,
+          1.1938839911946906,
+          0.0
+        ],
+        "static_task_pose_closure_mps2": {
+          "rms": 0.8132921209871573,
+          "p50": 0.4899788657367988,
+          "p95": 1.6512341555414374,
+          "max": 2.07833251485995
+        },
+        "static_force_cone_min_task_axis_error_lower_bound_deg": {
+          "rms": 1.1617185147123774,
+          "p50": 0.0,
+          "p95": 3.2623637250454287,
+          "max": 5.858227621886741
+        },
+        "static_force_cone_contains_task_axis_fraction": 0.7928,
+        "actual_to_task_yaw_gap_deg": {
+          "rms": 0.01755248555388368,
+          "p50": 0.003653139897429187,
+          "p95": 0.041610429902513305,
+          "max": 0.08115412588836321
+        },
+        "task_reference_acceleration_mps2": {
+          "rms": 0.616484019365824,
+          "p50": 0.3894188582507008,
+          "p95": 1.298529514928602,
+          "max": 1.3501308608649503
+        },
+        "task_reference_tilt_deg": {
+          "rms": 3.424434933979074,
+          "p50": 1.7398569040875664,
+          "p95": 7.500887692031719,
+          "max": 7.835083620191269
+        },
+        "task_reference_acceleration_zero_fraction": 5e-05
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C09_W09",
+      "n_samples": 20000,
+      "dt_s": 0.0009999999999998899,
+      "baseline_replay_max_abs_parity_error": 6.323414014630657e-14,
+      "baseline_command_task_error_deg": {
+        "rms": 3.4473311305055394,
+        "p50": 3.2779415925603788,
+        "p95": 4.983839664787029,
+        "max": 6.085452992209094
+      },
+      "governor_command_task_error_deg": {
+        "rms": 0.4245711928846433,
+        "p50": 0.27058715530266203,
+        "p95": 0.8894262147635481,
+        "max": 2.019962717797896
+      },
+      "governor_minus_baseline_task_error_p95_deg": -1.2445275498150201,
+      "baseline_post_filter_closure_mps2": {
+        "rms": 0.33412801297727973,
+        "p50": 0.24155799973283304,
+        "p95": 0.6156957746801678,
+        "max": 0.7479690865902158
+      },
+      "governor_post_filter_closure_mps2": {
+        "rms": 0.6288332412574288,
+        "p50": 0.5475116435845214,
+        "p95": 1.0313186812327297,
+        "max": 1.1928545139006026
+      },
+      "baseline_post_filter_closure_fraction_above_epsilon": 0.0,
+      "governor_post_filter_closure_fraction_above_epsilon": 0.02325,
+      "governor_eta_delta_from_baseline_mps": {
+        "rms": 0.136143581415884,
+        "p50": 0.13538401401336767,
+        "p95": 0.16844676306821493,
+        "max": 0.1979978683888905
+      },
+      "governor_target_shift_from_original_deg": {
+        "rms": 3.60982054781898,
+        "p50": 3.129432544475494,
+        "p95": 5.989707220145178,
+        "max": 7.494586911303511
+      },
+      "governor_filtered_reference_shift_from_original_deg": {
+        "rms": 3.269892587988117,
+        "p50": 3.1226769131295553,
+        "p95": 4.590285818487841,
+        "max": 5.432897807674165
+      },
+      "governor": {
+        "alpha_task_mean": 0.9782934999999999,
+        "alpha_task_fraction": {
+          "rms": 0.9890467001107683,
+          "p50": 1.0,
+          "p95": 1.0,
+          "max": 1.0
+        },
+        "fraction_alpha_positive": 0.97845,
+        "fraction_alpha_full": 0.97795,
+        "fallback_no_feasible_grid_point_fraction": 0.02155,
+        "target_shift_from_existing_position_command_deg": {
+          "rms": 3.60982054781898,
+          "p50": 3.129432544475494,
+          "p95": 5.989707220145178,
+          "max": 7.494586911303511
+        },
+        "one_step_filter_output_shift_vs_position_target_deg": {
+          "rms": 0.0011695996282491995,
+          "p50": 0.001013935915459278,
+          "p95": 0.0019407229207426431,
+          "max": 0.002428415023660981
+        },
+        "commanded_task_attitude_error_deg": {
+          "rms": 0.4245711928846433,
+          "p50": 0.27058715530266203,
+          "p95": 0.8894262147635481,
+          "max": 2.019962717797896
+        },
+        "post_filter_closure_mps2": {
+          "rms": 0.6288332412574288,
+          "p50": 0.5475116435845214,
+          "p95": 1.0313186812327297,
+          "max": 1.1928545139006026
+        },
+        "post_filter_closure_fraction_above_fixed_epsilon": 0.02325,
+        "governor_predicted_closure_mps2": {
+          "rms": 0.6286155714655838,
+          "p50": 0.547371275136786,
+          "p95": 1.0307112156968306,
+          "max": 1.187193135381339
+        },
+        "predicted_closure_fraction_above_fixed_epsilon": 0.02155,
+        "eta_norm_mps": {
+          "rms": 0.1378095807040829,
+          "p50": 0.13547592716650267,
+          "p95": 0.17480714098912706,
+          "max": 0.21776224318589849
+        },
+        "eta_component_rms_mps": [
+          0.13445441000239608,
+          0.02954382729016353,
+          0.00637608295050786
+        ],
+        "max_target_tilt_deg": 8.896557748450302,
+        "max_filtered_reference_tilt_deg": 3.3653978474225617,
+        "fraction_target_over_30deg": 0.0,
+        "fraction_filtered_reference_over_30deg": 0.0,
+        "filter_acceleration_request_max_abs_rads2": [
+          12.645132125607569,
+          35.88618475123191,
+          0.0
+        ],
+        "filter_acceleration_clipped_fraction": 0.0,
+        "filter_rate_max_abs_rads": [
+          0.32373271170347023,
+          0.8308258641894191,
+          0.0
+        ],
+        "static_task_pose_closure_mps2": {
+          "rms": 0.6528030660368414,
+          "p50": 0.5597107929226651,
+          "p95": 1.083884513632478,
+          "max": 1.3168791118185212
+        },
+        "static_force_cone_min_task_axis_error_lower_bound_deg": {
+          "rms": 0.14537610937526263,
+          "p50": 0.0,
+          "p95": 0.06350932577112085,
+          "max": 1.3911603177439078
+        },
+        "static_force_cone_contains_task_axis_fraction": 0.94245,
+        "actual_to_task_yaw_gap_deg": {
+          "rms": 0.058760973981123385,
+          "p50": 0.012405383827212662,
+          "p95": 0.145098384661705,
+          "max": 0.237285268218677
+        },
+        "task_reference_acceleration_mps2": {
+          "rms": 0.33123146848432444,
+          "p50": 0.3353956007040001,
+          "p95": 0.4605658344000006,
+          "max": 0.46188016842240076
+        },
+        "task_reference_tilt_deg": {
+          "rms": 1.9354657730458904,
+          "p50": 1.9601280495523175,
+          "p95": 2.6907220786187582,
+          "max": 2.6983893602612157
+        },
+        "task_reference_acceleration_zero_fraction": 0.0004
+      }
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C01_W14",
+      "n_samples": 20000,
+      "dt_s": 0.0009999999999998899,
+      "baseline_replay_max_abs_parity_error": 1.3494760864318778e-13,
+      "baseline_command_task_error_deg": {
+        "rms": 3.9299591840274495,
+        "p50": 3.458330640237128,
+        "p95": 6.390260279777729,
+        "max": 7.982812995200383
+      },
+      "governor_command_task_error_deg": {
+        "rms": 2.1641772922473432,
+        "p50": 1.2714074612248711,
+        "p95": 4.456935158228775,
+        "max": 5.800537263752328
+      },
+      "governor_minus_baseline_task_error_p95_deg": -0.5782122645136478,
+      "baseline_post_filter_closure_mps2": {
+        "rms": 0.7801260746749332,
+        "p50": 0.6013041150172609,
+        "p95": 1.3844742567663424,
+        "max": 1.7872107790068257
+      },
+      "governor_post_filter_closure_mps2": {
+        "rms": 0.7955940929546916,
+        "p50": 0.6165111222961702,
+        "p95": 1.5004503936558098,
+        "max": 1.9578966834119176
+      },
+      "baseline_post_filter_closure_fraction_above_epsilon": 0.1909,
+      "governor_post_filter_closure_fraction_above_epsilon": 0.17175,
+      "governor_eta_delta_from_baseline_mps": {
+        "rms": 0.0861260279876504,
+        "p50": 0.08265783030612531,
+        "p95": 0.12594891890139392,
+        "max": 0.15451015987170652
+      },
+      "governor_target_shift_from_original_deg": {
+        "rms": 3.662266745239676,
+        "p50": 2.256053661759702,
+        "p95": 7.403244965633839,
+        "max": 11.36549757515168
+      },
+      "governor_filtered_reference_shift_from_original_deg": {
+        "rms": 2.2563150098335303,
+        "p50": 1.971829139693055,
+        "p95": 3.779680804523189,
+        "max": 5.100027222609912
+      },
+      "governor": {
+        "alpha_task_mean": 0.8304674999999999,
+        "alpha_task_fraction": {
+          "rms": 0.9112734359126244,
+          "p50": 1.0,
+          "p95": 1.0,
+          "max": 1.0
+        },
+        "fraction_alpha_positive": 0.8306,
+        "fraction_alpha_full": 0.83035,
+        "fallback_no_feasible_grid_point_fraction": 0.1694,
+        "target_shift_from_existing_position_command_deg": {
+          "rms": 3.662266745239676,
+          "p50": 2.256053661759702,
+          "p95": 7.403244965633839,
+          "max": 11.36549757515168
+        },
+        "one_step_filter_output_shift_vs_position_target_deg": {
+          "rms": 0.0011866097697134192,
+          "p50": 0.0007309668623087728,
+          "p95": 0.0023986863504384514,
+          "max": 0.0036826092944547604
+        },
+        "commanded_task_attitude_error_deg": {
+          "rms": 2.1641772922473432,
+          "p50": 1.2714074612248711,
+          "p95": 4.456935158228775,
+          "max": 5.800537263752328
+        },
+        "post_filter_closure_mps2": {
+          "rms": 0.7955940929546916,
+          "p50": 0.6165111222961702,
+          "p95": 1.5004503936558098,
+          "max": 1.9578966834119176
+        },
+        "post_filter_closure_fraction_above_fixed_epsilon": 0.17175,
+        "governor_predicted_closure_mps2": {
+          "rms": 0.7925023374872967,
+          "p50": 0.6148045970978054,
+          "p95": 1.4915822403702548,
+          "max": 1.948125055817836
+        },
+        "predicted_closure_fraction_above_fixed_epsilon": 0.1694,
+        "eta_norm_mps": {
+          "rms": 0.09283744153894223,
+          "p50": 0.08529194299146912,
+          "p95": 0.1465963714229861,
+          "max": 0.1919574684459199
+        },
+        "eta_component_rms_mps": [
+          0.08481652267641965,
+          0.03634830875554165,
+          0.010185699936125206
+        ],
+        "max_target_tilt_deg": 14.132016920689694,
+        "max_filtered_reference_tilt_deg": 6.692434295613726,
+        "fraction_target_over_30deg": 0.0,
+        "fraction_filtered_reference_over_30deg": 0.0,
+        "filter_acceleration_request_max_abs_rads2": [
+          30.281269924244945,
+          74.86069315316877,
+          0.0
+        ],
+        "filter_acceleration_clipped_fraction": 0.0,
+        "filter_rate_max_abs_rads": [
+          0.6249635343405471,
+          1.4020035180186545,
+          0.0
+        ],
+        "static_task_pose_closure_mps2": {
+          "rms": 0.9173478906830665,
+          "p50": 0.5833441052044948,
+          "p95": 1.8183212192184521,
+          "max": 2.345195339579447
+        },
+        "static_force_cone_min_task_axis_error_lower_bound_deg": {
+          "rms": 1.6452546467758256,
+          "p50": 0.0,
+          "p95": 4.4308183200752005,
+          "max": 7.496401071779954
+        },
+        "static_force_cone_contains_task_axis_fraction": 0.7462,
+        "actual_to_task_yaw_gap_deg": {
+          "rms": 0.1895048700477023,
+          "p50": 0.04970631682163844,
+          "p95": 0.43108674571186856,
+          "max": 0.6873971162342135
+        },
+        "task_reference_acceleration_mps2": {
+          "rms": 0.33123146848432444,
+          "p50": 0.3353956007040001,
+          "p95": 0.4605658344000006,
+          "max": 0.46188016842240076
+        },
+        "task_reference_tilt_deg": {
+          "rms": 1.9354657730458904,
+          "p50": 1.9601280495523175,
+          "p95": 2.6907220786187582,
+          "max": 2.6983893602612157
+        },
+        "task_reference_acceleration_zero_fraction": 0.0004
+      }
+    }
+  ]
+}

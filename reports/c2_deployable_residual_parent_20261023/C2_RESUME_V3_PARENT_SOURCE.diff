@@ -1,0 +1,299 @@
+--- 
++++ 
+@@ -1,9 +1,9 @@
+-function summary = run_c2_beta_v2(mode)
++function summary = run_c2_beta_v3(mode)
+ % Fixed twelve-scene C2 screen. A failed attempt is retained and never retried.
+ if nargin~=1, error('C2:Mode','Pass exactly PROBE or CONTINUE.'); end
+-mode=upper(char(mode)); assert(strcmp(mode,'CONTINUE'),'C2:Mode','v2 runner only allows CONTINUE.');
++mode=upper(char(mode)); assert(strcmp(mode,'CONTINUE'),'C2:Mode','v3 runner only allows CONTINUE.');
+ here=fileparts(mfilename('fullpath')); repoRoot=fileparts(fileparts(here));
+-lockPath=fullfile(here,'C2_SOURCE_LOCK.json'); releasePath=fullfile(here,'C2_RELEASE_v2.json');
++lockPath=fullfile(here,'C2_SOURCE_LOCK.json'); releasePath=fullfile(here,'C2_RELEASE_v3.json');
+ contractPath=fullfile(here,'C2_RUN_CONTRACT.json');
+ lock=jsondecode(fileread(lockPath)); release=jsondecode(fileread(releasePath)); contract=jsondecode(fileread(contractPath));
+ sourceLockSha=sha256_file(lockPath); releaseSha=sha256_file(releasePath); contractSha=sha256_file(contractPath);
+@@ -12,6 +12,8 @@
+     strcmp(release.schema,'C2_BETA_CLOCK_EXECUTION_RELEASE_V1') && ...
+     strcmp(release.state,'PREPARED_FOR_SOURCE_REVIEW_NO_PLANT') && ...
+     strcmp(release.candidate_condition_id,'C2_ON1_BETA_ALIGNED') && ...
++    double(release.max_new_sorties)==12 && double(release.probe_sorties)==1 && ...
++    double(release.continue_sorties)==10 && ...
+     ~logical(release.optimizer_steps) && ~logical(release.gpu_jobs) && ~logical(release.TEST_accessed), ...
+     'C2:Scope','C2 release/lock/root or scope is invalid.');
+ assert(strcmpi(sourceLockSha,release.source_lock_sha256) && ...
+@@ -42,6 +44,13 @@
+ verify_file(release.preflight_path,release.preflight_sha256);
+ verify_file(release.matlab_smoke_path,release.matlab_smoke_sha256);
+ verify_file(release.no_plant_smoke_result_path,release.no_plant_smoke_result_sha256);
++verify_file(release.repair.parent_release_path,release.repair.parent_release_sha256);
++verify_file(release.repair.probe_summary_path,release.repair.probe_summary_sha256);
++verify_file(release.repair.probe_attempt_started_marker_path,release.repair.probe_attempt_started_marker_sha256);
++verify_file(release.repair.recovery_review_path,release.repair.recovery_review_sha256);
++verify_file(release.repair.failed_launch_path,release.repair.failed_launch_sha256);
++verify_file(release.repair.failed_v2_launch_path,release.repair.failed_v2_launch_sha256);
++verify_file(release.repair.failed_v2_completion_path,release.repair.failed_v2_completion_sha256);
+ budget=jsondecode(fileread(release.user_budget_authorization_path));
+ assert(strcmp(budget.status,'USER_AUTHORIZED_ADDITIONAL_MAX_12_SORTIES') && ...
+     double(budget.max_new_sorties)==12 && double(budget.probe_sorties)==1 && ...
+@@ -61,36 +70,42 @@
+     numel(c1lock.shared_scenes)==12 && numel(r2.runtimeFiles)==9 && numel(r2.plantFiles)==22, ...
+     'C2:InventoryShape','Expected the frozen nine-runtime/22-Plant/12-scene inventory.');
+ 
+-approvalPath=fullfile(here,'reports',['C2_' mode '_APPROVAL_v2.json']);
++approvalPath=fullfile(here,'reports',['C2_' mode '_APPROVAL_v3.json']);
+ assert(isfile(approvalPath),'C2:ApprovalMissing','Separate parent %s approval is required.',mode);
+ approval=jsondecode(fileread(approvalPath)); approvalSha=sha256_file(approvalPath);
+-expectedRuns=1; indices=1; summaryPath=fullfile(here,'reports','C2_PROBE_SUMMARY.json');
+-if strcmp(mode,'CONTINUE')
+-    expectedRuns=11; indices=2:12; summaryPath=fullfile(here,'reports','C2_CONTINUE_SUMMARY.json');
+-end
+-remainingAuthorized=12;
+-if strcmp(mode,'CONTINUE'), remainingAuthorized=11; end
++expectedRuns=10; indices=3:12;
++summaryPath=fullfile(here,'reports','C2_CONTINUE_SUMMARY_v3.json');
++remainingAuthorized=10;
+ expectedStatus=['APPROVED_' mode];
+ assert(strcmp(approval.status,expectedStatus) && strcmp(approval.mode,mode) && ...
+     strcmp(approval.candidate_condition_id,contract.candidate_condition_id) && ...
+     strcmpi(approval.source_lock_sha256,sourceLockSha) && strcmpi(approval.release_sha256,releaseSha) && ...
+     strcmpi(approval.user_budget_authorization_sha256,release.user_budget_authorization_sha256) && ...
+-    double(approval.expected_new_runs)==expectedRuns && ~isfile(summaryPath), ...
++    double(approval.expected_new_runs)==expectedRuns && ~isfile(summaryPath) && ...
++    strcmpi(approval.probe_summary_sha256,release.repair.probe_summary_sha256) && ...
++    strcmpi(approval.recovery_review_sha256,release.repair.recovery_review_sha256), ...
+     'C2:ApprovalMismatch','Approval does not bind this exact fixed C2 stage.');
+ sceneIds=string({c1lock.shared_scenes.scene_id}).'; approvedIds=string(approval.scene_ids(:));
+ assert(isequal(approvedIds,sceneIds(indices)),'C2:ApprovalScenes','Approval scene order differs from the frozen twelve-scene list.');
+ 
+-probeSummaryPath=fullfile(here,'reports','C2_PROBE_SUMMARY.json'); probeSummarySha='';
+-if strcmp(mode,'CONTINUE')
+-    assert(isfile(probeSummaryPath)&&isfield(approval,'probe_summary_sha256'), ...
+-        'C2:ProbeMissing','CONTINUE requires a parent-bound completed probe.');
+-    probeSummarySha=sha256_file(probeSummaryPath);
+-    assert(strcmpi(probeSummarySha,approval.probe_summary_sha256), ...
+-        'C2:ProbeBinding','CONTINUE approval must bind the exact probe summary.');
+-    verify_completed_probe(probeSummaryPath,probeSummarySha,here,c1lock,release,contract);
+-end
+-
+-preflightPath=fullfile(here,'reports',['preflight_c2_' lower(mode) '_v2.json']);
++probeSummaryPath=char(release.repair.probe_summary_path);
++probeSummarySha=sha256_file(probeSummaryPath);
++assert(strcmpi(probeSummarySha,approval.probe_summary_sha256) && ...
++    same_path(release.repair.parent_release_path,fullfile(here,'C2_RELEASE_v2.json')) && ...
++    same_path(release.repair.probe_summary_path,fullfile(here,'reports','C2_PROBE_SUMMARY.json')) && ...
++    same_path(release.repair.failed_launch_path,fullfile(here,'reports','C2_CONTINUE_LAUNCH.json')) && ...
++    same_path(release.repair.failed_v2_launch_path,fullfile(here,'reports','C2_CONTINUE_v2_LAUNCH.json')) && ...
++    same_path(release.repair.failed_v2_completion_path,fullfile(here,'reports','C2_CONTINUE_v2_COMPLETION.json')), ...
++    'C2:RepairBindings','v3 recovery bindings differ from the approved v2/probe/failure records.');
++verify_completed_probe(probeSummaryPath,probeSummarySha,here,c1lock,release,contract);
++recoveryReviewPath=char(release.repair.recovery_review_path);
++recoveryReviewSha=sha256_file(recoveryReviewPath);
++assert(strcmpi(recoveryReviewSha,approval.recovery_review_sha256), ...
++    'C2:RecoveryApproval','CONTINUE approval must bind the exact scene2 recovery review.');
++verify_scene2_recovery_review(recoveryReviewPath,recoveryReviewSha,release, ...
++    char(c1lock.shared_scenes(2).scene_id),contract);
++
++preflightPath=fullfile(here,'reports',['preflight_c2_' lower(mode) '_v3.json']);
+ assert(isfile(preflightPath),'C2:PreflightMissing','Fresh PS7 preflight is required.');
+ pf=jsondecode(fileread(preflightPath)); pfSha=sha256_file(preflightPath);
+ pfTime=datetime(char(pf.created_utc),'InputFormat','yyyy-MM-dd''T''HH:mm:ss.SSS''Z''','TimeZone','UTC');
+@@ -168,11 +183,7 @@
+     'C2:CandidateOptions','Only the frozen ON1 c=1/W0/FEATURE/gamma12 contract is allowed.');
+ 
+ runsRoot=fullfile(here,'runs_c2');
+-if strcmp(mode,'PROBE')
+-    assert(~isfolder(runsRoot),'C2:NoRetry','PROBE refuses any pre-existing output root.');
+-else
+-    verify_no_unapproved_c2_output(runsRoot,sceneIds(1),contract);
+-end
++verify_v3_resume_tree(runsRoot,sceneIds,contract,release,probeSummaryPath,probeSummarySha);
+ for si=indices
+     attemptCheck=fullfile(runsRoot,char(sceneIds(si)),contract.candidate_condition_id,'attempt_01');
+     assert(~isfolder(attemptCheck),'C2:NoRetry','Attempt already exists; no retry or overwrite: %s',attemptCheck);
+@@ -194,8 +205,8 @@
+     scene=scenePack.scene; if ~strcmp(char(scene.scene_id),sceneId), scene.scene_id=sceneId; end
+     attemptDir=fullfile(runsRoot,sceneId,contract.candidate_condition_id,'attempt_01');
+     assert(~isfolder(attemptDir),'C2:NoRetry','Attempt exists; no retry or overwrite: %s',attemptDir);
+-    completedBefore=completed_c2_runs(runsRoot);
+-    reservedRuns=12-completedBefore;
++    startedBefore=started_c2_attempts(runsRoot);
++    reservedRuns=12-startedBefore;
+     reserveBytes=int64(reservedRuns)*int64(80000000);
+     currentBytes=directory_bytes(here);
+     freeBytes=double(java.io.File(repoRoot).getUsableSpace());
+@@ -279,8 +290,7 @@
+             'C2:ActualOutputBudget','Actual attempt/C2 output would exceed its hard cap.');
+         write_text(statusPath,statusText);
+         actualAttemptBytes=directory_bytes(attemptDir); actualC2Bytes=directory_bytes(here);
+-        assert(actualAttemptBytes<=80000000&&actualC2Bytes<=double(budget.new_output_cap_bytes)&& ...
+-            actualAttemptBytes==projectedAttemptBytes, ...
++        assert(actualAttemptBytes<=80000000&&actualC2Bytes<=double(budget.new_output_cap_bytes), ...
+             'C2:ActualOutputBudget','Actual attempt/C2 output exceeded its hard cap after status write.');
+         row=struct('scene_id',sceneId,'condition',contract.candidate_condition_id,'status',status.status, ...
+             'raw_path',rawPath,'raw_sha256',rawSha,'run_start_path',runStartPath,'run_start_sha256',startSha, ...
+@@ -325,7 +335,7 @@
+     'plant_start_confirmed_count',sum([runRows.plant_start_confirmed]), ...
+     'attempt_runtime_seconds',toc(startedTimer),'output_bytes',0, ...
+     'output_bytes_snapshot_utc',utc_now(), ...
+-    'remaining_authorized_new_sorties',12-completed_c2_runs(runsRoot));
++     'remaining_authorized_new_sorties',12-started_c2_attempts(runsRoot));
+ [summary,summaryText,projectedSummaryBytes]=encode_budgeted_summary( ...
+     summary,here,double(budget.new_output_cap_bytes));
+ assert(projectedSummaryBytes<=double(budget.new_output_cap_bytes), ...
+@@ -337,35 +347,22 @@
+ end
+ 
+ function [status,payload,attemptBytes,totalBytes]=encode_budgeted_status(status,attemptDir,c2Dir,totalCap,attemptCap)
+-baseAttempt=directory_bytes(attemptDir); baseTotal=directory_bytes(c2Dir);
+-attemptBytes=baseAttempt; totalBytes=baseTotal; payload='';
+-for k=1:10
+-    status.attempt_bytes_projected=attemptBytes;
+-    status.c2_directory_bytes_projected_after_status=totalBytes;
+-    payload=[jsonencode(status,'PrettyPrint',true) newline];
+-    payloadBytes=numel(unicode2native(payload,'UTF-8'));
+-    nextAttempt=baseAttempt+payloadBytes; nextTotal=baseTotal+payloadBytes;
+-    if nextAttempt==attemptBytes&&nextTotal==totalBytes, break; end
+-    attemptBytes=nextAttempt; totalBytes=nextTotal;
+-end
++baseAttempt=directory_bytes(attemptDir); baseTotal=directory_bytes(c2Dir); safetyMargin=65536;
++attemptBytes=baseAttempt+safetyMargin; totalBytes=baseTotal+safetyMargin;
+ status.attempt_bytes_projected=attemptBytes;
+ status.c2_directory_bytes_projected_after_status=totalBytes;
+ payload=[jsonencode(status,'PrettyPrint',true) newline];
+-payloadBytes=numel(unicode2native(payload,'UTF-8'));
+-assert(baseAttempt+payloadBytes==attemptBytes && baseTotal+payloadBytes==totalBytes, ...
+-    'C2:BudgetSerialization','Could not stabilize exact status JSON byte count.');
+ assert(attemptBytes<=attemptCap&&totalBytes<=totalCap, ...
+-    'C2:ActualOutputBudget','Actual attempt/C2 output exceeds its hard cap before status write.');
++    'C2:ActualOutputBudget','Conservative projected attempt/C2 output exceeds its hard cap before status write.');
+ end
+ 
+ function [summary,payload,totalBytes]=encode_budgeted_summary(summary,c2Dir,totalCap)
+ base=directory_bytes(c2Dir); summary.output_bytes=base;
+ summary.output_bytes_snapshot_utc=utc_now();
+ payload=[jsonencode(summary,'PrettyPrint',true) newline];
+-payloadBytes=numel(unicode2native(payload,'UTF-8'));
+-totalBytes=base+payloadBytes;
++totalBytes=base+65536;
+ assert(totalBytes<=totalCap, ...
+-    'C2:ActualOutputBudget','Summary serialization exceeds the C2 directory cap.');
++    'C2:ActualOutputBudget','Conservative projected summary serialization exceeds the C2 directory cap.');
+ end
+ 
+ function verify_r2_inputs(r2)
+@@ -454,33 +451,90 @@
+ 
+ function ids=lockSceneId(lock,ix), ids=string(lock.shared_scenes(ix).scene_id); end
+ 
+-function verify_no_unapproved_c2_output(runsRoot,probeScene,contract)
+-assert(isfolder(runsRoot),'C2:ProbeMissing','CONTINUE requires the successful C2 PROBE output.');
++function verify_v3_resume_tree(runsRoot,sceneIds,contract,release,probeSummaryPath,probeSummarySha)
++assert(isfolder(runsRoot),'C2:ResumeTree','v3 requires the preserved C2 output tree.');
+ dirs=dir(runsRoot); dirs=dirs([dirs.isdir]&~ismember({dirs.name},{'.','..'}));
+-assert(numel(dirs)==1&&strcmp(dirs(1).name,char(probeScene)), ...
+-    'C2:NoRetry','Only the exact first-scene PROBE output may exist before CONTINUE.');
+-sceneDir=fullfile(runsRoot,char(probeScene)); cdirs=dir(sceneDir); cdirs=cdirs([cdirs.isdir]&~ismember({cdirs.name},{'.','..'}));
+-assert(numel(cdirs)==1&&strcmp(cdirs(1).name,contract.candidate_condition_id), ...
+-    'C2:NoRetry','Unexpected condition output exists before CONTINUE.');
+-adir=fullfile(sceneDir,contract.candidate_condition_id); attempts=dir(adir); attempts=attempts([attempts.isdir]&~ismember({attempts.name},{'.','..'}));
+-assert(numel(attempts)==1&&strcmp(attempts(1).name,'attempt_01'), ...
+-    'C2:NoRetry','Unexpected attempt directory exists before CONTINUE.');
+-expected=sort({fullfile(char(probeScene),contract.candidate_condition_id,'attempt_01','attempt_started.marker'), ...
+-    fullfile(char(probeScene),contract.candidate_condition_id,'attempt_01','r2e_first_plant_step.marker'), ...
+-    fullfile(char(probeScene),contract.candidate_condition_id,'attempt_01','raw_run.mat'), ...
+-    fullfile(char(probeScene),contract.candidate_condition_id,'attempt_01','run_start.mat'), ...
+-    fullfile(char(probeScene),contract.candidate_condition_id,'attempt_01','run_status.json')});
++expectedScenes=cellstr(sceneIds(1:2)).';
++assert(numel(dirs)==2&&isequal(sort({dirs.name}),sort(expectedScenes)), ...
++    'C2:NoRetry','Only the original probe and approved scene2 recovery may exist before v3.');
++expectedNames=sort({'attempt_started.marker','r2e_first_plant_step.marker','raw_run.mat','run_start.mat','run_status.json'});
++for si=1:2
++    sceneDir=fullfile(runsRoot,char(sceneIds(si)));
++    conditions=dir(sceneDir); conditions=conditions([conditions.isdir]&~ismember({conditions.name},{'.','..'}));
++    assert(numel(conditions)==1&&strcmp(conditions.name,contract.candidate_condition_id), ...
++        'C2:NoRetry','Unexpected condition output exists before v3.');
++    conditionDir=fullfile(sceneDir,contract.candidate_condition_id);
++    attempts=dir(conditionDir); attempts=attempts([attempts.isdir]&~ismember({attempts.name},{'.','..'}));
++    assert(numel(attempts)==1&&strcmp(attempts.name,'attempt_01'), ...
++        'C2:NoRetry','Only attempt_01 is allowed for the two consumed scenes.');
++    attemptDir=fullfile(conditionDir,'attempt_01');
++    listing=dir(attemptDir); names=sort({listing(~[listing.isdir]).name});
++    assert(isequal(names,expectedNames),'C2:NoRetry','Each preserved attempt must contain exactly five files.');
++end
+ files=dir(fullfile(runsRoot,'**','*')); files=files(~[files.isdir]);
+-actual=sort(cellfun(@(p)erase(p,[runsRoot filesep]),fullfile({files.folder},{files.name}),'UniformOutput',false));
+-assert(isequal(actual,expected),'C2:NoRetry','Probe output tree contains unexpected or partial files.');
+-end
+-
+-function n=completed_c2_runs(runsRoot)
++expectedFiles=cell(1,10); n=0;
++for si=1:2
++    for name=expectedNames
++        n=n+1; expectedFiles{n}=fullfile(char(sceneIds(si)),contract.candidate_condition_id,'attempt_01',name{1});
++    end
++end
++actualFiles=sort(cellfun(@(p)erase(p,[runsRoot filesep]),fullfile({files.folder},{files.name}),'UniformOutput',false));
++assert(isequal(sort(expectedFiles),actualFiles),'C2:NoRetry','The resumed output tree contains an unapproved or partial file.');
++probe=jsondecode(fileread(probeSummaryPath)); probeRow=probe.run_rows(1);
++probeDir=fullfile(runsRoot,char(sceneIds(1)),contract.candidate_condition_id,'attempt_01');
++expectedProbeMarker=fullfile(probeDir,'attempt_started.marker');
++assert(strcmpi(sha256_file(probeSummaryPath),probeSummarySha) && ...
++    same_path(release.repair.probe_attempt_started_marker_path,expectedProbeMarker), ...
++    'C2:ProbeAttemptMarker','The v1 probe attempt marker path does not match the fixed first scene.');
++verify_file(expectedProbeMarker,release.repair.probe_attempt_started_marker_sha256);
++verify_file(fullfile(probeDir,'raw_run.mat'),probeRow.raw_sha256);
++verify_file(fullfile(probeDir,'run_start.mat'),probeRow.run_start_sha256);
++verify_file(fullfile(probeDir,'run_status.json'),probeRow.run_status_sha256);
++verify_file(fullfile(probeDir,'r2e_first_plant_step.marker'),probeRow.r2e_first_plant_step_marker_sha256);
++verify_scene2_recovery_review(release.repair.recovery_review_path,release.repair.recovery_review_sha256, ...
++    release,char(sceneIds(2)),contract);
++end
++
++function verify_scene2_recovery_review(path,expectedSha,release,sceneId,contract)
++verify_file(path,expectedSha); recovery=jsondecode(fileread(path));
++attemptDir=fullfile(fileparts(char(release.source_lock_path)),'runs_c2',sceneId, ...
++    contract.candidate_condition_id,'attempt_01');
++parentSha=sha256_file(release.repair.parent_release_path);
++assert(strcmp(recovery.schema,'C2_SCENE2_RECOVERY_REVIEW_V1')&& ...
++    strcmp(recovery.scene_id,sceneId)&&strcmp(recovery.condition,contract.candidate_condition_id)&& ...
++    strcmp(recovery.collection_status_original,'FAILED_NO_RETRY')&& ...
++    strcmp(recovery.collection_identifier,'C2:BudgetSerialization')&& ...
++    ~logical(recovery.collection_success)&&logical(recovery.raw_usable_for_scoring)&& ...
++    same_path(recovery.parent_release_path,release.repair.parent_release_path)&& ...
++    strcmpi(recovery.parent_release_sha256,parentSha)&& ...
++    strcmpi(recovery.source_lock_sha256,release.source_lock_sha256)&& ...
++    strcmpi(recovery.raw_sha256,'f01d4d5463e78b7fd2e448ba93c07eb37a92d337c2228736baf6f74959610167')&& ...
++    same_path(recovery.frozen_scorer.path,fullfile(fileparts(char(release.parent_score_script_path)),'score_c2_beta.py'))&& ...
++    strcmpi(recovery.frozen_scorer.sha256,'3037abb1935b2d969490946aa2219dd862b0979aad750e383adc00b47fee2eb4'), ...
++    'C2:RecoveryReview','Scene2 recovery review does not match the preserved failed attempt.');
++verify_file(recovery.frozen_scorer.path,recovery.frozen_scorer.sha256);
++names={'raw_run.mat','run_start.mat','run_status.json','attempt_started.marker','r2e_first_plant_step.marker'};
++keys={'raw','run_start','run_status','attempt_started_marker','first_plant_marker'};
++for k=1:numel(names)
++    entry=recovery.five_file_identity.(keys{k}); file=fullfile(attemptDir,names{k});
++    assert(same_path(entry.path,file),'C2:RecoveryPath','Recovery path differs for %s.',names{k});
++    verify_file(file,entry.sha256);
++    info=dir(file); assert(double(info.bytes)==double(entry.size_bytes), ...
++        'C2:RecoverySize','Recovery file size differs for %s.',names{k});
++end
++status=jsondecode(fileread(fullfile(attemptDir,'run_status.json')));
++assert(strcmp(status.status,'FAILED_NO_RETRY')&&strcmp(status.identifier,'C2:BudgetSerialization')&& ...
++    strcmp(status.scene_id,sceneId)&&strcmp(status.condition,contract.candidate_condition_id)&& ...
++    strcmpi(status.partial_raw_sha256,recovery.raw_sha256)&& ...
++    strcmpi(status.run_start_sha256,recovery.five_file_identity.run_start.sha256)&& ...
++    strcmpi(status.release_sha256,release.repair.parent_release_sha256)&& ...
++    logical(status.partial_raw_preserved)&&logical(status.first_plant_step_marker_present), ...
++    'C2:RecoveryStatus','Original scene2 FAILED_NO_RETRY status changed or is inconsistent.');
++end
++
++function n=started_c2_attempts(runsRoot)
+ n=0; if ~isfolder(runsRoot), return; end
+-d=dir(fullfile(runsRoot,'**','run_status.json'));
+-for k=1:numel(d)
+-    try, s=jsondecode(fileread(fullfile(d(k).folder,d(k).name))); if strcmp(s.status,'STABLE'), n=n+1; end, catch, end
+-end
++d=dir(fullfile(runsRoot,'**','attempt_started.marker')); n=numel(d);
+ end
+ 
+ function result=validate_candidate_log(log,W0,cfg,c1onPath,c1bPath)

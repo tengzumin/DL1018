@@ -1,0 +1,126 @@
+{
+  "schema": "DL1018_CAUSAL_N4_GATE_NOPLANT_V2",
+  "study_id": "causal_n4_gate_v2",
+  "status": "PREPARED_NO_PLANT_PENDING_ROOT_AUDIT",
+  "authorized_scenes": [
+    "DL1018_DEV_T3_C09_W09",
+    "DL1018_DEV_T1_C00_W03",
+    "DL1018_DEV_T1_C11_W12"
+  ],
+  "authorized_Plant_calls": 0,
+  "Plant_calls": 0,
+  "potential_budget_calls": 0,
+  "source_lock_sha256": "94301260f83dc097d2fb5b95d71ea081d3c5639163e65cb393cf85655dc3b6bb",
+  "applied_acceleration_static_n4": {
+    "enabled": true,
+    "centers_hz": [
+      2.2,
+      3.2,
+      3.7,
+      4.8
+    ],
+    "quality_factor_each": [
+      4,
+      4,
+      4,
+      4
+    ],
+    "sample_rate_hz": 100,
+    "action_limit_mps2": 3,
+    "b": [
+      [
+        0.9830678494084116,
+        -1.9473815673631925,
+        0.9830678494084116
+      ],
+      [
+        0.9756442629082012,
+        -1.9119799206806107,
+        0.9756442629082012
+      ],
+      [
+        0.972007469545749,
+        -1.8917180425569462,
+        0.972007469545749
+      ],
+      [
+        0.9641990969122544,
+        -1.841359063436488,
+        0.9641990969122544
+      ]
+    ],
+    "a": [
+      [
+        1.0,
+        -1.9473815673631925,
+        0.9661356988168233
+      ],
+      [
+        1.0,
+        -1.9119799206806107,
+        0.9512885258164024
+      ],
+      [
+        1.0,
+        -1.8917180425569462,
+        0.9440149390914979
+      ],
+      [
+        1.0,
+        -1.841359063436488,
+        0.9283981938245087
+      ]
+    ],
+    "gate_bp_sos": [
+      [
+        0.00782020803349719,
+        0.01564041606699438,
+        0.00782020803349719,
+        1.0,
+        -1.765303227856989,
+        0.8375337582790457
+      ],
+      [
+        1.0,
+        -2.0,
+        1.0,
+        1.0,
+        -1.8957260285978639,
+        0.9145978814242006
+      ]
+    ],
+    "gate_lo_sos": [
+      [
+        0.002080567135492293,
+        0.004161134270984586,
+        0.002080567135492293,
+        1.0,
+        -1.8925388671474799,
+        0.9041738508370836
+      ],
+      [
+        1.0,
+        -2.0,
+        1.0,
+        1.0,
+        -1.9667173311097974,
+        0.9679715327350051
+      ]
+    ],
+    "gate_energy_tau_s": 1,
+    "gate_ratio_epsilon": 1e-08,
+    "gate_ratio_low": 0.35,
+    "gate_ratio_span": 0.3,
+    "gate_tau_s": 0.3,
+    "startup_gate_zero_until_s": 2,
+    "event_contract": "1999 events 0.01:0.01:19.99; 31 warmup actions are zero; ZOH at other 1-ms steps",
+    "application_point": "final C5 applied compensation before position_bs_step",
+    "state_initialization": "gate SOS zero; N4 first nonzero input initializes all section histories",
+    "runtime_wind_or_W_code_branching": false
+  },
+  "extra_position_residual_gru_enabled": false,
+  "TEST_read": false,
+  "VAL_data_read": false,
+  "inertia_reconstruction_enabled": false,
+  "Plant_truth_deployment_input": false
+}

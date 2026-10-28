@@ -1,0 +1,260 @@
+{
+  "schema": "COSINE_GRU_C5_TRAIN24_POSITION_CAUSAL_DATASET_V1",
+  "status": "PASS_READ_ONLY_PARENT_RAW_CAUSAL_DATASET_BUILT",
+  "dataset_path": "experiments/dl_attitude_replacement_20261028/position_cosine_gru_train24_causal_v1/COSINE_GRU_C5_TRAIN24_POSITION_CAUSAL_PAIRS_v1.npz",
+  "dataset_sha256": "15d689f08fd6d8a53a64c59dbdf62b33f9b8e8a12ce083fb12834cd106df2eeb",
+  "builder_path": "experiments/dl_attitude_replacement_20261028/position_cosine_gru_train24_causal_v1/build_cosine_gru_train24_causal_pairs_v1.py",
+  "builder_sha256": "e8872933e9919f0f2737675fcdb07b555f3d862fa9e7f8b4b3bf960bce2f1970",
+  "scene_count": 24,
+  "events_per_scene": 1999,
+  "ready_events_per_scene": 1968,
+  "source_scene_ids": [
+    "DL1018_DEV_T1_C00_W03",
+    "DL1018_DEV_T1_C01_W15",
+    "DL1018_DEV_T1_C04_W00",
+    "DL1018_DEV_T1_C05_W06",
+    "DL1018_DEV_T1_C07_W08",
+    "DL1018_DEV_T1_C10_W09",
+    "DL1018_DEV_T1_C11_W12",
+    "DL1018_DEV_T1_C15_W14",
+    "DL1018_DEV_T2_C00_W04",
+    "DL1018_DEV_T2_C02_W15",
+    "DL1018_DEV_T2_C03_W01",
+    "DL1018_DEV_T2_C06_W07",
+    "DL1018_DEV_T2_C08_W08",
+    "DL1018_DEV_T2_C09_W10",
+    "DL1018_DEV_T2_C12_W13",
+    "DL1018_DEV_T2_C14_W14",
+    "DL1018_DEV_T3_C00_W05",
+    "DL1018_DEV_T3_C03_W15",
+    "DL1018_DEV_T3_C05_W02",
+    "DL1018_DEV_T3_C06_W08",
+    "DL1018_DEV_T3_C09_W09",
+    "DL1018_DEV_T3_C10_W11",
+    "DL1018_DEV_T3_C13_W12",
+    "DL1018_DEV_T3_C15_W14"
+  ],
+  "scene_id_note": "These IDs are declared TRAIN_C5_24 by the physical manifest, although canonical IDs begin DL1018_DEV_. This exact 24-ID set equals parent DEV24 by external identity.",
+  "other_C5_pairs_non_alias_check": {
+    "other_C5_pairs_manifest_path": "reports/position_c5_train24_causal_dataset_v1/C5_TRAIN24_POSITION_CAUSAL_MANIFEST_v1.json",
+    "other_C5_pairs_manifest_sha256": "53026f8b922713c3c4a64cf99adb12abd64fbe74247c58b70b050a8a23e04f73",
+    "other_scene_count": 24,
+    "scene_id_overlap": 0,
+    "external_identity_overlap": 0,
+    "used_for_new_features_or_labels": false
+  },
+  "parent_model_exposure": {
+    "training_status": "INHERITED_COMPLETED_60000_STEPS",
+    "payload_scene_count": 72,
+    "dev_scene_count": 24,
+    "val_scene_count": 48,
+    "physical_train24_is_parent_dev24": true,
+    "limit": "Parent cosine-GRU has seen the same DEV24 scenes and VAL48; these trajectories are in-sample with respect to the frozen parent. This derived head dataset is for development, not independent validation."
+  },
+  "features": "Actual logged stage1_position_feature_14 / stage1_position_feature_input at event t; 14D and equal on all event rows.",
+  "target": "(v[e+10]-v[e])/0.010 - mean_10ms(position_nominal_acceleration-position_compensation_applied_acceleration), m/s^2; feature event is t and label ends t+10ms.",
+  "current_applied": "Logged parent cosine-GRU/C5 position_compensation_applied_acceleration at event t.",
+  "ready_mask": "Logged C5 stage1_position_event_inference_valid; 1968/1999 events, first ready event ordinal 31 at t=0.32s.",
+  "scene_folds": [
+    {
+      "fold_id": "holdout_W00_05",
+      "wind_code_range": [
+        0,
+        5
+      ],
+      "holdout_scene_ids": [
+        "DL1018_DEV_T1_C00_W03",
+        "DL1018_DEV_T1_C04_W00",
+        "DL1018_DEV_T2_C00_W04",
+        "DL1018_DEV_T2_C03_W01",
+        "DL1018_DEV_T3_C00_W05",
+        "DL1018_DEV_T3_C05_W02"
+      ],
+      "train_scene_ids": [
+        "DL1018_DEV_T1_C01_W15",
+        "DL1018_DEV_T1_C05_W06",
+        "DL1018_DEV_T1_C07_W08",
+        "DL1018_DEV_T1_C10_W09",
+        "DL1018_DEV_T1_C11_W12",
+        "DL1018_DEV_T1_C15_W14",
+        "DL1018_DEV_T2_C02_W15",
+        "DL1018_DEV_T2_C06_W07",
+        "DL1018_DEV_T2_C08_W08",
+        "DL1018_DEV_T2_C09_W10",
+        "DL1018_DEV_T2_C12_W13",
+        "DL1018_DEV_T2_C14_W14",
+        "DL1018_DEV_T3_C03_W15",
+        "DL1018_DEV_T3_C06_W08",
+        "DL1018_DEV_T3_C09_W09",
+        "DL1018_DEV_T3_C10_W11",
+        "DL1018_DEV_T3_C13_W12",
+        "DL1018_DEV_T3_C15_W14"
+      ],
+      "holdout_scene_count": 6,
+      "train_scene_count": 18,
+      "holdout_task_counts": {
+        "T1": 2,
+        "T2": 2,
+        "T3": 2
+      }
+    },
+    {
+      "fold_id": "holdout_W06_10",
+      "wind_code_range": [
+        6,
+        10
+      ],
+      "holdout_scene_ids": [
+        "DL1018_DEV_T1_C05_W06",
+        "DL1018_DEV_T1_C07_W08",
+        "DL1018_DEV_T1_C10_W09",
+        "DL1018_DEV_T2_C06_W07",
+        "DL1018_DEV_T2_C08_W08",
+        "DL1018_DEV_T2_C09_W10",
+        "DL1018_DEV_T3_C06_W08",
+        "DL1018_DEV_T3_C09_W09"
+      ],
+      "train_scene_ids": [
+        "DL1018_DEV_T1_C00_W03",
+        "DL1018_DEV_T1_C01_W15",
+        "DL1018_DEV_T1_C04_W00",
+        "DL1018_DEV_T1_C11_W12",
+        "DL1018_DEV_T1_C15_W14",
+        "DL1018_DEV_T2_C00_W04",
+        "DL1018_DEV_T2_C02_W15",
+        "DL1018_DEV_T2_C03_W01",
+        "DL1018_DEV_T2_C12_W13",
+        "DL1018_DEV_T2_C14_W14",
+        "DL1018_DEV_T3_C00_W05",
+        "DL1018_DEV_T3_C03_W15",
+        "DL1018_DEV_T3_C05_W02",
+        "DL1018_DEV_T3_C10_W11",
+        "DL1018_DEV_T3_C13_W12",
+        "DL1018_DEV_T3_C15_W14"
+      ],
+      "holdout_scene_count": 8,
+      "train_scene_count": 16,
+      "holdout_task_counts": {
+        "T1": 3,
+        "T2": 3,
+        "T3": 2
+      }
+    },
+    {
+      "fold_id": "holdout_W11_13",
+      "wind_code_range": [
+        11,
+        13
+      ],
+      "holdout_scene_ids": [
+        "DL1018_DEV_T1_C11_W12",
+        "DL1018_DEV_T2_C12_W13",
+        "DL1018_DEV_T3_C10_W11",
+        "DL1018_DEV_T3_C13_W12"
+      ],
+      "train_scene_ids": [
+        "DL1018_DEV_T1_C00_W03",
+        "DL1018_DEV_T1_C01_W15",
+        "DL1018_DEV_T1_C04_W00",
+        "DL1018_DEV_T1_C05_W06",
+        "DL1018_DEV_T1_C07_W08",
+        "DL1018_DEV_T1_C10_W09",
+        "DL1018_DEV_T1_C15_W14",
+        "DL1018_DEV_T2_C00_W04",
+        "DL1018_DEV_T2_C02_W15",
+        "DL1018_DEV_T2_C03_W01",
+        "DL1018_DEV_T2_C06_W07",
+        "DL1018_DEV_T2_C08_W08",
+        "DL1018_DEV_T2_C09_W10",
+        "DL1018_DEV_T2_C14_W14",
+        "DL1018_DEV_T3_C00_W05",
+        "DL1018_DEV_T3_C03_W15",
+        "DL1018_DEV_T3_C05_W02",
+        "DL1018_DEV_T3_C06_W08",
+        "DL1018_DEV_T3_C09_W09",
+        "DL1018_DEV_T3_C15_W14"
+      ],
+      "holdout_scene_count": 4,
+      "train_scene_count": 20,
+      "holdout_task_counts": {
+        "T1": 1,
+        "T2": 1,
+        "T3": 2
+      }
+    },
+    {
+      "fold_id": "holdout_W14_15",
+      "wind_code_range": [
+        14,
+        15
+      ],
+      "holdout_scene_ids": [
+        "DL1018_DEV_T1_C01_W15",
+        "DL1018_DEV_T1_C15_W14",
+        "DL1018_DEV_T2_C02_W15",
+        "DL1018_DEV_T2_C14_W14",
+        "DL1018_DEV_T3_C03_W15",
+        "DL1018_DEV_T3_C15_W14"
+      ],
+      "train_scene_ids": [
+        "DL1018_DEV_T1_C00_W03",
+        "DL1018_DEV_T1_C04_W00",
+        "DL1018_DEV_T1_C05_W06",
+        "DL1018_DEV_T1_C07_W08",
+        "DL1018_DEV_T1_C10_W09",
+        "DL1018_DEV_T1_C11_W12",
+        "DL1018_DEV_T2_C00_W04",
+        "DL1018_DEV_T2_C03_W01",
+        "DL1018_DEV_T2_C06_W07",
+        "DL1018_DEV_T2_C08_W08",
+        "DL1018_DEV_T2_C09_W10",
+        "DL1018_DEV_T2_C12_W13",
+        "DL1018_DEV_T3_C00_W05",
+        "DL1018_DEV_T3_C05_W02",
+        "DL1018_DEV_T3_C06_W08",
+        "DL1018_DEV_T3_C09_W09",
+        "DL1018_DEV_T3_C10_W11",
+        "DL1018_DEV_T3_C13_W12"
+      ],
+      "holdout_scene_count": 6,
+      "train_scene_count": 18,
+      "holdout_task_counts": {
+        "T1": 2,
+        "T2": 2,
+        "T3": 2
+      }
+    }
+  ],
+  "wind_code_distribution": {
+    "0": 1,
+    "1": 1,
+    "2": 1,
+    "3": 1,
+    "4": 1,
+    "5": 1,
+    "6": 1,
+    "7": 1,
+    "8": 3,
+    "9": 2,
+    "10": 1,
+    "11": 1,
+    "12": 2,
+    "13": 1,
+    "14": 3,
+    "15": 3
+  },
+  "scope": {
+    "only_physical_train24_ids": true,
+    "VAL_raw_read": false,
+    "TEST_read": false,
+    "Plant_called_by_builder": false,
+    "inertia_reconstruction": false
+  },
+  "scope_limits": [
+    "Parent model was trained/evaluated on DEV24+VAL48; all derived scenes are in its DEV24 and are not an independent test.",
+    "The newer TRAIN-prefixed C5 causal cohort is a different external-identity set and was not used for features or targets.",
+    "The four whole-scene wind folds have nonuniform counts 6/8/4/6 based on observed IDs; no Cartesian wind grid is assumed."
+  ],
+  "source_lock_path": "experiments/dl_attitude_replacement_20261028/position_cosine_gru_train24_causal_v1/SOURCE_LOCK_v1.json",
+  "source_lock_sha256": "10be2c860c042491acfc0cfaad1067c65d848dd5889c177e6ccb8d65c9602fb7"
+}

@@ -1,0 +1,26 @@
+{
+  "status": "COMPLETED_RAW_AUDITS_PASS",
+  "recorded_by": "/root",
+  "utc": "2026-10-26T22:53:40.913068+00:00",
+  "exec_session_id": 76826,
+  "matlab_process_ids": [
+    2612,
+    16052
+  ],
+  "shell": "PowerShell 7",
+  "matlab_executable": "C:/Program Files/MATLAB/R2025b/bin/matlab.exe",
+  "log": "ROOT_REMAINING_FIVE_MATLAB.log",
+  "release_sha256": "bd6e858bcc8e3be4fed852bb87170e5171a4b8357759f562375f57a6c3688145",
+  "scenes": [
+    "DL1018_VAL_T2_C05_W15",
+    "DL1018_VAL_T3_C02_W15",
+    "DL1018_VAL_T1_C05_W12",
+    "DL1018_VAL_T2_C02_W12",
+    "DL1018_VAL_T3_C00_W13"
+  ],
+  "training": false,
+  "TEST": false,
+  "code_modifications": "Luna xhigh only; no source changes in this batch",
+  "exit_code": 0,
+  "exact_matlab_batch_command": "cd('C:/Users/35326/Desktop/postgraduation/0/Mcode/drone_tcn/DL1018'); study='experiments/dl_attitude_replacement_20261026/gru_stream_ncmd_dev_v1'; ids={'DL1018_VAL_T2_C05_W15','DL1018_VAL_T3_C02_W15','DL1018_VAL_T1_C05_W12','DL1018_VAL_T2_C02_W12','DL1018_VAL_T3_C00_W13'}; for j=1:numel(ids); addpath(study); attempt=run_gru_stream_dev_attempt(ids{j}); addpath(fullfile(study,'audits')); audit_gru_stream_raw(ids{j},fullfile(attempt,'raw_run.mat')); end"
+}

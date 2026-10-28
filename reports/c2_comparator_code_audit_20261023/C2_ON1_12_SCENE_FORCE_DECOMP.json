@@ -1,0 +1,1592 @@
+{
+  "schema": "C2_ON1_FORCE_DECOMPOSITION_V1",
+  "status": "PASS_OFFLINE_DESCRIPTIVE_NOT_CAUSAL",
+  "created_utc": "2026-10-22T17:37:34.373Z",
+  "source_inputs_before_after": {
+    "before": [
+      {
+        "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_beta_clock_c2_20261023\\C2_SOURCE_LOCK.json",
+        "sha256": "390888537a0138f36a0d9b3a1e1fc607ecdc57939a38dabb66db79c0887aca87",
+        "size_bytes": 6905,
+        "mtime_ns": 1792687109354050000
+      },
+      {
+        "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_prior_calibration_c1_20261022_v9\\C1_SOURCE_LOCK_v2.json",
+        "sha256": "02668f6268944715e65e6d2cffa52b395417506132212b00e7d273d88df164e5",
+        "size_bytes": 26039,
+        "mtime_ns": 1792680338398669300
+      },
+      {
+        "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_prior_calibration_c1_20261022_v9\\reports\\C1_SCREEN_PER_RUN.csv",
+        "sha256": "43aab1c0fa906dfa5e3d7f175339a5607bd4ec2e2cc55687741524d34fa08bac",
+        "size_bytes": 39786,
+        "mtime_ns": 1792684858088019700
+      },
+      {
+        "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\configs\\effective_config.mat",
+        "sha256": "cec90417369c7a44580b0315b2473ae86eb62550012188340b1dd5f3a796522f",
+        "size_bytes": 3153,
+        "mtime_ns": 1792295457026427400
+      },
+      {
+        "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\corrected_reference_training_v1\\corrected_pair_eval_v1\\sources\\local_runtime\\run_dl1018_closed_loop.m",
+        "sha256": "01d83dec95aea5d30feef3afd0628a2ce0911f70465f0773a4f568a01b08450b",
+        "size_bytes": 227246,
+        "mtime_ns": 1792537056804738200
+      }
+    ],
+    "after": [
+      {
+        "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_beta_clock_c2_20261023\\C2_SOURCE_LOCK.json",
+        "sha256": "390888537a0138f36a0d9b3a1e1fc607ecdc57939a38dabb66db79c0887aca87",
+        "size_bytes": 6905,
+        "mtime_ns": 1792687109354050000
+      },
+      {
+        "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_prior_calibration_c1_20261022_v9\\C1_SOURCE_LOCK_v2.json",
+        "sha256": "02668f6268944715e65e6d2cffa52b395417506132212b00e7d273d88df164e5",
+        "size_bytes": 26039,
+        "mtime_ns": 1792680338398669300
+      },
+      {
+        "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_prior_calibration_c1_20261022_v9\\reports\\C1_SCREEN_PER_RUN.csv",
+        "sha256": "43aab1c0fa906dfa5e3d7f175339a5607bd4ec2e2cc55687741524d34fa08bac",
+        "size_bytes": 39786,
+        "mtime_ns": 1792684858088019700
+      },
+      {
+        "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\configs\\effective_config.mat",
+        "sha256": "cec90417369c7a44580b0315b2473ae86eb62550012188340b1dd5f3a796522f",
+        "size_bytes": 3153,
+        "mtime_ns": 1792295457026427400
+      },
+      {
+        "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\corrected_reference_training_v1\\corrected_pair_eval_v1\\sources\\local_runtime\\run_dl1018_closed_loop.m",
+        "sha256": "01d83dec95aea5d30feef3afd0628a2ce0911f70465f0773a4f568a01b08450b",
+        "size_bytes": 227246,
+        "mtime_ns": 1792537056804738200
+      }
+    ]
+  },
+  "runtime_source_semantics": {
+    "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\corrected_reference_training_v1\\corrected_pair_eval_v1\\sources\\local_runtime\\run_dl1018_closed_loop.m",
+    "sha256": "01d83dec95aea5d30feef3afd0628a2ce0911f70465f0773a4f568a01b08450b",
+    "raw_outer_attitude_semantics": "The locked runtime sets raw=target and logs raw_outer_attitude from rawAtt; filtered_attitude_reference is logged from ir.euler returned by command_filter_step at the same event step.",
+    "raw_attitude_reference_dataset_absent_but_raw_outer_attitude_present": true
+  },
+  "physical_contract": {
+    "mass_kg": 0.695,
+    "gravity_mps2": 9.8,
+    "d_definition": "d=a_actual-a_f; a_actual=R(actual Euler)e3*T_real/m + wind_force_I/m - g*e3; a_f=R(filtered attitude)e3*T_req/m - g*e3.",
+    "terms_mps2": {
+      "wind_over_mass": "wind_force_I/m",
+      "actual_vs_filtered_direction": "(R_actual-R_filtered)e3*T_req/m",
+      "requested_vs_realized_thrust": "R_actual*e3*(T_real-T_req)/m"
+    },
+    "raw_split_if_available": [
+      "(R_actual-R_raw)e3*T_req/m",
+      "(R_raw-R_filtered)e3*T_req/m"
+    ],
+    "instantaneous_not_RK4_interval_average": true
+  },
+  "scope": {
+    "runs": 12,
+    "condition": "ON1",
+    "phase": "fixed event time 5.0 <= t < 20.0 s",
+    "events_per_run": 1500,
+    "groups": "ALL=12; HF_W09_W14=6 using W09_W11 or W12_W14; W15=3.",
+    "aggregation": "For each run compute temporal RMS first; group values are equal-scene arithmetic means of those per-run RMS values. RMS components are not additive percentages."
+  },
+  "frequency_method": {
+    "signal": "online_applied_acceleration minus d",
+    "sample_interval_s": 0.01,
+    "samples_per_run": 1500,
+    "bands_hz": {
+      "0_1_Hz_including_DC": "0 <= f < 1",
+      "1_5_Hz": "1 <= f < 5",
+      "5_50_Hz_including_Nyquist": "5 <= f <= 50"
+    },
+    "method": "One-sided rFFT Parseval weights; each run/window transformed independently, no concatenated trajectories, detrending or lag search."
+  },
+  "runs": [
+    {
+      "scene_id": "DL1018_VAL_T2_C00_W10",
+      "task": "FIG8_3D",
+      "wind_band": "W09_W11",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_prior_calibration_c1_20261022_v9\\runs_v9\\DL1018_VAL_T2_C00_W10\\ON1\\attempt_01\\raw_run.mat",
+      "raw_sha256": "2377ee61ec67f15012256502e28f008c26b61af78d0964995ec2f2d8678e854e",
+      "events_all": 1968,
+      "events_late_5_20": 1500,
+      "late_time_s": [
+        5.0,
+        19.99
+      ],
+      "dt_s": 0.009999999999999787,
+      "decomposition_closure_max_abs_mps2": 3.3306690738754696e-15,
+      "raw_attitude_split_available": true,
+      "raw_direction_split_closure_max_abs_mps2": 4.98732999343332e-16,
+      "online_beta_clip_closure_max_abs_mps2": 0.0,
+      "late_rms_mps2": {
+        "wind_over_mass": {
+          "ALL": 0.6104060724738913,
+          "X": 0.5545371071423802,
+          "Y": 0.1931702086818564,
+          "Z": 0.16664165323522737
+        },
+        "actual_vs_filtered_direction": {
+          "ALL": 0.0026388503887818404,
+          "X": 0.002577039479284196,
+          "Y": 0.0005392310783476503,
+          "Z": 0.00017784470958884417
+        },
+        "requested_vs_realized_thrust": {
+          "ALL": 7.773494117368933e-16,
+          "X": 4.801891612616908e-17,
+          "Y": 5.232514801333013e-17,
+          "Z": 7.740984243021976e-16
+        },
+        "actual_vs_raw_direction": {
+          "ALL": 0.6238889805173574,
+          "X": 0.605769555105274,
+          "Y": 0.14258690797986895,
+          "Z": 0.044155178533058594
+        },
+        "raw_vs_filtered_direction": {
+          "ALL": 0.6214875045809488,
+          "X": 0.6034094436324532,
+          "Y": 0.14214481953018046,
+          "Z": 0.044029671429169075
+        },
+        "physical_d": {
+          "ALL": 0.6114847725425226,
+          "X": 0.555701603986023,
+          "Y": 0.19320627678034105,
+          "Z": 0.16667540007877626
+        },
+        "online_u_minus_d": {
+          "ALL": 0.26191164878009776,
+          "X": 0.191234921126008,
+          "Y": 0.14582297840893854,
+          "Z": 0.10374283433849785
+        }
+      },
+      "online_u_minus_d_frequency_rms_mps2": {
+        "0_1_Hz_including_DC": {
+          "ALL": 0.08621615887347803,
+          "X": 0.031462233159347416,
+          "Y": 0.07920779088454473,
+          "Z": 0.013018440717455275
+        },
+        "1_5_Hz": {
+          "ALL": 0.24434364467491151,
+          "X": 0.18556928906799453,
+          "Y": 0.12179657506435565,
+          "Z": 0.10214426048687848
+        },
+        "5_50_Hz_including_Nyquist": {
+          "ALL": 0.03821869315435455,
+          "X": 0.033837280894697785,
+          "Y": 0.012492437852131614,
+          "Z": 0.0126351068294121
+        }
+      },
+      "raw_identity_before": {
+        "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_prior_calibration_c1_20261022_v9\\runs_v9\\DL1018_VAL_T2_C00_W10\\ON1\\attempt_01\\raw_run.mat",
+        "sha256": "2377ee61ec67f15012256502e28f008c26b61af78d0964995ec2f2d8678e854e",
+        "size_bytes": 47505737,
+        "mtime_ns": 1792683050642705000
+      },
+      "raw_identity_after": {
+        "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_prior_calibration_c1_20261022_v9\\runs_v9\\DL1018_VAL_T2_C00_W10\\ON1\\attempt_01\\raw_run.mat",
+        "sha256": "2377ee61ec67f15012256502e28f008c26b61af78d0964995ec2f2d8678e854e",
+        "size_bytes": 47505737,
+        "mtime_ns": 1792683050642705000
+      },
+      "raw_identity_before_after_equal": true
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C02_W12",
+      "task": "FIG8_3D",
+      "wind_band": "W12_W14",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_prior_calibration_c1_20261022_v9\\runs_v9\\DL1018_VAL_T2_C02_W12\\ON1\\attempt_01\\raw_run.mat",
+      "raw_sha256": "ea8c0aa5937c2d9811fbed2a3a6e5e4125b115e1ee53f383a417b7145e247eb4",
+      "events_all": 1968,
+      "events_late_5_20": 1500,
+      "late_time_s": [
+        5.0,
+        19.99
+      ],
+      "dt_s": 0.009999999999999787,
+      "decomposition_closure_max_abs_mps2": 3.2751579226442118e-15,
+      "raw_attitude_split_available": true,
+      "raw_direction_split_closure_max_abs_mps2": 1.6653345369377348e-16,
+      "online_beta_clip_closure_max_abs_mps2": 0.0,
+      "late_rms_mps2": {
+        "wind_over_mass": {
+          "ALL": 0.5010007856375772,
+          "X": 0.4536682863624994,
+          "Y": 0.15831387484484263,
+          "Z": 0.1418576405767219
+        },
+        "actual_vs_filtered_direction": {
+          "ALL": 0.18010201621979144,
+          "X": 0.12336179004483311,
+          "Y": 0.1308894739403307,
+          "Z": 0.00930325829975833
+        },
+        "requested_vs_realized_thrust": {
+          "ALL": 7.884748347875011e-16,
+          "X": 3.963817872287027e-17,
+          "Y": 5.681918480379391e-17,
+          "Z": 7.854253370747237e-16
+        },
+        "actual_vs_raw_direction": {
+          "ALL": 0.33147730924486873,
+          "X": 0.276718410801005,
+          "Y": 0.18162686250360377,
+          "Z": 0.01777105751162742
+        },
+        "raw_vs_filtered_direction": {
+          "ALL": 0.2696570947911392,
+          "X": 0.2462549181061507,
+          "Y": 0.10876631123788268,
+          "Z": 0.015599795493354726
+        },
+        "physical_d": {
+          "ALL": 0.49604641834530133,
+          "X": 0.4427913775737778,
+          "Y": 0.17181148972399832,
+          "Z": 0.14310365857775367
+        },
+        "online_u_minus_d": {
+          "ALL": 0.1685736817656608,
+          "X": 0.13796795568742645,
+          "Y": 0.08430149391621551,
+          "Z": 0.04769892567927383
+        }
+      },
+      "online_u_minus_d_frequency_rms_mps2": {
+        "0_1_Hz_including_DC": {
+          "ALL": 0.08927609386110803,
+          "X": 0.04021951218019707,
+          "Y": 0.07841479195345744,
+          "Z": 0.014273478131847771
+        },
+        "1_5_Hz": {
+          "ALL": 0.1420980117677163,
+          "X": 0.13116412539764352,
+          "Y": 0.030583651802428356,
+          "Z": 0.045304054999934715
+        },
+        "5_50_Hz_including_Nyquist": {
+          "ALL": 0.015968867479654127,
+          "X": 0.014611818738793744,
+          "Y": 0.004743579970144222,
+          "Z": 0.004358661582898781
+        }
+      },
+      "raw_identity_before": {
+        "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_prior_calibration_c1_20261022_v9\\runs_v9\\DL1018_VAL_T2_C02_W12\\ON1\\attempt_01\\raw_run.mat",
+        "sha256": "ea8c0aa5937c2d9811fbed2a3a6e5e4125b115e1ee53f383a417b7145e247eb4",
+        "size_bytes": 47506012,
+        "mtime_ns": 1792683872864581400
+      },
+      "raw_identity_after": {
+        "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_prior_calibration_c1_20261022_v9\\runs_v9\\DL1018_VAL_T2_C02_W12\\ON1\\attempt_01\\raw_run.mat",
+        "sha256": "ea8c0aa5937c2d9811fbed2a3a6e5e4125b115e1ee53f383a417b7145e247eb4",
+        "size_bytes": 47506012,
+        "mtime_ns": 1792683872864581400
+      },
+      "raw_identity_before_after_equal": true
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C05_W15",
+      "task": "FIG8_3D",
+      "wind_band": "W15",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_prior_calibration_c1_20261022_v9\\runs_v9\\DL1018_VAL_T2_C05_W15\\ON1\\attempt_01\\raw_run.mat",
+      "raw_sha256": "c3a55da25518ac16c5fb2a43d7b2452e5fad20005dd2cfcfa85c85939dffe91e",
+      "events_all": 1968,
+      "events_late_5_20": 1500,
+      "late_time_s": [
+        5.0,
+        19.99
+      ],
+      "dt_s": 0.009999999999999787,
+      "decomposition_closure_max_abs_mps2": 3.36016106703297e-15,
+      "raw_attitude_split_available": true,
+      "raw_direction_split_closure_max_abs_mps2": 2.220446049250313e-16,
+      "online_beta_clip_closure_max_abs_mps2": 0.0,
+      "late_rms_mps2": {
+        "wind_over_mass": {
+          "ALL": 0.005410914625499046,
+          "X": 0.0027481722261230726,
+          "Y": 0.004315184686062642,
+          "Z": 0.0017620237300262711
+        },
+        "actual_vs_filtered_direction": {
+          "ALL": 0.24984035800760918,
+          "X": 0.10613933551428903,
+          "Y": 0.22592515727900966,
+          "Z": 0.010605152257758963
+        },
+        "requested_vs_realized_thrust": {
+          "ALL": 8.66122645292579e-16,
+          "X": 2.274726348472978e-17,
+          "Y": 5.9487204266561e-17,
+          "Z": 8.637779061895017e-16
+        },
+        "actual_vs_raw_direction": {
+          "ALL": 0.2828454065513736,
+          "X": 0.11470797891838437,
+          "Y": 0.25826844361907114,
+          "Z": 0.011874957273775723
+        },
+        "raw_vs_filtered_direction": {
+          "ALL": 0.0915111944198861,
+          "X": 0.03951867615446395,
+          "Y": 0.08234632811410517,
+          "Z": 0.005626294097976642
+        },
+        "physical_d": {
+          "ALL": 0.24873055989727175,
+          "X": 0.1052208111824653,
+          "Y": 0.22506897876593354,
+          "Z": 0.011807926074211219
+        },
+        "online_u_minus_d": {
+          "ALL": 0.09923119334410757,
+          "X": 0.055497924367585584,
+          "Y": 0.08215257313433627,
+          "Z": 0.004214836982961338
+        }
+      },
+      "online_u_minus_d_frequency_rms_mps2": {
+        "0_1_Hz_including_DC": {
+          "ALL": 0.09403846056524706,
+          "X": 0.04980004099820002,
+          "Y": 0.0796788757037531,
+          "Z": 0.003803255006568564
+        },
+        "1_5_Hz": {
+          "ALL": 0.031035825113682414,
+          "X": 0.02393386377391943,
+          "Y": 0.01967500535775148,
+          "Z": 0.0018129449828932622
+        },
+        "5_50_Hz_including_Nyquist": {
+          "ALL": 0.006354100874831766,
+          "X": 0.005210135421350693,
+          "Y": 0.0036353479136211316,
+          "Z": 0.000115465863592371
+        }
+      },
+      "raw_identity_before": {
+        "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_prior_calibration_c1_20261022_v9\\runs_v9\\DL1018_VAL_T2_C05_W15\\ON1\\attempt_01\\raw_run.mat",
+        "sha256": "c3a55da25518ac16c5fb2a43d7b2452e5fad20005dd2cfcfa85c85939dffe91e",
+        "size_bytes": 46470400,
+        "mtime_ns": 1792683964696231900
+      },
+      "raw_identity_after": {
+        "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_prior_calibration_c1_20261022_v9\\runs_v9\\DL1018_VAL_T2_C05_W15\\ON1\\attempt_01\\raw_run.mat",
+        "sha256": "c3a55da25518ac16c5fb2a43d7b2452e5fad20005dd2cfcfa85c85939dffe91e",
+        "size_bytes": 46470400,
+        "mtime_ns": 1792683964696231900
+      },
+      "raw_identity_before_after_equal": true
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C06_W00",
+      "task": "FIG8_3D",
+      "wind_band": "W00_W08",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_prior_calibration_c1_20261022_v9\\runs_v9\\DL1018_VAL_T2_C06_W00\\ON1\\attempt_01\\raw_run.mat",
+      "raw_sha256": "b598e7f75b50a57d9a1400ac51d0312022f507860a941d7dd0a5380b4656f43b",
+      "events_all": 1968,
+      "events_late_5_20": 1500,
+      "late_time_s": [
+        5.0,
+        19.99
+      ],
+      "dt_s": 0.009999999999999787,
+      "decomposition_closure_max_abs_mps2": 3.2335245592207684e-15,
+      "raw_attitude_split_available": true,
+      "raw_direction_split_closure_max_abs_mps2": 5.551115123125783e-17,
+      "online_beta_clip_closure_max_abs_mps2": 0.0,
+      "late_rms_mps2": {
+        "wind_over_mass": {
+          "ALL": 0.579306192955461,
+          "X": 0.5037949775497267,
+          "Y": 0.20672414973332345,
+          "Z": 0.19761430036628122
+        },
+        "actual_vs_filtered_direction": {
+          "ALL": 0.12563483332298606,
+          "X": 0.08616470863354533,
+          "Y": 0.09139517473754274,
+          "Z": 0.0025838662668081487
+        },
+        "requested_vs_realized_thrust": {
+          "ALL": 8.502640603762736e-16,
+          "X": 5.326435352251854e-17,
+          "Y": 6.851150736498486e-17,
+          "Z": 8.458238908720616e-16
+        },
+        "actual_vs_raw_direction": {
+          "ALL": 0.1543026418418408,
+          "X": 0.10014438823536338,
+          "Y": 0.11703153006067309,
+          "Z": 0.00916666547845965
+        },
+        "raw_vs_filtered_direction": {
+          "ALL": 0.09614558491416962,
+          "X": 0.0457595370824543,
+          "Y": 0.08419002500224942,
+          "Z": 0.007878956441554128
+        },
+        "physical_d": {
+          "ALL": 0.6043473267048066,
+          "X": 0.534741348365618,
+          "Y": 0.1998309107605009,
+          "Z": 0.19838091830616117
+        },
+        "online_u_minus_d": {
+          "ALL": 0.09608932487491206,
+          "X": 0.05367596597217533,
+          "Y": 0.07269076757009428,
+          "Z": 0.03268181974647065
+        }
+      },
+      "online_u_minus_d_frequency_rms_mps2": {
+        "0_1_Hz_including_DC": {
+          "ALL": 0.093350300920122,
+          "X": 0.05178022138943504,
+          "Y": 0.07070753216757424,
+          "Z": 0.032148596384754966
+        },
+        "1_5_Hz": {
+          "ALL": 0.022097317489067406,
+          "X": 0.013458329688831271,
+          "Y": 0.01666400388449388,
+          "Z": 0.005429159855533809
+        },
+        "5_50_Hz_including_Nyquist": {
+          "ALL": 0.005530476429762477,
+          "X": 0.004334777819322669,
+          "Y": 0.002589088804782574,
+          "Z": 0.0022566545943533455
+        }
+      },
+      "raw_identity_before": {
+        "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_prior_calibration_c1_20261022_v9\\runs_v9\\DL1018_VAL_T2_C06_W00\\ON1\\attempt_01\\raw_run.mat",
+        "sha256": "b598e7f75b50a57d9a1400ac51d0312022f507860a941d7dd0a5380b4656f43b",
+        "size_bytes": 46973684,
+        "mtime_ns": 1792684052335607400
+      },
+      "raw_identity_after": {
+        "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_prior_calibration_c1_20261022_v9\\runs_v9\\DL1018_VAL_T2_C06_W00\\ON1\\attempt_01\\raw_run.mat",
+        "sha256": "b598e7f75b50a57d9a1400ac51d0312022f507860a941d7dd0a5380b4656f43b",
+        "size_bytes": 46973684,
+        "mtime_ns": 1792684052335607400
+      },
+      "raw_identity_before_after_equal": true
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C02_W09",
+      "task": "HELIX",
+      "wind_band": "W09_W11",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_prior_calibration_c1_20261022_v9\\runs_v9\\DL1018_VAL_T1_C02_W09\\ON1\\attempt_01\\raw_run.mat",
+      "raw_sha256": "994ddfc0d7e44917a19a0c19e2cdd3c910f8379436c0dac165cc099fb216f085",
+      "events_all": 1968,
+      "events_late_5_20": 1500,
+      "late_time_s": [
+        5.0,
+        19.99
+      ],
+      "dt_s": 0.009999999999999787,
+      "decomposition_closure_max_abs_mps2": 3.073929999430902e-15,
+      "raw_attitude_split_available": true,
+      "raw_direction_split_closure_max_abs_mps2": 2.7755575615628914e-16,
+      "online_beta_clip_closure_max_abs_mps2": 0.0,
+      "late_rms_mps2": {
+        "wind_over_mass": {
+          "ALL": 0.5137629458176695,
+          "X": 0.19593652301867265,
+          "Y": 0.4746557792558416,
+          "Z": 0.016221426004901347
+        },
+        "actual_vs_filtered_direction": {
+          "ALL": 0.2025576103274057,
+          "X": 0.13887231523580254,
+          "Y": 0.14728200352845403,
+          "Z": 0.007216439512771816
+        },
+        "requested_vs_realized_thrust": {
+          "ALL": 8.162919126021815e-16,
+          "X": 3.9518974573591245e-17,
+          "Y": 5.5259612557602666e-17,
+          "Z": 8.134599636419502e-16
+        },
+        "actual_vs_raw_direction": {
+          "ALL": 0.37846310835070013,
+          "X": 0.15780805508445975,
+          "Y": 0.3433304316111591,
+          "Z": 0.021334405607587818
+        },
+        "raw_vs_filtered_direction": {
+          "ALL": 0.32619659242337096,
+          "X": 0.08840752355306941,
+          "Y": 0.3133108861487357,
+          "Z": 0.020606195877120717
+        },
+        "physical_d": {
+          "ALL": 0.5699439975110085,
+          "X": 0.20238152258341824,
+          "Y": 0.5324199761013716,
+          "Z": 0.020170489926147357
+        },
+        "online_u_minus_d": {
+          "ALL": 0.1627197513683506,
+          "X": 0.0784111678661799,
+          "Y": 0.14201640253053271,
+          "Z": 0.012678629717966182
+        }
+      },
+      "online_u_minus_d_frequency_rms_mps2": {
+        "0_1_Hz_including_DC": {
+          "ALL": 0.09685828120068925,
+          "X": 0.06709612472556174,
+          "Y": 0.06961785377049569,
+          "Z": 0.005743789720518445
+        },
+        "1_5_Hz": {
+          "ALL": 0.13043370114696287,
+          "X": 0.0402259055077764,
+          "Y": 0.12356519790075539,
+          "Z": 0.011245834283049951
+        },
+        "5_50_Hz_including_Nyquist": {
+          "ALL": 0.009123616669547058,
+          "X": 0.005319568450327928,
+          "Y": 0.007324945828117092,
+          "Z": 0.0011347868743789202
+        }
+      },
+      "raw_identity_before": {
+        "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_prior_calibration_c1_20261022_v9\\runs_v9\\DL1018_VAL_T1_C02_W09\\ON1\\attempt_01\\raw_run.mat",
+        "sha256": "994ddfc0d7e44917a19a0c19e2cdd3c910f8379436c0dac165cc099fb216f085",
+        "size_bytes": 47206145,
+        "mtime_ns": 1792684141305720800
+      },
+      "raw_identity_after": {
+        "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_prior_calibration_c1_20261022_v9\\runs_v9\\DL1018_VAL_T1_C02_W09\\ON1\\attempt_01\\raw_run.mat",
+        "sha256": "994ddfc0d7e44917a19a0c19e2cdd3c910f8379436c0dac165cc099fb216f085",
+        "size_bytes": 47206145,
+        "mtime_ns": 1792684141305720800
+      },
+      "raw_identity_before_after_equal": true
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C05_W12",
+      "task": "HELIX",
+      "wind_band": "W12_W14",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_prior_calibration_c1_20261022_v9\\runs_v9\\DL1018_VAL_T1_C05_W12\\ON1\\attempt_01\\raw_run.mat",
+      "raw_sha256": "3d975d5115be2776efd576b0dfa134cf2fd32679c1eab78ae6b9f5fccb226234",
+      "events_all": 1968,
+      "events_late_5_20": 1500,
+      "late_time_s": [
+        5.0,
+        19.99
+      ],
+      "dt_s": 0.009999999999999787,
+      "decomposition_closure_max_abs_mps2": 3.0808688933348094e-15,
+      "raw_attitude_split_available": true,
+      "raw_direction_split_closure_max_abs_mps2": 2.7755575615628914e-16,
+      "online_beta_clip_closure_max_abs_mps2": 0.0,
+      "late_rms_mps2": {
+        "wind_over_mass": {
+          "ALL": 0.5742426538252428,
+          "X": 0.5020825375151198,
+          "Y": 0.18759186055447694,
+          "Z": 0.20609959934057526
+        },
+        "actual_vs_filtered_direction": {
+          "ALL": 0.28499935077640065,
+          "X": 0.1412770619697083,
+          "Y": 0.24731445138199792,
+          "Z": 0.010049071688390369
+        },
+        "requested_vs_realized_thrust": {
+          "ALL": 8.235951984324564e-16,
+          "X": 5.1915749053232027e-17,
+          "Y": 3.773912875104392e-17,
+          "Z": 8.210904725073548e-16
+        },
+        "actual_vs_raw_direction": {
+          "ALL": 0.4156409902464895,
+          "X": 0.31562110246393127,
+          "Y": 0.2695790972764255,
+          "Z": 0.021630135555804852
+        },
+        "raw_vs_filtered_direction": {
+          "ALL": 0.29831483614729853,
+          "X": 0.2737383119109115,
+          "Y": 0.11721399135409091,
+          "Z": 0.017887377912851016
+        },
+        "physical_d": {
+          "ALL": 0.6307726624017491,
+          "X": 0.4814390243679052,
+          "Y": 0.35274877316792125,
+          "Z": 0.2041051701393105
+        },
+        "online_u_minus_d": {
+          "ALL": 0.19128175023810193,
+          "X": 0.16036013451071277,
+          "Y": 0.09021643947857923,
+          "Z": 0.05229081450566221
+        }
+      },
+      "online_u_minus_d_frequency_rms_mps2": {
+        "0_1_Hz_including_DC": {
+          "ALL": 0.09941822614847504,
+          "X": 0.06294354156623888,
+          "Y": 0.07641372052051443,
+          "Z": 0.009112495916114113
+        },
+        "1_5_Hz": {
+          "ALL": 0.16271142128195068,
+          "X": 0.14686477288910685,
+          "Y": 0.04767279903043327,
+          "Z": 0.05131324714367063
+        },
+        "5_50_Hz_including_Nyquist": {
+          "ALL": 0.015156168255893316,
+          "X": 0.01357256951596011,
+          "Y": 0.005220464843359707,
+          "Z": 0.004271011561050139
+        }
+      },
+      "raw_identity_before": {
+        "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_prior_calibration_c1_20261022_v9\\runs_v9\\DL1018_VAL_T1_C05_W12\\ON1\\attempt_01\\raw_run.mat",
+        "sha256": "3d975d5115be2776efd576b0dfa134cf2fd32679c1eab78ae6b9f5fccb226234",
+        "size_bytes": 47473290,
+        "mtime_ns": 1792684229439483400
+      },
+      "raw_identity_after": {
+        "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_prior_calibration_c1_20261022_v9\\runs_v9\\DL1018_VAL_T1_C05_W12\\ON1\\attempt_01\\raw_run.mat",
+        "sha256": "3d975d5115be2776efd576b0dfa134cf2fd32679c1eab78ae6b9f5fccb226234",
+        "size_bytes": 47473290,
+        "mtime_ns": 1792684229439483400
+      },
+      "raw_identity_before_after_equal": true
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C08_W15",
+      "task": "HELIX",
+      "wind_band": "W15",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_prior_calibration_c1_20261022_v9\\runs_v9\\DL1018_VAL_T1_C08_W15\\ON1\\attempt_01\\raw_run.mat",
+      "raw_sha256": "47544ff50743209881663a10b069a5a203e46e2266ea67f5da1478a1d9c314b4",
+      "events_all": 1968,
+      "events_late_5_20": 1500,
+      "late_time_s": [
+        5.0,
+        19.99
+      ],
+      "dt_s": 0.009999999999999787,
+      "decomposition_closure_max_abs_mps2": 3.2526065174565133e-15,
+      "raw_attitude_split_available": true,
+      "raw_direction_split_closure_max_abs_mps2": 2.220446049250313e-16,
+      "online_beta_clip_closure_max_abs_mps2": 0.0,
+      "late_rms_mps2": {
+        "wind_over_mass": {
+          "ALL": 0.005037996088333819,
+          "X": 0.0036261770308094582,
+          "Y": 0.0034414842561212755,
+          "Z": 0.0006232422018494525
+        },
+        "actual_vs_filtered_direction": {
+          "ALL": 0.2885761404708909,
+          "X": 0.282075969537653,
+          "Y": 0.059605971052646846,
+          "Z": 0.012508575991673392
+        },
+        "requested_vs_realized_thrust": {
+          "ALL": 8.736325197488513e-16,
+          "X": 4.235390885190242e-17,
+          "Y": 3.994246583359803e-17,
+          "Z": 8.716906133433029e-16
+        },
+        "actual_vs_raw_direction": {
+          "ALL": 0.29130873958342385,
+          "X": 0.28152645590931363,
+          "Y": 0.07380863174316724,
+          "Z": 0.012486883559394896
+        },
+        "raw_vs_filtered_direction": {
+          "ALL": 0.08398747589468547,
+          "X": 0.06742496750780391,
+          "Y": 0.05000462880542048,
+          "Z": 0.0027031392424495724
+        },
+        "physical_d": {
+          "ALL": 0.28880700586461844,
+          "X": 0.28214755439091777,
+          "Y": 0.06040944308213642,
+          "Z": 0.012367027703370169
+        },
+        "online_u_minus_d": {
+          "ALL": 0.1004597781335855,
+          "X": 0.08644984502746875,
+          "Y": 0.050858585048880335,
+          "Z": 0.0056564692345728125
+        }
+      },
+      "online_u_minus_d_frequency_rms_mps2": {
+        "0_1_Hz_including_DC": {
+          "ALL": 0.09604041552928519,
+          "X": 0.08267256989163001,
+          "Y": 0.04859542563384038,
+          "Z": 0.005243301442526873
+        },
+        "1_5_Hz": {
+          "ALL": 0.02841724598995062,
+          "X": 0.024178022687939622,
+          "Y": 0.014781001934319417,
+          "Z": 0.0021177984730580777
+        },
+        "5_50_Hz_including_Nyquist": {
+          "ALL": 0.007801643585895412,
+          "X": 0.0073651273671590705,
+          "Y": 0.0025694703419625593,
+          "Z": 0.00013551261432917378
+        }
+      },
+      "raw_identity_before": {
+        "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_prior_calibration_c1_20261022_v9\\runs_v9\\DL1018_VAL_T1_C08_W15\\ON1\\attempt_01\\raw_run.mat",
+        "sha256": "47544ff50743209881663a10b069a5a203e46e2266ea67f5da1478a1d9c314b4",
+        "size_bytes": 46285345,
+        "mtime_ns": 1792684317623856300
+      },
+      "raw_identity_after": {
+        "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_prior_calibration_c1_20261022_v9\\runs_v9\\DL1018_VAL_T1_C08_W15\\ON1\\attempt_01\\raw_run.mat",
+        "sha256": "47544ff50743209881663a10b069a5a203e46e2266ea67f5da1478a1d9c314b4",
+        "size_bytes": 46285345,
+        "mtime_ns": 1792684317623856300
+      },
+      "raw_identity_before_after_equal": true
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C00_W07",
+      "task": "HELIX",
+      "wind_band": "W00_W08",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_prior_calibration_c1_20261022_v9\\runs_v9\\DL1018_VAL_T1_C00_W07\\ON1\\attempt_01\\raw_run.mat",
+      "raw_sha256": "7d38ea5a4a5c241e8a4c3612ae2f3d25d583a18603c78f5deafac882f3b7a2c9",
+      "events_all": 1968,
+      "events_late_5_20": 1500,
+      "late_time_s": [
+        5.0,
+        19.99
+      ],
+      "dt_s": 0.009999999999999787,
+      "decomposition_closure_max_abs_mps2": 3.1677134873508983e-15,
+      "raw_attitude_split_available": true,
+      "raw_direction_split_closure_max_abs_mps2": 2.5066754227864863e-16,
+      "online_beta_clip_closure_max_abs_mps2": 0.0,
+      "late_rms_mps2": {
+        "wind_over_mass": {
+          "ALL": 0.5821503981755084,
+          "X": 0.20166639404381748,
+          "Y": 0.5456582840802073,
+          "Z": 0.022063286788472733
+        },
+        "actual_vs_filtered_direction": {
+          "ALL": 0.001759092375359973,
+          "X": 0.0005883213686254966,
+          "Y": 0.0016523083859159367,
+          "Z": 0.00013476256935843442
+        },
+        "requested_vs_realized_thrust": {
+          "ALL": 7.100031543776172e-16,
+          "X": 3.384650861514694e-17,
+          "Y": 5.1177872310751444e-17,
+          "Z": 7.073469576286276e-16
+        },
+        "actual_vs_raw_direction": {
+          "ALL": 0.40238993647582816,
+          "X": 0.13789322454000513,
+          "Y": 0.3768261978383067,
+          "Z": 0.030085481975632423
+        },
+        "raw_vs_filtered_direction": {
+          "ALL": 0.4006698234113474,
+          "X": 0.13732765077018425,
+          "Y": 0.3752059083029958,
+          "Z": 0.029965815539485092
+        },
+        "physical_d": {
+          "ALL": 0.5826877422691611,
+          "X": 0.20190879164702308,
+          "Y": 0.5461408126477155,
+          "Z": 0.022092025866003846
+        },
+        "online_u_minus_d": {
+          "ALL": 0.14168351671693977,
+          "X": 0.07975715673197446,
+          "Y": 0.11512582253544418,
+          "Z": 0.021425681899254246
+        }
+      },
+      "online_u_minus_d_frequency_rms_mps2": {
+        "0_1_Hz_including_DC": {
+          "ALL": 0.08044649465076513,
+          "X": 0.06027602198641639,
+          "Y": 0.053041606557510355,
+          "Z": 0.005002764124651965
+        },
+        "1_5_Hz": {
+          "ALL": 0.11659577963642323,
+          "X": 0.05220927786384585,
+          "Y": 0.10215437297038805,
+          "Z": 0.0208146875303943
+        },
+        "5_50_Hz_including_Nyquist": {
+          "ALL": 0.0028291349461032197,
+          "X": 0.0014820182764435908,
+          "Y": 0.0022420405080684604,
+          "Z": 0.0008836745621153513
+        }
+      },
+      "raw_identity_before": {
+        "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_prior_calibration_c1_20261022_v9\\runs_v9\\DL1018_VAL_T1_C00_W07\\ON1\\attempt_01\\raw_run.mat",
+        "sha256": "7d38ea5a4a5c241e8a4c3612ae2f3d25d583a18603c78f5deafac882f3b7a2c9",
+        "size_bytes": 47068179,
+        "mtime_ns": 1792684406277322600
+      },
+      "raw_identity_after": {
+        "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_prior_calibration_c1_20261022_v9\\runs_v9\\DL1018_VAL_T1_C00_W07\\ON1\\attempt_01\\raw_run.mat",
+        "sha256": "7d38ea5a4a5c241e8a4c3612ae2f3d25d583a18603c78f5deafac882f3b7a2c9",
+        "size_bytes": 47068179,
+        "mtime_ns": 1792684406277322600
+      },
+      "raw_identity_before_after_equal": true
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C12_W09",
+      "task": "SQUARE",
+      "wind_band": "W09_W11",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_prior_calibration_c1_20261022_v9\\runs_v9\\DL1018_VAL_T3_C12_W09\\ON1\\attempt_01\\raw_run.mat",
+      "raw_sha256": "a8a9d2a324bc23fac26dee9b3fb94fe0376748c38bb9ef1e344d7395e48e255f",
+      "events_all": 1968,
+      "events_late_5_20": 1500,
+      "late_time_s": [
+        5.0,
+        19.99
+      ],
+      "dt_s": 0.009999999999999787,
+      "decomposition_closure_max_abs_mps2": 3.469446951953614e-15,
+      "raw_attitude_split_available": true,
+      "raw_direction_split_closure_max_abs_mps2": 2.220446049250313e-16,
+      "online_beta_clip_closure_max_abs_mps2": 0.0,
+      "late_rms_mps2": {
+        "wind_over_mass": {
+          "ALL": 0.5310054537222868,
+          "X": 0.18564661105800348,
+          "Y": 0.46049195963482004,
+          "Z": 0.18827979922756796
+        },
+        "actual_vs_filtered_direction": {
+          "ALL": 0.19224927168953818,
+          "X": 0.07536548001918805,
+          "Y": 0.1761797917162245,
+          "Z": 0.015508316396791197
+        },
+        "requested_vs_realized_thrust": {
+          "ALL": 8.464137882445509e-16,
+          "X": 2.261028910465682e-17,
+          "Y": 4.548218100258692e-17,
+          "Z": 8.448884227922307e-16
+        },
+        "actual_vs_raw_direction": {
+          "ALL": 0.37224435341292345,
+          "X": 0.11353799552905262,
+          "Y": 0.35364223361683284,
+          "Z": 0.02474172228337596
+        },
+        "raw_vs_filtered_direction": {
+          "ALL": 0.3074837637813042,
+          "X": 0.07333568980187373,
+          "Y": 0.2980131044388968,
+          "Z": 0.018876736293423173
+        },
+        "physical_d": {
+          "ALL": 0.6107871455268773,
+          "X": 0.20605974182370532,
+          "Y": 0.5453022269226313,
+          "Z": 0.18233431178370635
+        },
+        "online_u_minus_d": {
+          "ALL": 0.1517693624040668,
+          "X": 0.06732241861389127,
+          "Y": 0.12366034909505753,
+          "Z": 0.056654650102188855
+        }
+      },
+      "online_u_minus_d_frequency_rms_mps2": {
+        "0_1_Hz_including_DC": {
+          "ALL": 0.07932962409725697,
+          "X": 0.0522927288830831,
+          "Y": 0.059286435015611275,
+          "Z": 0.006616523899462624
+        },
+        "1_5_Hz": {
+          "ALL": 0.12899120324276034,
+          "X": 0.041931318016686356,
+          "Y": 0.10825974451678083,
+          "Z": 0.05621674839903107
+        },
+        "5_50_Hz_including_Nyquist": {
+          "ALL": 0.010100229033492262,
+          "X": 0.006288176746135073,
+          "Y": 0.007538258691480152,
+          "Z": 0.0023765764533652395
+        }
+      },
+      "raw_identity_before": {
+        "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_prior_calibration_c1_20261022_v9\\runs_v9\\DL1018_VAL_T3_C12_W09\\ON1\\attempt_01\\raw_run.mat",
+        "sha256": "a8a9d2a324bc23fac26dee9b3fb94fe0376748c38bb9ef1e344d7395e48e255f",
+        "size_bytes": 46008158,
+        "mtime_ns": 1792684498428822200
+      },
+      "raw_identity_after": {
+        "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_prior_calibration_c1_20261022_v9\\runs_v9\\DL1018_VAL_T3_C12_W09\\ON1\\attempt_01\\raw_run.mat",
+        "sha256": "a8a9d2a324bc23fac26dee9b3fb94fe0376748c38bb9ef1e344d7395e48e255f",
+        "size_bytes": 46008158,
+        "mtime_ns": 1792684498428822200
+      },
+      "raw_identity_before_after_equal": true
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C00_W13",
+      "task": "SQUARE",
+      "wind_band": "W12_W14",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_prior_calibration_c1_20261022_v9\\runs_v9\\DL1018_VAL_T3_C00_W13\\ON1\\attempt_01\\raw_run.mat",
+      "raw_sha256": "5217f44ca675a94c5cd8fb45c95aa2b0cde69ee655254c406b83628189048225",
+      "events_all": 1968,
+      "events_late_5_20": 1500,
+      "late_time_s": [
+        5.0,
+        19.99
+      ],
+      "dt_s": 0.009999999999999787,
+      "decomposition_closure_max_abs_mps2": 3.011479954295737e-15,
+      "raw_attitude_split_available": true,
+      "raw_direction_split_closure_max_abs_mps2": 3.642919299551295e-16,
+      "online_beta_clip_closure_max_abs_mps2": 0.0,
+      "late_rms_mps2": {
+        "wind_over_mass": {
+          "ALL": 0.5911130996222622,
+          "X": 0.20249176640252814,
+          "Y": 0.5165515306465878,
+          "Z": 0.20392718619862782
+        },
+        "actual_vs_filtered_direction": {
+          "ALL": 0.0023760005641872404,
+          "X": 0.000773187326062807,
+          "Y": 0.0022428681498461345,
+          "Z": 0.00013077653550888892
+        },
+        "requested_vs_realized_thrust": {
+          "ALL": 8.673788064244481e-16,
+          "X": 2.2364968397611067e-17,
+          "Y": 4.9628228006806447e-17,
+          "Z": 8.65669013542577e-16
+        },
+        "actual_vs_raw_direction": {
+          "ALL": 0.6206434238574495,
+          "X": 0.20186132482514713,
+          "Y": 0.585621829429602,
+          "Z": 0.0386954520953084
+        },
+        "raw_vs_filtered_direction": {
+          "ALL": 0.6187523321124517,
+          "X": 0.2012536300392383,
+          "Y": 0.5838325524786115,
+          "Z": 0.03861315264176688
+        },
+        "physical_d": {
+          "ALL": 0.5913453513263555,
+          "X": 0.2027541107334389,
+          "Y": 0.5167180321523872,
+          "Z": 0.20391804815794917
+        },
+        "online_u_minus_d": {
+          "ALL": 0.38189949229122305,
+          "X": 0.08296974710985407,
+          "Y": 0.3579442117335065,
+          "Z": 0.10411140457845858
+        }
+      },
+      "online_u_minus_d_frequency_rms_mps2": {
+        "0_1_Hz_including_DC": {
+          "ALL": 0.07228228173744686,
+          "X": 0.04221412378185774,
+          "Y": 0.05842449619563934,
+          "Z": 0.005410568434772933
+        },
+        "1_5_Hz": {
+          "ALL": 0.3721220872234806,
+          "X": 0.07035108646448865,
+          "Y": 0.3504800660463903,
+          "Z": 0.10338905037257881
+        },
+        "5_50_Hz_including_Nyquist": {
+          "ALL": 0.046342289190945456,
+          "X": 0.01235600298224067,
+          "Y": 0.04329345393450151,
+          "Z": 0.01098243161514221
+        }
+      },
+      "raw_identity_before": {
+        "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_prior_calibration_c1_20261022_v9\\runs_v9\\DL1018_VAL_T3_C00_W13\\ON1\\attempt_01\\raw_run.mat",
+        "sha256": "5217f44ca675a94c5cd8fb45c95aa2b0cde69ee655254c406b83628189048225",
+        "size_bytes": 46004389,
+        "mtime_ns": 1792684591069836800
+      },
+      "raw_identity_after": {
+        "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_prior_calibration_c1_20261022_v9\\runs_v9\\DL1018_VAL_T3_C00_W13\\ON1\\attempt_01\\raw_run.mat",
+        "sha256": "5217f44ca675a94c5cd8fb45c95aa2b0cde69ee655254c406b83628189048225",
+        "size_bytes": 46004389,
+        "mtime_ns": 1792684591069836800
+      },
+      "raw_identity_before_after_equal": true
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C02_W15",
+      "task": "SQUARE",
+      "wind_band": "W15",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_prior_calibration_c1_20261022_v9\\runs_v9\\DL1018_VAL_T3_C02_W15\\ON1\\attempt_01\\raw_run.mat",
+      "raw_sha256": "d33353ac92cccaa704776a8c58b09f5ea92903cc27795099fe7c342d092857ee",
+      "events_all": 1968,
+      "events_late_5_20": 1500,
+      "late_time_s": [
+        5.0,
+        19.99
+      ],
+      "dt_s": 0.009999999999999787,
+      "decomposition_closure_max_abs_mps2": 3.2491370705045597e-15,
+      "raw_attitude_split_available": true,
+      "raw_direction_split_closure_max_abs_mps2": 1.6653345369377348e-16,
+      "online_beta_clip_closure_max_abs_mps2": 0.0,
+      "late_rms_mps2": {
+        "wind_over_mass": {
+          "ALL": 0.0022189139602161213,
+          "X": 0.0013540768282265612,
+          "Y": 0.00175723692750405,
+          "Z": 4.662066835657803e-05
+        },
+        "actual_vs_filtered_direction": {
+          "ALL": 0.18795470811175452,
+          "X": 0.1287984683878307,
+          "Y": 0.13674123654195758,
+          "Z": 0.00630563805655009
+        },
+        "requested_vs_realized_thrust": {
+          "ALL": 7.553277250105219e-16,
+          "X": 1.489802248806415e-17,
+          "Y": 2.0359514727079245e-17,
+          "Z": 7.549062930295346e-16
+        },
+        "actual_vs_raw_direction": {
+          "ALL": 0.19222011673658068,
+          "X": 0.13083819750313008,
+          "Y": 0.14065939532887983,
+          "Z": 0.00669879527008594
+        },
+        "raw_vs_filtered_direction": {
+          "ALL": 0.06360399167910454,
+          "X": 0.04006197351167781,
+          "Y": 0.049354391534914666,
+          "Z": 0.0021564025791970766
+        },
+        "physical_d": {
+          "ALL": 0.18890044690074798,
+          "X": 0.12904878803615252,
+          "Y": 0.13780356027504448,
+          "Z": 0.006322018761809834
+        },
+        "online_u_minus_d": {
+          "ALL": 0.08704483492091188,
+          "X": 0.05934488350166736,
+          "Y": 0.06357449671552352,
+          "Z": 0.0036430009539135323
+        }
+      },
+      "online_u_minus_d_frequency_rms_mps2": {
+        "0_1_Hz_including_DC": {
+          "ALL": 0.08262921573944411,
+          "X": 0.05594010434030071,
+          "Y": 0.06073227475180721,
+          "Z": 0.0031436958477035447
+        },
+        "1_5_Hz": {
+          "ALL": 0.026407892242358316,
+          "X": 0.018944582691255384,
+          "Y": 0.01830643554553335,
+          "Z": 0.0018313866209592193
+        },
+        "5_50_Hz_including_Nyquist": {
+          "ALL": 0.00719965487047235,
+          "X": 0.0057983755316268,
+          "Y": 0.0042637098066271245,
+          "Z": 0.00018614546199022247
+        }
+      },
+      "raw_identity_before": {
+        "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_prior_calibration_c1_20261022_v9\\runs_v9\\DL1018_VAL_T3_C02_W15\\ON1\\attempt_01\\raw_run.mat",
+        "sha256": "d33353ac92cccaa704776a8c58b09f5ea92903cc27795099fe7c342d092857ee",
+        "size_bytes": 44931805,
+        "mtime_ns": 1792684681682684200
+      },
+      "raw_identity_after": {
+        "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_prior_calibration_c1_20261022_v9\\runs_v9\\DL1018_VAL_T3_C02_W15\\ON1\\attempt_01\\raw_run.mat",
+        "sha256": "d33353ac92cccaa704776a8c58b09f5ea92903cc27795099fe7c342d092857ee",
+        "size_bytes": 44931805,
+        "mtime_ns": 1792684681682684200
+      },
+      "raw_identity_before_after_equal": true
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C03_W00",
+      "task": "SQUARE",
+      "wind_band": "W00_W08",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_prior_calibration_c1_20261022_v9\\runs_v9\\DL1018_VAL_T3_C03_W00\\ON1\\attempt_01\\raw_run.mat",
+      "raw_sha256": "3c2c9339064757e02dc1ae76cff568e4fe936c92c61eccbcbe98817d33f0a493",
+      "events_all": 1968,
+      "events_late_5_20": 1500,
+      "late_time_s": [
+        5.0,
+        19.99
+      ],
+      "dt_s": 0.009999999999999787,
+      "decomposition_closure_max_abs_mps2": 3.4833247397614286e-15,
+      "raw_attitude_split_available": true,
+      "raw_direction_split_closure_max_abs_mps2": 1.1102230246251565e-16,
+      "online_beta_clip_closure_max_abs_mps2": 0.0,
+      "late_rms_mps2": {
+        "wind_over_mass": {
+          "ALL": 0.5015958956883673,
+          "X": 0.4580898879484921,
+          "Y": 0.16462390956328843,
+          "Z": 0.12104158595644561
+        },
+        "actual_vs_filtered_direction": {
+          "ALL": 0.15527354588381542,
+          "X": 0.1066376443009831,
+          "Y": 0.11267261026380523,
+          "Z": 0.0065703702795957405
+        },
+        "requested_vs_realized_thrust": {
+          "ALL": 8.136199188124371e-16,
+          "X": 3.926799358275575e-17,
+          "Y": 2.75134325888528e-17,
+          "Z": 8.122058901507179e-16
+        },
+        "actual_vs_raw_direction": {
+          "ALL": 0.17371993159562774,
+          "X": 0.11968204452445783,
+          "Y": 0.1256896531214848,
+          "Z": 0.007545458914877023
+        },
+        "raw_vs_filtered_direction": {
+          "ALL": 0.07308653591289671,
+          "X": 0.05462609689375685,
+          "Y": 0.04843136214129085,
+          "Z": 0.003469067747993423
+        },
+        "physical_d": {
+          "ALL": 0.5085545342670386,
+          "X": 0.4434346189386514,
+          "Y": 0.21739081043592554,
+          "Z": 0.12138652556321508
+        },
+        "online_u_minus_d": {
+          "ALL": 0.08778622700826533,
+          "X": 0.05843392423323184,
+          "Y": 0.06331939960430238,
+          "Z": 0.016809276748339978
+        }
+      },
+      "online_u_minus_d_frequency_rms_mps2": {
+        "0_1_Hz_including_DC": {
+          "ALL": 0.08379267733582851,
+          "X": 0.05596333082089307,
+          "Y": 0.0601111541577527,
+          "Z": 0.01661227029518962
+        },
+        "1_5_Hz": {
+          "ALL": 0.025127887731186543,
+          "X": 0.01577842246271705,
+          "Y": 0.019388216414534386,
+          "Z": 0.002559138660237208
+        },
+        "5_50_Hz_including_Nyquist": {
+          "ALL": 0.0073343752105197585,
+          "X": 0.005802417921703558,
+          "Y": 0.0044821802811825465,
+          "Z": 0.00018725895855332405
+        }
+      },
+      "raw_identity_before": {
+        "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_prior_calibration_c1_20261022_v9\\runs_v9\\DL1018_VAL_T3_C03_W00\\ON1\\attempt_01\\raw_run.mat",
+        "sha256": "3c2c9339064757e02dc1ae76cff568e4fe936c92c61eccbcbe98817d33f0a493",
+        "size_bytes": 45478019,
+        "mtime_ns": 1792684771841615800
+      },
+      "raw_identity_after": {
+        "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_prior_calibration_c1_20261022_v9\\runs_v9\\DL1018_VAL_T3_C03_W00\\ON1\\attempt_01\\raw_run.mat",
+        "sha256": "3c2c9339064757e02dc1ae76cff568e4fe936c92c61eccbcbe98817d33f0a493",
+        "size_bytes": 45478019,
+        "mtime_ns": 1792684771841615800
+      },
+      "raw_identity_before_after_equal": true
+    }
+  ],
+  "group_equal_scene_means": [
+    {
+      "group": "ALL",
+      "n_scenes": 12,
+      "metric": "wind_over_mass",
+      "RMS_equal_scene_mean": {
+        "ALL": 0.4164376102160263,
+        "X": 0.2721368764271999,
+        "Y": 0.24310795523874437,
+        "Z": 0.10551486369125446
+      }
+    },
+    {
+      "group": "ALL",
+      "n_scenes": 12,
+      "metric": "actual_vs_filtered_direction",
+      "RMS_equal_scene_mean": {
+        "ALL": 0.15616348151154344,
+        "X": 0.09938594348481715,
+        "Y": 0.11103668983800657,
+        "Z": 0.006757839380379518
+      }
+    },
+    {
+      "group": "ALL",
+      "n_scenes": 12,
+      "metric": "requested_vs_realized_thrust",
+      "RMS_equal_scene_mean": {
+        "ALL": 8.157061646538593e-16,
+        "X": 3.5870427210270674e-17,
+        "Y": 4.702045668558261e-17,
+        "Z": 8.133652654228983e-16
+      }
+    },
+    {
+      "group": "ALL",
+      "n_scenes": 12,
+      "metric": "actual_vs_raw_direction",
+      "RMS_equal_scene_mean": {
+        "ALL": 0.3532620782012053,
+        "X": 0.21300906111996035,
+        "Y": 0.24738926784408957,
+        "Z": 0.02051551617158239
+      }
+    },
+    {
+      "group": "ALL",
+      "n_scenes": 12,
+      "metric": "raw_vs_filtered_direction",
+      "RMS_equal_scene_mean": {
+        "ALL": 0.2709080608390503,
+        "X": 0.15592653491366984,
+        "Y": 0.18773452575744787,
+        "Z": 0.017284383774695128
+      }
+    },
+    {
+      "group": "ALL",
+      "n_scenes": 12,
+      "metric": "physical_d",
+      "RMS_equal_scene_mean": {
+        "ALL": 0.4943673302964549,
+        "X": 0.31563577446909136,
+        "Y": 0.3082376075679923,
+        "Z": 0.10772196007820123
+      }
+    },
+    {
+      "group": "ALL",
+      "n_scenes": 12,
+      "metric": "online_u_minus_d",
+      "RMS_equal_scene_mean": {
+        "ALL": 0.16087088015385193,
+        "X": 0.09261883706234798,
+        "Y": 0.11597362664761758,
+        "Z": 0.038467362040630004
+      }
+    },
+    {
+      "group": "ALL",
+      "n_scenes": 12,
+      "metric": "online_u_minus_d:0_1_Hz_including_DC",
+      "RMS_equal_scene_mean": {
+        "ALL": 0.0878065192215955,
+        "X": 0.0543883794769301,
+        "Y": 0.06618599644270841,
+        "Z": 0.010010764993463891
+      }
+    },
+    {
+      "group": "ALL",
+      "n_scenes": 12,
+      "metric": "online_u_minus_d:1_5_Hz",
+      "RMS_equal_scene_mean": {
+        "ALL": 0.11919850146170424,
+        "X": 0.06371741637601708,
+        "Y": 0.08111058920568036,
+        "Z": 0.033681525984018294
+      }
+    },
+    {
+      "group": "ALL",
+      "n_scenes": 12,
+      "metric": "online_u_minus_d:5_50_Hz_including_Nyquist",
+      "RMS_equal_scene_mean": {
+        "ALL": 0.014329937475122645,
+        "X": 0.009664855805480141,
+        "Y": 0.008366248231331558,
+        "Z": 0.003293607247598432
+      }
+    },
+    {
+      "group": "HF_W09_W14",
+      "n_scenes": 6,
+      "metric": "wind_over_mass",
+      "RMS_equal_scene_mean": {
+        "ALL": 0.5535885018498217,
+        "X": 0.34906047191653394,
+        "Y": 0.3317958689364042,
+        "Z": 0.15383788409727028
+      }
+    },
+    {
+      "group": "HF_W09_W14",
+      "n_scenes": 6,
+      "metric": "actual_vs_filtered_direction",
+      "RMS_equal_scene_mean": {
+        "ALL": 0.14415384999435085,
+        "X": 0.08037114567914651,
+        "Y": 0.11740796996586683,
+        "Z": 0.007064284523801575
+      }
+    },
+    {
+      "group": "HF_W09_W14",
+      "n_scenes": 6,
+      "metric": "requested_vs_realized_thrust",
+      "RMS_equal_scene_mean": {
+        "ALL": 8.199173253713386e-16,
+        "X": 3.7344512663021756e-17,
+        "Y": 4.9542247189194e-17,
+        "Z": 8.174386056435057e-16
+      }
+    },
+    {
+      "group": "HF_W09_W14",
+      "n_scenes": 6,
+      "metric": "actual_vs_raw_direction",
+      "RMS_equal_scene_mean": {
+        "ALL": 0.45705969427163146,
+        "X": 0.2785527406348116,
+        "Y": 0.312731227069582,
+        "Z": 0.02805465859779384
+      }
+    },
+    {
+      "group": "HF_W09_W14",
+      "n_scenes": 6,
+      "metric": "raw_vs_filtered_direction",
+      "RMS_equal_scene_mean": {
+        "ALL": 0.40698202063941896,
+        "X": 0.24773325284061612,
+        "Y": 0.26054694419806634,
+        "Z": 0.025935488274614265
+      }
+    },
+    {
+      "group": "HF_W09_W14",
+      "n_scenes": 6,
+      "metric": "physical_d",
+      "RMS_equal_scene_mean": {
+        "ALL": 0.5850633912756357,
+        "X": 0.3485212301780447,
+        "Y": 0.3853677958081085,
+        "Z": 0.15338451311060722
+      }
+    },
+    {
+      "group": "HF_W09_W14",
+      "n_scenes": 6,
+      "metric": "online_u_minus_d",
+      "RMS_equal_scene_mean": {
+        "ALL": 0.21969261447458346,
+        "X": 0.11971105748567874,
+        "Y": 0.157326979193805,
+        "Z": 0.06286287648700792
+      }
+    },
+    {
+      "group": "HF_W09_W14",
+      "n_scenes": 6,
+      "metric": "online_u_minus_d:0_1_Hz_including_DC",
+      "RMS_equal_scene_mean": {
+        "ALL": 0.08723011098640902,
+        "X": 0.049371377382714327,
+        "Y": 0.07022751472337714,
+        "Z": 0.009029216136695195
+      }
+    },
+    {
+      "group": "HF_W09_W14",
+      "n_scenes": 6,
+      "metric": "online_u_minus_d:1_5_Hz",
+      "RMS_equal_scene_mean": {
+        "ALL": 0.19678334488963037,
+        "X": 0.10268441622394937,
+        "Y": 0.1303930057268573,
+        "Z": 0.06160219928085728
+      }
+    },
+    {
+      "group": "HF_W09_W14",
+      "n_scenes": 6,
+      "metric": "online_u_minus_d:5_50_Hz_including_Nyquist",
+      "RMS_equal_scene_mean": {
+        "ALL": 0.022484977297314458,
+        "X": 0.014330902888025887,
+        "Y": 0.013435523519955717,
+        "Z": 0.005959762486041232
+      }
+    },
+    {
+      "group": "W15",
+      "n_scenes": 3,
+      "metric": "wind_over_mass",
+      "RMS_equal_scene_mean": {
+        "ALL": 0.004222608224682995,
+        "X": 0.002576142028386364,
+        "Y": 0.0031713019565626555,
+        "Z": 0.0008106288667441005
+      }
+    },
+    {
+      "group": "W15",
+      "n_scenes": 3,
+      "metric": "actual_vs_filtered_direction",
+      "RMS_equal_scene_mean": {
+        "ALL": 0.24212373553008484,
+        "X": 0.17233792447992424,
+        "Y": 0.14075745495787137,
+        "Z": 0.009806455435327481
+      }
+    },
+    {
+      "group": "W15",
+      "n_scenes": 3,
+      "metric": "requested_vs_realized_thrust",
+      "RMS_equal_scene_mean": {
+        "ALL": 8.316942966839841e-16,
+        "X": 2.6666398274898784e-17,
+        "Y": 3.992972827574609e-17,
+        "Z": 8.301249375207797e-16
+      }
+    },
+    {
+      "group": "W15",
+      "n_scenes": 3,
+      "metric": "actual_vs_raw_direction",
+      "RMS_equal_scene_mean": {
+        "ALL": 0.2554580876237927,
+        "X": 0.17569087744360937,
+        "Y": 0.1575788235637061,
+        "Z": 0.010353545367752187
+      }
+    },
+    {
+      "group": "W15",
+      "n_scenes": 3,
+      "metric": "raw_vs_filtered_direction",
+      "RMS_equal_scene_mean": {
+        "ALL": 0.07970088733122536,
+        "X": 0.049001872391315225,
+        "Y": 0.060568449484813436,
+        "Z": 0.0034952786398744305
+      }
+    },
+    {
+      "group": "W15",
+      "n_scenes": 3,
+      "metric": "physical_d",
+      "RMS_equal_scene_mean": {
+        "ALL": 0.2421460042208794,
+        "X": 0.17213905120317852,
+        "Y": 0.14109399404103815,
+        "Z": 0.010165657513130408
+      }
+    },
+    {
+      "group": "W15",
+      "n_scenes": 3,
+      "metric": "online_u_minus_d",
+      "RMS_equal_scene_mean": {
+        "ALL": 0.09557860213286833,
+        "X": 0.06709755096557389,
+        "Y": 0.06552855163291338,
+        "Z": 0.004504769057149228
+      }
+    },
+    {
+      "group": "W15",
+      "n_scenes": 3,
+      "metric": "online_u_minus_d:0_1_Hz_including_DC",
+      "RMS_equal_scene_mean": {
+        "ALL": 0.09090269727799212,
+        "X": 0.06280423841004358,
+        "Y": 0.06300219202980023,
+        "Z": 0.0040634174322663275
+      }
+    },
+    {
+      "group": "W15",
+      "n_scenes": 3,
+      "metric": "online_u_minus_d:1_5_Hz",
+      "RMS_equal_scene_mean": {
+        "ALL": 0.028620321115330447,
+        "X": 0.02235215638437148,
+        "Y": 0.017587480945868084,
+        "Z": 0.001920710025636853
+      }
+    },
+    {
+      "group": "W15",
+      "n_scenes": 3,
+      "metric": "online_u_minus_d:5_50_Hz_including_Nyquist",
+      "RMS_equal_scene_mean": {
+        "ALL": 0.007118466443733176,
+        "X": 0.006124546106712188,
+        "Y": 0.003489509354070272,
+        "Z": 0.0001457079799705891
+      }
+    }
+  ],
+  "limits": [
+    "The 12 records are the original ON1 closed-loop states. This decomposes observed same-state forces, not counterfactual controller effects or a new rollout.",
+    "No true wind or geometry is a deployment input; logged wind is used only for offline physical attribution.",
+    "Frequency bands describe the logged 5-20 s error on the fixed 100-Hz event grid; no causal interpretation or tuning is implied.",
+    "All raw/config/source path hashes and raw stat/hash before-after checks are retained.",
+    "Plant=0 new, training=0, optimizer=0, GPU=0, TEST=false."
+  ]
+}

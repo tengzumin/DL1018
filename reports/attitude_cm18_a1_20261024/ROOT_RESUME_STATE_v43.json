@@ -1,0 +1,121 @@
+{
+  "schema": "ROOT_CM18_CONTINUATION_STATE_V43",
+  "observed_utc": "2026-10-24T18:31:20.905849+00:00",
+  "goal_status": "ACTIVE_NOT_ACHIEVED",
+  "C5": "FROZEN",
+  "C7": "PAUSED",
+  "TEST": "NO_NEW_ACCESS",
+  "phase": "CSTAR_ALL816_RUNNING_READER_SMOKE_PASS",
+  "active_root_session": 5961,
+  "A1R_receipt": "experiments\\attitude_cm18_datarepair_20261024\\training_a1r_v1\\run_receipt.json",
+  "A1R_steps": 60000,
+  "A1R_best_step": 40000,
+  "A1R_best_sha256": "5fa4308b6220e530e6c2e7a6f45c4b6e22ddddef80d1bc5cafdcf58564bc5ef3",
+  "A1R_elapsed_seconds": 397,
+  "dataset": "ALL816 repaired B PASS:768TRAIN+48VAL; independent audit v2",
+  "normalizer_sha256": "faf8748f640c944c745406247ab8486825966abd763088ad1f4e0cde626ad14c",
+  "C5_VAL48": "48 actual caches independent audit PASS, diagnostic only",
+  "CSTAR": "attempt02 actualOS0 fourPASS and independentSciPy cache audit PASS; Root source/result review accepted. All816 relabel implementation in progress, not yet released/run.",
+  "closed_loop_sorties_completed": 20,
+  "cumulative_actual_optimizer_steps": 218200,
+  "formal_command_attempts_total": 5,
+  "actual_optimizer_jobs_total": 4,
+  "incidents": "normalizer reduction layout corrected before optimizer; first formal GUI utilization preflight blocked zero steps; preserved",
+  "next": "Poll SAME5961 until terminal. All816 independent audit -> A1T selfcheck -> Root one formal training release. Data Luna replay done; train Luna A1R12 preparation implementation. Root must not call full independent audit until final label manifest exists AND live handle terminalPASS. No new Plant/TEST so far.",
+  "A1R_same_C5_VAL48": {
+    "old_macro_vector_rmse": 0.6675904586616129,
+    "new_macro_vector_rmse": 0.6466336148512785,
+    "wins": 29,
+    "yaw_slightly_worse": true,
+    "scope": "behavior residual prediction on same recorded states; not tracking"
+  },
+  "postselection": {
+    "source_sha256": "6d17631a3eb570d62d0e263b5729a6e0d61ebde55a9c9d51d486339e15e19cc7",
+    "actual_exit_code": 0,
+    "torch_numpy_parity": 7.105427357601002e-15,
+    "B_macro_vector_old": 0.3295702982551219,
+    "B_macro_vector_a1r": 0.32922513847064483,
+    "B_wins": 23,
+    "C5_independent_per_scene_delta": 0.0
+  },
+  "decision_report": "reports/attitude_cm18_datarepair_20261024/ROOT_A1R_AND_CSTAR4_DECISION_v1_ZH.md",
+  "previous_goal_turn_classification": "PROGRESS: full static same-state action replay source reviewed with actual MATLAB checkcode and real4 run_start/status metadata; A1R12 preparation taskbook read and implementation approved",
+  "A1T_taskbook": {
+    "path": "reports/attitude_cm18_datarepair_20261024/A1T_TRAINING_TASKBOOK_v1_ZH.md",
+    "sha256": "2fe158fd370019bfe9e3d95e6b3222e1f4d7829cfa1681bd8dd85d06615102e9",
+    "status": "IMPLEMENTATION_APPROVED_TRAINING_NOT_RELEASED"
+  },
+  "conditional_theory_draft": "reports/attitude_cm18_datarepair_20261024/ROOT_ATTITUDE_CONDITIONAL_ERROR_BOUND_DRAFT_v2_ZH.md",
+  "resource_observation": {
+    "free_RAM_GiB": 5.13,
+    "free_disk_GiB": 203.03,
+    "MATLAB_processes": 0
+  },
+  "full_cstar_source_sha256": "042f39badedff5d1cc545e7f3feaedcfe4166de1d1bce619d2500017d05d85cb",
+  "full_cstar_progress": {
+    "status": "RUNNING",
+    "completed_count_observed": 522,
+    "root_session": 5961,
+    "last_scene": "DL1018_TRAIN_T3_C00_W09"
+  },
+  "cstar_reader": {
+    "path": "experiments/attitude_cm18_datarepair_20261024/read_cstar_split_v1.py",
+    "sha256": "ced4251719f986d762f29ccced04fb80208a28e7aed1e2fe12d3b504955a4096",
+    "actual_private_first_row_smoke": "PASS",
+    "public_full_split": "NOT_RUN_NO_FINAL_MANIFEST_YET"
+  },
+  "root_auditor": {
+    "path": "reports/attitude_cm18_datarepair_20261024/root_audit_cstar_all816_v1.py",
+    "status": "SOURCE_READY_NOT_RUN",
+    "agreed_output_schema": "CM18_CSTAR_ALL816_INDEPENDENT_AUDIT_V1",
+    "review": "Nonauthor RMS layout accepted; incorrect whole-F reshape concern withdrawn after Root actual arange matrix validation; additional source/cache pins added."
+  },
+  "A1T_trainer": {
+    "source_sha256": "2a5ea2ba6d0ccba1e0bf30a7d84f8a07723144fb44a070a63ca7fd6d68ade88b",
+    "root_review": "PASS",
+    "nonauthor_review": "NONAUTHOR_A1T_AND_CSTAR_AUDIT_REVIEW_v1_ZH.md",
+    "zero_step": "PENDING_ACTUAL_FULL_DATA",
+    "formal_release": "NOT_ISSUED"
+  },
+  "primary_literature": "reports/attitude_cm18_datarepair_20261024/ROOT_MORPHING_ATTITUDE_PRIMARY_LITERATURE_ADDENDUM_v1_ZH.md",
+  "partial_clip_diagnosis": {
+    "path": "reports/attitude_cm18_datarepair_20261024/ROOT_CSTAR_PARTIAL_CLIP_DIAGNOSIS_v1.json",
+    "scope": "completed prefix only;9 clipped scenes analyzed; no whole816 claim",
+    "finding": "yaw target exceeds4.7124 at beta1 mainly HOLD; output clip creates RP residual throughG coupling; physical feasibility not established globally",
+    "action": "retain all samples, original limits/protocol unchanged; full batch continues"
+  },
+  "A1T_attribution_note": "reports/attitude_cm18_datarepair_20261024/ROOT_A1T_ATTRIBUTION_BOUNDARY_v1_ZH.md",
+  "export_parity_preparation": {
+    "python_sha256": "bdf30ceb6244ecd69191d8850105ae1d3530aa70d38683f2390394c56aa586d3",
+    "matlab_checker_sha256": "6f7775e445c748574f5467205be558b436ac81b7a3e9fa737c1bc7d98df60875",
+    "fixture_scene": "DL1018_VAL_T2_C04_W14",
+    "actual_private_fixture_reads": "PASS",
+    "actual_trained_parity": "NOT_RUN_NO_TRAINED_A1T"
+  },
+  "safe_powershell_live_read": "Use [IO.File]::Open(path,Open,Read,([IO.FileShare]::ReadWrite -bor [IO.FileShare]::Delete)); StreamReader.ReadToEnd; finally Dispose. Do not Get-Content live atomic-replaced JSON.",
+  "T1_complete_group_diagnosis": {
+    "path": "reports/attitude_cm18_datarepair_20261024/ROOT_CSTAR_T1_256_LIMIT_GROUP_DIAGNOSIS_v1.json",
+    "scope": "256TRAIN B-state oracle single-action only",
+    "raw_clip_scenes_W00_W08": "8/144",
+    "raw_clip_scenes_W09_W14": "5/96",
+    "raw_clip_scenes_W15": "0/16",
+    "conclusion": "Clipping is one boundary, not universal explanation for HF/no-wind weaknesses. No direct A1T trained/closed-loop outcome yet."
+  },
+  "parallel_preparation": {
+    "data_Luna": "replay_cm18_val_action_v1.m WIP; only outer/model gates exist, physical loop/helpers not yet handed off; no execution",
+    "train_Luna": "A1R fixed SCREEN12 control taskbook/runner proposal only; no Plant release"
+  },
+  "static_action_replay": {
+    "source_sha256": "77e960b049579f608e7fb29d00fbca545d376c48b3a510bf4cfbea4b63b2e029",
+    "root_review": "reports/attitude_cm18_datarepair_20261024/ROOT_STATIC_ACTION_REPLAY_SOURCE_REVIEW_v1.json",
+    "actual_checkcode": "OS0:2 ALIGN+2NASGU only; no parse errors",
+    "actual_replay": "NOT_RUN_NO_A1T_MODEL"
+  },
+  "A1R12_control": {
+    "taskbook_sha256": "f69704d003b880e263ba85fef17b79ebb59517d8b5fed871622ef40c5a1ada47",
+    "status": "IMPLEMENTATION_APPROVED_NO_PLANT_RELEASE",
+    "first_scene": "DL1018_DEV_T1_C01_W15",
+    "new_output_budget_GiB": 1.5,
+    "engine_unchanged": true
+  }
+}

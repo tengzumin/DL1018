@@ -1,0 +1,1853 @@
+{
+  "schema": "COSINE_GRU_C5_POSITION_RESIDUAL_GRU_TASK_AWARE_CV_RESULTS_V1",
+  "scope": "Locked TRAIN_C5_24 development cohort only; no VAL/TEST raw, no new Plant, no real-wind fields, no inertia reconstruction/use.",
+  "dataset_sha256": "15d689f08fd6d8a53a64c59dbdf62b33f9b8e8a12ce083fb12834cd106df2eeb",
+  "parent_replay_audit_sha256": "97dbcf59ad3fdc67b4a39daafe10fe122eb3559ec3cfdc4b15efbc57da59185f",
+  "no_task_control": {
+    "source_lock_sha256": "197c77af5c293247f7a0ad0dc2eea341ff6bade4845c2f4d960810c13ce495fb",
+    "results_sha256": "cbd90530f124aa5db42588c5a61984e3137ca163a13be3ff9b8f25e1cf16aaca",
+    "oof_sha256": "9dc29cc2d94b990bafc2bdf77cc8c704fb14e2c0582987e3057cd6464e177d0f",
+    "lambda_smooth": 0.01,
+    "training_repeated": false,
+    "source_fold_ids": [
+      "holdout_W00_05",
+      "holdout_W06_10",
+      "holdout_W11_13",
+      "holdout_W14_15"
+    ]
+  },
+  "model": "GRU(14,32) -> Linear(32,3), zero-initialized output; per-scene hidden reset",
+  "training": {
+    "seed_base": 20261028,
+    "steps_per_fold": 300,
+    "optimizer": "Adam",
+    "learning_rate": 0.001,
+    "normalizer": "per-fold mean/std computed from training scenes only across 1999 causal X14 rows",
+    "position_loss": "SmoothL1(clamp(a_C5 + beta*clip(delta,-0.5,0.5),-3,3), y_10ms_clipped) on ready events",
+    "smoothness_loss": "0.01 * mean(second_difference(clipped_delta)^2) on contiguous ready triples",
+    "task_loss": "0.1 * mean(SO3 geodesic angle in radians squared) over the exact 1-ms filtered command trajectory on frozen parent-C5 states; no normalization, threshold, or adaptive gate",
+    "task_weight": 0.1,
+    "gradient_adjoint_check": {
+      "cases": {
+        "unsaturated": {
+          "steps": 240,
+          "max_output_abs_rad": 2.710505431213761e-20,
+          "loss_abs": 0.0,
+          "max_input_gradient_abs": 1.4230153513872246e-19,
+          "custom_gradient_norm": 0.0004294193684449231,
+          "passed": true
+        },
+        "saturated": {
+          "steps": 240,
+          "max_output_abs_rad": 0.0,
+          "loss_abs": 0.0,
+          "max_input_gradient_abs": 2.846030702774449e-19,
+          "custom_gradient_norm": 0.0001837372180195157,
+          "passed": true
+        },
+        "exact_limit_boundary": {
+          "steps": 8,
+          "max_output_abs_rad": 0.0,
+          "loss_abs": 0.0,
+          "max_input_gradient_abs": 5.421010862427522e-20,
+          "custom_gradient_norm": 0.0003654829090776525,
+          "passed": true
+        },
+        "event_zoh_and_preupdate": {
+          "transition_count": 50,
+          "event_count": 4,
+          "first_event_transition_index": 10,
+          "action_hold_10ms_exact": true,
+          "event0_has_no_effect_on_preupdate_output_at_transition_10": true,
+          "event0_affects_output_by_transition_11": true,
+          "max_output_abs_rad": 0.0,
+          "max_event_action_gradient_abs": 8.326672684688674e-17,
+          "passed": true
+        }
+      },
+      "passed": true,
+      "saturation_derivative_convention": "matches torch.clamp: derivative 1 exactly at the limit, 0 outside"
+    },
+    "filter": {
+      "dt_s": 0.001,
+      "wn_rad_s": [
+        18.0,
+        18.0,
+        12.0
+      ],
+      "damping": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "acceleration_limit_rad_s2": [
+        "Inf",
+        "Inf",
+        6
+      ],
+      "initial_state": "parent raw initial Euler and zero Euler-rate",
+      "filter_reference_timing": "pre-update; roll/pitch from current yaw, target yaw from reference"
+    },
+    "state_frozen_limit": "The loss measures command/target consistency on fixed C5 state, yaw, and reference trajectories. It does not propagate residual-induced state changes or establish closed-loop performance."
+  },
+  "folds": {
+    "holdout_W00_05": {
+      "train_scene_count": 18,
+      "holdout_scene_count": 6,
+      "train_scene_ids": [
+        "DL1018_DEV_T1_C01_W15",
+        "DL1018_DEV_T1_C05_W06",
+        "DL1018_DEV_T1_C07_W08",
+        "DL1018_DEV_T1_C10_W09",
+        "DL1018_DEV_T1_C11_W12",
+        "DL1018_DEV_T1_C15_W14",
+        "DL1018_DEV_T2_C02_W15",
+        "DL1018_DEV_T2_C06_W07",
+        "DL1018_DEV_T2_C08_W08",
+        "DL1018_DEV_T2_C09_W10",
+        "DL1018_DEV_T2_C12_W13",
+        "DL1018_DEV_T2_C14_W14",
+        "DL1018_DEV_T3_C03_W15",
+        "DL1018_DEV_T3_C06_W08",
+        "DL1018_DEV_T3_C09_W09",
+        "DL1018_DEV_T3_C10_W11",
+        "DL1018_DEV_T3_C13_W12",
+        "DL1018_DEV_T3_C15_W14"
+      ],
+      "holdout_scene_ids": [
+        "DL1018_DEV_T1_C00_W03",
+        "DL1018_DEV_T1_C04_W00",
+        "DL1018_DEV_T2_C00_W04",
+        "DL1018_DEV_T2_C03_W01",
+        "DL1018_DEV_T3_C00_W05",
+        "DL1018_DEV_T3_C05_W02"
+      ],
+      "seed": 20261028,
+      "normalizer_fit_scope": "train scenes only, all 1999 causal X14 rows",
+      "normalizer_mean": [
+        0.0008170011569745839,
+        0.0005412623868323863,
+        0.00010454109724378213,
+        0.0007549426518380642,
+        0.0005123831797391176,
+        9.813986252993345e-05,
+        -0.0139505285769701,
+        0.016740832477808,
+        3.6490448110271245e-05,
+        9.815017700195312,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "normalizer_std": [
+        0.006983553990721703,
+        0.006633346434682608,
+        0.00214077765122056,
+        0.027328448370099068,
+        0.023262936621904373,
+        0.0069612194783985615,
+        0.055543504655361176,
+        0.05036312714219093,
+        0.0015744062839075923,
+        0.1161184161901474,
+        0.2472684383392334,
+        0.2582634687423706,
+        0.29446566104888916,
+        0.2333916872739792
+      ],
+      "loss_log": [
+        {
+          "step": 1,
+          "position_smooth_l1": 0.03586145117878914,
+          "smoothness_mean_d2_sq": 0.0,
+          "task_mean_so3_sq_rad2": 0.003735085716471076,
+          "total_objective": 0.036234959959983826
+        },
+        {
+          "step": 50,
+          "position_smooth_l1": 0.0266503244638443,
+          "smoothness_mean_d2_sq": 1.1860078302561305e-05,
+          "task_mean_so3_sq_rad2": 0.0036506825126707554,
+          "total_objective": 0.02701551280915737
+        },
+        {
+          "step": 100,
+          "position_smooth_l1": 0.0144275464117527,
+          "smoothness_mean_d2_sq": 0.0001262474397663027,
+          "task_mean_so3_sq_rad2": 0.004385933745652437,
+          "total_objective": 0.014867402613162994
+        },
+        {
+          "step": 150,
+          "position_smooth_l1": 0.008214709348976612,
+          "smoothness_mean_d2_sq": 0.00031072358251549304,
+          "task_mean_so3_sq_rad2": 0.00466678012162447,
+          "total_objective": 0.008684494532644749
+        },
+        {
+          "step": 200,
+          "position_smooth_l1": 0.00647717947140336,
+          "smoothness_mean_d2_sq": 0.0004009380063507706,
+          "task_mean_so3_sq_rad2": 0.004733745940029621,
+          "total_objective": 0.006954563315957785
+        },
+        {
+          "step": 250,
+          "position_smooth_l1": 0.005926896817982197,
+          "smoothness_mean_d2_sq": 0.0004289998032618314,
+          "task_mean_so3_sq_rad2": 0.004759358707815409,
+          "total_objective": 0.0064071230590343475
+        },
+        {
+          "step": 300,
+          "position_smooth_l1": 0.00565681979060173,
+          "smoothness_mean_d2_sq": 0.0004373682022560388,
+          "task_mean_so3_sq_rad2": 0.004775056149810553,
+          "total_objective": 0.0061386991292238235
+        }
+      ],
+      "position": {
+        "train": {
+          "scene_count": 18,
+          "pooled_rmse_mps2": 0.10636336155477509,
+          "scene_macro_rmse_mps2": 0.08598685168747984
+        },
+        "holdout": {
+          "scene_count": 6,
+          "pooled_rmse_mps2": 0.06010182024798962,
+          "scene_macro_rmse_mps2": 0.052933611268236334
+        }
+      },
+      "holdout_head_abs_ge_0_5_fraction": 0.005335365853658537,
+      "holdout_clipped_delta_abs_ge_0_5_fraction": 0.005335365853658537,
+      "holdout_preclip_total_action_abs_ge_3_fraction": 0.0,
+      "holdout_final_action_at_limit_fraction": 0.0,
+      "checkpoint_path": "experiments/dl_attitude_replacement_20261028/position_cosine_gru_train24_causal_v1/task_aware_cv_v1/checkpoints/holdout_W00_05_task_aware.pt",
+      "checkpoint_sha256": "10baba648406f521ad7822889a0ed9b44590e6ea41f30e89a5b4b7005bde6d38"
+    },
+    "holdout_W06_10": {
+      "train_scene_count": 16,
+      "holdout_scene_count": 8,
+      "train_scene_ids": [
+        "DL1018_DEV_T1_C00_W03",
+        "DL1018_DEV_T1_C01_W15",
+        "DL1018_DEV_T1_C04_W00",
+        "DL1018_DEV_T1_C11_W12",
+        "DL1018_DEV_T1_C15_W14",
+        "DL1018_DEV_T2_C00_W04",
+        "DL1018_DEV_T2_C02_W15",
+        "DL1018_DEV_T2_C03_W01",
+        "DL1018_DEV_T2_C12_W13",
+        "DL1018_DEV_T2_C14_W14",
+        "DL1018_DEV_T3_C00_W05",
+        "DL1018_DEV_T3_C03_W15",
+        "DL1018_DEV_T3_C05_W02",
+        "DL1018_DEV_T3_C10_W11",
+        "DL1018_DEV_T3_C13_W12",
+        "DL1018_DEV_T3_C15_W14"
+      ],
+      "holdout_scene_ids": [
+        "DL1018_DEV_T1_C05_W06",
+        "DL1018_DEV_T1_C07_W08",
+        "DL1018_DEV_T1_C10_W09",
+        "DL1018_DEV_T2_C06_W07",
+        "DL1018_DEV_T2_C08_W08",
+        "DL1018_DEV_T2_C09_W10",
+        "DL1018_DEV_T3_C06_W08",
+        "DL1018_DEV_T3_C09_W09"
+      ],
+      "seed": 20261029,
+      "normalizer_fit_scope": "train scenes only, all 1999 causal X14 rows",
+      "normalizer_mean": [
+        0.0003053756372537464,
+        0.00022996407642494887,
+        0.0003734141937457025,
+        0.00018867693142965436,
+        0.00025866663781926036,
+        0.00042778856004588306,
+        -0.008205973543226719,
+        0.004853423684835434,
+        -9.46972068049945e-05,
+        9.815510749816895,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "normalizer_std": [
+        0.007006887812167406,
+        0.0073592341504991055,
+        0.003003349993377924,
+        0.019650520756840706,
+        0.021484240889549255,
+        0.008865050971508026,
+        0.053338900208473206,
+        0.047845259308815,
+        0.00207298481836915,
+        0.11694888025522232,
+        0.23723013699054718,
+        0.20315176248550415,
+        0.2693255841732025,
+        0.21799945831298828
+      ],
+      "loss_log": [
+        {
+          "step": 1,
+          "position_smooth_l1": 0.024965031072497368,
+          "smoothness_mean_d2_sq": 0.0,
+          "task_mean_so3_sq_rad2": 0.002988331951200962,
+          "total_objective": 0.025263864547014236
+        },
+        {
+          "step": 50,
+          "position_smooth_l1": 0.019358286634087563,
+          "smoothness_mean_d2_sq": 1.0630354154272936e-05,
+          "task_mean_so3_sq_rad2": 0.002830053912475705,
+          "total_objective": 0.019641397520899773
+        },
+        {
+          "step": 100,
+          "position_smooth_l1": 0.008649397641420364,
+          "smoothness_mean_d2_sq": 0.00015356829680968076,
+          "task_mean_so3_sq_rad2": 0.0033453425858169794,
+          "total_objective": 0.008985467255115509
+        },
+        {
+          "step": 150,
+          "position_smooth_l1": 0.005265164189040661,
+          "smoothness_mean_d2_sq": 0.0002996833936776966,
+          "task_mean_so3_sq_rad2": 0.003476414829492569,
+          "total_objective": 0.0056158024817705154
+        },
+        {
+          "step": 200,
+          "position_smooth_l1": 0.004304392728954554,
+          "smoothness_mean_d2_sq": 0.00040077263838611543,
+          "task_mean_so3_sq_rad2": 0.0035101966932415962,
+          "total_objective": 0.004659420344978571
+        },
+        {
+          "step": 250,
+          "position_smooth_l1": 0.003937100525945425,
+          "smoothness_mean_d2_sq": 0.00044525787234306335,
+          "task_mean_so3_sq_rad2": 0.0035226333420723677,
+          "total_objective": 0.00429381662979722
+        },
+        {
+          "step": 300,
+          "position_smooth_l1": 0.003752666525542736,
+          "smoothness_mean_d2_sq": 0.00046221690718084574,
+          "task_mean_so3_sq_rad2": 0.0035286254715174437,
+          "total_objective": 0.004110151436179876
+        }
+      ],
+      "position": {
+        "train": {
+          "scene_count": 16,
+          "pooled_rmse_mps2": 0.086603092217063,
+          "scene_macro_rmse_mps2": 0.06367513044662333
+        },
+        "holdout": {
+          "scene_count": 8,
+          "pooled_rmse_mps2": 0.13510039188184952,
+          "scene_macro_rmse_mps2": 0.11414918182958332
+        }
+      },
+      "holdout_head_abs_ge_0_5_fraction": 0.05693174119241192,
+      "holdout_clipped_delta_abs_ge_0_5_fraction": 0.05693174119241192,
+      "holdout_preclip_total_action_abs_ge_3_fraction": 0.0,
+      "holdout_final_action_at_limit_fraction": 0.0,
+      "checkpoint_path": "experiments/dl_attitude_replacement_20261028/position_cosine_gru_train24_causal_v1/task_aware_cv_v1/checkpoints/holdout_W06_10_task_aware.pt",
+      "checkpoint_sha256": "965adc4892c4e46265290e93d12f2a3233e9387819f93587848b3f5ed19013f9"
+    },
+    "holdout_W11_13": {
+      "train_scene_count": 20,
+      "holdout_scene_count": 4,
+      "train_scene_ids": [
+        "DL1018_DEV_T1_C00_W03",
+        "DL1018_DEV_T1_C01_W15",
+        "DL1018_DEV_T1_C04_W00",
+        "DL1018_DEV_T1_C05_W06",
+        "DL1018_DEV_T1_C07_W08",
+        "DL1018_DEV_T1_C10_W09",
+        "DL1018_DEV_T1_C15_W14",
+        "DL1018_DEV_T2_C00_W04",
+        "DL1018_DEV_T2_C02_W15",
+        "DL1018_DEV_T2_C03_W01",
+        "DL1018_DEV_T2_C06_W07",
+        "DL1018_DEV_T2_C08_W08",
+        "DL1018_DEV_T2_C09_W10",
+        "DL1018_DEV_T2_C14_W14",
+        "DL1018_DEV_T3_C00_W05",
+        "DL1018_DEV_T3_C03_W15",
+        "DL1018_DEV_T3_C05_W02",
+        "DL1018_DEV_T3_C06_W08",
+        "DL1018_DEV_T3_C09_W09",
+        "DL1018_DEV_T3_C15_W14"
+      ],
+      "holdout_scene_ids": [
+        "DL1018_DEV_T1_C11_W12",
+        "DL1018_DEV_T2_C12_W13",
+        "DL1018_DEV_T3_C10_W11",
+        "DL1018_DEV_T3_C13_W12"
+      ],
+      "seed": 20261030,
+      "normalizer_fit_scope": "train scenes only, all 1999 causal X14 rows",
+      "normalizer_mean": [
+        0.001117922831326723,
+        0.0007861548801884055,
+        9.546480578137562e-05,
+        0.0009822549764066935,
+        0.0007858809549361467,
+        0.00013308911002241075,
+        -0.01928585208952427,
+        0.022556371986865997,
+        6.740992375853239e-06,
+        9.815905570983887,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "normalizer_std": [
+        0.007255755364894867,
+        0.007372843101620674,
+        0.0029834271408617496,
+        0.027023199945688248,
+        0.023960962891578674,
+        0.00950100552290678,
+        0.05450105294585228,
+        0.048275724053382874,
+        0.0020436965860426426,
+        0.12331592291593552,
+        0.22809211909770966,
+        0.22588828206062317,
+        0.23027485609054565,
+        0.19498464465141296
+      ],
+      "loss_log": [
+        {
+          "step": 1,
+          "position_smooth_l1": 0.026641910895705223,
+          "smoothness_mean_d2_sq": 0.0,
+          "task_mean_so3_sq_rad2": 0.003759469138458371,
+          "total_objective": 0.027017857879400253
+        },
+        {
+          "step": 50,
+          "position_smooth_l1": 0.020612403750419617,
+          "smoothness_mean_d2_sq": 7.5392690632725134e-06,
+          "task_mean_so3_sq_rad2": 0.003937335219234228,
+          "total_objective": 0.021006211638450623
+        },
+        {
+          "step": 100,
+          "position_smooth_l1": 0.011387971229851246,
+          "smoothness_mean_d2_sq": 8.204914047382772e-05,
+          "task_mean_so3_sq_rad2": 0.004443495534360409,
+          "total_objective": 0.011833141557872295
+        },
+        {
+          "step": 150,
+          "position_smooth_l1": 0.005852633621543646,
+          "smoothness_mean_d2_sq": 0.00022222961706575006,
+          "task_mean_so3_sq_rad2": 0.0047243935987353325,
+          "total_objective": 0.006327295210212469
+        },
+        {
+          "step": 200,
+          "position_smooth_l1": 0.0045625451020896435,
+          "smoothness_mean_d2_sq": 0.00027131300885230303,
+          "task_mean_so3_sq_rad2": 0.004774441942572594,
+          "total_objective": 0.005042702425271273
+        },
+        {
+          "step": 250,
+          "position_smooth_l1": 0.004092628136277199,
+          "smoothness_mean_d2_sq": 0.00027932855300605297,
+          "task_mean_so3_sq_rad2": 0.004796834662556648,
+          "total_objective": 0.004575104918330908
+        },
+        {
+          "step": 300,
+          "position_smooth_l1": 0.0038575236685574055,
+          "smoothness_mean_d2_sq": 0.00028098587063141167,
+          "task_mean_so3_sq_rad2": 0.004809965845197439,
+          "total_objective": 0.004341329913586378
+        }
+      ],
+      "position": {
+        "train": {
+          "scene_count": 20,
+          "pooled_rmse_mps2": 0.08783505753409983,
+          "scene_macro_rmse_mps2": 0.0668920790010169
+        },
+        "holdout": {
+          "scene_count": 4,
+          "pooled_rmse_mps2": 0.15206590742812995,
+          "scene_macro_rmse_mps2": 0.13307413822156083
+        }
+      },
+      "holdout_head_abs_ge_0_5_fraction": 0.0732130758807588,
+      "holdout_clipped_delta_abs_ge_0_5_fraction": 0.0732130758807588,
+      "holdout_preclip_total_action_abs_ge_3_fraction": 0.0,
+      "holdout_final_action_at_limit_fraction": 0.0,
+      "checkpoint_path": "experiments/dl_attitude_replacement_20261028/position_cosine_gru_train24_causal_v1/task_aware_cv_v1/checkpoints/holdout_W11_13_task_aware.pt",
+      "checkpoint_sha256": "f78218dd488996cdf1275397258e6e59a0a41c6413ead6ca5757ad3f7d46eb22"
+    },
+    "holdout_W14_15": {
+      "train_scene_count": 18,
+      "holdout_scene_count": 6,
+      "train_scene_ids": [
+        "DL1018_DEV_T1_C00_W03",
+        "DL1018_DEV_T1_C04_W00",
+        "DL1018_DEV_T1_C05_W06",
+        "DL1018_DEV_T1_C07_W08",
+        "DL1018_DEV_T1_C10_W09",
+        "DL1018_DEV_T1_C11_W12",
+        "DL1018_DEV_T2_C00_W04",
+        "DL1018_DEV_T2_C03_W01",
+        "DL1018_DEV_T2_C06_W07",
+        "DL1018_DEV_T2_C08_W08",
+        "DL1018_DEV_T2_C09_W10",
+        "DL1018_DEV_T2_C12_W13",
+        "DL1018_DEV_T3_C00_W05",
+        "DL1018_DEV_T3_C05_W02",
+        "DL1018_DEV_T3_C06_W08",
+        "DL1018_DEV_T3_C09_W09",
+        "DL1018_DEV_T3_C10_W11",
+        "DL1018_DEV_T3_C13_W12"
+      ],
+      "holdout_scene_ids": [
+        "DL1018_DEV_T1_C01_W15",
+        "DL1018_DEV_T1_C15_W14",
+        "DL1018_DEV_T2_C02_W15",
+        "DL1018_DEV_T2_C14_W14",
+        "DL1018_DEV_T3_C03_W15",
+        "DL1018_DEV_T3_C15_W14"
+      ],
+      "seed": 20261031,
+      "normalizer_fit_scope": "train scenes only, all 1999 causal X14 rows",
+      "normalizer_mean": [
+        0.0006467925850301981,
+        0.0006133001297712326,
+        0.00022266739688348025,
+        0.0005006215069442987,
+        0.0006150601548142731,
+        0.00026696405257098377,
+        -0.01597287505865097,
+        0.014147735200822353,
+        -5.822049570269883e-05,
+        9.81617546081543,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "normalizer_std": [
+        0.007841311395168304,
+        0.007776235695928335,
+        0.003235497046262026,
+        0.028676124289631844,
+        0.025342579931020737,
+        0.01017102412879467,
+        0.05632277950644493,
+        0.054768092930316925,
+        0.0021202138159424067,
+        0.1220398098230362,
+        0.2186359465122223,
+        0.22366271913051605,
+        0.2582634687423706,
+        0.20280945301055908
+      ],
+      "loss_log": [
+        {
+          "step": 1,
+          "position_smooth_l1": 0.026573725044727325,
+          "smoothness_mean_d2_sq": 0.0,
+          "task_mean_so3_sq_rad2": 0.0042706807143986225,
+          "total_objective": 0.027000792324543
+        },
+        {
+          "step": 50,
+          "position_smooth_l1": 0.019521495327353477,
+          "smoothness_mean_d2_sq": 3.698845148392138e-06,
+          "task_mean_so3_sq_rad2": 0.004414383787661791,
+          "total_objective": 0.019962970167398453
+        },
+        {
+          "step": 100,
+          "position_smooth_l1": 0.011405445635318756,
+          "smoothness_mean_d2_sq": 3.8560916436836123e-05,
+          "task_mean_so3_sq_rad2": 0.004999250173568726,
+          "total_objective": 0.01190575584769249
+        },
+        {
+          "step": 150,
+          "position_smooth_l1": 0.006789579056203365,
+          "smoothness_mean_d2_sq": 8.185891783796251e-05,
+          "task_mean_so3_sq_rad2": 0.005308346822857857,
+          "total_objective": 0.0073212324641644955
+        },
+        {
+          "step": 200,
+          "position_smooth_l1": 0.005108897108584642,
+          "smoothness_mean_d2_sq": 0.00011869019363075495,
+          "task_mean_so3_sq_rad2": 0.005431903060525656,
+          "total_objective": 0.005653274245560169
+        },
+        {
+          "step": 250,
+          "position_smooth_l1": 0.004470345564186573,
+          "smoothness_mean_d2_sq": 0.000152807857375592,
+          "task_mean_so3_sq_rad2": 0.005466284696012735,
+          "total_objective": 0.005018502473831177
+        },
+        {
+          "step": 300,
+          "position_smooth_l1": 0.004219810012727976,
+          "smoothness_mean_d2_sq": 0.0001657752291066572,
+          "task_mean_so3_sq_rad2": 0.005493822041898966,
+          "total_objective": 0.004770849831402302
+        }
+      ],
+      "position": {
+        "train": {
+          "scene_count": 18,
+          "pooled_rmse_mps2": 0.09190652647316626,
+          "scene_macro_rmse_mps2": 0.07164981492628532
+        },
+        "holdout": {
+          "scene_count": 6,
+          "pooled_rmse_mps2": 0.1388050959941224,
+          "scene_macro_rmse_mps2": 0.10206347144319021
+        }
+      },
+      "holdout_head_abs_ge_0_5_fraction": 0.1119579945799458,
+      "holdout_clipped_delta_abs_ge_0_5_fraction": 0.1119579945799458,
+      "holdout_preclip_total_action_abs_ge_3_fraction": 0.0,
+      "holdout_final_action_at_limit_fraction": 0.0,
+      "checkpoint_path": "experiments/dl_attitude_replacement_20261028/position_cosine_gru_train24_causal_v1/task_aware_cv_v1/checkpoints/holdout_W14_15_task_aware.pt",
+      "checkpoint_sha256": "fb09e78b9cf9dbe9c6c9913090d84e1e561aef5061b8af48c56ddbbcde44a9db"
+    }
+  },
+  "position_oof": {
+    "baseline_c5": {
+      "scene_count": 24,
+      "pooled_baseline_rmse_mps2": 0.23972851037979126,
+      "pooled_candidate_rmse_mps2": 0.23972851037979126,
+      "scene_macro_baseline_rmse_mps2": 0.20021421309444973,
+      "scene_macro_candidate_rmse_mps2": 0.20021421309444973,
+      "candidate_wins_ties_losses_vs_baseline": [
+        0,
+        24,
+        0
+      ],
+      "per_scene": {
+        "DL1018_DEV_T1_C00_W03": {
+          "baseline_rmse_mps2": 0.06401449036672664,
+          "candidate_rmse_mps2": 0.06401449036672664,
+          "baseline_axis_rmse_mps2": [
+            0.06728468916579172,
+            0.08783102820775297,
+            0.007214292658779732
+          ],
+          "candidate_axis_rmse_mps2": [
+            0.06728468916579172,
+            0.08783102820775297,
+            0.007214292658779732
+          ]
+        },
+        "DL1018_DEV_T1_C01_W15": {
+          "baseline_rmse_mps2": 0.026961264121980928,
+          "candidate_rmse_mps2": 0.026961264121980928,
+          "baseline_axis_rmse_mps2": [
+            0.03201278569789277,
+            0.0339150533514326,
+            0.0023832744692776453
+          ],
+          "candidate_axis_rmse_mps2": [
+            0.03201278569789277,
+            0.0339150533514326,
+            0.0023832744692776453
+          ]
+        },
+        "DL1018_DEV_T1_C04_W00": {
+          "baseline_rmse_mps2": 0.052415357707644036,
+          "candidate_rmse_mps2": 0.052415357707644036,
+          "baseline_axis_rmse_mps2": [
+            0.08008083591977881,
+            0.039055199367013696,
+            0.0174315889021348
+          ],
+          "candidate_axis_rmse_mps2": [
+            0.08008083591977881,
+            0.039055199367013696,
+            0.0174315889021348
+          ]
+        },
+        "DL1018_DEV_T1_C05_W06": {
+          "baseline_rmse_mps2": 0.10066960333105379,
+          "candidate_rmse_mps2": 0.10066960333105379,
+          "baseline_axis_rmse_mps2": [
+            0.11577915913124895,
+            0.12689655367128003,
+            0.029925876456802242
+          ],
+          "candidate_axis_rmse_mps2": [
+            0.11577915913124895,
+            0.12689655367128003,
+            0.029925876456802242
+          ]
+        },
+        "DL1018_DEV_T1_C07_W08": {
+          "baseline_rmse_mps2": 0.28572266131408286,
+          "candidate_rmse_mps2": 0.28572266131408286,
+          "baseline_axis_rmse_mps2": [
+            0.29914186126581727,
+            0.3819081169442759,
+            0.09783994386601592
+          ],
+          "candidate_axis_rmse_mps2": [
+            0.29914186126581727,
+            0.3819081169442759,
+            0.09783994386601592
+          ]
+        },
+        "DL1018_DEV_T1_C10_W09": {
+          "baseline_rmse_mps2": 0.126710440788355,
+          "candidate_rmse_mps2": 0.126710440788355,
+          "baseline_axis_rmse_mps2": [
+            0.10021351698795952,
+            0.18835925651435878,
+            0.05142615008533157
+          ],
+          "candidate_axis_rmse_mps2": [
+            0.10021351698795952,
+            0.18835925651435878,
+            0.05142615008533157
+          ]
+        },
+        "DL1018_DEV_T1_C11_W12": {
+          "baseline_rmse_mps2": 0.12078306864358983,
+          "candidate_rmse_mps2": 0.12078306864358983,
+          "baseline_axis_rmse_mps2": [
+            0.11259848607625347,
+            0.16880175097924632,
+            0.05092346033570481
+          ],
+          "candidate_axis_rmse_mps2": [
+            0.11259848607625347,
+            0.16880175097924632,
+            0.05092346033570481
+          ]
+        },
+        "DL1018_DEV_T1_C15_W14": {
+          "baseline_rmse_mps2": 0.3709339081119292,
+          "candidate_rmse_mps2": 0.3709339081119292,
+          "baseline_axis_rmse_mps2": [
+            0.5348824516784852,
+            0.32489934463529424,
+            0.14531714043269034
+          ],
+          "candidate_axis_rmse_mps2": [
+            0.5348824516784852,
+            0.32489934463529424,
+            0.14531714043269034
+          ]
+        },
+        "DL1018_DEV_T2_C00_W04": {
+          "baseline_rmse_mps2": 0.1409731237120178,
+          "candidate_rmse_mps2": 0.1409731237120178,
+          "baseline_axis_rmse_mps2": [
+            0.12113681203926024,
+            0.17820483783814323,
+            0.11484412639494057
+          ],
+          "candidate_axis_rmse_mps2": [
+            0.12113681203926024,
+            0.17820483783814323,
+            0.11484412639494057
+          ]
+        },
+        "DL1018_DEV_T2_C02_W15": {
+          "baseline_rmse_mps2": 0.026947507265160257,
+          "candidate_rmse_mps2": 0.026947507265160257,
+          "baseline_axis_rmse_mps2": [
+            0.029112289986897237,
+            0.036332193764993796,
+            0.0033091859058285754
+          ],
+          "candidate_axis_rmse_mps2": [
+            0.029112289986897237,
+            0.036332193764993796,
+            0.0033091859058285754
+          ]
+        },
+        "DL1018_DEV_T2_C03_W01": {
+          "baseline_rmse_mps2": 0.07451135863147736,
+          "candidate_rmse_mps2": 0.07451135863147736,
+          "baseline_axis_rmse_mps2": [
+            0.07212900079193096,
+            0.10642950328516272,
+            0.011224783764367741
+          ],
+          "candidate_axis_rmse_mps2": [
+            0.07212900079193096,
+            0.10642950328516272,
+            0.011224783764367741
+          ]
+        },
+        "DL1018_DEV_T2_C06_W07": {
+          "baseline_rmse_mps2": 0.27053687807457055,
+          "candidate_rmse_mps2": 0.27053687807457055,
+          "baseline_axis_rmse_mps2": [
+            0.4284233865003297,
+            0.1351146997921932,
+            0.13329676288139547
+          ],
+          "candidate_axis_rmse_mps2": [
+            0.4284233865003297,
+            0.1351146997921932,
+            0.13329676288139547
+          ]
+        },
+        "DL1018_DEV_T2_C08_W08": {
+          "baseline_rmse_mps2": 0.29257193847414953,
+          "candidate_rmse_mps2": 0.29257193847414953,
+          "baseline_axis_rmse_mps2": [
+            0.31640469105786573,
+            0.38361411455636774,
+            0.0975873974305817
+          ],
+          "candidate_axis_rmse_mps2": [
+            0.31640469105786573,
+            0.38361411455636774,
+            0.0975873974305817
+          ]
+        },
+        "DL1018_DEV_T2_C09_W10": {
+          "baseline_rmse_mps2": 0.35293964527124166,
+          "candidate_rmse_mps2": 0.35293964527124166,
+          "baseline_axis_rmse_mps2": [
+            0.11670335177419355,
+            0.58563026387113,
+            0.13083081187345533
+          ],
+          "candidate_axis_rmse_mps2": [
+            0.11670335177419355,
+            0.58563026387113,
+            0.13083081187345533
+          ]
+        },
+        "DL1018_DEV_T2_C12_W13": {
+          "baseline_rmse_mps2": 0.37076905594675685,
+          "candidate_rmse_mps2": 0.37076905594675685,
+          "baseline_axis_rmse_mps2": [
+            0.6298509970565501,
+            0.10391248480385411,
+            0.06999282500159557
+          ],
+          "candidate_axis_rmse_mps2": [
+            0.6298509970565501,
+            0.10391248480385411,
+            0.06999282500159557
+          ]
+        },
+        "DL1018_DEV_T2_C14_W14": {
+          "baseline_rmse_mps2": 0.37656213300924857,
+          "candidate_rmse_mps2": 0.37656213300924857,
+          "baseline_axis_rmse_mps2": [
+            0.3532216288522557,
+            0.5435431190953819,
+            0.07205885542003984
+          ],
+          "candidate_axis_rmse_mps2": [
+            0.3532216288522557,
+            0.5435431190953819,
+            0.07205885542003984
+          ]
+        },
+        "DL1018_DEV_T3_C00_W05": {
+          "baseline_rmse_mps2": 0.18126478131579998,
+          "candidate_rmse_mps2": 0.18126478131579998,
+          "baseline_axis_rmse_mps2": [
+            0.19475802263599237,
+            0.21715567965306903,
+            0.1161184147744267
+          ],
+          "candidate_axis_rmse_mps2": [
+            0.19475802263599237,
+            0.21715567965306903,
+            0.1161184147744267
+          ]
+        },
+        "DL1018_DEV_T3_C03_W15": {
+          "baseline_rmse_mps2": 0.026987725878238732,
+          "candidate_rmse_mps2": 0.026987725878238732,
+          "baseline_axis_rmse_mps2": [
+            0.030674347274771568,
+            0.035121590070729965,
+            0.0032512112215571398
+          ],
+          "candidate_axis_rmse_mps2": [
+            0.030674347274771568,
+            0.035121590070729965,
+            0.0032512112215571398
+          ]
+        },
+        "DL1018_DEV_T3_C05_W02": {
+          "baseline_rmse_mps2": 0.12085519091898066,
+          "candidate_rmse_mps2": 0.12085519091898066,
+          "baseline_axis_rmse_mps2": [
+            0.14694420508251385,
+            0.12273080105475745,
+            0.08463145149006499
+          ],
+          "candidate_axis_rmse_mps2": [
+            0.14694420508251385,
+            0.12273080105475745,
+            0.08463145149006499
+          ]
+        },
+        "DL1018_DEV_T3_C06_W08": {
+          "baseline_rmse_mps2": 0.39846512435589243,
+          "candidate_rmse_mps2": 0.39846512435589243,
+          "baseline_axis_rmse_mps2": [
+            0.6504184929250503,
+            0.19384575871229176,
+            0.12531149936949684
+          ],
+          "candidate_axis_rmse_mps2": [
+            0.6504184929250503,
+            0.19384575871229176,
+            0.12531149936949684
+          ]
+        },
+        "DL1018_DEV_T3_C09_W09": {
+          "baseline_rmse_mps2": 0.1624547247090196,
+          "candidate_rmse_mps2": 0.1624547247090196,
+          "baseline_axis_rmse_mps2": [
+            0.26536961566561945,
+            0.08002596227446286,
+            0.04847086944110768
+          ],
+          "candidate_axis_rmse_mps2": [
+            0.26536961566561945,
+            0.08002596227446286,
+            0.04847086944110768
+          ]
+        },
+        "DL1018_DEV_T3_C10_W11": {
+          "baseline_rmse_mps2": 0.37587132937142625,
+          "candidate_rmse_mps2": 0.37587132937142625,
+          "baseline_axis_rmse_mps2": [
+            0.302601901935995,
+            0.5641024861311751,
+            0.11856746103242001
+          ],
+          "candidate_axis_rmse_mps2": [
+            0.302601901935995,
+            0.5641024861311751,
+            0.11856746103242001
+          ]
+        },
+        "DL1018_DEV_T3_C13_W12": {
+          "baseline_rmse_mps2": 0.11899072508247203,
+          "candidate_rmse_mps2": 0.11899072508247203,
+          "baseline_axis_rmse_mps2": [
+            0.1100929262142405,
+            0.16776636224033054,
+            0.047014606934321725
+          ],
+          "candidate_axis_rmse_mps2": [
+            0.1100929262142405,
+            0.16776636224033054,
+            0.047014606934321725
+          ]
+        },
+        "DL1018_DEV_T3_C15_W14": {
+          "baseline_rmse_mps2": 0.3662290778649791,
+          "candidate_rmse_mps2": 0.3662290778649791,
+          "baseline_axis_rmse_mps2": [
+            0.33751739009360676,
+            0.5342739595880118,
+            0.054813866056363764
+          ],
+          "candidate_axis_rmse_mps2": [
+            0.33751739009360676,
+            0.5342739595880118,
+            0.054813866056363764
+          ]
+        }
+      }
+    },
+    "no_task_lambda_0_01": {
+      "scene_count": 24,
+      "pooled_baseline_rmse_mps2": 0.23972851037979126,
+      "pooled_candidate_rmse_mps2": 0.12486377358436584,
+      "scene_macro_baseline_rmse_mps2": 0.20021421309444973,
+      "scene_macro_candidate_rmse_mps2": 0.09911440527114547,
+      "candidate_wins_ties_losses_vs_baseline": [
+        24,
+        0,
+        0
+      ],
+      "per_scene": {
+        "DL1018_DEV_T1_C00_W03": {
+          "baseline_rmse_mps2": 0.06401449036672664,
+          "candidate_rmse_mps2": 0.029482043056514914,
+          "baseline_axis_rmse_mps2": [
+            0.06728468916579172,
+            0.08783102820775297,
+            0.007214292658779732
+          ],
+          "candidate_axis_rmse_mps2": [
+            0.028368486254559774,
+            0.041463110187281854,
+            0.009143963559679813
+          ]
+        },
+        "DL1018_DEV_T1_C01_W15": {
+          "baseline_rmse_mps2": 0.026961264121980928,
+          "candidate_rmse_mps2": 0.00917526093720598,
+          "baseline_axis_rmse_mps2": [
+            0.03201278569789277,
+            0.0339150533514326,
+            0.0023832744692776453
+          ],
+          "candidate_axis_rmse_mps2": [
+            0.011469930100178828,
+            0.008911966700364597,
+            0.006447774253651951
+          ]
+        },
+        "DL1018_DEV_T1_C04_W00": {
+          "baseline_rmse_mps2": 0.052415357707644036,
+          "candidate_rmse_mps2": 0.033862427665292634,
+          "baseline_axis_rmse_mps2": [
+            0.08008083591977881,
+            0.039055199367013696,
+            0.0174315889021348
+          ],
+          "candidate_axis_rmse_mps2": [
+            0.048207477001059935,
+            0.017494371473181485,
+            0.02846011507552485
+          ]
+        },
+        "DL1018_DEV_T1_C05_W06": {
+          "baseline_rmse_mps2": 0.10066960333105379,
+          "candidate_rmse_mps2": 0.03830093422031986,
+          "baseline_axis_rmse_mps2": [
+            0.11577915913124895,
+            0.12689655367128003,
+            0.029925876456802242
+          ],
+          "candidate_axis_rmse_mps2": [
+            0.03795827595102067,
+            0.05039835168759654,
+            0.020495368268154197
+          ]
+        },
+        "DL1018_DEV_T1_C07_W08": {
+          "baseline_rmse_mps2": 0.28572266131408286,
+          "candidate_rmse_mps2": 0.11630235315472799,
+          "baseline_axis_rmse_mps2": [
+            0.29914186126581727,
+            0.3819081169442759,
+            0.09783994386601592
+          ],
+          "candidate_axis_rmse_mps2": [
+            0.10183400717978532,
+            0.1537031814805034,
+            0.08114110568916068
+          ]
+        },
+        "DL1018_DEV_T1_C10_W09": {
+          "baseline_rmse_mps2": 0.126710440788355,
+          "candidate_rmse_mps2": 0.03301462733587548,
+          "baseline_axis_rmse_mps2": [
+            0.10021351698795952,
+            0.18835925651435878,
+            0.05142615008533157
+          ],
+          "candidate_axis_rmse_mps2": [
+            0.026395666014552656,
+            0.042109230513446096,
+            0.028283888975772702
+          ]
+        },
+        "DL1018_DEV_T1_C11_W12": {
+          "baseline_rmse_mps2": 0.12078306864358983,
+          "candidate_rmse_mps2": 0.06734249762553361,
+          "baseline_axis_rmse_mps2": [
+            0.11259848607625347,
+            0.16880175097924632,
+            0.05092346033570481
+          ],
+          "candidate_axis_rmse_mps2": [
+            0.07140638241019608,
+            0.08166864246166705,
+            0.04285320698491629
+          ]
+        },
+        "DL1018_DEV_T1_C15_W14": {
+          "baseline_rmse_mps2": 0.3709339081119292,
+          "candidate_rmse_mps2": 0.22224803515015226,
+          "baseline_axis_rmse_mps2": [
+            0.5348824516784852,
+            0.32489934463529424,
+            0.14531714043269034
+          ],
+          "candidate_axis_rmse_mps2": [
+            0.28010768348015336,
+            0.23243902465160773,
+            0.12527710428765632
+          ]
+        },
+        "DL1018_DEV_T2_C00_W04": {
+          "baseline_rmse_mps2": 0.1409731237120178,
+          "candidate_rmse_mps2": 0.065894298975551,
+          "baseline_axis_rmse_mps2": [
+            0.12113681203926024,
+            0.17820483783814323,
+            0.11484412639494057
+          ],
+          "candidate_axis_rmse_mps2": [
+            0.05354574914207591,
+            0.07772020124299231,
+            0.06417631167339231
+          ]
+        },
+        "DL1018_DEV_T2_C02_W15": {
+          "baseline_rmse_mps2": 0.026947507265160257,
+          "candidate_rmse_mps2": 0.007600439297411607,
+          "baseline_axis_rmse_mps2": [
+            0.029112289986897237,
+            0.036332193764993796,
+            0.0033091859058285754
+          ],
+          "candidate_axis_rmse_mps2": [
+            0.009225735536477132,
+            0.007648314778607132,
+            0.005448772100137561
+          ]
+        },
+        "DL1018_DEV_T2_C03_W01": {
+          "baseline_rmse_mps2": 0.07451135863147736,
+          "candidate_rmse_mps2": 0.022819732685281292,
+          "baseline_axis_rmse_mps2": [
+            0.07212900079193096,
+            0.10642950328516272,
+            0.011224783764367741
+          ],
+          "candidate_axis_rmse_mps2": [
+            0.02456921692611295,
+            0.027358070936153497,
+            0.014495176224284962
+          ]
+        },
+        "DL1018_DEV_T2_C06_W07": {
+          "baseline_rmse_mps2": 0.27053687807457055,
+          "candidate_rmse_mps2": 0.11857228112193362,
+          "baseline_axis_rmse_mps2": [
+            0.4284233865003297,
+            0.1351146997921932,
+            0.13329676288139547
+          ],
+          "candidate_axis_rmse_mps2": [
+            0.1653245654343941,
+            0.10449767308698331,
+            0.06265925258659595
+          ]
+        },
+        "DL1018_DEV_T2_C08_W08": {
+          "baseline_rmse_mps2": 0.29257193847414953,
+          "candidate_rmse_mps2": 0.12121759716248225,
+          "baseline_axis_rmse_mps2": [
+            0.31640469105786573,
+            0.38361411455636774,
+            0.0975873974305817
+          ],
+          "candidate_axis_rmse_mps2": [
+            0.10749468317932535,
+            0.15959784111904474,
+            0.0839913077874943
+          ]
+        },
+        "DL1018_DEV_T2_C09_W10": {
+          "baseline_rmse_mps2": 0.35293964527124166,
+          "candidate_rmse_mps2": 0.19092072310511357,
+          "baseline_axis_rmse_mps2": [
+            0.11670335177419355,
+            0.58563026387113,
+            0.13083081187345533
+          ],
+          "candidate_axis_rmse_mps2": [
+            0.10889845414732313,
+            0.3050251658036689,
+            0.06673037122408902
+          ]
+        },
+        "DL1018_DEV_T2_C12_W13": {
+          "baseline_rmse_mps2": 0.37076905594675685,
+          "candidate_rmse_mps2": 0.22248700396274831,
+          "baseline_axis_rmse_mps2": [
+            0.6298509970565501,
+            0.10391248480385411,
+            0.06999282500159557
+          ],
+          "candidate_axis_rmse_mps2": [
+            0.36693788685747236,
+            0.08678840304536643,
+            0.07953465334284367
+          ]
+        },
+        "DL1018_DEV_T2_C14_W14": {
+          "baseline_rmse_mps2": 0.37656213300924857,
+          "candidate_rmse_mps2": 0.18285004676200164,
+          "baseline_axis_rmse_mps2": [
+            0.3532216288522557,
+            0.5435431190953819,
+            0.07205885542003984
+          ],
+          "candidate_axis_rmse_mps2": [
+            0.1793283810080504,
+            0.25473762193894806,
+            0.05703064559093622
+          ]
+        },
+        "DL1018_DEV_T3_C00_W05": {
+          "baseline_rmse_mps2": 0.18126478131579998,
+          "candidate_rmse_mps2": 0.10794715418026918,
+          "baseline_axis_rmse_mps2": [
+            0.19475802263599237,
+            0.21715567965306903,
+            0.1161184147744267
+          ],
+          "candidate_axis_rmse_mps2": [
+            0.11196421887610927,
+            0.12672864880328466,
+            0.07975981162723861
+          ]
+        },
+        "DL1018_DEV_T3_C03_W15": {
+          "baseline_rmse_mps2": 0.026987725878238732,
+          "candidate_rmse_mps2": 0.00908534043157623,
+          "baseline_axis_rmse_mps2": [
+            0.030674347274771568,
+            0.035121590070729965,
+            0.0032512112215571398
+          ],
+          "candidate_axis_rmse_mps2": [
+            0.011982667160563787,
+            0.008676764178698981,
+            0.005362805551135558
+          ]
+        },
+        "DL1018_DEV_T3_C05_W02": {
+          "baseline_rmse_mps2": 0.12085519091898066,
+          "candidate_rmse_mps2": 0.06020130741826967,
+          "baseline_axis_rmse_mps2": [
+            0.14694420508251385,
+            0.12273080105475745,
+            0.08463145149006499
+          ],
+          "candidate_axis_rmse_mps2": [
+            0.052869089320343746,
+            0.06495705730408752,
+            0.06211306098911887
+          ]
+        },
+        "DL1018_DEV_T3_C06_W08": {
+          "baseline_rmse_mps2": 0.39846512435589243,
+          "candidate_rmse_mps2": 0.24831852908623908,
+          "baseline_axis_rmse_mps2": [
+            0.6504184929250503,
+            0.19384575871229176,
+            0.12531149936949684
+          ],
+          "candidate_axis_rmse_mps2": [
+            0.3831294259398637,
+            0.15089889671828557,
+            0.12420805775332548
+          ]
+        },
+        "DL1018_DEV_T3_C09_W09": {
+          "baseline_rmse_mps2": 0.1624547247090196,
+          "candidate_rmse_mps2": 0.04698295002286774,
+          "baseline_axis_rmse_mps2": [
+            0.26536961566561945,
+            0.08002596227446286,
+            0.04847086944110768
+          ],
+          "candidate_axis_rmse_mps2": [
+            0.06855765790819907,
+            0.03506105640739028,
+            0.02632038457724263
+          ]
+        },
+        "DL1018_DEV_T3_C10_W11": {
+          "baseline_rmse_mps2": 0.37587132937142625,
+          "candidate_rmse_mps2": 0.18249418577078835,
+          "baseline_axis_rmse_mps2": [
+            0.302601901935995,
+            0.5641024861311751,
+            0.11856746103242001
+          ],
+          "candidate_axis_rmse_mps2": [
+            0.09927587630752667,
+            0.2744121989676276,
+            0.12146863365310394
+          ]
+        },
+        "DL1018_DEV_T3_C13_W12": {
+          "baseline_rmse_mps2": 0.11899072508247203,
+          "candidate_rmse_mps2": 0.06045059533314216,
+          "baseline_axis_rmse_mps2": [
+            0.1100929262142405,
+            0.16776636224033054,
+            0.047014606934321725
+          ],
+          "candidate_axis_rmse_mps2": [
+            0.06259848889101192,
+            0.07520956271660222,
+            0.03725284274969029
+          ]
+        },
+        "DL1018_DEV_T3_C15_W14": {
+          "baseline_rmse_mps2": 0.3662290778649791,
+          "candidate_rmse_mps2": 0.18117536204619294,
+          "baseline_axis_rmse_mps2": [
+            0.33751739009360676,
+            0.5342739595880118,
+            0.054813866056363764
+          ],
+          "candidate_axis_rmse_mps2": [
+            0.18443080104558066,
+            0.24863702853551342,
+            0.05136577756076907
+          ]
+        }
+      }
+    },
+    "task_aware_lambda_task_0_1": {
+      "scene_count": 24,
+      "pooled_baseline_rmse_mps2": 0.23972851037979126,
+      "pooled_candidate_rmse_mps2": 0.12513118982315063,
+      "scene_macro_baseline_rmse_mps2": 0.20021421309444973,
+      "scene_macro_candidate_rmse_mps2": 0.09897802096689422,
+      "candidate_wins_ties_losses_vs_baseline": [
+        24,
+        0,
+        0
+      ],
+      "per_scene": {
+        "DL1018_DEV_T1_C00_W03": {
+          "baseline_rmse_mps2": 0.06401449036672664,
+          "candidate_rmse_mps2": 0.029625941908041766,
+          "baseline_axis_rmse_mps2": [
+            0.06728468916579172,
+            0.08783102820775297,
+            0.007214292658779732
+          ],
+          "candidate_axis_rmse_mps2": [
+            0.028992712448772443,
+            0.04144998306496865,
+            0.008626171259172963
+          ]
+        },
+        "DL1018_DEV_T1_C01_W15": {
+          "baseline_rmse_mps2": 0.026961264121980928,
+          "candidate_rmse_mps2": 0.009454410771581358,
+          "baseline_axis_rmse_mps2": [
+            0.03201278569789277,
+            0.0339150533514326,
+            0.0023832744692776453
+          ],
+          "candidate_axis_rmse_mps2": [
+            0.01223962467265664,
+            0.008619765822576269,
+            0.006636932585902956
+          ]
+        },
+        "DL1018_DEV_T1_C04_W00": {
+          "baseline_rmse_mps2": 0.052415357707644036,
+          "candidate_rmse_mps2": 0.03394574944139194,
+          "baseline_axis_rmse_mps2": [
+            0.08008083591977881,
+            0.039055199367013696,
+            0.0174315889021348
+          ],
+          "candidate_axis_rmse_mps2": [
+            0.04902854553917507,
+            0.01539000262864262,
+            0.028570811273337555
+          ]
+        },
+        "DL1018_DEV_T1_C05_W06": {
+          "baseline_rmse_mps2": 0.10066960333105379,
+          "candidate_rmse_mps2": 0.03770582643820223,
+          "baseline_axis_rmse_mps2": [
+            0.11577915913124895,
+            0.12689655367128003,
+            0.029925876456802242
+          ],
+          "candidate_axis_rmse_mps2": [
+            0.037266210100503815,
+            0.0493739687735499,
+            0.020943467584358395
+          ]
+        },
+        "DL1018_DEV_T1_C07_W08": {
+          "baseline_rmse_mps2": 0.28572266131408286,
+          "candidate_rmse_mps2": 0.11623660032698632,
+          "baseline_axis_rmse_mps2": [
+            0.29914186126581727,
+            0.3819081169442759,
+            0.09783994386601592
+          ],
+          "candidate_axis_rmse_mps2": [
+            0.10250334189918296,
+            0.1532190682316993,
+            0.08093098168461273
+          ]
+        },
+        "DL1018_DEV_T1_C10_W09": {
+          "baseline_rmse_mps2": 0.126710440788355,
+          "candidate_rmse_mps2": 0.032017238452937614,
+          "baseline_axis_rmse_mps2": [
+            0.10021351698795952,
+            0.18835925651435878,
+            0.05142615008533157
+          ],
+          "candidate_axis_rmse_mps2": [
+            0.025075811023632485,
+            0.04142090924940719,
+            0.02703373176082477
+          ]
+        },
+        "DL1018_DEV_T1_C11_W12": {
+          "baseline_rmse_mps2": 0.12078306864358983,
+          "candidate_rmse_mps2": 0.06388961908803388,
+          "baseline_axis_rmse_mps2": [
+            0.11259848607625347,
+            0.16880175097924632,
+            0.05092346033570481
+          ],
+          "candidate_axis_rmse_mps2": [
+            0.05989618369774262,
+            0.08240763901335452,
+            0.04320970368254091
+          ]
+        },
+        "DL1018_DEV_T1_C15_W14": {
+          "baseline_rmse_mps2": 0.3709339081119292,
+          "candidate_rmse_mps2": 0.22298458814298522,
+          "baseline_axis_rmse_mps2": [
+            0.5348824516784852,
+            0.32489934463529424,
+            0.14531714043269034
+          ],
+          "candidate_axis_rmse_mps2": [
+            0.2816302181369068,
+            0.23221988096236112,
+            0.12619321204357428
+          ]
+        },
+        "DL1018_DEV_T2_C00_W04": {
+          "baseline_rmse_mps2": 0.1409731237120178,
+          "candidate_rmse_mps2": 0.06641823281987108,
+          "baseline_axis_rmse_mps2": [
+            0.12113681203926024,
+            0.17820483783814323,
+            0.11484412639494057
+          ],
+          "candidate_axis_rmse_mps2": [
+            0.05524511577132284,
+            0.07754129013447776,
+            0.06457143687759712
+          ]
+        },
+        "DL1018_DEV_T2_C02_W15": {
+          "baseline_rmse_mps2": 0.026947507265160257,
+          "candidate_rmse_mps2": 0.00809826103042067,
+          "baseline_axis_rmse_mps2": [
+            0.029112289986897237,
+            0.036332193764993796,
+            0.0033091859058285754
+          ],
+          "candidate_axis_rmse_mps2": [
+            0.010953029063452573,
+            0.00704248488408215,
+            0.005213449543548513
+          ]
+        },
+        "DL1018_DEV_T2_C03_W01": {
+          "baseline_rmse_mps2": 0.07451135863147736,
+          "candidate_rmse_mps2": 0.022958578396150463,
+          "baseline_axis_rmse_mps2": [
+            0.07212900079193096,
+            0.10642950328516272,
+            0.011224783764367741
+          ],
+          "candidate_axis_rmse_mps2": [
+            0.025260199338724875,
+            0.027576982036090096,
+            0.013517446395884073
+          ]
+        },
+        "DL1018_DEV_T2_C06_W07": {
+          "baseline_rmse_mps2": 0.27053687807457055,
+          "candidate_rmse_mps2": 0.11679092504393877,
+          "baseline_axis_rmse_mps2": [
+            0.4284233865003297,
+            0.1351146997921932,
+            0.13329676288139547
+          ],
+          "candidate_axis_rmse_mps2": [
+            0.16071581056515416,
+            0.10772899990015024,
+            0.0590360172501101
+          ]
+        },
+        "DL1018_DEV_T2_C08_W08": {
+          "baseline_rmse_mps2": 0.29257193847414953,
+          "candidate_rmse_mps2": 0.12089932090418232,
+          "baseline_axis_rmse_mps2": [
+            0.31640469105786573,
+            0.38361411455636774,
+            0.0975873974305817
+          ],
+          "candidate_axis_rmse_mps2": [
+            0.10846991618915698,
+            0.15898576507650622,
+            0.08250903690040315
+          ]
+        },
+        "DL1018_DEV_T2_C09_W10": {
+          "baseline_rmse_mps2": 0.35293964527124166,
+          "candidate_rmse_mps2": 0.19454105771517313,
+          "baseline_axis_rmse_mps2": [
+            0.11670335177419355,
+            0.58563026387113,
+            0.13083081187345533
+          ],
+          "candidate_axis_rmse_mps2": [
+            0.1185225065048542,
+            0.3051702342473839,
+            0.0797634815690579
+          ]
+        },
+        "DL1018_DEV_T2_C12_W13": {
+          "baseline_rmse_mps2": 0.37076905594675685,
+          "candidate_rmse_mps2": 0.22526677761497982,
+          "baseline_axis_rmse_mps2": [
+            0.6298509970565501,
+            0.10391248480385411,
+            0.06999282500159557
+          ],
+          "candidate_axis_rmse_mps2": [
+            0.3734732174065124,
+            0.0892537910270858,
+            0.06918728176789386
+          ]
+        },
+        "DL1018_DEV_T2_C14_W14": {
+          "baseline_rmse_mps2": 0.37656213300924857,
+          "candidate_rmse_mps2": 0.18179218664297395,
+          "baseline_axis_rmse_mps2": [
+            0.3532216288522557,
+            0.5435431190953819,
+            0.07205885542003984
+          ],
+          "candidate_axis_rmse_mps2": [
+            0.17706449018085338,
+            0.2539858968007904,
+            0.05731080104651901
+          ]
+        },
+        "DL1018_DEV_T3_C00_W05": {
+          "baseline_rmse_mps2": 0.18126478131579998,
+          "candidate_rmse_mps2": 0.10630106976450861,
+          "baseline_axis_rmse_mps2": [
+            0.19475802263599237,
+            0.21715567965306903,
+            0.1161184147744267
+          ],
+          "candidate_axis_rmse_mps2": [
+            0.11220434111892226,
+            0.12177444392172677,
+            0.080504179648384
+          ]
+        },
+        "DL1018_DEV_T3_C03_W15": {
+          "baseline_rmse_mps2": 0.026987725878238732,
+          "candidate_rmse_mps2": 0.009539227980983545,
+          "baseline_axis_rmse_mps2": [
+            0.030674347274771568,
+            0.035121590070729965,
+            0.0032512112215571398
+          ],
+          "candidate_axis_rmse_mps2": [
+            0.013524106998696975,
+            0.008105944853451572,
+            0.004937894221237811
+          ]
+        },
+        "DL1018_DEV_T3_C05_W02": {
+          "baseline_rmse_mps2": 0.12085519091898066,
+          "candidate_rmse_mps2": 0.058352095123679566,
+          "baseline_axis_rmse_mps2": [
+            0.14694420508251385,
+            0.12273080105475745,
+            0.08463145149006499
+          ],
+          "candidate_axis_rmse_mps2": [
+            0.05503785376541073,
+            0.06047630310590711,
+            0.059399936292125095
+          ]
+        },
+        "DL1018_DEV_T3_C06_W08": {
+          "baseline_rmse_mps2": 0.39846512435589243,
+          "candidate_rmse_mps2": 0.24860249023650532,
+          "baseline_axis_rmse_mps2": [
+            0.6504184929250503,
+            0.19384575871229176,
+            0.12531149936949684
+          ],
+          "candidate_axis_rmse_mps2": [
+            0.38106013272980765,
+            0.15858097371011687,
+            0.12269818448724579
+          ]
+        },
+        "DL1018_DEV_T3_C09_W09": {
+          "baseline_rmse_mps2": 0.1624547247090196,
+          "candidate_rmse_mps2": 0.04639999533925052,
+          "baseline_axis_rmse_mps2": [
+            0.26536961566561945,
+            0.08002596227446286,
+            0.04847086944110768
+          ],
+          "candidate_axis_rmse_mps2": [
+            0.06755510251069395,
+            0.033871135655357223,
+            0.027348363692063532
+          ]
+        },
+        "DL1018_DEV_T3_C10_W11": {
+          "baseline_rmse_mps2": 0.37587132937142625,
+          "candidate_rmse_mps2": 0.18525127010178735,
+          "baseline_axis_rmse_mps2": [
+            0.302601901935995,
+            0.5641024861311751,
+            0.11856746103242001
+          ],
+          "candidate_axis_rmse_mps2": [
+            0.10629931896611369,
+            0.2787469464410929,
+            0.11812998713316597
+          ]
+        },
+        "DL1018_DEV_T3_C13_W12": {
+          "baseline_rmse_mps2": 0.11899072508247203,
+          "candidate_rmse_mps2": 0.0578888858603974,
+          "baseline_axis_rmse_mps2": [
+            0.1100929262142405,
+            0.16776636224033054,
+            0.047014606934321725
+          ],
+          "candidate_axis_rmse_mps2": [
+            0.053549520887840485,
+            0.07541827193221484,
+            0.03870274395847768
+          ]
+        },
+        "DL1018_DEV_T3_C15_W14": {
+          "baseline_rmse_mps2": 0.3662290778649791,
+          "candidate_rmse_mps2": 0.1805121540604981,
+          "baseline_axis_rmse_mps2": [
+            0.33751739009360676,
+            0.5342739595880118,
+            0.054813866056363764
+          ],
+          "candidate_axis_rmse_mps2": [
+            0.1829003622703309,
+            0.24823576788855622,
+            0.05177233153763539
+          ]
+        }
+      }
+    }
+  },
+  "task_so3_oof": {
+    "c5_baseline": {
+      "scene_count": 24,
+      "pooled_SO3_RMSE_rad": 0.06090823027503882,
+      "scene_macro_SO3_RMSE_rad": 0.05721551111127302,
+      "per_scene_SO3_RMSE_rad": {
+        "DL1018_DEV_T1_C00_W03": 0.04645534126799029,
+        "DL1018_DEV_T1_C01_W15": 0.015602669159477575,
+        "DL1018_DEV_T1_C04_W00": 0.06421769690218014,
+        "DL1018_DEV_T1_C05_W06": 0.053774325743943044,
+        "DL1018_DEV_T1_C07_W08": 0.07587220893965547,
+        "DL1018_DEV_T1_C10_W09": 0.043282898497156046,
+        "DL1018_DEV_T1_C11_W12": 0.049786182619191315,
+        "DL1018_DEV_T1_C15_W14": 0.0644263092871111,
+        "DL1018_DEV_T2_C00_W04": 0.053653766557662415,
+        "DL1018_DEV_T2_C02_W15": 0.01211605512837213,
+        "DL1018_DEV_T2_C03_W01": 0.05823310103169952,
+        "DL1018_DEV_T2_C06_W07": 0.07515825466945403,
+        "DL1018_DEV_T2_C08_W08": 0.07401982627000897,
+        "DL1018_DEV_T2_C09_W10": 0.0749930006362029,
+        "DL1018_DEV_T2_C12_W13": 0.07357984225420079,
+        "DL1018_DEV_T2_C14_W14": 0.06106868886542962,
+        "DL1018_DEV_T3_C00_W05": 0.06440935219733351,
+        "DL1018_DEV_T3_C03_W15": 0.009494842932910235,
+        "DL1018_DEV_T3_C05_W02": 0.0714392029130559,
+        "DL1018_DEV_T3_C06_W08": 0.1016305077611482,
+        "DL1018_DEV_T3_C09_W09": 0.060167278638559245,
+        "DL1018_DEV_T3_C10_W11": 0.06140992228381615,
+        "DL1018_DEV_T3_C13_W12": 0.046714828820061206,
+        "DL1018_DEV_T3_C15_W14": 0.06166616329393264
+      }
+    },
+    "no_task_lambda_0_01": {
+      "scene_count": 24,
+      "pooled_SO3_RMSE_rad": 0.06919320852509223,
+      "scene_macro_SO3_RMSE_rad": 0.06455618847366468,
+      "per_scene_SO3_RMSE_rad": {
+        "DL1018_DEV_T1_C00_W03": 0.049324838212057014,
+        "DL1018_DEV_T1_C01_W15": 0.018318187389940364,
+        "DL1018_DEV_T1_C04_W00": 0.0639650425037047,
+        "DL1018_DEV_T1_C05_W06": 0.058322894034939406,
+        "DL1018_DEV_T1_C07_W08": 0.09254290821995168,
+        "DL1018_DEV_T1_C10_W09": 0.04890390050855333,
+        "DL1018_DEV_T1_C11_W12": 0.052504730310324564,
+        "DL1018_DEV_T1_C15_W14": 0.06701095156037794,
+        "DL1018_DEV_T2_C00_W04": 0.06144987292427441,
+        "DL1018_DEV_T2_C02_W15": 0.014784684373438575,
+        "DL1018_DEV_T2_C03_W01": 0.06239321560119537,
+        "DL1018_DEV_T2_C06_W07": 0.08900412041913865,
+        "DL1018_DEV_T2_C08_W08": 0.09272667220918583,
+        "DL1018_DEV_T2_C09_W10": 0.0868269960203291,
+        "DL1018_DEV_T2_C12_W13": 0.08020705825572104,
+        "DL1018_DEV_T2_C14_W14": 0.06458827040545938,
+        "DL1018_DEV_T3_C00_W05": 0.0788343790375815,
+        "DL1018_DEV_T3_C03_W15": 0.012284742158971351,
+        "DL1018_DEV_T3_C05_W02": 0.07973288817344266,
+        "DL1018_DEV_T3_C06_W08": 0.12101155293289326,
+        "DL1018_DEV_T3_C09_W09": 0.06555820761531232,
+        "DL1018_DEV_T3_C10_W11": 0.07438684514958618,
+        "DL1018_DEV_T3_C13_W12": 0.049695921717681404,
+        "DL1018_DEV_T3_C15_W14": 0.06496964363389235
+      }
+    },
+    "task_aware_lambda_task_0_1": {
+      "scene_count": 24,
+      "pooled_SO3_RMSE_rad": 0.06905182282796915,
+      "scene_macro_SO3_RMSE_rad": 0.06440699211129054,
+      "per_scene_SO3_RMSE_rad": {
+        "DL1018_DEV_T1_C00_W03": 0.04911543979809915,
+        "DL1018_DEV_T1_C01_W15": 0.01817133988154361,
+        "DL1018_DEV_T1_C04_W00": 0.063737198962064,
+        "DL1018_DEV_T1_C05_W06": 0.058252485936774484,
+        "DL1018_DEV_T1_C07_W08": 0.0923768836648624,
+        "DL1018_DEV_T1_C10_W09": 0.048611421611397886,
+        "DL1018_DEV_T1_C11_W12": 0.05236045157275426,
+        "DL1018_DEV_T1_C15_W14": 0.06672776688409132,
+        "DL1018_DEV_T2_C00_W04": 0.06120459706161655,
+        "DL1018_DEV_T2_C02_W15": 0.014821407713600195,
+        "DL1018_DEV_T2_C03_W01": 0.06215467729187098,
+        "DL1018_DEV_T2_C06_W07": 0.08827830286909998,
+        "DL1018_DEV_T2_C08_W08": 0.09283546627009238,
+        "DL1018_DEV_T2_C09_W10": 0.08706208025064559,
+        "DL1018_DEV_T2_C12_W13": 0.08003335696450484,
+        "DL1018_DEV_T2_C14_W14": 0.06429151216214599,
+        "DL1018_DEV_T3_C00_W05": 0.07845035129437776,
+        "DL1018_DEV_T3_C03_W15": 0.012355337571429663,
+        "DL1018_DEV_T3_C05_W02": 0.07970279137010447,
+        "DL1018_DEV_T3_C06_W08": 0.12109910274750921,
+        "DL1018_DEV_T3_C09_W09": 0.06536413239419693,
+        "DL1018_DEV_T3_C10_W11": 0.07448823698945026,
+        "DL1018_DEV_T3_C13_W12": 0.04962345886040333,
+        "DL1018_DEV_T3_C15_W14": 0.06465001054833762
+      }
+    }
+  },
+  "task_minus_no_task_per_scene_position_rmse_mps2": {
+    "DL1018_DEV_T1_C00_W03": 0.00014389885152685244,
+    "DL1018_DEV_T1_C01_W15": 0.0002791498343753772,
+    "DL1018_DEV_T1_C04_W00": 8.332177609930713e-05,
+    "DL1018_DEV_T1_C05_W06": -0.000595107782117632,
+    "DL1018_DEV_T1_C07_W08": -6.575282774166913e-05,
+    "DL1018_DEV_T1_C10_W09": -0.0009973888829378635,
+    "DL1018_DEV_T1_C11_W12": -0.0034528785374997317,
+    "DL1018_DEV_T1_C15_W14": 0.0007365529928329562,
+    "DL1018_DEV_T2_C00_W04": 0.0005239338443200764,
+    "DL1018_DEV_T2_C02_W15": 0.000497821733009063,
+    "DL1018_DEV_T2_C03_W01": 0.0001388457108691711,
+    "DL1018_DEV_T2_C06_W07": -0.0017813560779948445,
+    "DL1018_DEV_T2_C08_W08": -0.00031827625829992934,
+    "DL1018_DEV_T2_C09_W10": 0.0036203346100595613,
+    "DL1018_DEV_T2_C12_W13": 0.002779773652231504,
+    "DL1018_DEV_T2_C14_W14": -0.0010578601190276982,
+    "DL1018_DEV_T3_C00_W05": -0.0016460844157605709,
+    "DL1018_DEV_T3_C03_W15": 0.0004538875494073148,
+    "DL1018_DEV_T3_C05_W02": -0.0018492122945901052,
+    "DL1018_DEV_T3_C06_W08": 0.00028396115026624313,
+    "DL1018_DEV_T3_C09_W09": -0.000582954683617215,
+    "DL1018_DEV_T3_C10_W11": 0.002757084330998999,
+    "DL1018_DEV_T3_C13_W12": -0.0025617094727447623,
+    "DL1018_DEV_T3_C15_W14": -0.0006632079856948581
+  },
+  "task_minus_no_task_per_scene_SO3_rmse_rad": {
+    "DL1018_DEV_T1_C00_W03": -0.00020939841395786057,
+    "DL1018_DEV_T1_C01_W15": -0.0001468475083967538,
+    "DL1018_DEV_T1_C04_W00": -0.00022784354164069598,
+    "DL1018_DEV_T1_C05_W06": -7.04080981649216e-05,
+    "DL1018_DEV_T1_C07_W08": -0.00016602455508928082,
+    "DL1018_DEV_T1_C10_W09": -0.00029247889715544595,
+    "DL1018_DEV_T1_C11_W12": -0.00014427873757030113,
+    "DL1018_DEV_T1_C15_W14": -0.0002831846762866158,
+    "DL1018_DEV_T2_C00_W04": -0.000245275862657858,
+    "DL1018_DEV_T2_C02_W15": 3.6723340161620016e-05,
+    "DL1018_DEV_T2_C03_W01": -0.0002385383093243959,
+    "DL1018_DEV_T2_C06_W07": -0.000725817550038671,
+    "DL1018_DEV_T2_C08_W08": 0.00010879406090655297,
+    "DL1018_DEV_T2_C09_W10": 0.00023508423031648462,
+    "DL1018_DEV_T2_C12_W13": -0.00017370129121620226,
+    "DL1018_DEV_T2_C14_W14": -0.0002967582433133914,
+    "DL1018_DEV_T3_C00_W05": -0.00038402774320374367,
+    "DL1018_DEV_T3_C03_W15": 7.059541245831198e-05,
+    "DL1018_DEV_T3_C05_W02": -3.0096803338194866e-05,
+    "DL1018_DEV_T3_C06_W08": 8.754981461595035e-05,
+    "DL1018_DEV_T3_C09_W09": -0.00019407522111539177,
+    "DL1018_DEV_T3_C10_W11": 0.00010139183986407341,
+    "DL1018_DEV_T3_C13_W12": -7.246285727807722e-05,
+    "DL1018_DEV_T3_C15_W14": -0.0003196330855547297
+  },
+  "paired_scene_wins_task_vs_no_task": {
+    "position": [
+      12,
+      0,
+      12
+    ],
+    "task_SO3": [
+      18,
+      0,
+      6
+    ]
+  },
+  "limits": [
+    "Development OOF of residual head on parent-seen DEV24 trajectories; not independent full-system validation.",
+    "Task-aware objective is a frozen-state surrogate; changes to position/yaw states and their later task commands are not modeled."
+  ],
+  "runtime_seconds": 753.1250057220459,
+  "oof_path": "experiments/dl_attitude_replacement_20261028/position_cosine_gru_train24_causal_v1/task_aware_cv_v1/TASK_AWARE_CV_OOF_v1.npz",
+  "oof_sha256": "a92c61662fa2fee8faf11d97b1f0234db13f6875c1cc6036098d71f3dccf5dcd"
+}

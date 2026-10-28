@@ -1,0 +1,809 @@
+{
+  "schema": "COSINE_GRU_C5_TRAIN24_TASK_POSITION_FEASIBILITY_ORACLE_PROBE_V1",
+  "scope": "TRAIN_C5_24 parent cosine-GRU raw/OOF heads only; no VAL/TEST raw, Plant, real-wind fields, or inertia reconstruction/use.",
+  "dataset_sha256": "15d689f08fd6d8a53a64c59dbdf62b33f9b8e8a12ce083fb12834cd106df2eeb",
+  "dataset_manifest_sha256": "16856362913e5144add83035b9b767affa02c0719c66971635731d237bb0d91e",
+  "dataset_source_lock_sha256": "10be2c860c042491acfc0cfaad1067c65d848dd5889c177e6ccb8d65c9602fb7",
+  "no_task_oof_sha256": "9dc29cc2d94b990bafc2bdf77cc8c704fb14e2c0582987e3057cd6464e177d0f",
+  "task_oof_sha256": "a92c61662fa2fee8faf11d97b1f0234db13f6875c1cc6036098d71f3dccf5dcd",
+  "selection": "Exploratory deterministic sample: lowest, median-rank, and highest per-scene 2-5 Hz command-target energy share of 0.1-20 Hz among TRAIN_C5_24; command target reconstructed from C5 applied action, current yaw, and reference yaw before oracle optimization. This is TRAIN selection, not independent validation or preregistration.",
+  "frequency_ranked_train_scenes": [
+    {
+      "scene_id": "DL1018_DEV_T1_C00_W03",
+      "share_2_5hz_of_0_1_20hz": 7.799581469637624e-07,
+      "energy_2_5hz": 0.349148921858204,
+      "energy_0_1_20hz": 447650.8428271162
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C00_W04",
+      "share_2_5hz_of_0_1_20hz": 3.961180414736632e-05,
+      "energy_2_5hz": 24.692766424001306,
+      "energy_0_1_20hz": 623368.8910542354
+    },
+    {
+      "scene_id": "DL1018_DEV_T1_C04_W00",
+      "share_2_5hz_of_0_1_20hz": 0.00012618414688510512,
+      "energy_2_5hz": 64.37063257203606,
+      "energy_0_1_20hz": 510132.48621990264
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C02_W15",
+      "share_2_5hz_of_0_1_20hz": 0.00023848054313284665,
+      "energy_2_5hz": 127.7182405634136,
+      "energy_0_1_20hz": 535549.939989308
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C03_W01",
+      "share_2_5hz_of_0_1_20hz": 0.0002810294565244368,
+      "energy_2_5hz": 143.06913700997,
+      "energy_0_1_20hz": 509089.4697635708
+    },
+    {
+      "scene_id": "DL1018_DEV_T1_C01_W15",
+      "share_2_5hz_of_0_1_20hz": 0.00030547240249549266,
+      "energy_2_5hz": 136.3261702507082,
+      "energy_0_1_20hz": 446279.8247469172
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C00_W05",
+      "share_2_5hz_of_0_1_20hz": 0.0011533329160611137,
+      "energy_2_5hz": 281.02493548522676,
+      "energy_0_1_20hz": 243663.32701661624
+    },
+    {
+      "scene_id": "DL1018_DEV_T1_C05_W06",
+      "share_2_5hz_of_0_1_20hz": 0.00119161990612823,
+      "energy_2_5hz": 565.0676338028483,
+      "energy_0_1_20hz": 474201.23723750666
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C05_W02",
+      "share_2_5hz_of_0_1_20hz": 0.0024591329690598273,
+      "energy_2_5hz": 710.9108391775194,
+      "energy_0_1_20hz": 289090.0362534336
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C03_W15",
+      "share_2_5hz_of_0_1_20hz": 0.00401046675566794,
+      "energy_2_5hz": 337.55046074940697,
+      "energy_0_1_20hz": 84167.37534910401
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C06_W07",
+      "share_2_5hz_of_0_1_20hz": 0.008843669241712702,
+      "energy_2_5hz": 6983.693021220797,
+      "energy_0_1_20hz": 789682.7470978897
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C08_W08",
+      "share_2_5hz_of_0_1_20hz": 0.020642581486155755,
+      "energy_2_5hz": 19425.826287794884,
+      "energy_0_1_20hz": 941056.0544873273
+    },
+    {
+      "scene_id": "DL1018_DEV_T1_C07_W08",
+      "share_2_5hz_of_0_1_20hz": 0.025919695375175463,
+      "energy_2_5hz": 21816.287365495573,
+      "energy_0_1_20hz": 841687.6452332877
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C06_W08",
+      "share_2_5hz_of_0_1_20hz": 0.05204642902882764,
+      "energy_2_5hz": 38407.45204923191,
+      "energy_0_1_20hz": 737945.9602878551
+    },
+    {
+      "scene_id": "DL1018_DEV_T1_C11_W12",
+      "share_2_5hz_of_0_1_20hz": 0.07297928851087922,
+      "energy_2_5hz": 34835.150514015484,
+      "energy_0_1_20hz": 477329.2700547843
+    },
+    {
+      "scene_id": "DL1018_DEV_T1_C10_W09",
+      "share_2_5hz_of_0_1_20hz": 0.09528283129245894,
+      "energy_2_5hz": 46801.80881206489,
+      "energy_0_1_20hz": 491188.2673638495
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C13_W12",
+      "share_2_5hz_of_0_1_20hz": 0.2829643557042824,
+      "energy_2_5hz": 30615.38315835592,
+      "energy_0_1_20hz": 108195.1932855852
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C14_W14",
+      "share_2_5hz_of_0_1_20hz": 0.3781708619865998,
+      "energy_2_5hz": 364299.21561636607,
+      "energy_0_1_20hz": 963319.1031763698
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C09_W10",
+      "share_2_5hz_of_0_1_20hz": 0.3976439043424075,
+      "energy_2_5hz": 408550.86352273525,
+      "energy_0_1_20hz": 1027428.961091117
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C12_W13",
+      "share_2_5hz_of_0_1_20hz": 0.4098256477310142,
+      "energy_2_5hz": 363769.00693599135,
+      "energy_0_1_20hz": 887618.9397857018
+    },
+    {
+      "scene_id": "DL1018_DEV_T1_C15_W14",
+      "share_2_5hz_of_0_1_20hz": 0.45119565600642114,
+      "energy_2_5hz": 362808.42342427804,
+      "energy_0_1_20hz": 804104.424753404
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C09_W09",
+      "share_2_5hz_of_0_1_20hz": 0.5094001807803409,
+      "energy_2_5hz": 80262.49250640301,
+      "energy_0_1_20hz": 157562.74837486385
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C15_W14",
+      "share_2_5hz_of_0_1_20hz": 0.8047027155676627,
+      "energy_2_5hz": 376110.065176437,
+      "energy_0_1_20hz": 467390.07822425093
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C10_W11",
+      "share_2_5hz_of_0_1_20hz": 0.850283212060242,
+      "energy_2_5hz": 427425.56521523715,
+      "energy_0_1_20hz": 502686.11581731937
+    }
+  ],
+  "oracle_protocol": {
+    "variable": "independent per-event delta for each selected scene; only ready events can vary",
+    "delta_bounds_mps2": [
+      -0.5,
+      0.5
+    ],
+    "beta": "clip(event_time_s/1.8,0,1)",
+    "total_action_clip_mps2": [
+      -3.0,
+      3.0
+    ],
+    "position_constraint": "RMSE of (candidate applied action - clipped 10-ms position target), ready events only, must not exceed C5 baseline RMSE",
+    "task_objective": "minimize SO3 geodesic RMSE over 20,000 1-ms frozen-state command-filter outputs against reference-derived task target",
+    "filter": "same 1-ms pre-update semi-implicit command-filter replay; initial logged Euler, zero rate; acceleration limits [Inf,Inf,6]",
+    "optimizer": "projected task-gradient descent with position-gradient half-space projection, fixed 15-iteration budget and up to 9 feasibility backtracking trials per step; starts at C5 delta=0",
+    "future_information": "noncausal oracle: each event delta is optimized with the entire trajectory available; not a deployable policy"
+  },
+  "selected_scene_count": 3,
+  "selected_scenes": {
+    "DL1018_DEV_T1_C00_W03": {
+      "frequency_selector": {
+        "scene_id": "DL1018_DEV_T1_C00_W03",
+        "share_2_5hz_of_0_1_20hz": 7.799581469637624e-07,
+        "energy_2_5hz": 0.349148921858204,
+        "energy_0_1_20hz": 447650.8428271162
+      },
+      "baseline_and_oof_heads": {
+        "C5_baseline": {
+          "position_ready_rmse_mps2": 0.06401449038794034,
+          "task_so3_rmse_rad": 0.04645534126799029,
+          "max_abs_action_mps2": 0.5380020141601562
+        },
+        "ordinary_head_lambda_0_01": {
+          "position_ready_rmse_mps2": 0.029482043074743794,
+          "task_so3_rmse_rad": 0.049324838212057014,
+          "max_abs_action_mps2": 0.6320329308509827
+        },
+        "task_head_lambda_0_1": {
+          "position_ready_rmse_mps2": 0.029625941873826896,
+          "task_so3_rmse_rad": 0.04911543979809915,
+          "max_abs_action_mps2": 0.6325187683105469
+        }
+      },
+      "oracle_sample": {
+        "scene_id": "DL1018_DEV_T1_C00_W03",
+        "objective": "minimize fixed-trajectory SO3 RMSE subject to ready-event position residual RMSE <= C5 baseline RMSE",
+        "position_constraint_cap_mps2": 0.06401449038794034,
+        "position_constraint_tolerance_mps2": 1e-08,
+        "initial": {
+          "position_rmse_mps2": 0.06401449038794034,
+          "task_so3_rmse_rad": 0.04645534126799029,
+          "task_forward_torch_scipy_abs_error_rad": 6.938893903907228e-18
+        },
+        "oracle_sample": {
+          "position_rmse_mps2": 0.06400587677928156,
+          "position_cap_mps2": 0.06401449038794034,
+          "position_excess_over_cap_mps2": 0.0,
+          "task_so3_rmse_rad_torch": 0.04219221842057514,
+          "task_so3_rmse_rad_scipy_replay": 0.04219221842057514,
+          "torch_vs_scipy_task_abs_error_rad": 0.0,
+          "max_abs_delta_mps2": 0.07496230968049789,
+          "delta_ready_clip_abs_ge_0_5_fraction": 0.0,
+          "delta_before_ready_abs_max_mps2": 0.0,
+          "total_action_abs_ge_3_fraction": 0.0,
+          "filter_clip_count_by_axis": [
+            0,
+            0,
+            0
+          ],
+          "filter_request_max_abs_by_axis_rad_s2": [
+            1.4042628355655666,
+            0.9242361113118833,
+            0.0
+          ],
+          "filter_applied_max_abs_by_axis_rad_s2": [
+            1.4042628355655666,
+            0.9242361113118833,
+            0.0
+          ],
+          "task_target_filter_output_samples": 20000
+        },
+        "optimization": {
+          "accepted_steps": 15,
+          "max_iterations": 15,
+          "max_backtracking_trials_per_step": 9,
+          "initial_step_max_event_delta_mps2": 0.02,
+          "stop_reason": "fixed_iteration_budget",
+          "accepted_history": [
+            {
+              "iteration": 1,
+              "backtrack": 3,
+              "step_max_delta": 0.0025,
+              "position_rmse_mps2": 0.0640060207643599,
+              "position_cap_mps2": 0.06401449038794034,
+              "task_so3_rmse_rad": 0.0462810062130363,
+              "max_abs_delta_mps2": 0.0025
+            },
+            {
+              "iteration": 2,
+              "backtrack": 2,
+              "step_max_delta": 0.005,
+              "position_rmse_mps2": 0.0640064497788216,
+              "position_cap_mps2": 0.06401449038794034,
+              "task_so3_rmse_rad": 0.045934306815278575,
+              "max_abs_delta_mps2": 0.0074991127013080095
+            },
+            {
+              "iteration": 3,
+              "backtrack": 2,
+              "step_max_delta": 0.005,
+              "position_rmse_mps2": 0.06400679092250311,
+              "position_cap_mps2": 0.06401449038794034,
+              "task_so3_rmse_rad": 0.045592821241929926,
+              "max_abs_delta_mps2": 0.012488201486159372
+            },
+            {
+              "iteration": 4,
+              "backtrack": 2,
+              "step_max_delta": 0.005,
+              "position_rmse_mps2": 0.06400692679462901,
+              "position_cap_mps2": 0.06401449038794034,
+              "task_so3_rmse_rad": 0.04525818919805676,
+              "max_abs_delta_mps2": 0.01746478641276989
+            },
+            {
+              "iteration": 5,
+              "backtrack": 2,
+              "step_max_delta": 0.005,
+              "position_rmse_mps2": 0.06400677317706621,
+              "position_cap_mps2": 0.06401449038794034,
+              "task_so3_rmse_rad": 0.04493168374818515,
+              "max_abs_delta_mps2": 0.02242503750076151
+            },
+            {
+              "iteration": 6,
+              "backtrack": 2,
+              "step_max_delta": 0.005,
+              "position_rmse_mps2": 0.06400627346295829,
+              "position_cap_mps2": 0.06401449038794034,
+              "task_so3_rmse_rad": 0.04461426882067972,
+              "max_abs_delta_mps2": 0.02736775508750739
+            },
+            {
+              "iteration": 7,
+              "backtrack": 2,
+              "step_max_delta": 0.005,
+              "position_rmse_mps2": 0.06400487723206663,
+              "position_cap_mps2": 0.06401449038794034,
+              "task_so3_rmse_rad": 0.044311774087657685,
+              "max_abs_delta_mps2": 0.03221123697007818
+            },
+            {
+              "iteration": 8,
+              "backtrack": 2,
+              "step_max_delta": 0.005,
+              "position_rmse_mps2": 0.06400248736416053,
+              "position_cap_mps2": 0.06401449038794034,
+              "task_so3_rmse_rad": 0.04402566651422815,
+              "max_abs_delta_mps2": 0.036933125583031995
+            },
+            {
+              "iteration": 9,
+              "backtrack": 2,
+              "step_max_delta": 0.005,
+              "position_rmse_mps2": 0.06399926617397858,
+              "position_cap_mps2": 0.06401449038794034,
+              "task_so3_rmse_rad": 0.04375464812443571,
+              "max_abs_delta_mps2": 0.041551826457773035
+            },
+            {
+              "iteration": 10,
+              "backtrack": 2,
+              "step_max_delta": 0.005,
+              "position_rmse_mps2": 0.06399534962920958,
+              "position_cap_mps2": 0.06401449038794034,
+              "task_so3_rmse_rad": 0.043497516903569226,
+              "max_abs_delta_mps2": 0.04608334376407317
+            },
+            {
+              "iteration": 11,
+              "backtrack": 2,
+              "step_max_delta": 0.005,
+              "position_rmse_mps2": 0.06399083581822641,
+              "position_cap_mps2": 0.06401449038794034,
+              "task_so3_rmse_rad": 0.04325335703813596,
+              "max_abs_delta_mps2": 0.05053820302495703
+            },
+            {
+              "iteration": 12,
+              "backtrack": 2,
+              "step_max_delta": 0.005,
+              "position_rmse_mps2": 0.06398580906957785,
+              "position_cap_mps2": 0.06401449038794034,
+              "task_so3_rmse_rad": 0.04302130347585912,
+              "max_abs_delta_mps2": 0.055065116462427184
+            },
+            {
+              "iteration": 13,
+              "backtrack": 2,
+              "step_max_delta": 0.005,
+              "position_rmse_mps2": 0.06398033333408588,
+              "position_cap_mps2": 0.06401449038794034,
+              "task_so3_rmse_rad": 0.042800651769772345,
+              "max_abs_delta_mps2": 0.06003975032669286
+            },
+            {
+              "iteration": 14,
+              "backtrack": 1,
+              "step_max_delta": 0.01,
+              "position_rmse_mps2": 0.064012459055904,
+              "position_cap_mps2": 0.06401449038794034,
+              "task_so3_rmse_rad": 0.042381879801279984,
+              "max_abs_delta_mps2": 0.06999391674736188
+            },
+            {
+              "iteration": 15,
+              "backtrack": 2,
+              "step_max_delta": 0.005,
+              "position_rmse_mps2": 0.06400587677928156,
+              "position_cap_mps2": 0.06401449038794034,
+              "task_so3_rmse_rad": 0.04219221842057514,
+              "max_abs_delta_mps2": 0.07496230968049789
+            }
+          ]
+        },
+        "noncausal_limit": "delta is selected jointly from the full future scene trajectory; this is a sampled frozen-state oracle point, not a causal deployable controller or a global optimum/lower bound."
+      }
+    },
+    "DL1018_DEV_T1_C07_W08": {
+      "frequency_selector": {
+        "scene_id": "DL1018_DEV_T1_C07_W08",
+        "share_2_5hz_of_0_1_20hz": 0.025919695375175463,
+        "energy_2_5hz": 21816.287365495573,
+        "energy_0_1_20hz": 841687.6452332877
+      },
+      "baseline_and_oof_heads": {
+        "C5_baseline": {
+          "position_ready_rmse_mps2": 0.2857226613680396,
+          "task_so3_rmse_rad": 0.07587220893965547,
+          "max_abs_action_mps2": 1.5498963594436646
+        },
+        "ordinary_head_lambda_0_01": {
+          "position_ready_rmse_mps2": 0.11630235309685948,
+          "task_so3_rmse_rad": 0.09254290821995168,
+          "max_abs_action_mps2": 2.049896240234375
+        },
+        "task_head_lambda_0_1": {
+          "position_ready_rmse_mps2": 0.1162366003093739,
+          "task_so3_rmse_rad": 0.0923768836648624,
+          "max_abs_action_mps2": 2.049896240234375
+        }
+      },
+      "oracle_sample": {
+        "scene_id": "DL1018_DEV_T1_C07_W08",
+        "objective": "minimize fixed-trajectory SO3 RMSE subject to ready-event position residual RMSE <= C5 baseline RMSE",
+        "position_constraint_cap_mps2": 0.2857226613680396,
+        "position_constraint_tolerance_mps2": 1e-08,
+        "initial": {
+          "position_rmse_mps2": 0.2857226613680396,
+          "task_so3_rmse_rad": 0.07587220893965547,
+          "task_forward_torch_scipy_abs_error_rad": 0.0
+        },
+        "oracle_sample": {
+          "position_rmse_mps2": 0.28490835415897403,
+          "position_cap_mps2": 0.2857226613680396,
+          "position_excess_over_cap_mps2": 0.0,
+          "task_so3_rmse_rad_torch": 0.065658119261801,
+          "task_so3_rmse_rad_scipy_replay": 0.065658119261801,
+          "torch_vs_scipy_task_abs_error_rad": 0.0,
+          "max_abs_delta_mps2": 0.2986015967452075,
+          "delta_ready_clip_abs_ge_0_5_fraction": 0.0,
+          "delta_before_ready_abs_max_mps2": 0.0,
+          "total_action_abs_ge_3_fraction": 0.0,
+          "filter_clip_count_by_axis": [
+            0,
+            0,
+            0
+          ],
+          "filter_request_max_abs_by_axis_rad_s2": [
+            15.646936954900934,
+            8.534083665604333,
+            0.0
+          ],
+          "filter_applied_max_abs_by_axis_rad_s2": [
+            15.646936954900934,
+            8.534083665604333,
+            0.0
+          ],
+          "task_target_filter_output_samples": 20000
+        },
+        "optimization": {
+          "accepted_steps": 15,
+          "max_iterations": 15,
+          "max_backtracking_trials_per_step": 9,
+          "initial_step_max_event_delta_mps2": 0.02,
+          "stop_reason": "fixed_iteration_budget",
+          "accepted_history": [
+            {
+              "iteration": 1,
+              "backtrack": 0,
+              "step_max_delta": 0.02,
+              "position_rmse_mps2": 0.28566774578964677,
+              "position_cap_mps2": 0.2857226613680396,
+              "task_so3_rmse_rad": 0.07506410242672605,
+              "max_abs_delta_mps2": 0.02
+            },
+            {
+              "iteration": 2,
+              "backtrack": 0,
+              "step_max_delta": 0.02,
+              "position_rmse_mps2": 0.2856128832547043,
+              "position_cap_mps2": 0.2857226613680396,
+              "task_so3_rmse_rad": 0.07427406525660289,
+              "max_abs_delta_mps2": 0.04
+            },
+            {
+              "iteration": 3,
+              "backtrack": 0,
+              "step_max_delta": 0.02,
+              "position_rmse_mps2": 0.2855580808623121,
+              "position_cap_mps2": 0.2857226613680396,
+              "task_so3_rmse_rad": 0.07350176246809408,
+              "max_abs_delta_mps2": 0.06
+            },
+            {
+              "iteration": 4,
+              "backtrack": 0,
+              "step_max_delta": 0.02,
+              "position_rmse_mps2": 0.2855033472754751,
+              "position_cap_mps2": 0.2857226613680396,
+              "task_so3_rmse_rad": 0.07274727725067913,
+              "max_abs_delta_mps2": 0.07999005100513587
+            },
+            {
+              "iteration": 5,
+              "backtrack": 0,
+              "step_max_delta": 0.02,
+              "position_rmse_mps2": 0.28544869996612543,
+              "position_cap_mps2": 0.2857226613680396,
+              "task_so3_rmse_rad": 0.07201154363729624,
+              "max_abs_delta_mps2": 0.09993722054210052
+            },
+            {
+              "iteration": 6,
+              "backtrack": 0,
+              "step_max_delta": 0.02,
+              "position_rmse_mps2": 0.28539414409165653,
+              "position_cap_mps2": 0.2857226613680396,
+              "task_so3_rmse_rad": 0.07129418392568071,
+              "max_abs_delta_mps2": 0.11984295092037252
+            },
+            {
+              "iteration": 7,
+              "backtrack": 0,
+              "step_max_delta": 0.02,
+              "position_rmse_mps2": 0.2853396831075537,
+              "position_cap_mps2": 0.2857226613680396,
+              "task_so3_rmse_rad": 0.07059486408086468,
+              "max_abs_delta_mps2": 0.1397582023353422
+            },
+            {
+              "iteration": 8,
+              "backtrack": 0,
+              "step_max_delta": 0.02,
+              "position_rmse_mps2": 0.2852853309590545,
+              "position_cap_mps2": 0.2857226613680396,
+              "task_so3_rmse_rad": 0.06991405449787676,
+              "max_abs_delta_mps2": 0.15973568903751353
+            },
+            {
+              "iteration": 9,
+              "backtrack": 0,
+              "step_max_delta": 0.02,
+              "position_rmse_mps2": 0.28523109809403935,
+              "position_cap_mps2": 0.2857226613680396,
+              "task_so3_rmse_rad": 0.06925189773966763,
+              "max_abs_delta_mps2": 0.17967673098571765
+            },
+            {
+              "iteration": 10,
+              "backtrack": 0,
+              "step_max_delta": 0.02,
+              "position_rmse_mps2": 0.2851769860173541,
+              "position_cap_mps2": 0.2857226613680396,
+              "task_so3_rmse_rad": 0.06860803363983914,
+              "max_abs_delta_mps2": 0.19958252610065913
+            },
+            {
+              "iteration": 11,
+              "backtrack": 0,
+              "step_max_delta": 0.02,
+              "position_rmse_mps2": 0.28512299499637667,
+              "position_cap_mps2": 0.2857226613680396,
+              "task_so3_rmse_rad": 0.06798213987171138,
+              "max_abs_delta_mps2": 0.21945417740381937
+            },
+            {
+              "iteration": 12,
+              "backtrack": 0,
+              "step_max_delta": 0.02,
+              "position_rmse_mps2": 0.28506912503424414,
+              "position_cap_mps2": 0.2857226613680396,
+              "task_so3_rmse_rad": 0.06737396268932494,
+              "max_abs_delta_mps2": 0.23929156519386957
+            },
+            {
+              "iteration": 13,
+              "backtrack": 0,
+              "step_max_delta": 0.02,
+              "position_rmse_mps2": 0.2850153959853747,
+              "position_cap_mps2": 0.2857226613680396,
+              "task_so3_rmse_rad": 0.06678412085963557,
+              "max_abs_delta_mps2": 0.25906603229526
+            },
+            {
+              "iteration": 14,
+              "backtrack": 0,
+              "step_max_delta": 0.02,
+              "position_rmse_mps2": 0.2849618064546341,
+              "position_cap_mps2": 0.2857226613680396,
+              "task_so3_rmse_rad": 0.06621227543718769,
+              "max_abs_delta_mps2": 0.27877955736069576
+            },
+            {
+              "iteration": 15,
+              "backtrack": 0,
+              "step_max_delta": 0.02,
+              "position_rmse_mps2": 0.28490835415897403,
+              "position_cap_mps2": 0.2857226613680396,
+              "task_so3_rmse_rad": 0.065658119261801,
+              "max_abs_delta_mps2": 0.2986015967452075
+            }
+          ]
+        },
+        "noncausal_limit": "delta is selected jointly from the full future scene trajectory; this is a sampled frozen-state oracle point, not a causal deployable controller or a global optimum/lower bound."
+      }
+    },
+    "DL1018_DEV_T3_C10_W11": {
+      "frequency_selector": {
+        "scene_id": "DL1018_DEV_T3_C10_W11",
+        "share_2_5hz_of_0_1_20hz": 0.850283212060242,
+        "energy_2_5hz": 427425.56521523715,
+        "energy_0_1_20hz": 502686.11581731937
+      },
+      "baseline_and_oof_heads": {
+        "C5_baseline": {
+          "position_ready_rmse_mps2": 0.37587132900512427,
+          "task_so3_rmse_rad": 0.06140992228381615,
+          "max_abs_action_mps2": 1.600488543510437
+        },
+        "ordinary_head_lambda_0_01": {
+          "position_ready_rmse_mps2": 0.18249418568160217,
+          "task_so3_rmse_rad": 0.07438684514958618,
+          "max_abs_action_mps2": 2.072526454925537
+        },
+        "task_head_lambda_0_1": {
+          "position_ready_rmse_mps2": 0.18525127008958142,
+          "task_so3_rmse_rad": 0.07448823698945026,
+          "max_abs_action_mps2": 2.072526454925537
+        }
+      },
+      "oracle_sample": {
+        "scene_id": "DL1018_DEV_T3_C10_W11",
+        "objective": "minimize fixed-trajectory SO3 RMSE subject to ready-event position residual RMSE <= C5 baseline RMSE",
+        "position_constraint_cap_mps2": 0.37587132900512427,
+        "position_constraint_tolerance_mps2": 1e-08,
+        "initial": {
+          "position_rmse_mps2": 0.37587132900512427,
+          "task_so3_rmse_rad": 0.06140992228381615,
+          "task_forward_torch_scipy_abs_error_rad": 0.0
+        },
+        "oracle_sample": {
+          "position_rmse_mps2": 0.3748315996163039,
+          "position_cap_mps2": 0.37587132900512427,
+          "position_excess_over_cap_mps2": 0.0,
+          "task_so3_rmse_rad_torch": 0.050952709935440925,
+          "task_so3_rmse_rad_scipy_replay": 0.050952709935440925,
+          "torch_vs_scipy_task_abs_error_rad": 0.0,
+          "max_abs_delta_mps2": 0.2995541670504473,
+          "delta_ready_clip_abs_ge_0_5_fraction": 0.0,
+          "delta_before_ready_abs_max_mps2": 0.0,
+          "total_action_abs_ge_3_fraction": 0.0,
+          "filter_clip_count_by_axis": [
+            0,
+            0,
+            0
+          ],
+          "filter_request_max_abs_by_axis_rad_s2": [
+            24.751975480826896,
+            12.668678014256871,
+            0.0
+          ],
+          "filter_applied_max_abs_by_axis_rad_s2": [
+            24.751975480826896,
+            12.668678014256871,
+            0.0
+          ],
+          "task_target_filter_output_samples": 20000
+        },
+        "optimization": {
+          "accepted_steps": 15,
+          "max_iterations": 15,
+          "max_backtracking_trials_per_step": 9,
+          "initial_step_max_event_delta_mps2": 0.02,
+          "stop_reason": "fixed_iteration_budget",
+          "accepted_history": [
+            {
+              "iteration": 1,
+              "backtrack": 0,
+              "step_max_delta": 0.02,
+              "position_rmse_mps2": 0.375801011594302,
+              "position_cap_mps2": 0.37587132900512427,
+              "task_so3_rmse_rad": 0.06061184331068206,
+              "max_abs_delta_mps2": 0.02
+            },
+            {
+              "iteration": 2,
+              "backtrack": 0,
+              "step_max_delta": 0.02,
+              "position_rmse_mps2": 0.3757308550534657,
+              "position_cap_mps2": 0.37587132900512427,
+              "task_so3_rmse_rad": 0.05982771562510389,
+              "max_abs_delta_mps2": 0.04
+            },
+            {
+              "iteration": 3,
+              "backtrack": 0,
+              "step_max_delta": 0.02,
+              "position_rmse_mps2": 0.375660852658424,
+              "position_cap_mps2": 0.37587132900512427,
+              "task_so3_rmse_rad": 0.05905754181748468,
+              "max_abs_delta_mps2": 0.06
+            },
+            {
+              "iteration": 4,
+              "backtrack": 0,
+              "step_max_delta": 0.02,
+              "position_rmse_mps2": 0.3755909974565697,
+              "position_cap_mps2": 0.37587132900512427,
+              "task_so3_rmse_rad": 0.05830133889398145,
+              "max_abs_delta_mps2": 0.08
+            },
+            {
+              "iteration": 5,
+              "backtrack": 0,
+              "step_max_delta": 0.02,
+              "position_rmse_mps2": 0.37552128228318427,
+              "position_cap_mps2": 0.37587132900512427,
+              "task_so3_rmse_rad": 0.0575591372771089,
+              "max_abs_delta_mps2": 0.1
+            },
+            {
+              "iteration": 6,
+              "backtrack": 0,
+              "step_max_delta": 0.02,
+              "position_rmse_mps2": 0.37545169977169646,
+              "position_cap_mps2": 0.37587132900512427,
+              "task_so3_rmse_rad": 0.056830979842410784,
+              "max_abs_delta_mps2": 0.12000000000000001
+            },
+            {
+              "iteration": 7,
+              "backtrack": 0,
+              "step_max_delta": 0.02,
+              "position_rmse_mps2": 0.3753822700966501,
+              "position_cap_mps2": 0.37587132900512427,
+              "task_so3_rmse_rad": 0.05611764657383884,
+              "max_abs_delta_mps2": 0.13997959667063486
+            },
+            {
+              "iteration": 8,
+              "backtrack": 0,
+              "step_max_delta": 0.02,
+              "position_rmse_mps2": 0.37531299288617065,
+              "position_cap_mps2": 0.37587132900512427,
+              "task_so3_rmse_rad": 0.055419331822748046,
+              "max_abs_delta_mps2": 0.1599338273807394
+            },
+            {
+              "iteration": 9,
+              "backtrack": 0,
+              "step_max_delta": 0.02,
+              "position_rmse_mps2": 0.3752438599364358,
+              "position_cap_mps2": 0.37587132900512427,
+              "task_so3_rmse_rad": 0.054736033850247355,
+              "max_abs_delta_mps2": 0.17986332913578365
+            },
+            {
+              "iteration": 10,
+              "backtrack": 0,
+              "step_max_delta": 0.02,
+              "position_rmse_mps2": 0.3751748627959869,
+              "position_cap_mps2": 0.37587132900512427,
+              "task_so3_rmse_rad": 0.05406776168503426,
+              "max_abs_delta_mps2": 0.199768714631957
+            },
+            {
+              "iteration": 11,
+              "backtrack": 0,
+              "step_max_delta": 0.02,
+              "position_rmse_mps2": 0.3751059927582462,
+              "position_cap_mps2": 0.37587132900512427,
+              "task_so3_rmse_rad": 0.05341453394260767,
+              "max_abs_delta_mps2": 0.21965057493794832
+            },
+            {
+              "iteration": 12,
+              "backtrack": 0,
+              "step_max_delta": 0.02,
+              "position_rmse_mps2": 0.37503724084767887,
+              "position_cap_mps2": 0.37587132900512427,
+              "task_so3_rmse_rad": 0.052776377660340074,
+              "max_abs_delta_mps2": 0.23955416705044727
+            },
+            {
+              "iteration": 13,
+              "backtrack": 0,
+              "step_max_delta": 0.02,
+              "position_rmse_mps2": 0.3749685977995194,
+              "position_cap_mps2": 0.37587132900512427,
+              "task_so3_rmse_rad": 0.05215332713920704,
+              "max_abs_delta_mps2": 0.25955416705044726
+            },
+            {
+              "iteration": 14,
+              "backtrack": 0,
+              "step_max_delta": 0.02,
+              "position_rmse_mps2": 0.37490005403280774,
+              "position_cap_mps2": 0.37587132900512427,
+              "task_so3_rmse_rad": 0.05154542278407112,
+              "max_abs_delta_mps2": 0.2795541670504473
+            },
+            {
+              "iteration": 15,
+              "backtrack": 0,
+              "step_max_delta": 0.02,
+              "position_rmse_mps2": 0.3748315996163039,
+              "position_cap_mps2": 0.37587132900512427,
+              "task_so3_rmse_rad": 0.050952709935440925,
+              "max_abs_delta_mps2": 0.2995541670504473
+            }
+          ]
+        },
+        "noncausal_limit": "delta is selected jointly from the full future scene trajectory; this is a sampled frozen-state oracle point, not a causal deployable controller or a global optimum/lower bound."
+      }
+    }
+  },
+  "limitations": [
+    "The reported result is a sampled feasible point from a fixed-budget optimizer, not a global optimum, lower bound, or proof that no better feasible action exists.",
+    "State, current yaw, reference, and later command-filter task targets are frozen; residual-induced closed-loop state changes are omitted.",
+    "The high-frequency selector uses reconstructed C5 command-target signal only; no wind or test field is read."
+  ],
+  "script_sha256": "1d80a53abe2125d8e421483385e250f550e0081014accbaf0af1196bedf67286"
+}

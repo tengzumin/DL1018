@@ -1,0 +1,692 @@
+{
+  "schema": "DL1018_INNER_POSE_DELAYED_LABEL_HF_V1",
+  "status": "PASS_READ_ONLY_6HF_RAW_AUDIT",
+  "scope": "Only six DEV/VAL HF W09-W14 scenes. Each GRU original, GRU_NCMD, and C5 raw is status-checked COMPLETED/STABLE and raw-SHA bound. No Plant, TEST, wind, J, or Jdot values are read.",
+  "fixed_constants": {
+    "mass_kg": 0.695,
+    "gravity_mps2": 9.8,
+    "sample_dt_s": 0.001,
+    "delayed_label_horizon_s": 0.01,
+    "label_source": "logged stage1_position_delayed_prediction_target_mps2",
+    "actual_pose_acceleration": "(requested_generalized thrust / 0.695) * R(measured Euler) * e3 - g*e3"
+  },
+  "label_mechanism": {
+    "runtime_formula": "y=(v[k]-v[j] - sum(predictionReference[j:k])*dt)/0.01, with k-j=10 samples",
+    "xy_prediction_reference": "stage1_position_pcf_prediction_reference_mps2 equals stage1_position_pcf_a_f_mps2 for x/y (mask [1,1,0])",
+    "counterfactual_relation": "y_actual_pose_xy = y_current_xy - mean((a_actual_pose-af)_xy over [j,k)); this changes the label only and is not a rerun",
+    "interpretation": "a_actual_pose-af is a deployable geometric component using issued thrust and measured attitude, but the residual label still contains external disturbance, actuator mismatch, and other dynamics. Correlation/phase is diagnostic, not causal."
+  },
+  "macro_mean_six_scenes": {
+    "GRU_original": {
+      "xy_label_vector_rms_mps2": 0.6670920053727817,
+      "xy_actual_minus_filtered_pose_vector_rms_mps2": 0.14105166388649124,
+      "xy_delta_to_label_rms_ratio": 0.2250598656783486,
+      "xy_label_after_reference_swap_vector_rms_mps2": 0.6499937459369963,
+      "xy_label_after_reference_swap_rms_ratio": 0.9790063737930587,
+      "axis_mean": {
+        "x": {
+          "zero_lag_correlation": 0.47817259528503114,
+          "coherence_mean_1_to_3_hz": 0.7599931461651716,
+          "phase_label_relative_to_delta_pose_deg_1_to_3_hz": -19.810538840628833
+        },
+        "y": {
+          "zero_lag_correlation": 0.564385754626745,
+          "coherence_mean_1_to_3_hz": 0.7948554999579308,
+          "phase_label_relative_to_delta_pose_deg_1_to_3_hz": -3.190958923327375
+        }
+      }
+    },
+    "GRU_NCMD": {
+      "xy_label_vector_rms_mps2": 0.6683705599547527,
+      "xy_actual_minus_filtered_pose_vector_rms_mps2": 0.13434524820009255,
+      "xy_delta_to_label_rms_ratio": 0.2116020449788485,
+      "xy_label_after_reference_swap_vector_rms_mps2": 0.6498918296419126,
+      "xy_label_after_reference_swap_rms_ratio": 0.9794078851739126,
+      "axis_mean": {
+        "x": {
+          "zero_lag_correlation": 0.46783247296219926,
+          "coherence_mean_1_to_3_hz": 0.7519967046299847,
+          "phase_label_relative_to_delta_pose_deg_1_to_3_hz": 7.215066561908253
+        },
+        "y": {
+          "zero_lag_correlation": 0.5478319404723994,
+          "coherence_mean_1_to_3_hz": 0.7216830283358298,
+          "phase_label_relative_to_delta_pose_deg_1_to_3_hz": 8.752942304137763
+        }
+      }
+    },
+    "C5": {
+      "xy_label_vector_rms_mps2": 0.6741063777404378,
+      "xy_actual_minus_filtered_pose_vector_rms_mps2": 0.1606197830346698,
+      "xy_delta_to_label_rms_ratio": 0.2526291212184929,
+      "xy_label_after_reference_swap_vector_rms_mps2": 0.6499417532747582,
+      "xy_label_after_reference_swap_rms_ratio": 0.9685288745990627,
+      "axis_mean": {
+        "x": {
+          "zero_lag_correlation": 0.5058110826780776,
+          "coherence_mean_1_to_3_hz": 0.7363472491760005,
+          "phase_label_relative_to_delta_pose_deg_1_to_3_hz": -34.27610795214923
+        },
+        "y": {
+          "zero_lag_correlation": 0.6000601263798263,
+          "coherence_mean_1_to_3_hz": 0.7776573940779451,
+          "phase_label_relative_to_delta_pose_deg_1_to_3_hz": -4.9484393574333145
+        }
+      }
+    }
+  },
+  "per_scene": [
+    {
+      "scene_id": "DL1018_DEV_T1_C10_W09",
+      "arm": "GRU_original",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_full72_v1\\runs\\DL1018_DEV_T1_C10_W09\\raw_run.mat",
+      "raw_sha256": "c40239f9c9a6cea0f233eabdea3294b20ff4d3384e22a59055dc4e5358f5b541",
+      "valid_event_count": 1967,
+      "first_event_index": 330,
+      "last_event_index": 19990,
+      "mean_interval_samples": 10.0,
+      "xy_prediction_reference_af_max_abs_mps2": 0.0,
+      "delayed_label_reconstruction_max_abs_mps2": 2.318145675417327e-13,
+      "xy_label_vector_rms_mps2": 0.43071418252338456,
+      "xy_actual_minus_filtered_pose_vector_rms_mps2": 0.20372873065299751,
+      "xy_delta_to_label_rms_ratio": 0.47300214137233937,
+      "xy_label_after_reference_swap_vector_rms_mps2": 0.4311472812769802,
+      "xy_label_after_reference_swap_rms_ratio": 1.0010055363189072,
+      "xy_axis_correlation_and_1_to_3_hz_phase": {
+        "x": {
+          "delta_pose_rms_mps2": 0.09502255565314158,
+          "label_rms_mps2": 0.11930573294438564,
+          "zero_lag_correlation": 0.7649249417272831,
+          "coherence_mean_1_to_3_hz": 0.7036782513927653,
+          "phase_label_relative_to_delta_pose_deg_1_to_3_hz": 4.4932528442962605
+        },
+        "y": {
+          "delta_pose_rms_mps2": 0.17303038848177507,
+          "label_rms_mps2": 0.20491575483988694,
+          "zero_lag_correlation": 0.8439007631657257,
+          "coherence_mean_1_to_3_hz": 0.658642299253285,
+          "phase_label_relative_to_delta_pose_deg_1_to_3_hz": 9.381090643257803
+        }
+      },
+      "available_runtime_inputs": "issued requested_generalized thrust, measured Euler state, and logged/computed pcf a_f; no wind/J/Jdot"
+    },
+    {
+      "scene_id": "DL1018_DEV_T1_C10_W09",
+      "arm": "GRU_NCMD",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\gru_ncmd_tracking_v1\\runs\\DL1018_DEV_T1_C10_W09\\raw_run.mat",
+      "raw_sha256": "291a4fd89e37f25520e1bad5005ec06e12289ad7c8977648b2fcd8a5de0eb832",
+      "valid_event_count": 1967,
+      "first_event_index": 330,
+      "last_event_index": 19990,
+      "mean_interval_samples": 10.0,
+      "xy_prediction_reference_af_max_abs_mps2": 0.0,
+      "delayed_label_reconstruction_max_abs_mps2": 2.358668815816145e-13,
+      "xy_label_vector_rms_mps2": 0.42401849973078576,
+      "xy_actual_minus_filtered_pose_vector_rms_mps2": 0.17007414430210097,
+      "xy_delta_to_label_rms_ratio": 0.40110076425930236,
+      "xy_label_after_reference_swap_vector_rms_mps2": 0.4311368431415371,
+      "xy_label_after_reference_swap_rms_ratio": 1.0167878133035961,
+      "xy_axis_correlation_and_1_to_3_hz_phase": {
+        "x": {
+          "delta_pose_rms_mps2": 0.08477052227514766,
+          "label_rms_mps2": 0.11176350313242477,
+          "zero_lag_correlation": 0.7263032846368582,
+          "coherence_mean_1_to_3_hz": 0.5383863870384064,
+          "phase_label_relative_to_delta_pose_deg_1_to_3_hz": -32.660236261684084
+        },
+        "y": {
+          "delta_pose_rms_mps2": 0.14146079170475842,
+          "label_rms_mps2": 0.1772092476924959,
+          "zero_lag_correlation": 0.7845132442886421,
+          "coherence_mean_1_to_3_hz": 0.48345492203803675,
+          "phase_label_relative_to_delta_pose_deg_1_to_3_hz": 8.871513597238293
+        }
+      },
+      "available_runtime_inputs": "issued requested_generalized thrust, measured Euler state, and logged/computed pcf a_f; no wind/J/Jdot"
+    },
+    {
+      "scene_id": "DL1018_DEV_T1_C10_W09",
+      "arm": "C5",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_DEV_T1_C10_W09\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "1e684df2174bc6b754e7798c67acb5c0b4ead218bcc1bd7b1d5cfc1a2fcf4991",
+      "valid_event_count": 1967,
+      "first_event_index": 330,
+      "last_event_index": 19990,
+      "mean_interval_samples": 10.0,
+      "xy_prediction_reference_af_max_abs_mps2": 0.0,
+      "delayed_label_reconstruction_max_abs_mps2": 2.380873276308648e-13,
+      "xy_label_vector_rms_mps2": 0.44209104253717385,
+      "xy_actual_minus_filtered_pose_vector_rms_mps2": 0.23417970324668774,
+      "xy_delta_to_label_rms_ratio": 0.5297092243776833,
+      "xy_label_after_reference_swap_vector_rms_mps2": 0.43113640198606223,
+      "xy_label_after_reference_swap_rms_ratio": 0.9752208493340137,
+      "xy_axis_correlation_and_1_to_3_hz_phase": {
+        "x": {
+          "delta_pose_rms_mps2": 0.10427436281451789,
+          "label_rms_mps2": 0.12480108241191264,
+          "zero_lag_correlation": 0.7889066784907465,
+          "coherence_mean_1_to_3_hz": 0.6545594133886614,
+          "phase_label_relative_to_delta_pose_deg_1_to_3_hz": 0.7101786870963114
+        },
+        "y": {
+          "delta_pose_rms_mps2": 0.20285292416346906,
+          "label_rms_mps2": 0.22914684449621703,
+          "zero_lag_correlation": 0.8774681608755627,
+          "coherence_mean_1_to_3_hz": 0.6316038304407858,
+          "phase_label_relative_to_delta_pose_deg_1_to_3_hz": 4.897804952980797
+        }
+      },
+      "available_runtime_inputs": "issued requested_generalized thrust, measured Euler state, and logged/computed pcf a_f; no wind/J/Jdot"
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C09_W10",
+      "arm": "GRU_original",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_full72_v1\\runs\\DL1018_DEV_T2_C09_W10\\raw_run.mat",
+      "raw_sha256": "518567b25d19d8e8acd6a74c33eb7c5ed6b78c507d6f022a0cd12ba6bf126e98",
+      "valid_event_count": 1967,
+      "first_event_index": 330,
+      "last_event_index": 19990,
+      "mean_interval_samples": 10.0,
+      "xy_prediction_reference_af_max_abs_mps2": 0.0,
+      "delayed_label_reconstruction_max_abs_mps2": 5.171280070825901e-13,
+      "xy_label_vector_rms_mps2": 0.7235437513419903,
+      "xy_actual_minus_filtered_pose_vector_rms_mps2": 0.10276653138647242,
+      "xy_delta_to_label_rms_ratio": 0.14203222845317445,
+      "xy_label_after_reference_swap_vector_rms_mps2": 0.6994999107411994,
+      "xy_label_after_reference_swap_rms_ratio": 0.9667693341885744,
+      "xy_axis_correlation_and_1_to_3_hz_phase": {
+        "x": {
+          "delta_pose_rms_mps2": 0.07040516607561235,
+          "label_rms_mps2": 0.06285501284448101,
+          "zero_lag_correlation": 0.9763624574545332,
+          "coherence_mean_1_to_3_hz": 0.9550452022474062,
+          "phase_label_relative_to_delta_pose_deg_1_to_3_hz": -3.4557471931574897
+        },
+        "y": {
+          "delta_pose_rms_mps2": 0.07222717142068621,
+          "label_rms_mps2": 0.3851003465322104,
+          "zero_lag_correlation": 0.34034607337858985,
+          "coherence_mean_1_to_3_hz": 0.4965437374711775,
+          "phase_label_relative_to_delta_pose_deg_1_to_3_hz": 16.521434826486477
+        }
+      },
+      "available_runtime_inputs": "issued requested_generalized thrust, measured Euler state, and logged/computed pcf a_f; no wind/J/Jdot"
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C09_W10",
+      "arm": "GRU_NCMD",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\gru_ncmd_tracking_v1\\runs\\DL1018_DEV_T2_C09_W10\\raw_run.mat",
+      "raw_sha256": "0a910d82a5ff7efbff632d001fcda7caa69f6eec8c3ed935455d2527767bb1d6",
+      "valid_event_count": 1967,
+      "first_event_index": 330,
+      "last_event_index": 19990,
+      "mean_interval_samples": 10.0,
+      "xy_prediction_reference_af_max_abs_mps2": 0.0,
+      "delayed_label_reconstruction_max_abs_mps2": 5.209166431541234e-13,
+      "xy_label_vector_rms_mps2": 0.7289614945798021,
+      "xy_actual_minus_filtered_pose_vector_rms_mps2": 0.10707694783993137,
+      "xy_delta_to_label_rms_ratio": 0.1468897172705317,
+      "xy_label_after_reference_swap_vector_rms_mps2": 0.6995543026143508,
+      "xy_label_after_reference_swap_rms_ratio": 0.9596587855680874,
+      "xy_axis_correlation_and_1_to_3_hz_phase": {
+        "x": {
+          "delta_pose_rms_mps2": 0.07131901904123004,
+          "label_rms_mps2": 0.06403359322254731,
+          "zero_lag_correlation": 0.9765901173026507,
+          "coherence_mean_1_to_3_hz": 0.9402602513761009,
+          "phase_label_relative_to_delta_pose_deg_1_to_3_hz": -2.1936786205797474
+        },
+        "y": {
+          "delta_pose_rms_mps2": 0.07295536530858493,
+          "label_rms_mps2": 0.3800954023728828,
+          "zero_lag_correlation": 0.2743912269525198,
+          "coherence_mean_1_to_3_hz": 0.4432800700685557,
+          "phase_label_relative_to_delta_pose_deg_1_to_3_hz": 7.472505000340997
+        }
+      },
+      "available_runtime_inputs": "issued requested_generalized thrust, measured Euler state, and logged/computed pcf a_f; no wind/J/Jdot"
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C09_W10",
+      "arm": "C5",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_DEV_T2_C09_W10\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "9810e02aa6bede12197eda25dbb0c18335252b1965f055931ea28b2f2dbb505d",
+      "valid_event_count": 1967,
+      "first_event_index": 330,
+      "last_event_index": 19990,
+      "mean_interval_samples": 10.0,
+      "xy_prediction_reference_af_max_abs_mps2": 0.0,
+      "delayed_label_reconstruction_max_abs_mps2": 4.98434626905464e-13,
+      "xy_label_vector_rms_mps2": 0.7262565115681527,
+      "xy_actual_minus_filtered_pose_vector_rms_mps2": 0.10956648904009472,
+      "xy_delta_to_label_rms_ratio": 0.15086472519677074,
+      "xy_label_after_reference_swap_vector_rms_mps2": 0.6994065577561309,
+      "xy_label_after_reference_swap_rms_ratio": 0.9630296549712901,
+      "xy_axis_correlation_and_1_to_3_hz_phase": {
+        "x": {
+          "delta_pose_rms_mps2": 0.07374179141282926,
+          "label_rms_mps2": 0.0660717039822388,
+          "zero_lag_correlation": 0.9787023682520057,
+          "coherence_mean_1_to_3_hz": 0.9364164324212589,
+          "phase_label_relative_to_delta_pose_deg_1_to_3_hz": -1.5784028321379366
+        },
+        "y": {
+          "delta_pose_rms_mps2": 0.07819950107428653,
+          "label_rms_mps2": 0.3877421652270121,
+          "zero_lag_correlation": 0.3618017921356816,
+          "coherence_mean_1_to_3_hz": 0.5148610590140614,
+          "phase_label_relative_to_delta_pose_deg_1_to_3_hz": 12.989925190156693
+        }
+      },
+      "available_runtime_inputs": "issued requested_generalized thrust, measured Euler state, and logged/computed pcf a_f; no wind/J/Jdot"
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C09_W09",
+      "arm": "GRU_original",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_full72_v1\\runs\\DL1018_DEV_T3_C09_W09\\raw_run.mat",
+      "raw_sha256": "14176658aac8e8b69817f71aff748add1b591cee744cd05954184e52e34c2cb2",
+      "valid_event_count": 1967,
+      "first_event_index": 330,
+      "last_event_index": 19990,
+      "mean_interval_samples": 10.0,
+      "xy_prediction_reference_af_max_abs_mps2": 0.0,
+      "delayed_label_reconstruction_max_abs_mps2": 5.057065877167588e-13,
+      "xy_label_vector_rms_mps2": 0.6001001882607853,
+      "xy_actual_minus_filtered_pose_vector_rms_mps2": 0.09652892431758614,
+      "xy_delta_to_label_rms_ratio": 0.16085468094477187,
+      "xy_label_after_reference_swap_vector_rms_mps2": 0.6043066295450275,
+      "xy_label_after_reference_swap_rms_ratio": 1.0070095650135245,
+      "xy_axis_correlation_and_1_to_3_hz_phase": {
+        "x": {
+          "delta_pose_rms_mps2": 0.06447842916938959,
+          "label_rms_mps2": 0.18081590080683804,
+          "zero_lag_correlation": 0.3414746651576826,
+          "coherence_mean_1_to_3_hz": 0.525788486107838,
+          "phase_label_relative_to_delta_pose_deg_1_to_3_hz": 28.84381424504168
+        },
+        "y": {
+          "delta_pose_rms_mps2": 0.06838772090804214,
+          "label_rms_mps2": 0.0972137029223571,
+          "zero_lag_correlation": 0.9521477496780305,
+          "coherence_mean_1_to_3_hz": 0.8284270936998903,
+          "phase_label_relative_to_delta_pose_deg_1_to_3_hz": -41.27620655397135
+        }
+      },
+      "available_runtime_inputs": "issued requested_generalized thrust, measured Euler state, and logged/computed pcf a_f; no wind/J/Jdot"
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C09_W09",
+      "arm": "GRU_NCMD",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\gru_ncmd_tracking_v1\\runs\\DL1018_DEV_T3_C09_W09\\raw_run.mat",
+      "raw_sha256": "6f77565ca508e50648d725d244e3c1fd7771293880118d2622934e65c27ec5c1",
+      "valid_event_count": 1967,
+      "first_event_index": 330,
+      "last_event_index": 19990,
+      "mean_interval_samples": 10.0,
+      "xy_prediction_reference_af_max_abs_mps2": 0.0,
+      "delayed_label_reconstruction_max_abs_mps2": 5.316858064929875e-13,
+      "xy_label_vector_rms_mps2": 0.5903270260652883,
+      "xy_actual_minus_filtered_pose_vector_rms_mps2": 0.09577551982300421,
+      "xy_delta_to_label_rms_ratio": 0.16224146209496385,
+      "xy_label_after_reference_swap_vector_rms_mps2": 0.604272921231532,
+      "xy_label_after_reference_swap_rms_ratio": 1.0236240160969714,
+      "xy_axis_correlation_and_1_to_3_hz_phase": {
+        "x": {
+          "delta_pose_rms_mps2": 0.060205607745415064,
+          "label_rms_mps2": 0.17488300220410405,
+          "zero_lag_correlation": 0.25394596915695,
+          "coherence_mean_1_to_3_hz": 0.4613269046792274,
+          "phase_label_relative_to_delta_pose_deg_1_to_3_hz": 71.6362757729767
+        },
+        "y": {
+          "delta_pose_rms_mps2": 0.06544939964052185,
+          "label_rms_mps2": 0.0939797000528561,
+          "zero_lag_correlation": 0.946594865247217,
+          "coherence_mean_1_to_3_hz": 0.7362986462121924,
+          "phase_label_relative_to_delta_pose_deg_1_to_3_hz": -33.971367535363164
+        }
+      },
+      "available_runtime_inputs": "issued requested_generalized thrust, measured Euler state, and logged/computed pcf a_f; no wind/J/Jdot"
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C09_W09",
+      "arm": "C5",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_DEV_T3_C09_W09\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "fa11a41b18ce9d4c3b7558d3bbb0d230aaef3e7071fc15419df0c6d1fca2f3a4",
+      "valid_event_count": 1967,
+      "first_event_index": 330,
+      "last_event_index": 19990,
+      "mean_interval_samples": 10.0,
+      "xy_prediction_reference_af_max_abs_mps2": 0.0,
+      "delayed_label_reconstruction_max_abs_mps2": 4.688471832992036e-13,
+      "xy_label_vector_rms_mps2": 0.601317139535356,
+      "xy_actual_minus_filtered_pose_vector_rms_mps2": 0.10791954714513248,
+      "xy_delta_to_label_rms_ratio": 0.17947192928597216,
+      "xy_label_after_reference_swap_vector_rms_mps2": 0.6043062412640028,
+      "xy_label_after_reference_swap_rms_ratio": 1.004970923880461,
+      "xy_axis_correlation_and_1_to_3_hz_phase": {
+        "x": {
+          "delta_pose_rms_mps2": 0.07238736704261706,
+          "label_rms_mps2": 0.18390315675151667,
+          "zero_lag_correlation": 0.3823913437835659,
+          "coherence_mean_1_to_3_hz": 0.5428844576722073,
+          "phase_label_relative_to_delta_pose_deg_1_to_3_hz": 18.356164625519153
+        },
+        "y": {
+          "delta_pose_rms_mps2": 0.07635459914372786,
+          "label_rms_mps2": 0.1044164421094114,
+          "zero_lag_correlation": 0.9571083668807067,
+          "coherence_mean_1_to_3_hz": 0.7860335509967552,
+          "phase_label_relative_to_delta_pose_deg_1_to_3_hz": -74.42803799627133
+        }
+      },
+      "available_runtime_inputs": "issued requested_generalized thrust, measured Euler state, and logged/computed pcf a_f; no wind/J/Jdot"
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C07_W14",
+      "arm": "GRU_original",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_full72_v1\\runs\\DL1018_VAL_T1_C07_W14\\raw_run.mat",
+      "raw_sha256": "fe85f45de5cb16135840a1cb0a6c9bb8e7ac1c1e7e1bcda274c7b7eb1f1b2c27",
+      "valid_event_count": 1967,
+      "first_event_index": 330,
+      "last_event_index": 19990,
+      "mean_interval_samples": 10.0,
+      "xy_prediction_reference_af_max_abs_mps2": 0.0,
+      "delayed_label_reconstruction_max_abs_mps2": 4.728023528244307e-13,
+      "xy_label_vector_rms_mps2": 0.8328610015924098,
+      "xy_actual_minus_filtered_pose_vector_rms_mps2": 0.2167078314942829,
+      "xy_delta_to_label_rms_ratio": 0.2601968768857503,
+      "xy_label_after_reference_swap_vector_rms_mps2": 0.7701186141947407,
+      "xy_label_after_reference_swap_rms_ratio": 0.9246664362027911,
+      "xy_axis_correlation_and_1_to_3_hz_phase": {
+        "x": {
+          "delta_pose_rms_mps2": 0.20291284435924165,
+          "label_rms_mps2": 0.49301899789718306,
+          "zero_lag_correlation": 0.41631511130324333,
+          "coherence_mean_1_to_3_hz": 0.7926480644690957,
+          "phase_label_relative_to_delta_pose_deg_1_to_3_hz": 4.788349256910144
+        },
+        "y": {
+          "delta_pose_rms_mps2": 0.05816410249971878,
+          "label_rms_mps2": 0.18052603472580733,
+          "zero_lag_correlation": 0.2919413235519889,
+          "coherence_mean_1_to_3_hz": 0.9770560550398983,
+          "phase_label_relative_to_delta_pose_deg_1_to_3_hz": 14.798048070840357
+        }
+      },
+      "available_runtime_inputs": "issued requested_generalized thrust, measured Euler state, and logged/computed pcf a_f; no wind/J/Jdot"
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C07_W14",
+      "arm": "GRU_NCMD",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\gru_ncmd_tracking_v1\\runs\\DL1018_VAL_T1_C07_W14\\raw_run.mat",
+      "raw_sha256": "63ca844f2365768a5aefb3e73099040267e2f0495562514f881da5556feac9f8",
+      "valid_event_count": 1967,
+      "first_event_index": 330,
+      "last_event_index": 19990,
+      "mean_interval_samples": 10.0,
+      "xy_prediction_reference_af_max_abs_mps2": 0.0,
+      "delayed_label_reconstruction_max_abs_mps2": 5.784261958297066e-13,
+      "xy_label_vector_rms_mps2": 0.8467770938359009,
+      "xy_actual_minus_filtered_pose_vector_rms_mps2": 0.20921532205854518,
+      "xy_delta_to_label_rms_ratio": 0.24707248646842772,
+      "xy_label_after_reference_swap_vector_rms_mps2": 0.7700219168829281,
+      "xy_label_after_reference_swap_rms_ratio": 0.9093561014915131,
+      "xy_axis_correlation_and_1_to_3_hz_phase": {
+        "x": {
+          "delta_pose_rms_mps2": 0.1906249010977551,
+          "label_rms_mps2": 0.49518480849012125,
+          "zero_lag_correlation": 0.42779915222890075,
+          "coherence_mean_1_to_3_hz": 0.9241302100087962,
+          "phase_label_relative_to_delta_pose_deg_1_to_3_hz": 42.72588719976482
+        },
+        "y": {
+          "delta_pose_rms_mps2": 0.05815619647585391,
+          "label_rms_mps2": 0.18372387033484755,
+          "zero_lag_correlation": 0.34028354140550376,
+          "coherence_mean_1_to_3_hz": 0.9549550787101087,
+          "phase_label_relative_to_delta_pose_deg_1_to_3_hz": -3.6468086680122105
+        }
+      },
+      "available_runtime_inputs": "issued requested_generalized thrust, measured Euler state, and logged/computed pcf a_f; no wind/J/Jdot"
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C07_W14",
+      "arm": "C5",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T1_C07_W14\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "df07c18cd061aa78e8e1152b73bccc2ae11026a5d54630065c877a5e4ec42dd1",
+      "valid_event_count": 1967,
+      "first_event_index": 330,
+      "last_event_index": 19990,
+      "mean_interval_samples": 10.0,
+      "xy_prediction_reference_af_max_abs_mps2": 0.0,
+      "delayed_label_reconstruction_max_abs_mps2": 5.473399511402022e-13,
+      "xy_label_vector_rms_mps2": 0.8520755994965079,
+      "xy_actual_minus_filtered_pose_vector_rms_mps2": 0.24980217832187804,
+      "xy_delta_to_label_rms_ratio": 0.29316903156185475,
+      "xy_label_after_reference_swap_vector_rms_mps2": 0.7699729452692576,
+      "xy_label_after_reference_swap_rms_ratio": 0.9036439322100471,
+      "xy_axis_correlation_and_1_to_3_hz_phase": {
+        "x": {
+          "delta_pose_rms_mps2": 0.2357662194234179,
+          "label_rms_mps2": 0.50987884077845,
+          "zero_lag_correlation": 0.47732417176694997,
+          "coherence_mean_1_to_3_hz": 0.7669368251984018,
+          "phase_label_relative_to_delta_pose_deg_1_to_3_hz": -77.91903718540757
+        },
+        "y": {
+          "delta_pose_rms_mps2": 0.057317423417907104,
+          "label_rms_mps2": 0.18133388132533523,
+          "zero_lag_correlation": 0.3024323617257215,
+          "coherence_mean_1_to_3_hz": 0.9534804475523536,
+          "phase_label_relative_to_delta_pose_deg_1_to_3_hz": 25.40334936993883
+        }
+      },
+      "available_runtime_inputs": "issued requested_generalized thrust, measured Euler state, and logged/computed pcf a_f; no wind/J/Jdot"
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C04_W14",
+      "arm": "GRU_original",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_full72_v1\\runs\\DL1018_VAL_T2_C04_W14\\raw_run.mat",
+      "raw_sha256": "9b009512da9f08e917f5484d6292066dcbcb731353df72828dc702d76b6a3479",
+      "valid_event_count": 1967,
+      "first_event_index": 330,
+      "last_event_index": 19990,
+      "mean_interval_samples": 10.0,
+      "xy_prediction_reference_af_max_abs_mps2": 0.0,
+      "delayed_label_reconstruction_max_abs_mps2": 4.982680934517703e-13,
+      "xy_label_vector_rms_mps2": 0.6592332628443667,
+      "xy_actual_minus_filtered_pose_vector_rms_mps2": 0.07516056995945296,
+      "xy_delta_to_label_rms_ratio": 0.11401210193059849,
+      "xy_label_after_reference_swap_vector_rms_mps2": 0.6675931788173265,
+      "xy_label_after_reference_swap_rms_ratio": 1.0126812714772455,
+      "xy_axis_correlation_and_1_to_3_hz_phase": {
+        "x": {
+          "delta_pose_rms_mps2": 0.052063485556074554,
+          "label_rms_mps2": 0.3900652876032888,
+          "zero_lag_correlation": 0.09895850492793097,
+          "coherence_mean_1_to_3_hz": 0.7713934411706562,
+          "phase_label_relative_to_delta_pose_deg_1_to_3_hz": -47.93993385307395
+        },
+        "y": {
+          "delta_pose_rms_mps2": 0.051285928031866095,
+          "label_rms_mps2": 0.14363657480966235,
+          "zero_lag_correlation": 0.39902063200145327,
+          "coherence_mean_1_to_3_hz": 0.8733462584866551,
+          "phase_label_relative_to_delta_pose_deg_1_to_3_hz": -43.49592534466921
+        }
+      },
+      "available_runtime_inputs": "issued requested_generalized thrust, measured Euler state, and logged/computed pcf a_f; no wind/J/Jdot"
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C04_W14",
+      "arm": "GRU_NCMD",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\gru_ncmd_tracking_v1\\runs\\DL1018_VAL_T2_C04_W14\\raw_run.mat",
+      "raw_sha256": "abd7d4203e07b3435c297bea95499dbedd45443fe03857b14e052f6f11ab0987",
+      "valid_event_count": 1967,
+      "first_event_index": 330,
+      "last_event_index": 19990,
+      "mean_interval_samples": 10.0,
+      "xy_prediction_reference_af_max_abs_mps2": 0.0,
+      "delayed_label_reconstruction_max_abs_mps2": 4.706790512898351e-13,
+      "xy_label_vector_rms_mps2": 0.6622058485315552,
+      "xy_actual_minus_filtered_pose_vector_rms_mps2": 0.08840004668726596,
+      "xy_delta_to_label_rms_ratio": 0.13349330405838836,
+      "xy_label_after_reference_swap_vector_rms_mps2": 0.6675881555904715,
+      "xy_label_after_reference_swap_rms_ratio": 1.008127845851636,
+      "xy_axis_correlation_and_1_to_3_hz_phase": {
+        "x": {
+          "delta_pose_rms_mps2": 0.05591890149158796,
+          "label_rms_mps2": 0.3908715832556649,
+          "zero_lag_correlation": 0.11734983196769587,
+          "coherence_mean_1_to_3_hz": 0.85732717077491,
+          "phase_label_relative_to_delta_pose_deg_1_to_3_hz": -54.6265186221767
+        },
+        "y": {
+          "delta_pose_rms_mps2": 0.06683408029907136,
+          "label_rms_mps2": 0.15048737038525253,
+          "zero_lag_correlation": 0.48323830821203245,
+          "coherence_mean_1_to_3_hz": 0.8516457886099589,
+          "phase_label_relative_to_delta_pose_deg_1_to_3_hz": 35.89272363097589
+        }
+      },
+      "available_runtime_inputs": "issued requested_generalized thrust, measured Euler state, and logged/computed pcf a_f; no wind/J/Jdot"
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C04_W14",
+      "arm": "C5",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T2_C04_W14\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "b3cbe42c3835600cef5b4a5adbafe619cb83c56da94f37fe87669e027e91c6bf",
+      "valid_event_count": 1967,
+      "first_event_index": 330,
+      "last_event_index": 19990,
+      "mean_interval_samples": 10.0,
+      "xy_prediction_reference_af_max_abs_mps2": 0.0,
+      "delayed_label_reconstruction_max_abs_mps2": 4.909406214892442e-13,
+      "xy_label_vector_rms_mps2": 0.6616220469661641,
+      "xy_actual_minus_filtered_pose_vector_rms_mps2": 0.09133733490629788,
+      "xy_delta_to_label_rms_ratio": 0.13805062168819918,
+      "xy_label_after_reference_swap_vector_rms_mps2": 0.6675844051668719,
+      "xy_label_after_reference_swap_rms_ratio": 1.0090117284151094,
+      "xy_axis_correlation_and_1_to_3_hz_phase": {
+        "x": {
+          "delta_pose_rms_mps2": 0.06150426686315692,
+          "label_rms_mps2": 0.39079442703806,
+          "zero_lag_correlation": 0.11806221118100048,
+          "coherence_mean_1_to_3_hz": 0.7343176715981872,
+          "phase_label_relative_to_delta_pose_deg_1_to_3_hz": -42.99820312731841
+        },
+        "y": {
+          "delta_pose_rms_mps2": 0.06543505601791172,
+          "label_rms_mps2": 0.1518640142070814,
+          "zero_lag_correlation": 0.5009099349005149,
+          "coherence_mean_1_to_3_hz": 0.8645656863389904,
+          "phase_label_relative_to_delta_pose_deg_1_to_3_hz": -30.891510342064755
+        }
+      },
+      "available_runtime_inputs": "issued requested_generalized thrust, measured Euler state, and logged/computed pcf a_f; no wind/J/Jdot"
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C01_W14",
+      "arm": "GRU_original",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_full72_v1\\runs\\DL1018_VAL_T3_C01_W14\\raw_run.mat",
+      "raw_sha256": "76afcf331ca14b169977810c74c8a8680f57d9747a9a3b9a46285804a98a0503",
+      "valid_event_count": 1967,
+      "first_event_index": 330,
+      "last_event_index": 19990,
+      "mean_interval_samples": 10.0,
+      "xy_prediction_reference_af_max_abs_mps2": 0.0,
+      "delayed_label_reconstruction_max_abs_mps2": 5.196953978270358e-13,
+      "xy_label_vector_rms_mps2": 0.7560996456737538,
+      "xy_actual_minus_filtered_pose_vector_rms_mps2": 0.1514173955081554,
+      "xy_delta_to_label_rms_ratio": 0.2002611644834573,
+      "xy_label_after_reference_swap_vector_rms_mps2": 0.7272968610467035,
+      "xy_label_after_reference_swap_rms_ratio": 0.9619060995573087,
+      "xy_axis_correlation_and_1_to_3_hz_phase": {
+        "x": {
+          "delta_pose_rms_mps2": 0.10209004216121317,
+          "label_rms_mps2": 0.43198802741151954,
+          "zero_lag_correlation": 0.2709998911395133,
+          "coherence_mean_1_to_3_hz": 0.8114054316032682,
+          "phase_label_relative_to_delta_pose_deg_1_to_3_hz": -105.59296834378964
+        },
+        "y": {
+          "delta_pose_rms_mps2": 0.10673846006322733,
+          "label_rms_mps2": 0.18625058089411753,
+          "zero_lag_correlation": 0.5589579859846824,
+          "coherence_mean_1_to_3_hz": 0.9351175557966792,
+          "phase_label_relative_to_delta_pose_deg_1_to_3_hz": 24.925804818091674
+        }
+      },
+      "available_runtime_inputs": "issued requested_generalized thrust, measured Euler state, and logged/computed pcf a_f; no wind/J/Jdot"
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C01_W14",
+      "arm": "GRU_NCMD",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\gru_ncmd_tracking_v1\\runs\\DL1018_VAL_T3_C01_W14\\raw_run.mat",
+      "raw_sha256": "42791e3630067cc0a17692de7bcb08eeec4f77a5402e752ca30aea06a42f7df5",
+      "valid_event_count": 1967,
+      "first_event_index": 330,
+      "last_event_index": 19990,
+      "mean_interval_samples": 10.0,
+      "xy_prediction_reference_af_max_abs_mps2": 0.0,
+      "delayed_label_reconstruction_max_abs_mps2": 5.316858064929875e-13,
+      "xy_label_vector_rms_mps2": 0.757933396985184,
+      "xy_actual_minus_filtered_pose_vector_rms_mps2": 0.13552950848970763,
+      "xy_delta_to_label_rms_ratio": 0.17881453572147704,
+      "xy_label_after_reference_swap_vector_rms_mps2": 0.7267768383906563,
+      "xy_label_after_reference_swap_rms_ratio": 0.9588927487316715,
+      "xy_axis_correlation_and_1_to_3_hz_phase": {
+        "x": {
+          "delta_pose_rms_mps2": 0.0946025486760446,
+          "label_rms_mps2": 0.4344151912608779,
+          "zero_lag_correlation": 0.30500648248013984,
+          "coherence_mean_1_to_3_hz": 0.7905493039024676,
+          "phase_label_relative_to_delta_pose_deg_1_to_3_hz": 18.40866990314852
+        },
+        "y": {
+          "delta_pose_rms_mps2": 0.09054091524077998,
+          "label_rms_mps2": 0.17350807060114173,
+          "zero_lag_correlation": 0.4579704567284812,
+          "coherence_mean_1_to_3_hz": 0.8604636643761261,
+          "phase_label_relative_to_delta_pose_deg_1_to_3_hz": 37.89908779964677
+        }
+      },
+      "available_runtime_inputs": "issued requested_generalized thrust, measured Euler state, and logged/computed pcf a_f; no wind/J/Jdot"
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C01_W14",
+      "arm": "C5",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T3_C01_W14\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "556be0c5cc9ae61c077597fdf474c2fde74f443a848bcd7dcfe0f7f49768db83",
+      "valid_event_count": 1967,
+      "first_event_index": 330,
+      "last_event_index": 19990,
+      "mean_interval_samples": 10.0,
+      "xy_prediction_reference_af_max_abs_mps2": 0.0,
+      "delayed_label_reconstruction_max_abs_mps2": 5.462574836911926e-13,
+      "xy_label_vector_rms_mps2": 0.7612759263392727,
+      "xy_actual_minus_filtered_pose_vector_rms_mps2": 0.170913445547928,
+      "xy_delta_to_label_rms_ratio": 0.22450919520047738,
+      "xy_label_after_reference_swap_vector_rms_mps2": 0.7272439682062238,
+      "xy_label_after_reference_swap_rms_ratio": 0.9552961587834553,
+      "xy_axis_correlation_and_1_to_3_hz_phase": {
+        "x": {
+          "delta_pose_rms_mps2": 0.11454683044175139,
+          "label_rms_mps2": 0.4345285453568797,
+          "zero_lag_correlation": 0.2894797225941974,
+          "coherence_mean_1_to_3_hz": 0.7829686947772855,
+          "phase_label_relative_to_delta_pose_deg_1_to_3_hz": -102.22734788064692
+        },
+        "y": {
+          "delta_pose_rms_mps2": 0.12053604440966971,
+          "label_rms_mps2": 0.19312295097820895,
+          "zero_lag_correlation": 0.6006401417607712,
+          "coherence_mean_1_to_3_hz": 0.9153997901247244,
+          "phase_label_relative_to_delta_pose_deg_1_to_3_hz": 32.33783268065988
+        }
+      },
+      "available_runtime_inputs": "issued requested_generalized thrust, measured Euler state, and logged/computed pcf a_f; no wind/J/Jdot"
+    }
+  ]
+}

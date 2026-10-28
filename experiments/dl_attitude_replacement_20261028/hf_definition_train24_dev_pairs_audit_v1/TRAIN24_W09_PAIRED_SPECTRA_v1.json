@@ -1,0 +1,1287 @@
+{
+  "schema": "TRAIN24_W09_DEV_PREFIX_PAIRED_SPECTRAL_AUDIT_V1",
+  "status": "PASS_READ_ONLY_LOCKED_RAW_DIAGNOSTIC",
+  "scope": {
+    "scene_ids": [
+      "DL1018_DEV_T1_C10_W09",
+      "DL1018_DEV_T3_C09_W09"
+    ],
+    "physical_source_split": "TRAIN_C5_24",
+    "canonical_id_prefix": "DL1018_DEV",
+    "methods": [
+      "B",
+      "C5",
+      "GRU_PARENT",
+      "CURRENT_CANDIDATE"
+    ],
+    "raw_files_read": 8,
+    "Plant_calls": 0,
+    "TEST_raw_or_score_opened_by_this_spectral_pass": false,
+    "inertia_reconstruction": false,
+    "historical_scope_note": "A preceding audit pass in a sibling directory mistakenly analyzed legacy data/raw/train/DL1018_TRAIN_* raws and performed one overly broad text search. Its numeric results are superseded and must not be used for current TRAIN24. This corrected pass opened only the exact DEV TRAIN24 paired raws and DEV-only manifests listed here; no TEST raw or score was opened.",
+    "current_candidate_attempts": {
+      "DL1018_DEV_T1_C10_W09": 14,
+      "DL1018_DEV_T3_C09_W09": 15
+    }
+  },
+  "cohort": {
+    "scene_count": 24,
+    "selected_ids_in_manifest": {
+      "DL1018_DEV_T1_C10_W09": true,
+      "DL1018_DEV_T3_C09_W09": true
+    },
+    "physical_train24_is_parent_dev24": true,
+    "parent_exposure_limit": "Parent cosine-GRU has seen the same DEV24 scenes and VAL48; these trajectories are in-sample with respect to the frozen parent. This derived head dataset is for development, not independent validation."
+  },
+  "method": {
+    "sample_rate_hz": 1000.0,
+    "periodogram": "one-sided Hann periodogram, constant-detrended PSD integrated over listed bands; 20 s window, ~0.05 Hz resolution",
+    "bands_hz": {
+      "0.05-0.5Hz": [
+        0.05,
+        0.5
+      ],
+      "0.5-1.5Hz": [
+        0.5,
+        1.5
+      ],
+      "1.5-2.5Hz": [
+        1.5,
+        2.5
+      ],
+      "2.5-3.5Hz": [
+        2.5,
+        3.5
+      ],
+      "3.5-10Hz": [
+        3.5,
+        10
+      ],
+      "10-50Hz": [
+        10,
+        50
+      ]
+    },
+    "task_formula": "Frozen scorer task Euler: add g=9.8 to ref acceleration z; derive roll/pitch from ref acceleration and ref yaw; scale roll/pitch to 30-degree cap; preserve yaw. Wind is not an input to task reconstruction.",
+    "spectral_axis": "roll/pitch/yaw Euler; no causal intervention",
+    "w09_observed_primary_wind_peak_hz": [
+      2.2,
+      3.2
+    ],
+    "frequency_band_interpretation": "For W09, periodogram peak bins of shared environment_wind_I are 2.2 and 3.2 Hz; values named 1.5-2.5Hz and 2.5-3.5Hz integrate those two neighboring bands. The bounds are [1.5,2.5) and [2.5,3.5) Hz."
+  },
+  "source_sha256": {
+    "frozen_scorer": "6baf689802f4d73ead813449e52a8fe85cb0be92c3185850c93646da2d54dd16",
+    "task_filter_hf6_taskbook": "c280ae2ce1384e5bfdee871ff74d412092566c019fc794050165e9b1cf7deb28",
+    "scene_generation": "7d11b4ebf63105b016c67f4b3c427282b35dafa53280ef2daf5578a6a16bb9ec",
+    "wind_profile": "88b500b0016225e21cde55fce0fbd6d54d0ffd2b34bed7a58f36d57e25b04f66",
+    "physical_train24_manifest": "16856362913e5144add83035b9b767affa02c0719c66971635731d237bb0d91e",
+    "t1_scene_binding": "57472755dbbeaee0d275b4b63bcaadabf00d6a0b5c7f1b258ba305c022ed0118",
+    "parent_full72_manifest": "97230bcc399d79a4b4785bffe8898880d7e21cd20eb3629c61d6b03a746fd1fe",
+    "c5_dev72_input_lock": "82024c01276cc4bfbd9b7772cf5332dee3fdfcbed422969589b68f1c90ed2d75",
+    "current_candidate_DL1018_DEV_T1_C10_W09_run_start": "9de52f14707215430947883aec70ba3a0a92104ad1b4c3906c9ae62edccc3dd2",
+    "current_candidate_DL1018_DEV_T1_C10_W09_run_status": "9bbd26981dea4aa0e22d7e7a69af55c770582339e8b9740bcdc329d57e9343a0",
+    "current_candidate_DL1018_DEV_T3_C09_W09_run_start": "4ff1ff8a8219f94e3cc0c6a167b7a77c0712e2822c8880ee0ada7839d45e1bb2",
+    "current_candidate_DL1018_DEV_T3_C09_W09_run_status": "7c83a13d607f36e6803ac2c09aa8aae8734e86f7de883a66e1991212de11c44f"
+  },
+  "raw_bindings": {
+    "DL1018_DEV_T1_C10_W09/B": {
+      "path": "experiments/b_traceable_c3core_dev72_20261023/runs_b/DL1018_DEV_T1_C10_W09/B_TRACEABLE_C3CORE_V1/attempt_01/raw_run.mat",
+      "sha256": "d1048a81954f856f3d4dac15d510f1cc7130775878bc4677ef76fd088c712a5f"
+    },
+    "DL1018_DEV_T1_C10_W09/C5": {
+      "path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T1_C10_W09/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "sha256": "1e684df2174bc6b754e7798c67acb5c0b4ead218bcc1bd7b1d5cfc1a2fcf4991"
+    },
+    "DL1018_DEV_T1_C10_W09/GRU_PARENT": {
+      "path": "experiments/dl_attitude_replacement_20261026/gru_stream_cosine_tracking_head_full72_v1/runs/DL1018_DEV_T1_C10_W09/raw_run.mat",
+      "sha256": "c40239f9c9a6cea0f233eabdea3294b20ff4d3384e22a59055dc4e5358f5b541"
+    },
+    "DL1018_DEV_T3_C09_W09/B": {
+      "path": "experiments/b_traceable_c3core_dev72_20261023/runs_b/DL1018_DEV_T3_C09_W09/B_TRACEABLE_C3CORE_V1/attempt_01/raw_run.mat",
+      "sha256": "a8cec3af85c0988622a3582385a44a201aa2d5e796fa73a933277cde0cf85f49"
+    },
+    "DL1018_DEV_T3_C09_W09/C5": {
+      "path": "experiments/position_axis_coordinate_c5_dev72_20261023/runs_dev72_v3/DL1018_DEV_T3_C09_W09/C5_AXIS_MASK_M110/attempt_01/raw_run.mat",
+      "sha256": "fa11a41b18ce9d4c3b7558d3bbb0d230aaef3e7071fc15419df0c6d1fca2f3a4"
+    },
+    "DL1018_DEV_T3_C09_W09/GRU_PARENT": {
+      "path": "experiments/dl_attitude_replacement_20261026/gru_stream_cosine_tracking_head_full72_v1/runs/DL1018_DEV_T3_C09_W09/raw_run.mat",
+      "sha256": "14176658aac8e8b69817f71aff748add1b591cee744cd05954184e52e34c2cb2"
+    },
+    "DL1018_DEV_T1_C10_W09/CURRENT_CANDIDATE": {
+      "path": "experiments/dl_attitude_replacement_20261028/position_dc_penalty_oof_train_pair_preflight_W09_T1_C10_attempt014_v1/runs/DL1018_DEV_T1_C10_W09/attempt_01/raw_run.mat",
+      "sha256": "5323d0330de6734b37b2f5f5c9cfd872a5e32aa2a3b220510b73c775692a451a",
+      "attempt": 14,
+      "run_status_sha256": "9bbd26981dea4aa0e22d7e7a69af55c770582339e8b9740bcdc329d57e9343a0",
+      "run_start_sha256": "9de52f14707215430947883aec70ba3a0a92104ad1b4c3906c9ae62edccc3dd2"
+    },
+    "DL1018_DEV_T3_C09_W09/CURRENT_CANDIDATE": {
+      "path": "experiments/dl_attitude_replacement_20261028/position_dc_penalty_oof_train_pair_preflight_W09_T3_C09_attempt015_v1/runs/DL1018_DEV_T3_C09_W09/attempt_01/raw_run.mat",
+      "sha256": "16c72ff78e7dfd298ae6157af9c98f6b77ef781162bd05dca07c564241b42963",
+      "attempt": 15,
+      "run_status_sha256": "7c83a13d607f36e6803ac2c09aa8aae8734e86f7de883a66e1991212de11c44f",
+      "run_start_sha256": "4ff1ff8a8219f94e3cc0c6a167b7a77c0712e2822c8880ee0ada7839d45e1bb2"
+    }
+  },
+  "scene_summary": {
+    "DL1018_DEV_T1_C10_W09": {
+      "scene_id": "DL1018_DEV_T1_C10_W09",
+      "task_family": "HELIX",
+      "physical_train24_member": true,
+      "canonical_split_prefix": "DEV",
+      "reference_acceleration_rms_xyz_mps2": [
+        0.37090786866007736,
+        0.37284652644203775,
+        0.020701449250508406
+      ],
+      "wind_velocity_mean_I_mps": [
+        -5.186814506770477,
+        -6.759588269444125,
+        -2.2830006832763243
+      ],
+      "wind_velocity_rms_norm_mps": 8.976285092937866,
+      "wind_velocity_peak_norm_mps": 11.499900869395601,
+      "wind_f1_2p2hz_vector_ac_rms_mps": 1.0606596305661526,
+      "wind_f2_3p2hz_vector_ac_rms_mps": 0.7071064545051386,
+      "methods": {
+        "B": {
+          "raw_sha256": "d1048a81954f856f3d4dac15d510f1cc7130775878bc4677ef76fd088c712a5f",
+          "task_attitude_mean_mrad": [
+            0.014145003133212715,
+            -0.0005503284662368851,
+            0.0
+          ],
+          "task_attitude_rms_mrad": [
+            37.955420858980915,
+            37.78646102551633,
+            0.0
+          ],
+          "command_target_mean_mrad": [
+            -29.569046613910036,
+            19.03889167432905,
+            0.0
+          ],
+          "filtered_reference_mean_mrad": [
+            -29.387187047841042,
+            18.920988201438618,
+            0.0
+          ],
+          "actual_attitude_mean_mrad": [
+            -33.996870823471866,
+            21.253171352759637,
+            -0.31060568044240033
+          ],
+          "task_minus_actual_mean_mrad": [
+            34.01101582660495,
+            -21.253721681225937,
+            0.31060568044240294
+          ],
+          "task_minus_actual_bias_squared_fraction_approx": 0.9032311677697847,
+          "task_so3_rmse_mrad_all_20001": 42.20080112905612,
+          "path_gaps": {
+            "task_to_command": {
+              "mean_error_mrad": [
+                29.58319232429329,
+                -19.039442030311633,
+                0.0
+              ],
+              "axis_rmse_mrad": [
+                38.06275345127135,
+                22.05958605145768,
+                0.0
+              ],
+              "axis_ac_rms_mrad": [
+                23.950113406748958,
+                11.14113925664999,
+                0.0
+              ],
+              "mean_bias_vector_norm_mrad": 35.18047215319491,
+              "so3_rmse_mrad": 43.99207259984562
+            },
+            "command_to_filtered": {
+              "mean_error_mrad": [
+                -0.18185956606899145,
+                0.11790347289043161,
+                0.0
+              ],
+              "axis_rmse_mrad": [
+                7.843065241302365,
+                5.237282034045652,
+                0.0
+              ],
+              "axis_ac_rms_mrad": [
+                7.840956540981115,
+                5.235954724328481,
+                0.0
+              ],
+              "mean_bias_vector_norm_mrad": 0.21673516256119266,
+              "so3_rmse_mrad": 9.430939111144202
+            },
+            "filtered_to_actual": {
+              "mean_error_mrad": [
+                4.609748653245535,
+                -2.3321933803361588,
+                0.31062126556169023
+              ],
+              "axis_rmse_mrad": [
+                20.67338822607069,
+                10.592818681036329,
+                1.073239497167418
+              ],
+              "axis_ac_rms_mrad": [
+                20.152895526443316,
+                10.3328931885522,
+                1.0273059172714942
+              ],
+              "mean_bias_vector_norm_mrad": 5.175460769825423,
+              "so3_rmse_mrad": 23.236953991647457
+            },
+            "task_to_actual": {
+              "mean_error_mrad": [
+                34.01108141146983,
+                -21.2537319377575,
+                0.31062126556169284
+              ],
+              "axis_rmse_mrad": [
+                35.77935346916246,
+                22.343491255465185,
+                1.0732394971674193
+              ],
+              "axis_ac_rms_mrad": [
+                11.108936758017032,
+                6.89278464780343,
+                1.0273059172714962
+              ],
+              "mean_bias_vector_norm_mrad": 40.106997713993756,
+              "so3_rmse_mrad": 42.200960283151815
+            }
+          },
+          "wind_frequency_stage_vector_rms_mrad": {
+            "command_filter_target_euler_rad": {
+              "1.5-2.5Hz": 4.760992756595059,
+              "2.5-3.5Hz": 1.7727577822706948
+            },
+            "filtered_attitude_reference_rad": {
+              "1.5-2.5Hz": 2.9915303143132324,
+              "2.5-3.5Hz": 0.7896107114043053
+            },
+            "actual_attitude_euler_rad": {
+              "1.5-2.5Hz": 3.566503459379416,
+              "2.5-3.5Hz": 0.8942704286964223
+            },
+            "task_minus_actual_euler_rad": {
+              "1.5-2.5Hz": 3.566503175326405,
+              "2.5-3.5Hz": 0.8942703606229081
+            }
+          },
+          "task_minus_actual_1p5_2p5hz_band_vector_rms_mrad": 3.566503175326405,
+          "task_minus_actual_2p5_3p5hz_band_vector_rms_mrad": 0.8942703606229081,
+          "actual_1p5_2p5hz_band_vector_rms_mrad": 3.566503459379416,
+          "actual_2p5_3p5hz_band_vector_rms_mrad": 0.8942704286964223,
+          "task_1p5_2p5hz_band_vector_rms_mrad": 8.118048759559284e-05,
+          "task_2p5_3p5hz_band_vector_rms_mrad": 1.2811516957479001e-05
+        },
+        "C5": {
+          "raw_sha256": "1e684df2174bc6b754e7798c67acb5c0b4ead218bcc1bd7b1d5cfc1a2fcf4991",
+          "task_attitude_mean_mrad": [
+            0.014145003133212715,
+            -0.0005503284662368851,
+            0.0
+          ],
+          "task_attitude_rms_mrad": [
+            37.955420858980915,
+            37.78646102551633,
+            0.0
+          ],
+          "command_target_mean_mrad": [
+            -29.585556932259898,
+            19.036187372324157,
+            0.0
+          ],
+          "filtered_reference_mean_mrad": [
+            -29.32159674475875,
+            18.906102803275804,
+            0.0
+          ],
+          "actual_attitude_mean_mrad": [
+            -33.93092042834633,
+            21.236386824131156,
+            -0.312846811520365
+          ],
+          "task_minus_actual_mean_mrad": [
+            33.94506543147977,
+            -21.236937152597395,
+            0.31284681152036337
+          ],
+          "task_minus_actual_bias_squared_fraction_approx": 0.8562398783005231,
+          "task_so3_rmse_mrad_all_20001": 43.272649035328165,
+          "path_gaps": {
+            "task_to_command": {
+              "mean_error_mrad": [
+                29.599702642643344,
+                -19.03673772830688,
+                0.0
+              ],
+              "axis_rmse_mrad": [
+                42.660102643351436,
+                23.105774393664348,
+                0.0
+              ],
+              "axis_ac_rms_mrad": [
+                30.720383477560453,
+                13.095015349153876,
+                0.0
+              ],
+              "mean_bias_vector_norm_mrad": 35.19289388313001,
+              "so3_rmse_mrad": 48.51395153937788
+            },
+            "command_to_filtered": {
+              "mean_error_mrad": [
+                -0.2639601875011488,
+                0.13008456904835597,
+                0.0
+              ],
+              "axis_rmse_mrad": [
+                23.779960235735903,
+                10.123319503558749,
+                0.0
+              ],
+              "axis_ac_rms_mrad": [
+                23.778495196975676,
+                10.122483676253989,
+                0.0
+              ],
+              "mean_bias_vector_norm_mrad": 0.2942736408347477,
+              "so3_rmse_mrad": 25.84491024246338
+            },
+            "filtered_to_actual": {
+              "mean_error_mrad": [
+                4.6087408087313895,
+                -2.3301619194094365,
+                0.3128625526871874
+              ],
+              "axis_rmse_mrad": [
+                20.699135849827265,
+                10.623942905339968,
+                1.081740091810533
+              ],
+              "axis_ac_rms_mrad": [
+                20.179537484480125,
+                10.365254858673643,
+                1.0355088842478934
+              ],
+              "mean_bias_vector_norm_mrad": 5.173782889685831,
+              "so3_rmse_mrad": 23.274046930281553
+            },
+            "task_to_actual": {
+              "mean_error_mrad": [
+                33.944483263873735,
+                -21.236815078667902,
+                0.31286255268718577
+              ],
+              "axis_rmse_mrad": [
+                36.91422932328373,
+                22.54533932978063,
+                1.081740091810532
+              ],
+              "axis_ac_rms_mrad": [
+                14.50628768777807,
+                7.569016502123478,
+                1.0355088842478957
+              ],
+              "mean_bias_vector_norm_mrad": 40.0415801600513,
+              "so3_rmse_mrad": 43.27220628569289
+            }
+          },
+          "wind_frequency_stage_vector_rms_mrad": {
+            "command_filter_target_euler_rad": {
+              "1.5-2.5Hz": 19.994323447675406,
+              "2.5-3.5Hz": 15.019431006292992
+            },
+            "filtered_attitude_reference_rad": {
+              "1.5-2.5Hz": 12.55487620686567,
+              "2.5-3.5Hz": 6.697023783271278
+            },
+            "actual_attitude_euler_rad": {
+              "1.5-2.5Hz": 12.412964534412193,
+              "2.5-3.5Hz": 6.3763935589715315
+            },
+            "task_minus_actual_euler_rad": {
+              "1.5-2.5Hz": 12.412964493023695,
+              "2.5-3.5Hz": 6.376393544954798
+            }
+          },
+          "task_minus_actual_1p5_2p5hz_band_vector_rms_mrad": 12.412964493023697,
+          "task_minus_actual_2p5_3p5hz_band_vector_rms_mrad": 6.376393544954798,
+          "actual_1p5_2p5hz_band_vector_rms_mrad": 12.412964534412193,
+          "actual_2p5_3p5hz_band_vector_rms_mrad": 6.376393558971531,
+          "task_1p5_2p5hz_band_vector_rms_mrad": 8.118048759559284e-05,
+          "task_2p5_3p5hz_band_vector_rms_mrad": 1.2811516957479001e-05
+        },
+        "GRU_PARENT": {
+          "raw_sha256": "c40239f9c9a6cea0f233eabdea3294b20ff4d3384e22a59055dc4e5358f5b541",
+          "task_attitude_mean_mrad": [
+            0.014145003133212715,
+            -0.0005503284662368851,
+            0.0
+          ],
+          "task_attitude_rms_mrad": [
+            37.955420858980915,
+            37.78646102551633,
+            0.0
+          ],
+          "command_target_mean_mrad": [
+            -29.825439078353067,
+            19.14118978448535,
+            0.0
+          ],
+          "filtered_reference_mean_mrad": [
+            -29.560031630204556,
+            19.012225474415047,
+            0.0
+          ],
+          "actual_attitude_mean_mrad": [
+            -33.93060827677396,
+            21.243140855897487,
+            -0.2878750760810188
+          ],
+          "task_minus_actual_mean_mrad": [
+            33.94475327990699,
+            -21.243691184363804,
+            0.2878750760810146
+          ],
+          "task_minus_actual_bias_squared_fraction_approx": 0.8549620148076774,
+          "task_so3_rmse_mrad_all_20001": 43.30835597159726,
+          "path_gaps": {
+            "task_to_command": {
+              "mean_error_mrad": [
+                29.839584788736527,
+                -19.14174014046801,
+                0.0
+              ],
+              "axis_rmse_mrad": [
+                41.39561394712165,
+                22.842719086517754,
+                0.0
+              ],
+              "axis_ac_rms_mrad": [
+                28.691393024649884,
+                12.465295811185522,
+                0.0
+              ],
+              "mean_bias_vector_norm_mrad": 35.45147438357678,
+              "so3_rmse_mrad": 47.2783955475924
+            },
+            "command_to_filtered": {
+              "mean_error_mrad": [
+                -0.26540744814851086,
+                0.12896431007030226,
+                0.0
+              ],
+              "axis_rmse_mrad": [
+                23.79192894205391,
+                10.138650133899267,
+                0.0
+              ],
+              "axis_ac_rms_mrad": [
+                23.790448538651177,
+                10.137829883379567,
+                0.0
+              ],
+              "mean_bias_vector_norm_mrad": 0.2950811868022317,
+              "so3_rmse_mrad": 25.8619256811213
+            },
+            "filtered_to_actual": {
+              "mean_error_mrad": [
+                4.369987522160891,
+                -2.230793851765106,
+                0.2878963105674255
+              ],
+              "axis_rmse_mrad": [
+                17.754644218408526,
+                9.706216474406048,
+                0.9489242392874145
+              ],
+              "axis_ac_rms_mrad": [
+                17.20844561192049,
+                9.446385395428157,
+                0.9041973934207413
+              ],
+              "mean_bias_vector_norm_mrad": 4.914887225415575,
+              "so3_rmse_mrad": 20.24501714889525
+            },
+            "task_to_actual": {
+              "mean_error_mrad": [
+                33.94416486274862,
+                -21.243569682162896,
+                0.2878963105674213
+              ],
+              "axis_rmse_mrad": [
+                36.95066630148221,
+                22.55961148432348,
+                0.948924239287413
+              ],
+              "axis_ac_rms_mrad": [
+                14.599500398781505,
+                7.592550130404879,
+                0.9041973934207418
+              ],
+              "mean_bias_vector_norm_mrad": 40.04470583430483,
+              "so3_rmse_mrad": 43.30790883363523
+            }
+          },
+          "wind_frequency_stage_vector_rms_mrad": {
+            "command_filter_target_euler_rad": {
+              "1.5-2.5Hz": 20.068324300225843,
+              "2.5-3.5Hz": 14.935353518282554
+            },
+            "filtered_attitude_reference_rad": {
+              "1.5-2.5Hz": 12.594838317366879,
+              "2.5-3.5Hz": 6.659877967987683
+            },
+            "actual_attitude_euler_rad": {
+              "1.5-2.5Hz": 12.328761956371558,
+              "2.5-3.5Hz": 6.327614705790521
+            },
+            "task_minus_actual_euler_rad": {
+              "1.5-2.5Hz": 12.328761876868366,
+              "2.5-3.5Hz": 6.327614692693532
+            }
+          },
+          "task_minus_actual_1p5_2p5hz_band_vector_rms_mrad": 12.328761876868366,
+          "task_minus_actual_2p5_3p5hz_band_vector_rms_mrad": 6.327614692693532,
+          "actual_1p5_2p5hz_band_vector_rms_mrad": 12.328761956371558,
+          "actual_2p5_3p5hz_band_vector_rms_mrad": 6.327614705790522,
+          "task_1p5_2p5hz_band_vector_rms_mrad": 8.118048759559284e-05,
+          "task_2p5_3p5hz_band_vector_rms_mrad": 1.2811516957479001e-05
+        },
+        "CURRENT_CANDIDATE": {
+          "raw_sha256": "5323d0330de6734b37b2f5f5c9cfd872a5e32aa2a3b220510b73c775692a451a",
+          "run_status_sha256": "9bbd26981dea4aa0e22d7e7a69af55c770582339e8b9740bcdc329d57e9343a0",
+          "run_start_sha256": "9de52f14707215430947883aec70ba3a0a92104ad1b4c3906c9ae62edccc3dd2",
+          "attempt": 14,
+          "fold_id": "holdout_W06_10",
+          "weights_sha256": "1d9f684d7b0c0bef2d166847f8fcf1b17e87d3b3a18c90560cea7aa45f1a45bd",
+          "task_attitude_mean_mrad": [
+            0.014145003133212715,
+            -0.0005503284662368851,
+            0.0
+          ],
+          "task_attitude_rms_mrad": [
+            37.955420858980915,
+            37.78646102551633,
+            0.0
+          ],
+          "command_target_mean_mrad": [
+            -29.84003942006608,
+            19.14862552761055,
+            0.0
+          ],
+          "filtered_reference_mean_mrad": [
+            -29.58119017191207,
+            19.018309789193477,
+            0.0
+          ],
+          "actual_attitude_mean_mrad": [
+            -33.93335244094925,
+            21.24158305067528,
+            -0.2864908539822486
+          ],
+          "task_minus_actual_mean_mrad": [
+            33.947497444082295,
+            -21.242133379141613,
+            0.28649085398224944
+          ],
+          "task_so3_rmse_mrad_all_20001": 43.1684191739434,
+          "task_minus_actual_bias_squared_fraction_approx": 0.8605782533640106,
+          "path_gaps": {
+            "task_to_command": {
+              "mean_error_mrad": [
+                29.854185130449462,
+                -19.149175883593234,
+                0.0
+              ],
+              "axis_rmse_mrad": [
+                41.141073904040304,
+                22.825615150503737,
+                0.0
+              ],
+              "axis_ac_rms_mrad": [
+                28.307518297699033,
+                12.422470365354709,
+                0.0
+              ],
+              "mean_bias_vector_norm_mrad": 35.46777843090738,
+              "so3_rmse_mrad": 47.047406262227284
+            },
+            "command_to_filtered": {
+              "mean_error_mrad": [
+                -0.2588492481540144,
+                0.13031573841707447,
+                0.0
+              ],
+              "axis_rmse_mrad": [
+                23.302642153181893,
+                9.997912739325784,
+                0.0
+              ],
+              "axis_ac_rms_mrad": [
+                23.301204440671725,
+                9.997063416398518,
+                0.0
+              ],
+              "mean_bias_vector_norm_mrad": 0.28980187188678735,
+              "so3_rmse_mrad": 25.35671532119503
+            },
+            "filtered_to_actual": {
+              "mean_error_mrad": [
+                4.351585438404125,
+                -2.223143105545886,
+                0.2865119286834335
+              ],
+              "axis_rmse_mrad": [
+                17.768345985430077,
+                9.702741083024268,
+                0.9457267064626715
+              ],
+              "axis_ac_rms_mrad": [
+                17.227240731766017,
+                9.444618534195586,
+                0.9012823741973606
+              ],
+              "mean_bias_vector_norm_mrad": 4.8949719284940665,
+              "so3_rmse_mrad": 20.255262754859558
+            },
+            "task_to_actual": {
+              "mean_error_mrad": [
+                33.946921320699396,
+                -21.24200325072212,
+                0.28651192868343434
+              ],
+              "axis_rmse_mrad": [
+                36.80208069872722,
+                22.534390524061564,
+                0.9457267064626741
+              ],
+              "axis_ac_rms_mrad": [
+                14.212659026440384,
+                7.521705537125871,
+                0.9012823741973632
+              ],
+              "mean_bias_vector_norm_mrad": 40.04620154699722,
+              "so3_rmse_mrad": 43.16797171387667
+            }
+          },
+          "wind_frequency_stage_vector_rms_mrad": {
+            "task_attitude_euler_rad": {
+              "1.5-2.5Hz": 8.118048759559285e-05,
+              "2.5-3.5Hz": 1.2811516957479001e-05
+            },
+            "command_filter_target_euler_rad": {
+              "1.5-2.5Hz": 19.08549371482023,
+              "2.5-3.5Hz": 15.244684712693491
+            },
+            "filtered_attitude_reference_rad": {
+              "1.5-2.5Hz": 11.973606225111595,
+              "2.5-3.5Hz": 6.800341374938514
+            },
+            "actual_attitude_euler_rad": {
+              "1.5-2.5Hz": 11.705154918546468,
+              "2.5-3.5Hz": 6.449948806766202
+            },
+            "task_minus_actual_euler_rad": {
+              "1.5-2.5Hz": 11.705154896579826,
+              "2.5-3.5Hz": 6.44994870058266
+            }
+          },
+          "task_minus_actual_1p5_2p5hz_band_vector_rms_mrad": 11.705154896579826,
+          "task_minus_actual_2p5_3p5hz_band_vector_rms_mrad": 6.44994870058266,
+          "actual_1p5_2p5hz_band_vector_rms_mrad": 11.705154918546468,
+          "actual_2p5_3p5hz_band_vector_rms_mrad": 6.449948806766202,
+          "task_1p5_2p5hz_band_vector_rms_mrad": 8.118048759559285e-05,
+          "task_2p5_3p5hz_band_vector_rms_mrad": 1.2811516957479001e-05
+        }
+      }
+    },
+    "DL1018_DEV_T3_C09_W09": {
+      "scene_id": "DL1018_DEV_T3_C09_W09",
+      "task_family": "SQUARE",
+      "physical_train24_member": true,
+      "canonical_split_prefix": "DEV",
+      "reference_acceleration_rms_xyz_mps2": [
+        0.2342101623267747,
+        0.2342101623267747,
+        0.0
+      ],
+      "wind_velocity_mean_I_mps": [
+        -8.4419641653595,
+        -1.1114056669128711,
+        -2.2815363403126177
+      ],
+      "wind_velocity_rms_norm_mps": 8.971984419673133,
+      "wind_velocity_peak_norm_mps": 11.488877206896609,
+      "wind_f1_2p2hz_vector_ac_rms_mps": 1.0606584333259623,
+      "wind_f2_3p2hz_vector_ac_rms_mps": 0.7071058580727475,
+      "methods": {
+        "B": {
+          "raw_sha256": "a8cec3af85c0988622a3582385a44a201aa2d5e796fa73a933277cde0cf85f49",
+          "task_attitude_mean_mrad": [
+            -1.1256620234478754e-15,
+            1.0658821046529646e-15,
+            0.0
+          ],
+          "task_attitude_rms_mrad": [
+            23.885646923110606,
+            23.885646923110606,
+            0.0
+          ],
+          "command_target_mean_mrad": [
+            -5.659414047074187,
+            55.506192592671525,
+            0.0
+          ],
+          "filtered_reference_mean_mrad": [
+            -5.66516602680834,
+            55.19146573870272,
+            0.0
+          ],
+          "actual_attitude_mean_mrad": [
+            -4.005591162380411,
+            56.881183313945755,
+            0.3812502149382514
+          ],
+          "task_minus_actual_mean_mrad": [
+            4.005591162380399,
+            -56.881183313945854,
+            -0.38125021493824823
+          ],
+          "task_minus_actual_bias_squared_fraction_approx": 0.9321772889069964,
+          "task_so3_rmse_mrad_all_20001": 59.06125628102724,
+          "path_gaps": {
+            "task_to_command": {
+              "mean_error_mrad": [
+                5.659414047074189,
+                -55.50619259267168,
+                0.0
+              ],
+              "axis_rmse_mrad": [
+                14.761396998238418,
+                57.58668817510572,
+                0.0
+              ],
+              "axis_ac_rms_mrad": [
+                13.633410211072649,
+                15.339140746538874,
+                0.0
+              ],
+              "mean_bias_vector_norm_mrad": 55.793963683278335,
+              "so3_rmse_mrad": 59.44783655407441
+            },
+            "command_to_filtered": {
+              "mean_error_mrad": [
+                0.005751979734152623,
+                0.3147268539688115,
+                0.0
+              ],
+              "axis_rmse_mrad": [
+                5.723135938799452,
+                9.254958866343518,
+                0.0
+              ],
+              "axis_ac_rms_mrad": [
+                5.7231330483142715,
+                9.249605971342854,
+                0.0
+              ],
+              "mean_bias_vector_norm_mrad": 0.3147794114613719,
+              "so3_rmse_mrad": 10.881554782693671
+            },
+            "filtered_to_actual": {
+              "mean_error_mrad": [
+                -1.6594581063673852,
+                -1.689634640198488,
+                -0.3812696087944015
+              ],
+              "axis_rmse_mrad": [
+                7.766739975193796,
+                7.333683967433047,
+                1.1527963728630355
+              ],
+              "axis_ac_rms_mrad": [
+                7.5873874710261715,
+                7.1363895154921195,
+                1.0879213954583002
+              ],
+              "mean_bias_vector_norm_mrad": 2.3987565401135105,
+              "so3_rmse_mrad": 10.703248504488942
+            },
+            "task_to_actual": {
+              "mean_error_mrad": [
+                4.00570792044094,
+                -56.8811003789013,
+                -0.3812696087943983
+              ],
+              "axis_rmse_mrad": [
+                8.117982363620275,
+                58.48658596908048,
+                1.1527963728630353
+              ],
+              "axis_ac_rms_mrad": [
+                7.060874004835843,
+                13.609598010375773,
+                1.0879213954583036
+              ],
+              "mean_bias_vector_norm_mrad": 57.023246512042085,
+              "so3_rmse_mrad": 59.06128105403707
+            }
+          },
+          "wind_frequency_stage_vector_rms_mrad": {
+            "command_filter_target_euler_rad": {
+              "1.5-2.5Hz": 6.428839299512604,
+              "2.5-3.5Hz": 2.5284284441951717
+            },
+            "filtered_attitude_reference_rad": {
+              "1.5-2.5Hz": 4.049266369225864,
+              "2.5-3.5Hz": 1.1295500298769405
+            },
+            "actual_attitude_euler_rad": {
+              "1.5-2.5Hz": 4.296237120725209,
+              "2.5-3.5Hz": 1.1440447087568213
+            },
+            "task_minus_actual_euler_rad": {
+              "1.5-2.5Hz": 4.253384914367341,
+              "2.5-3.5Hz": 1.2377722190763116
+            }
+          },
+          "task_minus_actual_1p5_2p5hz_band_vector_rms_mrad": 4.253384914367341,
+          "task_minus_actual_2p5_3p5hz_band_vector_rms_mrad": 1.2377722190763114,
+          "actual_1p5_2p5hz_band_vector_rms_mrad": 4.296237120725209,
+          "actual_2p5_3p5hz_band_vector_rms_mrad": 1.1440447087568213,
+          "task_1p5_2p5hz_band_vector_rms_mrad": 0.6258624423290917,
+          "task_2p5_3p5hz_band_vector_rms_mrad": 0.2608530186177872
+        },
+        "C5": {
+          "raw_sha256": "fa11a41b18ce9d4c3b7558d3bbb0d230aaef3e7071fc15419df0c6d1fca2f3a4",
+          "task_attitude_mean_mrad": [
+            -1.1256620234478754e-15,
+            1.0658821046529646e-15,
+            0.0
+          ],
+          "task_attitude_rms_mrad": [
+            23.885646923110606,
+            23.885646923110606,
+            0.0
+          ],
+          "command_target_mean_mrad": [
+            -5.578766983312477,
+            55.356137630917566,
+            0.0
+          ],
+          "filtered_reference_mean_mrad": [
+            -5.6451438931081555,
+            55.15743593769566,
+            0.0
+          ],
+          "actual_attitude_mean_mrad": [
+            -3.983107071761718,
+            56.848795906657784,
+            0.38724088044111843
+          ],
+          "task_minus_actual_mean_mrad": [
+            3.9831070717617307,
+            -56.848795906657614,
+            -0.3872408804411167
+          ],
+          "task_minus_actual_bias_squared_fraction_approx": 0.8813778135388753,
+          "task_so3_rmse_mrad_all_20001": 60.70477770565968,
+          "path_gaps": {
+            "task_to_command": {
+              "mean_error_mrad": [
+                5.578766983312466,
+                -55.35613763091723,
+                0.0
+              ],
+              "axis_rmse_mrad": [
+                16.8022728355779,
+                63.18270114659555,
+                0.0
+              ],
+              "axis_ac_rms_mrad": [
+                15.849092446796442,
+                30.459017560763954,
+                0.0
+              ],
+              "mean_bias_vector_norm_mrad": 55.63654028124995,
+              "so3_rmse_mrad": 65.37757847151336
+            },
+            "command_to_filtered": {
+              "mean_error_mrad": [
+                0.06637690979567828,
+                0.1987016932218875,
+                0.0
+              ],
+              "axis_rmse_mrad": [
+                12.917134602404454,
+                30.930906941976524,
+                0.0
+              ],
+              "axis_ac_rms_mrad": [
+                12.916964056715512,
+                30.930268700583934,
+                0.0
+              ],
+              "mean_bias_vector_norm_mrad": 0.20949524348602452,
+              "so3_rmse_mrad": 33.519391128670826
+            },
+            "filtered_to_actual": {
+              "mean_error_mrad": [
+                -1.6613627200787318,
+                -1.6925287779117761,
+                -0.38726053976966884
+              ],
+              "axis_rmse_mrad": [
+                7.818619760886039,
+                7.400467492271088,
+                1.1706407445292404
+              ],
+              "axis_ac_rms_mrad": [
+                7.6400712612939845,
+                7.204322691280671,
+                1.1047302960855556
+              ],
+              "mean_bias_vector_norm_mrad": 2.4030710512570423,
+              "so3_rmse_mrad": 10.78549330228452
+            },
+            "task_to_actual": {
+              "mean_error_mrad": [
+                3.9837811730294366,
+                -56.84996471560728,
+                -0.38726053976966723
+              ],
+              "axis_rmse_mrad": [
+                8.932916765304984,
+                60.03068336731732,
+                1.1706407445292435
+              ],
+              "axis_ac_rms_mrad": [
+                7.995404273786515,
+                19.281194397166026,
+                1.104730296085558
+              ],
+              "mean_bias_vector_norm_mrad": 56.99069197093539,
+              "so3_rmse_mrad": 60.70579674004566
+            }
+          },
+          "wind_frequency_stage_vector_rms_mrad": {
+            "command_filter_target_euler_rad": {
+              "1.5-2.5Hz": 26.27954878726551,
+              "2.5-3.5Hz": 19.925493300123623
+            },
+            "filtered_attitude_reference_rad": {
+              "1.5-2.5Hz": 16.549816418732462,
+              "2.5-3.5Hz": 8.890343305306654
+            },
+            "actual_attitude_euler_rad": {
+              "1.5-2.5Hz": 16.538363890929794,
+              "2.5-3.5Hz": 8.725730647445406
+            },
+            "task_minus_actual_euler_rad": {
+              "1.5-2.5Hz": 16.646705882965986,
+              "2.5-3.5Hz": 8.763217611689027
+            }
+          },
+          "task_minus_actual_1p5_2p5hz_band_vector_rms_mrad": 16.646705882965986,
+          "task_minus_actual_2p5_3p5hz_band_vector_rms_mrad": 8.763217611689027,
+          "actual_1p5_2p5hz_band_vector_rms_mrad": 16.538363890929794,
+          "actual_2p5_3p5hz_band_vector_rms_mrad": 8.725730647445406,
+          "task_1p5_2p5hz_band_vector_rms_mrad": 0.6258624423290917,
+          "task_2p5_3p5hz_band_vector_rms_mrad": 0.2608530186177872
+        },
+        "GRU_PARENT": {
+          "raw_sha256": "14176658aac8e8b69817f71aff748add1b591cee744cd05954184e52e34c2cb2",
+          "task_attitude_mean_mrad": [
+            -1.1256620234478754e-15,
+            1.0658821046529646e-15,
+            0.0
+          ],
+          "task_attitude_rms_mrad": [
+            23.885646923110606,
+            23.885646923110606,
+            0.0
+          ],
+          "command_target_mean_mrad": [
+            -5.406247999567687,
+            55.47239942567307,
+            0.0
+          ],
+          "filtered_reference_mean_mrad": [
+            -5.476856442086198,
+            55.271639675585504,
+            0.0
+          ],
+          "actual_attitude_mean_mrad": [
+            -3.983552020072991,
+            56.849289403706116,
+            0.3567370491630384
+          ],
+          "task_minus_actual_mean_mrad": [
+            3.983552020073012,
+            -56.849289403706386,
+            -0.35673704916304266
+          ],
+          "task_minus_actual_bias_squared_fraction_approx": 0.8826079510247207,
+          "task_so3_rmse_mrad_all_20001": 60.662806192281636,
+          "path_gaps": {
+            "task_to_command": {
+              "mean_error_mrad": [
+                5.406247999567644,
+                -55.47239942567332,
+                0.0
+              ],
+              "axis_rmse_mrad": [
+                16.50719848842057,
+                63.11073946146944,
+                0.0
+              ],
+              "axis_ac_rms_mrad": [
+                15.59679725146431,
+                30.096151536899853,
+                0.0
+              ],
+              "mean_bias_vector_norm_mrad": 55.73521880709065,
+              "so3_rmse_mrad": 65.23276752513513
+            },
+            "command_to_filtered": {
+              "mean_error_mrad": [
+                0.0706084425185117,
+                0.2007597500875569,
+                0.0
+              ],
+              "axis_rmse_mrad": [
+                13.122345761313612,
+                30.73136888219084,
+                0.0
+              ],
+              "axis_ac_rms_mrad": [
+                13.12215579572619,
+                30.730713120525404,
+                0.0
+              ],
+              "mean_bias_vector_norm_mrad": 0.21281454229001426,
+              "so3_rmse_mrad": 33.415397558742
+            },
+            "filtered_to_actual": {
+              "mean_error_mrad": [
+                -1.4926220081129986,
+                -1.5788196945787627,
+                -0.3567509046370104
+              ],
+              "axis_rmse_mrad": [
+                7.0016072027993115,
+                6.608671087764693,
+                1.0255724676493236
+              ],
+              "axis_ac_rms_mrad": [
+                6.840656617839249,
+                6.4173095544992345,
+                0.9615236234440614
+              ],
+              "mean_bias_vector_norm_mrad": 2.2017863872438634,
+              "so3_rmse_mrad": 9.645293117548055
+            },
+            "task_to_actual": {
+              "mean_error_mrad": [
+                3.984234433973219,
+                -56.85045937016455,
+                -0.3567509046370147
+              ],
+              "axis_rmse_mrad": [
+                9.135931611019346,
+                59.96054163859081,
+                1.0255724676493243
+              ],
+              "axis_ac_rms_mrad": [
+                8.221382023502166,
+                19.060215712170393,
+                0.9615236234440613
+              ],
+              "mean_bias_vector_norm_mrad": 56.99101793994864,
+              "so3_rmse_mrad": 60.6638231567403
+            }
+          },
+          "wind_frequency_stage_vector_rms_mrad": {
+            "command_filter_target_euler_rad": {
+              "1.5-2.5Hz": 26.016101335293985,
+              "2.5-3.5Hz": 19.98295272591314
+            },
+            "filtered_attitude_reference_rad": {
+              "1.5-2.5Hz": 16.384571514716637,
+              "2.5-3.5Hz": 8.91597899638646
+            },
+            "actual_attitude_euler_rad": {
+              "1.5-2.5Hz": 16.26859360755418,
+              "2.5-3.5Hz": 8.669643113723353
+            },
+            "task_minus_actual_euler_rad": {
+              "1.5-2.5Hz": 16.375355064085838,
+              "2.5-3.5Hz": 8.708734924226588
+            }
+          },
+          "task_minus_actual_1p5_2p5hz_band_vector_rms_mrad": 16.375355064085838,
+          "task_minus_actual_2p5_3p5hz_band_vector_rms_mrad": 8.708734924226588,
+          "actual_1p5_2p5hz_band_vector_rms_mrad": 16.268593607554184,
+          "actual_2p5_3p5hz_band_vector_rms_mrad": 8.669643113723351,
+          "task_1p5_2p5hz_band_vector_rms_mrad": 0.6258624423290917,
+          "task_2p5_3p5hz_band_vector_rms_mrad": 0.2608530186177872
+        },
+        "CURRENT_CANDIDATE": {
+          "raw_sha256": "16c72ff78e7dfd298ae6157af9c98f6b77ef781162bd05dca07c564241b42963",
+          "run_status_sha256": "7c83a13d607f36e6803ac2c09aa8aae8734e86f7de883a66e1991212de11c44f",
+          "run_start_sha256": "4ff1ff8a8219f94e3cc0c6a167b7a77c0712e2822c8880ee0ada7839d45e1bb2",
+          "attempt": 15,
+          "fold_id": "holdout_W06_10",
+          "weights_sha256": "3250b2eed5c529fc66139370826f9de463901da857f8e09ed1e88ef6863b047a",
+          "task_attitude_mean_mrad": [
+            -1.1256620234478754e-15,
+            1.0658821046529646e-15,
+            0.0
+          ],
+          "task_attitude_rms_mrad": [
+            23.885646923110606,
+            23.885646923110606,
+            0.0
+          ],
+          "command_target_mean_mrad": [
+            -5.420922105969548,
+            55.45920693097096,
+            0.0
+          ],
+          "filtered_reference_mean_mrad": [
+            -5.483271289744877,
+            55.24822327642553,
+            0.0
+          ],
+          "actual_attitude_mean_mrad": [
+            -3.981487201783992,
+            56.83227489138269,
+            0.3587367659475773
+          ],
+          "task_minus_actual_mean_mrad": [
+            3.981487201784004,
+            -56.83227489138256,
+            -0.35873676594757686
+          ],
+          "task_so3_rmse_mrad_all_20001": 60.62071519434056,
+          "task_minus_actual_bias_squared_fraction_approx": 0.8833026748315466,
+          "path_gaps": {
+            "task_to_command": {
+              "mean_error_mrad": [
+                5.420922105969558,
+                -55.459206930971064,
+                0.0
+              ],
+              "axis_rmse_mrad": [
+                16.172386174009535,
+                63.19118067444305,
+                0.0
+              ],
+              "axis_ac_rms_mrad": [
+                15.23678699996513,
+                30.288639481129884,
+                0.0
+              ],
+              "mean_bias_vector_norm_mrad": 55.723514155976005,
+              "so3_rmse_mrad": 65.22682762843922
+            },
+            "command_to_filtered": {
+              "mean_error_mrad": [
+                0.06234918377532872,
+                0.21098365454543214,
+                0.0
+              ],
+              "axis_rmse_mrad": [
+                12.593679807185111,
+                31.00652096507166,
+                0.0
+              ],
+              "axis_ac_rms_mrad": [
+                12.593525466095054,
+                31.005803138363355,
+                0.0
+              ],
+              "mean_bias_vector_norm_mrad": 0.22000346179729982,
+              "so3_rmse_mrad": 33.46612775477775
+            },
+            "filtered_to_actual": {
+              "mean_error_mrad": [
+                -1.501132014881134,
+                -1.5851942390681022,
+                -0.3587506433893281
+              ],
+              "axis_rmse_mrad": [
+                7.003496919471107,
+                6.602833595512165,
+                1.0262877947407967
+              ],
+              "axis_ac_rms_mrad": [
+                6.840728892080155,
+                6.409724698803327,
+                0.9615428297801772
+              ],
+              "mean_bias_vector_norm_mrad": 2.2124511578355914,
+              "so3_rmse_mrad": 9.642771638575981
+            },
+            "task_to_actual": {
+              "mean_error_mrad": [
+                3.9821392748637567,
+                -56.833417515493515,
+                -0.35875064338932766
+              ],
+              "axis_rmse_mrad": [
+                8.845511291576226,
+                59.961558220444616,
+                1.0262877947407993
+              ],
+              "axis_ac_rms_mrad": [
+                7.898457875116551,
+                19.114160136750595,
+                0.9615428297801759
+              ],
+              "mean_bias_vector_norm_mrad": 56.97388420775741,
+              "so3_rmse_mrad": 60.62172069540469
+            }
+          },
+          "wind_frequency_stage_vector_rms_mrad": {
+            "task_attitude_euler_rad": {
+              "1.5-2.5Hz": 0.6258624423290917,
+              "2.5-3.5Hz": 0.26085301861778726
+            },
+            "command_filter_target_euler_rad": {
+              "1.5-2.5Hz": 25.520061341099627,
+              "2.5-3.5Hz": 20.28685874936028
+            },
+            "filtered_attitude_reference_rad": {
+              "1.5-2.5Hz": 16.064464937668852,
+              "2.5-3.5Hz": 9.053830683704192
+            },
+            "actual_attitude_euler_rad": {
+              "1.5-2.5Hz": 15.94716637825297,
+              "2.5-3.5Hz": 8.818897259131107
+            },
+            "task_minus_actual_euler_rad": {
+              "1.5-2.5Hz": 16.059568278515712,
+              "2.5-3.5Hz": 8.851478938048071
+            }
+          },
+          "task_minus_actual_1p5_2p5hz_band_vector_rms_mrad": 16.059568278515712,
+          "task_minus_actual_2p5_3p5hz_band_vector_rms_mrad": 8.851478938048071,
+          "actual_1p5_2p5hz_band_vector_rms_mrad": 15.94716637825297,
+          "actual_2p5_3p5hz_band_vector_rms_mrad": 8.818897259131107,
+          "task_1p5_2p5hz_band_vector_rms_mrad": 0.6258624423290917,
+          "task_2p5_3p5hz_band_vector_rms_mrad": 0.26085301861778726
+        }
+      }
+    }
+  }
+}

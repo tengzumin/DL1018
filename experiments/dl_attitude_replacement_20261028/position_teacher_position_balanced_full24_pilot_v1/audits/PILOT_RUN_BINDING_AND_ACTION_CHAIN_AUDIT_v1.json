@@ -1,0 +1,431 @@
+{
+  "schema": "POSITION_TEACHER_POSITION_BALANCED_FULL24_RUN_BINDING_ACTION_CHAIN_AUDIT_V1",
+  "status": "PASS_BINDING_EVENTWISE_AND_ACTION_CHAIN",
+  "scope": "Post-run read-only audit of one VAL scene; no TEST, no Plant rerun, no inertia reconstruction.",
+  "study_id": "position_teacher_position_balanced_full24_pilot_v1",
+  "scene_id": "DL1018_VAL_T3_C01_W14",
+  "attempt": "attempt_002",
+  "plant_calls_actual": 1,
+  "attempt_001_actual_plant_calls": 0,
+  "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\position_teacher_position_balanced_full24_pilot_v1\\runs\\DL1018_VAL_T3_C01_W14\\attempt_002\\raw_run.mat",
+  "raw_sha256": "646057902947c28acf5f817f9fc9f72f2a68c20e3c91bf434a22f633ac8089c2",
+  "run_status_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\position_teacher_position_balanced_full24_pilot_v1\\runs\\DL1018_VAL_T3_C01_W14\\attempt_002\\run_status.json",
+  "run_status_sha256": "14db62454877e5811e915d3a9a03aa9dc73c1827d640a8dcb75ad50c05f93eac",
+  "release_sha256": "408006760bb16686a14c7435b61907012793aa49b2c6025dbee359079cc8988a",
+  "release_no_plant_sha256": "829de4194e6e57149a745f83a53e0c6f0797c9f41f751a04510fbaf5bec3d5c4",
+  "source_lock_sha256": "53b3f4e776fa86ac507fe070da0a8b34507a3e60a9e125e900ea09dc951f5ca4",
+  "weights_mat_sha256": "8acc8e22ca79e19c790a77652e427a60185f58d05f49e0e32d3363e751b185d1",
+  "checkpoint_sha256": "131ded439556ffd54006490ea4f66136102c4951803652e156cb12f379353383",
+  "training_data_sha256": "15d689f08fd6d8a53a64c59dbdf62b33f9b8e8a12ce083fb12834cd106df2eeb",
+  "source_lock_file_count_verified": 90,
+  "source_lock_external_input_count_verified": 9,
+  "teacher_npz_sha256": "e0519bc87a977d1349da3fdb0f582273bffaa61eb24ea380fb44e4a56791634a",
+  "runtime_log_weights_sha256_matches_release": true,
+  "matlab_eventwise_train24_parity": {
+    "schema": "POSITION_TEACHER_DISTILL_MATLAB_EVENTWISE_PARITY_V1",
+    "status": "PASS_TRAIN24_EVENTWISE_PARITY",
+    "scope": "offline eventwise replay only; no Plant step",
+    "scene_count": 24,
+    "events_per_scene": 1999,
+    "first_event_time_s": 0.009999999776482582,
+    "first_ready_zero_based_index": 31,
+    "first_ready_event_time_s": 0.3199999928474426,
+    "warmup_hidden_updates_from_event0": true,
+    "hidden_reset_each_scene": true,
+    "beta_formula": "clip(event_time_s/1.8,0,1)",
+    "delta_clip_mps2": 0.5,
+    "action_clip_mps2": 3,
+    "max_abs_raw_error": 1.5037253908722903e-07,
+    "max_abs_delta_error": 1.5037253908722903e-07,
+    "max_abs_action_error": 1.5037253908722903e-07,
+    "max_abs_beta_error": 5.2981906528692946e-08,
+    "plant_called": false
+  },
+  "event_clock": {
+    "dt_s": 0.0009999999999998899,
+    "event_rate_hz": 100,
+    "event_count": 1999,
+    "residual_gru_event_count": 1999,
+    "first_event_time_s": 0.01,
+    "first_ready_zero_based_event_index": 31,
+    "first_ready_time_s": 0.32,
+    "ready_event_count": 1968,
+    "hidden_updates_during_warmup": true
+  },
+  "independent_checkpoint_replay_on_logged_X14": {
+    "checkpoint": "DEPLOYMENT_MODEL_v1.pt copied into isolated study",
+    "event_count": 1999,
+    "max_abs_raw_delta_error_mps2": 1.3345647967288876e-07,
+    "tolerance_mps2": 2e-05
+  },
+  "action_chain": {
+    "beta_formula": "clip(event_time_s/1.8,0,1)",
+    "delta_formula": "clip(raw_delta,-0.5,0.5) if ready else 0",
+    "action_formula": "clip(C5 post-PCF applied event action + beta*delta,-3,3) if ready else 0",
+    "beta_max_abs_error": 0.0,
+    "delta_max_abs_error_mps2": 0.0,
+    "action_max_abs_error_mps2": 0.0,
+    "applied_correction_max_abs_error_mps2": 0.0,
+    "C5_post_PCF_base_vs_residual_base_max_abs_error_mps2": 0.0,
+    "warmup_action_exact_zero": true,
+    "total_clip_samples": 0,
+    "held_1ms_action_forward_hold_max_abs_error_mps2": 0.0,
+    "inferred_mass_kg_from_action_force": 0.6949999999999998,
+    "held_force_vs_mass_action_max_abs_error_N": 2.220446049250313e-16,
+    "injected_force_vs_held_force_max_abs_error_N": 0.0,
+    "first_plant_step_marker_exists": true
+  },
+  "score_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\position_teacher_position_balanced_full24_pilot_v1\\audits\\SINGLE_PILOT_SCORE_v1.json",
+  "score_sha256": "5d587d07181d2b3313e4308c979b5336991b5288b3858182c71a843abe0f59d1",
+  "scores": {
+    "PositionBalancedFull24": {
+      "Q_m": 0.013697509942572128,
+      "task_SO3_rad": 0.06560754704742319,
+      "inner_SO3_rad": 0.01589770967547521,
+      "axis_phase": {
+        "ALL": {
+          "state_samples": 20001,
+          "inner_samples": 20000,
+          "position_xyz_rmse_m": [
+            0.011780604923036666,
+            0.00631211576032211,
+            0.0029993867544014993
+          ],
+          "task_wrapped_euler_rmse_rad": [
+            0.02236904560475629,
+            0.06160505466996095,
+            0.0033223843382987743
+          ],
+          "inner_wrapped_euler_rmse_rad": [
+            0.011342338984817391,
+            0.010818203409058173,
+            0.0033224673968374435
+          ]
+        },
+        "0_5s": {
+          "state_samples": 5000,
+          "inner_samples": 5000,
+          "position_xyz_rmse_m": [
+            0.019335723145565704,
+            0.008327079170183806,
+            0.005401800293450932
+          ],
+          "task_wrapped_euler_rmse_rad": [
+            0.017653239382482134,
+            0.06112808657805917,
+            9.443326583740672e-05
+          ],
+          "inner_wrapped_euler_rmse_rad": [
+            0.00041828458999361375,
+            0.0004163873223496593,
+            9.443326583740672e-05
+          ]
+        },
+        "15_20s": {
+          "state_samples": 5001,
+          "inner_samples": 5000,
+          "position_xyz_rmse_m": [
+            0.007783275823917748,
+            0.004214666330713225,
+            0.0012682667286437212
+          ],
+          "task_wrapped_euler_rmse_rad": [
+            0.021233695791729658,
+            0.05836777222137866,
+            0.0015655895475120067
+          ],
+          "inner_wrapped_euler_rmse_rad": [
+            0.00932449595286066,
+            0.008434974811114776,
+            0.0015657460983716398
+          ]
+        }
+      },
+      "safety": {
+        "motor_saturation_samples": 0,
+        "generalized_clip_samples": 0,
+        "tilt_limited_samples": 0,
+        "attitude_head_projection_samples": 0,
+        "attitude_head_output_saturated_samples": 0
+      }
+    },
+    "B": {
+      "Q_m": 0.01140486236088605,
+      "task_SO3_rad": 0.06179200025117218,
+      "inner_SO3_rad": 0.017915416327921475,
+      "axis_phase": {
+        "ALL": {
+          "state_samples": 20001,
+          "inner_samples": 20000,
+          "position_xyz_rmse_m": [
+            0.009944076526230002,
+            0.005264150532794851,
+            0.0018641208864534967
+          ],
+          "task_wrapped_euler_rmse_rad": [
+            0.021573811693609737,
+            0.05778462613339167,
+            0.0038619185718546884
+          ],
+          "inner_wrapped_euler_rmse_rad": [
+            0.012825273512832382,
+            0.012106494300247855,
+            0.0038620151176300983
+          ]
+        },
+        "0_5s": {
+          "state_samples": 5000,
+          "inner_samples": 5000,
+          "position_xyz_rmse_m": [
+            0.016351126070283734,
+            0.0047658144261823404,
+            0.0032743861965602657
+          ],
+          "task_wrapped_euler_rmse_rad": [
+            0.01714795462210015,
+            0.05803376476194807,
+            2.1095207794126193e-07
+          ],
+          "inner_wrapped_euler_rmse_rad": [
+            1.75804792430604e-05,
+            5.891785708896168e-05,
+            2.1095207794126193e-07
+          ]
+        },
+        "15_20s": {
+          "state_samples": 5001,
+          "inner_samples": 5000,
+          "position_xyz_rmse_m": [
+            0.006115781511369361,
+            0.005526594722904604,
+            0.0008064680737345639
+          ],
+          "task_wrapped_euler_rmse_rad": [
+            0.02088888121776601,
+            0.05472633148431781,
+            0.001872124932140916
+          ],
+          "inner_wrapped_euler_rmse_rad": [
+            0.010300664581712148,
+            0.009470127093547142,
+            0.0018723121271716108
+          ]
+        }
+      },
+      "safety": {
+        "motor_saturation_samples": 0,
+        "generalized_clip_samples": 0,
+        "tilt_limited_samples": 0,
+        "attitude_head_projection_samples": 0,
+        "attitude_head_output_saturated_samples": 0
+      }
+    },
+    "C5": {
+      "Q_m": 0.00998956747303222,
+      "task_SO3_rad": 0.0653826067320855,
+      "inner_SO3_rad": 0.01796494791011554,
+      "axis_phase": {
+        "ALL": {
+          "state_samples": 20001,
+          "inner_samples": 20000,
+          "position_xyz_rmse_m": [
+            0.008847867048268556,
+            0.003901560906728793,
+            0.0025068963850771314
+          ],
+          "task_wrapped_euler_rmse_rad": [
+            0.02268108463084396,
+            0.06122981018653363,
+            0.003745142149958418
+          ],
+          "inner_wrapped_euler_rmse_rad": [
+            0.012874327769407579,
+            0.01218331177994999,
+            0.0037452357768756224
+          ]
+        },
+        "0_5s": {
+          "state_samples": 5000,
+          "inner_samples": 5000,
+          "position_xyz_rmse_m": [
+            0.01571497104525875,
+            0.004283316474052833,
+            0.004725898334076032
+          ],
+          "task_wrapped_euler_rmse_rad": [
+            0.0178325925992614,
+            0.06073994417253829,
+            6.497165418677921e-06
+          ],
+          "inner_wrapped_euler_rmse_rad": [
+            7.83700554516701e-05,
+            0.000273203188903062,
+            6.497165418677921e-06
+          ]
+        },
+        "15_20s": {
+          "state_samples": 5001,
+          "inner_samples": 5000,
+          "position_xyz_rmse_m": [
+            0.0050049475970520485,
+            0.0041097246531109025,
+            0.0007091598544576084
+          ],
+          "task_wrapped_euler_rmse_rad": [
+            0.021471468995177902,
+            0.05816746648072522,
+            0.0018242463686426408
+          ],
+          "inner_wrapped_euler_rmse_rad": [
+            0.010321273537301863,
+            0.009508556453624653,
+            0.0018244287803309324
+          ]
+        }
+      },
+      "safety": {
+        "motor_saturation_samples": 0,
+        "generalized_clip_samples": 0,
+        "tilt_limited_samples": 0,
+        "attitude_head_projection_samples": 0,
+        "attitude_head_output_saturated_samples": 0
+      }
+    },
+    "Parent_Cosine_GRU": {
+      "Q_m": 0.009620689116816572,
+      "task_SO3_rad": 0.06541727222755461,
+      "inner_SO3_rad": 0.015910360180281174,
+      "axis_phase": {
+        "ALL": {
+          "state_samples": 20001,
+          "inner_samples": 20000,
+          "position_xyz_rmse_m": [
+            0.00860652857058676,
+            0.003497271969826836,
+            0.0025008826072349527
+          ],
+          "task_wrapped_euler_rmse_rad": [
+            0.022714004459135757,
+            0.0612769505425406,
+            0.0033074012506894707
+          ],
+          "inner_wrapped_euler_rmse_rad": [
+            0.011358180334620948,
+            0.010825387993534882,
+            0.0033074839308963972
+          ]
+        },
+        "0_5s": {
+          "state_samples": 5000,
+          "inner_samples": 5000,
+          "position_xyz_rmse_m": [
+            0.015712161074991,
+            0.0042928159770547585,
+            0.004725242777128451
+          ],
+          "task_wrapped_euler_rmse_rad": [
+            0.017874015913325478,
+            0.06078470130770641,
+            8.130898207763632e-05
+          ],
+          "inner_wrapped_euler_rmse_rad": [
+            0.00035218747216288085,
+            0.0004006722872998767,
+            8.130898207763632e-05
+          ]
+        },
+        "15_20s": {
+          "state_samples": 5001,
+          "inner_samples": 5000,
+          "position_xyz_rmse_m": [
+            0.004160989949319447,
+            0.0033233187536052867,
+            0.0007229504214233205
+          ],
+          "task_wrapped_euler_rmse_rad": [
+            0.0215206496679922,
+            0.0581462733646933,
+            0.0016004743151074763
+          ],
+          "inner_wrapped_euler_rmse_rad": [
+            0.00932360969266479,
+            0.008296880978789804,
+            0.0016006343232047846
+          ]
+        }
+      },
+      "safety": {
+        "motor_saturation_samples": 0,
+        "generalized_clip_samples": 0,
+        "tilt_limited_samples": 0,
+        "attitude_head_projection_samples": 0,
+        "attitude_head_output_saturated_samples": 0
+      }
+    }
+  },
+  "comparisons": {
+    "B": {
+      "Q_m": {
+        "candidate_minus_reference": 0.002292647581686078,
+        "relative_change": 0.20102369578337995,
+        "candidate_lower_is_better": false
+      },
+      "task_SO3_rad": {
+        "candidate_minus_reference": 0.0038155467962510126,
+        "relative_change": 0.06174823246927716,
+        "candidate_lower_is_better": false
+      },
+      "inner_SO3_rad": {
+        "candidate_minus_reference": -0.0020177066524462647,
+        "relative_change": -0.11262404487366756,
+        "candidate_lower_is_better": true
+      }
+    },
+    "C5": {
+      "Q_m": {
+        "candidate_minus_reference": 0.0037079424695399075,
+        "relative_change": 0.3711814830371633,
+        "candidate_lower_is_better": false
+      },
+      "task_SO3_rad": {
+        "candidate_minus_reference": 0.00022494031533769332,
+        "relative_change": 0.0034403693364416957,
+        "candidate_lower_is_better": false
+      },
+      "inner_SO3_rad": {
+        "candidate_minus_reference": -0.0020672382346403305,
+        "relative_change": -0.11507065007832996,
+        "candidate_lower_is_better": true
+      }
+    },
+    "Parent_Cosine_GRU": {
+      "Q_m": {
+        "candidate_minus_reference": 0.004076820825755556,
+        "relative_change": 0.4237555934147627,
+        "candidate_lower_is_better": false
+      },
+      "task_SO3_rad": {
+        "candidate_minus_reference": 0.00019027481986857997,
+        "relative_change": 0.002908632741620702,
+        "candidate_lower_is_better": false
+      },
+      "inner_SO3_rad": {
+        "candidate_minus_reference": -1.2650504805963858e-05,
+        "relative_change": -0.0007951111516408357,
+        "candidate_lower_is_better": true
+      }
+    }
+  },
+  "safety": {
+    "motor_saturation_samples": 0,
+    "generalized_clip_samples": 0,
+    "tilt_limited_samples": 0,
+    "attitude_head_projection_samples": 0,
+    "attitude_head_output_saturated_samples": 0
+  },
+  "TEST_read": false,
+  "inertia_reconstruction_enabled": false,
+  "audit_script_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\position_teacher_position_balanced_full24_pilot_v1\\audits\\audit_balanced_pilot_event_action_chain_v1.py",
+  "audit_script_sha256": "399a4080323feb26de0241a96cd296cc71b3a226d2d3ab4f55835bb7356404cc",
+  "audit_script_postrun_only": true
+}

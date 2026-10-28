@@ -1,0 +1,66 @@
+{
+  "schema": "DL1018_NCMD_LABEL_PREDICTABILITY_V1",
+  "status": "PASS_HISTORICAL_C5_OFFLINE_DIAGNOSTIC",
+  "created_utc": "2026-10-26T23:06:09.174515+00:00",
+  "scope": {
+    "training": false,
+    "optimizer_updates": 0,
+    "Plant_calls": 0,
+    "TEST_read": false,
+    "raws_read": false,
+    "dataset_role": "DEV24 + VAL48_AS_DEV_TRAIN; all 72 are development material, no independent validation"
+  },
+  "method": {
+    "model_inference": "per-scene hidden reset; double precision; deployed GRU reset/update/new gate equation; legal 13D feature X only",
+    "events_per_scene": 1999,
+    "event_period_s": 0.01,
+    "target": "NCMD clipped_float32 only",
+    "old_teacher_y": "read only as historical label comparison; not training input for NCMD",
+    "lag_scan": "prediction event j compared with label event j+offset, offsets -2..+2; no cross-scene wrap",
+    "groups": [
+      "ALL72",
+      "T1",
+      "T2",
+      "T3",
+      "W15_NO_WIND",
+      "HF_W09_W14",
+      "W00_W08",
+      "T2_C05_W15"
+    ],
+    "phases": {
+      "all": "events 1..1999",
+      "early_0_5s": "events 1..499",
+      "late_15_20s": "events 1500..1999"
+    }
+  },
+  "identity": {
+    "feature_npz_sha256": "b3a8ca6446d6bdde0573e6c233aa222a6cfb28d35f13b084e8dd9683c16c111f",
+    "ncmd_target_npz_sha256": "88df5c2f2088910a9c5650a5c67efdb7f42d30cabc021d0da83b68b72578ffb7",
+    "ncmd_target_manifest_sha256": "fc5ed29cfd0a5260a2992f28b8ada21ccd72f7d25c7bbe00831dca7a10e9e0ab",
+    "target_stats_csv_sha256": "599af4527376b88c0020b255a758586f333ca72151a70f09db48c8e829765344",
+    "cosine_model_sha256": "b2c462f77a6bb97b8c6bb2b471daef0633d4f9664a7d623b894461a4fa21b567",
+    "ncmd_model_sha256": "cd5870a48deac9eb3540c3662c59ec4212965c333669b730cdd4f6519d364de6",
+    "normalizer_member_values_match_between_models": true,
+    "normalizer_sha256_from_approved_lock": "612c39d7fd113571f2935eae1e42d3fb4d33705bf9a230c75e5c274db1bfb693",
+    "dmax_rad_s2": [
+      45.0,
+      45.0,
+      4.7124
+    ]
+  },
+  "outputs": {
+    "scene_csv": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\ncmd_label_predictability_diagnostic_v1\\open_loop_scene_metrics_v1.csv",
+    "scene_csv_sha256": "0b355ffe618822a28456ff88625bd6849e66ffcccb491f0b01731dd0e1c82515",
+    "scene_rows": 13005,
+    "group_csv": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\ncmd_label_predictability_diagnostic_v1\\open_loop_group_metrics_v1.csv",
+    "group_csv_sha256": "d35e37e370f4e0cc4924f769fa89a109cfab419651b7035e40556fb4d3b8213c",
+    "group_rows": 3195,
+    "lag_csv": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\ncmd_label_predictability_diagnostic_v1\\ncmd_event_lag_scan_v1.csv",
+    "lag_csv_sha256": "4f42c4c663fed1c37548511a7982fba273c86801d7d224ef34d9c9bf7af600b1",
+    "lag_rows": 4335,
+    "lag_group_csv": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\ncmd_label_predictability_diagnostic_v1\\ncmd_event_lag_group_metrics_v1.csv",
+    "lag_group_csv_sha256": "5a84b06c59f6c1c3495048418286f7dd4a6da4fdb24ffe7bfb82e19d97a65f28",
+    "lag_group_rows": 705
+  },
+  "script_sha256": "bfe0fa0861a4803705b58d08b8c94ea668260c99e13dda180bb098d966791249"
+}

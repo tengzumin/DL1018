@@ -1,0 +1,83 @@
+{
+  "schema": "PEER_CORRECTED144_W0_HASH_PROTOCOL_NOTE_V1",
+  "status": "CONFIRMED_PROTOCOL_DIFFERENCE_SAME_W0_VALUES",
+  "scope": {
+    "read_only": true,
+    "read_large_raw": false,
+    "read_TEST": false,
+    "MATLAB": false,
+    "Plant": false,
+    "training": false,
+    "result_or_score_recomputed": false
+  },
+  "bound_sources": {
+    "composed_report_sha256": "b15b7bbb812d5407b8878e86bfe6b5e96298789f3dd817d9c6389f9f8d185e22",
+    "pair_runtime_helper_path": "../DL1009_DL1018_FULL_AUDIT_20261020_233501/scripts/runtime_audit.py",
+    "pair_runtime_helper_sha256": "ad315be928a7e3e263819ee4ce2eb7cda08d892ff8da95412b17c387581599df",
+    "pair_replay_runner_path": "../REFERENCE_FIX_FULL72_20261021_022342_313/supporting_rescore/scripts/replay_full72_nn.py",
+    "pair_replay_runner_sha256": "610a4f36d3b8555795643d135e7e6ad6bf3faf282299e187c72a02c1eeb05aa9",
+    "pair_raw_scan_path": "../DL1009_DL1018_FULL_AUDIT_20261020_233501/scripts/raw_scan.py",
+    "pair_raw_scan_sha256": "680c9a3fe95d9c3b4fb9c7702343078fc679c3f64a41a44865aa4aa7435100d4",
+    "main_protocol_checker_path": "reports/paper_continuation_20261023/test_raw_review_v1/audit_test48_raw_v1.py",
+    "main_protocol_checker_sha256": "31229d1b9d137ec2847b25b7a32c3d0183e517fac963dc2ed01de74bcde11d45"
+  },
+  "protocols": {
+    "pair_lineage_W0": {
+      "implementation": "runtime_audit.py digest(d), lines 22-34, and W0 call line 66",
+      "array_cast": "little-endian float64",
+      "shape_prefix": true,
+      "key_prefix": "key + NUL; key is W0",
+      "byte_order": "C/default row-major",
+      "hash": "SHA256(key-NUL + str(shape) + C-order bytes)"
+    },
+    "main_parent_W0": {
+      "implementation": "audit_test48_raw_v1.py w0_sha256, lines 493-494",
+      "array_cast": "little-endian float64",
+      "shape_prefix": false,
+      "key_prefix": false,
+      "byte_order": "F/column-major",
+      "hash": "SHA256(F-order bytes)"
+    }
+  },
+  "same_w0_recalculation": [
+    {
+      "method": "CORRECTED_TRAIN_DSSM14_G12_R32",
+      "run": "r002",
+      "run_start_path": "../REFERENCE_FIX_FULL72_20261021_022342_313/corrected_reference_training_v1/corrected_pair_eval_v1/runs/r002/attempt_01/run_start.mat",
+      "run_start_sha256": "3b798c8624cc10cc1ddf3b3b1000099bc62e42e8430af92a42b0fa467385743e",
+      "dataset": "opts/stage1_position_runtime/model/output_W",
+      "hdf5_shape": [
+        3,
+        33
+      ],
+      "hdf5_dtype": "float32",
+      "matlab_logical_shape": [
+        33,
+        3
+      ],
+      "pair_lineage_digest": "87fa03a567ced9f144eca26eceadebba59269cbebf800a0eb72c1a755fe7bbd0",
+      "main_column_major_digest": "88f8c4f2495438c3797655c48bab1bf0c11ac2e27bff1f5f2a7423a8f0a2cf53",
+      "matches_preexisting_ids": true
+    },
+    {
+      "method": "CORRECTED_TRAIN_KAN14_G12_R32",
+      "run": "r001",
+      "run_start_path": "../REFERENCE_FIX_FULL72_20261021_022342_313/corrected_reference_training_v1/corrected_pair_eval_v1/runs/r001/attempt_01/run_start.mat",
+      "run_start_sha256": "0012bf34074ac2f034517fbb65237bd667b31e7e539987601e4d16e0b26c9525",
+      "dataset": "opts/stage1_position_runtime/model/output_W",
+      "hdf5_shape": [
+        3,
+        33
+      ],
+      "hdf5_dtype": "float32",
+      "matlab_logical_shape": [
+        33,
+        3
+      ],
+      "pair_lineage_digest": "b729a81fe67456a70bb25ebd3240682019bff21641ba597dcd92772080e6833d",
+      "main_column_major_digest": "acd52fe281d2f7c1a801afe304b96896a4434ff8c084c9f9d0c387dfa8187b4a",
+      "matches_preexisting_ids": true
+    }
+  ],
+  "interpretation": "The two SHA sets identify the same W0 matrices under different serialization conventions; no model mutation or renewed model mismatch is implied."
+}

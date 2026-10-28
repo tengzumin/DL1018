@@ -1,0 +1,403 @@
+{
+  "schema": "DL1018_GATE_C5_R_TASK_BINDING_V2",
+  "created_utc": "2026-10-25T15:22:41.291Z",
+  "status": "PASS_NO_PLANT_PILOT_PAYLOADS_ONLY",
+  "plant_calls": 0,
+  "training_runs": 0,
+  "pilot_started": false,
+  "holdout_payloads_generated": false,
+  "tests_data_read": false,
+  "runner_root": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\attitude_physics_inertia_observer_20261025\\holdout_gate_inspection_v2\\candidate_runner_work",
+  "taskbook_sha256": "d091ad07a93f99c9b796b8690c7ad802ff2a8e53698a66db103255a95f500fcb",
+  "scene_builder_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\attitude_physics_inertia_observer_20261025\\holdout_gate_inspection_v2\\scene_builder_work\\build_gate_inspection_scenes.m",
+  "scene_builder_sha256": "41d3fffef397eb066ac5a051201378eaaa53c118530bc6982ea3f9936ecbbd51",
+  "candidate_validator_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\attitude_physics_inertia_observer_20261025\\holdout_gate_inspection_v2\\candidate_runner_work\\matlab\\runtime\\gate_holdout_validate_scene.m",
+  "b_validator_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\attitude_physics_inertia_observer_20261025\\holdout_gate_inspection_v2\\b_runner_work\\validate_b_gate_scene_no_plant.m",
+  "input_records": {
+    "c5_input_lock": {
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\C5_DEV72_INPUT_LOCK_v3.json",
+      "sha256": "82024c01276cc4bfbd9b7772cf5332dee3fdfcbed422969589b68f1c90ed2d75"
+    },
+    "c5_run_contract": {
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\C5_DEV72_RUN_CONTRACT_v3.json",
+      "sha256": "6ac3cd505dc13fc5b7e6e0cdef966b21225b54d6f847d32177d43f7c678c8150"
+    },
+    "c5_prepare_result": {
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\C5_DEV72_PREPARE_RESULT_v3.json",
+      "sha256": "ca1fbd9bdf2d7a7b02b15d36ed010fbb1851b4607394c426f6d4d6d408ce3095"
+    },
+    "c5_snapshot_mat": {
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\C5_DEV72_PREPARED_CFG_OPTS_v3.mat",
+      "sha256": "842ef395569e675db6e139c2684d72b976946915e5e0a58b9b7f24ec10c1d24a"
+    },
+    "model_mat": {
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\corrected_reference_training_v1\\corrected_pair_training\\models\\DSSM14\\matlab_model_and_parity.mat",
+      "sha256": "6f3628b10540c617496b2a20f249c4319af79c1a02d5945f1f91f0aead9c9b6e"
+    },
+    "normalizer_npz": {
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\corrected_reference_training_v1\\corrected_pair_training\\data\\normalizer_x14_train_only.npz",
+      "sha256": "520983e01aa9af38bd3c1aad15b5b8e6a65f5129a32e997e2234951ace198404"
+    }
+  },
+  "candidate_id": "DSSM14",
+  "W0_sha256": "88f8c4f2495438c3797655c48bab1bf0c11ac2e27bff1f5f2a7423a8f0a2cf53",
+  "normalizer_arrays_sha256": "533aad9a2c66874cfa67f5d268661835e81e58b797cba7d6fc1c12d4013de5f0",
+  "C5_nominal_task": {
+    "cfg_sha256": "635d75b3a687b2887c31b87e268868d0d9e4327d0aaa73f1f920dd194190894f",
+    "mass_kg": 0.695,
+    "g_mps2": 9.8,
+    "max_tilt_rad": 0.52359877559829882,
+    "J0_sha256": "8cd498cac86940c800e5c4c1e622e19ed2630bebbd3bbe880d3ae4ad1b689f75",
+    "reference_yaw_source": "scene.reference.yaw",
+    "acceleration_source": "scene.reference.acceleration",
+    "adapter_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\attitude_physics_inertia_observer_20261025\\holdout_gate_inspection_v2\\candidate_runner_work\\matlab\\core\\baseline_force_to_attitude.m"
+  },
+  "common_position_options_sha256": "0218d3dc3c591b07ed6f7328de2c36276c4f51c2a0d56966bdff62d68d6a6b21",
+  "attitude_arm_ids": [
+    "C5_RBF",
+    "C5_RBF_F",
+    "C5_00",
+    "C5_10",
+    "C5_01",
+    "C5_11"
+  ],
+  "arm_identity": {
+    "ACTIVE_C5_RBF": {
+      "common": {
+        "model_sha256": "2c51989030077d3ba47a94f454fbc0cdc1823a6012c5d328c487b6e3c4dd25e6",
+        "normalizer_sha256": "f574827a3a56266f57d7b7ee96bcc236ec7ddc363ea914bbf25aff719d86730a",
+        "W0_sha256": "88f8c4f2495438c3797655c48bab1bf0c11ac2e27bff1f5f2a7423a8f0a2cf53",
+        "position_options_sha256": "0218d3dc3c591b07ed6f7328de2c36276c4f51c2a0d56966bdff62d68d6a6b21"
+      },
+      "geometry": {
+        "cfg_sha256": "7801fd72947f52a4b7bac74fc65a1b444db8d8f2e08b27f8af4965448363a266",
+        "plant_sha256": "afec5e9143e6cd26688ce50f8487f91061a1fd36a9ecd5e796f0793caa9387f1",
+        "filter_sha256": "10c58c22c00fe57da626bc643492955d681b6464dea231a4abbb9b213469a713",
+        "allocator_sha256": "05bc5bc69798cab22587850ca5d861339006c1f5be13674effe77d704e456ddf",
+        "J0_sha256": "8cd498cac86940c800e5c4c1e622e19ed2630bebbd3bbe880d3ae4ad1b689f75",
+        "C0_sha256": "89fb81a74d4dabda1e0495547b14d4b61d5a54901d9ad2067c7ed788fb031a85",
+        "options_sha256": "4d8ddeb28564ec07b8f0597b5986162317f9659211b26d306fd865e10bbdf4fb"
+      }
+    },
+    "ACTIVE_C5_RBF_F": {
+      "common": {
+        "model_sha256": "2c51989030077d3ba47a94f454fbc0cdc1823a6012c5d328c487b6e3c4dd25e6",
+        "normalizer_sha256": "f574827a3a56266f57d7b7ee96bcc236ec7ddc363ea914bbf25aff719d86730a",
+        "W0_sha256": "88f8c4f2495438c3797655c48bab1bf0c11ac2e27bff1f5f2a7423a8f0a2cf53",
+        "position_options_sha256": "0218d3dc3c591b07ed6f7328de2c36276c4f51c2a0d56966bdff62d68d6a6b21"
+      },
+      "geometry": {
+        "cfg_sha256": "7801fd72947f52a4b7bac74fc65a1b444db8d8f2e08b27f8af4965448363a266",
+        "plant_sha256": "afec5e9143e6cd26688ce50f8487f91061a1fd36a9ecd5e796f0793caa9387f1",
+        "filter_sha256": "10c58c22c00fe57da626bc643492955d681b6464dea231a4abbb9b213469a713",
+        "allocator_sha256": "05bc5bc69798cab22587850ca5d861339006c1f5be13674effe77d704e456ddf",
+        "J0_sha256": "8cd498cac86940c800e5c4c1e622e19ed2630bebbd3bbe880d3ae4ad1b689f75",
+        "C0_sha256": "89fb81a74d4dabda1e0495547b14d4b61d5a54901d9ad2067c7ed788fb031a85",
+        "options_sha256": "241ba0c3222eeaa91428525dd9725a6a56df6c0230cc6d1e27b1ce8c3ef17780"
+      }
+    },
+    "ACTIVE_C5_00": {
+      "common": {
+        "model_sha256": "2c51989030077d3ba47a94f454fbc0cdc1823a6012c5d328c487b6e3c4dd25e6",
+        "normalizer_sha256": "f574827a3a56266f57d7b7ee96bcc236ec7ddc363ea914bbf25aff719d86730a",
+        "W0_sha256": "88f8c4f2495438c3797655c48bab1bf0c11ac2e27bff1f5f2a7423a8f0a2cf53",
+        "position_options_sha256": "0218d3dc3c591b07ed6f7328de2c36276c4f51c2a0d56966bdff62d68d6a6b21"
+      },
+      "geometry": {
+        "cfg_sha256": "7801fd72947f52a4b7bac74fc65a1b444db8d8f2e08b27f8af4965448363a266",
+        "plant_sha256": "afec5e9143e6cd26688ce50f8487f91061a1fd36a9ecd5e796f0793caa9387f1",
+        "filter_sha256": "10c58c22c00fe57da626bc643492955d681b6464dea231a4abbb9b213469a713",
+        "allocator_sha256": "05bc5bc69798cab22587850ca5d861339006c1f5be13674effe77d704e456ddf",
+        "J0_sha256": "8cd498cac86940c800e5c4c1e622e19ed2630bebbd3bbe880d3ae4ad1b689f75",
+        "C0_sha256": "89fb81a74d4dabda1e0495547b14d4b61d5a54901d9ad2067c7ed788fb031a85",
+        "options_sha256": "9bad93cfe12426dc19137aaa17eba9579006af23b4c29b408f37d15cbbde7427"
+      }
+    },
+    "ACTIVE_C5_10": {
+      "common": {
+        "model_sha256": "2c51989030077d3ba47a94f454fbc0cdc1823a6012c5d328c487b6e3c4dd25e6",
+        "normalizer_sha256": "f574827a3a56266f57d7b7ee96bcc236ec7ddc363ea914bbf25aff719d86730a",
+        "W0_sha256": "88f8c4f2495438c3797655c48bab1bf0c11ac2e27bff1f5f2a7423a8f0a2cf53",
+        "position_options_sha256": "0218d3dc3c591b07ed6f7328de2c36276c4f51c2a0d56966bdff62d68d6a6b21"
+      },
+      "geometry": {
+        "cfg_sha256": "7801fd72947f52a4b7bac74fc65a1b444db8d8f2e08b27f8af4965448363a266",
+        "plant_sha256": "afec5e9143e6cd26688ce50f8487f91061a1fd36a9ecd5e796f0793caa9387f1",
+        "filter_sha256": "10c58c22c00fe57da626bc643492955d681b6464dea231a4abbb9b213469a713",
+        "allocator_sha256": "05bc5bc69798cab22587850ca5d861339006c1f5be13674effe77d704e456ddf",
+        "J0_sha256": "8cd498cac86940c800e5c4c1e622e19ed2630bebbd3bbe880d3ae4ad1b689f75",
+        "C0_sha256": "89fb81a74d4dabda1e0495547b14d4b61d5a54901d9ad2067c7ed788fb031a85",
+        "options_sha256": "c86ff54a23a6a1d4bfd0eab39830fb23c884d754abd6ab37879621fd2ab61d2a"
+      }
+    },
+    "ACTIVE_C5_01": {
+      "common": {
+        "model_sha256": "2c51989030077d3ba47a94f454fbc0cdc1823a6012c5d328c487b6e3c4dd25e6",
+        "normalizer_sha256": "f574827a3a56266f57d7b7ee96bcc236ec7ddc363ea914bbf25aff719d86730a",
+        "W0_sha256": "88f8c4f2495438c3797655c48bab1bf0c11ac2e27bff1f5f2a7423a8f0a2cf53",
+        "position_options_sha256": "0218d3dc3c591b07ed6f7328de2c36276c4f51c2a0d56966bdff62d68d6a6b21"
+      },
+      "geometry": {
+        "cfg_sha256": "7801fd72947f52a4b7bac74fc65a1b444db8d8f2e08b27f8af4965448363a266",
+        "plant_sha256": "afec5e9143e6cd26688ce50f8487f91061a1fd36a9ecd5e796f0793caa9387f1",
+        "filter_sha256": "10c58c22c00fe57da626bc643492955d681b6464dea231a4abbb9b213469a713",
+        "allocator_sha256": "05bc5bc69798cab22587850ca5d861339006c1f5be13674effe77d704e456ddf",
+        "J0_sha256": "8cd498cac86940c800e5c4c1e622e19ed2630bebbd3bbe880d3ae4ad1b689f75",
+        "C0_sha256": "89fb81a74d4dabda1e0495547b14d4b61d5a54901d9ad2067c7ed788fb031a85",
+        "options_sha256": "145dd2b81c9cddbdec928681fd7c29de3e4bb65bde200d363d55ae56c39b91ea"
+      }
+    },
+    "ACTIVE_C5_11": {
+      "common": {
+        "model_sha256": "2c51989030077d3ba47a94f454fbc0cdc1823a6012c5d328c487b6e3c4dd25e6",
+        "normalizer_sha256": "f574827a3a56266f57d7b7ee96bcc236ec7ddc363ea914bbf25aff719d86730a",
+        "W0_sha256": "88f8c4f2495438c3797655c48bab1bf0c11ac2e27bff1f5f2a7423a8f0a2cf53",
+        "position_options_sha256": "0218d3dc3c591b07ed6f7328de2c36276c4f51c2a0d56966bdff62d68d6a6b21"
+      },
+      "geometry": {
+        "cfg_sha256": "7801fd72947f52a4b7bac74fc65a1b444db8d8f2e08b27f8af4965448363a266",
+        "plant_sha256": "afec5e9143e6cd26688ce50f8487f91061a1fd36a9ecd5e796f0793caa9387f1",
+        "filter_sha256": "10c58c22c00fe57da626bc643492955d681b6464dea231a4abbb9b213469a713",
+        "allocator_sha256": "05bc5bc69798cab22587850ca5d861339006c1f5be13674effe77d704e456ddf",
+        "J0_sha256": "8cd498cac86940c800e5c4c1e622e19ed2630bebbd3bbe880d3ae4ad1b689f75",
+        "C0_sha256": "89fb81a74d4dabda1e0495547b14d4b61d5a54901d9ad2067c7ed788fb031a85",
+        "options_sha256": "efc6717af5b23506b4f8ca3a5c5de3fb79323cc78ee4d6e2a697fa51043eb473"
+      }
+    },
+    "FIXED_MIN_C5_11": {
+      "common": {
+        "model_sha256": "2c51989030077d3ba47a94f454fbc0cdc1823a6012c5d328c487b6e3c4dd25e6",
+        "normalizer_sha256": "f574827a3a56266f57d7b7ee96bcc236ec7ddc363ea914bbf25aff719d86730a",
+        "W0_sha256": "88f8c4f2495438c3797655c48bab1bf0c11ac2e27bff1f5f2a7423a8f0a2cf53",
+        "position_options_sha256": "0218d3dc3c591b07ed6f7328de2c36276c4f51c2a0d56966bdff62d68d6a6b21"
+      },
+      "geometry": {
+        "cfg_sha256": "7801fd72947f52a4b7bac74fc65a1b444db8d8f2e08b27f8af4965448363a266",
+        "plant_sha256": "afec5e9143e6cd26688ce50f8487f91061a1fd36a9ecd5e796f0793caa9387f1",
+        "filter_sha256": "10c58c22c00fe57da626bc643492955d681b6464dea231a4abbb9b213469a713",
+        "allocator_sha256": "05bc5bc69798cab22587850ca5d861339006c1f5be13674effe77d704e456ddf",
+        "J0_sha256": "8cd498cac86940c800e5c4c1e622e19ed2630bebbd3bbe880d3ae4ad1b689f75",
+        "C0_sha256": "89fb81a74d4dabda1e0495547b14d4b61d5a54901d9ad2067c7ed788fb031a85",
+        "options_sha256": "f1e999384913f0ae224338a3fbaff1067bf8c5f91c53661b15de0cd3b8ddcff3"
+      }
+    },
+    "FIXED_BOUND15_C5_11": {
+      "common": {
+        "model_sha256": "2c51989030077d3ba47a94f454fbc0cdc1823a6012c5d328c487b6e3c4dd25e6",
+        "normalizer_sha256": "f574827a3a56266f57d7b7ee96bcc236ec7ddc363ea914bbf25aff719d86730a",
+        "W0_sha256": "88f8c4f2495438c3797655c48bab1bf0c11ac2e27bff1f5f2a7423a8f0a2cf53",
+        "position_options_sha256": "0218d3dc3c591b07ed6f7328de2c36276c4f51c2a0d56966bdff62d68d6a6b21"
+      },
+      "geometry": {
+        "cfg_sha256": "9685da3930cbf1c4a87454dc597549326316771d1e41de4727384ab60b91a95f",
+        "plant_sha256": "478930eaf8cf30011fc28139cd3f96845bfa889b599092f2c49272d5d45defea",
+        "filter_sha256": "10c58c22c00fe57da626bc643492955d681b6464dea231a4abbb9b213469a713",
+        "allocator_sha256": "36082af87a04f6f441780ef51af258259387b7d9821f34ca2411a9c3e0a46634",
+        "J0_sha256": "389aae5af6f8f21e49cabcc9d88a7a7a4c65e70b6f8d8aade26d9e98586f9085",
+        "C0_sha256": "636ad5705c89294e72c762819e5a7071c0f00f1b422271d85987fed05a1a9b44",
+        "options_sha256": "62969634eb6adaf52d3eb8e53e28c457ecf0d2a91c448256a07e9ada8a4d6680"
+      }
+    }
+  },
+  "scene_count": 18,
+  "scenes": [
+    {
+      "scene_id": "DL1018_GHP7_G1_W00",
+      "seed": 2.06E+9,
+      "geometry_arm": "ACTIVE",
+      "r_task_sha256": "0b36e8ccd80d4739bd4b531518fbc298710f5792015747f0b8b30d7871530327",
+      "scene_audit_sha256": "5da8186a753622f5283e6b21dcf3f5ab1b4e7c243d8addfde6fc6fe9681618d2",
+      "b_r_task_sha256": "0b36e8ccd80d4739bd4b531518fbc298710f5792015747f0b8b30d7871530327",
+      "payload_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\attitude_physics_inertia_observer_20261025\\holdout_gate_inspection_v2\\pilot_payloads_bound_c5_v5\\DL1018_GHP7_G1_W00_ACTIVE_scene_payload.mat",
+      "payload_sha256": "a29c787507d385f9c797fc8bb6341ad0596d6b788fc8c3e3065a97ed197772c3",
+      "limited_samples": 0
+    },
+    {
+      "scene_id": "DL1018_GHP7_G1_W12",
+      "seed": 2.060000012E+9,
+      "geometry_arm": "ACTIVE",
+      "r_task_sha256": "0b36e8ccd80d4739bd4b531518fbc298710f5792015747f0b8b30d7871530327",
+      "scene_audit_sha256": "86a00855a64f0a903ee903eef6ddb31cb77140a9366d5582197a0e91b0bb3a0b",
+      "b_r_task_sha256": "0b36e8ccd80d4739bd4b531518fbc298710f5792015747f0b8b30d7871530327",
+      "payload_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\attitude_physics_inertia_observer_20261025\\holdout_gate_inspection_v2\\pilot_payloads_bound_c5_v5\\DL1018_GHP7_G1_W12_ACTIVE_scene_payload.mat",
+      "payload_sha256": "f7c994827a9f006b3caa190b04d2b92c1e353d0972c0a69720f2f374f30957f2",
+      "limited_samples": 0
+    },
+    {
+      "scene_id": "DL1018_GHP7_G2_W00",
+      "seed": 2.060001E+9,
+      "geometry_arm": "ACTIVE",
+      "r_task_sha256": "b97446fa12e2da21a2911ebacf6dcb2b2bd65acc1074b33a31b20310d4a10bfd",
+      "scene_audit_sha256": "998c00adfc57c2e3aaecebd8248b012049818c42fb68b613bef911108157a2c9",
+      "b_r_task_sha256": "b97446fa12e2da21a2911ebacf6dcb2b2bd65acc1074b33a31b20310d4a10bfd",
+      "payload_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\attitude_physics_inertia_observer_20261025\\holdout_gate_inspection_v2\\pilot_payloads_bound_c5_v5\\DL1018_GHP7_G2_W00_ACTIVE_scene_payload.mat",
+      "payload_sha256": "1c137af02fdc0935dc5d69efdde32dedd333f578b14b9155ef6df7944facb8de",
+      "limited_samples": 0
+    },
+    {
+      "scene_id": "DL1018_GHP7_G2_W12",
+      "seed": 2.060001012E+9,
+      "geometry_arm": "ACTIVE",
+      "r_task_sha256": "b97446fa12e2da21a2911ebacf6dcb2b2bd65acc1074b33a31b20310d4a10bfd",
+      "scene_audit_sha256": "7a5a9fb70602fc5430c1cb25b0260e1b135ad2a3aad08af14169231396456a8e",
+      "b_r_task_sha256": "b97446fa12e2da21a2911ebacf6dcb2b2bd65acc1074b33a31b20310d4a10bfd",
+      "payload_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\attitude_physics_inertia_observer_20261025\\holdout_gate_inspection_v2\\pilot_payloads_bound_c5_v5\\DL1018_GHP7_G2_W12_ACTIVE_scene_payload.mat",
+      "payload_sha256": "4c482e41b28ed008ee767f617e1ee145137a225bac939a066e89442096bfdba1",
+      "limited_samples": 0
+    },
+    {
+      "scene_id": "DL1018_GHP7_G3_W00",
+      "seed": 2.060002E+9,
+      "geometry_arm": "ACTIVE",
+      "r_task_sha256": "d76894014dc7dbbe04476b5786ac49d79cd3af2224d334a99a2e0789bc5382cb",
+      "scene_audit_sha256": "52537660141dd3d16d6b366a20b44bb56003c2fb9446beb257040385f13d5414",
+      "b_r_task_sha256": "d76894014dc7dbbe04476b5786ac49d79cd3af2224d334a99a2e0789bc5382cb",
+      "payload_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\attitude_physics_inertia_observer_20261025\\holdout_gate_inspection_v2\\pilot_payloads_bound_c5_v5\\DL1018_GHP7_G3_W00_ACTIVE_scene_payload.mat",
+      "payload_sha256": "caa06f2f891875f68c3c3dc40a890bf353c356be410749f222b8f83e997a9296",
+      "limited_samples": 0
+    },
+    {
+      "scene_id": "DL1018_GHP7_G3_W12",
+      "seed": 2.060002012E+9,
+      "geometry_arm": "ACTIVE",
+      "r_task_sha256": "d76894014dc7dbbe04476b5786ac49d79cd3af2224d334a99a2e0789bc5382cb",
+      "scene_audit_sha256": "33ebac95f50fc19bda0e76493a6a2b1b45b0942bcb7a64d505a227cfe0fadfdf",
+      "b_r_task_sha256": "d76894014dc7dbbe04476b5786ac49d79cd3af2224d334a99a2e0789bc5382cb",
+      "payload_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\attitude_physics_inertia_observer_20261025\\holdout_gate_inspection_v2\\pilot_payloads_bound_c5_v5\\DL1018_GHP7_G3_W12_ACTIVE_scene_payload.mat",
+      "payload_sha256": "b5e46e29c285e7b5b6ae65c6568b27c225c59ed4017c2af8fb797a638d1d8793",
+      "limited_samples": 0
+    },
+    {
+      "scene_id": "DL1018_GHP7_G1_W00",
+      "seed": 2.06E+9,
+      "geometry_arm": "FIXED_MIN",
+      "r_task_sha256": "0b36e8ccd80d4739bd4b531518fbc298710f5792015747f0b8b30d7871530327",
+      "scene_audit_sha256": "05d1bb5ccc127168632734a87519c8576d422af64c40970cfc5afd675acd55b2",
+      "b_r_task_sha256": "0b36e8ccd80d4739bd4b531518fbc298710f5792015747f0b8b30d7871530327",
+      "payload_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\attitude_physics_inertia_observer_20261025\\holdout_gate_inspection_v2\\pilot_payloads_bound_c5_v5\\DL1018_GHP7_G1_W00_FIXED_MIN_scene_payload.mat",
+      "payload_sha256": "cfe20a83cb036a3f5648f3c1ebadd6a386e747af8f793dd826d0e0621947b6ce",
+      "limited_samples": 0
+    },
+    {
+      "scene_id": "DL1018_GHP7_G1_W12",
+      "seed": 2.060000012E+9,
+      "geometry_arm": "FIXED_MIN",
+      "r_task_sha256": "0b36e8ccd80d4739bd4b531518fbc298710f5792015747f0b8b30d7871530327",
+      "scene_audit_sha256": "eeaad9e5383440491c04c0d2fb7db9565d8883b487441fdb06fc0030d549e5c7",
+      "b_r_task_sha256": "0b36e8ccd80d4739bd4b531518fbc298710f5792015747f0b8b30d7871530327",
+      "payload_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\attitude_physics_inertia_observer_20261025\\holdout_gate_inspection_v2\\pilot_payloads_bound_c5_v5\\DL1018_GHP7_G1_W12_FIXED_MIN_scene_payload.mat",
+      "payload_sha256": "96ae1933e82eadc2f423570cd7b701805a482e81daa804b5b367a9f3db66698f",
+      "limited_samples": 0
+    },
+    {
+      "scene_id": "DL1018_GHP7_G2_W00",
+      "seed": 2.060001E+9,
+      "geometry_arm": "FIXED_MIN",
+      "r_task_sha256": "b97446fa12e2da21a2911ebacf6dcb2b2bd65acc1074b33a31b20310d4a10bfd",
+      "scene_audit_sha256": "94ffd6d800ec6a2e2a37044bb62c24117b05196a440f00c8071ee5171c9e36e4",
+      "b_r_task_sha256": "b97446fa12e2da21a2911ebacf6dcb2b2bd65acc1074b33a31b20310d4a10bfd",
+      "payload_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\attitude_physics_inertia_observer_20261025\\holdout_gate_inspection_v2\\pilot_payloads_bound_c5_v5\\DL1018_GHP7_G2_W00_FIXED_MIN_scene_payload.mat",
+      "payload_sha256": "deba1d87fbbe23cf8eda8f47bb499eebda40138756d1f06cbe091f66b5a3fb12",
+      "limited_samples": 0
+    },
+    {
+      "scene_id": "DL1018_GHP7_G2_W12",
+      "seed": 2.060001012E+9,
+      "geometry_arm": "FIXED_MIN",
+      "r_task_sha256": "b97446fa12e2da21a2911ebacf6dcb2b2bd65acc1074b33a31b20310d4a10bfd",
+      "scene_audit_sha256": "08f90b8c9c27e7d6c5d99472feec258d382e75a5ad47d51c493db24901efaecb",
+      "b_r_task_sha256": "b97446fa12e2da21a2911ebacf6dcb2b2bd65acc1074b33a31b20310d4a10bfd",
+      "payload_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\attitude_physics_inertia_observer_20261025\\holdout_gate_inspection_v2\\pilot_payloads_bound_c5_v5\\DL1018_GHP7_G2_W12_FIXED_MIN_scene_payload.mat",
+      "payload_sha256": "306869fe7df3b6b8dd54781346f33635f0f993161858d01d610f13453a9e8111",
+      "limited_samples": 0
+    },
+    {
+      "scene_id": "DL1018_GHP7_G3_W00",
+      "seed": 2.060002E+9,
+      "geometry_arm": "FIXED_MIN",
+      "r_task_sha256": "d76894014dc7dbbe04476b5786ac49d79cd3af2224d334a99a2e0789bc5382cb",
+      "scene_audit_sha256": "11a3a851cc203651c35873b476dfcac11cbd80cd70f82e6f6f1c4fa51dff69f6",
+      "b_r_task_sha256": "d76894014dc7dbbe04476b5786ac49d79cd3af2224d334a99a2e0789bc5382cb",
+      "payload_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\attitude_physics_inertia_observer_20261025\\holdout_gate_inspection_v2\\pilot_payloads_bound_c5_v5\\DL1018_GHP7_G3_W00_FIXED_MIN_scene_payload.mat",
+      "payload_sha256": "9f375b595d27834ebc63439f36b170bb4e4ff5785694e0b81530b3f2520fc11a",
+      "limited_samples": 0
+    },
+    {
+      "scene_id": "DL1018_GHP7_G3_W12",
+      "seed": 2.060002012E+9,
+      "geometry_arm": "FIXED_MIN",
+      "r_task_sha256": "d76894014dc7dbbe04476b5786ac49d79cd3af2224d334a99a2e0789bc5382cb",
+      "scene_audit_sha256": "84fa5712587a32764eb024fe73287a4c651021d52b44b46772e18e3b78754da8",
+      "b_r_task_sha256": "d76894014dc7dbbe04476b5786ac49d79cd3af2224d334a99a2e0789bc5382cb",
+      "payload_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\attitude_physics_inertia_observer_20261025\\holdout_gate_inspection_v2\\pilot_payloads_bound_c5_v5\\DL1018_GHP7_G3_W12_FIXED_MIN_scene_payload.mat",
+      "payload_sha256": "cfa243c53f93d2385be630e517167bf4f072c3876bc57643ed4cabeffb61791c",
+      "limited_samples": 0
+    },
+    {
+      "scene_id": "DL1018_GHP7_G1_W00",
+      "seed": 2.06E+9,
+      "geometry_arm": "FIXED_BOUND15",
+      "r_task_sha256": "0b36e8ccd80d4739bd4b531518fbc298710f5792015747f0b8b30d7871530327",
+      "scene_audit_sha256": "6916b4b92ee80cccdcf960d0ec722cff3fad45db442d16581448b691ce710350",
+      "b_r_task_sha256": "0b36e8ccd80d4739bd4b531518fbc298710f5792015747f0b8b30d7871530327",
+      "payload_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\attitude_physics_inertia_observer_20261025\\holdout_gate_inspection_v2\\pilot_payloads_bound_c5_v5\\DL1018_GHP7_G1_W00_FIXED_BOUND15_scene_payload.mat",
+      "payload_sha256": "7f9f15f18126671cf22e7b46a6d68ccf32ba0043c7d87fd9d68426f8078d03ef",
+      "limited_samples": 0
+    },
+    {
+      "scene_id": "DL1018_GHP7_G1_W12",
+      "seed": 2.060000012E+9,
+      "geometry_arm": "FIXED_BOUND15",
+      "r_task_sha256": "0b36e8ccd80d4739bd4b531518fbc298710f5792015747f0b8b30d7871530327",
+      "scene_audit_sha256": "1a62cbef6c45cdc3c860d8a4f21df66ba7c5d1a72cdc5c4b1aa5ea0d454d26be",
+      "b_r_task_sha256": "0b36e8ccd80d4739bd4b531518fbc298710f5792015747f0b8b30d7871530327",
+      "payload_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\attitude_physics_inertia_observer_20261025\\holdout_gate_inspection_v2\\pilot_payloads_bound_c5_v5\\DL1018_GHP7_G1_W12_FIXED_BOUND15_scene_payload.mat",
+      "payload_sha256": "438f0f393af843316c43288638eae7478166cc3d55389116a52a73ba0a1825e4",
+      "limited_samples": 0
+    },
+    {
+      "scene_id": "DL1018_GHP7_G2_W00",
+      "seed": 2.060001E+9,
+      "geometry_arm": "FIXED_BOUND15",
+      "r_task_sha256": "b97446fa12e2da21a2911ebacf6dcb2b2bd65acc1074b33a31b20310d4a10bfd",
+      "scene_audit_sha256": "5ed4c4fe56477db09b075ba9dd1e55c06080b6ba34ce43bccc0ca3f60e30dde6",
+      "b_r_task_sha256": "b97446fa12e2da21a2911ebacf6dcb2b2bd65acc1074b33a31b20310d4a10bfd",
+      "payload_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\attitude_physics_inertia_observer_20261025\\holdout_gate_inspection_v2\\pilot_payloads_bound_c5_v5\\DL1018_GHP7_G2_W00_FIXED_BOUND15_scene_payload.mat",
+      "payload_sha256": "63fb2faeb5154d5cffc198589ee332d62fc6a43a2ee68551fbc6d40ed716e353",
+      "limited_samples": 0
+    },
+    {
+      "scene_id": "DL1018_GHP7_G2_W12",
+      "seed": 2.060001012E+9,
+      "geometry_arm": "FIXED_BOUND15",
+      "r_task_sha256": "b97446fa12e2da21a2911ebacf6dcb2b2bd65acc1074b33a31b20310d4a10bfd",
+      "scene_audit_sha256": "989d53b279ff6a77eb899b48417b4b035d2cc3755a2292f92db109b153cca237",
+      "b_r_task_sha256": "b97446fa12e2da21a2911ebacf6dcb2b2bd65acc1074b33a31b20310d4a10bfd",
+      "payload_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\attitude_physics_inertia_observer_20261025\\holdout_gate_inspection_v2\\pilot_payloads_bound_c5_v5\\DL1018_GHP7_G2_W12_FIXED_BOUND15_scene_payload.mat",
+      "payload_sha256": "aac09591a822602b1677f6dcffcc96e2076fee45f8eda8b46e781a907914173c",
+      "limited_samples": 0
+    },
+    {
+      "scene_id": "DL1018_GHP7_G3_W00",
+      "seed": 2.060002E+9,
+      "geometry_arm": "FIXED_BOUND15",
+      "r_task_sha256": "d76894014dc7dbbe04476b5786ac49d79cd3af2224d334a99a2e0789bc5382cb",
+      "scene_audit_sha256": "c1f58b9ec7655192e6bfeadf982eea33b55f8d142adacf39dc138591ddbf0f09",
+      "b_r_task_sha256": "d76894014dc7dbbe04476b5786ac49d79cd3af2224d334a99a2e0789bc5382cb",
+      "payload_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\attitude_physics_inertia_observer_20261025\\holdout_gate_inspection_v2\\pilot_payloads_bound_c5_v5\\DL1018_GHP7_G3_W00_FIXED_BOUND15_scene_payload.mat",
+      "payload_sha256": "887b66995bf6bbdffc02cb1a097140ecaad9c0529611f6e633382bb854f00341",
+      "limited_samples": 0
+    },
+    {
+      "scene_id": "DL1018_GHP7_G3_W12",
+      "seed": 2.060002012E+9,
+      "geometry_arm": "FIXED_BOUND15",
+      "r_task_sha256": "d76894014dc7dbbe04476b5786ac49d79cd3af2224d334a99a2e0789bc5382cb",
+      "scene_audit_sha256": "00487a1570a25040ea058b4803071162b747bab2e3f9280e0accfabe6f7e2f8c",
+      "b_r_task_sha256": "d76894014dc7dbbe04476b5786ac49d79cd3af2224d334a99a2e0789bc5382cb",
+      "payload_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\attitude_physics_inertia_observer_20261025\\holdout_gate_inspection_v2\\pilot_payloads_bound_c5_v5\\DL1018_GHP7_G3_W12_FIXED_BOUND15_scene_payload.mat",
+      "payload_sha256": "fca74952d6d81e9cdb4ed5420f15e6310befa861ec991206e0530a6de0d00eda",
+      "limited_samples": 0
+    }
+  ]
+}

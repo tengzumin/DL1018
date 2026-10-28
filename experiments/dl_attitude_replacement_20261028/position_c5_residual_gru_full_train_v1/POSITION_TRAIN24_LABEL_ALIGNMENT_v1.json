@@ -1,0 +1,1969 @@
+{
+  "schema": "POSITION_TRAIN24_H5_VS_10MS_FINITE_DIFFERENCE_ALIGNMENT_V1",
+  "scope": "TRAIN24 B/POS_OFF only; no TEST, Plant, training, or inertia reconstruction",
+  "episode_count": 48,
+  "raw_aligned_episode_count": 27,
+  "raw_missing_episode_count": 21,
+  "scene_count": 24,
+  "raw_alignment_available_by_role": {
+    "B": 24,
+    "POS_OFF": 3
+  },
+  "raw_missing_by_role": {
+    "B": 0,
+    "POS_OFF": 21
+  },
+  "units": "m/s^2",
+  "event_indexing": {
+    "H5_plant_index": "1-based transition index; first=11,last=19991",
+    "raw_transition_column": "0-based HDF5 column = plant_index - 1; first=10,last=19990",
+    "interval": "10 transitions beginning at the event column; state velocity difference uses columns i and i+10",
+    "H5_event_time_equals_raw_transition_time_at_event": true
+  },
+  "finite_difference_formula": "(v[i+10]-v[i])/0.010 - mean(nominal_acceleration[:,i:i+10] - applied_acceleration[:,i:i+10])",
+  "pooled_stats": {
+    "bias_by_axis_mps2": [
+      9.137933527883861e-06,
+      -4.819226909500595e-06,
+      -2.5810635694973395e-05
+    ],
+    "rmse_by_axis_mps2": [
+      0.007382543974681073,
+      0.007731617028760769,
+      0.002329600637970455
+    ],
+    "abs_error_p95_by_axis_mps2": [
+      0.018083911049032002,
+      0.018369444833774447,
+      0.005484393648901239
+    ],
+    "corr_by_axis": [
+      0.9997636402100645,
+      0.9997634223221185,
+      0.9998183177878697
+    ],
+    "target_rms_by_axis_mps2": [
+      0.340520148400928,
+      0.3557945885187033,
+      0.12273605730476411
+    ],
+    "interval_target_rms_by_axis_mps2": [
+      0.3403206786301231,
+      0.3554904928102147,
+      0.12273389974693671
+    ],
+    "n_events": 53973
+  },
+  "pooled_stats_by_role": {
+    "B": {
+      "bias_by_axis_mps2": [
+        9.029203923886887e-06,
+        -9.08584877878312e-06,
+        -2.9358576370213254e-05
+      ],
+      "rmse_by_axis_mps2": [
+        0.007821314132730964,
+        0.00819151058609954,
+        0.0024681854491302095
+      ],
+      "abs_error_p95_by_axis_mps2": [
+        0.018890262701830723,
+        0.01941512081685423,
+        0.005851740107331131
+      ],
+      "corr_by_axis": [
+        0.9997246704833893,
+        0.9997299670045124,
+        0.9997916518464273
+      ],
+      "target_rms_by_axis_mps2": [
+        0.3337368789862832,
+        0.3524532279810232,
+        0.12137827391966792
+      ],
+      "interval_target_rms_by_axis_mps2": [
+        0.33350764326206733,
+        0.35210794987298655,
+        0.12137536791712167
+      ],
+      "n_events": 47976
+    },
+    "POS_OFF": {
+      "bias_by_axis_mps2": [
+        1.0007770359860014e-05,
+        2.9313748044760018e-05,
+        2.5728897069454883e-06
+      ],
+      "rmse_by_axis_mps2": [
+        0.001064876396603071,
+        0.0010928638786988412,
+        0.00032838529429088213
+      ],
+      "abs_error_p95_by_axis_mps2": [
+        0.002122962146598328,
+        0.0021975465686381083,
+        0.0007674689212491922
+      ],
+      "corr_by_axis": [
+        0.9999960580129089,
+        0.9999956252406197,
+        0.9999969068184859
+      ],
+      "target_rms_by_axis_mps2": [
+        0.39056793012082747,
+        0.38147330137087543,
+        0.13310061918233895
+      ],
+      "interval_target_rms_by_axis_mps2": [
+        0.3905697041702862,
+        0.38147260372925906,
+        0.1331039136452647
+      ],
+      "n_events": 5997
+    }
+  },
+  "global_TRAIN_raw_availability_by_role": {
+    "B": {
+      "episodes": 768,
+      "present": 768,
+      "missing": 0
+    },
+    "POS_OFF": {
+      "episodes": 768,
+      "present": 3,
+      "missing": 765
+    }
+  },
+  "episodes": [
+    {
+      "scene_id": "DL1018_TRAIN_T1_C00_W00",
+      "role": "B",
+      "run_id": "G02_P_TEACHER_DL1018_TRAIN_T1_C00_W00_B",
+      "raw_path": "data/raw/train/DL1018_TRAIN_T1_C00_W00/B/attempt_01/raw_run.mat",
+      "raw_status": "PRESENT_AND_ALIGNED",
+      "raw_sha256": "5f1221277f91b664958bc50c5b627f1ef1df40ebcb2eb32f310ea683d7a46236",
+      "position_event_path": "data/events/position/train/DL1018_TRAIN_T1_C00_W00/B.h5",
+      "position_event_sha256": "f678b3a09b575bec4292ab48690b03a88fa716d04ce7de6f3c4ddd39eeaba1c1",
+      "event_index_one_based_first_last": [
+        11,
+        19991
+      ],
+      "time_s_first_last": [
+        0.01,
+        19.99
+      ],
+      "finite_difference_definition": "(v(t+0.010)-v(t))/0.010 - mean_10ms(a_nominal-a_applied)",
+      "units": "m/s^2",
+      "stats": {
+        "bias_by_axis_mps2": [
+          1.7222488893269867e-05,
+          -2.2363846284490435e-06,
+          -4.450719685486892e-05
+        ],
+        "rmse_by_axis_mps2": [
+          0.0019206536761138414,
+          0.0002235753898069385,
+          0.0006286952528779263
+        ],
+        "abs_error_p95_by_axis_mps2": [
+          0.005069070999955491,
+          0.000508376157568019,
+          0.0012125421286217962
+        ],
+        "corr_by_axis": [
+          0.9999524263121536,
+          0.9999983415455165,
+          0.9999623710721888
+        ],
+        "target_rms_by_axis_mps2": [
+          0.6007271291911668,
+          0.03462249748427078,
+          0.19993322802115762
+        ],
+        "interval_target_rms_by_axis_mps2": [
+          0.6004874857922468,
+          0.034407991216148744,
+          0.19996754318924323
+        ],
+        "n_events": 1999
+      }
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T1_C00_W00",
+      "role": "POS_OFF",
+      "run_id": "G02_P_TEACHER_DL1018_TRAIN_T1_C00_W00_POS_OFF",
+      "raw_path": "data/raw/train/DL1018_TRAIN_T1_C00_W00/POS_OFF/attempt_01/raw_run.mat",
+      "raw_status": "PRESENT_AND_ALIGNED",
+      "raw_sha256": "313bb4d72781d5b6ed93cb08c5ff30746ed4f6c2f878246451db6fd340a2f3d5",
+      "position_event_path": "data/events/position/train/DL1018_TRAIN_T1_C00_W00/POS_OFF.h5",
+      "position_event_sha256": "240bd935ec727135fbed46fbfaca979d050685dada941d79e4eff768a3416578",
+      "event_index_one_based_first_last": [
+        11,
+        19991
+      ],
+      "time_s_first_last": [
+        0.01,
+        19.99
+      ],
+      "finite_difference_definition": "(v(t+0.010)-v(t))/0.010 - mean_10ms(a_nominal-a_applied)",
+      "units": "m/s^2",
+      "stats": {
+        "bias_by_axis_mps2": [
+          6.695584256019022e-05,
+          1.6679321444643385e-06,
+          -1.9116939952712505e-05
+        ],
+        "rmse_by_axis_mps2": [
+          0.0015129919540081511,
+          0.00021599181045296636,
+          0.0005087359113230031
+        ],
+        "abs_error_p95_by_axis_mps2": [
+          0.002405699079313106,
+          0.00047471223699404317,
+          0.0009582147519998416
+        ],
+        "corr_by_axis": [
+          0.9999644773515173,
+          0.999992599445769,
+          0.9999732904556592
+        ],
+        "target_rms_by_axis_mps2": [
+          0.6001008140568603,
+          0.035106474283534375,
+          0.19806570424053174
+        ],
+        "interval_target_rms_by_axis_mps2": [
+          0.6001134902608235,
+          0.03493775864753057,
+          0.19806892945584295
+        ],
+        "n_events": 1999
+      }
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T1_C00_W09",
+      "role": "B",
+      "run_id": "G02_P_TEACHER_DL1018_TRAIN_T1_C00_W09_B",
+      "raw_path": "data/raw/train/DL1018_TRAIN_T1_C00_W09/B/attempt_01/raw_run.mat",
+      "raw_status": "PRESENT_AND_ALIGNED",
+      "raw_sha256": "ba2b5b318e7ef7fa0734edf983966dfd8d5077de04a4516cd46fd9e39c358bf8",
+      "position_event_path": "data/events/position/train/DL1018_TRAIN_T1_C00_W09/B.h5",
+      "position_event_sha256": "14412ee38a02b184de10cd19402d65f745cb92a2b0c6dde157eaec79036f5ef5",
+      "event_index_one_based_first_last": [
+        11,
+        19991
+      ],
+      "time_s_first_last": [
+        0.01,
+        19.99
+      ],
+      "finite_difference_definition": "(v(t+0.010)-v(t))/0.010 - mean_10ms(a_nominal-a_applied)",
+      "units": "m/s^2",
+      "stats": {
+        "bias_by_axis_mps2": [
+          -4.823179730415324e-06,
+          5.66753738810915e-06,
+          -9.786435703557237e-06
+        ],
+        "rmse_by_axis_mps2": [
+          0.007822780038738677,
+          0.007199501948256096,
+          0.00042071658078432494
+        ],
+        "abs_error_p95_by_axis_mps2": [
+          0.014513720381418594,
+          0.013462801174817542,
+          0.0008897171838036612
+        ],
+        "corr_by_axis": [
+          0.9979129615531711,
+          0.9978774634753225,
+          0.9991233641034273
+        ],
+        "target_rms_by_axis_mps2": [
+          0.3404905107556408,
+          0.30799931522799007,
+          0.01410472569219609
+        ],
+        "interval_target_rms_by_axis_mps2": [
+          0.3403440274638552,
+          0.30785682066873093,
+          0.014076574979010048
+        ],
+        "n_events": 1999
+      }
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T1_C00_W09",
+      "role": "POS_OFF",
+      "run_id": "G02_P_TEACHER_DL1018_TRAIN_T1_C00_W09_POS_OFF",
+      "raw_path": "data/raw/train/DL1018_TRAIN_T1_C00_W09/POS_OFF/attempt_01/raw_run.mat",
+      "raw_status": "MISSING_ON_DISK",
+      "position_event_path": "data/events/position/train/DL1018_TRAIN_T1_C00_W09/POS_OFF.h5",
+      "position_event_sha256": "c3f1606d7aaa5acbfd971c0e02ba856900b0d168480a4e419eefc0e96b40cd8e",
+      "event_index_one_based_first_last": [
+        11,
+        19991
+      ],
+      "time_s_first_last": [
+        0.01,
+        19.99
+      ],
+      "units": "m/s^2",
+      "stats": null
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T1_C00_W12",
+      "role": "B",
+      "run_id": "G02_P_TEACHER_DL1018_TRAIN_T1_C00_W12_B",
+      "raw_path": "data/raw/train/DL1018_TRAIN_T1_C00_W12/B/attempt_01/raw_run.mat",
+      "raw_status": "PRESENT_AND_ALIGNED",
+      "raw_sha256": "cf3067febd023ac3de0f8a7e839a7625f423fc0e3ebc74113adef0e86deb5524",
+      "position_event_path": "data/events/position/train/DL1018_TRAIN_T1_C00_W12/B.h5",
+      "position_event_sha256": "f7e217ad313473a25b6165cc61d7d2394ba502bf056ae42920372fa44b228eee",
+      "event_index_one_based_first_last": [
+        11,
+        19991
+      ],
+      "time_s_first_last": [
+        0.01,
+        19.99
+      ],
+      "finite_difference_definition": "(v(t+0.010)-v(t))/0.010 - mean_10ms(a_nominal-a_applied)",
+      "units": "m/s^2",
+      "stats": {
+        "bias_by_axis_mps2": [
+          6.883830266010472e-05,
+          -3.943536062993212e-06,
+          -6.892612758980357e-05
+        ],
+        "rmse_by_axis_mps2": [
+          0.020083100761630262,
+          0.000328895001793213,
+          0.005781972577622776
+        ],
+        "abs_error_p95_by_axis_mps2": [
+          0.03808286048152913,
+          0.0007034110678818536,
+          0.010883636413029607
+        ],
+        "corr_by_axis": [
+          0.9942389668668461,
+          0.999973386282063,
+          0.995830161000658
+        ],
+        "target_rms_by_axis_mps2": [
+          0.6000971644550941,
+          0.034641816507681944,
+          0.19164596004066464
+        ],
+        "interval_target_rms_by_axis_mps2": [
+          0.5999812562749074,
+          0.03443038512726727,
+          0.19165540919166696
+        ],
+        "n_events": 1999
+      }
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T1_C00_W12",
+      "role": "POS_OFF",
+      "run_id": "G02_P_TEACHER_DL1018_TRAIN_T1_C00_W12_POS_OFF",
+      "raw_path": "data/raw/train/DL1018_TRAIN_T1_C00_W12/POS_OFF/attempt_01/raw_run.mat",
+      "raw_status": "MISSING_ON_DISK",
+      "position_event_path": "data/events/position/train/DL1018_TRAIN_T1_C00_W12/POS_OFF.h5",
+      "position_event_sha256": "cb9e777c64634cfb3aeae3bafab395c2fcdfe1ae8eb949b37d5b52a38473a2f3",
+      "event_index_one_based_first_last": [
+        11,
+        19991
+      ],
+      "time_s_first_last": [
+        0.01,
+        19.99
+      ],
+      "units": "m/s^2",
+      "stats": null
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T1_C00_W15",
+      "role": "B",
+      "run_id": "G02_P_TEACHER_DL1018_TRAIN_T1_C00_W15_B",
+      "raw_path": "data/raw/train/DL1018_TRAIN_T1_C00_W15/B/attempt_01/raw_run.mat",
+      "raw_status": "PRESENT_AND_ALIGNED",
+      "raw_sha256": "56ee8155130cd3b5d6232b2571eefa3c64bbec0eed998b5f7aa4065ba83be451",
+      "position_event_path": "data/events/position/train/DL1018_TRAIN_T1_C00_W15/B.h5",
+      "position_event_sha256": "87437550befa59143f4a493b47dc9460c18cebc39eeda8adf2ffd294b474286c",
+      "event_index_one_based_first_last": [
+        11,
+        19991
+      ],
+      "time_s_first_last": [
+        0.01,
+        19.99
+      ],
+      "finite_difference_definition": "(v(t+0.010)-v(t))/0.010 - mean_10ms(a_nominal-a_applied)",
+      "units": "m/s^2",
+      "stats": {
+        "bias_by_axis_mps2": [
+          -1.3836686300787652e-07,
+          5.301794482059099e-07,
+          9.56115369471926e-06
+        ],
+        "rmse_by_axis_mps2": [
+          0.00021089822459265098,
+          0.00021548760808964422,
+          1.5742986903197896e-05
+        ],
+        "abs_error_p95_by_axis_mps2": [
+          0.0004777055550119089,
+          0.0004842483514600745,
+          3.4159725832531675e-05
+        ],
+        "corr_by_axis": [
+          0.9999997770886159,
+          0.999999216592223,
+          0.9999265862728756
+        ],
+        "target_rms_by_axis_mps2": [
+          0.03413794848229645,
+          0.03463806133355376,
+          0.0007669535745714598
+        ],
+        "interval_target_rms_by_axis_mps2": [
+          0.03392828542262249,
+          0.03442695447214058,
+          0.0007548127221200844
+        ],
+        "n_events": 1999
+      }
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T1_C00_W15",
+      "role": "POS_OFF",
+      "run_id": "G02_P_TEACHER_DL1018_TRAIN_T1_C00_W15_POS_OFF",
+      "raw_path": "data/raw/train/DL1018_TRAIN_T1_C00_W15/POS_OFF/attempt_01/raw_run.mat",
+      "raw_status": "MISSING_ON_DISK",
+      "position_event_path": "data/events/position/train/DL1018_TRAIN_T1_C00_W15/POS_OFF.h5",
+      "position_event_sha256": "e4fc49a0099aab8ee93fdc1b3b69c8a167528439abf399368b6d1baa580713b1",
+      "event_index_one_based_first_last": [
+        11,
+        19991
+      ],
+      "time_s_first_last": [
+        0.01,
+        19.99
+      ],
+      "units": "m/s^2",
+      "stats": null
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T1_C15_W00",
+      "role": "B",
+      "run_id": "G02_P_TEACHER_DL1018_TRAIN_T1_C15_W00_B",
+      "raw_path": "data/raw/train/DL1018_TRAIN_T1_C15_W00/B/attempt_01/raw_run.mat",
+      "raw_status": "PRESENT_AND_ALIGNED",
+      "raw_sha256": "f519476ac897439ed066fb8412b975a8a6e4ff7772500accdab3a82d6c65e3f9",
+      "position_event_path": "data/events/position/train/DL1018_TRAIN_T1_C15_W00/B.h5",
+      "position_event_sha256": "688352cb80c070b1410de2c24e2c167c22fb0542552e9a312c9496cc5efbbdeb",
+      "event_index_one_based_first_last": [
+        11,
+        19991
+      ],
+      "time_s_first_last": [
+        0.01,
+        19.99
+      ],
+      "finite_difference_definition": "(v(t+0.010)-v(t))/0.010 - mean_10ms(a_nominal-a_applied)",
+      "units": "m/s^2",
+      "stats": {
+        "bias_by_axis_mps2": [
+          -2.8815227643148202e-05,
+          -1.959916402663335e-05,
+          -9.504515136868314e-05
+        ],
+        "rmse_by_axis_mps2": [
+          0.002418141742572676,
+          0.0021366197898334046,
+          0.0008025033502227247
+        ],
+        "abs_error_p95_by_axis_mps2": [
+          0.005357257668468088,
+          0.005360575523260833,
+          0.0015870131144473205
+        ],
+        "corr_by_axis": [
+          0.999855230025381,
+          0.9999484216664093,
+          0.9999699586912123
+        ],
+        "target_rms_by_axis_mps2": [
+          0.3404411920224827,
+          0.33982013772049835,
+          0.22254013754800747
+        ],
+        "interval_target_rms_by_axis_mps2": [
+          0.34010509703997327,
+          0.3393469938781897,
+          0.22261252449875982
+        ],
+        "n_events": 1999
+      }
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T1_C15_W00",
+      "role": "POS_OFF",
+      "run_id": "G02_P_TEACHER_DL1018_TRAIN_T1_C15_W00_POS_OFF",
+      "raw_path": "data/raw/train/DL1018_TRAIN_T1_C15_W00/POS_OFF/attempt_01/raw_run.mat",
+      "raw_status": "MISSING_ON_DISK",
+      "position_event_path": "data/events/position/train/DL1018_TRAIN_T1_C15_W00/POS_OFF.h5",
+      "position_event_sha256": "21b7c8db80df8ccc65be2f70fb2039a52e9b66d7557e5ab841183610b947faef",
+      "event_index_one_based_first_last": [
+        11,
+        19991
+      ],
+      "time_s_first_last": [
+        0.01,
+        19.99
+      ],
+      "units": "m/s^2",
+      "stats": null
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T1_C15_W09",
+      "role": "B",
+      "run_id": "G02_P_TEACHER_DL1018_TRAIN_T1_C15_W09_B",
+      "raw_path": "data/raw/train/DL1018_TRAIN_T1_C15_W09/B/attempt_01/raw_run.mat",
+      "raw_status": "PRESENT_AND_ALIGNED",
+      "raw_sha256": "683c585abaa65942b04c5b3df4f087faa2bd78053dba150809194b497f26bb18",
+      "position_event_path": "data/events/position/train/DL1018_TRAIN_T1_C15_W09/B.h5",
+      "position_event_sha256": "1ada3c8c63265cdd66cd3c4f65d1590e61b555c1a754a772665a313fe1b47ad1",
+      "event_index_one_based_first_last": [
+        11,
+        19991
+      ],
+      "time_s_first_last": [
+        0.01,
+        19.99
+      ],
+      "finite_difference_definition": "(v(t+0.010)-v(t))/0.010 - mean_10ms(a_nominal-a_applied)",
+      "units": "m/s^2",
+      "stats": {
+        "bias_by_axis_mps2": [
+          -5.8957481320413625e-05,
+          1.6909611610538537e-06,
+          -4.8029040467426445e-05
+        ],
+        "rmse_by_axis_mps2": [
+          0.01577067975590246,
+          0.0027079757490320964,
+          0.0008699680108225442
+        ],
+        "abs_error_p95_by_axis_mps2": [
+          0.028793234842613265,
+          0.006462651896946419,
+          0.0018328942856375857
+        ],
+        "corr_by_axis": [
+          0.9982445893947824,
+          0.9997891743229198,
+          0.9991456500143637
+        ],
+        "target_rms_by_axis_mps2": [
+          0.6502409351021283,
+          0.12295517136094372,
+          0.03067713168664043
+        ],
+        "interval_target_rms_by_axis_mps2": [
+          0.6499519527028994,
+          0.12193599378006517,
+          0.03058073413645487
+        ],
+        "n_events": 1999
+      }
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T1_C15_W09",
+      "role": "POS_OFF",
+      "run_id": "G02_P_TEACHER_DL1018_TRAIN_T1_C15_W09_POS_OFF",
+      "raw_path": "data/raw/train/DL1018_TRAIN_T1_C15_W09/POS_OFF/attempt_01/raw_run.mat",
+      "raw_status": "MISSING_ON_DISK",
+      "position_event_path": "data/events/position/train/DL1018_TRAIN_T1_C15_W09/POS_OFF.h5",
+      "position_event_sha256": "3ff611d92ec0c4183ac1bd9cde538ac0452896b5faf8d09405ad047aab85a9fb",
+      "event_index_one_based_first_last": [
+        11,
+        19991
+      ],
+      "time_s_first_last": [
+        0.01,
+        19.99
+      ],
+      "units": "m/s^2",
+      "stats": null
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T1_C15_W12",
+      "role": "B",
+      "run_id": "G02_P_TEACHER_DL1018_TRAIN_T1_C15_W12_B",
+      "raw_path": "data/raw/train/DL1018_TRAIN_T1_C15_W12/B/attempt_01/raw_run.mat",
+      "raw_status": "PRESENT_AND_ALIGNED",
+      "raw_sha256": "14da718429bd53343d5e5516c98732cbc70cfd2cd4bdb3026370989efde7ed0c",
+      "position_event_path": "data/events/position/train/DL1018_TRAIN_T1_C15_W12/B.h5",
+      "position_event_sha256": "2d280f5118b906390a373ea355ca8a046e0dd83c151df1f5d4f337089902acc3",
+      "event_index_one_based_first_last": [
+        11,
+        19991
+      ],
+      "time_s_first_last": [
+        0.01,
+        19.99
+      ],
+      "finite_difference_definition": "(v(t+0.010)-v(t))/0.010 - mean_10ms(a_nominal-a_applied)",
+      "units": "m/s^2",
+      "stats": {
+        "bias_by_axis_mps2": [
+          -1.2436002868491476e-06,
+          8.418300437707024e-06,
+          -5.9524650631665035e-05
+        ],
+        "rmse_by_axis_mps2": [
+          0.011805036352674403,
+          0.011233101254290393,
+          0.006443367261714995
+        ],
+        "abs_error_p95_by_axis_mps2": [
+          0.022374244682945695,
+          0.021401643886931214,
+          0.012253240525019676
+        ],
+        "corr_by_axis": [
+          0.9967052891688777,
+          0.997826301286475,
+          0.9971263954447738
+        ],
+        "target_rms_by_axis_mps2": [
+          0.3495094820573996,
+          0.33009952523103686,
+          0.2128854703376989
+        ],
+        "interval_target_rms_by_axis_mps2": [
+          0.3492288137858667,
+          0.3297818470104807,
+          0.21287541361133996
+        ],
+        "n_events": 1999
+      }
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T1_C15_W12",
+      "role": "POS_OFF",
+      "run_id": "G02_P_TEACHER_DL1018_TRAIN_T1_C15_W12_POS_OFF",
+      "raw_path": "data/raw/train/DL1018_TRAIN_T1_C15_W12/POS_OFF/attempt_01/raw_run.mat",
+      "raw_status": "MISSING_ON_DISK",
+      "position_event_path": "data/events/position/train/DL1018_TRAIN_T1_C15_W12/POS_OFF.h5",
+      "position_event_sha256": "c0ee8447776bc93af773f57dbec11278766ba35570d840a40074c63ff5fe52f6",
+      "event_index_one_based_first_last": [
+        11,
+        19991
+      ],
+      "time_s_first_last": [
+        0.01,
+        19.99
+      ],
+      "units": "m/s^2",
+      "stats": null
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T1_C15_W15",
+      "role": "B",
+      "run_id": "G02_P_TEACHER_DL1018_TRAIN_T1_C15_W15_B",
+      "raw_path": "data/raw/train/DL1018_TRAIN_T1_C15_W15/B/attempt_01/raw_run.mat",
+      "raw_status": "PRESENT_AND_ALIGNED",
+      "raw_sha256": "6facee4c95e33486cb244f9bdb44b73cc2ed141dac27ec91aba6b53e4639c904",
+      "position_event_path": "data/events/position/train/DL1018_TRAIN_T1_C15_W15/B.h5",
+      "position_event_sha256": "539a270d2774e5f51a6c21e4e7da0ccbbcf25339493af9a7ab85cfa2bc0989ed",
+      "event_index_one_based_first_last": [
+        11,
+        19991
+      ],
+      "time_s_first_last": [
+        0.01,
+        19.99
+      ],
+      "finite_difference_definition": "(v(t+0.010)-v(t))/0.010 - mean_10ms(a_nominal-a_applied)",
+      "units": "m/s^2",
+      "stats": {
+        "bias_by_axis_mps2": [
+          -2.171406546141024e-07,
+          6.738258284709881e-07,
+          1.6482540265337026e-06
+        ],
+        "rmse_by_axis_mps2": [
+          0.0012019697961157096,
+          0.0017431337652556492,
+          8.209729429930984e-05
+        ],
+        "abs_error_p95_by_axis_mps2": [
+          0.0029449580239362338,
+          0.004485393671378982,
+          0.00023099531598582052
+        ],
+        "corr_by_axis": [
+          0.9999732311293447,
+          0.9998516758895815,
+          0.999934574138459
+        ],
+        "target_rms_by_axis_mps2": [
+          0.15159847493336642,
+          0.08715442878020452,
+          0.007172287196271995
+        ],
+        "interval_target_rms_by_axis_mps2": [
+          0.15109742874112672,
+          0.08625496015364587,
+          0.007157710982155463
+        ],
+        "n_events": 1999
+      }
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T1_C15_W15",
+      "role": "POS_OFF",
+      "run_id": "G02_P_TEACHER_DL1018_TRAIN_T1_C15_W15_POS_OFF",
+      "raw_path": "data/raw/train/DL1018_TRAIN_T1_C15_W15/POS_OFF/attempt_01/raw_run.mat",
+      "raw_status": "MISSING_ON_DISK",
+      "position_event_path": "data/events/position/train/DL1018_TRAIN_T1_C15_W15/POS_OFF.h5",
+      "position_event_sha256": "ed5267f252a1638f8eb42ba986820e0152a621e177adf7657425ab7e6267e53c",
+      "event_index_one_based_first_last": [
+        11,
+        19991
+      ],
+      "time_s_first_last": [
+        0.01,
+        19.99
+      ],
+      "units": "m/s^2",
+      "stats": null
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T2_C00_W00",
+      "role": "B",
+      "run_id": "G02_P_TEACHER_DL1018_TRAIN_T2_C00_W00_B",
+      "raw_path": "data/raw/train/DL1018_TRAIN_T2_C00_W00/B/attempt_01/raw_run.mat",
+      "raw_status": "PRESENT_AND_ALIGNED",
+      "raw_sha256": "1d0dfa4663a1b05cb38a13ac605c4885ce1974a88703a947a013b33ecdcdfc70",
+      "position_event_path": "data/events/position/train/DL1018_TRAIN_T2_C00_W00/B.h5",
+      "position_event_sha256": "8ea9c62b03da04a435d211fe2b8b16acaa1c27917d3d4338b723273ffa67a3f2",
+      "event_index_one_based_first_last": [
+        11,
+        19991
+      ],
+      "time_s_first_last": [
+        0.01,
+        19.99
+      ],
+      "finite_difference_definition": "(v(t+0.010)-v(t))/0.010 - mean_10ms(a_nominal-a_applied)",
+      "units": "m/s^2",
+      "stats": {
+        "bias_by_axis_mps2": [
+          1.7396514203866116e-05,
+          -2.223896601346196e-05,
+          -2.1221621440287493e-05
+        ],
+        "rmse_by_axis_mps2": [
+          0.0008156677222657628,
+          0.001924954389844782,
+          0.00021138300621924327
+        ],
+        "abs_error_p95_by_axis_mps2": [
+          0.0017681216337402097,
+          0.004166834466941513,
+          0.0004108608110639815
+        ],
+        "corr_by_axis": [
+          0.9999760777184207,
+          0.9999069178007072,
+          0.9999824987603775
+        ],
+        "target_rms_by_axis_mps2": [
+          0.3097275966366956,
+          0.2942665515241536,
+          0.11393086843937482
+        ],
+        "interval_target_rms_by_axis_mps2": [
+          0.30957138702660125,
+          0.293829104204906,
+          0.1138832525497588
+        ],
+        "n_events": 1999
+      }
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T2_C00_W00",
+      "role": "POS_OFF",
+      "run_id": "G02_P_TEACHER_DL1018_TRAIN_T2_C00_W00_POS_OFF",
+      "raw_path": "data/raw/train/DL1018_TRAIN_T2_C00_W00/POS_OFF/attempt_01/raw_run.mat",
+      "raw_status": "PRESENT_AND_ALIGNED",
+      "raw_sha256": "031ce2eee09845d71e2b2404469ecfd1552cf586da98d08c86e8e29c6143bcda",
+      "position_event_path": "data/events/position/train/DL1018_TRAIN_T2_C00_W00/POS_OFF.h5",
+      "position_event_sha256": "7fdcb6cb4330d483e6e7169cf15418d467eb112eeb37b5d245a7af601afefba9",
+      "event_index_one_based_first_last": [
+        11,
+        19991
+      ],
+      "time_s_first_last": [
+        0.01,
+        19.99
+      ],
+      "finite_difference_definition": "(v(t+0.010)-v(t))/0.010 - mean_10ms(a_nominal-a_applied)",
+      "units": "m/s^2",
+      "stats": {
+        "bias_by_axis_mps2": [
+          -3.913124333724101e-05,
+          -4.5016055718670865e-05,
+          2.021228721158124e-05
+        ],
+        "rmse_by_axis_mps2": [
+          0.0007770615717690385,
+          0.0007629172218129918,
+          0.00022742392496623103
+        ],
+        "abs_error_p95_by_axis_mps2": [
+          0.0013572219361298154,
+          0.0014269036229448417,
+          0.00039013751473286054
+        ],
+        "corr_by_axis": [
+          0.9999718165274055,
+          0.999978665657402,
+          0.9999766048723248
+        ],
+        "target_rms_by_axis_mps2": [
+          0.310188657133863,
+          0.29513491320626134,
+          0.1141602451228853
+        ],
+        "interval_target_rms_by_axis_mps2": [
+          0.31019042110081935,
+          0.2950802314253497,
+          0.11416556111155893
+        ],
+        "n_events": 1999
+      }
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T2_C00_W09",
+      "role": "B",
+      "run_id": "G02_P_TEACHER_DL1018_TRAIN_T2_C00_W09_B",
+      "raw_path": "data/raw/train/DL1018_TRAIN_T2_C00_W09/B/attempt_01/raw_run.mat",
+      "raw_status": "PRESENT_AND_ALIGNED",
+      "raw_sha256": "fdeeb7ab31011a8c3ee773da9361488264ba6ef15e34d0fa0f7604ca0c6cd51c",
+      "position_event_path": "data/events/position/train/DL1018_TRAIN_T2_C00_W09/B.h5",
+      "position_event_sha256": "598d079bc6a490f0db72d98259b0999d2538aca7381bba834a73edc80e7dfa2b",
+      "event_index_one_based_first_last": [
+        11,
+        19991
+      ],
+      "time_s_first_last": [
+        0.01,
+        19.99
+      ],
+      "finite_difference_definition": "(v(t+0.010)-v(t))/0.010 - mean_10ms(a_nominal-a_applied)",
+      "units": "m/s^2",
+      "stats": {
+        "bias_by_axis_mps2": [
+          7.527070130332915e-05,
+          -2.7249369126079742e-05,
+          -6.216989844605805e-05
+        ],
+        "rmse_by_axis_mps2": [
+          0.013914696002956025,
+          0.0017708323045531335,
+          0.0028659289295462406
+        ],
+        "abs_error_p95_by_axis_mps2": [
+          0.02670351246729384,
+          0.004031817487998146,
+          0.005501138998252822
+        ],
+        "corr_by_axis": [
+          0.9978990608028444,
+          0.9999796585119972,
+          0.9989162637019564
+        ],
+        "target_rms_by_axis_mps2": [
+          0.5955458410203487,
+          0.06961438257365361,
+          0.1780538242192525
+        ],
+        "interval_target_rms_by_axis_mps2": [
+          0.5952362865840318,
+          0.06789955982324869,
+          0.1780798898084237
+        ],
+        "n_events": 1999
+      }
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T2_C00_W09",
+      "role": "POS_OFF",
+      "run_id": "G02_P_TEACHER_DL1018_TRAIN_T2_C00_W09_POS_OFF",
+      "raw_path": "data/raw/train/DL1018_TRAIN_T2_C00_W09/POS_OFF/attempt_01/raw_run.mat",
+      "raw_status": "MISSING_ON_DISK",
+      "position_event_path": "data/events/position/train/DL1018_TRAIN_T2_C00_W09/POS_OFF.h5",
+      "position_event_sha256": "5ed16ac281ade39402af67fbb26470c948155c3bc3c2d484c1471ea3909b9972",
+      "event_index_one_based_first_last": [
+        11,
+        19991
+      ],
+      "time_s_first_last": [
+        0.01,
+        19.99
+      ],
+      "units": "m/s^2",
+      "stats": null
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T2_C00_W12",
+      "role": "B",
+      "run_id": "G02_P_TEACHER_DL1018_TRAIN_T2_C00_W12_B",
+      "raw_path": "data/raw/train/DL1018_TRAIN_T2_C00_W12/B/attempt_01/raw_run.mat",
+      "raw_status": "PRESENT_AND_ALIGNED",
+      "raw_sha256": "77eb581b3a0d7498c83ef647ccb490c750f9aaecc30fa4da83b47fd03050d7d8",
+      "position_event_path": "data/events/position/train/DL1018_TRAIN_T2_C00_W12/B.h5",
+      "position_event_sha256": "a36a2a930b4b34b30fa6743cc92b14a5eef0bec288a46629b734f28105ef21d3",
+      "event_index_one_based_first_last": [
+        11,
+        19991
+      ],
+      "time_s_first_last": [
+        0.01,
+        19.99
+      ],
+      "finite_difference_definition": "(v(t+0.010)-v(t))/0.010 - mean_10ms(a_nominal-a_applied)",
+      "units": "m/s^2",
+      "stats": {
+        "bias_by_axis_mps2": [
+          4.0848440220899575e-05,
+          2.8340451065929086e-07,
+          -1.4970206649829873e-05
+        ],
+        "rmse_by_axis_mps2": [
+          0.010347469196234577,
+          0.009866878539184947,
+          0.0038242456989555497
+        ],
+        "abs_error_p95_by_axis_mps2": [
+          0.019743652789708424,
+          0.018786155512752544,
+          0.007268323004636287
+        ],
+        "corr_by_axis": [
+          0.9943448638240451,
+          0.9946990625290324,
+          0.9948110068494673
+        ],
+        "target_rms_by_axis_mps2": [
+          0.3065108519786264,
+          0.288187675254335,
+          0.1170238257144419
+        ],
+        "interval_target_rms_by_axis_mps2": [
+          0.3063661164166354,
+          0.2879098227763963,
+          0.11696779260462899
+        ],
+        "n_events": 1999
+      }
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T2_C00_W12",
+      "role": "POS_OFF",
+      "run_id": "G02_P_TEACHER_DL1018_TRAIN_T2_C00_W12_POS_OFF",
+      "raw_path": "data/raw/train/DL1018_TRAIN_T2_C00_W12/POS_OFF/attempt_01/raw_run.mat",
+      "raw_status": "MISSING_ON_DISK",
+      "position_event_path": "data/events/position/train/DL1018_TRAIN_T2_C00_W12/POS_OFF.h5",
+      "position_event_sha256": "0bbfbef5d2fb1d1e9ca9faf15d14cf48ab7ebd6405609b9a05e330db75596f7e",
+      "event_index_one_based_first_last": [
+        11,
+        19991
+      ],
+      "time_s_first_last": [
+        0.01,
+        19.99
+      ],
+      "units": "m/s^2",
+      "stats": null
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T2_C00_W15",
+      "role": "B",
+      "run_id": "G02_P_TEACHER_DL1018_TRAIN_T2_C00_W15_B",
+      "raw_path": "data/raw/train/DL1018_TRAIN_T2_C00_W15/B/attempt_01/raw_run.mat",
+      "raw_status": "PRESENT_AND_ALIGNED",
+      "raw_sha256": "847a47c2838af6d39a6adb23dfca39b4cd9517b6a8f107bb0a6ada82b3437017",
+      "position_event_path": "data/events/position/train/DL1018_TRAIN_T2_C00_W15/B.h5",
+      "position_event_sha256": "2987ab2ab87604109866e31aa26e739cd33c48f3cf9dd7d4cb1a6257888a4505",
+      "event_index_one_based_first_last": [
+        11,
+        19991
+      ],
+      "time_s_first_last": [
+        0.01,
+        19.99
+      ],
+      "finite_difference_definition": "(v(t+0.010)-v(t))/0.010 - mean_10ms(a_nominal-a_applied)",
+      "units": "m/s^2",
+      "stats": {
+        "bias_by_axis_mps2": [
+          5.124596465599415e-06,
+          -3.009394888201785e-05,
+          -1.572134333321945e-05
+        ],
+        "rmse_by_axis_mps2": [
+          9.877998144775455e-05,
+          0.0017561180048450114,
+          0.0001269629375378074
+        ],
+        "abs_error_p95_by_axis_mps2": [
+          0.0001891022863688488,
+          0.00391111820728626,
+          0.0003067236368871406
+        ],
+        "corr_by_axis": [
+          0.9999972373763263,
+          0.9999639305326902,
+          0.9998957092659144
+        ],
+        "target_rms_by_axis_mps2": [
+          0.01468269308652088,
+          0.06940188103712548,
+          0.005005357436629414
+        ],
+        "interval_target_rms_by_axis_mps2": [
+          0.014590327081972058,
+          0.06774511109222833,
+          0.0049018610865176684
+        ],
+        "n_events": 1999
+      }
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T2_C00_W15",
+      "role": "POS_OFF",
+      "run_id": "G02_P_TEACHER_DL1018_TRAIN_T2_C00_W15_POS_OFF",
+      "raw_path": "data/raw/train/DL1018_TRAIN_T2_C00_W15/POS_OFF/attempt_01/raw_run.mat",
+      "raw_status": "MISSING_ON_DISK",
+      "position_event_path": "data/events/position/train/DL1018_TRAIN_T2_C00_W15/POS_OFF.h5",
+      "position_event_sha256": "90f07b9f8ed9992d3616fec40372850297afaf863d9bd86a3fcb20fedecf6021",
+      "event_index_one_based_first_last": [
+        11,
+        19991
+      ],
+      "time_s_first_last": [
+        0.01,
+        19.99
+      ],
+      "units": "m/s^2",
+      "stats": null
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T2_C15_W00",
+      "role": "B",
+      "run_id": "G02_P_TEACHER_DL1018_TRAIN_T2_C15_W00_B",
+      "raw_path": "data/raw/train/DL1018_TRAIN_T2_C15_W00/B/attempt_01/raw_run.mat",
+      "raw_status": "PRESENT_AND_ALIGNED",
+      "raw_sha256": "f023453a0ad7e9c5286b20fe8acae373aa0cfb504fa94d206fdd3fcea0ca2412",
+      "position_event_path": "data/events/position/train/DL1018_TRAIN_T2_C15_W00/B.h5",
+      "position_event_sha256": "2b613a6215304b57855d0a0b9559b3e6ad9d07338c2fe16af45be1d24db6e1dd",
+      "event_index_one_based_first_last": [
+        11,
+        19991
+      ],
+      "time_s_first_last": [
+        0.01,
+        19.99
+      ],
+      "finite_difference_definition": "(v(t+0.010)-v(t))/0.010 - mean_10ms(a_nominal-a_applied)",
+      "units": "m/s^2",
+      "stats": {
+        "bias_by_axis_mps2": [
+          4.329355230913151e-06,
+          -7.633083223635406e-05,
+          -2.8859164020002752e-05
+        ],
+        "rmse_by_axis_mps2": [
+          0.001841926805445636,
+          0.0032643971557671926,
+          0.0004373880046707128
+        ],
+        "abs_error_p95_by_axis_mps2": [
+          0.004722478912926292,
+          0.006577832458476983,
+          0.0009813438570939303
+        ],
+        "corr_by_axis": [
+          0.999911160449502,
+          0.999931707680814,
+          0.9999800896000263
+        ],
+        "target_rms_by_axis_mps2": [
+          0.13588852982699925,
+          0.6292415107882956,
+          0.15130343513327124
+        ],
+        "interval_target_rms_by_axis_mps2": [
+          0.13544026864942782,
+          0.628694151526148,
+          0.151257603622361
+        ],
+        "n_events": 1999
+      }
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T2_C15_W00",
+      "role": "POS_OFF",
+      "run_id": "G02_P_TEACHER_DL1018_TRAIN_T2_C15_W00_POS_OFF",
+      "raw_path": "data/raw/train/DL1018_TRAIN_T2_C15_W00/POS_OFF/attempt_01/raw_run.mat",
+      "raw_status": "MISSING_ON_DISK",
+      "position_event_path": "data/events/position/train/DL1018_TRAIN_T2_C15_W00/POS_OFF.h5",
+      "position_event_sha256": "a6c0b6d84f48a7bbb007b86d88a0b95b7cda68c545a83ec79ba3d0037f0026de",
+      "event_index_one_based_first_last": [
+        11,
+        19991
+      ],
+      "time_s_first_last": [
+        0.01,
+        19.99
+      ],
+      "units": "m/s^2",
+      "stats": null
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T2_C15_W09",
+      "role": "B",
+      "run_id": "G02_P_TEACHER_DL1018_TRAIN_T2_C15_W09_B",
+      "raw_path": "data/raw/train/DL1018_TRAIN_T2_C15_W09/B/attempt_01/raw_run.mat",
+      "raw_status": "PRESENT_AND_ALIGNED",
+      "raw_sha256": "dd95167b318e1db4c3bd2fd7cd694f84f7f7e9395e34d461d6c4cced29766ee0",
+      "position_event_path": "data/events/position/train/DL1018_TRAIN_T2_C15_W09/B.h5",
+      "position_event_sha256": "067e8453c5e40e3b28d6f48d5ed49ae8d643bc585d871b0ff1adb7b632f81d41",
+      "event_index_one_based_first_last": [
+        11,
+        19991
+      ],
+      "time_s_first_last": [
+        0.01,
+        19.99
+      ],
+      "finite_difference_definition": "(v(t+0.010)-v(t))/0.010 - mean_10ms(a_nominal-a_applied)",
+      "units": "m/s^2",
+      "stats": {
+        "bias_by_axis_mps2": [
+          1.0082648473212954e-05,
+          -1.9262044626098484e-05,
+          -8.665588085091643e-05
+        ],
+        "rmse_by_axis_mps2": [
+          0.00877626466015078,
+          0.00818833628040572,
+          0.0032957037905279197
+        ],
+        "abs_error_p95_by_axis_mps2": [
+          0.017499159691211817,
+          0.0165511068502332,
+          0.006448884324509017
+        ],
+        "corr_by_axis": [
+          0.9985894310741026,
+          0.9989441534907602,
+          0.9993439618134385
+        ],
+        "target_rms_by_axis_mps2": [
+          0.3687955709525017,
+          0.3395027387114122,
+          0.20509609253337227
+        ],
+        "interval_target_rms_by_axis_mps2": [
+          0.36851762964840407,
+          0.3389002190498306,
+          0.20514249636564386
+        ],
+        "n_events": 1999
+      }
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T2_C15_W09",
+      "role": "POS_OFF",
+      "run_id": "G02_P_TEACHER_DL1018_TRAIN_T2_C15_W09_POS_OFF",
+      "raw_path": "data/raw/train/DL1018_TRAIN_T2_C15_W09/POS_OFF/attempt_01/raw_run.mat",
+      "raw_status": "MISSING_ON_DISK",
+      "position_event_path": "data/events/position/train/DL1018_TRAIN_T2_C15_W09/POS_OFF.h5",
+      "position_event_sha256": "18b7cfb85a17df98acbcebfe4892868725f2716b085ac8280ae3ca88dbc66666",
+      "event_index_one_based_first_last": [
+        11,
+        19991
+      ],
+      "time_s_first_last": [
+        0.01,
+        19.99
+      ],
+      "units": "m/s^2",
+      "stats": null
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T2_C15_W12",
+      "role": "B",
+      "run_id": "G02_P_TEACHER_DL1018_TRAIN_T2_C15_W12_B",
+      "raw_path": "data/raw/train/DL1018_TRAIN_T2_C15_W12/B/attempt_01/raw_run.mat",
+      "raw_status": "PRESENT_AND_ALIGNED",
+      "raw_sha256": "90b03a00223a2fb26699fcb184b0c7f2f1cd08e378cc4738a6d74c21424f5696",
+      "position_event_path": "data/events/position/train/DL1018_TRAIN_T2_C15_W12/B.h5",
+      "position_event_sha256": "c84d45ac034a96b423e0fa1df7571c462262eebcc3d1c14587e7a4012a4632c7",
+      "event_index_one_based_first_last": [
+        11,
+        19991
+      ],
+      "time_s_first_last": [
+        0.01,
+        19.99
+      ],
+      "finite_difference_definition": "(v(t+0.010)-v(t))/0.010 - mean_10ms(a_nominal-a_applied)",
+      "units": "m/s^2",
+      "stats": {
+        "bias_by_axis_mps2": [
+          4.763201783407812e-06,
+          -7.473805021586222e-05,
+          -4.726441383116544e-05
+        ],
+        "rmse_by_axis_mps2": [
+          0.0018639756598285233,
+          0.02070625299294435,
+          0.004691037519589081
+        ],
+        "abs_error_p95_by_axis_mps2": [
+          0.0047592557878474665,
+          0.0386885451628678,
+          0.008842434481758138
+        ],
+        "corr_by_axis": [
+          0.9999080666424841,
+          0.9961456150679924,
+          0.9973937811505174
+        ],
+        "target_rms_by_axis_mps2": [
+          0.1352477414640941,
+          0.6232310328144849,
+          0.1504746687620331
+        ],
+        "interval_target_rms_by_axis_mps2": [
+          0.13479744590470064,
+          0.6228773910148986,
+          0.15038749612490943
+        ],
+        "n_events": 1999
+      }
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T2_C15_W12",
+      "role": "POS_OFF",
+      "run_id": "G02_P_TEACHER_DL1018_TRAIN_T2_C15_W12_POS_OFF",
+      "raw_path": "data/raw/train/DL1018_TRAIN_T2_C15_W12/POS_OFF/attempt_01/raw_run.mat",
+      "raw_status": "MISSING_ON_DISK",
+      "position_event_path": "data/events/position/train/DL1018_TRAIN_T2_C15_W12/POS_OFF.h5",
+      "position_event_sha256": "3a6ada8606dc29659927375e83c5e319138ad2f285aebd5780cb48a636b2cd73",
+      "event_index_one_based_first_last": [
+        11,
+        19991
+      ],
+      "time_s_first_last": [
+        0.01,
+        19.99
+      ],
+      "units": "m/s^2",
+      "stats": null
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T2_C15_W15",
+      "role": "B",
+      "run_id": "G02_P_TEACHER_DL1018_TRAIN_T2_C15_W15_B",
+      "raw_path": "data/raw/train/DL1018_TRAIN_T2_C15_W15/B/attempt_01/raw_run.mat",
+      "raw_status": "PRESENT_AND_ALIGNED",
+      "raw_sha256": "a605ab3c5cf1b7bacb07ac8a4194d06c7fc3d5f20f9ea5f2b29d5efb79e15099",
+      "position_event_path": "data/events/position/train/DL1018_TRAIN_T2_C15_W15/B.h5",
+      "position_event_sha256": "dad672494522e3fecbb0da23397b9b18a73ddd8e4d27ad04ef1a2120e7a0bd5d",
+      "event_index_one_based_first_last": [
+        11,
+        19991
+      ],
+      "time_s_first_last": [
+        0.01,
+        19.99
+      ],
+      "finite_difference_definition": "(v(t+0.010)-v(t))/0.010 - mean_10ms(a_nominal-a_applied)",
+      "units": "m/s^2",
+      "stats": {
+        "bias_by_axis_mps2": [
+          5.003334363972061e-06,
+          -3.0155972143766513e-05,
+          -4.506402695444083e-05
+        ],
+        "rmse_by_axis_mps2": [
+          0.0019366951035065534,
+          0.0028634593510268747,
+          0.00022063848510348342
+        ],
+        "abs_error_p95_by_axis_mps2": [
+          0.004765190073358524,
+          0.005645326347564994,
+          0.00044914093326874023
+        ],
+        "corr_by_axis": [
+          0.9998486797760276,
+          0.9998869088811161,
+          0.9998783406038922
+        ],
+        "target_rms_by_axis_mps2": [
+          0.09946178687341434,
+          0.18445133825983664,
+          0.012617928268668702
+        ],
+        "interval_target_rms_by_axis_mps2": [
+          0.09857641036437602,
+          0.1836132597250977,
+          0.012529035715264722
+        ],
+        "n_events": 1999
+      }
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T2_C15_W15",
+      "role": "POS_OFF",
+      "run_id": "G02_P_TEACHER_DL1018_TRAIN_T2_C15_W15_POS_OFF",
+      "raw_path": "data/raw/train/DL1018_TRAIN_T2_C15_W15/POS_OFF/attempt_01/raw_run.mat",
+      "raw_status": "MISSING_ON_DISK",
+      "position_event_path": "data/events/position/train/DL1018_TRAIN_T2_C15_W15/POS_OFF.h5",
+      "position_event_sha256": "13ecf7510517e485922370739b3f868ebba86af67001907d1fca801c6d591a14",
+      "event_index_one_based_first_last": [
+        11,
+        19991
+      ],
+      "time_s_first_last": [
+        0.01,
+        19.99
+      ],
+      "units": "m/s^2",
+      "stats": null
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T3_C00_W00",
+      "role": "B",
+      "run_id": "G02_P_TEACHER_DL1018_TRAIN_T3_C00_W00_B",
+      "raw_path": "data/raw/train/DL1018_TRAIN_T3_C00_W00/B/attempt_01/raw_run.mat",
+      "raw_status": "PRESENT_AND_ALIGNED",
+      "raw_sha256": "d69a0c983da5911d00b24e5eaf675b3fc3e6aa3156f36eb4095cb1fe45f01bc3",
+      "position_event_path": "data/events/position/train/DL1018_TRAIN_T3_C00_W00/B.h5",
+      "position_event_sha256": "8d94f59aeb728ef8360a670613738bb80c40531d6c416c2434240f0ccc2b48fe",
+      "event_index_one_based_first_last": [
+        11,
+        19991
+      ],
+      "time_s_first_last": [
+        0.01,
+        19.99
+      ],
+      "finite_difference_definition": "(v(t+0.010)-v(t))/0.010 - mean_10ms(a_nominal-a_applied)",
+      "units": "m/s^2",
+      "stats": {
+        "bias_by_axis_mps2": [
+          1.6168989816142473e-06,
+          -1.347653975816447e-05,
+          -2.292396690044464e-05
+        ],
+        "rmse_by_axis_mps2": [
+          0.0010127780033954302,
+          0.002134069618669633,
+          0.0001606969100901514
+        ],
+        "abs_error_p95_by_axis_mps2": [
+          0.0023479060706971928,
+          0.004850763097708688,
+          0.0003311350987116273
+        ],
+        "corr_by_axis": [
+          0.999712378276585,
+          0.9999498460124083,
+          0.9999617754499522
+        ],
+        "target_rms_by_axis_mps2": [
+          0.03848902368731,
+          0.5898956352374999,
+          0.03002406138888797
+        ],
+        "interval_target_rms_by_axis_mps2": [
+          0.038061214772016454,
+          0.5895442808773769,
+          0.029964158043501842
+        ],
+        "n_events": 1999
+      }
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T3_C00_W00",
+      "role": "POS_OFF",
+      "run_id": "G02_P_TEACHER_DL1018_TRAIN_T3_C00_W00_POS_OFF",
+      "raw_path": "data/raw/train/DL1018_TRAIN_T3_C00_W00/POS_OFF/attempt_01/raw_run.mat",
+      "raw_status": "PRESENT_AND_ALIGNED",
+      "raw_sha256": "66d7f4e68fcdb909cd5d98dc9e1652db3906503cbe3b080186403580204a1b20",
+      "position_event_path": "data/events/position/train/DL1018_TRAIN_T3_C00_W00/POS_OFF.h5",
+      "position_event_sha256": "ae9e63566b370b31694d30b796158b9c3894300f290183157e42adb162716ddf",
+      "event_index_one_based_first_last": [
+        11,
+        19991
+      ],
+      "time_s_first_last": [
+        0.01,
+        19.99
+      ],
+      "finite_difference_definition": "(v(t+0.010)-v(t))/0.010 - mean_10ms(a_nominal-a_applied)",
+      "units": "m/s^2",
+      "stats": {
+        "bias_by_axis_mps2": [
+          2.1987118566308854e-06,
+          0.00013128936770848655,
+          6.623321861967729e-06
+        ],
+        "rmse_by_axis_mps2": [
+          0.0007133834038674032,
+          0.0017188249540230733,
+          0.00011391591373830827
+        ],
+        "abs_error_p95_by_axis_mps2": [
+          0.0014666333416939734,
+          0.0025604216632969965,
+          0.0001842776924571715
+        ],
+        "corr_by_axis": [
+          0.9998132725592922,
+          0.999959554934442,
+          0.9999745472304785
+        ],
+        "target_rms_by_axis_mps2": [
+          0.03594348439408776,
+          0.5901089369315603,
+          0.029744574586823735
+        ],
+        "interval_target_rms_by_axis_mps2": [
+          0.03577405360402557,
+          0.5901449417139744,
+          0.02974692124165812
+        ],
+        "n_events": 1999
+      }
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T3_C00_W09",
+      "role": "B",
+      "run_id": "G02_P_TEACHER_DL1018_TRAIN_T3_C00_W09_B",
+      "raw_path": "data/raw/train/DL1018_TRAIN_T3_C00_W09/B/attempt_01/raw_run.mat",
+      "raw_status": "PRESENT_AND_ALIGNED",
+      "raw_sha256": "692a073e529807b356d29b43cd81eeabd63763facda58d3201a378903717d087",
+      "position_event_path": "data/events/position/train/DL1018_TRAIN_T3_C00_W09/B.h5",
+      "position_event_sha256": "b9395811a6b013042ecc0fa56a079314887a914a8a36b382699815ecd07e6c89",
+      "event_index_one_based_first_last": [
+        11,
+        19991
+      ],
+      "time_s_first_last": [
+        0.01,
+        19.99
+      ],
+      "finite_difference_definition": "(v(t+0.010)-v(t))/0.010 - mean_10ms(a_nominal-a_applied)",
+      "units": "m/s^2",
+      "stats": {
+        "bias_by_axis_mps2": [
+          4.5175696640905946e-05,
+          4.8154406238616775e-05,
+          3.144352567382337e-05
+        ],
+        "rmse_by_axis_mps2": [
+          0.007250546240491387,
+          0.006771271275074504,
+          0.0022962898281699623
+        ],
+        "abs_error_p95_by_axis_mps2": [
+          0.013922032905378082,
+          0.013012124734682898,
+          0.004372875184632313
+        ],
+        "corr_by_axis": [
+          0.9981788351403682,
+          0.9980583194651051,
+          0.9982754048989242
+        ],
+        "target_rms_by_axis_mps2": [
+          0.31447439020023144,
+          0.292760990860537,
+          0.11973209747899914
+        ],
+        "interval_target_rms_by_axis_mps2": [
+          0.31436215650281807,
+          0.2926775012935801,
+          0.11974392626564259
+        ],
+        "n_events": 1999
+      }
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T3_C00_W09",
+      "role": "POS_OFF",
+      "run_id": "G02_P_TEACHER_DL1018_TRAIN_T3_C00_W09_POS_OFF",
+      "raw_path": "data/raw/train/DL1018_TRAIN_T3_C00_W09/POS_OFF/attempt_01/raw_run.mat",
+      "raw_status": "MISSING_ON_DISK",
+      "position_event_path": "data/events/position/train/DL1018_TRAIN_T3_C00_W09/POS_OFF.h5",
+      "position_event_sha256": "d002901208f065522d37ede386b89671b2372c831731b8b1156fee0c4dd771f3",
+      "event_index_one_based_first_last": [
+        11,
+        19991
+      ],
+      "time_s_first_last": [
+        0.01,
+        19.99
+      ],
+      "units": "m/s^2",
+      "stats": null
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T3_C00_W12",
+      "role": "B",
+      "run_id": "G02_P_TEACHER_DL1018_TRAIN_T3_C00_W12_B",
+      "raw_path": "data/raw/train/DL1018_TRAIN_T3_C00_W12/B/attempt_01/raw_run.mat",
+      "raw_status": "PRESENT_AND_ALIGNED",
+      "raw_sha256": "3714f78a7dd1116cb77bd487663b7fc3702425dc0242fa0f0d43ddffbf0329cb",
+      "position_event_path": "data/events/position/train/DL1018_TRAIN_T3_C00_W12/B.h5",
+      "position_event_sha256": "eb4de11e45915359dff4d35ff1348fc17e7d7dae9a96f33aef7898fab3c153d7",
+      "event_index_one_based_first_last": [
+        11,
+        19991
+      ],
+      "time_s_first_last": [
+        0.01,
+        19.99
+      ],
+      "finite_difference_definition": "(v(t+0.010)-v(t))/0.010 - mean_10ms(a_nominal-a_applied)",
+      "units": "m/s^2",
+      "stats": {
+        "bias_by_axis_mps2": [
+          1.8053458006515702e-06,
+          -4.405103570112987e-05,
+          -9.115372047607823e-06
+        ],
+        "rmse_by_axis_mps2": [
+          0.001013207098982219,
+          0.020009980794974916,
+          0.0009321159746254068
+        ],
+        "abs_error_p95_by_axis_mps2": [
+          0.002354321604732384,
+          0.03770697454117007,
+          0.0018940397868251362
+        ],
+        "corr_by_axis": [
+          0.9997103189882347,
+          0.9943101748740821,
+          0.9971695779562035
+        ],
+        "target_rms_by_axis_mps2": [
+          0.03837129686176401,
+          0.5913794000485402,
+          0.027613411456506608
+        ],
+        "interval_target_rms_by_axis_mps2": [
+          0.037943429831260304,
+          0.5911079644230829,
+          0.027588293397717192
+        ],
+        "n_events": 1999
+      }
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T3_C00_W12",
+      "role": "POS_OFF",
+      "run_id": "G02_P_TEACHER_DL1018_TRAIN_T3_C00_W12_POS_OFF",
+      "raw_path": "data/raw/train/DL1018_TRAIN_T3_C00_W12/POS_OFF/attempt_01/raw_run.mat",
+      "raw_status": "MISSING_ON_DISK",
+      "position_event_path": "data/events/position/train/DL1018_TRAIN_T3_C00_W12/POS_OFF.h5",
+      "position_event_sha256": "605174eb9a6c675545c1ec146c80f58cac08f4ee21fe742f4db3b968ac2fd857",
+      "event_index_one_based_first_last": [
+        11,
+        19991
+      ],
+      "time_s_first_last": [
+        0.01,
+        19.99
+      ],
+      "units": "m/s^2",
+      "stats": null
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T3_C00_W15",
+      "role": "B",
+      "run_id": "G02_P_TEACHER_DL1018_TRAIN_T3_C00_W15_B",
+      "raw_path": "data/raw/train/DL1018_TRAIN_T3_C00_W15/B/attempt_01/raw_run.mat",
+      "raw_status": "PRESENT_AND_ALIGNED",
+      "raw_sha256": "98b88ca920c6e01004e13b382f19161d9f6c7180200bc9be714dde12008fcf13",
+      "position_event_path": "data/events/position/train/DL1018_TRAIN_T3_C00_W15/B.h5",
+      "position_event_sha256": "946c65d734c63446ff514d37b9ba9f0dc7d0f7a346444dde34a1952411a0ccfe",
+      "event_index_one_based_first_last": [
+        11,
+        19991
+      ],
+      "time_s_first_last": [
+        0.01,
+        19.99
+      ],
+      "finite_difference_definition": "(v(t+0.010)-v(t))/0.010 - mean_10ms(a_nominal-a_applied)",
+      "units": "m/s^2",
+      "stats": {
+        "bias_by_axis_mps2": [
+          2.075817763639164e-06,
+          9.09243403191447e-06,
+          3.853158100073373e-06
+        ],
+        "rmse_by_axis_mps2": [
+          0.001013926665335393,
+          0.000919410023822645,
+          3.543486007547249e-05
+        ],
+        "abs_error_p95_by_axis_mps2": [
+          0.0023543829939185203,
+          0.002356648853810364,
+          7.380078758875949e-05
+        ],
+        "corr_by_axis": [
+          0.9997165443683576,
+          0.9997576267034338,
+          0.9997378208025703
+        ],
+        "target_rms_by_axis_mps2": [
+          0.038797599803706444,
+          0.03803948707476585,
+          0.0013221733093520534
+        ],
+        "interval_target_rms_by_axis_mps2": [
+          0.03836848950706271,
+          0.03765096693881743,
+          0.001303993116450222
+        ],
+        "n_events": 1999
+      }
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T3_C00_W15",
+      "role": "POS_OFF",
+      "run_id": "G02_P_TEACHER_DL1018_TRAIN_T3_C00_W15_POS_OFF",
+      "raw_path": "data/raw/train/DL1018_TRAIN_T3_C00_W15/POS_OFF/attempt_01/raw_run.mat",
+      "raw_status": "MISSING_ON_DISK",
+      "position_event_path": "data/events/position/train/DL1018_TRAIN_T3_C00_W15/POS_OFF.h5",
+      "position_event_sha256": "619d524f1946bda6415a0c3bb4e8420fcfe00571ff7c2bcee600cffc51341db9",
+      "event_index_one_based_first_last": [
+        11,
+        19991
+      ],
+      "time_s_first_last": [
+        0.01,
+        19.99
+      ],
+      "units": "m/s^2",
+      "stats": null
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T3_C15_W00",
+      "role": "B",
+      "run_id": "G02_P_TEACHER_DL1018_TRAIN_T3_C15_W00_B",
+      "raw_path": "data/raw/train/DL1018_TRAIN_T3_C15_W00/B/attempt_01/raw_run.mat",
+      "raw_status": "PRESENT_AND_ALIGNED",
+      "raw_sha256": "1e07d2bed1ece346a25104b58411a7a6c25623eb240523a73fbb268d5305f969",
+      "position_event_path": "data/events/position/train/DL1018_TRAIN_T3_C15_W00/B.h5",
+      "position_event_sha256": "7ea54c78c74af9da5dd00caa15911c824a4dfa1cdfa2c0972ea8047adf0ba4ed",
+      "event_index_one_based_first_last": [
+        11,
+        19991
+      ],
+      "time_s_first_last": [
+        0.01,
+        19.99
+      ],
+      "finite_difference_definition": "(v(t+0.010)-v(t))/0.010 - mean_10ms(a_nominal-a_applied)",
+      "units": "m/s^2",
+      "stats": {
+        "bias_by_axis_mps2": [
+          -1.4023933324345335e-06,
+          1.2523600811827071e-05,
+          -3.069799106406442e-05
+        ],
+        "rmse_by_axis_mps2": [
+          0.002199037580135961,
+          0.001982996626995632,
+          0.00014099942508929902
+        ],
+        "abs_error_p95_by_axis_mps2": [
+          0.004962178604127285,
+          0.004499267006451539,
+          0.00030502236442312607
+        ],
+        "corr_by_axis": [
+          0.9999193810238225,
+          0.9999652636377947,
+          0.9999619844878974
+        ],
+        "target_rms_by_axis_mps2": [
+          0.37512958475649205,
+          0.4141515902790006,
+          0.024921293172148036
+        ],
+        "interval_target_rms_by_axis_mps2": [
+          0.3747652571818526,
+          0.4138037065070889,
+          0.024857139611671984
+        ],
+        "n_events": 1999
+      }
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T3_C15_W00",
+      "role": "POS_OFF",
+      "run_id": "G02_P_TEACHER_DL1018_TRAIN_T3_C15_W00_POS_OFF",
+      "raw_path": "data/raw/train/DL1018_TRAIN_T3_C15_W00/POS_OFF/attempt_01/raw_run.mat",
+      "raw_status": "MISSING_ON_DISK",
+      "position_event_path": "data/events/position/train/DL1018_TRAIN_T3_C15_W00/POS_OFF.h5",
+      "position_event_sha256": "466db41bf2f29bb4e993298699c4e7f3348d0d24c470dfc62ca7fbdd81070e11",
+      "event_index_one_based_first_last": [
+        11,
+        19991
+      ],
+      "time_s_first_last": [
+        0.01,
+        19.99
+      ],
+      "units": "m/s^2",
+      "stats": null
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T3_C15_W09",
+      "role": "B",
+      "run_id": "G02_P_TEACHER_DL1018_TRAIN_T3_C15_W09_B",
+      "raw_path": "data/raw/train/DL1018_TRAIN_T3_C15_W09/B/attempt_01/raw_run.mat",
+      "raw_status": "PRESENT_AND_ALIGNED",
+      "raw_sha256": "2fdcfafb3ab66a695436af63032a40586e51e0c5bfa31cdd0c48e20426a5a06f",
+      "position_event_path": "data/events/position/train/DL1018_TRAIN_T3_C15_W09/B.h5",
+      "position_event_sha256": "32eb851413edd8318cb19801ebafc833919035f193c9c26fda9262ff0fdf686b",
+      "event_index_one_based_first_last": [
+        11,
+        19991
+      ],
+      "time_s_first_last": [
+        0.01,
+        19.99
+      ],
+      "finite_difference_definition": "(v(t+0.010)-v(t))/0.010 - mean_10ms(a_nominal-a_applied)",
+      "units": "m/s^2",
+      "stats": {
+        "bias_by_axis_mps2": [
+          2.5844167717236e-06,
+          4.4090372941670865e-05,
+          -7.1630505641365865e-06
+        ],
+        "rmse_by_axis_mps2": [
+          0.0015540914939974994,
+          0.014235532025627433,
+          0.0025771915939255476
+        ],
+        "abs_error_p95_by_axis_mps2": [
+          0.0037015702246424404,
+          0.026803378230995566,
+          0.004854682477128929
+        ],
+        "corr_by_axis": [
+          0.999948342588447,
+          0.9983163105847237,
+          0.9982973510517728
+        ],
+        "target_rms_by_axis_mps2": [
+          0.14260982635645025,
+          0.6254273211408995,
+          0.1323000274231876
+        ],
+        "interval_target_rms_by_axis_mps2": [
+          0.1420166389835388,
+          0.6250336039897436,
+          0.13226908701723844
+        ],
+        "n_events": 1999
+      }
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T3_C15_W09",
+      "role": "POS_OFF",
+      "run_id": "G02_P_TEACHER_DL1018_TRAIN_T3_C15_W09_POS_OFF",
+      "raw_path": "data/raw/train/DL1018_TRAIN_T3_C15_W09/POS_OFF/attempt_01/raw_run.mat",
+      "raw_status": "MISSING_ON_DISK",
+      "position_event_path": "data/events/position/train/DL1018_TRAIN_T3_C15_W09/POS_OFF.h5",
+      "position_event_sha256": "eaa6bbdba24b2356249e2d12a09d85083eef0625f7ebc1cf0e24bc568ee12993",
+      "event_index_one_based_first_last": [
+        11,
+        19991
+      ],
+      "time_s_first_last": [
+        0.01,
+        19.99
+      ],
+      "units": "m/s^2",
+      "stats": null
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T3_C15_W12",
+      "role": "B",
+      "run_id": "G02_P_TEACHER_DL1018_TRAIN_T3_C15_W12_B",
+      "raw_path": "data/raw/train/DL1018_TRAIN_T3_C15_W12/B/attempt_01/raw_run.mat",
+      "raw_status": "PRESENT_AND_ALIGNED",
+      "raw_sha256": "122ae005dfdf9df03d1c806abf27109615286a255bdabe202a846a69224b3ce4",
+      "position_event_path": "data/events/position/train/DL1018_TRAIN_T3_C15_W12/B.h5",
+      "position_event_sha256": "c9a6705846b2caf14324c5561b06fbe4ab3decea961328d308fb9478bfe77432",
+      "event_index_one_based_first_last": [
+        11,
+        19991
+      ],
+      "time_s_first_last": [
+        0.01,
+        19.99
+      ],
+      "finite_difference_definition": "(v(t+0.010)-v(t))/0.010 - mean_10ms(a_nominal-a_applied)",
+      "units": "m/s^2",
+      "stats": {
+        "bias_by_axis_mps2": [
+          7.536234025570176e-06,
+          4.085804593020223e-06,
+          -2.150756078497081e-05
+        ],
+        "rmse_by_axis_mps2": [
+          0.01222903628692142,
+          0.011498569595484587,
+          0.0006553181748001941
+        ],
+        "abs_error_p95_by_axis_mps2": [
+          0.023687095611980475,
+          0.022505539689678375,
+          0.0013351250801370597
+        ],
+        "corr_by_axis": [
+          0.9967076759103478,
+          0.9985759731301973,
+          0.9984422062244975
+        ],
+        "target_rms_by_axis_mps2": [
+          0.37125528297045945,
+          0.40828805167477683,
+          0.022958577779890858
+        ],
+        "interval_target_rms_by_axis_mps2": [
+          0.37097620250119934,
+          0.40798705313819816,
+          0.02291573973695714
+        ],
+        "n_events": 1999
+      }
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T3_C15_W12",
+      "role": "POS_OFF",
+      "run_id": "G02_P_TEACHER_DL1018_TRAIN_T3_C15_W12_POS_OFF",
+      "raw_path": "data/raw/train/DL1018_TRAIN_T3_C15_W12/POS_OFF/attempt_01/raw_run.mat",
+      "raw_status": "MISSING_ON_DISK",
+      "position_event_path": "data/events/position/train/DL1018_TRAIN_T3_C15_W12/POS_OFF.h5",
+      "position_event_sha256": "016cb6e9fb216f037fce823472d28b143b1e302f1db5b3d50ca3e4f9059d5a13",
+      "event_index_one_based_first_last": [
+        11,
+        19991
+      ],
+      "time_s_first_last": [
+        0.01,
+        19.99
+      ],
+      "units": "m/s^2",
+      "stats": null
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T3_C15_W15",
+      "role": "B",
+      "run_id": "G02_P_TEACHER_DL1018_TRAIN_T3_C15_W15_B",
+      "raw_path": "data/raw/train/DL1018_TRAIN_T3_C15_W15/B/attempt_01/raw_run.mat",
+      "raw_status": "PRESENT_AND_ALIGNED",
+      "raw_sha256": "f4871b39ff5833378bf82870378914b63c3535c3b61af6a604d2b3084aff98d0",
+      "position_event_path": "data/events/position/train/DL1018_TRAIN_T3_C15_W15/B.h5",
+      "position_event_sha256": "35b9731765e405acfd47e152d678eb293bd20e40d80228e246e81a446838b03d",
+      "event_index_one_based_first_last": [
+        11,
+        19991
+      ],
+      "time_s_first_last": [
+        0.01,
+        19.99
+      ],
+      "finite_difference_definition": "(v(t+0.010)-v(t))/0.010 - mean_10ms(a_nominal-a_applied)",
+      "units": "m/s^2",
+      "stats": {
+        "bias_by_axis_mps2": [
+          2.6242904214891085e-06,
+          1.0104645338958897e-05,
+          -1.195882487712872e-05
+        ],
+        "rmse_by_axis_mps2": [
+          0.0017520282068685794,
+          0.0022092450388684712,
+          0.00010703071837063275
+        ],
+        "abs_error_p95_by_axis_mps2": [
+          0.0042883074985360335,
+          0.004921665438677974,
+          0.00019687617844978367
+        ],
+        "corr_by_axis": [
+          0.9999350642001268,
+          0.9997836268143352,
+          0.9998803705573355
+        ],
+        "target_rms_by_axis_mps2": [
+          0.14666827073142905,
+          0.09242749687077031,
+          0.005624932288588483
+        ],
+        "interval_target_rms_by_axis_mps2": [
+          0.14605604147855278,
+          0.09131907146984264,
+          0.0055572014332188726
+        ],
+        "n_events": 1999
+      }
+    },
+    {
+      "scene_id": "DL1018_TRAIN_T3_C15_W15",
+      "role": "POS_OFF",
+      "run_id": "G02_P_TEACHER_DL1018_TRAIN_T3_C15_W15_POS_OFF",
+      "raw_path": "data/raw/train/DL1018_TRAIN_T3_C15_W15/POS_OFF/attempt_01/raw_run.mat",
+      "raw_status": "MISSING_ON_DISK",
+      "position_event_path": "data/events/position/train/DL1018_TRAIN_T3_C15_W15/POS_OFF.h5",
+      "position_event_sha256": "5c45f5a39a582d6ff5fc1751da76c18ffbc5b48f8bddbd035b5268c31ed7471a",
+      "event_index_one_based_first_last": [
+        11,
+        19991
+      ],
+      "time_s_first_last": [
+        0.01,
+        19.99
+      ],
+      "units": "m/s^2",
+      "stats": null
+    }
+  ]
+}

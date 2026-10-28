@@ -1,0 +1,210 @@
+diff --git a/experiments/position_axis_coordinate_c5_dev72_20261023/run_dl1018_closed_loop.m b/experiments/attitude_physics_inertia_observer_20261025/paired_runner/matlab/runtime/run_paired_observer_closed_loop.m
+index 7691ca5..0f7463d 100644
+--- a/experiments/position_axis_coordinate_c5_dev72_20261023/run_dl1018_closed_loop.m
++++ b/experiments/attitude_physics_inertia_observer_20261025/paired_runner/matlab/runtime/run_paired_observer_closed_loop.m
+@@ -1,4 +1,4 @@
+-function log=run_dl1018_closed_loop(s,method,cfg,opts)
++function log=run_paired_observer_closed_loop(s,method,cfg,opts)
+     % FUNCTION:
+     %   run_baseline_closed_loop
+     % PURPOSE:
+@@ -13,6 +13,20 @@ function log=run_dl1018_closed_loop(s,method,cfg,opts)
+     %RUN_BASELINE_CLOSED_LOOP One shared controller loop; Plant advances only here.
+     if nargin<4,opts=struct;
+     end
++    assert(isstruct(s)&&isfield(s,'reference_contract_id')&& ...
++        strcmp(char(string(s.reference_contract_id)),'DL1018_SCENE_REF_FIG8_A2_V2'), ...
++        'PAIRED:SceneContract','Scene reference contract is missing or incompatible.');
++    isolatedRoot=fileparts(fileparts(fileparts(mfilename('fullpath'))));
++    folders={'core','models','runtime','scenes'};
++    for folder=folders
++        sourceDir=fullfile(isolatedRoot,'matlab',folder{1});
++        entries=dir(fullfile(sourceDir,'*.m'));
++        for entry=entries.'
++            [~,name]=fileparts(entry.name);
++            assert(strcmpi(which(name),fullfile(sourceDir,entry.name)), ...
++                'PAIRED:SourcePath','An isolated function resolves outside paired_runner: %s.',name);
++        end
++    end
+     positionDelayedPredictionFlag=field_or(opts,'position_delayed_prediction_enabled',false);
+     assert((islogical(positionDelayedPredictionFlag)&&isscalar(positionDelayedPredictionFlag))|| ...
+         (isnumeric(positionDelayedPredictionFlag)&&isreal(positionDelayedPredictionFlag)&& ...
+@@ -28,12 +42,29 @@ function log=run_dl1018_closed_loop(s,method,cfg,opts)
+         all(ismember(double(positionCoordinateMaskFlag(:)),[0,1]))), ...
+         'C5Coordinate:Mask','position_coordinate_mask must be a finite three-element binary vector.');
+     positionCoordinateMask=double(positionCoordinateMaskFlag(:));
++    assert(positionDelayedPredictionEnabled&&isequal(positionCoordinateMask,[1;1;0]), ...
++        'PAIRED:C5','Both arms require C5 delayed prediction and M110.');
+     if positionDelayedPredictionEnabled
+         assert(isfield(opts,'position_coordinate_mask'),'C5Coordinate:Required', ...
+             'C5 delayed prediction requires an explicit three-element coordinate mask.');
+     end
+     assert(strcmp(method,'B2-RBF-Full-SPLIT')&&abs(cfg.plant.dt-.001)<1e-12, ...
+         'RBFBS:A1Only','This standalone package only runs 1-kHz-plant A1-Full-100Hz backstepping.');
++    arm=char(field_or(opts,'paired_arm',''));
++    assert(ismember(arm,{'baseline','candidate'}),'PAIRED:Arm', ...
++        'paired_arm must be baseline or candidate.');
++    assert(strcmp(char(field_or(opts,'paired_position_method_id','')), ...
++        'C5_AXIS_MIXED_COORDINATE_M110'), ...
++        'PAIRED:C5Method','Expected the frozen C5 M110 position method.');
++    physCandidate=strcmp(arm,'candidate');
++    assert(isfield(opts,'stage1_position_runtime')&& ...
++        isfield(opts.stage1_position_runtime,'model'), ...
++        'PAIRED:C5Model','Missing frozen C5 position model.');
++    [expectedBaseline,expectedCandidate]=make_paired_c5_options( ...
++        cfg,opts.stage1_position_runtime.model);
++    if physCandidate,expected=expectedCandidate;else,expected=expectedBaseline;end
++    assert(isequaln(opts,expected),'PAIRED:ExactOptions', ...
++        'Effective options differ from the paired C5 builder.');
+     formalRbfBaseline=logical(field_or(opts,'formal_rbf_baseline',false));
+     assert(isscalar(formalRbfBaseline),'RBFBS0:FormalBaselineFlag','formal_rbf_baseline must be scalar.');
+     attitudeFusion=field_or(opts,'attitude_fusion_v3_6',struct);
+@@ -90,6 +121,16 @@ function log=run_dl1018_closed_loop(s,method,cfg,opts)
+             all(isfinite(fixedController.allocation.C),'all')&&all(isfinite(fixedController.inertia),'all'), ...
+             'RBFBS0:FixedControllerModel','Formal BS/RBF requires finite fixed initial-arm C0/J0.');
+     end
++    assert(formalRbfBaseline&&isfield(cfg,'attitude_replacement')&& ...
++        isfield(cfg.attitude_replacement,'J0_controller_fixed_kgm2')&& ...
++        isfield(cfg.attitude_replacement,'J0_controller_fixed_sha256'), ...
++        'PAIRED:J0Config','Missing explicit frozen controller J0 identity.');
++    J0frozen=double(cfg.attitude_replacement.J0_controller_fixed_kgm2);
++    J0sha=char(cfg.attitude_replacement.J0_controller_fixed_sha256);
++    assert(isequal(size(J0frozen),[3,3])&&isequal(J0frozen,double(fixedController.inertia))&& ...
++        strcmpi(J0sha,paired_sha256_double(J0frozen))&& ...
++        strcmpi(J0sha,paired_sha256_double(double(fixedController.inertia))), ...
++        'PAIRED:J0Identity','Frozen helper J0 differs from fixed controller J0 or SHA.');
+     rlGapRuntime=field_or(opts,'rl_gap_runtime',struct);
+     rlGapRuntimeEnabled=isstruct(rlGapRuntime)&&logical(field_or(rlGapRuntime,'enabled',false));
+     rlGapRuntimeStepFn=[];
+@@ -857,9 +898,16 @@ function log=run_dl1018_closed_loop(s,method,cfg,opts)
+             'RBFBS0:FormalPathIsolation','Formal RBF-BS0 cannot enable reconstruction, observers, learned hooks, oracle, or diagnostic injections.');
+     end
+     rbfAttitudeOutputEnabled=logical(field_or(opts,'rbf_attitude_output_enabled',true));
++    assert(formalRbfBaseline&&stage1PositionActive&&pcfCoordinationEnabled&& ...
++        ~attitudeFusionActive&&~rbfPositionOutputEnabled&&~rbfPositionUpdateEnabled&& ...
++        rbfAttitudeRuntimeEnabled==~physCandidate&& ...
++        rbfAttitudeOutputEnabled==~physCandidate&& ...
++        rbfAttitudeUpdateEnabled==~physCandidate&& ...
++        abs(rbfHz-100)<1e-12&&abs(rbfFullHz-100)<1e-12, ...
++        'PAIRED:Options','Paired C5/RBF treatment flags or schedule differ.');
+     if stage1PositionActive
+         attitudeRbfPathAllowed=(rbfAttitudeRuntimeEnabled&&rbfAttitudeOutputEnabled)|| ...
+-            (attitudeFusionActive&&attitudeFusionLambda==1&&~rbfAttitudeRuntimeEnabled&& ...
++            (physCandidate&&~rbfAttitudeRuntimeEnabled&& ...
+              ~rbfAttitudeOutputEnabled&&~rbfAttitudeUpdateEnabled);
+         assert(formalRbfBaseline&&~rbfPositionUpdateEnabled&&~rbfPositionOutputEnabled&& ...
+             attitudeRbfPathAllowed, ...
+@@ -954,6 +1002,10 @@ function log=run_dl1018_closed_loop(s,method,cfg,opts)
+         'phi_norm',zeros(rbfAuditMax,1),'phi_max',zeros(rbfAuditMax,1));
+     attitudeGammaScale=attitudeGammaScale(:);
+     attitudeSurfaceLambda=1;
++    physTrace=cell(n,1);
++    if physCandidate
++        [physMemory,~]=phys_attitude_replacement_candidate_v2('init',struct,struct,cfg);
++    end
+     for k=1:n
+         attitudeHeadDeltaNorm(k)=norm(attitudeHeadDeltaW,'fro');
+         attitudeHeadReadyEventCount(k)=attitudeFusionEventCount;
+@@ -2271,7 +2323,7 @@ function log=run_dl1018_closed_loop(s,method,cfg,opts)
+                         end
+                     end
+                     stage1PcfEtaAfterLog(k,:)=stage1PcfEta.';
+-                    if rbfAtt400 && (rbfAttitudeRuntimeEnabled||attitudeFusionActive)
++                    if rbfAtt400 && (rbfAttitudeRuntimeEnabled||attitudeFusionActive||physCandidate)
+                         % Split-rate scheduler sets attitudeEvent before this branch;
+                         % preserve it so independent Position/Attitude rates remain causal.
+                         dtUpdate=0;
+@@ -2288,7 +2340,28 @@ function log=run_dl1018_closed_loop(s,method,cfg,opts)
+                         else
+                             dtUpdate=attitudeEventDt;
+                         end
+-                        if attitudeEvent
++                        if physCandidate
++                            [~,ai0]=attitude_bs_step(x(k,:).',ir,zeros(3,1),P);
++                            prepareInput=struct('time_s',t(k),'omega_body',x(k,10:12).', ...
++                                'alpha_bs_body',ai0.nominal_body_angular_acceleration, ...
++                                'morph_command',s.arms.command(k,:).', ...
++                                'sample_index',k,'is_attitude_event',attitudeEvent);
++                            [physMemory,physOut]=phys_attitude_replacement_candidate_v2( ...
++                                'prepare',physMemory,prepareInput,cfg);
++                            assert(isequal(physOut.estimateTorque_Nm,-physOut.tau_comp_Nm), ...
++                                'PAIRED:TorqueSign','Candidate torque sign differs.');
++                            dT=physOut.estimateTorque_Nm;
++                            attitudeErrorRotation=rotation_zyx(ir.euler).'*rotation_zyx(x(k,7:9).');
++                            so3Error=acos(max(min((trace(attitudeErrorRotation)-1)/2,1),-1));
++                            physTrace{k}=struct('sample_index',k,'morph_command', ...
++                                prepareInput.morph_command,'omega_body',prepareInput.omega_body, ...
++                                'alpha_bs_body',prepareInput.alpha_bs_body, ...
++                                'is_attitude_event',attitudeEvent,'event_delta_s',attitudeEventDt, ...
++                                'rbf_output_enabled',false,'rbf_update_enabled',false, ...
++                                'q_error_m',norm(r.position-x(k,1:3).'), ...
++                                'so3_error_rad',so3Error,'safety_status',status, ...
++                                'prepare',physOut);
++                        elseif attitudeEvent
+                             assert(dtUpdate>0,'TCN0901:RbfDt','RBF update dt must be positive.');
+                             [~,ai0]=attitude_bs_step(x(k,:).',ir,zeros(3,1),P);
+                             zRbf=attitude_input(ai0);
+@@ -2439,8 +2512,10 @@ function log=run_dl1018_closed_loop(s,method,cfg,opts)
+                             rbfBasisMax(k)=max(abs(rbfInfo.Phi));
+                             lastRbfEventTime=t(k);
+                         end
+-                        dT=heldRbfTorque;
+-                        if ~rbfAttitudeOutputEnabled, dT=zeros(3,1); end
++                        if ~physCandidate
++                            dT=heldRbfTorque;
++                            if ~rbfAttitudeOutputEnabled, dT=zeros(3,1); end
++                        end
+                         if attitudeFusionActive
+                             attitudeFusionLambdaLog(k)=attitudeFusionLambda;
+                             attitudeFusionReady(k)=attitudeFusionEventCount>=32;
+@@ -2498,17 +2573,19 @@ function log=run_dl1018_closed_loop(s,method,cfg,opts)
+                             diagnosticOracleTorque(k,:)=injectedTorqueB.';
+                         end
+                     end
+-                    rbfOutputHeld(k,:)=dT.';
++                    if ~physCandidate,rbfOutputHeld(k,:)=dT.';end
+             if stage1PositionActive
+                 positionRbfAccelerationApplied(k,:)=0;
+             else
+                 positionRbfAccelerationApplied(k,:)=dF.'/P.mass;
+             end
+-                    attitudeRbfAccelerationApplied(k,:)=heldRbfAttitudeAcceleration.';
+-                    if attitudeFusionActive
+-                        attitudeRbfTorqueApplied(k,:)=attitudeFusionOriginalRbfTorque(k,:);
+-                    else
+-                        attitudeRbfTorqueApplied(k,:)=dT.';
++                    if ~physCandidate
++                        attitudeRbfAccelerationApplied(k,:)=heldRbfAttitudeAcceleration.';
++                        if attitudeFusionActive
++                            attitudeRbfTorqueApplied(k,:)=attitudeFusionOriginalRbfTorque(k,:);
++                        else
++                            attitudeRbfTorqueApplied(k,:)=dT.';
++                        end
+                     end
+                     rbfWeightNorm(k)=norm(rbfAtt.W,'fro');
+                     rbfWeightMax(k)=max(abs(rbfAtt.W),[],'all');
+@@ -2531,6 +2608,15 @@ function log=run_dl1018_closed_loop(s,method,cfg,opts)
+             end
+             controllerTime(k)=toc(timer);
+             [motorSetpointNow,wrenchNow,a]=allocate_control(command,P,Ptrue,previousMotor);
++            if physCandidate
++                commitInput=struct('time_s',t(k), ...
++                    'tau_cmd_clipped_Nm',a.clipped_generalized(2:4));
++                [physMemory,physCommit]=phys_attitude_replacement_candidate_v2( ...
++                    'commit',physMemory,commitInput,cfg);
++                physTrace{k}.commit=physCommit;
++                physTrace{k}.generalized_command_clipped=a.generalized_command_clipped;
++                physTrace{k}.motor_saturated=a.motor_saturated;
++            end
+             controllerClippedWrench(k,:)=a.clipped_generalized.';
+             motorNow=motorSetpointNow;
+             if motorTimeConstant>0&&~isempty(previousMotor)
+@@ -2906,6 +2992,8 @@ function log=run_dl1018_closed_loop(s,method,cfg,opts)
+              'predictive_force_horizon_ms',field_or(field_or(opts,'predictive_force_head',struct),'horizon_ms',NaN), ...
+             'v1_adaptation_law',v1Law,'v1_feature_kind',v1FeatureKind,'status',status,'divergence_time_s',divergenceTime,'last_transition',last,'method',method);
+      log.safety_stop_reason=safetyStopReason;
++     log.paired_arm=arm;
++     if physCandidate,log.phys_attitude_trace=physTrace(q);end
+      log.safety_position_error_persistence_s=safetyPositionErrorTime;
+      log.safety_tilt_persistence_s=safetyTiltTime;
+      log.safety_body_rate_persistence_s=safetyRateTime;

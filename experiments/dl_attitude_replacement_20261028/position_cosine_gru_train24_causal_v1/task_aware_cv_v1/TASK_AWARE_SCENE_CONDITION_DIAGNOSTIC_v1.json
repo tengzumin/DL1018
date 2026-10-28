@@ -1,0 +1,1511 @@
+{
+  "schema": "TASK_AWARE_SCENE_CONDITION_DIAGNOSTIC_V1",
+  "status": "PASS_READ_ONLY_TRAIN24_OOF_RECONSTRUCTION",
+  "scope": "Only physical TRAIN_C5_24 parent cosine-GRU trajectories and OOF outputs; no VAL/TEST, Plant, or inertia reconstruction. This is frozen-state command replay, not new closed-loop evidence.",
+  "dataset_sha256": "15d689f08fd6d8a53a64c59dbdf62b33f9b8e8a12ce083fb12834cd106df2eeb",
+  "task_oof_sha256": "a92c61662fa2fee8faf11d97b1f0234db13f6875c1cc6036098d71f3dccf5dcd",
+  "reconstruction_parity_max_abs_rad_by_method": {
+    "c5": 1.3877787807814457e-17,
+    "no_task": 1.3877787807814457e-17,
+    "task": 1.3877787807814457e-17
+  },
+  "overall": {
+    "c5_so3_macro_mrad": 57.215511111273024,
+    "no_task_so3_macro_mrad": 64.55618847366468,
+    "task_aware_so3_macro_mrad": 64.40699211129055,
+    "task_aware_vs_no_task_better_scenes": [
+      18,
+      0,
+      6
+    ],
+    "task_aware_vs_c5_worse_scene_count": 23,
+    "position_no_task_macro_mps2": 0.09911440527114547,
+    "position_task_aware_macro_mps2": 0.09897802096689422,
+    "position_no_task_pooled_mps2": 0.12486377358436584,
+    "position_task_aware_pooled_mps2": 0.12513118982315063
+  },
+  "by_task_id": {
+    "T1": {
+      "scene_count": 8,
+      "c5_so3_macro_mrad": 51.67720405208813,
+      "no_task_so3_macro_mrad": 56.361681592481126,
+      "task_so3_macro_mrad": 56.1691235389484,
+      "task_vs_no_task_improved_scenes": 8,
+      "task_position_macro_mps2": 0.06823249682220041,
+      "no_task_position_macro_mps2": 0.0687160223754894,
+      "task_vs_no_task_position_better_scenes": 4
+    },
+    "T2": {
+      "scene_count": 8,
+      "c5_so3_macro_mrad": 60.352816926628805,
+      "no_task_so3_macro_mrad": 68.9976112760928,
+      "task_so3_macro_mrad": 68.83517507294707,
+      "task_vs_no_task_improved_scenes": 5,
+      "task_position_macro_mps2": 0.11709566755264765,
+      "no_task_position_macro_mps2": 0.11654526541686472,
+      "task_vs_no_task_position_better_scenes": 3
+    },
+    "T3": {
+      "scene_count": 8,
+      "c5_so3_macro_mrad": 59.616512355102145,
+      "no_task_so3_macro_mrad": 68.30927255242013,
+      "task_so3_macro_mrad": 68.21667772197615,
+      "task_vs_no_task_improved_scenes": 5,
+      "task_position_macro_mps2": 0.11160589859908558,
+      "no_task_position_macro_mps2": 0.11208192807040508,
+      "task_vs_no_task_position_better_scenes": 5
+    }
+  },
+  "by_wind_code_design_metadata_only": {
+    "0": {
+      "scene_count": 1,
+      "c5_so3_macro_mrad": 64.21769690218014,
+      "no_task_so3_macro_mrad": 63.9650425037047,
+      "task_so3_macro_mrad": 63.73719896206402,
+      "task_vs_no_task_improved_scenes": 1,
+      "task_position_macro_mps2": 0.03394574945234555,
+      "no_task_position_macro_mps2": 0.033862427657026496,
+      "task_vs_no_task_position_better_scenes": 0
+    },
+    "1": {
+      "scene_count": 1,
+      "c5_so3_macro_mrad": 58.233101031699526,
+      "no_task_so3_macro_mrad": 62.39321560119539,
+      "task_so3_macro_mrad": 62.15467729187099,
+      "task_vs_no_task_improved_scenes": 1,
+      "task_position_macro_mps2": 0.02295857840315697,
+      "no_task_position_macro_mps2": 0.022819732679508084,
+      "task_vs_no_task_position_better_scenes": 0
+    },
+    "10": {
+      "scene_count": 1,
+      "c5_so3_macro_mrad": 74.9930006362029,
+      "no_task_so3_macro_mrad": 86.8269960203291,
+      "task_so3_macro_mrad": 87.06208025064561,
+      "task_vs_no_task_improved_scenes": 0,
+      "task_position_macro_mps2": 0.19454105771647404,
+      "no_task_position_macro_mps2": 0.19092072311121483,
+      "task_vs_no_task_position_better_scenes": 0
+    },
+    "11": {
+      "scene_count": 1,
+      "c5_so3_macro_mrad": 61.40992228381616,
+      "no_task_so3_macro_mrad": 74.38684514958618,
+      "task_so3_macro_mrad": 74.48823698945027,
+      "task_vs_no_task_improved_scenes": 0,
+      "task_position_macro_mps2": 0.18525127008958142,
+      "no_task_position_macro_mps2": 0.18249418568160217,
+      "task_vs_no_task_position_better_scenes": 0
+    },
+    "12": {
+      "scene_count": 2,
+      "c5_so3_macro_mrad": 48.25050571962626,
+      "no_task_so3_macro_mrad": 51.10032601400299,
+      "task_so3_macro_mrad": 50.9919552165788,
+      "task_vs_no_task_improved_scenes": 2,
+      "task_position_macro_mps2": 0.06088925247052643,
+      "no_task_position_macro_mps2": 0.0638965464664882,
+      "task_vs_no_task_position_better_scenes": 2
+    },
+    "13": {
+      "scene_count": 1,
+      "c5_so3_macro_mrad": 73.57984225420081,
+      "no_task_so3_macro_mrad": 80.20705825572105,
+      "task_so3_macro_mrad": 80.03335696450483,
+      "task_vs_no_task_improved_scenes": 1,
+      "task_position_macro_mps2": 0.22526677785560903,
+      "no_task_position_macro_mps2": 0.22248700412075406,
+      "task_vs_no_task_position_better_scenes": 0
+    },
+    "14": {
+      "scene_count": 3,
+      "c5_so3_macro_mrad": 62.38705381549113,
+      "no_task_so3_macro_mrad": 65.5229551999099,
+      "task_so3_macro_mrad": 65.22309653152499,
+      "task_vs_no_task_improved_scenes": 3,
+      "task_position_macro_mps2": 0.19509630963119884,
+      "no_task_position_macro_mps2": 0.19542448132728774,
+      "task_vs_no_task_position_better_scenes": 2
+    },
+    "15": {
+      "scene_count": 3,
+      "c5_so3_macro_mrad": 12.40452240691998,
+      "no_task_so3_macro_mrad": 15.129204640783433,
+      "task_so3_macro_mrad": 15.116028388857822,
+      "task_vs_no_task_improved_scenes": 1,
+      "task_position_macro_mps2": 0.009030633255181572,
+      "no_task_position_macro_mps2": 0.008620346888061098,
+      "task_vs_no_task_position_better_scenes": 0
+    },
+    "2": {
+      "scene_count": 1,
+      "c5_so3_macro_mrad": 71.43920291305591,
+      "no_task_so3_macro_mrad": 79.73288817344266,
+      "task_so3_macro_mrad": 79.70279137010446,
+      "task_vs_no_task_improved_scenes": 1,
+      "task_position_macro_mps2": 0.05835209516301005,
+      "no_task_position_macro_mps2": 0.06020130744404046,
+      "task_vs_no_task_position_better_scenes": 1
+    },
+    "3": {
+      "scene_count": 1,
+      "c5_so3_macro_mrad": 46.45534126799029,
+      "no_task_so3_macro_mrad": 49.32483821205702,
+      "task_so3_macro_mrad": 49.11543979809915,
+      "task_vs_no_task_improved_scenes": 1,
+      "task_position_macro_mps2": 0.029625941873826896,
+      "no_task_position_macro_mps2": 0.029482043074743794,
+      "task_vs_no_task_position_better_scenes": 0
+    },
+    "4": {
+      "scene_count": 1,
+      "c5_so3_macro_mrad": 53.65376655766242,
+      "no_task_so3_macro_mrad": 61.449872924274416,
+      "task_so3_macro_mrad": 61.20459706161656,
+      "task_vs_no_task_improved_scenes": 1,
+      "task_position_macro_mps2": 0.0664182328132935,
+      "no_task_position_macro_mps2": 0.06589429901780909,
+      "task_vs_no_task_position_better_scenes": 0
+    },
+    "5": {
+      "scene_count": 1,
+      "c5_so3_macro_mrad": 64.40935219733352,
+      "no_task_so3_macro_mrad": 78.8343790375815,
+      "task_so3_macro_mrad": 78.45035129437775,
+      "task_vs_no_task_improved_scenes": 1,
+      "task_position_macro_mps2": 0.10630106990378509,
+      "no_task_position_macro_mps2": 0.10794715435453203,
+      "task_vs_no_task_position_better_scenes": 1
+    },
+    "6": {
+      "scene_count": 1,
+      "c5_so3_macro_mrad": 53.77432574394305,
+      "no_task_so3_macro_mrad": 58.32289403493941,
+      "task_so3_macro_mrad": 58.25248593677449,
+      "task_vs_no_task_improved_scenes": 1,
+      "task_position_macro_mps2": 0.03770582645740314,
+      "no_task_position_macro_mps2": 0.03830093422299294,
+      "task_vs_no_task_position_better_scenes": 1
+    },
+    "7": {
+      "scene_count": 1,
+      "c5_so3_macro_mrad": 75.15825466945402,
+      "no_task_so3_macro_mrad": 89.00412041913864,
+      "task_so3_macro_mrad": 88.27830286909997,
+      "task_vs_no_task_improved_scenes": 1,
+      "task_position_macro_mps2": 0.11679092499154287,
+      "no_task_position_macro_mps2": 0.11857228104092887,
+      "task_vs_no_task_position_better_scenes": 1
+    },
+    "8": {
+      "scene_count": 3,
+      "c5_so3_macro_mrad": 83.84084765693756,
+      "no_task_so3_macro_mrad": 102.09371112067693,
+      "task_so3_macro_mrad": 102.10381756082133,
+      "task_vs_no_task_improved_scenes": 1,
+      "task_position_macro_mps2": 0.16191280389434395,
+      "no_task_position_macro_mps2": 0.16194615984088334,
+      "task_vs_no_task_position_better_scenes": 2
+    },
+    "9": {
+      "scene_count": 2,
+      "c5_so3_macro_mrad": 51.72508856785765,
+      "no_task_so3_macro_mrad": 57.23105406193284,
+      "task_so3_macro_mrad": 56.98777700279741,
+      "task_vs_no_task_improved_scenes": 2,
+      "task_position_macro_mps2": 0.039208616894107304,
+      "no_task_position_macro_mps2": 0.039998788697623966,
+      "task_vs_no_task_position_better_scenes": 2
+    }
+  },
+  "by_manifest_fold": {
+    "holdout_W00_05": {
+      "scene_count": 6,
+      "c5_so3_macro_mrad": 59.7347434783203,
+      "no_task_so3_macro_mrad": 65.95003940870929,
+      "task_so3_macro_mrad": 65.72750929635549,
+      "task_vs_no_task_improved_scenes": 6,
+      "task_position_macro_mps2": 0.052933611268236334,
+      "no_task_position_macro_mps2": 0.05336782737127666,
+      "task_vs_no_task_position_better_scenes": 2
+    },
+    "holdout_W06_10": {
+      "scene_count": 8,
+      "c5_so3_macro_mrad": 69.86228764451599,
+      "no_task_so3_macro_mrad": 81.86215649503795,
+      "task_so3_macro_mrad": 81.73498446807235,
+      "task_vs_no_task_improved_scenes": 5,
+      "task_position_macro_mps2": 0.11414918182958332,
+      "no_task_position_macro_mps2": 0.11420374941162932,
+      "task_vs_no_task_position_better_scenes": 6
+    },
+    "holdout_W11_13": {
+      "scene_count": 4,
+      "c5_so3_macro_mrad": 57.87269399431737,
+      "no_task_so3_macro_mrad": 64.1986388583283,
+      "task_so3_macro_mrad": 64.12637609677817,
+      "task_vs_no_task_improved_scenes": 3,
+      "task_position_macro_mps2": 0.13307413822156083,
+      "no_task_position_macro_mps2": 0.13319357068383314,
+      "task_vs_no_task_position_better_scenes": 2
+    },
+    "holdout_W14_15": {
+      "scene_count": 6,
+      "c5_so3_macro_mrad": 37.395788111205555,
+      "no_task_so3_macro_mrad": 40.326079920346665,
+      "task_so3_macro_mrad": 40.1695624601914,
+      "task_vs_no_task_improved_scenes": 4,
+      "task_position_macro_mps2": 0.10206347144319021,
+      "no_task_position_macro_mps2": 0.10202241410767442,
+      "task_vs_no_task_position_better_scenes": 2
+    }
+  },
+  "SO3_error_vector_band_macro_mrad": {
+    "c5": {
+      "0-1Hz": 12.750830933068267,
+      "1-2Hz": 7.847871025534528,
+      "2-5Hz": 6.415545935336302,
+      "5-10Hz": 0.545941352083466,
+      "10-20Hz": 0.33273754826313584,
+      "20-50Hz": 0.25580229304174446,
+      "50-100Hz": 0.14833197309450818,
+      "100-500Hz": 0.14456751195179998
+    },
+    "no_task": {
+      "0-1Hz": 15.12535410922169,
+      "1-2Hz": 10.850502340333653,
+      "2-5Hz": 9.844234283955748,
+      "5-10Hz": 0.7914738912866754,
+      "10-20Hz": 0.3716788059085811,
+      "20-50Hz": 0.26785763166744775,
+      "50-100Hz": 0.15489015651239338,
+      "100-500Hz": 0.1509324698966752
+    },
+    "task": {
+      "0-1Hz": 15.076474799929391,
+      "1-2Hz": 10.874585947481293,
+      "2-5Hz": 9.83055016815695,
+      "5-10Hz": 0.7948648138063241,
+      "10-20Hz": 0.3720839075484796,
+      "20-50Hz": 0.26751532725169624,
+      "50-100Hz": 0.15468628575886642,
+      "100-500Hz": 0.1507363030893043
+    }
+  },
+  "causal_current_preview_error_gate_screen": [
+    {
+      "fold_id": "holdout_W00_05",
+      "preview_error_norm_threshold_from_train_ready_events": 0.005012041884315432,
+      "holdout_scene_count": 6,
+      "groups": {
+        "low": {
+          "ready_events": 3838,
+          "task_so3_next_boundary_mrad": 53.62991260961046,
+          "no_task_so3_next_boundary_mrad": 53.74139971889438,
+          "task_minus_no_task_so3_mrad": -0.11148710928392258,
+          "task_position_rmse_mps2": 0.04061213766897537,
+          "no_task_position_rmse_mps2": 0.04038104606517108,
+          "task_minus_no_task_position_rmse_mps2": 0.00023109160380428706
+        },
+        "high": {
+          "ready_events": 7964,
+          "task_so3_next_boundary_mrad": 72.72658332937607,
+          "no_task_so3_next_boundary_mrad": 72.98815846420433,
+          "task_minus_no_task_so3_mrad": -0.26157513482827355,
+          "task_position_rmse_mps2": 0.06751828138060961,
+          "no_task_position_rmse_mps2": 0.06846181993545074,
+          "task_minus_no_task_position_rmse_mps2": -0.0009435385548411251
+        }
+      }
+    },
+    {
+      "fold_id": "holdout_W06_10",
+      "preview_error_norm_threshold_from_train_ready_events": 0.005250694838621962,
+      "holdout_scene_count": 8,
+      "groups": {
+        "low": {
+          "ready_events": 6795,
+          "task_so3_next_boundary_mrad": 73.81941364538878,
+          "no_task_so3_next_boundary_mrad": 73.94177649042108,
+          "task_minus_no_task_so3_mrad": -0.122362845032295,
+          "task_position_rmse_mps2": 0.09474843718204908,
+          "no_task_position_rmse_mps2": 0.09449547212481833,
+          "task_minus_no_task_position_rmse_mps2": 0.0002529650572307418
+        },
+        "high": {
+          "ready_events": 8941,
+          "task_so3_next_boundary_mrad": 93.02866496455731,
+          "no_task_so3_next_boundary_mrad": 93.12214660869307,
+          "task_minus_no_task_so3_mrad": -0.09348164413576499,
+          "task_position_rmse_mps2": 0.159110062507101,
+          "no_task_position_rmse_mps2": 0.15862863560241336,
+          "task_minus_no_task_position_rmse_mps2": 0.0004814269046876374
+        }
+      }
+    },
+    {
+      "fold_id": "holdout_W11_13",
+      "preview_error_norm_threshold_from_train_ready_events": 0.005609072549672467,
+      "holdout_scene_count": 4,
+      "groups": {
+        "low": {
+          "ready_events": 4229,
+          "task_so3_next_boundary_mrad": 59.69895331131411,
+          "no_task_so3_next_boundary_mrad": 59.79302101627739,
+          "task_minus_no_task_so3_mrad": -0.09406770496327849,
+          "task_position_rmse_mps2": 0.1351495484776727,
+          "no_task_position_rmse_mps2": 0.13543032566961985,
+          "task_minus_no_task_position_rmse_mps2": -0.00028077719194716244
+        },
+        "high": {
+          "ready_events": 3639,
+          "task_so3_next_boundary_mrad": 72.70895957869887,
+          "no_task_so3_next_boundary_mrad": 72.75162210173366,
+          "task_minus_no_task_so3_mrad": -0.0426625230347949,
+          "task_position_rmse_mps2": 0.169669732808033,
+          "no_task_position_rmse_mps2": 0.16699107671697228,
+          "task_minus_no_task_position_rmse_mps2": 0.002678656091060716
+        }
+      }
+    },
+    {
+      "fold_id": "holdout_W14_15",
+      "preview_error_norm_threshold_from_train_ready_events": 0.006296259353208606,
+      "holdout_scene_count": 6,
+      "groups": {
+        "low": {
+          "ready_events": 8561,
+          "task_so3_next_boundary_mrad": 40.47112559707332,
+          "no_task_so3_next_boundary_mrad": 40.671867470113064,
+          "task_minus_no_task_so3_mrad": -0.20074187303974894,
+          "task_position_rmse_mps2": 0.12452766508198652,
+          "no_task_position_rmse_mps2": 0.12462898022196557,
+          "task_minus_no_task_position_rmse_mps2": -0.00010131513997904684
+        },
+        "high": {
+          "ready_events": 3241,
+          "task_so3_next_boundary_mrad": 63.11628371641132,
+          "no_task_so3_next_boundary_mrad": 63.361868497055234,
+          "task_minus_no_task_so3_mrad": -0.24558478064391764,
+          "task_position_rmse_mps2": 0.1709104410382551,
+          "no_task_position_rmse_mps2": 0.17120375077627287,
+          "task_minus_no_task_position_rmse_mps2": -0.0002933097380177774
+        }
+      }
+    }
+  ],
+  "posthoc_scene_feature_correlations_not_deployable_gate": [
+    {
+      "feature": "preview_error_norm",
+      "whole_scene_ready_event_rms_posthoc_only": true,
+      "corr_with_task_minus_no_task_SO3_mrad": -0.152740670263014,
+      "corr_with_task_minus_no_task_position_RMSE_mps2": -0.07769303511010149
+    },
+    {
+      "feature": "surface_norm",
+      "whole_scene_ready_event_rms_posthoc_only": true,
+      "corr_with_task_minus_no_task_SO3_mrad": -0.01446721112826068,
+      "corr_with_task_minus_no_task_position_RMSE_mps2": 0.11745186096767674
+    },
+    {
+      "feature": "attitude_norm",
+      "whole_scene_ready_event_rms_posthoc_only": true,
+      "corr_with_task_minus_no_task_SO3_mrad": -0.09096460718891314,
+      "corr_with_task_minus_no_task_position_RMSE_mps2": 0.22684743862352416
+    },
+    {
+      "feature": "preview_thrust_abs",
+      "whole_scene_ready_event_rms_posthoc_only": true,
+      "corr_with_task_minus_no_task_SO3_mrad": -0.39177217748242277,
+      "corr_with_task_minus_no_task_position_RMSE_mps2": -0.00973971200267008
+    },
+    {
+      "feature": "arm_command_norm",
+      "whole_scene_ready_event_rms_posthoc_only": true,
+      "corr_with_task_minus_no_task_SO3_mrad": 0.08714885986042477,
+      "corr_with_task_minus_no_task_position_RMSE_mps2": -0.04570394487418107
+    }
+  ],
+  "per_scene": [
+    {
+      "scene_id": "DL1018_DEV_T1_C00_W03",
+      "task_id": "T1",
+      "wind_code": 3,
+      "fold_id": "holdout_W00_05",
+      "c5_so3_rmse_mrad": 46.45534126799029,
+      "no_task_so3_rmse_mrad": 49.32483821205702,
+      "task_so3_rmse_mrad": 49.11543979809915,
+      "task_minus_no_task_so3_mrad": -0.20939841395786374,
+      "no_task_position_rmse_mps2": 0.029482043074743794,
+      "task_position_rmse_mps2": 0.029625941873826896,
+      "task_minus_no_task_position_rmse_mps2": 0.00014389879908310171,
+      "so3_error_vector_band_rms_mrad": {
+        "c5": {
+          "0-1Hz": 10.173948582633644,
+          "1-2Hz": 1.2880832761889078,
+          "2-5Hz": 0.5826824275453931,
+          "5-10Hz": 0.3207331882741928,
+          "10-20Hz": 0.22696120896270425,
+          "20-50Hz": 0.1759908292264925,
+          "50-100Hz": 0.10224925119455883,
+          "100-500Hz": 0.09969384029257583
+        },
+        "no_task": {
+          "0-1Hz": 13.075289759252827,
+          "1-2Hz": 2.0215284318254114,
+          "2-5Hz": 0.5195762976920609,
+          "5-10Hz": 0.26948687431883556,
+          "10-20Hz": 0.19083761117239886,
+          "20-50Hz": 0.14815061402651875,
+          "50-100Hz": 0.08608233137999807,
+          "100-500Hz": 0.0839318950133221
+        },
+        "task": {
+          "0-1Hz": 13.015049216589977,
+          "1-2Hz": 2.014109069952658,
+          "2-5Hz": 0.5173223785223111,
+          "5-10Hz": 0.2685266503627502,
+          "10-20Hz": 0.1901680205276884,
+          "20-50Hz": 0.1476188467772152,
+          "50-100Hz": 0.08577355747185311,
+          "100-500Hz": 0.08363079797759543
+        }
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T1_C01_W15",
+      "task_id": "T1",
+      "wind_code": 15,
+      "fold_id": "holdout_W14_15",
+      "c5_so3_rmse_mrad": 15.602669159477577,
+      "no_task_so3_rmse_mrad": 18.318187389940363,
+      "task_so3_rmse_mrad": 18.17133988154361,
+      "task_minus_no_task_so3_mrad": -0.1468475083967533,
+      "no_task_position_rmse_mps2": 0.009175260939946523,
+      "task_position_rmse_mps2": 0.009454410769484202,
+      "task_minus_no_task_position_rmse_mps2": 0.00027914982953767924,
+      "so3_error_vector_band_rms_mrad": {
+        "c5": {
+          "0-1Hz": 8.79303940321377,
+          "1-2Hz": 0.9543072567250656,
+          "2-5Hz": 0.3792414492368823,
+          "5-10Hz": 0.02835054610678853,
+          "10-20Hz": 0.003149612875331694,
+          "20-50Hz": 0.0010283478866444237,
+          "50-100Hz": 0.0005304215986259378,
+          "100-500Hz": 0.0005127936045067661
+        },
+        "no_task": {
+          "0-1Hz": 10.305869488652574,
+          "1-2Hz": 1.3398696663318321,
+          "2-5Hz": 0.4961942276147854,
+          "5-10Hz": 0.04223908464868865,
+          "10-20Hz": 0.009032662340807684,
+          "20-50Hz": 0.004627541524497828,
+          "50-100Hz": 0.0026566532686257737,
+          "100-500Hz": 0.002589214754946231
+        },
+        "task": {
+          "0-1Hz": 10.27835981687561,
+          "1-2Hz": 1.334763554769784,
+          "2-5Hz": 0.495880459624719,
+          "5-10Hz": 0.04236255333992267,
+          "10-20Hz": 0.009879517498220148,
+          "20-50Hz": 0.005553629193043953,
+          "50-100Hz": 0.0032061291378165397,
+          "100-500Hz": 0.00312499271200791
+        }
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T1_C04_W00",
+      "task_id": "T1",
+      "wind_code": 0,
+      "fold_id": "holdout_W00_05",
+      "c5_so3_rmse_mrad": 64.21769690218014,
+      "no_task_so3_rmse_mrad": 63.9650425037047,
+      "task_so3_rmse_mrad": 63.73719896206402,
+      "task_minus_no_task_so3_mrad": -0.22784354164068077,
+      "no_task_position_rmse_mps2": 0.033862427657026496,
+      "task_position_rmse_mps2": 0.03394574945234555,
+      "task_minus_no_task_position_rmse_mps2": 8.332179531905098e-05,
+      "so3_error_vector_band_rms_mrad": {
+        "c5": {
+          "0-1Hz": 14.215609737033507,
+          "1-2Hz": 1.1076440722738852,
+          "2-5Hz": 0.7590894757766393,
+          "5-10Hz": 0.4026077044827495,
+          "10-20Hz": 0.2840568817372622,
+          "20-50Hz": 0.22010436630089553,
+          "50-100Hz": 0.127855948606023,
+          "100-500Hz": 0.12465702498512882
+        },
+        "no_task": {
+          "0-1Hz": 14.88724740133467,
+          "1-2Hz": 1.2433487930787366,
+          "2-5Hz": 0.7151702292301134,
+          "5-10Hz": 0.34973875289741235,
+          "10-20Hz": 0.2464147939733431,
+          "20-50Hz": 0.19098560671076986,
+          "50-100Hz": 0.11094508906162355,
+          "100-500Hz": 0.10816969441587829
+        },
+        "task": {
+          "0-1Hz": 14.795283206923681,
+          "1-2Hz": 1.2400421885231945,
+          "2-5Hz": 0.7092305275135207,
+          "5-10Hz": 0.34724644981846914,
+          "10-20Hz": 0.24466692609565083,
+          "20-50Hz": 0.18962035550962913,
+          "50-100Hz": 0.11015214018671361,
+          "100-500Hz": 0.10739658596174612
+        }
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T1_C05_W06",
+      "task_id": "T1",
+      "wind_code": 6,
+      "fold_id": "holdout_W06_10",
+      "c5_so3_rmse_mrad": 53.77432574394305,
+      "no_task_so3_rmse_mrad": 58.32289403493941,
+      "task_so3_rmse_mrad": 58.25248593677449,
+      "task_minus_no_task_so3_mrad": -0.07040809816491844,
+      "no_task_position_rmse_mps2": 0.03830093422299294,
+      "task_position_rmse_mps2": 0.03770582645740314,
+      "task_minus_no_task_position_rmse_mps2": -0.0005951077655897974,
+      "so3_error_vector_band_rms_mrad": {
+        "c5": {
+          "0-1Hz": 11.926136246383399,
+          "1-2Hz": 9.89490916515538,
+          "2-5Hz": 1.0182770321561656,
+          "5-10Hz": 0.3331806721786202,
+          "10-20Hz": 0.23412000057803953,
+          "20-50Hz": 0.18161052635350652,
+          "50-100Hz": 0.10553017207037169,
+          "100-500Hz": 0.10289604759853103
+        },
+        "no_task": {
+          "0-1Hz": 13.985719127669519,
+          "1-2Hz": 14.413359080701673,
+          "2-5Hz": 1.4807688334909,
+          "5-10Hz": 0.3025222913329584,
+          "10-20Hz": 0.2090323206734111,
+          "20-50Hz": 0.1619823678619598,
+          "50-100Hz": 0.09413037448632397,
+          "100-500Hz": 0.09178134952650482
+        },
+        "task": {
+          "0-1Hz": 13.910109910265373,
+          "1-2Hz": 14.515752751797177,
+          "2-5Hz": 1.4888656558282312,
+          "5-10Hz": 0.2998714156903357,
+          "10-20Hz": 0.20716927288067832,
+          "20-50Hz": 0.1606442152123383,
+          "50-100Hz": 0.09335264354141075,
+          "100-500Hz": 0.09102307012187413
+        }
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T1_C07_W08",
+      "task_id": "T1",
+      "wind_code": 8,
+      "fold_id": "holdout_W06_10",
+      "c5_so3_rmse_mrad": 75.87220893965548,
+      "no_task_so3_rmse_mrad": 92.54290821995167,
+      "task_so3_rmse_mrad": 92.37688366486239,
+      "task_minus_no_task_so3_mrad": -0.1660245550892796,
+      "no_task_position_rmse_mps2": 0.11630235309685948,
+      "task_position_rmse_mps2": 0.1162366003093739,
+      "task_minus_no_task_position_rmse_mps2": -6.5752787485579e-05,
+      "so3_error_vector_band_rms_mrad": {
+        "c5": {
+          "0-1Hz": 12.97729035650831,
+          "1-2Hz": 28.749240292888285,
+          "2-5Hz": 5.161716720548249,
+          "5-10Hz": 0.30242843067985126,
+          "10-20Hz": 0.1986937571461634,
+          "20-50Hz": 0.1534527335772812,
+          "50-100Hz": 0.08907270032895671,
+          "100-500Hz": 0.086831072922106
+        },
+        "no_task": {
+          "0-1Hz": 15.113736394736177,
+          "1-2Hz": 41.06932441751082,
+          "2-5Hz": 7.812336219236526,
+          "5-10Hz": 0.5345852107732687,
+          "10-20Hz": 0.20115321403887,
+          "20-50Hz": 0.1463505039572711,
+          "50-100Hz": 0.08493540026063147,
+          "100-500Hz": 0.08279613164914842
+        },
+        "task": {
+          "0-1Hz": 15.063169840476878,
+          "1-2Hz": 41.16696438390384,
+          "2-5Hz": 7.814263995855051,
+          "5-10Hz": 0.5307103553127203,
+          "10-20Hz": 0.20667514699903902,
+          "20-50Hz": 0.14776528773300152,
+          "50-100Hz": 0.08574970391063652,
+          "100-500Hz": 0.08359141484026313
+        }
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T1_C10_W09",
+      "task_id": "T1",
+      "wind_code": 9,
+      "fold_id": "holdout_W06_10",
+      "c5_so3_rmse_mrad": 43.28289849715605,
+      "no_task_so3_rmse_mrad": 48.90390050855334,
+      "task_so3_rmse_mrad": 48.61142161139789,
+      "task_minus_no_task_so3_mrad": -0.29247889715545483,
+      "no_task_position_rmse_mps2": 0.03301462733758232,
+      "task_position_rmse_mps2": 0.03201723843551052,
+      "task_minus_no_task_position_rmse_mps2": -0.000997388902071801,
+      "so3_error_vector_band_rms_mrad": {
+        "c5": {
+          "0-1Hz": 12.362947292935868,
+          "1-2Hz": 1.3844345625864065,
+          "2-5Hz": 7.570764372865964,
+          "5-10Hz": 0.5082034457358271,
+          "10-20Hz": 0.3395329225492093,
+          "20-50Hz": 0.2607816226391756,
+          "50-100Hz": 0.15119002936132028,
+          "100-500Hz": 0.14735567159374052
+        },
+        "no_task": {
+          "0-1Hz": 14.42237590760315,
+          "1-2Hz": 1.6559307843504845,
+          "2-5Hz": 12.709675113255145,
+          "5-10Hz": 0.6118830038472219,
+          "10-20Hz": 0.39925360020953415,
+          "20-50Hz": 0.3059096919097661,
+          "50-100Hz": 0.17726947036832558,
+          "100-500Hz": 0.17275781587071215
+        },
+        "task": {
+          "0-1Hz": 14.30238937797066,
+          "1-2Hz": 1.6508612162085976,
+          "2-5Hz": 12.623985655450193,
+          "5-10Hz": 0.608455094906884,
+          "10-20Hz": 0.39660478746696204,
+          "20-50Hz": 0.30399185324921335,
+          "50-100Hz": 0.17615877008159286,
+          "100-500Hz": 0.17167560149570057
+        }
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T1_C11_W12",
+      "task_id": "T1",
+      "wind_code": 12,
+      "fold_id": "holdout_W11_13",
+      "c5_so3_rmse_mrad": 49.786182619191315,
+      "no_task_so3_rmse_mrad": 52.50473031032456,
+      "task_so3_rmse_mrad": 52.360451572754265,
+      "task_minus_no_task_so3_mrad": -0.1442787375702963,
+      "no_task_position_rmse_mps2": 0.06734249762254918,
+      "task_position_rmse_mps2": 0.06388961908745922,
+      "task_minus_no_task_position_rmse_mps2": -0.003452878535089965,
+      "so3_error_vector_band_rms_mrad": {
+        "c5": {
+          "0-1Hz": 11.79073006687388,
+          "1-2Hz": 1.5572834285752502,
+          "2-5Hz": 4.415609185139751,
+          "5-10Hz": 0.43133080075703634,
+          "10-20Hz": 0.27818974076221653,
+          "20-50Hz": 0.21438557410151737,
+          "50-100Hz": 0.12441060383400912,
+          "100-500Hz": 0.1212804985706403
+        },
+        "no_task": {
+          "0-1Hz": 13.244803461660227,
+          "1-2Hz": 1.9559009040432982,
+          "2-5Hz": 8.384774663589944,
+          "5-10Hz": 0.7878257818782816,
+          "10-20Hz": 0.356160176620568,
+          "20-50Hz": 0.26864457217499454,
+          "50-100Hz": 0.1552608467305908,
+          "100-500Hz": 0.15125089502237715
+        },
+        "task": {
+          "0-1Hz": 13.13286361638447,
+          "1-2Hz": 1.9301534626034513,
+          "2-5Hz": 8.248765144421846,
+          "5-10Hz": 0.7897956011573939,
+          "10-20Hz": 0.3555986139808981,
+          "20-50Hz": 0.2683958258445353,
+          "50-100Hz": 0.15512815978560815,
+          "100-500Hz": 0.15112320591130102
+        }
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T1_C15_W14",
+      "task_id": "T1",
+      "wind_code": 14,
+      "fold_id": "holdout_W14_15",
+      "c5_so3_rmse_mrad": 64.42630928711111,
+      "no_task_so3_rmse_mrad": 67.01095156037795,
+      "task_so3_rmse_mrad": 66.72776688409132,
+      "task_minus_no_task_so3_mrad": -0.28318467628662347,
+      "no_task_position_rmse_mps2": 0.22224803505221447,
+      "task_position_rmse_mps2": 0.2229845881921999,
+      "task_minus_no_task_position_rmse_mps2": 0.0007365531399854408,
+      "so3_error_vector_band_rms_mrad": {
+        "c5": {
+          "0-1Hz": 12.60336556060511,
+          "1-2Hz": 5.463833952926345,
+          "2-5Hz": 12.676331889702173,
+          "5-10Hz": 0.7671645378707328,
+          "10-20Hz": 0.29495103551921753,
+          "20-50Hz": 0.22416395681312948,
+          "50-100Hz": 0.1296675601699399,
+          "100-500Hz": 0.12632256871792377
+        },
+        "no_task": {
+          "0-1Hz": 12.662255593632418,
+          "1-2Hz": 6.649709569582704,
+          "2-5Hz": 20.525604994526773,
+          "5-10Hz": 1.3659925360941378,
+          "10-20Hz": 0.3463007050702826,
+          "20-50Hz": 0.18397631646901125,
+          "50-100Hz": 0.10522586158867034,
+          "100-500Hz": 0.10237587006909593
+        },
+        "task": {
+          "0-1Hz": 12.657175509807516,
+          "1-2Hz": 6.665104960738669,
+          "2-5Hz": 20.534928971622822,
+          "5-10Hz": 1.3580550279281982,
+          "10-20Hz": 0.34199142405986405,
+          "20-50Hz": 0.18036672759237218,
+          "50-100Hz": 0.10312321048273639,
+          "100-500Hz": 0.10032283603743833
+        }
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C00_W04",
+      "task_id": "T2",
+      "wind_code": 4,
+      "fold_id": "holdout_W00_05",
+      "c5_so3_rmse_mrad": 53.65376655766242,
+      "no_task_so3_rmse_mrad": 61.449872924274416,
+      "task_so3_rmse_mrad": 61.20459706161656,
+      "task_minus_no_task_so3_mrad": -0.24527586265785573,
+      "no_task_position_rmse_mps2": 0.06589429901780909,
+      "task_position_rmse_mps2": 0.0664182328132935,
+      "task_minus_no_task_position_rmse_mps2": 0.0005239337954844048,
+      "so3_error_vector_band_rms_mrad": {
+        "c5": {
+          "0-1Hz": 19.086063249644504,
+          "1-2Hz": 3.3901468286856673,
+          "2-5Hz": 1.396758536739004,
+          "5-10Hz": 0.7410896843263026,
+          "10-20Hz": 0.5199512660668852,
+          "20-50Hz": 0.4022571667263087,
+          "50-100Hz": 0.2335835696485077,
+          "100-500Hz": 0.22772418045158788
+        },
+        "no_task": {
+          "0-1Hz": 24.790512704798374,
+          "1-2Hz": 5.142846448617984,
+          "2-5Hz": 2.0495592214440204,
+          "5-10Hz": 1.000075508601136,
+          "10-20Hz": 0.7003732147305913,
+          "20-50Hz": 0.5417953824410944,
+          "50-100Hz": 0.3145913424828224,
+          "100-500Hz": 0.3066965931010098
+        },
+        "task": {
+          "0-1Hz": 24.694203932409614,
+          "1-2Hz": 5.14409179472567,
+          "2-5Hz": 2.0461224412271055,
+          "5-10Hz": 0.9982335623288463,
+          "10-20Hz": 0.6990915093560639,
+          "20-50Hz": 0.5407700428758123,
+          "50-100Hz": 0.3139949032905199,
+          "100-500Hz": 0.3061148732009652
+        }
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C02_W15",
+      "task_id": "T2",
+      "wind_code": 15,
+      "fold_id": "holdout_W14_15",
+      "c5_so3_rmse_mrad": 12.11605512837213,
+      "no_task_so3_rmse_mrad": 14.784684373438576,
+      "task_so3_rmse_mrad": 14.821407713600195,
+      "task_minus_no_task_so3_mrad": 0.03672334016161827,
+      "no_task_position_rmse_mps2": 0.007600439297145989,
+      "task_position_rmse_mps2": 0.008098261028146592,
+      "task_minus_no_task_position_rmse_mps2": 0.0004978217310006028,
+      "so3_error_vector_band_rms_mrad": {
+        "c5": {
+          "0-1Hz": 6.843795505358563,
+          "1-2Hz": 0.8005134264827185,
+          "2-5Hz": 0.3938619560390844,
+          "5-10Hz": 0.039932321568045485,
+          "10-20Hz": 0.006632150508664533,
+          "20-50Hz": 0.0026266927014912764,
+          "50-100Hz": 0.0014123047314228616,
+          "100-500Hz": 0.0013722743410848615
+        },
+        "no_task": {
+          "0-1Hz": 8.384837507367132,
+          "1-2Hz": 1.0212035731225118,
+          "2-5Hz": 0.5149911310964017,
+          "5-10Hz": 0.06470505947506644,
+          "10-20Hz": 0.009419142574834172,
+          "20-50Hz": 0.002669933272347889,
+          "50-100Hz": 0.0014495067521481113,
+          "100-500Hz": 0.001408799959122865
+        },
+        "task": {
+          "0-1Hz": 8.362802434114531,
+          "1-2Hz": 1.0183171975382157,
+          "2-5Hz": 0.5126358126194882,
+          "5-10Hz": 0.06483306193205031,
+          "10-20Hz": 0.012057023308730545,
+          "20-50Hz": 0.006681339874218483,
+          "50-100Hz": 0.0038470941865125716,
+          "100-500Hz": 0.003749142266208371
+        }
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C03_W01",
+      "task_id": "T2",
+      "wind_code": 1,
+      "fold_id": "holdout_W00_05",
+      "c5_so3_rmse_mrad": 58.233101031699526,
+      "no_task_so3_rmse_mrad": 62.39321560119539,
+      "task_so3_rmse_mrad": 62.15467729187099,
+      "task_minus_no_task_so3_mrad": -0.23853830932439735,
+      "no_task_position_rmse_mps2": 0.022819732679508084,
+      "task_position_rmse_mps2": 0.02295857840315697,
+      "task_minus_no_task_position_rmse_mps2": 0.0001388457236488859,
+      "so3_error_vector_band_rms_mrad": {
+        "c5": {
+          "0-1Hz": 21.548191608238053,
+          "1-2Hz": 1.4853054253693136,
+          "2-5Hz": 0.940669447213681,
+          "5-10Hz": 0.4817563204063642,
+          "10-20Hz": 0.33879847323962814,
+          "20-50Hz": 0.2624591604360486,
+          "50-100Hz": 0.1524551835402828,
+          "100-500Hz": 0.14863956989893898
+        },
+        "no_task": {
+          "0-1Hz": 24.631380489332006,
+          "1-2Hz": 1.7344817703311433,
+          "2-5Hz": 1.0251013349546672,
+          "5-10Hz": 0.5124222263419229,
+          "10-20Hz": 0.35951043109408215,
+          "20-50Hz": 0.27858894290255737,
+          "50-100Hz": 0.16182085484172506,
+          "100-500Hz": 0.15776971964574096
+        },
+        "task": {
+          "0-1Hz": 24.516642309568528,
+          "1-2Hz": 1.7292967566259656,
+          "2-5Hz": 1.024354281575908,
+          "5-10Hz": 0.5115891217995816,
+          "10-20Hz": 0.3589104561170716,
+          "20-50Hz": 0.2780919295056863,
+          "50-100Hz": 0.16153253551550328,
+          "100-500Hz": 0.15748859811298185
+        }
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C06_W07",
+      "task_id": "T2",
+      "wind_code": 7,
+      "fold_id": "holdout_W06_10",
+      "c5_so3_rmse_mrad": 75.15825466945402,
+      "no_task_so3_rmse_mrad": 89.00412041913864,
+      "task_so3_rmse_mrad": 88.27830286909997,
+      "task_minus_no_task_so3_mrad": -0.7258175500386699,
+      "no_task_position_rmse_mps2": 0.11857228104092887,
+      "task_position_rmse_mps2": 0.11679092499154287,
+      "task_minus_no_task_position_rmse_mps2": -0.001781356049386007,
+      "so3_error_vector_band_rms_mrad": {
+        "c5": {
+          "0-1Hz": 10.32578728708183,
+          "1-2Hz": 25.777197186183045,
+          "2-5Hz": 2.9023165744387995,
+          "5-10Hz": 0.1740323252094808,
+          "10-20Hz": 0.12151750537720102,
+          "20-50Hz": 0.09482392821063719,
+          "50-100Hz": 0.05517850826215114,
+          "100-500Hz": 0.05381352915110521
+        },
+        "no_task": {
+          "0-1Hz": 12.769370792983956,
+          "1-2Hz": 35.58048612758238,
+          "2-5Hz": 4.722165121169008,
+          "5-10Hz": 0.3529049481875262,
+          "10-20Hz": 0.04535385978727095,
+          "20-50Hz": 0.027288160996448273,
+          "50-100Hz": 0.015865159246754353,
+          "100-500Hz": 0.015470835752911158
+        },
+        "task": {
+          "0-1Hz": 12.600315698995251,
+          "1-2Hz": 35.59820123704997,
+          "2-5Hz": 4.7025272997268095,
+          "5-10Hz": 0.3778100019255278,
+          "10-20Hz": 0.045486058122933166,
+          "20-50Hz": 0.024651730662015307,
+          "50-100Hz": 0.014272797739820153,
+          "100-500Hz": 0.013909751319079393
+        }
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C08_W08",
+      "task_id": "T2",
+      "wind_code": 8,
+      "fold_id": "holdout_W06_10",
+      "c5_so3_rmse_mrad": 74.01982627000899,
+      "no_task_so3_rmse_mrad": 92.72667220918585,
+      "task_so3_rmse_mrad": 92.83546627009238,
+      "task_minus_no_task_so3_mrad": 0.10879406090653276,
+      "no_task_position_rmse_mps2": 0.12121759716790885,
+      "task_position_rmse_mps2": 0.12089932087909507,
+      "task_minus_no_task_position_rmse_mps2": -0.00031827628881378467,
+      "so3_error_vector_band_rms_mrad": {
+        "c5": {
+          "0-1Hz": 13.088572528077528,
+          "1-2Hz": 29.14587209954588,
+          "2-5Hz": 5.1446738682410045,
+          "5-10Hz": 0.5716323132189164,
+          "10-20Hz": 0.3884776799021407,
+          "20-50Hz": 0.29856151155674554,
+          "50-100Hz": 0.17310878943167127,
+          "100-500Hz": 0.16872088287598283
+        },
+        "no_task": {
+          "0-1Hz": 15.459949159674586,
+          "1-2Hz": 42.535285069566825,
+          "2-5Hz": 7.7522225254829635,
+          "5-10Hz": 0.88089740500138,
+          "10-20Hz": 0.5316441952855103,
+          "20-50Hz": 0.40287871718440793,
+          "50-100Hz": 0.2335514598402729,
+          "100-500Hz": 0.2276232045304678
+        },
+        "task": {
+          "0-1Hz": 15.393651577890202,
+          "1-2Hz": 42.632288924236406,
+          "2-5Hz": 7.793017866165174,
+          "5-10Hz": 0.8769513791196756,
+          "10-20Hz": 0.5329395282157252,
+          "20-50Hz": 0.40267041307673845,
+          "50-100Hz": 0.23345315160770358,
+          "100-500Hz": 0.22752947236235932
+        }
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C09_W10",
+      "task_id": "T2",
+      "wind_code": 10,
+      "fold_id": "holdout_W06_10",
+      "c5_so3_rmse_mrad": 74.9930006362029,
+      "no_task_so3_rmse_mrad": 86.8269960203291,
+      "task_so3_rmse_mrad": 87.06208025064561,
+      "task_minus_no_task_so3_mrad": 0.23508423031650238,
+      "no_task_position_rmse_mps2": 0.19092072311121483,
+      "task_position_rmse_mps2": 0.19454105771647404,
+      "task_minus_no_task_position_rmse_mps2": 0.0036203346052592067,
+      "so3_error_vector_band_rms_mrad": {
+        "c5": {
+          "0-1Hz": 8.440603035559878,
+          "1-2Hz": 3.840116802844606,
+          "2-5Hz": 22.6692167650576,
+          "5-10Hz": 0.7831733859663113,
+          "10-20Hz": 0.4543776942832411,
+          "20-50Hz": 0.3513065654217175,
+          "50-100Hz": 0.2039706104478702,
+          "100-500Hz": 0.19884710095896743
+        },
+        "no_task": {
+          "0-1Hz": 9.293170588286277,
+          "1-2Hz": 6.588185936472751,
+          "2-5Hz": 33.05550076022319,
+          "5-10Hz": 1.344449238938569,
+          "10-20Hz": 0.5610242141959334,
+          "20-50Hz": 0.3988153734009401,
+          "50-100Hz": 0.2316655779956824,
+          "100-500Hz": 0.2258832441711288
+        },
+        "task": {
+          "0-1Hz": 9.40444774564427,
+          "1-2Hz": 6.687064756873239,
+          "2-5Hz": 33.24379658623999,
+          "5-10Hz": 1.3234129337508882,
+          "10-20Hz": 0.5615599185645734,
+          "20-50Hz": 0.3967598307381834,
+          "50-100Hz": 0.2305028102565947,
+          "100-500Hz": 0.22475356683181624
+        }
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C12_W13",
+      "task_id": "T2",
+      "wind_code": 13,
+      "fold_id": "holdout_W11_13",
+      "c5_so3_rmse_mrad": 73.57984225420081,
+      "no_task_so3_rmse_mrad": 80.20705825572105,
+      "task_so3_rmse_mrad": 80.03335696450483,
+      "task_minus_no_task_so3_mrad": -0.17370129121621858,
+      "no_task_position_rmse_mps2": 0.22248700412075406,
+      "task_position_rmse_mps2": 0.22526677785560903,
+      "task_minus_no_task_position_rmse_mps2": 0.002779773734854968,
+      "so3_error_vector_band_rms_mrad": {
+        "c5": {
+          "0-1Hz": 10.850402461656646,
+          "1-2Hz": 3.6062947881709335,
+          "2-5Hz": 13.472083093922793,
+          "5-10Hz": 0.6905544654637832,
+          "10-20Hz": 0.3770992223956463,
+          "20-50Hz": 0.29054879598066197,
+          "50-100Hz": 0.16866895412424826,
+          "100-500Hz": 0.16442998004895704
+        },
+        "no_task": {
+          "0-1Hz": 11.650072920112981,
+          "1-2Hz": 5.567566584356583,
+          "2-5Hz": 20.419082421063493,
+          "5-10Hz": 1.1830756512600473,
+          "10-20Hz": 0.47624166008652163,
+          "20-50Hz": 0.3186813772102939,
+          "50-100Hz": 0.18420817641489085,
+          "100-500Hz": 0.17951067318696481
+        },
+        "task": {
+          "0-1Hz": 11.76427075966706,
+          "1-2Hz": 5.5784054542184744,
+          "2-5Hz": 20.46762080105286,
+          "5-10Hz": 1.1952931556990558,
+          "10-20Hz": 0.4832075099677345,
+          "20-50Hz": 0.3210018996782068,
+          "50-100Hz": 0.18558536576531487,
+          "100-500Hz": 0.18085500535120383
+        }
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C14_W14",
+      "task_id": "T2",
+      "wind_code": 14,
+      "fold_id": "holdout_W14_15",
+      "c5_so3_rmse_mrad": 61.06868886542963,
+      "no_task_so3_rmse_mrad": 64.58827040545938,
+      "task_so3_rmse_mrad": 64.29151216214599,
+      "task_minus_no_task_so3_mrad": -0.2967582433133913,
+      "no_task_position_rmse_mps2": 0.18285004689964798,
+      "task_position_rmse_mps2": 0.18179218673386316,
+      "task_minus_no_task_position_rmse_mps2": -0.0010578601657848241,
+      "so3_error_vector_band_rms_mrad": {
+        "c5": {
+          "0-1Hz": 10.033112337903061,
+          "1-2Hz": 5.719626666184931,
+          "2-5Hz": 13.571202530311803,
+          "5-10Hz": 0.949155534481401,
+          "10-20Hz": 0.5334035953384749,
+          "20-50Hz": 0.4033400488267835,
+          "50-100Hz": 0.23321272954266692,
+          "100-500Hz": 0.22718276303601342
+        },
+        "no_task": {
+          "0-1Hz": 11.03697978733976,
+          "1-2Hz": 6.422009575957196,
+          "2-5Hz": 21.182597685212517,
+          "5-10Hz": 1.5737942236859406,
+          "10-20Hz": 0.4940472889559701,
+          "20-50Hz": 0.32746697022550836,
+          "50-100Hz": 0.18924175562213053,
+          "100-500Hz": 0.18432824188919938
+        },
+        "task": {
+          "0-1Hz": 11.023849668629634,
+          "1-2Hz": 6.458918305780524,
+          "2-5Hz": 21.17081587676259,
+          "5-10Hz": 1.5670605171953147,
+          "10-20Hz": 0.48949414195661145,
+          "20-50Hz": 0.3257937199145209,
+          "50-100Hz": 0.18824703765221493,
+          "100-500Hz": 0.1833541454979101
+        }
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C00_W05",
+      "task_id": "T3",
+      "wind_code": 5,
+      "fold_id": "holdout_W00_05",
+      "c5_so3_rmse_mrad": 64.40935219733352,
+      "no_task_so3_rmse_mrad": 78.8343790375815,
+      "task_so3_rmse_mrad": 78.45035129437775,
+      "task_minus_no_task_so3_mrad": -0.38402774320374533,
+      "no_task_position_rmse_mps2": 0.10794715435453203,
+      "task_position_rmse_mps2": 0.10630106990378509,
+      "task_minus_no_task_position_rmse_mps2": -0.0016460844507469458,
+      "so3_error_vector_band_rms_mrad": {
+        "c5": {
+          "0-1Hz": 25.41586634882506,
+          "1-2Hz": 5.624717266877046,
+          "2-5Hz": 0.8640151238320448,
+          "5-10Hz": 0.3178454611760519,
+          "10-20Hz": 0.220715138548129,
+          "20-50Hz": 0.1706319161077171,
+          "50-100Hz": 0.09906859835672241,
+          "100-500Hz": 0.09658218863452053
+        },
+        "no_task": {
+          "0-1Hz": 36.49200678301595,
+          "1-2Hz": 8.652588110634197,
+          "2-5Hz": 1.6043134113798803,
+          "5-10Hz": 0.2973744019874921,
+          "10-20Hz": 0.18563204793415874,
+          "20-50Hz": 0.14330163658636974,
+          "50-100Hz": 0.08317343505643712,
+          "100-500Hz": 0.08108220619319272
+        },
+        "task": {
+          "0-1Hz": 36.09433690146183,
+          "1-2Hz": 8.635307865249104,
+          "2-5Hz": 1.6080643004184425,
+          "5-10Hz": 0.28994468290899644,
+          "10-20Hz": 0.18440145937000402,
+          "20-50Hz": 0.14225262493772226,
+          "50-100Hz": 0.08256405968874393,
+          "100-500Hz": 0.0804877037663336
+        }
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C03_W15",
+      "task_id": "T3",
+      "wind_code": 15,
+      "fold_id": "holdout_W14_15",
+      "c5_so3_rmse_mrad": 9.494842932910236,
+      "no_task_so3_rmse_mrad": 12.284742158971353,
+      "task_so3_rmse_mrad": 12.355337571429663,
+      "task_minus_no_task_so3_mrad": 0.07059541245831014,
+      "no_task_position_rmse_mps2": 0.009085340427090785,
+      "task_position_rmse_mps2": 0.009539227967913922,
+      "task_minus_no_task_position_rmse_mps2": 0.0004538875408231363,
+      "so3_error_vector_band_rms_mrad": {
+        "c5": {
+          "0-1Hz": 5.261535389642672,
+          "1-2Hz": 0.9752829143500515,
+          "2-5Hz": 0.6016848437596107,
+          "5-10Hz": 0.08495125727453921,
+          "10-20Hz": 0.022780977199299144,
+          "20-50Hz": 0.008481173746849395,
+          "50-100Hz": 0.002833301663121069,
+          "100-500Hz": 0.0022123415385288192
+        },
+        "no_task": {
+          "0-1Hz": 6.890159930731399,
+          "1-2Hz": 1.1864486055628098,
+          "2-5Hz": 0.71549624020884,
+          "5-10Hz": 0.10879896380526669,
+          "10-20Hz": 0.024264713346575945,
+          "20-50Hz": 0.010679248690275159,
+          "50-100Hz": 0.00474273034283219,
+          "100-500Hz": 0.00432426641415641
+        },
+        "task": {
+          "0-1Hz": 6.86467971017389,
+          "1-2Hz": 1.1757312502325192,
+          "2-5Hz": 0.7151820569485259,
+          "5-10Hz": 0.10991691007720232,
+          "10-20Hz": 0.026495949603792476,
+          "20-50Hz": 0.013747994515943473,
+          "50-100Hz": 0.0069181466668824035,
+          "100-500Hz": 0.006544187987196732
+        }
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C05_W02",
+      "task_id": "T3",
+      "wind_code": 2,
+      "fold_id": "holdout_W00_05",
+      "c5_so3_rmse_mrad": 71.43920291305591,
+      "no_task_so3_rmse_mrad": 79.73288817344266,
+      "task_so3_rmse_mrad": 79.70279137010446,
+      "task_minus_no_task_so3_mrad": -0.03009680333819631,
+      "no_task_position_rmse_mps2": 0.06020130744404046,
+      "task_position_rmse_mps2": 0.05835209516301005,
+      "task_minus_no_task_position_rmse_mps2": -0.0018492122810304101,
+      "so3_error_vector_band_rms_mrad": {
+        "c5": {
+          "0-1Hz": 28.675165417875075,
+          "1-2Hz": 3.8363669897988415,
+          "2-5Hz": 2.4282721530380593,
+          "5-10Hz": 1.301462135855418,
+          "10-20Hz": 0.9168676539301803,
+          "20-50Hz": 0.7100580574811148,
+          "50-100Hz": 0.4124033326477673,
+          "100-500Hz": 0.40207499345683373
+        },
+        "no_task": {
+          "0-1Hz": 33.82640850738433,
+          "1-2Hz": 4.471524621973042,
+          "2-5Hz": 2.7243051752318133,
+          "5-10Hz": 1.417751802372998,
+          "10-20Hz": 0.9976947233320359,
+          "20-50Hz": 0.7724937120848813,
+          "50-100Hz": 0.4486507311456459,
+          "100-500Hz": 0.4374121155091119
+        },
+        "task": {
+          "0-1Hz": 33.91451266641815,
+          "1-2Hz": 4.496935564459626,
+          "2-5Hz": 2.739025948358017,
+          "5-10Hz": 1.4270904735616985,
+          "10-20Hz": 1.003926332421778,
+          "20-50Hz": 0.777249885664288,
+          "50-100Hz": 0.45140628234829655,
+          "100-500Hz": 0.4400974969165385
+        }
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C06_W08",
+      "task_id": "T3",
+      "wind_code": 8,
+      "fold_id": "holdout_W06_10",
+      "c5_so3_rmse_mrad": 101.63050776114821,
+      "no_task_so3_rmse_mrad": 121.01155293289325,
+      "task_so3_rmse_mrad": 121.0991027475092,
+      "task_minus_no_task_so3_mrad": 0.08754981461595435,
+      "no_task_position_rmse_mps2": 0.2483185292578817,
+      "task_position_rmse_mps2": 0.2486024904945629,
+      "task_minus_no_task_position_rmse_mps2": 0.00028396123668120166,
+      "so3_error_vector_band_rms_mrad": {
+        "c5": {
+          "0-1Hz": 12.417554269523967,
+          "1-2Hz": 39.53993997247575,
+          "2-5Hz": 7.306736109449928,
+          "5-10Hz": 1.7183740362277466,
+          "10-20Hz": 1.168457409083053,
+          "20-50Hz": 0.8984107749446764,
+          "50-100Hz": 0.5209514659314057,
+          "100-500Hz": 0.5077552997584964
+        },
+        "no_task": {
+          "0-1Hz": 15.077731520678604,
+          "1-2Hz": 53.73861841121617,
+          "2-5Hz": 10.366267883481754,
+          "5-10Hz": 2.2712010703590164,
+          "10-20Hz": 1.4828548940271036,
+          "20-50Hz": 1.1402900746999531,
+          "50-100Hz": 0.6613508304148104,
+          "100-500Hz": 0.6446130823946847
+        },
+        "task": {
+          "0-1Hz": 15.261044746554642,
+          "1-2Hz": 53.87700431559329,
+          "2-5Hz": 10.31170519499978,
+          "5-10Hz": 2.2836679668132267,
+          "10-20Hz": 1.4834534655693814,
+          "20-50Hz": 1.1404365547948354,
+          "50-100Hz": 0.6614129819837525,
+          "100-500Hz": 0.644667896329633
+        }
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C09_W09",
+      "task_id": "T3",
+      "wind_code": 9,
+      "fold_id": "holdout_W06_10",
+      "c5_so3_rmse_mrad": 60.167278638559246,
+      "no_task_so3_rmse_mrad": 65.55820761531233,
+      "task_so3_rmse_mrad": 65.36413239419693,
+      "task_minus_no_task_so3_mrad": -0.19407522111539777,
+      "no_task_position_rmse_mps2": 0.04698295005766562,
+      "task_position_rmse_mps2": 0.04639999535270408,
+      "task_minus_no_task_position_rmse_mps2": -0.0005829547049615372,
+      "so3_error_vector_band_rms_mrad": {
+        "c5": {
+          "0-1Hz": 8.592279238877653,
+          "1-2Hz": 2.4064442124807153,
+          "2-5Hz": 9.961292187028645,
+          "5-10Hz": 0.3378453773970244,
+          "10-20Hz": 0.22784276413396604,
+          "20-50Hz": 0.1779327853872602,
+          "50-100Hz": 0.10357847095803419,
+          "100-500Hz": 0.1010247775670634
+        },
+        "no_task": {
+          "0-1Hz": 10.08426263140652,
+          "1-2Hz": 2.9380321689287374,
+          "2-5Hz": 16.09455893093338,
+          "5-10Hz": 0.32605873437658783,
+          "10-20Hz": 0.1521213619008995,
+          "20-50Hz": 0.11739398365525323,
+          "50-100Hz": 0.06825468769136994,
+          "100-500Hz": 0.06655589837703968
+        },
+        "task": {
+          "0-1Hz": 10.020362686308225,
+          "1-2Hz": 2.919775376184184,
+          "2-5Hz": 16.04300147656095,
+          "5-10Hz": 0.32236070375507014,
+          "10-20Hz": 0.15453158009502424,
+          "20-50Hz": 0.11922863918288232,
+          "50-100Hz": 0.06931457776779955,
+          "100-500Hz": 0.06758841972119618
+        }
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C10_W11",
+      "task_id": "T3",
+      "wind_code": 11,
+      "fold_id": "holdout_W11_13",
+      "c5_so3_rmse_mrad": 61.40992228381616,
+      "no_task_so3_rmse_mrad": 74.38684514958618,
+      "task_so3_rmse_mrad": 74.48823698945027,
+      "task_minus_no_task_so3_mrad": 0.1013918398640925,
+      "no_task_position_rmse_mps2": 0.18249418568160217,
+      "task_position_rmse_mps2": 0.18525127008958142,
+      "task_minus_no_task_position_rmse_mps2": 0.0027570844079792545,
+      "so3_error_vector_band_rms_mrad": {
+        "c5": {
+          "0-1Hz": 11.627924469868777,
+          "1-2Hz": 4.9213249280374365,
+          "2-5Hz": 22.140543357223052,
+          "5-10Hz": 0.8240947395329673,
+          "10-20Hz": 0.37633192243865976,
+          "20-50Hz": 0.2870592013045378,
+          "50-100Hz": 0.1661172994565447,
+          "100-500Hz": 0.16184428276212795
+        },
+        "no_task": {
+          "0-1Hz": 12.996073091148606,
+          "1-2Hz": 6.5976480835386955,
+          "2-5Hz": 32.48463298240948,
+          "5-10Hz": 1.0946603792206808,
+          "10-20Hz": 0.28938198695081735,
+          "20-50Hz": 0.18964775445718238,
+          "50-100Hz": 0.10840271762968828,
+          "100-500Hz": 0.10536445763622665
+        },
+        "task": {
+          "0-1Hz": 12.929815061569672,
+          "1-2Hz": 6.649833790576888,
+          "2-5Hz": 32.30356363607503,
+          "5-10Hz": 1.184216493305669,
+          "10-20Hz": 0.2969747952835631,
+          "20-50Hz": 0.18544373337261383,
+          "50-100Hz": 0.10591031969800119,
+          "100-500Hz": 0.10293206983611342
+        }
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C13_W12",
+      "task_id": "T3",
+      "wind_code": 12,
+      "fold_id": "holdout_W11_13",
+      "c5_so3_rmse_mrad": 46.71482882006121,
+      "no_task_so3_rmse_mrad": 49.69592171768141,
+      "task_so3_rmse_mrad": 49.62345886040333,
+      "task_minus_no_task_so3_mrad": -0.07246285727807589,
+      "no_task_position_rmse_mps2": 0.06045059531042721,
+      "task_position_rmse_mps2": 0.057888885853593634,
+      "task_minus_no_task_position_rmse_mps2": -0.0025617094568335733,
+      "so3_error_vector_band_rms_mrad": {
+        "c5": {
+          "0-1Hz": 9.483456024125061,
+          "1-2Hz": 1.8456298080701654,
+          "2-5Hz": 4.2681736935115495,
+          "5-10Hz": 0.49881565574710224,
+          "10-20Hz": 0.30390403859327697,
+          "20-50Hz": 0.23236241852245093,
+          "50-100Hz": 0.1346167674067574,
+          "100-500Hz": 0.13119116459348765
+        },
+        "no_task": {
+          "0-1Hz": 11.310612736704016,
+          "1-2Hz": 2.285381679020866,
+          "2-5Hz": 8.027468387847582,
+          "5-10Hz": 0.8435778905863119,
+          "10-20Hz": 0.4070175996909576,
+          "20-50Hz": 0.3041254488224019,
+          "50-100Hz": 0.17541773564416302,
+          "100-500Hz": 0.17082785892062718
+        },
+        "task": {
+          "0-1Hz": 11.229320994280624,
+          "1-2Hz": 2.2380059419139537,
+          "2-5Hz": 7.9531326851336805,
+          "5-10Hz": 0.8396933760904982,
+          "10-20Hz": 0.40460993390328814,
+          "20-50Hz": 0.30230375023191564,
+          "50-100Hz": 0.17437751832616194,
+          "100-500Hz": 0.16981630589698135
+        }
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C15_W14",
+      "task_id": "T3",
+      "wind_code": 14,
+      "fold_id": "holdout_W14_15",
+      "c5_so3_rmse_mrad": 61.666163293932655,
+      "no_task_so3_rmse_mrad": 64.96964363389235,
+      "task_so3_rmse_mrad": 64.65001054833763,
+      "task_minus_no_task_so3_mrad": -0.31963308555471315,
+      "no_task_position_rmse_mps2": 0.1811753620300007,
+      "task_position_rmse_mps2": 0.1805121539675335,
+      "task_minus_no_task_position_rmse_mps2": -0.0006632080624671965,
+      "so3_error_vector_band_rms_mrad": {
+        "c5": {
+          "0-1Hz": 9.486565975192573,
+          "1-2Hz": 5.0343892899520615,
+          "2-5Hz": 13.34788965529337,
+          "5-10Hz": 0.4938781100659287,
+          "10-20Hz": 0.14888850714666918,
+          "20-50Hz": 0.11687687874822371,
+          "50-100Hz": 0.06830078095521754,
+          "100-500Hz": 0.0666554394843507
+        },
+        "no_task": {
+          "0-1Hz": 10.617672335814449,
+          "1-2Hz": 5.600777753700805,
+          "2-5Hz": 20.87925902416274,
+          "5-10Hz": 1.4593523508894641,
+          "10-20Hz": 0.24552492381346822,
+          "20-50Hz": 0.041839228754041696,
+          "50-100Hz": 0.01847102803127886,
+          "100-500Hz": 0.017855213516634445
+        },
+        "task": {
+          "0-1Hz": 10.60673780932504,
+          "1-2Hz": 5.633132619795619,
+          "2-5Hz": 20.865394983063744,
+          "5-10Hz": 1.4596580425718007,
+          "10-20Hz": 0.240120409798233,
+          "20-50Hz": 0.0393270239037778,
+          "50-100Hz": 0.016486961120604174,
+          "100-500Hz": 0.015894133688859495
+        }
+      }
+    }
+  ]
+}

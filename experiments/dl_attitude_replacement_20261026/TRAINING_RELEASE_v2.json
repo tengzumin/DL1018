@@ -1,0 +1,68 @@
+{
+  "schema": "DL1018_CAUSAL_TCN_TRAINING_RELEASE_V1",
+  "status": "FROZEN",
+  "revision": 2,
+  "frozen_local": "2026-10-26 Asia/Shanghai",
+  "amendment": "same candidate/config; deterministic CUDA environment correction after zero-step attempt01",
+  "taskbook": "experiments/dl_attitude_replacement_20261026/DL_ATTITUDE_REPLACEMENT_TASKBOOK_v1_FROZEN_ZH.md",
+  "dataset": "experiments/dl_attitude_replacement_20261026/dataset_v3_corrected/attitude_residual_train_val_v1.npz",
+  "dataset_status": "PASS",
+  "output": "experiments/dl_attitude_replacement_20261026/training_v1_retry01",
+  "scenes": {
+    "TRAIN": 768,
+    "VAL": 48,
+    "corrected_T2": 272,
+    "reused_original": 544,
+    "TEST_accessed": false
+  },
+  "architecture": {
+    "kind": "causal_tcn",
+    "input_dim": 13,
+    "window": 15,
+    "hidden": 32,
+    "kernel": 3,
+    "dilations": [
+      1,
+      2,
+      4
+    ],
+    "output_dim": 3
+  },
+  "target": "(omega[k+10]-omega[k])/0.010-alpha_bs_body[k]",
+  "training_command": "python .\\experiments\\dl_attitude_replacement_20261026\\train_tcn_v1.py",
+  "optimizer_steps": 60000,
+  "seed": 2026102001,
+  "cublas_workspace_config": ":4096:8",
+  "launch_history": {
+    "attempt01_optimizer_steps": 0,
+    "attempt02_is_same_frozen_candidate": true,
+    "successful_training_candidates": 1
+  },
+  "environment": {
+    "powershell": "7.6.8",
+    "python": "3.12.7",
+    "pytorch": "2.6.0+cu124",
+    "gpu": "NVIDIA GeForce RTX 3070 Laptop GPU",
+    "matlab": "R2025b"
+  },
+  "source_files": {
+    "experiments/dl_attitude_replacement_20261026/DL_ATTITUDE_REPLACEMENT_TASKBOOK_v1_FROZEN_ZH.md": "0f03aba04acb89289f6cd91cf0403592c2645045739837adf0d75ee39af8c110",
+    "experiments/dl_attitude_replacement_20261026/DL_ATTITUDE_REPLACEMENT_TASKBOOK_v1_AMENDMENT01.md": "3ea8594c06dbe6e60fbece4c850dbe789d834d196f326db0753e49aeefa4412f",
+    "experiments/dl_attitude_replacement_20261026/IMPLEMENTATION_REVIEW_v1.md": "bd2314ad86d903063b484a8dea040d45e3b4ba5d56e39a9f18386ed55a0ee7ef",
+    "experiments/dl_attitude_replacement_20261026/DATASET_V1_SOURCE_LINEAGE_AUDIT.md": "8e84e439870264a9a2988c6575b1175b56173fb8f4b98443ff0a4f7cb446c237",
+    "experiments/dl_attitude_replacement_20261026/prepare_tcn_dataset_v1.py": "0fd4b7ccca27c541a5172d06bd02bbf36e5bc1815158c65317958fa7236f1dac",
+    "experiments/dl_attitude_replacement_20261026/train_tcn_v1.py": "0aa793d4e4a34640b6c2c38533443c831f686f203a9c179c39b02e85032c5d26",
+    "experiments/dl_attitude_replacement_20261026/matlab/tcn_attitude_forward_v1.m": "193c288d33ad213aa57f40db4795a3d1f0898ccf5f678e7854ccf925cb6ff3cc",
+    "experiments/dl_attitude_replacement_20261026/matlab/tcn_attitude_step_v1.m": "9ec27dc1a9226c7f64acd26f1d0e8173fb0e1aabfb3d67d51318aba66122f130",
+    "experiments/dl_attitude_replacement_20261026/matlab/verify_tcn_parity_v1.m": "2947014e42f6622a987e42121d9f76f539a650116cc72ae01d9cb89c7990a3c3",
+    "matlab/core/attitude_bs_step.m": "cf6b20ffc4df2625d9316a80340d69542e380d14feaed66ef8498e793fdaccbc",
+    "matlab/core/controller_parameters.m": "4fad5e78c0bd4177461647af167e7c86a7defa628b43d523b0b7da2ef5556398",
+    "matlab/core/arm_mass_properties.m": "8ec66e107156b5219f7e41aca2464eef1ec8043eb7f67df313c0f23ef4b551f5",
+    "reports/attitude_cm18_datarepair_20261024/B_REF_REPAIRED_SOURCE_MANIFEST_v1.json": "0f86b47d01940e7b556b78a9664470531572809aa6857a59fc77d88a33681ec5",
+    "reports/attitude_cm18_datarepair_20261024/repaired_all816_v1/DATASET_MANIFEST_v1.json": "3f51a1cd0e2e8c3eae79a16df363f2f8d47b0d5dbd876ecd95f1571d9e70a5e0",
+    "experiments/dl_attitude_replacement_20261026/dataset_v3_corrected/DATASET_MANIFEST_v1.json": "a16c18214f552b8286dcfa09d5858b74e0d26b6bf777ade6f968d4be8f249ed1",
+    "experiments/dl_attitude_replacement_20261026/dataset_v3_corrected/attitude_residual_train_val_v1.npz": "07622eb59821404bf57ed943936a6a805c98a3b4b29f832f388ae2f5f89478cd",
+    "experiments/dl_attitude_replacement_20261026/TRAINING_RELEASE_v1.json": "efd3fc06a8e068f9849fa01f7f330a3aee26675d435488b906be3c22117f2685",
+    "experiments/dl_attitude_replacement_20261026/training_v1/ATTEMPT_FAILURE_v1.json": "dd2dd223b3ebaeb75f43a8113c81e7436baf7fc81d04e319e79800c44164f659"
+  }
+}

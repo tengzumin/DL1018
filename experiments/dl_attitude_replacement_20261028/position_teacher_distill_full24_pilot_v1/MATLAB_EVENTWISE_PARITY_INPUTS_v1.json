@@ -1,0 +1,53 @@
+{
+  "schema": "POSITION_TEACHER_DISTILL_MATLAB_PARITY_INPUTS_V1",
+  "scope": "TRAIN24 X14 and C5 applied acceleration only; no TEST, wind or inertia data",
+  "dataset_sha256": "15d689f08fd6d8a53a64c59dbdf62b33f9b8e8a12ce083fb12834cd106df2eeb",
+  "teacher_npz_sha256": "e0519bc87a977d1349da3fdb0f582273bffaa61eb24ea380fb44e4a56791634a",
+  "model_checkpoint_sha256": "dddbd649af996dae7b10df3347deb9693f4aa74880979e44ff5d37f422ae899b",
+  "weights_mat_sha256": "aa870747f22ddd5a7c670ad351e1277dd11fc9fecd9143272a5d82c33681e5c5",
+  "scene_ids": [
+    "DL1018_DEV_T1_C00_W03",
+    "DL1018_DEV_T1_C01_W15",
+    "DL1018_DEV_T1_C04_W00",
+    "DL1018_DEV_T1_C05_W06",
+    "DL1018_DEV_T1_C07_W08",
+    "DL1018_DEV_T1_C10_W09",
+    "DL1018_DEV_T1_C11_W12",
+    "DL1018_DEV_T1_C15_W14",
+    "DL1018_DEV_T2_C00_W04",
+    "DL1018_DEV_T2_C02_W15",
+    "DL1018_DEV_T2_C03_W01",
+    "DL1018_DEV_T2_C06_W07",
+    "DL1018_DEV_T2_C08_W08",
+    "DL1018_DEV_T2_C09_W10",
+    "DL1018_DEV_T2_C12_W13",
+    "DL1018_DEV_T2_C14_W14",
+    "DL1018_DEV_T3_C00_W05",
+    "DL1018_DEV_T3_C03_W15",
+    "DL1018_DEV_T3_C05_W02",
+    "DL1018_DEV_T3_C06_W08",
+    "DL1018_DEV_T3_C09_W09",
+    "DL1018_DEV_T3_C10_W11",
+    "DL1018_DEV_T3_C13_W12",
+    "DL1018_DEV_T3_C15_W14"
+  ],
+  "event_count_per_scene": 1999,
+  "x14_shape_matlab": [
+    14,
+    1999,
+    24
+  ],
+  "base_applied_shape_matlab": [
+    3,
+    1999,
+    24
+  ],
+  "first_event_time_s": 0.009999999776482582,
+  "first_ready_zero_based_index": 31,
+  "first_ready_event_time_s": 0.3199999928474426,
+  "beta": "clip(event_time_s/1.8,0,1)",
+  "delta_clip_mps2": 0.5,
+  "total_action_clip_mps2": 3.0,
+  "warmup_delta_and_action_exactly_zero": true,
+  "mat_sha256": "5aa33fab957da6010b053da4dc650e841577ea8799aac8fd327628f5dad28d09"
+}

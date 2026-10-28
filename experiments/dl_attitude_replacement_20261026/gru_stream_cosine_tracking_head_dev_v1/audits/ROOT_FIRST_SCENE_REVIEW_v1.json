@@ -1,0 +1,54 @@
+{
+  "schema": "DL1018_GRU_TRACKING_HEAD_FIRST_SCENE_ROOT_REVIEW_V1",
+  "status": "PASS_ENGINEERING_GATE_CONTINUE_TO_ONE_HIGH_FREQUENCY_SCENE",
+  "reviewed_utc": "2026-10-26T23:54:56Z",
+  "scene_id": "DL1018_VAL_T1_C08_W15",
+  "next_authorized_scene": "DL1018_VAL_T1_C05_W12",
+  "first_release_sha256": "418c59866d8292a817baa8c9ccd1411487dc632b3391f7154ff5161d1f71db45",
+  "run_status_sha256": "633792170fd165882f870ebb36af33b065fa8adbc0728f75757333d089113c71",
+  "raw_sha256": "cb4fb0e1137586cf5869df769183a60344614bf5b639688e076ca43ca6a42219",
+  "raw_audit_path": "experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_dev_v1\\audits\\DL1018_VAL_T1_C08_W15_GRU_STREAM_TRACKING_HEAD_RAW_AUDIT.json",
+  "raw_audit_sha256": "a7d7c0b9a114ffeb787d75b412626761bfa12f04ff833dd0ea2df9b82ab17ee1",
+  "no_plant_check_sha256": "b5adff8b2ce11c43e7584b1a8447d97979a810e1e8f8eef70984769a4ef3ce9c",
+  "model_sha256": "b2c462f77a6bb97b8c6bb2b471daef0633d4f9664a7d623b894461a4fa21b567",
+  "methods": "Frozen cosine GRU base plus online bounded 33x3 DeltaW tracking head; position C5 DSSM14/M110; RBF attitude output/update off; no inertia reconstruction or Plant truth inputs.",
+  "metrics": {
+    "B": {
+      "Q_m": 0.00916152175326803,
+      "task_SO3_rad": 0.006024390012417934,
+      "inner_tracking_SO3_rad": 0.025478213345243004
+    },
+    "C5": {
+      "Q_m": 0.008587887210447743,
+      "task_SO3_rad": 0.002994678368820837,
+      "inner_tracking_SO3_rad": 0.025475786117778496
+    },
+    "candidate": {
+      "Q_m": 0.007154553703177813,
+      "task_SO3_rad": 0.0030163913342609494,
+      "inner_tracking_SO3_rad": 0.021739885911459533
+    }
+  },
+  "percent_change_candidate_vs_B": {
+    "Q_m": -21.906492219748387,
+    "task_SO3_rad": -49.93034434949708,
+    "inner_tracking_SO3_rad": -14.672643576404653
+  },
+  "percent_change_candidate_vs_C5": {
+    "Q_m": -16.690176199871175,
+    "task_SO3_rad": 0.7250516671899687,
+    "inner_tracking_SO3_rad": -14.664513939029467
+  },
+  "safety": {
+    "transitions": 20000,
+    "state_samples": 20001,
+    "motor_saturation_samples": 0,
+    "generalized_clip_samples": 0,
+    "tilt_limited_samples": 0,
+    "status": "STABLE"
+  },
+  "raw_replay_status": "PASS_INDEPENDENT_GRU_STREAM_TRACKING_HEAD_RAW_REPLAY",
+  "raw_replay_maxima_zero": true,
+  "decision": "Engineering and raw-replay gates pass. This W15 scene is not high-frequency evidence. Candidate task SO3 is 0.725% worse than C5 on this one scene while inner tracking SO3 improves 14.665%; candidate beats B on both. Continue with one locked W12 high-frequency scene before releasing the other four.",
+  "scope_limit": "Single W15 engineering scene; no claim of high-frequency, six-scene, DEV72, or TEST performance."
+}

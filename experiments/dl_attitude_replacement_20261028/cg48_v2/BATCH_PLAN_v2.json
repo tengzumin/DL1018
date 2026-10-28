@@ -1,0 +1,525 @@
+{
+  "schema": "DL1018_CAUSAL_N4_VAL48_BATCH_PLAN_V2",
+  "status": "FROZEN_VAL48_48_NEW_SCENES_READY",
+  "study_id": "causal_n4_gate_train24_batch_v2",
+  "source_split": "VAL48",
+  "scene_count": 48,
+  "ordered_scene_ids": [
+    "DL1018_VAL_T1_C00_W07",
+    "DL1018_VAL_T1_C01_W08",
+    "DL1018_VAL_T1_C02_W09",
+    "DL1018_VAL_T1_C03_W10",
+    "DL1018_VAL_T1_C04_W11",
+    "DL1018_VAL_T1_C05_W12",
+    "DL1018_VAL_T1_C06_W13",
+    "DL1018_VAL_T1_C07_W14",
+    "DL1018_VAL_T1_C08_W15",
+    "DL1018_VAL_T1_C09_W00",
+    "DL1018_VAL_T1_C10_W01",
+    "DL1018_VAL_T1_C11_W02",
+    "DL1018_VAL_T1_C12_W03",
+    "DL1018_VAL_T1_C13_W04",
+    "DL1018_VAL_T1_C14_W05",
+    "DL1018_VAL_T1_C15_W06",
+    "DL1018_VAL_T2_C00_W10",
+    "DL1018_VAL_T2_C01_W11",
+    "DL1018_VAL_T2_C02_W12",
+    "DL1018_VAL_T2_C03_W13",
+    "DL1018_VAL_T2_C04_W14",
+    "DL1018_VAL_T2_C05_W15",
+    "DL1018_VAL_T2_C06_W00",
+    "DL1018_VAL_T2_C07_W01",
+    "DL1018_VAL_T2_C08_W02",
+    "DL1018_VAL_T2_C09_W03",
+    "DL1018_VAL_T2_C10_W04",
+    "DL1018_VAL_T2_C11_W05",
+    "DL1018_VAL_T2_C12_W06",
+    "DL1018_VAL_T2_C13_W07",
+    "DL1018_VAL_T2_C14_W08",
+    "DL1018_VAL_T2_C15_W09",
+    "DL1018_VAL_T3_C00_W13",
+    "DL1018_VAL_T3_C01_W14",
+    "DL1018_VAL_T3_C02_W15",
+    "DL1018_VAL_T3_C03_W00",
+    "DL1018_VAL_T3_C04_W01",
+    "DL1018_VAL_T3_C05_W02",
+    "DL1018_VAL_T3_C06_W03",
+    "DL1018_VAL_T3_C07_W04",
+    "DL1018_VAL_T3_C08_W05",
+    "DL1018_VAL_T3_C09_W06",
+    "DL1018_VAL_T3_C10_W07",
+    "DL1018_VAL_T3_C11_W08",
+    "DL1018_VAL_T3_C12_W09",
+    "DL1018_VAL_T3_C13_W10",
+    "DL1018_VAL_T3_C14_W11",
+    "DL1018_VAL_T3_C15_W12"
+  ],
+  "input_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\cg48_v2\\BATCH_INPUT_v2.json",
+  "input_sha256": "0f2d7a48e629d594437100f8bf2f49cd8751d1bee4550f6d0366153a1b9e5ad9",
+  "source_lock_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\cg48_v2\\SOURCE_LOCK_VAL48_v1.json",
+  "candidate_identity_sha256": "7cdb682030f86a5d2adf4264907c9f4fb0f72385a71c42749a650d55b3a12479",
+  "controller": {
+    "attitude": "frozen parent cosine-GRU",
+    "position": "frozen C5 DSSM14 / M110 options",
+    "extra_position_residual_gru_enabled": false,
+    "fixed_J0": true,
+    "inertia_reconstruction_enabled": false,
+    "parameter_tuning": false
+  },
+  "fixed_n4_filter": {
+    "enabled": true,
+    "centers_hz": [
+      2.2,
+      3.2,
+      3.7,
+      4.8
+    ],
+    "quality_factor_each": [
+      4,
+      4,
+      4,
+      4
+    ],
+    "sample_rate_hz": 100,
+    "action_limit_mps2": 3,
+    "b": [
+      [
+        0.9830678494084116,
+        -1.9473815673631925,
+        0.9830678494084116
+      ],
+      [
+        0.9756442629082012,
+        -1.9119799206806107,
+        0.9756442629082012
+      ],
+      [
+        0.972007469545749,
+        -1.8917180425569462,
+        0.972007469545749
+      ],
+      [
+        0.9641990969122544,
+        -1.841359063436488,
+        0.9641990969122544
+      ]
+    ],
+    "a": [
+      [
+        1.0,
+        -1.9473815673631925,
+        0.9661356988168233
+      ],
+      [
+        1.0,
+        -1.9119799206806107,
+        0.9512885258164024
+      ],
+      [
+        1.0,
+        -1.8917180425569462,
+        0.9440149390914979
+      ],
+      [
+        1.0,
+        -1.841359063436488,
+        0.9283981938245087
+      ]
+    ],
+    "gate_bp_sos": [
+      [
+        0.00782020803349719,
+        0.01564041606699438,
+        0.00782020803349719,
+        1.0,
+        -1.765303227856989,
+        0.8375337582790457
+      ],
+      [
+        1.0,
+        -2.0,
+        1.0,
+        1.0,
+        -1.8957260285978639,
+        0.9145978814242006
+      ]
+    ],
+    "gate_lo_sos": [
+      [
+        0.002080567135492293,
+        0.004161134270984586,
+        0.002080567135492293,
+        1.0,
+        -1.8925388671474799,
+        0.9041738508370836
+      ],
+      [
+        1.0,
+        -2.0,
+        1.0,
+        1.0,
+        -1.9667173311097974,
+        0.9679715327350051
+      ]
+    ],
+    "gate_energy_tau_s": 1,
+    "gate_ratio_epsilon": 1e-08,
+    "gate_ratio_low": 0.35,
+    "gate_ratio_span": 0.3,
+    "gate_tau_s": 0.3,
+    "startup_gate_zero_until_s": 2,
+    "event_contract": "1999 events 0.01:0.01:19.99; 31 warmup actions are zero; ZOH at other 1-ms steps",
+    "application_point": "final C5 applied compensation before position_bs_step",
+    "state_initialization": "gate SOS zero; N4 first nonzero input initializes all section histories",
+    "runtime_wind_or_W_code_branching": false
+  },
+  "attempt_policy": {
+    "attempt_id": "attempt_01",
+    "max_attempts_per_scene": 1,
+    "new_attempt_count": 48,
+    "Plant_calls_at_freeze": 0,
+    "authorized_Plant_calls": 48,
+    "potential_budget_calls": 48,
+    "retry_or_overwrite": false
+  },
+  "score_contract": "Frozen full72 score_raw, same-scene B/C5/parent, diagnostic misses retained.",
+  "entries": [
+    {
+      "scene_id": "DL1018_VAL_T1_C00_W07",
+      "source_order_zero_based": 0,
+      "binding_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\cg48_v2\\bindings\\DL1018_VAL_T1_C00_W07.json",
+      "binding_sha256": "7fc57aa0583f32c861708a10c324019512e5bf57cbe2bb7551e598f54bf98744",
+      "mode": "NEW_SINGLE_CALL"
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C01_W08",
+      "source_order_zero_based": 1,
+      "binding_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\cg48_v2\\bindings\\DL1018_VAL_T1_C01_W08.json",
+      "binding_sha256": "51aaefecf904d9afdc21ce3681427c4ce50491098b5bbfd888b2cdd8da931bfe",
+      "mode": "NEW_SINGLE_CALL"
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C02_W09",
+      "source_order_zero_based": 2,
+      "binding_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\cg48_v2\\bindings\\DL1018_VAL_T1_C02_W09.json",
+      "binding_sha256": "eb421da1a8e482d2339061cf3cd5985db014749d49603cbeeeec87a85dc098c5",
+      "mode": "NEW_SINGLE_CALL"
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C03_W10",
+      "source_order_zero_based": 3,
+      "binding_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\cg48_v2\\bindings\\DL1018_VAL_T1_C03_W10.json",
+      "binding_sha256": "63321e0b89cf02302cfc3e6907d9cd20138ec8d03623e8d96f8e3bb2f0606176",
+      "mode": "NEW_SINGLE_CALL"
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C04_W11",
+      "source_order_zero_based": 4,
+      "binding_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\cg48_v2\\bindings\\DL1018_VAL_T1_C04_W11.json",
+      "binding_sha256": "4113c1260fc9ecb477df57abf6d554da3cd1ec42f943b7bf3d5215ed04141010",
+      "mode": "NEW_SINGLE_CALL"
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C05_W12",
+      "source_order_zero_based": 5,
+      "binding_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\cg48_v2\\bindings\\DL1018_VAL_T1_C05_W12.json",
+      "binding_sha256": "46d92e66fa44fa2cc047c8b5b438d653f8eb6907bfd5c49349aad17b2f4457fd",
+      "mode": "NEW_SINGLE_CALL"
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C06_W13",
+      "source_order_zero_based": 6,
+      "binding_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\cg48_v2\\bindings\\DL1018_VAL_T1_C06_W13.json",
+      "binding_sha256": "9ca3cd2af75e3bdc7ce6f06063649bdbcb5957bf4599ce0ef6b0089bfc24c320",
+      "mode": "NEW_SINGLE_CALL"
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C07_W14",
+      "source_order_zero_based": 7,
+      "binding_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\cg48_v2\\bindings\\DL1018_VAL_T1_C07_W14.json",
+      "binding_sha256": "a4bec643b293ff1ce879d04bd1260675f4bf053a6cdc3dc678adff01a55166d6",
+      "mode": "NEW_SINGLE_CALL"
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C08_W15",
+      "source_order_zero_based": 8,
+      "binding_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\cg48_v2\\bindings\\DL1018_VAL_T1_C08_W15.json",
+      "binding_sha256": "4e4aa0d35508a19ba0857bace1798584d45b7102cc8493e0b2a6b91f61c27823",
+      "mode": "NEW_SINGLE_CALL"
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C09_W00",
+      "source_order_zero_based": 9,
+      "binding_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\cg48_v2\\bindings\\DL1018_VAL_T1_C09_W00.json",
+      "binding_sha256": "e6bd5a3626a14420d659d0547eb5c97bf4810270e37cc006556ef7a9d3149f62",
+      "mode": "NEW_SINGLE_CALL"
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C10_W01",
+      "source_order_zero_based": 10,
+      "binding_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\cg48_v2\\bindings\\DL1018_VAL_T1_C10_W01.json",
+      "binding_sha256": "3958f82e8acb0064e471542e7bcef4140e5922e3438ed9b42e617bd7bac34ca5",
+      "mode": "NEW_SINGLE_CALL"
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C11_W02",
+      "source_order_zero_based": 11,
+      "binding_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\cg48_v2\\bindings\\DL1018_VAL_T1_C11_W02.json",
+      "binding_sha256": "e1e8e8f2a2141503900c137ffe5550f6a35656e460ee4bfe275fd50c38013518",
+      "mode": "NEW_SINGLE_CALL"
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C12_W03",
+      "source_order_zero_based": 12,
+      "binding_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\cg48_v2\\bindings\\DL1018_VAL_T1_C12_W03.json",
+      "binding_sha256": "446b0bc62f8b2fefb68cb691b00d2b59b92cddd6ca839e96c4cc278238af1e5b",
+      "mode": "NEW_SINGLE_CALL"
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C13_W04",
+      "source_order_zero_based": 13,
+      "binding_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\cg48_v2\\bindings\\DL1018_VAL_T1_C13_W04.json",
+      "binding_sha256": "1c3f75fe0cb561d7eae3e3a211d5761e379405d02598d1f87897aa4db9998c01",
+      "mode": "NEW_SINGLE_CALL"
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C14_W05",
+      "source_order_zero_based": 14,
+      "binding_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\cg48_v2\\bindings\\DL1018_VAL_T1_C14_W05.json",
+      "binding_sha256": "e13ee43739e6ce0458702934378ddb5c9b9f5e2f1ee9310131a3d9d04e32d318",
+      "mode": "NEW_SINGLE_CALL"
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C15_W06",
+      "source_order_zero_based": 15,
+      "binding_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\cg48_v2\\bindings\\DL1018_VAL_T1_C15_W06.json",
+      "binding_sha256": "f242cfa96eb2119c8f35ff30a1a73d143b90ec0e23b2d4e1a226ed3e88fa43cd",
+      "mode": "NEW_SINGLE_CALL"
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C00_W10",
+      "source_order_zero_based": 16,
+      "binding_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\cg48_v2\\bindings\\DL1018_VAL_T2_C00_W10.json",
+      "binding_sha256": "0839882b2a80755ccb7f2119c60f6730c8abcc69f01242b442cbfb83ffa4e42a",
+      "mode": "NEW_SINGLE_CALL"
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C01_W11",
+      "source_order_zero_based": 17,
+      "binding_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\cg48_v2\\bindings\\DL1018_VAL_T2_C01_W11.json",
+      "binding_sha256": "f0e6fa26436a5d4a64a1fbc13f4b814b107a76428e853a1bdf66caff2aa8b4f7",
+      "mode": "NEW_SINGLE_CALL"
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C02_W12",
+      "source_order_zero_based": 18,
+      "binding_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\cg48_v2\\bindings\\DL1018_VAL_T2_C02_W12.json",
+      "binding_sha256": "9d0936911af2bf09637c2d49448af3591684a7f48eb7b6a863148346d54dafd8",
+      "mode": "NEW_SINGLE_CALL"
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C03_W13",
+      "source_order_zero_based": 19,
+      "binding_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\cg48_v2\\bindings\\DL1018_VAL_T2_C03_W13.json",
+      "binding_sha256": "5abc78c45739de5466059e924ffafbff7ea98b335dd7ac0cbc472ec03a027fac",
+      "mode": "NEW_SINGLE_CALL"
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C04_W14",
+      "source_order_zero_based": 20,
+      "binding_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\cg48_v2\\bindings\\DL1018_VAL_T2_C04_W14.json",
+      "binding_sha256": "1dec2a96b76b221e7502f0412cf95c5f5ff0021987443bb6c63e038df969c982",
+      "mode": "NEW_SINGLE_CALL"
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C05_W15",
+      "source_order_zero_based": 21,
+      "binding_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\cg48_v2\\bindings\\DL1018_VAL_T2_C05_W15.json",
+      "binding_sha256": "9cbc38c41759c5df30e7788aa29e9339e25d0412a8dec526d0f6823e2bd27b8f",
+      "mode": "NEW_SINGLE_CALL"
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C06_W00",
+      "source_order_zero_based": 22,
+      "binding_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\cg48_v2\\bindings\\DL1018_VAL_T2_C06_W00.json",
+      "binding_sha256": "79cd4147e8855f4bfc755a437f574a3362e6a2d8e9591840f7407957d48199a7",
+      "mode": "NEW_SINGLE_CALL"
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C07_W01",
+      "source_order_zero_based": 23,
+      "binding_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\cg48_v2\\bindings\\DL1018_VAL_T2_C07_W01.json",
+      "binding_sha256": "2f6b296cd2663ebfde23e76208d2e0b2dcd7e3d130de94b0aea6eac66c30c62b",
+      "mode": "NEW_SINGLE_CALL"
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C08_W02",
+      "source_order_zero_based": 24,
+      "binding_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\cg48_v2\\bindings\\DL1018_VAL_T2_C08_W02.json",
+      "binding_sha256": "dabe296ad279a4f7e12b52f870cc3ed99460660dcbcc6feba86959529d770555",
+      "mode": "NEW_SINGLE_CALL"
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C09_W03",
+      "source_order_zero_based": 25,
+      "binding_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\cg48_v2\\bindings\\DL1018_VAL_T2_C09_W03.json",
+      "binding_sha256": "ccc93a1ecfaf7a3886f6d2619e566680b59ab55b65c3f4d0342c02c01863040a",
+      "mode": "NEW_SINGLE_CALL"
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C10_W04",
+      "source_order_zero_based": 26,
+      "binding_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\cg48_v2\\bindings\\DL1018_VAL_T2_C10_W04.json",
+      "binding_sha256": "4312006c6a670013f35f2685c4eceaecf97c97f301096d306f0b79b4b36d064e",
+      "mode": "NEW_SINGLE_CALL"
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C11_W05",
+      "source_order_zero_based": 27,
+      "binding_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\cg48_v2\\bindings\\DL1018_VAL_T2_C11_W05.json",
+      "binding_sha256": "240baa034a4aa96936c049de9e43eb73ef5ec6f56752aed6166a355250d6e878",
+      "mode": "NEW_SINGLE_CALL"
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C12_W06",
+      "source_order_zero_based": 28,
+      "binding_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\cg48_v2\\bindings\\DL1018_VAL_T2_C12_W06.json",
+      "binding_sha256": "c6f4964029471dc7fca89523adefbb9ed92a18c656c65b57ec430d12dca3aa30",
+      "mode": "NEW_SINGLE_CALL"
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C13_W07",
+      "source_order_zero_based": 29,
+      "binding_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\cg48_v2\\bindings\\DL1018_VAL_T2_C13_W07.json",
+      "binding_sha256": "32e382c4584dc26a097aa173d272d3bc38d595735624c8bad454cb12f9309851",
+      "mode": "NEW_SINGLE_CALL"
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C14_W08",
+      "source_order_zero_based": 30,
+      "binding_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\cg48_v2\\bindings\\DL1018_VAL_T2_C14_W08.json",
+      "binding_sha256": "0e59ade7855a5b9f15cef5ec7d16719a7e4b1d110fab31797cd2c0ba262777f4",
+      "mode": "NEW_SINGLE_CALL"
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C15_W09",
+      "source_order_zero_based": 31,
+      "binding_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\cg48_v2\\bindings\\DL1018_VAL_T2_C15_W09.json",
+      "binding_sha256": "88da7d0e69add1288daf1aa24e9681a581ee37d474b56f7756097510027e0c6b",
+      "mode": "NEW_SINGLE_CALL"
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C00_W13",
+      "source_order_zero_based": 32,
+      "binding_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\cg48_v2\\bindings\\DL1018_VAL_T3_C00_W13.json",
+      "binding_sha256": "0b83ad4cbe6dc4ccdae2a7aa8198eeb5687baf08543ee99667f0539988306c9f",
+      "mode": "NEW_SINGLE_CALL"
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C01_W14",
+      "source_order_zero_based": 33,
+      "binding_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\cg48_v2\\bindings\\DL1018_VAL_T3_C01_W14.json",
+      "binding_sha256": "f7d57053b8747b3602a58cd1d4b37e9295bbb79a86fdb9c2a1d9cacdc1f27e2c",
+      "mode": "NEW_SINGLE_CALL"
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C02_W15",
+      "source_order_zero_based": 34,
+      "binding_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\cg48_v2\\bindings\\DL1018_VAL_T3_C02_W15.json",
+      "binding_sha256": "30ca61700acf3878dc04a59d95a231aba94819dfc7537b33cfb2f41d9a697508",
+      "mode": "NEW_SINGLE_CALL"
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C03_W00",
+      "source_order_zero_based": 35,
+      "binding_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\cg48_v2\\bindings\\DL1018_VAL_T3_C03_W00.json",
+      "binding_sha256": "2ef5fdd1661ba544e09fc8e508af8c2a989bb9a4f7298afcdf14402ea10e77b3",
+      "mode": "NEW_SINGLE_CALL"
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C04_W01",
+      "source_order_zero_based": 36,
+      "binding_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\cg48_v2\\bindings\\DL1018_VAL_T3_C04_W01.json",
+      "binding_sha256": "a3ff2e7ae5fe6eca8f728d2d43a65f0a33eb0542d02c6ebb78cd6110ac62975e",
+      "mode": "NEW_SINGLE_CALL"
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C05_W02",
+      "source_order_zero_based": 37,
+      "binding_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\cg48_v2\\bindings\\DL1018_VAL_T3_C05_W02.json",
+      "binding_sha256": "25a37fd0b55144a9df5cc62840e6d00637c2c6720726833db33b2fef3d4f8a50",
+      "mode": "NEW_SINGLE_CALL"
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C06_W03",
+      "source_order_zero_based": 38,
+      "binding_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\cg48_v2\\bindings\\DL1018_VAL_T3_C06_W03.json",
+      "binding_sha256": "2d2ef81055ddee2a5d9b1897fde004043bde0d2f5790fb89366778fa5e5b2f22",
+      "mode": "NEW_SINGLE_CALL"
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C07_W04",
+      "source_order_zero_based": 39,
+      "binding_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\cg48_v2\\bindings\\DL1018_VAL_T3_C07_W04.json",
+      "binding_sha256": "19d5081272d17c3a507eeddd643da4783ba0ca442e93bd9b775765dcc1366129",
+      "mode": "NEW_SINGLE_CALL"
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C08_W05",
+      "source_order_zero_based": 40,
+      "binding_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\cg48_v2\\bindings\\DL1018_VAL_T3_C08_W05.json",
+      "binding_sha256": "dac1ca58d63560cf309cacdd356f87b691c2186b270b4e1b76bd46bf6a3a248e",
+      "mode": "NEW_SINGLE_CALL"
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C09_W06",
+      "source_order_zero_based": 41,
+      "binding_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\cg48_v2\\bindings\\DL1018_VAL_T3_C09_W06.json",
+      "binding_sha256": "9cd5c44df3a82e7cacb63e00753a1fe2d6ee37b8ff7fdd53eb48bf84fed36e26",
+      "mode": "NEW_SINGLE_CALL"
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C10_W07",
+      "source_order_zero_based": 42,
+      "binding_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\cg48_v2\\bindings\\DL1018_VAL_T3_C10_W07.json",
+      "binding_sha256": "93b4da854a35087ddd1b2d1625b0d43f7b655da35f35c82b4fad2a48048f3bfe",
+      "mode": "NEW_SINGLE_CALL"
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C11_W08",
+      "source_order_zero_based": 43,
+      "binding_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\cg48_v2\\bindings\\DL1018_VAL_T3_C11_W08.json",
+      "binding_sha256": "ddb044179bbffe332105a608b1f3aec6abaa17a84e08e95c413f96b879403cd7",
+      "mode": "NEW_SINGLE_CALL"
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C12_W09",
+      "source_order_zero_based": 44,
+      "binding_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\cg48_v2\\bindings\\DL1018_VAL_T3_C12_W09.json",
+      "binding_sha256": "4cfb4140e093722cc6ed5ba5519da9aa3ee4be1f75a1c21ed6ecadd9527813c5",
+      "mode": "NEW_SINGLE_CALL"
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C13_W10",
+      "source_order_zero_based": 45,
+      "binding_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\cg48_v2\\bindings\\DL1018_VAL_T3_C13_W10.json",
+      "binding_sha256": "79711bf9253c8e045ca9696d3fa6fa9e7ab6e0cc1d08d3eeb4a872027293a063",
+      "mode": "NEW_SINGLE_CALL"
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C14_W11",
+      "source_order_zero_based": 46,
+      "binding_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\cg48_v2\\bindings\\DL1018_VAL_T3_C14_W11.json",
+      "binding_sha256": "cb283b4cdeb4acda2af760a068cf88026309b941298bb400e6c50ae0940a98fe",
+      "mode": "NEW_SINGLE_CALL"
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C15_W12",
+      "source_order_zero_based": 47,
+      "binding_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\cg48_v2\\bindings\\DL1018_VAL_T3_C15_W12.json",
+      "binding_sha256": "6e52d3f0165e9a8bed9d558d8b447d29027fa9c0d73811f3f8ca174b060df2f9",
+      "mode": "NEW_SINGLE_CALL"
+    }
+  ],
+  "source_lock_sha256": "baa3a5f55900e3d0eb73ab6abb64a08b867338b0d397ac0c53eb308b2da5dc88"
+}

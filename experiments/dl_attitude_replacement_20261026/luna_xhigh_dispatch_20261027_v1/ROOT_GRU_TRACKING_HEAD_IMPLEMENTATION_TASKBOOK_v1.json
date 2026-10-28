@@ -1,0 +1,78 @@
+{
+  "task": "COSINE_GRU_PURE_TRACKING_INCREMENT_HEAD",
+  "status": "APPROVED_ISOLATED_IMPLEMENTATION_AND_0PLANT_VALIDATION_ONLY",
+  "root_utc": "2026-10-26T23:18:26.465738+00:00",
+  "executor": "Luna xhigh",
+  "scientific_question": "Does tracking-surface online adaptation improve a frozen GRU whose nominal task performance is close to C5? This is a mechanism experiment; missing adaptation is not established as sole cause.",
+  "parent": "gru_stream_cosine_dev_v1",
+  "model_sha256": "b2c462f77a6bb97b8c6bb2b471daef0633d4f9664a7d623b894461a4fa21b567",
+  "single_change": "Add zero-initialized online residual DeltaW on the frozen GRU hidden feature. No RLS, observer, target change or retraining.",
+  "phi": "[h_after;1],33components,no normalization",
+  "output": "q_raw=q_base_physical_rad_s2+DeltaW_before.T@phi; then unchanged total dmax clip,beta,fixedJ0 mapping and sample hold",
+  "update": "DeltaW_unprojected=DeltaW+eventDt*(-beta*outer(phi,gamma*(T.T@clip(s,-s_limit,s_limit)))-DeltaW*sigma_w[None,:]); elementwise projection[-wmax,wmax]",
+  "state": "DeltaW0=zeros(33,3),scene reset; output strictly beforeDeltaWupdate; hidden timing unchanged",
+  "inherit_from_actual_C5_cfg": {
+    "gamma": [
+      2.1,
+      2.25,
+      1.1
+    ],
+    "sigma_w": [
+      0.11,
+      0.12,
+      0.2
+    ],
+    "s_limit": [
+      2.3,
+      2.3,
+      1.4
+    ],
+    "wmax": 60,
+    "dmax": [
+      45,
+      45,
+      4.7124
+    ]
+  },
+  "units": "q_base and DeltaW.T@phi both physical rad/s\u00b2; no extra target_rms on incremental term; sigma_w is leakage, sigma is kernelwidth and mustnotbeused",
+  "checks": [
+    "zeroDeltaW reproduces frozen output",
+    "PythonMATLAB head parity",
+    "actual eventDt/onebased beta clock",
+    "output-before-update including firstevent",
+    "all33x3 Wbefore/Wafter trace",
+    "feature/reset/non-event hold",
+    "no forbiddendeploymentinputs/inertia reconstruction",
+    "actualCFG/source binding and same C5 position/Plant"
+  ],
+  "planned_scenes": [
+    "DL1018_VAL_T1_C08_W15",
+    "DL1018_VAL_T2_C05_W15",
+    "DL1018_VAL_T3_C02_W15",
+    "DL1018_VAL_T1_C05_W12",
+    "DL1018_VAL_T2_C02_W12",
+    "DL1018_VAL_T3_C00_W13"
+  ],
+  "proposed_future_flights": "first1 then5 only after actual source/noPlant review; not currentlyauthorized",
+  "comparators": "reuse exact paired B,C5 and frozen cosine GRU; no reruns",
+  "primary_gates": [
+    "macroQ<B",
+    "macroQ<=1.10C5",
+    "macro taskSO3<B",
+    "macro taskSO3<C5",
+    "W15Q<=B",
+    "HFQ<=B"
+  ],
+  "mechanism_reporting": "Compare errors/online correction/inner task metric separately against frozen cosine; no substitution ofinner for taskSO3",
+  "new_training": 0,
+  "Plant_calls_authorized": 0,
+  "TEST_read": false,
+  "forbidden": [
+    "trueJ/Jdot reconstruction",
+    "truewind/truegeometry deployment input",
+    "modifying history",
+    "parameter or seed sweep",
+    "automatic DEV72/TEST expansion"
+  ],
+  "failure_decision": "If screen fails, preserve negative result. Do not increase gamma automatically without evidence."
+}

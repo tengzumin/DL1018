@@ -1,0 +1,55 @@
+{
+  "schema": "DL1018_HOLDOUT_ROOT_NO_PLANT_AUDIT_V1",
+  "timestamp_utc": "2026-10-25T13:31:32Z",
+  "status": "PASS_NO_PLANT_PREFLIGHT_DRAFTS_ONLY",
+  "matlab_version": "R2025b",
+  "plant_calls": 0,
+  "holdout_payloads_generated": false,
+  "pilot_started": false,
+  "tests_data_read": false,
+  "checks": {
+    "scene_builder_static_selfcheck": "PASS",
+    "candidate_attitude_arm_map": "PASS",
+    "scene_contract": "PASS",
+    "R_task_raw_double_sha256": "PASS_USING_SYNTHETIC_IDENTITY_R_task",
+    "B_source_and_config_identity": "PASS",
+    "PowerShell_launcher_parser": "PASS",
+    "canonical_C5_R_task_binding": "PENDING",
+    "external_id_seed_collision_audit": "PENDING",
+    "MATLAB_wrapper_compile_check": "PENDING",
+    "root_line_by_line_review": "IN_PROGRESS",
+    "matlab_syntax_load": "PASS_R2025b_nargin_on_candidate_B_builder_validator",
+    "physics_helper_no_plant_parity": "PASS_31_steps_F1O1_exact_v2_and_F1O0_sign_clip",
+    "complete_transition_count": "FIXED_last_equals_n_minus_1"
+  },
+  "candidate_arm_ids": [
+    "C5_RBF",
+    "C5_RBF_F",
+    "C5_00",
+    "C5_10",
+    "C5_01",
+    "C5_11"
+  ],
+  "scene_contract_id": "DL1018_GATE_INSPECTION_HOLDOUT_V1",
+  "R_task_sha256": "synthetic identity R_task only; not a production target",
+  "frozen_copy_mismatch_count": 0,
+  "frozen_matlab_source_files": 40,
+  "candidate_new_matlab_files": 8,
+  "b_locked_matlab_sources": 31,
+  "b_locked_mat_support_files": 1,
+  "code_sha256": {
+    "scene_builder_work\\build_gate_inspection_scenes.m": "f940d81d989f9de154c8507de482529c2f8f0a68b7833f0c000f8e08b4a1a378",
+    "candidate_runner_work\\matlab\\runtime\\run_gate_holdout_closed_loop.m": "8066e4944308781bfba384a9d78b7eef7af03b34b67262fe223c22f44c76ebbc",
+    "candidate_runner_work\\matlab\\runtime\\phys_attitude_replacement_gate_v1.m": "58a1316cf53d53ec7964b85bf56b2dd07c226cfe44905166c4d34ea0e34e7661",
+    "candidate_runner_work\\matlab\\runtime\\gate_holdout_validate_scene.m": "6b60c8a210e3c3acf1859a6c5dd014c5670ff4a1272a9f3f7f60e90e59f01909",
+    "b_runner_work\\run_b_frozen_gate.m": "12d31e2ecabe0522fb018d794a43398390717222efeac5d4d907b52b74686895",
+    "b_runner_work\\RUN_B_FROZEN_GATE.ps1": "d3dc04c2e197687ef70929b869e871bbd7a6c4cdc3e09a45a01b42a9be65fdd4"
+  },
+  "notes": [
+    "All checks were no-Plant.",
+    "The synthetic R_task only verifies the scene interface and byte-hash contract.",
+    "Do not release pilot until pending items are complete.",
+    "No old TEST raw/MAT/status/score was opened.",
+    "No existing process was interrupted."
+  ]
+}

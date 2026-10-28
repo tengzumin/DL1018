@@ -1,0 +1,22 @@
+{
+  "schema": "NOMINAL_PARAMETER_PREPARATION_FAILURE_V1",
+  "attempt": 1,
+  "script_path": "reports/attitude_redesign_20261024/offline_input_probe_v1/prepare_nominal_parameters_v1.py",
+  "script_sha256": "0ecccf8ed18e053d404116ece9db5ead6d16e395dd699d2cd5c1b5de1443f48b",
+  "preserved_failed_source": "reports/attitude_redesign_20261024/offline_input_probe_v1/prepare_nominal_parameters_v1.failed_0ecccf8.py",
+  "execution": {
+    "performed_by": "root",
+    "os_exit_code": 1,
+    "exact_argv_in_this_receipt": null,
+    "console_log_preserved": false,
+    "stage": "validator-source hash pin comparison",
+    "assertion_line": 94,
+    "assertion": "matlab_receipt['python_validator_sha256'].lower() == PINS['current_validator_source_sha256']",
+    "cause": "the hard-coded validator digest was 63 hex characters; the pinned receipt/current validator digest is 64 characters",
+    "parameters_json_written": false,
+    "fit_executed": false,
+    "Plant_or_MATLAB_executed": false
+  },
+  "correct_validator_digest_from_receipt_and_current_source": "bfacfadad2fbf9dc3e10fadbbf7c728ae16450141515fdecfb3a99d4856705f5",
+  "scope": "No H5/raw_run arrays were read by this failed attempt; it stopped before parameter output or fitting."
+}

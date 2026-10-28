@@ -1,0 +1,599 @@
+{
+  "schema": "DL1018_STAGE1_COMPENSATION_LPF_SAME_TRACE_REPLAY_HF6_V1",
+  "status": "COMPLETE_SAME_TRACE_REPLAY_NOT_CLOSED_LOOP",
+  "scope": "Six existing DEV/VAL HF6 candidate raws, paired with same-scene B; no TEST, Plant, training, or inertia reconstruction.",
+  "same_trace_replay": true,
+  "closed_loop_result": false,
+  "TEST_read": false,
+  "Plant_calls_by_replay": 0,
+  "training_runs_by_replay": 0,
+  "inertia_reconstruction": false,
+  "scene_count": 6,
+  "input_score_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\gru_tau01_delayed_start_v1\\audits\\ROOT_HF6_SCORE_v1.json",
+  "input_score_sha256": "5c3987658cb6517ffbb2d837d25a68ec436c79cf02eac5c050dc71e00fd8c852",
+  "replay_script_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\gru_tau01_delayed_start_v1\\audits\\replay_stage1_compensation_lpf_hf6_v1.py",
+  "replay_script_sha256": "6cc31545d08c24e7c2377111947b84fb36f0771363c02478cb53674b2e347901",
+  "source_bindings": [
+    {
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\gru_tau01_delayed_start_v1\\candidate_runner_work\\matlab\\core\\command_filter_step.m",
+      "sha256": "15c7eb27162e1971a1164304830f4afd3af35eb9bd709291e969dbfefd0d262b"
+    },
+    {
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\gru_tau01_delayed_start_v1\\candidate_runner_work\\matlab\\core\\baseline_force_to_attitude.m",
+      "sha256": "ef42d1d08af24ed82da307a4d886b0c205e28e754177765a2584e3e9bb0cd039"
+    },
+    {
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\gru_tau01_delayed_start_v1\\candidate_runner_work\\matlab\\runtime\\run_gate_holdout_closed_loop.m",
+      "sha256": "17c44c282c91499e6f4202085737be44984b93b2092663f9aa6442e21a0844e5"
+    }
+  ],
+  "filter_definitions": {
+    "existing_fc18_over_2pi_1ms": {
+      "type": "one-pole exponential ZOH at 1 kHz",
+      "fc_hz": 2.864788975654116,
+      "tau_s": 0.05555555555555555,
+      "alpha_1ms": 0.9821610323583008
+    },
+    "proposed_tau0p1_1ms_curve": {
+      "type": "one-pole exponential ZOH at 1 kHz",
+      "tau_s": 0.1,
+      "fc_hz": 1.5915494309189535,
+      "alpha_1ms": 0.9900498337491681
+    },
+    "proposed_tau0p1_event100hz": {
+      "type": "one-pole exponential update at valid Stage1 inference events; zero-order hold between events",
+      "tau_s": 0.1,
+      "event_period_s": 0.01,
+      "fc_hz": 1.5915494309189535,
+      "alpha_event": 0.9048374180359596
+    },
+    "initialization": "filter state equals first raw compensation sample; verified [0,0,0] m/s^2 in all six scenes. The first nonzero Stage1 inference event occurs at 0.320 s and has nonzero raw output."
+  },
+  "first_event_update_coefficients": {
+    "fc18_over_2pi_1ms": 0.017838967641699233,
+    "tau_0p1_1ms": 0.009950166250831893,
+    "tau_0p1_event100hz": 0.09516258196404037
+  },
+  "frequency_response_including_output_hold": {
+    "0.5_Hz": {
+      "fc18_over_2pi_1ms": {
+        "gain": 0.9851084941876298,
+        "gain_db": -0.13031872340340858,
+        "phase_deg": -9.900547247576318
+      },
+      "tau_0p1_1ms": {
+        "gain": 0.9540282163765111,
+        "gain_db": -0.4087756079013114,
+        "phase_deg": -17.44074449028679
+      },
+      "tau_0p1_event100hz": {
+        "gain": 0.954028196769061,
+        "gain_db": -0.4087757864161043,
+        "phase_deg": -17.45559223765714
+      }
+    },
+    "1_Hz": {
+      "fc18_over_2pi_1ms": {
+        "gain": 0.9441330284380893,
+        "gain_db": -0.4993361850924321,
+        "phase_deg": -19.24289052715469
+      },
+      "tau_0p1_1ms": {
+        "gain": 0.8467330159578623,
+        "gain_db": -1.4450701162767665,
+        "phase_deg": -32.14220763503946
+      },
+      "tau_0p1_event100hz": {
+        "gain": 0.8467329463405581,
+        "gain_db": -1.445070830419519,
+        "phase_deg": -32.171904609072556
+      }
+    },
+    "2.86479_Hz": {
+      "fc18_over_2pi_1ms": {
+        "gain": 0.7071067810319028,
+        "gain_db": -3.0102999585394214,
+        "phase_deg": -45.00154698604688
+      },
+      "tau_0p1_1ms": {
+        "gain": 0.485642931145849,
+        "gain_db": -6.273658566513664,
+        "phase_deg": -60.946255340824244
+      },
+      "tau_0p1_event100hz": {
+        "gain": 0.48564260307822416,
+        "gain_db": -6.273664434117129,
+        "phase_deg": -61.03137165819297
+      }
+    },
+    "5_Hz": {
+      "fc18_over_2pi_1ms": {
+        "gain": 0.4971388593957922,
+        "gain_db": -6.070445768740289,
+        "phase_deg": -60.191811703141894
+      },
+      "tau_0p1_1ms": {
+        "gain": 0.30331447099098263,
+        "gain_db": -10.362137384185036,
+        "phase_deg": -72.34471287076163
+      },
+      "tau_0p1_event100hz": {
+        "gain": 0.3033138451871081,
+        "gain_db": -10.362155305087324,
+        "phase_deg": -72.49343497915746
+      }
+    },
+    "10_Hz": {
+      "fc18_over_2pi_1ms": {
+        "gain": 0.27540062749681216,
+        "gain_db": -11.200701490870756,
+        "phase_deg": -74.01950992079072
+      },
+      "tau_0p1_1ms": {
+        "gain": 0.1571767253482966,
+        "gain_db": -16.07223527295051,
+        "phase_deg": -80.9599391133714
+      },
+      "tau_0p1_event100hz": {
+        "gain": 0.15717541275190156,
+        "gain_db": -16.072307809867205,
+        "phase_deg": -81.25887999403798
+      }
+    }
+  },
+  "summary_equal_scene_means": {
+    "raw": {
+      "mean_scene_compensation_rms_mps2": 0.7023893292128004,
+      "mean_scene_task_to_filtered_reference_rad": 0.06219697602638775,
+      "mean_scene_command_accel_delta_rms_mps2": 0.0,
+      "mean_scene_compensation_rms_ratio_vs_raw": 1.0,
+      "ratio_of_macro_mean_rms_vs_raw": 1.0,
+      "delta_task_vs_B_mrad": 1.6472193315619914,
+      "candidate_scene_wins_vs_B": 2
+    },
+    "fc18_over_2pi_1ms": {
+      "mean_scene_compensation_rms_mps2": 0.6331120506267741,
+      "mean_scene_task_to_filtered_reference_rad": 0.06075150656339421,
+      "mean_scene_command_accel_delta_rms_mps2": 0.28938095852530443,
+      "mean_scene_compensation_rms_ratio_vs_raw": 0.9071273673223418,
+      "ratio_of_macro_mean_rms_vs_raw": 0.9013691186572147,
+      "delta_task_vs_B_mrad": 0.20174986856845434,
+      "candidate_scene_wins_vs_B": 3
+    },
+    "tau_0p1_1ms": {
+      "mean_scene_compensation_rms_mps2": 0.6039494976242901,
+      "mean_scene_task_to_filtered_reference_rad": 0.059621264960122655,
+      "mean_scene_command_accel_delta_rms_mps2": 0.34435311919516515,
+      "mean_scene_compensation_rms_ratio_vs_raw": 0.8674464324976933,
+      "ratio_of_macro_mean_rms_vs_raw": 0.8598500468410641,
+      "delta_task_vs_B_mrad": -0.9284917347031005,
+      "candidate_scene_wins_vs_B": 5
+    },
+    "tau_0p1_event100hz": {
+      "mean_scene_compensation_rms_mps2": 0.6041881073135259,
+      "mean_scene_task_to_filtered_reference_rad": 0.059654539822554316,
+      "mean_scene_command_accel_delta_rms_mps2": 0.32892932752468645,
+      "mean_scene_compensation_rms_ratio_vs_raw": 0.8677729244686532,
+      "ratio_of_macro_mean_rms_vs_raw": 0.8601897582793107,
+      "delta_task_vs_B_mrad": -0.8952168722714399,
+      "candidate_scene_wins_vs_B": 5
+    }
+  },
+  "B_mean_task_to_filtered_reference_rad": 0.060549756694825756,
+  "tau_event_vs_tau_1ms_rms_difference_mean_mps2": 0.01820068825518355,
+  "position_closure_risk": {
+    "metric": "RMS of command-acceleration perturbation on the unchanged recorded state trajectory, equal to raw Stage1 compensation minus filtered compensation.",
+    "position_Q_recomputed": false,
+    "interpretation": "Changing this outer-loop force changes future position states and commands; same-trace results cannot predict closed-loop Q."
+  },
+  "scene_results": [
+    {
+      "scene_id": "DL1018_DEV_T1_C10_W09",
+      "split": "DEV",
+      "candidate_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\gru_tau01_delayed_start_v1\\runs\\DL1018_DEV_T1_C10_W09\\raw_run.mat",
+      "candidate_raw_sha256": "97868cac2e34d8474df7bc4a17f21a8db56f36c12a6713f19dab11a8074fd387",
+      "B_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\b_traceable_c3core_dev72_20261023\\runs_b\\DL1018_DEV_T1_C10_W09\\B_TRACEABLE_C3CORE_V1\\attempt_01\\raw_run.mat",
+      "B_raw_sha256": "d1048a81954f856f3d4dac15d510f1cc7130775878bc4677ef76fd088c712a5f",
+      "mass_derived_from_logged_force_over_acceleration_kg": 0.695,
+      "initial_compensation_at_t0_mps2": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "first_valid_event_index": 320,
+      "first_valid_event_time_s": 0.32,
+      "first_valid_event_raw_compensation_mps2": [
+        -0.002479054817087389,
+        -0.01220707424150476,
+        0.00030616872235984127
+      ],
+      "first_valid_event_filter_output_mps2": {
+        "fc18_over_2pi_1ms": [
+          -4.4223778664020544e-05,
+          -0.00021776160239402362,
+          5.461733931077604e-06
+        ],
+        "tau_0p1_1ms": [
+          -2.466700757494517e-05,
+          -0.00012146241813922001,
+          3.046429688285213e-06
+        ],
+        "tau_0p1_event100hz": [
+          -0.00023591325722442777,
+          -0.0011616567030483227,
+          2.9135806136393914e-05
+        ]
+      },
+      "tau_0p1_1ms_first_matching_event_response_time_s": 0.329,
+      "tau_0p1_event100hz_lead_over_1ms_curve_s": 0.009000000000000008,
+      "target_reconstruction_max_error_rad": 5.551115123125783e-17,
+      "original_command_filter_replay_max_error_rad": 2.3592239273284576e-16,
+      "B_task_to_logged_filtered_reference_rad": 0.04380881623376607,
+      "signals": {
+        "raw": {
+          "compensation_rms_mps2": 0.4748385690142872,
+          "task_to_logged_filtered_reference_rad": 0.043120487587244793
+        },
+        "fc18_over_2pi_1ms": {
+          "compensation_rms_mps2": 0.4581221915787259,
+          "task_to_replayed_filtered_reference_rad": 0.0425427806738903,
+          "command_accel_delta_rms_mps2": 0.12100656376378208,
+          "compensation_delta_rms_mps2": 0.12100656376378208
+        },
+        "tau_0p1_1ms": {
+          "compensation_rms_mps2": 0.447695128531868,
+          "task_to_replayed_filtered_reference_rad": 0.04193294937216195,
+          "command_accel_delta_rms_mps2": 0.15367145010366637,
+          "compensation_delta_rms_mps2": 0.15367145010366637
+        },
+        "tau_0p1_event100hz": {
+          "compensation_rms_mps2": 0.4477979496952104,
+          "task_to_replayed_filtered_reference_rad": 0.04194958151640073,
+          "command_accel_delta_rms_mps2": 0.1467884097013054,
+          "compensation_delta_rms_mps2": 0.1467884097013054
+        }
+      },
+      "between_tau_event100hz_and_tau_1ms_rms_mps2": 0.008122261716681765
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C09_W10",
+      "split": "DEV",
+      "candidate_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\gru_tau01_delayed_start_v1\\runs\\DL1018_DEV_T2_C09_W10\\raw_run.mat",
+      "candidate_raw_sha256": "9095932514b189dd01728ce5af88cd9b1bfb4f72bc80579658b54e5b6ba03de5",
+      "B_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\b_traceable_c3core_dev72_20261023\\runs_b\\DL1018_DEV_T2_C09_W10\\B_TRACEABLE_C3CORE_V1\\attempt_01\\raw_run.mat",
+      "B_raw_sha256": "61bb549a6afc78326bb6d577cd52c14f0edd52c046f69681f97a2e88adb5751e",
+      "mass_derived_from_logged_force_over_acceleration_kg": 0.695,
+      "initial_compensation_at_t0_mps2": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "first_valid_event_index": 320,
+      "first_valid_event_time_s": 0.32,
+      "first_valid_event_raw_compensation_mps2": [
+        -0.0022583687203508486,
+        -0.01729135004501939,
+        0.0009143409974932664
+      ],
+      "first_valid_event_filter_output_mps2": {
+        "fc18_over_2pi_1ms": [
+          -4.028696652536449e-05,
+          -0.0003084598339343955,
+          1.631089946776138e-05
+        ],
+        "tau_0p1_1ms": [
+          -2.2471144223169423e-05,
+          -0.0001720518076492725,
+          9.097844935009469e-06
+        ],
+        "tau_0p1_event100hz": [
+          -0.0002149121984554126,
+          -0.001645489515928071,
+          8.70110501170354e-05
+        ]
+      },
+      "tau_0p1_1ms_first_matching_event_response_time_s": 0.329,
+      "tau_0p1_event100hz_lead_over_1ms_curve_s": 0.009000000000000008,
+      "target_reconstruction_max_error_rad": 1.1102230246251565e-16,
+      "original_command_filter_replay_max_error_rad": 3.885780586188048e-16,
+      "B_task_to_logged_filtered_reference_rad": 0.06598880335726291,
+      "signals": {
+        "raw": {
+          "compensation_rms_mps2": 0.7869577295792105,
+          "task_to_logged_filtered_reference_rad": 0.07286784516507942
+        },
+        "fc18_over_2pi_1ms": {
+          "compensation_rms_mps2": 0.7149577385070389,
+          "task_to_replayed_filtered_reference_rad": 0.07060514184778997,
+          "command_accel_delta_rms_mps2": 0.3242160873275393,
+          "compensation_delta_rms_mps2": 0.3242160873275393
+        },
+        "tau_0p1_1ms": {
+          "compensation_rms_mps2": 0.6690835821784424,
+          "task_to_replayed_filtered_reference_rad": 0.06802779794323134,
+          "command_accel_delta_rms_mps2": 0.40990425147634557,
+          "compensation_delta_rms_mps2": 0.40990425147634557
+        },
+        "tau_0p1_event100hz": {
+          "compensation_rms_mps2": 0.6693562248811267,
+          "task_to_replayed_filtered_reference_rad": 0.06807525557875847,
+          "command_accel_delta_rms_mps2": 0.3915443835756528,
+          "compensation_delta_rms_mps2": 0.3915443835756528
+        }
+      },
+      "between_tau_event100hz_and_tau_1ms_rms_mps2": 0.021665375103999122
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C09_W09",
+      "split": "DEV",
+      "candidate_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\gru_tau01_delayed_start_v1\\runs\\DL1018_DEV_T3_C09_W09\\raw_run.mat",
+      "candidate_raw_sha256": "7d9aed5df2179c1d453fd258195869acac5470269cd63f322aeb8c08ecdf1515",
+      "B_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\b_traceable_c3core_dev72_20261023\\runs_b\\DL1018_DEV_T3_C09_W09\\B_TRACEABLE_C3CORE_V1\\attempt_01\\raw_run.mat",
+      "B_raw_sha256": "a8cec3af85c0988622a3582385a44a201aa2d5e796fa73a933277cde0cf85f49",
+      "mass_derived_from_logged_force_over_acceleration_kg": 0.695,
+      "initial_compensation_at_t0_mps2": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "first_valid_event_index": 320,
+      "first_valid_event_time_s": 0.32,
+      "first_valid_event_raw_compensation_mps2": [
+        -0.05288201132850012,
+        -0.006660862112009445,
+        0.001250916656225562
+      ],
+      "first_valid_event_filter_output_mps2": {
+        "fc18_over_2pi_1ms": [
+          -0.0009433604889170859,
+          -0.0001188229036819569,
+          2.2315061752870404e-05
+        ],
+        "tau_0p1_1ms": [
+          -0.0005261848043969518,
+          -6.627668538836123e-05,
+          1.244682869537907e-05
+        ],
+        "tau_0p1_event100hz": [
+          -0.005032388737471704,
+          -0.0006338648366852698,
+          0.00011904045882824837
+        ]
+      },
+      "tau_0p1_1ms_first_matching_event_response_time_s": 0.329,
+      "tau_0p1_event100hz_lead_over_1ms_curve_s": 0.009000000000000008,
+      "target_reconstruction_max_error_rad": 5.551115123125783e-17,
+      "original_command_filter_replay_max_error_rad": 2.3592239273284576e-16,
+      "B_task_to_logged_filtered_reference_rad": 0.058989261083626475,
+      "signals": {
+        "raw": {
+          "compensation_rms_mps2": 0.6297334431699672,
+          "task_to_logged_filtered_reference_rad": 0.05981829151466128
+        },
+        "fc18_over_2pi_1ms": {
+          "compensation_rms_mps2": 0.609755820712029,
+          "task_to_replayed_filtered_reference_rad": 0.0592004249274991,
+          "command_accel_delta_rms_mps2": 0.15357613664572622,
+          "compensation_delta_rms_mps2": 0.15357613664572622
+        },
+        "tau_0p1_1ms": {
+          "compensation_rms_mps2": 0.5974028170441185,
+          "task_to_replayed_filtered_reference_rad": 0.05850594768547411,
+          "command_accel_delta_rms_mps2": 0.1949753129855181,
+          "compensation_delta_rms_mps2": 0.1949753129855181
+        },
+        "tau_0p1_event100hz": {
+          "compensation_rms_mps2": 0.5975032110172902,
+          "task_to_replayed_filtered_reference_rad": 0.05852201600103843,
+          "command_accel_delta_rms_mps2": 0.18624224672085432,
+          "compensation_delta_rms_mps2": 0.18624224672085432
+        }
+      },
+      "between_tau_event100hz_and_tau_1ms_rms_mps2": 0.01030536589126998
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C07_W14",
+      "split": "VAL",
+      "candidate_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\gru_tau01_delayed_start_v1\\runs\\DL1018_VAL_T1_C07_W14\\raw_run.mat",
+      "candidate_raw_sha256": "02e8a9b41504b71bf03d2993e9345516bb386fa4379a68cd630410ca91445076",
+      "B_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\b_traceable_c3core_dev72_20261023\\runs_b\\DL1018_VAL_T1_C07_W14\\B_TRACEABLE_C3CORE_V1\\attempt_01\\raw_run.mat",
+      "B_raw_sha256": "d1b472b85cb95736eab9f9c05bb74ec24fa1ba52908b19c7897226153793cd26",
+      "mass_derived_from_logged_force_over_acceleration_kg": 0.695,
+      "initial_compensation_at_t0_mps2": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "first_valid_event_index": 320,
+      "first_valid_event_time_s": 0.32,
+      "first_valid_event_raw_compensation_mps2": [
+        -0.01145185533658584,
+        -0.0036461439681945884,
+        0.0005502752063277272
+      ],
+      "first_valid_event_filter_output_mps2": {
+        "fc18_over_2pi_1ms": [
+          -0.00020428927678677546,
+          -6.50434442656001e-05,
+          9.816341599709694e-06
+        ],
+        "tau_0p1_1ms": [
+          -0.00011394786447950553,
+          -3.627973865800407e-05,
+          5.4753297866717075e-06
+        ],
+        "tau_0p1_event100hz": [
+          -0.0010897881221081831,
+          -0.0003469764742260089,
+          5.2365609424941566e-05
+        ]
+      },
+      "tau_0p1_1ms_first_matching_event_response_time_s": 0.329,
+      "tau_0p1_event100hz_lead_over_1ms_curve_s": 0.009000000000000008,
+      "target_reconstruction_max_error_rad": 5.551115123125783e-17,
+      "original_command_filter_replay_max_error_rad": 5.551115123125783e-16,
+      "B_task_to_logged_filtered_reference_rad": 0.07477484243059768,
+      "signals": {
+        "raw": {
+          "compensation_rms_mps2": 0.83526787664052,
+          "task_to_logged_filtered_reference_rad": 0.07429509359711524
+        },
+        "fc18_over_2pi_1ms": {
+          "compensation_rms_mps2": 0.7352501957446118,
+          "task_to_replayed_filtered_reference_rad": 0.0725812369369139,
+          "command_accel_delta_rms_mps2": 0.3900239492900962,
+          "compensation_delta_rms_mps2": 0.3900239492900962
+        },
+        "tau_0p1_1ms": {
+          "compensation_rms_mps2": 0.700991070969544,
+          "task_to_replayed_filtered_reference_rad": 0.071590112785924,
+          "command_accel_delta_rms_mps2": 0.4486653771915013,
+          "compensation_delta_rms_mps2": 0.4486653771915013
+        },
+        "tau_0p1_event100hz": {
+          "compensation_rms_mps2": 0.7013237487127714,
+          "task_to_replayed_filtered_reference_rad": 0.07163323656398987,
+          "command_accel_delta_rms_mps2": 0.4285693742171929,
+          "compensation_delta_rms_mps2": 0.4285693742171929
+        }
+      },
+      "between_tau_event100hz_and_tau_1ms_rms_mps2": 0.023714083613480083
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C04_W14",
+      "split": "VAL",
+      "candidate_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\gru_tau01_delayed_start_v1\\runs\\DL1018_VAL_T2_C04_W14\\raw_run.mat",
+      "candidate_raw_sha256": "f2a7ad7e7fa4880d47af92e3abd58daf8c35a586bd13eaa5507c575d24f11edb",
+      "B_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\b_traceable_c3core_dev72_20261023\\runs_b\\DL1018_VAL_T2_C04_W14\\B_TRACEABLE_C3CORE_V1\\attempt_01\\raw_run.mat",
+      "B_raw_sha256": "2648d58e27b3d9a00c27ed181a074bf1d5b893768ff74ec18e341508c648689e",
+      "mass_derived_from_logged_force_over_acceleration_kg": 0.695,
+      "initial_compensation_at_t0_mps2": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "first_valid_event_index": 320,
+      "first_valid_event_time_s": 0.32,
+      "first_valid_event_raw_compensation_mps2": [
+        0.02002317158200692,
+        -0.01625614275801634,
+        7.258221574881075e-05
+      ],
+      "first_valid_event_filter_output_mps2": {
+        "fc18_over_2pi_1ms": [
+          0.0003571927099356131,
+          -0.00028999280463909676,
+          1.2947917981058674e-06
+        ],
+        "tau_0p1_1ms": [
+          0.00019923388610990151,
+          -0.00016175132303951947,
+          7.222051135544158e-07
+        ],
+        "tau_0p1_event100hz": [
+          0.0019054567068527775,
+          -0.001546976517628871,
+          6.907111055327865e-06
+        ]
+      },
+      "tau_0p1_1ms_first_matching_event_response_time_s": 0.329,
+      "tau_0p1_event100hz_lead_over_1ms_curve_s": 0.009000000000000008,
+      "target_reconstruction_max_error_rad": 5.551115123125783e-17,
+      "original_command_filter_replay_max_error_rad": 3.0531133177191805e-16,
+      "B_task_to_logged_filtered_reference_rad": 0.05388280489766766,
+      "signals": {
+        "raw": {
+          "compensation_rms_mps2": 0.706031201950539,
+          "task_to_logged_filtered_reference_rad": 0.05570277455490316
+        },
+        "fc18_over_2pi_1ms": {
+          "compensation_rms_mps2": 0.6017734748276989,
+          "task_to_replayed_filtered_reference_rad": 0.05422782297077768,
+          "command_accel_delta_rms_mps2": 0.3654341811170872,
+          "compensation_delta_rms_mps2": 0.3654341811170872
+        },
+        "tau_0p1_1ms": {
+          "compensation_rms_mps2": 0.5652760657886962,
+          "task_to_replayed_filtered_reference_rad": 0.05338389731889582,
+          "command_accel_delta_rms_mps2": 0.41971283998538556,
+          "compensation_delta_rms_mps2": 0.41971283998538556
+        },
+        "tau_0p1_event100hz": {
+          "compensation_rms_mps2": 0.5655751759718325,
+          "task_to_replayed_filtered_reference_rad": 0.05341295024717483,
+          "command_accel_delta_rms_mps2": 0.4009136392681399,
+          "compensation_delta_rms_mps2": 0.4009136392681399
+        }
+      },
+      "between_tau_event100hz_and_tau_1ms_rms_mps2": 0.022183805319161934
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C01_W14",
+      "split": "VAL",
+      "candidate_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\gru_tau01_delayed_start_v1\\runs\\DL1018_VAL_T3_C01_W14\\raw_run.mat",
+      "candidate_raw_sha256": "565485c4c13024bdbed6320abd992d01a41386ac05ef692e6b0bca9a7f0c4c95",
+      "B_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\b_traceable_c3core_dev72_20261023\\runs_b\\DL1018_VAL_T3_C01_W14\\B_TRACEABLE_C3CORE_V1\\attempt_01\\raw_run.mat",
+      "B_raw_sha256": "396496784a14c217d90bcb4566dad275c8602503d6debce6dce63ec50497ae5e",
+      "mass_derived_from_logged_force_over_acceleration_kg": 0.695,
+      "initial_compensation_at_t0_mps2": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "first_valid_event_index": 320,
+      "first_valid_event_time_s": 0.32,
+      "first_valid_event_raw_compensation_mps2": [
+        -0.05715459432776818,
+        -0.001871670617592288,
+        0.0023990224962266594
+      ],
+      "first_valid_event_filter_output_mps2": {
+        "fc18_over_2pi_1ms": [
+          -0.001019578958787503,
+          -3.338867158314805e-05,
+          4.2796084681895896e-05
+        ],
+        "tau_0p1_1ms": [
+          -0.0005686977155601469,
+          -1.8623433811840472e-05,
+          2.3870672676940988e-05
+        ],
+        "tau_0p1_event100hz": [
+          -0.005438978767337716,
+          -0.0001781130085563122,
+          0.0002282971749307462
+        ]
+      },
+      "tau_0p1_1ms_first_matching_event_response_time_s": 0.329,
+      "tau_0p1_event100hz_lead_over_1ms_curve_s": 0.009000000000000008,
+      "target_reconstruction_max_error_rad": 5.551115123125783e-17,
+      "original_command_filter_replay_max_error_rad": 2.7755575615628914e-16,
+      "B_task_to_logged_filtered_reference_rad": 0.0658540121660337,
+      "signals": {
+        "raw": {
+          "compensation_rms_mps2": 0.7815071549222777,
+          "task_to_logged_filtered_reference_rad": 0.06737736373932264
+        },
+        "fc18_over_2pi_1ms": {
+          "compensation_rms_mps2": 0.6788128823905399,
+          "task_to_replayed_filtered_reference_rad": 0.0653516320234943,
+          "command_accel_delta_rms_mps2": 0.38202883300759566,
+          "compensation_delta_rms_mps2": 0.38202883300759566
+        },
+        "tau_0p1_1ms": {
+          "compensation_rms_mps2": 0.6432483212330712,
+          "task_to_replayed_filtered_reference_rad": 0.06428688465504868,
+          "command_accel_delta_rms_mps2": 0.43918948342857406,
+          "compensation_delta_rms_mps2": 0.43918948342857406
+        },
+        "tau_0p1_event100hz": {
+          "compensation_rms_mps2": 0.6435723336029238,
+          "task_to_replayed_filtered_reference_rad": 0.06433419902796354,
+          "command_accel_delta_rms_mps2": 0.4195179116649733,
+          "compensation_delta_rms_mps2": 0.4195179116649733
+        }
+      },
+      "between_tau_event100hz_and_tau_1ms_rms_mps2": 0.023213237886508427
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "schema": "ROOT_CM18_SCREEN4_REPLAY_LAUNCH_V3",
+  "started_utc": "2026-10-24T11:42:42.4538912Z",
+  "source_sha256": "2a09f80c2cadd26fc493cdaa7cb732583a7da6135344d0ecf3440ae1e9ebdc0b",
+  "command": "addpath('experiments/attitude_cm18_a1_20261024','-begin'); summary=check_cm18_replay_v1('experiments/attitude_cm18_a1_20261024/deployment_v1/deployment_parameters_v1.json','ee00c46af42cbce83a630ae9b03eaf1a86bfc6047910ed68bc4e7b8b020aa6ae','reports/attitude_cm18_a1_20261024/runtime_preparation_v1/screen4_same_state_replay_v3'); disp(summary.status); assert(strcmp(summary.status,'PASS_SAME_STATE_ACTION_DIAGNOSTIC'),'CM18:ReplayFailed','Offline replay did not qualify');",
+  "engineering_repair": "Canonicalize source-list row/column shape only; previous endian API repair retained",
+  "prior_attempt_os_exit_code": 1,
+  "prior_failure": "Source list gate row/column shape mismatch before raw/cache read",
+  "scope": "4 frozen SCREEN4 records; no state integration",
+  "new_closed_loop_sorties": 0,
+  "new_training_runs": 0
+}

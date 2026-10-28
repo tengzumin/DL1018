@@ -1,0 +1,22 @@
+{
+  "schema": "OFFLINE_ATTITUDE_PROBE_CLARIFICATIONS_V1",
+  "original_taskbook_unchanged": true,
+  "input_lock_unchanged": true,
+  "metrics": {
+    "axis_RMSE": "sqrt(mean_k((prediction_kj-target_kj)^2)) in rad/s^2",
+    "normalized_vector_RMSE": "sqrt(mean_k(sum_j(((prediction_kj-target_kj)/TRAIN_target_RMS_j)^2)))",
+    "physical_vector_RMSE": "sqrt(mean_k(sum_j((prediction_kj-target_kj)^2))) in rad/s^2",
+    "peak_vector_error": "max_k norm(prediction_k-target_k,2) in rad/s^2",
+    "output_amplitude_RMS": "sqrt(mean_k(sum_j(prediction_kj^2))) in rad/s^2",
+    "target_amplitude_RMS": "sqrt(mean_k(sum_j(target_kj^2))) in rad/s^2",
+    "output_peak": "max_k norm(prediction_k,2) in rad/s^2",
+    "group_aggregation": "Arithmetic mean of per-scene metrics over scenes with samples in that group; report contributing scene and event counts. Missing scene-phase values are null, not zero."
+  },
+  "wording": "For C00/PRE/RECOVERY report output amplitude together with target amplitude. Use neutral wording rather than automatically calling every nonzero prediction false compensation; empirical near-zero targets apply to the currently audited data, not arbitrary real-world wind torques.",
+  "signals": {
+    "u": "Current emitted normalized signed-rate command, dimensionless {-1,0,1}",
+    "z": "Four-dimensional causal internal command integral in seconds, z[k]=sum_i<k dt_i*u[i]",
+    "a3": "Weighted mean requested body torque over the immediately preceding complete event interval; excludes current event row. For MATLAB event index k and 10 ms spacing, rows k-10 through k-1."
+  },
+  "resources": "At most five diagnostic closed-form supervised fits, no optimizer steps, neural training, GPU, new rollouts or TEST access."
+}

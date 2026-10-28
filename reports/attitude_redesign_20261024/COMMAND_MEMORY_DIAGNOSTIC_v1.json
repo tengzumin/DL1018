@@ -1,0 +1,150 @@
+{
+  "assumptions_for_offline_comparison_only": {
+    "initial_rho_m": 0.15,
+    "not_measured_shape": true,
+    "prescribed_extension_speed_mps": 0.05
+  },
+  "definition": "past-only four-channel command integral, initialized at zero; rho_proxy is computed without rho_true",
+  "new_rollouts": 0,
+  "plant_runs": 0,
+  "reproduction_command": "python reports/attitude_redesign_20261024/command_memory_diagnostic_v1.py",
+  "scenes": [
+    {
+      "command_off_memory": {
+        "command_off_definition": "all four command channels are exactly zero",
+        "first_sample_index_zero_based": 6600,
+        "interpretation": "command-off with prior accumulated command; consistent with held extension, but phase is not independently inferred from truth",
+        "last_sample_index_zero_based": 13400,
+        "nonzero_memory_threshold_s": 1e-12,
+        "peak_abs_memory_s": 1.4000000000000004,
+        "sample_count": 6801
+      },
+      "comparison_only": {
+        "max_abs_error_m": 7.771561172376096e-15,
+        "per_arm": [
+          {
+            "arm_zero_based": 0,
+            "command_off_nonzero_memory_samples": 6801,
+            "max_abs_error_m": 7.771561172376096e-15,
+            "rms_error_m": 4.814021344988091e-15
+          },
+          {
+            "arm_zero_based": 1,
+            "command_off_nonzero_memory_samples": 0,
+            "max_abs_error_m": 0.0,
+            "rms_error_m": 0.0
+          },
+          {
+            "arm_zero_based": 2,
+            "command_off_nonzero_memory_samples": 0,
+            "max_abs_error_m": 0.0,
+            "rms_error_m": 0.0
+          },
+          {
+            "arm_zero_based": 3,
+            "command_off_nonzero_memory_samples": 0,
+            "max_abs_error_m": 0.0,
+            "rms_error_m": 0.0
+          }
+        ],
+        "proxy_definition": "rho_proxy = 0.15 m + 0.05 m/s * z; no clipping or fitted alignment",
+        "rms_error_m": 2.4070106724940456e-15,
+        "truth_used_only_after_proxy_computed": true
+      },
+      "input_channels": 4,
+      "internal_memory_channels": 4,
+      "memory_definition": "z[k] = sum(i < k) diff(time)[i] * command[i]",
+      "raw_relative_path": "data/raw/train/DL1018_TRAIN_T1_C01_W00/B/attempt_01/raw_run.mat",
+      "raw_sha256": "c8e763e7bafea8e42a5018e05b57c8ce1987c5f97a29d5877839e759a4b03ea5",
+      "sample_count": 20001,
+      "sample_period_s": 0.001,
+      "scene_id": "DL1018_TRAIN_T1_C01_W00",
+      "split": "train",
+      "stored_shapes": {
+        "command": [
+          4,
+          20001
+        ],
+        "rho_true": [
+          4,
+          20001
+        ],
+        "time": [
+          1,
+          20001
+        ]
+      }
+    },
+    {
+      "command_off_memory": {
+        "command_off_definition": "all four command channels are exactly zero",
+        "first_sample_index_zero_based": 8200,
+        "interpretation": "command-off with prior accumulated command; consistent with held extension, but phase is not independently inferred from truth",
+        "last_sample_index_zero_based": 13999,
+        "nonzero_memory_threshold_s": 1e-12,
+        "peak_abs_memory_s": 1.9999999999999991,
+        "sample_count": 5800
+      },
+      "comparison_only": {
+        "max_abs_error_m": 1.1046719095020308e-14,
+        "per_arm": [
+          {
+            "arm_zero_based": 0,
+            "command_off_nonzero_memory_samples": 5800,
+            "max_abs_error_m": 1.1046719095020308e-14,
+            "rms_error_m": 6.5504330380625376e-15
+          },
+          {
+            "arm_zero_based": 1,
+            "command_off_nonzero_memory_samples": 0,
+            "max_abs_error_m": 0.0,
+            "rms_error_m": 0.0
+          },
+          {
+            "arm_zero_based": 2,
+            "command_off_nonzero_memory_samples": 0,
+            "max_abs_error_m": 0.0,
+            "rms_error_m": 0.0
+          },
+          {
+            "arm_zero_based": 3,
+            "command_off_nonzero_memory_samples": 0,
+            "max_abs_error_m": 0.0,
+            "rms_error_m": 0.0
+          }
+        ],
+        "proxy_definition": "rho_proxy = 0.15 m + 0.05 m/s * z; no clipping or fitted alignment",
+        "rms_error_m": 3.2752165190312688e-15,
+        "truth_used_only_after_proxy_computed": true
+      },
+      "input_channels": 4,
+      "internal_memory_channels": 4,
+      "memory_definition": "z[k] = sum(i < k) diff(time)[i] * command[i]",
+      "raw_relative_path": "data/raw/val/DL1018_VAL_T1_C01_W08/B/attempt_01/raw_run.mat",
+      "raw_sha256": "9efc4dfcc21bf8a08a091168bb48b3b39dbb6cd4f371f890e78fb697c78c3685",
+      "sample_count": 20001,
+      "sample_period_s": 0.001,
+      "scene_id": "DL1018_VAL_T1_C01_W08",
+      "split": "val",
+      "stored_shapes": {
+        "command": [
+          4,
+          20001
+        ],
+        "rho_true": [
+          4,
+          20001
+        ],
+        "time": [
+          1,
+          20001
+        ]
+      }
+    }
+  ],
+  "schema": "COMMAND_MEMORY_DIAGNOSTIC_REPRODUCED_V1",
+  "script_relative_path": "reports/attitude_redesign_20261024/command_memory_diagnostic_v1.py",
+  "script_sha256": "09f06cd98f4a6595172f1b243d8936d5782cf407a3d3982f2e8719a17f1abb27",
+  "test_data_read": false,
+  "training_steps": 0
+}

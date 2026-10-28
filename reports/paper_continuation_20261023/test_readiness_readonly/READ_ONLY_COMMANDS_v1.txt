@@ -1,0 +1,36 @@
+只读命令/查询清单（本轮 TEST readiness）
+
+工作目录：C:/Users/35326/Desktop/postgraduation/0/Mcode/drone_tcn/DL1018
+所有命令均为只读；没有调用 MATLAB、Plant、训练或 TEST。
+
+1. 读取协议/范围文件：
+   Get-Content -Raw reports/paper_continuation_20261023/TEST_READINESS_READONLY_TASKBOOK_ZH.md
+   Get-Content -Raw reports/paper_continuation_20261023/TEST48_CONDITIONAL_PROTOCOL_DRAFT_ZH.md
+   Get-Content -Raw reports/paper_continuation_20261023/C5_CONTRIBUTION_SCOPE_DRAFT_ZH.md
+   Get-Content -Raw reports/paper_continuation_20261023/PS7_TYPED_DEADLINE_ERRATUM_ZH.md
+   Select-String -Pattern 'scene|进程|顺序|TEST_accessed' TEST48_CONDITIONAL_PROTOCOL_DRAFT_ZH.md
+
+2. 读取状态/划分元数据（未打开 TEST 数值数组）：
+   Get-Content -Raw configs/dataset_plan.json
+   Get-Content reports/G06_P_DEV.json -TotalCount 50
+   Get-Content reports/paper_continuation_20261023/TEST_SEAL_METADATA_OBSERVATION_v1.json
+   Python csv.DictReader 统计 configs/scene_specs.csv 的行数和 split 计数。
+
+3. 源码/生成器定位：
+   rg --files | rg 'make_scenes_dl1018\.m$|init_dl1018\.m$'
+   rg --files C:/Users/35326/Desktop/postgraduation/0/Mcode/drone_tcn/REFERENCE_FIX_FULL72_20261021_022342_313 -g make_scenes_dl1018.m
+   rg -n -C3 'init_dl1018|restoredefaultpath|addpath|biased_dual_sine|tcn0916_morphology_scenario|FIG8_3D|puu' matlab/scenes/make_scenes_dl1018.m matlab/runtime/init_dl1018.m
+   Python 读取 current/reference_fixed 两个 MATLAB 源文件，精确截取 construct_scene 与 make_reference 函数块并比较；未调用函数或生成数据。
+   rg -n '^\s*timer\s*=\s*tic|controllerTime\(k\)\s*=\s*toc\(timer\)|allocate_control\(command' 四个已锁 core 文件。
+
+4. 六方法/锁/模型身份：
+   Python json.load 读取 B、C5、FREEZE、NO_PRED 的 input lock；输出 schema、state、候选身份、source inventory/refs 和快照字段。
+   Get-ChildItem 列出 corrected_pair_eval_v1/sources/local_runtime 文件名/长度。
+   Get-FileHash -Algorithm SHA256 对 B/C5/两消融 lock、prepared cfg/opts MAT、四个 core/helper、旧 runtime files、model MAT/checkpoint、normalizer、scene generator、effective_config 和状态文件取 SHA。
+   Python json.load 读取 PAIR_EVAL_MODEL_ACCEPTANCE.json、PAIR_EVAL_MODEL_BINDING_FORWARD.json、PAIR_EVAL_SNAPSHOT_INDEX.json、STAGE_STARTUP_ACCEPTANCE_IDENTITY.json；只读身份/计数/路径字段。
+   Python h5py 对两个已完成 VAL T1_C00_W07 的旧 run_start.mat 检查 HDF5 顶层字段及 meta 身份；这两个文件是 DEV/VAL，不是 TEST。一次检查还遍历并打印了其中一个旧 run_start 的 DEV scene 字段；没有访问 TEST 场景文件。
+
+5. 既有 DEV 物理映射证据：
+   Python json.load 只读 ACTUAL_PHYSICAL_BRIDGE_DEV72_CHECK_v1.json 的顶层状态、scope、计数和最大残差；没有打开 raw。
+
+本轮未列入或访问任何 TEST raw、TEST metrics、TEST run status、TEST 轨迹数组；未生成 TEST 场景、未修改状态/锁/缓存。

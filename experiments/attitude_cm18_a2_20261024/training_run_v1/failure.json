@@ -1,0 +1,10 @@
+{
+  "schema": "CM18_A2_TRAINING_FAILURE_V1",
+  "recorded_at_utc": "2026-10-24T13:48:07Z",
+  "stage": "train",
+  "optimizer_step_attempted": 38200,
+  "optimizer_steps_completed": 38200,
+  "exception_type": "PermissionError",
+  "message": "[WinError 5] 拒绝访问。: 'C:\\\\Users\\\\35326\\\\Desktop\\\\postgraduation\\\\0\\\\Mcode\\\\drone_tcn\\\\DL1018\\\\experiments\\\\attitude_cm18_a2_20261024\\\\training_run_v1\\\\progress.json.tmp' -> 'C:\\\\Users\\\\35326\\\\Desktop\\\\postgraduation\\\\0\\\\Mcode\\\\drone_tcn\\\\DL1018\\\\experiments\\\\attitude_cm18_a2_20261024\\\\training_run_v1\\\\progress.json'",
+  "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\attitude_cm18_a2_20261024\\train_cm18_a2_v1.py\", line 631, in _formal_train\n    _write_json(run_dir / \"progress.json\", {\"optimizer_steps_completed\": step, \"optimizer_steps_target\": STEPS, \"latest_loss\": loss_value, \"updated_at_utc\": _now()})\n  File \"C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\attitude_cm18_a2_20261024\\train_cm18_a2_v1.py\", line 87, in _write_json\n    temp.replace(path)\n  File \"C:\\ProgramData\\anaconda3\\Lib\\pathlib.py\", line 1376, in replace\n    os.replace(self, target)\nPermissionError: [WinError 5] 拒绝访问。: 'C:\\\\Users\\\\35326\\\\Desktop\\\\postgraduation\\\\0\\\\Mcode\\\\drone_tcn\\\\DL1018\\\\experiments\\\\attitude_cm18_a2_20261024\\\\training_run_v1\\\\progress.json.tmp' -> 'C:\\\\Users\\\\35326\\\\Desktop\\\\postgraduation\\\\0\\\\Mcode\\\\drone_tcn\\\\DL1018\\\\experiments\\\\attitude_cm18_a2_20261024\\\\training_run_v1\\\\progress.json'\n"
+}

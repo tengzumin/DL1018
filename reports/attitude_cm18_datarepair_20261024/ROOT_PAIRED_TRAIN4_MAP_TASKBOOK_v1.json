@@ -1,0 +1,39 @@
+{
+  "schema": "ROOT_PAIRED_TRAIN4_MAP_TASKBOOK_V1",
+  "decision": "APPROVE_ISOLATED_IMPLEMENTATION_ONLY",
+  "priority": "Determine fixed A1R/A1T map error on existing paired TRAIN B-vs-C5 upstream trajectories, keeping original attitudeRBF teacher; no new data collection",
+  "base_source_path": "experiments/attitude_cm18_datarepair_20261024/audit_full_matrix_replacement_target_v1.m",
+  "base_source_sha256": "fe48f2d9d812cfa92364bd859490858a0e3eec01b3e6e80c773c829f9975042c",
+  "base_report_path": "reports/attitude_cm18_datarepair_20261024/full_matrix_replacement_target_v1/FULL_MATRIX_REPLACEMENT_TARGET_DIAGNOSTIC_v1.json",
+  "base_report_sha256": "bdb0ba18cd9d81aa176157c58f665c6ca2a0eb8946e75c3f652ea18ccffabee3",
+  "models": {
+    "A1R_path": "experiments/attitude_cm18_datarepair_20261024/postselection_a1r_v1/deployment_parameters_v1.json",
+    "A1R_sha256": "b3ab7a3d99df639d4cc0a10ec2b6fcd4622388f58c90c25424e472164ef38d23",
+    "A1T_path": "experiments/attitude_cm18_datarepair_20261024/postselection_a1t_v1/deployment_parameters_v1.json",
+    "A1T_sha256": "dd5375623cf47abed1db1e620a7d00358aff71b5985ead13e88ba05218952b42"
+  },
+  "flights": [
+    "T1_B",
+    "T1_C5",
+    "T3_B",
+    "T3_C5"
+  ],
+  "implementation": [
+    "Create isolated new MATLAB source by copying reviewed base; keep historical source and output immutable.",
+    "Retain all existing input/raw/runstart/event/release/helper pins and physics/allocator closure gates; old four cases only.",
+    "Add frozen A1R/A1T pure forward helper actual SHA/path checks. For each same event X18, use each model own axisRMS/normalizer; beta/clip unchanged.",
+    "Reuse computed G/E0/Cstar in same loop, save per-event index/time/beta/G/E0/Cstar and both raw predictions/applied actions/linear E0-Gc.",
+    "Retain full prior physics summaries with explicit new report schema; add ALL/PRE0to5/POST5to20 same-state model metrics for each flight. Output all4 no-overwrite independent version directory, budget<=1GiB.",
+    "First implementation staticcheck only; Root read actual diff/source SHA then release one offline4-case run."
+  ],
+  "bounds": {
+    "Plant_calls": 0,
+    "engine_calls": 0,
+    "training_steps": 0,
+    "TEST_access": false,
+    "DEV_training": false,
+    "new_collection": false
+  },
+  "interpretation": "B/C5 paired controlled runs identify upstream policy effect on recorded state/input distributions for these2TRAIN scenarios. Comparing fixed maps across them is diagnostic, not a new NN closed-loop causal trial, not allTRAIN generalization or proof matched data will fix performance. Old teacher remains attitudeRBF.",
+  "created_at": "2026-10-25T04:38:34.4800332+08:00"
+}

@@ -1,0 +1,33 @@
+{
+  "schema": "C3_DELAYED_PREDICTION_RUN_CONTRACT_V1",
+  "candidate_condition_id": "C3_DELAYED_PREDICTION_TAU1_RHO001",
+  "candidate": {
+    "head": "FEATURE",
+    "gamma": 12,
+    "kappa": 1,
+    "initial_weight": "locked W0",
+    "feature_dim": 14,
+    "tau_s": 1,
+    "rho": 0.01,
+    "delayed_prediction_enabled": true,
+    "beta": "min((n+1)*dt/1.8,1); n is zero-based plant index",
+    "original_tracking_leak_pcf_pose_plant_unchanged": true
+  },
+  "fixed_inputs": {
+    "scene_order": "C1 shared_scenes fixed order (VAL12)",
+    "probe_scene_index_1based": 1,
+    "reuse": ["B", "C2 raw from frozen execution ledger"]
+  },
+  "scope": {
+    "max_new_sorties": 12,
+    "probe_sorties": 1,
+    "remaining_after_parent_probe_gate": 11,
+    "new_training": 0,
+    "gain_or_seed_search": 0,
+    "full72": false,
+    "TEST": false,
+    "new_output_cap_bytes": 1073741824,
+    "minimum_free_bytes": 30000000000
+  },
+  "plant_gate": "No Plant in prepare entry; separate explicit parent C3 probe release required."
+}

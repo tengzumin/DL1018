@@ -1,0 +1,27 @@
+{
+  "schema": "ROOT_CM18_CONTINUATION_STATE_V11",
+  "observed_utc": "2026-10-24T12:31:20.6516805Z",
+  "goal_status": "ACTIVE_NOT_ACHIEVED",
+  "phase": "ALL12_RAW_AUDIT_PASS_OFFLINE_DYNAMIC_MECHANISM",
+  "raw_audit_session20382": "TERMINAL_OS0_PASS12",
+  "raw_audit_path": "reports/attitude_cm18_a1_20261024/screen12_remaining_v1/ROOT_SCREEN12_INDEPENDENT_RAW_AUDIT_v2.json",
+  "new_closed_loop_sorties": 12,
+  "formal_training_runs": 1,
+  "optimizer_steps": 60000,
+  "selected_step": 30000,
+  "fullDEV_authorized": false,
+  "findings": [
+    "All12 model/timing/forward/held/RBFoff checks pass",
+    "C15W14 yaw degradation concentrated5-15s",
+    "OldC5 itself outside TRAIN marginal context bounds before morphology",
+    "OldC5 T1 same-state frozen predictor improves instantaneous mismatch; static label mismatch not proven primary cause",
+    "Jacobian sensitivity alone not discriminative; T2 improved control also has gain norm>1"
+  ],
+  "next_actions": [
+    "Finish effective angular-acceleration G and held-vs-fresh same-state diagnostics on old/new T1/T3 records",
+    "Select one discriminating minimal experiment only after mechanism review"
+  ],
+  "C7": "PAUSED",
+  "C5": "FROZEN",
+  "TEST": "NOT_ACCESSED"
+}

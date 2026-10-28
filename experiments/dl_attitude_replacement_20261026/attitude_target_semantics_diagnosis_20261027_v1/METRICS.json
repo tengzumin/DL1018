@@ -1,0 +1,1408 @@
+{
+  "schema": "C5_MLP15_TARGET_SEMANTICS_DIAGNOSIS_V1",
+  "inputs": {
+    "files_sha256": {
+      "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\attitude_head_mechanism_v1\\CAUSAL_NOMINAL_TORQUE_RESIDUAL.json": "1147071403cbcad7eecf64f186a491afed7ae2d7d1cdafbcbfe7d23830f4d231",
+      "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\attitude_head_mechanism_v1\\audit_causal_nominal_torque_residual.m": "14947c1fb96a04c667a419426d3aac036aa8254244ae377af1694c4a9eb15e67",
+      "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\mlp15_distribution_countercheck_v1\\SAME_STATE_REPLAY.json": "997f70c4cea7844a8196f839776e82277d25485f58624e8afd95025f87afdec9",
+      "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\mlp15_distribution_countercheck_v1\\replay_fixed_c5_states.py": "a04154ee06348d4bb7c2cbca0a51e2850c62b9eb05db53356a7a3d5d7bfcb18d",
+      "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\mlp15_c5_teacher_redistill_v1\\DATASET_MANIFEST_v1.json": "98766ddac3125b81d4637eeb2576349b6ce181c94564c1a444d1d4cab734d55c",
+      "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\mlp15_c5_teacher_redistill_v1\\matched_teacher_data_v1.npz": "b3a8ca6446d6bdde0573e6c233aa222a6cfb28d35f13b084e8dd9683c16c111f",
+      "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\mlp15_c5_teacher_full72_v1\\train_mlp15_c5_full72_v1.py": "eb4d98213b9f75d1ede547ea5cc455ad72bad4a28ca172dd64d9bf0137270d09",
+      "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\mlp15_c5_teacher_redistill_v1\\build_matched_teacher_dataset_v1.py": "303eff1c2f0cbe2c76b431948995992c0c7286a50976d8dd9cbbaa020f6b96d9",
+      "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\architecture_screen_v1\\screen_attitude_architectures_v1.py": "66816f8b04776aca47440008bda96523055c70fc0b68700df07ea30c06357700",
+      "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\mlp15_c5_teacher_full72_v1\\runs\\C5_MLP15_FULL72_SEED2026102001\\mlp15_attitude_weights_v1.mat": "67a6564148ba8c1988d7457c04a5d3271516ff4010da18e61e29fd7da13be46b",
+      "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\mlp15_c5_teacher_full72_v1\\runs\\C5_MLP15_FULL72_SEED2026102001\\final_step_60000.pt": "cc55d7448f32950495c61cfc5226510d2cb3b7aae8ba0e8253694b9d2aaaa806",
+      "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\mlp15_c5_teacher_full72_v1\\runs\\C5_MLP15_FULL72_SEED2026102001\\training_config.json": "b4b186299a87e8167fc8c7c0f1e0d0ea06239a7430d0f2463ad7a6bde9dcce76",
+      "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\mlp15_c5_teacher_full72_v1\\runs\\C5_MLP15_FULL72_SEED2026102001\\run_receipt.json": "3c5563cc8decf62a87595422850976fc596d7b82f1356c7029a8be1af8cd6bca",
+      "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\attitude_target_semantics_diagnosis_20261027_v1\\diagnose_target_semantics.py": "0d8e321861c0f149bea81ce5e99e27470e0ea593c9663c27402cf019e0a8ac32"
+    },
+    "six_original_C5_raw_sha256": {
+      "DL1018_VAL_T1_C08_W15": "c118dd1bd5567e0e7c58b7f5334109187b2cfe743977a6a18a3976d7d0ab23c3",
+      "DL1018_VAL_T1_C05_W12": "4b14d0a1c390c3275334f76f15b0b358c02e701b58982b404bf4ec8a4f12495d",
+      "DL1018_VAL_T2_C02_W12": "a9b189771beb2c8212c08ae229cee5adf92d2bb80990dc2e3e15ac0ccb2e760c",
+      "DL1018_VAL_T2_C05_W15": "b291199298fb4c591478a9c3115323a4299e281b0be447c9fbca0ffe4f640314",
+      "DL1018_VAL_T3_C00_W13": "fe56d41b82deed388bd90f3e1933d40ba4abb1a33c9a770f85729de9932071f6",
+      "DL1018_VAL_T3_C02_W15": "fdf56c425be3a5dcede1c9fd0abb4d24a081996ec72049b0f0d7a33aad88b911"
+    },
+    "fixed_J0_diagonal_kg_m2": [
+      0.003257553333333334,
+      0.0032575533333333334,
+      0.006360648333333333
+    ],
+    "teacher_target": "rbf_output_raw = clip(rbf_output_unclipped, +/-[45,45,4.7124]) rad/s^2; post-DMAX/pre-beta.",
+    "beta_formula_and_index": "beta=min((k+1)*0.001/2.2,1), where k is the zero-based Plant transition/sample index of the attitude event (10,20,...,19990); MATLAB uses one-based k+1. k is not event ordinal 0..1998. Verified at all six logged event traces against beta-applied acceleration.",
+    "legal_observation_formula": "R=(omega[k]-omega[p])/(t[k]-t[p]) + mean((cross(omega[i],J0*omega[i])-tau_issued[i])/J0, i=p..k-1); p=max(0,k-10); tau_issued=requested_generalized columns 2:4 (MATLAB); fixed J0 diagonal only.",
+    "clock_alignment": "R interval ending at event j is compared with prediction/raw/applied teacher at prior 10 ms event j-1. R_j versus end-event label j is reported separately. First interval lacks a prior attitude-event feature.",
+    "frozen_model_forward": "MLP15 15x13 event-major flatten, SiLU, existing frozen PyTorch checkpoint/runtime helper.",
+    "training_split_caveat": {
+      "normalizer_fit_splits": [
+        "TRAIN_C5_24",
+        "C5_VAL48_AS_DEV_TRAIN"
+      ],
+      "validation": "disabled; no validation or checkpoint selection",
+      "dataset_events": 143928,
+      "C5_VAL48_is_in_C5_FULL72_training": true,
+      "same_state_fit_is_independent_validation": false
+    },
+    "scope": {
+      "scenes": 6,
+      "same_recorded_C5_teacher_states": true,
+      "Plant_calls": 0,
+      "TEST_read": false,
+      "training_jobs": 0,
+      "inertia_reconstruction_used": false
+    }
+  },
+  "verification": {
+    "frozen_forward_max_axis_RMSE_difference_vs_same_state_replay": 9.59828971858201e-09,
+    "feature_rebuild_max_abs_diff_vs_dataset_by_scene": {
+      "DL1018_VAL_T1_C08_W15": 7.407902374856334e-09,
+      "DL1018_VAL_T1_C05_W12": 1.4889646293703152e-08,
+      "DL1018_VAL_T2_C02_W12": 1.4900716216459386e-08,
+      "DL1018_VAL_T2_C05_W15": 7.403872209765794e-09,
+      "DL1018_VAL_T3_C00_W13": 2.9729749329021615e-08,
+      "DL1018_VAL_T3_C02_W15": 6.550067432886664e-09
+    },
+    "existing_CAUSAL_audit_max_abs_difference_by_scene": {
+      "DL1018_VAL_T1_C08_W15": 7.105427357601002e-15,
+      "DL1018_VAL_T1_C05_W12": 2.1316282072803006e-14,
+      "DL1018_VAL_T2_C02_W12": 2.3092638912203256e-14,
+      "DL1018_VAL_T2_C05_W15": 1.7763568394002505e-14,
+      "DL1018_VAL_T3_C00_W13": 1.859472161646783e-14,
+      "DL1018_VAL_T3_C02_W15": 2.1316282072803006e-14
+    }
+  },
+  "per_scene": [
+    {
+      "scene_id": "DL1018_VAL_T1_C08_W15",
+      "raw_sha256": "c118dd1bd5567e0e7c58b7f5334109187b2cfe743977a6a18a3976d7d0ab23c3",
+      "feature_max_abs_diff_vs_npz": 7.407902374856334e-09,
+      "raw_equals_clip_max_abs_error_at_events": 0.0,
+      "beta_apply_max_abs_error": 0.0,
+      "fixed_J0_torque_map_max_abs_error": 6.938893903907228e-18,
+      "applied_torque_equals_RBF_torque_max_abs_error": 0.0,
+      "base_mlp_fit_axis_rmse": [
+        0.7685449907090225,
+        1.98467969128123,
+        0.07084951611769413
+      ],
+      "base_mlp_fit_vector_rmse": 2.12946813398609,
+      "mature_t_end_ge_3s_residual_minus_applied_interval_rmse": [
+        0.3462453242530928,
+        1.1097746976217868,
+        0.05122024476391318
+      ],
+      "existing_residual_audit_max_abs_error": 7.105427357601002e-15
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C05_W12",
+      "raw_sha256": "4b14d0a1c390c3275334f76f15b0b358c02e701b58982b404bf4ec8a4f12495d",
+      "feature_max_abs_diff_vs_npz": 1.4889646293703152e-08,
+      "raw_equals_clip_max_abs_error_at_events": 0.0,
+      "beta_apply_max_abs_error": 0.0,
+      "fixed_J0_torque_map_max_abs_error": 6.938893903907228e-18,
+      "applied_torque_equals_RBF_torque_max_abs_error": 0.0,
+      "base_mlp_fit_axis_rmse": [
+        1.5471761183307826,
+        1.7969647285090806,
+        0.2320904545943143
+      ],
+      "base_mlp_fit_vector_rmse": 2.3825830847533127,
+      "mature_t_end_ge_3s_residual_minus_applied_interval_rmse": [
+        1.0255260666083017,
+        0.9309118130064393,
+        0.23100799911274902
+      ],
+      "existing_residual_audit_max_abs_error": 2.1316282072803006e-14
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C02_W12",
+      "raw_sha256": "a9b189771beb2c8212c08ae229cee5adf92d2bb80990dc2e3e15ac0ccb2e760c",
+      "feature_max_abs_diff_vs_npz": 1.4900716216459386e-08,
+      "raw_equals_clip_max_abs_error_at_events": 0.0,
+      "beta_apply_max_abs_error": 0.0,
+      "fixed_J0_torque_map_max_abs_error": 3.469446951953614e-18,
+      "applied_torque_equals_RBF_torque_max_abs_error": 0.0,
+      "base_mlp_fit_axis_rmse": [
+        1.7961919764970973,
+        2.1848310769011294,
+        0.08851898769911003
+      ],
+      "base_mlp_fit_vector_rmse": 2.8297752670854948,
+      "mature_t_end_ge_3s_residual_minus_applied_interval_rmse": [
+        0.6636773234920668,
+        0.6392668722093181,
+        0.06244576783381874
+      ],
+      "existing_residual_audit_max_abs_error": 2.3092638912203256e-14
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C05_W15",
+      "raw_sha256": "b291199298fb4c591478a9c3115323a4299e281b0be447c9fbca0ffe4f640314",
+      "feature_max_abs_diff_vs_npz": 7.403872209765794e-09,
+      "raw_equals_clip_max_abs_error_at_events": 0.0,
+      "beta_apply_max_abs_error": 0.0,
+      "fixed_J0_torque_map_max_abs_error": 6.938893903907228e-18,
+      "applied_torque_equals_RBF_torque_max_abs_error": 0.0,
+      "base_mlp_fit_axis_rmse": [
+        2.0302432431789583,
+        1.612890699469582,
+        0.1039056205085933
+      ],
+      "base_mlp_fit_vector_rmse": 2.595014530379853,
+      "mature_t_end_ge_3s_residual_minus_applied_interval_rmse": [
+        0.9239270587876036,
+        0.4952272077257028,
+        0.024528158329894707
+      ],
+      "existing_residual_audit_max_abs_error": 1.7763568394002505e-14
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C00_W13",
+      "raw_sha256": "fe56d41b82deed388bd90f3e1933d40ba4abb1a33c9a770f85729de9932071f6",
+      "feature_max_abs_diff_vs_npz": 2.9729749329021615e-08,
+      "raw_equals_clip_max_abs_error_at_events": 0.0,
+      "beta_apply_max_abs_error": 0.0,
+      "fixed_J0_torque_map_max_abs_error": 8.470329472543003e-22,
+      "applied_torque_equals_RBF_torque_max_abs_error": 0.0,
+      "base_mlp_fit_axis_rmse": [
+        0.41371412285212017,
+        0.4554667166267711,
+        0.03641909723288457
+      ],
+      "base_mlp_fit_vector_rmse": 0.6163892082485943,
+      "mature_t_end_ge_3s_residual_minus_applied_interval_rmse": [
+        0.001766768076608852,
+        0.0006400929456783774,
+        0.0004955220144107647
+      ],
+      "existing_residual_audit_max_abs_error": 1.859472161646783e-14
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C02_W15",
+      "raw_sha256": "fdf56c425be3a5dcede1c9fd0abb4d24a081996ec72049b0f0d7a33aad88b911",
+      "feature_max_abs_diff_vs_npz": 6.550067432886664e-09,
+      "raw_equals_clip_max_abs_error_at_events": 0.0,
+      "beta_apply_max_abs_error": 0.0,
+      "fixed_J0_torque_map_max_abs_error": 3.469446951953614e-18,
+      "applied_torque_equals_RBF_torque_max_abs_error": 0.0,
+      "base_mlp_fit_axis_rmse": [
+        1.699035758614482,
+        1.9774294933863281,
+        0.04670812601672145
+      ],
+      "base_mlp_fit_vector_rmse": 2.607514440880585,
+      "mature_t_end_ge_3s_residual_minus_applied_interval_rmse": [
+        0.5703961598969717,
+        0.5374869534100852,
+        0.012147895119795946
+      ],
+      "existing_residual_audit_max_abs_error": 2.1316282072803006e-14
+    }
+  ],
+  "pooled_categories": {
+    "all_start_aligned": {
+      "interval_count": 11988,
+      "axis_rmse_or_rms": {
+        "base_fit": [
+          1.4942668591809136,
+          1.7639803705273915,
+          0.11623677451122895
+        ],
+        "residual_minus_raw_start": [
+          0.6291224473260677,
+          0.6566885160380325,
+          0.09273005054421878
+        ],
+        "residual_minus_applied_point_start": [
+          0.6291224401220037,
+          0.656688510249577,
+          0.09273004950194672
+        ],
+        "residual_minus_applied_interval": [
+          0.6291224401220036,
+          0.656688510249577,
+          0.09273004950194673
+        ],
+        "residual_minus_raw_end": [
+          0.5907763920653036,
+          0.6180502523846119,
+          0.09146213111737674
+        ],
+        "label_start_to_end_delta": [
+          0.04109912933873397,
+          0.04399471841165215,
+          0.003312824694431445
+        ],
+        "residual_rms_source": [
+          10.333746843277474,
+          10.417343411120616,
+          0.37784189748277236
+        ],
+        "raw_start_rms_source": [
+          10.162904915171424,
+          10.24179030460246,
+          0.35840363662003144
+        ],
+        "applied_start_rms_source": [
+          10.162904914724887,
+          10.241790304231419,
+          0.35840363635036404
+        ]
+      },
+      "mismatch_to_base_fit_ratio": {
+        "residual_minus_raw_start": [
+          0.42102415874425725,
+          0.3722765440080815,
+          0.7977686144006059
+        ],
+        "residual_minus_applied_point_start": [
+          0.4210241539231211,
+          0.37227654072660765,
+          0.7977686054338046
+        ],
+        "residual_minus_applied_interval": [
+          0.42102415392312104,
+          0.37227654072660765,
+          0.7977686054338047
+        ],
+        "residual_minus_raw_end": [
+          0.3953620388724537,
+          0.350372522682794,
+          0.7868605396353382
+        ]
+      },
+      "mean_bias": {
+        "base_fit": [
+          -0.22222763502610549,
+          -0.5172822596915008,
+          0.00384294541653159
+        ],
+        "residual_minus_raw_start": [
+          0.07897289609343207,
+          0.03505169845066458,
+          -0.0045326115900351915
+        ],
+        "residual_minus_applied_point_start": [
+          0.07897293656271698,
+          0.035050164905986815,
+          -0.0045323534448780504
+        ],
+        "residual_minus_applied_interval": [
+          0.07897293656271709,
+          0.03505016490598712,
+          -0.0045323534448780504
+        ],
+        "residual_minus_raw_end": [
+          0.07897280484374505,
+          0.035051882263507445,
+          -0.004532652080118717
+        ]
+      }
+    },
+    "beta_immature_start": {
+      "interval_count": 1314,
+      "axis_rmse_or_rms": {
+        "base_fit": [
+          0.2675732402503753,
+          0.21344747812158024,
+          0.019740116821484733
+        ],
+        "residual_minus_raw_start": [
+          0.00047332540484101,
+          0.0003794678080558689,
+          0.0001091331220329364
+        ],
+        "residual_minus_applied_point_start": [
+          0.0003759509404492722,
+          0.0002731972228043153,
+          0.00010072987762624687
+        ],
+        "residual_minus_applied_interval": [
+          0.0003759509404492722,
+          0.00027319722280431534,
+          0.00010072987762624687
+        ],
+        "residual_minus_raw_end": [
+          0.0004763882573516418,
+          0.00038348806259645024,
+          0.00011124501493950267
+        ],
+        "label_start_to_end_delta": [
+          0.00011174465165684816,
+          8.288809582071326e-05,
+          8.163025214358917e-06
+        ],
+        "residual_rms_source": [
+          5.9287947807020235e-06,
+          1.2905586771059786e-05,
+          3.781565214035315e-15
+        ],
+        "raw_start_rms_source": [
+          0.00047358304027597144,
+          0.00037929065921601924,
+          0.00010913312203217964
+        ],
+        "applied_start_rms_source": [
+          0.0003761347875571005,
+          0.0002729894333521834,
+          0.00010072987762550813
+        ]
+      },
+      "mismatch_to_base_fit_ratio": {
+        "residual_minus_raw_start": [
+          0.0017689564337528931,
+          0.0017778041295935247,
+          0.005528494234348105
+        ],
+        "residual_minus_applied_point_start": [
+          0.0014050393832263834,
+          0.0012799271521432615,
+          0.005102800481738516
+        ],
+        "residual_minus_applied_interval": [
+          0.0014050393832263834,
+          0.0012799271521432617,
+          0.005102800481738516
+        ],
+        "residual_minus_raw_end": [
+          0.001780403215605091,
+          0.0017966389950881238,
+          0.00563547905747072
+        ]
+      },
+      "mean_bias": {
+        "base_fit": [
+          0.1458101116077147,
+          -0.06418994526146948,
+          0.0013317454608790496
+        ],
+        "residual_minus_raw_start": [
+          -4.185051680702308e-06,
+          1.503067703985563e-05,
+          -2.5075175393319114e-05
+        ],
+        "residual_minus_applied_point_start": [
+          -3.815838752721885e-06,
+          1.0397077875370265e-06,
+          -2.27200428637077e-05
+        ],
+        "residual_minus_applied_interval": [
+          -3.815838752721884e-06,
+          1.0397077875370246e-06,
+          -2.27200428637077e-05
+        ],
+        "residual_minus_raw_end": [
+          -5.838028306815046e-06,
+          1.470837420626893e-05,
+          -2.5818007574593323e-05
+        ]
+      }
+    },
+    "beta_mature_start": {
+      "interval_count": 10674,
+      "axis_rmse_or_rms": {
+        "base_fit": [
+          1.5807871586546725,
+          1.8679048089778194,
+          0.12298885846794708
+        ],
+        "residual_minus_raw_start": [
+          0.666722229958655,
+          0.6959358058705865,
+          0.0982720988110729
+        ],
+        "residual_minus_applied_point_start": [
+          0.666722229958655,
+          0.6959358058705865,
+          0.0982720988110729
+        ],
+        "residual_minus_applied_interval": [
+          0.6667222299586549,
+          0.6959358058705866,
+          0.0982720988110729
+        ],
+        "residual_minus_raw_end": [
+          0.6260844027759681,
+          0.6549883068652337,
+          0.09692840117560643
+        ],
+        "label_start_to_end_delta": [
+          0.04355542077225587,
+          0.0466240746840703,
+          0.0035108160751118923
+        ],
+        "residual_rms_source": [
+          10.951348155186277,
+          11.039940911802612,
+          0.4004237988123321
+        ],
+        "raw_start_rms_source": [
+          10.77029577643045,
+          10.853895789275109,
+          0.3798237990820926
+        ],
+        "applied_start_rms_source": [
+          10.77029577643045,
+          10.853895789275109,
+          0.3798237990820926
+        ]
+      },
+      "mismatch_to_base_fit_ratio": {
+        "residual_minus_raw_start": [
+          0.4217659703954506,
+          0.37257562726198346,
+          0.7990325305497834
+        ],
+        "residual_minus_applied_point_start": [
+          0.4217659703954506,
+          0.37257562726198346,
+          0.7990325305497834
+        ],
+        "residual_minus_applied_interval": [
+          0.42176597039545055,
+          0.3725756272619835,
+          0.7990325305497834
+        ],
+        "residual_minus_raw_end": [
+          0.3960586340471014,
+          0.3506540074832108,
+          0.7881071698935036
+        ]
+      },
+      "mean_bias": {
+        "base_fit": [
+          -0.26753413671964504,
+          -0.573059222513409,
+          0.004152081330127919
+        ],
+        "residual_minus_raw_start": [
+          0.08869520119224024,
+          0.03936481269598439,
+          -0.005087502244788754
+        ],
+        "residual_minus_applied_point_start": [
+          0.08869520119224024,
+          0.03936481269598439,
+          -0.005087502244788754
+        ],
+        "residual_minus_applied_interval": [
+          0.0886952011922404,
+          0.0393648126959847,
+          -0.0050875022447887525
+        ],
+        "residual_minus_raw_end": [
+          0.08869530219561647,
+          0.039365058813117935,
+          -0.005087456274546582
+        ]
+      }
+    },
+    "first_5s_start": {
+      "interval_count": 2994,
+      "axis_rmse_or_rms": {
+        "base_fit": [
+          0.3286349579999188,
+          0.2580194730113653,
+          0.02263365571952307
+        ],
+        "residual_minus_raw_start": [
+          0.0006583744710047429,
+          0.0005139990638772821,
+          0.00019225045854372226
+        ],
+        "residual_minus_applied_point_start": [
+          0.0006302084626430213,
+          0.0004834820304989858,
+          0.00019022687688083822
+        ],
+        "residual_minus_applied_interval": [
+          0.0006302084626430213,
+          0.00048348203049898585,
+          0.00019022687688083822
+        ],
+        "residual_minus_raw_end": [
+          0.0006591043143325948,
+          0.0005147008684643001,
+          0.00019259548237410216
+        ],
+        "label_start_to_end_delta": [
+          0.0001573976687906604,
+          0.00012160941322444362,
+          1.2443518708557265e-05
+        ],
+        "residual_rms_source": [
+          9.477694026740198e-06,
+          1.8203939833299847e-05,
+          4.255062331284743e-15
+        ],
+        "raw_start_rms_source": [
+          0.0006575776513657501,
+          0.0005139192399129503,
+          0.00019225045854253325
+        ],
+        "applied_start_rms_source": [
+          0.0006293391340218724,
+          0.0004834066644340328,
+          0.0001902268768796554
+        ]
+      },
+      "mismatch_to_base_fit_ratio": {
+        "residual_minus_raw_start": [
+          0.0020033610392869573,
+          0.0019920940767700944,
+          0.008494008255939546
+        ],
+        "residual_minus_applied_point_start": [
+          0.0019176549764470794,
+          0.0018738199286132534,
+          0.00840460238673484
+        ],
+        "residual_minus_applied_interval": [
+          0.0019176549764470794,
+          0.0018738199286132537,
+          0.00840460238673484
+        ],
+        "residual_minus_raw_end": [
+          0.002005581872190108,
+          0.001994814044293581,
+          0.00850925209611523
+        ]
+      },
+      "mean_bias": {
+        "base_fit": [
+          0.16830516055982703,
+          -0.06381428473335232,
+          0.00148795819976767
+        ],
+        "residual_minus_raw_start": [
+          -6.310300093317409e-07,
+          6.865373151881788e-06,
+          -7.555717989034736e-05
+        ],
+        "residual_minus_applied_point_start": [
+          -4.6899066819403196e-07,
+          7.250479690004799e-07,
+          -7.452356461182055e-05
+        ],
+        "residual_minus_applied_interval": [
+          -4.6899066819403186e-07,
+          7.250479690004816e-07,
+          -7.452356461182055e-05
+        ],
+        "residual_minus_raw_end": [
+          -9.720525126162892e-08,
+          6.690610897066327e-06,
+          -7.583011859759782e-05
+        ]
+      }
+    },
+    "last_5s_start": {
+      "interval_count": 2994,
+      "axis_rmse_or_rms": {
+        "base_fit": [
+          1.5825673712470851,
+          2.0857755393584707,
+          0.058541556117680034
+        ],
+        "residual_minus_raw_start": [
+          0.2868943599854663,
+          0.264878802385683,
+          0.008173438062149017
+        ],
+        "residual_minus_applied_point_start": [
+          0.2868943599854663,
+          0.264878802385683,
+          0.008173438062149017
+        ],
+        "residual_minus_applied_interval": [
+          0.28689435998546625,
+          0.26487880238568307,
+          0.008173438062149018
+        ],
+        "residual_minus_raw_end": [
+          0.2653580466647415,
+          0.24351551277073197,
+          0.007932042047745757
+        ],
+        "label_start_to_end_delta": [
+          0.021833920684792677,
+          0.021684405810917656,
+          0.0004607870217138302
+        ],
+        "residual_rms_source": [
+          0.4392240135274834,
+          0.4392239803786482,
+          3.627724124766156e-05
+        ],
+        "raw_start_rms_source": [
+          0.678353630560113,
+          0.6592577015336284,
+          0.008179733745325928
+        ],
+        "applied_start_rms_source": [
+          0.678353630560113,
+          0.6592577015336284,
+          0.008179733745325928
+        ]
+      },
+      "mismatch_to_base_fit_ratio": {
+        "residual_minus_raw_start": [
+          0.1812841369017924,
+          0.12699295652261447,
+          0.13961771097643527
+        ],
+        "residual_minus_applied_point_start": [
+          0.1812841369017924,
+          0.12699295652261447,
+          0.13961771097643527
+        ],
+        "residual_minus_applied_interval": [
+          0.18128413690179238,
+          0.1269929565226145,
+          0.1396177109764353
+        ],
+        "residual_minus_raw_end": [
+          0.16767567149803908,
+          0.1167505842194462,
+          0.1354942125522047
+        ]
+      },
+      "mean_bias": {
+        "base_fit": [
+          -0.6161275834597785,
+          -0.7516290628698421,
+          0.019305520627072977
+        ],
+        "residual_minus_raw_start": [
+          -0.05442995729773117,
+          -0.000920934014985208,
+          0.0017035237996871197
+        ],
+        "residual_minus_applied_point_start": [
+          -0.05442995729773117,
+          -0.000920934014985208,
+          0.0017035237996871197
+        ],
+        "residual_minus_applied_interval": [
+          -0.05442995729773117,
+          -0.0009209340149852053,
+          0.0017035237996871199
+        ],
+        "residual_minus_raw_end": [
+          -0.050417245830791026,
+          -0.0009154384301699464,
+          0.0016598930756074205
+        ]
+      }
+    },
+    "beta_mature_first_5s_start": {
+      "interval_count": 1680,
+      "axis_rmse_or_rms": {
+        "base_fit": [
+          0.36942554708775266,
+          0.2881148599230437,
+          0.024661326634758902
+        ],
+        "residual_minus_raw_start": [
+          0.0007728216516655185,
+          0.0005985048030475774,
+          0.0002378089026720663
+        ],
+        "residual_minus_applied_point_start": [
+          0.0007728216516655185,
+          0.0005985048030475774,
+          0.0002378089026720663
+        ],
+        "residual_minus_applied_interval": [
+          0.0007728216516655185,
+          0.0005985048030475775,
+          0.00023780890267206624
+        ],
+        "residual_minus_raw_end": [
+          0.0007724582884650362,
+          0.0005975747335068914,
+          0.00023754091837151125
+        ],
+        "label_start_to_end_delta": [
+          0.00018543014792965772,
+          0.00014485226790852788,
+          1.4960982230556819e-05
+        ],
+        "residual_rms_source": [
+          1.1514824651969763e-05,
+          2.1454683645541444e-05,
+          4.591498587694292e-15
+        ],
+        "raw_start_rms_source": [
+          0.0007714880315435003,
+          0.0005984704673412207,
+          0.0002378089026706249
+        ],
+        "applied_start_rms_source": [
+          0.0007714880315435003,
+          0.0005984704673412207,
+          0.0002378089026706249
+        ]
+      },
+      "mismatch_to_base_fit_ratio": {
+        "residual_minus_raw_start": [
+          0.0020919550847465994,
+          0.0020773132049052927,
+          0.009642989048970568
+        ],
+        "residual_minus_applied_point_start": [
+          0.0020919550847465994,
+          0.0020773132049052927,
+          0.009642989048970568
+        ],
+        "residual_minus_applied_interval": [
+          0.0020919550847465994,
+          0.002077313204905293,
+          0.009642989048970567
+        ],
+        "residual_minus_raw_end": [
+          0.002090971494945226,
+          0.002074085084214349,
+          0.009632122468087716
+        ]
+      },
+      "mean_bias": {
+        "base_fit": [
+          0.1858995024188008,
+          -0.06352046453457479,
+          0.0016101388776841293
+        ],
+        "residual_minus_raw_start": [
+          2.1487226550616873e-06,
+          4.789390395022482e-07,
+          -0.0001150413191219515
+        ],
+        "residual_minus_applied_point_start": [
+          2.1487226550616873e-06,
+          4.789390395022482e-07,
+          -0.0001150413191219515
+        ],
+        "residual_minus_applied_interval": [
+          2.148722655061681e-06,
+          4.789390395022462e-07,
+          -0.0001150413191219515
+        ],
+        "residual_minus_raw_end": [
+          4.392938495760531e-06,
+          4.195745945114244e-07,
+          -0.00011494673400487649
+        ]
+      }
+    },
+    "beta_mature_last_5s_start": {
+      "interval_count": 2994,
+      "axis_rmse_or_rms": {
+        "base_fit": [
+          1.5825673712470851,
+          2.0857755393584707,
+          0.058541556117680034
+        ],
+        "residual_minus_raw_start": [
+          0.2868943599854663,
+          0.264878802385683,
+          0.008173438062149017
+        ],
+        "residual_minus_applied_point_start": [
+          0.2868943599854663,
+          0.264878802385683,
+          0.008173438062149017
+        ],
+        "residual_minus_applied_interval": [
+          0.28689435998546625,
+          0.26487880238568307,
+          0.008173438062149018
+        ],
+        "residual_minus_raw_end": [
+          0.2653580466647415,
+          0.24351551277073197,
+          0.007932042047745757
+        ],
+        "label_start_to_end_delta": [
+          0.021833920684792677,
+          0.021684405810917656,
+          0.0004607870217138302
+        ],
+        "residual_rms_source": [
+          0.4392240135274834,
+          0.4392239803786482,
+          3.627724124766156e-05
+        ],
+        "raw_start_rms_source": [
+          0.678353630560113,
+          0.6592577015336284,
+          0.008179733745325928
+        ],
+        "applied_start_rms_source": [
+          0.678353630560113,
+          0.6592577015336284,
+          0.008179733745325928
+        ]
+      },
+      "mismatch_to_base_fit_ratio": {
+        "residual_minus_raw_start": [
+          0.1812841369017924,
+          0.12699295652261447,
+          0.13961771097643527
+        ],
+        "residual_minus_applied_point_start": [
+          0.1812841369017924,
+          0.12699295652261447,
+          0.13961771097643527
+        ],
+        "residual_minus_applied_interval": [
+          0.18128413690179238,
+          0.1269929565226145,
+          0.1396177109764353
+        ],
+        "residual_minus_raw_end": [
+          0.16767567149803908,
+          0.1167505842194462,
+          0.1354942125522047
+        ]
+      },
+      "mean_bias": {
+        "base_fit": [
+          -0.6161275834597785,
+          -0.7516290628698421,
+          0.019305520627072977
+        ],
+        "residual_minus_raw_start": [
+          -0.05442995729773117,
+          -0.000920934014985208,
+          0.0017035237996871197
+        ],
+        "residual_minus_applied_point_start": [
+          -0.05442995729773117,
+          -0.000920934014985208,
+          0.0017035237996871197
+        ],
+        "residual_minus_applied_interval": [
+          -0.05442995729773117,
+          -0.0009209340149852053,
+          0.0017035237996871199
+        ],
+        "residual_minus_raw_end": [
+          -0.050417245830791026,
+          -0.0009154384301699464,
+          0.0016598930756074205
+        ]
+      }
+    },
+    "conservative_mature_t_end_ge_3s": {
+      "interval_count": 10200,
+      "axis_rmse_or_rms": {
+        "base_fit": [
+          1.6154871971710962,
+          1.9097611356652864,
+          0.12569417892213436
+        ],
+        "residual_minus_raw_start": [
+          0.6820377846610828,
+          0.7119224488497777,
+          0.10052954001774027
+        ],
+        "residual_minus_applied_point_start": [
+          0.6820377846610828,
+          0.7119224488497777,
+          0.10052954001774027
+        ],
+        "residual_minus_applied_interval": [
+          0.6820377846610827,
+          0.7119224488497778,
+          0.10052954001774028
+        ],
+        "residual_minus_raw_end": [
+          0.6404664459290659,
+          0.6700343258277558,
+          0.09915497548349186
+        ],
+        "label_start_to_end_delta": [
+          0.044555931926541704,
+          0.047695086995655105,
+          0.003591462927470494
+        ],
+        "residual_rms_source": [
+          11.202916505620504,
+          11.293544366346232,
+          0.40962211422651273
+        ],
+        "raw_start_rms_source": [
+          11.017705089777616,
+          11.103225516765095,
+          0.3885488996673677
+        ],
+        "applied_start_rms_source": [
+          11.017705089777616,
+          11.103225516765095,
+          0.3885488996673677
+        ]
+      },
+      "mismatch_to_base_fit_ratio": {
+        "residual_minus_raw_start": [
+          0.4221870565457958,
+          0.372780886339365,
+          0.7997947150760004
+        ],
+        "residual_minus_applied_point_start": [
+          0.4221870565457958,
+          0.372780886339365,
+          0.7997947150760004
+        ],
+        "residual_minus_applied_interval": [
+          0.42218705654579575,
+          0.37278088633936507,
+          0.7997947150760005
+        ],
+        "residual_minus_raw_end": [
+          0.39645405240635534,
+          0.3508471888524121,
+          0.7888589299343518
+        ]
+      },
+      "mean_bias": {
+        "base_fit": [
+          -0.287739623920788,
+          -0.5964919537221163,
+          0.004316997657953105
+        ],
+        "residual_minus_raw_start": [
+          0.09281608497408413,
+          0.04119415247299938,
+          -0.0053188134295950856
+        ],
+        "residual_minus_applied_point_start": [
+          0.09281608497408413,
+          0.04119415247299938,
+          -0.0053188134295950856
+        ],
+        "residual_minus_applied_interval": [
+          0.09281608497408421,
+          0.04119415247299971,
+          -0.005318813429595084
+        ],
+        "residual_minus_raw_end": [
+          0.09281627314028659,
+          0.04119431219224099,
+          -0.0053187618131984105
+        ]
+      }
+    }
+  },
+  "per_scene_beta_mature_start_alignment": {
+    "DL1018_VAL_T1_C08_W15": {
+      "mature_interval_count": 1779,
+      "base_fit_rmse": [
+        0.8120363111455363,
+        2.103477930576279,
+        0.0751008989359881
+      ],
+      "residual_minus_raw_start_rmse": [
+        0.33847017346839836,
+        1.0848540271970188,
+        0.050070062802132505
+      ],
+      "raw_start_mismatch_to_fit_ratio": [
+        0.416816549731526,
+        0.5157430042062799,
+        0.6667039078295119
+      ],
+      "residual_minus_applied_start_rmse": [
+        0.33847017346839836,
+        1.0848540271970188,
+        0.050070062802132505
+      ],
+      "applied_start_mismatch_to_fit_ratio": [
+        0.416816549731526,
+        0.5157430042062799,
+        0.6667039078295119
+      ],
+      "residual_minus_applied_interval_rmse": [
+        0.33847017346839803,
+        1.0848540271970193,
+        0.050070062802132505
+      ],
+      "applied_interval_mismatch_to_fit_ratio": [
+        0.4168165497315256,
+        0.5157430042062802,
+        0.6667039078295119
+      ],
+      "residual_minus_raw_endpoint_rmse": [
+        0.3164525838195588,
+        1.0124365246052607,
+        0.05003315046490084
+      ],
+      "raw_endpoint_mismatch_to_fit_ratio": [
+        0.3897025040335209,
+        0.48131549653477407,
+        0.6662124045618463
+      ],
+      "raw_start_to_end_label_delta_rmse": [
+        0.022882167546875262,
+        0.07646441556626019,
+        0.0007943930046689679
+      ],
+      "teacher_raw_start_rms": [
+        3.02358472247451,
+        20.21411217817231,
+        0.049963753768182906
+      ],
+      "teacher_applied_start_rms": [
+        3.02358472247451,
+        20.21411217817231,
+        0.049963753768182906
+      ],
+      "residual_rms": [
+        3.0787214817771535,
+        20.55449811441741,
+        0.011751660118244993
+      ]
+    },
+    "DL1018_VAL_T1_C05_W12": {
+      "mature_interval_count": 1779,
+      "base_fit_rmse": [
+        1.6368822910658347,
+        1.903360239860519,
+        0.24590007092756938
+      ],
+      "residual_minus_raw_start_rmse": [
+        1.002497252174047,
+        0.9100076376196164,
+        0.22582057435200978
+      ],
+      "raw_start_mismatch_to_fit_ratio": [
+        0.612443092362667,
+        0.4781058354388569,
+        0.9183428597648755
+      ],
+      "residual_minus_applied_start_rmse": [
+        1.002497252174047,
+        0.9100076376196164,
+        0.22582057435200978
+      ],
+      "applied_start_mismatch_to_fit_ratio": [
+        0.612443092362667,
+        0.4781058354388569,
+        0.9183428597648755
+      ],
+      "residual_minus_applied_interval_rmse": [
+        1.002497252174047,
+        0.9100076376196163,
+        0.22582057435200978
+      ],
+      "applied_interval_mismatch_to_fit_ratio": [
+        0.612443092362667,
+        0.4781058354388568,
+        0.9183428597648755
+      ],
+      "residual_minus_raw_endpoint_rmse": [
+        0.9413564675689468,
+        0.8697033514529969,
+        0.22237597787693802
+      ],
+      "raw_endpoint_mismatch_to_fit_ratio": [
+        0.5750911184676539,
+        0.45693050282311776,
+        0.9043347447526339
+      ],
+      "raw_start_to_end_label_delta_rmse": [
+        0.06549960477778016,
+        0.05434927904533306,
+        0.008363474331961721
+      ],
+      "teacher_raw_start_rms": [
+        16.625747080396373,
+        9.242072324116156,
+        0.9278471614083178
+      ],
+      "teacher_applied_start_rms": [
+        16.625747080396373,
+        9.242072324116156,
+        0.9278471614083178
+      ],
+      "residual_rms": [
+        16.90417278459916,
+        9.41531440081879,
+        0.9792055660354961
+      ]
+    },
+    "DL1018_VAL_T2_C02_W12": {
+      "mature_interval_count": 1779,
+      "base_fit_rmse": [
+        1.9012941135378536,
+        2.314851007261574,
+        0.09353426231241434
+      ],
+      "residual_minus_raw_start_rmse": [
+        0.6487740454377434,
+        0.6249117784578686,
+        0.06104351670814126
+      ],
+      "raw_start_mismatch_to_fit_ratio": [
+        0.34122760956248377,
+        0.26995766746868416,
+        0.6526326845263338
+      ],
+      "residual_minus_applied_start_rmse": [
+        0.6487740454377434,
+        0.6249117784578686,
+        0.06104351670814126
+      ],
+      "applied_start_mismatch_to_fit_ratio": [
+        0.34122760956248377,
+        0.26995766746868416,
+        0.6526326845263338
+      ],
+      "residual_minus_applied_interval_rmse": [
+        0.6487740454377436,
+        0.6249117784578686,
+        0.06104351670814126
+      ],
+      "applied_interval_mismatch_to_fit_ratio": [
+        0.3412276095624839,
+        0.26995766746868416,
+        0.6526326845263338
+      ],
+      "residual_minus_raw_endpoint_rmse": [
+        0.6143596937466571,
+        0.5905322712004898,
+        0.06085672230947533
+      ],
+      "raw_endpoint_mismatch_to_fit_ratio": [
+        0.32312712134972144,
+        0.25510595254209406,
+        0.6506356152808201
+      ],
+      "raw_start_to_end_label_delta_rmse": [
+        0.040069307174338896,
+        0.04087179457880058,
+        0.0015688571050102129
+      ],
+      "teacher_raw_start_rms": [
+        8.851320632350193,
+        8.851355129150637,
+        0.03790624393275858
+      ],
+      "teacher_applied_start_rms": [
+        8.851320632350193,
+        8.851355129150637,
+        0.03790624393275858
+      ],
+      "residual_rms": [
+        9.004465329952593,
+        9.004465508620344,
+        0.05359199957750892
+      ]
+    },
+    "DL1018_VAL_T2_C05_W15": {
+      "mature_interval_count": 1779,
+      "base_fit_rmse": [
+        2.1511268691222365,
+        1.7094061853715714,
+        0.11014106096838723
+      ],
+      "residual_minus_raw_start_rmse": [
+        0.9031797109004823,
+        0.48410657751538233,
+        0.023977363514353287
+      ],
+      "raw_start_mismatch_to_fit_ratio": [
+        0.41986352542238625,
+        0.28320160629941366,
+        0.21769686349067663
+      ],
+      "residual_minus_applied_start_rmse": [
+        0.9031797109004823,
+        0.48410657751538233,
+        0.023977363514353287
+      ],
+      "applied_start_mismatch_to_fit_ratio": [
+        0.41986352542238625,
+        0.28320160629941366,
+        0.21769686349067663
+      ],
+      "residual_minus_applied_interval_rmse": [
+        0.903179710900482,
+        0.4841065775153818,
+        0.02397736351435329
+      ],
+      "applied_interval_mismatch_to_fit_ratio": [
+        0.41986352542238614,
+        0.2832016062994134,
+        0.21769686349067666
+      ],
+      "residual_minus_raw_endpoint_rmse": [
+        0.8461528403721981,
+        0.4518562931283616,
+        0.023909659725235056
+      ],
+      "raw_endpoint_mismatch_to_fit_ratio": [
+        0.39335329427476734,
+        0.26433523933350117,
+        0.21708216277395062
+      ],
+      "raw_start_to_end_label_delta_rmse": [
+        0.059776662359669504,
+        0.034223818714786226,
+        0.0008735799222495771
+      ],
+      "teacher_raw_start_rms": [
+        15.993532057152608,
+        7.628109488168565,
+        0.024972917488134863
+      ],
+      "teacher_applied_start_rms": [
+        15.993532057152608,
+        7.628109488168565,
+        0.024972917488134863
+      ],
+      "residual_rms": [
+        16.26013858808748,
+        7.757303834237301,
+        0.013419093771129166
+      ]
+    },
+    "DL1018_VAL_T3_C00_W13": {
+      "mature_interval_count": 1779,
+      "base_fit_rmse": [
+        0.4176801459199967,
+        0.4650104359656169,
+        0.036627781037236774
+      ],
+      "residual_minus_raw_start_rmse": [
+        0.0017742343935799106,
+        0.0006392142221497704,
+        0.0004963733301309117
+      ],
+      "raw_start_mismatch_to_fit_ratio": [
+        0.004247830333596348,
+        0.0013746233905964085,
+        0.013551826402650092
+      ],
+      "residual_minus_applied_start_rmse": [
+        0.0017742343935799106,
+        0.0006392142221497704,
+        0.0004963733301309117
+      ],
+      "applied_start_mismatch_to_fit_ratio": [
+        0.004247830333596348,
+        0.0013746233905964085,
+        0.013551826402650092
+      ],
+      "residual_minus_applied_interval_rmse": [
+        0.0017742343935799106,
+        0.0006392142221497705,
+        0.0004963733301309117
+      ],
+      "applied_interval_mismatch_to_fit_ratio": [
+        0.004247830333596348,
+        0.0013746233905964087,
+        0.013551826402650092
+      ],
+      "residual_minus_raw_endpoint_rmse": [
+        0.0017742639873314125,
+        0.0006399150809329775,
+        0.0004960999875166176
+      ],
+      "raw_endpoint_mismatch_to_fit_ratio": [
+        0.004247901186261457,
+        0.0013761305799603453,
+        0.01354436368974329
+      ],
+      "raw_start_to_end_label_delta_rmse": [
+        0.0004237278319878227,
+        0.00015531800804631193,
+        3.4053938795770174e-05
+      ],
+      "teacher_raw_start_rms": [
+        0.0017708320434074091,
+        0.0006403161826542032,
+        0.000496373330128309
+      ],
+      "teacher_applied_start_rms": [
+        0.0017708320434074091,
+        0.0006403161826542032,
+        0.000496373330128309
+      ],
+      "residual_rms": [
+        2.0303609310655213e-05,
+        5.591853392564873e-05,
+        2.154907234309276e-14
+      ]
+    },
+    "DL1018_VAL_T3_C02_W15": {
+      "mature_interval_count": 1779,
+      "base_fit_rmse": [
+        1.7993940154541386,
+        2.0952735495271106,
+        0.049287524375184716
+      ],
+      "residual_minus_raw_start_rmse": [
+        0.5575875648347851,
+        0.5254173547390372,
+        0.011875106695920618
+      ],
+      "raw_start_mismatch_to_fit_ratio": [
+        0.30987519133993496,
+        0.25076313059820776,
+        0.24093534512963888
+      ],
+      "residual_minus_applied_start_rmse": [
+        0.5575875648347851,
+        0.5254173547390372,
+        0.011875106695920618
+      ],
+      "applied_start_mismatch_to_fit_ratio": [
+        0.30987519133993496,
+        0.25076313059820776,
+        0.24093534512963888
+      ],
+      "residual_minus_applied_interval_rmse": [
+        0.5575875648347852,
+        0.5254173547390373,
+        0.011875106695920618
+      ],
+      "applied_interval_mismatch_to_fit_ratio": [
+        0.309875191339935,
+        0.2507631305982078,
+        0.24093534512963888
+      ],
+      "residual_minus_raw_endpoint_rmse": [
+        0.5217089504436073,
+        0.48963616536926613,
+        0.011867579827465365
+      ],
+      "raw_endpoint_mismatch_to_fit_ratio": [
+        0.2899359150707947,
+        0.23368603373042807,
+        0.24078263166815606
+      ],
+      "raw_start_to_end_label_delta_rmse": [
+        0.03727838473742868,
+        0.03742161911301498,
+        0.0003880718555749952
+      ],
+      "teacher_raw_start_rms": [
+        8.734938372982414,
+        8.73393086959733,
+        0.011798395967382918
+      ],
+      "teacher_applied_start_rms": [
+        8.734938372982414,
+        8.73393086959733,
+        0.011798395967382918
+      ],
+      "residual_rms": [
+        8.882008343845621,
+        8.882008339276869,
+        0.0012228511815834003
+      ]
+    }
+  }
+}

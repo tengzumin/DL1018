@@ -1,0 +1,11 @@
+# Composite v1交付主审决定
+
+2026-10-27。已实际读取LUNA_COMPLETION.md、SOURCE_DIFF.json及step源码。
+
+决定：不放行v1 Plant。保留其300事件数值验证成果，不能将其解释为DEV运行集成通过。
+
+依据：最终交付明确修改run_gate_holdout_closed_loop，未交付接通实际run_mlp15_dev72_closed_loop的driver；通用入口的0预算拒绝不能证明DEV入口接通。LOCKED_CFG使用default_config的准备路径亦不足以证明真实C5滤波配置同一性。
+
+处置：Luna极高在独立mlp15_composite_dev_v2实施精确接入修复，保留数值核心和模型，不训练、不改算法参数；另一Luna独立只读审核。v1历史及检查保留。v2通过实际入口与配置审核后，再决定首场无风闭环，不放行DEV72/TEST。
+
+论文级结果尚未达标。当前v1无新Plant航次；历史六场prediction-only最终B/C5指标未通过，不能以其相对冻结MLP的改善替代用户标准。

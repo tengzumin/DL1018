@@ -1,0 +1,216 @@
+{
+  "schema": "DL1018_NOTCH_SINGLE_SCENE_FROZEN_SCORE_AUDIT_V1",
+  "status": "PASS_SCORE_AND_LOGGED_NOTCH_ROUTE_AUDIT",
+  "scope": "Single completed VAL scene, frozen FULL72 score_raw; raw-only scoring and route audit. No Plant launched by auditor, no TEST, no training, no inertia reconstruction.",
+  "scene_id": "DL1018_VAL_T3_C01_W14",
+  "frozen_pilot_score_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\gru_prediction_tau01_v1\\audits\\GRU_PREDICTION_TAU01_SCORE_final12.json",
+  "frozen_pilot_score_sha256": "132ac1ccf86f3c2b51a4c89eaebdb23170f62598205e7ce7072a6a7e47759fcb",
+  "frozen_metric_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_full72_v1\\audits\\score_full72_candidate_v1.py",
+  "frozen_metric_sha256": "6baf689802f4d73ead813449e52a8fe85cb0be92c3185850c93646da2d54dd16",
+  "metric_constants": {
+    "gravity_mps2": 9.8,
+    "max_tilt_rad": 0.5235987755982988
+  },
+  "notch_candidate_audit": {
+    "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\gru_cosine_c5_applied_notch_35hz_q1_v1\\runs\\DL1018_VAL_T3_C01_W14\\raw_run.mat",
+    "raw_sha256": "e6e158c2f9a89fa824b0c618dbbf96d486f05a79957b5184e2c1856da844d4b9",
+    "run_start_sha256": "d99b975bbb8e783d6958c7d6a9de2bd2c80d32bfa7eba9d04cbdd0b7a7c6bb32",
+    "run_status_sha256": "91a78d91a1acf480c4b519f26f1209c3bda459bbcadeb1086fe943a4697819f3",
+    "run_bound_release_snapshot_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\gru_cosine_c5_applied_notch_35hz_q1_v1\\audits\\PILOT_SNAPSHOT_RELEASE.json",
+    "release_sha256_run_and_snapshot": "3d7a513464e562eed657d90d7f7ad993c848d901649d84570bc7e9bf08794e3d",
+    "current_release_sha256_at_audit": "7ae9a1d48619650fcfe353d0bba9d1bf601c39703a3398821d3b690c05d9b341",
+    "current_release_matches_run_snapshot": false,
+    "source_lock_snapshot_sha256": "f2159df0f9aea6506a1da8aee86cbde1f1d132eb9030df4b84ce3310a26a610c",
+    "current_source_lock_sha256_at_audit": "cea7057cc62c0dd6b4f688c90b7017d5918914cd7511929a87e89d4fecab9219",
+    "current_source_lock_matches_run_snapshot": false,
+    "run_bound_source_snapshot_dir": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\gru_cosine_c5_applied_notch_35hz_q1_v1\\audits\\PILOT_SOURCE_SNAPSHOT_v1",
+    "run_bound_source_snapshot_files_verified": 66,
+    "notch_helper_sha256_run_bound_snapshot": "011d2a21e13018cdc71ff780be30c4a9f3730fabcb21fba45a699a2643c5547b",
+    "notch_helper_sha256_current": "011d2a21e13018cdc71ff780be30c4a9f3730fabcb21fba45a699a2643c5547b",
+    "notch_runner_sha256_run_bound_snapshot": "f20f05d8fd806de1da2a9c17470e1e4286724d7ce5b023108fb035b21b7e0c37",
+    "notch_runner_sha256_current": "334b78bee64cc49c63201ffbfaeaed1c720d4baa2af73d10d5fb9348149c8500",
+    "notch_runner_current_matches_run_snapshot": false,
+    "scene_payload_sha256": "ed1235f954a9488b0935b8342e2f7435815ed805f96659fbcf19f98f2957b53b",
+    "Plant_calls_in_run": 1,
+    "Plant_calls_started_by_auditor": 0,
+    "TEST_read_by_auditor": false,
+    "inertia_reconstruction": false,
+    "training_runs_by_auditor": 0,
+    "status": "STABLE",
+    "safety_stop_reason": "",
+    "transitions": 20000,
+    "event_count": 1999,
+    "first_event_index_zero_based": 10,
+    "first_event_time_s": 0.01,
+    "last_event_index_zero_based": 19990,
+    "event_dt_s": 0.01,
+    "valid_head_event_count": 1968,
+    "pre_ready_zero_input_event_count": 31,
+    "filter": {
+      "frequency_hz": 3.5,
+      "Q": 1.0,
+      "sample_rate_hz": 100,
+      "b": [
+        0.9005755352793756,
+        -1.757773520542205,
+        0.9005755352793756
+      ],
+      "a": [
+        1.0,
+        -1.757773520542205,
+        0.8011510705587512
+      ],
+      "initial_state_zero": true,
+      "position_tau_s": 1.0,
+      "position_rho": 0.01,
+      "C5_flags_replacement_delay_pcf": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    "path_reconstruction_max_abs_errors": {
+      "notch_recurrence_raw_mps2": 0.0,
+      "notch_output_clip_mps2": 0.0,
+      "clip_flag_mismatch_count": 0,
+      "event_output_to_held_zoh_mps2": 0.0,
+      "held_to_total_compensation_mps2": 1.1102230246251565e-16,
+      "compensation_to_force_N": 0.0,
+      "held_force_N": 0.0,
+      "injected_force_N": 0.0,
+      "position_command_from_nominal_minus_comp_mps2": 4.440892098500626e-16,
+      "PCF_a_req_equals_position_command_mps2": 0.0
+    },
+    "clip_events_by_axis": [
+      0,
+      0,
+      0
+    ],
+    "notch_input_abs_peak_mps2_by_axis": [
+      1.8042643314790623,
+      0.6969181504149227,
+      0.2401807152105115
+    ],
+    "notch_raw_output_abs_peak_mps2_by_axis": [
+      1.2352911774334623,
+      0.5356407128950088,
+      0.20869150635632067
+    ],
+    "notch_limit_peak_mps2_by_axis": [
+      3.0,
+      3.0,
+      3.0
+    ],
+    "max_abs_notch_output_to_limit_ratio": 0.4117637258111541
+  },
+  "methods_rescored_with_frozen_score_raw": {
+    "B": {
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\b_traceable_c3core_dev72_20261023\\runs_b\\DL1018_VAL_T3_C01_W14\\B_TRACEABLE_C3CORE_V1\\attempt_01\\raw_run.mat",
+      "raw_sha256": "396496784a14c217d90bcb4566dad275c8602503d6debce6dce63ec50497ae5e",
+      "run_status_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\b_traceable_c3core_dev72_20261023\\runs_b\\DL1018_VAL_T3_C01_W14\\B_TRACEABLE_C3CORE_V1\\attempt_01\\run_status.json",
+      "run_status_sha256": "9cd855d1d8ac7b48a32e3f2a9327bb250b59fb07f1b673a5db72145fbe0a2e12",
+      "Q_mm": 11.40486236088605,
+      "task_SO3_mrad": 61.79200025117218,
+      "inner_SO3_mrad": 17.915416327921474,
+      "safety": {
+        "motor_saturation_samples": 0,
+        "generalized_clip_samples": 0,
+        "tilt_limited_samples": 0,
+        "attitude_head_projection_samples": 0,
+        "attitude_head_output_saturated_samples": 0
+      }
+    },
+    "C5": {
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T3_C01_W14\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "raw_sha256": "556be0c5cc9ae61c077597fdf474c2fde74f443a848bcd7dcfe0f7f49768db83",
+      "run_status_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_VAL_T3_C01_W14\\C5_AXIS_MASK_M110\\attempt_01\\run_status.json",
+      "run_status_sha256": "8df31342ac90af96069fe489241eaa4a39e0a8b862d46d7a5c4c8e8bd4ace31e",
+      "Q_mm": 9.98956747303222,
+      "task_SO3_mrad": 65.3826067320855,
+      "inner_SO3_mrad": 17.96494791011554,
+      "safety": {
+        "motor_saturation_samples": 0,
+        "generalized_clip_samples": 0,
+        "tilt_limited_samples": 0,
+        "attitude_head_projection_samples": 0,
+        "attitude_head_output_saturated_samples": 0
+      }
+    },
+    "Parent_Cosine_GRU": {
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_full72_v1\\runs\\DL1018_VAL_T3_C01_W14\\raw_run.mat",
+      "raw_sha256": "76afcf331ca14b169977810c74c8a8680f57d9747a9a3b9a46285804a98a0503",
+      "run_status_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_full72_v1\\runs\\DL1018_VAL_T3_C01_W14\\run_status.json",
+      "run_status_sha256": "e8dc339c635e7e64fdc78ce86ab2218ba51420d6cacb8f08c7f7579223e827af",
+      "Q_mm": 9.620689116816571,
+      "task_SO3_mrad": 65.41727222755462,
+      "inner_SO3_mrad": 15.910360180281177,
+      "safety": {
+        "motor_saturation_samples": 0,
+        "generalized_clip_samples": 0,
+        "tilt_limited_samples": 0,
+        "attitude_head_projection_samples": 0,
+        "attitude_head_output_saturated_samples": 0
+      }
+    },
+    "Position_Applied_Lowpass_tau0p1": {
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\gru_tau01_position_applied_lowpass_tau01_v1\\runs\\DL1018_VAL_T3_C01_W14_retry_005\\raw_run.mat",
+      "raw_sha256": "285223abd72ac9754a4ade9bfd2045c96876da71b4932e70c6b9c39b0f4613f2",
+      "run_status_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\gru_tau01_position_applied_lowpass_tau01_v1\\runs\\DL1018_VAL_T3_C01_W14_retry_005\\run_status.json",
+      "run_status_sha256": "ab62beb920afbc9c6d2dd0ca1eb1c45af9e43489e15829b403811c7001fd3bf7",
+      "Q_mm": 11.163265087559438,
+      "task_SO3_mrad": 62.134388920590695,
+      "inner_SO3_mrad": 16.422393840379023,
+      "safety": {
+        "motor_saturation_samples": 0,
+        "generalized_clip_samples": 0,
+        "tilt_limited_samples": 0,
+        "attitude_head_projection_samples": 0,
+        "attitude_head_output_saturated_samples": 0
+      }
+    },
+    "Applied_Notch_3p5Hz_Q1": {
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\gru_cosine_c5_applied_notch_35hz_q1_v1\\runs\\DL1018_VAL_T3_C01_W14\\raw_run.mat",
+      "raw_sha256": "e6e158c2f9a89fa824b0c618dbbf96d486f05a79957b5184e2c1856da844d4b9",
+      "run_status_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\gru_cosine_c5_applied_notch_35hz_q1_v1\\runs\\DL1018_VAL_T3_C01_W14\\run_status.json",
+      "run_status_sha256": "91a78d91a1acf480c4b519f26f1209c3bda459bbcadeb1086fe943a4697819f3",
+      "Q_mm": 10.100067213493386,
+      "task_SO3_mrad": 61.548491861770806,
+      "inner_SO3_mrad": 16.555426268340664,
+      "safety": {
+        "motor_saturation_samples": 0,
+        "generalized_clip_samples": 0,
+        "tilt_limited_samples": 0,
+        "attitude_head_projection_samples": 0,
+        "attitude_head_output_saturated_samples": 0
+      }
+    }
+  },
+  "notch_minus_comparator": {
+    "B": {
+      "Q_mm": -1.3047951473926638,
+      "task_SO3_mrad": -0.2435083894013772,
+      "inner_SO3_mrad": -1.3599900595808094
+    },
+    "C5": {
+      "Q_mm": 0.11049974046116517,
+      "task_SO3_mrad": -3.8341148703147,
+      "inner_SO3_mrad": -1.4095216417748766
+    },
+    "Parent_Cosine_GRU": {
+      "Q_mm": 0.47937809667681464,
+      "task_SO3_mrad": -3.868780365783813,
+      "inner_SO3_mrad": 0.6450660880594867
+    },
+    "Position_Applied_Lowpass_tau0p1": {
+      "Q_mm": -1.0631978740660522,
+      "task_SO3_mrad": -0.5858970588198886,
+      "inner_SO3_mrad": 0.13303242796164128
+    }
+  },
+  "interpretation": [
+    "This is one VAL scene and is only a development diagnostic, not independent validation.",
+    "The current RELEASE/source lock and pilot snapshot are bound to the run SHA; the older NO_PLANT prepare receipt has an earlier pre-release SHA and is not the run release.",
+    "The logged 100-Hz notch recurrence, clip, held compensation, position command, and PCF commanded-acceleration input were numerically reconstructed from the raw log.",
+    "The filters are compared across separate completed Plant runs on the same scenario, not the same state trajectory; this one scene cannot establish a cross-scene or general closed-loop effect."
+  ]
+}

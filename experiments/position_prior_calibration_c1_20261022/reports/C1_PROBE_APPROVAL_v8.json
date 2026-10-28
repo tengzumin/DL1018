@@ -1,0 +1,38 @@
+{
+  "status": "APPROVED_PROBE",
+  "mode": "PROBE",
+  "approved_local": "2026-10-22T23:04:17.714474+08:00",
+  "reviewer": "primary; independent Luna max v7 source review PASS",
+  "source_lock_sha256": "02668f6268944715e65e6d2cffa52b395417506132212b00e7d273d88df164e5",
+  "release_sha256": "82dcf11c4e5d8155b8f92e83671ae99eb6a2e876c690688af3fd118b5ded69b7",
+  "c_star": 0.2802979648061464,
+  "scene_id": "DL1018_VAL_T2_C00_W10",
+  "conditions": [
+    "B",
+    "ON1",
+    "ONC"
+  ],
+  "max_authorized_actual_sorties": 3,
+  "max_c1_sorties_total": 36,
+  "formal_timing_authorized": false,
+  "scope": "Fixed-step Q/mechanism screening only; preserve all actual timing but no formal timing/real-time claim. No other scene or retry authorized.",
+  "smoke_sha256": "5d26718ce9d5964487febf6a6c210828f9bd08df878a114f266468391079800c",
+  "dryrun_sha256": "6a485474e00ee9ec798d43b2397a596f6bb9b775f367b283640a7114eae8b6a7",
+  "fresh_actual_preflight_required": true,
+  "actual_preflight_requirements": [
+    "PASS PROBE matching exact source/release",
+    "GPU engine provider rows >0, active Compute rows 0",
+    "MATLAB process count 0 and other heavy research/unknown jobs 0",
+    "resource/time/space and no-existing-attempt gates pass"
+  ],
+  "continue_authorized": false,
+  "TEST_authorized": false,
+  "repair": "Reviewed canonical MATLAB scene shape assertions; no array transformation or scientific parameter change",
+  "previous_runner_actual_sorties": 0,
+  "approved_repair_retry_number_for_shape_fault": 1,
+  "scene_diagnostic_sha256": "ebe5b4e147b8856a6983ff97b59aca69c62f5a617657c38c9c3479c701eac568",
+  "independent_v8_review_sha256": "21af2a6025319a8c24978ab36f56e89f17ab1083586e2c459f264d02e6bfd146",
+  "runs_root": "runs_v8",
+  "previous_launch_preserved": true,
+  "smoke_reuse_note": "v7 exact unchanged options builder/forward-update smoke reused; v8 shape repair validated by all 12 actual MATLAB scene records and source diff. No claim of a new v8 whole-runner offline execution."
+}

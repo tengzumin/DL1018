@@ -1,0 +1,26 @@
+{
+  "schema": "ROOT_A1T_DECOMPOSITION_ENGINEERING_INCIDENTS_V1",
+  "status": "REPAIRING_BEFORE_RAW_READ",
+  "attempts": [
+    {
+      "attempt": 1,
+      "source_sha256": "0ddc9a2389905bd351f1067a8fbbcf24064fec0515a42121b1046345f01823e6",
+      "exit_code": 1,
+      "cause": "Mistyped taskbook SHA constant; actual file and implementation approval match",
+      "raw_read_reached": false
+    },
+    {
+      "attempt": 2,
+      "source_sha256": "43cfa10f00a21fd6c0f4421c7f764fb7f85b2de5b1be2585212f98095c6a43f1",
+      "exit_code": 1,
+      "cause": "jsondecode numeric index list is 2x1; row-vector isequal falsely rejects audit",
+      "root_reproduction": "Actual MATLAB printed size 2x1, values11/19991, row isequal false",
+      "raw_read_reached": false
+    }
+  ],
+  "plant_calls": 0,
+  "optimizer_steps": 0,
+  "new_TEST_access": false,
+  "next": "Archive attempt02 source, normalize only comparison shape, pin new source and retry; keep all values and original audit immutable",
+  "created_at": "2026-10-25T04:10:04.4922074+08:00"
+}

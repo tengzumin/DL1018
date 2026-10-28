@@ -1,0 +1,19 @@
+{
+  "schema": "ROOT_OFFLINE_DIAGNOSTIC_OS_RECEIPT_V1",
+  "status": "PASS",
+  "exit_code": 0,
+  "shell": "pwsh",
+  "login": false,
+  "matlab": "C:/Program Files/MATLAB/R2025b/bin/matlab.exe",
+  "command": "& 'C:/Program Files/MATLAB/R2025b/bin/matlab.exe' -batch \"addpath('reports/attitude_cm18_a1_20261024'); R=root_screen12_physical_hold_fresh_v2(); disp(R.status); for q=1:numel(R.scenes), disp(R.scenes(q).scene_id); disp(jsonencode(R.scenes(q).same_state_actions)); disp(jsonencode(R.scenes(q).phase_summaries)); end\"",
+  "source_path": "reports/attitude_cm18_a1_20261024/root_screen12_physical_hold_fresh_v2.m",
+  "source_sha256": "a1954a4ec006918d489b10ea1eb40293495849e3dabce38c6937b3734617b683",
+  "result_path": "reports/attitude_cm18_a1_20261024/ROOT_SCREEN12_PHYSICAL_HOLD_FRESH_DIAGNOSTIC_v2.json",
+  "result_sha256": "16601e016734e8067acf9a49bde6602eea6bf5d54a874132dac7762db845cb54",
+  "raw_sha256": [
+    "23150766d0b5e2888c35bc5bf96af30f9cc516ffca61e124f0d3d6e4f5ac9476",
+    "9887fe6425d6868b75e6209fd343d66275ee99dd258efa039477cf8c22d82114"
+  ],
+  "deployment_sha256": "ee00c46af42cbce83a630ae9b03eaf1a86bfc6047910ed68bc4e7b8b020aa6ae",
+  "scope": "Same-state action algebra only; the G-inverse candidate is diagnostic and not a proposed/deployed control law."
+}

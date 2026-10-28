@@ -1,0 +1,54 @@
+{
+  "schema": "ROOT_CM18_CONTINUATION_STATE_V35",
+  "observed_utc": "2026-10-24T17:45:02.618974+00:00",
+  "goal_status": "ACTIVE_NOT_ACHIEVED",
+  "C5": "FROZEN",
+  "C7": "PAUSED",
+  "TEST": "NO_NEW_ACCESS",
+  "phase": "ALL816_CSTAR_SOURCE_AND_A1T_TRAINER_IMPLEMENTATION",
+  "active_root_session": null,
+  "A1R_receipt": "experiments\\attitude_cm18_datarepair_20261024\\training_a1r_v1\\run_receipt.json",
+  "A1R_steps": 60000,
+  "A1R_best_step": 40000,
+  "A1R_best_sha256": "5fa4308b6220e530e6c2e7a6f45c4b6e22ddddef80d1bc5cafdcf58564bc5ef3",
+  "A1R_elapsed_seconds": 397,
+  "dataset": "ALL816 repaired B PASS:768TRAIN+48VAL; independent audit v2",
+  "normalizer_sha256": "faf8748f640c944c745406247ab8486825966abd763088ad1f4e0cde626ad14c",
+  "C5_VAL48": "48 actual caches independent audit PASS, diagnostic only",
+  "CSTAR": "attempt02 actualOS0 fourPASS and independentSciPy cache audit PASS; Root source/result review accepted. All816 relabel implementation in progress, not yet released/run.",
+  "closed_loop_sorties_completed": 20,
+  "cumulative_actual_optimizer_steps": 218200,
+  "formal_command_attempts_total": 5,
+  "actual_optimizer_jobs_total": 4,
+  "incidents": "normalizer reduction layout corrected before optimizer; first formal GUI utilization preflight blocked zero steps; preserved",
+  "next": "Root review ALL816 relabel source when handed off, launch only after pins/checkcode review. Data Luna writes outer per-scene resumable loop reusing frozen physics; train Luna writes isolated A1T trainer on agreed load_cstar_split interface. No active MATLAB or training job now; do not claim source preparation is simulation.",
+  "A1R_same_C5_VAL48": {
+    "old_macro_vector_rmse": 0.6675904586616129,
+    "new_macro_vector_rmse": 0.6466336148512785,
+    "wins": 29,
+    "yaw_slightly_worse": true,
+    "scope": "behavior residual prediction on same recorded states; not tracking"
+  },
+  "postselection": {
+    "source_sha256": "6d17631a3eb570d62d0e263b5729a6e0d61ebde55a9c9d51d486339e15e19cc7",
+    "actual_exit_code": 0,
+    "torch_numpy_parity": 7.105427357601002e-15,
+    "B_macro_vector_old": 0.3295702982551219,
+    "B_macro_vector_a1r": 0.32922513847064483,
+    "B_wins": 23,
+    "C5_independent_per_scene_delta": 0.0
+  },
+  "decision_report": "reports/attitude_cm18_datarepair_20261024/ROOT_A1R_AND_CSTAR4_DECISION_v1_ZH.md",
+  "previous_goal_turn_classification": "PROGRESS: approved A1T scientific protocol for implementation, read saved taskbook; derived conditional attitude error bound from actual BS/Plant source with explicit unresolved sampled-system proof gaps",
+  "A1T_taskbook": {
+    "path": "reports/attitude_cm18_datarepair_20261024/A1T_TRAINING_TASKBOOK_v1_ZH.md",
+    "sha256": "2fe158fd370019bfe9e3d95e6b3222e1f4d7829cfa1681bd8dd85d06615102e9",
+    "status": "IMPLEMENTATION_APPROVED_TRAINING_NOT_RELEASED"
+  },
+  "conditional_theory_draft": "reports/attitude_cm18_datarepair_20261024/ROOT_ATTITUDE_CONDITIONAL_ERROR_BOUND_DRAFT_v1_ZH.md",
+  "resource_observation": {
+    "free_RAM_GiB": 5.13,
+    "free_disk_GiB": 203.03,
+    "MATLAB_processes": 0
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "schema": "CM18_A1R_TRAINING_RELEASE_V1",
+  "decision": "APPROVE_ONE_FORMAL_TRAINING",
+  "created_utc": "2026-10-24T17:22:26.155427+00:00",
+  "seed": 2026102001,
+  "optimizer_steps": 60000,
+  "batch_size": 512,
+  "device": "cuda:0",
+  "output_directory": "experiments/attitude_cm18_datarepair_20261024/training_a1r_v1",
+  "taskbook": {
+    "path": "reports/attitude_cm18_datarepair_20261024/ROOT_A1R_REFERENCE_CONTROL_TRAINING_TASKBOOK_v1_ZH.md",
+    "sha256": "6828db6ba427be3a56ba4b9a0ad369829a88069f48e1152870b376a6eda7265b"
+  },
+  "source_manifest": {
+    "path": "reports/attitude_cm18_datarepair_20261024/B_REF_REPAIRED_SOURCE_MANIFEST_v1.json",
+    "sha256": "0f86b47d01940e7b556b78a9664470531572809aa6857a59fc77d88a33681ec5"
+  },
+  "dataset_manifest": {
+    "path": "reports/attitude_cm18_datarepair_20261024/repaired_all816_v1/DATASET_MANIFEST_v1.json",
+    "sha256": "3f51a1cd0e2e8c3eae79a16df363f2f8d47b0d5dbd876ecd95f1571d9e70a5e0"
+  },
+  "source_files": [
+    {
+      "path": "experiments/attitude_cm18_datarepair_20261024/train_cm18_a1r_v1.py",
+      "sha256": "31492e9a383e52c712247361b4c810bccac8abe92591583cbd84d250acc1e87b"
+    },
+    {
+      "path": "experiments/attitude_cm18_datarepair_20261024/cache_reader_cm18_b_ref_repaired_v1.py",
+      "sha256": "e62ccca443088e4ffbb5e82c7b70ea6fce02a1897d1aa37f99f730052773d148"
+    },
+    {
+      "path": "experiments/attitude_cm18_a1_20261024/model_cm18_v1.py",
+      "sha256": "ad32c4f97bf96c63172547c944d80c45062502f1062b774934e0f7a868720cf6"
+    },
+    {
+      "path": "experiments/attitude_cm18_a1_20261024/torch_model_cm18_v1.py",
+      "sha256": "bc9fe34fe957cb624438eeccfdfe2ddd38ad40cc9a4e706ce58863c9271d5aa0"
+    }
+  ],
+  "root_independent_data_audit": {
+    "path": "reports/attitude_cm18_datarepair_20261024/ROOT_REPAIRED_ALL816_INDEPENDENT_AUDIT_v2.json",
+    "sha256": "e8322b6016463540050ed6fe36d47db949234f59312d4c26c9523ec4ed24c995"
+  },
+  "zero_step_check": {
+    "path": "reports/attitude_cm18_datarepair_20261024/a1r_zero_step_attempt02/self_check_result.json",
+    "sha256": "42024542ab2d87cf1c70590ef148ef47ab9a3152ad85a2a0f433b82834b08531"
+  },
+  "canonical_normalizer_sha256": "faf8748f640c944c745406247ab8486825966abd763088ad1f4e0cde626ad14c",
+  "resource_preflight": "Root observed RTX3070 device0 util2%,855MiB GUI background; no train_cm18 python or MATLAB process before launch",
+  "scope": {
+    "new_formal_training_jobs": 1,
+    "Plant_calls": 0,
+    "TEST_accessed": false,
+    "C5_VAL48_fit_or_selection_rows": 0,
+    "label": "original behavior residual; only T2 reference repaired"
+  },
+  "root_review": "Trainer entire source reviewed; original A1 sample RNG, loss, initialization, optimizer, validation and strict earliest-best rules agree. First zero-step normalizer pin discrepancy was independently traced to C/F reduction layout, with bitwise identical input values; corrected audit uses original A1 advanced-index layout."
+}

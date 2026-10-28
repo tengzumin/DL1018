@@ -1,0 +1,131 @@
+{
+  "schema": "PARENT_HAND_CALCULATED_NONZERO_RF_CASE_V1",
+  "purpose": "Independent simple fixture oracle; no Plant, raw data or model forward pass.",
+  "n_zero_based": 330,
+  "previous_event_zero_based": 320,
+  "dt": 0.001,
+  "interval_s": 0.01,
+  "beta": 0.1838888888888889,
+  "a_req_constant": [
+    1,
+    2,
+    3
+  ],
+  "r_f_constant": [
+    0.3,
+    -0.2,
+    0.4
+  ],
+  "a_f_constant": [
+    0.7,
+    2.2,
+    2.6
+  ],
+  "physical_d0_constant": [
+    0.5,
+    -0.25,
+    0.1
+  ],
+  "delta_velocity_completed_interval": [
+    0.015,
+    0.0175,
+    0.031
+  ],
+  "Ms": [
+    1,
+    1,
+    0
+  ],
+  "My": [
+    0,
+    0,
+    0
+  ],
+  "s": [
+    0.2,
+    -0.1,
+    0.05
+  ],
+  "eta": [
+    0.04,
+    -0.02,
+    0.03
+  ],
+  "expected_s_eff": [
+    0.16,
+    -0.08,
+    0.05
+  ],
+  "phi_current_and_previous": "33-vector e1",
+  "W_before": "33x3 all zero",
+  "expected_current_applied": [
+    0,
+    0,
+    0
+  ],
+  "expected_C7_completed_target": [
+    0.5,
+    -0.25,
+    0.1
+  ],
+  "expected_C5_completed_target": [
+    0.8,
+    -0.45,
+    0.1
+  ],
+  "expected_C7_next_W_first_row": [
+    0.0014693333333333333,
+    -0.0007346666666666667,
+    -0.0001033333333333334
+  ],
+  "expected_C5_next_W_first_row": [
+    0.004469333333333333,
+    -0.002734666666666667,
+    -0.0001033333333333334
+  ],
+  "expected_C7_minus_C5_first_row": [
+    -0.003,
+    0.002,
+    0
+  ],
+  "all_other_next_W_rows_zero": true,
+  "notes": [
+    "Delta velocity comes from h*(a_req+d0), not from target-copy arithmetic.",
+    "Ms eta stays in tracking surface for both cases.",
+    "Current output is zero for both; only W_next differs.",
+    "No clip or projection active; next event may see changed output, never current event.",
+    "Numbers are a hand-checkable oracle, not a closed-loop result."
+  ],
+  "orthogonal_feature_variant": {
+    "phi_current": "e1",
+    "phi_previous": "e2",
+    "W_before": "all zero",
+    "expected_current_applied": [
+      0,
+      0,
+      0
+    ],
+    "expected_C7_next_W_row1": [
+      -0.0035306666666666668,
+      0.0017653333333333334,
+      -0.0011033333333333333
+    ],
+    "expected_C7_next_W_row2": [
+      0.005,
+      -0.0025,
+      0.001
+    ],
+    "expected_C5_next_W_row2": [
+      0.008,
+      -0.0045,
+      0.001
+    ],
+    "expected_next_W_rows3_to33": "all zero",
+    "purpose": "Detect substituting current phi for old interval phi."
+  },
+  "expected_C7_minus_C5_target": [
+    -0.3,
+    0.2,
+    0
+  ]
+}

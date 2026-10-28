@@ -1,0 +1,251 @@
+{
+  "schema": "C3_PREUPDATE_WEIGHT_FIT_DIAGNOSIS_V1",
+  "plant_training_search_test": 0,
+  "scope": "72 frozen C3 records; fixed recorded trajectory; no counterfactual rollout",
+  "interval_target": "(v[k]-v[j])/0.01 - mean(a_f[j:k]); adjacent valid event pair j=k-10; units m/s^2",
+  "weight_comparison": "trained W0 vs logged W_k immediately before current event k, both evaluated on the same earlier phi_j",
+  "timing": {
+    "all": "current k in [0.33,20) s",
+    "early": "[0.33,5) s",
+    "late": "[5,20) s",
+    "intervals_per_run": 1967
+  },
+  "groups": {
+    "ALL72": {
+      "n_scenes": 72,
+      "definition": "all 72"
+    },
+    "HF28": {
+      "n_scenes": 28,
+      "definition": "wind W09-W14"
+    },
+    "W15": {
+      "n_scenes": 6,
+      "definition": "wind W15"
+    },
+    "T2-HF9": {
+      "n_scenes": 9,
+      "definition": "task T2 and wind W09-W14"
+    }
+  },
+  "W0_sha256": "88f8c4f2495438c3797655c48bab1bf0c11ac2e27bff1f5f2a7423a8f0a2cf53",
+  "T2_HF9_Z": {
+    "ALL_0_20": {
+      "group": "T2-HF9",
+      "n_scenes": 9,
+      "phase": "ALL_0_20",
+      "axis": "Z",
+      "aggregation": "unweighted mean of per-scene metrics",
+      "n_intervals_per_scene": 1967,
+      "W0_rmse_mps2_mean_scene": 0.09576211339044347,
+      "W0_bias_mps2_mean_scene": -0.01313017617836313,
+      "Wk_preupdate_rmse_mps2_mean_scene": 0.05509935137200703,
+      "Wk_preupdate_bias_mps2_mean_scene": -0.002303220165431824,
+      "Wk_minus_W0_rmse_mps2_mean_scene": -0.04066276201843645,
+      "scenes_Wk_rmse_lower_than_W0": 9,
+      "scenes_Wk_rmse_higher_than_W0": 0,
+      "scenes_equal_rmse": 0,
+      "existing_mean_C3_Q_m": 0.010891618105656774,
+      "existing_mean_B_Q_m": 0.010215125365700541,
+      "existing_mean_Q_C3_minus_B_m": 0.0006764927399562298
+    },
+    "EARLY_0.33_5": {
+      "group": "T2-HF9",
+      "n_scenes": 9,
+      "phase": "EARLY_0.33_5",
+      "axis": "Z",
+      "aggregation": "unweighted mean of per-scene metrics",
+      "n_intervals_per_scene": 467,
+      "W0_rmse_mps2_mean_scene": 0.07575828133016198,
+      "W0_bias_mps2_mean_scene": -0.010491893258752206,
+      "Wk_preupdate_rmse_mps2_mean_scene": 0.050336148506364725,
+      "Wk_preupdate_bias_mps2_mean_scene": -0.0007439018316313359,
+      "Wk_minus_W0_rmse_mps2_mean_scene": -0.025422132823797253,
+      "scenes_Wk_rmse_lower_than_W0": 9,
+      "scenes_Wk_rmse_higher_than_W0": 0,
+      "scenes_equal_rmse": 0,
+      "existing_mean_C3_Q_m": 0.010891618105656774,
+      "existing_mean_B_Q_m": 0.010215125365700541,
+      "existing_mean_Q_C3_minus_B_m": 0.0006764927399562298
+    },
+    "LATE_5_20": {
+      "group": "T2-HF9",
+      "n_scenes": 9,
+      "phase": "LATE_5_20",
+      "axis": "Z",
+      "aggregation": "unweighted mean of per-scene metrics",
+      "n_intervals_per_scene": 1500,
+      "W0_rmse_mps2_mean_scene": 0.10099109742280736,
+      "W0_bias_mps2_mean_scene": -0.013951561594001995,
+      "Wk_preupdate_rmse_mps2_mean_scene": 0.05630775480798779,
+      "Wk_preupdate_bias_mps2_mean_scene": -0.0027886879400217095,
+      "Wk_minus_W0_rmse_mps2_mean_scene": -0.04468334261481958,
+      "scenes_Wk_rmse_lower_than_W0": 9,
+      "scenes_Wk_rmse_higher_than_W0": 0,
+      "scenes_equal_rmse": 0,
+      "existing_mean_C3_Q_m": 0.010891618105656774,
+      "existing_mean_B_Q_m": 0.010215125365700541,
+      "existing_mean_Q_C3_minus_B_m": 0.0006764927399562298
+    }
+  },
+  "HF28_Z": {
+    "ALL_0_20": {
+      "group": "HF28",
+      "n_scenes": 28,
+      "phase": "ALL_0_20",
+      "axis": "Z",
+      "aggregation": "unweighted mean of per-scene metrics",
+      "n_intervals_per_scene": 1967,
+      "W0_rmse_mps2_mean_scene": 0.13717628870191587,
+      "W0_bias_mps2_mean_scene": 0.042385543392505276,
+      "Wk_preupdate_rmse_mps2_mean_scene": 0.0671752243150939,
+      "Wk_preupdate_bias_mps2_mean_scene": -0.0015045756601868767,
+      "Wk_minus_W0_rmse_mps2_mean_scene": -0.07000106438682198,
+      "scenes_Wk_rmse_lower_than_W0": 28,
+      "scenes_Wk_rmse_higher_than_W0": 0,
+      "scenes_equal_rmse": 0,
+      "existing_mean_C3_Q_m": 0.010619983098130939,
+      "existing_mean_B_Q_m": 0.010719024063836466,
+      "existing_mean_Q_C3_minus_B_m": -9.904096570552446e-05
+    },
+    "EARLY_0.33_5": {
+      "group": "HF28",
+      "n_scenes": 28,
+      "phase": "EARLY_0.33_5",
+      "axis": "Z",
+      "aggregation": "unweighted mean of per-scene metrics",
+      "n_intervals_per_scene": 467,
+      "W0_rmse_mps2_mean_scene": 0.11087077436654898,
+      "W0_bias_mps2_mean_scene": 0.02957657644636068,
+      "Wk_preupdate_rmse_mps2_mean_scene": 0.0657326485943325,
+      "Wk_preupdate_bias_mps2_mean_scene": 0.0014052333932433605,
+      "Wk_minus_W0_rmse_mps2_mean_scene": -0.045138125772216466,
+      "scenes_Wk_rmse_lower_than_W0": 27,
+      "scenes_Wk_rmse_higher_than_W0": 1,
+      "scenes_equal_rmse": 0,
+      "existing_mean_C3_Q_m": 0.010619983098130939,
+      "existing_mean_B_Q_m": 0.010719024063836466,
+      "existing_mean_Q_C3_minus_B_m": -9.904096570552446e-05
+    },
+    "LATE_5_20": {
+      "group": "HF28",
+      "n_scenes": 28,
+      "phase": "LATE_5_20",
+      "axis": "Z",
+      "aggregation": "unweighted mean of per-scene metrics",
+      "n_intervals_per_scene": 1500,
+      "W0_rmse_mps2_mean_scene": 0.1442204809360149,
+      "W0_bias_mps2_mean_scene": 0.04637340176840495,
+      "Wk_preupdate_rmse_mps2_mean_scene": 0.0674199537232069,
+      "Wk_preupdate_bias_mps2_mean_scene": -0.002410496212154824,
+      "Wk_minus_W0_rmse_mps2_mean_scene": -0.07680052721280801,
+      "scenes_Wk_rmse_lower_than_W0": 28,
+      "scenes_Wk_rmse_higher_than_W0": 0,
+      "scenes_equal_rmse": 0,
+      "existing_mean_C3_Q_m": 0.010619983098130939,
+      "existing_mean_B_Q_m": 0.010719024063836466,
+      "existing_mean_Q_C3_minus_B_m": -9.904096570552446e-05
+    }
+  },
+  "ALL72_Z": {
+    "ALL_0_20": {
+      "group": "ALL72",
+      "n_scenes": 72,
+      "phase": "ALL_0_20",
+      "axis": "Z",
+      "aggregation": "unweighted mean of per-scene metrics",
+      "n_intervals_per_scene": 1967,
+      "W0_rmse_mps2_mean_scene": 0.1254800650730792,
+      "W0_bias_mps2_mean_scene": 0.020839361985598274,
+      "Wk_preupdate_rmse_mps2_mean_scene": 0.05485337200001122,
+      "Wk_preupdate_bias_mps2_mean_scene": -0.0006920692276605558,
+      "Wk_minus_W0_rmse_mps2_mean_scene": -0.070626693073068,
+      "scenes_Wk_rmse_lower_than_W0": 72,
+      "scenes_Wk_rmse_higher_than_W0": 0,
+      "scenes_equal_rmse": 0,
+      "existing_mean_C3_Q_m": 0.011759244913238593,
+      "existing_mean_B_Q_m": 0.01705808067535079,
+      "existing_mean_Q_C3_minus_B_m": -0.005298835762112193
+    },
+    "EARLY_0.33_5": {
+      "group": "ALL72",
+      "n_scenes": 72,
+      "phase": "EARLY_0.33_5",
+      "axis": "Z",
+      "aggregation": "unweighted mean of per-scene metrics",
+      "n_intervals_per_scene": 467,
+      "W0_rmse_mps2_mean_scene": 0.1010759216120341,
+      "W0_bias_mps2_mean_scene": 0.015451907200118822,
+      "Wk_preupdate_rmse_mps2_mean_scene": 0.05479539004732318,
+      "Wk_preupdate_bias_mps2_mean_scene": 0.0010041155517196668,
+      "Wk_minus_W0_rmse_mps2_mean_scene": -0.046280531564710924,
+      "scenes_Wk_rmse_lower_than_W0": 71,
+      "scenes_Wk_rmse_higher_than_W0": 1,
+      "scenes_equal_rmse": 0,
+      "existing_mean_C3_Q_m": 0.011759244913238593,
+      "existing_mean_B_Q_m": 0.01705808067535079,
+      "existing_mean_Q_C3_minus_B_m": -0.005298835762112193
+    },
+    "LATE_5_20": {
+      "group": "ALL72",
+      "n_scenes": 72,
+      "phase": "LATE_5_20",
+      "axis": "Z",
+      "aggregation": "unweighted mean of per-scene metrics",
+      "n_intervals_per_scene": 1500,
+      "W0_rmse_mps2_mean_scene": 0.13196771636915844,
+      "W0_bias_mps2_mean_scene": 0.022516656242144214,
+      "Wk_preupdate_rmse_mps2_mean_scene": 0.0546483688462627,
+      "Wk_preupdate_bias_mps2_mean_scene": -0.001220148088974265,
+      "Wk_minus_W0_rmse_mps2_mean_scene": -0.07731934752289574,
+      "scenes_Wk_rmse_lower_than_W0": 72,
+      "scenes_Wk_rmse_higher_than_W0": 0,
+      "scenes_equal_rmse": 0,
+      "existing_mean_C3_Q_m": 0.011759244913238593,
+      "existing_mean_B_Q_m": 0.01705808067535079,
+      "existing_mean_Q_C3_minus_B_m": -0.005298835762112193
+    }
+  },
+  "interpretation": "These are local residual-prediction fit metrics on the recorded C3 trajectory, not a counterfactual closed-loop test. A lower W_k residual does not establish adequate prediction, causal benefit, or application safety; a higher residual would not alone prove closed-loop causation.",
+  "provenance": {
+    "manifest": {
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\reports\\delayed_prediction_c3_dev72_parent_20261023\\PARENT_C3_ALL72_RAW_MANIFEST.json",
+      "sha256": "4d23aa8fb74d506151e7159a07027ad474e2b080d1448ba4d0a3e056b9ea8aa6"
+    },
+    "verified_manifest_source_refs": [
+      {
+        "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\reports\\delayed_prediction_c3_parent_20261023\\DEV72_SCENE_SCOPE_DRAFT.json",
+        "sha256": "b9bd309ab6cbd74d4a46044c03744aab669b620aedbd23911e3d0a36e6cec100"
+      },
+      {
+        "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_delayed_prediction_c3_dev72_20261023\\C3_DEV72_INPUT_LOCK_v2.json",
+        "sha256": "a95eda8e6ab8b45408d24b560366636bab62f72ea619bf46fa602142b6708730"
+      },
+      {
+        "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_delayed_prediction_c3_dev72_20261023\\C3_DEV72_SUMMARY_v2.json",
+        "sha256": "2f1567245f76a09fa51d1a8017248915af30730108b6da7c98ce49dd2cebe260"
+      },
+      {
+        "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_delayed_prediction_c3_dev72_20261023\\C3_DEV72_RELEASE_v2.json",
+        "sha256": "8a7b99a02ff6c67750d7eae5cea6ea584ceb6a4a1a6a3ffd43a0c7fd23aa399b"
+      }
+    ],
+    "common_input_residual_py": {
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\reports\\delayed_prediction_c3_parent_20261023\\common_input_residual.py",
+      "sha256": "cc9136d524c5d042d0626a4531688ddfb12aee47fb2986e69f9383006281655a"
+    },
+    "input_lock": {
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_delayed_prediction_c3_dev72_20261023\\C3_DEV72_INPUT_LOCK_v2.json",
+      "sha256": "a95eda8e6ab8b45408d24b560366636bab62f72ea619bf46fa602142b6708730"
+    },
+    "preexisting_Q_table": {
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\reports\\delayed_prediction_c3_dev72_parent_20261023\\PARENT_ALL288_METRICS.csv",
+      "sha256_observed": "acf0e3137ab171a8801a0a7672515a17ca85e8a16c1e067512c261c49ddbcd11",
+      "usage": "read-only join of existing B and C3 Q; no Q recomputation"
+    },
+    "preexisting_summary": {
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\reports\\delayed_prediction_c3_dev72_parent_20261023\\PARENT_DEV72_SUMMARY.json",
+      "sha256_observed": "650b17a569d0d09cdbb5877d219cebe0766beeb3056cd50aced9700f2b215b43"
+    }
+  }
+}

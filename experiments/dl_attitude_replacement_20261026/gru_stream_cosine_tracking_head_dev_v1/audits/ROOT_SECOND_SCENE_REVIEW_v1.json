@@ -1,0 +1,58 @@
+{
+  "schema": "DL1018_GRU_TRACKING_HEAD_HIGH_FREQUENCY_SCENE_ROOT_REVIEW_V1",
+  "status": "PASS_RAW_AND_ENGINEERING_GATES_CONTINUE_FROZEN_SCENES",
+  "reviewed_utc": "2026-10-26T23:57:41Z",
+  "scene_id": "DL1018_VAL_T1_C05_W12",
+  "stratum": "HF_W12",
+  "next_scene": "DL1018_VAL_T2_C02_W12",
+  "release_sha256": "13f03b53e37f1622d5c43fb5ba877167cd4309fb5ea4a8619b4c45af4ceac126",
+  "run_status_sha256": "73d06f2ae384fa6c148360dd85aee53a94e2d226303aede8c6f686fee20d6514",
+  "raw_sha256": "a0f37694e56cce6ff88f92a4cb83f0a92da28417476111acf062ceb53855436c",
+  "raw_audit_path": "experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_dev_v1\\audits\\DL1018_VAL_T1_C05_W12_GRU_STREAM_TRACKING_HEAD_RAW_AUDIT.json",
+  "raw_audit_sha256": "1b56be27fa98cc2b01340eee37445462dfc766c3ba3f4c08d678461272e1d670",
+  "model_sha256": "b2c462f77a6bb97b8c6bb2b471daef0633d4f9664a7d623b894461a4fa21b567",
+  "no_plant_check_sha256": "b5adff8b2ce11c43e7584b1a8447d97979a810e1e8f8eef70984769a4ef3ce9c",
+  "metrics": {
+    "B": {
+      "Q_m": 0.011731144573190947,
+      "task_SO3_rad": 0.05073473403979348,
+      "inner_tracking_SO3_rad": 0.024874824452372872
+    },
+    "C5": {
+      "Q_m": 0.010234349163013724,
+      "task_SO3_rad": 0.0507188282761417,
+      "inner_tracking_SO3_rad": 0.024898713355346866
+    },
+    "candidate": {
+      "Q_m": 0.009403104523936277,
+      "task_SO3_rad": 0.0506862326591783,
+      "inner_tracking_SO3_rad": 0.02185792229974822
+    }
+  },
+  "percent_change_candidate_vs_B": {
+    "Q_m": -19.844952338026022,
+    "task_SO3_rad": -0.09559797943778925,
+    "inner_tracking_SO3_rad": -12.128335451777872
+  },
+  "percent_change_candidate_vs_C5": {
+    "Q_m": -8.122105527545532,
+    "task_SO3_rad": -0.06426729100666995,
+    "inner_tracking_SO3_rad": -12.212643329000173
+  },
+  "micro_change_absolute": {
+    "task_SO3_vs_B_rad": -4.850138061517767e-05,
+    "task_SO3_vs_C5_rad": -3.2595616963400353e-05
+  },
+  "safety": {
+    "transitions": 20000,
+    "state_samples": 20001,
+    "motor_saturation_samples": 0,
+    "generalized_clip_samples": 0,
+    "tilt_limited_samples": 0,
+    "status": "STABLE"
+  },
+  "raw_replay_status": "PASS_INDEPENDENT_GRU_STREAM_TRACKING_HEAD_RAW_REPLAY",
+  "raw_replay_all_maxima_zero": true,
+  "decision": "This single W12 scene supports a stronger inner-reference tracking loop: inner SO3 is 12.21% below C5. Task-reference SO3 is only 0.064% below C5 (0.033 mrad), a very small change. Position Q is 8.12% below C5. Continue the remaining four locked scenes, with the other two HF scenes prioritized for decision.",
+  "scope_limit": "One HF scene only; not an HF-group conclusion and not DEV72/TEST evidence."
+}

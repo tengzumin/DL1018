@@ -1,0 +1,133 @@
+{
+  "schema": "DL1018_POSITION_C5_DUAL_NOTCH_NO_POSITION_GRU_SINGLE_CALL_V1",
+  "study_id": "position_compensation_dual_notch_no_residual_gru_ablation_T3_single_call_v1",
+  "status": "RELEASED",
+  "authorized_Plant_calls": 1,
+  "Plant_calls": 1,
+  "potential_budget_calls": 1,
+  "authorized_scenes": [
+    "DL1018_DEV_T3_C09_W09"
+  ],
+  "fixed_scene_id": "DL1018_DEV_T3_C09_W09",
+  "training_seed": 20261029,
+  "position_residual_gru": {
+    "enabled": false,
+    "weights_sha256": "3250b2eed5c529fc66139370826f9de463901da857f8e09ed1e88ef6863b047a",
+    "fold_id": "holdout_W06_10",
+    "teacher_used_at_inference": false,
+    "action_contract": "clip(C5_action + clip(t/1.8,0,1)*clip(delta,-0.5,0.5),-3,3); delta=0 until event 31 readiness.",
+    "disabled_for_ablation": true,
+    "runtime_field_present": false,
+    "weights_deserialized": false
+  },
+  "source_lock_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\no_position_gru_notch_T3_single_v1\\SOURCE_LOCK_SINGLE_CALL_v1.json",
+  "source_lock_sha256": "cc80ee1411e600450c7aa4c44d013d198a331297e9038dcb2081cd3eb83bd67d",
+  "train_scene_binding_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\position_compensation_dual_notch_no_residual_gru_ablation_v1\\T3\\TRAIN_SCENE_BINDING_v1.json",
+  "train_scene_binding_sha256": "d050a834ec005282f934537da1e51610e047645f98726b10c93cea38c2e133c0",
+  "model_manifest_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\position_compensation_dual_notch_no_residual_gru_ablation_v1\\T3\\OOF_FOLD_MODEL_MANIFEST_v1.json",
+  "model_manifest_sha256": "db8707ec26ffc0820eb884d0311c1241d228ad4f1ee79a5cb56bacfe1019bdeb",
+  "parity_inputs_json_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\position_compensation_dual_notch_no_residual_gru_ablation_v1\\T3\\MATLAB_EVENTWISE_PARITY_INPUTS_v1.json",
+  "parity_inputs_json_sha256": "10da1319fc72eead001d9cb47a43b6bee722d054c5791acb38bd8db57998109a",
+  "parity_inputs_mat_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\position_compensation_dual_notch_no_residual_gru_ablation_v1\\T3\\MATLAB_EVENTWISE_PARITY_INPUTS_v1.mat",
+  "parity_inputs_mat_sha256": "9998e07b13d363a2f9c4f06bcd074b4b7f219156be69087626b845eb9e0c617d",
+  "fold_checkpoint_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\position_dc_penalty_oof_train_pair_preflight_W09_T3_C09_attempt015_v1\\OOF_HOLDOUT_CHECKPOINT_v1.pt",
+  "fold_checkpoint_sha256": "b709bf14076e1881bf516e8429fc5d0f0a0a1c874e5a62934341b6a7a3fcc9ac",
+  "weights_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\position_dc_penalty_oof_train_pair_preflight_W09_T3_C09_attempt015_v1\\candidate_runner_work\\matlab\\models\\position_dc_oof_holdout_W06_10.mat",
+  "weights_sha256": "3250b2eed5c529fc66139370826f9de463901da857f8e09ed1e88ef6863b047a",
+  "candidate_runner_closed_loop_sha256": "6e679909097242829fd629e5ef5748a0048c525f43a1b3b2ecde81ba9bd15a9b",
+  "prepare_wrapper_sha256": "63ee3a8bda2b273b724572576f0b5073d2ba5d11e05edf03adc9f0d4e2ce7617",
+  "no_plant_wrapper_sha256": "3e6c14a417aacd2bcbee357b006005f51988ebedcc975eb15d0a2afbe7dd2955",
+  "eventwise_parity_script_sha256": "11dab025d74ddbb9d15dd4be83fa9aeab93aca516b1e3a5c3aa9f296feca6d1e",
+  "dataset_sha256": "15d689f08fd6d8a53a64c59dbdf62b33f9b8e8a12ce083fb12834cd106df2eeb",
+  "oof_sha256": "0b7b37e777a88af864482f60c2d9f531da7b86d243a725c3a10354c9e4734288",
+  "parent_cosine_model_sha256": "b2c462f77a6bb97b8c6bb2b471daef0633d4f9664a7d623b894461a4fa21b567",
+  "parent_raw_sha256": "14176658aac8e8b69817f71aff748add1b591cee744cd05954184e52e34c2cb2",
+  "parent_status_sha256": "e414d7127b3b755c3ea61141507d261652aef96cf628051d365d5d52119bef87",
+  "c5_raw_sha256": "fa11a41b18ce9d4c3b7558d3bbb0d230aaef3e7071fc15419df0c6d1fca2f3a4",
+  "c5_status_sha256": "a64b2e63e26836d78d2e207ff16bd9cce012b95d988f722a5b631f2f79434d10",
+  "c5_snapshot_sha256": "842ef395569e675db6e139c2684d72b976946915e5e0a58b9b7f24ec10c1d24a",
+  "position_model_sha256": "6f3628b10540c617496b2a20f249c4319af79c1a02d5945f1f91f0aead9c9b6e",
+  "scene_payload_sha256": "7d5cf3e4d7dc78ac6549a526433198d89867cd65e615d779499e0e1138b805bb",
+  "parent_controller": "cosine GRU + C5 M110, same scene's existing completed raw for comparison",
+  "source_split": "TRAIN_C5_24 only; canonical DEV ID",
+  "TEST_read": false,
+  "VAL_data_read": false,
+  "inertia_reconstruction_enabled": false,
+  "Plant_truth_deployment_input": false,
+  "frozen_replay_status": "FAIL_FIXED_FROZEN_REPLAY",
+  "applied_acceleration_dual_notch": {
+    "enabled": true,
+    "sample_rate_hz": 100.0,
+    "centers_hz": [
+      2.2,
+      3.2
+    ],
+    "quality_factor_each": [
+      4.0,
+      4.0
+    ],
+    "action_limit_mps2": 3.0,
+    "b": [
+      [
+        0.9830678494084116,
+        -1.9473815673631925,
+        0.9830678494084116
+      ],
+      [
+        0.9756442629082012,
+        -1.9119799206806107,
+        0.9756442629082012
+      ]
+    ],
+    "a": [
+      [
+        1.0,
+        -1.9473815673631925,
+        0.9661356988168233
+      ],
+      [
+        1.0,
+        -1.9119799206806107,
+        0.9512885258164024
+      ]
+    ],
+    "filter_location": "Post-residual-GRU final action, pre-force injection.",
+    "event_update_hz": 100.0,
+    "held_between_events": true,
+    "parameter_sweep": false
+  },
+  "source_lock_file_count": 134,
+  "dual_notch_helper_parity_input_sha256": "326f0051a033d8ec2312f4c82920ac1fc7c0f216b8ece14392dfc5c35aee866d",
+  "dual_notch_helper_parity_metadata_sha256": "fded9da1ab2b2a097dcc1ea03be6b15bad955d27017210c82ddd49615102ac85",
+  "position_residual_gru_enabled": false,
+  "exact_options_check_preserved": true,
+  "ablation_protocol_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\position_compensation_dual_notch_no_residual_gru_ablation_v1\\T3\\ABLATION_PROTOCOL_v1.json",
+  "ablation_protocol_sha256": "09c837a2b52a7fac994c84b0c5cff65dc56ea0d5cb4d276eeee5fa6651af8d91",
+  "no_residual_raw_validator_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\position_compensation_dual_notch_no_residual_gru_ablation_v1\\T3\\validate_no_residual_gru_raw_v1.py",
+  "no_residual_raw_validator_sha256": "c0c6e3a51dfba4d0ff4da322522bb7bd127cc5c6241e96219c37c0ac4eb197be",
+  "position_residual_gru_weights_deserialized": false,
+  "position_residual_gru_parity_status": "SKIPPED_DISABLED_MODEL_NOT_LOADED",
+  "one_attempt_only": true,
+  "prior_no_plant_preflight_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\position_compensation_dual_notch_no_residual_gru_ablation_v1\\T3\\audits\\NO_PLANT_PREFLIGHT_v1.json",
+  "prior_no_plant_preflight_sha256": "7c9a14a19e0da740b694b3683d372f81d38401fe4ab3c0519d601a2f256625cf",
+  "prior_full_runner_no_plant_source_audit_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\position_compensation_dual_notch_no_residual_gru_ablation_v1\\T3\\audits\\DUAL_NOTCH_FULL_RUNNER_NO_PLANT_SOURCE_AUDIT_v1.json",
+  "prior_full_runner_no_plant_source_audit_sha256": "8aa767ef97db02baabca833ba9d093db265dd5d650b9aaf6b866953ab301f0a1",
+  "prior_no_plant_release_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\position_compensation_dual_notch_no_residual_gru_ablation_v1\\T3\\RELEASE.json",
+  "prior_no_plant_release_sha256": "040324d6eae36076a0745d6cfbd0422d79cbace580236a5b349fca02269aa92c",
+  "prior_no_plant_source_lock_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\position_compensation_dual_notch_no_residual_gru_ablation_v1\\T3\\SOURCE_LOCK_NO_PLANT_v1.json",
+  "prior_no_plant_source_lock_sha256": "b806a3e790f2b7292c49f2be32c42bdb1210a46e5d489a92f26ad2279087be73",
+  "single_call_plan_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\no_position_gru_notch_T3_single_v1\\SINGLE_CALL_PLAN_v1.json",
+  "single_call_plan_sha256": "6d55b52d2d61902a25b1a53ef8a0d319bd7e0ba249e166cc8b22099c6df03ad9",
+  "single_call_score_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\no_position_gru_notch_T3_single_v1\\score_no_residual_gru_ablation_v1.py",
+  "single_call_score_sha256": "b914b2295c1afb14553018d5d1298aa0b56cfec21fe19bfa0a65dec958289cd5",
+  "raw_validator_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\no_position_gru_notch_T3_single_v1\\validate_no_residual_gru_raw_v1.py",
+  "raw_validator_sha256": "c0c6e3a51dfba4d0ff4da322522bb7bd127cc5c6241e96219c37c0ac4eb197be",
+  "single_attempt_wrapper_sha256": "61bf0d759b4b144c6fc3a4d5b9127f723cca6b93854198d1a4c68aec8bdde4c4",
+  "baseline_score_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\position_dc_penalty_oof_train_pair_preflight_W09_T3_C09_attempt015_v1\\audits\\TRAIN_SINGLE_SCENE_PAIRED_SCORE_v1.json",
+  "baseline_score_sha256": "827bfb8b3810e20dbe4c5120b0afeff2f067f5c6c5abebc3beb80f4e534ca764",
+  "with_position_gru_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\position_compensation_dual_notch_train_diag_single_call_T3_v1\\runs\\DL1018_DEV_T3_C09_W09\\attempt_01\\raw_run.mat",
+  "with_position_gru_raw_sha256": "598829bb583b7dd5869037e91bcf01c0ffbcffe02ec8e36e63dc3a8f59ee8a1e",
+  "with_position_gru_status_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\position_compensation_dual_notch_train_diag_single_call_T3_v1\\runs\\DL1018_DEV_T3_C09_W09\\attempt_01\\run_status.json",
+  "with_position_gru_status_sha256": "782b2355d23522d2b1382b9149710b69023799f685d5b6b3484cd47db7046c7d",
+  "diagnostic_only": true
+}

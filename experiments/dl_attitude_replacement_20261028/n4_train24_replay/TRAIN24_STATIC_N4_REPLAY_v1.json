@@ -1,0 +1,2599 @@
+{
+  "schema": "STATIC_N4_C5_PARENT_GRU_TRAIN24_FROZEN_REPLAY_V1",
+  "status": "MEASURED_FIXED_TRAIN24_REPLAY",
+  "protocol_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\n4_train24_replay\\PREDECLARED_PROTOCOL_v1.json",
+  "protocol_sha256": "d876b9f69e0200d10bb46ef20dda99c5e3dde42a6b783b699f9cf80427320268",
+  "source_binding_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\n4_train24_replay\\SOURCE_BINDING_v1.json",
+  "source_binding_sha256": "171a01ad25939bd7192002fd1b7a08f82e39661593f094476e951cbc30971c32",
+  "replay_script_sha256": "4828326ea12b4b57f4c2e9082d5e29e47ac6af39d86abd3727cc64c9ce4edd76",
+  "source_split": "TRAIN_C5_24 (canonical DEV prefix)",
+  "controller_identity": {
+    "candidate": "GRU32_STREAM72_COSINE_TRACKING_HEAD_S2026102001",
+    "attitude_arm": "GRU_STREAM",
+    "geometry_arm": "ACTIVE",
+    "gru_model_sha256": "b2c462f77a6bb97b8c6bb2b471daef0633d4f9664a7d623b894461a4fa21b567",
+    "position_model_sha256": "6f3628b10540c617496b2a20f249c4319af79c1a02d5945f1f91f0aead9c9b6e",
+    "common_position_options_sha256": "0218d3dc3c591b07ed6f7328de2c36276c4f51c2a0d56966bdff62d68d6a6b21",
+    "position_controller": "frozen C5 DSSM14 / M110 from parent raw; no added position residual GRU",
+    "current_action_source": "log/stage1_position_held_applied_acceleration_mps2, cross-checked against the locked TRAIN24 causal NPZ event action"
+  },
+  "scene_count": 24,
+  "filter": {
+    "type": "four causal unity-DC biquad notches, cascaded in ascending listed order",
+    "sample_rate_hz": 100.0,
+    "centers_hz": [
+      2.2,
+      3.2,
+      3.7,
+      4.8
+    ],
+    "quality_factor_each": [
+      4.0,
+      4.0,
+      4.0,
+      4.0
+    ],
+    "application_point": "final held applied position-compensation acceleration, after frozen C5 action and before conversion to injected force",
+    "update_rule": "Only at the logged 100-Hz position events; zero-order hold between events",
+    "state_initialization": "At the first nonzero action event, initialize every section's input/output history to that current action and pass it unchanged",
+    "final_action_clip_mps2": [
+      -3.0,
+      3.0
+    ],
+    "nominal_acceleration_yaw_and_shared_command_filter_changed": false,
+    "wind_code_or_wind_truth_used_by_filter": false,
+    "per_scene_frequency_switching": false
+  },
+  "static_low_frequency_response": {
+    "band_hz": [
+      0.05,
+      0.5
+    ],
+    "max_abs_group_delay_ms": 54.12320608783545,
+    "group_delay_ms_range": [
+      49.4261332700682,
+      54.12320608783545
+    ],
+    "magnitude_db_range": [
+      -0.03047446897099571,
+      -0.0002839056526700208
+    ],
+    "phase_deg_range_unwrapped": [
+      -9.166307019751045,
+      -0.8891194347016277
+    ],
+    "point_response": [
+      {
+        "frequency_hz": 0.05,
+        "magnitude": 0.9999673146879937,
+        "magnitude_db": -0.0002839056526700208,
+        "phase_deg": -0.8891194347016278,
+        "equivalent_phase_delay_ms": 49.39552415009044
+      },
+      {
+        "frequency_hz": 0.1,
+        "magnitude": 0.9998689919460769,
+        "magnitude_db": -0.0011379960430247338,
+        "phase_deg": -1.7798451117367557,
+        "equivalent_phase_delay_ms": 49.440141992687664
+      },
+      {
+        "frequency_hz": 0.25,
+        "magnitude": 0.9991693533240522,
+        "magnitude_db": -0.007217903534483384,
+        "phase_deg": -4.477980667920776,
+        "equivalent_phase_delay_ms": 49.75534075467529
+      },
+      {
+        "frequency_hz": 0.45,
+        "magnitude": 0.9972013019020536,
+        "magnitude_db": -0.024343263443326886,
+        "phase_deg": -8.200655833284966,
+        "equivalent_phase_delay_ms": 50.62133230422818
+      },
+      {
+        "frequency_hz": 0.5,
+        "magnitude": 0.9964976447060871,
+        "magnitude_db": -0.03047446897099474,
+        "phase_deg": -9.166307019751045,
+        "equivalent_phase_delay_ms": 50.923927887505805
+      },
+      {
+        "frequency_hz": 0.6,
+        "magnitude": 0.9947927139784165,
+        "magnitude_db": -0.04534808465957467,
+        "phase_deg": -11.15481936233244,
+        "equivalent_phase_delay_ms": 51.64268223302055
+      },
+      {
+        "frequency_hz": 0.85,
+        "magnitude": 0.9883155169803252,
+        "magnitude_db": -0.1020877194137449,
+        "phase_deg": -16.587536087114493,
+        "equivalent_phase_delay_ms": 54.207634271615994
+      },
+      {
+        "frequency_hz": 1.15,
+        "magnitude": 0.9736211114283623,
+        "magnitude_db": -0.2322003537882777,
+        "phase_deg": -24.540114818034912,
+        "equivalent_phase_delay_ms": 59.275639657089165
+      },
+      {
+        "frequency_hz": 1.75,
+        "magnitude": 0.849395400420796,
+        "magnitude_db": -1.4178019019262342,
+        "phase_deg": -53.92608274575296,
+        "equivalent_phase_delay_ms": 85.5969567392904
+      },
+      {
+        "frequency_hz": 2.2,
+        "magnitude": 0.0,
+        "magnitude_db": -300.0,
+        "phase_deg": 0.0,
+        "equivalent_phase_delay_ms": -0.0
+      },
+      {
+        "frequency_hz": 3.2,
+        "magnitude": 1.5849884794467805e-14,
+        "magnitude_db": -275.9994778024372,
+        "phase_deg": -117.44390713460764,
+        "equivalent_phase_delay_ms": 101.94783605434692
+      },
+      {
+        "frequency_hz": 3.7,
+        "magnitude": 6.467458541848415e-15,
+        "magnitude_db": -283.78532693094246,
+        "phase_deg": -21.96945583421283,
+        "equivalent_phase_delay_ms": 16.493585461120745
+      },
+      {
+        "frequency_hz": 4.8,
+        "magnitude": 0.0,
+        "magnitude_db": -300.0,
+        "phase_deg": 0.0,
+        "equivalent_phase_delay_ms": -0.0
+      }
+    ]
+  },
+  "per_wind_group_summary_offline_only": [
+    {
+      "wind_group": "W00-W02",
+      "scene_count": 3,
+      "target_peaks_hz": [
+        0.25000000000002753,
+        0.4500000000000495
+      ],
+      "low_frequency_action_delta_rms_percent_median_max": {
+        "median": 8.863499867451615,
+        "max": 9.398127559552753
+      },
+      "low_frequency_command_target_delta_rms_percent_median_max": {
+        "median": 3.289048137574847,
+        "max": 5.1101199398295725
+      },
+      "target_tone_bands": [
+        {
+          "label": "f1",
+          "center_hz": 0.25000000000002753,
+          "band_hz": [
+            0.15000000000002753,
+            0.3500000000000275
+          ],
+          "command_target_euler_reduction_percent_median_range": {
+            "median": 0.754808666699053,
+            "range": [
+              -0.6318664315735506,
+              2.5124783392941885
+            ]
+          },
+          "command_target_roll_pitch_reduction_percent_median_range": {
+            "median": 0.754808666699053,
+            "range": [
+              -0.6318664315735506,
+              2.5124783392941885
+            ]
+          },
+          "applied_action_reduction_percent_median_range": {
+            "median": 0.11529143954060878,
+            "range": [
+              0.06806946031514549,
+              0.142321004868236
+            ]
+          },
+          "target_roll_pitch_rms_before_after_mrad_median": [
+            42.57079925032103,
+            41.5012171402923
+          ]
+        },
+        {
+          "label": "f2",
+          "center_hz": 0.4500000000000495,
+          "band_hz": [
+            0.3500000000000495,
+            0.5500000000000496
+          ],
+          "command_target_euler_reduction_percent_median_range": {
+            "median": 3.370876981702616,
+            "range": [
+              2.8624528434214898,
+              3.4151436697697375
+            ]
+          },
+          "command_target_roll_pitch_reduction_percent_median_range": {
+            "median": 3.370876981702616,
+            "range": [
+              2.8624528434214898,
+              3.4151436697697375
+            ]
+          },
+          "applied_action_reduction_percent_median_range": {
+            "median": 0.17023790794203122,
+            "range": [
+              0.14141895758334436,
+              0.299173498520902
+            ]
+          },
+          "target_roll_pitch_rms_before_after_mrad_median": [
+            23.863085555308658,
+            23.180015984302624
+          ]
+        }
+      ],
+      "broad_command_target_0p05_10_hz_change_percent_median_range": {
+        "median": -0.26460842379829225,
+        "range": [
+          -2.2152342563470584,
+          -0.04048408785779375
+        ]
+      },
+      "zero_wind_group_no_tone_bands": false
+    },
+    {
+      "wind_group": "W03-W05",
+      "scene_count": 3,
+      "target_peaks_hz": [
+        0.600000000000066,
+        0.8500000000000936
+      ],
+      "low_frequency_action_delta_rms_percent_median_max": {
+        "median": 7.621395739053653,
+        "max": 8.561471508088557
+      },
+      "low_frequency_command_target_delta_rms_percent_median_max": {
+        "median": 0.38630099266991785,
+        "max": 1.8387972220208568
+      },
+      "target_tone_bands": [
+        {
+          "label": "f1",
+          "center_hz": 0.600000000000066,
+          "band_hz": [
+            0.5000000000000661,
+            0.700000000000066
+          ],
+          "command_target_euler_reduction_percent_median_range": {
+            "median": 3.0058810989705855,
+            "range": [
+              2.5789209066713616,
+              3.012612425492909
+            ]
+          },
+          "command_target_roll_pitch_reduction_percent_median_range": {
+            "median": 3.0058810989705855,
+            "range": [
+              2.5789209066713616,
+              3.012612425492909
+            ]
+          },
+          "applied_action_reduction_percent_median_range": {
+            "median": 0.5501567496939536,
+            "range": [
+              0.5033195099416596,
+              0.5551822629672817
+            ]
+          },
+          "target_roll_pitch_rms_before_after_mrad_median": [
+            28.084756447440807,
+            27.24056206169526
+          ]
+        },
+        {
+          "label": "f2",
+          "center_hz": 0.8500000000000936,
+          "band_hz": [
+            0.7500000000000936,
+            0.9500000000000935
+          ],
+          "command_target_euler_reduction_percent_median_range": {
+            "median": 1.3943294035366596,
+            "range": [
+              -2.062677766458966,
+              1.4460520256958458
+            ]
+          },
+          "command_target_roll_pitch_reduction_percent_median_range": {
+            "median": 1.3943294035366596,
+            "range": [
+              -2.062677766458966,
+              1.4460520256958458
+            ]
+          },
+          "applied_action_reduction_percent_median_range": {
+            "median": 1.3092236830533959,
+            "range": [
+              1.0500794415003414,
+              1.4061397867996177
+            ]
+          },
+          "target_roll_pitch_rms_before_after_mrad_median": [
+            19.97218748039417,
+            19.693709397825565
+          ]
+        }
+      ],
+      "broad_command_target_0p05_10_hz_change_percent_median_range": {
+        "median": -0.2620834909611739,
+        "range": [
+          -1.3076591996197162,
+          -0.05044670033508109
+        ]
+      },
+      "zero_wind_group_no_tone_bands": false
+    },
+    {
+      "wind_group": "W06-W08",
+      "scene_count": 5,
+      "target_peaks_hz": [
+        1.1500000000001267,
+        1.7500000000001927
+      ],
+      "low_frequency_action_delta_rms_percent_median_max": {
+        "median": 5.598234331004594,
+        "max": 6.592738809643121
+      },
+      "low_frequency_command_target_delta_rms_percent_median_max": {
+        "median": 0.942315024002387,
+        "max": 1.7290978184244112
+      },
+      "target_tone_bands": [
+        {
+          "label": "f1",
+          "center_hz": 1.1500000000001267,
+          "band_hz": [
+            1.0500000000001266,
+            1.2500000000001268
+          ],
+          "command_target_euler_reduction_percent_median_range": {
+            "median": 1.1845643735486644,
+            "range": [
+              0.20339445982737644,
+              1.3213565997436432
+            ]
+          },
+          "command_target_roll_pitch_reduction_percent_median_range": {
+            "median": 1.1845643735486644,
+            "range": [
+              0.20339445982737644,
+              1.3213565997436432
+            ]
+          },
+          "applied_action_reduction_percent_median_range": {
+            "median": 2.534599892503597,
+            "range": [
+              2.485514942030856,
+              2.7820444090154854
+            ]
+          },
+          "target_roll_pitch_rms_before_after_mrad_median": [
+            47.65339292154801,
+            47.55646856042581
+          ]
+        },
+        {
+          "label": "f2",
+          "center_hz": 1.7500000000001927,
+          "band_hz": [
+            1.6500000000001926,
+            1.8500000000001928
+          ],
+          "command_target_euler_reduction_percent_median_range": {
+            "median": 8.257787616925729,
+            "range": [
+              6.010953758286698,
+              9.205412338403242
+            ]
+          },
+          "command_target_roll_pitch_reduction_percent_median_range": {
+            "median": 8.257787616925729,
+            "range": [
+              6.010953758286698,
+              9.205412338403242
+            ]
+          },
+          "applied_action_reduction_percent_median_range": {
+            "median": 15.010289113073673,
+            "range": [
+              14.766775299628048,
+              15.804107164886064
+            ]
+          },
+          "target_roll_pitch_rms_before_after_mrad_median": [
+            42.11405278380497,
+            38.70427988196569
+          ]
+        }
+      ],
+      "broad_command_target_0p05_10_hz_change_percent_median_range": {
+        "median": -2.0097889562977826,
+        "range": [
+          -5.611292023114792,
+          -0.3955523699815251
+        ]
+      },
+      "zero_wind_group_no_tone_bands": false
+    },
+    {
+      "wind_group": "W09-W11",
+      "scene_count": 4,
+      "target_peaks_hz": [
+        2.200000000000242,
+        3.2000000000003523
+      ],
+      "low_frequency_action_delta_rms_percent_median_max": {
+        "median": 4.859297565853199,
+        "max": 5.032065315817117
+      },
+      "low_frequency_command_target_delta_rms_percent_median_max": {
+        "median": 1.1176057966811446,
+        "max": 2.473866880737243
+      },
+      "target_tone_bands": [
+        {
+          "label": "f1",
+          "center_hz": 2.200000000000242,
+          "band_hz": [
+            2.100000000000242,
+            2.3000000000002423
+          ],
+          "command_target_euler_reduction_percent_median_range": {
+            "median": 69.1663488284795,
+            "range": [
+              68.61487262967285,
+              70.12068292190618
+            ]
+          },
+          "command_target_roll_pitch_reduction_percent_median_range": {
+            "median": 69.1663488284795,
+            "range": [
+              68.61487262967285,
+              70.12068292190618
+            ]
+          },
+          "applied_action_reduction_percent_median_range": {
+            "median": 97.56988112241038,
+            "range": [
+              95.90021131764485,
+              98.14480267512437
+            ]
+          },
+          "target_roll_pitch_rms_before_after_mrad_median": [
+            41.75840262911197,
+            12.650018012495096
+          ]
+        },
+        {
+          "label": "f2",
+          "center_hz": 3.2000000000003523,
+          "band_hz": [
+            3.1000000000003523,
+            3.3000000000003524
+          ],
+          "command_target_euler_reduction_percent_median_range": {
+            "median": 78.95975689559809,
+            "range": [
+              78.34876379838383,
+              79.29745273448974
+            ]
+          },
+          "command_target_roll_pitch_reduction_percent_median_range": {
+            "median": 78.95975689559809,
+            "range": [
+              78.34876379838383,
+              79.29745273448974
+            ]
+          },
+          "applied_action_reduction_percent_median_range": {
+            "median": 98.82557152517856,
+            "range": [
+              98.09009354715866,
+              99.0600706574402
+            ]
+          },
+          "target_roll_pitch_rms_before_after_mrad_median": [
+            32.195003459920954,
+            6.801604436857026
+          ]
+        }
+      ],
+      "broad_command_target_0p05_10_hz_change_percent_median_range": {
+        "median": -22.4478846333926,
+        "range": [
+          -50.543972570511805,
+          -4.405250611188017
+        ]
+      },
+      "zero_wind_group_no_tone_bands": false
+    },
+    {
+      "wind_group": "W12-W14",
+      "scene_count": 6,
+      "target_peaks_hz": [
+        3.7000000000004074,
+        4.800000000000528
+      ],
+      "low_frequency_action_delta_rms_percent_median_max": {
+        "median": 5.486167856787809,
+        "max": 6.463483766754419
+      },
+      "low_frequency_command_target_delta_rms_percent_median_max": {
+        "median": 1.0558996774489833,
+        "max": 2.3056235261466167
+      },
+      "target_tone_bands": [
+        {
+          "label": "f1",
+          "center_hz": 3.7000000000004074,
+          "band_hz": [
+            3.6000000000004073,
+            3.8000000000004075
+          ],
+          "command_target_euler_reduction_percent_median_range": {
+            "median": 80.13982145408427,
+            "range": [
+              79.27075970546694,
+              81.92491759644817
+            ]
+          },
+          "command_target_roll_pitch_reduction_percent_median_range": {
+            "median": 80.13982145408427,
+            "range": [
+              79.27075970546694,
+              81.92491759644817
+            ]
+          },
+          "applied_action_reduction_percent_median_range": {
+            "median": 99.20017062300214,
+            "range": [
+              98.53372552915825,
+              99.37079708431612
+            ]
+          },
+          "target_roll_pitch_rms_before_after_mrad_median": [
+            60.80500962941228,
+            12.156551950214798
+          ]
+        },
+        {
+          "label": "f2",
+          "center_hz": 4.800000000000528,
+          "band_hz": [
+            4.700000000000529,
+            4.900000000000528
+          ],
+          "command_target_euler_reduction_percent_median_range": {
+            "median": 82.21358719110563,
+            "range": [
+              81.58311022159141,
+              83.99287735229579
+            ]
+          },
+          "command_target_roll_pitch_reduction_percent_median_range": {
+            "median": 82.21358719110563,
+            "range": [
+              81.58311022159141,
+              83.99287735229579
+            ]
+          },
+          "applied_action_reduction_percent_median_range": {
+            "median": 99.25973301605313,
+            "range": [
+              98.66514741667783,
+              99.56304725904651
+            ]
+          },
+          "target_roll_pitch_rms_before_after_mrad_median": [
+            31.388655334658758,
+            5.77338757841558
+          ]
+        }
+      ],
+      "broad_command_target_0p05_10_hz_change_percent_median_range": {
+        "median": -20.49071857853,
+        "range": [
+          -50.11980933012704,
+          -3.822244431214699
+        ]
+      },
+      "zero_wind_group_no_tone_bands": false
+    },
+    {
+      "wind_group": "W15",
+      "scene_count": 3,
+      "target_peaks_hz": null,
+      "low_frequency_action_delta_rms_percent_median_max": {
+        "median": 5.46872277705201,
+        "max": 6.372509111448312
+      },
+      "low_frequency_command_target_delta_rms_percent_median_max": {
+        "median": 1.0286798102756758,
+        "max": 1.688602034449999
+      },
+      "target_tone_bands": [],
+      "broad_command_target_0p05_10_hz_change_percent_median_range": {
+        "median": 0.5471198053359126,
+        "range": [
+          0.48110713632214125,
+          0.5910291372521758
+        ]
+      },
+      "zero_wind_group_no_tone_bands": true
+    }
+  ],
+  "risk_flags": {
+    "scene_low_action_delta_exceeds_2_percent": [
+      "DL1018_DEV_T1_C00_W03",
+      "DL1018_DEV_T1_C01_W15",
+      "DL1018_DEV_T1_C04_W00",
+      "DL1018_DEV_T1_C05_W06",
+      "DL1018_DEV_T1_C07_W08",
+      "DL1018_DEV_T1_C10_W09",
+      "DL1018_DEV_T1_C11_W12",
+      "DL1018_DEV_T1_C15_W14",
+      "DL1018_DEV_T2_C00_W04",
+      "DL1018_DEV_T2_C02_W15",
+      "DL1018_DEV_T2_C03_W01",
+      "DL1018_DEV_T2_C06_W07",
+      "DL1018_DEV_T2_C08_W08",
+      "DL1018_DEV_T2_C09_W10",
+      "DL1018_DEV_T2_C12_W13",
+      "DL1018_DEV_T2_C14_W14",
+      "DL1018_DEV_T3_C00_W05",
+      "DL1018_DEV_T3_C03_W15",
+      "DL1018_DEV_T3_C05_W02",
+      "DL1018_DEV_T3_C06_W08",
+      "DL1018_DEV_T3_C09_W09",
+      "DL1018_DEV_T3_C10_W11",
+      "DL1018_DEV_T3_C13_W12",
+      "DL1018_DEV_T3_C15_W14"
+    ],
+    "scene_low_command_target_delta_exceeds_2_percent": [
+      "DL1018_DEV_T2_C03_W01",
+      "DL1018_DEV_T3_C05_W02",
+      "DL1018_DEV_T3_C10_W11",
+      "DL1018_DEV_T3_C13_W12",
+      "DL1018_DEV_T3_C15_W14"
+    ],
+    "low_band_group_delay_exceeds_10ms": true,
+    "wind_tone_command_target_rms_amplified": [
+      {
+        "scene_id": "DL1018_DEV_T1_C00_W03",
+        "band": "f2",
+        "center_hz": 0.8500000000000936,
+        "command_target_rms_change_percent": 2.062677766458966
+      },
+      {
+        "scene_id": "DL1018_DEV_T2_C03_W01",
+        "band": "f1",
+        "center_hz": 0.25000000000002753,
+        "command_target_rms_change_percent": 0.6318664315735506
+      }
+    ],
+    "action_limit_clipping_scenes": []
+  },
+  "results": [
+    {
+      "scene_id": "DL1018_DEV_T1_C00_W03",
+      "source_split": "TRAIN_C5_24",
+      "wind_code_for_offline_grouping_only": 3,
+      "wind_group_for_offline_grouping_only": "W03-W05",
+      "target_peak_f1_hz": 0.600000000000066,
+      "target_peak_f2_hz": 0.8500000000000936,
+      "source_parent_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_full72_v1\\runs\\DL1018_DEV_T1_C00_W03\\raw_run.mat",
+      "source_parent_raw_sha256": "eb3f514139227d4d6d145265c1eae817b1bf49a9d612c221cdde7f4869b9bf85",
+      "parent_c5_action_npz_event_max_abs_difference_mps2": 2.9412628665959062e-08,
+      "logged_final_compensation_max_abs_difference_mps2": 5.551115123125783e-17,
+      "transitions": 20000,
+      "event_count": 1999,
+      "derived_mass_kg_from_logged_nominal_force_over_acceleration": 0.695,
+      "baseline_force_chain_max_abs_residual_N": 0.0,
+      "baseline_target_reconstruction_max_abs_error_rad": 4.163336342344337e-17,
+      "action_limit_clip_count": 0,
+      "low_frequency_0p05_0p5_hz": {
+        "action_rms_before_mps2": 0.04013613726468864,
+        "action_rms_after_mps2": 0.04031457590987863,
+        "action_rms_delta_percent": 0.44458350342292713,
+        "action_delta_rms_percent_of_before": 5.914805054009078,
+        "command_target_euler_rms_before_mrad": 77.07220702918906,
+        "command_target_euler_rms_after_mrad": 77.09815910469023,
+        "command_target_euler_rms_delta_percent": 0.03367241772555164,
+        "command_target_euler_delta_rms_percent_of_before": 0.3001708934834909,
+        "command_target_roll_pitch_rms_before_mrad": 77.07220702918906,
+        "command_target_roll_pitch_rms_after_mrad": 77.09815910469023
+      },
+      "wind_tone_target_bands": [
+        {
+          "label": "f1",
+          "center_hz": 0.600000000000066,
+          "band_hz": [
+            0.5000000000000661,
+            0.700000000000066
+          ],
+          "command_target_euler_vector_rms_before_mrad": 13.932244876866257,
+          "command_target_euler_vector_rms_after_mrad": 13.512520336555685,
+          "command_target_euler_reduction_percent": 3.012612425492909,
+          "command_target_roll_pitch_vector_rms_before_mrad": 13.932244876866257,
+          "command_target_roll_pitch_vector_rms_after_mrad": 13.512520336555685,
+          "command_target_roll_pitch_reduction_percent": 3.012612425492909,
+          "applied_action_vector_rms_before_mps2": 0.07502583279277483,
+          "applied_action_vector_rms_after_mps2": 0.07464821313883259,
+          "applied_action_reduction_percent": 0.5033195099416596,
+          "static_bank_response": {
+            "frequency_hz": 0.600000000000066,
+            "magnitude": 0.9947927139784143,
+            "magnitude_db": -0.04534808465959405,
+            "phase_deg": -11.154819362333683,
+            "equivalent_phase_delay_ms": 51.64268223302063
+          }
+        },
+        {
+          "label": "f2",
+          "center_hz": 0.8500000000000936,
+          "band_hz": [
+            0.7500000000000936,
+            0.9500000000000935
+          ],
+          "command_target_euler_vector_rms_before_mrad": 8.027206474332564,
+          "command_target_euler_vector_rms_after_mrad": 8.192781877546375,
+          "command_target_euler_reduction_percent": -2.062677766458966,
+          "command_target_roll_pitch_vector_rms_before_mrad": 8.027206474332564,
+          "command_target_roll_pitch_vector_rms_after_mrad": 8.192781877546375,
+          "command_target_roll_pitch_reduction_percent": -2.062677766458966,
+          "applied_action_vector_rms_before_mps2": 0.044716891730871525,
+          "applied_action_vector_rms_after_mps2": 0.04408810972482363,
+          "applied_action_reduction_percent": 1.4061397867996177,
+          "static_bank_response": {
+            "frequency_hz": 0.8500000000000936,
+            "magnitude": 0.9883155169803187,
+            "magnitude_db": -0.10208771941380149,
+            "phase_deg": -16.58753608711668,
+            "equivalent_phase_delay_ms": 54.20763427161717
+          }
+        }
+      ],
+      "broad_command_target_0p05_10_hz": {
+        "euler_vector_rms_before_mrad": 78.78557114124938,
+        "euler_vector_rms_after_mrad": 78.74582642026846,
+        "euler_vector_change_percent": -0.05044670033508109
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T1_C01_W15",
+      "source_split": "TRAIN_C5_24",
+      "wind_code_for_offline_grouping_only": 15,
+      "wind_group_for_offline_grouping_only": "W15",
+      "target_peak_f1_hz": null,
+      "target_peak_f2_hz": null,
+      "source_parent_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_full72_v1\\runs\\DL1018_DEV_T1_C01_W15\\raw_run.mat",
+      "source_parent_raw_sha256": "c6b3e33f1213b8a34c92cc310f431dd642fb5213a6ba1b519c31342d9ef8ac3c",
+      "parent_c5_action_npz_event_max_abs_difference_mps2": 1.4813208770725339e-08,
+      "logged_final_compensation_max_abs_difference_mps2": 5.551115123125783e-17,
+      "transitions": 20000,
+      "event_count": 1999,
+      "derived_mass_kg_from_logged_nominal_force_over_acceleration": 0.695,
+      "baseline_force_chain_max_abs_residual_N": 0.0,
+      "baseline_target_reconstruction_max_abs_error_rad": 2.7755575615628914e-17,
+      "action_limit_clip_count": 0,
+      "low_frequency_0p05_0p5_hz": {
+        "action_rms_before_mps2": 0.17082394093573294,
+        "action_rms_after_mps2": 0.17115226272232373,
+        "action_rms_delta_percent": 0.192198929958129,
+        "action_delta_rms_percent_of_before": 4.77116093925887,
+        "command_target_euler_rms_before_mrad": 80.50837484868515,
+        "command_target_euler_rms_after_mrad": 80.96811359887869,
+        "command_target_euler_rms_delta_percent": 0.5710446286583337,
+        "command_target_euler_delta_rms_percent_of_before": 1.0286798102756758,
+        "command_target_roll_pitch_rms_before_mrad": 80.50837484868515,
+        "command_target_roll_pitch_rms_after_mrad": 80.96811359887869
+      },
+      "wind_tone_target_bands": [],
+      "broad_command_target_0p05_10_hz": {
+        "euler_vector_rms_before_mrad": 80.58157453841812,
+        "euler_vector_rms_after_mrad": 81.02245229216932,
+        "euler_vector_change_percent": 0.5471198053359126
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T1_C04_W00",
+      "source_split": "TRAIN_C5_24",
+      "wind_code_for_offline_grouping_only": 0,
+      "wind_group_for_offline_grouping_only": "W00-W02",
+      "target_peak_f1_hz": 0.25000000000002753,
+      "target_peak_f2_hz": 0.4500000000000495,
+      "source_parent_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_full72_v1\\runs\\DL1018_DEV_T1_C04_W00\\raw_run.mat",
+      "source_parent_raw_sha256": "4ea932d78a1d11420e7e3bb39bc5d674dae9de3c2b3686dbfbe2fa9e0bd81ebd",
+      "parent_c5_action_npz_event_max_abs_difference_mps2": 2.9799466894075977e-08,
+      "logged_final_compensation_max_abs_difference_mps2": 1.1102230246251565e-16,
+      "transitions": 20000,
+      "event_count": 1999,
+      "derived_mass_kg_from_logged_nominal_force_over_acceleration": 0.695,
+      "baseline_force_chain_max_abs_residual_N": 0.0,
+      "baseline_target_reconstruction_max_abs_error_rad": 2.7755575615628914e-17,
+      "action_limit_clip_count": 0,
+      "low_frequency_0p05_0p5_hz": {
+        "action_rms_before_mps2": 0.18254318180254048,
+        "action_rms_after_mps2": 0.18265054740813008,
+        "action_rms_delta_percent": 0.0588165520779315,
+        "action_delta_rms_percent_of_before": 7.631484312677089,
+        "command_target_euler_rms_before_mrad": 84.3899131745783,
+        "command_target_euler_rms_after_mrad": 84.18457208978334,
+        "command_target_euler_rms_delta_percent": -0.2433242043633288,
+        "command_target_euler_delta_rms_percent_of_before": 1.6866147353483634,
+        "command_target_roll_pitch_rms_before_mrad": 84.3899131745783,
+        "command_target_roll_pitch_rms_after_mrad": 84.18457208978334
+      },
+      "wind_tone_target_bands": [
+        {
+          "label": "f1",
+          "center_hz": 0.25000000000002753,
+          "band_hz": [
+            0.15000000000002753,
+            0.3500000000000275
+          ],
+          "command_target_euler_vector_rms_before_mrad": 40.29452042995595,
+          "command_target_euler_vector_rms_after_mrad": 39.99037389754582,
+          "command_target_euler_reduction_percent": 0.754808666699053,
+          "command_target_roll_pitch_vector_rms_before_mrad": 40.29452042995595,
+          "command_target_roll_pitch_vector_rms_after_mrad": 39.99037389754582,
+          "command_target_roll_pitch_reduction_percent": 0.754808666699053,
+          "applied_action_vector_rms_before_mps2": 0.12531370765398156,
+          "applied_action_vector_rms_after_mps2": 0.12513535992601077,
+          "applied_action_reduction_percent": 0.142321004868236,
+          "static_bank_response": {
+            "frequency_hz": 0.25000000000002753,
+            "magnitude": 0.9991693533240519,
+            "magnitude_db": -0.00721790353448628,
+            "phase_deg": -4.477980667921273,
+            "equivalent_phase_delay_ms": 49.75534075467532
+          }
+        },
+        {
+          "label": "f2",
+          "center_hz": 0.4500000000000495,
+          "band_hz": [
+            0.3500000000000495,
+            0.5500000000000496
+          ],
+          "command_target_euler_vector_rms_before_mrad": 9.882248249016055,
+          "command_target_euler_vector_rms_after_mrad": 9.549129817515261,
+          "command_target_euler_reduction_percent": 3.370876981702616,
+          "command_target_roll_pitch_vector_rms_before_mrad": 9.882248249016055,
+          "command_target_roll_pitch_vector_rms_after_mrad": 9.549129817515261,
+          "command_target_roll_pitch_reduction_percent": 3.370876981702616,
+          "applied_action_vector_rms_before_mps2": 0.07106247861701814,
+          "applied_action_vector_rms_after_mps2": 0.07084987851360394,
+          "applied_action_reduction_percent": 0.299173498520902,
+          "static_bank_response": {
+            "frequency_hz": 0.4500000000000495,
+            "magnitude": 0.997201301902054,
+            "magnitude_db": -0.02434326344332302,
+            "phase_deg": -8.200655833285937,
+            "equivalent_phase_delay_ms": 50.62133230422861
+          }
+        }
+      ],
+      "broad_command_target_0p05_10_hz": {
+        "euler_vector_rms_before_mrad": 84.55932837555409,
+        "euler_vector_rms_after_mrad": 84.33557726956512,
+        "euler_vector_change_percent": -0.26460842379829225
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T1_C05_W06",
+      "source_split": "TRAIN_C5_24",
+      "wind_code_for_offline_grouping_only": 6,
+      "wind_group_for_offline_grouping_only": "W06-W08",
+      "target_peak_f1_hz": 1.1500000000001267,
+      "target_peak_f2_hz": 1.7500000000001927,
+      "source_parent_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_full72_v1\\runs\\DL1018_DEV_T1_C05_W06\\raw_run.mat",
+      "source_parent_raw_sha256": "07b5a84d10d135e8bfd5bbe3d11cd20975667996fe9c4279077ecac2214e4c9c",
+      "parent_c5_action_npz_event_max_abs_difference_mps2": 2.9744087748362347e-08,
+      "logged_final_compensation_max_abs_difference_mps2": 1.1102230246251565e-16,
+      "transitions": 20000,
+      "event_count": 1999,
+      "derived_mass_kg_from_logged_nominal_force_over_acceleration": 0.695,
+      "baseline_force_chain_max_abs_residual_N": 0.0,
+      "baseline_target_reconstruction_max_abs_error_rad": 5.551115123125783e-17,
+      "action_limit_clip_count": 0,
+      "low_frequency_0p05_0p5_hz": {
+        "action_rms_before_mps2": 0.17397838588202258,
+        "action_rms_after_mps2": 0.17409039308879493,
+        "action_rms_delta_percent": 0.06437995513322003,
+        "action_delta_rms_percent_of_before": 4.68985116405,
+        "command_target_euler_rms_before_mrad": 79.53407179164311,
+        "command_target_euler_rms_after_mrad": 79.58276194871083,
+        "command_target_euler_rms_delta_percent": 0.06121924349009137,
+        "command_target_euler_delta_rms_percent_of_before": 1.050204793854048,
+        "command_target_roll_pitch_rms_before_mrad": 79.53407179164311,
+        "command_target_roll_pitch_rms_after_mrad": 79.58276194871083
+      },
+      "wind_tone_target_bands": [
+        {
+          "label": "f1",
+          "center_hz": 1.1500000000001267,
+          "band_hz": [
+            1.0500000000001266,
+            1.2500000000001268
+          ],
+          "command_target_euler_vector_rms_before_mrad": 17.398025729116924,
+          "command_target_euler_vector_rms_after_mrad": 17.176978823750183,
+          "command_target_euler_reduction_percent": 1.270528672668897,
+          "command_target_roll_pitch_vector_rms_before_mrad": 17.398025729116924,
+          "command_target_roll_pitch_vector_rms_after_mrad": 17.176978823750183,
+          "command_target_roll_pitch_reduction_percent": 1.270528672668897,
+          "applied_action_vector_rms_before_mps2": 0.10892247642522963,
+          "applied_action_vector_rms_after_mps2": 0.10589220475968032,
+          "applied_action_reduction_percent": 2.7820444090154854,
+          "static_bank_response": {
+            "frequency_hz": 1.1500000000001267,
+            "magnitude": 0.9736211114283494,
+            "magnitude_db": -0.23220035378839254,
+            "phase_deg": -24.540114818038678,
+            "equivalent_phase_delay_ms": 59.27563965709172
+          }
+        },
+        {
+          "label": "f2",
+          "center_hz": 1.7500000000001927,
+          "band_hz": [
+            1.6500000000001926,
+            1.8500000000001928
+          ],
+          "command_target_euler_vector_rms_before_mrad": 15.180443165829839,
+          "command_target_euler_vector_rms_after_mrad": 13.783020777618248,
+          "command_target_euler_reduction_percent": 9.205412338403242,
+          "command_target_roll_pitch_vector_rms_before_mrad": 15.180443165829839,
+          "command_target_roll_pitch_vector_rms_after_mrad": 13.783020777618248,
+          "command_target_roll_pitch_reduction_percent": 9.205412338403242,
+          "applied_action_vector_rms_before_mps2": 0.09973572003645649,
+          "applied_action_vector_rms_after_mps2": 0.08397337996022416,
+          "applied_action_reduction_percent": 15.804107164886064,
+          "static_bank_response": {
+            "frequency_hz": 1.7500000000001927,
+            "magnitude": 0.8493954004206951,
+            "magnitude_db": -1.4178019019272665,
+            "phase_deg": -53.92608274576911,
+            "equivalent_phase_delay_ms": 85.59695673930662
+          }
+        }
+      ],
+      "broad_command_target_0p05_10_hz": {
+        "euler_vector_rms_before_mrad": 83.14497416518805,
+        "euler_vector_rms_after_mrad": 82.81609224935711,
+        "euler_vector_change_percent": -0.3955523699815251
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T1_C07_W08",
+      "source_split": "TRAIN_C5_24",
+      "wind_code_for_offline_grouping_only": 8,
+      "wind_group_for_offline_grouping_only": "W06-W08",
+      "target_peak_f1_hz": 1.1500000000001267,
+      "target_peak_f2_hz": 1.7500000000001927,
+      "source_parent_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_full72_v1\\runs\\DL1018_DEV_T1_C07_W08\\raw_run.mat",
+      "source_parent_raw_sha256": "2aa21e06d06c9c284d420223383d85cc2128a790cbf046fce5f2d11d6a4eef42",
+      "parent_c5_action_npz_event_max_abs_difference_mps2": 5.9571115595957735e-08,
+      "logged_final_compensation_max_abs_difference_mps2": 2.220446049250313e-16,
+      "transitions": 20000,
+      "event_count": 1999,
+      "derived_mass_kg_from_logged_nominal_force_over_acceleration": 0.695,
+      "baseline_force_chain_max_abs_residual_N": 0.0,
+      "baseline_target_reconstruction_max_abs_error_rad": 5.551115123125783e-17,
+      "action_limit_clip_count": 0,
+      "low_frequency_0p05_0p5_hz": {
+        "action_rms_before_mps2": 0.16013359723248494,
+        "action_rms_after_mps2": 0.16047187643894137,
+        "action_rms_delta_percent": 0.2112481155127691,
+        "action_delta_rms_percent_of_before": 4.863313729583136,
+        "command_target_euler_rms_before_mrad": 82.95915837748488,
+        "command_target_euler_rms_after_mrad": 83.12935116304841,
+        "command_target_euler_rms_delta_percent": 0.20515249779790531,
+        "command_target_euler_delta_rms_percent_of_before": 0.942315024002387,
+        "command_target_roll_pitch_rms_before_mrad": 82.95915837748488,
+        "command_target_roll_pitch_rms_after_mrad": 83.12935116304841
+      },
+      "wind_tone_target_bands": [
+        {
+          "label": "f1",
+          "center_hz": 1.1500000000001267,
+          "band_hz": [
+            1.0500000000001266,
+            1.2500000000001268
+          ],
+          "command_target_euler_vector_rms_before_mrad": 47.65339292154801,
+          "command_target_euler_vector_rms_after_mrad": 47.55646856042581,
+          "command_target_euler_reduction_percent": 0.20339445982737644,
+          "command_target_roll_pitch_vector_rms_before_mrad": 47.65339292154801,
+          "command_target_roll_pitch_vector_rms_after_mrad": 47.55646856042581,
+          "command_target_roll_pitch_reduction_percent": 0.20339445982737644,
+          "applied_action_vector_rms_before_mps2": 0.2823405901394127,
+          "applied_action_vector_rms_after_mps2": 0.27464391833909085,
+          "applied_action_reduction_percent": 2.726023841106739,
+          "static_bank_response": {
+            "frequency_hz": 1.1500000000001267,
+            "magnitude": 0.9736211114283494,
+            "magnitude_db": -0.23220035378839254,
+            "phase_deg": -24.540114818038678,
+            "equivalent_phase_delay_ms": 59.27563965709172
+          }
+        },
+        {
+          "label": "f2",
+          "center_hz": 1.7500000000001927,
+          "band_hz": [
+            1.6500000000001926,
+            1.8500000000001928
+          ],
+          "command_target_euler_vector_rms_before_mrad": 45.912750031589006,
+          "command_target_euler_vector_rms_after_mrad": 42.055610245120405,
+          "command_target_euler_reduction_percent": 8.40102103188069,
+          "command_target_roll_pitch_vector_rms_before_mrad": 45.912750031589006,
+          "command_target_roll_pitch_vector_rms_after_mrad": 42.055610245120405,
+          "command_target_roll_pitch_reduction_percent": 8.40102103188069,
+          "applied_action_vector_rms_before_mps2": 0.311704974388376,
+          "applied_action_vector_rms_after_mps2": 0.26402359769356454,
+          "applied_action_reduction_percent": 15.296957255292874,
+          "static_bank_response": {
+            "frequency_hz": 1.7500000000001927,
+            "magnitude": 0.8493954004206951,
+            "magnitude_db": -1.4178019019272665,
+            "phase_deg": -53.92608274576911,
+            "equivalent_phase_delay_ms": 85.59695673930662
+          }
+        }
+      ],
+      "broad_command_target_0p05_10_hz": {
+        "euler_vector_rms_before_mrad": 108.64947263140063,
+        "euler_vector_rms_after_mrad": 106.04420396615278,
+        "euler_vector_change_percent": -2.397865909654591
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T1_C10_W09",
+      "source_split": "TRAIN_C5_24",
+      "wind_code_for_offline_grouping_only": 9,
+      "wind_group_for_offline_grouping_only": "W09-W11",
+      "target_peak_f1_hz": 2.200000000000242,
+      "target_peak_f2_hz": 3.2000000000003523,
+      "source_parent_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_full72_v1\\runs\\DL1018_DEV_T1_C10_W09\\raw_run.mat",
+      "source_parent_raw_sha256": "c40239f9c9a6cea0f233eabdea3294b20ff4d3384e22a59055dc4e5358f5b541",
+      "parent_c5_action_npz_event_max_abs_difference_mps2": 2.9601812001622818e-08,
+      "logged_final_compensation_max_abs_difference_mps2": 1.1102230246251565e-16,
+      "transitions": 20000,
+      "event_count": 1999,
+      "derived_mass_kg_from_logged_nominal_force_over_acceleration": 0.695,
+      "baseline_force_chain_max_abs_residual_N": 0.0,
+      "baseline_target_reconstruction_max_abs_error_rad": 5.551115123125783e-17,
+      "action_limit_clip_count": 0,
+      "low_frequency_0p05_0p5_hz": {
+        "action_rms_before_mps2": 0.1995067117903732,
+        "action_rms_after_mps2": 0.19956648913259586,
+        "action_rms_delta_percent": 0.02996257202889861,
+        "action_delta_rms_percent_of_before": 3.7695488337244814,
+        "command_target_euler_rms_before_mrad": 78.20761996755681,
+        "command_target_euler_rms_after_mrad": 78.14839112034221,
+        "command_target_euler_rms_delta_percent": -0.07573283426751598,
+        "command_target_euler_delta_rms_percent_of_before": 0.8756866764393443,
+        "command_target_roll_pitch_rms_before_mrad": 78.20761996755681,
+        "command_target_roll_pitch_rms_after_mrad": 78.14839112034221
+      },
+      "wind_tone_target_bands": [
+        {
+          "label": "f1",
+          "center_hz": 2.200000000000242,
+          "band_hz": [
+            2.100000000000242,
+            2.3000000000002423
+          ],
+          "command_target_euler_vector_rms_before_mrad": 19.719676165585,
+          "command_target_euler_vector_rms_after_mrad": 6.189045481584898,
+          "command_target_euler_reduction_percent": 68.61487262967285,
+          "command_target_roll_pitch_vector_rms_before_mrad": 19.719676165585,
+          "command_target_roll_pitch_vector_rms_after_mrad": 6.189045481584898,
+          "command_target_roll_pitch_reduction_percent": 68.61487262967285,
+          "applied_action_vector_rms_before_mps2": 0.1529090021830792,
+          "applied_action_vector_rms_after_mps2": 0.0062689459658040805,
+          "applied_action_reduction_percent": 95.90021131764485,
+          "static_bank_response": {
+            "frequency_hz": 2.200000000000242,
+            "magnitude": 8.385391834720489e-13,
+            "magnitude_db": -241.52953277521647,
+            "phase_deg": 50.6636112928988,
+            "equivalent_phase_delay_ms": -63.96920617789548
+          }
+        },
+        {
+          "label": "f2",
+          "center_hz": 3.2000000000003523,
+          "band_hz": [
+            3.1000000000003523,
+            3.3000000000003524
+          ],
+          "command_target_euler_vector_rms_before_mrad": 14.705996161928619,
+          "command_target_euler_vector_rms_after_mrad": 3.0536807585134698,
+          "command_target_euler_reduction_percent": 79.23513154165684,
+          "command_target_roll_pitch_vector_rms_before_mrad": 14.705996161928619,
+          "command_target_roll_pitch_vector_rms_after_mrad": 3.0536807585134698,
+          "command_target_roll_pitch_reduction_percent": 79.23513154165684,
+          "applied_action_vector_rms_before_mps2": 0.12357700347381033,
+          "applied_action_vector_rms_after_mps2": 0.002360205163574273,
+          "applied_action_reduction_percent": 98.09009354715866,
+          "static_bank_response": {
+            "frequency_hz": 3.2000000000003523,
+            "magnitude": 6.146941097542114e-13,
+            "magnitude_db": -244.22681896886638,
+            "phase_deg": 51.02885759181529,
+            "equivalent_phase_delay_ms": -44.29588332622367
+          }
+        }
+      ],
+      "broad_command_target_0p05_10_hz": {
+        "euler_vector_rms_before_mrad": 82.24075691434344,
+        "euler_vector_rms_after_mrad": 78.61784546772867,
+        "euler_vector_change_percent": -4.405250611188017
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T1_C11_W12",
+      "source_split": "TRAIN_C5_24",
+      "wind_code_for_offline_grouping_only": 12,
+      "wind_group_for_offline_grouping_only": "W12-W14",
+      "target_peak_f1_hz": 3.7000000000004074,
+      "target_peak_f2_hz": 4.800000000000528,
+      "source_parent_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_full72_v1\\runs\\DL1018_DEV_T1_C11_W12\\raw_run.mat",
+      "source_parent_raw_sha256": "3d342df86a16c2a8694b81d2a41c0f7faea39c6e09230fec7345179b25687f0a",
+      "parent_c5_action_npz_event_max_abs_difference_mps2": 2.9707604154438627e-08,
+      "logged_final_compensation_max_abs_difference_mps2": 1.1102230246251565e-16,
+      "transitions": 20000,
+      "event_count": 1999,
+      "derived_mass_kg_from_logged_nominal_force_over_acceleration": 0.695,
+      "baseline_force_chain_max_abs_residual_N": 0.0,
+      "baseline_target_reconstruction_max_abs_error_rad": 5.551115123125783e-17,
+      "action_limit_clip_count": 0,
+      "low_frequency_0p05_0p5_hz": {
+        "action_rms_before_mps2": 0.1701545575910948,
+        "action_rms_after_mps2": 0.17040611677742543,
+        "action_rms_delta_percent": 0.14784157996823208,
+        "action_delta_rms_percent_of_before": 4.9971884010750465,
+        "command_target_euler_rms_before_mrad": 77.40100353006794,
+        "command_target_euler_rms_after_mrad": 77.17781111368501,
+        "command_target_euler_rms_delta_percent": -0.2883585563541635,
+        "command_target_euler_delta_rms_percent_of_before": 1.0406199379376253,
+        "command_target_roll_pitch_rms_before_mrad": 77.40100353006794,
+        "command_target_roll_pitch_rms_after_mrad": 77.17781111368501
+      },
+      "wind_tone_target_bands": [
+        {
+          "label": "f1",
+          "center_hz": 3.7000000000004074,
+          "band_hz": [
+            3.6000000000004073,
+            3.8000000000004075
+          ],
+          "command_target_euler_vector_rms_before_mrad": 19.51005907415017,
+          "command_target_euler_vector_rms_after_mrad": 3.5684738927780084,
+          "command_target_euler_reduction_percent": 81.7095690012233,
+          "command_target_roll_pitch_vector_rms_before_mrad": 19.51005907415017,
+          "command_target_roll_pitch_vector_rms_after_mrad": 3.5684738927780084,
+          "command_target_roll_pitch_reduction_percent": 81.7095690012233,
+          "applied_action_vector_rms_before_mps2": 0.1669327625634993,
+          "applied_action_vector_rms_after_mps2": 0.0014695388169816376,
+          "applied_action_reduction_percent": 99.11968220353232,
+          "static_bank_response": {
+            "frequency_hz": 3.7000000000004074,
+            "magnitude": 5.955753311914297e-13,
+            "magnitude_db": -244.50126598163806,
+            "phase_deg": 117.69919230315978,
+            "equivalent_phase_delay_ms": -88.36275698434446
+          }
+        },
+        {
+          "label": "f2",
+          "center_hz": 4.800000000000528,
+          "band_hz": [
+            4.700000000000529,
+            4.900000000000528
+          ],
+          "command_target_euler_vector_rms_before_mrad": 8.814891856870046,
+          "command_target_euler_vector_rms_after_mrad": 1.4417288848335361,
+          "command_target_euler_reduction_percent": 83.64439509589786,
+          "command_target_roll_pitch_vector_rms_before_mrad": 8.814891856870046,
+          "command_target_roll_pitch_vector_rms_after_mrad": 1.4417288848335361,
+          "command_target_roll_pitch_reduction_percent": 83.64439509589786,
+          "applied_action_vector_rms_before_mps2": 0.07607162232035199,
+          "applied_action_vector_rms_after_mps2": 0.0005609708027633914,
+          "applied_action_reduction_percent": 99.26257547078326,
+          "static_bank_response": {
+            "frequency_hz": 4.800000000000528,
+            "magnitude": 7.659077042381429e-13,
+            "magnitude_db": -242.3164712380298,
+            "phase_deg": 139.74514639600778,
+            "equivalent_phase_delay_ms": -80.87103379397709
+          }
+        }
+      ],
+      "broad_command_target_0p05_10_hz": {
+        "euler_vector_rms_before_mrad": 80.50286632173115,
+        "euler_vector_rms_after_mrad": 77.42584999678057,
+        "euler_vector_change_percent": -3.822244431214699
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T1_C15_W14",
+      "source_split": "TRAIN_C5_24",
+      "wind_code_for_offline_grouping_only": 14,
+      "wind_group_for_offline_grouping_only": "W12-W14",
+      "target_peak_f1_hz": 3.7000000000004074,
+      "target_peak_f2_hz": 4.800000000000528,
+      "source_parent_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_full72_v1\\runs\\DL1018_DEV_T1_C15_W14\\raw_run.mat",
+      "source_parent_raw_sha256": "cf7d6c742b71d997f0fde3332e998ccbfd59e5105480e296070c811550875c25",
+      "parent_c5_action_npz_event_max_abs_difference_mps2": 5.9385948159018653e-08,
+      "logged_final_compensation_max_abs_difference_mps2": 2.220446049250313e-16,
+      "transitions": 20000,
+      "event_count": 1999,
+      "derived_mass_kg_from_logged_nominal_force_over_acceleration": 0.695,
+      "baseline_force_chain_max_abs_residual_N": 0.0,
+      "baseline_target_reconstruction_max_abs_error_rad": 5.551115123125783e-17,
+      "action_limit_clip_count": 0,
+      "low_frequency_0p05_0p5_hz": {
+        "action_rms_before_mps2": 0.20445015459960492,
+        "action_rms_after_mps2": 0.20500398767469377,
+        "action_rms_delta_percent": 0.2708890468552014,
+        "action_delta_rms_percent_of_before": 3.730690788416963,
+        "command_target_euler_rms_before_mrad": 78.22602351965595,
+        "command_target_euler_rms_after_mrad": 78.4890566706635,
+        "command_target_euler_rms_delta_percent": 0.3362476311242599,
+        "command_target_euler_delta_rms_percent_of_before": 1.071179416960341,
+        "command_target_roll_pitch_rms_before_mrad": 78.22602351965595,
+        "command_target_roll_pitch_rms_after_mrad": 78.4890566706635
+      },
+      "wind_tone_target_bands": [
+        {
+          "label": "f1",
+          "center_hz": 3.7000000000004074,
+          "band_hz": [
+            3.6000000000004073,
+            3.8000000000004075
+          ],
+          "command_target_euler_vector_rms_before_mrad": 60.18975182991517,
+          "command_target_euler_vector_rms_after_mrad": 12.021316914944338,
+          "command_target_euler_reduction_percent": 80.02763502179856,
+          "command_target_roll_pitch_vector_rms_before_mrad": 60.18975182991517,
+          "command_target_roll_pitch_vector_rms_after_mrad": 12.021316914944338,
+          "command_target_roll_pitch_reduction_percent": 80.02763502179856,
+          "applied_action_vector_rms_before_mps2": 0.5152934386400124,
+          "applied_action_vector_rms_after_mps2": 0.007555616140701098,
+          "applied_action_reduction_percent": 98.53372552915825,
+          "static_bank_response": {
+            "frequency_hz": 3.7000000000004074,
+            "magnitude": 5.955753311914297e-13,
+            "magnitude_db": -244.50126598163806,
+            "phase_deg": 117.69919230315978,
+            "equivalent_phase_delay_ms": -88.36275698434446
+          }
+        },
+        {
+          "label": "f2",
+          "center_hz": 4.800000000000528,
+          "band_hz": [
+            4.700000000000529,
+            4.900000000000528
+          ],
+          "command_target_euler_vector_rms_before_mrad": 33.52893113337947,
+          "command_target_euler_vector_rms_after_mrad": 5.868690487412516,
+          "command_target_euler_reduction_percent": 82.49663711596823,
+          "command_target_roll_pitch_vector_rms_before_mrad": 33.52893113337947,
+          "command_target_roll_pitch_vector_rms_after_mrad": 5.868690487412516,
+          "command_target_roll_pitch_reduction_percent": 82.49663711596823,
+          "applied_action_vector_rms_before_mps2": 0.29068488196802633,
+          "applied_action_vector_rms_after_mps2": 0.003880214656277233,
+          "applied_action_reduction_percent": 98.66514741667783,
+          "static_bank_response": {
+            "frequency_hz": 4.800000000000528,
+            "magnitude": 7.659077042381429e-13,
+            "magnitude_db": -242.3164712380298,
+            "phase_deg": 139.74514639600778,
+            "equivalent_phase_delay_ms": -80.87103379397709
+          }
+        }
+      ],
+      "broad_command_target_0p05_10_hz": {
+        "euler_vector_rms_before_mrad": 105.74993905476963,
+        "euler_vector_rms_after_mrad": 81.08206400410477,
+        "euler_vector_change_percent": -23.32660923604784
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C00_W04",
+      "source_split": "TRAIN_C5_24",
+      "wind_code_for_offline_grouping_only": 4,
+      "wind_group_for_offline_grouping_only": "W03-W05",
+      "target_peak_f1_hz": 0.600000000000066,
+      "target_peak_f2_hz": 0.8500000000000936,
+      "source_parent_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_full72_v1\\runs\\DL1018_DEV_T2_C00_W04\\raw_run.mat",
+      "source_parent_raw_sha256": "96f3496fe2879d349f071cf28d6d1892ea27ba09558de507e6486d44e6422ad7",
+      "parent_c5_action_npz_event_max_abs_difference_mps2": 2.9766106579565133e-08,
+      "logged_final_compensation_max_abs_difference_mps2": 1.1102230246251565e-16,
+      "transitions": 20000,
+      "event_count": 1999,
+      "derived_mass_kg_from_logged_nominal_force_over_acceleration": 0.695,
+      "baseline_force_chain_max_abs_residual_N": 0.0,
+      "baseline_target_reconstruction_max_abs_error_rad": 5.551115123125783e-17,
+      "action_limit_clip_count": 0,
+      "low_frequency_0p05_0p5_hz": {
+        "action_rms_before_mps2": 0.06128210903245378,
+        "action_rms_after_mps2": 0.06122433399223544,
+        "action_rms_delta_percent": -0.09427717343693584,
+        "action_delta_rms_percent_of_before": 7.621395739053653,
+        "command_target_euler_rms_before_mrad": 85.31655519562351,
+        "command_target_euler_rms_after_mrad": 85.41807292570053,
+        "command_target_euler_rms_delta_percent": 0.11898948550401575,
+        "command_target_euler_delta_rms_percent_of_before": 0.38630099266991785,
+        "command_target_roll_pitch_rms_before_mrad": 85.31655519562351,
+        "command_target_roll_pitch_rms_after_mrad": 85.41807292570053
+      },
+      "wind_tone_target_bands": [
+        {
+          "label": "f1",
+          "center_hz": 0.600000000000066,
+          "band_hz": [
+            0.5000000000000661,
+            0.700000000000066
+          ],
+          "command_target_euler_vector_rms_before_mrad": 28.084756447440807,
+          "command_target_euler_vector_rms_after_mrad": 27.24056206169526,
+          "command_target_euler_reduction_percent": 3.0058810989705855,
+          "command_target_roll_pitch_vector_rms_before_mrad": 28.084756447440807,
+          "command_target_roll_pitch_vector_rms_after_mrad": 27.24056206169526,
+          "command_target_roll_pitch_reduction_percent": 3.0058810989705855,
+          "applied_action_vector_rms_before_mps2": 0.18954302759651703,
+          "applied_action_vector_rms_after_mps2": 0.18849071832661,
+          "applied_action_reduction_percent": 0.5551822629672817,
+          "static_bank_response": {
+            "frequency_hz": 0.600000000000066,
+            "magnitude": 0.9947927139784143,
+            "magnitude_db": -0.04534808465959405,
+            "phase_deg": -11.154819362333683,
+            "equivalent_phase_delay_ms": 51.64268223302063
+          }
+        },
+        {
+          "label": "f2",
+          "center_hz": 0.8500000000000936,
+          "band_hz": [
+            0.7500000000000936,
+            0.9500000000000935
+          ],
+          "command_target_euler_vector_rms_before_mrad": 19.97218748039417,
+          "command_target_euler_vector_rms_after_mrad": 19.693709397825565,
+          "command_target_euler_reduction_percent": 1.3943294035366596,
+          "command_target_roll_pitch_vector_rms_before_mrad": 19.97218748039417,
+          "command_target_roll_pitch_vector_rms_after_mrad": 19.693709397825565,
+          "command_target_roll_pitch_reduction_percent": 1.3943294035366596,
+          "applied_action_vector_rms_before_mps2": 0.125733952844182,
+          "applied_action_vector_rms_after_mps2": 0.12441364645437952,
+          "applied_action_reduction_percent": 1.0500794415003414,
+          "static_bank_response": {
+            "frequency_hz": 0.8500000000000936,
+            "magnitude": 0.9883155169803187,
+            "magnitude_db": -0.10208771941380149,
+            "phase_deg": -16.58753608711668,
+            "equivalent_phase_delay_ms": 54.20763427161717
+          }
+        }
+      ],
+      "broad_command_target_0p05_10_hz": {
+        "euler_vector_rms_before_mrad": 92.23578425238007,
+        "euler_vector_rms_after_mrad": 91.99404948909603,
+        "euler_vector_change_percent": -0.2620834909611739
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C02_W15",
+      "source_split": "TRAIN_C5_24",
+      "wind_code_for_offline_grouping_only": 15,
+      "wind_group_for_offline_grouping_only": "W15",
+      "target_peak_f1_hz": null,
+      "target_peak_f2_hz": null,
+      "source_parent_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_full72_v1\\runs\\DL1018_DEV_T2_C02_W15\\raw_run.mat",
+      "source_parent_raw_sha256": "623391696d2bf00f9757d6553128fbc4ea58ed553bb5d9ba3b23206cbabf5633",
+      "parent_c5_action_npz_event_max_abs_difference_mps2": 1.4858332175737843e-08,
+      "logged_final_compensation_max_abs_difference_mps2": 2.7755575615628914e-17,
+      "transitions": 20000,
+      "event_count": 1999,
+      "derived_mass_kg_from_logged_nominal_force_over_acceleration": 0.695,
+      "baseline_force_chain_max_abs_residual_N": 0.0,
+      "baseline_target_reconstruction_max_abs_error_rad": 5.551115123125783e-17,
+      "action_limit_clip_count": 0,
+      "low_frequency_0p05_0p5_hz": {
+        "action_rms_before_mps2": 0.12031975897699312,
+        "action_rms_after_mps2": 0.12029594062481425,
+        "action_rms_delta_percent": -0.01979587756939622,
+        "action_delta_rms_percent_of_before": 5.46872277705201,
+        "command_target_euler_rms_before_mrad": 86.59868554798483,
+        "command_target_euler_rms_after_mrad": 87.02831810854876,
+        "command_target_euler_rms_delta_percent": 0.4961190321137911,
+        "command_target_euler_delta_rms_percent_of_before": 0.7731048489591509,
+        "command_target_roll_pitch_rms_before_mrad": 86.59868554798483,
+        "command_target_roll_pitch_rms_after_mrad": 87.02831810854876
+      },
+      "wind_tone_target_bands": [],
+      "broad_command_target_0p05_10_hz": {
+        "euler_vector_rms_before_mrad": 86.68686649720172,
+        "euler_vector_rms_after_mrad": 87.10392319817382,
+        "euler_vector_change_percent": 0.48110713632214125
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C03_W01",
+      "source_split": "TRAIN_C5_24",
+      "wind_code_for_offline_grouping_only": 1,
+      "wind_group_for_offline_grouping_only": "W00-W02",
+      "target_peak_f1_hz": 0.25000000000002753,
+      "target_peak_f2_hz": 0.4500000000000495,
+      "source_parent_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_full72_v1\\runs\\DL1018_DEV_T2_C03_W01\\raw_run.mat",
+      "source_parent_raw_sha256": "b9e8bf1b098717d5e5ed9fbce97366eb1366f52a1e980e99f650c26f5d59a353",
+      "parent_c5_action_npz_event_max_abs_difference_mps2": 2.977284929706059e-08,
+      "logged_final_compensation_max_abs_difference_mps2": 1.1102230246251565e-16,
+      "transitions": 20000,
+      "event_count": 1999,
+      "derived_mass_kg_from_logged_nominal_force_over_acceleration": 0.695,
+      "baseline_force_chain_max_abs_residual_N": 0.0,
+      "baseline_target_reconstruction_max_abs_error_rad": 5.551115123125783e-17,
+      "action_limit_clip_count": 0,
+      "low_frequency_0p05_0p5_hz": {
+        "action_rms_before_mps2": 0.28430456004097737,
+        "action_rms_after_mps2": 0.28387365285165417,
+        "action_rms_delta_percent": -0.15156534571977906,
+        "action_delta_rms_percent_of_before": 9.398127559552753,
+        "command_target_euler_rms_before_mrad": 84.02251292008182,
+        "command_target_euler_rms_after_mrad": 84.02798685438286,
+        "command_target_euler_rms_delta_percent": 0.00651484240448487,
+        "command_target_euler_delta_rms_percent_of_before": 3.289048137574847,
+        "command_target_roll_pitch_rms_before_mrad": 84.02251292008182,
+        "command_target_roll_pitch_rms_after_mrad": 84.02798685438286
+      },
+      "wind_tone_target_bands": [
+        {
+          "label": "f1",
+          "center_hz": 0.25000000000002753,
+          "band_hz": [
+            0.15000000000002753,
+            0.3500000000000275
+          ],
+          "command_target_euler_vector_rms_before_mrad": 50.10656101976134,
+          "command_target_euler_vector_rms_after_mrad": 50.42316755886113,
+          "command_target_euler_reduction_percent": -0.6318664315735506,
+          "command_target_roll_pitch_vector_rms_before_mrad": 50.10656101976134,
+          "command_target_roll_pitch_vector_rms_after_mrad": 50.42316755886113,
+          "command_target_roll_pitch_reduction_percent": -0.6318664315735506,
+          "applied_action_vector_rms_before_mps2": 0.22483348503565842,
+          "applied_action_vector_rms_after_mps2": 0.22468044209578691,
+          "applied_action_reduction_percent": 0.06806946031514549,
+          "static_bank_response": {
+            "frequency_hz": 0.25000000000002753,
+            "magnitude": 0.9991693533240519,
+            "magnitude_db": -0.00721790353448628,
+            "phase_deg": -4.477980667921273,
+            "equivalent_phase_delay_ms": 49.75534075467532
+          }
+        },
+        {
+          "label": "f2",
+          "center_hz": 0.4500000000000495,
+          "band_hz": [
+            0.3500000000000495,
+            0.5500000000000496
+          ],
+          "command_target_euler_vector_rms_before_mrad": 23.863085555308658,
+          "command_target_euler_vector_rms_after_mrad": 23.180015984302624,
+          "command_target_euler_reduction_percent": 2.8624528434214898,
+          "command_target_roll_pitch_vector_rms_before_mrad": 23.863085555308658,
+          "command_target_roll_pitch_vector_rms_after_mrad": 23.180015984302624,
+          "command_target_roll_pitch_reduction_percent": 2.8624528434214898,
+          "applied_action_vector_rms_before_mps2": 0.1496822423848227,
+          "applied_action_vector_rms_after_mps2": 0.14942742646682605,
+          "applied_action_reduction_percent": 0.17023790794203122,
+          "static_bank_response": {
+            "frequency_hz": 0.4500000000000495,
+            "magnitude": 0.997201301902054,
+            "magnitude_db": -0.02434326344332302,
+            "phase_deg": -8.200655833285937,
+            "equivalent_phase_delay_ms": 50.62133230422861
+          }
+        }
+      ],
+      "broad_command_target_0p05_10_hz": {
+        "euler_vector_rms_before_mrad": 84.84015246709707,
+        "euler_vector_rms_after_mrad": 84.80580570523361,
+        "euler_vector_change_percent": -0.04048408785779375
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C06_W07",
+      "source_split": "TRAIN_C5_24",
+      "wind_code_for_offline_grouping_only": 7,
+      "wind_group_for_offline_grouping_only": "W06-W08",
+      "target_peak_f1_hz": 1.1500000000001267,
+      "target_peak_f2_hz": 1.7500000000001927,
+      "source_parent_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_full72_v1\\runs\\DL1018_DEV_T2_C06_W07\\raw_run.mat",
+      "source_parent_raw_sha256": "c25f8d819177eedb9e45504dfe64cdd3e5a5234a44021a9de3aca64fd7882ffc",
+      "parent_c5_action_npz_event_max_abs_difference_mps2": 5.931315061324938e-08,
+      "logged_final_compensation_max_abs_difference_mps2": 2.220446049250313e-16,
+      "transitions": 20000,
+      "event_count": 1999,
+      "derived_mass_kg_from_logged_nominal_force_over_acceleration": 0.695,
+      "baseline_force_chain_max_abs_residual_N": 0.0,
+      "baseline_target_reconstruction_max_abs_error_rad": 5.551115123125783e-17,
+      "action_limit_clip_count": 0,
+      "low_frequency_0p05_0p5_hz": {
+        "action_rms_before_mps2": 0.10823407269552258,
+        "action_rms_after_mps2": 0.10791369299128854,
+        "action_rms_delta_percent": -0.2960063280029332,
+        "action_delta_rms_percent_of_before": 5.598234331004594,
+        "command_target_euler_rms_before_mrad": 85.8652598710301,
+        "command_target_euler_rms_after_mrad": 86.00156323224223,
+        "command_target_euler_rms_delta_percent": 0.15874098723610472,
+        "command_target_euler_delta_rms_percent_of_before": 0.6792383674557263,
+        "command_target_roll_pitch_rms_before_mrad": 85.8652598710301,
+        "command_target_roll_pitch_rms_after_mrad": 86.00156323224223
+      },
+      "wind_tone_target_bands": [
+        {
+          "label": "f1",
+          "center_hz": 1.1500000000001267,
+          "band_hz": [
+            1.0500000000001266,
+            1.2500000000001268
+          ],
+          "command_target_euler_vector_rms_before_mrad": 44.61796162905893,
+          "command_target_euler_vector_rms_after_mrad": 44.089433151397486,
+          "command_target_euler_reduction_percent": 1.1845643735486644,
+          "command_target_roll_pitch_vector_rms_before_mrad": 44.61796162905893,
+          "command_target_roll_pitch_vector_rms_after_mrad": 44.089433151397486,
+          "command_target_roll_pitch_reduction_percent": 1.1845643735486644,
+          "applied_action_vector_rms_before_mps2": 0.27653172736676546,
+          "applied_action_vector_rms_after_mps2": 0.26959484590844435,
+          "applied_action_reduction_percent": 2.508530042601834,
+          "static_bank_response": {
+            "frequency_hz": 1.1500000000001267,
+            "magnitude": 0.9736211114283494,
+            "magnitude_db": -0.23220035378839254,
+            "phase_deg": -24.540114818038678,
+            "equivalent_phase_delay_ms": 59.27563965709172
+          }
+        },
+        {
+          "label": "f2",
+          "center_hz": 1.7500000000001927,
+          "band_hz": [
+            1.6500000000001926,
+            1.8500000000001928
+          ],
+          "command_target_euler_vector_rms_before_mrad": 34.30194293137522,
+          "command_target_euler_vector_rms_after_mrad": 32.240069003576366,
+          "command_target_euler_reduction_percent": 6.010953758286698,
+          "command_target_roll_pitch_vector_rms_before_mrad": 34.30194293137522,
+          "command_target_roll_pitch_vector_rms_after_mrad": 32.240069003576366,
+          "command_target_roll_pitch_reduction_percent": 6.010953758286698,
+          "applied_action_vector_rms_before_mps2": 0.23934123398919613,
+          "applied_action_vector_rms_after_mps2": 0.20341542280061964,
+          "applied_action_reduction_percent": 15.010289113073673,
+          "static_bank_response": {
+            "frequency_hz": 1.7500000000001927,
+            "magnitude": 0.8493954004206951,
+            "magnitude_db": -1.4178019019272665,
+            "phase_deg": -53.92608274576911,
+            "equivalent_phase_delay_ms": 85.59695673930662
+          }
+        }
+      ],
+      "broad_command_target_0p05_10_hz": {
+        "euler_vector_rms_before_mrad": 103.9471674158304,
+        "euler_vector_rms_after_mrad": 102.67573048509641,
+        "euler_vector_change_percent": -1.2231568808871265
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C08_W08",
+      "source_split": "TRAIN_C5_24",
+      "wind_code_for_offline_grouping_only": 8,
+      "wind_group_for_offline_grouping_only": "W06-W08",
+      "target_peak_f1_hz": 1.1500000000001267,
+      "target_peak_f2_hz": 1.7500000000001927,
+      "source_parent_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_full72_v1\\runs\\DL1018_DEV_T2_C08_W08\\raw_run.mat",
+      "source_parent_raw_sha256": "b00b8cd2d6d595558d6d5e72aa07328fa04b6e26b8422a45e5ab20ce5d2911d6",
+      "parent_c5_action_npz_event_max_abs_difference_mps2": 5.950609427429754e-08,
+      "logged_final_compensation_max_abs_difference_mps2": 1.1102230246251565e-16,
+      "transitions": 20000,
+      "event_count": 1999,
+      "derived_mass_kg_from_logged_nominal_force_over_acceleration": 0.695,
+      "baseline_force_chain_max_abs_residual_N": 0.0,
+      "baseline_target_reconstruction_max_abs_error_rad": 1.1102230246251565e-16,
+      "action_limit_clip_count": 0,
+      "low_frequency_0p05_0p5_hz": {
+        "action_rms_before_mps2": 0.1279104629892955,
+        "action_rms_after_mps2": 0.1275891092008893,
+        "action_rms_delta_percent": -0.25123338693027103,
+        "action_delta_rms_percent_of_before": 6.13797201053158,
+        "command_target_euler_rms_before_mrad": 91.63334548162236,
+        "command_target_euler_rms_after_mrad": 91.65326149822617,
+        "command_target_euler_rms_delta_percent": 0.0217344641288958,
+        "command_target_euler_delta_rms_percent_of_before": 0.881952967845147,
+        "command_target_roll_pitch_rms_before_mrad": 91.63334548162236,
+        "command_target_roll_pitch_rms_after_mrad": 91.65326149822617
+      },
+      "wind_tone_target_bands": [
+        {
+          "label": "f1",
+          "center_hz": 1.1500000000001267,
+          "band_hz": [
+            1.0500000000001266,
+            1.2500000000001268
+          ],
+          "command_target_euler_vector_rms_before_mrad": 48.238454179926435,
+          "command_target_euler_vector_rms_after_mrad": 48.01619534818884,
+          "command_target_euler_reduction_percent": 0.4607503194621179,
+          "command_target_roll_pitch_vector_rms_before_mrad": 48.238454179926435,
+          "command_target_roll_pitch_vector_rms_after_mrad": 48.01619534818884,
+          "command_target_roll_pitch_reduction_percent": 0.4607503194621179,
+          "applied_action_vector_rms_before_mps2": 0.2800779873181675,
+          "applied_action_vector_rms_after_mps2": 0.2731166070940352,
+          "applied_action_reduction_percent": 2.485514942030856,
+          "static_bank_response": {
+            "frequency_hz": 1.1500000000001267,
+            "magnitude": 0.9736211114283494,
+            "magnitude_db": -0.23220035378839254,
+            "phase_deg": -24.540114818038678,
+            "equivalent_phase_delay_ms": 59.27563965709172
+          }
+        },
+        {
+          "label": "f2",
+          "center_hz": 1.7500000000001927,
+          "band_hz": [
+            1.6500000000001926,
+            1.8500000000001928
+          ],
+          "command_target_euler_vector_rms_before_mrad": 42.11405278380497,
+          "command_target_euler_vector_rms_after_mrad": 38.70427988196569,
+          "command_target_euler_reduction_percent": 8.096520463949544,
+          "command_target_roll_pitch_vector_rms_before_mrad": 42.11405278380497,
+          "command_target_roll_pitch_vector_rms_after_mrad": 38.70427988196569,
+          "command_target_roll_pitch_reduction_percent": 8.096520463949544,
+          "applied_action_vector_rms_before_mps2": 0.284189981377943,
+          "applied_action_vector_rms_after_mps2": 0.24190391461937533,
+          "applied_action_reduction_percent": 14.879506502494051,
+          "static_bank_response": {
+            "frequency_hz": 1.7500000000001927,
+            "magnitude": 0.8493954004206951,
+            "magnitude_db": -1.4178019019272665,
+            "phase_deg": -53.92608274576911,
+            "equivalent_phase_delay_ms": 85.59695673930662
+          }
+        }
+      ],
+      "broad_command_target_0p05_10_hz": {
+        "euler_vector_rms_before_mrad": 114.19738137911324,
+        "euler_vector_rms_after_mrad": 111.90225501977456,
+        "euler_vector_change_percent": -2.0097889562977826
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C09_W10",
+      "source_split": "TRAIN_C5_24",
+      "wind_code_for_offline_grouping_only": 10,
+      "wind_group_for_offline_grouping_only": "W09-W11",
+      "target_peak_f1_hz": 2.200000000000242,
+      "target_peak_f2_hz": 3.2000000000003523,
+      "source_parent_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_full72_v1\\runs\\DL1018_DEV_T2_C09_W10\\raw_run.mat",
+      "source_parent_raw_sha256": "518567b25d19d8e8acd6a74c33eb7c5ed6b78c507d6f022a0cd12ba6bf126e98",
+      "parent_c5_action_npz_event_max_abs_difference_mps2": 7.226722642528216e-08,
+      "logged_final_compensation_max_abs_difference_mps2": 2.220446049250313e-16,
+      "transitions": 20000,
+      "event_count": 1999,
+      "derived_mass_kg_from_logged_nominal_force_over_acceleration": 0.695,
+      "baseline_force_chain_max_abs_residual_N": 0.0,
+      "baseline_target_reconstruction_max_abs_error_rad": 1.1102230246251565e-16,
+      "action_limit_clip_count": 0,
+      "low_frequency_0p05_0p5_hz": {
+        "action_rms_before_mps2": 0.09407968095925605,
+        "action_rms_after_mps2": 0.09468309026257826,
+        "action_rms_delta_percent": 0.6413811113831666,
+        "action_delta_rms_percent_of_before": 4.720048489898391,
+        "command_target_euler_rms_before_mrad": 92.05919432197882,
+        "command_target_euler_rms_after_mrad": 92.43603156916527,
+        "command_target_euler_rms_delta_percent": 0.40934232583924335,
+        "command_target_euler_delta_rms_percent_of_before": 0.6080759112436324,
+        "command_target_roll_pitch_rms_before_mrad": 92.05919432197882,
+        "command_target_roll_pitch_rms_after_mrad": 92.43603156916527
+      },
+      "wind_tone_target_bands": [
+        {
+          "label": "f1",
+          "center_hz": 2.200000000000242,
+          "band_hz": [
+            2.100000000000242,
+            2.3000000000002423
+          ],
+          "command_target_euler_vector_rms_before_mrad": 57.7215468850585,
+          "command_target_euler_vector_rms_after_mrad": 17.592588984558542,
+          "command_target_euler_reduction_percent": 69.52162591970924,
+          "command_target_roll_pitch_vector_rms_before_mrad": 57.7215468850585,
+          "command_target_roll_pitch_vector_rms_after_mrad": 17.592588984558542,
+          "command_target_roll_pitch_reduction_percent": 69.52162591970924,
+          "applied_action_vector_rms_before_mps2": 0.43558860411005096,
+          "applied_action_vector_rms_after_mps2": 0.010275081456404827,
+          "applied_action_reduction_percent": 97.64110416125375,
+          "static_bank_response": {
+            "frequency_hz": 2.200000000000242,
+            "magnitude": 8.385391834720489e-13,
+            "magnitude_db": -241.52953277521647,
+            "phase_deg": 50.6636112928988,
+            "equivalent_phase_delay_ms": -63.96920617789548
+          }
+        },
+        {
+          "label": "f2",
+          "center_hz": 3.2000000000003523,
+          "band_hz": [
+            3.1000000000003523,
+            3.3000000000003524
+          ],
+          "command_target_euler_vector_rms_before_mrad": 44.50340761234449,
+          "command_target_euler_vector_rms_after_mrad": 9.48617625257676,
+          "command_target_euler_reduction_percent": 78.68438224953934,
+          "command_target_roll_pitch_vector_rms_before_mrad": 44.50340761234449,
+          "command_target_roll_pitch_vector_rms_after_mrad": 9.48617625257676,
+          "command_target_roll_pitch_reduction_percent": 78.68438224953934,
+          "applied_action_vector_rms_before_mps2": 0.3570211252223004,
+          "applied_action_vector_rms_after_mps2": 0.0043631727639346736,
+          "applied_action_reduction_percent": 98.7778950723944,
+          "static_bank_response": {
+            "frequency_hz": 3.2000000000003523,
+            "magnitude": 6.146941097542114e-13,
+            "magnitude_db": -244.22681896886638,
+            "phase_deg": 51.02885759181529,
+            "equivalent_phase_delay_ms": -44.29588332622367
+          }
+        }
+      ],
+      "broad_command_target_0p05_10_hz": {
+        "euler_vector_rms_before_mrad": 118.40541804005153,
+        "euler_vector_rms_after_mrad": 95.14099616984917,
+        "euler_vector_change_percent": -19.648105851315854
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C12_W13",
+      "source_split": "TRAIN_C5_24",
+      "wind_code_for_offline_grouping_only": 13,
+      "wind_group_for_offline_grouping_only": "W12-W14",
+      "target_peak_f1_hz": 3.7000000000004074,
+      "target_peak_f2_hz": 4.800000000000528,
+      "source_parent_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_full72_v1\\runs\\DL1018_DEV_T2_C12_W13\\raw_run.mat",
+      "source_parent_raw_sha256": "f20c5af809af3b9e882ba3aa2de44f78ae2fb98df8648663b3e39b043ff0ccc5",
+      "parent_c5_action_npz_event_max_abs_difference_mps2": 5.9425487197728444e-08,
+      "logged_final_compensation_max_abs_difference_mps2": 2.220446049250313e-16,
+      "transitions": 20000,
+      "event_count": 1999,
+      "derived_mass_kg_from_logged_nominal_force_over_acceleration": 0.695,
+      "baseline_force_chain_max_abs_residual_N": 0.0,
+      "baseline_target_reconstruction_max_abs_error_rad": 5.551115123125783e-17,
+      "action_limit_clip_count": 0,
+      "low_frequency_0p05_0p5_hz": {
+        "action_rms_before_mps2": 0.1429659961360544,
+        "action_rms_after_mps2": 0.14308588851504175,
+        "action_rms_delta_percent": 0.0838607656559505,
+        "action_delta_rms_percent_of_before": 5.384090051665288,
+        "command_target_euler_rms_before_mrad": 83.76629659260702,
+        "command_target_euler_rms_after_mrad": 84.10554968829726,
+        "command_target_euler_rms_delta_percent": 0.40499951590336003,
+        "command_target_euler_delta_rms_percent_of_before": 0.9974569339499428,
+        "command_target_roll_pitch_rms_before_mrad": 83.76629659260702,
+        "command_target_roll_pitch_rms_after_mrad": 84.10554968829726
+      },
+      "wind_tone_target_bands": [
+        {
+          "label": "f1",
+          "center_hz": 3.7000000000004074,
+          "band_hz": [
+            3.6000000000004073,
+            3.8000000000004075
+          ],
+          "command_target_euler_vector_rms_before_mrad": 61.86484547059743,
+          "command_target_euler_vector_rms_after_mrad": 12.824112475441694,
+          "command_target_euler_reduction_percent": 79.27075970546694,
+          "command_target_roll_pitch_vector_rms_before_mrad": 61.86484547059743,
+          "command_target_roll_pitch_vector_rms_after_mrad": 12.824112475441694,
+          "command_target_roll_pitch_reduction_percent": 79.27075970546694,
+          "applied_action_vector_rms_before_mps2": 0.504905109866873,
+          "applied_action_vector_rms_after_mps2": 0.00357462521185639,
+          "applied_action_reduction_percent": 99.29202039313904,
+          "static_bank_response": {
+            "frequency_hz": 3.7000000000004074,
+            "magnitude": 5.955753311914297e-13,
+            "magnitude_db": -244.50126598163806,
+            "phase_deg": 117.69919230315978,
+            "equivalent_phase_delay_ms": -88.36275698434446
+          }
+        },
+        {
+          "label": "f2",
+          "center_hz": 4.800000000000528,
+          "band_hz": [
+            4.700000000000529,
+            4.900000000000528
+          ],
+          "command_target_euler_vector_rms_before_mrad": 30.888896700504777,
+          "command_target_euler_vector_rms_after_mrad": 5.678084669418645,
+          "command_target_euler_reduction_percent": 81.6177161506521,
+          "command_target_roll_pitch_vector_rms_before_mrad": 30.888896700504777,
+          "command_target_roll_pitch_vector_rms_after_mrad": 5.678084669418645,
+          "command_target_roll_pitch_reduction_percent": 81.6177161506521,
+          "applied_action_vector_rms_before_mps2": 0.25423409955640325,
+          "applied_action_vector_rms_after_mps2": 0.0015986821709146207,
+          "applied_action_reduction_percent": 99.37117712623757,
+          "static_bank_response": {
+            "frequency_hz": 4.800000000000528,
+            "magnitude": 7.659077042381429e-13,
+            "magnitude_db": -242.3164712380298,
+            "phase_deg": 139.74514639600778,
+            "equivalent_phase_delay_ms": -80.87103379397709
+          }
+        }
+      ],
+      "broad_command_target_0p05_10_hz": {
+        "euler_vector_rms_before_mrad": 109.34106846455745,
+        "euler_vector_rms_after_mrad": 85.80551522862729,
+        "euler_vector_change_percent": -21.52489779589006
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C14_W14",
+      "source_split": "TRAIN_C5_24",
+      "wind_code_for_offline_grouping_only": 14,
+      "wind_group_for_offline_grouping_only": "W12-W14",
+      "target_peak_f1_hz": 3.7000000000004074,
+      "target_peak_f2_hz": 4.800000000000528,
+      "source_parent_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_full72_v1\\runs\\DL1018_DEV_T2_C14_W14\\raw_run.mat",
+      "source_parent_raw_sha256": "57763ef41b91888810d32a558ae91cf44217cfce2082839f62a4460b6c67d06c",
+      "parent_c5_action_npz_event_max_abs_difference_mps2": 5.950315218328228e-08,
+      "logged_final_compensation_max_abs_difference_mps2": 2.220446049250313e-16,
+      "transitions": 20000,
+      "event_count": 1999,
+      "derived_mass_kg_from_logged_nominal_force_over_acceleration": 0.695,
+      "baseline_force_chain_max_abs_residual_N": 0.0,
+      "baseline_target_reconstruction_max_abs_error_rad": 1.1102230246251565e-16,
+      "action_limit_clip_count": 0,
+      "low_frequency_0p05_0p5_hz": {
+        "action_rms_before_mps2": 0.11932269444331572,
+        "action_rms_after_mps2": 0.11922471478799974,
+        "action_rms_delta_percent": -0.08211317702226824,
+        "action_delta_rms_percent_of_before": 6.263842542223618,
+        "command_target_euler_rms_before_mrad": 90.00874056840735,
+        "command_target_euler_rms_after_mrad": 90.29978010122653,
+        "command_target_euler_rms_delta_percent": 0.3233458561704817,
+        "command_target_euler_delta_rms_percent_of_before": 0.9104009810297741,
+        "command_target_roll_pitch_rms_before_mrad": 90.00874056840735,
+        "command_target_roll_pitch_rms_after_mrad": 90.29978010122653
+      },
+      "wind_tone_target_bands": [
+        {
+          "label": "f1",
+          "center_hz": 3.7000000000004074,
+          "band_hz": [
+            3.6000000000004073,
+            3.8000000000004075
+          ],
+          "command_target_euler_vector_rms_before_mrad": 61.42026742890939,
+          "command_target_euler_vector_rms_after_mrad": 12.291786985485258,
+          "command_target_euler_reduction_percent": 79.9874088797931,
+          "command_target_roll_pitch_vector_rms_before_mrad": 61.42026742890939,
+          "command_target_roll_pitch_vector_rms_after_mrad": 12.291786985485258,
+          "command_target_roll_pitch_reduction_percent": 79.9874088797931,
+          "applied_action_vector_rms_before_mps2": 0.5021223201445527,
+          "applied_action_vector_rms_after_mps2": 0.004143828634257957,
+          "applied_action_reduction_percent": 99.17473721680705,
+          "static_bank_response": {
+            "frequency_hz": 3.7000000000004074,
+            "magnitude": 5.955753311914297e-13,
+            "magnitude_db": -244.50126598163806,
+            "phase_deg": 117.69919230315978,
+            "equivalent_phase_delay_ms": -88.36275698434446
+          }
+        },
+        {
+          "label": "f2",
+          "center_hz": 4.800000000000528,
+          "band_hz": [
+            4.700000000000529,
+            4.900000000000528
+          ],
+          "command_target_euler_vector_rms_before_mrad": 31.888413968812735,
+          "command_target_euler_vector_rms_after_mrad": 5.872854052718889,
+          "command_target_euler_reduction_percent": 81.58311022159141,
+          "command_target_roll_pitch_vector_rms_before_mrad": 31.888413968812735,
+          "command_target_roll_pitch_vector_rms_after_mrad": 5.872854052718889,
+          "command_target_roll_pitch_reduction_percent": 81.58311022159141,
+          "applied_action_vector_rms_before_mps2": 0.2613683658695487,
+          "applied_action_vector_rms_after_mps2": 0.0019422529964924738,
+          "applied_action_reduction_percent": 99.25689056132299,
+          "static_bank_response": {
+            "frequency_hz": 4.800000000000528,
+            "magnitude": 7.659077042381429e-13,
+            "magnitude_db": -242.3164712380298,
+            "phase_deg": 139.74514639600778,
+            "equivalent_phase_delay_ms": -80.87103379397709
+          }
+        }
+      ],
+      "broad_command_target_0p05_10_hz": {
+        "euler_vector_rms_before_mrad": 114.7130628071236,
+        "euler_vector_rms_after_mrad": 92.39387058965201,
+        "euler_vector_change_percent": -19.456539361169938
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C00_W05",
+      "source_split": "TRAIN_C5_24",
+      "wind_code_for_offline_grouping_only": 5,
+      "wind_group_for_offline_grouping_only": "W03-W05",
+      "target_peak_f1_hz": 0.600000000000066,
+      "target_peak_f2_hz": 0.8500000000000936,
+      "source_parent_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_full72_v1\\runs\\DL1018_DEV_T3_C00_W05\\raw_run.mat",
+      "source_parent_raw_sha256": "ab47af19dd5567e0fea4231472d1ee848474e44726ee095c647b19545a8212d1",
+      "parent_c5_action_npz_event_max_abs_difference_mps2": 5.8192113794319766e-08,
+      "logged_final_compensation_max_abs_difference_mps2": 1.1102230246251565e-16,
+      "transitions": 20000,
+      "event_count": 1999,
+      "derived_mass_kg_from_logged_nominal_force_over_acceleration": 0.695,
+      "baseline_force_chain_max_abs_residual_N": 0.0,
+      "baseline_target_reconstruction_max_abs_error_rad": 5.551115123125783e-17,
+      "action_limit_clip_count": 0,
+      "low_frequency_0p05_0p5_hz": {
+        "action_rms_before_mps2": 0.10154535086738968,
+        "action_rms_after_mps2": 0.10149599624460644,
+        "action_rms_delta_percent": -0.048603527745643804,
+        "action_delta_rms_percent_of_before": 8.561471508088557,
+        "command_target_euler_rms_before_mrad": 33.75407129367714,
+        "command_target_euler_rms_after_mrad": 33.99614937588347,
+        "command_target_euler_rms_delta_percent": 0.7171818774100629,
+        "command_target_euler_delta_rms_percent_of_before": 1.8387972220208568,
+        "command_target_roll_pitch_rms_before_mrad": 33.75407129367714,
+        "command_target_roll_pitch_rms_after_mrad": 33.99614937588347
+      },
+      "wind_tone_target_bands": [
+        {
+          "label": "f1",
+          "center_hz": 0.600000000000066,
+          "band_hz": [
+            0.5000000000000661,
+            0.700000000000066
+          ],
+          "command_target_euler_vector_rms_before_mrad": 35.91689404445787,
+          "command_target_euler_vector_rms_after_mrad": 34.99062575491835,
+          "command_target_euler_reduction_percent": 2.5789209066713616,
+          "command_target_roll_pitch_vector_rms_before_mrad": 35.91689404445787,
+          "command_target_roll_pitch_vector_rms_after_mrad": 34.99062575491835,
+          "command_target_roll_pitch_reduction_percent": 2.5789209066713616,
+          "applied_action_vector_rms_before_mps2": 0.2558951443673772,
+          "applied_action_vector_rms_after_mps2": 0.254487319958501,
+          "applied_action_reduction_percent": 0.5501567496939536,
+          "static_bank_response": {
+            "frequency_hz": 0.600000000000066,
+            "magnitude": 0.9947927139784143,
+            "magnitude_db": -0.04534808465959405,
+            "phase_deg": -11.154819362333683,
+            "equivalent_phase_delay_ms": 51.64268223302063
+          }
+        },
+        {
+          "label": "f2",
+          "center_hz": 0.8500000000000936,
+          "band_hz": [
+            0.7500000000000936,
+            0.9500000000000935
+          ],
+          "command_target_euler_vector_rms_before_mrad": 27.74842238759511,
+          "command_target_euler_vector_rms_after_mrad": 27.347165763560653,
+          "command_target_euler_reduction_percent": 1.4460520256958458,
+          "command_target_roll_pitch_vector_rms_before_mrad": 27.74842238759511,
+          "command_target_roll_pitch_vector_rms_after_mrad": 27.347165763560653,
+          "command_target_roll_pitch_reduction_percent": 1.4460520256958458,
+          "applied_action_vector_rms_before_mps2": 0.19396488774596793,
+          "applied_action_vector_rms_after_mps2": 0.19142545349878978,
+          "applied_action_reduction_percent": 1.3092236830533959,
+          "static_bank_response": {
+            "frequency_hz": 0.8500000000000936,
+            "magnitude": 0.9883155169803187,
+            "magnitude_db": -0.10208771941380149,
+            "phase_deg": -16.58753608711668,
+            "equivalent_phase_delay_ms": 54.20763427161717
+          }
+        }
+      ],
+      "broad_command_target_0p05_10_hz": {
+        "euler_vector_rms_before_mrad": 57.88009769325681,
+        "euler_vector_rms_after_mrad": 57.123223271022056,
+        "euler_vector_change_percent": -1.3076591996197162
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C03_W15",
+      "source_split": "TRAIN_C5_24",
+      "wind_code_for_offline_grouping_only": 15,
+      "wind_group_for_offline_grouping_only": "W15",
+      "target_peak_f1_hz": null,
+      "target_peak_f2_hz": null,
+      "source_parent_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_full72_v1\\runs\\DL1018_DEV_T3_C03_W15\\raw_run.mat",
+      "source_parent_raw_sha256": "87083b98a2c9c78b45630be9eecd46870ff4523c6f1938a29768ff1759b25bed",
+      "parent_c5_action_npz_event_max_abs_difference_mps2": 7.450050992785506e-09,
+      "logged_final_compensation_max_abs_difference_mps2": 2.7755575615628914e-17,
+      "transitions": 20000,
+      "event_count": 1999,
+      "derived_mass_kg_from_logged_nominal_force_over_acceleration": 0.695,
+      "baseline_force_chain_max_abs_residual_N": 0.0,
+      "baseline_target_reconstruction_max_abs_error_rad": 1.3877787807814457e-17,
+      "action_limit_clip_count": 0,
+      "low_frequency_0p05_0p5_hz": {
+        "action_rms_before_mps2": 0.09074387921612648,
+        "action_rms_after_mps2": 0.09082889519281882,
+        "action_rms_delta_percent": 0.09368783594743797,
+        "action_delta_rms_percent_of_before": 6.372509111448312,
+        "command_target_euler_rms_before_mrad": 34.88668940560765,
+        "command_target_euler_rms_after_mrad": 35.118503443468384,
+        "command_target_euler_rms_delta_percent": 0.6644770306679506,
+        "command_target_euler_delta_rms_percent_of_before": 1.688602034449999,
+        "command_target_roll_pitch_rms_before_mrad": 34.88668940560765,
+        "command_target_roll_pitch_rms_after_mrad": 35.118503443468384
+      },
+      "wind_tone_target_bands": [],
+      "broad_command_target_0p05_10_hz": {
+        "euler_vector_rms_before_mrad": 35.64371334184218,
+        "euler_vector_rms_after_mrad": 35.85437807329111,
+        "euler_vector_change_percent": 0.5910291372521758
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C05_W02",
+      "source_split": "TRAIN_C5_24",
+      "wind_code_for_offline_grouping_only": 2,
+      "wind_group_for_offline_grouping_only": "W00-W02",
+      "target_peak_f1_hz": 0.25000000000002753,
+      "target_peak_f2_hz": 0.4500000000000495,
+      "source_parent_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_full72_v1\\runs\\DL1018_DEV_T3_C05_W02\\raw_run.mat",
+      "source_parent_raw_sha256": "4ab2a80d425306e8433eaad0d992494a1a99eb7c5a3c1d9df62f543313d1b468",
+      "parent_c5_action_npz_event_max_abs_difference_mps2": 5.956432147513624e-08,
+      "logged_final_compensation_max_abs_difference_mps2": 1.1102230246251565e-16,
+      "transitions": 20000,
+      "event_count": 1999,
+      "derived_mass_kg_from_logged_nominal_force_over_acceleration": 0.695,
+      "baseline_force_chain_max_abs_residual_N": 0.0,
+      "baseline_target_reconstruction_max_abs_error_rad": 5.551115123125783e-17,
+      "action_limit_clip_count": 0,
+      "low_frequency_0p05_0p5_hz": {
+        "action_rms_before_mps2": 0.43248932466184703,
+        "action_rms_after_mps2": 0.43248772329955076,
+        "action_rms_delta_percent": -0.00037026631756017353,
+        "action_delta_rms_percent_of_before": 8.863499867451615,
+        "command_target_euler_rms_before_mrad": 62.93134920881654,
+        "command_target_euler_rms_after_mrad": 61.69437679062926,
+        "command_target_euler_rms_delta_percent": -1.9655901768176014,
+        "command_target_euler_delta_rms_percent_of_before": 5.1101199398295725,
+        "command_target_roll_pitch_rms_before_mrad": 62.93134920881654,
+        "command_target_roll_pitch_rms_after_mrad": 61.69437679062926
+      },
+      "wind_tone_target_bands": [
+        {
+          "label": "f1",
+          "center_hz": 0.25000000000002753,
+          "band_hz": [
+            0.15000000000002753,
+            0.3500000000000275
+          ],
+          "command_target_euler_vector_rms_before_mrad": 42.57079925032103,
+          "command_target_euler_vector_rms_after_mrad": 41.5012171402923,
+          "command_target_euler_reduction_percent": 2.5124783392941885,
+          "command_target_roll_pitch_vector_rms_before_mrad": 42.57079925032103,
+          "command_target_roll_pitch_vector_rms_after_mrad": 41.5012171402923,
+          "command_target_roll_pitch_reduction_percent": 2.5124783392941885,
+          "applied_action_vector_rms_before_mps2": 0.3015648274570308,
+          "applied_action_vector_rms_after_mps2": 0.3012171490263074,
+          "applied_action_reduction_percent": 0.11529143954060878,
+          "static_bank_response": {
+            "frequency_hz": 0.25000000000002753,
+            "magnitude": 0.9991693533240519,
+            "magnitude_db": -0.00721790353448628,
+            "phase_deg": -4.477980667921273,
+            "equivalent_phase_delay_ms": 49.75534075467532
+          }
+        },
+        {
+          "label": "f2",
+          "center_hz": 0.4500000000000495,
+          "band_hz": [
+            0.3500000000000495,
+            0.5500000000000496
+          ],
+          "command_target_euler_vector_rms_before_mrad": 32.37226826038868,
+          "command_target_euler_vector_rms_after_mrad": 31.266708790133137,
+          "command_target_euler_reduction_percent": 3.4151436697697375,
+          "command_target_roll_pitch_vector_rms_before_mrad": 32.37226826038868,
+          "command_target_roll_pitch_vector_rms_after_mrad": 31.266708790133137,
+          "command_target_roll_pitch_reduction_percent": 3.4151436697697375,
+          "applied_action_vector_rms_before_mps2": 0.22407429163748452,
+          "applied_action_vector_rms_after_mps2": 0.22375740811003852,
+          "applied_action_reduction_percent": 0.14141895758334436,
+          "static_bank_response": {
+            "frequency_hz": 0.4500000000000495,
+            "magnitude": 0.997201301902054,
+            "magnitude_db": -0.02434326344332302,
+            "phase_deg": -8.200655833285937,
+            "equivalent_phase_delay_ms": 50.62133230422861
+          }
+        }
+      ],
+      "broad_command_target_0p05_10_hz": {
+        "euler_vector_rms_before_mrad": 65.0750514061697,
+        "euler_vector_rms_after_mrad": 63.633486575084774,
+        "euler_vector_change_percent": -2.2152342563470584
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C06_W08",
+      "source_split": "TRAIN_C5_24",
+      "wind_code_for_offline_grouping_only": 8,
+      "wind_group_for_offline_grouping_only": "W06-W08",
+      "target_peak_f1_hz": 1.1500000000001267,
+      "target_peak_f2_hz": 1.7500000000001927,
+      "source_parent_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_full72_v1\\runs\\DL1018_DEV_T3_C06_W08\\raw_run.mat",
+      "source_parent_raw_sha256": "0fa3dd10fcd63bc7041ae22effe1e1f90ec8ce64f7a634508e23443516c4513c",
+      "parent_c5_action_npz_event_max_abs_difference_mps2": 1.1657515397445195e-07,
+      "logged_final_compensation_max_abs_difference_mps2": 2.220446049250313e-16,
+      "transitions": 20000,
+      "event_count": 1999,
+      "derived_mass_kg_from_logged_nominal_force_over_acceleration": 0.695,
+      "baseline_force_chain_max_abs_residual_N": 0.0,
+      "baseline_target_reconstruction_max_abs_error_rad": 1.1102230246251565e-16,
+      "action_limit_clip_count": 0,
+      "low_frequency_0p05_0p5_hz": {
+        "action_rms_before_mps2": 0.09319800537200072,
+        "action_rms_after_mps2": 0.09418349365971668,
+        "action_rms_delta_percent": 1.0574134969760018,
+        "action_delta_rms_percent_of_before": 6.592738809643121,
+        "command_target_euler_rms_before_mrad": 35.30135595385044,
+        "command_target_euler_rms_after_mrad": 35.437643245409106,
+        "command_target_euler_rms_delta_percent": 0.3860681491578784,
+        "command_target_euler_delta_rms_percent_of_before": 1.7290978184244112,
+        "command_target_roll_pitch_rms_before_mrad": 35.30135595385044,
+        "command_target_roll_pitch_rms_after_mrad": 35.437643245409106
+      },
+      "wind_tone_target_bands": [
+        {
+          "label": "f1",
+          "center_hz": 1.1500000000001267,
+          "band_hz": [
+            1.0500000000001266,
+            1.2500000000001268
+          ],
+          "command_target_euler_vector_rms_before_mrad": 63.68698150114517,
+          "command_target_euler_vector_rms_after_mrad": 62.845449367902276,
+          "command_target_euler_reduction_percent": 1.3213565997436432,
+          "command_target_roll_pitch_vector_rms_before_mrad": 63.68698150114517,
+          "command_target_roll_pitch_vector_rms_after_mrad": 62.845449367902276,
+          "command_target_roll_pitch_reduction_percent": 1.3213565997436432,
+          "applied_action_vector_rms_before_mps2": 0.38112631325829266,
+          "applied_action_vector_rms_after_mps2": 0.37146628613214505,
+          "applied_action_reduction_percent": 2.534599892503597,
+          "static_bank_response": {
+            "frequency_hz": 1.1500000000001267,
+            "magnitude": 0.9736211114283494,
+            "magnitude_db": -0.23220035378839254,
+            "phase_deg": -24.540114818038678,
+            "equivalent_phase_delay_ms": 59.27563965709172
+          }
+        },
+        {
+          "label": "f2",
+          "center_hz": 1.7500000000001927,
+          "band_hz": [
+            1.6500000000001926,
+            1.8500000000001928
+          ],
+          "command_target_euler_vector_rms_before_mrad": 61.85993519708829,
+          "command_target_euler_vector_rms_after_mrad": 56.75167312854485,
+          "command_target_euler_reduction_percent": 8.257787616925729,
+          "command_target_roll_pitch_vector_rms_before_mrad": 61.85993519708829,
+          "command_target_roll_pitch_vector_rms_after_mrad": 56.75167312854485,
+          "command_target_roll_pitch_reduction_percent": 8.257787616925729,
+          "applied_action_vector_rms_before_mps2": 0.40841064184468806,
+          "applied_action_vector_rms_after_mps2": 0.3481015600637143,
+          "applied_action_reduction_percent": 14.766775299628048,
+          "static_bank_response": {
+            "frequency_hz": 1.7500000000001927,
+            "magnitude": 0.8493954004206951,
+            "magnitude_db": -1.4178019019272665,
+            "phase_deg": -53.92608274576911,
+            "equivalent_phase_delay_ms": 85.59695673930662
+          }
+        }
+      ],
+      "broad_command_target_0p05_10_hz": {
+        "euler_vector_rms_before_mrad": 99.65409563836205,
+        "euler_vector_rms_after_mrad": 94.06221331909946,
+        "euler_vector_change_percent": -5.611292023114792
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C09_W09",
+      "source_split": "TRAIN_C5_24",
+      "wind_code_for_offline_grouping_only": 9,
+      "wind_group_for_offline_grouping_only": "W09-W11",
+      "target_peak_f1_hz": 2.200000000000242,
+      "target_peak_f2_hz": 3.2000000000003523,
+      "source_parent_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_full72_v1\\runs\\DL1018_DEV_T3_C09_W09\\raw_run.mat",
+      "source_parent_raw_sha256": "14176658aac8e8b69817f71aff748add1b591cee744cd05954184e52e34c2cb2",
+      "parent_c5_action_npz_event_max_abs_difference_mps2": 5.696550586797855e-08,
+      "logged_final_compensation_max_abs_difference_mps2": 1.1102230246251565e-16,
+      "transitions": 20000,
+      "event_count": 1999,
+      "derived_mass_kg_from_logged_nominal_force_over_acceleration": 0.695,
+      "baseline_force_chain_max_abs_residual_N": 0.0,
+      "baseline_target_reconstruction_max_abs_error_rad": 5.551115123125783e-17,
+      "action_limit_clip_count": 0,
+      "low_frequency_0p05_0p5_hz": {
+        "action_rms_before_mps2": 0.09293256651266012,
+        "action_rms_after_mps2": 0.09237581386024585,
+        "action_rms_delta_percent": -0.59909316325448,
+        "action_delta_rms_percent_of_before": 5.032065315817117,
+        "command_target_euler_rms_before_mrad": 33.49998676761211,
+        "command_target_euler_rms_after_mrad": 33.561416381558054,
+        "command_target_euler_rms_delta_percent": 0.18337205435954013,
+        "command_target_euler_delta_rms_percent_of_before": 1.3595249169229449,
+        "command_target_roll_pitch_rms_before_mrad": 33.49998676761211,
+        "command_target_roll_pitch_rms_after_mrad": 33.561416381558054
+      },
+      "wind_tone_target_bands": [
+        {
+          "label": "f1",
+          "center_hz": 2.200000000000242,
+          "band_hz": [
+            2.100000000000242,
+            2.3000000000002423
+          ],
+          "command_target_euler_vector_rms_before_mrad": 25.795258373165446,
+          "command_target_euler_vector_rms_after_mrad": 7.707447040431651,
+          "command_target_euler_reduction_percent": 70.12068292190618,
+          "command_target_roll_pitch_vector_rms_before_mrad": 25.795258373165446,
+          "command_target_roll_pitch_vector_rms_after_mrad": 7.707447040431651,
+          "command_target_roll_pitch_reduction_percent": 70.12068292190618,
+          "applied_action_vector_rms_before_mps2": 0.1955182235123323,
+          "applied_action_vector_rms_after_mps2": 0.003627248852245159,
+          "applied_action_reduction_percent": 98.14480267512437,
+          "static_bank_response": {
+            "frequency_hz": 2.200000000000242,
+            "magnitude": 8.385391834720489e-13,
+            "magnitude_db": -241.52953277521647,
+            "phase_deg": 50.6636112928988,
+            "equivalent_phase_delay_ms": -63.96920617789548
+          }
+        },
+        {
+          "label": "f2",
+          "center_hz": 3.2000000000003523,
+          "band_hz": [
+            3.1000000000003523,
+            3.3000000000003524
+          ],
+          "command_target_euler_vector_rms_before_mrad": 19.886599307497427,
+          "command_target_euler_vector_rms_after_mrad": 4.117032621137292,
+          "command_target_euler_reduction_percent": 79.29745273448974,
+          "command_target_roll_pitch_vector_rms_before_mrad": 19.886599307497427,
+          "command_target_roll_pitch_vector_rms_after_mrad": 4.117032621137292,
+          "command_target_roll_pitch_reduction_percent": 79.29745273448974,
+          "applied_action_vector_rms_before_mps2": 0.166934944023831,
+          "applied_action_vector_rms_after_mps2": 0.0015690705218657603,
+          "applied_action_reduction_percent": 99.0600706574402,
+          "static_bank_response": {
+            "frequency_hz": 3.2000000000003523,
+            "magnitude": 6.146941097542114e-13,
+            "magnitude_db": -244.22681896886638,
+            "phase_deg": 51.02885759181529,
+            "equivalent_phase_delay_ms": -44.29588332622367
+          }
+        }
+      ],
+      "broad_command_target_0p05_10_hz": {
+        "euler_vector_rms_before_mrad": 47.32742208203892,
+        "euler_vector_rms_after_mrad": 35.37835385154722,
+        "euler_vector_change_percent": -25.247663415469347
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C10_W11",
+      "source_split": "TRAIN_C5_24",
+      "wind_code_for_offline_grouping_only": 11,
+      "wind_group_for_offline_grouping_only": "W09-W11",
+      "target_peak_f1_hz": 2.200000000000242,
+      "target_peak_f2_hz": 3.2000000000003523,
+      "source_parent_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_full72_v1\\runs\\DL1018_DEV_T3_C10_W11\\raw_run.mat",
+      "source_parent_raw_sha256": "5fcfd987b404b21afe39d4367bdf9baade7a526b72a00016de3c5a15630df38a",
+      "parent_c5_action_npz_event_max_abs_difference_mps2": 5.958593063404294e-08,
+      "logged_final_compensation_max_abs_difference_mps2": 2.220446049250313e-16,
+      "transitions": 20000,
+      "event_count": 1999,
+      "derived_mass_kg_from_logged_nominal_force_over_acceleration": 0.695,
+      "baseline_force_chain_max_abs_residual_N": 0.0,
+      "baseline_target_reconstruction_max_abs_error_rad": 5.551115123125783e-17,
+      "action_limit_clip_count": 0,
+      "low_frequency_0p05_0p5_hz": {
+        "action_rms_before_mps2": 0.16714311960283124,
+        "action_rms_after_mps2": 0.16725517755076158,
+        "action_rms_delta_percent": 0.06704311143445113,
+        "action_delta_rms_percent_of_before": 4.998546641808005,
+        "command_target_euler_rms_before_mrad": 32.82933605141728,
+        "command_target_euler_rms_after_mrad": 33.04897680648879,
+        "command_target_euler_rms_delta_percent": 0.6690380662207248,
+        "command_target_euler_delta_rms_percent_of_before": 2.473866880737243,
+        "command_target_roll_pitch_rms_before_mrad": 32.82933605141728,
+        "command_target_roll_pitch_rms_after_mrad": 33.04897680648879
+      },
+      "wind_tone_target_bands": [
+        {
+          "label": "f1",
+          "center_hz": 2.200000000000242,
+          "band_hz": [
+            2.100000000000242,
+            2.3000000000002423
+          ],
+          "command_target_euler_vector_rms_before_mrad": 59.1961014216732,
+          "command_target_euler_vector_rms_after_mrad": 18.462629606750532,
+          "command_target_euler_reduction_percent": 68.81107173724976,
+          "command_target_roll_pitch_vector_rms_before_mrad": 59.1961014216732,
+          "command_target_roll_pitch_vector_rms_after_mrad": 18.462629606750532,
+          "command_target_roll_pitch_reduction_percent": 68.81107173724976,
+          "applied_action_vector_rms_before_mps2": 0.4511542327544999,
+          "applied_action_vector_rms_after_mps2": 0.011284909931649937,
+          "applied_action_reduction_percent": 97.49865808356702,
+          "static_bank_response": {
+            "frequency_hz": 2.200000000000242,
+            "magnitude": 8.385391834720489e-13,
+            "magnitude_db": -241.52953277521647,
+            "phase_deg": 50.6636112928988,
+            "equivalent_phase_delay_ms": -63.96920617789548
+          }
+        },
+        {
+          "label": "f2",
+          "center_hz": 3.2000000000003523,
+          "band_hz": [
+            3.1000000000003523,
+            3.3000000000003524
+          ],
+          "command_target_euler_vector_rms_before_mrad": 46.23566318904998,
+          "command_target_euler_vector_rms_after_mrad": 10.010592646444913,
+          "command_target_euler_reduction_percent": 78.34876379838383,
+          "command_target_roll_pitch_vector_rms_before_mrad": 46.23566318904998,
+          "command_target_roll_pitch_vector_rms_after_mrad": 10.010592646444913,
+          "command_target_roll_pitch_reduction_percent": 78.34876379838383,
+          "applied_action_vector_rms_before_mps2": 0.3828929906742552,
+          "applied_action_vector_rms_after_mps2": 0.004314254514661194,
+          "applied_action_reduction_percent": 98.87324797796272,
+          "static_bank_response": {
+            "frequency_hz": 3.2000000000003523,
+            "magnitude": 6.146941097542114e-13,
+            "magnitude_db": -244.22681896886638,
+            "phase_deg": 51.02885759181529,
+            "equivalent_phase_delay_ms": -44.29588332622367
+          }
+        }
+      ],
+      "broad_command_target_0p05_10_hz": {
+        "euler_vector_rms_before_mrad": 83.31685804831308,
+        "euler_vector_rms_after_mrad": 41.20520816976146,
+        "euler_vector_change_percent": -50.543972570511805
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C13_W12",
+      "source_split": "TRAIN_C5_24",
+      "wind_code_for_offline_grouping_only": 12,
+      "wind_group_for_offline_grouping_only": "W12-W14",
+      "target_peak_f1_hz": 3.7000000000004074,
+      "target_peak_f2_hz": 4.800000000000528,
+      "source_parent_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_full72_v1\\runs\\DL1018_DEV_T3_C13_W12\\raw_run.mat",
+      "source_parent_raw_sha256": "e4dcbb80beb4ef1147d7b97d54736e1b7f0cb7c6e91bbf2f3d0cb057f7f734c0",
+      "parent_c5_action_npz_event_max_abs_difference_mps2": 2.98011451072e-08,
+      "logged_final_compensation_max_abs_difference_mps2": 1.1102230246251565e-16,
+      "transitions": 20000,
+      "event_count": 1999,
+      "derived_mass_kg_from_logged_nominal_force_over_acceleration": 0.695,
+      "baseline_force_chain_max_abs_residual_N": 0.0,
+      "baseline_target_reconstruction_max_abs_error_rad": 2.7755575615628914e-17,
+      "action_limit_clip_count": 0,
+      "low_frequency_0p05_0p5_hz": {
+        "action_rms_before_mps2": 0.14146716390179281,
+        "action_rms_after_mps2": 0.1421556845847469,
+        "action_rms_delta_percent": 0.4866999973450055,
+        "action_delta_rms_percent_of_before": 5.588245661910331,
+        "command_target_euler_rms_before_mrad": 34.26844106892033,
+        "command_target_euler_rms_after_mrad": 34.68256827179169,
+        "command_target_euler_rms_delta_percent": 1.2084798431258386,
+        "command_target_euler_delta_rms_percent_of_before": 2.3056235261466167,
+        "command_target_roll_pitch_rms_before_mrad": 34.26844106892033,
+        "command_target_roll_pitch_rms_after_mrad": 34.68256827179169
+      },
+      "wind_tone_target_bands": [
+        {
+          "label": "f1",
+          "center_hz": 3.7000000000004074,
+          "band_hz": [
+            3.6000000000004073,
+            3.8000000000004075
+          ],
+          "command_target_euler_vector_rms_before_mrad": 18.197632563158624,
+          "command_target_euler_vector_rms_after_mrad": 3.2892370812865024,
+          "command_target_euler_reduction_percent": 81.92491759644817,
+          "command_target_roll_pitch_vector_rms_before_mrad": 18.197632563158624,
+          "command_target_roll_pitch_vector_rms_after_mrad": 3.2892370812865024,
+          "command_target_roll_pitch_reduction_percent": 81.92491759644817,
+          "applied_action_vector_rms_before_mps2": 0.155649932909445,
+          "applied_action_vector_rms_after_mps2": 0.0009793539161262147,
+          "applied_action_reduction_percent": 99.37079708431612,
+          "static_bank_response": {
+            "frequency_hz": 3.7000000000004074,
+            "magnitude": 5.955753311914297e-13,
+            "magnitude_db": -244.50126598163806,
+            "phase_deg": 117.69919230315978,
+            "equivalent_phase_delay_ms": -88.36275698434446
+          }
+        },
+        {
+          "label": "f2",
+          "center_hz": 4.800000000000528,
+          "band_hz": [
+            4.700000000000529,
+            4.900000000000528
+          ],
+          "command_target_euler_vector_rms_before_mrad": 8.266819095137734,
+          "command_target_euler_vector_rms_after_mrad": 1.3232798716225287,
+          "command_target_euler_reduction_percent": 83.99287735229579,
+          "command_target_roll_pitch_vector_rms_before_mrad": 8.266819095137734,
+          "command_target_roll_pitch_vector_rms_after_mrad": 1.3232798716225287,
+          "command_target_roll_pitch_reduction_percent": 83.99287735229579,
+          "applied_action_vector_rms_before_mps2": 0.07130009256392277,
+          "applied_action_vector_rms_after_mps2": 0.00031154770876043035,
+          "applied_action_reduction_percent": 99.56304725904651,
+          "static_bank_response": {
+            "frequency_hz": 4.800000000000528,
+            "magnitude": 7.659077042381429e-13,
+            "magnitude_db": -242.3164712380298,
+            "phase_deg": 139.74514639600778,
+            "equivalent_phase_delay_ms": -80.87103379397709
+          }
+        }
+      ],
+      "broad_command_target_0p05_10_hz": {
+        "euler_vector_rms_before_mrad": 40.576691299507516,
+        "euler_vector_rms_after_mrad": 35.76661128644218,
+        "euler_vector_change_percent": -11.85429333693286
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C15_W14",
+      "source_split": "TRAIN_C5_24",
+      "wind_code_for_offline_grouping_only": 14,
+      "wind_group_for_offline_grouping_only": "W12-W14",
+      "target_peak_f1_hz": 3.7000000000004074,
+      "target_peak_f2_hz": 4.800000000000528,
+      "source_parent_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_full72_v1\\runs\\DL1018_DEV_T3_C15_W14\\raw_run.mat",
+      "source_parent_raw_sha256": "2d646c46c22019c5e59d6b143a8f1eb31f9190597011b701a469a1513d44c386",
+      "parent_c5_action_npz_event_max_abs_difference_mps2": 5.950791992503923e-08,
+      "logged_final_compensation_max_abs_difference_mps2": 2.220446049250313e-16,
+      "transitions": 20000,
+      "event_count": 1999,
+      "derived_mass_kg_from_logged_nominal_force_over_acceleration": 0.695,
+      "baseline_force_chain_max_abs_residual_N": 0.0,
+      "baseline_target_reconstruction_max_abs_error_rad": 5.551115123125783e-17,
+      "action_limit_clip_count": 0,
+      "low_frequency_0p05_0p5_hz": {
+        "action_rms_before_mps2": 0.11201798223891035,
+        "action_rms_after_mps2": 0.11164562507528454,
+        "action_rms_delta_percent": -0.3324083831751701,
+        "action_delta_rms_percent_of_before": 6.463483766754419,
+        "command_target_euler_rms_before_mrad": 34.799375989628565,
+        "command_target_euler_rms_after_mrad": 35.008273706272554,
+        "command_target_euler_rms_delta_percent": 0.6002915589815334,
+        "command_target_euler_delta_rms_percent_of_before": 2.169569481566692,
+        "command_target_roll_pitch_rms_before_mrad": 34.799375989628565,
+        "command_target_roll_pitch_rms_after_mrad": 35.008273706272554
+      },
+      "wind_tone_target_bands": [
+        {
+          "label": "f1",
+          "center_hz": 3.7000000000004074,
+          "band_hz": [
+            3.6000000000004073,
+            3.8000000000004075
+          ],
+          "command_target_euler_vector_rms_before_mrad": 62.614753831831486,
+          "command_target_euler_vector_rms_after_mrad": 12.365156648678935,
+          "command_target_euler_reduction_percent": 80.25200788636998,
+          "command_target_roll_pitch_vector_rms_before_mrad": 62.614753831831486,
+          "command_target_roll_pitch_vector_rms_after_mrad": 12.365156648678935,
+          "command_target_roll_pitch_reduction_percent": 80.25200788636998,
+          "applied_action_vector_rms_before_mps2": 0.5116697776703537,
+          "applied_action_vector_rms_after_mps2": 0.003962350142094748,
+          "applied_action_reduction_percent": 99.22560402919723,
+          "static_bank_response": {
+            "frequency_hz": 3.7000000000004074,
+            "magnitude": 5.955753311914297e-13,
+            "magnitude_db": -244.50126598163806,
+            "phase_deg": 117.69919230315978,
+            "equivalent_phase_delay_ms": -88.36275698434446
+          }
+        },
+        {
+          "label": "f2",
+          "center_hz": 4.800000000000528,
+          "band_hz": [
+            4.700000000000529,
+            4.900000000000528
+          ],
+          "command_target_euler_vector_rms_before_mrad": 32.62509549351538,
+          "command_target_euler_vector_rms_after_mrad": 5.895179472053379,
+          "command_target_euler_reduction_percent": 81.93053726624305,
+          "command_target_roll_pitch_vector_rms_before_mrad": 32.62509549351538,
+          "command_target_roll_pitch_vector_rms_after_mrad": 5.895179472053379,
+          "command_target_roll_pitch_reduction_percent": 81.93053726624305,
+          "applied_action_vector_rms_before_mps2": 0.26737865817452144,
+          "applied_action_vector_rms_after_mps2": 0.0020124306611421956,
+          "applied_action_reduction_percent": 99.2473480587861,
+          "static_bank_response": {
+            "frequency_hz": 4.800000000000528,
+            "magnitude": 7.659077042381429e-13,
+            "magnitude_db": -242.3164712380298,
+            "phase_deg": 139.74514639600778,
+            "equivalent_phase_delay_ms": -80.87103379397709
+          }
+        }
+      ],
+      "broad_command_target_0p05_10_hz": {
+        "euler_vector_rms_before_mrad": 80.06913427615363,
+        "euler_vector_rms_after_mrad": 39.93863684466203,
+        "euler_vector_change_percent": -50.11980933012704
+      }
+    }
+  ],
+  "prior_two_notch_status_preserved": "FAIL_FIXED_FROZEN_REPLAY",
+  "prior_two_notch_result_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\position_compensation_dual_notch_train_replay_v1\\TRAIN_FROZEN_DUAL_NOTCH_REPLAY_v1.json",
+  "prior_two_notch_result_sha256": "92c14d6252818b3c184554763677cf4b26efab470393c07d8f55d55733875f9d",
+  "Plant_called_by_this_replay": false,
+  "VAL_read": false,
+  "TEST_read": false,
+  "inertia_reconstruction_enabled": false,
+  "parameter_sweep": false,
+  "closed_loop_effect_measured": false,
+  "interpretation_limit": "Frozen same-trajectory TRAIN replay only; no closed-loop actual-attitude/position prediction and no cross-wind generalization claim."
+}

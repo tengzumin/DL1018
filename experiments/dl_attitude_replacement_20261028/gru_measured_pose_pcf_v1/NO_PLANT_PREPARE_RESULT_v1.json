@@ -1,0 +1,92 @@
+{
+  "schema": "DL1018_GRU_MEASURED_POSE_PCF_NO_PLANT_PREPARE_RECEIPT_V1",
+  "status": "PASS_NO_PLANT_PREPARE",
+  "scene_id": "DL1018_VAL_T3_C01_W14",
+  "MATLAB": "25.2.0.2998904 (R2025b)",
+  "scene_payload_sha256": "ed1235f954a9488b0935b8342e2f7435815ed805f96659fbcf19f98f2957b53b",
+  "gru_model_sha256": "b2c462f77a6bb97b8c6bb2b471daef0633d4f9664a7d623b894461a4fa21b567",
+  "source_hash_manifest_sha256": "dc79fb9605890c97fba6af68457973ff4f6544bbe3b69df222ad70c91c6c0463",
+  "source_lock_sha256": "200ccac15e4697f9ba069cb8220ea0f839ba7d45ec8ebb324cff1d619f965768",
+  "release_sha256": "31fc6a0f2dc66d636cc54942095ea9f693f3ad783aece037e81ddc71b6c11c5f",
+  "scene_input_manifest_sha256": "1f21bee535557ed0ee6b1601300077ed2efda693243366e153feb27152b8655d",
+  "position_model_sha256": "6f3628b10540c617496b2a20f249c4319af79c1a02d5945f1f91f0aead9c9b6e",
+  "common_position_options_sha256": "0218d3dc3c591b07ed6f7328de2c36276c4f51c2a0d56966bdff62d68d6a6b21",
+  "position_method_id": "C5_AXIS_MIXED_COORDINATE_M110",
+  "position_nn_compensation_scale": 1,
+  "position_nn_compensation_enabled": false,
+  "command_filter_wn_rad_s": [
+    18,
+    18,
+    12
+  ],
+  "position_filter_realization_attitude_source": "measured_euler_with_issued_thrust",
+  "pcf_unit_check": {
+    "status": "PASS",
+    "equal_pose_exact_recovery": true,
+    "changed_pose_changes_af_rf_eta": true,
+    "delta_norm_af_rf_eta": [
+      0.18930161983713628,
+      0.18930161983713645,
+      0.001881765779629241
+    ],
+    "helper": "position_filter_realization_pcf_step_v3_5"
+  },
+  "fixed_J0": [
+    [
+      0.0032575533333333339,
+      -2.1684043449710089E-19,
+      0
+    ],
+    [
+      -2.1684043449710089E-19,
+      0.0032575533333333334,
+      0
+    ],
+    [
+      0,
+      0,
+      0.0063606483333333332
+    ]
+  ],
+  "beta_rise_time_s": 2.2,
+  "dmax": [
+    45,
+    45,
+    4.7124
+  ],
+  "tracking_gamma": [
+    2.1,
+    2.25,
+    1.1
+  ],
+  "tracking_sigma_w": [
+    0.11,
+    0.12,
+    0.2
+  ],
+  "tracking_s_limit": [
+    2.3,
+    2.3,
+    1.4
+  ],
+  "tracking_wmax": 60,
+  "gru_init_status": "PASS",
+  "gru_forward_raw_residual_rad_s2": [
+    0.37253385391438593,
+    -0.52324959234945057,
+    -0.074619994820852617
+  ],
+  "gru_forward_hidden_norm": 0.33348356281674857,
+  "cosine_target_rms": [
+    8.0246160368513184,
+    9.2522437638076109,
+    0.6107712264303139
+  ],
+  "controller_arm": "GRU_STREAM",
+  "geometry_arm": "ACTIVE",
+  "inertia_reconstruction_enabled": false,
+  "Plant_calls": 0,
+  "plant_called": false,
+  "test_data_read": false,
+  "run_directory_created": false
+}

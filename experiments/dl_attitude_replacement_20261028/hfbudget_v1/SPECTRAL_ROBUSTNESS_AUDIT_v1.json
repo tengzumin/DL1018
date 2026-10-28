@@ -1,0 +1,1140 @@
+{
+  "schema": "HF_TRAIN10_SPECTRAL_ROBUSTNESS_AUDIT_V1",
+  "status": "COMPLETED_TRAIN_ONLY_ROBUSTNESS_AUDIT",
+  "scope": "Exactly 10 HF_W09_W14 TRAIN candidate raws, their SHA-bound same-scene B raws, and SHA-bound parent cosine-GRU raws. No Plant calls, TEST or VAL reads, tuning, or inertia reconstruction.",
+  "score_definition": "Frozen score_full72 task_SO3_rad = sqrt(mean(theta^2)), theta = norm(Log(R_task^T R_actual)); the analysis reuses hf_task_budget_with_b_v2.task_error (SO(3) rotvec) and confirms every whole-record score against frozen score_raw and TRAIN24 summary.",
+  "paired_reference_check": "For each scene, all three raw files have exactly equal 1 kHz time grids and reference acceleration/yaw arrays.",
+  "prior_unwindowed_estimates": {
+    "unwindowed_whole_record_2_to_5_Hz_candidate_over_B_pooled_rmse_ratio": 1.4132625657834683,
+    "unwindowed_time_window_2_to_5_Hz_candidate_over_B_rmse_ratios": {
+      "0_2": 2.9038070164814065,
+      "2_5": 1.890069412248201,
+      "5_20.001": 1.0235530303161562
+    },
+    "interpretation": "The prior finite-window FFT had no taper. The 0-2 s and 5-20 s values are historical spectral estimates, not task-score RMSE ratios."
+  },
+  "methods": {
+    "welch": "Welch PSD summed across the three SO(3) log-vector components; Hann window; nperseg=2000 samples, 50% overlap (2 s segments, 0.5 Hz bins); run separately with per-segment constant/demean and linear detrending. Integrate bins 2<=f<=5 Hz and f>5 Hz.",
+    "zero_phase_bandpass": "Fourth-order Butterworth SOS, applied by sosfiltfilt to the full 20.001-sample trace, then score mean squared vector magnitude in each time slice. 2-5 Hz bandpass and >5 Hz high-pass are offline/noncausal; one-second edge guards are used at the record ends.",
+    "aggregation": "Equal-scene pooling: pooled RMSE = sqrt(mean of 10 per-scene band MSEs); also report per-scene sensitivity counts. Ratios above 1 mean the candidate has more band energy than B."
+  },
+  "spectral_results": {
+    "welch": {
+      "hann_demean": {
+        "whole_0_20s": {
+          "2_to_5_Hz": {
+            "mean_scene_band_mse_rad2": {
+              "candidate": 6.094959877045854e-05,
+              "B": 2.4501919937427557e-05,
+              "parent": 0.0005503264470131473
+            },
+            "pooled_band_rmse_rad": {
+              "candidate": 0.007807022401047568,
+              "B": 0.004949941407474189,
+              "parent": 0.023459037640388133
+            },
+            "mean_scene_band_rmse_rad": {
+              "candidate": 0.006966841091755029,
+              "B": 0.004047396075340865,
+              "parent": 0.02105036481921769
+            },
+            "candidate_over_B_pooled_rmse_ratio": 1.5771949116931596,
+            "candidate_over_parent_pooled_rmse_ratio": 0.33279380513063533,
+            "candidate_scenes_with_more_band_mse_than_B": 10,
+            "welch_resolution_Hz": 0.5,
+            "welch_segments_by_window": 19
+          },
+          "above_5_Hz": {
+            "mean_scene_band_mse_rad2": {
+              "candidate": 2.7087528740474967e-07,
+              "B": 2.973901029577645e-08,
+              "parent": 1.0899869247034574e-06
+            },
+            "pooled_band_rmse_rad": {
+              "candidate": 0.0005204568064736493,
+              "B": 0.00017245002260300358,
+              "parent": 0.001044024388940918
+            },
+            "mean_scene_band_rmse_rad": {
+              "candidate": 0.0004489566888636748,
+              "B": 0.00015491820377083973,
+              "parent": 0.0008785748084106006
+            },
+            "candidate_over_B_pooled_rmse_ratio": 3.018015298680422,
+            "candidate_over_parent_pooled_rmse_ratio": 0.49851019955732306,
+            "candidate_scenes_with_more_band_mse_than_B": 10,
+            "welch_resolution_Hz": 0.5,
+            "welch_segments_by_window": 19
+          }
+        },
+        "0_2s": {
+          "2_to_5_Hz": {
+            "mean_scene_band_mse_rad2": {
+              "candidate": 0.00014858588855076317,
+              "B": 1.754999416094302e-05,
+              "parent": 0.00014858588855076317
+            },
+            "pooled_band_rmse_rad": {
+              "candidate": 0.012189581147470293,
+              "B": 0.004189271316224699,
+              "parent": 0.012189581147470293
+            },
+            "mean_scene_band_rmse_rad": {
+              "candidate": 0.010800288773943888,
+              "B": 0.0034387141972908467,
+              "parent": 0.010800288773943888
+            },
+            "candidate_over_B_pooled_rmse_ratio": 2.9097139400499223,
+            "candidate_over_parent_pooled_rmse_ratio": 1.0,
+            "candidate_scenes_with_more_band_mse_than_B": 10,
+            "welch_resolution_Hz": 0.5,
+            "welch_segments_by_window": 1
+          },
+          "above_5_Hz": {
+            "mean_scene_band_mse_rad2": {
+              "candidate": 5.517941792898514e-07,
+              "B": 2.5916699842187363e-08,
+              "parent": 5.517941792898514e-07
+            },
+            "pooled_band_rmse_rad": {
+              "candidate": 0.0007428284992445103,
+              "B": 0.00016098664491872412,
+              "parent": 0.0007428284992445103
+            },
+            "mean_scene_band_rmse_rad": {
+              "candidate": 0.0005982752415877283,
+              "B": 0.00013331764382722066,
+              "parent": 0.0005982752415877283
+            },
+            "candidate_over_B_pooled_rmse_ratio": 4.614224363887672,
+            "candidate_over_parent_pooled_rmse_ratio": 1.0,
+            "candidate_scenes_with_more_band_mse_than_B": 10,
+            "welch_resolution_Hz": 0.5,
+            "welch_segments_by_window": 1
+          }
+        },
+        "2_5s": {
+          "2_to_5_Hz": {
+            "mean_scene_band_mse_rad2": {
+              "candidate": 6.164277747710366e-05,
+              "B": 2.1909666374592703e-05,
+              "parent": 0.0006599135387823734
+            },
+            "pooled_band_rmse_rad": {
+              "candidate": 0.00785129145281868,
+              "B": 0.004680776257694091,
+              "parent": 0.025688782353050006
+            },
+            "mean_scene_band_rmse_rad": {
+              "candidate": 0.006071347106246841,
+              "B": 0.0037801401978932816,
+              "parent": 0.023044362481138583
+            },
+            "candidate_over_B_pooled_rmse_ratio": 1.6773481620517559,
+            "candidate_over_parent_pooled_rmse_ratio": 0.30563112509248624,
+            "candidate_scenes_with_more_band_mse_than_B": 10,
+            "welch_resolution_Hz": 0.5,
+            "welch_segments_by_window": 2
+          },
+          "above_5_Hz": {
+            "mean_scene_band_mse_rad2": {
+              "candidate": 1.6763747153623294e-07,
+              "B": 2.251267876599453e-08,
+              "parent": 1.2433408940862198e-06
+            },
+            "pooled_band_rmse_rad": {
+              "candidate": 0.0004094355523598713,
+              "B": 0.00015004225660124727,
+              "parent": 0.0011150519692311295
+            },
+            "mean_scene_band_rmse_rad": {
+              "candidate": 0.0003387704140416242,
+              "B": 0.00012599334828749503,
+              "parent": 0.0009240291677809438
+            },
+            "candidate_over_B_pooled_rmse_ratio": 2.7288016165205273,
+            "candidate_over_parent_pooled_rmse_ratio": 0.36718965900951916,
+            "candidate_scenes_with_more_band_mse_than_B": 10,
+            "welch_resolution_Hz": 0.5,
+            "welch_segments_by_window": 2
+          }
+        },
+        "5_20s": {
+          "2_to_5_Hz": {
+            "mean_scene_band_mse_rad2": {
+              "candidate": 3.13069935613161e-05,
+              "B": 2.5598779733915877e-05,
+              "parent": 0.0005558722796962883
+            },
+            "pooled_band_rmse_rad": {
+              "candidate": 0.00559526528069189,
+              "B": 0.005059523666701825,
+              "parent": 0.023576943815861468
+            },
+            "mean_scene_band_rmse_rad": {
+              "candidate": 0.004938007668779942,
+              "B": 0.004133638973313066,
+              "parent": 0.02114310635361118
+            },
+            "candidate_over_B_pooled_rmse_ratio": 1.1058877572835433,
+            "candidate_over_parent_pooled_rmse_ratio": 0.23731936269567122,
+            "candidate_scenes_with_more_band_mse_than_B": 10,
+            "welch_resolution_Hz": 0.5,
+            "welch_segments_by_window": 14
+          },
+          "above_5_Hz": {
+            "mean_scene_band_mse_rad2": {
+              "candidate": 1.6246762353879253e-07,
+              "B": 2.948972003049427e-08,
+              "parent": 1.077046565489208e-06
+            },
+            "pooled_band_rmse_rad": {
+              "candidate": 0.0004030727273567297,
+              "B": 0.00017172571161737623,
+              "parent": 0.001037808539899922
+            },
+            "mean_scene_band_rmse_rad": {
+              "candidate": 0.0003483528383870908,
+              "B": 0.0001538373649872012,
+              "parent": 0.000873596720797108
+            },
+            "candidate_over_B_pooled_rmse_ratio": 2.347189151586223,
+            "candidate_over_parent_pooled_rmse_ratio": 0.38838833162386466,
+            "candidate_scenes_with_more_band_mse_than_B": 10,
+            "welch_resolution_Hz": 0.5,
+            "welch_segments_by_window": 14
+          }
+        }
+      },
+      "hann_linear_detrend": {
+        "whole_0_20s": {
+          "2_to_5_Hz": {
+            "mean_scene_band_mse_rad2": {
+              "candidate": 6.10140997150152e-05,
+              "B": 2.4535754035781783e-05,
+              "parent": 0.0005503972650757893
+            },
+            "pooled_band_rmse_rad": {
+              "candidate": 0.0078111522655121245,
+              "B": 0.004953357854605478,
+              "parent": 0.023460546990123426
+            },
+            "mean_scene_band_rmse_rad": {
+              "candidate": 0.006970164204066846,
+              "B": 0.004050428199444322,
+              "parent": 0.02105135754903558
+            },
+            "candidate_over_B_pooled_rmse_ratio": 1.5769408338324595,
+            "candidate_over_parent_pooled_rmse_ratio": 0.332948429071177,
+            "candidate_scenes_with_more_band_mse_than_B": 10,
+            "welch_resolution_Hz": 0.5,
+            "welch_segments_by_window": 19
+          },
+          "above_5_Hz": {
+            "mean_scene_band_mse_rad2": {
+              "candidate": 2.711199599752299e-07,
+              "B": 2.9803418012893906e-08,
+              "parent": 1.0903584898951455e-06
+            },
+            "pooled_band_rmse_rad": {
+              "candidate": 0.00052069180901492,
+              "B": 0.00017263666474099268,
+              "parent": 0.0010442023222992495
+            },
+            "mean_scene_band_rmse_rad": {
+              "candidate": 0.0004491027105709241,
+              "B": 0.00015501848420020523,
+              "parent": 0.0008786668235858878
+            },
+            "candidate_over_B_pooled_rmse_ratio": 3.0161136963351067,
+            "candidate_over_parent_pooled_rmse_ratio": 0.4986503074120718,
+            "candidate_scenes_with_more_band_mse_than_B": 10,
+            "welch_resolution_Hz": 0.5,
+            "welch_segments_by_window": 19
+          }
+        },
+        "0_2s": {
+          "2_to_5_Hz": {
+            "mean_scene_band_mse_rad2": {
+              "candidate": 0.00014902773058377092,
+              "B": 1.7635432024276762e-05,
+              "parent": 0.00014902773058377092
+            },
+            "pooled_band_rmse_rad": {
+              "candidate": 0.012207691451858165,
+              "B": 0.004199456158156287,
+              "parent": 0.012207691451858165
+            },
+            "mean_scene_band_rmse_rad": {
+              "candidate": 0.010817175134870167,
+              "B": 0.003457483007913898,
+              "parent": 0.010817175134870167
+            },
+            "candidate_over_B_pooled_rmse_ratio": 2.9069696151364948,
+            "candidate_over_parent_pooled_rmse_ratio": 1.0,
+            "candidate_scenes_with_more_band_mse_than_B": 10,
+            "welch_resolution_Hz": 0.5,
+            "welch_segments_by_window": 1
+          },
+          "above_5_Hz": {
+            "mean_scene_band_mse_rad2": {
+              "candidate": 5.583695866059921e-07,
+              "B": 2.7339516235450334e-08,
+              "parent": 5.583695866059921e-07
+            },
+            "pooled_band_rmse_rad": {
+              "candidate": 0.0007472413175179703,
+              "B": 0.0001653466547452664,
+              "parent": 0.0007472413175179703
+            },
+            "mean_scene_band_rmse_rad": {
+              "candidate": 0.0006010068319604268,
+              "B": 0.00013574165006526758,
+              "parent": 0.0006010068319604268
+            },
+            "candidate_over_B_pooled_rmse_ratio": 4.519240614024957,
+            "candidate_over_parent_pooled_rmse_ratio": 1.0,
+            "candidate_scenes_with_more_band_mse_than_B": 10,
+            "welch_resolution_Hz": 0.5,
+            "welch_segments_by_window": 1
+          }
+        },
+        "2_5s": {
+          "2_to_5_Hz": {
+            "mean_scene_band_mse_rad2": {
+              "candidate": 6.179231667802959e-05,
+              "B": 2.1983096202845528e-05,
+              "parent": 0.0006599481205358277
+            },
+            "pooled_band_rmse_rad": {
+              "candidate": 0.007860808907359953,
+              "B": 0.004688613462724938,
+              "parent": 0.02568945543478545
+            },
+            "mean_scene_band_rmse_rad": {
+              "candidate": 0.00607744340104318,
+              "B": 0.003784528360493073,
+              "parent": 0.023044814918983515
+            },
+            "candidate_over_B_pooled_rmse_ratio": 1.6765743155955093,
+            "candidate_over_parent_pooled_rmse_ratio": 0.3059935983195591,
+            "candidate_scenes_with_more_band_mse_than_B": 10,
+            "welch_resolution_Hz": 0.5,
+            "welch_segments_by_window": 2
+          },
+          "above_5_Hz": {
+            "mean_scene_band_mse_rad2": {
+              "candidate": 1.6775654428316669e-07,
+              "B": 2.261229592541997e-08,
+              "parent": 1.243797291449649e-06
+            },
+            "pooled_band_rmse_rad": {
+              "candidate": 0.00040958093740208016,
+              "B": 0.0001503738538623652,
+              "parent": 0.0011152566034100175
+            },
+            "mean_scene_band_rmse_rad": {
+              "candidate": 0.0003388450759286507,
+              "B": 0.000126102206361252,
+              "parent": 0.0009240677649727406
+            },
+            "candidate_over_B_pooled_rmse_ratio": 2.7237510170947874,
+            "candidate_over_parent_pooled_rmse_ratio": 0.36725264495161225,
+            "candidate_scenes_with_more_band_mse_than_B": 10,
+            "welch_resolution_Hz": 0.5,
+            "welch_segments_by_window": 2
+          }
+        },
+        "5_20s": {
+          "2_to_5_Hz": {
+            "mean_scene_band_mse_rad2": {
+              "candidate": 3.133074711668628e-05,
+              "B": 2.563309986266758e-05,
+              "parent": 0.000555917811119378
+            },
+            "pooled_band_rmse_rad": {
+              "candidate": 0.005597387526041615,
+              "B": 0.005062914167025507,
+              "parent": 0.023577909388225623
+            },
+            "mean_scene_band_rmse_rad": {
+              "candidate": 0.004939919584477522,
+              "B": 0.004136404096207152,
+              "parent": 0.021143606575323246
+            },
+            "candidate_over_B_pooled_rmse_ratio": 1.1055663480327407,
+            "candidate_over_parent_pooled_rmse_ratio": 0.23739965379784048,
+            "candidate_scenes_with_more_band_mse_than_B": 10,
+            "welch_resolution_Hz": 0.5,
+            "welch_segments_by_window": 14
+          },
+          "above_5_Hz": {
+            "mean_scene_band_mse_rad2": {
+              "candidate": 1.6249997566244263e-07,
+              "B": 2.9491264941914978e-08,
+              "parent": 1.077182652090084e-06
+            },
+            "pooled_band_rmse_rad": {
+              "candidate": 0.00040311285722790163,
+              "B": 0.00017173020975330745,
+              "parent": 0.0010378741022349887
+            },
+            "mean_scene_band_rmse_rad": {
+              "candidate": 0.0003483533229910425,
+              "B": 0.00015381602729062617,
+              "parent": 0.000873594382919499
+            },
+            "candidate_over_B_pooled_rmse_ratio": 2.3473613513136575,
+            "candidate_over_parent_pooled_rmse_ratio": 0.38840246264920425,
+            "candidate_scenes_with_more_band_mse_than_B": 10,
+            "welch_resolution_Hz": 0.5,
+            "welch_segments_by_window": 14
+          }
+        }
+      }
+    },
+    "zero_phase_bandpass": {
+      "2_to_5_Hz": {
+        "whole_0_20s": {
+          "mean_scene_band_mse_rad2": {
+            "candidate": 4.41389151454434e-05,
+            "B": 2.002733249331919e-05,
+            "parent": 0.0005008151364541331
+          },
+          "pooled_band_rmse_rad": {
+            "candidate": 0.0066437124520439175,
+            "B": 0.004475190777309856,
+            "parent": 0.022378899357522773
+          },
+          "candidate_over_B_pooled_rmse_ratio": 1.484565191215739,
+          "candidate_over_parent_pooled_rmse_ratio": 0.29687395907657105,
+          "candidate_scenes_with_more_band_mse_than_B": 10,
+          "filter_order_one_pass": 4,
+          "filter_type": "Butterworth SOS; sosfiltfilt zero-phase; 2-5 Hz bandpass or >5 Hz high-pass"
+        },
+        "2_5s": {
+          "mean_scene_band_mse_rad2": {
+            "candidate": 6.064763507274993e-05,
+            "B": 1.82601399016597e-05,
+            "parent": 0.0005830784421584109
+          },
+          "pooled_band_rmse_rad": {
+            "candidate": 0.007787659152322342,
+            "B": 0.0042731884935794376,
+            "parent": 0.024147017251793457
+          },
+          "candidate_over_B_pooled_rmse_ratio": 1.8224469068058842,
+          "candidate_over_parent_pooled_rmse_ratio": 0.3225101912636408,
+          "candidate_scenes_with_more_band_mse_than_B": 10,
+          "filter_order_one_pass": 4,
+          "filter_type": "Butterworth SOS; sosfiltfilt zero-phase; 2-5 Hz bandpass or >5 Hz high-pass"
+        },
+        "5_20s": {
+          "mean_scene_band_mse_rad2": {
+            "candidate": 2.1857908074104773e-05,
+            "B": 2.0747996230262963e-05,
+            "parent": 0.0004956361274866365
+          },
+          "pooled_band_rmse_rad": {
+            "candidate": 0.004675244172672136,
+            "B": 0.004554996841959713,
+            "parent": 0.02226288677343162
+          },
+          "candidate_over_B_pooled_rmse_ratio": 1.026398993212186,
+          "candidate_over_parent_pooled_rmse_ratio": 0.21000170464198478,
+          "candidate_scenes_with_more_band_mse_than_B": 9,
+          "filter_order_one_pass": 4,
+          "filter_type": "Butterworth SOS; sosfiltfilt zero-phase; 2-5 Hz bandpass or >5 Hz high-pass"
+        }
+      },
+      "above_5_Hz": {
+        "whole_0_20s": {
+          "mean_scene_band_mse_rad2": {
+            "candidate": 5.333825670540303e-07,
+            "B": 1.165849107274681e-07,
+            "parent": 5.864546923475678e-06
+          },
+          "pooled_band_rmse_rad": {
+            "candidate": 0.0007303304505866028,
+            "B": 0.0003414453261174739,
+            "parent": 0.0024216826636608846
+          },
+          "candidate_over_B_pooled_rmse_ratio": 2.138938198074304,
+          "candidate_over_parent_pooled_rmse_ratio": 0.3015797492981819,
+          "candidate_scenes_with_more_band_mse_than_B": 10,
+          "filter_order_one_pass": 4,
+          "filter_type": "Butterworth SOS; sosfiltfilt zero-phase; 2-5 Hz bandpass or >5 Hz high-pass"
+        },
+        "2_5s": {
+          "mean_scene_band_mse_rad2": {
+            "candidate": 7.286439414912186e-07,
+            "B": 1.0927353984183282e-07,
+            "parent": 6.971551733299673e-06
+          },
+          "pooled_band_rmse_rad": {
+            "candidate": 0.0008536064324331316,
+            "B": 0.00033056548495242636,
+            "parent": 0.00264036962058339
+          },
+          "candidate_over_B_pooled_rmse_ratio": 2.5822612199092085,
+          "candidate_over_parent_pooled_rmse_ratio": 0.32329050666948944,
+          "candidate_scenes_with_more_band_mse_than_B": 10,
+          "filter_order_one_pass": 4,
+          "filter_type": "Butterworth SOS; sosfiltfilt zero-phase; 2-5 Hz bandpass or >5 Hz high-pass"
+        },
+        "5_20s": {
+          "mean_scene_band_mse_rad2": {
+            "candidate": 2.412622653873171e-07,
+            "B": 1.1897446173303986e-07,
+            "parent": 5.757684883957719e-06
+          },
+          "pooled_band_rmse_rad": {
+            "candidate": 0.0004911845532865596,
+            "B": 0.0003449267483583143,
+            "parent": 0.0023995176356838305
+          },
+          "candidate_over_B_pooled_rmse_ratio": 1.4240256971208007,
+          "candidate_over_parent_pooled_rmse_ratio": 0.20470137246837883,
+          "candidate_scenes_with_more_band_mse_than_B": 10,
+          "filter_order_one_pass": 4,
+          "filter_type": "Butterworth SOS; sosfiltfilt zero-phase; 2-5 Hz bandpass or >5 Hz high-pass"
+        }
+      }
+    }
+  },
+  "startup_parent_vs_gate": {
+    "gate_diagnostics": [
+      {
+        "scene_id": "DL1018_DEV_T1_C10_W09",
+        "early_event_count_t_lt_2s": 199,
+        "max_abs_recorded_gate_t_lt_2s": 0.0,
+        "max_abs_gate_applied_minus_parent_input_mps2_t_lt_2s": 0.0,
+        "candidate_parent_state_max_abs_t_lt_2s": 0.0,
+        "candidate_parent_error_rotvec_max_abs_rad_t_lt_2s": 0.0
+      },
+      {
+        "scene_id": "DL1018_DEV_T1_C11_W12",
+        "early_event_count_t_lt_2s": 199,
+        "max_abs_recorded_gate_t_lt_2s": 0.0,
+        "max_abs_gate_applied_minus_parent_input_mps2_t_lt_2s": 0.0,
+        "candidate_parent_state_max_abs_t_lt_2s": 0.0,
+        "candidate_parent_error_rotvec_max_abs_rad_t_lt_2s": 0.0
+      },
+      {
+        "scene_id": "DL1018_DEV_T1_C15_W14",
+        "early_event_count_t_lt_2s": 199,
+        "max_abs_recorded_gate_t_lt_2s": 0.0,
+        "max_abs_gate_applied_minus_parent_input_mps2_t_lt_2s": 0.0,
+        "candidate_parent_state_max_abs_t_lt_2s": 0.0,
+        "candidate_parent_error_rotvec_max_abs_rad_t_lt_2s": 0.0
+      },
+      {
+        "scene_id": "DL1018_DEV_T2_C09_W10",
+        "early_event_count_t_lt_2s": 199,
+        "max_abs_recorded_gate_t_lt_2s": 0.0,
+        "max_abs_gate_applied_minus_parent_input_mps2_t_lt_2s": 0.0,
+        "candidate_parent_state_max_abs_t_lt_2s": 0.0,
+        "candidate_parent_error_rotvec_max_abs_rad_t_lt_2s": 0.0
+      },
+      {
+        "scene_id": "DL1018_DEV_T2_C12_W13",
+        "early_event_count_t_lt_2s": 199,
+        "max_abs_recorded_gate_t_lt_2s": 0.0,
+        "max_abs_gate_applied_minus_parent_input_mps2_t_lt_2s": 0.0,
+        "candidate_parent_state_max_abs_t_lt_2s": 0.0,
+        "candidate_parent_error_rotvec_max_abs_rad_t_lt_2s": 0.0
+      },
+      {
+        "scene_id": "DL1018_DEV_T2_C14_W14",
+        "early_event_count_t_lt_2s": 199,
+        "max_abs_recorded_gate_t_lt_2s": 0.0,
+        "max_abs_gate_applied_minus_parent_input_mps2_t_lt_2s": 0.0,
+        "candidate_parent_state_max_abs_t_lt_2s": 0.0,
+        "candidate_parent_error_rotvec_max_abs_rad_t_lt_2s": 0.0
+      },
+      {
+        "scene_id": "DL1018_DEV_T3_C09_W09",
+        "early_event_count_t_lt_2s": 199,
+        "max_abs_recorded_gate_t_lt_2s": 0.0,
+        "max_abs_gate_applied_minus_parent_input_mps2_t_lt_2s": 0.0,
+        "candidate_parent_state_max_abs_t_lt_2s": 0.0,
+        "candidate_parent_error_rotvec_max_abs_rad_t_lt_2s": 0.0
+      },
+      {
+        "scene_id": "DL1018_DEV_T3_C10_W11",
+        "early_event_count_t_lt_2s": 199,
+        "max_abs_recorded_gate_t_lt_2s": 0.0,
+        "max_abs_gate_applied_minus_parent_input_mps2_t_lt_2s": 0.0,
+        "candidate_parent_state_max_abs_t_lt_2s": 0.0,
+        "candidate_parent_error_rotvec_max_abs_rad_t_lt_2s": 0.0
+      },
+      {
+        "scene_id": "DL1018_DEV_T3_C13_W12",
+        "early_event_count_t_lt_2s": 199,
+        "max_abs_recorded_gate_t_lt_2s": 0.0,
+        "max_abs_gate_applied_minus_parent_input_mps2_t_lt_2s": 0.0,
+        "candidate_parent_state_max_abs_t_lt_2s": 0.0,
+        "candidate_parent_error_rotvec_max_abs_rad_t_lt_2s": 0.0
+      },
+      {
+        "scene_id": "DL1018_DEV_T3_C15_W14",
+        "early_event_count_t_lt_2s": 199,
+        "max_abs_recorded_gate_t_lt_2s": 0.0,
+        "max_abs_gate_applied_minus_parent_input_mps2_t_lt_2s": 0.0,
+        "candidate_parent_state_max_abs_t_lt_2s": 0.0,
+        "candidate_parent_error_rotvec_max_abs_rad_t_lt_2s": 0.0
+      }
+    ],
+    "max_abs_recorded_gate_t_lt_2s_over_10_scenes": 0.0,
+    "max_abs_applied_minus_parent_input_mps2_t_lt_2s_over_10_scenes": 0.0,
+    "max_candidate_parent_state_abs_t_lt_2s_over_10_scenes": 0.0,
+    "max_candidate_parent_error_rotvec_abs_rad_t_lt_2s_over_10_scenes": 0.0,
+    "macro_window_task_rmse_rad": {
+      "whole_0_20s": {
+        "candidate": 0.054644381218716134,
+        "parent": 0.05848769329433436,
+        "B": 0.05509093250191146
+      },
+      "0_2s": {
+        "candidate": 0.04862568849476381,
+        "parent": 0.04862568849476381,
+        "B": 0.04962411039442484
+      },
+      "2_5s": {
+        "candidate": 0.05227463222610205,
+        "parent": 0.056855708952532134,
+        "B": 0.0513173431546905
+      },
+      "5_20s": {
+        "candidate": 0.05579775470917479,
+        "parent": 0.05995026115542473,
+        "B": 0.05645320044705691
+      }
+    },
+    "candidate_over_B_macro_window_rmse_ratio": {
+      "whole_0_20s": 0.9918942870829092,
+      "0_2s": 0.9798803063324395,
+      "2_5s": 1.0186542991620964,
+      "5_20s": 0.9883895734397413
+    }
+  },
+  "per_scene_raw_and_task_scores": [
+    {
+      "scene_id": "DL1018_DEV_T1_C10_W09",
+      "raws": {
+        "candidate": {
+          "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\causal_n4_gate_train24_batch_v2\\runs\\DL1018_DEV_T1_C10_W09\\attempt_01\\raw_run.mat",
+          "sha256": "3560818b0c2343a2eaac918d0175ee96ab94d0f4128f7ac2c580079c651bd82c",
+          "official_task_SO3_rmse_rad": 0.04164024502159498
+        },
+        "parent": {
+          "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_full72_v1\\runs\\DL1018_DEV_T1_C10_W09\\raw_run.mat",
+          "sha256": "c40239f9c9a6cea0f233eabdea3294b20ff4d3384e22a59055dc4e5358f5b541",
+          "official_task_SO3_rmse_rad": 0.04330835597159727
+        },
+        "B": {
+          "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\b_traceable_c3core_dev72_20261023\\runs_b\\DL1018_DEV_T1_C10_W09\\B_TRACEABLE_C3CORE_V1\\attempt_01\\raw_run.mat",
+          "sha256": "d1048a81954f856f3d4dac15d510f1cc7130775878bc4677ef76fd088c712a5f",
+          "official_task_SO3_rmse_rad": 0.042200801129056116
+        }
+      },
+      "reference_and_time_exact_across_pair": true,
+      "windows_task_rmse_rad": {
+        "whole_0_20s": {
+          "candidate": 0.04164024502159498,
+          "parent": 0.04330835597159727,
+          "B": 0.042200801129056116
+        },
+        "0_2s": {
+          "candidate": 0.038869951906443545,
+          "parent": 0.038869951906443545,
+          "B": 0.039226521225518785
+        },
+        "2_5s": {
+          "candidate": 0.0413913002350288,
+          "parent": 0.04293236314541704,
+          "B": 0.04168954708492426
+        },
+        "5_20s": {
+          "candidate": 0.04204497648254783,
+          "parent": 0.04394004178992687,
+          "B": 0.042682249634959035
+        }
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T1_C11_W12",
+      "raws": {
+        "candidate": {
+          "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\n4cg_v2\\r2\\runs\\DL1018_DEV_T1_C11_W12\\attempt_01\\raw_run.mat",
+          "sha256": "e4839cfcfab82f32e3fc21c56add89c524b0257030173cc8c79ac697ff6abac4",
+          "official_task_SO3_rmse_rad": 0.04415323720549651
+        },
+        "parent": {
+          "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_full72_v1\\runs\\DL1018_DEV_T1_C11_W12\\raw_run.mat",
+          "sha256": "3d342df86a16c2a8694b81d2a41c0f7faea39c6e09230fec7345179b25687f0a",
+          "official_task_SO3_rmse_rad": 0.04452455479737677
+        },
+        "B": {
+          "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\b_traceable_c3core_dev72_20261023\\runs_b\\DL1018_DEV_T1_C11_W12\\B_TRACEABLE_C3CORE_V1\\attempt_01\\raw_run.mat",
+          "sha256": "334a83e3ce9de14395c65853a1cf8fec9a60923ba2d6375ece0236a4f437a598",
+          "official_task_SO3_rmse_rad": 0.044442067944485256
+        }
+      },
+      "reference_and_time_exact_across_pair": true,
+      "windows_task_rmse_rad": {
+        "whole_0_20s": {
+          "candidate": 0.04415323720549651,
+          "parent": 0.04452455479737677,
+          "B": 0.04444206794448527
+        },
+        "0_2s": {
+          "candidate": 0.03748629072025467,
+          "parent": 0.03748629072025467,
+          "B": 0.038703331451114986
+        },
+        "2_5s": {
+          "candidate": 0.03796334933840766,
+          "parent": 0.03880613182034186,
+          "B": 0.038167356258743054
+        },
+        "5_20s": {
+          "candidate": 0.04608390986971977,
+          "parent": 0.04641864263359996,
+          "B": 0.046285810498553
+        }
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T1_C15_W14",
+      "raws": {
+        "candidate": {
+          "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\causal_n4_gate_train24_batch_v2\\runs\\DL1018_DEV_T1_C15_W14\\attempt_01\\raw_run.mat",
+          "sha256": "60194d7cc845018a331f3a2c5adc26407f3b4dd29ec2eaea1c89959c2ebe5410",
+          "official_task_SO3_rmse_rad": 0.05656314391852858
+        },
+        "parent": {
+          "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_full72_v1\\runs\\DL1018_DEV_T1_C15_W14\\raw_run.mat",
+          "sha256": "cf7d6c742b71d997f0fde3332e998ccbfd59e5105480e296070c811550875c25",
+          "official_task_SO3_rmse_rad": 0.059718567224082794
+        },
+        "B": {
+          "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\b_traceable_c3core_dev72_20261023\\runs_b\\DL1018_DEV_T1_C15_W14\\B_TRACEABLE_C3CORE_V1\\attempt_01\\raw_run.mat",
+          "sha256": "0f03e6a6778673fef380d7e8ab8012acb16703a2b38adf2a18a2b9427c03f8dd",
+          "official_task_SO3_rmse_rad": 0.05708308522902606
+        }
+      },
+      "reference_and_time_exact_across_pair": true,
+      "windows_task_rmse_rad": {
+        "whole_0_20s": {
+          "candidate": 0.05656314391852858,
+          "parent": 0.05971856722408281,
+          "B": 0.05708308522902606
+        },
+        "0_2s": {
+          "candidate": 0.044666391336475604,
+          "parent": 0.044666391336475604,
+          "B": 0.047048413105399416
+        },
+        "2_5s": {
+          "candidate": 0.04914559901374176,
+          "parent": 0.05304652094051533,
+          "B": 0.046713115036601464
+        },
+        "5_20s": {
+          "candidate": 0.05930229050621308,
+          "parent": 0.06265982886312416,
+          "B": 0.06010866055851922
+        }
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C09_W10",
+      "raws": {
+        "candidate": {
+          "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\causal_n4_gate_train24_batch_v2\\runs\\DL1018_DEV_T2_C09_W10\\attempt_01\\raw_run.mat",
+          "sha256": "58162100f83284f80e048e3b2b7c35a7f057b2dbf39366e9a303b5cf8b29eefe",
+          "official_task_SO3_rmse_rad": 0.0634145552737441
+        },
+        "parent": {
+          "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_full72_v1\\runs\\DL1018_DEV_T2_C09_W10\\raw_run.mat",
+          "sha256": "518567b25d19d8e8acd6a74c33eb7c5ed6b78c507d6f022a0cd12ba6bf126e98",
+          "official_task_SO3_rmse_rad": 0.07305537062489269
+        },
+        "B": {
+          "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\b_traceable_c3core_dev72_20261023\\runs_b\\DL1018_DEV_T2_C09_W10\\B_TRACEABLE_C3CORE_V1\\attempt_01\\raw_run.mat",
+          "sha256": "61bb549a6afc78326bb6d577cd52c14f0edd52c046f69681f97a2e88adb5751e",
+          "official_task_SO3_rmse_rad": 0.06360047397520943
+        }
+      },
+      "reference_and_time_exact_across_pair": true,
+      "windows_task_rmse_rad": {
+        "whole_0_20s": {
+          "candidate": 0.0634145552737441,
+          "parent": 0.07305537062489269,
+          "B": 0.06360047397520945
+        },
+        "0_2s": {
+          "candidate": 0.0620735667289768,
+          "parent": 0.0620735667289768,
+          "B": 0.06026534549946355
+        },
+        "2_5s": {
+          "candidate": 0.06465497895657832,
+          "parent": 0.07517491498749786,
+          "B": 0.06432991536479205
+        },
+        "5_20s": {
+          "candidate": 0.0633409143504073,
+          "parent": 0.07397366631607562,
+          "B": 0.0638861130520092
+        }
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C12_W13",
+      "raws": {
+        "candidate": {
+          "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\causal_n4_gate_train24_batch_v2\\runs\\DL1018_DEV_T2_C12_W13\\attempt_01\\raw_run.mat",
+          "sha256": "cb336f29d2777b45ef02843a0155553c7d8f5020798cd00ed5a1f19326128b86",
+          "official_task_SO3_rmse_rad": 0.07176743660223889
+        },
+        "parent": {
+          "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_full72_v1\\runs\\DL1018_DEV_T2_C12_W13\\raw_run.mat",
+          "sha256": "f20c5af809af3b9e882ba3aa2de44f78ae2fb98df8648663b3e39b043ff0ccc5",
+          "official_task_SO3_rmse_rad": 0.07501605472709363
+        },
+        "B": {
+          "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\b_traceable_c3core_dev72_20261023\\runs_b\\DL1018_DEV_T2_C12_W13\\B_TRACEABLE_C3CORE_V1\\attempt_01\\raw_run.mat",
+          "sha256": "8034596f07dc43db58a8babdb9d50f5105e7a14605274b3fb9e0f1c658a28b3b",
+          "official_task_SO3_rmse_rad": 0.07213134049087415
+        }
+      },
+      "reference_and_time_exact_across_pair": true,
+      "windows_task_rmse_rad": {
+        "whole_0_20s": {
+          "candidate": 0.0717674366022389,
+          "parent": 0.07501605472709365,
+          "B": 0.07213134049087416
+        },
+        "0_2s": {
+          "candidate": 0.06172564996381653,
+          "parent": 0.06172564996381653,
+          "B": 0.06404492986798788
+        },
+        "2_5s": {
+          "candidate": 0.062419854884881686,
+          "parent": 0.06737188115215802,
+          "B": 0.061752526294872497
+        },
+        "5_20s": {
+          "candidate": 0.07470030922712666,
+          "parent": 0.07802165790295168,
+          "B": 0.07501757630437778
+        }
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C14_W14",
+      "raws": {
+        "candidate": {
+          "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\causal_n4_gate_train24_batch_v2\\runs\\DL1018_DEV_T2_C14_W14\\attempt_01\\raw_run.mat",
+          "sha256": "e9401c4b62b6d1e2d6bf2c97670226f28214cdf0b4a7adff66e129fd59984f71",
+          "official_task_SO3_rmse_rad": 0.05820718446368748
+        },
+        "parent": {
+          "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_full72_v1\\runs\\DL1018_DEV_T2_C14_W14\\raw_run.mat",
+          "sha256": "57763ef41b91888810d32a558ae91cf44217cfce2082839f62a4460b6c67d06c",
+          "official_task_SO3_rmse_rad": 0.06210820341650414
+        },
+        "B": {
+          "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\b_traceable_c3core_dev72_20261023\\runs_b\\DL1018_DEV_T2_C14_W14\\B_TRACEABLE_C3CORE_V1\\attempt_01\\raw_run.mat",
+          "sha256": "4cd24ea9a1aa296c1c279c31b6b40806888ddb48d97a6a2db46376fba7a0d11a",
+          "official_task_SO3_rmse_rad": 0.058395445752302017
+        }
+      },
+      "reference_and_time_exact_across_pair": true,
+      "windows_task_rmse_rad": {
+        "whole_0_20s": {
+          "candidate": 0.058207184463687486,
+          "parent": 0.062108203416504144,
+          "B": 0.05839544575230202
+        },
+        "0_2s": {
+          "candidate": 0.05215543494733365,
+          "parent": 0.05215543494733365,
+          "B": 0.05187365289952382
+        },
+        "2_5s": {
+          "candidate": 0.054635098811151264,
+          "parent": 0.059649251318308144,
+          "B": 0.0557579297449465
+        },
+        "5_20s": {
+          "candidate": 0.059646735564013724,
+          "parent": 0.06378813306456185,
+          "B": 0.059717006891262164
+        }
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C09_W09",
+      "raws": {
+        "candidate": {
+          "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\n4cg_v2\\r1\\runs\\DL1018_DEV_T3_C09_W09\\attempt_01\\raw_run.mat",
+          "sha256": "7c14e5bb271a4141983075ef4cbddef169ff3cff97147d295ab02bb9b757f11e",
+          "official_task_SO3_rmse_rad": 0.058582949357324283
+        },
+        "parent": {
+          "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_full72_v1\\runs\\DL1018_DEV_T3_C09_W09\\raw_run.mat",
+          "sha256": "14176658aac8e8b69817f71aff748add1b591cee744cd05954184e52e34c2cb2",
+          "official_task_SO3_rmse_rad": 0.060662806192281635
+        },
+        "B": {
+          "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\b_traceable_c3core_dev72_20261023\\runs_b\\DL1018_DEV_T3_C09_W09\\B_TRACEABLE_C3CORE_V1\\attempt_01\\raw_run.mat",
+          "sha256": "a8cec3af85c0988622a3582385a44a201aa2d5e796fa73a933277cde0cf85f49",
+          "official_task_SO3_rmse_rad": 0.05906125628102724
+        }
+      },
+      "reference_and_time_exact_across_pair": true,
+      "windows_task_rmse_rad": {
+        "whole_0_20s": {
+          "candidate": 0.058582949357324283,
+          "parent": 0.060662806192281635,
+          "B": 0.05906125628102724
+        },
+        "0_2s": {
+          "candidate": 0.05459213354135198,
+          "parent": 0.05459213354135198,
+          "B": 0.056537456276653
+        },
+        "2_5s": {
+          "candidate": 0.06278310229250644,
+          "parent": 0.0647252190058447,
+          "B": 0.06161934875297252
+        },
+        "5_20s": {
+          "candidate": 0.058225724524135596,
+          "parent": 0.06059200479282146,
+          "B": 0.05886757022580006
+        }
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C10_W11",
+      "raws": {
+        "candidate": {
+          "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\causal_n4_gate_train24_batch_v2\\runs\\DL1018_DEV_T3_C10_W11\\attempt_01\\raw_run.mat",
+          "sha256": "a2d37a9a122679322d396736f717b9ae2ad4ed40b700b43f514f697e446d35f5",
+          "official_task_SO3_rmse_rad": 0.05172122038320029
+        },
+        "parent": {
+          "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_full72_v1\\runs\\DL1018_DEV_T3_C10_W11\\raw_run.mat",
+          "sha256": "5fcfd987b404b21afe39d4367bdf9baade7a526b72a00016de3c5a15630df38a",
+          "official_task_SO3_rmse_rad": 0.06237903812470895
+        },
+        "B": {
+          "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\b_traceable_c3core_dev72_20261023\\runs_b\\DL1018_DEV_T3_C10_W11\\B_TRACEABLE_C3CORE_V1\\attempt_01\\raw_run.mat",
+          "sha256": "afb64af0c42aa1161e123c929a0acc6988e2899e02dd88bb7686817fd3fb0bf4",
+          "official_task_SO3_rmse_rad": 0.0522519654506897
+        }
+      },
+      "reference_and_time_exact_across_pair": true,
+      "windows_task_rmse_rad": {
+        "whole_0_20s": {
+          "candidate": 0.051721220383200296,
+          "parent": 0.06237903812470895,
+          "B": 0.052251965450689705
+        },
+        "0_2s": {
+          "candidate": 0.047555415313631555,
+          "parent": 0.047555415313631555,
+          "B": 0.04820204376609617
+        },
+        "2_5s": {
+          "candidate": 0.056182324139670184,
+          "parent": 0.06697633808496163,
+          "B": 0.05104779655698785
+        },
+        "5_20s": {
+          "candidate": 0.05132207984795668,
+          "parent": 0.06316236483129646,
+          "B": 0.05300363013093829
+        }
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C13_W12",
+      "raws": {
+        "candidate": {
+          "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\causal_n4_gate_train24_batch_v2\\runs\\DL1018_DEV_T3_C13_W12\\attempt_01\\raw_run.mat",
+          "sha256": "4c91a0d9166b4c5ae0f1926fe04c9c9eccb06dc5cc15eefeb01f1899a1206a14",
+          "official_task_SO3_rmse_rad": 0.04194285252914149
+        },
+        "parent": {
+          "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_full72_v1\\runs\\DL1018_DEV_T3_C13_W12\\raw_run.mat",
+          "sha256": "e4dcbb80beb4ef1147d7b97d54736e1b7f0cb7c6e91bbf2f3d0cb057f7f734c0",
+          "official_task_SO3_rmse_rad": 0.04227495295807316
+        },
+        "B": {
+          "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\b_traceable_c3core_dev72_20261023\\runs_b\\DL1018_DEV_T3_C13_W12\\B_TRACEABLE_C3CORE_V1\\attempt_01\\raw_run.mat",
+          "sha256": "cdc06f1810f6a0d7fb42e940a2a2feb1a32ad13fd46b9535f03c8d255a6628e6",
+          "official_task_SO3_rmse_rad": 0.042393916917709905
+        }
+      },
+      "reference_and_time_exact_across_pair": true,
+      "windows_task_rmse_rad": {
+        "whole_0_20s": {
+          "candidate": 0.04194285252914149,
+          "parent": 0.04227495295807316,
+          "B": 0.042393916917709905
+        },
+        "0_2s": {
+          "candidate": 0.03707471171968565,
+          "parent": 0.03707471171968565,
+          "B": 0.03815425846973245
+        },
+        "2_5s": {
+          "candidate": 0.03765602523434023,
+          "parent": 0.0384623589859179,
+          "B": 0.03793368967230185
+        },
+        "5_20s": {
+          "candidate": 0.04334431206942255,
+          "parent": 0.04363193685318097,
+          "B": 0.04375414444090669
+        }
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C15_W14",
+      "raws": {
+        "candidate": {
+          "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\causal_n4_gate_train24_batch_v2\\runs\\DL1018_DEV_T3_C15_W14\\attempt_01\\raw_run.mat",
+          "sha256": "87a86f337ca0dcd8b569171f561ada43bfd151dafbc65fb39ee0ed6c0617e38a",
+          "official_task_SO3_rmse_rad": 0.05845098743220471
+        },
+        "parent": {
+          "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_full72_v1\\runs\\DL1018_DEV_T3_C15_W14\\raw_run.mat",
+          "sha256": "2d646c46c22019c5e59d6b143a8f1eb31f9190597011b701a469a1513d44c386",
+          "official_task_SO3_rmse_rad": 0.06182902890673264
+        },
+        "B": {
+          "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\b_traceable_c3core_dev72_20261023\\runs_b\\DL1018_DEV_T3_C15_W14\\B_TRACEABLE_C3CORE_V1\\attempt_01\\raw_run.mat",
+          "sha256": "85515327d99bb679c1ca51a4d36c36cb3d7704a72748744f915ddb24e31116a4",
+          "official_task_SO3_rmse_rad": 0.05934897184873463
+        }
+      },
+      "reference_and_time_exact_across_pair": true,
+      "windows_task_rmse_rad": {
+        "whole_0_20s": {
+          "candidate": 0.05845098743220472,
+          "parent": 0.06182902890673264,
+          "B": 0.05934897184873463
+        },
+        "0_2s": {
+          "candidate": 0.05005733876966814,
+          "parent": 0.05005733876966814,
+          "B": 0.05218515138275828
+        },
+        "2_5s": {
+          "candidate": 0.055914689354714005,
+          "parent": 0.061412110084358866,
+          "B": 0.054162206779762884
+        },
+        "5_20s": {
+          "candidate": 0.059966294650204775,
+          "parent": 0.06331433450670829,
+          "B": 0.061209242733243734
+        }
+      }
+    }
+  ],
+  "limitations": [
+    "Welch reduces endpoint leakage but does not eliminate leakage; 0.5 Hz resolution and a 2 s Hann segment soften the 2 Hz/5 Hz boundaries.",
+    "The 2-5 s window has only two overlapping 2 s Welch segments, so its estimate has low averaging and should be read descriptively.",
+    "Zero-phase filtering uses future samples and is not deployable evidence. Its band edges are smooth, not brick-wall; the 5-20 s filtered score excludes [19,20] s to avoid end transients.",
+    "These offline error spectra diagnose recorded trajectories only. They do not prove causal controller improvement or identify physical mechanism."
+  ],
+  "input_sha256": {
+    "train24_score_summary": "d127fc403a8d456924b7040ce8a329e5130f2b67f5ea8a801490e075085f4b21",
+    "frozen_score_full72": "6baf689802f4d73ead813449e52a8fe85cb0be92c3185850c93646da2d54dd16",
+    "frozen_constants_release": "507f9a13af2d20aca64a08ea7846991198112bd97ca8456dccb9402ec9424862",
+    "original_helper": "a5c7ccfbe3b37054e4df2422220905a2f751a43a71ea6a9de5900086b08bd6f5",
+    "audit_script": "1d59da5d32311e7be3e97e731d673e8a491161378b1b069614c2415bf3503f7d",
+    "prior_full_window_report": "adebc247f176cc41c67d31e95a70d6e2f10bbda29ed229d76d1de596bbef8038",
+    "prior_time_windows_report": "b90749b749c620bdefcc9eeef432e5b852413f9908aba7588f54a6a5c65fdb95",
+    "scene_bindings": {
+      "DL1018_DEV_T1_C10_W09": "2102247b743edfbcfce7a3c8cb0b9d198b005d68443026d604893a008f6d06ea",
+      "DL1018_DEV_T1_C11_W12": "1eb7ee45a9498acd3ec6c0ebefea48e9e30e3f179d4d547742941757df271faa",
+      "DL1018_DEV_T1_C15_W14": "c86f7cb19fbd06249d132d768ee3102da302e442c12defe9858df38f9dfb3f60",
+      "DL1018_DEV_T2_C09_W10": "e1a9813119148a8ee100b38ae588105da20bcb829d2d33456ac299e98de304af",
+      "DL1018_DEV_T2_C12_W13": "c3bef86eae680f952cc18bba284af0c19cad0d146ccf76b519373afe4e9a84ce",
+      "DL1018_DEV_T2_C14_W14": "04c00465088d39232f0522f115a63819dd7660ea472e1532132f292e486aefe6",
+      "DL1018_DEV_T3_C09_W09": "f9890efc91401dca279d7698595485f4c0495f4f5503b641e8de731f956e34fb",
+      "DL1018_DEV_T3_C10_W11": "38462d3430e9aba3d5ccff06edff58baf1dc5484bfd39944fbe793ca9840287c",
+      "DL1018_DEV_T3_C13_W12": "33ab3b51d10c5fbc8488679bc79150b6ffdb017f83549f584346ac6a81c317be",
+      "DL1018_DEV_T3_C15_W14": "248601fdf148cf7531ec24851ead17edf2b93d043ac4fd39f1931826cc99cf52"
+    },
+    "raws": {
+      "DL1018_DEV_T1_C10_W09": {
+        "candidate": "3560818b0c2343a2eaac918d0175ee96ab94d0f4128f7ac2c580079c651bd82c",
+        "parent": "c40239f9c9a6cea0f233eabdea3294b20ff4d3384e22a59055dc4e5358f5b541",
+        "B": "d1048a81954f856f3d4dac15d510f1cc7130775878bc4677ef76fd088c712a5f"
+      },
+      "DL1018_DEV_T1_C11_W12": {
+        "candidate": "e4839cfcfab82f32e3fc21c56add89c524b0257030173cc8c79ac697ff6abac4",
+        "parent": "3d342df86a16c2a8694b81d2a41c0f7faea39c6e09230fec7345179b25687f0a",
+        "B": "334a83e3ce9de14395c65853a1cf8fec9a60923ba2d6375ece0236a4f437a598"
+      },
+      "DL1018_DEV_T1_C15_W14": {
+        "candidate": "60194d7cc845018a331f3a2c5adc26407f3b4dd29ec2eaea1c89959c2ebe5410",
+        "parent": "cf7d6c742b71d997f0fde3332e998ccbfd59e5105480e296070c811550875c25",
+        "B": "0f03e6a6778673fef380d7e8ab8012acb16703a2b38adf2a18a2b9427c03f8dd"
+      },
+      "DL1018_DEV_T2_C09_W10": {
+        "candidate": "58162100f83284f80e048e3b2b7c35a7f057b2dbf39366e9a303b5cf8b29eefe",
+        "parent": "518567b25d19d8e8acd6a74c33eb7c5ed6b78c507d6f022a0cd12ba6bf126e98",
+        "B": "61bb549a6afc78326bb6d577cd52c14f0edd52c046f69681f97a2e88adb5751e"
+      },
+      "DL1018_DEV_T2_C12_W13": {
+        "candidate": "cb336f29d2777b45ef02843a0155553c7d8f5020798cd00ed5a1f19326128b86",
+        "parent": "f20c5af809af3b9e882ba3aa2de44f78ae2fb98df8648663b3e39b043ff0ccc5",
+        "B": "8034596f07dc43db58a8babdb9d50f5105e7a14605274b3fb9e0f1c658a28b3b"
+      },
+      "DL1018_DEV_T2_C14_W14": {
+        "candidate": "e9401c4b62b6d1e2d6bf2c97670226f28214cdf0b4a7adff66e129fd59984f71",
+        "parent": "57763ef41b91888810d32a558ae91cf44217cfce2082839f62a4460b6c67d06c",
+        "B": "4cd24ea9a1aa296c1c279c31b6b40806888ddb48d97a6a2db46376fba7a0d11a"
+      },
+      "DL1018_DEV_T3_C09_W09": {
+        "candidate": "7c14e5bb271a4141983075ef4cbddef169ff3cff97147d295ab02bb9b757f11e",
+        "parent": "14176658aac8e8b69817f71aff748add1b591cee744cd05954184e52e34c2cb2",
+        "B": "a8cec3af85c0988622a3582385a44a201aa2d5e796fa73a933277cde0cf85f49"
+      },
+      "DL1018_DEV_T3_C10_W11": {
+        "candidate": "a2d37a9a122679322d396736f717b9ae2ad4ed40b700b43f514f697e446d35f5",
+        "parent": "5fcfd987b404b21afe39d4367bdf9baade7a526b72a00016de3c5a15630df38a",
+        "B": "afb64af0c42aa1161e123c929a0acc6988e2899e02dd88bb7686817fd3fb0bf4"
+      },
+      "DL1018_DEV_T3_C13_W12": {
+        "candidate": "4c91a0d9166b4c5ae0f1926fe04c9c9eccb06dc5cc15eefeb01f1899a1206a14",
+        "parent": "e4dcbb80beb4ef1147d7b97d54736e1b7f0cb7c6e91bbf2f3d0cb057f7f734c0",
+        "B": "cdc06f1810f6a0d7fb42e940a2a2feb1a32ad13fd46b9535f03c8d255a6628e6"
+      },
+      "DL1018_DEV_T3_C15_W14": {
+        "candidate": "87a86f337ca0dcd8b569171f561ada43bfd151dafbc65fb39ee0ed6c0617e38a",
+        "parent": "2d646c46c22019c5e59d6b143a8f1eb31f9190597011b701a469a1513d44c386",
+        "B": "85515327d99bb679c1ca51a4d36c36cb3d7704a72748744f915ddb24e31116a4"
+      }
+    }
+  },
+  "conclusion": {
+    "original_unwindowed_2_to_5_Hz_estimate": "WITHDRAW_EXACT_MAGNITUDE; independent methods confirm candidate residual energy exceeds B",
+    "original_5_to_20_s_near_parity_characterization": "RETRACTED_AS_TOO_STRONG; independent ratios span 1.026 to 1.106, with candidate above B",
+    "robust_full_record_2_to_5_Hz_candidate_over_B_rmse_ratio_welch": 1.5771949116931596,
+    "robust_full_record_2_to_5_Hz_candidate_over_B_rmse_ratio_zero_phase_filter": 1.484565191215739,
+    "startup_attribution": "The 0-2 s candidate error trace and gate-applied position input are identical to the parent cosine-GRU on all 10 scenes (gate=0); any candidate-vs-B startup spectral gap is inherited from the parent-vs-B trajectories, not introduced by N4 gating.",
+    "causal_claim": "No causal improvement claim is supported by these offline diagnostics."
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "schema": "CM18_A2_RETRY1_WINDOWS_REPLACE_TEST_V1",
+  "status": "PASS",
+  "test_directory": "reports\\attitude_cm18_a2_20261024\\retry1_tinyfixture_v2\\case_20261024T135530_185a56ed",
+  "platform": "Windows-11-10.0.26300-SP0",
+  "python": "3.12.7 | packaged by Anaconda, Inc. | (main, Oct  4 2024, 13:17:27) [MSC v.1929 64 bit (AMD64)]",
+  "trainer_sha256": "b770a72f6f44273f105263cec7b6792f0bf6b6090f68c470a5549b0465328ef8",
+  "exporter_sha256": "58ad83fd2eb24740fe2a9a7ed84e54c3dfcaaa9b45caa140a6bae1cade90b057",
+  "retry_contract": {
+    "attempts": 20,
+    "sleep_seconds": 0.05,
+    "maximum_sleep_seconds": 0.95,
+    "retry_winerrors": [
+      5,
+      32,
+      33
+    ]
+  },
+  "cases": {
+    "short_non_delete_lock": {
+      "status": "PASS",
+      "attempts": 4,
+      "elapsed_seconds": 0.16187179999542423,
+      "new_value": {
+        "case": "short",
+        "written": true
+      }
+    },
+    "long_non_delete_lock": {
+      "status": "PASS",
+      "attempts": 20,
+      "elapsed_seconds": 0.9820709999985411,
+      "old_sha256_preserved": "7cfadbb6ece1a7a5340999ac3b6a5ff6f9e9c8f14e2ec634bd9b1d58b22ee9c2",
+      "old_file_unchanged": true,
+      "failed_temp_preserved": true,
+      "failed_temp_sha256": "bd2e78928dc72fc6b9306a153bd6ff60eb9e03b8abc2b9f54ac10279c852c5fd"
+    },
+    "share_delete_transient_lock": {
+      "status": "PASS",
+      "share_delete_flag": true,
+      "attempts": 4,
+      "observed_winerrors": [
+        5,
+        5,
+        5
+      ],
+      "elapsed_seconds": 0.16126239999721292,
+      "new_value": {
+        "case": "share_delete_transient",
+        "written": true
+      }
+    }
+  }
+}

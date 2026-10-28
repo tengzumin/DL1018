@@ -1,0 +1,56 @@
+{
+  "schema": "DL1018_HISTORY_CONTRACT_FINDINGS_V1",
+  "status": "COMPLETED_BOUNDED_STATIC_AUDIT_NO_ADDITIONAL_CONFIRMED_DEFECT",
+  "TEST_read": false,
+  "Plant_called": false,
+  "historical_files_modified": false,
+  "findings": [],
+  "excluded_already_known": [
+    "MLP RLS-only declaration with tracking enabled",
+    "legacy head update-count misuse"
+  ],
+  "verified_contracts": [
+    {
+      "contract": "C5 feature and label semantics",
+      "evidence": [
+        "experiments/dl_attitude_replacement_20261026/mlp15_c5_teacher_redistill_v1/build_matched_teacher_dataset_v1.py:248",
+        "experiments/dl_attitude_replacement_20261026/mlp15_c5_teacher_redistill_v1/build_matched_teacher_dataset_v1.py:288",
+        "experiments/dl_attitude_replacement_20261026/mlp15_c5_teacher_redistill_v1/build_matched_teacher_dataset_v1.py:293",
+        "experiments/dl_attitude_replacement_20261026/mlp15_c5_teacher_redistill_v1/build_matched_teacher_dataset_v1.py:298"
+      ],
+      "result": "wrapped(filtered Euler reference - current Euler), body omega, nominal BS torque, current morph command; teacher post-DMAX/pre-beta acceleration; fixed J0 torque closure and beta checked explicitly."
+    },
+    {
+      "contract": "MLP15 causal window",
+      "evidence": [
+        "experiments/dl_attitude_replacement_20261026/mlp15_formal_v1/matlab/mlp15_attitude_step_v1.m:6",
+        "experiments/dl_attitude_replacement_20261026/mlp15_formal_v1/matlab/mlp15_attitude_step_v1.m:23"
+      ],
+      "result": "14 zero normalized history events plus current normalized 13-feature event, history advanced after inference."
+    },
+    {
+      "contract": "NCMD unit/sign/interval",
+      "evidence": [
+        "experiments/dl_attitude_replacement_20261026/nominal_command_target_data_v1/build_nominal_command_target_v1.py:170",
+        "experiments/dl_attitude_replacement_20261026/nominal_command_target_data_v1/build_nominal_command_target_v1.py:173",
+        "experiments/dl_attitude_replacement_20261026/nominal_command_target_data_v1/build_nominal_command_target_v1.py:176",
+        "experiments/dl_attitude_replacement_20261026/gru_stream_ncmd_dev_v1/candidate_runner_work/matlab/core/attitude_bs_step.m:38"
+      ],
+      "result": "target = delta omega / 10ms + mean(J0^-1(cross(omega,J0 omega)-requested torque)); rad/s^2. Runtime torque is J0 beta clip(target); BS subtracts this estimate. Offline future endpoint creates supervised label, not runtime input leakage."
+    },
+    {
+      "contract": "NCMD stream runtime feature/event/head",
+      "evidence": [
+        "experiments/dl_attitude_replacement_20261026/gru_stream_ncmd_dev_v1/candidate_runner_work/matlab/runtime/run_mlp15_dev72_closed_loop.m:2498",
+        "experiments/dl_attitude_replacement_20261026/gru_stream_ncmd_dev_v1/candidate_runner_work/matlab/runtime/gru_stream_attitude_step_v1.m:35",
+        "experiments/dl_attitude_replacement_20261026/gru_stream_ncmd_v1/train_gru_stream_ncmd_v1.py:832",
+        "experiments/dl_attitude_replacement_20261026/gru_stream_ncmd_v1/train_gru_stream_ncmd_v1.py:851"
+      ],
+      "result": "current event same 13-feature order; GRU hidden carried, reset at scene init; frozen head and DMAX-before-beta; RBF attitude branch bypassed by GRU branch; training cohort hidden reset and TBPTT detach explicit."
+    }
+  ],
+  "limitations": [
+    "Bounded source audit only; no numerical raw revalidation, no reexecution, no claim that every historical copied runner was verified byte-for-byte.",
+    "No new confirmed defect beyond the two exclusions; do not interpret empty findings as historical outcome acceptance."
+  ]
+}

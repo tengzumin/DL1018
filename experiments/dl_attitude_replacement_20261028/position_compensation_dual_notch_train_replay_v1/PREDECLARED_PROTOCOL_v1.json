@@ -1,0 +1,28 @@
+{
+  "schema": "POSITION_COMPENSATION_DUAL_NOTCH_TRAIN_FROZEN_REPLAY_PROTOCOL_V1",
+  "scope": "Mechanism diagnostic on the two bound physical TRAIN W09 scenes only.",
+  "event_sample_rate_hz": 100.0,
+  "notch_centers_hz": [2.2, 3.2],
+  "quality_factor_each": 4.0,
+  "filter": "Two causal unity-DC biquad notches cascaded on final stage-1 applied position-compensation acceleration only.",
+  "filter_point": "After the stage-1 C5 action and residual-GRU correction are combined, before conversion to injected force and position_bs_step.",
+  "zoh_behavior": "Update only on logged 100-Hz stage-1 events and hold output between events.",
+  "state_initialization": "At the first nonzero action event, initialize each section's input/output history to that current value; pass that sample unchanged.",
+  "action_limit_mps2": 3.0,
+  "frozen_replay_pass_conditions": {
+    "baseline_command_target_reconstruction_max_abs_rad": 1e-8,
+    "command_target_rms_reduction_percent_min_each_1p5_2p5_and_2p5_3p5_hz": 30.0,
+    "low_band_command_target_delta_rms_percent_max_0p05_0p5_hz": 2.0,
+    "low_band_action_delta_rms_percent_max_0p05_0p5_hz": 2.0,
+    "action_limit_clip_count_max": 0
+  },
+  "future_closed_loop_falsifier": {
+    "task_actual_rms_reduction_percent_min_each_1p5_2p5_and_2p5_3p5_hz": 25.0,
+    "position_error_q_m_relative_worsening_percent_max_vs_current_candidate": 5.0,
+    "scene_count": 2
+  },
+  "plant_called_by_this_replay": false,
+  "TEST_read": false,
+  "inertia_reconstruction_enabled": false,
+  "parameter_sweep": false
+}

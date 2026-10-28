@@ -1,0 +1,92 @@
+{
+  "schema": "ROOT_ATTITUDE_DISTRIBUTION_DECISION_V1",
+  "created_utc": "2026-10-26T15:27:54.523366+00:00",
+  "goal_status": "ACTIVE_NOT_PAPER_QUALIFIED",
+  "previous_goal_turn_classification": "PROGRESS_REAL_18_FLIGHTS_AND_NEW_MECHANISM_EVIDENCE",
+  "decision": "REJECT_BOTH_FROZEN_MLP_PROMOTIONS; IMPLEMENT_AND_VERIFY_LEGAL_CAUSAL_ADAPTIVE_HEAD_NEXT",
+  "resources": {
+    "new_Plant_calls": 18,
+    "new_training_jobs": 0,
+    "baseline_reruns": 0,
+    "TEST_read": false,
+    "new_raw_bytes": 1138493003
+  },
+  "methods": {
+    "BALANCED_MLP15": {
+      "summary": [
+        {
+          "method": "BALANCED_MLP15",
+          "scene_count": 12,
+          "macro_Q_m": 0.015620718512046987,
+          "macro_task_SO3_rad": 0.046605375032995604,
+          "macro_inner_tracking_SO3_rad": 0.03821079856050746,
+          "macro_filter_to_outer_SO3_rad": 0.03271154100323657
+        },
+        {
+          "method": "B",
+          "scene_count": 12,
+          "macro_Q_m": 0.010348923315187376,
+          "macro_task_SO3_rad": 0.04061139303609195,
+          "macro_inner_tracking_SO3_rad": 0.013781653232893735,
+          "macro_filter_to_outer_SO3_rad": 0.011289793625119116
+        },
+        {
+          "method": "C5_RBF",
+          "scene_count": 12,
+          "macro_Q_m": 0.00905544274917589,
+          "macro_task_SO3_rad": 0.04066886030035823,
+          "macro_inner_tracking_SO3_rad": 0.013819779930179207,
+          "macro_filter_to_outer_SO3_rad": 0.025608416679907913
+        }
+      ],
+      "position_wins_B": 1,
+      "attitude_wins_B": 1,
+      "report_sha256": "18546c707fd8f6220aae8580fefbb93c5b7cc14b50dcebafaec0ecf1ef07ea6d"
+    },
+    "C5_FULL72_MLP15": {
+      "summary": [
+        {
+          "method": "C5_FULL72_MLP15",
+          "scene_count": 6,
+          "macro_Q_m": 0.018424500906624612,
+          "macro_task_SO3_rad": 0.04174997384490086,
+          "macro_inner_tracking_SO3_rad": 0.05640687934797516,
+          "macro_filter_to_outer_SO3_rad": 0.035250841759421066
+        },
+        {
+          "method": "B",
+          "scene_count": 6,
+          "macro_Q_m": 0.009143239793745279,
+          "macro_task_SO3_rad": 0.027613154408699474,
+          "macro_inner_tracking_SO3_rad": 0.017566758214773853,
+          "macro_filter_to_outer_SO3_rad": 0.008197484388582204
+        },
+        {
+          "method": "C5_RBF",
+          "scene_count": 6,
+          "macro_Q_m": 0.008356525862210943,
+          "macro_task_SO3_rad": 0.026427507338954385,
+          "macro_inner_tracking_SO3_rad": 0.017601902919654737,
+          "macro_filter_to_outer_SO3_rad": 0.022046956364051906
+        }
+      ],
+      "position_wins_B": 0,
+      "attitude_wins_B": 0,
+      "report_sha256": "9295f5332924d7dffca58343c8e701b70172dbbc6d6c76a18024163712bf56d1"
+    }
+  },
+  "oracle_capacity_status": "CAPACITY_SUPPORTED",
+  "causal_target_accounting_status": "PASS_PAST_ONLY_NOMINAL_ACCOUNTING",
+  "oracle_labels_allowed_at_deployment": false,
+  "limitations": [
+    "Teacher data used in training, not independent validation",
+    "No legal adaptive head closed-loop result yet",
+    "Ideal state feedback; noisy derivative robustness unproven",
+    "No attitude closed-loop stability theorem established"
+  ],
+  "next_taskbook": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\attitude_head_mechanism_v1\\NEXT_LEGAL_HEAD_TASKBOOK.md",
+  "next_taskbook_sha256": "f321c4c153e387c1fcca1b093e7541e7f5b5f5e0378802a9f874b0b970c15675",
+  "capacity_report_sha256": "65f8604c95685c11d7e140f321b1b87caa3bf45d24c5919d0f147477564fee08",
+  "causal_target_report_sha256": "1147071403cbcad7eecf64f186a491afed7ae2d7d1cdafbcbfe7d23830f4d231",
+  "same_state_report_sha256": "997f70c4cea7844a8196f839776e82277d25485f58624e8afd95025f87afdec9"
+}

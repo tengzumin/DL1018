@@ -1,0 +1,50 @@
+{
+  "completed_at_local": "2026-10-22T19:24:06+08:00",
+  "investigation_status": "COMPLETED_BOUNDED_READONLY_INVESTIGATION",
+  "paper_evidence_status": "NOT_QUALIFIED",
+  "research_rounds_used": 3,
+  "research_rounds_allowed": 3,
+  "new_research_cycle_opened": false,
+  "git_head": "e64e03da10ed84ce9aa4551084c16fe1955f4093",
+  "git_branch": "codex/dl1018-causal-diagnosis-upload",
+  "main_report": "REPORT_ZH.md",
+  "next_action": "NEXT_ACTION_PROMPT.md",
+  "review": "REVIEW_ZH.md",
+  "unique_candidate_raw_records_read": 72,
+  "source_training_cache_member_names_and_sha_checked": 1536,
+  "W15_source_cache_numeric_inference": {
+    "TRAIN": 96,
+    "VAL": 6
+  },
+  "source_training_raw_paths_existence_checked": 1536,
+  "source_training_raw_records_opened": 0,
+  "optimizer_steps": 0,
+  "plant_calls": 0,
+  "GPU_jobs": 0,
+  "TEST_accessed": false,
+  "historical_sources_changed": false,
+  "controller_changed": false,
+  "processes_interrupted": false,
+  "git_committed_or_pushed": false,
+  "free_disk_GiB_at_close": 160.36,
+  "derived_artifact_bytes_before_final_manifest": 2036283,
+  "review_status": "PASS_WITH_WORDING_CORRECTION_APPLIED",
+  "remaining_uncertainties": [
+    "Causal contribution of target mismatch to tracking Q is unproved.",
+    "W0 label-fit weakness does not establish zero-output closed-loop superiority.",
+    "TRAIN raw files exist but PCF reconstruction field/time sufficiency not verified.",
+    "Historical B per-run source identity remains incomplete.",
+    "Full deployed closed-loop theory, qualified candidate ablations and TEST remain outstanding."
+  ],
+  "tool_iterations": [
+    {
+      "tool": "audit_target_contract.py",
+      "note": "Initial diagnostics passed; rerun after user reference motivated adding low-frequency and per-scene bias diagnostics. Both passes preserved source hashes/stats."
+    },
+    {
+      "tool": "audit_training_cache_fields.py",
+      "note": "First attempt stopped at path guard: whitelist omitted TRAIN-index references into current DL1018. Whitelist extended only to declared current project; second attempt passed. No experimental attempt."
+    }
+  ],
+  "resume": "Read REPORT_ZH.md and NEXT_ACTION_PROMPT.md. Continue offline TRAIN PCF-field reconstruction if requested; no fourth training/Plant round or TEST is authorized by this audit."
+}

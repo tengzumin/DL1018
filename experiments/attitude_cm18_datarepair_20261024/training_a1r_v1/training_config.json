@@ -1,0 +1,55 @@
+{
+  "schema": "CM18_A1R_TRAINING_CONFIG_V1",
+  "release": {
+    "release_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\reports\\attitude_cm18_datarepair_20261024\\ROOT_A1R_TRAINING_RELEASE_v2.json",
+    "release_sha256": "6a71c3d2f4275edea9ea62694083cedd5afb6602bc8ae209a1f091fcfd709737",
+    "taskbook_sha256": "6828db6ba427be3a56ba4b9a0ad369829a88069f48e1152870b376a6eda7265b",
+    "source_manifest_sha256": "0f86b47d01940e7b556b78a9664470531572809aa6857a59fc77d88a33681ec5",
+    "dataset_manifest_path": "reports/attitude_cm18_datarepair_20261024/repaired_all816_v1/DATASET_MANIFEST_v1.json",
+    "dataset_manifest_sha256": "3f51a1cd0e2e8c3eae79a16df363f2f8d47b0d5dbd876ecd95f1571d9e70a5e0",
+    "source_files": {
+      "experiments/attitude_cm18_datarepair_20261024/train_cm18_a1r_v1.py": "792fa211ed66a618fc5fd9159dfb39838ead2911a79017ca0febd54268db12e7",
+      "experiments/attitude_cm18_datarepair_20261024/cache_reader_cm18_b_ref_repaired_v1.py": "e62ccca443088e4ffbb5e82c7b70ea6fce02a1897d1aa37f99f730052773d148",
+      "experiments/attitude_cm18_a1_20261024/model_cm18_v1.py": "ad32c4f97bf96c63172547c944d80c45062502f1062b774934e0f7a868720cf6",
+      "experiments/attitude_cm18_a1_20261024/torch_model_cm18_v1.py": "bc9fe34fe957cb624438eeccfdfe2ddd38ad40cc9a4e706ce58863c9271d5aa0"
+    }
+  },
+  "seed": 2026102001,
+  "optimizer_steps": 60000,
+  "batch_size": 512,
+  "optimizer": {
+    "name": "Adam",
+    "lr": 0.001,
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "eps": 1e-08,
+    "weight_decay": 1e-05
+  },
+  "loss": "SmoothL1(beta=1.0), mean over batch and 3 axes; output/target normalized by TRAIN axis RMS",
+  "sampling": "NumPy default_rng(seed), uniform with replacement over ordered 307200 TRAIN rows",
+  "selection": "B repaired-reference VAL48 equal-scene mean of normalized scene scores; strict improvement; earliest tie",
+  "train_scene_count": 768,
+  "train_fit_rows": 307200,
+  "b_val_scene_count": 48,
+  "b_val_events": 95952,
+  "c5_val48_training_eligible": false,
+  "c5_val48_used_for_selection": false,
+  "initial_parameters_npz_sha256": "ba39ca088db1eddd9f0f029ab1b051f601f6861e33203bdea8a747d2d433dc26",
+  "initial_float32_state_sha256": "631bb6ce5fbfd78c63af53b89655ce373c3deda42d981407e84db781bf9c9165",
+  "initial_checkpoint_sha256": "4801dabf936f3299724583dc00158fc88bd9a8da383fa156eace13782d391741",
+  "normalizer_sha256": "712627125bf48c3d07cc71de10b13efcb4560b7c31673a179b371cc91d1fe48c",
+  "runtime": {
+    "python": "3.12.7 | packaged by Anaconda, Inc. | (main, Oct  4 2024, 13:17:27) [MSC v.1929 64 bit (AMD64)]",
+    "numpy": "1.26.4",
+    "torch": "2.6.0+cu124",
+    "cuda_runtime": "12.4",
+    "gpu_name": "NVIDIA GeForce RTX 3070 Laptop GPU",
+    "device": "cuda:0",
+    "dtype": "float32",
+    "amp": false,
+    "tf32": false,
+    "deterministic_algorithms": true
+  }
+}

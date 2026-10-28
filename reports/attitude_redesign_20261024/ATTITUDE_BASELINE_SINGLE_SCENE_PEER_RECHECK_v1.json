@@ -1,0 +1,60 @@
+{
+  "schema": "ATTITUDE_BASELINE_SINGLE_SCENE_PEER_RECHECK_V1",
+  "scope": "One selected C5 DEV active-morphology scene only; read-only raw replay, no TEST, fitting, training, runner, integration, or Plant.",
+  "scene_id": "DL1018_DEV_T1_C01_W15",
+  "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_DEV_T1_C01_W15\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+  "raw_sha256": "b61f01ab5920de766b8596512490b596e3959fa87368cd40a3b30758831fe651",
+  "alignment": "first 20,000 transition-left state rows aligned same-row to filtered attitude reference/rate; terminal state excluded.",
+  "rotation_error": "geodesic angle of R_actual^T R_ref",
+  "body_rate_error": "omega_actual - R_actual^T R_ref omega_ref; omega_ref=T(eta_ref)^-1 eta_rate_ref",
+  "metrics": [
+    {
+      "period": "ALL",
+      "n": 20000,
+      "SO3_RMSE_deg": 0.9535576868551284,
+      "SO3_peak_deg": 2.8935426175068875,
+      "Euler_axis_RMSE_deg": [
+        0.6940416211469791,
+        0.6539123258412607,
+        0.01129155590718027
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.013893769435493317,
+        0.01307182726638916,
+        0.0005806115616916551
+      ]
+    },
+    {
+      "period": "PRE_0_5",
+      "n": 5000,
+      "SO3_RMSE_deg": 0.00017478317544126812,
+      "SO3_peak_deg": 0.00037962971302037607,
+      "Euler_axis_RMSE_deg": [
+        0.00015866783252993332,
+        7.330726268442136e-05,
+        6.87789694429621e-08
+      ],
+      "transported_body_rate_RMSE_rads": [
+        4.127963589144424e-06,
+        1.9090127866061176e-06,
+        2.4119068781445384e-08
+      ]
+    },
+    {
+      "period": "POST_5",
+      "n": 15000,
+      "SO3_RMSE_deg": 1.1010735697631433,
+      "SO3_peak_deg": 2.8935426175068875,
+      "Euler_axis_RMSE_deg": [
+        0.8014102283603628,
+        0.7550729135155433,
+        0.013038365685100006
+      ],
+      "transported_body_rate_RMSE_rads": [
+        0.016043142870257786,
+        0.015094045941859884,
+        0.0006704324827299566
+      ]
+    }
+  ]
+}

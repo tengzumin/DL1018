@@ -1,0 +1,1761 @@
+{
+  "schema": "DELAYED_INNOVATION_DESIGN_AUDIT_FIXED12_V1",
+  "status": "PASS_FIXED12_OFFLINE_DELAYED_INNOVATION_DIAGNOSTIC",
+  "created_utc": "2026-10-22T18:23:52.303Z",
+  "source_script_sha256": "bb6a90e4489825709995900bdb9fe69896c0a902b1239bb515859d131b2259ad",
+  "development_failure_ledger": {
+    "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\reports\\delayed_innovation_design_audit_20261023\\construction\\DEVELOPMENT_FAILURES.json",
+    "sha256": "c17823707aff039104440b10545f0353ad090d1fcea4a652b5733b9b6c8b811a"
+  },
+  "command": "python -B reports/delayed_innovation_design_audit_20261023/construction/delayed_innovation_audit.py --execute-offline",
+  "resource_scope": {
+    "Plant": 0,
+    "MATLAB": 0,
+    "training": 0,
+    "optimizer": 0,
+    "new_weight_updates": 0,
+    "gain_search": 0,
+    "GPU": 0,
+    "TEST": 0,
+    "CPU_threads_requested": 1
+  },
+  "sample_definition": {
+    "records": 12,
+    "all_valid_head_event_indices_zero_based": "320..19990 inclusive, step 10",
+    "valid_head_events_per_run": 1968,
+    "first_event_k320_has_no_previous_valid_head": true,
+    "eligible_pair_current_k": "330..19990 inclusive, step 10",
+    "eligible_previous_event_j": "k-10",
+    "eligible_pairs_per_run": 1967,
+    "eligible_pairs_total": 23604,
+    "event_time_segments": {
+      "EARLY_0_5S": "current event transition_time < 5.0 s",
+      "LATE_5_20S": "5.0 <= current event transition_time < 20.0 s"
+    }
+  },
+  "definitions": {
+    "past_interval_target": "d_hat_minus(k)=(v[k]-v[j])/(10*dt)-mean(a_f[j:k]), j=k-10, dt=0.001 s; uses only current/past velocity and internal filter acceleration.",
+    "historical_output": "u_hist(j)=logged applied output at j; checked against beta[j]*clip(phi[j]^T W_before[j],-3,3).",
+    "current_weight_replay": "u_rep(k<-j)=beta[j]*clip(phi[j]^T W_before[k],-3,3); W_before[k] is current pre-update weight, not W_after[k].",
+    "per_event_loss": "L_k=0.5*||u_rep(k<-j)-d_hat_minus(k)||_2^2.",
+    "analytic_gradient": "G_k=phi[j]*(beta[j]*m_k*e_k)^T; m_k[a]=1 if abs((phi[j]^T W_before[k])[a])<3, else 0. Exact +/-3 uses selected zero subgradient and is counted nondifferentiable.",
+    "actual_logged_weight_delta": "DeltaW_k=W_after[k]-W_before[k], includes the runtime leakage and any elementwise projection; rebuilt from frozen runtime equation and compared geometrically to -G_k only.",
+    "beta_clock": "Original ON1 beta at past event j is read from log and checked against min(transition_time[j]/1.8 s,1).",
+    "feature_normalization": "Logged phi_33 is read directly and norm-checked to 1; no encoder re-execution or refit.",
+    "clip_counting": "saturated iff abs(z)>3; exact kink iff abs(abs(z)-3)==0; near kink iff distance<=1e-12."
+  },
+  "units_and_symbolic_normalization": {
+    "phi": "dimensionless with logged norm 1.",
+    "beta": "dimensionless event ramp factor.",
+    "raw_innovation": "e=u_rep-d_hat_minus, m/s^2.",
+    "loss": "L=0.5*||e||^2, m^2/s^4.",
+    "gradient_wrt_W": "m/s^2, same units as W.",
+    "tracking_gamma": "12 s^-2; not a prediction gain.",
+    "symbolic_dimensionless_innovation": "nu_k=Sigma_d^(-1/2)*e_k/beta_j, where Sigma_d has units (m/s^2)^2; Sigma_d is unknown and not estimated here.",
+    "beta_squared_loss_scaling": "Since e=beta*clip-target and G_raw already contains beta, for L_tilde=0.5*||e/beta_j||^2, G_tilde=G_raw/beta_j^2=phi*(m*e/beta_j)^T. At beta=0.18 the relative gradient multiplier is ~30.86; the explicit coefficient on e is 1/beta=~5.56. Scale note only; no alternative loss or gain was used.",
+    "measurement_noise_bound": "If per-axis velocity sensor noise is independent with SD sigma_v, differencing contributes sqrt(2)*sigma_v/0.01 m/s^2; sigma_v is unknown. Logged state velocity is not a noisy sensor record."
+  },
+  "identity_and_runtime_checks": {
+    "static_inputs": {
+      "taskbook_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\reports\\delayed_innovation_design_audit_20261023\\TASKBOOK_ZH.md",
+      "taskbook_sha256": "af93442e1badd3906eac29c658261fd2d39445155a4bcb3043fa8fddeae1e0a0",
+      "preflight_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\reports\\delayed_innovation_design_audit_20261023\\construction\\INPUT_PREFLIGHT.json",
+      "preflight_sha256": "d704bc0d7e8900caf273dce0ad18224addaa988aa8ea76f0b089499db5bcaa25",
+      "C1_source_lock_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_prior_calibration_c1_20261022_v9\\C1_SOURCE_LOCK_v2.json",
+      "C1_source_lock_sha256": "02668f6268944715e65e6d2cffa52b395417506132212b00e7d273d88df164e5",
+      "C1_manifest_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_prior_calibration_c1_20261022_v9\\reports\\C1_SCREEN_PER_RUN.csv",
+      "C1_manifest_sha256": "43aab1c0fa906dfa5e3d7f175339a5607bd4ec2e2cc55687741524d34fa08bac",
+      "scene_list_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\reports\\paper14_v2\\phase1\\ROUND_SCREEN_12_SCENES.csv",
+      "scene_list_sha256": "176ed5770824a241b5c41b9c786f2110b730a7783414152875181985d497a32e",
+      "frozen_runtime_sources": {
+        "run_dl1018_closed_loop.m": {
+          "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\corrected_reference_training_v1\\corrected_pair_eval_v1\\sources\\local_runtime\\run_dl1018_closed_loop.m",
+          "sha256": "01d83dec95aea5d30feef3afd0628a2ce0911f70465f0773a4f568a01b08450b",
+          "stat": {
+            "bytes": 227246,
+            "mtime_ns": 1792537056804738200
+          }
+        },
+        "position_only_search_head_step.m": {
+          "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\corrected_reference_training_v1\\corrected_pair_eval_v1\\sources\\local_runtime\\position_only_search_head_step.m",
+          "sha256": "3bd0fe9686c3b75793575e517d4cc5f08de58ab6a26a2bc7516aa690422bb7dc",
+          "stat": {
+            "bytes": 1899,
+            "mtime_ns": 1792537056740758600
+          }
+        }
+      },
+      "effective_config": {
+        "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\configs\\effective_config.mat",
+        "sha256": "cec90417369c7a44580b0315b2473ae86eb62550012188340b1dd5f3a796522f",
+        "stat_before": {
+          "bytes": 3153,
+          "mtime_ns": 1792295457026427400
+        },
+        "dt_s": 0.001,
+        "beta_rise_time_s": 1.8,
+        "dmax_mps2": [
+          3.0,
+          3.0,
+          3.0
+        ]
+      },
+      "model_identity_from_C1_lock": {
+        "canonical_id": "CORRECTED_DSSM14_SEED2026102001_FINAL60000",
+        "checkpoint_sha256": "544b018b78187d9d9cbbcbd5c3332244b80ad91cb137f32bd71198a4302dfbf5",
+        "W0_output_W_double_f_order_sha256": "88f8c4f2495438c3797655c48bab1bf0c11ac2e27bff1f5f2a7423a8f0a2cf53",
+        "mat_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\corrected_reference_training_v1\\corrected_pair_training\\models\\DSSM14\\matlab_model_and_parity.mat",
+        "mat_sha256": "6f3628b10540c617496b2a20f249c4319af79c1a02d5945f1f91f0aead9c9b6e"
+      },
+      "normalizer_identity_from_C1_lock": {
+        "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\corrected_reference_training_v1\\corrected_pair_training\\data\\normalizer_x14_train_only.npz",
+        "sha256": "520983e01aa9af38bd3c1aad15b5b8e6a65f5129a32e997e2234951ace198404",
+        "actual_runner_arrays_identity_sha256": "533aad9a2c66874cfa67f5d268661835e81e58b797cba7d6fc1c12d4013de5f0",
+        "train_only_report_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\corrected_reference_training_v1\\corrected_pair_training\\reports\\TRAIN_ONLY_NORMALIZER.json",
+        "train_only_report_sha256": "b1d8a4e0386a6f91d11d51daeec0a01605dcf3fa58fd19f594dadd57e4e4d54e"
+      },
+      "causal_observability_inputs": {
+        "replay_10ms_observable.py": {
+          "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\reports\\c2_deployable_residual_parent_20261023\\causal_observability_10ms\\replay_10ms_observable.py",
+          "sha256": "ce2b347d3debab155b75739d7f8ccd19182c37b0c57c25eec591d29a468c28f2",
+          "stat_before": {
+            "bytes": 20140,
+            "mtime_ns": 1792691651385450100
+          }
+        },
+        "CAUSAL_10MS_FIXED12.json": {
+          "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\reports\\c2_deployable_residual_parent_20261023\\causal_observability_10ms\\CAUSAL_10MS_FIXED12.json",
+          "sha256": "b1d03dcb1ecce65ba93f1e7e82599dd9d5670fdb29246da4b916311c7a2ceb4d",
+          "stat_before": {
+            "bytes": 17483,
+            "mtime_ns": 1792691681504851000
+          }
+        },
+        "CAUSAL_10MS_METRICS.csv": {
+          "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\reports\\c2_deployable_residual_parent_20261023\\causal_observability_10ms\\CAUSAL_10MS_METRICS.csv",
+          "sha256": "0a305a86d682543b46881c8c8c62e2582f5e22926e717e10278e0484703b199e",
+          "stat_before": {
+            "bytes": 13357,
+            "mtime_ns": 1792691681503858700
+          }
+        }
+      },
+      "manifest_row_count_all_conditions": 36,
+      "fixed_ON1_count": 12,
+      "readout_gamma_s_minus2": 12.0,
+      "readout_leak_s_minus1": 0.002,
+      "stats_before_read": {
+        "taskbook": {
+          "bytes": 4380,
+          "mtime_ns": 1792692162325701600
+        },
+        "preflight": {
+          "bytes": 9532,
+          "mtime_ns": 1792692229768982700
+        },
+        "C1_lock": {
+          "bytes": 26039,
+          "mtime_ns": 1792680338398669300
+        },
+        "manifest": {
+          "bytes": 39786,
+          "mtime_ns": 1792684858088019700
+        },
+        "scene_list": {
+          "bytes": 467,
+          "mtime_ns": 1792602225850813900
+        },
+        "effective_config": {
+          "bytes": 3153,
+          "mtime_ns": 1792295457026427400
+        },
+        "model_mat": {
+          "bytes": 89162,
+          "mtime_ns": 1792566586398001200
+        },
+        "normalizer": {
+          "bytes": 475,
+          "mtime_ns": 1792564327882353900
+        },
+        "normalizer_report": {
+          "bytes": 1834,
+          "mtime_ns": 1792564327894812700
+        },
+        "causal_files": {
+          "replay_10ms_observable.py": {
+            "bytes": 20140,
+            "mtime_ns": 1792691651385450100
+          },
+          "CAUSAL_10MS_FIXED12.json": {
+            "bytes": 17483,
+            "mtime_ns": 1792691681504851000
+          },
+          "CAUSAL_10MS_METRICS.csv": {
+            "bytes": 13357,
+            "mtime_ns": 1792691681503858700
+          }
+        },
+        "runtime_sources": {
+          "run_dl1018_closed_loop.m": {
+            "bytes": 227246,
+            "mtime_ns": 1792537056804738200
+          },
+          "position_only_search_head_step.m": {
+            "bytes": 1899,
+            "mtime_ns": 1792537056740758600
+          }
+        }
+      },
+      "post_run_hashes": {
+        "taskbook_sha256": "af93442e1badd3906eac29c658261fd2d39445155a4bcb3043fa8fddeae1e0a0",
+        "preflight_sha256": "d704bc0d7e8900caf273dce0ad18224addaa988aa8ea76f0b089499db5bcaa25",
+        "C1_lock_sha256": "02668f6268944715e65e6d2cffa52b395417506132212b00e7d273d88df164e5",
+        "manifest_sha256": "43aab1c0fa906dfa5e3d7f175339a5607bd4ec2e2cc55687741524d34fa08bac",
+        "scene_list_sha256": "176ed5770824a241b5c41b9c786f2110b730a7783414152875181985d497a32e",
+        "effective_config_sha256": "cec90417369c7a44580b0315b2473ae86eb62550012188340b1dd5f3a796522f",
+        "model_mat_sha256": "6f3628b10540c617496b2a20f249c4319af79c1a02d5945f1f91f0aead9c9b6e",
+        "normalizer_sha256": "520983e01aa9af38bd3c1aad15b5b8e6a65f5129a32e997e2234951ace198404",
+        "normalizer_report_sha256": "b1d8a4e0386a6f91d11d51daeec0a01605dcf3fa58fd19f594dadd57e4e4d54e",
+        "causal_files": {
+          "replay_10ms_observable.py": "ce2b347d3debab155b75739d7f8ccd19182c37b0c57c25eec591d29a468c28f2",
+          "CAUSAL_10MS_FIXED12.json": "b1d03dcb1ecce65ba93f1e7e82599dd9d5670fdb29246da4b916311c7a2ceb4d",
+          "CAUSAL_10MS_METRICS.csv": "0a305a86d682543b46881c8c8c62e2582f5e22926e717e10278e0484703b199e"
+        },
+        "runtime_sources": {
+          "run_dl1018_closed_loop.m": "01d83dec95aea5d30feef3afd0628a2ce0911f70465f0773a4f568a01b08450b",
+          "position_only_search_head_step.m": "3bd0fe9686c3b75793575e517d4cc5f08de58ab6a26a2bc7516aa690422bb7dc"
+        },
+        "stats_after_read": {
+          "taskbook": {
+            "bytes": 4380,
+            "mtime_ns": 1792692162325701600
+          },
+          "preflight": {
+            "bytes": 9532,
+            "mtime_ns": 1792692229768982700
+          },
+          "C1_lock": {
+            "bytes": 26039,
+            "mtime_ns": 1792680338398669300
+          },
+          "manifest": {
+            "bytes": 39786,
+            "mtime_ns": 1792684858088019700
+          },
+          "scene_list": {
+            "bytes": 467,
+            "mtime_ns": 1792602225850813900
+          },
+          "effective_config": {
+            "bytes": 3153,
+            "mtime_ns": 1792295457026427400
+          },
+          "model_mat": {
+            "bytes": 89162,
+            "mtime_ns": 1792566586398001200
+          },
+          "normalizer": {
+            "bytes": 475,
+            "mtime_ns": 1792564327882353900
+          },
+          "normalizer_report": {
+            "bytes": 1834,
+            "mtime_ns": 1792564327894812700
+          },
+          "causal_files": {
+            "replay_10ms_observable.py": {
+              "bytes": 20140,
+              "mtime_ns": 1792691651385450100
+            },
+            "CAUSAL_10MS_FIXED12.json": {
+              "bytes": 17483,
+              "mtime_ns": 1792691681504851000
+            },
+            "CAUSAL_10MS_METRICS.csv": {
+              "bytes": 13357,
+              "mtime_ns": 1792691681503858700
+            }
+          },
+          "runtime_sources": {
+            "run_dl1018_closed_loop.m": {
+              "bytes": 227246,
+              "mtime_ns": 1792537056804738200
+            },
+            "position_only_search_head_step.m": {
+              "bytes": 1899,
+              "mtime_ns": 1792537056740758600
+            }
+          }
+        }
+      },
+      "raw_pre_post_hash_and_stat": [
+        {
+          "scene_id": "DL1018_VAL_T2_C00_W10",
+          "sha256_before": "2377ee61ec67f15012256502e28f008c26b61af78d0964995ec2f2d8678e854e",
+          "sha256_after": "2377ee61ec67f15012256502e28f008c26b61af78d0964995ec2f2d8678e854e",
+          "stat_before": {
+            "bytes": 47505737,
+            "mtime_ns": 1792683050642705000
+          },
+          "stat_after": {
+            "bytes": 47505737,
+            "mtime_ns": 1792683050642705000
+          }
+        },
+        {
+          "scene_id": "DL1018_VAL_T2_C02_W12",
+          "sha256_before": "ea8c0aa5937c2d9811fbed2a3a6e5e4125b115e1ee53f383a417b7145e247eb4",
+          "sha256_after": "ea8c0aa5937c2d9811fbed2a3a6e5e4125b115e1ee53f383a417b7145e247eb4",
+          "stat_before": {
+            "bytes": 47506012,
+            "mtime_ns": 1792683872864581400
+          },
+          "stat_after": {
+            "bytes": 47506012,
+            "mtime_ns": 1792683872864581400
+          }
+        },
+        {
+          "scene_id": "DL1018_VAL_T2_C05_W15",
+          "sha256_before": "c3a55da25518ac16c5fb2a43d7b2452e5fad20005dd2cfcfa85c85939dffe91e",
+          "sha256_after": "c3a55da25518ac16c5fb2a43d7b2452e5fad20005dd2cfcfa85c85939dffe91e",
+          "stat_before": {
+            "bytes": 46470400,
+            "mtime_ns": 1792683964696231900
+          },
+          "stat_after": {
+            "bytes": 46470400,
+            "mtime_ns": 1792683964696231900
+          }
+        },
+        {
+          "scene_id": "DL1018_VAL_T2_C06_W00",
+          "sha256_before": "b598e7f75b50a57d9a1400ac51d0312022f507860a941d7dd0a5380b4656f43b",
+          "sha256_after": "b598e7f75b50a57d9a1400ac51d0312022f507860a941d7dd0a5380b4656f43b",
+          "stat_before": {
+            "bytes": 46973684,
+            "mtime_ns": 1792684052335607400
+          },
+          "stat_after": {
+            "bytes": 46973684,
+            "mtime_ns": 1792684052335607400
+          }
+        },
+        {
+          "scene_id": "DL1018_VAL_T1_C02_W09",
+          "sha256_before": "994ddfc0d7e44917a19a0c19e2cdd3c910f8379436c0dac165cc099fb216f085",
+          "sha256_after": "994ddfc0d7e44917a19a0c19e2cdd3c910f8379436c0dac165cc099fb216f085",
+          "stat_before": {
+            "bytes": 47206145,
+            "mtime_ns": 1792684141305720800
+          },
+          "stat_after": {
+            "bytes": 47206145,
+            "mtime_ns": 1792684141305720800
+          }
+        },
+        {
+          "scene_id": "DL1018_VAL_T1_C05_W12",
+          "sha256_before": "3d975d5115be2776efd576b0dfa134cf2fd32679c1eab78ae6b9f5fccb226234",
+          "sha256_after": "3d975d5115be2776efd576b0dfa134cf2fd32679c1eab78ae6b9f5fccb226234",
+          "stat_before": {
+            "bytes": 47473290,
+            "mtime_ns": 1792684229439483400
+          },
+          "stat_after": {
+            "bytes": 47473290,
+            "mtime_ns": 1792684229439483400
+          }
+        },
+        {
+          "scene_id": "DL1018_VAL_T1_C08_W15",
+          "sha256_before": "47544ff50743209881663a10b069a5a203e46e2266ea67f5da1478a1d9c314b4",
+          "sha256_after": "47544ff50743209881663a10b069a5a203e46e2266ea67f5da1478a1d9c314b4",
+          "stat_before": {
+            "bytes": 46285345,
+            "mtime_ns": 1792684317623856300
+          },
+          "stat_after": {
+            "bytes": 46285345,
+            "mtime_ns": 1792684317623856300
+          }
+        },
+        {
+          "scene_id": "DL1018_VAL_T1_C00_W07",
+          "sha256_before": "7d38ea5a4a5c241e8a4c3612ae2f3d25d583a18603c78f5deafac882f3b7a2c9",
+          "sha256_after": "7d38ea5a4a5c241e8a4c3612ae2f3d25d583a18603c78f5deafac882f3b7a2c9",
+          "stat_before": {
+            "bytes": 47068179,
+            "mtime_ns": 1792684406277322600
+          },
+          "stat_after": {
+            "bytes": 47068179,
+            "mtime_ns": 1792684406277322600
+          }
+        },
+        {
+          "scene_id": "DL1018_VAL_T3_C12_W09",
+          "sha256_before": "a8a9d2a324bc23fac26dee9b3fb94fe0376748c38bb9ef1e344d7395e48e255f",
+          "sha256_after": "a8a9d2a324bc23fac26dee9b3fb94fe0376748c38bb9ef1e344d7395e48e255f",
+          "stat_before": {
+            "bytes": 46008158,
+            "mtime_ns": 1792684498428822200
+          },
+          "stat_after": {
+            "bytes": 46008158,
+            "mtime_ns": 1792684498428822200
+          }
+        },
+        {
+          "scene_id": "DL1018_VAL_T3_C00_W13",
+          "sha256_before": "5217f44ca675a94c5cd8fb45c95aa2b0cde69ee655254c406b83628189048225",
+          "sha256_after": "5217f44ca675a94c5cd8fb45c95aa2b0cde69ee655254c406b83628189048225",
+          "stat_before": {
+            "bytes": 46004389,
+            "mtime_ns": 1792684591069836800
+          },
+          "stat_after": {
+            "bytes": 46004389,
+            "mtime_ns": 1792684591069836800
+          }
+        },
+        {
+          "scene_id": "DL1018_VAL_T3_C02_W15",
+          "sha256_before": "d33353ac92cccaa704776a8c58b09f5ea92903cc27795099fe7c342d092857ee",
+          "sha256_after": "d33353ac92cccaa704776a8c58b09f5ea92903cc27795099fe7c342d092857ee",
+          "stat_before": {
+            "bytes": 44931805,
+            "mtime_ns": 1792684681682684200
+          },
+          "stat_after": {
+            "bytes": 44931805,
+            "mtime_ns": 1792684681682684200
+          }
+        },
+        {
+          "scene_id": "DL1018_VAL_T3_C03_W00",
+          "sha256_before": "3c2c9339064757e02dc1ae76cff568e4fe936c92c61eccbcbe98817d33f0a493",
+          "sha256_after": "3c2c9339064757e02dc1ae76cff568e4fe936c92c61eccbcbe98817d33f0a493",
+          "stat_before": {
+            "bytes": 45478019,
+            "mtime_ns": 1792684771841615800
+          },
+          "stat_after": {
+            "bytes": 45478019,
+            "mtime_ns": 1792684771841615800
+          }
+        }
+      ]
+    },
+    "records": [
+      {
+        "scene_id": "DL1018_VAL_T2_C00_W10",
+        "task": "FIG8_3D",
+        "wind_band": "W09_W11",
+        "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_prior_calibration_c1_20261022_v9\\runs_v9\\DL1018_VAL_T2_C00_W10\\ON1\\attempt_01\\raw_run.mat",
+        "raw_sha256_before": "2377ee61ec67f15012256502e28f008c26b61af78d0964995ec2f2d8678e854e",
+        "raw_sha256_after": "2377ee61ec67f15012256502e28f008c26b61af78d0964995ec2f2d8678e854e",
+        "raw_bytes": 47505737,
+        "raw_stat_before": {
+          "bytes": 47505737,
+          "mtime_ns": 1792683050642705000
+        },
+        "raw_stat_after": {
+          "bytes": 47505737,
+          "mtime_ns": 1792683050642705000
+        },
+        "all_valid_events": 1968,
+        "eligible_previous_valid_phi_pairs": 1967,
+        "first_current_event_index_zero_based": 330,
+        "last_current_event_index_zero_based": 19990,
+        "first_eligible_time_s": 0.33,
+        "last_eligible_time_s": 19.99,
+        "beta_clock_max_abs_error": 0.0,
+        "phi_norm_max_abs_error": 2.220446049250313e-16,
+        "non_event_uncomputed_field_nonfinite_counts": {
+          "phi": 595056,
+          "beta": 18032,
+          "raw_output": 54096,
+          "applied_output": 54096,
+          "s_eff": 54096
+        },
+        "history_raw_from_Wbefore_max_abs_error_mps2": 4.440892098500626e-16,
+        "history_applied_from_beta_clip_max_abs_error_mps2": 0.0,
+        "history_applied_formula_on_pairs_max_abs_error_mps2": 0.0,
+        "Wafter_previous_to_Wbefore_current_max_abs_error": 0.0,
+        "held_output_previous_event_interval_max_abs_error_mps2": 0.0,
+        "original_tracking_update_reconstruction_max_abs_error": 0.0,
+        "gamma_s_minus2": 12.0,
+        "beta_mean_previous_event": 0.9688583855843643,
+        "beta_min_previous_event": 0.17777777777777778,
+        "beta_max_previous_event": 1.0
+      },
+      {
+        "scene_id": "DL1018_VAL_T2_C02_W12",
+        "task": "FIG8_3D",
+        "wind_band": "W12_W14",
+        "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_prior_calibration_c1_20261022_v9\\runs_v9\\DL1018_VAL_T2_C02_W12\\ON1\\attempt_01\\raw_run.mat",
+        "raw_sha256_before": "ea8c0aa5937c2d9811fbed2a3a6e5e4125b115e1ee53f383a417b7145e247eb4",
+        "raw_sha256_after": "ea8c0aa5937c2d9811fbed2a3a6e5e4125b115e1ee53f383a417b7145e247eb4",
+        "raw_bytes": 47506012,
+        "raw_stat_before": {
+          "bytes": 47506012,
+          "mtime_ns": 1792683872864581400
+        },
+        "raw_stat_after": {
+          "bytes": 47506012,
+          "mtime_ns": 1792683872864581400
+        },
+        "all_valid_events": 1968,
+        "eligible_previous_valid_phi_pairs": 1967,
+        "first_current_event_index_zero_based": 330,
+        "last_current_event_index_zero_based": 19990,
+        "first_eligible_time_s": 0.33,
+        "last_eligible_time_s": 19.99,
+        "beta_clock_max_abs_error": 0.0,
+        "phi_norm_max_abs_error": 2.220446049250313e-16,
+        "non_event_uncomputed_field_nonfinite_counts": {
+          "phi": 595056,
+          "beta": 18032,
+          "raw_output": 54096,
+          "applied_output": 54096,
+          "s_eff": 54096
+        },
+        "history_raw_from_Wbefore_max_abs_error_mps2": 2.220446049250313e-16,
+        "history_applied_from_beta_clip_max_abs_error_mps2": 0.0,
+        "history_applied_formula_on_pairs_max_abs_error_mps2": 0.0,
+        "Wafter_previous_to_Wbefore_current_max_abs_error": 0.0,
+        "held_output_previous_event_interval_max_abs_error_mps2": 0.0,
+        "original_tracking_update_reconstruction_max_abs_error": 0.0,
+        "gamma_s_minus2": 12.0,
+        "beta_mean_previous_event": 0.9688583855843643,
+        "beta_min_previous_event": 0.17777777777777778,
+        "beta_max_previous_event": 1.0
+      },
+      {
+        "scene_id": "DL1018_VAL_T2_C05_W15",
+        "task": "FIG8_3D",
+        "wind_band": "W15",
+        "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_prior_calibration_c1_20261022_v9\\runs_v9\\DL1018_VAL_T2_C05_W15\\ON1\\attempt_01\\raw_run.mat",
+        "raw_sha256_before": "c3a55da25518ac16c5fb2a43d7b2452e5fad20005dd2cfcfa85c85939dffe91e",
+        "raw_sha256_after": "c3a55da25518ac16c5fb2a43d7b2452e5fad20005dd2cfcfa85c85939dffe91e",
+        "raw_bytes": 46470400,
+        "raw_stat_before": {
+          "bytes": 46470400,
+          "mtime_ns": 1792683964696231900
+        },
+        "raw_stat_after": {
+          "bytes": 46470400,
+          "mtime_ns": 1792683964696231900
+        },
+        "all_valid_events": 1968,
+        "eligible_previous_valid_phi_pairs": 1967,
+        "first_current_event_index_zero_based": 330,
+        "last_current_event_index_zero_based": 19990,
+        "first_eligible_time_s": 0.33,
+        "last_eligible_time_s": 19.99,
+        "beta_clock_max_abs_error": 0.0,
+        "phi_norm_max_abs_error": 2.220446049250313e-16,
+        "non_event_uncomputed_field_nonfinite_counts": {
+          "phi": 595056,
+          "beta": 18032,
+          "raw_output": 54096,
+          "applied_output": 54096,
+          "s_eff": 54096
+        },
+        "history_raw_from_Wbefore_max_abs_error_mps2": 1.6653345369377348e-16,
+        "history_applied_from_beta_clip_max_abs_error_mps2": 0.0,
+        "history_applied_formula_on_pairs_max_abs_error_mps2": 0.0,
+        "Wafter_previous_to_Wbefore_current_max_abs_error": 0.0,
+        "held_output_previous_event_interval_max_abs_error_mps2": 0.0,
+        "original_tracking_update_reconstruction_max_abs_error": 0.0,
+        "gamma_s_minus2": 12.0,
+        "beta_mean_previous_event": 0.9688583855843643,
+        "beta_min_previous_event": 0.17777777777777778,
+        "beta_max_previous_event": 1.0
+      },
+      {
+        "scene_id": "DL1018_VAL_T2_C06_W00",
+        "task": "FIG8_3D",
+        "wind_band": "W00_W08",
+        "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_prior_calibration_c1_20261022_v9\\runs_v9\\DL1018_VAL_T2_C06_W00\\ON1\\attempt_01\\raw_run.mat",
+        "raw_sha256_before": "b598e7f75b50a57d9a1400ac51d0312022f507860a941d7dd0a5380b4656f43b",
+        "raw_sha256_after": "b598e7f75b50a57d9a1400ac51d0312022f507860a941d7dd0a5380b4656f43b",
+        "raw_bytes": 46973684,
+        "raw_stat_before": {
+          "bytes": 46973684,
+          "mtime_ns": 1792684052335607400
+        },
+        "raw_stat_after": {
+          "bytes": 46973684,
+          "mtime_ns": 1792684052335607400
+        },
+        "all_valid_events": 1968,
+        "eligible_previous_valid_phi_pairs": 1967,
+        "first_current_event_index_zero_based": 330,
+        "last_current_event_index_zero_based": 19990,
+        "first_eligible_time_s": 0.33,
+        "last_eligible_time_s": 19.99,
+        "beta_clock_max_abs_error": 0.0,
+        "phi_norm_max_abs_error": 2.220446049250313e-16,
+        "non_event_uncomputed_field_nonfinite_counts": {
+          "phi": 595056,
+          "beta": 18032,
+          "raw_output": 54096,
+          "applied_output": 54096,
+          "s_eff": 54096
+        },
+        "history_raw_from_Wbefore_max_abs_error_mps2": 2.220446049250313e-16,
+        "history_applied_from_beta_clip_max_abs_error_mps2": 0.0,
+        "history_applied_formula_on_pairs_max_abs_error_mps2": 0.0,
+        "Wafter_previous_to_Wbefore_current_max_abs_error": 0.0,
+        "held_output_previous_event_interval_max_abs_error_mps2": 0.0,
+        "original_tracking_update_reconstruction_max_abs_error": 0.0,
+        "gamma_s_minus2": 12.0,
+        "beta_mean_previous_event": 0.9688583855843643,
+        "beta_min_previous_event": 0.17777777777777778,
+        "beta_max_previous_event": 1.0
+      },
+      {
+        "scene_id": "DL1018_VAL_T1_C02_W09",
+        "task": "HELIX",
+        "wind_band": "W09_W11",
+        "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_prior_calibration_c1_20261022_v9\\runs_v9\\DL1018_VAL_T1_C02_W09\\ON1\\attempt_01\\raw_run.mat",
+        "raw_sha256_before": "994ddfc0d7e44917a19a0c19e2cdd3c910f8379436c0dac165cc099fb216f085",
+        "raw_sha256_after": "994ddfc0d7e44917a19a0c19e2cdd3c910f8379436c0dac165cc099fb216f085",
+        "raw_bytes": 47206145,
+        "raw_stat_before": {
+          "bytes": 47206145,
+          "mtime_ns": 1792684141305720800
+        },
+        "raw_stat_after": {
+          "bytes": 47206145,
+          "mtime_ns": 1792684141305720800
+        },
+        "all_valid_events": 1968,
+        "eligible_previous_valid_phi_pairs": 1967,
+        "first_current_event_index_zero_based": 330,
+        "last_current_event_index_zero_based": 19990,
+        "first_eligible_time_s": 0.33,
+        "last_eligible_time_s": 19.99,
+        "beta_clock_max_abs_error": 0.0,
+        "phi_norm_max_abs_error": 2.220446049250313e-16,
+        "non_event_uncomputed_field_nonfinite_counts": {
+          "phi": 595056,
+          "beta": 18032,
+          "raw_output": 54096,
+          "applied_output": 54096,
+          "s_eff": 54096
+        },
+        "history_raw_from_Wbefore_max_abs_error_mps2": 4.440892098500626e-16,
+        "history_applied_from_beta_clip_max_abs_error_mps2": 0.0,
+        "history_applied_formula_on_pairs_max_abs_error_mps2": 0.0,
+        "Wafter_previous_to_Wbefore_current_max_abs_error": 0.0,
+        "held_output_previous_event_interval_max_abs_error_mps2": 0.0,
+        "original_tracking_update_reconstruction_max_abs_error": 0.0,
+        "gamma_s_minus2": 12.0,
+        "beta_mean_previous_event": 0.9688583855843643,
+        "beta_min_previous_event": 0.17777777777777778,
+        "beta_max_previous_event": 1.0
+      },
+      {
+        "scene_id": "DL1018_VAL_T1_C05_W12",
+        "task": "HELIX",
+        "wind_band": "W12_W14",
+        "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_prior_calibration_c1_20261022_v9\\runs_v9\\DL1018_VAL_T1_C05_W12\\ON1\\attempt_01\\raw_run.mat",
+        "raw_sha256_before": "3d975d5115be2776efd576b0dfa134cf2fd32679c1eab78ae6b9f5fccb226234",
+        "raw_sha256_after": "3d975d5115be2776efd576b0dfa134cf2fd32679c1eab78ae6b9f5fccb226234",
+        "raw_bytes": 47473290,
+        "raw_stat_before": {
+          "bytes": 47473290,
+          "mtime_ns": 1792684229439483400
+        },
+        "raw_stat_after": {
+          "bytes": 47473290,
+          "mtime_ns": 1792684229439483400
+        },
+        "all_valid_events": 1968,
+        "eligible_previous_valid_phi_pairs": 1967,
+        "first_current_event_index_zero_based": 330,
+        "last_current_event_index_zero_based": 19990,
+        "first_eligible_time_s": 0.33,
+        "last_eligible_time_s": 19.99,
+        "beta_clock_max_abs_error": 0.0,
+        "phi_norm_max_abs_error": 2.220446049250313e-16,
+        "non_event_uncomputed_field_nonfinite_counts": {
+          "phi": 595056,
+          "beta": 18032,
+          "raw_output": 54096,
+          "applied_output": 54096,
+          "s_eff": 54096
+        },
+        "history_raw_from_Wbefore_max_abs_error_mps2": 3.3306690738754696e-16,
+        "history_applied_from_beta_clip_max_abs_error_mps2": 0.0,
+        "history_applied_formula_on_pairs_max_abs_error_mps2": 0.0,
+        "Wafter_previous_to_Wbefore_current_max_abs_error": 0.0,
+        "held_output_previous_event_interval_max_abs_error_mps2": 0.0,
+        "original_tracking_update_reconstruction_max_abs_error": 0.0,
+        "gamma_s_minus2": 12.0,
+        "beta_mean_previous_event": 0.9688583855843643,
+        "beta_min_previous_event": 0.17777777777777778,
+        "beta_max_previous_event": 1.0
+      },
+      {
+        "scene_id": "DL1018_VAL_T1_C08_W15",
+        "task": "HELIX",
+        "wind_band": "W15",
+        "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_prior_calibration_c1_20261022_v9\\runs_v9\\DL1018_VAL_T1_C08_W15\\ON1\\attempt_01\\raw_run.mat",
+        "raw_sha256_before": "47544ff50743209881663a10b069a5a203e46e2266ea67f5da1478a1d9c314b4",
+        "raw_sha256_after": "47544ff50743209881663a10b069a5a203e46e2266ea67f5da1478a1d9c314b4",
+        "raw_bytes": 46285345,
+        "raw_stat_before": {
+          "bytes": 46285345,
+          "mtime_ns": 1792684317623856300
+        },
+        "raw_stat_after": {
+          "bytes": 46285345,
+          "mtime_ns": 1792684317623856300
+        },
+        "all_valid_events": 1968,
+        "eligible_previous_valid_phi_pairs": 1967,
+        "first_current_event_index_zero_based": 330,
+        "last_current_event_index_zero_based": 19990,
+        "first_eligible_time_s": 0.33,
+        "last_eligible_time_s": 19.99,
+        "beta_clock_max_abs_error": 0.0,
+        "phi_norm_max_abs_error": 2.220446049250313e-16,
+        "non_event_uncomputed_field_nonfinite_counts": {
+          "phi": 595056,
+          "beta": 18032,
+          "raw_output": 54096,
+          "applied_output": 54096,
+          "s_eff": 54096
+        },
+        "history_raw_from_Wbefore_max_abs_error_mps2": 2.220446049250313e-16,
+        "history_applied_from_beta_clip_max_abs_error_mps2": 0.0,
+        "history_applied_formula_on_pairs_max_abs_error_mps2": 0.0,
+        "Wafter_previous_to_Wbefore_current_max_abs_error": 0.0,
+        "held_output_previous_event_interval_max_abs_error_mps2": 0.0,
+        "original_tracking_update_reconstruction_max_abs_error": 0.0,
+        "gamma_s_minus2": 12.0,
+        "beta_mean_previous_event": 0.9688583855843643,
+        "beta_min_previous_event": 0.17777777777777778,
+        "beta_max_previous_event": 1.0
+      },
+      {
+        "scene_id": "DL1018_VAL_T1_C00_W07",
+        "task": "HELIX",
+        "wind_band": "W00_W08",
+        "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_prior_calibration_c1_20261022_v9\\runs_v9\\DL1018_VAL_T1_C00_W07\\ON1\\attempt_01\\raw_run.mat",
+        "raw_sha256_before": "7d38ea5a4a5c241e8a4c3612ae2f3d25d583a18603c78f5deafac882f3b7a2c9",
+        "raw_sha256_after": "7d38ea5a4a5c241e8a4c3612ae2f3d25d583a18603c78f5deafac882f3b7a2c9",
+        "raw_bytes": 47068179,
+        "raw_stat_before": {
+          "bytes": 47068179,
+          "mtime_ns": 1792684406277322600
+        },
+        "raw_stat_after": {
+          "bytes": 47068179,
+          "mtime_ns": 1792684406277322600
+        },
+        "all_valid_events": 1968,
+        "eligible_previous_valid_phi_pairs": 1967,
+        "first_current_event_index_zero_based": 330,
+        "last_current_event_index_zero_based": 19990,
+        "first_eligible_time_s": 0.33,
+        "last_eligible_time_s": 19.99,
+        "beta_clock_max_abs_error": 0.0,
+        "phi_norm_max_abs_error": 2.220446049250313e-16,
+        "non_event_uncomputed_field_nonfinite_counts": {
+          "phi": 595056,
+          "beta": 18032,
+          "raw_output": 54096,
+          "applied_output": 54096,
+          "s_eff": 54096
+        },
+        "history_raw_from_Wbefore_max_abs_error_mps2": 4.440892098500626e-16,
+        "history_applied_from_beta_clip_max_abs_error_mps2": 0.0,
+        "history_applied_formula_on_pairs_max_abs_error_mps2": 0.0,
+        "Wafter_previous_to_Wbefore_current_max_abs_error": 0.0,
+        "held_output_previous_event_interval_max_abs_error_mps2": 0.0,
+        "original_tracking_update_reconstruction_max_abs_error": 0.0,
+        "gamma_s_minus2": 12.0,
+        "beta_mean_previous_event": 0.9688583855843643,
+        "beta_min_previous_event": 0.17777777777777778,
+        "beta_max_previous_event": 1.0
+      },
+      {
+        "scene_id": "DL1018_VAL_T3_C12_W09",
+        "task": "SQUARE",
+        "wind_band": "W09_W11",
+        "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_prior_calibration_c1_20261022_v9\\runs_v9\\DL1018_VAL_T3_C12_W09\\ON1\\attempt_01\\raw_run.mat",
+        "raw_sha256_before": "a8a9d2a324bc23fac26dee9b3fb94fe0376748c38bb9ef1e344d7395e48e255f",
+        "raw_sha256_after": "a8a9d2a324bc23fac26dee9b3fb94fe0376748c38bb9ef1e344d7395e48e255f",
+        "raw_bytes": 46008158,
+        "raw_stat_before": {
+          "bytes": 46008158,
+          "mtime_ns": 1792684498428822200
+        },
+        "raw_stat_after": {
+          "bytes": 46008158,
+          "mtime_ns": 1792684498428822200
+        },
+        "all_valid_events": 1968,
+        "eligible_previous_valid_phi_pairs": 1967,
+        "first_current_event_index_zero_based": 330,
+        "last_current_event_index_zero_based": 19990,
+        "first_eligible_time_s": 0.33,
+        "last_eligible_time_s": 19.99,
+        "beta_clock_max_abs_error": 0.0,
+        "phi_norm_max_abs_error": 2.220446049250313e-16,
+        "non_event_uncomputed_field_nonfinite_counts": {
+          "phi": 595056,
+          "beta": 18032,
+          "raw_output": 54096,
+          "applied_output": 54096,
+          "s_eff": 54096
+        },
+        "history_raw_from_Wbefore_max_abs_error_mps2": 4.440892098500626e-16,
+        "history_applied_from_beta_clip_max_abs_error_mps2": 0.0,
+        "history_applied_formula_on_pairs_max_abs_error_mps2": 0.0,
+        "Wafter_previous_to_Wbefore_current_max_abs_error": 0.0,
+        "held_output_previous_event_interval_max_abs_error_mps2": 0.0,
+        "original_tracking_update_reconstruction_max_abs_error": 0.0,
+        "gamma_s_minus2": 12.0,
+        "beta_mean_previous_event": 0.9688583855843643,
+        "beta_min_previous_event": 0.17777777777777778,
+        "beta_max_previous_event": 1.0
+      },
+      {
+        "scene_id": "DL1018_VAL_T3_C00_W13",
+        "task": "SQUARE",
+        "wind_band": "W12_W14",
+        "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_prior_calibration_c1_20261022_v9\\runs_v9\\DL1018_VAL_T3_C00_W13\\ON1\\attempt_01\\raw_run.mat",
+        "raw_sha256_before": "5217f44ca675a94c5cd8fb45c95aa2b0cde69ee655254c406b83628189048225",
+        "raw_sha256_after": "5217f44ca675a94c5cd8fb45c95aa2b0cde69ee655254c406b83628189048225",
+        "raw_bytes": 46004389,
+        "raw_stat_before": {
+          "bytes": 46004389,
+          "mtime_ns": 1792684591069836800
+        },
+        "raw_stat_after": {
+          "bytes": 46004389,
+          "mtime_ns": 1792684591069836800
+        },
+        "all_valid_events": 1968,
+        "eligible_previous_valid_phi_pairs": 1967,
+        "first_current_event_index_zero_based": 330,
+        "last_current_event_index_zero_based": 19990,
+        "first_eligible_time_s": 0.33,
+        "last_eligible_time_s": 19.99,
+        "beta_clock_max_abs_error": 0.0,
+        "phi_norm_max_abs_error": 2.220446049250313e-16,
+        "non_event_uncomputed_field_nonfinite_counts": {
+          "phi": 595056,
+          "beta": 18032,
+          "raw_output": 54096,
+          "applied_output": 54096,
+          "s_eff": 54096
+        },
+        "history_raw_from_Wbefore_max_abs_error_mps2": 4.440892098500626e-16,
+        "history_applied_from_beta_clip_max_abs_error_mps2": 0.0,
+        "history_applied_formula_on_pairs_max_abs_error_mps2": 0.0,
+        "Wafter_previous_to_Wbefore_current_max_abs_error": 0.0,
+        "held_output_previous_event_interval_max_abs_error_mps2": 0.0,
+        "original_tracking_update_reconstruction_max_abs_error": 0.0,
+        "gamma_s_minus2": 12.0,
+        "beta_mean_previous_event": 0.9688583855843643,
+        "beta_min_previous_event": 0.17777777777777778,
+        "beta_max_previous_event": 1.0
+      },
+      {
+        "scene_id": "DL1018_VAL_T3_C02_W15",
+        "task": "SQUARE",
+        "wind_band": "W15",
+        "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_prior_calibration_c1_20261022_v9\\runs_v9\\DL1018_VAL_T3_C02_W15\\ON1\\attempt_01\\raw_run.mat",
+        "raw_sha256_before": "d33353ac92cccaa704776a8c58b09f5ea92903cc27795099fe7c342d092857ee",
+        "raw_sha256_after": "d33353ac92cccaa704776a8c58b09f5ea92903cc27795099fe7c342d092857ee",
+        "raw_bytes": 44931805,
+        "raw_stat_before": {
+          "bytes": 44931805,
+          "mtime_ns": 1792684681682684200
+        },
+        "raw_stat_after": {
+          "bytes": 44931805,
+          "mtime_ns": 1792684681682684200
+        },
+        "all_valid_events": 1968,
+        "eligible_previous_valid_phi_pairs": 1967,
+        "first_current_event_index_zero_based": 330,
+        "last_current_event_index_zero_based": 19990,
+        "first_eligible_time_s": 0.33,
+        "last_eligible_time_s": 19.99,
+        "beta_clock_max_abs_error": 0.0,
+        "phi_norm_max_abs_error": 2.220446049250313e-16,
+        "non_event_uncomputed_field_nonfinite_counts": {
+          "phi": 595056,
+          "beta": 18032,
+          "raw_output": 54096,
+          "applied_output": 54096,
+          "s_eff": 54096
+        },
+        "history_raw_from_Wbefore_max_abs_error_mps2": 1.3877787807814457e-16,
+        "history_applied_from_beta_clip_max_abs_error_mps2": 0.0,
+        "history_applied_formula_on_pairs_max_abs_error_mps2": 0.0,
+        "Wafter_previous_to_Wbefore_current_max_abs_error": 0.0,
+        "held_output_previous_event_interval_max_abs_error_mps2": 0.0,
+        "original_tracking_update_reconstruction_max_abs_error": 0.0,
+        "gamma_s_minus2": 12.0,
+        "beta_mean_previous_event": 0.9688583855843643,
+        "beta_min_previous_event": 0.17777777777777778,
+        "beta_max_previous_event": 1.0
+      },
+      {
+        "scene_id": "DL1018_VAL_T3_C03_W00",
+        "task": "SQUARE",
+        "wind_band": "W00_W08",
+        "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_prior_calibration_c1_20261022_v9\\runs_v9\\DL1018_VAL_T3_C03_W00\\ON1\\attempt_01\\raw_run.mat",
+        "raw_sha256_before": "3c2c9339064757e02dc1ae76cff568e4fe936c92c61eccbcbe98817d33f0a493",
+        "raw_sha256_after": "3c2c9339064757e02dc1ae76cff568e4fe936c92c61eccbcbe98817d33f0a493",
+        "raw_bytes": 45478019,
+        "raw_stat_before": {
+          "bytes": 45478019,
+          "mtime_ns": 1792684771841615800
+        },
+        "raw_stat_after": {
+          "bytes": 45478019,
+          "mtime_ns": 1792684771841615800
+        },
+        "all_valid_events": 1968,
+        "eligible_previous_valid_phi_pairs": 1967,
+        "first_current_event_index_zero_based": 330,
+        "last_current_event_index_zero_based": 19990,
+        "first_eligible_time_s": 0.33,
+        "last_eligible_time_s": 19.99,
+        "beta_clock_max_abs_error": 0.0,
+        "phi_norm_max_abs_error": 2.220446049250313e-16,
+        "non_event_uncomputed_field_nonfinite_counts": {
+          "phi": 595056,
+          "beta": 18032,
+          "raw_output": 54096,
+          "applied_output": 54096,
+          "s_eff": 54096
+        },
+        "history_raw_from_Wbefore_max_abs_error_mps2": 2.220446049250313e-16,
+        "history_applied_from_beta_clip_max_abs_error_mps2": 0.0,
+        "history_applied_formula_on_pairs_max_abs_error_mps2": 0.0,
+        "Wafter_previous_to_Wbefore_current_max_abs_error": 0.0,
+        "held_output_previous_event_interval_max_abs_error_mps2": 0.0,
+        "original_tracking_update_reconstruction_max_abs_error": 0.0,
+        "gamma_s_minus2": 12.0,
+        "beta_mean_previous_event": 0.9688583855843643,
+        "beta_min_previous_event": 0.17777777777777778,
+        "beta_max_previous_event": 1.0
+      }
+    ],
+    "all_static_and_raw_pre_post_checks_passed": true,
+    "history_output_and_update_closure_checked": true,
+    "event_index_and_hold_timing_checked": true,
+    "phi_norm_error_max": 2.220446049250313e-16,
+    "history_raw_reconstruction_error_max_mps2": 4.440892098500626e-16,
+    "history_applied_reconstruction_error_max_mps2": 0.0,
+    "held_interval_error_max_mps2": 0.0,
+    "original_tracking_update_reconstruction_error_max": 0.0
+  },
+  "finite_difference": {
+    "direction": "fixed deterministic unit-Frobenius matrix sin(i*sqrt(2))+0.37*cos(i*sqrt(3)), i=1..99.",
+    "step": 1e-06,
+    "real_samples_per_run": [
+      "FIRST",
+      "MIDDLE",
+      "LAST"
+    ],
+    "rows": [
+      {
+        "sample_id": "FIRST_ELIGIBLE_PAIR",
+        "scene_id": "DL1018_VAL_T2_C00_W10",
+        "current_event_index_zero_based": 330,
+        "previous_event_index_zero_based": 320,
+        "beta_previous": 0.17777777777777778,
+        "phi_norm": 1.0,
+        "fd_step": 1e-06,
+        "min_distance_to_clip_kink": 2.85450308529591,
+        "saturated_axis_count": 0,
+        "exact_kink_axis_count": 0,
+        "near_kink_axis_count": 0,
+        "same_active_set_plus_minus": true,
+        "analytic_directional_derivative": -0.0036858430227880426,
+        "central_difference": -0.003685843022720875,
+        "absolute_error": 6.716762562808398e-14,
+        "relative_error": 1.8223137885366886e-11,
+        "status": "PASS",
+        "note": "Fixed direction; current W_before[k] on previous valid phi_j; no update applied."
+      },
+      {
+        "sample_id": "MIDDLE_ELIGIBLE_PAIR",
+        "scene_id": "DL1018_VAL_T2_C00_W10",
+        "current_event_index_zero_based": 10160,
+        "previous_event_index_zero_based": 10150,
+        "beta_previous": 1.0,
+        "phi_norm": 0.9999999999999999,
+        "fd_step": 1e-06,
+        "min_distance_to_clip_kink": 2.72282314266426,
+        "saturated_axis_count": 0,
+        "exact_kink_axis_count": 0,
+        "near_kink_axis_count": 0,
+        "same_active_set_plus_minus": true,
+        "analytic_directional_derivative": 0.025755531651197747,
+        "central_difference": 0.025755531655319297,
+        "absolute_error": 4.121550323255008e-12,
+        "relative_error": 1.600258297290393e-10,
+        "status": "PASS",
+        "note": "Fixed direction; current W_before[k] on previous valid phi_j; no update applied."
+      },
+      {
+        "sample_id": "LAST_ELIGIBLE_PAIR",
+        "scene_id": "DL1018_VAL_T2_C00_W10",
+        "current_event_index_zero_based": 19990,
+        "previous_event_index_zero_based": 19980,
+        "beta_previous": 1.0,
+        "phi_norm": 1.0,
+        "fd_step": 1e-06,
+        "min_distance_to_clip_kink": 2.096055864404834,
+        "saturated_axis_count": 0,
+        "exact_kink_axis_count": 0,
+        "near_kink_axis_count": 0,
+        "same_active_set_plus_minus": true,
+        "analytic_directional_derivative": 0.02408548978595985,
+        "central_difference": 0.024085489748471023,
+        "absolute_error": 3.748882801413167e-11,
+        "relative_error": 1.5564901667885128e-09,
+        "status": "PASS",
+        "note": "Fixed direction; current W_before[k] on previous valid phi_j; no update applied."
+      },
+      {
+        "sample_id": "FIRST_ELIGIBLE_PAIR",
+        "scene_id": "DL1018_VAL_T2_C02_W12",
+        "current_event_index_zero_based": 330,
+        "previous_event_index_zero_based": 320,
+        "beta_previous": 0.17777777777777778,
+        "phi_norm": 0.9999999999999999,
+        "fd_step": 1e-06,
+        "min_distance_to_clip_kink": 2.9338373862609908,
+        "saturated_axis_count": 0,
+        "exact_kink_axis_count": 0,
+        "near_kink_axis_count": 0,
+        "same_active_set_plus_minus": true,
+        "analytic_directional_derivative": -0.0011627852465539248,
+        "central_difference": -0.0011627852466154255,
+        "absolute_error": 6.150071771293675e-14,
+        "relative_error": 5.289086518078022e-11,
+        "status": "PASS",
+        "note": "Fixed direction; current W_before[k] on previous valid phi_j; no update applied."
+      },
+      {
+        "sample_id": "MIDDLE_ELIGIBLE_PAIR",
+        "scene_id": "DL1018_VAL_T2_C02_W12",
+        "current_event_index_zero_based": 10160,
+        "previous_event_index_zero_based": 10150,
+        "beta_previous": 1.0,
+        "phi_norm": 1.0,
+        "fd_step": 1e-06,
+        "min_distance_to_clip_kink": 2.7289001517834865,
+        "saturated_axis_count": 0,
+        "exact_kink_axis_count": 0,
+        "near_kink_axis_count": 0,
+        "same_active_set_plus_minus": true,
+        "analytic_directional_derivative": 0.021232266204447976,
+        "central_difference": 0.02123226620735774,
+        "absolute_error": 2.909766178005313e-12,
+        "relative_error": 1.3704454105784407e-10,
+        "status": "PASS",
+        "note": "Fixed direction; current W_before[k] on previous valid phi_j; no update applied."
+      },
+      {
+        "sample_id": "LAST_ELIGIBLE_PAIR",
+        "scene_id": "DL1018_VAL_T2_C02_W12",
+        "current_event_index_zero_based": 19990,
+        "previous_event_index_zero_based": 19980,
+        "beta_previous": 1.0,
+        "phi_norm": 1.0,
+        "fd_step": 1e-06,
+        "min_distance_to_clip_kink": 2.4072522596881374,
+        "saturated_axis_count": 0,
+        "exact_kink_axis_count": 0,
+        "near_kink_axis_count": 0,
+        "same_active_set_plus_minus": true,
+        "analytic_directional_derivative": 0.023340072042259668,
+        "central_difference": 0.023340072052152605,
+        "absolute_error": 9.892937163913373e-12,
+        "relative_error": 4.238606094191971e-10,
+        "status": "PASS",
+        "note": "Fixed direction; current W_before[k] on previous valid phi_j; no update applied."
+      },
+      {
+        "sample_id": "FIRST_ELIGIBLE_PAIR",
+        "scene_id": "DL1018_VAL_T2_C05_W15",
+        "current_event_index_zero_based": 330,
+        "previous_event_index_zero_based": 320,
+        "beta_previous": 0.17777777777777778,
+        "phi_norm": 1.0,
+        "fd_step": 1e-06,
+        "min_distance_to_clip_kink": 2.9453628065069664,
+        "saturated_axis_count": 0,
+        "exact_kink_axis_count": 0,
+        "near_kink_axis_count": 0,
+        "same_active_set_plus_minus": true,
+        "analytic_directional_derivative": -9.101707028161957e-05,
+        "central_difference": -9.101707030133191e-05,
+        "absolute_error": 1.9712340483882262e-14,
+        "relative_error": 2.1657849916087444e-10,
+        "status": "PASS",
+        "note": "Fixed direction; current W_before[k] on previous valid phi_j; no update applied."
+      },
+      {
+        "sample_id": "MIDDLE_ELIGIBLE_PAIR",
+        "scene_id": "DL1018_VAL_T2_C05_W15",
+        "current_event_index_zero_based": 10160,
+        "previous_event_index_zero_based": 10150,
+        "beta_previous": 1.0,
+        "phi_norm": 1.0000000000000002,
+        "fd_step": 1e-06,
+        "min_distance_to_clip_kink": 2.8915943291558017,
+        "saturated_axis_count": 0,
+        "exact_kink_axis_count": 0,
+        "near_kink_axis_count": 0,
+        "same_active_set_plus_minus": true,
+        "analytic_directional_derivative": 0.01687455100986234,
+        "central_difference": 0.016874551006518246,
+        "absolute_error": 3.34409583357953e-12,
+        "relative_error": 1.9817391476816605e-10,
+        "status": "PASS",
+        "note": "Fixed direction; current W_before[k] on previous valid phi_j; no update applied."
+      },
+      {
+        "sample_id": "LAST_ELIGIBLE_PAIR",
+        "scene_id": "DL1018_VAL_T2_C05_W15",
+        "current_event_index_zero_based": 19990,
+        "previous_event_index_zero_based": 19980,
+        "beta_previous": 1.0,
+        "phi_norm": 1.0,
+        "fd_step": 1e-06,
+        "min_distance_to_clip_kink": 2.988908808944104,
+        "saturated_axis_count": 0,
+        "exact_kink_axis_count": 0,
+        "near_kink_axis_count": 0,
+        "same_active_set_plus_minus": true,
+        "analytic_directional_derivative": 0.0005300674137044162,
+        "central_difference": 0.0005300674138985703,
+        "absolute_error": 1.941541545591452e-13,
+        "relative_error": 3.662820038892205e-10,
+        "status": "PASS",
+        "note": "Fixed direction; current W_before[k] on previous valid phi_j; no update applied."
+      },
+      {
+        "sample_id": "FIRST_ELIGIBLE_PAIR",
+        "scene_id": "DL1018_VAL_T2_C06_W00",
+        "current_event_index_zero_based": 330,
+        "previous_event_index_zero_based": 320,
+        "beta_previous": 0.17777777777777778,
+        "phi_norm": 1.0,
+        "fd_step": 1e-06,
+        "min_distance_to_clip_kink": 2.9205875445756093,
+        "saturated_axis_count": 0,
+        "exact_kink_axis_count": 0,
+        "near_kink_axis_count": 0,
+        "same_active_set_plus_minus": true,
+        "analytic_directional_derivative": 0.00213535779112949,
+        "central_difference": 0.0021353577907626264,
+        "absolute_error": 3.668636575082651e-13,
+        "relative_error": 1.718043032564645e-10,
+        "status": "PASS",
+        "note": "Fixed direction; current W_before[k] on previous valid phi_j; no update applied."
+      },
+      {
+        "sample_id": "MIDDLE_ELIGIBLE_PAIR",
+        "scene_id": "DL1018_VAL_T2_C06_W00",
+        "current_event_index_zero_based": 10160,
+        "previous_event_index_zero_based": 10150,
+        "beta_previous": 1.0,
+        "phi_norm": 0.9999999999999999,
+        "fd_step": 1e-06,
+        "min_distance_to_clip_kink": 2.572766806012766,
+        "saturated_axis_count": 0,
+        "exact_kink_axis_count": 0,
+        "near_kink_axis_count": 0,
+        "same_active_set_plus_minus": true,
+        "analytic_directional_derivative": 0.006914707034508767,
+        "central_difference": 0.006914707035253487,
+        "absolute_error": 7.447193903220573e-13,
+        "relative_error": 1.0770078710858305e-10,
+        "status": "PASS",
+        "note": "Fixed direction; current W_before[k] on previous valid phi_j; no update applied."
+      },
+      {
+        "sample_id": "LAST_ELIGIBLE_PAIR",
+        "scene_id": "DL1018_VAL_T2_C06_W00",
+        "current_event_index_zero_based": 19990,
+        "previous_event_index_zero_based": 19980,
+        "beta_previous": 1.0,
+        "phi_norm": 1.0,
+        "fd_step": 1e-06,
+        "min_distance_to_clip_kink": 2.4158144865818927,
+        "saturated_axis_count": 0,
+        "exact_kink_axis_count": 0,
+        "near_kink_axis_count": 0,
+        "same_active_set_plus_minus": true,
+        "analytic_directional_derivative": 0.013042737640267789,
+        "central_difference": 0.01304273763926174,
+        "absolute_error": 1.0060494104457973e-12,
+        "relative_error": 7.713483458716122e-11,
+        "status": "PASS",
+        "note": "Fixed direction; current W_before[k] on previous valid phi_j; no update applied."
+      },
+      {
+        "sample_id": "FIRST_ELIGIBLE_PAIR",
+        "scene_id": "DL1018_VAL_T1_C02_W09",
+        "current_event_index_zero_based": 330,
+        "previous_event_index_zero_based": 320,
+        "beta_previous": 0.17777777777777778,
+        "phi_norm": 0.9999999999999999,
+        "fd_step": 1e-06,
+        "min_distance_to_clip_kink": 2.901581554953316,
+        "saturated_axis_count": 0,
+        "exact_kink_axis_count": 0,
+        "near_kink_axis_count": 0,
+        "same_active_set_plus_minus": true,
+        "analytic_directional_derivative": 0.00020490639442901444,
+        "central_difference": 0.00020490639442366856,
+        "absolute_error": 5.345875651874277e-15,
+        "relative_error": 2.6089354930923077e-11,
+        "status": "PASS",
+        "note": "Fixed direction; current W_before[k] on previous valid phi_j; no update applied."
+      },
+      {
+        "sample_id": "MIDDLE_ELIGIBLE_PAIR",
+        "scene_id": "DL1018_VAL_T1_C02_W09",
+        "current_event_index_zero_based": 10160,
+        "previous_event_index_zero_based": 10150,
+        "beta_previous": 1.0,
+        "phi_norm": 1.0,
+        "fd_step": 1e-06,
+        "min_distance_to_clip_kink": 2.396579405887887,
+        "saturated_axis_count": 0,
+        "exact_kink_axis_count": 0,
+        "near_kink_axis_count": 0,
+        "same_active_set_plus_minus": true,
+        "analytic_directional_derivative": -0.010079631550231626,
+        "central_difference": -0.010079631556497715,
+        "absolute_error": 6.266088342643528e-12,
+        "relative_error": 6.216584710980005e-10,
+        "status": "PASS",
+        "note": "Fixed direction; current W_before[k] on previous valid phi_j; no update applied."
+      },
+      {
+        "sample_id": "LAST_ELIGIBLE_PAIR",
+        "scene_id": "DL1018_VAL_T1_C02_W09",
+        "current_event_index_zero_based": 19990,
+        "previous_event_index_zero_based": 19980,
+        "beta_previous": 1.0,
+        "phi_norm": 1.0,
+        "fd_step": 1e-06,
+        "min_distance_to_clip_kink": 2.613396695878136,
+        "saturated_axis_count": 0,
+        "exact_kink_axis_count": 0,
+        "near_kink_axis_count": 0,
+        "same_active_set_plus_minus": true,
+        "analytic_directional_derivative": -0.0015548935725327659,
+        "central_difference": -0.0015548935706696798,
+        "absolute_error": 1.863086074305187e-12,
+        "relative_error": 1.198208100680747e-09,
+        "status": "PASS",
+        "note": "Fixed direction; current W_before[k] on previous valid phi_j; no update applied."
+      },
+      {
+        "sample_id": "FIRST_ELIGIBLE_PAIR",
+        "scene_id": "DL1018_VAL_T1_C05_W12",
+        "current_event_index_zero_based": 330,
+        "previous_event_index_zero_based": 320,
+        "beta_previous": 0.17777777777777778,
+        "phi_norm": 1.0,
+        "fd_step": 1e-06,
+        "min_distance_to_clip_kink": 2.939066325834849,
+        "saturated_axis_count": 0,
+        "exact_kink_axis_count": 0,
+        "near_kink_axis_count": 0,
+        "same_active_set_plus_minus": true,
+        "analytic_directional_derivative": 0.0007755773755491067,
+        "central_difference": 0.0007755773755700485,
+        "absolute_error": 2.0941798642426512e-14,
+        "relative_error": 2.7001559485969165e-11,
+        "status": "PASS",
+        "note": "Fixed direction; current W_before[k] on previous valid phi_j; no update applied."
+      },
+      {
+        "sample_id": "MIDDLE_ELIGIBLE_PAIR",
+        "scene_id": "DL1018_VAL_T1_C05_W12",
+        "current_event_index_zero_based": 10160,
+        "previous_event_index_zero_based": 10150,
+        "beta_previous": 1.0,
+        "phi_norm": 1.0,
+        "fd_step": 1e-06,
+        "min_distance_to_clip_kink": 2.7684500251028954,
+        "saturated_axis_count": 0,
+        "exact_kink_axis_count": 0,
+        "near_kink_axis_count": 0,
+        "same_active_set_plus_minus": true,
+        "analytic_directional_derivative": 0.0060570229293302425,
+        "central_difference": 0.006057022929658457,
+        "absolute_error": 3.2821401846350184e-13,
+        "relative_error": 5.41873495073609e-11,
+        "status": "PASS",
+        "note": "Fixed direction; current W_before[k] on previous valid phi_j; no update applied."
+      },
+      {
+        "sample_id": "LAST_ELIGIBLE_PAIR",
+        "scene_id": "DL1018_VAL_T1_C05_W12",
+        "current_event_index_zero_based": 19990,
+        "previous_event_index_zero_based": 19980,
+        "beta_previous": 1.0,
+        "phi_norm": 1.0,
+        "fd_step": 1e-06,
+        "min_distance_to_clip_kink": 2.4472249314537384,
+        "saturated_axis_count": 0,
+        "exact_kink_axis_count": 0,
+        "near_kink_axis_count": 0,
+        "same_active_set_plus_minus": true,
+        "analytic_directional_derivative": 0.008888608155521449,
+        "central_difference": 0.008888608158535982,
+        "absolute_error": 3.0145330676134563e-12,
+        "relative_error": 3.3914568106127107e-10,
+        "status": "PASS",
+        "note": "Fixed direction; current W_before[k] on previous valid phi_j; no update applied."
+      },
+      {
+        "sample_id": "FIRST_ELIGIBLE_PAIR",
+        "scene_id": "DL1018_VAL_T1_C08_W15",
+        "current_event_index_zero_based": 330,
+        "previous_event_index_zero_based": 320,
+        "beta_previous": 0.17777777777777778,
+        "phi_norm": 1.0,
+        "fd_step": 1e-06,
+        "min_distance_to_clip_kink": 2.9560760771593277,
+        "saturated_axis_count": 0,
+        "exact_kink_axis_count": 0,
+        "near_kink_axis_count": 0,
+        "same_active_set_plus_minus": true,
+        "analytic_directional_derivative": -0.0001314852502759326,
+        "central_difference": -0.0001314852502728005,
+        "absolute_error": 3.1320974459847495e-15,
+        "relative_error": 2.382090340484416e-11,
+        "status": "PASS",
+        "note": "Fixed direction; current W_before[k] on previous valid phi_j; no update applied."
+      },
+      {
+        "sample_id": "MIDDLE_ELIGIBLE_PAIR",
+        "scene_id": "DL1018_VAL_T1_C08_W15",
+        "current_event_index_zero_based": 10160,
+        "previous_event_index_zero_based": 10150,
+        "beta_previous": 1.0,
+        "phi_norm": 1.0,
+        "fd_step": 1e-06,
+        "min_distance_to_clip_kink": 2.703890501272456,
+        "saturated_axis_count": 0,
+        "exact_kink_axis_count": 0,
+        "near_kink_axis_count": 0,
+        "same_active_set_plus_minus": true,
+        "analytic_directional_derivative": -0.01608286481112401,
+        "central_difference": -0.016082864815088194,
+        "absolute_error": 3.964183148408296e-12,
+        "relative_error": 2.464848889788145e-10,
+        "status": "PASS",
+        "note": "Fixed direction; current W_before[k] on previous valid phi_j; no update applied."
+      },
+      {
+        "sample_id": "LAST_ELIGIBLE_PAIR",
+        "scene_id": "DL1018_VAL_T1_C08_W15",
+        "current_event_index_zero_based": 19990,
+        "previous_event_index_zero_based": 19980,
+        "beta_previous": 1.0,
+        "phi_norm": 0.9999999999999999,
+        "fd_step": 1e-06,
+        "min_distance_to_clip_kink": 2.989321074101562,
+        "saturated_axis_count": 0,
+        "exact_kink_axis_count": 0,
+        "near_kink_axis_count": 0,
+        "same_active_set_plus_minus": true,
+        "analytic_directional_derivative": 0.0011935638853338509,
+        "central_difference": 0.0011935638853507395,
+        "absolute_error": 1.6888617240806703e-14,
+        "relative_error": 1.4149738818415933e-11,
+        "status": "PASS",
+        "note": "Fixed direction; current W_before[k] on previous valid phi_j; no update applied."
+      },
+      {
+        "sample_id": "FIRST_ELIGIBLE_PAIR",
+        "scene_id": "DL1018_VAL_T1_C00_W07",
+        "current_event_index_zero_based": 330,
+        "previous_event_index_zero_based": 320,
+        "beta_previous": 0.17777777777777778,
+        "phi_norm": 1.0,
+        "fd_step": 1e-06,
+        "min_distance_to_clip_kink": 2.920843729296234,
+        "saturated_axis_count": 0,
+        "exact_kink_axis_count": 0,
+        "near_kink_axis_count": 0,
+        "same_active_set_plus_minus": true,
+        "analytic_directional_derivative": 7.276239792795944e-05,
+        "central_difference": 7.276239796772353e-05,
+        "absolute_error": 3.976409045786111e-14,
+        "relative_error": 5.464923032841764e-10,
+        "status": "PASS",
+        "note": "Fixed direction; current W_before[k] on previous valid phi_j; no update applied."
+      },
+      {
+        "sample_id": "MIDDLE_ELIGIBLE_PAIR",
+        "scene_id": "DL1018_VAL_T1_C00_W07",
+        "current_event_index_zero_based": 10160,
+        "previous_event_index_zero_based": 10150,
+        "beta_previous": 1.0,
+        "phi_norm": 0.9999999999999999,
+        "fd_step": 1e-06,
+        "min_distance_to_clip_kink": 2.7186632911519024,
+        "saturated_axis_count": 0,
+        "exact_kink_axis_count": 0,
+        "near_kink_axis_count": 0,
+        "same_active_set_plus_minus": true,
+        "analytic_directional_derivative": -0.016385514983213546,
+        "central_difference": -0.016385514981301363,
+        "absolute_error": 1.9121822181222825e-12,
+        "relative_error": 1.1669954957663853e-10,
+        "status": "PASS",
+        "note": "Fixed direction; current W_before[k] on previous valid phi_j; no update applied."
+      },
+      {
+        "sample_id": "LAST_ELIGIBLE_PAIR",
+        "scene_id": "DL1018_VAL_T1_C00_W07",
+        "current_event_index_zero_based": 19990,
+        "previous_event_index_zero_based": 19980,
+        "beta_previous": 1.0,
+        "phi_norm": 1.0,
+        "fd_step": 1e-06,
+        "min_distance_to_clip_kink": 2.540728381919662,
+        "saturated_axis_count": 0,
+        "exact_kink_axis_count": 0,
+        "near_kink_axis_count": 0,
+        "same_active_set_plus_minus": true,
+        "analytic_directional_derivative": 0.010828366368173012,
+        "central_difference": 0.010828366366760767,
+        "absolute_error": 1.4122453206866226e-12,
+        "relative_error": 1.3042090308631662e-10,
+        "status": "PASS",
+        "note": "Fixed direction; current W_before[k] on previous valid phi_j; no update applied."
+      },
+      {
+        "sample_id": "FIRST_ELIGIBLE_PAIR",
+        "scene_id": "DL1018_VAL_T3_C12_W09",
+        "current_event_index_zero_based": 330,
+        "previous_event_index_zero_based": 320,
+        "beta_previous": 0.17777777777777778,
+        "phi_norm": 0.9999999999999999,
+        "fd_step": 1e-06,
+        "min_distance_to_clip_kink": 2.760995528292063,
+        "saturated_axis_count": 0,
+        "exact_kink_axis_count": 0,
+        "near_kink_axis_count": 0,
+        "same_active_set_plus_minus": true,
+        "analytic_directional_derivative": 0.0010743330194421792,
+        "central_difference": 0.0010743330191935983,
+        "absolute_error": 2.48580886777483e-13,
+        "relative_error": 2.3138159423467454e-10,
+        "status": "PASS",
+        "note": "Fixed direction; current W_before[k] on previous valid phi_j; no update applied."
+      },
+      {
+        "sample_id": "MIDDLE_ELIGIBLE_PAIR",
+        "scene_id": "DL1018_VAL_T3_C12_W09",
+        "current_event_index_zero_based": 10160,
+        "previous_event_index_zero_based": 10150,
+        "beta_previous": 1.0,
+        "phi_norm": 1.0,
+        "fd_step": 1e-06,
+        "min_distance_to_clip_kink": 2.182623335586216,
+        "saturated_axis_count": 0,
+        "exact_kink_axis_count": 0,
+        "near_kink_axis_count": 0,
+        "same_active_set_plus_minus": true,
+        "analytic_directional_derivative": -0.0019305406061840835,
+        "central_difference": -0.0019305406032468775,
+        "absolute_error": 2.937206033948314e-12,
+        "relative_error": 1.5214422450061855e-09,
+        "status": "PASS",
+        "note": "Fixed direction; current W_before[k] on previous valid phi_j; no update applied."
+      },
+      {
+        "sample_id": "LAST_ELIGIBLE_PAIR",
+        "scene_id": "DL1018_VAL_T3_C12_W09",
+        "current_event_index_zero_based": 19990,
+        "previous_event_index_zero_based": 19980,
+        "beta_previous": 1.0,
+        "phi_norm": 0.9999999999999999,
+        "fd_step": 1e-06,
+        "min_distance_to_clip_kink": 2.7861926130888817,
+        "saturated_axis_count": 0,
+        "exact_kink_axis_count": 0,
+        "near_kink_axis_count": 0,
+        "same_active_set_plus_minus": true,
+        "analytic_directional_derivative": 0.005056475940420265,
+        "central_difference": 0.005056475939346772,
+        "absolute_error": 1.0734928571065616e-12,
+        "relative_error": 2.123005962562415e-10,
+        "status": "PASS",
+        "note": "Fixed direction; current W_before[k] on previous valid phi_j; no update applied."
+      },
+      {
+        "sample_id": "FIRST_ELIGIBLE_PAIR",
+        "scene_id": "DL1018_VAL_T3_C00_W13",
+        "current_event_index_zero_based": 330,
+        "previous_event_index_zero_based": 320,
+        "beta_previous": 0.17777777777777778,
+        "phi_norm": 1.0,
+        "fd_step": 1e-06,
+        "min_distance_to_clip_kink": 2.7953947791451204,
+        "saturated_axis_count": 0,
+        "exact_kink_axis_count": 0,
+        "near_kink_axis_count": 0,
+        "same_active_set_plus_minus": true,
+        "analytic_directional_derivative": 0.0006451576983619183,
+        "central_difference": 0.0006451576989655039,
+        "absolute_error": 6.035856493433189e-13,
+        "relative_error": 9.355629643901873e-10,
+        "status": "PASS",
+        "note": "Fixed direction; current W_before[k] on previous valid phi_j; no update applied."
+      },
+      {
+        "sample_id": "MIDDLE_ELIGIBLE_PAIR",
+        "scene_id": "DL1018_VAL_T3_C00_W13",
+        "current_event_index_zero_based": 10160,
+        "previous_event_index_zero_based": 10150,
+        "beta_previous": 1.0,
+        "phi_norm": 0.9999999999999999,
+        "fd_step": 1e-06,
+        "min_distance_to_clip_kink": 2.2646375920998327,
+        "saturated_axis_count": 0,
+        "exact_kink_axis_count": 0,
+        "near_kink_axis_count": 0,
+        "same_active_set_plus_minus": true,
+        "analytic_directional_derivative": 0.007121229936766369,
+        "central_difference": 0.007121229939066609,
+        "absolute_error": 2.3002398596982943e-12,
+        "relative_error": 3.2301159762856784e-10,
+        "status": "PASS",
+        "note": "Fixed direction; current W_before[k] on previous valid phi_j; no update applied."
+      },
+      {
+        "sample_id": "LAST_ELIGIBLE_PAIR",
+        "scene_id": "DL1018_VAL_T3_C00_W13",
+        "current_event_index_zero_based": 19990,
+        "previous_event_index_zero_based": 19980,
+        "beta_previous": 1.0,
+        "phi_norm": 1.0,
+        "fd_step": 1e-06,
+        "min_distance_to_clip_kink": 2.8493629511512992,
+        "saturated_axis_count": 0,
+        "exact_kink_axis_count": 0,
+        "near_kink_axis_count": 0,
+        "same_active_set_plus_minus": true,
+        "analytic_directional_derivative": -0.020252162630199688,
+        "central_difference": -0.020252162648282113,
+        "absolute_error": 1.808242444667485e-11,
+        "relative_error": 8.928638763529133e-10,
+        "status": "PASS",
+        "note": "Fixed direction; current W_before[k] on previous valid phi_j; no update applied."
+      },
+      {
+        "sample_id": "FIRST_ELIGIBLE_PAIR",
+        "scene_id": "DL1018_VAL_T3_C02_W15",
+        "current_event_index_zero_based": 330,
+        "previous_event_index_zero_based": 320,
+        "beta_previous": 0.17777777777777778,
+        "phi_norm": 0.9999999999999999,
+        "fd_step": 1e-06,
+        "min_distance_to_clip_kink": 2.7738407187670804,
+        "saturated_axis_count": 0,
+        "exact_kink_axis_count": 0,
+        "near_kink_axis_count": 0,
+        "same_active_set_plus_minus": true,
+        "analytic_directional_derivative": 0.0007062614710820417,
+        "central_difference": 0.0007062614712353456,
+        "absolute_error": 1.533039103648881e-13,
+        "relative_error": 2.170639580504641e-10,
+        "status": "PASS",
+        "note": "Fixed direction; current W_before[k] on previous valid phi_j; no update applied."
+      },
+      {
+        "sample_id": "MIDDLE_ELIGIBLE_PAIR",
+        "scene_id": "DL1018_VAL_T3_C02_W15",
+        "current_event_index_zero_based": 10160,
+        "previous_event_index_zero_based": 10150,
+        "beta_previous": 1.0,
+        "phi_norm": 0.9999999999999999,
+        "fd_step": 1e-06,
+        "min_distance_to_clip_kink": 2.8290638782994435,
+        "saturated_axis_count": 0,
+        "exact_kink_axis_count": 0,
+        "near_kink_axis_count": 0,
+        "same_active_set_plus_minus": true,
+        "analytic_directional_derivative": -0.011487751089623228,
+        "central_difference": -0.01148775108893163,
+        "absolute_error": 6.915978206789575e-13,
+        "relative_error": 6.020306457576984e-11,
+        "status": "PASS",
+        "note": "Fixed direction; current W_before[k] on previous valid phi_j; no update applied."
+      },
+      {
+        "sample_id": "LAST_ELIGIBLE_PAIR",
+        "scene_id": "DL1018_VAL_T3_C02_W15",
+        "current_event_index_zero_based": 19990,
+        "previous_event_index_zero_based": 19980,
+        "beta_previous": 1.0,
+        "phi_norm": 1.0,
+        "fd_step": 1e-06,
+        "min_distance_to_clip_kink": 2.872679369880811,
+        "saturated_axis_count": 0,
+        "exact_kink_axis_count": 0,
+        "near_kink_axis_count": 0,
+        "same_active_set_plus_minus": true,
+        "analytic_directional_derivative": 0.014417997921341245,
+        "central_difference": 0.01441799792317039,
+        "absolute_error": 1.8291444747742247e-12,
+        "relative_error": 1.2686535845831306e-10,
+        "status": "PASS",
+        "note": "Fixed direction; current W_before[k] on previous valid phi_j; no update applied."
+      },
+      {
+        "sample_id": "FIRST_ELIGIBLE_PAIR",
+        "scene_id": "DL1018_VAL_T3_C03_W00",
+        "current_event_index_zero_based": 330,
+        "previous_event_index_zero_based": 320,
+        "beta_previous": 0.17777777777777778,
+        "phi_norm": 1.0,
+        "fd_step": 1e-06,
+        "min_distance_to_clip_kink": 2.7166337429814456,
+        "saturated_axis_count": 0,
+        "exact_kink_axis_count": 0,
+        "near_kink_axis_count": 0,
+        "same_active_set_plus_minus": true,
+        "analytic_directional_derivative": -0.000814845811224465,
+        "central_difference": -0.0008148458113766896,
+        "absolute_error": 1.522245871021788e-13,
+        "relative_error": 1.8681397753642977e-10,
+        "status": "PASS",
+        "note": "Fixed direction; current W_before[k] on previous valid phi_j; no update applied."
+      },
+      {
+        "sample_id": "MIDDLE_ELIGIBLE_PAIR",
+        "scene_id": "DL1018_VAL_T3_C03_W00",
+        "current_event_index_zero_based": 10160,
+        "previous_event_index_zero_based": 10150,
+        "beta_previous": 1.0,
+        "phi_norm": 1.0,
+        "fd_step": 1e-06,
+        "min_distance_to_clip_kink": 2.7192874382439793,
+        "saturated_axis_count": 0,
+        "exact_kink_axis_count": 0,
+        "near_kink_axis_count": 0,
+        "same_active_set_plus_minus": true,
+        "analytic_directional_derivative": -0.009425718779362654,
+        "central_difference": -0.009425718777537895,
+        "absolute_error": 1.8247590938269553e-12,
+        "relative_error": 1.9359362787506605e-10,
+        "status": "PASS",
+        "note": "Fixed direction; current W_before[k] on previous valid phi_j; no update applied."
+      },
+      {
+        "sample_id": "LAST_ELIGIBLE_PAIR",
+        "scene_id": "DL1018_VAL_T3_C03_W00",
+        "current_event_index_zero_based": 19990,
+        "previous_event_index_zero_based": 19980,
+        "beta_previous": 1.0,
+        "phi_norm": 0.9999999999999999,
+        "fd_step": 1e-06,
+        "min_distance_to_clip_kink": 2.5033488825148873,
+        "saturated_axis_count": 0,
+        "exact_kink_axis_count": 0,
+        "near_kink_axis_count": 0,
+        "same_active_set_plus_minus": true,
+        "analytic_directional_derivative": 0.01749346448526407,
+        "central_difference": 0.017493464482543075,
+        "absolute_error": 2.720993569349517e-12,
+        "relative_error": 1.5554343575805663e-10,
+        "status": "PASS",
+        "note": "Fixed direction; current W_before[k] on previous valid phi_j; no update applied."
+      },
+      {
+        "sample_id": "SYNTHETIC_MIXED_ACTIVE_SATURATED",
+        "scene_id": "SYNTHETIC",
+        "current_event_index_zero_based": null,
+        "previous_event_index_zero_based": null,
+        "beta_previous": 0.65,
+        "phi_norm": 1.0,
+        "fd_step": 1e-06,
+        "min_distance_to_clip_kink": 0.39999999999999947,
+        "saturated_axis_count": 1,
+        "exact_kink_axis_count": 0,
+        "near_kink_axis_count": 0,
+        "same_active_set_plus_minus": true,
+        "analytic_directional_derivative": 0.0007496233917269734,
+        "central_difference": 0.0007496234744053254,
+        "absolute_error": 8.267835201192231e-11,
+        "relative_error": 1.1029317361961064e-07,
+        "status": "PASS",
+        "note": "Constructed q=[0.4,-3.4,1.2], beta=0.65; one saturated axis, two active."
+      }
+    ],
+    "synthetic_mixed_active_saturated_case": {
+      "sample_id": "SYNTHETIC_MIXED_ACTIVE_SATURATED",
+      "scene_id": "SYNTHETIC",
+      "current_event_index_zero_based": null,
+      "previous_event_index_zero_based": null,
+      "beta_previous": 0.65,
+      "phi_norm": 1.0,
+      "fd_step": 1e-06,
+      "min_distance_to_clip_kink": 0.39999999999999947,
+      "saturated_axis_count": 1,
+      "exact_kink_axis_count": 0,
+      "near_kink_axis_count": 0,
+      "same_active_set_plus_minus": true,
+      "analytic_directional_derivative": 0.0007496233917269734,
+      "central_difference": 0.0007496234744053254,
+      "absolute_error": 8.267835201192231e-11,
+      "relative_error": 1.1029317361961064e-07,
+      "status": "PASS",
+      "note": "Constructed q=[0.4,-3.4,1.2], beta=0.65; one saturated axis, two active."
+    },
+    "pass_count": 37,
+    "skip_count_exact_kink": 0,
+    "skip_count_active_set_crossed": 0,
+    "max_absolute_error_passed": 8.267835201192231e-11,
+    "max_relative_error_passed": 1.1029317361961064e-07
+  },
+  "group_csv": {
+    "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\reports\\delayed_innovation_design_audit_20261023\\construction\\DELAYED_INNOVATION_GROUPS.csv",
+    "sha256": "14ee3a792c5138787450846f24a15fa796281099b055026dcfc132c4b41ad460",
+    "row_count": 252
+  },
+  "interpretation_limits": [
+    "No weight update, training, optimizer, new gain, or closed-loop counterfactual was performed.",
+    "Gradient-to-original-update cosine/dot is local geometric evidence only, not an adaptive-law or closed-loop benefit result.",
+    "The delay target is a causal 10 ms finite-difference approximation; deployment noise floor is unknown.",
+    "The original update is tracking-error driven with beta, leakage and projection; it need not minimize this delayed prediction loss."
+  ],
+  "elapsed_seconds": 4.424085699953139,
+  "artifacts": {
+    "script_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\reports\\delayed_innovation_design_audit_20261023\\construction\\delayed_innovation_audit.py",
+    "script_sha256": "bb6a90e4489825709995900bdb9fe69896c0a902b1239bb515859d131b2259ad",
+    "csv_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\reports\\delayed_innovation_design_audit_20261023\\construction\\DELAYED_INNOVATION_GROUPS.csv",
+    "csv_sha256": "14ee3a792c5138787450846f24a15fa796281099b055026dcfc132c4b41ad460",
+    "summary_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\reports\\delayed_innovation_design_audit_20261023\\construction\\DELAYED_INNOVATION_SUMMARY.json",
+    "report_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\reports\\delayed_innovation_design_audit_20261023\\construction\\REPORT_ZH.md"
+  }
+}

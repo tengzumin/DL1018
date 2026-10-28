@@ -1,0 +1,297 @@
+{
+  "scope": "offline candidate-only; no baseline/TEST/old MAT; no MATLAB or Plant; physical truth only post-run",
+  "raw_path": "experiments\\attitude_physics_inertia_observer_20261025\\paired_runner\\dev3_v1\\attempts\\DEV3_20261025_A01\\01_DL1018_DEV_T1_C00_W03_candidate\\run_raw.mat",
+  "raw_sha256": "6f2716992181d1b06c9e28259b1bf16f7adec11c24a4ab90d27a0212acf3b202",
+  "raw_bytes": 440092883,
+  "source_hashes_sha256": {
+    "experiments\\attitude_physics_inertia_observer_20261025\\paired_runner\\dev3_v1\\source_lock_paired_runner_v1.json": "64041daea543f746ad4067c830d1bdf983fda0ec809843d65ed950147345cb8d",
+    "experiments\\attitude_physics_inertia_observer_20261025\\paired_runner\\dev3_v1\\attempts\\DEV3_20261025_A01\\01_DL1018_DEV_T1_C00_W03_candidate\\scene_audit.json": "4447c5664db72081e7e34c9f83a251dd3b3814a05209849d5df842d4234b983f",
+    "experiments\\attitude_physics_inertia_observer_20261025\\phys_attitude_replacement_candidate_v2.m": "fdca20386820f9899a06ade7226902767bbfda2ee3a5ad04af5ab467959c1182",
+    "experiments\\attitude_physics_inertia_observer_20261025\\paired_runner\\matlab\\runtime\\phys_attitude_replacement_candidate_v2.m": "fdca20386820f9899a06ade7226902767bbfda2ee3a5ad04af5ab467959c1182",
+    "experiments\\attitude_physics_inertia_observer_20261025\\paired_runner\\matlab\\core\\default_config.m": "685abb7b72a335fdc826673e6431098fe79af88409f17b1b70ce08edb214dc51",
+    "experiments\\attitude_physics_inertia_observer_20261025\\paired_runner\\matlab\\core\\arm_mass_properties.m": "8ec66e107156b5219f7e41aca2464eef1ec8043eb7f67df313c0f23ef4b551f5",
+    "experiments\\attitude_physics_inertia_observer_20261025\\paired_runner\\matlab\\core\\distributed_mass_properties.m": "db380b506e4bacc37bc398d5726c5ebd25be8ebc08b6c9e76ff59bc78fd45d3a"
+  },
+  "n_samples": 20000,
+  "time_s": [
+    0.0,
+    19.999
+  ],
+  "dt_s": 0.0009999999999998899,
+  "event_count": 1999,
+  "event_flag_updated_mismatch_count": 0,
+  "J0_kgm2": [
+    [
+      0.003257553333333334,
+      -2.168404344971009e-19,
+      0.0
+    ],
+    [
+      -2.168404344971009e-19,
+      0.0032575533333333334,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.006360648333333333
+    ]
+  ],
+  "dmax_rads2": [
+    45.0,
+    45.0,
+    4.7124
+  ],
+  "beta_rise_time_s": 2.2,
+  "observer_lpf_tau_s": 0.1,
+  "C00_invariants": {
+    "max_abs_Jhat_minus_J0_kgm2": 0.0,
+    "Jhat_constant_from_first_max_abs_kgm2": 0.0,
+    "rho_hat_initial_m": [
+      0.15,
+      0.15,
+      0.15,
+      0.15
+    ],
+    "rho_hat_span_m_by_axis": [
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "max_abs_morph_command": 0.0,
+    "max_abs_Jdothat_kgm2ps": 0.0,
+    "tau_shape": {
+      "rms_by_axis": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "max_abs_by_axis": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "tau_shape_reconstruction_max_abs_Nm": 0.0
+  },
+  "helper_reconstruction": {
+    "r_tau_max_abs_Nm": 0.0,
+    "tau_cmd_bar_max_abs_Nm": 0.0,
+    "gamma_max_abs": 1.1102230246251565e-16,
+    "dhat_a_max_abs_rads2": 2.0679515313825692e-25,
+    "observer_projection_hit_events": 0,
+    "a_extra_projection_hit_samples": 0,
+    "a_extra_max_abs_reconstruction_rads2": 0.0,
+    "beta_max_abs": 1.1024514634527804e-13,
+    "tau_comp_max_abs_Nm": 1.2116903504194741e-24,
+    "estimateTorque_max_abs_Nm": 1.2116903504194741e-24,
+    "estimateTorque_rms_Nm_by_axis": [
+      1.7633239077966361e-12,
+      2.139485644679861e-12,
+      2.2325542755078798e-17
+    ],
+    "estimateTorque_max_abs_Nm_by_axis": [
+      1.0994454586431178e-11,
+      1.1465691774179924e-11,
+      2.928285665654687e-17
+    ],
+    "dhat_tau_rms_Nm_by_axis": [
+      2.2159439468668783e-12,
+      2.953941471002438e-12,
+      2.3127618144414788e-17
+    ]
+  },
+  "offline_physics_truth": {
+    "definition": "wind_torque_B + realized_generalized[1:4] - controller_clipped_generalized[1:4]; post-run diagnostic only",
+    "wind_torque_rms_Nm_by_axis": [
+      1.6832274814434753e-20,
+      1.4325569395643526e-20,
+      1.364965632950058e-18
+    ],
+    "actuator_realized_minus_clipped_max_abs_Nm_by_axis": [
+      2.736526283353413e-16,
+      2.999987411267391e-16,
+      9.05850915111639e-17
+    ],
+    "per_step_truth_max_abs_Nm_by_axis": [
+      2.736526283353413e-16,
+      3.000258461810512e-16,
+      9.03309816269876e-17
+    ],
+    "phase_metrics": {
+      "0-2.2 s": {
+        "r_tau": {
+          "x": {
+            "rms_Nm": 5.849929000437267e-12,
+            "max_abs_Nm": 2.4098963276319996e-11
+          },
+          "y": {
+            "rms_Nm": 8.77319889437687e-12,
+            "max_abs_Nm": 3.6866018918169097e-11
+          },
+          "z": {
+            "rms_Nm": 2.4497274087425282e-17,
+            "max_abs_Nm": 4.4398078963281407e-17
+          }
+        },
+        "tau_truth_bar": {
+          "x": {
+            "rms_Nm": 2.7530329956170124e-17,
+            "max_abs_Nm": 7.191953467229162e-17
+          },
+          "y": {
+            "rms_Nm": 5.3438942462377194e-17,
+            "max_abs_Nm": 1.0291247021232414e-16
+          },
+          "z": {
+            "rms_Nm": 2.4449856602938547e-17,
+            "max_abs_Nm": 4.0990973636244315e-17
+          }
+        },
+        "r_minus_truth": {
+          "x": {
+            "rms_Nm": 5.8499214579295385e-12,
+            "max_abs_Nm": 2.4098934740118817e-11
+          },
+          "y": {
+            "rms_Nm": 8.77317325414455e-12,
+            "max_abs_Nm": 3.6865942330127635e-11
+          },
+          "z": {
+            "rms_Nm": 1.0864922645208551e-18,
+            "max_abs_Nm": 3.951916918709103e-18
+          }
+        },
+        "trapz_minus_simpson": {
+          "x": {
+            "rms_Nm": 1.73511697821935e-11,
+            "max_abs_Nm": 5.435380934964754e-11
+          },
+          "y": {
+            "rms_Nm": 2.5238139618525935e-11,
+            "max_abs_Nm": 8.272671379744406e-11
+          },
+          "z": {
+            "rms_Nm": 2.467441648202479e-22,
+            "max_abs_Nm": 1.1293772630057341e-21
+          }
+        },
+        "r_tau_simpson": {
+          "x": {
+            "rms_Nm": 1.743950750308895e-11,
+            "max_abs_Nm": 5.348270288577559e-11
+          },
+          "y": {
+            "rms_Nm": 2.5167514164563562e-11,
+            "max_abs_Nm": 8.131929285116434e-11
+          },
+          "z": {
+            "rms_Nm": 2.4497247606204772e-17,
+            "max_abs_Nm": 4.4398052493501805e-17
+          }
+        },
+        "r_simpson_minus_truth": {
+          "x": {
+            "rms_Nm": 1.7439499061941864e-11,
+            "max_abs_Nm": 5.348266583316634e-11
+          },
+          "y": {
+            "rms_Nm": 2.5167486929311803e-11,
+            "max_abs_Nm": 8.131928029881369e-11
+          },
+          "z": {
+            "rms_Nm": 1.086493629166662e-18,
+            "max_abs_Nm": 3.9519179837041415e-18
+          }
+        }
+      },
+      "2.2-20 s": {
+        "r_tau": {
+          "x": {
+            "rms_Nm": 1.8931088517614726e-12,
+            "max_abs_Nm": 1.3482332221134707e-11
+          },
+          "y": {
+            "rms_Nm": 2.2190465262005613e-12,
+            "max_abs_Nm": 1.4331169280804024e-11
+          },
+          "z": {
+            "rms_Nm": 2.4980134194457705e-17,
+            "max_abs_Nm": 6.231451986360437e-17
+          }
+        },
+        "tau_truth_bar": {
+          "x": {
+            "rms_Nm": 2.915900041695208e-17,
+            "max_abs_Nm": 1.0258449905514218e-16
+          },
+          "y": {
+            "rms_Nm": 5.3843999715949515e-17,
+            "max_abs_Nm": 1.2212453270876294e-16
+          },
+          "z": {
+            "rms_Nm": 2.3973422707306737e-17,
+            "max_abs_Nm": 4.586310714885313e-17
+          }
+        },
+        "r_minus_truth": {
+          "x": {
+            "rms_Nm": 1.8931002030165865e-12,
+            "max_abs_Nm": 1.3482327906010061e-11
+          },
+          "y": {
+            "rms_Nm": 2.219024307784267e-12,
+            "max_abs_Nm": 1.4331089505208172e-11
+          },
+          "z": {
+            "rms_Nm": 6.912985721133911e-18,
+            "max_abs_Nm": 5.508289137312692e-17
+          }
+        },
+        "trapz_minus_simpson": {
+          "x": {
+            "rms_Nm": 1.6577882501267724e-11,
+            "max_abs_Nm": 7.870374890920285e-11
+          },
+          "y": {
+            "rms_Nm": 1.9301956472780332e-11,
+            "max_abs_Nm": 1.3111113961527415e-10
+          },
+          "z": {
+            "rms_Nm": 1.3370574459565951e-22,
+            "max_abs_Nm": 1.4681904419066714e-21
+          }
+        },
+        "r_tau_simpson": {
+          "x": {
+            "rms_Nm": 1.6991918663353702e-11,
+            "max_abs_Nm": 7.892719174407762e-11
+          },
+          "y": {
+            "rms_Nm": 1.9787237762890715e-11,
+            "max_abs_Nm": 1.3087092421561913e-10
+          },
+          "z": {
+            "rms_Nm": 2.498013648183617e-17,
+            "max_abs_Nm": 6.231452010658867e-17
+          }
+        },
+        "r_simpson_minus_truth": {
+          "x": {
+            "rms_Nm": 1.699191117973448e-11,
+            "max_abs_Nm": 7.892720981230682e-11
+          },
+          "y": {
+            "rms_Nm": 1.978721751265617e-11,
+            "max_abs_Nm": 1.3087089014998686e-10
+          },
+          "z": {
+            "rms_Nm": 6.912989198630165e-18,
+            "max_abs_Nm": 5.508294784199007e-17
+          }
+        }
+      }
+    }
+  }
+}

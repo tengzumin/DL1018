@@ -1,0 +1,72 @@
+{
+  "schema": "DL1018_NCMD_LOCAL_FEEDBACK_SENSITIVITY_V1",
+  "status": "PASS_OFFLINE_LOCAL_MAP_DIAGNOSTIC",
+  "created_utc": "2026-10-26T23:15:05.427303+00:00",
+  "scope": {
+    "new_training": false,
+    "optimizer_updates": 0,
+    "new_Plant_calls": 0,
+    "TEST_read": false,
+    "true_inertia_mass_wind_fields_read": false
+  },
+  "definition": {
+    "held_fixed": "current 13-D feature and its own trajectory hidden-before state",
+    "perturbed_features": "attitude-error x/y/z and body-rate x/y/z",
+    "finite_difference": "central difference, +/-1e-4 normalized feature standard deviations",
+    "issued_torque_slope": "d(tau_nominal - J0*beta*NN_output)/d(body_rate)",
+    "boundary": "local command-map sensitivity only; does not include Plant dynamics or prove closed-loop stability"
+  },
+  "identity": {
+    "feature_npz_sha256": "b3a8ca6446d6bdde0573e6c233aa222a6cfb28d35f13b084e8dd9683c16c111f",
+    "model_sha256": "cd5870a48deac9eb3540c3662c59ec4212965c333669b730cdd4f6519d364de6",
+    "locked_cfg_sha256": "55a794e875ca95e5846a29997e01065ab9700e26ac17eb9cb57ce02d7e05df99",
+    "J0_source": "fixed locked nominal J0 only"
+  },
+  "raws": {
+    "DL1018_VAL_T1_C08_W15": {
+      "raw_sha256": "74824224e7ef6353c9a87e587c8cf84aadcd1c1743ba7c0a46933567bd8399fb",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_ncmd_dev_v1\\runs\\DL1018_VAL_T1_C08_W15\\raw_run.mat",
+      "independent_replay_status": "PASS_INDEPENDENT_GRU_STREAM_RAW_REPLAY",
+      "events": 1999
+    },
+    "DL1018_VAL_T2_C05_W15": {
+      "raw_sha256": "acec0905ba7eab5fbb1def3d287188197ff87062f45fc0609ba631fc2c8fc2da",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_ncmd_dev_v1\\runs\\DL1018_VAL_T2_C05_W15\\raw_run.mat",
+      "independent_replay_status": "PASS_INDEPENDENT_GRU_STREAM_RAW_REPLAY",
+      "events": 1999
+    },
+    "DL1018_VAL_T3_C02_W15": {
+      "raw_sha256": "511e2a764df614b556a782196d0516126f8063c3108459ea49c9df11eff82061",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_ncmd_dev_v1\\runs\\DL1018_VAL_T3_C02_W15\\raw_run.mat",
+      "independent_replay_status": "PASS_INDEPENDENT_GRU_STREAM_RAW_REPLAY",
+      "events": 1999
+    },
+    "DL1018_VAL_T1_C05_W12": {
+      "raw_sha256": "a8988418d5815f10b45dd5909f5e068fbf77943efd2a8c13c493f7f1bf7a4626",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_ncmd_dev_v1\\runs\\DL1018_VAL_T1_C05_W12\\raw_run.mat",
+      "independent_replay_status": "PASS_INDEPENDENT_GRU_STREAM_RAW_REPLAY",
+      "events": 1999
+    },
+    "DL1018_VAL_T2_C02_W12": {
+      "raw_sha256": "edf28564338809b410159931f35df86c14dec347d02151fda1d9b851c4b38d90",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_ncmd_dev_v1\\runs\\DL1018_VAL_T2_C02_W12\\raw_run.mat",
+      "independent_replay_status": "PASS_INDEPENDENT_GRU_STREAM_RAW_REPLAY",
+      "events": 1999
+    },
+    "DL1018_VAL_T3_C00_W13": {
+      "raw_sha256": "76ac6cef970257d1916462e47e5a4eb54c56c11f329a50cfef9947be7dd18000",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_ncmd_dev_v1\\runs\\DL1018_VAL_T3_C00_W13\\raw_run.mat",
+      "independent_replay_status": "PASS_INDEPENDENT_GRU_STREAM_RAW_REPLAY",
+      "events": 1999
+    }
+  },
+  "outputs": {
+    "event_csv": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\ncmd_label_predictability_diagnostic_v1\\local_feedback_event_metrics_v1.csv",
+    "event_csv_sha256": "e3c340ff1e87b3f99a58ad73ce8e54ae16b16b85d7f94966212ec376d0d73640",
+    "event_rows": 23988,
+    "group_csv": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\ncmd_label_predictability_diagnostic_v1\\local_feedback_group_metrics_v1.csv",
+    "group_csv_sha256": "2196a6100afe74a61b3ebf5755bfee086892c4523b75bbe8ca77e8367e4e9e3e",
+    "group_rows": 84
+  },
+  "script_sha256": "c2c845847c689885af5f9af4c1f8345f2069c1e43d0ffd8a127c3c426ac176e5"
+}

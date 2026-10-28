@@ -1,0 +1,43 @@
+function report=analyze_ghp7_balanced_matlab_v1()
+% Code Analyzer audit for the new MATLAB parity/preflight/runner glue only.
+auditDir=fileparts(mfilename('fullpath'));taskRoot=fileparts(auditDir);
+files={ ...
+    fullfile(auditDir,'audit_mlp15_ghp7_balance_parity_v1.m'), ...
+    fullfile(auditDir,'preflight_ghp7_balanced_candidate_v1.m'), ...
+    fullfile(taskRoot,'candidate_runner_work','matlab','runtime', ...
+        'prepare_balanced_mlp15_candidate_no_plant.m'), ...
+    fullfile(taskRoot,'candidate_runner_work','matlab','runtime', ...
+        'run_balanced_mlp15_candidate_gate_attempt.m')};
+diagnostics=struct('file',{},'line',{},'id',{},'message',{});
+for i=1:numel(files)
+    assert(isfile(files{i}),'CodeAudit:MissingSource','Missing MATLAB source: %s.',files{i});
+    items=checkcode(files{i},'-id');
+    for j=1:numel(items)
+        if isfield(items,'id'),identifier=char(items(j).id);else,identifier='';end
+        diagnostics(end+1)=struct('file',files{i},'line',double(items(j).line), ... %#ok<AGROW>
+            'id',identifier,'message',char(items(j).message));
+    end
+end
+sharedLockPath=fullfile(fileparts(taskRoot),'pilot_runner_mlp15_c5_full72_v1', ...
+    'MLP15_C5_FULL72_PILOT_SOURCE_LOCK_v1.json');
+sharedLock=jsondecode(fileread(sharedLockPath));
+report=struct('schema','DL1018_MLP15_C5_GHP7_BALANCE_CODE_ANALYZER_V1', ...
+    'status','PASS_NO_NEW_DIAGNOSTICS','plant_called',false,'TEST48_read',false, ...
+    'analyzed_new_file_count',numel(files),'diagnostic_count',numel(diagnostics), ...
+    'diagnostics',diagnostics,'shared_runner_file_count', ...
+    double(sharedLock.candidate_runner.file_count), ...
+    'shared_runner_source_lock_sha256',sha256_file(sharedLockPath), ...
+    'source_sha256',{cellfun(@sha256_file,files,'UniformOutput',false)});
+if ~isempty(diagnostics),report.status='REVIEW_DIAGNOSTICS';end
+outPath=fullfile(auditDir,'MLP15_GHP7_BALANCE_CODE_ANALYZER_v1.json');
+fid=fopen(outPath,'w');assert(fid>=0,'CodeAudit:Report','Cannot write Code Analyzer report.');
+cleanup=onCleanup(@()fclose(fid));
+fwrite(fid,[jsonencode(report,'PrettyPrint',true) newline],'char');clear cleanup
+end
+
+function h=sha256_file(path)
+fid=fopen(path,'rb');assert(fid>=0,'CodeAudit:HashOpen','Cannot read %s.',path);
+cleanup=onCleanup(@()fclose(fid));md=java.security.MessageDigest.getInstance('SHA-256');
+while true,b=fread(fid,8*1024*1024,'*uint8');if isempty(b),break;end;md.update(typecast(b(:),'int8'));end
+h=lower(reshape(dec2hex(typecast(md.digest(),'uint8'),2).',1,[]));clear cleanup
+end

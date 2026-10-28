@@ -1,0 +1,23 @@
+function result=check_measured_pose_pcf_step()
+% Unit check for measured-versus-filtered attitude inputs to unchanged PCF math.
+studyRoot=fileparts(fileparts(mfilename('fullpath')));
+addpath(fullfile(studyRoot,'candidate_runner_work','matlab','models'),'-begin');
+filtered=[0.10;-0.08;0.20];measured=filtered;
+aReq=[1.5;-0.7;0.2];eta=[0.01;-0.03;0.02];k2=[1;2;3];
+thrust=3.2;mass=1.4;gravity=9.8;dt=0.01;
+[aEq,rEq,etaEq]=position_filter_realization_pcf_step_v3_5( ...
+    thrust,filtered,aReq,eta,k2,mass,gravity,dt,true);
+[aSame,rSame,etaSame]=position_filter_realization_pcf_step_v3_5( ...
+    thrust,measured,aReq,eta,k2,mass,gravity,dt,true);
+assert(isequaln(aEq,aSame)&&isequaln(rEq,rSame)&&isequaln(etaEq,etaSame), ...
+    'MeasuredPosePCF:EqualPoseParity','Equal measured/filtered Euler must reproduce the original PCF output exactly.');
+measured=[0.15;-0.02;0.24];
+[aMeasured,rMeasured,etaMeasured]=position_filter_realization_pcf_step_v3_5( ...
+    thrust,measured,aReq,eta,k2,mass,gravity,dt,true);
+delta=[norm(aMeasured-aEq),norm(rMeasured-rEq),norm(etaMeasured-etaEq)];
+assert(all(delta>0)&&all(isfinite(delta)), ...
+    'MeasuredPosePCF:PoseSensitivity','Changing measured Euler must change a_f, r_f and eta update.');
+result=struct('status','PASS','equal_pose_exact_recovery',true, ...
+    'changed_pose_changes_af_rf_eta',true,'delta_norm_af_rf_eta',delta, ...
+    'helper','position_filter_realization_pcf_step_v3_5');
+end

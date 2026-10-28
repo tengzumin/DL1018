@@ -1,0 +1,9 @@
+# C5 VAL48：认证和离线缓存准备补充
+
+2026-10-25。Root仅授权隔离实现，实际导出待源码审核；0 Plant、0 optimizer，不访问TEST。输入固定C5_MATCHED_VAL_REUSE_CANDIDATES_v1.json SHA80ef7a37cb0fff237086ccc138772c71494cacd50a916ed2dba4037d4f833494，沿用主datarepair任务书512MiB产物预算。
+
+在48份实际raw/start/status及父审计身份、cfg/姿态opts、初态/时序/1999事件、完整scene相对physical B source逐场认证后，可调用已做四份golden parity的纯extract_cm18_events_v1（SHA15d8fb369b93e3a251d70c7eb7a590f732da839d35a5bebfb2011f25123e37c1）重建X18和原物理标签，保存独立v7小cache。不得读旧position sidecar当姿态标签，不重跑闭环，不改历史raw或状态。
+
+32个T1/T3沿用旧参考；16个T2使用ACC_FIX物理来源，必须相对原A1 raw检查仅reference.acceleration Y/Z修正，且匹配锁定corrected helper的解析曲线；允许的场景ID别名须精确记录。36个DEV72新run和12个合法screen复用run分别列source身份和父审计依据，不宣称48逐运行源码bytes同一。
+
+任一场失败保留具体差异和现有产物，不跳过、不覆盖、不自动重试或换源。只有48真实PASS才能生成完整VAL48 cache manifest；序列化标量、编码/文件尺寸和no-overwrite检查。VAL只作开发验证，禁止拟合训练normalizer或进入TRAIN。后续新模型的独立测试必须另行封存，旧position TEST不能自动改称新独立测试。

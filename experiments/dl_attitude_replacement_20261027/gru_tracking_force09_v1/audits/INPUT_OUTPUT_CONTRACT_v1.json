@@ -1,0 +1,81 @@
+{
+  "schema": "DL1018_GRU_TRACKING_FORCE09_INPUT_OUTPUT_CONTRACT_V1",
+  "status": "SOURCE_TRACED",
+  "study_id": "gru_tracking_force09_v1",
+  "candidate_arm_id": "GRU32_STREAM72_COSINE_TRACKING_HEAD_FORCE09",
+  "source_hash_manifest_sha256": "148192fcd69ecb5da17157c940556ef1849f941d7b0052d6cd5f32fbbd2c0717",
+  "gru_model_sha256": "b2c462f77a6bb97b8c6bb2b471daef0633d4f9664a7d623b894461a4fa21b567",
+  "model_training_scope": "Parent GRU model uses DEV24+VAL48 development data; VAL is not independent validation. This study adds no training.",
+  "independent_validation_claimed": false,
+  "fresh_holdout_required_for_winner": true,
+  "input": {
+    "feature_vector": {
+      "dimension": 13,
+      "normalization": "(feature - input_mean) ./ input_std",
+      "ordering": [
+        {"indices": "1:3", "name": "Euler attitude error channels", "source": "ai0.error = wrap(reference.euler - current Euler state)", "units": "rad"},
+        {"indices": "4:6", "name": "body angular rate", "source": "state(10:12)", "units": "rad/s"},
+        {"indices": "7:9", "name": "nominal body moment", "source": "ai0.nominal_moment from attitude_bs_step", "units": "N*m"},
+        {"indices": "10:13", "name": "four arm morphology command", "source": "scene.arms.command(k,:) = rhoDotTrue / morph_speed_mps", "units": "dimensionless normalized rate; arm order 1:4; values -1, 0, +1"}
+      ]
+    },
+    "gru": {
+      "hidden_dimension": 32,
+      "gate_order": "reset, update, new",
+      "gru_weight_ih_shape": [96, 13],
+      "gru_weight_hh_shape": [96, 32],
+      "gru_bias_ih_dimension": 96,
+      "gru_bias_hh_dimension": 96,
+      "readout_weight_shape": [3, 32],
+      "readout_bias_dimension": 3,
+      "target_rms_dimension": 3,
+      "base_model_weights": "frozen"
+    },
+    "tracking_delta": {
+      "hidden_memory_dimension": 32,
+      "phi": "[hidden_after; 1]",
+      "phi_dimension": 33,
+      "DeltaW_shape": [33, 3],
+      "update": "Online at actual GRU events; base GRU weights remain fixed.",
+      "tracking_surface_dimension": 3,
+      "tracking_surface_units": "rad/s",
+      "tracking_euler_rate_map_shape": [3, 3],
+      "tracking_euler_rate_map_units": "dimensionless"
+    },
+    "step_context": {
+      "J0": {"shape": [3, 3], "units": "kg*m^2", "meaning": "fixed nominal cfg.attitude_replacement.J0_controller_fixed_kgm2"},
+      "beta": "Scalar residual ramp in [0,1].",
+      "dmax": "Three residual limits in rad/s^2.",
+      "actual_event_dt": "Elapsed seconds between actual GRU events.",
+      "sample_index_time_s": "Strictly increasing causal event index and timestamp.",
+      "tracking_parameters": ["gamma", "sigma_w", "s_limit", "wmax"]
+    }
+  },
+  "output": {
+    "base_residual": {"dimension": 3, "units": "rad/s^2", "equation": "(head_weight * hidden_after + head_bias) .* target_rms"},
+    "tracking_corrected_residual": {"dimension": 3, "units": "rad/s^2", "equation": "q_raw = q_base + DeltaW' * [hidden_after;1]; clip by dmax; multiply by beta"},
+    "torque_estimate": {"dimension": 3, "units": "N*m", "equation": "estimateTorque_Nm = J0 * (beta * clipped_residual)"},
+    "gru_trace_fields": ["q_base_rad_s2", "raw_residual_rad_s2", "clipped_residual_rad_s2", "beta_scaled_residual_rad_s2", "estimateTorque_Nm", "hidden_before", "hidden_after", "DeltaW_before", "DeltaW_dot", "DeltaW_unprojected", "DeltaW_after", "tracking_update_norm", "tracking_weight_projection_active"]
+  },
+  "inertia_boundary": {
+    "gru_step_has_Jdot_or_Jhat_input": false,
+    "gru_step_outputs_J_Jdot_or_Jhat": false,
+    "inertia_identification_output": false,
+    "controller_path": "formal_rbf_baseline=true selects fixedController and locked nominal J0; the dynamic Phat controller branch is bypassed.",
+    "plant_physics": "Ptrue is computed from true scene morphology for Plant dynamics and allocation; it is not passed to the GRU or used as controller P.",
+    "backstepping_helper": "The shared attitude_bs_step info struct contains inertia_dot_for_bs; on this fixed-controller path it is zero and is not an estimated Jdot."
+  },
+  "position_force_scale": {"scale": 0.9, "scope": "Applied DSSM position compensation only; GRU residual inference is unchanged."},
+  "source_evidence": [
+    {"path": "candidate_runner_work/matlab/runtime/run_mlp15_dev72_closed_loop.m", "sha256": "f7fcdddd30f0f3a98155cca6228a847ee9d90d7ad6f2ed5150a9a22f35ede3fc", "anchors": ["GRU feature assembly", "fixedController selection", "Ptrue Plant path"]},
+    {"path": "candidate_runner_work/matlab/runtime/gru_stream_tracking_head_step_v1.m", "sha256": "228fba90d1954780a55b42436f2a659030950f684970537d7108566b938f3c67", "anchors": ["13-feature input", "32 hidden state", "33x3 DeltaW", "fixed J0 torque mapping"]},
+    {"path": "candidate_runner_work/matlab/runtime/gru_stream_attitude_forward_v1.m", "sha256": "669f86ac4dabc96a1bceb151d47504ff21e865addb03dcf9e92677ce61d1b47d", "anchors": ["GRU weight shapes", "three-channel residual readout"]},
+    {"path": "candidate_runner_work/matlab/runtime/make_gate_holdout_options.m", "sha256": "0c41c885d7932ce0415df0ffb307b19f6dbafd2c15257b54de743a4392cf7f9b", "anchors": ["GRU_STREAM model shape contract"]},
+    {"path": "candidate_runner_work/matlab/runtime/controller_options_dl1018.m", "sha256": "93633a5fd95f73d33982045c2fa372d49b1a0df8ea0cfb5ca4461208ca9d53b1", "anchors": ["formal_rbf_baseline=true"]},
+    {"path": "candidate_runner_work/matlab/runtime/bind_paired_fixed_j0.m", "sha256": "99f0304eb44cf5ab419560fc1a7d63e732b3a71fb843ca03e3aac9ab84efecce", "anchors": ["fixed J0 identity binding"]},
+    {"path": "candidate_runner_work/matlab/core/attitude_bs_step.m", "sha256": "cf6b20ffc4df2625d9316a80340d69542e380d14feaed66ef8498e793fdaccbc", "anchors": ["wrapped Euler error", "nominal moment", "fixed inertia_dot_for_bs"]},
+    {"path": "candidate_runner_work/matlab/core/controller_parameters.m", "sha256": "4fad5e78c0bd4177461647af167e7c86a7defa628b43d523b0b7da2ef5556398", "anchors": ["fixed morphology uses nominal arms and zero arm rates"]},
+    {"path": "candidate_runner_work/matlab/core/simulation_parameters.m", "sha256": "962b5434c23d5ac1a9ac568f136635a8ea651a775165d84b7d95250ca88bb9ae", "anchors": ["Plant parameter construction"]},
+    {"path": "candidate_runner_work/matlab/core/tcn0916_morphology_scenario.m", "sha256": "711a87e01e616ee141f9068a8c4e31758dc328ade3f692e1a92a5de723d30438", "anchors": ["dimensionless arm command from rhoDotTrue/morph_speed_mps"]}
+  ]
+}

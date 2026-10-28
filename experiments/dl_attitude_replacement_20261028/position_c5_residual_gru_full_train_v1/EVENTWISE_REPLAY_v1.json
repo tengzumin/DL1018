@@ -1,0 +1,33 @@
+{
+  "schema": "POSITION_RESIDUAL_GRU_EVENTWISE_REPLAY_V1",
+  "status": "PASS",
+  "scene_count": 24,
+  "events_per_scene": 1999,
+  "total_events": 47976,
+  "ready_events": 47232,
+  "per_scene_hidden_reset": true,
+  "unready_delta_exactly_zero": true,
+  "events_processed_from_first_event": true,
+  "first_event_time_s": 0.009999999776482582,
+  "first_ready_event_index_zero_based": 31,
+  "first_ready_event_time_s": 0.3199999928474426,
+  "pre_ready_x14_finite": true,
+  "warmup_hidden_state_finite_and_nonzero_all_scenes": true,
+  "warmup_hidden_norm_min_max": [
+    1.4499508142471313,
+    1.7361727952957153
+  ],
+  "max_abs_delta_vs_batch_sequence_mps2": 6.780028343200684e-07,
+  "max_abs_action_vs_batch_sequence_mps2": 6.854534149169922e-07,
+  "mat_weight_and_normalizer_arrays_match_pytorch": true,
+  "replay_script_sha256": "b8d2e14ae32b3585a67f0c411181595d554b6b096e708c2287dc7866d72a576d",
+  "fit_script_sha256": "706da1d28aaf3fefe9721fc0e5e8a497607daf06603ea0b1b0a14f05df821c3a",
+  "source_manifest_sha256": "53026f8b922713c3c4a64cf99adb12abd64fbe74247c58b70b050a8a23e04f73",
+  "source_label_alignment_sha256": "3be1e4803d85d9b566519eba637a3bac02b4c443546d56225c429553e3a8993d",
+  "data_sha256": "fbeaca11080620d2ba217a0ddeb7f4a1a25b6518fa2bb16012780a4c46cb6001",
+  "checkpoint_sha256": "b3a0df95e44ebe6726c9d3288d6e767c2fb3af06d9812038eca73ddaa0a1d18a",
+  "mat_weights_sha256": "8521b07c89aff6c563876495bd0b8e611a246360c94dce6c476550ff3229fe10",
+  "eventwise_output_sha256": "6525e8c6dff6224b5240d02c1036d653427162508c0e0553a7fbd83de2486860",
+  "scope": "Python numerical replay only; no TEST, Plant, inertia reconstruction, or closed-loop integration",
+  "deployment_caveat": "MAT file preserves raw PyTorch GRU gate order/reset convention; MATLAB runtime integration still requires separate interface and numerical review."
+}

@@ -1,0 +1,66 @@
+{
+  "schema": "RAW_PHYSICAL_TARGET_BOOKKEEPING_RECOVERY_V1",
+  "status": "FULL_COMPUTATION_COMPLETE_POSTWRITE_BOOKKEEPING_ASSERTION_FAILED",
+  "recorded_utc": "2026-10-23T02:58:30.5594335+08:00",
+  "exact_full_command": "$env:OPENBLAS_NUM_THREADS='1'; $env:OMP_NUM_THREADS='1'; $env:MKL_NUM_THREADS='1'; $env:NUMEXPR_NUM_THREADS='1'; $env:VECLIB_MAXIMUM_THREADS='1'; $env:BLIS_NUM_THREADS='1'; python -B 'reports\\raw_physical_target_contract_20261023\\construction\\raw_physical_target_contract.py' --full",
+  "process_exit_code": 1,
+  "computation_summary_status": "PASS",
+  "interpretation": "The numeric pass, finite/input guards, and all 504 rows completed and were written. Process exit 1 occurred only at the final exact byte-ledger equality assertion; do not report process exit 0.",
+  "failure": {
+    "exception": "AssertionError",
+    "failed_assertion": "actual bundle bytes == summary.total_new_artifact_bytes_including_script",
+    "traceback": "raw_physical_target_contract.py:363 main -> line 358 write_full -> line 325 assert size == summary[\"total_new_artifact_bytes_including_script\"]",
+    "script_sha256_at_execution": "8411371afda8cffaace6efdf7584801c73bb8af0838704fd76cec80b14c6b5a6",
+    "encoded_bundle_estimate_bytes": 222387,
+    "actual_bundle_bytes_before_this_recovery_file": 222844,
+    "difference_bytes": 457,
+    "cause": "Windows text-mode newline translation expanded JSON LF to CRLF; the JSON file has 457 additional newline bytes compared with the pre-write UTF-8 estimate.",
+    "numerical_outputs_remain_unchanged": true
+  },
+  "integrity": {
+    "csv_rows": 504,
+    "runs": 12,
+    "pairs_per_run": 1967,
+    "total_pairs": 23604,
+    "per_run_raw_sha_unchanged": true,
+    "beta1_unsaturated_identity": {
+      "coordinates": 65484,
+      "prediction_max_abs_difference_mps2": 0.0,
+      "error_max_abs_difference_mps2": 0.0,
+      "gradient_max_abs_difference": 0.0,
+      "pass": true,
+      "interpretation": "same-state local equality only"
+    },
+    "static_input_sha_snapshot_count": 15,
+    "cap_bytes": 5242880,
+    "actual_pre_recovery_bundle_below_cap": true,
+    "no_training_fit_optimizer_plant_matlab_gpu_test": true,
+    "actual_pre_recovery_bundle_bytes": 222844,
+    "cap_margin_before_recovery_bytes": 5020036
+  },
+  "artifacts": [
+    {
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\reports\\raw_physical_target_contract_20261023\\construction\\raw_physical_target_contract.py",
+      "bytes": 21471,
+      "sha256": "8411371afda8cffaace6efdf7584801c73bb8af0838704fd76cec80b14c6b5a6"
+    },
+    {
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\reports\\raw_physical_target_contract_20261023\\construction\\RAW_PHYSICAL_TARGET_GROUPS.csv",
+      "bytes": 177000,
+      "sha256": "6bedf4dfd0de290fbc930c79eccbae86367e8a2735c81f9b0606f8d0687eddda"
+    },
+    {
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\reports\\raw_physical_target_contract_20261023\\construction\\RAW_PHYSICAL_TARGET_SUMMARY.json",
+      "bytes": 20332,
+      "sha256": "a52d9690ff758ffe38e20435cd6d54f60442903a15357ef3dab67d815b46f501"
+    },
+    {
+      "path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\reports\\raw_physical_target_contract_20261023\\construction\\REPORT_ZH.md",
+      "bytes": 4041,
+      "sha256": "5062001f31b1c07293565d578e38f9d07e6a04dfd0a1ed43f2c4b262f85bd7e2"
+    }
+  ],
+  "no_source_or_raw_modified": true,
+  "no_data_rerun_or_output_overwrite": true,
+  "note": "Original failed command outputs and exit code are preserved. This file is a bookkeeping addendum only; it does not convert the original process to success."
+}

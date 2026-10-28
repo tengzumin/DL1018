@@ -1,0 +1,62 @@
+{
+  "schema": "DL1018_POSITION_APPLIED_LOWPASS_NOPLANT_PREPARE_V1",
+  "status": "PASS_NO_PLANT_PREPARE",
+  "study_id": "gru_tau01_position_applied_lowpass_tau01_v1",
+  "parent_study_id": "gru_tau01_delayed_start_v1",
+  "parent_scene_id": "DL1018_VAL_T3_C01_W14",
+  "parent_no_plant_receipt_sha256": "87398836ed950b6c1f91330ea342e9d2fbc1609177f4a44d576541e246b6879f",
+  "source_hash_manifest_sha256": "86b84ef18cac2688024fb76c2b8bf2b7abf35d243c52da36a113781dfa42c90c",
+  "source_lock_sha256": "f6d8f3769a7c01cd74c62748759d06238a0c33a97604f46f1fb852b7ccc4914e",
+  "runtime_dependency_manifest_sha256": "4f169379faa75939bcaf3f58419cd453300c85a7df67b7903f69e4eb64784923",
+  "parent_dev72_payload_manifest_sha256": "8c6bae8a0ed4d94b30b9e9ac466d8a46ed1a1d955c9592eccabaf4c4987a3991",
+  "parent_manifest_sha256": "97230bcc399d79a4b4785bffe8898880d7e21cd20eb3629c61d6b03a746fd1fe",
+  "active_runtime_dependency_inventory_verified": true,
+  "changed_parent_source_files": [
+    "matlab/runtime/run_mlp15_dev72_closed_loop.m"
+  ],
+  "added_source_files": [
+    "matlab/models/position_applied_accel_lowpass_zoh.m"
+  ],
+  "tau_s": 0.1,
+  "event_rate_hz": 100,
+  "event_dt_s": 0.01,
+  "alpha_first_event": 0.095162581964040413,
+  "alpha_1khz_comparison": 0.0099501662508318933,
+  "filter_initial_state": [
+    0,
+    0,
+    0
+  ],
+  "saturation_bound_violation": 0,
+  "position_force_uses_filtered_output": true,
+  "pcf_uses_same_force_derived_position_request": true,
+  "Plant_calls": 0,
+  "plant_called": false,
+  "TEST_data_read": false,
+  "run_directory_created": false,
+  "no_plant_checks": {
+    "status": "PASS_NO_PLANT_FILTER_CHECK",
+    "tau_s": 0.1,
+    "event_dt_s": 0.01,
+    "alpha_100hz": 0.095162581964040413,
+    "alpha_1khz_comparison": 0.0099501662508318933,
+    "initial_state_norm": 0,
+    "event_count": 4,
+    "event_times_s": [
+      0.01,
+      0.02,
+      0.03,
+      0.04
+    ],
+    "event_intervals_s": [
+      0.01,
+      0.01,
+      0.0099999999999999985,
+      0.010000000000000002
+    ],
+    "max_beta_dmax_bound_violation": 0,
+    "Plant_calls": 0,
+    "plant_called": false,
+    "TEST_data_read": false
+  }
+}

@@ -1,0 +1,374 @@
+diff --git a/experiments/position_axis_coordinate_c5_dev72_20261023/run_dl1018_closed_loop.m b/experiments/attitude_cm18_a1_20261024/run_cm18_closed_loop_v1.m
+index 7691ca5..364d42c 100644
+--- a/experiments/position_axis_coordinate_c5_dev72_20261023/run_dl1018_closed_loop.m
++++ b/experiments/attitude_cm18_a1_20261024/run_cm18_closed_loop_v1.m
+@@ -1,4 +1,7 @@
+-function log=run_dl1018_closed_loop(s,method,cfg,opts)
++function log=run_cm18_closed_loop_v1(s,method,cfg,opts)
++    % Isolated copy of experiments/position_axis_coordinate_c5_dev72_20261023/run_dl1018_closed_loop.m.
++    % Parent SHA256: 48350037B66EFE00301B138068F187C62CF92583F0F9BA2FABC9B24F248A963C.
++    % CM18-A1 source-preparation branch; this file does not authorize Plant execution.
+     % FUNCTION:
+     %   run_baseline_closed_loop
+     % PURPOSE:
+@@ -13,6 +16,46 @@ function log=run_dl1018_closed_loop(s,method,cfg,opts)
+     %RUN_BASELINE_CLOSED_LOOP One shared controller loop; Plant advances only here.
+     if nargin<4,opts=struct;
+     end
++    assert(isstruct(opts),'CM18A1:Options','opts must be a structure.');
++    cm18Config=field_or(opts,'cm18_attitude_v1',struct);
++    cm18Enabled=field_or(cm18Config,'enabled',false);
++    assert(isstruct(cm18Config)&&isfield(cm18Config,'enabled')&& ...
++        islogical(cm18Enabled)&&isscalar(cm18Enabled)&&cm18Enabled, ...
++        'CM18A1:EnabledRequired','This isolated entry only accepts cm18_attitude_v1.enabled=true.');
++    cm18AttitudeActive=true;
++    assert(isfield(cm18Config,'model')&&isstruct(cm18Config.model), ...
++        'CM18A1:ModelRequired','CM18-A1 requires an explicit frozen model structure.');
++    cm18Model=cm18Config.model;
++    cm18ModelFields={'W1','b1','W2','b2','W3','b3','input_mean','input_std','train_axis_rms_rad_s2'};
++    cm18ModelShapes={[32,18],32,[32,32],32,[24,32],24,18,18,3};
++    assert(all(isfield(cm18Model,cm18ModelFields)), ...
++        'CM18A1:ModelFields','CM18-A1 model is missing required weights or normalizers.');
++    for cm18FieldIndex=1:numel(cm18ModelFields)
++        cm18Value=cm18Model.(cm18ModelFields{cm18FieldIndex});
++        if isscalar(cm18ModelShapes{cm18FieldIndex})&&cm18ModelShapes{cm18FieldIndex}~=1
++            cm18ShapeOk=numel(cm18Value)==cm18ModelShapes{cm18FieldIndex};
++        else
++            cm18ShapeOk=isequal(size(cm18Value),cm18ModelShapes{cm18FieldIndex});
++        end
++        assert(isnumeric(cm18Value)&&isreal(cm18Value)&&cm18ShapeOk&& ...
++            all(isfinite(double(cm18Value(:)))), ...
++            'CM18A1:ModelShape','CM18-A1 model array has an invalid shape or non-finite value.');
++    end
++    assert(all(double(cm18Model.input_std(:))>=1e-6)&& ...
++        all(double(cm18Model.train_axis_rms_rad_s2(:))>0), ...
++        'CM18A1:Normalizer','CM18-A1 canonical normalizer floor or target RMS is invalid.');
++    cm18RbfFlags={'rbf_attitude_enabled','rbf_attitude_output_enabled','rbf_attitude_update_enabled'};
++    for cm18FlagIndex=1:numel(cm18RbfFlags)
++        cm18FlagName=cm18RbfFlags{cm18FlagIndex};
++        assert(isfield(opts,cm18FlagName)&&islogical(opts.(cm18FlagName))&& ...
++            isscalar(opts.(cm18FlagName))&&~opts.(cm18FlagName), ...
++            'CM18A1:RbfFlags','All three attitude RBF flags must be explicitly logical false.');
++    end
++    cm18HelperFile=fullfile(fileparts(mfilename('fullpath')),'matlab','cm18_a1_forward_v1.m');
++    assert(isfile(cm18HelperFile),'CM18A1:HelperMissing','The isolated CM18 forward helper is missing.');
++    addpath(fileparts(cm18HelperFile),'-begin');
++    assert(strcmpi(which('cm18_a1_forward_v1'),cm18HelperFile), ...
++        'CM18A1:HelperShadowed','CM18-A1 forward helper resolved outside its isolated directory.');
+     positionDelayedPredictionFlag=field_or(opts,'position_delayed_prediction_enabled',false);
+     assert((islogical(positionDelayedPredictionFlag)&&isscalar(positionDelayedPredictionFlag))|| ...
+         (isnumeric(positionDelayedPredictionFlag)&&isreal(positionDelayedPredictionFlag)&& ...
+@@ -41,6 +84,10 @@ function log=run_dl1018_closed_loop(s,method,cfg,opts)
+     attitudeFusionLambda=0;attitudeFusionModel=struct;attitudeFusionInputDim=0;
+     attitudeHeadCfg=field_or(opts,'attitude_head_v39',struct);
+     attitudeHeadEnabled=isstruct(attitudeHeadCfg)&&logical(field_or(attitudeHeadCfg,'enabled',false));
++    if cm18AttitudeActive
++        assert(~attitudeFusionActive&&~attitudeHeadEnabled, ...
++            'CM18A1:AttitudeExclusivity','CM18-A1 cannot share the old attitude fusion or Head.');
++    end
+     attitudeHeadDeltaW=zeros(33,3);attitudeHeadAuditCount=0;
+     if isfield(opts,'attitude_head_v39')
+         assert(isequal(double(field_or(attitudeHeadCfg,'gamma',NaN)),0.002)&& ...
+@@ -90,6 +137,25 @@ function log=run_dl1018_closed_loop(s,method,cfg,opts)
+             all(isfinite(fixedController.allocation.C),'all')&&all(isfinite(fixedController.inertia),'all'), ...
+             'RBFBS0:FixedControllerModel','Formal BS/RBF requires finite fixed initial-arm C0/J0.');
+     end
++    if cm18AttitudeActive
++        assert(formalRbfBaseline&&isfield(cfg,'controller_morphology_mode')&& ...
++            strcmpi(char(string(cfg.controller_morphology_mode)),'fixed')&& ...
++            isfield(cfg,'controller_inertia_derivative_mode')&& ...
++            strcmpi(char(string(cfg.controller_inertia_derivative_mode)),'full')&& ...
++            isfield(cfg.rbf,'attitude')&& ...
++            isequal(size(cfg.rbf.attitude.dmax),[3,1])&& ...
++            max(abs(double(cfg.rbf.attitude.dmax(:))-[45;45;4.7124]))<1e-12&& ...
++            abs(double(cfg.rbf.attitude.beta_rise_time)-2.2)<1e-12, ...
++            'CM18A1:FrozenConfig','CM18-A1 requires fixed nominal control, dmax=[45;45;4.7124], and beta rise time 2.2 s.');
++        cm18J0=double(fixedController.inertia);
++        assert(strcmp(fixedController.morphology_mode,'fixed')&& ...
++            strcmp(fixedController.controller_inertia_derivative_mode,'full')&& ...
++            isequal(size(cm18J0),[3,3])&&all(isfinite(cm18J0(:)))&& ...
++            norm(cm18J0-cm18J0.','fro')<1e-12&&min(eig(cm18J0))>0&& ...
++            norm(double(fixedController.inertia_dot_for_bs),'fro')<1e-12&& ...
++            max(abs(double(fixedController.arm_lengths(:))-double(cfg.plant.arm_initial(:))))<1e-12, ...
++            'CM18A1:FixedNominal','CM18-A1 must use fixed nominal J0/C0 with zero Jdot.');
++    end
+     rlGapRuntime=field_or(opts,'rl_gap_runtime',struct);
+     rlGapRuntimeEnabled=isstruct(rlGapRuntime)&&logical(field_or(rlGapRuntime,'enabled',false));
+     rlGapRuntimeStepFn=[];
+@@ -394,6 +460,10 @@ function log=run_dl1018_closed_loop(s,method,cfg,opts)
+         assert(isequal(size(opts.rbf_attitude_initial_weight),size(rbfAtt.W)),'TCN0916:RbfInitialAttitudeWeight','Invalid audit Attitude RBF initial weight shape.');
+         rbfAtt.W=double(opts.rbf_attitude_initial_weight);
+     end
++    if cm18AttitudeActive
++        assert(norm(rbfPos.W,'fro')==0&&norm(rbfAtt.W,'fro')==0, ...
++            'CM18A1:RbfInitialWeights','CM18-A1 does not accept nonzero legacy RBF initial weights.');
++    end
+     motor=zeros(n,4);
+     motorSetpoint=zeros(n,4);
+     motorSquaredRequested=zeros(n,4);
+@@ -636,6 +706,13 @@ function log=run_dl1018_closed_loop(s,method,cfg,opts)
+         rbfFullHz=cfg.rbf.runtime.position_update_hz;
+     end
+     if isRbfFullScheduled, assert(isnumeric(rbfFullHz)&&isscalar(rbfFullHz)&&isfinite(rbfFullHz)&&rbfFullHz>0&&rbfFullHz<=1/dt,'TCN0901:RbfPositionRate','position_update_hz must be in (0,1/dt].'); end
++    if cm18AttitudeActive
++        assert(isRbfFullSplit&&rbfAtt400&&abs(dt-.001)<1e-12&& ...
++            abs(rbfHz-100)<1e-12&&abs(rbfFullHz-100)<1e-12&& ...
++            numel(t)>11&&abs(t(1))<1e-12&&abs(t(11)-.010)<1e-12&& ...
++            all(abs(diff(t)-dt)<1e-12), ...
++            'CM18A1:EventSchedule','CM18-A1 requires the original 1-ms plant and 100-Hz split event schedule.');
++    end
+     if stage1PositionActive
+         assert(formalRbfBaseline&&isRbfFullScheduled&&abs(rbfFullHz-100)<1e-12&& ...
+             isfield(stage1PositionRuntime,'model')&&isfield(stage1PositionRuntime,'weight')&& ...
+@@ -654,6 +731,10 @@ function log=run_dl1018_closed_loop(s,method,cfg,opts)
+         if ~isfield(opts,'rbf_phase_start'),rbfPhase=-rbfHz*dt;end
+         if ~isfield(opts,'rbf_full_phase_start'),rbfFullPhase=-rbfFullHz*dt;end
+     end
++    if cm18AttitudeActive
++        assert(abs(rbfPhase+rbfHz*dt)<1e-12&&abs(rbfFullPhase+rbfFullHz*dt)<1e-12, ...
++            'CM18A1:FirstEventPhase','CM18-A1 requires first attitude and position events at k=11 (0.01 s).');
++    end
+     lastRbfFullEventTime=0;
+     rbfFullEventCount=0;
+     rbfPositionEventCount=0;
+@@ -803,6 +884,25 @@ function log=run_dl1018_closed_loop(s,method,cfg,opts)
+     attitudeBsNominalTorque=zeros(n,3);
+     attitudeRbfAccelerationApplied=zeros(n,3);
+     attitudeRbfTorqueApplied=zeros(n,3);
++    cm18EventLog=false(n,1);
++    cm18EventInput18=nan(n,18);
++    cm18EventZBefore=nan(n,4);
++    cm18EventUCurrent=nan(n,4);
++    cm18EventAPrevious=nan(n,3);
++    cm18EventRawAcceleration=nan(n,3);
++    cm18EventClippedAcceleration=nan(n,3);
++    cm18AppliedAccelerationHeld=zeros(n,3);
++    cm18BetaHeldLog=zeros(n,1);
++    cm18CompensationTorqueHeld=zeros(n,3);
++    cm18ClipFlagHeld=false(n,1);
++    cm18InferenceTimeLog=zeros(n,1);
++    cm18EventIntervalLog=zeros(n,1);
++    cm18CommandIntegral=zeros(4,1);
++    cm18HeldAppliedAcceleration=zeros(3,1);
++    cm18HeldBeta=0;
++    cm18HeldTorque=zeros(3,1);
++    cm18HeldClipFlag=false;
++    cm18EventCount=0;
+     attitudeFusionEvent=false(n,1);attitudeFusionReady=false(n,1);
+     attitudeFusionLambdaLog=zeros(n,1);attitudeFusionRawNormalized=zeros(n,3);
+     attitudeFusionAppliedNormalized=zeros(n,3);attitudeFusionAppliedAcceleration=zeros(n,3);
+@@ -856,14 +956,33 @@ function log=run_dl1018_closed_loop(s,method,cfg,opts)
+             (~isNetwork||attitudeFusionActive), ...
+             'RBFBS0:FormalPathIsolation','Formal RBF-BS0 cannot enable reconstruction, observers, learned hooks, oracle, or diagnostic injections.');
+     end
++    if cm18AttitudeActive
++        assert(formalRbfBaseline&&~attitudeFusionActive&&~attitudeHeadEnabled&& ...
++            ~rbfAttitudeRuntimeEnabled&&~logical(opts.rbf_attitude_output_enabled)&&~rbfAttitudeUpdateEnabled&& ...
++            ~rlGapRuntimeEnabled&&~positionNdoEnabled&&~positionSmcEnabled&& ...
++            ~positionRbfWithNdoEnabled&&~adaptiveBasisActive&&~adaptiveTorqueActive&& ...
++            ~tcnResidualActive&&~contextErrorAdaptive&&~a3sV2Adaptive&&~v1Adaptive&& ...
++            isempty(widthScaleFn)&&isempty(positionDeepBasisFn)&&isempty(attitudeModFn)&& ...
++            ~oracleEnabled&&~truthOracleEnabled&& ...
++            (~wrenchDiagnosticEnabled||wrenchDiagnosticZeroExternal)&& ...
++            ~physicalImpulseEnabled&&~statePerturbationEnabled, ...
++            'CM18A1:TorqueIsolation','CM18-A1 rejects old fusion/head, online torque hooks, RBF and injected torque paths.');
++    end
+     rbfAttitudeOutputEnabled=logical(field_or(opts,'rbf_attitude_output_enabled',true));
++    if cm18AttitudeActive
++        assert(stage1PositionActive&&pcfCoordinationEnabled&& ...
++            positionDelayedPredictionEnabled&&isequal(positionCoordinateMask,[1;1;0]), ...
++            'CM18A1:PositionBaseline','CM18-A1 is isolated on the frozen C5/PCF position path and coordinate mask [1;1;0].');
++    end
+     if stage1PositionActive
+         attitudeRbfPathAllowed=(rbfAttitudeRuntimeEnabled&&rbfAttitudeOutputEnabled)|| ...
+             (attitudeFusionActive&&attitudeFusionLambda==1&&~rbfAttitudeRuntimeEnabled&& ...
++             ~rbfAttitudeOutputEnabled&&~rbfAttitudeUpdateEnabled)|| ...
++            (cm18AttitudeActive&&~rbfAttitudeRuntimeEnabled&& ...
+              ~rbfAttitudeOutputEnabled&&~rbfAttitudeUpdateEnabled);
+         assert(formalRbfBaseline&&~rbfPositionUpdateEnabled&&~rbfPositionOutputEnabled&& ...
+             attitudeRbfPathAllowed, ...
+-            'POSADV:PositionRbfIsolation','P_CF position must remain frozen; V3.6 lambda=1 disables the replaced attitude-RBF output and update.');
++            'POSADV:PositionRbfIsolation','P_CF position must remain frozen; V3.6 lambda=1 or CM18-A1 disables replaced attitude-RBF output and update.');
+     end
+     rbfPositionOutputDelayEvents=double(field_or(opts,'rbf_position_output_delay_events',0));
+     rbfAttitudeOutputDelayEvents=double(field_or(opts,'rbf_attitude_output_delay_events',0));
+@@ -1124,6 +1243,13 @@ function log=run_dl1018_closed_loop(s,method,cfg,opts)
+                 rbfFullEvent=false; rbfFullDt=0; attitudeEvent=false; attitudeEventDt=0;
+             end
+         end
++        if cm18AttitudeActive
++            if k<11
++                assert(~attitudeEvent&&~rbfFullEvent,'CM18A1:EarlyEvent','CM18-A1 must not infer before k=11.');
++            elseif k==11
++                assert(attitudeEvent&&rbfFullEvent,'CM18A1:FirstEvent','Both split schedulers must fire at k=11.');
++            end
++        end
+         positionEventLog(k)=rbfFullEvent;
+         attitudeEventLog(k)=attitudeEvent;
+         contextEvent=false; contextEventDt=0;
+@@ -2271,7 +2397,7 @@ function log=run_dl1018_closed_loop(s,method,cfg,opts)
+                         end
+                     end
+                     stage1PcfEtaAfterLog(k,:)=stage1PcfEta.';
+-                    if rbfAtt400 && (rbfAttitudeRuntimeEnabled||attitudeFusionActive)
++                    if rbfAtt400 && (rbfAttitudeRuntimeEnabled||attitudeFusionActive||cm18AttitudeActive)
+                         % Split-rate scheduler sets attitudeEvent before this branch;
+                         % preserve it so independent Position/Attitude rates remain causal.
+                         dtUpdate=0;
+@@ -2288,7 +2414,63 @@ function log=run_dl1018_closed_loop(s,method,cfg,opts)
+                         else
+                             dtUpdate=attitudeEventDt;
+                         end
+-                        if attitudeEvent
++                        if cm18AttitudeActive
++                            if attitudeEvent
++                                assert(dtUpdate>0&&k>=11&&norm(P.inertia-cm18J0,'fro')<1e-12, ...
++                                    'CM18A1:EventState','CM18-A1 event requires past context and the fixed J0.');
++                                if cm18EventCount==0
++                                    assert(k==11&&abs(t(k)-.010)<1e-12, ...
++                                        'CM18A1:FirstEvent','The first CM18-A1 prediction must be k=11 at 0.01 s.');
++                                end
++                                [~,ai0]=attitude_bs_step(x(k,:).',ir,zeros(3,1),P);
++                                alphaBS=double(ai0.nominal_body_angular_acceleration(:));
++                                uCurrent=double(s.arms.command(k,:)).';
++                                zBefore=cm18CommandIntegral;
++                                pastRows=(k-10):(k-1);
++                                pastDt=double(t(pastRows+1)-t(pastRows));
++                                pastDt=pastDt(:);
++                                assert(numel(pastRows)==10&&all(pastDt>0)&& ...
++                                    abs(sum(pastDt)-.010)<1e-12&&all(isfinite(requested(pastRows,2:4)),'all'), ...
++                                    'CM18A1:PastAction','CM18-A1 action context must contain ten completed requested torques.');
++                                aPrevious=sum(double(requested(pastRows,2:4)).*pastDt,1).'/sum(pastDt);
++                                input18=[double(x(k,10:12).');alphaBS;double(thrust/P.mass);uCurrent;zBefore;aPrevious];
++                                assert(numel(input18)==18&&all(isfinite(input18)), ...
++                                    'CM18A1:Input18','CM18-A1 event input must be finite and in frozen X18 order.');
++                                inferenceTimer=tic;
++                                rawAcceleration=double(cm18_a1_forward_v1(input18,cm18Model));
++                                inferenceTime=toc(inferenceTimer);
++                                rawAcceleration=rawAcceleration(:);
++                                clippedAcceleration=max(min(rawAcceleration,double(cfg.rbf.attitude.dmax(:))), ...
++                                    -double(cfg.rbf.attitude.dmax(:)));
++                                beta=min(k*dt/double(cfg.rbf.attitude.beta_rise_time),1);
++                                appliedAcceleration=beta*clippedAcceleration;
++                                heldCompensation=cm18J0*appliedAcceleration;
++                                clipFlag=any(clippedAcceleration~=rawAcceleration);
++                                assert(numel(rawAcceleration)==3&&all(isfinite([rawAcceleration;clippedAcceleration; ...
++                                    appliedAcceleration;heldCompensation]))&&isfinite(inferenceTime), ...
++                                    'CM18A1:Output','CM18-A1 output must be finite and in rad/s^2.');
++                                cm18EventLog(k)=true;
++                                cm18EventInput18(k,:)=input18(:).';
++                                cm18EventZBefore(k,:)=zBefore(:).';
++                                cm18EventUCurrent(k,:)=uCurrent(:).';
++                                cm18EventAPrevious(k,:)=aPrevious(:).';
++                                cm18EventRawAcceleration(k,:)=rawAcceleration(:).';
++                                cm18EventClippedAcceleration(k,:)=clippedAcceleration(:).';
++                                cm18InferenceTimeLog(k)=inferenceTime;
++                                cm18EventIntervalLog(k)=dtUpdate;
++                                cm18HeldAppliedAcceleration=appliedAcceleration;
++                                cm18HeldBeta=beta;
++                                cm18HeldTorque=heldCompensation;
++                                cm18HeldClipFlag=clipFlag;
++                                cm18EventCount=cm18EventCount+1;
++                            end
++                            dT=cm18HeldTorque;
++                            cm18AppliedAccelerationHeld(k,:)=cm18HeldAppliedAcceleration(:).';
++                            cm18BetaHeldLog(k)=cm18HeldBeta;
++                            cm18CompensationTorqueHeld(k,:)=cm18HeldTorque(:).';
++                            cm18ClipFlagHeld(k)=cm18HeldClipFlag;
++                        else
++                            if attitudeEvent
+                             assert(dtUpdate>0,'TCN0901:RbfDt','RBF update dt must be positive.');
+                             [~,ai0]=attitude_bs_step(x(k,:).',ir,zeros(3,1),P);
+                             zRbf=attitude_input(ai0);
+@@ -2453,6 +2635,7 @@ function log=run_dl1018_closed_loop(s,method,cfg,opts)
+                             end
+                             attitudeFusionMixedTorque(k,:)=dT(:).';
+                         end
++                        end
+                     elseif strcmp(method,'B2-RBF-Full')
+                         [~,ai0]=attitude_bs_step(x(k,:).',ir,zeros(3,1),P);
+                         zRbf=attitude_input(ai0);
+@@ -2498,20 +2681,30 @@ function log=run_dl1018_closed_loop(s,method,cfg,opts)
+                             diagnosticOracleTorque(k,:)=injectedTorqueB.';
+                         end
+                     end
+-                    rbfOutputHeld(k,:)=dT.';
+-            if stage1PositionActive
+-                positionRbfAccelerationApplied(k,:)=0;
+-            else
+-                positionRbfAccelerationApplied(k,:)=dF.'/P.mass;
+-            end
+-                    attitudeRbfAccelerationApplied(k,:)=heldRbfAttitudeAcceleration.';
+-                    if attitudeFusionActive
+-                        attitudeRbfTorqueApplied(k,:)=attitudeFusionOriginalRbfTorque(k,:);
++                    if cm18AttitudeActive
++                        % Legacy RBF arrays describe disabled RBF only; CM18 has its own fields below.
++                        rbfUpdateFlag(k)=false;rbfUpdateDt(k)=0;rbfInputSample(k,:)=0;
++                        rbfOutputRaw(k,:)=0;rbfOutputUnclipped(k,:)=0;rbfOutputHeld(k,:)=0;
++                        rbfWeightNorm(k)=0;rbfWeightMax(k)=0;rbfWeightDerivativeNorm(k)=0;
++                        rbfBasisNorm(k)=0;rbfBasisMax(k)=0;rbfAttitudeOutputLimitActive(k)=false;
++                        attitudeRbfAccelerationApplied(k,:)=0;
++                        attitudeRbfTorqueApplied(k,:)=0;
++                    else
++                        rbfOutputHeld(k,:)=dT.';
++                        attitudeRbfAccelerationApplied(k,:)=heldRbfAttitudeAcceleration.';
++                        if attitudeFusionActive
++                            attitudeRbfTorqueApplied(k,:)=attitudeFusionOriginalRbfTorque(k,:);
++                        else
++                            attitudeRbfTorqueApplied(k,:)=dT.';
++                        end
++                        rbfWeightNorm(k)=norm(rbfAtt.W,'fro');
++                        rbfWeightMax(k)=max(abs(rbfAtt.W),[],'all');
++                    end
++                    if stage1PositionActive
++                        positionRbfAccelerationApplied(k,:)=0;
+                     else
+-                        attitudeRbfTorqueApplied(k,:)=dT.';
++                        positionRbfAccelerationApplied(k,:)=dF.'/P.mass;
+                     end
+-                    rbfWeightNorm(k)=norm(rbfAtt.W,'fro');
+-                    rbfWeightMax(k)=max(abs(rbfAtt.W),[],'all');
+                     if wrenchDiagnosticEnabled
+                         [moments,diagnosticAttInfo]=attitude_bs_step(x(k,:).',ir,dT,P);
+                         attitudeInfo=diagnosticAttInfo;
+@@ -2607,6 +2800,10 @@ function log=run_dl1018_closed_loop(s,method,cfg,opts)
+                 end
+             end
+             x(k+1,:)=next.';
++            if cm18AttitudeActive
++                % Advance past-only command memory after the completed Plant transition.
++                cm18CommandIntegral=cm18CommandIntegral+dt*double(s.arms.command(k,:)).';
++            end
+             motor(k,:)=motorNow.';
+             motorSetpoint(k,:)=motorSetpointNow.';
+             requested(k,:)=command.';
+@@ -2723,6 +2920,29 @@ function log=run_dl1018_closed_loop(s,method,cfg,opts)
+             'attitude_bs_nominal_torque_Nm',attitudeBsNominalTorque(q,:), ...
+             'attitude_rbf_estimate_acceleration_rads2',attitudeRbfAccelerationApplied(q,:), ...
+             'attitude_rbf_compensation_torque_Nm',attitudeRbfTorqueApplied(q,:), ...
++            'cm18_attitude_enabled',cm18AttitudeActive, ...
++            'cm18_model_profile','CM18_A1_MLP32x32_TO24_FIXED_J0', ...
++            'cm18_rbf_attitude_runtime_enabled',false, ...
++            'cm18_rbf_attitude_output_enabled',false, ...
++            'cm18_rbf_attitude_update_enabled',false, ...
++            'cm18_dmax_rad_s2',double(cfg.rbf.attitude.dmax(:)).', ...
++            'cm18_beta_rise_time_s',double(cfg.rbf.attitude.beta_rise_time), ...
++            'cm18_fixed_inertia_J0_kgm2',cm18J0, ...
++            'cm18_control_law','tau_BS_minus_tau_compensation', ...
++            'cm18_event_flag',cm18EventLog(q), ...
++            'cm18_event_input_18',cm18EventInput18(q,:), ...
++            'cm18_event_z_before_4',cm18EventZBefore(q,:), ...
++            'cm18_event_u_current_4',cm18EventUCurrent(q,:), ...
++            'cm18_event_a_previous_requested_torque_mean_Nm',cm18EventAPrevious(q,:), ...
++            'cm18_event_raw_acceleration_rad_s2',cm18EventRawAcceleration(q,:), ...
++            'cm18_event_clipped_acceleration_rad_s2',cm18EventClippedAcceleration(q,:), ...
++            'cm18_applied_acceleration_held_rad_s2',cm18AppliedAccelerationHeld(q,:), ...
++            'cm18_beta_held',cm18BetaHeldLog(q), ...
++            'cm18_compensation_torque_held_Nm',cm18CompensationTorqueHeld(q,:), ...
++            'cm18_clip_flag_held',cm18ClipFlagHeld(q), ...
++            'cm18_inference_time_s',cm18InferenceTimeLog(q), ...
++            'cm18_event_interval_s',cm18EventIntervalLog(q), ...
++            'cm18_event_count',cm18EventCount, ...
+              'attitude_fusion_enabled',attitudeFusionActive,'attitude_fusion_architecture',char(field_or(attitudeFusionModel,'architecture','none')), ...
+              'attitude_fusion_input_dim',attitudeFusionInputDim, ...
+              'attitude_fusion_rbf_output_enabled',rbfAttitudeOutputEnabled, ...

@@ -1,0 +1,67 @@
+{
+  "schema": "C3_NO_PLANT_DEVELOPMENT_FAILURES_V1",
+  "plant_calls": 0,
+  "attempts": [
+    {
+      "attempt": 1,
+      "command_mode": "Start-Process -batch",
+      "failure": "PowerShell path normalization expression called Replace with an empty oldValue; batch expression was malformed.",
+      "pid": 85464,
+      "stdout_bytes": 0,
+      "stderr_bytes": 0,
+      "kernel_result_created": false,
+      "os_exit_code": null,
+      "record": "MATLAB_NO_PLANT_LAUNCH.json"
+    },
+    {
+      "attempt": 2,
+      "command_mode": "direct MATLAB -wait -batch",
+      "failure": "MATLAB default preference directory AppData/Roaming was not writable.",
+      "os_exit_code": 1,
+      "record": "MATLAB_NO_PLANT_EXIT_02.json"
+    },
+    {
+      "attempt": 3,
+      "command_mode": "direct MATLAB -wait -batch with MATLAB_PREFDIR under C3",
+      "result": "MATLAB_NO_PLANT_KERNEL_EXECUTED; checkcode_count=0; result JSON exists; wrapper exit code 0.",
+      "tool_session_id": 27087,
+      "os_exit_code": 0,
+      "record": "matlab_kernel_result.json"
+    },
+    {
+      "attempt": 4,
+      "command_mode": "direct MATLAB -batch runtime checkcode; MATLAB_PREFDIR omitted",
+      "failure": "Same default preference directory permission failure.",
+      "os_exit_code": 1,
+      "record": "RUNTIME_CHECKCODE_EXIT.json"
+    },
+    {
+      "attempt": 5,
+      "command_mode": "direct MATLAB -batch runtime checkcode with MATLAB_PREFDIR under C3",
+      "result": "MATLAB_NO_PLANT_RUNTIME_CHECKCODE; message_count=25.",
+      "tool_session_id": 2869,
+      "os_exit_code": "UNKNOWN_WRAPPER_EXIT",
+      "record": "runtime_checkcode.json"
+    },
+    {
+      "attempt": 6,
+      "command_mode": "direct MATLAB -batch prepare_c3_probe with C3 MATLAB_PREFDIR",
+      "failure": "C3 custom uint64 dimension-prefix normalizer hash differed from frozen C2/C1 canonical UTF8 header hash; arrays are identical and C2 hash reproduced.",
+      "tool_session_id": 40102,
+      "os_exit_code": "UNKNOWN_WRAPPER_EXIT",
+      "no_plant_result_created": false,
+      "record": "C3_PREPARE_ATTEMPT_01.json",
+      "diagnostic": "C3_NORMALIZER_HASH_DIAGNOSTIC.json"
+    },
+    {
+      "attempt": 7,
+      "command_mode": "direct MATLAB -wait -batch prepare_c3_probe with C3 MATLAB_PREFDIR",
+      "failure": "C3:SceneInput rejected the frozen B scene because C3 required only the canonical ID; C2 valid_scene permits the exact _ACC_FIX_V1 alias and normalizes it only in memory. A PowerShell Test-Path guard parameter-binding error was also printed, but MATLAB proceeded and produced the assertion output.",
+      "tool_session_id": 79817,
+      "os_exit_code": "UNKNOWN_WRAPPER_EXIT",
+      "plant_calls": 0,
+      "record": "C3_PREPARE_ATTEMPT_02.json"
+    }
+  ],
+  "status_note": "Attempts 1-7 retain their original records. Attempt 7 reached MATLAB and failed C3:SceneInput; no MATLAB process or result/snapshot remained visible and wrapper exit stayed unknown. No Plant calls."
+}

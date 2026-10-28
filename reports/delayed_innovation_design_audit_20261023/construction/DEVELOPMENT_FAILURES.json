@@ -1,0 +1,110 @@
+{
+  "schema": "DELAYED_INNOVATION_DEVELOPMENT_FAILURES_V1",
+  "records": [
+    {
+      "TEST": 0,
+      "action": "Correct the source constant to the actual SHA pinned in INPUT_PREFLIGHT.json; retain this record.",
+      "raw_files_opened": 0,
+      "cause": "The script constant had a transposed character in the expected causal JSON SHA. The on-disk SHA matched INPUT_PREFLIGHT.json; this was a source-code constant typo.",
+      "Plant": 0,
+      "MATLAB": 0,
+      "time_utc": "2026-10-23T02:18:24.2245748+08:00",
+      "status": "FAILED_BEFORE_RAW_READ",
+      "optimizer": 0,
+      "exception": "AssertionError: causal source SHA mismatch: CAUSAL_10MS_FIXED12.json",
+      "GPU": 0,
+      "command": "python -B - (runpy.run_path(...); parse_input_identities(); read_one(first ON1))",
+      "training": 0
+    },
+    {
+      "time_utc": "2026-10-22T18:19:56.898Z",
+      "command": "python -B - (runpy.run_path(...); parse_input_identities(); read_one(first ON1))",
+      "status": "FAILED_ONE_RECORD_SMOKE_ONLY_NO_OUTPUTS",
+      "exception": "AssertionError: nonfinite phi in DL1018_VAL_T2_C00_W10",
+      "cause": "The raw log stores phi as NaN at non-event transitions by design; the first implementation incorrectly required finite phi at every 1 ms step. The guard now requires finite phi only at valid head events and rejects Inf elsewhere.",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_prior_calibration_c1_20261022_v9\\runs_v9\\DL1018_VAL_T2_C00_W10\\ON1\\attempt_01\\raw_run.mat",
+      "raw_sha256_after_failure_hash_check": "2377ee61ec67f15012256502e28f008c26b61af78d0964995ec2f2d8678e854e",
+      "expected_sha256": "2377ee61ec67f15012256502e28f008c26b61af78d0964995ec2f2d8678e854e",
+      "raw_stat_after_failure_hash_check": {
+        "bytes": 47505737,
+        "mtime_ns": 1792683050642705000
+      },
+      "Plant": 0,
+      "MATLAB": 0,
+      "training": 0,
+      "optimizer": 0,
+      "GPU": 0,
+      "TEST": 0,
+      "action": "No raw was changed. The present script records event-only feature finiteness and non-event NaN count."
+    },
+    {
+      "time_utc": "2026-10-23T02:21:50.4249633+08:00",
+      "command": "python -B - (runpy.run_path(...); parse_input_identities(); read_one(first ON1))",
+      "status": "FAILED_ONE_RECORD_SMOKE_ONLY_NO_OUTPUTS",
+      "exception": "AssertionError: nonfinite beta/raw/applied/s_eff outside valid head events in DL1018_VAL_T2_C00_W10",
+      "cause": "The first event-only finiteness guard correctly handled phi but still treated event-only beta, raw/applied output and s_eff NaNs at non-event transitions as invalid. The raw stores these as NaN by design. The guard is being narrowed to valid head events, while rejecting Inf and recording the expected nonfinite counts outside events.",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_prior_calibration_c1_20261022_v9\\runs_v9\\DL1018_VAL_T2_C00_W10\\ON1\\attempt_01\\raw_run.mat",
+      "raw_sha256_before_after": "2377ee61ec67f15012256502e28f008c26b61af78d0964995ec2f2d8678e854e",
+      "raw_stat_after_failure_hash_check": {
+        "bytes": 47505737,
+        "mtime_ns": 1792683050642705000
+      },
+      "nonfinite_counts": {
+        "raw_output": 54096,
+        "s_eff": 54096,
+        "phi": 595056,
+        "valid_event_rows": 0,
+        "beta": 18032,
+        "applied_output": 54096
+      },
+      "raw_files_opened": 1,
+      "outputs_written": 0,
+      "Plant": 0,
+      "MATLAB": 0,
+      "training": 0,
+      "optimizer": 0,
+      "GPU": 0,
+      "TEST": 0,
+      "action": "Preserve this failure; corrected source now finite-checks only valid event rows for these fields and records off-event NaN counts; raw identity remained unchanged."
+    },
+    {
+      "time_utc": "2026-10-23T02:22:53.7421927+08:00",
+      "command": "python -B - (runpy.run_path(...); parse_input_identities(); read_one(first ON1))",
+      "status": "FAILED_ONE_RECORD_SMOKE_ONLY_NO_OUTPUTS",
+      "exception": "ValueError: operands could not be broadcast together with shapes (1967,33,1) (1967,1,1967,3)",
+      "cause": "The analytic gradient coefficient added two unnecessary singleton dimensions to beta_old before multiplying by the (pair,axis) active mask and residual. The per-pair coefficient must be beta_old[:,None] * active * replay_error, then expand once along the feature axis. This was a source broadcasting error discovered before outputs were written; the expression is corrected.",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_prior_calibration_c1_20261022_v9\\runs_v9\\DL1018_VAL_T2_C00_W10\\ON1\\attempt_01\\raw_run.mat",
+      "raw_sha256_before": "2377ee61ec67f15012256502e28f008c26b61af78d0964995ec2f2d8678e854e",
+      "raw_sha256_after_external_check": "2377ee61ec67f15012256502e28f008c26b61af78d0964995ec2f2d8678e854e",
+      "raw_stat_external_check": {
+        "mtime_utc": "2026-10-22T15:30:50.642705Z",
+        "bytes": 47505737
+      },
+      "raw_files_opened": 1,
+      "outputs_written": 0,
+      "Plant": 0,
+      "MATLAB": 0,
+      "training": 0,
+      "optimizer": 0,
+      "GPU": 0,
+      "TEST": 0,
+      "action": "Preserve this development failure; corrected gradient uses pair×axis residual coefficient and feature-axis broadcast."
+    },
+    {
+      "time_utc": "2026-10-22T18:23:16.7470860+00:00",
+      "command": "python -B - (AST + runpy smoke script; attempted path reports/delayed_innovation_design_audit_20261022/construction/delayed_innovation_audit.py)",
+      "status": "FAILED_SMOKE_LAUNCH_NO_RAW_READ",
+      "exception": "FileNotFoundError: wrong year in smoke harness path (20261022 instead of 20261023)",
+      "cause": "The ad hoc smoke invocation referenced the previous report year; this was a harness path typo and did not import the script or open any raw. The corrected invocation uses the taskbook directory 20261023.",
+      "raw_files_opened": 0,
+      "outputs_written": 0,
+      "Plant": 0,
+      "MATLAB": 0,
+      "training": 0,
+      "optimizer": 0,
+      "GPU": 0,
+      "TEST": 0,
+      "action": "Retain invocation failure; rerun only with corrected path."
+    }
+  ]
+}

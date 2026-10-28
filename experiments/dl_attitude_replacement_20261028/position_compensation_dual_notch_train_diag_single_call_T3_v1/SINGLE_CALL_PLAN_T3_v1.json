@@ -1,0 +1,209 @@
+{
+  "schema": "POSITION_COMPENSATION_DUAL_NOTCH_SINGLE_CALL_T3_PLAN_V1",
+  "study_id": "position_compensation_dual_notch_train_diag_single_call_T3_v1",
+  "status": "PREDECLARED_BEFORE_SINGLE_CALL",
+  "scope": {
+    "scene_id": "DL1018_DEV_T3_C09_W09",
+    "split": "TRAIN_C5_24",
+    "fold_id": "holdout_W06_10",
+    "wind_group": "W09, dominant tones 2.2/3.2 Hz",
+    "claim_limit": "Single-scene W09 mechanism falsification only; no cross-wind-spectrum generalization."
+  },
+  "entry_reason": {
+    "prior_frozen_replay_status": "FAIL_FIXED_FROZEN_REPLAY",
+    "why_one_closed_loop_diagnostic_is_authorized": "T1's fixed-parameter diagnostic showed that the W09 mechanism can reduce both target bands. This is one independent same-W09 T3 scene replication with parameters and falsifier unchanged. The frozen replay still fails its low-band action limit (3.116% vs 2.0%); this call is diagnostic only, does not convert that failure to a pass, and makes no cross-wind claim.",
+    "parameters_or_thresholds_changed": false
+  },
+  "fixed_intervention": {
+    "sample_rate_hz": 100.0,
+    "notch_centers_hz": [
+      2.2,
+      3.2
+    ],
+    "quality_factor_each": 4.0,
+    "location": "Filter final C5 plus residual-GRU action after both are combined and before conversion to injected force.",
+    "zero_order_hold_between_events": true,
+    "action_limit_mps2": 3.0
+  },
+  "frozen_score": {
+    "implementation": "score_full72_candidate_v1.score_raw",
+    "metrics": [
+      "Q_m",
+      "task_SO3_rad",
+      "inner_SO3_rad",
+      "safety counters"
+    ],
+    "same_scene_comparators": [
+      "B",
+      "C5",
+      "parent_GRU",
+      "candidate_pre_dual_notch",
+      "dual_notch_candidate"
+    ],
+    "baseline_score_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\position_dc_penalty_oof_train_pair_preflight_W09_T3_C09_attempt015_v1\\audits\\TRAIN_SINGLE_SCENE_PAIRED_SCORE_v1.json",
+    "baseline_score_sha256": "827bfb8b3810e20dbe4c5120b0afeff2f067f5c6c5abebc3beb80f4e534ca764"
+  },
+  "spectrum": {
+    "sample_rate_hz": 1000.0,
+    "transition_count": 20000,
+    "window": "symmetric Hann",
+    "detrend": "constant per channel",
+    "bands_hz": {
+      "peak_2p2": [
+        1.5,
+        2.5
+      ],
+      "peak_3p2": [
+        2.5,
+        3.5
+      ]
+    },
+    "signals": [
+      "task_minus_actual_wrapped_euler",
+      "command_filter_target_euler",
+      "filtered_attitude_reference",
+      "actual_euler",
+      "task_euler"
+    ],
+    "units": "vector RMS mrad"
+  },
+  "single_call_falsifier": {
+    "task_minus_actual_band_rms_reduction_percent_min_each_band_vs_candidate_pre_dual_notch": 25.0,
+    "Q_m_relative_worsening_percent_max_vs_candidate_pre_dual_notch": 5.0,
+    "complete_stable_run_required": true,
+    "all_safety_stop_or_clip_counters_must_be_zero": true,
+    "one_plant_call_only": true,
+    "no_parameter_change_after_result": true
+  },
+  "measured_baseline_Q_task_inner": {
+    "B": {
+      "Q_m": 0.011022185804672962,
+      "task_SO3_rad": 0.05906125628102724,
+      "inner_SO3_rad": 0.010703248504488942
+    },
+    "C5": {
+      "Q_m": 0.009644971109702142,
+      "task_SO3_rad": 0.06070477770565968,
+      "inner_SO3_rad": 0.01078549330228452
+    },
+    "parent_GRU": {
+      "Q_m": 0.009418457073797846,
+      "task_SO3_rad": 0.060662806192281635,
+      "inner_SO3_rad": 0.009645293117548056
+    },
+    "candidate_pre_dual_notch": {
+      "Q_m": 0.009859266808724274,
+      "task_SO3_rad": 0.06062071519434056,
+      "inner_SO3_rad": 0.009642771638575982
+    }
+  },
+  "Plant_calls_authorized": 1,
+  "TEST_read": false,
+  "VAL_read": false,
+  "inertia_reconstruction_enabled": false,
+  "parameter_sweep": false,
+  "measured_baseline_spectra": {
+    "B": {
+      "peak_2p2": {
+        "band_hz": [
+          1.5,
+          2.5
+        ],
+        "task_minus_actual_wrapped_euler_vector_rms_mrad": 4.253388518801604,
+        "command_filter_target_vector_rms_mrad": 6.428853993206957,
+        "filtered_attitude_reference_vector_rms_mrad": 4.049275616035965,
+        "actual_euler_vector_rms_mrad": 4.2962451275178415,
+        "task_euler_vector_rms_mrad": 0.6258625524015138
+      },
+      "peak_3p2": {
+        "band_hz": [
+          2.5,
+          3.5
+        ],
+        "task_minus_actual_wrapped_euler_vector_rms_mrad": 1.2377879939553942,
+        "command_filter_target_vector_rms_mrad": 2.528445485151964,
+        "filtered_attitude_reference_vector_rms_mrad": 1.1295574160359438,
+        "actual_euler_vector_rms_mrad": 1.144054516819863,
+        "task_euler_vector_rms_mrad": 0.2608529022387086
+      }
+    },
+    "C5": {
+      "peak_2p2": {
+        "band_hz": [
+          1.5,
+          2.5
+        ],
+        "task_minus_actual_wrapped_euler_vector_rms_mrad": 16.6468488601516,
+        "command_filter_target_vector_rms_mrad": 26.279772454675648,
+        "filtered_attitude_reference_vector_rms_mrad": 16.549956591157763,
+        "actual_euler_vector_rms_mrad": 16.538494514314035,
+        "task_euler_vector_rms_mrad": 0.6258625524015138
+      },
+      "peak_3p2": {
+        "band_hz": [
+          2.5,
+          3.5
+        ],
+        "task_minus_actual_wrapped_euler_vector_rms_mrad": 8.763299981665641,
+        "command_filter_target_vector_rms_mrad": 19.925682728518208,
+        "filtered_attitude_reference_vector_rms_mrad": 8.890426127542622,
+        "actual_euler_vector_rms_mrad": 8.725810451652201,
+        "task_euler_vector_rms_mrad": 0.2608529022387086
+      }
+    },
+    "parent_GRU": {
+      "peak_2p2": {
+        "band_hz": [
+          1.5,
+          2.5
+        ],
+        "task_minus_actual_wrapped_euler_vector_rms_mrad": 16.375489435803637,
+        "command_filter_target_vector_rms_mrad": 26.016310392337108,
+        "filtered_attitude_reference_vector_rms_mrad": 16.384703025286203,
+        "actual_euler_vector_rms_mrad": 16.26871514772118,
+        "task_euler_vector_rms_mrad": 0.6258625524015138
+      },
+      "peak_3p2": {
+        "band_hz": [
+          2.5,
+          3.5
+        ],
+        "task_minus_actual_wrapped_euler_vector_rms_mrad": 8.708815558935331,
+        "command_filter_target_vector_rms_mrad": 19.983139473142863,
+        "filtered_attitude_reference_vector_rms_mrad": 8.916060606058588,
+        "actual_euler_vector_rms_mrad": 8.669720999980159,
+        "task_euler_vector_rms_mrad": 0.2608529022387086
+      }
+    },
+    "candidate_pre_dual_notch": {
+      "peak_2p2": {
+        "band_hz": [
+          1.5,
+          2.5
+        ],
+        "task_minus_actual_wrapped_euler_vector_rms_mrad": 16.0596947997958,
+        "command_filter_target_vector_rms_mrad": 25.520258433142217,
+        "filtered_attitude_reference_vector_rms_mrad": 16.064588229579826,
+        "actual_euler_vector_rms_mrad": 15.94727877109151,
+        "task_euler_vector_rms_mrad": 0.6258625524015138
+      },
+      "peak_3p2": {
+        "band_hz": [
+          2.5,
+          3.5
+        ],
+        "task_minus_actual_wrapped_euler_vector_rms_mrad": 8.851559688516176,
+        "command_filter_target_vector_rms_mrad": 20.28704725335563,
+        "filtered_attitude_reference_vector_rms_mrad": 9.053912872673871,
+        "actual_euler_vector_rms_mrad": 8.818975301185999,
+        "task_euler_vector_rms_mrad": 0.2608529022387086
+      }
+    }
+  },
+  "measured_baseline_raw_sha256": {
+    "B": "a8cec3af85c0988622a3582385a44a201aa2d5e796fa73a933277cde0cf85f49",
+    "C5": "fa11a41b18ce9d4c3b7558d3bbb0d230aaef3e7071fc15419df0c6d1fca2f3a4",
+    "parent_GRU": "14176658aac8e8b69817f71aff748add1b591cee744cd05954184e52e34c2cb2",
+    "candidate_pre_dual_notch": "16c72ff78e7dfd298ae6157af9c98f6b77ef781162bd05dca07c564241b42963"
+  }
+}

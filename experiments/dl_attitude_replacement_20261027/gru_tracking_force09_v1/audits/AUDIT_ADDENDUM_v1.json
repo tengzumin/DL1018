@@ -1,0 +1,125 @@
+{
+  "schema": "DL1018_GRU_TRACKING_FORCE09_AUDIT_ADDENDUM_V1",
+  "status": "READ_ONLY_RAW_AUDIT_COMPLETE",
+  "study_id": "gru_tracking_force09_v1",
+  "created_utc": "2026-10-27 16:26:20 UTC",
+  "scope": "Supplement only; no Plant rerun and no changes to RELEASE, source, run outputs, or formal final12 score.",
+  "bindings": {
+    "formal_final12_score": {
+      "path": "audits/GRU_TRACKING_FORCE09_SCORE_final12.json",
+      "sha256": "a3caf0ec466bdd59065c6fcd9573e99f75f89f0e7439d04a577a94e38e97b0c6"
+    },
+    "scene_input_manifest": {
+      "path": "SCENE_INPUT_MANIFEST_v1.json",
+      "sha256": "f9e93dded862317c5fd60be6468a08fad27adab1a6a6923ce54d397fb3124f73"
+    },
+    "release": {
+      "path": "RELEASE.json",
+      "sha256": "5ce6908c42f040eacd405fd9a280d2df01673cdeb7c02e6a90e8e65961a11f90"
+    },
+    "source_hash_manifest": {
+      "path": "SOURCE_HASH_MANIFEST_v1.json",
+      "sha256": "148192fcd69ecb5da17157c940556ef1849f941d7b0052d6cd5f32fbbd2c0717"
+    },
+    "parent_locked_cfg": {
+      "path": "experiments/dl_attitude_replacement_20261026/gru_stream_cosine_tracking_head_full72_v1/LOCKED_CFG.json",
+      "sha256": "613aff59c4036ae488cb373afacb3ef1383faa970c8dcd99ffac68462cb6d95f"
+    },
+    "gru_model_sha256": "b2c462f77a6bb97b8c6bb2b471daef0633d4f9664a7d623b894461a4fa21b567"
+  },
+  "raw_run_binding": {
+    "scene_count": 12,
+    "raw_sha256_matches_formal_score": 12,
+    "run_status_sha256_matches_formal_score": 12,
+    "completed_run_status_count": 12,
+    "run_start_sha256_matches_formal_score": 12,
+    "wind_classification": "Computed from each candidate raw MAT scene/environment_wind_I; zero iff every component is exactly zero.",
+    "zero_wind_scene_count": 3,
+    "zero_wind_scene_ids": [
+      "DL1018_DEV_T1_C01_W15",
+      "DL1018_VAL_T2_C05_W15",
+      "DL1018_VAL_T3_C02_W15"
+    ],
+    "nonzero_wind_scene_count": 9,
+    "nonzero_wind_scene_ids": [
+      "DL1018_DEV_T1_C10_W09",
+      "DL1018_DEV_T2_C00_W04",
+      "DL1018_DEV_T2_C09_W10",
+      "DL1018_DEV_T3_C00_W05",
+      "DL1018_DEV_T3_C09_W09",
+      "DL1018_VAL_T1_C00_W07",
+      "DL1018_VAL_T1_C07_W14",
+      "DL1018_VAL_T2_C04_W14",
+      "DL1018_VAL_T3_C01_W14"
+    ],
+    "maximum_absolute_raw_wind_component": 14.722010947957433
+  },
+  "gru_trace_audit": {
+    "trace_used": "log/gru_stream_attitude_trace (not the legacy generic log/trace)",
+    "event_count": 23988,
+    "events_per_scene": 1999,
+    "feature_raw_dimension_counts": {
+      "13": 23988
+    },
+    "feature_order_and_units": [
+      {
+        "indices": "1:3",
+        "name": "wrapped Euler attitude error",
+        "units": "rad"
+      },
+      {
+        "indices": "4:6",
+        "name": "body angular rate",
+        "units": "rad/s"
+      },
+      {
+        "indices": "7:9",
+        "name": "nominal body moment",
+        "units": "N*m"
+      },
+      {
+        "indices": "10:13",
+        "name": "normalized arm morphology command, arm order 1:4",
+        "units": "dimensionless"
+      }
+    ],
+    "gru_base_weights_fixed_events": 23988,
+    "output_precedes_tracking_update_events": 23988,
+    "time_varying_inertia_reconstruction_false_events": 23988,
+    "rbf_output_and_update_disabled_events": 23988,
+    "inertial_input_or_estimate_fields_in_trace": [],
+    "boundary": "GRU inference consumes the 13-feature vector. The step interface receives locked fixed J0 separately for torque conversion; no J/Jdot/Jhat feature or inertia reconstruction/estimate is used. Plant physical dynamics remain separate from the GRU/controller path."
+  },
+  "identity_checks": {
+    "residual_clip": "clipped_residual_rad_s2 = clip(raw_residual_rad_s2, -dmax, +dmax), with parent-locked dmax=[45,45,4.7124] rad/s^2.",
+    "beta_scaling": "beta_scaled_residual_rad_s2 = beta * clipped_residual_rad_s2.",
+    "torque_conversion": "estimateTorque_Nm = J0_kgm2 * beta_scaled_residual_rad_s2, with parent-locked fixed J0.",
+    "tracking_update": "Verified DeltaW_dot, DeltaW_unprojected and elementwise projection DeltaW_after=clip(DeltaW_unprojected,-wmax,+wmax), with wmax=60.",
+    "maximum_absolute_identity_errors": {
+      "raw_residual_from_base_and_DeltaW": 7.105427357601002e-15,
+      "residual_clip": 0.0,
+      "beta_scaling": 0.0,
+      "fixed_J0_torque": 0.0,
+      "DeltaW_dot": 1.734723475976807e-18,
+      "DeltaW_unprojected": 0.0,
+      "DeltaW_projection": 0.0
+    },
+    "residual_clipped_elements": 0,
+    "residual_clipped_events": 0,
+    "DeltaW_projection_active_events": 0,
+    "DeltaW_projection_flag_mismatches": 0
+  },
+  "decision": {
+    "scope": "HF_W09_W14, six scenes; higher RMSE is worse.",
+    "candidate_HF_Q_m": 0.011716514848720517,
+    "B_HF_Q_m": 0.011265769659882808,
+    "candidate_Q_increase_vs_B_percent": 4.0010154871424675,
+    "candidate_HF_task_SO3_rad": 0.060302756106428344,
+    "B_HF_task_SO3_rad": 0.05761862420381656,
+    "candidate_task_SO3_increase_vs_B_percent": 4.65844497278709,
+    "task_SO3_wins_vs_B": 0,
+    "task_SO3_scene_count": 6,
+    "decision": "FAIL; do not expand the candidate study.",
+    "model_training_scope": "Parent GRU was trained on DEV24+VAL48 development data; VAL is not independent validation. This force09 study adds no training. Any future winner requires a fresh holdout."
+  }
+}

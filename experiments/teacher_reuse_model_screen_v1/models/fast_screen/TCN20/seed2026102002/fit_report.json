@@ -1,0 +1,138 @@
+{
+  "status": "COMPLETE",
+  "fit_id": "FAST_SCREEN_TCN20_SEED2026102002",
+  "stage": "FAST_SCREEN",
+  "model_id": "TCN20",
+  "model_group": "TEMPORAL",
+  "family": "TCN",
+  "input_dim": 20,
+  "window": 32,
+  "seed": 2026102002,
+  "initialization": "random; no DL1018 Initial/Final/HISTORY weights or optimizer loaded",
+  "train_sample_count": 75648,
+  "val_sample_count": 37824,
+  "train_episode_count": 192,
+  "val_episode_count": 96,
+  "parameter_count": 6259,
+  "optimizer": {
+    "name": "Adam",
+    "lr": 0.001,
+    "weight_decay": 1e-05,
+    "batch_size": 256
+  },
+  "loss": "mean_axis SmoothL1(pred/3,target_clip/3), one hierarchical sample weight; uniform shuffled endpoints; N/batch unbiased scaling",
+  "step0_weighted_val_rmse_mps2": 0.4411121508488657,
+  "positive_step_improved_vs_step0": true,
+  "selected_step": 2000,
+  "selected_teacher_val_rmse_mps2": 0.11826631184884562,
+  "selected_teacher_val_detail": {
+    "weighted_clipped_rmse_mps2": 0.11826631184884562,
+    "natural_time_weighted_rmse_mps2": 0.11690916163022981,
+    "by_axis_weighted_rmse_mps2": {
+      "x": 0.11040517118555722,
+      "y": 0.1205724012084319,
+      "z": 0.12342510197405528
+    },
+    "by_role_weighted_rmse_mps2": {
+      "B": 0.1342245412419726,
+      "POS_OFF": 0.09978784277174652
+    },
+    "by_task_weighted_rmse_mps2": {
+      "FIG8_3D": 0.11906320113147673,
+      "HELIX": 0.11807854426917015,
+      "SQUARE": 0.11765276484070968
+    },
+    "by_wind_weighted_rmse_mps2": {
+      "0": 0.08641829822277118,
+      "1": 0.11507391012838439,
+      "2": 0.1425013466620532,
+      "3": 0.08283364831754562,
+      "4": 0.13697537083554698,
+      "5": 0.1544180726110738,
+      "6": 0.08778924463064075,
+      "7": 0.10604124183560668,
+      "8": 0.18083366569461976,
+      "9": 0.09097794752392666,
+      "10": 0.11487476548339999,
+      "11": 0.0953255474528933,
+      "12": 0.10708157641204262,
+      "13": 0.09956694964797233,
+      "14": 0.14924414356484125,
+      "15": 0.08624868294859674
+    },
+    "by_phase_weighted_rmse_mps2": {
+      "0": 0.09615166154957117,
+      "1": 0.07235098011994517,
+      "2": 0.1310777395064799,
+      "3": 0.154111584504774,
+      "4": 0.13038943742931813,
+      "5": 0.09136395004414426
+    },
+    "prediction_raw_clip_fraction": 0.0,
+    "target_raw_clip_fraction": 0.0
+  },
+  "last_step": 2000,
+  "final_step_teacher_val_rmse_mps2": 0.11826631184884562,
+  "final_step_teacher_val_detail": {
+    "weighted_clipped_rmse_mps2": 0.11826631184884562,
+    "natural_time_weighted_rmse_mps2": 0.11690916163022981,
+    "by_axis_weighted_rmse_mps2": {
+      "x": 0.11040517118555722,
+      "y": 0.1205724012084319,
+      "z": 0.12342510197405528
+    },
+    "by_role_weighted_rmse_mps2": {
+      "B": 0.1342245412419726,
+      "POS_OFF": 0.09978784277174652
+    },
+    "by_task_weighted_rmse_mps2": {
+      "FIG8_3D": 0.11906320113147673,
+      "HELIX": 0.11807854426917015,
+      "SQUARE": 0.11765276484070968
+    },
+    "by_wind_weighted_rmse_mps2": {
+      "0": 0.08641829822277118,
+      "1": 0.11507391012838439,
+      "2": 0.1425013466620532,
+      "3": 0.08283364831754562,
+      "4": 0.13697537083554698,
+      "5": 0.1544180726110738,
+      "6": 0.08778924463064075,
+      "7": 0.10604124183560668,
+      "8": 0.18083366569461976,
+      "9": 0.09097794752392666,
+      "10": 0.11487476548339999,
+      "11": 0.0953255474528933,
+      "12": 0.10708157641204262,
+      "13": 0.09956694964797233,
+      "14": 0.14924414356484125,
+      "15": 0.08624868294859674
+    },
+    "by_phase_weighted_rmse_mps2": {
+      "0": 0.09615166154957117,
+      "1": 0.07235098011994517,
+      "2": 0.1310777395064799,
+      "3": 0.154111584504774,
+      "4": 0.13038943742931813,
+      "5": 0.09136395004414426
+    },
+    "prediction_raw_clip_fraction": 0.0,
+    "target_raw_clip_fraction": 0.0
+  },
+  "steps_per_s_mean": 3.148278980398797,
+  "eval_steps": [
+    500,
+    1000,
+    1500,
+    2000
+  ],
+  "history_rows": 5,
+  "protocol_sha256": "746360dc2985a3a9fb5602975481884e89a59e677d383dc3d3c8f0ef6a5a0f29",
+  "fit_runner_source_sha256": "9843d0786f17c09ff9b6e4aa0c69bb6c495d191ebe6954976c16958ec2c83063",
+  "model_source_sha256": "58b891598b4d1211254b9294fd525233b81a94fbf24206f011aa53bd2de1beea",
+  "data_source_sha256": "3d6ec20f544cda2ec99c3bddf17e595a75683c90fbd6b542475d006b6d2badad",
+  "normalizer_id": "TEACHER_TRAIN_INITIAL_X14_PLUS_TRAIN_X20_EXTRAS",
+  "started_or_resumed_at_utc": "2026-10-19T19:21:09.154015+00:00",
+  "fit_elapsed_s_this_invocation": 847.4688494999973,
+  "preflight_step_count": null
+}

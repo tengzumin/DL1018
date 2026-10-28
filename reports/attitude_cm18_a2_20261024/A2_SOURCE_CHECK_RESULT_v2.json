@@ -1,0 +1,57 @@
+{
+  "schema": "CM18_A2_SOURCE_CHECK_RESULT_V1",
+  "status": "PASS",
+  "device": "cpu",
+  "torch_dtype": "float64",
+  "training_started": false,
+  "optimizer_objects_created": 0,
+  "optimizer_steps": 0,
+  "plant_calls": 0,
+  "cache_files_read": 0,
+  "parameter_count": 2456,
+  "a1_initial_arrays_sha256": "9c3bd602e211ee5438dec9a8eab623c5135ad713e7a399a749d2852b5e670e8b",
+  "a1_normalizer_sha256": "7d969a9144ed9cfd519348ba831014981942f93b491539bc2c5732b8401c8592",
+  "initial_arrays_exactly_match_a1": true,
+  "raw_zero_before_normalization": true,
+  "nonzero_alphaBS_normalizer_means": [
+    0.000860724151282406,
+    0.0003876157966761425
+  ],
+  "normalized_masked_alphaBS": [
+    -0.0005713197759932931,
+    -0.00026727334221638457
+  ],
+  "yaw_perturbation_invariance_exact": true,
+  "yaw_input_partial_exact_zero": true,
+  "roll_pitch_match_a1_exact": true,
+  "zero_basis_exact_zero": true,
+  "batch_single_atol_1e-12_pass": true,
+  "numpy_torch_float64_max_abs_error": {
+    "physical_output_rad_s2": 3.552713678800501e-15,
+    "normalized_output": 4.440892098500626e-16,
+    "coefficients_3x8": 4.440892098500626e-16,
+    "basis_8": 0.0
+  },
+  "joint_gradient_matches_two_shared_branches_max_abs_error": 4.440892098500626e-16,
+  "branch_gradient_l2": {
+    "full_roll_pitch": 4.249469114726433,
+    "masked_yaw": 8.624311089867494
+  },
+  "joint_smooth_l1": 0.7211918376720219,
+  "fixture_path": "reports/attitude_cm18_a2_20261024/cm18_a2_parity_fixture_v1.json",
+  "fixture_sha256": "9c28c2acc3f43c40120035bac6709fa11dbd1ec3c1bb87c81d545155130869cc",
+  "source_files": {
+    "experiments/attitude_cm18_a2_20261024/model_cm18_a2_v1.py": "588f36a9434b1bf0a8b8343fc6a18f52c65a74aa4494a85511a6c71a465a9352",
+    "experiments/attitude_cm18_a2_20261024/torch_model_cm18_a2_v1.py": "7886fae80c77e204dacdb4af82647053626eab11b9285c2ef3c388e1842f4df8",
+    "experiments/attitude_cm18_a2_20261024/check_cm18_a2_yaw_invariance_v1.py": "b78b06d9ffd936b353fcef42969ad68457d589628d18ff6f00502aa4b23122ea",
+    "experiments/attitude_cm18_a2_20261024/matlab/cm18_a2_forward_v1.m": "f6647ee60f22f32ee66c881bfdac820d4ce9b03fb0aabbd7bf0bdb930216b20d",
+    "experiments/attitude_cm18_a2_20261024/matlab/check_cm18_a2_parity_v1.m": "7ed1c0ac356aadf77279c01cb4f1711f97341df71cee7b1a1f47555abd2a48b4"
+  },
+  "environment": {
+    "MKL_THREADING_LAYER": "SEQUENTIAL",
+    "OMP_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1",
+    "CUBLAS_WORKSPACE_CONFIG": ":4096:8"
+  }
+}

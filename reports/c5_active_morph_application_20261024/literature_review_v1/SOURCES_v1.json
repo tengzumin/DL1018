@@ -1,0 +1,100 @@
+{
+  "review_date": "2026-10-24",
+  "review_scope": "A bounded review of four original papers directly relevant to application of active-morphing or variable-arm quadrotors. No methods were implemented or run; C5 results were read from the frozen manuscript/report only.",
+  "paper_sources": [
+    {
+      "id": "falanga_foldable_2019",
+      "title": "The Foldable Drone: A Morphing Quadrotor that can Squeeze and Fly",
+      "authors": ["Davide Falanga", "Kevin Kleber", "Stefano Mintchev", "Dario Floreano", "Davide Scaramuzza"],
+      "venue_year": "IEEE Robotics and Automation Letters, 4(2), 209-216, 2019",
+      "doi": "10.1109/LRA.2018.2885575",
+      "doi_url": "https://doi.org/10.1109/LRA.2018.2885575",
+      "publisher_url": "https://ieeexplore.ieee.org/document/8567932/",
+      "author_fulltext_url": "https://rpg.ifi.uzh.ch/docs/RAL18_Falanga.pdf",
+      "author_project_url": "https://rpg.ifi.uzh.ch/foldable_drone/index.html",
+      "access_level": "author_fulltext_partial",
+      "access_note": "Read relevant sections of the public author-hosted RA-L manuscript/reprint and the author project page: morphing mechanics and task configurations, morphology-dependent model/control, onboard state-estimation setup, and task-demonstration scope. Not a page-by-page re-review of every appendix.",
+      "task_and_method_evidence": "Four independently servo-actuated arms support H/O/T task configurations. The paper describes narrow-gap negotiation, close vertical-surface inspection, and object grasping/transport. Its controller adapts to morphology and computes geometry-dependent mass properties/allocation; the task-specific morphology is not shown as a joint continuous trajectory-and-shape optimization.",
+      "configuration_and_validation": "Real autonomous quadrotor experiments with onboard visual-inertial state estimation. The model uses commanded servo arm angles as morphology parameters; the reviewed material did not establish a separate estimator of actual arm shape.",
+      "code_review": "No study-specific code repository was linked on the author's publication listing or project page that were inspected. The project page links the paper and supplementary experiment videos. This is a bounded search result, not a claim that no code exists anywhere.",
+      "code_or_project_evidence_urls": [
+        "https://rpg.ifi.uzh.ch/publications.html",
+        "https://rpg.ifi.uzh.ch/foldable_drone/index.html"
+      ]
+    },
+    {
+      "id": "fabris_geometry_compensation_2021",
+      "title": "Geometry-aware Compensation Scheme for Morphing Drones",
+      "authors": ["Amedeo Fabris", "Kevin Kleber", "Davide Falanga", "Davide Scaramuzza"],
+      "venue_year": "IEEE International Conference on Robotics and Automation, 2021",
+      "doi": "10.1109/ICRA48506.2021.9561774",
+      "doi_url": "https://doi.org/10.1109/ICRA48506.2021.9561774",
+      "arxiv_url": "https://arxiv.org/abs/2003.03929",
+      "author_pdf_url": "https://rpg.ifi.uzh.ch/docs/ICRA21_fabris.pdf",
+      "access_level": "author_arxiv_fulltext_read",
+      "access_note": "Read the complete arXiv HTML text exposed by the primary arXiv record, including motivation, test setup, geometric compensation formulation, deployment, comparison tables, discussion, and conclusion.",
+      "task_and_method_evidence": "Measures propeller thrust loss from partial propeller/body occlusion on a load-cell test rig, then computes a per-rotor geometry-aware thrust compensation online from arm/occlusion geometry. Compares compensated and uncompensated flight during morphing hover transitions and circular trajectory flight; it does not jointly optimize the morph schedule and the mission trajectory.",
+      "configuration_and_validation": "Offline bench characterization plus real autonomous morphing-quadrotor experiments. Morphology is computed geometrically from arm configuration; the reviewed formulation does not rely on tracking error to infer the overlap effect.",
+      "code_review": "The arXiv paper describes supplementary experiment videos; no author-linked code repository was found on the inspected author page or paper materials. This is not an exhaustive proof of nonexistence.",
+      "code_or_project_evidence_urls": [
+        "https://rpg.ifi.uzh.ch/research_mav.html",
+        "https://arxiv.org/abs/2003.03929"
+      ]
+    },
+    {
+      "id": "bai_gururajan_morph_geometry_2019",
+      "title": "Evaluation of a Baseline Controller for Autonomous Figure-8 Flights of a Morphing Geometry Quadcopter: Flight Performance",
+      "authors": ["Ye Bai", "Srikanth Gururajan"],
+      "venue_year": "Drones, 3(3), 70, 2019",
+      "doi": "10.3390/drones3030070",
+      "doi_url": "https://doi.org/10.3390/drones3030070",
+      "publisher_url": "https://www.mdpi.com/2504-446X/3/3/70",
+      "access_level": "publisher_fulltext_partial",
+      "access_note": "The publisher search index exposed the abstract and substantial introduction, methods, and results excerpts, including flight-test matrix and setup. Direct article opening returned HTTP 429; therefore this is not labelled fulltext-read.",
+      "task_and_method_evidence": "Reports Figure-8 tracking experiments across nominal and two morph-angle configurations (21 and 27 degrees), different speeds, waypoint counts, and three planes. The paper evaluates the baseline flight controller under morphing geometries; the reviewed test description does not establish joint trajectory/morphology optimization or narrow-gap traversal as an experiment.",
+      "configuration_and_validation": "In-house servo-actuated morphing quadcopter with Pixhawk and ArduPilot 3.4.1; approximately 350 outdoor flight repetitions are reported. Configurations are compared by set morph angle. No separate actual-shape estimator was identified in the reviewed excerpts.",
+      "code_review": "The article identifies standard open-source ArduPilot 3.4.1 as the firmware but no study-specific code repository was linked in the publisher material inspected. The firmware is not treated as a release of the paper's custom experiment code.",
+      "code_or_project_evidence_urls": [
+        "https://www.mdpi.com/2504-446X/3/3/70",
+        "https://ardupilot.org/"
+      ]
+    },
+    {
+      "id": "qin_variable_arm_planning_2025",
+      "title": "Minimum Snap Trajectory Planning and Augmented MPC for Morphing Quadrotor Navigation in Confined Spaces",
+      "authors": ["Chaojun Qin", "Na Zhao", "Qiuyu Wang", "Yudong Luo", "Yantao Shen"],
+      "venue_year": "Drones, 9(4), 304, 2025",
+      "doi": "10.3390/drones9040304",
+      "doi_url": "https://doi.org/10.3390/drones9040304",
+      "publisher_url": "https://www.mdpi.com/2504-446X/9/4/304",
+      "access_level": "publisher_fulltext_partial",
+      "access_note": "Read publisher-indexed abstract, dynamic-model/arm-length identification and planning sections, figure captions for trajectory and MPC results, and the data-availability statement. Direct article opening returned HTTP 429; no claim of full 19-page review is made.",
+      "task_and_method_evidence": "The minimum-snap planning variable jointly includes position and arm length; corridor inequalities account for variable vehicle size, while augmented MPC tracks position and attitude. The paper describes numerical corridor studies; no physical flight validation was found in the reviewed results material.",
+      "configuration_and_validation": "Models servo angle to arm-length dynamics and reports identification in the model-design section. The task's morph variable is a planning decision; no onboard measured-configuration estimator or hardware actuator validation was identified in reviewed material.",
+      "code_review": "The publisher article states original contributions are included in the article and directs further inquiries to the corresponding authors; no public author repository was linked on the inspected article page. This is a bounded search, not an exhaustive proof of nonexistence.",
+      "code_or_project_evidence_urls": [
+        "https://www.mdpi.com/2504-446X/9/4/304",
+        "https://www.mdpi.com/2504-446X/9/4"
+      ]
+    }
+  ],
+  "bounded_search_notes": {
+    "search_date": "2026-10-24",
+    "searches": [
+      "morphing quadrotor variable arm length trajectory planning experimental paper DOI",
+      "morphing quadrotor telescopic arms trajectory control experiment author code",
+      "exact paper title plus GitHub/code",
+      "author project/publication pages for Foldable Drone and geometry-aware compensation"
+    ],
+    "negative_result_interpretation": "A missing linked repository means no paper-specific public code was verified in the checked primary pages and targeted exact-title searches. It does not establish that a private, unindexed, or independently hosted repository does not exist."
+  },
+  "project_scope_read": {
+    "manuscript": "reports/paper_continuation_20261023/final_contribution_peer_max/manuscript_test_v2/main.tex",
+    "frozen_results_report": "reports/paper_continuation_20261023/RESULTS_REPORT_ZH.md",
+    "code_read_only": [
+      "experiments/position_axis_coordinate_c5_20261023/run_dl1018_closed_loop.m",
+      "matlab/core/simulation_parameters.m"
+    ],
+    "scope_summary": "C5 is position-loop residual compensation with the original B attitude inner loop unchanged. It receives commanded arm-morphology inputs but not true rho/rhoDot or wind; the simulated Plant varies geometry/inertia with prescribed morphology, while morphology and propulsion actuators are ideal. T1-T3 are scene groups, and the frozen primary metric is position RMSE."
+  }
+}

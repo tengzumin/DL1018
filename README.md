@@ -4,6 +4,10 @@ DL1018 is the isolated formal experiment project for the V3.11/R2E contract. Its
 
 The corrected scene-reference identity, cache guards, and zero-Plant regression are documented in [the engineering note](reports/integration_next14_v1/engineering/A_CORRECTED_REFERENCE_CACHE_GUARD_ZH.md).
 
+## Experiment archive
+
+See [the DL1018 experiment index](reports/EXPERIMENTS_INDEX_ZH.md) for the completed experiment families, their result locations, and the currently running large-data dual-loop work.
+
 ## Runtime
 
 - MATLAB R2025b (`25.2.0.2998904`)

@@ -1,0 +1,10 @@
+import pathlib,json,csv,statistics
+root=pathlib.Path.cwd();d=root/'reports/attitude_cm18_a1_20261024';r=json.loads((d/'ROOT_SCREEN12_PAIRED_METRICS_v1.json').read_text())['rows'];p=d/'SCREEN12_COMPLETE_PAIRED_TABLE_v1.csv';assert not p.exists()
+fields=['scene_id','task','category','old_SO3_deg','new_SO3_deg','delta_SO3_deg','old_position_Q_mm','new_position_Q_mm','delta_position_Q_mm','old_body_rate_RMSE_rads','new_body_rate_RMSE_rads','old_raw_sha256','new_raw_sha256']
+with p.open('x',newline='',encoding='utf-8-sig') as f:
+ w=csv.DictWriter(f,fieldnames=fields);w.writeheader()
+ for x in r:
+  a=x['C5_RBF']['metrics']['all'];b=x['CM18_A1']['metrics']['all'];w.writerow(dict(scene_id=x['scene_id'],task=x['task'],category=x['category'],old_SO3_deg=a['SO3_RMSE_deg'],new_SO3_deg=b['SO3_RMSE_deg'],delta_SO3_deg=b['SO3_RMSE_deg']-a['SO3_RMSE_deg'],old_position_Q_mm=1000*a['position_Q_m'],new_position_Q_mm=1000*b['position_Q_m'],delta_position_Q_mm=1000*(b['position_Q_m']-a['position_Q_m']),old_body_rate_RMSE_rads=a['body_rate_RMSE_rads'],new_body_rate_RMSE_rads=b['body_rate_RMSE_rads'],old_raw_sha256=x['C5_RBF']['raw_sha256'],new_raw_sha256=x['CM18_A1']['raw_sha256']))
+groups={k:[x for x in r if x['task']==k] for k in ['T1','T2','T3']};groups.update({k:[x for x in r if x['category']==k] for k in sorted(set(x['category'] for x in r))});out=[]
+for name,x in groups.items():out.append(dict(group=name,n=len(x),old_mean_SO3_deg=statistics.mean(v['C5_RBF']['metrics']['all']['SO3_RMSE_deg'] for v in x),new_mean_SO3_deg=statistics.mean(v['CM18_A1']['metrics']['all']['SO3_RMSE_deg'] for v in x),old_mean_Q_mm=1000*statistics.mean(v['C5_RBF']['metrics']['all']['position_Q_m'] for v in x),new_mean_Q_mm=1000*statistics.mean(v['CM18_A1']['metrics']['all']['position_Q_m'] for v in x)))
+p=d/'SCREEN12_TASK_CATEGORY_GROUPS_v1.json';assert not p.exists();p.write_text(json.dumps(dict(scope='Fixed screening subset, not fullDEV72 or independent test',groups=out),indent=2));print(json.dumps(out,indent=2))

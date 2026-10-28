@@ -1,0 +1,75 @@
+{
+  "schema": "MORPH_DEV2_PRIOR_T2_REUSE_RAW_REVIEW_V1",
+  "status": "PASS_REUSE_AFTER_INDEPENDENT_CAUSAL_REVIEW",
+  "scene_id": "DL1018_DEV_T2_C02_W15",
+  "candidate_source_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\attitude_physics_inertia_observer_20261025\\paired_runner\\morph_dev2_diagnostic_v1\\attempts\\MORPH_DEV2_20261025_A02\\01_DL1018_DEV_T2_C02_W15_candidate\\run_raw.mat",
+  "candidate_source_raw_sha256": "99523fa5c1dc69a3daeed2f7f23ecc24d04e37e0ede2c0c49e7058156eead0ff",
+  "original_runner_status": "FAILED_ENGINEERING",
+  "original_runner_failure_reason": "Candidate attitude RBF was active or its trace shape differed.",
+  "old_failure_explained_by": "RBF-disabled status fields are an all-false logical history, not a scalar; the old gate rejected shape before per-step trace inspection.",
+  "attitude_rbf_output_enabled_all_false": true,
+  "attitude_rbf_update_enabled_all_false": true,
+  "rbf_history_all_zero": true,
+  "causal_observer_trace_passed": true,
+  "causal_trace_samples": 20000,
+  "observer_update_events": 1999,
+  "flag_field_sizes": {
+    "attitude_fusion_rbf_output_enabled": [
+      1,
+      1
+    ],
+    "attitude_fusion_rbf_update_enabled": [
+      1,
+      1
+    ]
+  },
+  "same_scene_inputs_as_locked_B": true,
+  "independent_score_matches_prior_within_1e_12": false,
+  "score_differences_candidate_q_so3_B_q_so3_candidate_pair_q_so3": [
+    0,
+    0,
+    0.0015646718472790717,
+    -1.9814976966892744E-6,
+    0,
+    0
+  ],
+  "locked_B_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\b_traceable_c3core_dev72_20261023\\runs_b\\DL1018_DEV_T2_C02_W15\\B_TRACEABLE_C3CORE_V1\\attempt_01\\raw_run.mat",
+  "locked_B_raw_sha256": "24e645c3b3a4cf7d65996cca429e1f3e349e63c470174c9b3abe5bb118cc37c6",
+  "candidate_scores": {
+    "q_rmse_m": 0.0042704429641144031,
+    "q_axis_rmse_m": [
+      0.002076809865184678,
+      0.003721899431409876,
+      0.00026647423158091893
+    ],
+    "so3_rmse_rad": 0.0085213522905267583,
+    "q_peak_m": 0.010670216565732395,
+    "so3_peak_rad": 0.030856030439952862,
+    "motor_saturation_count": 0,
+    "generalized_clip_count": 0,
+    "tilt_limited_count": 0
+  },
+  "B_scores": {
+    "q_rmse_m": 0.0069776407559459909,
+    "q_axis_rmse_m": [
+      0.0040405342686890113,
+      0.00567779893010992,
+      0.00035235302160035141
+    ],
+    "so3_rmse_rad": 0.013185147481204586,
+    "q_peak_m": 0.022995086454953073,
+    "so3_peak_rad": 0.045027954252192116,
+    "motor_saturation_count": 0,
+    "generalized_clip_count": 0,
+    "tilt_limited_count": 0
+  },
+  "candidate_minus_B_q_rmse_m": -0.0027071977918315879,
+  "candidate_minus_B_so3_rmse_rad": -0.0046637951906778278,
+  "canonical_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\attitude_physics_inertia_observer_20261025\\paired_runner\\morph_dev2_dev72_v1\\review\\PRIOR_T2_CANDIDATE_CANONICAL.mat",
+  "canonical_raw_sha256": "430751352a20c7aff8b04434b189b3e11acd1459debca3191f95a6d5acbf23a6",
+  "canonical_raw_bytes": 4.08626415E+8,
+  "canonical_trace_container": "20,000-element struct array; numeric/causal fields preserved",
+  "plant_calls_this_review": 0,
+  "training_runs_this_review": 0,
+  "TEST_accessed": false
+}

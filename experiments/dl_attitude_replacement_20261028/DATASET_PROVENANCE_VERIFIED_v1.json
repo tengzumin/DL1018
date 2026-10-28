@@ -1,0 +1,47 @@
+{
+  "status": "VERIFIED_FROM_FROZEN_MODEL_TRAINING_PROTOCOL_AND_COHORT",
+  "source": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\corrected_reference_training_v1\\g3_collection\\manifests\\G3_COHORT_1632.csv",
+  "position": {
+    "TRAIN": {
+      "episodes": 1536,
+      "unique_source_scenes": 768,
+      "episodes_by_task": {
+        "FIG8_3D": 512,
+        "HELIX": 512,
+        "SQUARE": 512
+      },
+      "episodes_by_role": {
+        "B": 768,
+        "POS_OFF": 768
+      }
+    },
+    "VAL": {
+      "episodes": 96,
+      "unique_source_scenes": 48,
+      "episodes_by_task": {
+        "FIG8_3D": 32,
+        "HELIX": 32,
+        "SQUARE": 32
+      },
+      "episodes_by_role": {
+        "B": 48,
+        "POS_OFF": 48
+      }
+    }
+  },
+  "attitude": {
+    "architecture": "GRU(13,32)+Linear(32,3)",
+    "training_scenes": 72,
+    "train_splits": [
+      "TRAIN_C5_24",
+      "C5_VAL48_AS_DEV_TRAIN"
+    ],
+    "independent_validation_on_original_VAL48": false
+  },
+  "comparison": {
+    "DEV": 24,
+    "VAL": 48,
+    "interpretation": "72 development scenes; not independent test"
+  },
+  "correction": "1536 is episode count, not count of distinct physical scene conditions."
+}

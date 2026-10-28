@@ -1,0 +1,54 @@
+{
+  "schema": "DL1018_MLP15_UPDATE_FIRST_FIRST_SCENE_CAUSAL_AUDIT_V1",
+  "status": "PASS_READ_ONLY_TRACE_AUDIT",
+  "study_id": "mlp15_nominal_residual_v1_closed_loop_update_first_v1",
+  "scene_id": "DL1018_DEV_T1_C10_W09",
+  "raw_path": "runs/DL1018_DEV_T1_C10_W09/PHYS_RESIDUAL_ATTEMPT_01/raw_run.mat",
+  "raw_sha256": "462b3158ac47a58e4b5599e041f886100c6c280c3605e9bfd119e618ae8782ec",
+  "release_sha256_matches_embedded_identity": true,
+  "model_sha256_matches_embedded_identity": true,
+  "test_data_read": false,
+  "run": {
+    "state": "COMPLETED",
+    "status_value": "STABLE",
+    "plant_calls": 1,
+    "transitions": 20000,
+    "state_samples": 20001,
+    "attitude_events": 1999,
+    "valid_past_interval_observations": 1998,
+    "first_last_event_q_zero_based": [10, 19990],
+    "first_last_event_sample_index_runtime_one_based": [11, 19991]
+  },
+  "causal_order_checks": {
+    "raw_equals_base_plus_target_rms_times_output_weight_phi_max_abs": 7.105427357601002e-15,
+    "output_weight_equals_RLS_after_when_not_projected_max_abs": 0.0,
+    "RLS_output_weight_equals_Frobenius_20_projection_max_abs": 3.552713678800501e-15,
+    "output_projection_event_count": 30,
+    "RLS_after_weight_norm_max": 20.242755201211114,
+    "output_weight_norm_max": 20.000000000000004,
+    "final_memory_projection_event_count": 30,
+    "final_memory_weight_norm_max": 20.000000000000004,
+    "weight_after_to_next_weight_before_max_abs": 0.0
+  },
+  "past_observation_checks": {
+    "event_time_vector_max_abs_error_s": 0.0,
+    "observation_endpoint_future_excess_max_s": 0.0,
+    "observation_interval_duration_max_abs_error_s": 1.9897278269453977e-15,
+    "issued_torque_index_excess_over_event_minus_one_max": 0.0
+  },
+  "compensation_checks": {
+    "estimate_torque_equals_fixed_J0_beta_clipped_residual_max_abs_Nm": 6.938893903907228e-18,
+    "applied_compensation_log_equals_event_estimate_max_abs_Nm": 0.0,
+    "raw_vs_clipped_residual_events": 0,
+    "raw_vs_clipped_residual_axis_samples": [0, 0, 0]
+  },
+  "legacy_safety_field_scope": {
+    "attitude_head_projection_active_count": 0,
+    "attitude_head_output_saturated_count": 0,
+    "note": "These are legacy v39 head fields. MLP15 causal-head projection counts above come from each mlp15_attitude_trace.causal_head record and are nonzero; legacy zero counts do not represent MLP15 projection or residual clipping."
+  },
+  "limitations": [
+    "single authorized W09 closed-loop run; this audit validates trace causality and compensation wiring, not performance generalization",
+    "the update-first variant retains the inherited tracking-drive term after output; the original 12-scene candidate and this variant are not the taskbook's pure target-only single factor"
+  ]
+}

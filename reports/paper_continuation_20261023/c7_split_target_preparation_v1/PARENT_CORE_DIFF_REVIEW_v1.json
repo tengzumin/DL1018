@@ -1,0 +1,26 @@
+{
+  "status": "PARENT_CORE_DIFF_PASS_APPROVE_NO_PLANT_PREPARATION_ONLY",
+  "files_sha256": {
+    "experiments/position_split_target_c7_20261024/run_dl1018_closed_loop.m": "9b03b3c979a0402fdcd0f50ff389db9a4dcb72c50537bd4d9bc41bd77ac4c33d",
+    "experiments/position_split_target_c7_20261024/delayed_prediction_step_candidate.m": "48feebf934b8eb90b4424f2286aa857c48213d229714f30af99aacf53329549d",
+    "experiments/position_split_target_c7_20261024/run_episode_dl1018.m": "fcc1f5de659541e692483f8395d93fd2a251256286ebade5e510ed4c7a2e2330",
+    "experiments/position_split_target_c7_20261024/c7_split_target_options.m": "97bf3e34bf3e1b85270aca39b62031934f3724b0c8ff4014216ebf5950f6db87"
+  },
+  "review": "Full diff against frozen C5 DEV72 runner read; mathematical change restricted to My prediction reference, Ms110 tracking unchanged. Helper and episode wrapper exact-byte unchanged.",
+  "checks": [
+    "Tracking surface subtracts only Ms eta.",
+    "Prediction interval integral uses a_req on My000 axes; completed interval pairing unchanged.",
+    "Runtime requires explicit Ms110/My000 and rejects coupled old option.",
+    "Logging records both masks.",
+    "Output-before-update and held command remain original code."
+  ],
+  "remaining": [
+    "Independent core review",
+    "Actual MATLAB/Python no-Plant fixture and OS0",
+    "Pinned12 input/comparator/source/model lock",
+    "First-flight runner and actual sourceSnapshot identity review"
+  ],
+  "plant_calls_released": 0,
+  "training_steps": 0,
+  "time_utc": "2026-10-24T07:53:26.261568+00:00"
+}

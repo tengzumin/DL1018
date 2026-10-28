@@ -1,0 +1,21 @@
+{
+  "schema": "POSITION_TEACHER_POSITION_BALANCED_FULL24_ATTEMPT_AUDIT_V1",
+  "attempt": 1,
+  "status": "FAILED_EXACT_OPTIONS_BEFORE_PLANT_LOOP",
+  "scene_id": "DL1018_VAL_T3_C01_W14",
+  "release_sha256": "9913c653219e610bd4a0890ae14eaf595d54e7ed1a97e805d51a20b95e721d64",
+  "source_lock_sha256": "b4fedb696507f5a542661d18da1104debedfecd28f600bc44fa60af9f7369207",
+  "error_identifier": "GATE:ExactOptions",
+  "cause": "The wrapper supplied r2e_first_plant_step_marker before the shared runner's frozen-option equality check. The runner adds this internal marker itself only after that check.",
+  "actual_Plant_transition_steps": 0,
+  "plant_called": false,
+  "evidence": {
+    "first_plant_step_marker_exists": false,
+    "raw_run_mat_exists": false,
+    "runner_error_before_loop": true
+  },
+  "run_status_correction": "Initial run_status incorrectly said plant_calls=1 because the wrapper counted an authorized attempt. The original file is preserved beside this report; corrected status is plant_calls=0 based on absent first-step marker and raw run.",
+  "retry_policy": "Retain attempt_001; permit only one attempt_002 after removing the premature option, re-freezing source, and repeating parity/no-Plant checks.",
+  "TEST_read": false,
+  "inertia_reconstruction_enabled": false
+}

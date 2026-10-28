@@ -1,0 +1,20 @@
+{
+  "schema": "C3_ANALYSIS_EXECUTION_LOG_V1",
+  "status": "FINAL_OFFLINE_ANALYSIS_EXIT_0",
+  "python_executable": "C:/ProgramData/anaconda3/python.exe",
+  "attempts": [
+    {"command": "python analyze_c3_pairs.py", "exit_code": 1, "result": "SyntaxError at assert message line; no analysis outputs written.", "fix": "Put assertion message on the same line."},
+    {"command": "python analyze_c3_pairs.py", "exit_code": 1, "result": "Assertion expected continuation summary scene_ids to equal all 12; actual continuation list contains scenes 2-12 only. No scoring/output write.", "fix": "Validate continuation scene_ids against frozen scene_ids[1:]."},
+    {"command": "python analyze_c3_pairs.py", "exit_code": 1, "result": "In-memory scorer exec lacked __file__; no raw scoring/output write.", "fix": "Set adapter namespace __file__ to frozen scorer path."},
+    {"command": "python analyze_c3_pairs.py", "exit_code": 1, "result": "C1 B raw for T1_C02_W09 contains scene_id; prior adapter asserted all B files lacked it. No output write.", "fix": "Accept absent raw scene_id via C1 metadata, or require present raw identity to match C1 metadata."},
+    {"command": "python analyze_c3_pairs.py", "exit_code": 0, "elapsed_seconds": 6.729, "result": "PASS_READONLY_RAW_SCORE_CROSSCHECK; scored 36 files, 24 pairs; wrote metrics, crosschecks, and binding manifest."},
+    {"command": "python summarize_common_input.py", "exit_code": 0, "result": "Aggregated existing parent full 12-scene fixed-input replay into 84 host/phase/axis/group rows; did not recompute full replay."},
+    {"command": "python summarize_scored_runs.py", "exit_code": 0, "result": "Wrote 35 group Q and supplemental metric rows from the 36 scored runs and 24 pair table."},
+    {"command": "inline read-only output validation", "exit_code": 0, "result": "36 runs, 24 pairs, 5 losses, 36 primary-Q crosschecks, 432 axis/phase crosschecks, 24 common-input key-scene crosschecks; PASS."}
+  ],
+  "plant": 0,
+  "matlab": 0,
+  "training": 0,
+  "test_accessed": false,
+  "notes": "All exit-1 attempts were offline script construction/schema fixes and occurred before output files were committed. No experimental data was changed."
+}

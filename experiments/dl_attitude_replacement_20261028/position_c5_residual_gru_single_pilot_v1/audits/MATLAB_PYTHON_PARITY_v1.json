@@ -1,0 +1,23 @@
+{
+  "schema": "POSITION_RESIDUAL_GRU_MATLAB_PYTHON_PARITY_V1",
+  "status": "PASS",
+  "scene_count": 24,
+  "events_per_scene": 1999,
+  "total_events": 47976,
+  "ready_events": 47232,
+  "per_scene_hidden_reset": true,
+  "events_processed_from_t_0_01": true,
+  "first_ready_event_index_zero_based": 31,
+  "first_ready_event_time_s": 0.31999999284744263,
+  "pre_ready_hidden_norm_min_max": [
+    1.4499508643214,
+    1.7361728092331883
+  ],
+  "unready_delta_exactly_zero": true,
+  "max_abs_delta_error_mps2": 4.7555199089721611E-7,
+  "max_abs_action_error_mps2": 4.2844368638994546E-7,
+  "per_scene_base_and_beta_formula": "clip(base + clip(event_time_s/1.8,0,1)*clip(delta,±0.5),±3)",
+  "weights_sha256": "8521b07c89aff6c563876495bd0b8e611a246360c94dce6c476550ff3229fe10",
+  "parity_inputs_sha256": "bd29c52f041ec53d1904a65de9c912aaba0f032fc856897c6bfc7fe54aa0cfbd",
+  "scope": "TRAIN24 numerical replay only; no TEST, Plant, or inertia reconstruction"
+}

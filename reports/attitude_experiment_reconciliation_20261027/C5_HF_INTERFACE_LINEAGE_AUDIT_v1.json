@@ -1,0 +1,110 @@
+{
+  "schema": "C5_HF_INTERFACE_LINEAGE_AUDIT_V1",
+  "date": "2026-10-28",
+  "scope": {
+    "question": "Trace the C5 high-frequency position repair and verify the actual WN18 GRU tracking/C5 runtime interfaces.",
+    "mode": "read_only_source_and_existing_DEV_VAL_raw_audit",
+    "plant_calls_this_audit": 0,
+    "test_data_read": false,
+    "source_files_modified": false
+  },
+  "historical_c5_repair": {
+    "summary": "C4's all-axis coordinate change hurt HF position Q. C5's repair kept the C3 residual coordinates on X/Y and used requested coordinates on Z: M=diag(1,1,0). The DSSM14 encoder, shared 33x3 head, normalizer, delayed interval, PCF helper, and learning limits stayed fixed. This is the measured positional repair; it did not change the force-to-attitude yaw adapter.",
+    "locked_parameters": {
+      "mask": [1, 1, 0],
+      "feature_dim": 14,
+      "context_length": 32,
+      "head_shape": [33, 3],
+      "gamma": 12,
+      "leak_per_s": 0.002,
+      "event_period_s": 0.01,
+      "plant_dt_s": 0.001,
+      "beta_rise_time_s": 1.8,
+      "output_clip_mps2": [-3, 3],
+      "weight_clip": [-60, 60],
+      "normalizer_and_helper_changed": false
+    },
+    "screen_result": {
+      "HF6_Q_m": {"B": 0.009632957, "C3": 0.009253685, "C4": 0.009684147, "C5": 0.009139203},
+      "C5_wins_B_HF6": 4,
+      "C5_screen_gates_passed": 5
+    },
+    "references": [
+      {"path": "reports/paper_continuation_20261023/C5_AXIS_COORDINATE_SCREEN_TASKBOOK_ZH.md", "lines": "7,13-29,37", "supports": "C4 HF regression; sole C3-to-C5 coordinate factor; unchanged helper/normalizer/limits; preregistered screen gates."},
+      {"path": "reports/paper_continuation_20261023/c5_axis_coordinate_parent_review/C5_SCREEN12_PARENT_FINDINGS_ZH.md", "lines": "5-7,12,18,42", "supports": "Independent raw replay, M110 definition, HF6 B/C3/C4/C5 Q, gates, and scope limitation."}
+    ]
+  },
+  "active_wn18_gru_c5_runtime": {
+    "study": "experiments/dl_attitude_replacement_20261026/gru_stream_cosine_tracking_head_full72_v1",
+    "c5_lock_sha256": "82024c01276cc4bfbd9b7772cf5332dee3fdfcbed422969589b68f1c90ed2d75",
+    "position_path_is_active_not_options_only": [
+      {"path": "experiments/dl_attitude_replacement_20261026/gru_stream_cosine_tracking_head_full72_v1/candidate_runner_work/matlab/runtime/make_paired_c5_options.m", "lines": "3-6", "supports": "Loads the C5 position options and sets delayed prediction, M110, and the frozen method ID."},
+      {"path": "experiments/dl_attitude_replacement_20261026/gru_stream_cosine_tracking_head_full72_v1/candidate_runner_work/matlab/runtime/run_mlp15_dev72_closed_loop.m", "lines": "73-96,815-842", "supports": "Runtime requires delayed prediction and exact M110, active FEATURE/X14/32 path, 1 kHz/100 Hz timing, gamma 12, beta 1.8 s, ±3 m/s² output, locked DSSM normalizer/head, and local delayed helper."},
+      {"path": "experiments/dl_attitude_replacement_20261026/gru_stream_cosine_tracking_head_full72_v1/candidate_runner_work/matlab/runtime/run_mlp15_dev72_closed_loop.m", "lines": "2113-2140,2144-2178,2262-2289,2397-2404", "supports": "Actual feature assembly/inference, PCF event surface, completed j=n−10 target, acceleration-to-force injection, and M110 prediction reference using filtered a_f on X/Y and a_req on Z."},
+      {"path": "experiments/dl_attitude_replacement_20261026/gru_stream_cosine_tracking_head_full72_v1/candidate_runner_work/matlab/models/position_filter_realization_pcf_step_v3_5.m", "lines": "9-22", "supports": "PCF reconstructs acceleration from the filtered full Euler triple and carries r_f=a_req−a_f in eta."}
+    ],
+    "position_interface_checks": {
+      "coordinate_and_units": "PASS: position BS forms inertial commanded force in N and commanded acceleration in m/s²; stage1 outputs clipped acceleration and the runtime multiplies it by mass before injection.",
+      "filter_and_delay_timing": "PASS: C5 runtime asserts dt=1 ms and 100 Hz events; delayed update uses the completed 10 ms j=n−10 interval; beta and event ordering match the locked helper.",
+      "actual_raw_path_check": "Existing WN18 raw logs record M110, PCF enabled, and the exact mixed prediction-reference path; this audit did not rerun the Plant."
+    }
+  },
+  "confirmed_yaw_interface_inconsistency": {
+    "confidence": "high for source/runtime inconsistency; low-to-moderate for any causal contribution to the HF task gap",
+    "finding": "The force adapter documents its yaw argument as reference yaw but the active position path passes actual yaw x(k,9) to solve roll/pitch, then replaces the returned yaw with desired r.euler(3). The command filter and PCF consequently use [roll/pitch solved at actual yaw; desired yaw]. For nonzero yaw error, the unfiltered commanded force is not exactly closed by this mixed Euler target.",
+    "references": [
+      {"path": "experiments/dl_attitude_replacement_20261026/gru_stream_cosine_tracking_head_full72_v1/candidate_runner_work/matlab/core/baseline_force_to_attitude.m", "lines": "1,8,15-23", "supports": "Adapter contract says reference yaw; it solves roll/pitch from that yaw and applies tilt projection."},
+      {"path": "experiments/dl_attitude_replacement_20261026/gru_stream_cosine_tracking_head_full72_v1/candidate_runner_work/matlab/runtime/run_mlp15_dev72_closed_loop.m", "lines": "2384-2395", "supports": "Active caller passes actual yaw, overwrites the output yaw with reference yaw, filters the mixed target, then sends the filtered full Euler state to PCF."},
+      {"path": "experiments/dl_attitude_replacement_20261026/gru_stream_cosine_tracking_head_full72_v1/candidate_runner_work/matlab/core/position_bs_step.m", "lines": "6-7,15,24-40,56-61", "supports": "Position BS uses actual yaw for its own force-direction solve and reports commanded acceleration in m/s² after force residual subtraction."},
+      {"path": "experiments/dl_attitude_replacement_20261026/gru_stream_cosine_tracking_head_full72_v1/candidate_runner_work/matlab/models/position_filter_realization_pcf_step_v3_5.m", "lines": "9-22", "supports": "The discrepancy is evaluated through filtered Euler realization and PCF residual state, so unfiltered closure error is not the final closed-loop error."}
+    ],
+    "existing_raw_reconstruction": {
+      "cohort": "same six HF_W09_W14 scenes named by task_attitude_filter_wn12_hf_screen_v1/MANIFEST.json, mapped to the original WN18 GRU full72 raw via its parent MANIFEST.json",
+      "scene_count": 6,
+      "each_raw_has_20000_transitions": true,
+      "method": "Read position_commanded_force_N, state yaw, and command_filter_target_euler. Reconstruct the adapter roll/pitch using actual yaw, then pair that RP with desired yaw; compare T/m*R([RP;yaw_des])*e3−g against commanded acceleration. Repeat with RP recomputed from the same commanded acceleration at desired yaw. Compute geodesic SO(3) angle between the two unfiltered targets.",
+      "macro_scene_rms": {
+        "mixed_target_force_closure_mps2": 0.00206981188,
+        "desired_yaw_recomputed_force_closure_mps2": 1.0745e-15,
+        "target_rotation_difference_mrad": 0.210518,
+        "actual_minus_desired_yaw_rms_mrad": 1.68674
+      },
+      "pooled_samples_rms": {
+        "mixed_target_force_closure_mps2": 0.00292970820,
+        "desired_yaw_recomputed_force_closure_mps2": 1.0745e-15,
+        "target_rotation_difference_mrad": 0.297706,
+        "actual_minus_desired_yaw_mrad": 2.13231
+      },
+      "per_scene": [
+        {"scene_id": "DL1018_DEV_T1_C10_W09", "raw_sha256": "c40239f9c9a6cea0f233eabdea3294b20ff4d3384e22a59055dc4e5358f5b541", "mixed_force_closure_rms_mps2": 0.000753548, "target_rotation_rms_mrad": 0.074971},
+        {"scene_id": "DL1018_VAL_T1_C07_W14", "raw_sha256": "fe85f45de5cb16135840a1cb0a6c9bb8e7ac1c1e7e1bcda274c7b7eb1f1b2c27", "mixed_force_closure_rms_mps2": 0.006001389, "target_rotation_rms_mrad": 0.605607},
+        {"scene_id": "DL1018_DEV_T2_C09_W10", "raw_sha256": "518567b25d19d8e8acd6a74c33eb7c5ed6b78c507d6f022a0cd12ba6bf126e98", "mixed_force_closure_rms_mps2": 0.000939551, "target_rotation_rms_mrad": 0.097650},
+        {"scene_id": "DL1018_VAL_T2_C04_W14", "raw_sha256": "9b009512da9f08e917f5484d6292066dcbcb731353df72828dc702d76b6a3479", "mixed_force_closure_rms_mps2": 0.000341699, "target_rotation_rms_mrad": 0.033880},
+        {"scene_id": "DL1018_DEV_T3_C09_W09", "raw_sha256": "14176658aac8e8b69817f71aff748add1b591cee744cd05954184e52e34c2cb2", "mixed_force_closure_rms_mps2": 0.000723153, "target_rotation_rms_mrad": 0.072189},
+        {"scene_id": "DL1018_VAL_T3_C01_W14", "raw_sha256": "76afcf331ca14b169977810c74c8a8680f57d9747a9a3b9a46285804a98a0503", "mixed_force_closure_rms_mps2": 0.003659532, "target_rotation_rms_mrad": 0.378814}
+      ],
+      "relative_to_hf_task_gap": {
+        "WN18_task_SO3_rad": 0.0611989933664,
+        "B_task_SO3_rad": 0.0576186242038,
+        "WN18_minus_B_mrad": 3.580369,
+        "pooled_target_rotation_difference_as_percent_of_gap": 8.315
+      },
+      "impact_assessment": "The interface is real, but its pooled target change is about 8.3% of the reported HF WN18-vs-B task gap and scene-RMS ranges from 0.034 to 0.606 mrad. This does not establish it as the main performance cause. PCF explicitly tracks a_req−a_f and C5 uses logged a_f on X/Y, which may absorb part of filtered-reference mismatch. A single desired-yaw-consistent variant would be a clean follow-up only if prioritized; no variant or Plant run was made here."
+    }
+  },
+  "other_interfaces_reviewed": {
+    "gru_normalizer_and_feature_order": "PASS: active GRU feature is [Euler-angle error; body rates; nominal body moment; four arm commands] (13 values); inference normalizes with frozen 13-value input mean/std.",
+    "gru_output_units_and_beta": "PASS: frozen output is three rad/s² residuals; per-axis dmax is [45,45,4.7124], beta rises over 2.2 s, then fixed controller J0 maps the clipped/scaled vector to N·m.",
+    "tracking_surface_and_update_sign": "PASS: BS surface is alpha−EulerRate; online head uses T' times clipped surface and the negative beta*phi*(gamma.*drive)' update. No sign mismatch was found.",
+    "source_refs": [
+      {"path": "experiments/dl_attitude_replacement_20261026/gru_stream_cosine_tracking_head_full72_v1/candidate_runner_work/matlab/runtime/run_mlp15_dev72_closed_loop.m", "lines": "2501-2550", "supports": "Active 13-feature GRU call, per-axis config inputs, online trace and causal output-before-update order."},
+      {"path": "experiments/dl_attitude_replacement_20261026/gru_stream_cosine_tracking_head_full72_v1/candidate_runner_work/matlab/runtime/gru_stream_tracking_head_step_v1.m", "lines": "53-66", "supports": "Frozen normalization, rad/s² clipping and beta, fixed J0 torque conversion, surface map, and online update sign."},
+      {"path": "experiments/dl_attitude_replacement_20261026/gru_stream_cosine_tracking_head_full72_v1/candidate_runner_work/matlab/core/attitude_bs_step.m", "lines": "11-25,44-55", "supports": "ZYX Euler/body-rate map and alpha−EulerRate surface."},
+      {"path": "experiments/dl_attitude_replacement_20261026/gru_stream_cosine_tracking_head_full72_v1/LOCKED_CFG.json", "lines": "67-96,103-107,119-135", "supports": "Locked per-axis attitude limits/beta, WN18 filter, C5 position model/hash, tracking parameters."}
+    ]
+  },
+  "decision": {
+    "conclusion": "C5's high-frequency positional repair is specifically the active M110 coordinate split plus unchanged delayed-PCF path. That path is wired into WN18 GRU runtime and raw logs. One separate yaw-contract inconsistency is confirmed in the force-to-attitude caller; magnitude is measurable but insufficient to label it the cause of the HF task regression. No C5 coordinate, filter timing, GRU normalizer, per-channel dmax/beta, units, or online tracking sign error was found in the reviewed active chain.",
+    "next_small_experiment_if_requested": "One isolated no-Plant assertion/fixture for force-to-attitude desired-yaw closure, followed only if useful by a one-factor HF screen using desired yaw consistently while holding GRU, C5 M110/PCF, WN18 filter, and all other parameters fixed."
+  }
+}

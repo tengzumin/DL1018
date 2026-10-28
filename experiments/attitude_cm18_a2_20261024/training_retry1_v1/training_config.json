@@ -1,0 +1,84 @@
+{
+  "schema": "CM18_A2_TRAINING_CONFIG_V1",
+  "candidate": "A2_YAW_CONTEXT_INVARIANT",
+  "forward_contract": "full 18-feature forward supplies roll/pitch; shared-weight second forward sets raw feature indices 3:5 to zero before normalization and supplies yaw",
+  "release": {
+    "release_sha256": "1f5d7bb8c2d8ece5e4a5558a58c9154b967b7f0411c0293afc5bef5390c621e9",
+    "dataset_manifest_path": "reports/attitude_cm18_a1_20261024/data_preparation_v1/events_all816_v1/DATASET_MANIFEST_v1.json",
+    "dataset_manifest_sha256": "7dd3e1f786f6095ecc2ba56473e5cf0fab6b92cdd42e38a184d6ad1223f36271",
+    "input_manifest_path": "reports/attitude_cm18_a1_20261024/data_preparation_v1/INPUT_MANIFEST_v1.json",
+    "input_manifest_sha256": "a5f7fea9b0918c1449af6fa83929177d3bf7d5e70cb3b71711c40f6338d210a5",
+    "source_files": {
+      "experiments/attitude_cm18_a2_20261024/train_cm18_a2_retry1_v1.py": "b770a72f6f44273f105263cec7b6792f0bf6b6090f68c470a5549b0465328ef8",
+      "experiments/attitude_cm18_a1_20261024/cache_reader_cm18_v1.py": "a2867cbf516d7ed655a6f50e05b8600ffb7582e0f2164b1ce21d5e647adf2b47",
+      "experiments/attitude_cm18_a2_20261024/model_cm18_a2_v1.py": "588f36a9434b1bf0a8b8343fc6a18f52c65a74aa4494a85511a6c71a465a9352",
+      "experiments/attitude_cm18_a2_20261024/torch_model_cm18_a2_v1.py": "7886fae80c77e204dacdb4af82647053626eab11b9285c2ef3c388e1842f4df8"
+    },
+    "taskbook_sha256": "f8ab1e51aad38d3b070c5c4f39a4b4986d391ac42dadfb9ea9b4706a83b6d652",
+    "continuation_gates_sha256": "9efdf7763b9ba6e896bb0e970e065dd70574c6814fa38ff92f65e221a64abb56",
+    "data_audit_sha256": "3c4ee08222f1233fbc85757df099b9d55bb885da1deb38ad546e454c11acfce9",
+    "gpu_background_rows": [
+      "1116, [Insufficient Permissions]",
+      "13616, C:\\Windows\\SystemApps\\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\\CrossDeviceResume.exe",
+      "13056, C:\\Windows\\explorer.exe",
+      "14360, C:\\Windows\\SystemApps\\Microsoft.Windows.StartMenuExperienceHost_cw5n1h2txyewy\\StartMenuExperienceHost.exe",
+      "13492, C:\\Windows\\SystemApps\\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\\SearchHost.exe",
+      "16476, C:\\Windows\\SystemApps\\Microsoft.LockApp_cw5n1h2txyewy\\LockApp.exe",
+      "16728, C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\155.0.4283.62\\msedgewebview2.exe",
+      "15296, C:\\Windows\\SystemApps\\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\\TextInputHost.exe",
+      "13172, [Insufficient Permissions]",
+      "7948, C:\\Program Files\\WindowsApps\\AppUp.IntelGraphicsExperience_1.100.5688.0_x64__8j3eq9eme6ctt\\IGCC.exe",
+      "11080, C:\\Program Files\\Athena\\一元机场.VIP.exe",
+      "8960, C:\\Program Files\\WindowsApps\\Microsoft.YourPhone_1.26082.121.0_x64__8wekyb3d8bbwe\\PhoneExperienceHost.exe",
+      "24276, C:\\Program Files\\WindowsApps\\9426MICRO-STARINTERNATION.MSICenter_2.0.74.0_x64__kzh8wxbdkxb8p\\DCv2\\DCv2.exe",
+      "10092, C:\\Program Files\\WindowsApps\\OpenAI.Codex_26.1016.8622.0_x64__2p2nqsd0c76g0\\app\\ChatGPT.exe",
+      "18036, C:\\Users\\35326\\AppData\\Local\\OpenAI\\Codex\\runtimes\\cua_node\\2b841c3d44b123ec\\bin\\node_modules\\@oai\\sky\\bin\\windows\\swift\\x64\\codex-computer-use-swift.exe",
+      "12128, C:\\Windows\\System32\\ShellHost.exe",
+      "20724, C:\\Users\\35326\\AppData\\Local\\Kingsoft\\WPS Office\\12.1.0.29161\\office6\\promecefpluginhost.exe"
+    ]
+  },
+  "seed": 2026102001,
+  "optimizer": {
+    "name": "Adam",
+    "lr": 0.001,
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "eps": 1e-08,
+    "weight_decay": 1e-05
+  },
+  "optimizer_steps": 60000,
+  "batch_size": 512,
+  "batch_sampling": "NumPy default_rng(2026102001), independent with-replacement integers over the 307200 ordered TRAIN fit rows",
+  "loss": "SmoothL1(beta=1.0, mean over batch and 3 axes), physical model prediction and target divided by saved TRAIN axis RMS",
+  "device": "cuda:0",
+  "dtype": "float32",
+  "amp": false,
+  "tf32": false,
+  "torch_deterministic_algorithms": true,
+  "training_scene_count": 768,
+  "training_fit_rows": 307200,
+  "validation_scene_count": 48,
+  "validation_events": 95952,
+  "initial_numpy_parameter_archive_sha256": "9c3bd602e211ee5438dec9a8eab623c5135ad713e7a399a749d2852b5e670e8b",
+  "initial_float32_state_sha256": "926121541621aabe51852a0963f1e8a72f62bcd2e2fed1ba7cf5b52fffd452d2",
+  "initial_checkpoint_sha256": "5cb53da49714cc4a631470163fd7e2367b05bab2816847557d1c428b06923614",
+  "environment": {
+    "MKL_THREADING_LAYER": "SEQUENTIAL",
+    "OMP_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1",
+    "CUBLAS_WORKSPACE_CONFIG": ":4096:8"
+  },
+  "runtime": {
+    "python": "3.12.7 | packaged by Anaconda, Inc. | (main, Oct  4 2024, 13:17:27) [MSC v.1929 64 bit (AMD64)]",
+    "numpy": "1.26.4",
+    "torch": "2.6.0+cu124",
+    "cuda_runtime": "12.4",
+    "gpu_name": "NVIDIA GeForce RTX 3070 Laptop GPU",
+    "device": "cuda:0",
+    "deterministic_algorithms": true,
+    "tf32": false
+  }
+}

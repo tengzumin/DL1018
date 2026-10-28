@@ -1,0 +1,43 @@
+{
+  "status": "PRE_EXECUTION_REVIEW_FINDINGS_SENT_TO_AUTHORS",
+  "Plant_calls": 0,
+  "first_flight_released": false,
+  "implementation_core_status": "PASS; 2 masks only, original helper and wrapper unchanged",
+  "synthetic_status": "Python and MATLAB actual OS0; all 8 source/result hash bindings verified",
+  "prepared_snapshot_findings": [
+    {
+      "issue": "Named refs were incorrectly iterated as struct array",
+      "state": "Author fixed before execution; remaining lock-dependent validation pending"
+    },
+    {
+      "issue": "modelIdentity.W0 field does not exist in frozen C5 snapshot",
+      "state": "Author replaced with actual W0 array byte SHA before execution"
+    }
+  ],
+  "batch_runner_findings": [
+    {
+      "issue": "Scene SHA guard compared stored hash to itself",
+      "required": "Verify actual physical scene, paired B72 raw and C5 raw bytes before load/Plant"
+    },
+    {
+      "issue": "Named upstream references lacked actual run-time verification",
+      "required": "Verify explicit named refs against recorded path/SHA"
+    },
+    {
+      "issue": "Inherited C5 metadata is not sufficient to prove new resolved source paths",
+      "required": "Record and verify actual which-resolution for C7 and active dependencies"
+    }
+  ],
+  "raw_audit_findings": {
+    "status": "Peer repaired draft schema before any C7 raw execution",
+    "fixes": [
+      "Exact helper SHA typo",
+      "raw_run filename vs scene parent path",
+      "collector candidate tag vs internal runtime method",
+      "20000 transition rows vs 20001 state rows",
+      "No terminal before-step cumulative integral row",
+      "Zero initialization of pre-ready held-output expectation"
+    ]
+  },
+  "scope": "These are preparation/auditing defects, not evidence of controller math failure or failed Plant runs. No synthetic checks need repetition after preparation-only metadata changes."
+}

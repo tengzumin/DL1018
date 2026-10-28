@@ -1,0 +1,19 @@
+{
+  "status": "APPROVED_ONE_COSINE_LR_TRAINING_JOB",
+  "approved_by": "/root",
+  "approved_utc": "2026-10-26T21:29:23.1431259Z",
+  "prepared_lock_sha256": "b32be889af14bb13e59a0c33bb2be496a9da1d8fbfe24b1a1b8dc835f94f06b8",
+  "approved_lock_sha256": "306a8ce662835c2163a6f8b3312783d628ef8a3a47bbfab3f777cb9b49d0281b",
+  "trainer_sha256": "0edeb24a320f75a5d34946d4625daad262dca78b2bea643488d33899cb7107cd",
+  "self_check_exit_code": 0,
+  "authorized_jobs": 1,
+  "optimizer_steps": 60000,
+  "expected_valid_samples": 29985000,
+  "only_numerical_factor_changed": "Deterministic per-update cosine lr 1e-3 to 1e-5; architecture/labels/input/normalizer/init/seed/Adam_other_parameters/batch/stream schedule unchanged",
+  "source_diff_review": "Root inspected normalized full diff and actual optimizer loop; lr set before corresponding optimizer.step; no other training numerical delta",
+  "Plant_calls_authorized": 0,
+  "TEST48_authorized": false,
+  "checkpoint_selection_authorized": false,
+  "initialization_sha256": "82d952ce8f150388015bc2776b8acceb9c9da59814470eb036ec9ca99420e06e",
+  "next": "Start one fixed training using documented safe dependency-preload process command; then actual model parity and independently recomputed full72 fit/gradient, followed by separately approved closed-loop screen"
+}

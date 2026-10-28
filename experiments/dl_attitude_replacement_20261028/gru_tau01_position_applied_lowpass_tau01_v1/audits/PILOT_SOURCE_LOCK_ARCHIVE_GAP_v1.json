@@ -1,0 +1,28 @@
+{
+  "schema": "DL1018_POSITION_APPLIED_LOWPASS_PILOT_SOURCE_LOCK_ARCHIVE_GAP_V1",
+  "status": "PRIOR_SOURCE_LOCK_AND_MANIFEST_BYTES_NOT_ARCHIVED",
+  "pilot_scene_id": "DL1018_VAL_T3_C01_W14",
+  "pilot_release_archive_path": "audits/RELEASE_PILOT_ARCHIVE_v1.json",
+  "pilot_release_archive_sha256": "7aa3010ad8876cde8804c6632f82f5b1647fb7daec2a1bf15d676a39b35afd55",
+  "pilot_run_start_path": "runs/DL1018_VAL_T3_C01_W14_retry_005/run_start.json",
+  "pilot_run_start_sha256": "d971bd158e7141954d08f235293665107199ad1bfcbc02df412186a3c361b80c",
+  "pilot_source_lock_sha256": "3564cf7eee7d3f8abe99f4f3c2091ee3ab12f3fdd60e70ca2e6fc6a98de9a3d1",
+  "pilot_source_manifest_sha256": "46b649cb65ae87d9cee5e3ecfa0f14777240d1e22b17f76fe04a8b94328c1c05",
+  "missing_prior_files": [
+    "SOURCE_LOCK_v1.json bytes from generation 1",
+    "SOURCE_HASH_MANIFEST_v1.json bytes from generation 1"
+  ],
+  "search_scope": "Candidate study recursive file scan found only current generation-2 source lock and manifest; release/run_start preserve hashes but not prior bytes.",
+  "known_generation_2_source_changes": [
+    {
+      "path": "candidate_runner_work/matlab/runtime/run_mlp15_dev72_closed_loop.m",
+      "change": "Generation-2 HF6 release/scene/budget gate; the tau validation remains, frozen C5 comparison strips only the added tau from a temporary comparison copy, and runner identity hash still includes tau."
+    },
+    {
+      "path": "run_position_applied_lowpass_hf6_remaining.m",
+      "change": "New sequential five-scene release/preflight/attempt orchestration and run binding; no controller math."
+    }
+  ],
+  "control_math_change": "None intended: force/position/PCF/attitude/plant equations, low-pass realization, and scheduler unchanged.",
+  "reproducibility_limit": "Prior file-level hashes cannot be compared byte-for-byte because the pilot lock/manifest files themselves were not archived. This report does not claim both generations used the same lock."
+}

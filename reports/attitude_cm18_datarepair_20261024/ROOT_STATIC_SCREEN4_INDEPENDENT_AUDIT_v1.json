@@ -1,0 +1,150 @@
+{
+  "schema": "ROOT_STATIC_ACTION_REPLAY_AUDIT_V1",
+  "status": "PASS",
+  "scene_count": 4,
+  "scenes": [
+    {
+      "scene_id": "DL1018_VAL_T1_C02_W09",
+      "metrics": {
+        "RBF": {
+          "vector_rmse_rad_s2": 0.8526554699302195,
+          "axis_rmse_rad_s2": [
+            0.5972491204534051,
+            0.5684903385155031,
+            0.21710267970268207
+          ]
+        },
+        "A1R": {
+          "vector_rmse_rad_s2": 0.6887266182374024,
+          "axis_rmse_rad_s2": [
+            0.4323587237127986,
+            0.4593868149112588,
+            0.2763585406385287
+          ]
+        },
+        "A1T": {
+          "vector_rmse_rad_s2": 0.5732351774020291,
+          "axis_rmse_rad_s2": [
+            0.4072027380180141,
+            0.2802946714732207,
+            0.2902057819987182
+          ]
+        }
+      }
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C00_W13",
+      "metrics": {
+        "RBF": {
+          "vector_rmse_rad_s2": 0.0018662787050230335,
+          "axis_rmse_rad_s2": [
+            0.0016975863915245765,
+            0.0006128213229536793,
+            0.0004750228144692785
+          ]
+        },
+        "A1R": {
+          "vector_rmse_rad_s2": 4.5551051522617193e-14,
+          "axis_rmse_rad_s2": [
+            3.531171468079902e-14,
+            2.8397742817859518e-14,
+            4.642122786902274e-15
+          ]
+        },
+        "A1T": {
+          "vector_rmse_rad_s2": 4.5551051522617193e-14,
+          "axis_rmse_rad_s2": [
+            3.531171468079902e-14,
+            2.8397742817859518e-14,
+            4.642122786902274e-15
+          ]
+        }
+      }
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C00_W10",
+      "metrics": {
+        "RBF": {
+          "vector_rmse_rad_s2": 0.0027877151140560455,
+          "axis_rmse_rad_s2": [
+            0.0004663553094623668,
+            0.002735577481865574,
+            0.00026548846148708106
+          ]
+        },
+        "A1R": {
+          "vector_rmse_rad_s2": 4.286516622945536e-14,
+          "axis_rmse_rad_s2": [
+            2.6319363544007804e-14,
+            3.344447961793247e-14,
+            5.116674858039457e-15
+          ]
+        },
+        "A1T": {
+          "vector_rmse_rad_s2": 4.286516622945536e-14,
+          "axis_rmse_rad_s2": [
+            2.6319363544007804e-14,
+            3.344447961793247e-14,
+            5.116674858039457e-15
+          ]
+        }
+      }
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C08_W15",
+      "metrics": {
+        "RBF": {
+          "vector_rmse_rad_s2": 1.0456125982213922,
+          "axis_rmse_rad_s2": [
+            0.3120867097910686,
+            0.9968247739739168,
+            0.04741266838013756
+          ]
+        },
+        "A1R": {
+          "vector_rmse_rad_s2": 0.17547114375030576,
+          "axis_rmse_rad_s2": [
+            0.12442405104689733,
+            0.11878209194619499,
+            0.0346351330733007
+          ]
+        },
+        "A1T": {
+          "vector_rmse_rad_s2": 0.14908586746573385,
+          "axis_rmse_rad_s2": [
+            0.07893763278778189,
+            0.12113728292075782,
+            0.036348379529876275
+          ]
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "name": "A1R",
+      "deployment_path": "experiments\\attitude_cm18_datarepair_20261024\\postselection_a1r_v1\\deployment_parameters_v1.json",
+      "deployment_sha256": "b3ab7a3d99df639d4cc0a10ec2b6fcd4622388f58c90c25424e472164ef38d23",
+      "deployment_schema": "CM18_A1R_DEPLOYMENT_PARAMETERS_V1",
+      "artifact_release_sha256": "6a71c3d2f4275edea9ea62694083cedd5afb6602bc8ae209a1f091fcfd709737",
+      "checkpoint_sha256": "5fa4308b6220e530e6c2e7a6f45c4b6e22ddddef80d1bc5cafdcf58564bc5ef3",
+      "selected_step": 40000,
+      "normalizer_sha256": "faf8748f640c944c745406247ab8486825966abd763088ad1f4e0cde626ad14c"
+    },
+    {
+      "name": "A1T",
+      "deployment_path": "experiments\\attitude_cm18_datarepair_20261024\\postselection_a1t_v1\\deployment_parameters_v1.json",
+      "deployment_sha256": "dd5375623cf47abed1db1e620a7d00358aff71b5985ead13e88ba05218952b42",
+      "deployment_schema": "CM18_A1T_DEPLOYMENT_PARAMETERS_V1",
+      "artifact_release_sha256": "b9758c7f1e75ce9cc9a2f25e9a756fa15f6da950d461cb58c24073118414840b",
+      "checkpoint_sha256": "58c72450fcc1e9aaa04f7454ad2a8aa551f161a95e52bb9946f0c99c23957cea",
+      "selected_step": 40000,
+      "normalizer_sha256": "12c864b9c2404235e0ea3f313bb0801a99902eca7cfdfbf43f0d8d584d5d609a"
+    }
+  ],
+  "C5_VAL48_manifest_sha256": "3e72f4726219cfd0e89476c70d24796a06c8f8447d4064cfdc471433a863a501",
+  "replay_report_sha256": "d42852d4662cd69409eadc346cf0609059b408a68707d3b72e97bcc2e3f72c4c",
+  "Plant_calls": 0,
+  "TEST_accessed": false,
+  "limits": "Independent CSV/hash/error recomputation; physics reconstruction covered by reviewed MATLAB, not independently repeated here. Not closed-loop tracking."
+}

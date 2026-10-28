@@ -1,0 +1,27 @@
+{
+  "schema": "PARENT_DEV_FILTER_EQUATION_REVIEW_V1",
+  "status": "PASS_BOTH_ACTUAL_MANIFEST_DEV_RAWS_EXACT_EQUATIONS",
+  "TEST_accessed": false,
+  "historical_helper_which_identity": "UNCLOSED",
+  "filter_sha256": "b4ae22db5bd444a162d0cd01a3a59a589f2e37077b089bb33693401b660228d0",
+  "reproduction_auditor_sha256": "c74a691ffed00575fa08d74278641ba2da8d80e1146bc08289343d24f9f71755",
+  "reader_engineering_failure_preserved": "Initial one-off reader used (1-exp(-k2dt))/k2 rather than helper actual -expm1(-k2dt)/k2; strict exact assertion failed from cancellation rounding; no output and no Plant. Corrected reader uses exact deployed formula.",
+  "rows": [
+    {
+      "alias": "DSSM",
+      "raw_sha256": "e54111ca11559ccb5d1e7c9ca9824db0b225234b2cff3497d5cfe71e1878c8d8",
+      "steps": 20000,
+      "r_f_max_abs": 0.0,
+      "eta_max_abs": 0.0,
+      "naive_1_minus_exp_reader_error": 1.3877787807814457e-17
+    },
+    {
+      "alias": "KAN",
+      "raw_sha256": "977a948da36402f869046782344e9a8231f34cc5d982a1ee8c462170fc695c2d",
+      "steps": 20000,
+      "r_f_max_abs": 0.0,
+      "eta_max_abs": 0.0,
+      "naive_1_minus_exp_reader_error": 2.7755575615628914e-17
+    }
+  ]
+}

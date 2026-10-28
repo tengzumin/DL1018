@@ -1,0 +1,75 @@
+{
+  "schema": "DL1018_GRU_POSITION_APPLIED_NOTCH_NOPLANT_V1",
+  "study_id": "gru_cosine_c5_applied_notch_35hz_q1_v1",
+  "status": "RELEASED",
+  "fixed_scene_id": "DL1018_VAL_T3_C01_W14",
+  "authorized_scenes": [
+    "DL1018_VAL_T3_C01_W14",
+    "DL1018_DEV_T1_C10_W09",
+    "DL1018_DEV_T2_C09_W10",
+    "DL1018_DEV_T3_C09_W09",
+    "DL1018_VAL_T1_C07_W14",
+    "DL1018_VAL_T2_C04_W14"
+  ],
+  "authorized_Plant_calls": 6,
+  "Plant_calls": 1,
+  "TEST_read": false,
+  "test_data_read": false,
+  "training_runs": 0,
+  "inertia_reconstruction_enabled": false,
+  "position_method_id": "C5_AXIS_MIXED_COORDINATE_M110",
+  "position_delayed_prediction_h_s": 0.01,
+  "position_delayed_prediction_tau_s": 1.0,
+  "position_delayed_prediction_rho": 0.01,
+  "parent_study_id": "gru_stream_cosine_tracking_head_full72_v1",
+  "parent_cosine_release_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_full72_v1\\RELEASE.json",
+  "parent_cosine_release_sha256": "b453e50d1ef3affce66b0d05dda4848ef0aaf6d58476361d9c3006febd6ef047",
+  "parent_tau01_release_sha256": "05cad3e876221979e329ed6212ed36e4068d2a97c24a59b8c02f0322171b4817",
+  "parent_tau1_helper_sha256": "48feebf934b8eb90b4424f2286aa857c48213d229714f30af99aacf53329549d",
+  "source_lock_sha256": "cea7057cc62c0dd6b4f688c90b7017d5918914cd7511929a87e89d4fecab9219",
+  "applied_acceleration_notch": {
+    "enabled": true,
+    "center_hz": 3.5,
+    "quality_factor": 1,
+    "sample_rate_hz": 100,
+    "b": [
+      0.9005755352793756,
+      -1.757773520542205,
+      0.9005755352793756
+    ],
+    "a": [
+      1.0,
+      -1.757773520542205,
+      0.8011510705587512
+    ],
+    "initial_state": [
+      [
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0
+      ]
+    ],
+    "update": "causal scipy.signal.iirnotch recurrence once per 10-ms Stage1 event; hold output between events",
+    "output_limit": "existing beta-scaled cfg.rbf.position.dmax, elementwise clip is logged"
+  },
+  "release_notes": "HF6 continuation: pilot scene VAL_T3_C01_W14 is bound to the archived prior release; this unchanged 3.5-Hz Q1 causal notch authorizes the five remaining fixed HF scenes under one six-call budget. Fixed cosine GRU/C5, tau=1 s, rho=.01. No TEST or inertia reconstruction.",
+  "parent_payload_manifest_sha256": "8c6bae8a0ed4d94b30b9e9ac466d8a46ed1a1d955c9592eccabaf4c4987a3991",
+  "authorization_phase": "HF6_REMAINING_FIVE_SCENES",
+  "release_generation": 2,
+  "previous_release_archive_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\gru_cosine_c5_applied_notch_35hz_q1_v1\\audits\\PILOT_SOURCE_SNAPSHOT_v1\\PILOT_RELEASE.json",
+  "previous_release_archive_sha256": "3d7a513464e562eed657d90d7f7ad993c848d901649d84570bc7e9bf08794e3d",
+  "previous_release_source_lock_sha256": "f2159df0f9aea6506a1da8aee86cbde1f1d132eb9030df4b84ce3310a26a610c"
+}

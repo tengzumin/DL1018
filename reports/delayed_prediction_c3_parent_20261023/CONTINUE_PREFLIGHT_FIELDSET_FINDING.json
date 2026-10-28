@@ -1,0 +1,19 @@
+{
+  "status": "VERIFIED_CONTINUE_PRE_PLANT_ENGINEERING_FAILURE",
+  "created_utc": "2026-10-23T02:07:49.0615799Z",
+  "session": 88906,
+  "error": "C2 run_start cfg/opts or fixed input identity differs for first audited probe scene",
+  "root_cause": "Blanking existing marker field retains C2-only field, whereas prepared C3 opts has no marker field; isequaln fails on field sets",
+  "actual_C2_only_fields": [
+    "r2e_first_plant_step_marker"
+  ],
+  "actual_C3_only_fields": [
+    "position_delayed_prediction_enabled"
+  ],
+  "evidence": "Read actual HDF5 opts group keys from frozen C2 run_start and SHA-bound C3 prepared snapshot",
+  "allowed_fix": "Remove diagnostic marker field from both comparison structs if present, matching existing PREPARE contract; no other config changes",
+  "new_Plant": 0,
+  "total_Plant": 1,
+  "old_release_preserved": true,
+  "repair_requires_new_runner_and_release": true
+}

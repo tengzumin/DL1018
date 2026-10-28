@@ -1,0 +1,7 @@
+{
+  "TEST_accessed": false,
+  "status": "ALL_DECODED_FALSE_DIFFERENCES_ARE_MATCHING_NUMERIC_NAN_ARRAYS",
+  "matching_NaN_numeric_fields": 85,
+  "explanation": "General equal_mat/decoder.same_value does not treat NaNs inside Python lists as equal. The original full-log semantic attempt failed on these matching inactive diagnostic arrays; direct HDF5 dtype/shape/value comparisons including equal_nan already PASS all377. MATLAB compare_raw_tree explicitly matches NaN positions; no tolerance/field exclusion is expanded. No controller or shared decoder changed.",
+  "diagnostic_sha256": "bd81caeb1f5e0b8c9bf16463bc2953c248406067ccaa252c3299455e2cf6003c"
+}

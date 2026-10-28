@@ -1,0 +1,53 @@
+{
+  "schema": "DL1018_TASK_ATTITUDE_BLEND_SHADOW_V1",
+  "status": "PASS_GATE",
+  "beta": 0.25,
+  "macro_equal_scene_rmse_rad": {
+    "Candidate": {
+      "task_to_original_command_rmse_rad": 0.07592376721138784,
+      "task_to_mixed_command_rmse_rad": 0.05694282540854089,
+      "original_to_mixed_command_rmse_rad": 0.018980941802846967,
+      "task_to_original_filtered_rmse_rad": 0.06053717423678088,
+      "task_to_mixed_filtered_rmse_rad": 0.045522496426945024
+    },
+    "C5": {
+      "task_to_original_command_rmse_rad": 0.07634391844929693,
+      "task_to_mixed_command_rmse_rad": 0.05725793883697271,
+      "original_to_mixed_command_rmse_rad": 0.019085979612324232,
+      "task_to_original_filtered_rmse_rad": 0.06111290544977228,
+      "task_to_mixed_filtered_rmse_rad": 0.04595446777270446
+    }
+  },
+  "candidate_frozen_threshold_rad": 0.058949,
+  "candidate_gate_pass": true,
+  "mixed_tilt_cap_all_scenes_pass": true,
+  "scope": {
+    "scenes": 28,
+    "raw_trajectories": 56,
+    "methods": [
+      "Candidate",
+      "C5"
+    ],
+    "samples_per_trajectory": 20000,
+    "Plant_calls": 0,
+    "MATLAB_started": false,
+    "training_steps": 0,
+    "B_raw_read": false,
+    "TEST_read": false,
+    "inertia_or_plant_truth_read": false,
+    "raw_files_copied": 0
+  },
+  "identity_csv_sha256": "71f3d159954198a066ef8cc00151e07a90ef4de92f216db6990a07da045c2c1a",
+  "prior_result_sha256": "4a5d9230e8bf407da93d1a3912f13a1021e5ba3c9cef2a468c1a155692c3dff4",
+  "input_recheck_sha256": "7873fa9fda44349d6a142c27d14294498e099b1d403a1341b19ecab9e742d793",
+  "reviewed_source_sha256": {
+    "experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_full72_v1\\candidate_runner_work\\matlab\\runtime\\run_mlp15_dev72_closed_loop.m": "a1b9e47992da41b49373f409d9333048b6130698d80614817d64bbc1a652ddcc",
+    "experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_full72_v1\\candidate_runner_work\\matlab\\core\\command_filter_step.m": "15c7eb27162e1971a1164304830f4afd3af35eb9bd709291e969dbfefd0d262b",
+    "experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_full72_v1\\candidate_runner_work\\matlab\\core\\baseline_force_to_attitude.m": "ef42d1d08af24ed82da307a4d886b0c205e28e754177765a2584e3e9bb0cd039",
+    "experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_full72_v1\\LOCKED_CFG.json": "613aff59c4036ae488cb373afacb3ef1383faa970c8dcd99ffac68462cb6d95f",
+    "experiments\\dl_attitude_replacement_20261026\\attitude_task_inner_hf_w09_w14_diagnosis_20261027_v1\\HF_W09_W14_attitude_path_by_scene_phase.csv": "87e5780879b5c5ae9ff8be8eb8cae3f99700b939938239dc15c4827ee412daaa"
+  },
+  "interpretation_limit": "same-state offline command/filter shadow only; no Plant propagation or closed-loop performance claim",
+  "output_cap_bytes": 104857600,
+  "output_bytes_including_status": 54505
+}

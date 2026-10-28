@@ -1,0 +1,73 @@
+{
+  "status": "PASS_PARENT_TIMING_FLOW_SOURCE_REVIEW",
+  "source_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\corrected_reference_training_v1\\corrected_pair_eval_v1\\sources\\local_runtime\\run_dl1018_closed_loop.m",
+  "sha256": "01d83dec95aea5d30feef3afd0628a2ce0911f70465f0773a4f568a01b08450b",
+  "observations": "Plant dt comes from fixed config; reviewed elapsed-time arrays are assigned from toc and exported as diagnostics, not read by active C1 FEATURE control/update scheduling. Non-research desktop load prevents formal timing qualification, not fixed-step Q evaluation. Numerical repeatability remains limited to this source/environment, not a wall-clock real-time claim.",
+  "matched_lines": [
+    {
+      "line": 82,
+      "text": "dt=cfg.plant.dt;"
+    },
+    {
+      "line": 402,
+      "text": "controllerTime=zeros(n,1);"
+    },
+    {
+      "line": 437,
+      "text": "networkCallTime=zeros(n,1);"
+    },
+    {
+      "line": 723,
+      "text": "stage1PositionInferenceTime=zeros(n,1);"
+    },
+    {
+      "line": 1096,
+      "text": "networkCallTime(k)=toc(networkTimer);"
+    },
+    {
+      "line": 1252,
+      "text": "networkCallTime(k)=toc(networkTimer);"
+    },
+    {
+      "line": 1296,
+      "text": "networkCallTime(k)=toc(networkTimer);"
+    },
+    {
+      "line": 1344,
+      "text": "networkCallTime(k)=toc(networkTimer);"
+    },
+    {
+      "line": 1445,
+      "text": "forwardDebug.network_call_time_s(debugEvent)=networkCallTime(k);"
+    },
+    {
+      "line": 2011,
+      "text": "stage1PositionInferenceTime(k)=toc(inferenceTimer);"
+    },
+    {
+      "line": 2030,
+      "text": "stage1PositionInferenceTime(k)=toc(inferenceTimer);"
+    },
+    {
+      "line": 2031,
+      "text": "stage1PositionEventInferenceTime(k)=stage1PositionInferenceTime(k);"
+    },
+    {
+      "line": 2419,
+      "text": "controllerTime(k)=toc(timer);"
+    },
+    {
+      "line": 2639,
+      "text": "'controller_call_time_s',controllerTime(q),'network_raw',networkRaw(q,:),'network_applied',networkApplied(q,:), ..."
+    },
+    {
+      "line": 2649,
+      "text": "'network_update',networkUpdate(q),'network_call_time_s',networkCallTime(q),'network_gate',networkGate(q),'network_release',networkRelease(q), ..."
+    },
+    {
+      "line": 2727,
+      "text": "'stage1_position_inference_time_s',stage1PositionInferenceTime(q),'stage1_position_event_dt_s',stage1PositionEventDt(q), ..."
+    }
+  ],
+  "plant_calls": 0
+}

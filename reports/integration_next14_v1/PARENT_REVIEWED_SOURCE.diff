@@ -1,0 +1,520 @@
+--- a/README.md
++++ b/README.md
+@@ -1,6 +1,8 @@
+ # DL1018
+ 
+ DL1018 is the isolated formal experiment project for the V3.11/R2E contract. Its MATLAB runtime uses only files under this project; DL1009 is read only and supplies the migration reference. The contract id is `DL1018_V311_R2E_PAPER_FINAL`.
++
++The corrected scene-reference identity, cache guards, and zero-Plant regression are documented in [the engineering note](reports/integration_next14_v1/engineering/A_CORRECTED_REFERENCE_CACHE_GUARD_ZH.md).
+ 
+ ## Runtime
+ 
+--- a/run_dl1018.py
++++ b/run_dl1018.py
+@@ -16,6 +16,7 @@
+ import numpy as np
+ 
+ CONTRACT = "DL1018_V311_R2E_PAPER_FINAL"
++REFERENCE_CONTRACT_ID = "DL1018_SCENE_REF_FIG8_A2_V2"
+ GATES = [
+     "G00_MIGRATION", "G01_SCENES", "G02_P_TEACHER", "G03_P_INITIAL",
+     "G04_P_STUDENT", "G05_P_FINAL", "G06_P_DEV", "G07_A_TEACHER",
+@@ -101,6 +102,45 @@
+ 
+ def gate_report(root: Path, gate: str) -> dict | None:
+     return read_json(root / "reports" / f"{gate}.json")
++
++
++def _has_legacy_scene_artifacts(root: Path) -> bool:
++    if any((root / "reports" / f"{gate}.json").is_file() for gate in GATES[2:]):
++        return True
++    if any((root / "configs" / name).is_file() for name in ("scene_specs.csv", "dataset_plan.json")):
++        return True
++    if any((root / relative).is_file() and _csv_has_data_rows(root / relative)
++           for relative in ("logs/attempt_index.csv", "logs/episode_index.csv")):
++        return True
++    if any(path.is_dir() and next(path.iterdir(), None) is not None for path in (
++        root / "data" / "raw", root / "data" / "events" / "position",
++        root / "data" / "events" / "attitude")):
++        return True
++    models = root / "models"
++    return models.is_dir() and any(path.is_file() for path in models.rglob("*"))
++
++
++def _csv_has_data_rows(path: Path) -> bool:
++    with path.open("r", encoding="utf-8-sig", newline="") as stream:
++        next(stream, None)
++        return any(line.strip() for line in stream)
++
++
++def _assert_scene_buildable(root: Path) -> None:
++    report = gate_report(root, "G01_SCENES")
++    if report is not None:
++        if report.get("reference_contract_id") != REFERENCE_CONTRACT_ID:
++            raise GateError("G01 属于旧场景参考；请使用没有旧场景/采集产物的新输出根目录。", EXIT_CONTRACT)
++        return
++    if _has_legacy_scene_artifacts(root):
++        raise GateError("G01 缺失但已有场景或下游产物；拒绝为旧数据根目录盖新身份。", EXIT_CONTRACT)
++
++
++def _assert_scene_reference(root: Path) -> None:
++    report = gate_report(root, "G01_SCENES")
++    if (report is None or report.get("reference_contract_id") != REFERENCE_CONTRACT_ID or
++            report.get("status") != "PASS" or not report.get("next_gate_allowed")):
++        raise GateError("当前 G01 场景参考身份缺失或不匹配；下游 Gate 已 fail-closed。", EXIT_CONTRACT)
+ 
+ 
+ def report_statuses(root: Path) -> dict[str, str]:
+@@ -519,6 +559,10 @@
+ 
+ 
+ def run_gate(root: Path, source_root: Path | None, gate: str, resume: bool = False) -> dict:
++    if gate == "G01_SCENES":
++        _assert_scene_buildable(root)
++    elif GATES.index(gate) > GATES.index("G01_SCENES"):
++        _assert_scene_reference(root)
+     ensure_layout(root)
+     index = GATES.index(gate)
+     statuses = report_statuses(root)
+@@ -626,6 +670,16 @@
+     if args.status:
+         _safe_print(json.dumps(derive_state(root), ensure_ascii=False, indent=2))
+         return EXIT_OK
++    try:
++        if args.stage == "G01_SCENES":
++            _assert_scene_buildable(root)
++        elif args.stage and GATES.index(args.stage) > GATES.index("G01_SCENES"):
++            _assert_scene_reference(root)
++        elif args.through and GATES.index(args.through) >= GATES.index("G01_SCENES"):
++            _assert_scene_buildable(root)
++    except GateError as exc:
++        _safe_print(str(exc), file=sys.stderr)
++        return exc.code
+     source = args.source_root.expanduser().resolve() if args.source_root else None
+     if source is not None and not source.is_dir():
+         _safe_print(f"源目录不存在：{source}", file=sys.stderr)
+--- a/matlab/scenes/make_scenes_dl1018.m
++++ b/matlab/scenes/make_scenes_dl1018.m
+@@ -6,6 +6,7 @@
+ projectRoot=char(java.io.File(projectRoot).getCanonicalPath());
+ switch upper(char(action))
+     case 'BUILD'
++        assert_reference_buildable(projectRoot);
+         out=build_all(projectRoot);
+     case 'GET'
+         assert(nargin>=3&&~isempty(sceneId),'DL1018:SceneId','GET requires scene_id.');
+@@ -15,6 +16,7 @@
+         assert(numel(idx)==1,'DL1018:UnknownScene','Expected one scene_id: %s.',sceneId);
+         [cfg,~,root]=init_dl1018();assert(strcmp(root,projectRoot),'DL1018:RootMismatch','Unexpected root.');
+         [scene,metadata]=construct_scene(M(idx,:),cfg);
++        metadata.reference_contract_id=reference_contract_id();
+         out=struct('scene',scene,'metadata',metadata,'spec',M(idx,:));
+     otherwise
+         error('DL1018:SceneAction','Action must be BUILD or GET.');
+@@ -115,6 +117,7 @@
+     write_json_dl1018(planPath,plan);
+ end
+ report=struct('gate_id','G01_SCENES','status','PASS','contract_version','DL1018_V311_R2E_PAPER_FINAL', ...
++    'reference_contract_id',reference_contract_id(), ...
+     'upstream_passed',true,'model_id','','actual_counts',struct('scenes_total',height(M), ...
+     'train',nnz(M.split=="TRAIN"),'val',nnz(M.split=="VAL"),'dev',nnz(M.split=="DEV"), ...
+     'test',nnz(M.split=="TEST"),'student_train',nnz(M.student_train),'student_val',nnz(M.student_val), ...
+@@ -308,7 +311,7 @@
+     case 'FIG8_3D'
+         th=2*pi*u;p=[1.5*sin(th),sin(2*th),.4*u+.35*(1-cos(2*th))];
+         pu=[3*pi*cos(th),4*pi*cos(2*th),.4+1.4*pi*sin(2*th)];
+-        puu=[-6*pi^2*sin(th),-8*pi^2*sin(2*th),2.8*pi^2*cos(2*th)];
++        puu=[-6*pi^2*sin(th),-16*pi^2*sin(2*th),5.6*pi^2*cos(2*th)];
+         v=pu.*ud;a=puu.*(ud.^2)+pu.*udd;
+     case 'SQUARE'
+         p=zeros(numel(t),3);v=p;a=p;points=[0 0 0;2 0 0;2 2 0;0 2 0;0 0 0];
+@@ -324,6 +327,55 @@
+ u=min(max((t-5*i)/5,0),1);h=10*u^3-15*u^4+6*u^5;
+ hd=30*u^2-60*u^3+30*u^4;hdd=60*u-180*u^2+120*u^3;dp=points(i+2,:)-points(i+1,:);
+ p=points(i+1,:)+dp*h;v=dp*hd/5;a=dp*hdd/25;
++end
++
++function assert_reference_buildable(root)
++reportPath=fullfile(root,'reports','G01_SCENES.json');
++if isfile(reportPath)
++    prior=jsondecode(fileread(reportPath));
++    assert(isfield(prior,'reference_contract_id')&& ...
++        strcmp(char(string(prior.reference_contract_id)),reference_contract_id()), ...
++        'DL1018:ReferenceIdentityConflict', ...
++        'G01 belongs to another reference contract; use a fresh output root.');
++    return;
++end
++assert(~has_legacy_scene_artifacts(root),'DL1018:LegacySceneEvidence', ...
++    'G01 is missing but prior scene or pipeline artifacts exist; use a fresh output root.');
++end
++
++function tf=has_legacy_scene_artifacts(root)
++tf=false;
++paths={fullfile(root,'configs','scene_specs.csv'),fullfile(root,'configs','dataset_plan.json'), ...
++    fullfile(root,'reports','G02_P_TEACHER.json'),fullfile(root,'reports','G03_P_INITIAL.json'), ...
++    fullfile(root,'reports','G04_P_STUDENT.json'),fullfile(root,'reports','G05_P_FINAL.json'), ...
++    fullfile(root,'reports','G06_P_DEV.json'),fullfile(root,'reports','G07_A_TEACHER.json'), ...
++    fullfile(root,'reports','G08_A_INITIAL.json'),fullfile(root,'reports','G09_A_STUDENT.json'), ...
++    fullfile(root,'reports','G10_A_FINAL.json'),fullfile(root,'reports','G11_PA_DEV.json'), ...
++    fullfile(root,'reports','G12_FINAL_TEST.json'),fullfile(root,'reports','G13_FINAL_REPORT.json')};
++if any(cellfun(@isfile,paths)),tf=true;return;end
++for name={'attempt_index.csv','episode_index.csv'}
++    p=fullfile(root,'logs',name{1});
++    if isfile(p)
++        lines=readlines(p);
++        if numel(lines)>1&&any(strlength(strtrim(lines(2:end)))>0),tf=true;return;end
++    end
++end
++for p={fullfile(root,'data','raw'),fullfile(root,'data','events','position'), ...
++        fullfile(root,'data','events','attitude')}
++    if isfolder(p{1})
++        entries=dir(p{1});
++        if any(~ismember({entries.name},{'.','..'})),tf=true;return;end
++    end
++end
++modelRoot=fullfile(root,'models');
++if isfolder(modelRoot)
++    entries=dir(fullfile(modelRoot,'**','*'));
++    tf=any(~[entries.isdir]&~ismember({entries.name},{'.','..'}));
++end
++end
++
++function id=reference_contract_id()
++id='DL1018_SCENE_REF_FIG8_A2_V2';
+ end
+ 
+ function [jump,maxSpeed,maxAccel]=corner_metrics(task,ref,t)
+--- a/matlab/runtime/assert_scene_reference_contract_dl1018.m
++++ b/matlab/runtime/assert_scene_reference_contract_dl1018.m
+@@ -0,0 +1,14 @@
++function assert_scene_reference_contract_dl1018(root)
++% Fail closed before collectors can reuse runs from another scene reference.
++root=char(java.io.File(root).getCanonicalPath());
++reportPath=fullfile(root,'reports','G01_SCENES.json');
++assert(isfile(reportPath),'DL1018:ReferenceIdentityMismatch', ...
++    'A current G01 reference identity is required before collection.');
++report=jsondecode(fileread(reportPath));
++assert(isfield(report,'reference_contract_id')&& ...
++    strcmp(char(string(report.reference_contract_id)),'DL1018_SCENE_REF_FIG8_A2_V2')&& ...
++    isfield(report,'status')&&strcmp(report.status,'PASS')&& ...
++    isfield(report,'next_gate_allowed')&&logical(report.next_gate_allowed), ...
++    'DL1018:ReferenceIdentityMismatch', ...
++    'G01 reference identity is missing or incompatible; use a fresh output root.');
++end
+--- a/matlab/runtime/collect_dual_eval_dl1018.m
++++ b/matlab/runtime/collect_dual_eval_dl1018.m
+@@ -4,6 +4,7 @@
+ assert(ismember(gateId,{'G11_PA_DEV','G12_FINAL_TEST'}));
+ addpath(fullfile(root,'matlab','runtime'),fullfile(root,'matlab','data'), ...
+     fullfile(root,'matlab','scenes'),fullfile(root,'matlab','models'),fullfile(root,'matlab','metrics'));
++assert_scene_reference_contract_dl1018(root);
+ [cfg,~,resolved]=init_dl1018();assert(strcmp(root,resolved));
+ smPath=fullfile(root,'configs','selected_models.json');sm=jsondecode(fileread(smPath));
+ assert(isfield(sm,'position_star_method')&&isfield(sm,'position_selected_head_mode'));
+--- a/matlab/runtime/collect_g02_position_teacher.m
++++ b/matlab/runtime/collect_g02_position_teacher.m
+@@ -1,10 +1,11 @@
+ function report=collect_g02_position_teacher(projectRoot)
+ % Collect the locked B/POS_OFF position Teacher pool from new DL1018 scenes.
+ projectRoot=char(java.io.File(projectRoot).getCanonicalPath());
++addpath(fullfile(projectRoot,'matlab','data'),fullfile(projectRoot,'matlab','scenes'), ...
++    fullfile(projectRoot,'matlab','runtime'));
++assert_scene_reference_contract_dl1018(projectRoot);
+ prior=jsondecode(fileread(fullfile(projectRoot,'reports','G01_SCENES.json')));
+ assert(strcmp(prior.status,'PASS')&&prior.next_gate_allowed,'DL1018:GateLocked','G01 must PASS before G02.');
+-addpath(fullfile(projectRoot,'matlab','data'),fullfile(projectRoot,'matlab','scenes'), ...
+-    fullfile(projectRoot,'matlab','runtime'));
+ [cfg,~,root]=init_dl1018();assert(strcmp(root,projectRoot),'DL1018:RootMismatch','Unexpected project root.');
+ M=read_specs(fullfile(projectRoot,'configs','scene_specs.csv'));
+ assert(nnz(M.split=="TRAIN")==768&&nnz(M.split=="VAL")==48,'DL1018:ScenePlan','G02 scene plan is incomplete.');
+--- a/matlab/runtime/collect_position_dev_dl1018.m
++++ b/matlab/runtime/collect_position_dev_dl1018.m
+@@ -3,6 +3,7 @@
+ root=char(java.io.File(root).getCanonicalPath());
+ addpath(fullfile(root,'matlab','runtime'),fullfile(root,'matlab','data'), ...
+     fullfile(root,'matlab','scenes'),fullfile(root,'matlab','models'),fullfile(root,'matlab','metrics'));
++assert_scene_reference_contract_dl1018(root);
+ [cfg,~,resolved]=init_dl1018();assert(strcmp(root,resolved));
+ M=readtable(fullfile(root,'configs','scene_specs.csv'),'TextType','string');
+ M=M(M.split=="DEV",:);assert(height(M)==24);
+--- a/matlab/runtime/collect_position_role_dl1018.m
++++ b/matlab/runtime/collect_position_role_dl1018.m
+@@ -5,6 +5,7 @@
+     'DL1018:CollectorGate','Unsupported role collection Gate.');
+ addpath(fullfile(root,'matlab','runtime'),fullfile(root,'matlab','data'), ...
+     fullfile(root,'matlab','scenes'),fullfile(root,'matlab','models'));
++assert_scene_reference_contract_dl1018(root);
+ [cfg,~,resolved]=init_dl1018();assert(strcmp(root,resolved));
+ M=read_specs(fullfile(root,'configs','scene_specs.csv'));
+ if strcmp(gateId,'G07_A_TEACHER')
+--- a/matlab/runtime/run_gate_dl1018.m
++++ b/matlab/runtime/run_gate_dl1018.m
+@@ -3,6 +3,10 @@
+ projectRoot=char(java.io.File(projectRoot).getCanonicalPath());
+ sourceRoot=char(java.io.File(sourceRoot).getCanonicalPath());
+ gateId=upper(char(gateId));
++if ~ismember(gateId,{'G00_MIGRATION','G01_SCENES'})
++    addpath(fullfile(projectRoot,'matlab','runtime'));
++    assert_scene_reference_contract_dl1018(projectRoot);
++end
+ if strcmp(gateId,'G01_SCENES')
+     priorPath=fullfile(projectRoot,'reports','G00_MIGRATION.json');
+     assert(isfile(priorPath),'DL1018:GateLocked','G00_MIGRATION must PASS before G01.');
+--- a/matlab/tests/check_dl1018_corrected_reference.m
++++ b/matlab/tests/check_dl1018_corrected_reference.m
+@@ -0,0 +1,87 @@
++function result=check_dl1018_corrected_reference(projectRoot)
++% Zero-Plant numerical regression through the production GET path only.
++if nargin<1||isempty(projectRoot)
++    projectRoot=fileparts(fileparts(fileparts(mfilename('fullpath'))));
++end
++projectRoot=char(java.io.File(projectRoot).getCanonicalPath());
++addpath(fullfile(projectRoot,'matlab','scenes'),fullfile(projectRoot,'matlab','runtime'));
++specPath=fullfile(projectRoot,'configs','scene_specs.csv');
++io=detectImportOptions(specPath,'VariableNamingRule','preserve');
++io=setvartype(io,{'scene_id','split','task','class_id'},'string');
++M=readtable(specPath,io);
++M=M(ismember(M.split,["TRAIN","VAL","DEV"]),:);
++splits=["TRAIN","VAL","DEV"];tasks=["HELIX","FIG8_3D","SQUARE"];
++maxPositionError=0;maxVelocityError=0;maxAccelerationError=0;oldFig8Error=0;scenesChecked=0;
++for split=splits
++    for task=tasks
++        rows=M(M.split==split&M.task==task,:);
++        assert(~isempty(rows),'DL1018:ReferenceRegressionFixture','Missing %s/%s fixed scene.',split,task);
++        sceneId=char(rows.scene_id(1));built=make_scenes_dl1018('GET',projectRoot,sceneId);
++        assert(strcmp(built.metadata.reference_contract_id,'DL1018_SCENE_REF_FIG8_A2_V2'), ...
++            'DL1018:ReferenceRegressionIdentity','GET returned a wrong reference identity.');
++        assert(string(built.spec.split)==split&&string(built.spec.task)==task, ...
++            'DL1018:ReferenceRegressionSplit','GET selected a scene outside the requested split/task.');
++        scene=built.scene;ref=scene.reference;t=scene.time(:);h=t(2)-t(1);
++        [expectedP,expectedV]=expected_position_velocity(task,t);
++        positionError=max(abs(ref.position(:)-expectedP(:)));
++        velocityError=max(abs(ref.velocity(:)-expectedV(:)));
++        assert(positionError<1e-12&&velocityError<1e-12, ...
++            'DL1018:ReferenceRegressionPositionVelocity','Position/velocity changed for %s.',sceneId);
++        ix=(3:numel(t)-2).';
++        if task=="SQUARE"
++            nearCorner=abs(t(ix)-5*round(t(ix)/5))<.003;
++            ix=ix(~nearCorner);
++        end
++        numericA=(ref.velocity(ix-2,:)-8*ref.velocity(ix-1,:)+ ...
++            8*ref.velocity(ix+1,:)-ref.velocity(ix+2,:))/(12*h);
++        accelerationError=max(abs(numericA-ref.acceleration(ix,:)),[],'all');
++        assert(accelerationError<1e-6,'DL1018:ReferenceRegressionAcceleration', ...
++            'Five-point dV/dt disagrees with acceleration for %s (%.9g).',sceneId,accelerationError);
++        if task=="FIG8_3D"
++            oldA=old_fig8_acceleration(t);
++            oldFig8Error=max(oldFig8Error,max(abs(numericA-oldA(ix,:)),[],'all'));
++        end
++        maxPositionError=max(maxPositionError,positionError);
++        maxVelocityError=max(maxVelocityError,velocityError);
++        maxAccelerationError=max(maxAccelerationError,accelerationError);
++        scenesChecked=scenesChecked+1;
++    end
++end
++assert(oldFig8Error>.1,'DL1018:ReferenceRegressionSensitivity', ...
++    'The numerical check no longer distinguishes the old FIG8 half-acceleration terms.');
++result=struct('reference_contract_id','DL1018_SCENE_REF_FIG8_A2_V2', ...
++    'scenes_checked',scenesChecked,'max_position_error',maxPositionError, ...
++    'max_velocity_error',maxVelocityError,'max_five_point_acceleration_error',maxAccelerationError, ...
++    'old_fig8_acceleration_error',oldFig8Error,'plant_calls',0,'optimizer_steps',0,'test_accesses',0);
++fprintf('DL1018 reference regression: %d TRAIN/VAL/DEV scenes, max |p| %.3g, max |v| %.3g, max 5-point |dv/dt-a| %.3g, old FIG8 error %.3g; Plant=0, optimizer=0, TEST=0.\n', ...
++    scenesChecked,maxPositionError,maxVelocityError,maxAccelerationError,oldFig8Error);
++end
++
++function [p,v]=expected_position_velocity(task,t)
++s=min(max(t/20,0),1);u=10*s.^3-15*s.^4+6*s.^5;
++ud=(30*s.^2-60*s.^3+30*s.^4)/20;
++switch task
++    case "HELIX"
++        th=3*pi*u;p=[1.2*(cos(th)-1),1.2*sin(th),2*u];
++        pu=[-3.6*pi*sin(th),3.6*pi*cos(th),2+zeros(size(t))];v=pu.*ud;
++    case "FIG8_3D"
++        th=2*pi*u;p=[1.5*sin(th),sin(2*th),.4*u+.35*(1-cos(2*th))];
++        pu=[3*pi*cos(th),4*pi*cos(2*th),.4+1.4*pi*sin(2*th)];v=pu.*ud;
++    case "SQUARE"
++        p=zeros(numel(t),3);v=p;points=[0 0 0;2 0 0;2 2 0;0 2 0;0 0 0];
++        for k=1:numel(t)
++            segment=min(floor(t(k)/5),3);q=min(max((t(k)-5*segment)/5,0),1);
++            h=10*q^3-15*q^4+6*q^5;hd=30*q^2-60*q^3+30*q^4;
++            dp=points(segment+2,:)-points(segment+1,:);
++            p(k,:)=points(segment+1,:)+dp*h;v(k,:)=dp*hd/5;
++        end
++end
++end
++
++function a=old_fig8_acceleration(t)
++s=min(max(t/20,0),1);u=10*s.^3-15*s.^4+6*s.^5;
++ud=(30*s.^2-60*s.^3+30*s.^4)/20;udd=(60*s-180*s.^2+120*s.^3)/400;
++th=2*pi*u;pu=[3*pi*cos(th),4*pi*cos(2*th),.4+1.4*pi*sin(2*th)];
++puu=[-6*pi^2*sin(th),-8*pi^2*sin(2*th),2.8*pi^2*cos(2*th)];
++a=puu.*(ud.^2)+pu.*udd;
++end
+--- a/matlab/tests/check_dl1018_reference_cache_guard.m
++++ b/matlab/tests/check_dl1018_reference_cache_guard.m
+@@ -0,0 +1,61 @@
++function result=check_dl1018_reference_cache_guard()
++% Small synthetic fixtures verify old pipeline evidence is rejected before reuse.
++projectRoot=fileparts(fileparts(fileparts(mfilename('fullpath'))));
++addpath(fullfile(projectRoot,'matlab','scenes'),fullfile(projectRoot,'matlab','runtime'));
++fixtureDir=fullfile(projectRoot,'reports','integration_next14_v1','engineering','fixtures');
++if ~isfolder(fixtureDir),mkdir(fixtureDir);end
++root=tempname(fixtureDir);mkdir(root);
++validRoot=fullfile(root,'valid_identity');mkdir(validRoot);
++mkdir(fullfile(validRoot,'reports'));
++write_text(fullfile(validRoot,'reports','G01_SCENES.json'), ...
++    "{""status"":""PASS"",""next_gate_allowed"":true,""reference_contract_id"":""DL1018_SCENE_REF_FIG8_A2_V2""}"+newline);
++assert_scene_reference_contract_dl1018(validRoot);
++mkdir(fullfile(root,'reports'));mkdir(fullfile(root,'logs'));
++for folder={'data','scenes','runtime','models','metrics'}
++    mkdir(fullfile(root,'matlab',folder{1}));
++end
++write_text(fullfile(root,'logs','attempt_index.csv'), ...
++    "run_id,status"+newline+"G02_P_TEACHER_OLD_B,STABLE"+newline);
++assert_error(@()make_scenes_dl1018('BUILD',root),'DL1018:LegacySceneEvidence');
++assert(~isfile(fullfile(root,'reports','G01_SCENES.json'))&& ...
++    ~isfile(fullfile(root,'configs','scene_specs.csv')), ...
++    'DL1018:CacheGuardTestWrite','BUILD wrote output before rejecting legacy evidence.');
++
++write_text(fullfile(root,'reports','G01_SCENES.json'), ...
++    "{""status"":""PASS"",""next_gate_allowed"":true}"+newline);
++assert_error(@()make_scenes_dl1018('BUILD',root),'DL1018:ReferenceIdentityConflict');
++write_text(fullfile(root,'logs','episode_index.csv'), ...
++    "run_id,source_role,accepted"+newline+"G02_P_TEACHER_OLD_B,B,true"+newline);
++rawFolder=fullfile(root,'data','raw','dev','FAKE_SCENE','B','attempt_01');mkdir(rawFolder);
++write_text(fullfile(rawFolder,'raw_run.mat'),'fixture only; no MATLAB payload');
++
++assert_error(@()collect_g02_position_teacher(root),'DL1018:ReferenceIdentityMismatch');
++assert_error(@()collect_position_role_dl1018(root,'G04_P_STUDENT','P_INIT_STUDENT'), ...
++    'DL1018:ReferenceIdentityMismatch');
++assert_error(@()collect_position_dev_dl1018(root),'DL1018:ReferenceIdentityMismatch');
++assert_error(@()collect_dual_eval_dl1018(root,'G11_PA_DEV'),'DL1018:ReferenceIdentityMismatch');
++assert_error(@()run_gate_dl1018('G02_P_TEACHER',root,root),'DL1018:ReferenceIdentityMismatch');
++assert(isfile(fullfile(root,'logs','attempt_index.csv'))&& ...
++    isfile(fullfile(root,'logs','episode_index.csv'))&&isfile(fullfile(rawFolder,'raw_run.mat')), ...
++    'DL1018:CacheGuardTestMutation','A collector changed or removed a fixture cache.');
++result=struct('old_pass_rejected',true,'missing_g01_with_ledger_rejected',true, ...
++    'accepted_cache_collectors_rejected',true,'valid_reference_identity_allowed',true, ...
++    'plant_calls',0,'optimizer_steps',0,'test_accesses',0);
++fprintf('DL1018 cache guard fixtures: valid identity allowed; stale G01, missing G01 with ledger, and accepted/raw cache paths rejected before collection; Plant=0, optimizer=0, TEST=0. Fixture: %s\n',root);
++end
++
++function assert_error(f,expected)
++try
++    f();
++catch err
++    assert(strcmp(err.identifier,expected),'DL1018:CacheGuardTestError', ...
++        'Expected %s, received %s: %s',expected,err.identifier,err.message);
++    return;
++end
++error('DL1018:CacheGuardTestAccepted','Expected %s but call returned.',expected);
++end
++
++function write_text(path,value)
++folder=fileparts(path);if ~isfolder(folder),mkdir(folder);end
++f=fopen(path,'w');assert(f>=0);c=onCleanup(@()fclose(f));fprintf(f,'%s',char(value));clear c;
++end
+--- a/tests/test_dl1018_scene_reference.py
++++ b/tests/test_dl1018_scene_reference.py
+@@ -0,0 +1,101 @@
++import json
++from pathlib import Path
++import tempfile
++import unittest
++from unittest import mock
++
++import run_dl1018
++
++
++class SceneReferenceGateTest(unittest.TestCase):
++    def setUp(self):
++        fixture_root = Path(__file__).resolve().parents[1] / "reports" / "integration_next14_v1" / "engineering" / "fixtures"
++        fixture_root.mkdir(parents=True, exist_ok=True)
++        self.root = Path(tempfile.mkdtemp(prefix="python_scene_reference_", dir=fixture_root))
++        (self.root / "reports").mkdir()
++        configs = self.root / "configs"
++        configs.mkdir()
++        (configs / "contract_dl1018.json").write_text(
++            json.dumps({"contract_id": run_dl1018.CONTRACT}), encoding="utf-8"
++        )
++
++    def write_g01(self, reference_id=None):
++        report = {"status": "PASS", "next_gate_allowed": True}
++        if reference_id is not None:
++            report["reference_contract_id"] = reference_id
++        (self.root / "reports" / "G01_SCENES.json").write_text(
++            json.dumps(report), encoding="utf-8"
++        )
++
++    def test_old_pass_report_is_rejected_before_pass_skip(self):
++        self.write_g01()
++
++        with self.assertRaises(run_dl1018.GateError):
++            run_dl1018.run_gate(self.root, None, "G01_SCENES")
++
++        self.assertFalse((self.root / "logs").exists())
++        self.assertFalse((self.root / "data").exists())
++
++    def test_missing_g01_with_attempt_rows_is_not_stamped_as_new(self):
++        logs = self.root / "logs"
++        logs.mkdir()
++        (logs / "attempt_index.csv").write_text(
++            "run_id,status\nG02_P_TEACHER_OLD_B,STABLE\n", encoding="utf-8"
++        )
++
++        with self.assertRaises(run_dl1018.GateError):
++            run_dl1018.run_gate(self.root, None, "G01_SCENES")
++
++        self.assertFalse((self.root / "data").exists())
++        self.assertFalse((self.root / "reports" / "G01_SCENES.json").exists())
++
++    def test_through_rejects_orphaned_scene_configs_before_g00_writes(self):
++        for config_name in ("scene_specs.csv", "dataset_plan.json"):
++            with self.subTest(config_name=config_name):
++                root = self.root / config_name.replace(".", "_")
++                (root / "reports").mkdir(parents=True)
++                configs = root / "configs"
++                configs.mkdir()
++                (configs / "contract_dl1018.json").write_text(
++                    json.dumps({"contract_id": run_dl1018.CONTRACT}), encoding="utf-8"
++                )
++                (configs / config_name).write_text("fixture\n", encoding="utf-8")
++
++                with mock.patch.object(run_dl1018, "_safe_print"):
++                    status = run_dl1018.main([
++                        "--through", "G02_P_TEACHER", "--root", str(root)
++                    ])
++
++                self.assertEqual(status, run_dl1018.EXIT_CONTRACT)
++                self.assertFalse((root / "logs").exists())
++                self.assertFalse((root / "data").exists())
++
++    def test_downstream_gate_requires_current_g01_before_layout(self):
++        self.write_g01("DL1018_OLD_SCENE_REFERENCE")
++
++        with self.assertRaises(run_dl1018.GateError):
++            run_dl1018.run_gate(self.root, None, "G02_P_TEACHER")
++
++        self.assertFalse((self.root / "logs").exists())
++        self.assertFalse((self.root / "data").exists())
++
++    def test_current_g01_reference_identity_is_allowed(self):
++        self.write_g01(run_dl1018.REFERENCE_CONTRACT_ID)
++
++        run_dl1018._assert_scene_reference(self.root)
++
++    def test_through_rejects_legacy_g01_before_g00_writes_state(self):
++        self.write_g01()
++
++        with mock.patch.object(run_dl1018, "_safe_print"):
++            status = run_dl1018.main([
++                "--through", "G02_P_TEACHER", "--root", str(self.root)
++            ])
++
++        self.assertEqual(status, run_dl1018.EXIT_CONTRACT)
++        self.assertFalse((self.root / "logs").exists())
++        self.assertFalse((self.root / "data").exists())
++
++
++if __name__ == "__main__":
++    unittest.main()

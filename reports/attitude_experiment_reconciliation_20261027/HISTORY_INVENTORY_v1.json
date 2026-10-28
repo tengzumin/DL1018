@@ -1,0 +1,435 @@
+{
+  "schema": "DL1018_ATTITUDE_EXPERIMENT_HISTORY_INVENTORY_V1",
+  "created_date": "2026-10-27",
+  "workspace_root": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018",
+  "scope": [
+    "experiments/dl_attitude_replacement_20261026",
+    "experiments/dl_attitude_replacement_20261027",
+    "reports/attitude_replacement_progress_20261027"
+  ],
+  "method_limits": {
+    "TEST_arrays_read": false,
+    "Plant_or_training_run_by_inventory": false,
+    "force09_scorer_executed": false,
+    "raw_files_modified": false,
+    "score_metric_functions_modified": false
+  },
+  "training_split_rule": "For frozen MLP15/Cosine-GRU/NCMD models, archive aliases TRAIN_C5_24 and C5_VAL48_AS_DEV_TRAIN mean 24 DEV + 48 original VAL scenes jointly used for fitting; VAL48 is not independent validation. Reported closed-loop DEV/VAL scores are in-sample development evidence.",
+  "directions": [
+    {
+      "id": "mlp15_causal_head_v1",
+      "direction": "MLP15 with causal online residual/tracking adaptation",
+      "data_and_model": {
+        "fit_scenes": "base MLP15 model: 72 total = DEV24 + VAL48; causal head itself has no optimizer training",
+        "independent_validation": false,
+        "new_training_jobs": 0,
+        "model_path": "experiments/dl_attitude_replacement_20261026/mlp15_c5_teacher_full72_v1/runs/C5_MLP15_FULL72_SEED2026102001/mlp15_attitude_weights_v1.mat",
+        "model_sha256": "67a6564148ba8c1988d7457c04a5d3271516ff4010da18e61e29fd7da13be46b"
+      },
+      "execution": {
+        "status": "COMPLETED_FAILED_FINAL_B_C5_GATES",
+        "completed_scenes": 6,
+        "scene_split_counts": {
+          "VAL": 6
+        },
+        "Plant_calls": 6,
+        "all_six_stable_safe": true,
+        "raw_replay_pass": true,
+        "score": "experiments/dl_attitude_replacement_20261026/mlp15_causal_head_v1/ROOT_RESULT_v1.json",
+        "score_table": "experiments/dl_attitude_replacement_20261026/mlp15_causal_head_v1/ALL_PAIRED_SCENES_AND_LOSSES.csv",
+        "code": "experiments/dl_attitude_replacement_20261026/mlp15_causal_head_v1/causal_head_study.m",
+        "manifest": "experiments/dl_attitude_replacement_20261026/mlp15_causal_head_v1/MANIFEST.json"
+      },
+      "macro_all6": {
+        "candidate": {
+          "Q_m": 0.009474758696548433,
+          "task_SO3_rad": 0.028167353633502368,
+          "inner_tracking_rad": 0.020047197937696735
+        },
+        "B": {
+          "Q_m": 0.00914323979374528,
+          "task_SO3_rad": 0.027613154408699474,
+          "inner_tracking_rad": 0.017566758214773853
+        },
+        "C5": {
+          "Q_m": 0.008356525862210943,
+          "task_SO3_rad": 0.026427507338954385,
+          "inner_tracking_rad": 0.017601902919654737
+        },
+        "wins_task_SO3_C5": 0,
+        "position_degradation_vs_C5_percent": 13.38155176895044
+      },
+      "interpretation": "Attitude task gate loses to C5 on all six; failed final B/C5 and <=10% position-retention gates. No DEV72/TEST expansion."
+    },
+    {
+      "id": "mlp15_composite_v3",
+      "direction": "MLP15 frozen predictor plus composite tracking term; v1/v2 preparation precedes v3 six-scene execution",
+      "data_and_model": {
+        "fit_scenes": "base MLP15: DEV24 + VAL48 combined (72); composite head uses no new offline training",
+        "independent_validation": false,
+        "new_training_jobs": 0,
+        "model_path": "experiments/dl_attitude_replacement_20261026/mlp15_c5_teacher_full72_v1/runs/C5_MLP15_FULL72_SEED2026102001/mlp15_attitude_weights_v1.mat",
+        "model_sha256": "67a6564148ba8c1988d7457c04a5d3271516ff4010da18e61e29fd7da13be46b"
+      },
+      "execution": {
+        "status": "COMPLETED_REJECTED_FOR_EXPANSION",
+        "completed_scenes": 6,
+        "scene_split_counts": {
+          "VAL": 6
+        },
+        "Plant_calls": 6,
+        "v2_pre_Plant_failed_launches": 1,
+        "score": "experiments/dl_attitude_replacement_20261026/mlp15_composite_dev_v3/ROOT_SIX_PYTHON_METRICS_v1.json",
+        "decision": "experiments/dl_attitude_replacement_20261026/mlp15_composite_dev_v3/ROOT_SIX_SCENE_DECISION_v1.json",
+        "code": "experiments/dl_attitude_replacement_20261026/mlp15_composite_dev_v3/run_composite_dev_attempt.m",
+        "manifest": "experiments/dl_attitude_replacement_20261026/mlp15_composite_dev_v3/MANIFEST.json"
+      },
+      "macro_all6": {
+        "candidate": {
+          "Q_m": 0.00967599223616282,
+          "task_SO3_rad": 0.028081634587032087,
+          "inner_tracking_rad": 0.019582849907956404
+        },
+        "B": {
+          "Q_m": 0.009143239793745275,
+          "task_SO3_rad": 0.027613154408699592,
+          "inner_tracking_rad": 0.017566758214778107
+        },
+        "C5": {
+          "Q_m": 0.008356525862210942,
+          "task_SO3_rad": 0.026427507338954798,
+          "inner_tracking_rad": 0.017601902919654498
+        },
+        "attitude_wins_B": 1,
+        "attitude_wins_C5": 0,
+        "position_degradation_vs_C5_percent": 15.789652251525222
+      },
+      "interpretation": "Engineering/no-Plant v1 and v2 snapshots are not closed-loop results; v3 six raw flights completed and failed performance gates. No expansion."
+    },
+    {
+      "id": "gru_stream_cosine_tracking_head_six",
+      "direction": "Frozen cosine GRU with online DeltaW tracking head",
+      "data_and_model": {
+        "fit_scenes": "frozen cosine GRU: 72 = DEV24 + VAL48_AS_DEV_TRAIN",
+        "independent_validation": false,
+        "training_steps": 60000,
+        "training_run": "experiments/dl_attitude_replacement_20261026/gru_stream_cosine_c5_teacher_v1/runs/GRU32_STREAM72_COSINE_S2026102001",
+        "model_path": "experiments/dl_attitude_replacement_20261026/gru_stream_cosine_c5_teacher_v1/runs/GRU32_STREAM72_COSINE_S2026102001/gru_stream_c5_teacher_weights_v1.mat",
+        "model_sha256": "b2c462f77a6bb97b8c6bb2b471daef0633d4f9664a7d623b894461a4fa21b567",
+        "new_training_in_tracking_head_study": 0
+      },
+      "execution": {
+        "status": "SIX_SCENE_COMPLETE_HF_TASK_ATTITUDE_UNRESOLVED",
+        "completed_scenes": 6,
+        "scene_split_counts": {
+          "VAL": 6
+        },
+        "Plant_calls": 6,
+        "score": "experiments/dl_attitude_replacement_20261026/gru_stream_cosine_tracking_head_dev_v1/audits/ROOT_TRACKING_HEAD_SIX_SCENE_REVIEW_v1.json",
+        "decision": "experiments/dl_attitude_replacement_20261026/gru_stream_cosine_tracking_head_dev_v1/audits/ROOT_TRACKING_HEAD_SIX_SCENE_DECISION_v1.json",
+        "paired_score": "experiments/dl_attitude_replacement_20261026/gru_stream_cosine_tracking_head_dev_v1/audits/ROOT_TRACKING_HEAD_SIX_SCENE_PAIRED_v1.csv",
+        "code": "experiments/dl_attitude_replacement_20261026/gru_stream_cosine_tracking_head_dev_v1/run_gru_stream_tracking_head_attempt.m",
+        "manifest": "experiments/dl_attitude_replacement_20261026/gru_stream_cosine_tracking_head_dev_v1/MANIFEST.json"
+      },
+      "macro_all6": {
+        "candidate": {
+          "Q_m": 0.007677641201859446,
+          "task_SO3_rad": 0.026444275557931097,
+          "inner_tracking_rad": 0.015366615123056255
+        },
+        "B": {
+          "Q_m": 0.009143239793745275,
+          "task_SO3_rad": 0.0276131544086993,
+          "inner_tracking_rad": 0.017566758214791808
+        },
+        "C5": {
+          "Q_m": 0.008356525862210942,
+          "task_SO3_rad": 0.02642750733895403,
+          "inner_tracking_rad": 0.017601902919650313
+        },
+        "HF3_candidate_task_SO3_rad": 0.049650095999412024,
+        "HF3_B_task_SO3_rad": 0.04860023410428729,
+        "HF3_C5_task_SO3_rad": 0.049643006032831255,
+        "HF_SO3_wins_B": 1,
+        "HF_SO3_wins_C5": 1
+      },
+      "interpretation": "Inner tracking improves, but HF task SO(3) loses to B and C5 on 2/3 scenes; ALL6 task SO(3) is slightly worse than C5. Six-scene result authorized a separate full72 screen, not a pass."
+    },
+    {
+      "id": "gru_stream_cosine_tracking_head_full72",
+      "direction": "Same frozen GRU tracking candidate screened over DEV72",
+      "data_and_model": {
+        "fit_scenes": "72 = DEV24 + VAL48_AS_DEV_TRAIN; scoring overlap is 72/72",
+        "independent_validation": false,
+        "training_steps_inherited": 60000,
+        "new_training_runs_in_full72_screen": 0,
+        "model_sha256": "b2c462f77a6bb97b8c6bb2b471daef0633d4f9664a7d623b894461a4fa21b567",
+        "model_path": "experiments/dl_attitude_replacement_20261026/gru_stream_cosine_c5_teacher_v1/runs/GRU32_STREAM72_COSINE_S2026102001/gru_stream_c5_teacher_weights_v1.mat"
+      },
+      "execution": {
+        "status": "COMPLETE_IN_SAMPLE_DEV_SCREEN_FAILED_HF_TASK_GATE",
+        "new_candidate_calls_completed_and_audited": 66,
+        "candidate_rows_including_reused_parent": 72,
+        "reused_parent_rows": 6,
+        "score_splits": {
+          "DEV": 24,
+          "VAL": 48
+        },
+        "Plant_calls_new": 66,
+        "failed_or_incomplete_new_calls": 0,
+        "score": "experiments/dl_attitude_replacement_20261026/gru_stream_cosine_tracking_head_full72_v1/audits/FULL72_PAIRED_SCORE_v1.json",
+        "score_csv": "experiments/dl_attitude_replacement_20261026/gru_stream_cosine_tracking_head_full72_v1/audits/FULL72_PAIRED_SCORE_v1.csv",
+        "execution_ledger": "experiments/dl_attitude_replacement_20261026/gru_stream_cosine_tracking_head_full72_v1/audits/FULL72_PROGRESS_LEDGER_v02.json",
+        "manifest": "experiments/dl_attitude_replacement_20261026/gru_stream_cosine_tracking_head_full72_v1/MANIFEST.json",
+        "root_decision": "reports/attitude_replacement_progress_20261027/ROOT_FULL72_C5_PARENT_AUDIT_AND_GRU_DECISION_v1.md",
+        "code": "experiments/dl_attitude_replacement_20261026/gru_stream_cosine_tracking_head_full72_v1/run_gru_stream_tracking_head_full72_attempt.m"
+      },
+      "macro_all72": {
+        "candidate": {
+          "Q_m": 0.011128767982288842,
+          "task_SO3_rad": 0.058479738969794415,
+          "inner_SO3_rad": 0.014459742627122373
+        },
+        "B": {
+          "Q_m": 0.017057913104666485,
+          "task_SO3_rad": 0.06236871941471251,
+          "inner_SO3_rad": 0.016338107956065467
+        },
+        "C5": {
+          "Q_m": 0.01155871797362272,
+          "task_SO3_rad": 0.058494286579376595,
+          "inner_SO3_rad": 0.016387734600841183
+        },
+        "HF28_candidate_task_SO3_rad": 0.058853581332200734,
+        "HF28_B_task_SO3_rad": 0.054815925449182845,
+        "HF28_C5_task_SO3_rad": 0.05879537963542259,
+        "HF_task_SO3_wins_B": 2,
+        "HF_task_SO3_wins_C5": 7
+      },
+      "state_reconciliation": {
+        "pre_dispatch_status_and_taskbook_are_snapshots": true,
+        "superseded_by": "FULL72_EXECUTION_STATUS_ADDENDUM_v1.md, FULL72_EXECUTION_STATUS_ADDENDUM_v2.md and FULL72_PROGRESS_LEDGER_v02.json",
+        "do_not_label_partial": true,
+        "source_note": "66 new raw audits PASS + 6 direct-parent reuse rows; score JSON 72 rows and manifest IDs match."
+      },
+      "limitations": [
+        "In-sample, not independent validation/generalization; TEST sealed.",
+        "The score JSON retains older INCOMPLETE_C5_PARENT_AUDIT_PENDING text; later ROOT_FULL72_C5_PARENT_AUDIT_AND_GRU_DECISION_v1.md records C5 audit closure for 72/72.",
+        "B historical runtime identity gap remains."
+      ]
+    },
+    {
+      "id": "gru_stream_ncmd",
+      "direction": "GRU with clipped nominal-command-port residual supervision",
+      "data_and_model": {
+        "training_scenes": "72 = DEV24 + VAL48_AS_DEV_TRAIN",
+        "independent_validation": false,
+        "training_steps": 60000,
+        "optimizer_jobs": 1,
+        "target_events": 143928,
+        "target_path": "experiments/dl_attitude_replacement_20261026/nominal_command_target_data_v1/nominal_command_target_v1.npz",
+        "target_sha256": "88df5c2f2088910a9c5650a5c67efdb7f42d30cabc021d0da83b68b72578ffb7",
+        "model_path": "experiments/dl_attitude_replacement_20261026/gru_stream_ncmd_v1/runs/GRU32_STREAM72_NCMD_S2026102001/gru_stream_c5_teacher_weights_v1.mat",
+        "model_sha256": "cd5870a48deac9eb3540c3662c59ec4212965c333669b730cdd4f6519d364de6",
+        "training_manifest": "experiments/dl_attitude_replacement_20261026/gru_stream_ncmd_v1/GRU_STREAM_NCMD_SOURCE_LOCK_v1.json"
+      },
+      "execution": {
+        "status": "COMPLETED_REJECTED_SIX_SCENE_SCREEN",
+        "completed_scenes": 6,
+        "scene_split_counts": {
+          "VAL": 6
+        },
+        "Plant_calls": 6,
+        "all_raw_replay_audits": "PASS",
+        "score": "experiments/dl_attitude_replacement_20261026/gru_stream_ncmd_dev_v1/ROOT_SIX_PYTHON_METRICS_v1.json",
+        "decision": "experiments/dl_attitude_replacement_20261026/gru_stream_ncmd_dev_v1/ROOT_SIX_SCENE_DECISION_v1.json",
+        "training_accounting": "experiments/dl_attitude_replacement_20261026/gru_stream_ncmd_v1/ROOT_TRAINING_ACCOUNTING_REVIEW_v1.json",
+        "code": "experiments/dl_attitude_replacement_20261026/gru_stream_ncmd_v1/train_gru_stream_ncmd_v1.py",
+        "manifest": "experiments/dl_attitude_replacement_20261026/gru_stream_ncmd_dev_v1/MANIFEST.json",
+        "closed_loop_code": "experiments/dl_attitude_replacement_20261026/gru_stream_ncmd_dev_v1/run_gru_stream_dev_attempt.m"
+      },
+      "macro_all6": {
+        "candidate": {
+          "Q_m": 0.009112563907821206,
+          "task_SO3_rad": 0.027329618126023605,
+          "inner_tracking_rad": 0.018534505648572713
+        },
+        "B": {
+          "Q_m": 0.009143239793745275,
+          "task_SO3_rad": 0.0276131544086993,
+          "inner_tracking_rad": 0.017566758214791808
+        },
+        "C5": {
+          "Q_m": 0.008356525862210942,
+          "task_SO3_rad": 0.02642750733895403,
+          "inner_tracking_rad": 0.017601902919650313
+        },
+        "position_degradation_vs_C5_percent": 9.047277039243617,
+        "task_SO3_degradation_vs_C5_percent": 3.4135296057220987,
+        "task_SO3_losses_C5": 6
+      },
+      "interpretation": "Failed frozen C5 task-SO(3) gate; no DEV72/TEST expansion. Valid target construction did not establish learnability or superior task tracking."
+    },
+    {
+      "id": "gru_stream_cosine_tracking_head_filter_wn12",
+      "direction": "Frozen GRU tracking head, shared command-filter frequency 18→12 rad/s",
+      "data_and_model": {
+        "training_scenes": "reused cosine GRU trained on DEV24 + VAL48_AS_DEV_TRAIN",
+        "independent_validation": false,
+        "new_training_runs": 0,
+        "model_path": "experiments/dl_attitude_replacement_20261026/gru_stream_cosine_c5_teacher_v1/runs/GRU32_STREAM72_COSINE_S2026102001/gru_stream_c5_teacher_weights_v1.mat",
+        "model_sha256": "b2c462f77a6bb97b8c6bb2b471daef0633d4f9664a7d623b894461a4fa21b567"
+      },
+      "execution": {
+        "status": "COMPLETED_FAILED_SCREEN_GATE",
+        "completed_scenes": 12,
+        "scene_split_counts": {
+          "DEV": 6,
+          "VAL": 6
+        },
+        "Plant_calls": 12,
+        "all_12_score_identity_integrity_checks_recorded_pass": true,
+        "score": "experiments/dl_attitude_replacement_20261027/task_attitude_filter_wn12_hf_screen_v1/SCREEN12_RESULTS_v1.json",
+        "score_csv": "experiments/dl_attitude_replacement_20261027/task_attitude_filter_wn12_hf_screen_v1/SCREEN12_RESULTS_v1.csv",
+        "decision": "experiments/dl_attitude_replacement_20261027/task_attitude_filter_wn12_hf_screen_v1/ROOT_SCREEN12_DECISION_v1.md",
+        "code": "experiments/dl_attitude_replacement_20261027/task_attitude_filter_wn12_hf_screen_v1/run_gru_stream_tracking_head_filter_wn12_attempt.m",
+        "candidate_raw_path_issue": {
+          "current_expected_raw_paths_exist": false,
+          "missing_count": 12,
+          "score_rows_stored_candidate_raw_sha256": true,
+          "first_path_mismatch": true,
+          "interpretation": "Historical score/audit claims remain, but current raw paths are absent, so independent raw replay from the current workspace is blocked; do not silently present as currently reverified."
+        },
+        "manifest": "experiments/dl_attitude_replacement_20261027/task_attitude_filter_wn12_hf_screen_v1/MANIFEST.json"
+      },
+      "macro_all12": {
+        "candidate": {
+          "Q_m": 0.012166773277764123,
+          "task_SO3_rad": 0.046308086802474835,
+          "inner_SO3_rad": 0.011438373242884936
+        },
+        "B": {
+          "Q_m": 0.01430617200223012,
+          "task_SO3_rad": 0.05015821143759538,
+          "inner_SO3_rad": 0.012760749616712747
+        },
+        "C5": {
+          "Q_m": 0.010079640536897068,
+          "task_SO3_rad": 0.04651092973102474,
+          "inner_SO3_rad": 0.01286478293497989
+        },
+        "WN18": {
+          "Q_m": 0.009690773134102977,
+          "task_SO3_rad": 0.04652544104754486,
+          "inner_SO3_rad": 0.011475037325128765
+        },
+        "gate": "FAIL_Q_CANDIDATE_LE_1.05_C5"
+      },
+      "interpretation": "12-scene screen fails Q-retention gate despite task SO(3) macro below B/C5 and better inner metric; HF task SO(3) worse than B. WN12 branch stopped."
+    },
+    {
+      "id": "task_attitude_blend_beta025_hf28",
+      "direction": "Beta=0.25 task-command blending, HF28 package vs offline shadow",
+      "data_and_model": {
+        "model_path": "experiments/dl_attitude_replacement_20261026/gru_stream_cosine_c5_teacher_v1/runs/GRU32_STREAM72_COSINE_S2026102001/gru_stream_c5_teacher_weights_v1.mat",
+        "model_sha256": "b2c462f77a6bb97b8c6bb2b471daef0633d4f9664a7d623b894461a4fa21b567",
+        "training_scenes": "base model uses DEV24 + VAL48_AS_DEV_TRAIN",
+        "new_training_runs": 0
+      },
+      "closed_loop_package": {
+        "status": "PLANNED_NOT_EXECUTED",
+        "v1_release_status": "RELEASED",
+        "v2_release_status": "RELEASED",
+        "authorized_Plant_calls_each": 28,
+        "actual_Plant_calls_each": 0,
+        "execution_manifest_status": "DRAFT_LOCKED_REFERENCES",
+        "scene_count": 28,
+        "run_status_files": 0,
+        "candidate_score_path": null,
+        "evidence": [
+          "experiments/dl_attitude_replacement_20261027/task_attitude_blend_beta025_hf28_v1/RELEASE.json",
+          "experiments/dl_attitude_replacement_20261027/task_attitude_blend_beta025_hf28_v1/HF28_EXECUTION_MANIFEST_v1.json",
+          "experiments/dl_attitude_replacement_20261027/task_attitude_blend_beta025_hf28_v2/RELEASE.json",
+          "experiments/dl_attitude_replacement_20261027/task_attitude_blend_beta025_hf28_v2/HF28_EXECUTION_MANIFEST_v1.json"
+        ],
+        "code_paths": [
+          "experiments/dl_attitude_replacement_20261027/task_attitude_blend_beta025_hf28_v1/score_beta025_hf28.py",
+          "experiments/dl_attitude_replacement_20261027/task_attitude_blend_beta025_hf28_v2/score_beta025_hf28_v2.py"
+        ]
+      },
+      "offline_shadow": {
+        "status": "PASS_GATE_OFFLINE_ONLY",
+        "scene_count": 28,
+        "raw_trajectory_rows": 56,
+        "beta": 0.25,
+        "Plant_calls": 0,
+        "MATLAB_started": false,
+        "training_steps": 0,
+        "B_raw_read": false,
+        "TEST_read": false,
+        "candidate_task_to_mixed_command_rmse_rad": 0.05694282540854089,
+        "frozen_threshold_rad": 0.058949,
+        "mixed_tilt_cap_all_scenes_pass": true,
+        "score": "reports/attitude_replacement_progress_20261027/task_attitude_blend_shadow_v1/RESULT_v1.json",
+        "per_scene": "reports/attitude_replacement_progress_20261027/task_attitude_blend_shadow_v1/PER_SCENE_v1.csv",
+        "code": "reports/attitude_replacement_progress_20261027/task_attitude_blend_shadow_v1/diagnose_task_attitude_blend_shadow_v1.py"
+      },
+      "interpretation": "PASS_GATE applies only to an offline same-state command/filter shadow; it is not a beta025 Plant/closed-loop flight result. The v1/v2 28-call packages are not executed."
+    }
+  ],
+  "cross_lane_findings": [
+    {
+      "id": "full72_release_snapshot_reconciliation",
+      "status": "resolved_by_append_only_execution_evidence",
+      "detail": "IMPLEMENTATION_STATUS/RELEASE and original taskbook preserve pre-dispatch values (0 calls/no run). Addenda v1/v2 and FULL72_PROGRESS_LEDGER_v02 supersede those snapshots: 66/66 new raw audits passed; six direct-parent reuse rows are bound in MANIFEST; FULL72_PAIRED_SCORE has 72 rows with IDs equal to 72 manifest IDs. Do not call this a partial screen. Score is still in-sample because all 72 score scenes trained the model.",
+      "evidence": [
+        "experiments/dl_attitude_replacement_20261026/gru_stream_cosine_tracking_head_full72_v1/audits/FULL72_EXECUTION_STATUS_ADDENDUM_v1.md",
+        "experiments/dl_attitude_replacement_20261026/gru_stream_cosine_tracking_head_full72_v1/audits/FULL72_EXECUTION_STATUS_ADDENDUM_v2.md",
+        "experiments/dl_attitude_replacement_20261026/gru_stream_cosine_tracking_head_full72_v1/audits/FULL72_PROGRESS_LEDGER_v02.json",
+        "experiments/dl_attitude_replacement_20261026/gru_stream_cosine_tracking_head_full72_v1/audits/FULL72_PAIRED_SCORE_v1.json",
+        "experiments/dl_attitude_replacement_20261026/gru_stream_cosine_tracking_head_full72_v1/MANIFEST.json"
+      ]
+    },
+    {
+      "id": "full72_c5_audit_limitation_superseded",
+      "status": "later_report_closes_c5_only",
+      "detail": "FULL72_PAIRED_SCORE_v1.json still records INCOMPLETE_C5_PARENT_AUDIT_PENDING; later ROOT_FULL72_C5_PARENT_AUDIT_AND_GRU_DECISION_v1.md says the separate parent audit covered all 72 C5 rows. The B historical runtime identity limitation remains. This audit closure does not make the GRU result independent because train/score overlap is 72/72.",
+      "evidence": [
+        "experiments/dl_attitude_replacement_20261026/gru_stream_cosine_tracking_head_full72_v1/audits/FULL72_PAIRED_SCORE_v1.json",
+        "reports/attitude_replacement_progress_20261027/ROOT_FULL72_C5_PARENT_AUDIT_AND_GRU_DECISION_v1.md"
+      ]
+    },
+    {
+      "id": "wn12_candidate_raw_paths_absent_now",
+      "status": "confirmed_current_path_missing_historical_metric_evidence_retained",
+      "detail": "All 12 candidate_raw_path_actual values in SCREEN12_RESULTS_v1.json currently fail is_file. One first-scene path mismatch is documented and its SHA/status are in the engineering audit; the score and audit files retain metrics and hashes, but the raw replay cannot be rerun from these current paths. Treat as provenance/reproducibility gap, not automatic score invalidation.",
+      "evidence": [
+        "experiments/dl_attitude_replacement_20261027/task_attitude_filter_wn12_hf_screen_v1/SCREEN12_RESULTS_v1.json",
+        "experiments/dl_attitude_replacement_20261027/task_attitude_filter_wn12_hf_screen_v1/ENGINEERING_GATE_RAW_AUDIT_v1.json",
+        "experiments/dl_attitude_replacement_20261027/task_attitude_filter_wn12_hf_screen_v1/PATH_RECONCILIATION_ADDENDUM_v1.md",
+        "experiments/dl_attitude_replacement_20261027/task_attitude_filter_wn12_hf_screen_v1/ROOT_SCREEN12_DECISION_v1.md"
+      ]
+    },
+    {
+      "id": "beta025_pass_scope",
+      "status": "confirmed_offline_pass_only",
+      "detail": "The only PASS_GATE artifact is the 28-scene/56-trajectory offline shadow. Both HF28 releases say 28 calls authorized, but Plant_calls=0, manifests remain DRAFT_LOCKED_REFERENCES, and there are no run_status/raws. Never report this as 28 closed-loop passes.",
+      "evidence": [
+        "reports/attitude_replacement_progress_20261027/task_attitude_blend_shadow_v1/RESULT_v1.json",
+        "reports/attitude_replacement_progress_20261027/task_attitude_blend_shadow_v1/STATUS_v1.json",
+        "experiments/dl_attitude_replacement_20261027/task_attitude_blend_beta025_hf28_v1/RELEASE.json",
+        "experiments/dl_attitude_replacement_20261027/task_attitude_blend_beta025_hf28_v2/RELEASE.json"
+      ]
+    },
+    {
+      "id": "force09_actual_wind_reclassification",
+      "status": "corrected_code_and_new_evidence_no_rescore",
+      "detail": "Current scorer groups use raw scene/environment_wind_I exact-zero vs nonzero. Audit: 3 zero, 9 nonzero; W15 scene suffix does not imply wind. The prior output wording is preserved in history and corrected by a new erratum; no metrics altered and scorer not executed.",
+      "evidence": [
+        "experiments/dl_attitude_replacement_20261027/mlp15_nominal_residual_v1/closed_loop_force09_v1/audits/FORCE09_ACTUAL_WIND_CLASSIFICATION_AUDIT_v1.json",
+        "reports/attitude_replacement_progress_20261027/FORCE09_WIND_GROUP_ERRATUM_v1.md"
+      ]
+    }
+  ],
+  "overall_readout": "All executed candidates in the requested priority set failed their respective frozen performance screen or remain in-sample. The beta025 offline shadow passed only its command/filter shadow criterion; no beta025 HF28 closed-loop execution exists. Do not label DEV/VAL screens as independent VAL or paper evidence."
+}

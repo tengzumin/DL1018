@@ -1,0 +1,70 @@
+{
+  "consulted_date_local": "2026-10-22",
+  "primary_sources_only": true,
+  "source_code_copied_into_controller": false,
+  "sources": [
+    {
+      "method": "Neural-Fly",
+      "paper": "https://arxiv.org/html/2205.06908v2",
+      "repo": "https://github.com/aerorobotics/neural-fly",
+      "files": [
+        {
+          "url": "https://github.com/aerorobotics/neural-fly/blob/main/mlmodel.py",
+          "git_blob_sha1": "ef0e22176dd52b8a05b79f29f2ff18ec8326022d",
+          "line_count": 200
+        }
+      ],
+      "lesson": "Composite prediction/tracking update, learned disturbance representation. Public repo contains offline training/data tools, not the complete online flight controller.",
+      "boundary": "Requires a causal noisy force-residual measurement and matching stability assumptions; not reproduced by merely changing the encoder."
+    },
+    {
+      "method": "DATT",
+      "paper": "https://arxiv.org/html/2310.09053v2",
+      "repo": "https://github.com/KevinHuang8/DATT",
+      "files": [
+        {
+          "url": "https://github.com/KevinHuang8/DATT/blob/main/controllers/datt_controller.py",
+          "git_blob_sha1": "bd8db24280e9105dd8c72524c70dbba324b1b02c",
+          "line_count": 132
+        },
+        {
+          "url": "https://github.com/KevinHuang8/DATT/blob/main/learning/adaptation_module.py",
+          "git_blob_sha1": "3af5a1d5434db8ad041f4116a937f5873f62909c",
+          "line_count": 92
+        },
+        {
+          "url": "https://github.com/KevinHuang8/DATT/blob/main/configuration/DATT_config.py",
+          "git_blob_sha1": "f7fee663cf170894d088c5947ccb34300dd05ef5",
+          "line_count": 68
+        },
+        {
+          "url": "https://github.com/KevinHuang8/DATT/blob/main/configuration/datt_wind_adaptive.py",
+          "git_blob_sha1": "cc45d1d7ebbd2546539e08509758248c67b5b5c3",
+          "line_count": 58
+        }
+      ],
+      "lesson": "Learned policy with reference preview and an L1 velocity predictor; inspected adaptation source uses dt=0.02 and alpha=0.99.",
+      "boundary": "Full policy replaces more than the allowed position residual block. Default estimator low-pass bandwidth is not evidence of 2.2-4.8 Hz disturbance tracking."
+    },
+    {
+      "method": "Cascaded INDI",
+      "paper": "https://arxiv.org/pdf/1701.07254",
+      "doi": "https://doi.org/10.1016/j.conengprac.2018.01.003",
+      "repo": "https://github.com/tudelft/indiflight",
+      "files": [
+        {
+          "url": "https://github.com/tudelft/indiflight/blob/indi/src/main/flight/indi.c",
+          "git_blob_sha1": "db9170f0938f7fd39661bbd0e6ce12b456890147",
+          "line_count": 649
+        },
+        {
+          "url": "https://github.com/tudelft/indiflight/blob/indi/src/main/flight/indi_init.c",
+          "git_blob_sha1": "5138ad52f5da2b8616fb650611e609a4ee21275a",
+          "line_count": 244
+        }
+      ],
+      "lesson": "Measurement/control/actuator filtering must preserve consistent delay; current institutional code initializes synchronized IMU and actuator-state filters.",
+      "boundary": "The inspected indiFlight research fork is not the 2018 paper's exact Paparazzi implementation; replacing the attitude loop is outside current scope."
+    }
+  ]
+}

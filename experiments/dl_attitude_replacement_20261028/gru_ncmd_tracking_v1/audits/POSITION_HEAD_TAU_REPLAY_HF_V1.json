@@ -1,0 +1,972 @@
+{
+  "schema": "DL1018_POSITION_HEAD_TAU_REPLAY_HF_V1",
+  "status": "PASS_READ_ONLY_SAME_TRAJECTORY_REPLAY",
+  "scope": "Six matched DEV/VAL HF W09-W14 scenes, original cosine GRU and GRU_NCMD. No Plant, TEST, wind, J, or Jdot access.",
+  "historical_parameter_check": {
+    "artifact": "experiments/position_delayed_prediction_c3_dev72_20261023/C3_DEV72_SUMMARY_v2.json",
+    "screen_run_count": 60,
+    "conditions_found": [
+      "C3_DELAYED_PREDICTION_TAU1_RHO001"
+    ],
+    "tau_0_1_or_rho_0_1_found_in_that_screen": false
+  },
+  "equations": {
+    "source": "candidate_runner_work/matlab/runtime/delayed_prediction_step_candidate.m",
+    "rho_definition": "h/tau, h=0.01 s",
+    "update": "W+=clip(W - h*gamma*beta*phi*s_eff' - h*lambda*W - rho*phi_prev*(W'*phi_prev-y_prev)', +/-60)",
+    "output": "beta*clip(W'*phi, +/-3); issued force = 0.695*output",
+    "counterfactual": "Replay changes rho only from .01 to .1 on fixed saved phi/s_eff/targets; it is not a closed-loop rerun."
+  },
+  "fixed_parameters": {
+    "h_s": 0.01,
+    "gamma": 12.0,
+    "lambda": 0.002,
+    "rho_baseline": 0.01,
+    "rho_candidate": 0.1,
+    "tau_baseline_s": 1.0,
+    "tau_candidate_s": 0.1,
+    "weight_clip": 60.0,
+    "prediction_clip_mps2": 3.0,
+    "mass_kg": 0.695
+  },
+  "baseline_reproduction_maxima": {
+    "GRU_original": {
+      "weight_before": 4.440892098500626e-16,
+      "weight_after": 4.440892098500626e-16,
+      "applied_acceleration": 6.661338147750939e-16
+    },
+    "GRU_NCMD": {
+      "weight_before": 3.3306690738754696e-16,
+      "weight_after": 3.3306690738754696e-16,
+      "applied_acceleration": 8.881784197001252e-16
+    }
+  },
+  "macro_equal_scene_mean": {
+    "GRU_original": {
+      "mean_scene_future_xy_label_rmse_rho_0_01_mps2": 0.3290421131734272,
+      "mean_scene_future_xy_label_rmse_rho_0_1_mps2": 0.263595325808848,
+      "mean_scene_future_xy_label_rmse_change_pct": -20.232971245978888,
+      "mean_scene_force_rms_xy_rho_0_01_N": 0.5010308692125078,
+      "mean_scene_force_rms_xy_rho_0_1_N": 0.4616434605186717,
+      "mean_scene_force_rms_xy_change_pct": -6.880346467673533,
+      "mean_scene_xy_axis_phase_deg_label_relative_to_prediction_1_to_3_hz": {
+        "x": {
+          "rho_0_01": -4.761878340361951,
+          "rho_0_1": 14.236900042617435
+        },
+        "y": {
+          "rho_0_01": 12.7422588921573,
+          "rho_0_1": 9.8530336311874
+        }
+      }
+    },
+    "GRU_NCMD": {
+      "mean_scene_future_xy_label_rmse_rho_0_01_mps2": 0.3339134985934861,
+      "mean_scene_future_xy_label_rmse_rho_0_1_mps2": 0.26684709639794096,
+      "mean_scene_future_xy_label_rmse_change_pct": -20.73816901035814,
+      "mean_scene_force_rms_xy_rho_0_01_N": 0.5003487749731816,
+      "mean_scene_force_rms_xy_rho_0_1_N": 0.4621111887583333,
+      "mean_scene_force_rms_xy_change_pct": -6.645265534585292,
+      "mean_scene_xy_axis_phase_deg_label_relative_to_prediction_1_to_3_hz": {
+        "x": {
+          "rho_0_01": -4.216179824470132,
+          "rho_0_1": 18.17239372539629
+        },
+        "y": {
+          "rho_0_01": 17.811805612051064,
+          "rho_0_1": 10.823246487019896
+        }
+      }
+    }
+  },
+  "per_scene": [
+    {
+      "scene_id": "DL1018_DEV_T1_C10_W09",
+      "arm": "GRU_original",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_full72_v1\\runs\\DL1018_DEV_T1_C10_W09\\raw_run.mat",
+      "raw_sha256": "c40239f9c9a6cea0f233eabdea3294b20ff4d3384e22a59055dc4e5358f5b541",
+      "baseline_rho_0_01": {
+        "rho": 0.01,
+        "tau_s": 1.0,
+        "baseline_reconstruction_max_abs_weight_before": 2.220446049250313e-16,
+        "baseline_reconstruction_max_abs_weight_after": 2.220446049250313e-16,
+        "baseline_reconstruction_max_abs_applied_accel": 3.885780586188048e-16,
+        "future_pair_count": 1967,
+        "future_pair_lead_ms": 10.0,
+        "future_label_vector_rmse_xy_mps2": 0.1266083573002438,
+        "future_label_vector_rmse_xyz_mps2": 0.1366572947095352,
+        "force_rms_xy_N": 0.3033488104832678,
+        "force_rms_xyz_N": 0.3308782688777747,
+        "axis": {
+          "x": {
+            "future_label_rmse_mps2": 0.06465821958956075,
+            "zero_lag_correlation": 0.8413860160521887,
+            "mean_coherence_1_to_3_hz": 0.6066143633010396,
+            "phase_label_relative_to_prediction_deg_1_to_3_hz": -9.31911288865982
+          },
+          "y": {
+            "future_label_rmse_mps2": 0.10885306967547743,
+            "zero_lag_correlation": 0.8909590501308194,
+            "mean_coherence_1_to_3_hz": 0.7203854096333677,
+            "phase_label_relative_to_prediction_deg_1_to_3_hz": 0.533163772209176
+          },
+          "z": {
+            "future_label_rmse_mps2": 0.051434813687448636,
+            "zero_lag_correlation": 0.6844478346523835,
+            "mean_coherence_1_to_3_hz": 0.659036406557691,
+            "phase_label_relative_to_prediction_deg_1_to_3_hz": 99.22730612202994
+          }
+        }
+      },
+      "candidate_rho_0_1": {
+        "rho": 0.1,
+        "tau_s": 0.09999999999999999,
+        "baseline_reconstruction_max_abs_weight_before": 0.2149907516082657,
+        "baseline_reconstruction_max_abs_weight_after": 0.0,
+        "baseline_reconstruction_max_abs_applied_accel": 0.20910733329907638,
+        "future_pair_count": 1967,
+        "future_pair_lead_ms": 10.0,
+        "future_label_vector_rmse_xy_mps2": 0.0987038252880982,
+        "future_label_vector_rmse_xyz_mps2": 0.1079491661337805,
+        "force_rms_xy_N": 0.30714733334827665,
+        "force_rms_xyz_N": 0.3352884518456732,
+        "axis": {
+          "x": {
+            "future_label_rmse_mps2": 0.038689600316211006,
+            "zero_lag_correlation": 0.9481224426196881,
+            "mean_coherence_1_to_3_hz": 0.6165340751108768,
+            "phase_label_relative_to_prediction_deg_1_to_3_hz": 2.3131419201308243
+          },
+          "y": {
+            "future_label_rmse_mps2": 0.09080506568399836,
+            "zero_lag_correlation": 0.9317697219670126,
+            "mean_coherence_1_to_3_hz": 0.6602521196479599,
+            "phase_label_relative_to_prediction_deg_1_to_3_hz": -8.288598840594204
+          },
+          "z": {
+            "future_label_rmse_mps2": 0.04371015148080742,
+            "zero_lag_correlation": 0.7924035752176988,
+            "mean_coherence_1_to_3_hz": 0.9012769746269557,
+            "phase_label_relative_to_prediction_deg_1_to_3_hz": 60.92673505077933
+          }
+        }
+      },
+      "future_xy_label_rmse_change_pct": -22.04003954175928,
+      "force_rms_xy_change_pct": 1.252196393635896
+    },
+    {
+      "scene_id": "DL1018_DEV_T1_C10_W09",
+      "arm": "GRU_NCMD",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\gru_ncmd_tracking_v1\\runs\\DL1018_DEV_T1_C10_W09\\raw_run.mat",
+      "raw_sha256": "291a4fd89e37f25520e1bad5005ec06e12289ad7c8977648b2fcd8a5de0eb832",
+      "baseline_rho_0_01": {
+        "rho": 0.01,
+        "tau_s": 1.0,
+        "baseline_reconstruction_max_abs_weight_before": 3.3306690738754696e-16,
+        "baseline_reconstruction_max_abs_weight_after": 3.3306690738754696e-16,
+        "baseline_reconstruction_max_abs_applied_accel": 4.440892098500626e-16,
+        "future_pair_count": 1967,
+        "future_pair_lead_ms": 10.0,
+        "future_label_vector_rmse_xy_mps2": 0.131917382372604,
+        "future_label_vector_rmse_xyz_mps2": 0.14236539117032349,
+        "force_rms_xy_N": 0.2988939082590331,
+        "force_rms_xyz_N": 0.3269753232023172,
+        "axis": {
+          "x": {
+            "future_label_rmse_mps2": 0.06613430837303216,
+            "zero_lag_correlation": 0.8071294498450052,
+            "mean_coherence_1_to_3_hz": 0.47077403219540387,
+            "phase_label_relative_to_prediction_deg_1_to_3_hz": -2.2055040652099107
+          },
+          "y": {
+            "future_label_rmse_mps2": 0.11414223157123092,
+            "zero_lag_correlation": 0.8519126437076554,
+            "mean_coherence_1_to_3_hz": 0.5054654260242021,
+            "phase_label_relative_to_prediction_deg_1_to_3_hz": -1.663816245945132
+          },
+          "z": {
+            "future_label_rmse_mps2": 0.053532315763839315,
+            "zero_lag_correlation": 0.6552941607917571,
+            "mean_coherence_1_to_3_hz": 0.6617807700396428,
+            "phase_label_relative_to_prediction_deg_1_to_3_hz": 101.92670362501983
+          }
+        }
+      },
+      "candidate_rho_0_1": {
+        "rho": 0.1,
+        "tau_s": 0.09999999999999999,
+        "baseline_reconstruction_max_abs_weight_before": 0.2179233226396895,
+        "baseline_reconstruction_max_abs_weight_after": 0.0,
+        "baseline_reconstruction_max_abs_applied_accel": 0.21234817831775676,
+        "future_pair_count": 1967,
+        "future_pair_lead_ms": 10.0,
+        "future_label_vector_rmse_xy_mps2": 0.1015565913269351,
+        "future_label_vector_rmse_xyz_mps2": 0.11124216069686566,
+        "force_rms_xy_N": 0.3029545414060201,
+        "force_rms_xyz_N": 0.33167320768030506,
+        "axis": {
+          "x": {
+            "future_label_rmse_mps2": 0.03734423661524188,
+            "zero_lag_correlation": 0.9450212543043285,
+            "mean_coherence_1_to_3_hz": 0.6213506304123617,
+            "phase_label_relative_to_prediction_deg_1_to_3_hz": 7.689268764327727
+          },
+          "y": {
+            "future_label_rmse_mps2": 0.09444124752231378,
+            "zero_lag_correlation": 0.9109690461218045,
+            "mean_coherence_1_to_3_hz": 0.6017397695726636,
+            "phase_label_relative_to_prediction_deg_1_to_3_hz": -11.12280284652882
+          },
+          "z": {
+            "future_label_rmse_mps2": 0.04539908671505598,
+            "zero_lag_correlation": 0.7758349871347228,
+            "mean_coherence_1_to_3_hz": 0.8505252269712671,
+            "phase_label_relative_to_prediction_deg_1_to_3_hz": 62.26687130848183
+          }
+        }
+      },
+      "future_xy_label_rmse_change_pct": -23.01500416367729,
+      "force_rms_xy_change_pct": 1.3585533310594755
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C09_W10",
+      "arm": "GRU_original",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_full72_v1\\runs\\DL1018_DEV_T2_C09_W10\\raw_run.mat",
+      "raw_sha256": "518567b25d19d8e8acd6a74c33eb7c5ed6b78c507d6f022a0cd12ba6bf126e98",
+      "baseline_rho_0_01": {
+        "rho": 0.01,
+        "tau_s": 1.0,
+        "baseline_reconstruction_max_abs_weight_before": 2.220446049250313e-16,
+        "baseline_reconstruction_max_abs_weight_after": 2.220446049250313e-16,
+        "baseline_reconstruction_max_abs_applied_accel": 6.661338147750939e-16,
+        "future_pair_count": 1967,
+        "future_pair_lead_ms": 10.0,
+        "future_label_vector_rmse_xy_mps2": 0.28850043400169906,
+        "future_label_vector_rmse_xyz_mps2": 0.3167931412517443,
+        "force_rms_xy_N": 0.5659205787833496,
+        "force_rms_xyz_N": 0.5781315698304252,
+        "axis": {
+          "x": {
+            "future_label_rmse_mps2": 0.13052659696414837,
+            "zero_lag_correlation": 0.5937558719708576,
+            "mean_coherence_1_to_3_hz": 0.6032216403741788,
+            "phase_label_relative_to_prediction_deg_1_to_3_hz": 2.5352235231997553
+          },
+          "y": {
+            "future_label_rmse_mps2": 0.2572844882695564,
+            "zero_lag_correlation": 0.8902254794781002,
+            "mean_coherence_1_to_3_hz": 0.7505164194278706,
+            "phase_label_relative_to_prediction_deg_1_to_3_hz": -1.0375411979307947
+          },
+          "z": {
+            "future_label_rmse_mps2": 0.13086402838434594,
+            "zero_lag_correlation": 0.40719622712689374,
+            "mean_coherence_1_to_3_hz": 0.8107228918017457,
+            "phase_label_relative_to_prediction_deg_1_to_3_hz": 58.34629032348616
+          }
+        }
+      },
+      "candidate_rho_0_1": {
+        "rho": 0.1,
+        "tau_s": 0.09999999999999999,
+        "baseline_reconstruction_max_abs_weight_before": 0.45532069167627787,
+        "baseline_reconstruction_max_abs_weight_after": 0.0,
+        "baseline_reconstruction_max_abs_applied_accel": 0.4520781311582965,
+        "future_pair_count": 1967,
+        "future_pair_lead_ms": 10.0,
+        "future_label_vector_rmse_xy_mps2": 0.20847828880120414,
+        "future_label_vector_rmse_xyz_mps2": 0.2359261357155634,
+        "force_rms_xy_N": 0.5185648693589976,
+        "force_rms_xyz_N": 0.5365614646593069,
+        "axis": {
+          "x": {
+            "future_label_rmse_mps2": 0.09388716288409782,
+            "zero_lag_correlation": 0.6702528939568989,
+            "mean_coherence_1_to_3_hz": 0.5958422988214187,
+            "phase_label_relative_to_prediction_deg_1_to_3_hz": 10.514330354358915
+          },
+          "y": {
+            "future_label_rmse_mps2": 0.18614080032881875,
+            "zero_lag_correlation": 0.903667826070672,
+            "mean_coherence_1_to_3_hz": 0.759181392693771,
+            "phase_label_relative_to_prediction_deg_1_to_3_hz": 2.735336552250035
+          },
+          "z": {
+            "future_label_rmse_mps2": 0.1104443054765621,
+            "zero_lag_correlation": 0.6668550166619615,
+            "mean_coherence_1_to_3_hz": 0.9161582230125852,
+            "phase_label_relative_to_prediction_deg_1_to_3_hz": 39.13472503945825
+          }
+        }
+      },
+      "future_xy_label_rmse_change_pct": -27.73727030165356,
+      "force_rms_xy_change_pct": -8.367907300024346
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C09_W10",
+      "arm": "GRU_NCMD",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\gru_ncmd_tracking_v1\\runs\\DL1018_DEV_T2_C09_W10\\raw_run.mat",
+      "raw_sha256": "0a910d82a5ff7efbff632d001fcda7caa69f6eec8c3ed935455d2527767bb1d6",
+      "baseline_rho_0_01": {
+        "rho": 0.01,
+        "tau_s": 1.0,
+        "baseline_reconstruction_max_abs_weight_before": 3.3306690738754696e-16,
+        "baseline_reconstruction_max_abs_weight_after": 3.3306690738754696e-16,
+        "baseline_reconstruction_max_abs_applied_accel": 4.440892098500626e-16,
+        "future_pair_count": 1967,
+        "future_pair_lead_ms": 10.0,
+        "future_label_vector_rmse_xy_mps2": 0.2952102360138397,
+        "future_label_vector_rmse_xyz_mps2": 0.3235503385680015,
+        "force_rms_xy_N": 0.5675932789471481,
+        "force_rms_xyz_N": 0.5798190611086783,
+        "axis": {
+          "x": {
+            "future_label_rmse_mps2": 0.1377942128806316,
+            "zero_lag_correlation": 0.42263999313014966,
+            "mean_coherence_1_to_3_hz": 0.38008531586928596,
+            "phase_label_relative_to_prediction_deg_1_to_3_hz": 10.440824640513535
+          },
+          "y": {
+            "future_label_rmse_mps2": 0.26107822265358355,
+            "zero_lag_correlation": 0.8825933754704663,
+            "mean_coherence_1_to_3_hz": 0.6020866479804885,
+            "phase_label_relative_to_prediction_deg_1_to_3_hz": 0.08874803123610027
+          },
+          "z": {
+            "future_label_rmse_mps2": 0.13242257413342123,
+            "zero_lag_correlation": 0.3982589842235857,
+            "mean_coherence_1_to_3_hz": 0.7718835342813681,
+            "phase_label_relative_to_prediction_deg_1_to_3_hz": 59.83552862857406
+          }
+        }
+      },
+      "candidate_rho_0_1": {
+        "rho": 0.1,
+        "tau_s": 0.09999999999999999,
+        "baseline_reconstruction_max_abs_weight_before": 0.48445648046016987,
+        "baseline_reconstruction_max_abs_weight_after": 0.0,
+        "baseline_reconstruction_max_abs_applied_accel": 0.4659009944322615,
+        "future_pair_count": 1967,
+        "future_pair_lead_ms": 10.0,
+        "future_label_vector_rmse_xy_mps2": 0.21049135992117274,
+        "future_label_vector_rmse_xyz_mps2": 0.2380975370197802,
+        "force_rms_xy_N": 0.5224346227117538,
+        "force_rms_xyz_N": 0.5404533074892651,
+        "axis": {
+          "x": {
+            "future_label_rmse_mps2": 0.09814218084314127,
+            "zero_lag_correlation": 0.5965943963556822,
+            "mean_coherence_1_to_3_hz": 0.4717240386488742,
+            "phase_label_relative_to_prediction_deg_1_to_3_hz": 17.807750872422897
+          },
+          "y": {
+            "future_label_rmse_mps2": 0.18621150593026428,
+            "zero_lag_correlation": 0.902339046532787,
+            "mean_coherence_1_to_3_hz": 0.7033122789904291,
+            "phase_label_relative_to_prediction_deg_1_to_3_hz": 3.5368427310303976
+          },
+          "z": {
+            "future_label_rmse_mps2": 0.11128263356616304,
+            "zero_lag_correlation": 0.666358385697241,
+            "mean_coherence_1_to_3_hz": 0.9114262767296386,
+            "phase_label_relative_to_prediction_deg_1_to_3_hz": 39.76453458038071
+          }
+        }
+      },
+      "future_xy_label_rmse_change_pct": -28.69781117233865,
+      "force_rms_xy_change_pct": -7.956164724001125
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C09_W09",
+      "arm": "GRU_original",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_full72_v1\\runs\\DL1018_DEV_T3_C09_W09\\raw_run.mat",
+      "raw_sha256": "14176658aac8e8b69817f71aff748add1b591cee744cd05954184e52e34c2cb2",
+      "baseline_rho_0_01": {
+        "rho": 0.01,
+        "tau_s": 1.0,
+        "baseline_reconstruction_max_abs_weight_before": 2.220446049250313e-16,
+        "baseline_reconstruction_max_abs_weight_after": 2.220446049250313e-16,
+        "baseline_reconstruction_max_abs_applied_accel": 4.440892098500626e-16,
+        "future_pair_count": 1967,
+        "future_pair_lead_ms": 10.0,
+        "future_label_vector_rmse_xy_mps2": 0.14449777327526012,
+        "future_label_vector_rmse_xyz_mps2": 0.15241335746398316,
+        "force_rms_xy_N": 0.42737166886791444,
+        "force_rms_xyz_N": 0.4440186125966384,
+        "axis": {
+          "x": {
+            "future_label_rmse_mps2": 0.10589187505986773,
+            "zero_lag_correlation": 0.9108686522891323,
+            "mean_coherence_1_to_3_hz": 0.7961206031983898,
+            "phase_label_relative_to_prediction_deg_1_to_3_hz": 1.9402572596182828
+          },
+          "y": {
+            "future_label_rmse_mps2": 0.09831844830861518,
+            "zero_lag_correlation": 0.6627775383350715,
+            "mean_coherence_1_to_3_hz": 0.400589599543265,
+            "phase_label_relative_to_prediction_deg_1_to_3_hz": 16.643053685194854
+          },
+          "z": {
+            "future_label_rmse_mps2": 0.04847911975206887,
+            "zero_lag_correlation": 0.29797239998189207,
+            "mean_coherence_1_to_3_hz": 0.8059435698429332,
+            "phase_label_relative_to_prediction_deg_1_to_3_hz": 143.19184426302493
+          }
+        }
+      },
+      "candidate_rho_0_1": {
+        "rho": 0.1,
+        "tau_s": 0.09999999999999999,
+        "baseline_reconstruction_max_abs_weight_before": 0.3177727646481601,
+        "baseline_reconstruction_max_abs_weight_after": 0.0,
+        "baseline_reconstruction_max_abs_applied_accel": 0.1661155682469715,
+        "future_pair_count": 1967,
+        "future_pair_lead_ms": 10.0,
+        "future_label_vector_rmse_xy_mps2": 0.12095659289757096,
+        "future_label_vector_rmse_xyz_mps2": 0.1272109239941746,
+        "force_rms_xy_N": 0.4239879711089006,
+        "force_rms_xyz_N": 0.4410030601918617,
+        "axis": {
+          "x": {
+            "future_label_rmse_mps2": 0.09497286446690345,
+            "zero_lag_correlation": 0.9319190834471452,
+            "mean_coherence_1_to_3_hz": 0.7178866693663817,
+            "phase_label_relative_to_prediction_deg_1_to_3_hz": -2.1995119120553275
+          },
+          "y": {
+            "future_label_rmse_mps2": 0.07490428813051962,
+            "zero_lag_correlation": 0.7920959851354149,
+            "mean_coherence_1_to_3_hz": 0.2808014621112046,
+            "phase_label_relative_to_prediction_deg_1_to_3_hz": -2.9981032931602973
+          },
+          "z": {
+            "future_label_rmse_mps2": 0.03939697727063528,
+            "zero_lag_correlation": 0.5762801576686695,
+            "mean_coherence_1_to_3_hz": 0.9262198651036722,
+            "phase_label_relative_to_prediction_deg_1_to_3_hz": 73.25331961738424
+          }
+        }
+      },
+      "future_xy_label_rmse_change_pct": -16.29172536302309,
+      "force_rms_xy_change_pct": -0.7917459217587131
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C09_W09",
+      "arm": "GRU_NCMD",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\gru_ncmd_tracking_v1\\runs\\DL1018_DEV_T3_C09_W09\\raw_run.mat",
+      "raw_sha256": "6f77565ca508e50648d725d244e3c1fd7771293880118d2622934e65c27ec5c1",
+      "baseline_rho_0_01": {
+        "rho": 0.01,
+        "tau_s": 1.0,
+        "baseline_reconstruction_max_abs_weight_before": 2.220446049250313e-16,
+        "baseline_reconstruction_max_abs_weight_after": 2.220446049250313e-16,
+        "baseline_reconstruction_max_abs_applied_accel": 5.551115123125783e-16,
+        "future_pair_count": 1967,
+        "future_pair_lead_ms": 10.0,
+        "future_label_vector_rmse_xy_mps2": 0.14964270250202194,
+        "future_label_vector_rmse_xyz_mps2": 0.15754365870447398,
+        "force_rms_xy_N": 0.41984229171087367,
+        "force_rms_xyz_N": 0.4369803549871628,
+        "axis": {
+          "x": {
+            "future_label_rmse_mps2": 0.1074723075210343,
+            "zero_lag_correlation": 0.9022955565992182,
+            "mean_coherence_1_to_3_hz": 0.5635115070537651,
+            "phase_label_relative_to_prediction_deg_1_to_3_hz": 2.3179766627227014
+          },
+          "y": {
+            "future_label_rmse_mps2": 0.10412800549426114,
+            "zero_lag_correlation": 0.5640156839923822,
+            "mean_coherence_1_to_3_hz": 0.2877383309603319,
+            "phase_label_relative_to_prediction_deg_1_to_3_hz": 24.039363984010592
+          },
+          "z": {
+            "future_label_rmse_mps2": 0.04926526145148466,
+            "zero_lag_correlation": 0.28896712728536433,
+            "mean_coherence_1_to_3_hz": 0.8439503629270828,
+            "phase_label_relative_to_prediction_deg_1_to_3_hz": 139.070026361827
+          }
+        }
+      },
+      "candidate_rho_0_1": {
+        "rho": 0.1,
+        "tau_s": 0.09999999999999999,
+        "baseline_reconstruction_max_abs_weight_before": 0.31812913059100556,
+        "baseline_reconstruction_max_abs_weight_after": 0.0,
+        "baseline_reconstruction_max_abs_applied_accel": 0.2146347464712367,
+        "future_pair_count": 1967,
+        "future_pair_lead_ms": 10.0,
+        "future_label_vector_rmse_xy_mps2": 0.12272407510563937,
+        "future_label_vector_rmse_xyz_mps2": 0.12904057648711897,
+        "force_rms_xy_N": 0.4171836300298142,
+        "force_rms_xyz_N": 0.4346873886613257,
+        "axis": {
+          "x": {
+            "future_label_rmse_mps2": 0.09541682948044576,
+            "zero_lag_correlation": 0.9283502241189284,
+            "mean_coherence_1_to_3_hz": 0.60291953809128,
+            "phase_label_relative_to_prediction_deg_1_to_3_hz": -2.493947547037742
+          },
+          "y": {
+            "future_label_rmse_mps2": 0.07718048498444507,
+            "zero_lag_correlation": 0.7611347667733532,
+            "mean_coherence_1_to_3_hz": 0.3298058929761003,
+            "phase_label_relative_to_prediction_deg_1_to_3_hz": 3.9770457988517336
+          },
+          "z": {
+            "future_label_rmse_mps2": 0.03987821171508804,
+            "zero_lag_correlation": 0.5770776851075113,
+            "mean_coherence_1_to_3_hz": 0.947538425351938,
+            "phase_label_relative_to_prediction_deg_1_to_3_hz": 71.833022930088
+          }
+        }
+      },
+      "future_xy_label_rmse_change_pct": -17.988600143076706,
+      "force_rms_xy_change_pct": -0.6332524696893493
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C07_W14",
+      "arm": "GRU_original",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_full72_v1\\runs\\DL1018_VAL_T1_C07_W14\\raw_run.mat",
+      "raw_sha256": "fe85f45de5cb16135840a1cb0a6c9bb8e7ac1c1e7e1bcda274c7b7eb1f1b2c27",
+      "baseline_rho_0_01": {
+        "rho": 0.01,
+        "tau_s": 1.0,
+        "baseline_reconstruction_max_abs_weight_before": 4.440892098500626e-16,
+        "baseline_reconstruction_max_abs_weight_after": 4.440892098500626e-16,
+        "baseline_reconstruction_max_abs_applied_accel": 6.661338147750939e-16,
+        "future_pair_count": 1967,
+        "future_pair_lead_ms": 10.0,
+        "future_label_vector_rmse_xy_mps2": 0.49707330857749193,
+        "future_label_vector_rmse_xyz_mps2": 0.5036870530738625,
+        "force_rms_xy_N": 0.62278918545163,
+        "force_rms_xyz_N": 0.6238419089377953,
+        "axis": {
+          "x": {
+            "future_label_rmse_mps2": 0.48029939563848817,
+            "zero_lag_correlation": 0.6232656216522466,
+            "mean_coherence_1_to_3_hz": 0.49280465924832784,
+            "phase_label_relative_to_prediction_deg_1_to_3_hz": -8.705722190598419
+          },
+          "y": {
+            "future_label_rmse_mps2": 0.12804048051096006,
+            "zero_lag_correlation": 0.8171127406115144,
+            "mean_coherence_1_to_3_hz": 0.3902389180540699,
+            "phase_label_relative_to_prediction_deg_1_to_3_hz": 15.912966937085942
+          },
+          "z": {
+            "future_label_rmse_mps2": 0.08135584388387539,
+            "zero_lag_correlation": 0.32312329784098,
+            "mean_coherence_1_to_3_hz": 0.7265046497558579,
+            "phase_label_relative_to_prediction_deg_1_to_3_hz": 33.346651284892374
+          }
+        }
+      },
+      "candidate_rho_0_1": {
+        "rho": 0.1,
+        "tau_s": 0.09999999999999999,
+        "baseline_reconstruction_max_abs_weight_before": 0.8619526037623174,
+        "baseline_reconstruction_max_abs_weight_after": 0.0,
+        "baseline_reconstruction_max_abs_applied_accel": 0.5817160678125863,
+        "future_pair_count": 1967,
+        "future_pair_lead_ms": 10.0,
+        "future_label_vector_rmse_xy_mps2": 0.4072276833690883,
+        "future_label_vector_rmse_xyz_mps2": 0.41256262766290064,
+        "force_rms_xy_N": 0.5603682057705343,
+        "force_rms_xyz_N": 0.5629825829811914,
+        "axis": {
+          "x": {
+            "future_label_rmse_mps2": 0.3943803843641933,
+            "zero_lag_correlation": 0.6591073127960613,
+            "mean_coherence_1_to_3_hz": 0.47722317468086234,
+            "phase_label_relative_to_prediction_deg_1_to_3_hz": 23.717401658591925
+          },
+          "y": {
+            "future_label_rmse_mps2": 0.1014815181740283,
+            "zero_lag_correlation": 0.8633507053162299,
+            "mean_coherence_1_to_3_hz": 0.3897852540617044,
+            "phase_label_relative_to_prediction_deg_1_to_3_hz": 20.576999922855837
+          },
+          "z": {
+            "future_label_rmse_mps2": 0.06613271234391255,
+            "zero_lag_correlation": 0.6488201087094008,
+            "mean_coherence_1_to_3_hz": 0.8606165885062284,
+            "phase_label_relative_to_prediction_deg_1_to_3_hz": 21.08021633118401
+          }
+        }
+      },
+      "future_xy_label_rmse_change_pct": -18.07492449464263,
+      "force_rms_xy_change_pct": -10.022810469297038
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C07_W14",
+      "arm": "GRU_NCMD",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\gru_ncmd_tracking_v1\\runs\\DL1018_VAL_T1_C07_W14\\raw_run.mat",
+      "raw_sha256": "63ca844f2365768a5aefb3e73099040267e2f0495562514f881da5556feac9f8",
+      "baseline_rho_0_01": {
+        "rho": 0.01,
+        "tau_s": 1.0,
+        "baseline_reconstruction_max_abs_weight_before": 2.220446049250313e-16,
+        "baseline_reconstruction_max_abs_weight_after": 2.220446049250313e-16,
+        "baseline_reconstruction_max_abs_applied_accel": 6.661338147750939e-16,
+        "future_pair_count": 1967,
+        "future_pair_lead_ms": 10.0,
+        "future_label_vector_rmse_xy_mps2": 0.502460560197522,
+        "future_label_vector_rmse_xyz_mps2": 0.50914574467341,
+        "force_rms_xy_N": 0.628851530129072,
+        "force_rms_xyz_N": 0.6299419492513253,
+        "axis": {
+          "x": {
+            "future_label_rmse_mps2": 0.488123489014024,
+            "zero_lag_correlation": 0.6105035478720735,
+            "mean_coherence_1_to_3_hz": 0.39844629602361176,
+            "phase_label_relative_to_prediction_deg_1_to_3_hz": -20.28465120830508
+          },
+          "y": {
+            "future_label_rmse_mps2": 0.11917245498345515,
+            "zero_lag_correlation": 0.8331269991485271,
+            "mean_coherence_1_to_3_hz": 0.32423411455127094,
+            "phase_label_relative_to_prediction_deg_1_to_3_hz": 29.979371930164596
+          },
+          "z": {
+            "future_label_rmse_mps2": 0.08223609162061071,
+            "zero_lag_correlation": 0.3338578290652412,
+            "mean_coherence_1_to_3_hz": 0.6611982856038331,
+            "phase_label_relative_to_prediction_deg_1_to_3_hz": 37.35045791075854
+          }
+        }
+      },
+      "candidate_rho_0_1": {
+        "rho": 0.1,
+        "tau_s": 0.09999999999999999,
+        "baseline_reconstruction_max_abs_weight_before": 0.8677582300728482,
+        "baseline_reconstruction_max_abs_weight_after": 0.0,
+        "baseline_reconstruction_max_abs_applied_accel": 0.6136019100902868,
+        "future_pair_count": 1967,
+        "future_pair_lead_ms": 10.0,
+        "future_label_vector_rmse_xy_mps2": 0.41441980702098985,
+        "future_label_vector_rmse_xyz_mps2": 0.41966636431979387,
+        "force_rms_xy_N": 0.5686362697851436,
+        "force_rms_xyz_N": 0.5712972832277112,
+        "axis": {
+          "x": {
+            "future_label_rmse_mps2": 0.4021549161745489,
+            "zero_lag_correlation": 0.6458942828107044,
+            "mean_coherence_1_to_3_hz": 0.6719063857216969,
+            "phase_label_relative_to_prediction_deg_1_to_3_hz": 31.099144425532817
+          },
+          "y": {
+            "future_label_rmse_mps2": 0.10007597038228518,
+            "zero_lag_correlation": 0.8730843607947745,
+            "mean_coherence_1_to_3_hz": 0.41197605928021097,
+            "phase_label_relative_to_prediction_deg_1_to_3_hz": 24.27274411642358
+          },
+          "z": {
+            "future_label_rmse_mps2": 0.06615195303299415,
+            "zero_lag_correlation": 0.6601232450045728,
+            "mean_coherence_1_to_3_hz": 0.8600872070588717,
+            "phase_label_relative_to_prediction_deg_1_to_3_hz": 20.455467798452194
+          }
+        }
+      },
+      "future_xy_label_rmse_change_pct": -17.521923141972085,
+      "force_rms_xy_change_pct": -9.57543354177245
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C04_W14",
+      "arm": "GRU_original",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_full72_v1\\runs\\DL1018_VAL_T2_C04_W14\\raw_run.mat",
+      "raw_sha256": "9b009512da9f08e917f5484d6292066dcbcb731353df72828dc702d76b6a3479",
+      "baseline_rho_0_01": {
+        "rho": 0.01,
+        "tau_s": 1.0,
+        "baseline_reconstruction_max_abs_weight_before": 2.220446049250313e-16,
+        "baseline_reconstruction_max_abs_weight_after": 2.220446049250313e-16,
+        "baseline_reconstruction_max_abs_applied_accel": 6.661338147750939e-16,
+        "future_pair_count": 1967,
+        "future_pair_lead_ms": 10.0,
+        "future_label_vector_rmse_xy_mps2": 0.4367708571755321,
+        "future_label_vector_rmse_xyz_mps2": 0.45390807371570724,
+        "force_rms_xy_N": 0.5088830112279915,
+        "force_rms_xyz_N": 0.523774431149099,
+        "axis": {
+          "x": {
+            "future_label_rmse_mps2": 0.42457233552596324,
+            "zero_lag_correlation": 0.5777140486152927,
+            "mean_coherence_1_to_3_hz": 0.42952862146308257,
+            "phase_label_relative_to_prediction_deg_1_to_3_hz": -11.98645877116786
+          },
+          "y": {
+            "future_label_rmse_mps2": 0.10250421251772039,
+            "zero_lag_correlation": 0.8000745850433661,
+            "mean_coherence_1_to_3_hz": 0.4697678480250785,
+            "phase_label_relative_to_prediction_deg_1_to_3_hz": 23.787105412236212
+          },
+          "z": {
+            "future_label_rmse_mps2": 0.12354658112005709,
+            "zero_lag_correlation": 0.037869473731243095,
+            "mean_coherence_1_to_3_hz": 0.6563663043124098,
+            "phase_label_relative_to_prediction_deg_1_to_3_hz": 35.09240653416083
+          }
+        }
+      },
+      "candidate_rho_0_1": {
+        "rho": 0.1,
+        "tau_s": 0.09999999999999999,
+        "baseline_reconstruction_max_abs_weight_before": 0.7252957490759502,
+        "baseline_reconstruction_max_abs_weight_after": 0.0,
+        "baseline_reconstruction_max_abs_applied_accel": 0.4539870268324637,
+        "future_pair_count": 1967,
+        "future_pair_lead_ms": 10.0,
+        "future_label_vector_rmse_xy_mps2": 0.35989314793096494,
+        "future_label_vector_rmse_xyz_mps2": 0.38038722497002014,
+        "force_rms_xy_N": 0.45001290801336,
+        "force_rms_xyz_N": 0.4680820115013955,
+        "axis": {
+          "x": {
+            "future_label_rmse_mps2": 0.35059747650525286,
+            "zero_lag_correlation": 0.5830141398729816,
+            "mean_coherence_1_to_3_hz": 0.4034107967246713,
+            "phase_label_relative_to_prediction_deg_1_to_3_hz": 24.842667566845073
+          },
+          "y": {
+            "future_label_rmse_mps2": 0.08126799736555644,
+            "zero_lag_correlation": 0.8686124904287011,
+            "mean_coherence_1_to_3_hz": 0.5464822692473075,
+            "phase_label_relative_to_prediction_deg_1_to_3_hz": 27.3902579760725
+          },
+          "z": {
+            "future_label_rmse_mps2": 0.1231720869058137,
+            "zero_lag_correlation": 0.17241340228721452,
+            "mean_coherence_1_to_3_hz": 0.8259944442569613,
+            "phase_label_relative_to_prediction_deg_1_to_3_hz": 38.216707146713105
+          }
+        }
+      },
+      "future_xy_label_rmse_change_pct": -17.601382505626074,
+      "force_rms_xy_change_pct": -11.568494509685312
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C04_W14",
+      "arm": "GRU_NCMD",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\gru_ncmd_tracking_v1\\runs\\DL1018_VAL_T2_C04_W14\\raw_run.mat",
+      "raw_sha256": "abd7d4203e07b3435c297bea95499dbedd45443fe03857b14e052f6f11ab0987",
+      "baseline_rho_0_01": {
+        "rho": 0.01,
+        "tau_s": 1.0,
+        "baseline_reconstruction_max_abs_weight_before": 3.3306690738754696e-16,
+        "baseline_reconstruction_max_abs_weight_after": 3.3306690738754696e-16,
+        "baseline_reconstruction_max_abs_applied_accel": 6.661338147750939e-16,
+        "future_pair_count": 1967,
+        "future_pair_lead_ms": 10.0,
+        "future_label_vector_rmse_xy_mps2": 0.4400445549740316,
+        "future_label_vector_rmse_xyz_mps2": 0.45713831709473973,
+        "force_rms_xy_N": 0.5092824339919366,
+        "force_rms_xyz_N": 0.5241350518084373,
+        "axis": {
+          "x": {
+            "future_label_rmse_mps2": 0.4271514617275488,
+            "zero_lag_correlation": 0.5713242943581066,
+            "mean_coherence_1_to_3_hz": 0.5081369383271934,
+            "phase_label_relative_to_prediction_deg_1_to_3_hz": -7.828198007034636
+          },
+          "y": {
+            "future_label_rmse_mps2": 0.10573948697772244,
+            "zero_lag_correlation": 0.7929624787892404,
+            "mean_coherence_1_to_3_hz": 0.2500182069581289,
+            "phase_label_relative_to_prediction_deg_1_to_3_hz": 42.13819394195522
+          },
+          "z": {
+            "future_label_rmse_mps2": 0.12383953566578502,
+            "zero_lag_correlation": 0.040583574740723834,
+            "mean_coherence_1_to_3_hz": 0.8067552180973584,
+            "phase_label_relative_to_prediction_deg_1_to_3_hz": 35.12239227639931
+          }
+        }
+      },
+      "candidate_rho_0_1": {
+        "rho": 0.1,
+        "tau_s": 0.09999999999999999,
+        "baseline_reconstruction_max_abs_weight_before": 0.7257673611465183,
+        "baseline_reconstruction_max_abs_weight_after": 0.0,
+        "baseline_reconstruction_max_abs_applied_accel": 0.4693371363936887,
+        "future_pair_count": 1967,
+        "future_pair_lead_ms": 10.0,
+        "future_label_vector_rmse_xy_mps2": 0.3623949720631504,
+        "future_label_vector_rmse_xyz_mps2": 0.3828459748063831,
+        "force_rms_xy_N": 0.451322737821948,
+        "force_rms_xyz_N": 0.469329156427518,
+        "axis": {
+          "x": {
+            "future_label_rmse_mps2": 0.3530775954349135,
+            "zero_lag_correlation": 0.577268812472981,
+            "mean_coherence_1_to_3_hz": 0.42485927942558466,
+            "phase_label_relative_to_prediction_deg_1_to_3_hz": 24.371660489488594
+          },
+          "y": {
+            "future_label_rmse_mps2": 0.0816475803594395,
+            "zero_lag_correlation": 0.8759393364279715,
+            "mean_coherence_1_to_3_hz": 0.37956921406595506,
+            "phase_label_relative_to_prediction_deg_1_to_3_hz": 30.022473218125217
+          },
+          "z": {
+            "future_label_rmse_mps2": 0.12345413986091401,
+            "zero_lag_correlation": 0.17528282284801977,
+            "mean_coherence_1_to_3_hz": 0.9210451944490028,
+            "phase_label_relative_to_prediction_deg_1_to_3_hz": 35.845321193346464
+          }
+        }
+      },
+      "future_xy_label_rmse_change_pct": -17.645845638395308,
+      "force_rms_xy_change_pct": -11.380658805700394
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C01_W14",
+      "arm": "GRU_original",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_full72_v1\\runs\\DL1018_VAL_T3_C01_W14\\raw_run.mat",
+      "raw_sha256": "76afcf331ca14b169977810c74c8a8680f57d9747a9a3b9a46285804a98a0503",
+      "baseline_rho_0_01": {
+        "rho": 0.01,
+        "tau_s": 1.0,
+        "baseline_reconstruction_max_abs_weight_before": 2.220446049250313e-16,
+        "baseline_reconstruction_max_abs_weight_after": 2.220446049250313e-16,
+        "baseline_reconstruction_max_abs_applied_accel": 6.661338147750939e-16,
+        "future_pair_count": 1967,
+        "future_pair_lead_ms": 10.0,
+        "future_label_vector_rmse_xy_mps2": 0.4808019487103358,
+        "future_label_vector_rmse_xyz_mps2": 0.5050473117719092,
+        "force_rms_xy_N": 0.577871960460894,
+        "force_rms_xyz_N": 0.5899218696793339,
+        "axis": {
+          "x": {
+            "future_label_rmse_mps2": 0.4689637376236254,
+            "zero_lag_correlation": 0.5706017008640462,
+            "mean_coherence_1_to_3_hz": 0.701542770481897,
+            "phase_label_relative_to_prediction_deg_1_to_3_hz": -3.035456974563647
+          },
+          "y": {
+            "future_label_rmse_mps2": 0.1060354972532117,
+            "zero_lag_correlation": 0.8796258068376597,
+            "mean_coherence_1_to_3_hz": 0.5216387149838153,
+            "phase_label_relative_to_prediction_deg_1_to_3_hz": 20.614804744148422
+          },
+          "z": {
+            "future_label_rmse_mps2": 0.15460360036032705,
+            "zero_lag_correlation": 0.25917484237391947,
+            "mean_coherence_1_to_3_hz": 0.8321805670260831,
+            "phase_label_relative_to_prediction_deg_1_to_3_hz": 38.9796405154426
+          }
+        }
+      },
+      "candidate_rho_0_1": {
+        "rho": 0.1,
+        "tau_s": 0.09999999999999999,
+        "baseline_reconstruction_max_abs_weight_before": 0.8315987632462255,
+        "baseline_reconstruction_max_abs_weight_after": 0.0,
+        "baseline_reconstruction_max_abs_applied_accel": 0.5276841626751676,
+        "future_pair_count": 1967,
+        "future_pair_lead_ms": 10.0,
+        "future_label_vector_rmse_xy_mps2": 0.38631241656616105,
+        "future_label_vector_rmse_xyz_mps2": 0.40784609788861564,
+        "force_rms_xy_N": 0.5097794755119612,
+        "force_rms_xyz_N": 0.5279185720090067,
+        "axis": {
+          "x": {
+            "future_label_rmse_mps2": 0.37602954740928807,
+            "zero_lag_correlation": 0.5960577219889581,
+            "mean_coherence_1_to_3_hz": 0.45619831782489584,
+            "phase_label_relative_to_prediction_deg_1_to_3_hz": 26.23337066783321
+          },
+          "y": {
+            "future_label_rmse_mps2": 0.08853848128555826,
+            "zero_lag_correlation": 0.9024271258862837,
+            "mean_coherence_1_to_3_hz": 0.5418659799091284,
+            "phase_label_relative_to_prediction_deg_1_to_3_hz": 19.70230946970053
+          },
+          "z": {
+            "future_label_rmse_mps2": 0.1307713897218465,
+            "zero_lag_correlation": 0.5832730470182202,
+            "mean_coherence_1_to_3_hz": 0.9173776352014759,
+            "phase_label_relative_to_prediction_deg_1_to_3_hz": 24.69858742234179
+          }
+        }
+      },
+      "future_xy_label_rmse_change_pct": -19.652485269168697,
+      "force_rms_xy_change_pct": -11.783316998911687
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C01_W14",
+      "arm": "GRU_NCMD",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\gru_ncmd_tracking_v1\\runs\\DL1018_VAL_T3_C01_W14\\raw_run.mat",
+      "raw_sha256": "42791e3630067cc0a17692de7bcb08eeec4f77a5402e752ca30aea06a42f7df5",
+      "baseline_rho_0_01": {
+        "rho": 0.01,
+        "tau_s": 1.0,
+        "baseline_reconstruction_max_abs_weight_before": 2.220446049250313e-16,
+        "baseline_reconstruction_max_abs_weight_after": 2.220446049250313e-16,
+        "baseline_reconstruction_max_abs_applied_accel": 8.881784197001252e-16,
+        "future_pair_count": 1967,
+        "future_pair_lead_ms": 10.0,
+        "future_label_vector_rmse_xy_mps2": 0.48420555550089767,
+        "future_label_vector_rmse_xyz_mps2": 0.5085059320339533,
+        "force_rms_xy_N": 0.5776292068010266,
+        "force_rms_xyz_N": 0.589640374866853,
+        "axis": {
+          "x": {
+            "future_label_rmse_mps2": 0.4738329728871424,
+            "zero_lag_correlation": 0.5625011345419727,
+            "mean_coherence_1_to_3_hz": 0.4009004331000924,
+            "phase_label_relative_to_prediction_deg_1_to_3_hz": -7.737526969507398
+          },
+          "y": {
+            "future_label_rmse_mps2": 0.09968617648834496,
+            "zero_lag_correlation": 0.8791870743977948,
+            "mean_coherence_1_to_3_hz": 0.39407838140097273,
+            "phase_label_relative_to_prediction_deg_1_to_3_hz": 12.288972030885013
+          },
+          "z": {
+            "future_label_rmse_mps2": 0.15531665376187676,
+            "zero_lag_correlation": 0.2505242929094512,
+            "mean_coherence_1_to_3_hz": 0.8304917309694178,
+            "phase_label_relative_to_prediction_deg_1_to_3_hz": 42.197241361904375
+          }
+        }
+      },
+      "candidate_rho_0_1": {
+        "rho": 0.1,
+        "tau_s": 0.09999999999999999,
+        "baseline_reconstruction_max_abs_weight_before": 0.843456381610817,
+        "baseline_reconstruction_max_abs_weight_after": 0.0,
+        "baseline_reconstruction_max_abs_applied_accel": 0.543948118584045,
+        "future_pair_count": 1967,
+        "future_pair_lead_ms": 10.0,
+        "future_label_vector_rmse_xy_mps2": 0.3894957729497583,
+        "future_label_vector_rmse_xyz_mps2": 0.4108046575996994,
+        "force_rms_xy_N": 0.51013533079532,
+        "force_rms_xyz_N": 0.52832290314312,
+        "axis": {
+          "x": {
+            "future_label_rmse_mps2": 0.3795129522134598,
+            "zero_lag_correlation": 0.5907728072152316,
+            "mean_coherence_1_to_3_hz": 0.4710254484810181,
+            "phase_label_relative_to_prediction_deg_1_to_3_hz": 30.560485347643446
+          },
+          "y": {
+            "future_label_rmse_mps2": 0.08761778499798882,
+            "zero_lag_correlation": 0.893753924053514,
+            "mean_coherence_1_to_3_hz": 0.3648356184504261,
+            "phase_label_relative_to_prediction_deg_1_to_3_hz": 14.253175904217265
+          },
+          "z": {
+            "future_label_rmse_mps2": 0.1305890866798473,
+            "zero_lag_correlation": 0.5869439564636546,
+            "mean_coherence_1_to_3_hz": 0.9054534756520957,
+            "phase_label_relative_to_prediction_deg_1_to_3_hz": 24.634306006769183
+          }
+        }
+      },
+      "future_xy_label_rmse_change_pct": -19.55982980268879,
+      "force_rms_xy_change_pct": -11.684636997407905
+    }
+  ]
+}

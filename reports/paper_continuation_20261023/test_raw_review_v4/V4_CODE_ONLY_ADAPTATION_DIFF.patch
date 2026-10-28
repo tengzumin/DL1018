@@ -1,0 +1,790 @@
+--- reports/paper_continuation_20261023/test_raw_review_v3/audit_test48_raw_v3.py
++++ reports/paper_continuation_20261023/test_raw_review_v4/audit_test48_raw_v4.py
+@@ -1,5 +1,5 @@
+ #!/usr/bin/env python3
+-"""Review the mixed v3-B48 / v5-five-method TEST48 raw package.
++"""Review the mixed v3-B48 / v9-five-method TEST48 raw package.
+ 
+ Import is inert. The real reviewer CLI is intended for use only after every
+ formal method process has a natural OS0 receipt. --self-check uses synthetic
+@@ -24,31 +24,32 @@
+ ROOT = Path(__file__).resolve().parents[3]
+ V1_READER = ROOT / "reports" / "paper_continuation_20261023" / "test_raw_review_v1" / "audit_test48_raw_v1.py"
+ V1_READER_SHA256 = "31229d1b9d137ec2847b25b7a32c3d0183e517fac963dc2ed01de74bcde11d45"
+-TASKBOOK = ROOT / "reports" / "paper_continuation_20261023" / "TEST_UNSTARTED_DEPENDENCY_REPAIR_TASKBOOK_v3_ZH.md"
+-TASKBOOK_SHA256 = "2099a4c2c262bc8f3b98aa7e7cfaef631e276d360d1152e390b940d04ccf54c9"
++TASKBOOK = ROOT / "reports" / "paper_continuation_20261023" / "TEST_STAGE_PATH_CONTRACT_REPAIR_TASKBOOK_v2_ZH.md"
++TASKBOOK_SHA256 = "3d93cd4419cc86d8e1fa7e9e64b34399320f4a8a46726a2423e403e4093c0d9f"
+ DEPENDENCY_REVIEW = ROOT / "reports" / "paper_continuation_20261023" / "test_dependency_review_v1" / "DEPENDENCY_REVIEW_v1.json"
+ DEPENDENCY_REVIEW_SHA256 = "dc9d9ab261bc13ee08fd733b961acf56396e1da8eb945fc15455a1b2b2d3d4b7"
+ 
+ V3_TASK = ROOT / "experiments" / "c5_test48_v3"
+ V3_REPORT = ROOT / "reports" / "paper_continuation_20261023" / "test_entry_v3"
+-V5_TASK = ROOT / "experiments" / "c5_test48_v5"
+-V5_REPORT = ROOT / "reports" / "paper_continuation_20261023" / "test_entry_v5"
+-V5_OUTPUT = V5_TASK / "runs"
+-V5_ENTRY = V5_TASK / "test48_entry_v4.m"
+-V5_LAUNCHER = V5_TASK / "RUN_TEST48_EXACT_v1.ps1"
+-V5_CONTRACT = V5_TASK / "TEST48_RUN_CONTRACT_v4.json"
+-V5_MANIFEST = V5_REPORT / "TEST_METHOD_SOURCE_MANIFEST_v4.json"
+-V5_RUN_RELEASE = V5_REPORT / "RUN_UNSTARTED_TEST_PARENT_RELEASE_v1.json"
+-# Filled from the final root-reviewed v5 source bundle before the reader is frozen.
+-V5_ENTRY_SHA256 = "e69b273fb5c259690009ecc4346cf3a10ee69424806315c68a78bfcb4ac0afe5"
+-V5_LAUNCHER_SHA256 = "7417d8e104e8771b6451eac01e81e4916b28bb6c25d5dc95d125c6e97f7731ff"
+-V5_CONTRACT_SHA256 = "c5bdf35253d52f50bc9436c3420358315065597be201f7a7876effc83f06bace"
+-V5_MANIFEST_SHA256 = "0439d7fced47a2cdb9eee740955fc49229ecceb54ff03361e1b89896bec88b4e"
+-V5_CODE_ONLY_RELEASE = ROOT / "reports" / "paper_continuation_20261023" / "TEST_UNSTARTED_DEPENDENCY_REPAIR_CODE_ONLY_RELEASE_v3.json"
+-V5_CODE_ONLY_RELEASE_SHA256 = "b58e07f9d0cf57bc916ed6c788d106415de1ca5bd0047ca6477ae6686fa98335"
++V9_TASK = ROOT / "experiments" / "c5_test48_v9"
++V9_REPORT = ROOT / "reports" / "paper_continuation_20261023" / "test_entry_v9"
++V9_OUTPUT = V9_TASK / "runs"
++V9_ENTRY = V9_TASK / "test48_entry_v4.m"
++V9_LAUNCHER = V9_TASK / "RUN_TEST48_EXACT_v1.ps1"
++V9_CONTRACT = V9_TASK / "TEST48_RUN_CONTRACT_v4.json"
++V9_MANIFEST = V9_REPORT / "TEST_METHOD_SOURCE_MANIFEST_v4.json"
++V9_RUN_RELEASE = V9_REPORT / "RUN_UNSTARTED_TEST_PARENT_RELEASE_v1.json"
++V9_RUN_RELEASE_SHA256 = "59fae7920eb498d06f29c5c8d7eb1191843de79a640b6ec46e5c40fd32b1d06a"
++# Filled from the final root-reviewed v9 source bundle before the reader is frozen.
++V9_ENTRY_SHA256 = "b9906578088319c8108a360c140c163b8af9080f311613489a20a48a8f609fd1"
++V9_LAUNCHER_SHA256 = "7034e2e6d5459fb33e9a66dcc2ad32c80677b7850a1eacd510b6d1648d631c8c"
++V9_CONTRACT_SHA256 = "d4132d2a00693bde5ca234e4ac7cf07ba2695971a086b2275539842d7f5c3210"
++V9_MANIFEST_SHA256 = "f8998debf70835d0fb4dcab8c9d8fe77ef1702be80559622badd3dafa1b77d80"
++V9_CODE_ONLY_RELEASE = ROOT / "reports" / "paper_continuation_20261023" / "TEST_STAGE_PATH_CONTRACT_REPAIR_CODE_ONLY_RELEASE_v2.json"
++V9_CODE_ONLY_RELEASE_SHA256 = "9f4876e732d00415b8be5a14383e36f74dab961f1aabd7a9571377ace9bd7732"
+ 
+ # Failed v4 preparation and its diagnostic are preserved as separate history;
+-# neither belongs to the v5 success batch or the 288 scored rows.
++# neither belongs to the v9 success batch or the 288 scored rows.
+ V4_HISTORY_TASK = ROOT / "experiments" / "c5_test48_v4"
+ V4_HISTORY_REPORT = ROOT / "reports" / "paper_continuation_20261023" / "test_entry_v4"
+ V4_HISTORY_ENTRY_SHA256 = "b87848d474c2f30d7774a9833a61d54d4629595ae445e556010abef2995541f6"
+@@ -196,9 +197,34 @@
+         require(old.get("alias") == new.get("alias") and int(new.get("order", -1)) == i
+                 and new.get("v3_method_id") == mid and int(new.get("v3_order", -1)) == i,
+                 f"v3/v4 method identity or order changed: {mid}")
+-        # These fields bind the same learned model, snapshot, and method contract.
+-        for key in ("cfg_opts_snapshot_path", "cfg_opts_snapshot_sha256", "run_contract_path", "run_contract_sha256"):
+-            require(str(old.get(key, "")) == str(new.get(key, "")), f"v3/v4 {mid} changed {key}")
++        # Deployed contracts/models stay frozen; only the two historical references were corrected.
++        for key in ("run_contract_path", "run_contract_sha256"):
++            require(str(old.get(key, "")) == str(new.get(key, "")), f"v3/v9 {mid} changed {key}")
++        corrected_shas = {
++            "CORRECTED_DSSM14_G12_R32": ("1b6417b4369f5b5618d1ee81ac8595de1bb6d607e0fdd04ad2913748f6986cde",
++                                       "3b798c8624cc10cc1ddf3b3b1000099bc62e42e8430af92a42b0fa467385743e"),
++            "CORRECTED_KAN14_G12_R32": ("b10d1de1a0a0307659c3e1bb0f608aa8a4e0da109991493dbc327104404bbda9",
++                                      "0012bf34074ac2f034517fbb65237bd667b31e7e539987601e4d16e0b26c9525"),
++        }
++        if mid in corrected_shas:
++            superseded = [row for row in v4_manifest.get("v6_incorrect_dk_reference_bindings", [])
++                          if row.get("method_id") == mid]
++            corrected = [row for row in v4_manifest.get("engineering_dev2", []) if row.get("method_id") == mid]
++            require(len(superseded) == len(corrected) == 1, f"Missing exact corrected reference bridge: {mid}")
++            before, after = corrected_shas[mid]
++            require(old.get("cfg_opts_snapshot_sha256", "").lower() == before
++                    and superseded[0].get("cfg_opts_snapshot_sha256", "").lower() == before
++                    and canonical_path(old["cfg_opts_snapshot_path"], v1)
++                        == canonical_path(superseded[0]["cfg_opts_snapshot_path"], v1),
++                    f"Superseded historical reference identity changed: {mid}")
++            require(new.get("cfg_opts_snapshot_sha256", "").lower() == after
++                    and corrected[0].get("run_start_sha256", "").lower() == after
++                    and canonical_path(new["cfg_opts_snapshot_path"], v1)
++                        == canonical_path(corrected[0]["run_start_path"], v1),
++                    f"Corrected historical reference identity changed: {mid}")
++        else:
++            for key in ("cfg_opts_snapshot_path", "cfg_opts_snapshot_sha256"):
++                require(str(old.get(key, "")) == str(new.get(key, "")), f"v3/v9 {mid} changed {key}")
+         require(refs_map(old.get("model_refs", []), v1, f"v3 {mid} model refs")
+                 == refs_map(new.get("model_refs", []), v1, f"v4 {mid} model refs"),
+                 f"v3/v4 {mid} model or normalizer identity changed")
+@@ -249,22 +275,22 @@
+         "method_and_shared_source_reference_count": method_ref_count + len(v4_manifest.get("shared_source_refs", [])),
+         "global_platform_reference_count": len(global_refs),
+         "global_platform_lock_sha256": global_sha,
+-        "D_K_source_change": "Each corrected method adds exactly the pre-existing PCF filter helper; all other source/model/config identities match v3.",
++        "D_K_source_change": "Each corrected method adds exactly the locked PCF helper. Only the two historical reference paths/SHAs are corrected to r002/r001; frozen TEST cfgpack bytes and all model/source identities stay unchanged.",
+         "B_behavior": "Reuse all 48 v3 raw records; no B rerun.",
+     }
+ 
+ 
+ def verify_v4_code_and_manifest(v1) -> tuple[dict, dict, dict, dict]:
+-    require(sha256_file(TASKBOOK).lower() == TASKBOOK_SHA256, "v5 taskbook SHA changed")
++    require(sha256_file(TASKBOOK).lower() == TASKBOOK_SHA256, "v9 taskbook SHA changed")
+     require(sha256_file(DEPENDENCY_REVIEW).lower() == DEPENDENCY_REVIEW_SHA256,
+             "Independent dependency review SHA changed")
+-    require(sha256_file(V5_ENTRY).lower() == V5_ENTRY_SHA256
+-            and sha256_file(V5_LAUNCHER).lower() == V5_LAUNCHER_SHA256
+-            and sha256_file(V5_CONTRACT).lower() == V5_CONTRACT_SHA256
+-            and sha256_file(V5_MANIFEST).lower() == V5_MANIFEST_SHA256,
+-            "Final root-reviewed v5 source/contract/manifest SHA lock changed")
+-    v4_contract = load_json(V5_CONTRACT)
+-    v4_manifest = load_json(V5_MANIFEST)
++    require(sha256_file(V9_ENTRY).lower() == V9_ENTRY_SHA256
++            and sha256_file(V9_LAUNCHER).lower() == V9_LAUNCHER_SHA256
++            and sha256_file(V9_CONTRACT).lower() == V9_CONTRACT_SHA256
++            and sha256_file(V9_MANIFEST).lower() == V9_MANIFEST_SHA256,
++            "Final root-reviewed v9 source/contract/manifest SHA lock changed")
++    v4_contract = load_json(V9_CONTRACT)
++    v4_manifest = load_json(V9_MANIFEST)
+     v3_manifest = load_json(v1.SOURCE_MANIFEST)
+     v3_contract = load_json(v1.CONTRACT)
+     require(v4_contract.get("schema") == "TEST48_RUN_CONTRACT_V4"
+@@ -274,18 +300,18 @@
+             and v4_manifest.get("test_accessed") is False and v4_manifest.get("plant_started") is False,
+             "v4 source manifest is not a pre-run source lock")
+     v3_manifest_sha = sha256_file(v1.SOURCE_MANIFEST)
+-    v4_manifest_sha = sha256_file(V5_MANIFEST)
+-    v4_contract_sha = sha256_file(V5_CONTRACT)
++    v4_manifest_sha = sha256_file(V9_MANIFEST)
++    v4_contract_sha = sha256_file(V9_CONTRACT)
+     require(v3_manifest_sha.lower() == V3_MANIFEST_SHA256
+             and sha256_file(v1.CONTRACT).lower() == V3_CONTRACT_SHA256,
+             "Frozen v3 source manifest or contract SHA changed")
+     require(v4_contract.get("method_source_manifest_sha256", "").lower() == v4_manifest_sha.lower()
+             and v4_manifest.get("v3_source_manifest_sha256", "").lower() == v3_manifest_sha.lower(),
+-            "v5 contract/manifest no longer bind the exact v3 source identity")
++            "v9 contract/manifest no longer bind the exact v3 source identity")
+     require(v4_contract.get("v3_source_manifest_sha256", "").lower() == v3_manifest_sha.lower(),
+-            "v5 contract does not bind the v3 source manifest")
++            "v9 contract does not bind the v3 source manifest")
+     for owner, key_path, key_sha, path, expected_sha, label in (
+-        (v4_contract, "taskbook_path", "taskbook_sha256", TASKBOOK, TASKBOOK_SHA256, "v5 taskbook"),
++        (v4_contract, "taskbook_path", "taskbook_sha256", TASKBOOK, TASKBOOK_SHA256, "v9 taskbook"),
+         (v4_contract, "dependency_review_path", "dependency_review_sha256", DEPENDENCY_REVIEW,
+          DEPENDENCY_REVIEW_SHA256, "dependency review"),
+     ):
+@@ -295,9 +321,9 @@
+     require(isinstance(v3_inputs, dict), "v4 manifest lacks exact v3 frozen-input binding")
+     for field, expected in EXPECTED_FROZEN_INPUTS.items():
+         require(str(v3_inputs.get(field, "")).lower() == expected.lower(),
+-                f"v5 source manifest changed frozen-input identity {field}")
++                f"v9 source manifest changed frozen-input identity {field}")
+     contract_inputs = v4_contract.get("v3_frozen_inputs")
+-    require(isinstance(contract_inputs, dict), "v5 contract lacks inherited v3 frozen-input binding")
++    require(isinstance(contract_inputs, dict), "v9 contract lacks inherited v3 frozen-input binding")
+     contract_input_aliases = {
+         "shared_scenes_sha256": "shared_scenes_sha256",
+         "cfg_opts_sha256": "cfg_opts_sha256",
+@@ -308,7 +334,7 @@
+     }
+     for key, manifest_field in contract_input_aliases.items():
+         require(str(contract_inputs.get(key, "")).lower() == str(v3_inputs.get(manifest_field, "")).lower(),
+-                f"v5 contract/manifest input binding differs for {key}")
++                f"v9 contract/manifest input binding differs for {key}")
+     execution = v4_contract.get("execution", {})
+     manifest_execution = v4_manifest.get("v4_execution", {})
+     require(execution.get("unstarted_method_ids") == list(V4_METHODS)
+@@ -317,66 +343,66 @@
+             and manifest_execution.get("run_unstarted_method_ids") == list(V4_METHODS)
+             and manifest_execution.get("B48_reused") is True
+             and int(manifest_execution.get("max_unique_plant_calls", -1)) == 240,
+-            "v5 execution scope must contain only five unstarted methods and reuse B48")
++            "v9 execution scope must contain only five unstarted methods and reuse B48")
+     require(v4_contract.get("method_order") and tuple(row.get("id") for row in v4_contract["method_order"]) == EXPECTED_METHODS,
+-            "v5 contract method order changed")
++            "v9 contract method order changed")
+     require(tuple(row.get("alias") for row in v4_contract["method_order"])
+             == tuple(row.get("alias") for row in v4_manifest["methods"]),
+-            "v5 contract/manifest method aliases changed")
++            "v9 contract/manifest method aliases changed")
+     lineage = validate_method_lineage(v3_manifest, v4_manifest, v1)
+     require(v4_contract.get("global_platform_lock_sha256", "").lower()
+             == v4_manifest.get("global_platform_lock_sha256", "").lower()
+             and int(v4_contract.get("global_platform_ref_count", -1)) == len(v4_manifest.get("global_platform_refs", [])),
+-            "v5 contract and manifest global platform lock/count differ")
++            "v9 contract and manifest global platform lock/count differ")
+     # This code-only release grants no runtime permission; separate stage releases bind the final files.
+     code_release_path = canonical_path(v4_contract.get("code_only_release_path", ""), v1)
+-    require(code_release_path == V5_CODE_ONLY_RELEASE.resolve(strict=True),
+-            "v5 contract points at an unexpected code-only release")
+-    require_sha_binding(v4_contract, "code_only_release_sha256", code_release_path, "v5 code-only release")
+-    require(sha256_file(code_release_path).lower() == V5_CODE_ONLY_RELEASE_SHA256,
+-            "v5 code-only release SHA differs from the approved code-only record")
++    require(code_release_path == V9_CODE_ONLY_RELEASE.resolve(strict=True),
++            "v9 contract points at an unexpected code-only release")
++    require_sha_binding(v4_contract, "code_only_release_sha256", code_release_path, "v9 code-only release")
++    require(sha256_file(code_release_path).lower() == V9_CODE_ONLY_RELEASE_SHA256,
++            "v9 code-only release SHA differs from the approved code-only record")
+     code_release = load_json(code_release_path)
+-    require(code_release.get("schema") == "TEST_UNSTARTED_DEPENDENCY_REPAIR_CODE_ONLY_RELEASE_V3"
++    require(code_release.get("schema") == "TEST_STAGE_PATH_CONTRACT_REPAIR_CODE_ONLY_RELEASE_V2"
+             and code_release.get("status") == "APPROVED_CODE_ONLY"
+             and not any(bool(code_release.get(key, False)) for key in
+                         ("MATLAB_authorized", "Plant_authorized", "TEST_generation_authorized", "training_authorized")),
+-            "v5 code-only parent release contains execution authorization")
++            "v9 code-only parent release contains execution authorization")
+     require(code_release.get("taskbook_sha256", "").lower() == TASKBOOK_SHA256,
+-            "v5 code-only parent does not bind the taskbook")
++            "v9 code-only parent does not bind the taskbook")
+     require(code_release.get("allowed_write_directories") == [
+-                "experiments/c5_test48_v5", "reports/paper_continuation_20261023/test_entry_v5"],
+-            "v5 code-only release write scope differs from the isolated code directories")
++                "experiments/c5_test48_v9", "reports/paper_continuation_20261023/test_entry_v9"],
++            "v9 code-only release write scope differs from the isolated code directories")
+     entry_path = canonical_path(v4_contract.get("entry_path", ""), v1)
+-    require(entry_path == V5_ENTRY.resolve(strict=True), "v5 contract entry path differs from the isolated v5 entry")
+-    require(v4_contract.get("entry_sha256", "").lower() == V5_ENTRY_SHA256,
+-            "v5 contract entry SHA does not bind the final pinned entry")
++    require(entry_path == V9_ENTRY.resolve(strict=True), "v9 contract entry path differs from the isolated v9 entry")
++    require(v4_contract.get("entry_sha256", "").lower() == V9_ENTRY_SHA256,
++            "v9 contract entry SHA does not bind the final pinned entry")
+     launcher = resolve_v4_launcher(code_release, v4_manifest, v1, v4_contract)
+-    require(path_equal(launcher, V5_LAUNCHER.resolve(strict=True)),
+-            "v5 launcher path differs from the final root-reviewed launcher")
+-    require(v4_contract.get("launcher_sha256", "").lower() == V5_LAUNCHER_SHA256,
+-            "v5 contract launcher SHA does not bind the final pinned launcher")
+-    require(sha256_file(launcher).lower() == V5_LAUNCHER_SHA256,
+-            "v5 launcher SHA differs from the final root-reviewed launcher")
++    require(path_equal(launcher, V9_LAUNCHER.resolve(strict=True)),
++            "v9 launcher path differs from the final root-reviewed launcher")
++    require(v4_contract.get("launcher_sha256", "").lower() == V9_LAUNCHER_SHA256,
++            "v9 contract launcher SHA does not bind the final pinned launcher")
++    require(sha256_file(launcher).lower() == V9_LAUNCHER_SHA256,
++            "v9 launcher SHA differs from the final root-reviewed launcher")
+     require(canonical_path(v4_contract.get("method_source_manifest_path", ""), v1)
+-            == V5_MANIFEST.resolve(strict=True), "v5 contract points to a different source manifest")
+-    require(v4_contract.get("method_source_manifest_sha256", "").lower() == V5_MANIFEST_SHA256,
+-            "v5 contract manifest SHA does not bind the final pinned manifest")
++            == V9_MANIFEST.resolve(strict=True), "v9 contract points to a different source manifest")
++    require(v4_contract.get("method_source_manifest_sha256", "").lower() == V9_MANIFEST_SHA256,
++            "v9 contract manifest SHA does not bind the final pinned manifest")
+     require(v4_manifest.get("taskbook_sha256", "").lower() == TASKBOOK_SHA256
+-            and v4_manifest.get("code_only_release_sha256", "").lower() == V5_CODE_ONLY_RELEASE_SHA256,
+-            "v5 manifest does not bind its taskbook and code-only release")
++            and v4_manifest.get("code_only_release_sha256", "").lower() == V9_CODE_ONLY_RELEASE_SHA256,
++            "v9 manifest does not bind its taskbook and code-only release")
+     # Bind manifest to the contract's approved v3 inputs and exact method rows.
+     old_input_index = v1.load_json(v1.INPUT_INDEX)
+     require(old_input_index.get("scene_set_sha256", "").lower() == EXPECTED_FROZEN_INPUTS["scene_set_sha256"],
+             "v3 scene set index identity changed")
+     return v4_contract, v4_manifest, v3_contract, {
+         "v3_source_manifest_sha256": v3_manifest_sha,
+-        "v5_source_manifest_sha256": v4_manifest_sha,
++        "v9_source_manifest_sha256": v4_manifest_sha,
+         "v3_run_contract_sha256": sha256_file(v1.CONTRACT),
+-        "v5_run_contract_sha256": v4_contract_sha,
+-        "v5_entry_sha256": sha256_file(V5_ENTRY),
+-        "v5_launcher_path": str(launcher.resolve()),
+-        "v5_launcher_sha256": sha256_file(launcher),
+-        "v5_contract_sha256": sha256_file(V5_CONTRACT),
++        "v9_run_contract_sha256": v4_contract_sha,
++        "v9_entry_sha256": sha256_file(V9_ENTRY),
++        "v9_launcher_path": str(launcher.resolve()),
++        "v9_launcher_sha256": sha256_file(launcher),
++        "v9_contract_sha256": sha256_file(V9_CONTRACT),
+         "lineage": lineage,
+         "code_only_release_path": str(code_release_path),
+         "code_only_release_sha256": sha256_file(code_release_path),
+@@ -391,24 +417,26 @@
+             if isinstance(value, str) and value:
+                 candidates.append(canonical_path(value, v1))
+     if not candidates:
+-        candidates = sorted(V5_TASK.glob("*.ps1"))
++        candidates = sorted(V9_TASK.glob("*.ps1"))
+     unique = {str(path.resolve(strict=True)).casefold(): path.resolve(strict=True) for path in candidates if path.is_file()}
+     require(len(unique) == 1, "v4 launcher path must be explicit or resolve to one locked .ps1")
+     return next(iter(unique.values()))
+ 
+ 
+ def verify_v4_run_release(v4_contract: dict, code_info: dict, v1) -> tuple[dict, dict]:
+-    release = load_json(V5_RUN_RELEASE)
+-    release_sha = sha256_file(V5_RUN_RELEASE)
++    require(sha256_file(V9_RUN_RELEASE).lower() == V9_RUN_RELEASE_SHA256,
++            "Final v9 formal TEST release SHA changed")
++    release = load_json(V9_RUN_RELEASE)
++    release_sha = sha256_file(V9_RUN_RELEASE)
+     require(release.get("schema") == "TEST48_V4_UNSTARTED_TEST_RELEASE_V1"
+             and release.get("status") == "APPROVED_RUN_UNSTARTED_TEST_V4",
+             "Missing or invalid root-approved v4 unstarted TEST release")
+     for field, expected in (
+         ("taskbook_sha256", TASKBOOK_SHA256),
+-        ("contract_sha256", code_info["v5_run_contract_sha256"]),
+-        ("method_source_manifest_sha256", code_info["v5_source_manifest_sha256"]),
+-        ("entry_sha256", code_info["v5_entry_sha256"]),
+-        ("launcher_sha256", code_info["v5_launcher_sha256"]),
++        ("contract_sha256", code_info["v9_run_contract_sha256"]),
++        ("method_source_manifest_sha256", code_info["v9_source_manifest_sha256"]),
++        ("entry_sha256", code_info["v9_entry_sha256"]),
++        ("launcher_sha256", code_info["v9_launcher_sha256"]),
+     ):
+         require(str(release.get(field, "")).lower() == expected.lower(),
+                 f"v4 root release does not bind {field}")
+@@ -429,7 +457,7 @@
+         ("freeze_os_exit_sha256", EXPECTED_FROZEN_INPUTS["freeze_os_sha256"]),
+     ):
+         require(str(release.get(field, "")).lower() == expected.lower(), f"v4 release changed frozen input binding {field}")
+-    return release, {"path": str(V5_RUN_RELEASE.resolve()), "sha256": release_sha}
++    return release, {"path": str(V9_RUN_RELEASE.resolve()), "sha256": release_sha}
+ 
+ 
+ def verify_v3_failure_history(v1) -> dict[str, Any]:
+@@ -473,7 +501,7 @@
+         "receipt_path": str(receipt_path.resolve()), "receipt_sha256": sha256_file(receipt_path),
+         "method_id": V4_METHODS[0], "scene_id": OLD_DSSM_FAILURE_SCENE,
+         "natural_os_exit_code": 1, "plant_calls": 0, "raw_exists": False,
+-        "first_plant_marker_exists": False, "status": "PRESERVED_PREVIOUS_FAILED_STARTUP_NOT_PART_OF_V5_BATCH",
++        "first_plant_marker_exists": False, "status": "PRESERVED_PREVIOUS_FAILED_STARTUP_NOT_PART_OF_V9_BATCH",
+         "failure_identifier": failure["identifier"], "failure_cause": OLD_DSSM_FAILURE_CAUSE,
+         "failure_record_sha256": sha256_file(attempt / "FAILURE_NO_RETRY_v1.json"),
+         "batch_record_sha256": sha256_file(attempt.parent.parent / "METHOD_BATCH_STATUS_v1.json"),
+@@ -600,9 +628,86 @@
+     }
+ 
+ 
++def verify_v5_v8_history(v1, manifest: dict) -> list[dict[str, Any]]:
++    # Fixed prior processes only; none contributes a successful TEST row.
++    pins = (
++        (5, "PREPARE_NO_PLANT", 0, 0, "6b5b205532f8a9cbca6251ac0882762f2f981e9b04162615b89961dceff08e71"),
++        (5, "ENGINEERING_DSSM", 1, 0, "5d906af25595288e3b94351bd60c7c75544c3fb748513fbfb0f0acc47ec5f661"),
++        (6, "PREPARE_NO_PLANT", 0, 0, "f3ef16282c6479a79adfe20c5b9a73924dc2e48ebbdd2b611d6d5d4a88eb5beb"),
++        (6, "ENGINEERING_DSSM", 1, 1, "33204ba01c1796c7e71497402088ecf501e70cc2c4adc4202c673746116669f5"),
++        (7, "PREPARE_NO_PLANT", 1, 0, "355a6d7373dd3e64d8fa06d2fd911927a9014cca45be21229a294646b4cba3d8"),
++        (8, "PREPARE_NO_PLANT", 1, 0, "004e93d8d3fb094acdb4cee3d4a4b147294fc3c7402b5cf7acf80c6a71ba5878"),
++    )
++    prepare_shas = {5: "07ede6782702e6f5e82fdbc05e73c1f299e8dd96174a12e8043d9942e66bc183",
++                    6: "41eadace795daa0bc7b1bf0a6ea83daeeddb2251b4db74ad57c2f25cc62372c1"}
++    rows = []
++    for version, phase, exit_code, plant_calls, receipt_sha in pins:
++        task = ROOT / "experiments" / f"c5_test48_v{version}"
++        report = ROOT / "reports" / "paper_continuation_20261023" / f"test_entry_v{version}"
++        path = report / f"{phase}_MATLAB_OS_EXIT_v1.json"
++        v1.verify_file(path, receipt_sha, f"preserved v{version} {phase} OS receipt")
++        receipt = v1.load_json(path)
++        prepare = phase == "PREPARE_NO_PLANT"
++        require(receipt.get("schema") == "TEST48V4_MATLAB_OS_EXIT_V1"
++                and receipt.get("mode") == ("PREPARE_NO_PLANT" if prepare else "ENGINEERING_DEV2")
++                and receipt.get("stage") == receipt.get("mode")
++                and receipt.get("method_id") == ("" if prepare else V4_METHODS[0])
++                and receipt.get("matlab_os_exit_code") == exit_code and receipt.get("natural_wait_used") is True
++                and receipt.get("TEST_accessed") is prepare and receipt.get("plant_authorized") is (not prepare),
++                f"Preserved v{version} {phase} process identity/scope changed")
++        require(path_equal(canonical_path(receipt.get("command_file", ""), v1),
++                           task / "RUN_TEST48_EXACT_v1.ps1"), "Historical launcher path changed")
++        for source, field in ((task / "RUN_TEST48_EXACT_v1.ps1", "command_sha256"),
++                              (task / "TEST48_RUN_CONTRACT_v4.json", "contract_sha256"),
++                              (report / "TEST_METHOD_SOURCE_MANIFEST_v4.json", "source_manifest_sha256")):
++            v1.verify_file(source, receipt.get(field, ""), f"v{version} preserved {field}")
++        for field in ("stdout", "stderr"):
++            v1.verify_file(canonical_path(receipt[f"{field}_path"], v1), receipt[f"{field}_sha256"],
++                           f"v{version} preserved {phase} {field}")
++        if prepare and exit_code == 0:
++            result_path = report / "PREPARE_NO_PLANT_RESULT_v1.json"
++            v1.verify_file(result_path, prepare_shas[version], f"v{version} prior prepare result")
++            result = v1.load_json(result_path)
++            require(result.get("status") == "PASS_PREPARE_NO_PLANT" and result.get("plant_calls") == 0
++                    and result.get("training_steps") == 0, "Prior preparation scope changed")
++        elif prepare:
++            evidence = manifest[f"v{version}_prepare_failure_evidence"]
++            require(evidence.get("os_exit_sha256", "").lower() == receipt_sha and evidence.get("plant_calls") == 0,
++                    f"v{version} failed prepare is not retained by the final manifest")
++            require(not (report / "PREPARE_NO_PLANT_RESULT_v1.json").exists()
++                    and not (report / "PREPARE_NO_PLANT_FAILURE_v1.json").exists(),
++                    "Failed pre-body preparation acquired new outputs")
++        else:
++            attempt = task / "engineering_dev2" / "DSSM" / "DL1018_VAL_T1_C00_W07" / "attempt_01"
++            require(not (report / "ENGINEERING_DSSM_RESULT_v1.json").exists(),
++                    "A failed engineering attempt was rewritten as a success")
++            if version == 5:
++                evidence = manifest["v5_dev2_failure_evidence"]
++                require(evidence.get("os_exit_sha256", "").lower() == receipt_sha
++                        and evidence.get("plant_calls") == 0 and not (attempt / "raw_run.mat").exists()
++                        and not (attempt / "run_start.mat").exists()
++                        and not (attempt / "first_plant_step.marker").exists(), "v5 pre-Plant failure changed")
++            else:
++                evidence = manifest["v6_dev2_failure_evidence"]
++                failure_path = canonical_path(evidence["failure_path"], v1)
++                v1.verify_file(failure_path, evidence["failure_sha256"], "preserved v6 engineering failure")
++                failure = v1.load_json(failure_path)
++                require(failure.get("status") == "FAILED_NO_RETRY" and failure.get("plant_calls") == 1
++                        and failure.get("TEST_accessed") is False and failure.get("training_steps") == 0
++                        and failure.get("plant_start_confirmed") is True and failure.get("partial_raw_preserved") is True
++                        and (attempt / "first_plant_step.marker").is_file(), "v6 genuine VAL Plant failure changed")
++                v1.verify_file(canonical_path(evidence["partial_raw_path"], v1), evidence["partial_raw_sha256"],
++                               "preserved failed v6 VAL raw; excluded from TEST scores")
++        rows.append({"method_id": "" if prepare else V4_METHODS[0], "phase": f"PRESERVED_V{version}_{phase}",
++                     "receipt": receipt, "receipt_path": str(path.resolve()), "receipt_sha256": receipt_sha,
++                     "natural_os_exit_code": exit_code, "plant_calls": plant_calls, "training_steps": 0,
++                     "formal_method_block": False, "TEST_performance_row": False})
++    return rows
++
++
+ def verify_stage_preconditions(release: dict, v1, manifest: dict) -> dict[str, Any]:
+-    prepare_result_path = V5_REPORT / "PREPARE_NO_PLANT_RESULT_v1.json"
+-    prepare_os_path = V5_REPORT / "PREPARE_NO_PLANT_MATLAB_OS_EXIT_v1.json"
++    prepare_result_path = V9_REPORT / "PREPARE_NO_PLANT_RESULT_v1.json"
++    prepare_os_path = V9_REPORT / "PREPARE_NO_PLANT_MATLAB_OS_EXIT_v1.json"
+     prepare_result = v1.load_json(prepare_result_path)
+     prepare_os = v1.load_json(prepare_os_path)
+     require(prepare_result.get("schema") == "TEST48_V4_PREPARE_RESULT_V1"
+@@ -610,19 +715,19 @@
+             and prepare_result.get("TEST_accessed") is True
+             and prepare_result.get("plant_calls") == 0 and prepare_result.get("training_steps") == 0
+             and prepare_os.get("matlab_os_exit_code") == 0 and prepare_os.get("natural_wait_used") is True,
+-            "v5 no-Plant preparation result/OS0 receipt is incomplete")
++            "v9 no-Plant preparation result/OS0 receipt is incomplete")
+     require(prepare_os.get("schema") == "TEST48V4_MATLAB_OS_EXIT_V1"
+             and prepare_os.get("mode") == "PREPARE_NO_PLANT" and prepare_os.get("stage") == "PREPARE_NO_PLANT"
+             and prepare_os.get("method_id") == "" and prepare_os.get("process_scope") == "ONE_STAGE_MATLAB_PROCESS"
+             and prepare_os.get("plant_authorized") is False and prepare_os.get("TEST_accessed") is True
+             and prepare_os.get("thread_argument") == "-singleCompThread"
+-            and prepare_os.get("command_sha256", "").lower() == V5_LAUNCHER_SHA256
+-            and str(prepare_os.get("command_file", "")).casefold() == str(V5_LAUNCHER.resolve()).casefold()
+-            and prepare_os.get("contract_sha256", "").lower() == V5_CONTRACT_SHA256
+-            and prepare_os.get("source_manifest_sha256", "").lower() == V5_MANIFEST_SHA256,
+-            "v5 preparation process receipt mode/Plant scope changed")
+-    require_sha_binding(release, "prepare_result_sha256", prepare_result_path, "v5 prepare result")
+-    require_sha_binding(release, "prepare_os_exit_sha256", prepare_os_path, "v5 prepare OS receipt")
++            and prepare_os.get("command_sha256", "").lower() == V9_LAUNCHER_SHA256
++            and str(prepare_os.get("command_file", "")).casefold() == str(V9_LAUNCHER.resolve()).casefold()
++            and prepare_os.get("contract_sha256", "").lower() == V9_CONTRACT_SHA256
++            and prepare_os.get("source_manifest_sha256", "").lower() == V9_MANIFEST_SHA256,
++            "v9 preparation process receipt mode/Plant scope changed")
++    require_sha_binding(release, "prepare_result_sha256", prepare_result_path, "v9 prepare result")
++    require_sha_binding(release, "prepare_os_exit_sha256", prepare_os_path, "v9 prepare OS receipt")
+     stages = [{"name": "PREPARE_NO_PLANT", "result_path": str(prepare_result_path.resolve()),
+                "result_sha256": sha256_file(prepare_result_path), "os_receipt_path": str(prepare_os_path.resolve()),
+                "os_receipt_sha256": sha256_file(prepare_os_path), "natural_os_exit_code": 0}]
+@@ -634,11 +739,11 @@
+             helper_refs.extend(ref for ref in method["source_refs"]
+                                if Path(str(ref["path"])).name.casefold() == "position_filter_realization_pcf_step_v3_5.m")
+     require(len(helper_refs) == 2 and all(ref.get("sha256", "").lower() == FILTER_HELPER_SHA256 for ref in helper_refs),
+-            "v5 engineering helper path/SHA is not uniquely bound for DSSM and KAN")
++            "v9 engineering helper path/SHA is not uniquely bound for DSSM and KAN")
+     helper_path = v1.resolve_repo_path(helper_refs[0]["path"])
+     for alias, mid in (("DSSM", V4_METHODS[0]), ("KAN", V4_METHODS[1])):
+-        result_path = V5_REPORT / f"ENGINEERING_{alias}_RESULT_v1.json"
+-        os_path = V5_REPORT / f"ENGINEERING_{alias}_MATLAB_OS_EXIT_v1.json"
++        result_path = V9_REPORT / f"ENGINEERING_{alias}_RESULT_v1.json"
++        os_path = V9_REPORT / f"ENGINEERING_{alias}_MATLAB_OS_EXIT_v1.json"
+         result = v1.load_json(result_path)
+         receipt = v1.load_json(os_path)
+         require(result.get("schema") == "TEST48V4_ENGINEERING_RESULT_V1"
+@@ -655,17 +760,27 @@
+                 and result.get("global_platform_lock_sha256", "").lower()
+                     == manifest.get("global_platform_lock_sha256", "").lower()
+                 and receipt.get("matlab_os_exit_code") == 0 and receipt.get("natural_wait_used") is True,
+-                f"{alias} v5 DEV2 engineering replay did not pass its complete numeric comparison and natural OS0")
++                f"{alias} v9 DEV2 engineering replay did not pass its complete numeric comparison and natural OS0")
+         require(receipt.get("schema") == "TEST48V4_MATLAB_OS_EXIT_V1"
+                 and receipt.get("mode") == "ENGINEERING_DEV2" and receipt.get("stage") == "ENGINEERING_DEV2"
+                 and receipt.get("method_id") == mid and receipt.get("plant_authorized") is True
+                 and receipt.get("process_scope") == "ONE_SEQUENTIAL_METHOD_MATLAB_PROCESS"
+                 and receipt.get("TEST_accessed") is False and receipt.get("thread_argument") == "-singleCompThread"
+-                and receipt.get("command_sha256", "").lower() == V5_LAUNCHER_SHA256
+-                and str(receipt.get("command_file", "")).casefold() == str(V5_LAUNCHER.resolve()).casefold()
+-                and receipt.get("contract_sha256", "").lower() == V5_CONTRACT_SHA256
+-                and receipt.get("source_manifest_sha256", "").lower() == V5_MANIFEST_SHA256,
+-                f"{alias} v5 DEV2 process receipt does not identify its fixed engineering-only scope")
++                and receipt.get("command_sha256", "").lower() == V9_LAUNCHER_SHA256
++                and str(receipt.get("command_file", "")).casefold() == str(V9_LAUNCHER.resolve()).casefold()
++                and receipt.get("contract_sha256", "").lower() == V9_CONTRACT_SHA256
++                and receipt.get("source_manifest_sha256", "").lower() == V9_MANIFEST_SHA256,
++                f"{alias} v9 DEV2 process receipt does not identify its fixed engineering-only scope")
++        engineering = [row for row in manifest.get("engineering_dev2", []) if row.get("method_id") == mid]
++        require(len(engineering) == 1, f"Missing exact {alias} engineering reference")
++        spec = engineering[0]
++        for path_key, sha_key, source_path, source_sha in (
++            ("v3_snapshot_path", "v3_snapshot_sha256", "run_start_path", "run_start_sha256"),
++            ("v3_raw_path", "v3_raw_sha256", "raw_path", "raw_sha256"),
++        ):
++            require(canonical_path(result.get(path_key, ""), v1) == canonical_path(spec[source_path], v1)
++                    and result.get(sha_key, "").lower() == spec[source_sha].lower(),
++                    f"{alias} DEV2 source reference differs from the corrected manifest")
+         verify_engineering_helper_binding(result.get("which_bindings"), helper_path)
+         require_sha_binding(release, f"engineering_{alias}_result_sha256", result_path,
+                             f"{alias} engineering result")
+@@ -681,7 +796,7 @@
+             "v4 prepare/DEV2 MATLAB receipts are not sequential in the authorized stage order")
+     return {"stage_artifacts": stages, "chronological_intervals_utc": [
+         {"started_utc": a.isoformat(), "completed_utc": b.isoformat()} for a, b in stage_times],
+-        "scope_note": "v5 preparation is zero-Plant. The two engineering DEV2 flights are fixed VAL engineering replays, not TEST outcomes."}
++        "scope_note": "v9 preparation is zero-Plant. The two engineering DEV2 flights are fixed VAL engineering replays, not TEST outcomes."}
+ 
+ 
+ def verify_engineering_helper_binding(value, helper_path: Path) -> None:
+@@ -704,7 +819,7 @@
+                          launcher_sha: str, v1) -> dict[str, Any]:
+     alias = str(method.get("alias", ""))
+     method_id = str(method.get("method_id", ""))
+-    path = V5_REPORT / f"RUN_{alias}_MATLAB_OS_EXIT_v1.json"
++    path = V9_REPORT / f"RUN_{alias}_MATLAB_OS_EXIT_v1.json"
+     receipt = v1.load_json(path)
+     require(receipt.get("schema") == "TEST48V4_MATLAB_OS_EXIT_V1"
+             and receipt.get("mode") == V4_METHOD_PHASE and receipt.get("stage") == V4_METHOD_PHASE
+@@ -734,8 +849,9 @@
+ 
+ 
+ def verify_mixed_receipt_order(v3_b_receipt: dict, v3_failure: dict, v4_history: dict,
+-                               stage_history: dict, v5_receipts: list[dict], v1) -> list[dict[str, Any]]:
+-    receipts = [v3_b_receipt, *v5_receipts]
++                               stage_history: dict, v9_receipts: list[dict], v1,
++                               prior_v5_v8: list[dict]) -> list[dict[str, Any]]:
++    receipts = [v3_b_receipt, *v9_receipts]
+     times = v1.validate_receipt_sequence(receipts)
+     fail = v1.load_json(Path(v3_failure["receipt_path"]))
+     process_rows = [{"method_id": "B_TRACEABLE", "phase": "V3_REUSED_B48", "receipt": v3_b_receipt}]
+@@ -756,22 +872,23 @@
+                          "receipt_sha256": v4_history["v4_path_diagnostic"]["os_receipt_sha256"],
+                          "natural_os_exit_code": 0, "plant_calls": 0,
+                          "formal_method_block": False})
++    process_rows.extend(prior_v5_v8)
+     for artifact in stage_history["stage_artifacts"]:
+         process_rows.append({"method_id": artifact.get("method_id", ""), "phase": artifact["name"],
+                              "receipt": v1.load_json(Path(artifact["os_receipt_path"])),
+                              "receipt_path": artifact["os_receipt_path"],
+                              "receipt_sha256": artifact["os_receipt_sha256"]})
+-    process_rows.extend({"method_id": item["method_id"], "phase": "V5_FORMAL_METHOD_BLOCK", "receipt": item}
+-                        for item in v5_receipts)
++    process_rows.extend({"method_id": item["method_id"], "phase": "V9_FORMAL_METHOD_BLOCK", "receipt": item}
++                        for item in v9_receipts)
+     intervals = []
+     for row in process_rows:
+         receipt = row["receipt"]
+         intervals.append((v1.utc_instant(receipt.get("started_utc")), v1.utc_instant(receipt.get("completed_utc"))))
+     require(all(start <= end for start, end in intervals)
+             and all(intervals[i][1] <= intervals[i + 1][0] for i in range(len(intervals) - 1)),
+-            "v3/v4 historical failures, diagnostic, v5 prepare/DEV2, and formal receipts are not in strict sequential order")
+-    require(tuple(item["method_id"] for item in v5_receipts) == V4_METHODS,
+-            "v5 formal method receipt order differs from the five fixed unstarted methods")
++            "v3/v4 historical failures, diagnostic, v9 prepare/DEV2, and formal receipts are not in strict sequential order")
++    require(tuple(item["method_id"] for item in v9_receipts) == V4_METHODS,
++            "v9 formal method receipt order differs from the five fixed unstarted methods")
+     output = []
+     for index, (row, (start, end)) in enumerate(zip(process_rows, intervals)):
+         receipt = row["receipt"]
+@@ -788,7 +905,7 @@
+ def verify_v3_b_artifacts(v1, v3_methods: dict[str, dict], scene_ids: list[str],
+                           v3_release: dict, v3_source_sha: str, input_hashes: dict[str, str]) -> tuple[dict, list[dict]]:
+     method = v3_methods[EXPECTED_METHODS[0]]
+-    reuse = load_json(V5_MANIFEST).get("methods", [])[0].get("v3_reuse_binding", {})
++    reuse = load_json(V9_MANIFEST).get("methods", [])[0].get("v3_reuse_binding", {})
+     for field, expected_path in (("method_batch_path", V3_TASK / "runs" / "BTR" / "METHOD_BATCH_STATUS_v1.json"),
+                                  ("method_body_path", V3_TASK / "runs" / "BTR" / "METHOD_BODY_COMPLETE_v1.json")):
+         require(canonical_path(reuse.get(field, ""), v1) == expected_path.resolve(strict=True),
+@@ -806,7 +923,7 @@
+                            runner_sha: str, v1) -> tuple[dict, list[dict]]:
+     alias = str(method["alias"])
+     method_id = str(method["method_id"])
+-    root = V5_OUTPUT / alias
++    root = V9_OUTPUT / alias
+     batch_path = root / "METHOD_BATCH_STATUS_v4.json"
+     body_path = root / "METHOD_BODY_COMPLETE_v4.json"
+     batch, body = v1.load_json(batch_path), v1.load_json(body_path)
+@@ -894,6 +1011,20 @@
+     return str(a.resolve()).casefold() == str(b.resolve()).casefold()
+ 
+ 
++def verify_spec_storage_identity(expected, start_path: Path, v1, c5_review, decoder, label: str) -> None:
++    # The frozen decoder returns integer storage headers for opaque MATLAB tables.
++    # Equality of these headers is not independent decoding of table contents.
++    with h5py.File(start_path, "r") as file:
++        node = file["spec"]
++        opaque_table = isinstance(node, h5py.Dataset) and node.attrs.get("MATLAB_class") == b"table"
++        if opaque_table:
++            require(node.dtype.kind in "ui" and "MATLAB_object_decode" in node.attrs,
++                    f"Unknown opaque MATLAB table representation: {label}")
++    actual = v1.mat_section(start_path, "spec", c5_review, decoder)
++    v1.equal_mat(expected, actual, c5_review, decoder,
++                 ("opaque spec storage header only " if opaque_table else "decoded spec metadata ") + label)
++
++
+ def verify_v4_run_identity(raw_path: Path, start_path: Path, record: dict, method: dict,
+                            method_index: int, scene_id: str, scene_digest: str, scene_pack: dict,
+                            snapshot: dict, source_sha: str, cfg_sha: str, release_sha: str,
+@@ -971,9 +1102,10 @@
+     marker_in_opts = opts.get("r2e_first_plant_step_marker") if isinstance(opts, dict) else None
+     require(str(v1.plain(marker_in_opts, c5_review)).casefold() == str(marker_path.resolve()).casefold(),
+             f"v4 opts first-Plant marker path mismatch for {mid}/{scene_id}")
+-    for source_key, mat_name in (("scene", "scene"), ("metadata", "sceneMeta"), ("spec", "spec")):
++    for source_key, mat_name in (("scene", "scene"), ("metadata", "sceneMeta")):
+         v1.equal_mat(scene_pack[source_key], v1.mat_section(start_path, mat_name, c5_review, decoder),
+                      c5_review, decoder, f"v4 {mat_name} identity {mid}/{scene_id}")
++    verify_spec_storage_identity(scene_pack["spec"], start_path, v1, c5_review, decoder, f"{mid}/{scene_id}")
+     v1.equal_mat(identity.get("which_bindings"), meta.get("which_bindings"), c5_review, decoder,
+                  f"v4 which bindings {mid}/{scene_id}")
+     v1.equal_mat(identity.get("model_identity"), meta.get("modelIdentity"), c5_review, decoder,
+@@ -1032,31 +1164,32 @@
+     release, release_info = verify_v4_run_release(v4_contract, code_info, v1)
+     failure_history = verify_v3_failure_history(v1)
+     v4_history = verify_v4_failure_and_path_diagnostic_history(v1)
++    prior_v5_v8 = verify_v5_v8_history(v1, v4_manifest)
+ 
+     # This complete OS0 preflight is deliberately before any TEST MAT or score file is opened.
+     v3_b_receipt = v1.verify_os_receipt("B_TRACEABLE", "BTR", V3_MANIFEST_SHA256, V3_CONTRACT_SHA256)
+     require(v3_b_receipt.get("receipt_sha256", "").lower() == V3_B_OS_RECEIPT_SHA256,
+             "Reused v3 B48 natural OS0 receipt SHA changed")
+-    v5_methods = v4_manifest["methods"][1:]
+-    v5_receipts = [verify_v4_os_receipt(method, v4_contract, code_info["v5_source_manifest_sha256"],
+-                                        code_info["v5_run_contract_sha256"], release_info["sha256"],
+-                                        Path(code_info["v5_launcher_path"]),
+-                                        code_info["v5_launcher_sha256"], v1) for method in v5_methods]
++    v9_methods = v4_manifest["methods"][1:]
++    v9_receipts = [verify_v4_os_receipt(method, v4_contract, code_info["v9_source_manifest_sha256"],
++                                        code_info["v9_run_contract_sha256"], release_info["sha256"],
++                                        Path(code_info["v9_launcher_path"]),
++                                        code_info["v9_launcher_sha256"], v1) for method in v9_methods]
+     stage_history = verify_stage_preconditions(release, v1, v4_manifest)
+     receipt_history = verify_mixed_receipt_order(v3_b_receipt, failure_history, v4_history,
+-                                                 stage_history, v5_receipts, v1)
++                                                 stage_history, v9_receipts, v1, prior_v5_v8)
+ 
+     scorer, c5_review, ablation, decoder, helper_hashes = v1.verify_helpers()
+     v3_source_bindings = v1.verify_manifest_sources(load_json(v1.SOURCE_MANIFEST), ROOT)
+     require(v1.sha256_file(v1.SOURCE_MANIFEST).lower() == V3_MANIFEST_SHA256,
+             "The B/v3 source manifest changed before the mixed audit")
+-    v5_source_bindings = verify_v4_source_files(v4_manifest, v1)
++    v9_source_bindings = verify_v4_source_files(v4_manifest, v1)
+ 
+     # Preserve v1's frozen TEST input decoder/round-trip checks, using its v3 manifest.
+     index, freeze, v3_release, bound_files, scene_ids, scene_digests = v1.verify_input_package(
+         v3_contract, load_json(v1.SOURCE_MANIFEST), V3_MANIFEST_SHA256)
+     require(index["scene_set_sha256"].lower() == EXPECTED_FROZEN_INPUTS["scene_set_sha256"],
+-            "v3 shared scene-set identity differs from v5's inherited lock")
++            "v3 shared scene-set identity differs from v9's inherited lock")
+     for field, expected in EXPECTED_FROZEN_INPUTS.items():
+         if field in {"shared_scenes_sha256", "cfg_opts_sha256", "index_sha256", "freeze_result_sha256", "freeze_os_sha256"}:
+             actual_key = {"shared_scenes_sha256": "shared_scenes_mat_sha256", "cfg_opts_sha256": "method_cfg_opts_sha256",
+@@ -1068,7 +1201,7 @@
+                           "freeze_os_sha256": sha256_file(v1.FREEZE_EXIT)}[field]
+             else:
+                 actual = v3_release.get(actual_key, "")
+-            require(str(actual).lower() == expected.lower(), f"v3/v5 frozen input binding mismatch for {field}")
++            require(str(actual).lower() == expected.lower(), f"v3/v9 frozen input binding mismatch for {field}")
+     snapshots_scene, snapshots, model_summary, c5_w0_hashes = v1.verify_scene_and_snapshots(
+         index, scene_ids, scene_digests, c5_review, decoder)
+     # The scene package is read once above for identity check; reuse it for all subsequent comparisons.
+@@ -1077,7 +1210,7 @@
+     v1._SCENE_INDEX.update({scene_id: i for i, scene_id in enumerate(scene_ids, start=1)})
+ 
+     v3_methods = {row["method_id"]: row for row in load_json(v1.SOURCE_MANIFEST)["methods"]}
+-    v5_methods_by_id = {row["method_id"]: row for row in v4_manifest["methods"]}
++    v9_methods_by_id = {row["method_id"]: row for row in v4_manifest["methods"]}
+     input_hashes = {"index": sha256_file(v1.INPUT_INDEX), "shared": sha256_file(v1.SHARED_SCENES),
+                     "cfg": sha256_file(v1.CFG_OPTS)}
+     b_artifacts, b_records = verify_v3_b_artifacts(v1, v3_methods, scene_ids, v3_release,
+@@ -1100,18 +1233,18 @@
+         "records": [], "model_identity": model_summary[EXPECTED_METHODS[0]],
+     })
+     for method_id in V4_METHODS:
+-        method = v5_methods_by_id[method_id]
++        method = v9_methods_by_id[method_id]
+         block, records = verify_v4_method_block(method, EXPECTED_METHODS.index(method_id) + 1,
+                                                 scene_ids, scene_digests,
+-                                                code_info["v5_source_manifest_sha256"], input_hashes,
+-                                                release_info["sha256"], code_info["v5_entry_sha256"], v1)
++                                                code_info["v9_source_manifest_sha256"], input_hashes,
++                                                release_info["sha256"], code_info["v9_entry_sha256"], v1)
+         method_records[method_id] = records
+-        block["natural_os_exit_receipt"] = next(r for r in v5_receipts if r["method_id"] == method_id)
++        block["natural_os_exit_receipt"] = next(r for r in v9_receipts if r["method_id"] == method_id)
+         batch_summary = block.pop("batch")
+         block.pop("body")
+         block.update(method_id=method_id, alias=method["alias"],
+                      method_block_order=EXPECTED_METHODS.index(method_id) + 1,
+-                     source_version="v5_NEW_UNSTARTED_V4_SCHEMA", plant_calls=48, scene_records=48,
++                     source_version="v9_NEW_UNSTARTED_V4_SCHEMA", plant_calls=48, scene_records=48,
+                      machine_info=batch_summary.get("machine_info"),
+                      thread_argument=batch_summary.get("thread_argument"),
+                      controller_timer_boundary=batch_summary.get("controller_timer_boundary"),
+@@ -1129,8 +1262,8 @@
+     native_by_method = {}
+     physical_by_scene = {scene_id: [] for scene_id in scene_ids}
+     for method_index, method_id in enumerate(EXPECTED_METHODS, start=1):
+-        method = (v3_methods if method_index == 1 else v5_methods_by_id)[method_id]
+-        version = "v3" if method_index == 1 else "v5"
++        method = (v3_methods if method_index == 1 else v9_methods_by_id)[method_id]
++        version = "v3" if method_index == 1 else "v9"
+         alias = str(method["alias"])
+         snapshot = snapshots[method_index - 1]
+         method_native = []
+@@ -1151,9 +1284,9 @@
+                 run_status = v1.load_json(record["run_status_path"])
+                 identity, meta, _ = verify_v4_run_identity(
+                     raw_path, start_path, record, method, method_index, scene_id, digest,
+-                    scene_packs[scene_index - 1], snapshot, code_info["v5_source_manifest_sha256"],
+-                    input_hashes["cfg"], release_info["sha256"], input_hashes["index"], V5_ENTRY,
+-                    code_info["v5_entry_sha256"], v4_manifest["global_platform_refs"],
++                    scene_packs[scene_index - 1], snapshot, code_info["v9_source_manifest_sha256"],
++                    input_hashes["cfg"], release_info["sha256"], input_hashes["index"], V9_ENTRY,
++                    code_info["v9_entry_sha256"], v4_manifest["global_platform_refs"],
+                     v1, c5_review, decoder)
+             if method_id in v1.CORRECTED_METHODS:
+                 initial_weight_audits.append({"scene_id": scene_id, "method": method_id,
+@@ -1230,22 +1363,23 @@
+         "scene_count": 48, "method_count": 6, "rows": rows, "methods_order": list(EXPECTED_METHODS),
+         "scene_ids": scene_ids,
+         "provenance": {
+-            "mixed_method_sources": {"B_TRACEABLE": "v3_reused", "five_remaining_methods": "v5_path_repair_v4_schema"},
++            "mixed_method_sources": {"B_TRACEABLE": "v3_reused", "five_remaining_methods": "v9_path_repair_v4_schema"},
+             "frozen_helpers": helper_hashes,
+             "v3_source_manifest": v3_source_bindings,
+-            "v5_source_manifest": v5_source_bindings,
++            "v9_source_manifest": v9_source_bindings,
+             "v3_bound_files": bound_files,
+-            "v5_run_release": release_info,
+-            "v5_code_and_input_bindings": code_info,
++            "v9_run_release": release_info,
++            "v9_code_and_input_bindings": code_info,
+             "v3_failed_startup_preserved": failure_history,
+             "v4_failed_prepare_and_path_diagnostic_preserved": v4_history,
+-            "v5_prepare_and_DEV2_history": stage_history,
++            "v5_v8_prior_prepare_and_failed_attempts": prior_v5_v8,
++            "v9_prepare_and_DEV2_history": stage_history,
+             "chronological_process_receipts": receipt_history,
+             "method_blocks": method_blocks,
+             "common_scene_set_sha256": index["scene_set_sha256"],
+             "external_identity_hashes_match_by_scene_across_all_methods": True,
+             "historical_helper_identity_limitation": (
+-                "The old v3 DSSM/KAN raw carries no historical MATLAB which SHA; the v5 dependency lock and active which "
++                "The old v3 DSSM/KAN raw carries no historical MATLAB which SHA; the v9 dependency lock and active which "
+                 "bind the pre-existing PCF helper. The fixed DEV2 replays are a behavioral/full-raw bridge, not retroactive proof of old source identity."
+             ),
+         },
+@@ -1273,12 +1407,20 @@
+             "method_pause_and_failure_note": (
+                 "The original v3 DSSM startup and the v4 preparation both failed before Plant (OS1, 0 calls) and remain separate history. "
+                 "The isolated v4 path diagnostic then exited OS0 with zero Plant calls and is not a method block. "
+-                "The v5 five-method blocks follow fixed DEV2 engineering replays and are the only new TEST combinations; process gaps and timestamps are retained above."
++                "The preserved v5 pre-Plant DEV2 failure, v6 one-VAL-Plant DEV2 failure, and v7/v8 zero-Plant prepare failures are disclosed separately. "
++                "The v9 five-method blocks follow the successful fixed DEV2 replays and are the only new TEST combinations; process gaps and timestamps are retained above."
+             ),
+             "thread_argument_interpretation": "-singleCompThread sets MATLAB numerical-computation thread behavior; runtime worker threads may remain.",
+             "sysnoise": "Sequential method processes; no OS-level timing isolation; initial calls/JIT effects included.",
+             "formal_1khz_loop_claim": False,
+             "natural_os_receipt_order_checked_before_mat_or_score_reads": True,
++        },
++        "serialization_scope": {
++            "MATLAB_char_identity": "Actual scene/method/candidate/collector strings are checked through frozen char-field decoding.",
++            "MATLAB_cells": "Frozen cell-safe decoder and record normalization remain unchanged.",
++            "opaque_spec_table": "Only opaque integer storage-header equality is checked where spec is a MATLAB table; its table contents are not independently semantically decoded. Spec is saved metadata, not a controller input. B uses the unchanged pinned v1 representation check.",
++            "opaque_table_semantic_equality_claimed": False,
++            "frozen_input_metadata": "The original cfgpack and its metadata remain byte-frozen; corrected historical run_start references are a distinct manifest lineage, not replacement cfgpack bytes.",
+         },
+         "score_source": {"path": str(v1.SCORER.resolve()), "sha256": v1.EXPECTED_SHA256["scorer"]},
+         "paper_gate_or_goal_decision": "NOT_AUTOMATED_BY_RAW_AUDIT",
+@@ -1329,7 +1471,7 @@
+ 
+ def synthetic_self_check() -> dict[str, Any]:
+     v1 = load_v1()
+-    inherited = {"path": str(V5_ENTRY), "sha256": sha256_file(V5_ENTRY), "role": "synthetic_existing_source"}
++    inherited = {"path": str(V9_ENTRY), "sha256": sha256_file(V9_ENTRY), "role": "synthetic_existing_source"}
+     helper_path = ROOT / "matlab" / "models" / "position_filter_realization_pcf_step_v3_5.m"
+     helper = {"path": str(helper_path), "sha256": FILTER_HELPER_SHA256, "role": "active_pcf_filter_helper"}
+     # Exercise the actual path/hash lineage guard using two existing source files only.
+@@ -1348,7 +1490,7 @@
+     return {"schema": "DEV_OR_SYNTHETIC_SELF_CHECK_V1", "status": "DEV_OR_SYNTHETIC_SELF_CHECK",
+             "TEST_accessed": False, "synthetic_only": True,
+             "checks": {"mixed_method_order_count": len(EXPECTED_METHODS),
+-                       "v3_B_reuse_count": 1, "v5_unstarted_method_count": len(V4_METHODS),
++                       "v3_B_reuse_count": 1, "v9_unstarted_method_count": len(V4_METHODS),
+                        "single_PCF_helper_addition": True, "unexpected_extra_reference_rejected": True,
+                        "separate_historical_v3_v4_and_path_diagnostic_audit_paths_present": True,
+                        "frozen_v1_timing_and_struct_checks": v1_check["checks"]},
+@@ -1359,7 +1501,7 @@
+     parser = argparse.ArgumentParser(description=__doc__)
+     group = parser.add_mutually_exclusive_group(required=True)
+     group.add_argument("--self-check", action="store_true", help="run only the synthetic/in-memory check")
+-    group.add_argument("--output-json", type=Path, help="new final raw-audit JSON path inside the v3 folder")
++    group.add_argument("--output-json", type=Path, help="new final raw-audit JSON path inside the v4 reader folder")
+     args = parser.parse_args()
+     output_dir = Path(__file__).resolve().parent
+     output_path = output_dir / "SELF_CHECK_DEV_OR_SYNTHETIC_v1.json" if args.self_check else args.output_json

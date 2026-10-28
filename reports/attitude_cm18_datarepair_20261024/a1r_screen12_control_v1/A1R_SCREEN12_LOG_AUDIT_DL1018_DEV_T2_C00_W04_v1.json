@@ -1,0 +1,217 @@
+{
+  "status": "PASS",
+  "scene_id": "DL1018_DEV_T2_C00_W04",
+  "raw_path": "experiments\\attitude_cm18_datarepair_20261024\\a1r_screen12_control_v1\\runs\\DL1018_DEV_T2_C00_W04\\attempt_01\\raw_run.mat",
+  "raw_sha256": "8dc4da78dd1f5a83e29d8b68a86ff6d56ee48abb232728af2a95477dace72428",
+  "run_start_sha256": "7f5fc7fabcc0e653a0c529761da2b4729bcc23f9efece5f92dd4212fdd28de11",
+  "release_path": "reports\\attitude_cm18_datarepair_20261024\\a1r_screen12_control_v1\\ROOT_A1R_SCREEN12_CONTROL_RELEASE_DL1018_DEV_T2_C00_W04_v2.json",
+  "release_sha256": "6f35c6d6300df42cf287d63854f169290b360c52afa37f6a72bb4f65198ad28d",
+  "deployment_parameters_sha256": "b3ab7a3d99df639d4cc0a10ec2b6fcd4622388f58c90c25424e472164ef38d23",
+  "checkpoint_sha256": "5fa4308b6220e530e6c2e7a6f45c4b6e22ddddef80d1bc5cafdcf58564bc5ef3",
+  "selected_step": 40000,
+  "normalizer_float64_sha256": "faf8748f640c944c745406247ab8486825966abd763088ad1f4e0cde626ad14c",
+  "engine_sha256": "4f72db75f176e76de03f77b45e0b82f05ff0e3206907714f3c7faf786ba1092a",
+  "c5_active_source_file_count_sha_verified": 32,
+  "counts": {
+    "transitions": 20000,
+    "state_samples": 20001,
+    "cm18_events": 1999,
+    "event_first_last_matlab_index": [
+      11,
+      19991
+    ],
+    "event_stride_transitions": 10,
+    "event_pre_0_5": 499,
+    "event_post_5_20": 1500,
+    "clip_by_axis": [
+      0,
+      0,
+      0
+    ],
+    "motor_saturation_by_motor": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "generalized_clip_by_axis": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "tilt_limit_transitions": 0
+  },
+  "rbf_off": {
+    "three_options_false": true,
+    "three_runtime_log_flags_false": true,
+    "fusion_and_head_false": true,
+    "update_flags_zero": true,
+    "raw_unclipped_held_outputs_zero": true,
+    "attitude_rbf_compensation_torque_zero": true
+  },
+  "position_controller": {
+    "scope": "C5 configuration, source, mask, and initial weights matched; trajectory-dependent outputs are not expected to match.",
+    "mask": [
+      1,
+      1,
+      0
+    ],
+    "cfg_exact_to_C5": true,
+    "opts_exact_except_A1R_model_marker_and_three_RBF_off_flags": true,
+    "scene_exact_to_C5_baseline": true,
+    "static_position_log_fields_exact_to_C5": [
+      "stage1_position_coordinate_mask",
+      "stage1_position_delayed_prediction_enabled",
+      "stage1_position_beta_scale",
+      "stage1_position_update_enabled",
+      "stage1_position_update_dt_scale",
+      "stage1_position_search_head_enabled",
+      "stage1_position_search_head_type",
+      "stage1_position_search_gamma",
+      "stage1_position_search_kappa",
+      "stage1_position_model_context_length",
+      "stage1_position_pcf_coordination_enabled",
+      "stage1_position_replacement_enabled",
+      "stage1_position_search_initial_weight",
+      "stage1_position_weight_initial"
+    ]
+  },
+  "bs_nominal_model": {
+    "controller_morphology_mode": "fixed",
+    "controller_inertia_derivative_mode": "full",
+    "zero_Jdot_basis": "The pinned engine constructs fixedController from fixed initial geometry and zero arm rates; controller_parameters in fixed mode sets arm_rates=zeros before arm_mass_properties. Thus the full Jdot term is evaluated as zero. Jdot is derived from source/config identity, not directly logged.",
+    "derivation_sources_hash_verified_in_C5_inventory": [
+      "matlab/core/simulation_parameters.m",
+      "matlab/core/controller_parameters.m",
+      "matlab/core/arm_mass_properties.m",
+      "matlab/core/attitude_bs_step.m"
+    ]
+  },
+  "max_abs_reconstruction_delta": {
+    "X18": 1.3877787807814457e-15,
+    "z": 0.0,
+    "u": 0.0,
+    "a_previous": 1.734723475976807e-18,
+    "BS_alpha": 1.3877787807814457e-15,
+    "BS_nominal_torque": 4.553649124439119e-18,
+    "forward": 0.0,
+    "clip": 0.0,
+    "beta": 0.0,
+    "held_acceleration": 0.0,
+    "held_torque": 0.0,
+    "nominal_minus_comp": 0.0
+  },
+  "phase_clip_delta_rad_s2": {
+    "PRE_0_5": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "POST_5_20": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "scoring": {
+    "method": "frozen A1 scorer; 20,000 left-aligned transition samples, terminal t=20 s excluded",
+    "position_Q_and_filtered_reference_SO3": {
+      "ALL_0_20": {
+        "samples": 20000,
+        "position_Q_rmse_m": 0.012737450518059787,
+        "position_axis_rmse_m": [
+          0.005766013132830582,
+          0.00998876242435172,
+          0.005405586321751464
+        ],
+        "position_peak_m": 0.03814060141669733,
+        "SO3_rmse_rad": 7.598712245452745e-05,
+        "SO3_rmse_deg": 0.004353741413988191,
+        "SO3_peak_deg": 0.010766952027994912,
+        "Euler_axis_rmse_rad": [
+          6.121228938429608e-05,
+          4.5014836893547924e-05,
+          7.261249701787727e-07
+        ],
+        "transported_body_rate_vector_rmse_rad_s": 0.00010818586483582201,
+        "transported_body_rate_axis_rmse_rad_s": [
+          8.670581755609295e-05,
+          6.342311819239372e-05,
+          1.2798071376496346e-05
+        ]
+      },
+      "PRE_0_5": {
+        "samples": 5000,
+        "position_Q_rmse_m": 0.017430201326858106,
+        "position_axis_rmse_m": [
+          0.008210687287248811,
+          0.013495119317930494,
+          0.007367379938664501
+        ],
+        "position_peak_m": 0.03814060141669733,
+        "SO3_rmse_rad": 6.514209549182564e-05,
+        "SO3_rmse_deg": 0.0037323671403197956,
+        "SO3_peak_deg": 0.0093943251755682,
+        "Euler_axis_rmse_rad": [
+          5.154874116170372e-05,
+          3.981957497231991e-05,
+          5.989826761887636e-07
+        ],
+        "transported_body_rate_vector_rmse_rad_s": 9.279607478569405e-05,
+        "transported_body_rate_axis_rmse_rad_s": [
+          7.302485693943557e-05,
+          5.619832992541966e-05,
+          1.0964920346302497e-05
+        ]
+      },
+      "POST_5_20": {
+        "samples": 15000,
+        "position_Q_rmse_m": 0.010726270934878844,
+        "position_axis_rmse_m": [
+          0.004675191406524052,
+          0.008504572371679108,
+          0.004568120210290346
+        ],
+        "position_peak_m": 0.023575644368040216,
+        "SO3_rmse_rad": 7.927311126859949e-05,
+        "SO3_rmse_deg": 0.0045420147045617185,
+        "SO3_peak_deg": 0.010766952027994912,
+        "Euler_axis_rmse_rad": [
+          6.41105939537579e-05,
+          4.6618106679825055e-05,
+          7.638170904289939e-07
+        ],
+        "transported_body_rate_vector_rmse_rad_s": 0.00011285036391237568,
+        "transported_body_rate_axis_rmse_rad_s": [
+          9.080926065341022e-05,
+          6.565494497390397e-05,
+          1.335331476489166e-05
+        ]
+      }
+    }
+  },
+  "safety": {
+    "position_error_peak_m": 0.03814060141669733,
+    "position_error_longest_run_s": 0.0,
+    "tilt_peak_deg": 10.675653292025903,
+    "tilt_longest_run_s": 0.0,
+    "body_rate_peak_rad_s": 0.38728485814883784,
+    "body_rate_longest_run_s": 0.0,
+    "logged_trailing_persistence_s": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "recomputed_trailing_persistence_s": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "scope_note": "This is one fixed closed-loop scene audit. It does not establish full SCREEN12 performance or causal model benefit.",
+  "schema": "A1R_SCREEN12_INDEPENDENT_LOG_AUDIT_V1",
+  "created_utc": "2026-10-24T19:20:04.029123+00:00",
+  "audit_source_path": "reports\\attitude_cm18_datarepair_20261024\\a1r_screen12_control_v1\\audit_a1r_screen12_log_v1.py",
+  "audit_source_sha256": "8e99eedfa8c02229cb456e165d1dccf243a7357d4a276e7869620a6498715210"
+}

@@ -1,0 +1,24 @@
+UTC_START=2026-10-26T09:48:58.6144699Z
+COMMAND=python experiments/dl_attitude_replacement_20261026/mlp15_c5_teacher_redistill_v1/build_matched_teacher_dataset_v1.py --execute
+
+Traceback (most recent call last):
+  File "C:\Users\35326\Desktop\postgraduation\0\Mcode\drone_tcn\DL1018\experiments\dl_attitude_replacement_20261026\mlp15_c5_teacher_redistill_v1\build_matched_teacher_dataset_v1.py", line 70, in repo_file
+    p.relative_to(ROOT.resolve())
+  File "C:\ProgramData\anaconda3\Lib\pathlib.py", line 682, in relative_to
+    raise ValueError(f"{str(self)!r} is not in the subpath of {str(other)!r}")
+ValueError: 'C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\REFERENCE_FIX_FULL72_20261021_022342_313\\runs\\DL1018_VAL_T2_C02_W12_ACC_FIX_V1\\B\\attempt_01\\raw_run.mat' is not in the subpath of 'C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\35326\Desktop\postgraduation\0\Mcode\drone_tcn\DL1018\experiments\dl_attitude_replacement_20261026\mlp15_c5_teacher_redistill_v1\build_matched_teacher_dataset_v1.py", line 621, in <module>
+    main()
+  File "C:\Users\35326\Desktop\postgraduation\0\Mcode\drone_tcn\DL1018\experiments\dl_attitude_replacement_20261026\mlp15_c5_teacher_redistill_v1\build_matched_teacher_dataset_v1.py", line 475, in main
+    or repo_file(scene_b_path).resolve() != repo_file(row["B_source"]["path"]).resolve()
+       ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\35326\Desktop\postgraduation\0\Mcode\drone_tcn\DL1018\experiments\dl_attitude_replacement_20261026\mlp15_c5_teacher_redistill_v1\build_matched_teacher_dataset_v1.py", line 72, in repo_file
+    raise ValueError(f"input path escapes repository: {value}") from exc
+ValueError: input path escapes repository: C:\Users\35326\Desktop\postgraduation\0\Mcode\drone_tcn\REFERENCE_FIX_FULL72_20261021_022342_313\runs\DL1018_VAL_T2_C02_W12_ACC_FIX_V1\B\attempt_01\raw_run.mat
+
+EXIT_CODE=1
+UTC_END=2026-10-26T09:49:05.3144378Z

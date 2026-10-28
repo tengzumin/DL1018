@@ -1,0 +1,386 @@
+{
+  "schema": "ROOT_ALPHA_XY_TRAIN_MARGINAL_SUPPORT_DIAGNOSTIC_V1",
+  "status": "PASS",
+  "identity": {
+    "dataset_manifest_path": "reports/attitude_cm18_a1_20261024/data_preparation_v1/events_all816_v1/DATASET_MANIFEST_v1.json",
+    "dataset_manifest_sha256": "7dd3e1f786f6095ecc2ba56473e5cf0fab6b92cdd42e38a184d6ad1223f36271",
+    "input_manifest_sha256": "a5f7fea9b0918c1449af6fa83929177d3bf7d5e70cb3b71711c40f6338d210a5",
+    "cache_reader_path": "experiments/attitude_cm18_a1_20261024/cache_reader_cm18_v1.py",
+    "cache_reader_sha256": "a2867cbf516d7ed655a6f50e05b8600ffb7582e0f2164b1ce21d5e647adf2b47",
+    "trainer_path": "experiments/attitude_cm18_a1_20261024/train_cm18_a1_v1.py",
+    "trainer_sha256": "7544a04329bc1e06ff5d7a113a077033a65f0b7c2de8a6f1b25ac54710e62c76",
+    "event_exporter_path": "experiments/attitude_position_context_probe_20261024/export_matched_position_probe_events_v2.m",
+    "event_exporter_sha256": "ddb1684b1d720d9bee80b3bcda2c95bf855faee1220fc54e9ba764695c5a54a9"
+  },
+  "train_support": {
+    "cache_scene_count": 768,
+    "cache_bytes_verified_sum": 153680788,
+    "full_event_rows_per_scene": 1999,
+    "full_event_count": 1535232,
+    "training_sample_rule": {
+      "zero_based_event_indices": "0,5,...,1995",
+      "stride": 5,
+      "rows_per_scene": 400,
+      "sampled_event_count": 307200,
+      "source": "experiments/attitude_cm18_a1_20261024/train_cm18_a1_v1.py",
+      "source_sha256": "7544a04329bc1e06ff5d7a113a077033a65f0b7c2de8a6f1b25ac54710e62c76"
+    },
+    "feature_names": [
+      "alpha_BS_x",
+      "alpha_BS_y"
+    ],
+    "full_1999_event_support": {
+      "min": [
+        -15.221571406267046,
+        -12.507086150986321
+      ],
+      "max": [
+        16.771126484269434,
+        12.644516120670923
+      ]
+    },
+    "stride_0_5_support": {
+      "min": [
+        -15.188735601630116,
+        -12.478222795694663
+      ],
+      "max": [
+        16.504675046198553,
+        12.614604161640006
+      ]
+    },
+    "loaded_scene_ids_sha256": "76b55347ac1fd9e2a0b5fbc463eb47eff1e1ab08847ea8edbf1e15354ce09398"
+  },
+  "probe_scenes": {
+    "T1_B": {
+      "scene_id": "DL1018_TRAIN_T1_C15_W14",
+      "position_mode": "B_POSITION_RBF",
+      "attempt_id": 2,
+      "event_export_sha256": "574edcdc35483c6069bd053ae345a2ddee1c61780b7e044dea422b7b01fbf08c",
+      "against_full_train_1999_support": {
+        "probe_event_count": 1999,
+        "probe_xy_min": [
+          -4.428108463551347,
+          -4.251338919190463
+        ],
+        "probe_xy_max": [
+          5.991653734828937,
+          4.435459717483246
+        ],
+        "outside_by_axis": {
+          "alpha_BS_x": {
+            "below_count": 0,
+            "above_count": 0,
+            "outside_count": 0,
+            "outside_rate": 0.0
+          },
+          "alpha_BS_y": {
+            "below_count": 0,
+            "above_count": 0,
+            "outside_count": 0,
+            "outside_rate": 0.0
+          }
+        },
+        "outside_any_axis_event_count": 0,
+        "outside_any_axis_event_rate": 0.0,
+        "comparison": "strict component-wise outside test: value < TRAIN min or value > TRAIN max"
+      },
+      "against_trained_stride_0_5_support": {
+        "probe_event_count": 1999,
+        "probe_xy_min": [
+          -4.428108463551347,
+          -4.251338919190463
+        ],
+        "probe_xy_max": [
+          5.991653734828937,
+          4.435459717483246
+        ],
+        "outside_by_axis": {
+          "alpha_BS_x": {
+            "below_count": 0,
+            "above_count": 0,
+            "outside_count": 0,
+            "outside_rate": 0.0
+          },
+          "alpha_BS_y": {
+            "below_count": 0,
+            "above_count": 0,
+            "outside_count": 0,
+            "outside_rate": 0.0
+          }
+        },
+        "outside_any_axis_event_count": 0,
+        "outside_any_axis_event_rate": 0.0,
+        "comparison": "strict component-wise outside test: value < TRAIN min or value > TRAIN max"
+      }
+    },
+    "T1_C5": {
+      "scene_id": "DL1018_TRAIN_T1_C15_W14",
+      "position_mode": "C5_POSITION_M110",
+      "attempt_id": 1,
+      "event_export_sha256": "6440649b1f6b45b483158d963e34f99ee6d5d47b961860422556f9c450f75749",
+      "against_full_train_1999_support": {
+        "probe_event_count": 1999,
+        "probe_xy_min": [
+          -26.836398000328558,
+          -26.80479659212402
+        ],
+        "probe_xy_max": [
+          26.23836881318429,
+          31.534163622204666
+        ],
+        "outside_by_axis": {
+          "alpha_BS_x": {
+            "below_count": 139,
+            "above_count": 93,
+            "outside_count": 232,
+            "outside_rate": 0.11605802901450725
+          },
+          "alpha_BS_y": {
+            "below_count": 308,
+            "above_count": 298,
+            "outside_count": 606,
+            "outside_rate": 0.3031515757878939
+          }
+        },
+        "outside_any_axis_event_count": 613,
+        "outside_any_axis_event_rate": 0.30665332666333167,
+        "comparison": "strict component-wise outside test: value < TRAIN min or value > TRAIN max"
+      },
+      "against_trained_stride_0_5_support": {
+        "probe_event_count": 1999,
+        "probe_xy_min": [
+          -26.836398000328558,
+          -26.80479659212402
+        ],
+        "probe_xy_max": [
+          26.23836881318429,
+          31.534163622204666
+        ],
+        "outside_by_axis": {
+          "alpha_BS_x": {
+            "below_count": 141,
+            "above_count": 98,
+            "outside_count": 239,
+            "outside_rate": 0.11955977988994497
+          },
+          "alpha_BS_y": {
+            "below_count": 309,
+            "above_count": 299,
+            "outside_count": 608,
+            "outside_rate": 0.304152076038019
+          }
+        },
+        "outside_any_axis_event_count": 615,
+        "outside_any_axis_event_rate": 0.3076538269134567,
+        "comparison": "strict component-wise outside test: value < TRAIN min or value > TRAIN max"
+      }
+    },
+    "T3_B": {
+      "scene_id": "DL1018_TRAIN_T3_C15_W14",
+      "position_mode": "B_POSITION_RBF",
+      "attempt_id": 1,
+      "event_export_sha256": "bc5e8499347d071f736a5aa7a0a8d1173e3b9633aaeb2182b14256666d2f7594",
+      "against_full_train_1999_support": {
+        "probe_event_count": 1999,
+        "probe_xy_min": [
+          -6.029512373634849,
+          -4.794711995026312
+        ],
+        "probe_xy_max": [
+          4.785289708939329,
+          4.3944196094789945
+        ],
+        "outside_by_axis": {
+          "alpha_BS_x": {
+            "below_count": 0,
+            "above_count": 0,
+            "outside_count": 0,
+            "outside_rate": 0.0
+          },
+          "alpha_BS_y": {
+            "below_count": 0,
+            "above_count": 0,
+            "outside_count": 0,
+            "outside_rate": 0.0
+          }
+        },
+        "outside_any_axis_event_count": 0,
+        "outside_any_axis_event_rate": 0.0,
+        "comparison": "strict component-wise outside test: value < TRAIN min or value > TRAIN max"
+      },
+      "against_trained_stride_0_5_support": {
+        "probe_event_count": 1999,
+        "probe_xy_min": [
+          -6.029512373634849,
+          -4.794711995026312
+        ],
+        "probe_xy_max": [
+          4.785289708939329,
+          4.3944196094789945
+        ],
+        "outside_by_axis": {
+          "alpha_BS_x": {
+            "below_count": 0,
+            "above_count": 0,
+            "outside_count": 0,
+            "outside_rate": 0.0
+          },
+          "alpha_BS_y": {
+            "below_count": 0,
+            "above_count": 0,
+            "outside_count": 0,
+            "outside_rate": 0.0
+          }
+        },
+        "outside_any_axis_event_count": 0,
+        "outside_any_axis_event_rate": 0.0,
+        "comparison": "strict component-wise outside test: value < TRAIN min or value > TRAIN max"
+      }
+    },
+    "T3_C5": {
+      "scene_id": "DL1018_TRAIN_T3_C15_W14",
+      "position_mode": "C5_POSITION_M110",
+      "attempt_id": 1,
+      "event_export_sha256": "27c5af24ac01f0ea90eb8a1138a8d947c9c568f945c64c05cced3da08117a7f4",
+      "against_full_train_1999_support": {
+        "probe_event_count": 1999,
+        "probe_xy_min": [
+          -28.55278581556589,
+          -27.096017625085732
+        ],
+        "probe_xy_max": [
+          24.114154417170813,
+          29.11709876982059
+        ],
+        "outside_by_axis": {
+          "alpha_BS_x": {
+            "below_count": 192,
+            "above_count": 120,
+            "outside_count": 312,
+            "outside_rate": 0.15607803901950976
+          },
+          "alpha_BS_y": {
+            "below_count": 292,
+            "above_count": 284,
+            "outside_count": 576,
+            "outside_rate": 0.288144072036018
+          }
+        },
+        "outside_any_axis_event_count": 628,
+        "outside_any_axis_event_rate": 0.3141570785392696,
+        "comparison": "strict component-wise outside test: value < TRAIN min or value > TRAIN max"
+      },
+      "against_trained_stride_0_5_support": {
+        "probe_event_count": 1999,
+        "probe_xy_min": [
+          -28.55278581556589,
+          -27.096017625085732
+        ],
+        "probe_xy_max": [
+          24.114154417170813,
+          29.11709876982059
+        ],
+        "outside_by_axis": {
+          "alpha_BS_x": {
+            "below_count": 194,
+            "above_count": 127,
+            "outside_count": 321,
+            "outside_rate": 0.16058029014507252
+          },
+          "alpha_BS_y": {
+            "below_count": 294,
+            "above_count": 287,
+            "outside_count": 581,
+            "outside_rate": 0.29064532266133064
+          }
+        },
+        "outside_any_axis_event_count": 637,
+        "outside_any_axis_event_rate": 0.3186593296648324,
+        "comparison": "strict component-wise outside test: value < TRAIN min or value > TRAIN max"
+      }
+    }
+  },
+  "aggregate_four_probe_flights": {
+    "event_count": 7996,
+    "against_full_train_1999_support": {
+      "probe_event_count": 7996,
+      "probe_xy_min": [
+        -28.55278581556589,
+        -27.096017625085732
+      ],
+      "probe_xy_max": [
+        26.23836881318429,
+        31.534163622204666
+      ],
+      "outside_by_axis": {
+        "alpha_BS_x": {
+          "below_count": 331,
+          "above_count": 213,
+          "outside_count": 544,
+          "outside_rate": 0.06803401700850426
+        },
+        "alpha_BS_y": {
+          "below_count": 600,
+          "above_count": 582,
+          "outside_count": 1182,
+          "outside_rate": 0.147823911955978
+        }
+      },
+      "outside_any_axis_event_count": 1241,
+      "outside_any_axis_event_rate": 0.15520260130065033,
+      "comparison": "strict component-wise outside test: value < TRAIN min or value > TRAIN max"
+    },
+    "against_trained_stride_0_5_support": {
+      "probe_event_count": 7996,
+      "probe_xy_min": [
+        -28.55278581556589,
+        -27.096017625085732
+      ],
+      "probe_xy_max": [
+        26.23836881318429,
+        31.534163622204666
+      ],
+      "outside_by_axis": {
+        "alpha_BS_x": {
+          "below_count": 335,
+          "above_count": 225,
+          "outside_count": 560,
+          "outside_rate": 0.07003501750875438
+        },
+        "alpha_BS_y": {
+          "below_count": 603,
+          "above_count": 586,
+          "outside_count": 1189,
+          "outside_rate": 0.14869934967483742
+        }
+      },
+      "outside_any_axis_event_count": 1252,
+      "outside_any_axis_event_rate": 0.15657828914457228,
+      "comparison": "strict component-wise outside test: value < TRAIN min or value > TRAIN max"
+    }
+  },
+  "interpretation_limits": [
+    "This is marginal per-feature min/max coverage, not joint-support coverage or a causal test.",
+    "A cache event outside a component-wise TRAIN range does not by itself establish harmful extrapolation.",
+    "Only SHA-pinned TRAIN cache MAT files and the four SHA-pinned probe event JSON files are read; no raw MAT, VAL/TEST cache, Plant, training, or optimizer is used."
+  ],
+  "scope": {
+    "TRAIN_caches_read": 768,
+    "TRAIN_event_rows_read": 1535232,
+    "training_stride_rows_examined": 307200,
+    "probe_events_per_flight": 1999,
+    "probe_flights": [
+      "T1_B",
+      "T1_C5",
+      "T3_B",
+      "T3_C5"
+    ],
+    "raw_files_read": 0,
+    "VAL_accessed": false,
+    "TEST_accessed": false,
+    "plant_calls": 0,
+    "training_steps": 0,
+    "optimizer_steps": 0
+  }
+}

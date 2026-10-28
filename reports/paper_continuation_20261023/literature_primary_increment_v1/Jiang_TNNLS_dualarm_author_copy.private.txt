@@ -1,0 +1,837 @@
+
+--- PAGE 1 ---
+                          This article has been accepted for inclusion in a future issue of this journal. Content is final as presented, with the exception of pagination.
+
+
+IEEE TRANSACTIONS ON NEURAL NETWORKS AND LEARNING SYSTEMS                                                                            1
+
+Composite-Learning-Based Adaptive Neural Control
+    for Dual-Arm Robots With Relative Motion
+
+ Yiming Jiang   , Member, IEEE, Yaonan Wang   , Zhiqiang Miao   , Member, IEEE, Jing Na   , Member, IEEE,
+
+                   Zhijia Zhao   , Member, IEEE, and Chenguang Yang   , Senior Member, IEEE
+
+
+  Abstract—This article presents an adaptive control method   assembly, out-space repairing, and elderly people assistance
+for dual-arm robot systems to perform bimanual tasks under   [1]–[3]. However, controlling the dual-arm robots  is chal-
+modeling uncertainties. Different from the traditional symmetric                                                             lenging due to the increase of complexity in motion control
+bimanual robot control, we study the dual-arm robot control
+                                                       and path planning. Therefore, advanced control technologieswith relative motions between robotic arms and a grasped object.
+The robot system is ﬁrst divided into two subsystems: a settled   have been extensively studied for dual-arm robots in past
+manipulator system and a tool-used manipulator system. Then,   decades [4]–[11].
+a command ﬁltered control technique is developed for trajectory    An adaptive decentralized control scheme was proposed to
+tracking and contact force control. In addition, to deal with                                                             address the object handling problem of a cooperative robot,
+the inevitable dynamic uncertainties, a radial basis function
+                                                      where an implicit force control scheme was employed toneural network (RBFNN) is employed for the robot, with a novel
+composite learning law to update the NN weights. The composite   simultaneously regulate the force and position [9]. In [10],
+learning is mainly based on an integration of the historic data   a decentralized control structure for multiple mobile manipula-
+of NN regression such that information of the estimate error   tors was developed, where the internal forces were constrained
+can be utilized to improve the convergence. Moreover, a partial                                                    by employing an augmented object model for the multiple
+persistent excitation condition is employed to ensure estimation
+                                                          systems with a virtual linkage. In [11], the loading problem forconvergence. The stability analysis  is performed by using the
+Lyapunov theorem. Numerical simulation results demonstrate the   multiple manipulators was addressed by analyzing the grasp
+validity of the proposed control and learning algorithm.          space of the robot. Note that the abovementioned controllers
+                                                      were developed under the assumption that the object is ﬁrmly  Index  Terms—Adaptive  robot  control,  bimanual  robot,
+composite learning, neural network, relative motion.             held by the robotic arms such that no relative motion occurred
+                                                       between the arms and the objects. However, in practical appli-
+                           I. INTRODUCTION                          cations, such as polishing, grinding, and welding, the robot
+                                                                 end-effectors need to operate along the object’s surface, where
+    ECENTLY,  coordination  control  of dual-arm  robots
+                                                                    sliding movements usually happened between the robotic arm
+     has received increasing attention due to its superiorityR                                                  and the object [12]–[14].
+compared with traditional single-arm robot systems, includ-
+                                                                 In this respect, the coordination control of dual-arm robots
+ing stronger payload capability, larger workspace, and more
+                                                           with relative motion deserves further investigation. The rel-
+ﬂexibility. Thus,  the dual-arm robots have been involved
+                                                                     ative motion  is  also known as  the asymmetric bimanual
+in many high technology applications, such as  intelligent
+                                                                       task. In  [15], a  relative impedance  controller was  devel-
+                                                      oped by using a  relative Jacobian method such  that the  Manuscript received November 13, 2019; revised June 13, 2020; accepted
+November 2, 2020. This work was supported in part by the National Natural   dual-arm system can be treated as a single-arm robotic system.
+Science Foundation of China under Grant 62003136, Grant 61733004, Grant   In [16], a brain-actuated control architecture was proposed
+61803109, Grant 61903135, Grant 61922037, and Grant 62073131; in part by
+                                                                   for dual-arm robots  to perform the asymmetric bimanualthe Science Technology Project of Hunan Province under Grant 2017XK2102,
+Grant 2018GK2022, and Grant 2018JJ3079; in part by the Special Funding   task, where electroencephalogram signals and visual stimu-
+Support for the Construction of Innovative Provinces in Hunan Province under   lation were employed to send control command through a
+Grant 2019GK1010; in part by the Natural Science Foundation of Hunan
+                                                         brain–machine interface. In these works, however, the con-Province under Grant 2020JJ5090; and in part by the Fellowship of the
+China Postdoctoral Science Foundation under Grant 2020M672486 and Grant   trollers were designed under the assumption that the robot
+2020M682554. (Corresponding author: Yaonan Wang.)                 dynamics are fully available, while the stability analysis of
+  Yiming Jiang, Yaonan Wang, and Zhiqiang Miao are with the National
+                                                                 the contact force between the robotic arm and the object wasEngineering Laboratory for Robot Visual Perception and Control, Hunan
+University, Changsha 410082, China (e-mail: ymjiang@hnu.edu.cn; yaonan@   not given.
+hnu.edu.cn; miaozhiqiang@hnu.edu.cn).                            The dynamic model of the robot system is of great impor-
+  Jing Na  is with the Faculty of Mechanical and Electrical Engineering,
+                                                              tance in the controller design [17]–[22], but it is often unavail-Kunming University of Science and Technology, Kunming 650093, China
+(e-mail: najing25@163.com).                                        able in practice. For example, in carrying tasks, the dynamics
+  Zhijia Zhao is with the School of Mechanical and Electrical Engineering,   of the grasped object is hard to obtain in advance. Without
+Guangzhou  University, Guangzhou 510006, China  (e-mail: zhjzhaoscut@
+                                                           a precise dynamics model, the model-based control method163.com).
+  Chenguang Yang is with the Bristol Robotics Laboratory, University of the  became invalid and may cause degeneration of the control
+West of England, Bristol BS16 1QY, U.K. (e-mail: cyang@ieee.org).        performance. Hence, advanced control strategies have been
+  Color versions of one or more ﬁgures  in  this  article  are  available  at
+                                                              presented to compensate for the model uncertainties. Neuralhttps://doi.org/10.1109/TNNLS.2020.3037795.
+  Digital Object Identiﬁer 10.1109/TNNLS.2020.3037795                network (NN) is well known by its advantages in alleviating
+
+                   2162-237X © 2020 IEEE. Personal use is permitted, but republication/redistribution requires IEEE permission.
+                                  See https://www.ieee.org/publications/rights/index.html for more information.
+
+
+
+          Authorized licensed use limited to: HUNAN UNIVERSITY. Downloaded on April 02,2021 at 07:29:12 UTC from IEEE Xplore. Restrictions apply.
+--- PAGE 2 ---
+                          This article has been accepted for inclusion in a future issue of this journal. Content is final as presented, with the exception of pagination.
+
+
+2                                                                      IEEE TRANSACTIONS ON NEURAL NETWORKS AND LEARNING SYSTEMS
+
+
+modeling difﬁculties of nonlinear systems due to the powerful
+approximation  ability  [23]. Thus, NN  control synthesizes
+have been widely implemented in developing controllers for
+nonlinear robotic systems [24]–[32].
+ A fuzzy neural network control approach was presented for
+pure-feedback stochastic systems by using a semi-Nussbaum
+function [33]. In [34], an adaptive NN control strategy was
+proposed  for an  uncertain robot  to ensure  the  state  not
+to violate the prescribed constraints. Recently, a sensorless
+admittance controller was designed to solve the unknown
+environments’ interaction by using the NN technique [35].
+                                                                                    Fig. 1.  Overlook of the two-robotic-arm coordination with relative motion.
+Signiﬁcant works have been done in [36]–[38] to make a
+complex topic understandable about modeling and control   a PPE condition is also introduced in the estimation scheme to
+of ﬂapping-wing ﬂying robots to the average reader. While   achieve a relaxation of the requirement of the PE condition. In
+the NN controllers have been successfully developed in the   comparison to the method in [45], the estimation error of the
+abovementioned work, a major limitation for existing adaptive  NN weights is properly expressed and employed to enhance
+NN control schemes  lies in that only convergence of the   the approximation of the neural network.
+tracking errors can be achieved, instead of the convergence    The  objective  of  this  article  is  to  develop  a  control
+of NN weights to their ideal values. Without the convergence  framework for dual-arm robot tracking control under rela-
+of NN weights, the NN compensation can be hardly accom-   tive motion. The main contributions of this article can be
+plished, and the system performance may be degraded and,  summarized as follows.
+eventually, became unstable. In this respect, developing a novel     1) A novel neural control framework  is developed for
+control scheme with guaranteed NN convergence is of great        dual-arm robot systems to perform asymmetric bimanual
+signiﬁcance.                                                           tasks with no prior knowledge of the dynamics.
+  In our recent work [39], a ﬁltered operation was presented     2) A novel composite learning algorithm is designed for
+to control the robotic arm with ﬁnite-time convergence under     NN weights adaptation such that information of the
+a linear-in-parameter (LIP) robotic dynamic model. Neverthe-         estimate errors could be appropriately integrated into the
+less, the guaranteed convergence of the NN weights is more         adaptation law to improve the estimation performance.
+difﬁcult. It is well known that the persistent excitation (PE)     3) A  partial  persistent  condition  is  introduced  for  the
+condition is important to guarantee the estimation convergence         adaptation of NN weights such that the requirement of
+[40]. However, in practice, it is very stringent to ensure the PE        conventional PE condition can be greatly relaxed.
+condition of neural networks due to the sparse characteristics     In the following sections, the system modeling and control
+of the NN regressor vector. Recent research of neural networks   design procedures are detailed. Section II discusses the system
+in [41] presented a partial persistent excitation (PPE) condition  modeling of the dual-arm robot in addition to some preliminar-
+instead of the traditional PE condition. It has been proven that,    ies. Section III presents the design of the composite learning
+for the radial basis function neural network (RBFNN) deﬁned   control algorithm by utilizing a command ﬁltered backstep-
+in a regular lattice, neural nodes could be partially activated   ping technique with  stability analysis. Section IV demon-
+for any recurrent NN inputs trajectory remained in this local   strates the simulation results. A brief conclusion is given in
+region  [41]. In  the subsequent work  [42],  this idea was   Section V.
+employed for the control design of nonlinear strict-feedback
+                                                                                                  II. SYSTEM DESCRIPTION
+systems to guarantee the system stability and accurate NN
+                                                             A. Kinematics Modelingapproximation. However, the NN inputs still need to satisfy the
+condition of recurrent trajectory, and a small input excitation    The system studied  in  this  article  is shown  in Fig.  1,
+strength may lead to slow learning speed.                   where a rigid object is tightly caught by a settled manipulator
+  The work  in [43] indicates  that parameter convergence  (SM), while a tool-used manipulator (TM) holds an implement
+can be improved  if  certain information of the estimation   to follow a given trajectory on the surface of the object.
+error can be integrated into the adaptation. In [44], a novel  As depicted in Fig. 1, the world coordinate is described by
+parameter estimation law was proposed for a robotic system  OXY Z. Besides, three coordinates are attached to the settled
+with unknown dynamics by using a sliding mode technique   manipulator end-effector (SME) (Os XsYs Zs), the tool-used
+and a ﬁnite-time estimator. In [45], the estimation error was   manipulator end-effector (TME) (Ot XtYt Zt), and the grasped
+integrated into the adaptation scheme of a class of nonlinear   object (OoXoYoZo), respectively. The SME carries an object to
+systems to achieve the convergence of NN weights. Motivated   track the desired trajectory during the manipulation task. The
+by the abovementioned idea, in this article, we develop a com-  TME follows a trajectory ρ(pto) = 0 deﬁned on a manifold of
+posite learning controller for the dual-arm robot to perform   the object surface, and relative motion is, therefore, generated
+bimanual relative motion tasks. To the best of our knowledge,  between the object and robotic end-effector. Table I presents
+few studies have investigated the learning control in the frame  some notations used in this article.
+of the dual-arm robot systems subject to relative motion and    To facilitate the modeling procedure, the following assump-
+unknown dynamics. Moreover, different from the work in [46],   tions are adopted.
+
+
+
+          Authorized licensed use limited to: HUNAN UNIVERSITY. Downloaded on April 02,2021 at 07:29:12 UTC from IEEE Xplore. Restrictions apply.
+--- PAGE 3 ---
+                          This article has been accepted for inclusion in a future issue of this journal. Content is final as presented, with the exception of pagination.
+
+
+JIANG et al.: COMPOSITE-LEARNING-BASED ADAPTIVE NEURAL CONTROL FOR DUAL-ARM ROBOTS WITH RELATIVE MOTION                          3
+
+
+                      TABLE I                               for any given vector a = [a1, a2, a3]T , where φo, φto, and φso
+        NOMENCLATURE OF THE COORDINATION SYSTEM             are the vectors of angular velocities. Note that, in the above
+                                                                    derivation, due to the factor that the workpiece is tightly caught
+                                                     by the TME, φso = 0 and ˙φso = 0 are omitted in (5)–(8).
+                                                             Equations (5)–(8) can be rewritten in a compact form as
+                                                                                                        vt = Dtvo + Rvvto                 (10)
+                                                                                             vs = Dsvo                         (11)
+                                                      where vt = [˙rtT φTt ]T , vs = [˙rsT φTs ]T , vo = [˙roT φTo ]T , vto =
+                                                                                                         [˙rtoT φTto]T , and
+                                                                                     Ro(θo)   0
+                                                                         Rv =                                 (12)
+                                                                            0    Ro(θo)
+
+                                                                                                              I −E(Ro(θo)rto)
+                                                                         Dt =                                   (13)
+                                                                         0          I
+
+                                                                                                              I −E(Ro(θo)rso)
+                                                                   Ds =                                  (14)
+                                                                         0          I
+
+                                                           with I being an unit matrix with proper dimension. Note that
+                                                                the TME follows a reference trajectory ρ(pto) = 0 on the
+                                                                     rigid object surface, and the constraint force   ft  vertical to
+                                                                object surface can be expressed as follows [48]:
+                                                                                                                                          ft = ηtξ                           (15)
+                                                                                  Rv(∂ρ/∂pto)T
+                                                                                                  ηt =                               (16)
+  Assumption 1: The  object   is  ﬁrmly  caught  by  the                             ||(∂ρ/∂pto)T ||
+end-effector of the SM, and no sliding movement has occurred  where ηt  is a vector representing the direction of the con-
+between SME and the object.                                        straint force and ξ  is a Lagrange multiplier that denotes the
+  Assumption 2: The TME  is always in contact with the   force magnitude. Then, through the transformation matrix Dt,
+object surface.                                                  the contact force applied on the object can be obtained as
+  Assumption 3: The  inverse  kinematics  of  the  dual-arm                                                                                                       fo = −DTt  ft = −DTt ηtξ.              (17)
+robot are fully available, and singularity points are properly
+avoided.                                                             B. Dynamics Modeling
+  In terms of the notations in Table I, the kinematics of the
+                                                                 In order to build the dynamic model of the dual-arm robotdual-arm coordination system can be described as follows [47]:
+                                                             system, we ﬁrst build the dynamic model of the SME and the
+                             rt = ro + Ro(θo)rto                   (1)  TME, respectively. Remind in Assumption 1 that the object
+                         rs = ro + Ro(θo)rso                   (2)    is rigidly caught by the SME, and no motion is generated
+                                                       between the SME and object. Hence, the object and the SME                     Rt = Ro(θo)Rto(θto)                  (3)
+                                                         can be treated as a lump dynamic system, and its dynamics is
+                   Rs = Ro(θo)                           (4)                                                             obtained by using the Lagrange–Euler method as follows:
+where θo is the rotation angle of the object’s CoM, θto is the        Ms(qs)¨qs + Cs(qs, ˙qs)˙qs + Gs(qs) = τs + JsT (qs) fo  (18)
+rotation from the object’s CoM to the TME, and Ro(θo) ∈
+Rlr ×lr and Rto(θto) ∈Rlr ×lr  are the rotation matrices of θo   where Ms is the inertia matrix of the arm-object system, Cs is
+                                                                 the Coriolis/centrifugal force matrix, Gs is the gravity vector,and θto, respectively, with lr being the dimension of rotation.
+                                                                           τs is the torque of the joints, and Js is the Jacobian matrix.Then, Rt and Rs represent the rotation matrices of the SME
+                                           On the other hand, the dynamics of TME can be described asand TME, respectively.
+                                                                 follows:  Taking the derivative of (1) with respect to time yields
+                                                                           Mt(qt)¨qt + Ct(qt, ˙qt)˙qt + Gt(qt) = τt + JtT (qt) ft   (19)                         ˙rt = ˙ro + Ro(θo)˙rto −E(Ro(θo)rto)φo         (5)
+                                                      where Mt, Ct, and Gt  are the matrices of  inertia, Corio-                      ˙rs = ˙ro −E(Ro(θo)rso)φo                      (6)
+                                                                       lis/centrifugal force, and the vector of the gravitational force,
+             φt = φo + Ro(θo)φto                           (7)
+                                                                     respectively, τt  is the joints torque of TM,  ft  is the contact
+           φs = φo                                         (8)   force deﬁned in (15), and  Jt  is the corresponding Jacobian
+                                                                matrix.and
+              ⎡        ⎤                   Combining the dynamics of robot systems (17)–(19), we can
+                       0  −a3  a2
+                                                               obtain the robot dynamics of the dual-arm robot system as              E(a) = ⎣ a3   0  −a1 ⎦                (9)
+                    −a2  a1   0                             M(q)¨q + C(q, ˙q)˙q + G(q) = τ + J T (q)ηtξ     (20)
+
+
+
+          Authorized licensed use limited to: HUNAN UNIVERSITY. Downloaded on April 02,2021 at 07:29:12 UTC from IEEE Xplore. Restrictions apply.
+--- PAGE 4 ---
+                          This article has been accepted for inclusion in a future issue of this journal. Content is final as presented, with the exception of pagination.
+
+
+4                                                                      IEEE TRANSACTIONS ON NEURAL NETWORKS AND LEARNING SYSTEMS
+
+
+where                                                          following, while the later term is developed to deal with the
+                    Ms(qs)    0                             contact force between the TME and the grasped object.
+         M(q) =                     0    Mt(qt)                             Substituting (27) into (24), we have
+                     Cs(qs, ˙qs)     0                           Mc(qc)¨qc + Cc(qc, ˙qc)˙qc + Gc(qc)
+        C(q, ˙q) =                                                                                                                                                                      t
+                      0      Ct(qt, ˙qt)                                                                       T
+                                     = τd −Jc(qc)ηt  ξd + kξ    eξdτ + Jc (qc)ηtξ
+                    Gs(qs)              Js(qs)                                                          0
+          G(q) =              , J(t) =             ,                                                                                                    t
+                     Gt(qt)               Jt(qt)
+                                     = τd −Jc(qc)ηt  eξ + kξ    eξdτ   .              (28)
+                           qs             τs                                                                   0
+                q=       ,  τ =         .              (21)
+                              qt               τt                         Premultiplying on  both  sides  of  (28)  with NT  and
+  Note that the dual-arm robot is constrained by a holonomic   considering NT (qc)JcT (qc)ηt = 0 in Property 3, we have
+kinematic constraints represented by (10) and (11); thus, some                                                                   M(qc)¨qc + C(qc, ˙qc)˙qc + G(qc) = NT τd       (29)
+degrees of freedom of the robotic system will be lost in the
+movement. Let us select a set of n independent variables qc =  where M(qc) with C(qc, ˙qc) are deﬁned in Properties 1 and 2,
+[qc1, qc2, . . . , qcn]T from the joints variable q = [qTs , qTt ]T ,   respectively, and G(qc) = NT Gc(qc).
+and q can be represented by a function of d(qc) as            Remark 1: Equation (29) represents a subspace of the robot
+                    q = d(qc).                      (22)   dynamics, which is orthogonal to the contact constraints. That
+                                                                                       is, (29) gives a description of the error dynamics of the
+Differentiating (22) with respect to time yields                 robot tracking, while (28) represents the error dynamics of the
+                              ˙q = N(qc)˙qc                                contact force eξ. Now, the dynamic behavior of the dual-arm
+                              ¨q = N(qc)¨qc + ˙N(qc)˙qc              (23)   robot system with relative motion and contact constraint is
+                                                                  available for the controller design.
+where N(qc) = ∂q/∂qc with N being a full column rank
+matrix.                                                   C. Preliminaries
+  Note that vto = R−1v  (vt −Dtvo) = RTv (vt −Dtvo), and   A number of useful deﬁnitions and lemmas used in this
+vt =  Jt(qt)˙qt and vo =  Jo(qt)˙qo hold  in terms of the   article are introduced as follows.
+kinematics. Also, vto = RTv JcNc ˙qc can be derived from (22)     Deﬁnition 1 (PE [44]): A variable or vector ϕ  is termed
+and (23). Since  vto and  ηt  are orthogonal to each  other,  PE  if  there  exist  positive  constants  ta  and    such  that
+we can obtain ηTt vto = 0. From the above derivation, we can     t−tat  ϕT (τ)ϕ(τ)dτ ≥   I ∀t ≥0.
+derive ηTt JcNc ˙qc = 0. Since qc is a variable, we obtain that    Lemma 1 (RBFNN [49]): The RBFNN is of the capabil-
+NT (qc)JcT (qc)ηt = 0.                                                  ity to approximate any given continuous function F(Z) =
+  The combination of (20), (22), and (23) yields                   [ f1(Z), f2(Z), . . . , fn(Z)]T ∈Rn with
+    Mc(qc)¨qc + Cc(qc, ˙qc)˙qc + Gc(qc) = τ + JcT (qc)ηtξ  (24)                F(Z) = W                                                                                                     ∗T S(x) + ε                (30)
+
+                                                                                    ∗   is  the  optimal NN  weights,  and  S(x) =where Mc(qc) = M(qc)N(qc), Cc(qc, ˙qc) = M(qc)( ˙N(qc) +  where W
+C(qc, ˙qc)N(qc)), Gc = G(d(qc)), and Jc(qc) = J(d(qc)).                                                                         [s1, s2, . . . , sl]T ∈Rl is the NN regressor vector with si being
+  Several useful properties for the system (24) is given as
+                                                                       −(x −μi)T (x −μi)
+follows.                                                                           si(||x −μi||) = exp
+  Property 1  [47]: The matrix M(qc) = NT Mc(qc) is a                                 ϑ2i
+bounded symmetric positive deﬁnite matrix.                 where μi(i = 1, . . . ,l) denote the centers of NN nodes. ε is
+  Property 2  [47]: Deﬁne C(qc, ˙qc) = NT Cc(qc, ˙qc). Then,   the NN approximation error.
+the matrix M(qc)˙    −2C(qc, ˙qc) is a skew-symmetric matrix    Lemma 2   [49]: The  regressor vectors of the RBFNN
+such that                                                             satisfy that ||S(x)|| ≤¯S for any given constant vector x, where
+                                                                                                          ¯S is a positive constant denoting the boundary of S.             νT ( M˙ −2C)ν = 0  ∀ν ∈Rn.            (25)
+                                               Lemma 3 (Spatially Localized Approximation [41]): For
+  Property 3  [48]: For the tool-use manipulator, the follow-  any given trajectory, a function can be approximated by the
+ing relationship is satisﬁed:                       RBFNN with a limited number of NN nodes located in a local
+              NT (qc)JcT (qc)ηt = 0.                (26)   region along x(t) such that
+   It should be emphasized  that (24) gives the  constraint                                   f (x) = STζ Wζ∗ + εζ                  (31)
+dynamics of the dual-arm robot, where the last term on the              ∗
+                                                      where Wζ = [w∗l1, w∗l2, . . . , w∗lNζ ] and Sζ = [sl1, sl2, . . . , slNζ ]Tright-hand side represents the contact force applied on the
+                                                                 are the elements from W ∗and S, receptively, satisfying that
+robotic joint. To address the effect of the contact force, let
+                                                                                                   sli > δl, Nζ ≤N, where δl is small positive constant, and εζus consider a controller τc as follows:
+                                                                                       t                            is the corresponding NN approximate error.
+            τc = τd −Jc(qc)ηt  ξd + kξ    eξdτ          (27)    Lemma 4 (Partial PE  Condition  [41]):  Consider  the
+                                               0              RBFNN whose centers are placed on a regular lattice, and we
+where τd is a feedback control term to be designed later, and   can obtain that the regressor Sζ is PPE for any given recurrent
+eξ = ξ −ξd. Note that, in (27), τd is designed for the trajectory   trajectory x(t).
+
+
+
+          Authorized licensed use limited to: HUNAN UNIVERSITY. Downloaded on April 02,2021 at 07:29:12 UTC from IEEE Xplore. Restrictions apply.
+--- PAGE 5 ---
+                          This article has been accepted for inclusion in a future issue of this journal. Content is final as presented, with the exception of pagination.
+
+
+JIANG et al.: COMPOSITE-LEARNING-BASED ADAPTIVE NEURAL CONTROL FOR DUAL-ARM ROBOTS WITH RELATIVE MOTION                          5
+
+
+
+
+
+Fig. 2.   Overall framework of the proposed bimanual control system.
+
+  Remark 2: For most existing estimation schemes, the PE   Substituting (33) into (35) yields
+condition  is  required  for  the  convergence of  estimation.
+                                                                                                               ˙V1 = eT (˙x1 −˙x1d).                  (36)However, the PE condition in Deﬁnition 1 is very stringent
+for neural networks due to the requirement of excitation of                                                         For the conventional backstepping technique, a virtual con-
+S for all time. The PPE condition presented in Lemma 4                                                                           trol  term α  =    ˙x1d −   e   is  designed  with    =
+indicates that only partial regressors Sζ need to be activated.                                                                  diag[k11, k12, . . . , k1n] being a positive deﬁnite matrix. Here,
+Thus, the required condition is claimed to be relaxed. This                                             we employ a ﬁltered virtual controller αc to replace α as
+condition has been applied in a wide range of implementations
+of neural control, such as robotics and unmanned underwater                            ˙v1 = v2
+                                                                                                                       (37)
+vehicles [50].                                                                                                   ˙v2 = −2κσv2 + σ 2(α −v1)
+                    III. CONTROLLER DESIGN
+                                                      where v1 = αc, v2 = ˙αc with v1(0) = α(0), v2(0) = 0, σ  is  Revisiting the objective of the controller design for the
+                                                           a positive constant denoting the natural frequency, and κ is a
+dual-arm robot system, we aim to control the TME to follow
+                                                                   positive damping ratio.
+a reference path on the surface of the grasped object while
+                                               Lemma 5:  [43] For the command ﬁltered deﬁned in (37),
+maintaining the contact force at the desired level. Deﬁning pod
+                                                                  there exists a small positive constant dα such that |˜α| ≤dα
+as the desired trajectory of the object, ptod is the desired path
+                                                           with a sufﬁciently large frequency σ.
+for the TM, while ξd is the desired constraint force. To facil-                                                     Remark 3: Note that the ﬁltered error  ˜α =  αc −α  is
+itate the theoretical analysis, the Cartesian space variables,
+                                                     bounded in terms of Lemma 5. The command ﬁlter here can
+pod and  ptod, are transformed to desired joint variables qcd
+                                                        be used to simplify the process of calculating the command
+by using the inverse kinematics. Then, the control objective
+                                                                   derivative signals.
+can be reformulated to follow the reference trajectory qcd in                                                          According to the deﬁnition of αc, (36) can be rewritten as
+the joint space. The proposed control system is depicted as
+                                                                 follows:
+shown in Fig. 2.
+A. Command Filtered Control                                                                      ˙V1 = eT (z −  e + ˜α).                (38)
+  Let x1 = qc, x2 = ˙qc, and the robotic dynamics in (29) can     Considering the system state z, let us deﬁne a Lyapunov
+be rewritten as                                                              candidate V2 as follows:
+           ˙x1 = x2
+                                                                            1
+           ˙x2 = M(qc)−1 NT τd −C(qc, ˙qc)x2 −G(qc)  .   (32)                      V2 = 2zT Mz.                    (39)
+  Then, we deﬁne the tracking errors as follows:            The time derivative of (39) gives
+                      e = x1 −x1d                                                  1
+                                                                                                            ˙V2 = zT M˙z +   Mz.˙                 (40)                          z = x2 −αc                     (33)                              2zT
+where x1d = qcd, and αc is the ﬁltered virtual control term to  Combining (32) and (33) and substituting them into (40),
+be speciﬁed later.                                 we can obtain that
+  The controller is designed with the following steps. Con-
+                                                                                             ˙V2 = zT NT τd −C(qc, ˙qc)x2 −G(qc)sider a Lyapunov candidate V1 with respect to the tracking
+error e as follows:                                  −1  M˙αc + 1 Mz˙                         1                                        2zT       2zT
+                     V1 = 2eT e.                     (34)       = zT NT τd −M˙αc −C(qc, ˙qc)αc −G(qc)
+Taking time derivative of (34), we have                                                                        1
+                                                          −zT Cz +   Mz.˙                           (41)                                 ˙V1 = eT ˙e.                      (35)                      2zT
+
+
+
+          Authorized licensed use limited to: HUNAN UNIVERSITY. Downloaded on April 02,2021 at 07:29:12 UTC from IEEE Xplore. Restrictions apply.
+--- PAGE 6 ---
+                          This article has been accepted for inclusion in a future issue of this journal. Content is final as presented, with the exception of pagination.
+
+
+6                                                                      IEEE TRANSACTIONS ON NEURAL NETWORKS AND LEARNING SYSTEMS
+
+
+Note  that  the  property  in  (25)  holds, and  (41) can be  where β and λω are the positive gain matrices, and     is a
+rewritten as                                                     projection operator deﬁned as
+                ˙V2 = zT NT τd +  f (˙αc, αc, ˙qc, qc)           (42)     (u)⎧
+                                                                       ⎪⎨ u,                 if || ˆW||≤σω or (|| ˆW||=σω & ˆW T u ≤0)
+                                                                                  T ˆWwhere   f (xc) = −M˙αc −C(qc, ˙qc)αc −G(qc) and xc =  =        ˆW
+[˙αc, αc, ˙qc, qc].                                                       ⎪⎩ u −       u,  ohterwise
+                                                                                                            || ˆW||
+                                                                                                                       (49)B. Composite Learning
+   It should be emphasized that the robot dynamics   f (xc)  where σω is a positive constant representing the boundary of
+                                     NN weights.is  strongly  nonlinear  and  often  not  available  in  prac-
+                                                     Remark 5: The projection operator     is deﬁned for thetice.  Therefore, an RBFNN  is introduced  to address  the
+                                                               adaptation of ˆW such that ˆW is kept as its original form if ˆW isnonlinearity. The RBFNN is constructed to approximate  f (xc)
+                                                                  inside the compact set  σω or on the boundary but going intoas
+                                                                 the compact set. Otherwise, ˆW  is projected to the boundary
+                                  f (xc) = ˆW T S                    (43)                                                               of   σω.
+                                                           Then, the controller can be designed aswhere S is a vector of the radial basis function, and ˆW is the
+estimation of W ∗.                                                              τd = (NT )−1(−K2z −e) −ˆWζT Sζ           (50)
+  To improve the learning performance of the neural weights,
+                                                      where K2 = diag{k21, k22, . . . , k2n} is a positive deﬁnite gainthe following  auxiliary term  is  introduced  to design  the
+                                                                matrix.
+learning law:
+                               t                                            C. Stability Analysis
+     P =    e−γ (t−τ)S(xc(τ))S(xc(τ))T dτ                  Theorem 1: Consider  the  closed-loop  dual-arm  robot
+                0
+                               t                                         dynamic system described by (29), using the control law (27)
+    Q =    e−γ (t−τ)S(xc(τ)) S(xc(τ))T W ∗+ ε dτ   (44)  and (50), and the adaptation law (48), under the assumption
+                0                                                       that the PPE condition is satisﬁed; then, the following results
+where γ  is a forgetting constant.                               hold: 1) the tracking errors e and z of the system converge to
+  Remark 4: e−γ (t−τ)  in (44)  is introduced to remain the   a small neighborhood containing the origin; 2) the estimation
+boundedness of the auxiliary terms: P and Q. This is because   errors ˜Wξ converge to a small neighborhood containing the
+noises and external disturbances may be accumulated over   origin; and 3) the error of the contact force eξ is bounded.
+time in the integration, which leads to the oversize of P, Q.     Proof: Let us consider a Lyapunov candidate V3 as follows:
+The forgetting factor γ can help to maintain the amplitude of                         1     T
+P and Q by reducing the inﬂuence of the past time variables                     V3 =    ˜Wζ  ˜Wζ.                  (51)                                                                      2β
+and, thus, help to improve the convergence speed.
+                                                     Combining (34), (39), and (51), we can deﬁne V = V1 + V2 +  Then, let us deﬁne a novel predication error as
+                                                                V3. Taking the derivative of V with respect to time yields
+                   ϵ = Q(t) −P(t) ˆW.                 (45)
+                                                                                                                  ˙V = ˙V1 + ˙V2 + ˙V3.                 (52)
+Note  that Q  can be  calculated from  (32) and  (43)  as                      t                                                                         t                Then, substituting (38) and (42) into (52), we can obtain that
+Q =    0 e−γ (t−τ)S(ST W ∗+ ε)dτ =    0 e−γ (t−τ)Sτ ′dτ,
+                                                                                                                         T ˙ˆWζ .  (53)where τ ′ = NT τd.                                                              ˙V = eT (z −  e + ˜α) + zT (NT τd +  f (xc)) −1 ˜Wζ                                                                                β  The combination of (44) and (45) yields
+                                                                 Substituting the designed controller (50) to (53), we have                    ϵ = P(t) ˜W + εa                   (46)
+                               t                                                                              ˙V = eT (z −  e + ˜α) + zT −K2z−e
+where εa =   0 e−γ (t−τ)S(xc(τ))ε(τ)dτ and ˜W = W ∗−ˆW.
+                                                                                                                      T ˙ˆWζAccording to Lemma 3,  f (xc) can be expressed by partial             +zT f (xc) −zT NT ˆWζT Sζ −1 ˜Wζ
+NN regression vector as                                                             β
+                                        = −eT  e −zT K2 z + eT ˜α                                      ∗                              f (xc) = STζ Wζ + εζ                 (47)
+                                                                                                                   T ˙ˆWζ.       (54)                                        + zT ( f (xc) −NT ˆWζT Sζ) −1 ˜Wζ
+                                                                            βwhere εζ satisﬁes that |εζ| < dεζ , and dεζ ∈R+ represents
+the bound of εζ. Here, a projection   (·) is deﬁned to choose     Then, substituting the adaptation law (48) into (54) yields
+the excitation elements such that Sζ =   (S). Then, P can be                                                    t                                                               ˙V = −eT  e −zT K2 z + eT ˜α
+reformulated by Pζ =  0 e−γ (t−τ)Sζ(τ)STζ (τ)dτ, and we can
+                                                                                                                    T ˙ˆWζ                                                  −1 ˜Wζrewrite (46) by ϵζ = Pζ ˜Wζ + εaζ.                                 +zT ( f (xc) −NT ˆWζT Sζ)                                                                             β
+  The neural weight adaptation law is designed as follows:                                                         T                                        = −eT  e −zT K2 z + eT ˜α + zT NT ˜Wζ Sζ
+                     ˙ˆWζ = β  (Sζ (xc)zT NT + λωϵζ)           (48)            +zT εζ −˜WζT  (Sζ(Nz)T + λωϵζ).          (55)
+
+
+
+          Authorized licensed use limited to: HUNAN UNIVERSITY. Downloaded on April 02,2021 at 07:29:12 UTC from IEEE Xplore. Restrictions apply.
+--- PAGE 7 ---
+                          This article has been accepted for inclusion in a future issue of this journal. Content is final as presented, with the exception of pagination.
+
+
+JIANG et al.: COMPOSITE-LEARNING-BASED ADAPTIVE NEURAL CONTROL FOR DUAL-ARM ROBOTS WITH RELATIVE MOTION                          7
+
+From the projection operation   (·) deﬁned in (49), ˆWζ (t) is    it and remain in    in the future time. In addition, the tracking
+remained in ˆWζ(t) ∈  σω by choosing proper initial condition   errors e, z, and ˜Wζ converge to a small neighborhood around
+ˆWζ(0) ∈   σω. Since the initial condition is easy to guaran-   zero, and the size of the compact set can be diminished by
+tee, we can obtain ˜WζT Sζ(xc)(Nz)T −˜WζT  (Sζ (xc)(Nz)T +   increasing k1i, k2i, and λω.
+λωϵζ) ≤−λω ˜WζT ϵζ.                                          Then, let us revisit the stability of contact force. Substituting
+  Then, (55) can be rewritten as                                the error dynamics (50) into (28), we have
+    ˙V ≤−eT  e −zT K2 z + eT ˜α + zT εζ −λω ˜WζT ϵζ.    (56)                                                                                                                   t                                                  (NT )−1(−K2z−e + NT ˜W T S)= Jc(qc)ηt  eξ +kξ    eξdτ  .
+Reminding the deﬁnition of ϵ in (46), we can obtain that                                                                   0                                                                                                                       (62)
+           ˙V ≤−eT  e −zT K2 z + eT ˜α + zT εζ                                                        According to the results of Theorem 1, as z, e, ˜W, and ε
+         −λω ˜WζT (Pζ ˜Wζ + εaζ)                          converge to a small neighborhood around zero and N and Jc
+      ≤−eT  e −zT K2 z + eT ˜α −λω ˜WζT Pζ ˜Wζ           are also full column rank matrices, we can obtain
+          +zT εζ −λω ˜WζT εaζ.                        (57)                                                                    t
+                                                                                            eξ + kξ    eξdτ ≤U                 (63)
+Note that  ˜α is bounded by |˜α| ≤dα, and ε is bounded by                                    0
+|ε| ≤dε. Employing Young’s inequality −a2 + 2ab −b2 ≤0  where U =  (max{k2i}|σz|+|σe|+|σw| ¯S +|dε|), with σz, σe,
+here, we can obtain                                      and σ ˜W being the boundary of the compact set of the tracking
+                                                                       errors, and  = |λmax((NT Jc)−1/ηt)| is a bounded parameter.
+˙V ≤−1   e−1  K2 z−λω ˜WζT P ˜Wζ +μ−λω ˜WζT εaζ  (58)   Since eξ is continuous and the inequality in (63) holds, we can       2eT     2zT
+                                                          conclude that the error of the contact force eξ  is bounded in
+where μ = (dα)2/(2 min(k1i)) + (dε)2/(2 min(k2i)).                                                           terms of the boundedness of U, while the magnitude of eξ can
+  Then, according to the assumption that PPE condition is                                                        be diminished through the increases of kξ and ηt.
+guaranteed, we can obtain that Pζ  is positive deﬁnite and                                                             This completes the proof.
+λ(Pζ) ≥σP I [51], where σP  is a small constant satisfying                                                     Remark 6: Different  from  the  traditional NN  learning
+σP ≤λmin(Pζ ), and I is an unit matrix with proper dimension.                                                                algorithms, a leakage term λωϵζ  is designed in (48). As dis-
+Therefore, (58) can be rewritten as                                                           cussed in Section III-B, ϵζ can be described by a function of
+                                                                 the estimation error of the NN weights. Therefore, integrating
+                                          T ˜Wζ   ˙V ≤−1    e −1  K2 z −λωσP ˜Wζ        2eT      2zT                                              ϵζ  in  the adaptation law  will  result  in a  quadratic term
+    +μ −λω ˜WζT εaζ                                  λω ˜WζT Pζ ˜Wζ  in the Lyapunov function (57). Thus, the esti-
+                                                         mation error and the tracking error are claimed to be con-
+                                           T  ≤−1    e −1  K2 z −1      ˜Wζ ˜Wζ                 verged simultaneously. In comparison to the widely used NN        2eT      2zT      2λωσP
+                                                               adaptation algorithm in [31] and [41], the proposed composite
+    +μ −λω ˜WζT εaζ −1      ˜Wζ                    2λωσP   T ˜Wζ                        learning algorithm is clearly different by using the prediction
+                                                                   error for ensuring the convergence. More detailed illustrations
+                                           T  ≤−1    e −1  K2 z −1      ˜Wζ ˜Wζ + μ + ϖ  (59)   will be given in Section IV with numerical examples.        2eT      2zT      2λωσP
+where                                                                              IV. SIMULATION
+                                           || ¯Sdε||2                       To verify the validity of the proposed bimanual control           ϖ = λω
+                          2σP                            algorithm, we employ a bimanual robot consists of a manip-
+                                                                    ulator with two revolute joints and an arm with one trans-and again Young’s inequality
+                                                                         late  joint, to rigidly grasp a rectangular object, as shown
+                        1                                                     ||εaζ||2             in Fig. 3. The object coordinate frame X O OOYO is attached                     T ˜Wζ + 2    −1            ζ                               ˜WζT εaζ ) ≤λω       2λωσP(W        σP             2σP               to the object mass center Oo. The  joint variables of the
+is employed with ||εaζ|| ≤|| ¯Sdεζ ||.                 SM and TM are set to qs = x and  qt =  [q1, q2], with
+                                                           base displacements of b = 0.5 and a = 0.3. From Fig. 3,  Comparing with the elements of V deﬁned in (34), (39),
+                                             we can derive the position vectors of the object coordinateand (51), we can obtain that
+                                                       and the tool coordinate as po = [qs, b]T , pc = [l1 cos(q1) +
+                              ˙V ≤−ϑvV + δ                   (60)    l2 cos(q1+q2)+a, l1 sin(q1)+l2 sin(q1+q2)]T . We assume that
+                                                                 the tool-used manipulator tracks a straight line on the object
+where ϑv = min{λmin(  ), λmin(K2)/λmax(M), λωσP/β}, and
+                                                               as ρ(pto) = xto −yto = 0. The joint coordinate is chosenδ = μ + ϖ.
+                                                                    to be d(q) = [qt1, qt2]T and qs(q) = l1(cos(q1) −sin(q1)) +
+  Integrating on both sides of (60) to solve the differential
+                                                                 l2(cos(q1 + q2) −sin(q1 + q2)) + a.
+inequality equation yields
+                                                           Then, the kinematic relationship of the bimanual robot can
+               V(t) ≤V (0)e−ϑvt + δ/ϑv.              (61)  be derived by
+
+  Therefore, we can derive that there exists a compact set          −l1 sin(q1) −l2 sin(q1 + q2)  −l2 sin(q1 + q2)                                                                                        Jt =
+{    : V ≤δ/ϑv} such that the states outside   could enter into          −l1 cos(q1) + l2 cos(q1 + q2)  −l2 cos(q1 + q2)
+
+
+
+          Authorized licensed use limited to: HUNAN UNIVERSITY. Downloaded on April 02,2021 at 07:29:12 UTC from IEEE Xplore. Restrictions apply.
+--- PAGE 8 ---
+                          This article has been accepted for inclusion in a future issue of this journal. Content is final as presented, with the exception of pagination.
+
+
+8                                                                      IEEE TRANSACTIONS ON NEURAL NETWORKS AND LEARNING SYSTEMS
+
+
+
+                                                                          TABLE II
+
+                                                               NOMENCLATURE OF THE COORDINATION SYSTEM
+
+
+
+
+
+Fig. 3.  Simulated bimanual robot system.
+
+and
+                          1
+                              Js =
+                          0
+
+and                                                                               Fig. 4.  Tracking performance of the object position xod.
+          1 0  −l1(s1 + c1) −l2(s12 + c12)   NT =
+          0 1        −l2(s12 + c12)
+          0 0  l1(s1 −c1)˙q1 −l2(s12 −c12)(˙q1 + ˙q2)    ˙NT =                                                                      .
+          0 1           l2(s12 −c12)(˙q1 + ˙q2)
+
+  The TM robot is chosen as a two-link manipulator, and its
+dynamics is given by
+      Mt(qt)¨qt + Ct(qt, ˙qt)˙qt + Gt(qt) = τt + JtT (qt) ft   (64)
+
+where
+                       M11  M12
+                Mt =
+                       M21  M22
+
+with
+                                                                                    Fig. 5.  Tracking performance of the joint position q1.
+    M11 = (m1 + m2)l21 + m2l22 + 2m2l1l2 cos(q2)
+         +I1 + I2; M12 = m2l22 + m2l1l2 cos(q2) + I2;        to xod = and ˙xod = 0. The control gains are selected as K2 =
+                                                             diag(15, 10) and  = diag(15, 20), with the command ﬁltered    M22 = m2l22 + I2
+                                                            parameters being κ = 1 and σ = 50. Assume that the robot
+                                                       dynamics Mt, Ms, Ct, and Gt are unknown to users, and an                −c ˙q2 −c(˙q1 + ˙q2)
+               Ct =                           RBFNN with 28 = 256 nodes is employed to cancel the effect                      c ˙q1  0
+                                                               of dynamic uncertainties, with the centers placing on a regular
+with c = m2l1l2 sin(q2); and Gt = [v1g, v2g]T , with v1 =   lattice as [−1, 1] × [−1.5, 1.5] × [−0.5, 0.5] × [−0.5, 0.5] ×
+(m1+m2)l1 cos(q2)+m2l2 cos(q1+q2) and v2 = m2l2 cos(q1+  [−1, 1]×[−1, 1]×[−1, 1]×[−1, 1]. The gains of the NN are
+q2). The SM  is a one-link  translate manipulator, and  its   selected as β = 15 and λω = 1. The NN is initialized with
+dynamics can be described as                          W(0) = 0 and S(0) = 0. To further verify the superiority of
+                                                                 the proposed bimanual control algorithm, comparative studies
+             Ms ¨qs = τs −Js(qs)DTt ηtξ              (65)                                                         have also been conducted using the traditional PID controller                    √   √
+where ms = 0.1, Dt = I, and ηt = [1/  2, −1/  2]T . The  and the NN learning control (NNLC) in [41].
+parameters of the links are given in Table II.                    Next, we analyze the tracking performance of the proposed
+  The tracking trajectory of the object  is given as xod =   control scheme. Figs. 4–6 show the typical performance of
+0.15(1 −sin(t + 12)), and the desired trajectory on the object   qs, q1, and q2 under the proposed controller, a well-turned
+surface is deﬁned as xtod = −1.5/12 cos(t + 2) and ytod =  PID controller, and an NNLC controller. We can see from the
+−1.5/12 cos(t + 2). The desired contact force is set to ξd =   ﬁgures that the proposed composite learning control scheme
+2N. The initial conditions of the robot joints are set to q1 = 0,   follows the reference trajectory very well with high track-
+q2 = 2, ˙q1 = 0, and ˙q2 = 0. The initial object position is set   ing precision. On the other hand, the tracking of NNLC is
+
+
+
+          Authorized licensed use limited to: HUNAN UNIVERSITY. Downloaded on April 02,2021 at 07:29:12 UTC from IEEE Xplore. Restrictions apply.
+--- PAGE 9 ---
+                          This article has been accepted for inclusion in a future issue of this journal. Content is final as presented, with the exception of pagination.
+
+
+JIANG et al.: COMPOSITE-LEARNING-BASED ADAPTIVE NEURAL CONTROL FOR DUAL-ARM ROBOTS WITH RELATIVE MOTION                          9
+
+
+
+
+
+                                                                                    Fig. 9.   Filter error of the command ﬁlter ˜α.
+Fig. 6.  Tracking performance of the joint position q2.
+
+
+
+
+
+                                                                                    Fig. 10.  Approximation performance of the NN with and without composite
+                                                                                     learning.
+
+
+
+
+
+Fig. 7.  Tracking error of joint angles e1.
+
+
+
+
+
+                                                                                    Fig. 11.  Converge of NN weights W1 with composite learning.
+
+
+
+
+
+Fig. 8.  Tracking error of joint angles e2.
+                                                                                    Fig. 12.  Approximation performance of the NN with and without composite
+better than the PID controller; however, steady-state position    learning.
+tracking errors still can be observed. The tracking errors of
+the controllers were depicted, as shown in Figs. 7 and 8.
+We can see from the ﬁgures that the tracking errors of the
+proposed controller are less than 0.01 rad in a few seconds
+with fast convergence. As a comparison, the PID controller
+demonstrates large tracking errors in the steady state. Although
+the NNLC achieves adequate control precision, the setting
+time  is  less than the proposed controller, and also small
+tracking errors existed. The peak of the tracking error of    Fig. 13.  Converge of NN weights W2 with composite learning.
+the proposed controller is nearly 70% lower than the case
+of the NNLC controller. Therefore, the proposed controller   see from the ﬁgures that the approximation of the unknown
+demonstrates better control performance than the other two   function  f (xc) is successful (dotted line “.-") by the proposed
+controllers. Fig. 9 shows the ﬁlter error of ˜αc. We can see that   composite learning method. For the NNLC, the approximation
+the ﬁlter error is less than 0.001, which implies an accurate   of  f (xc) is not achieved (dotted line “–"). Figs. 11–15 show
+approximation of the command derivative.                        that the NN weight parameters converge to constant values in
+  The NN learning performance and weight convergence are   about 10 s, a time interval after which the overall tracking
+depicted, as shown in Figs. 10–16, where the proposed com-   performance remains substantially unvaried. The convergence
+posite learning algorithm and the NNLC are compared. We can   of the NN norm is depicted in Fig. 16, where the convergence
+
+
+
+          Authorized licensed use limited to: HUNAN UNIVERSITY. Downloaded on April 02,2021 at 07:29:12 UTC from IEEE Xplore. Restrictions apply.
+--- PAGE 10 ---
+                          This article has been accepted for inclusion in a future issue of this journal. Content is final as presented, with the exception of pagination.
+
+
+10                                                                     IEEE TRANSACTIONS ON NEURAL NETWORKS AND LEARNING SYSTEMS
+
+
+
+                                                                                       [6] C. Yang, C. Chen, W. He, R. Cui, and Z. Li, “Robot learning system
+                                                                              based on adaptive neural control and dynamic movement primitives,”
+                                                                 IEEE Trans. Neural Netw. Learn. Syst., vol. 30, no. 3, pp. 777–787,
+                                                                            Mar. 2019.
+                                                                                       [7] N. Sommer, M. Li, and A. Billard, “Bimanual compliant tactile explo-
+                                                                                            ration for grasping unknown objects,” in Proc. IEEE Int. Conf. Robot.
+                                                                           Autom. (ICRA), May 2014, pp. 6400–6407.
+                                                                                       [8] C. Yang, C. Zeng, C. Fang, W. He, and Z. Li, “A DMPs-based framework
+                                                                                            for robot learning and generalization of humanlike variable impedance
+Fig. 14.  Approximation performance of the NN with and without composite           skills,” IEEE/ASME Trans. Mechatronics, vol. 23, no. 3, pp. 1193–1203,
+learning.                                                                              Jun. 2018.
+                                                                                       [9] Y.-H. Liu and S. Arimoto, “Decentralized adaptive and nonadaptive
+                                                                                          position/force controllers for redundant manipulators in cooperations,”
+                                                                                                         Int. J. Robot. Res., vol. 17, no. 3, pp. 232–247, Mar. 1998.
+                                                                                [10] O. Khatib, K. Yokoi, K. Chang, D. Ruspini, R. Holmberg, and A. Casal,
+                                                                                 “Vehicle/arm coordination and multiple mobile manipulator decentral-
+                                                                                      ized cooperation,” in Proc. IEEE/RSJ Int. Conf.  Intell. Robots Syst.
+                                                                                 (IROS), vol. 2, Nov. 1996, pp. 546–553.
+                                                                                [11]  J. H. Chung, B.-J. Yi, and W. K. Kim, “Analysis of internal loading
+                                                                                                   at multiple robotic systems,”  J. Mech. Sci. Technol., vol. 19, no. 8,
+                                                                                     pp. 1554–1567, Aug. 2005.
+                                                                                [12] L. Feng-yun and L. Tian-sheng, “Development of a robot system for
+Fig. 15.  Converge of NN weights W3 with composite learning.                                                                         complex surfaces polishing based on CL data,”  Int.  J. Adv. Manuf.
+                                                                                        Technol., vol. 26, nos. 9–10, pp. 1132–1137, Oct. 2005.
+                                                                                [13] L. Wu, K. Cui, and S. B. Chen, “Redundancy coordination of multi-
+                                                                                       ple robotic devices for welding through genetic algorithm,” Robotica,
+                                                                                              vol. 18, no. 6, pp. 669–676, Nov. 2000.
+                                                                                [14] C. Zeng, C. Yang, Z. Chen, and S.-L. Dai, “Robot learning human
+                                                                                                 stiffness regulation for hybrid manufacture,” Assem. Autom., vol. 38,
+                                                                                     no. 5, pp. 539–547, Nov. 2018, doi: 10.1108/aa-02-2018-019.
+                                                                                [15]  J. Lee, P. H. Chang, and R. S. Jamisola, “Relative impedance control for
+                                                                               dual-arm robots performing asymmetric bimanual tasks,” IEEE Trans.
+                                                                                          Ind. Electron., vol. 61, no. 7, pp. 3786–3796, Jul. 2014.
+                                                                                [16] Z. Li, W. Yuan, S. Zhao, Z. Yu, Y. Kang, and C. L. P. Chen, “Brain-
+                                                                                      actuated control of dual-arm robot manipulation with relative motion,”
+                                                                 IEEE Trans. Cognit. Develop. Syst., vol. 11, no. 1, pp. 51–62, Mar. 2019.Fig. 16.  Norm of the NN weights.
+                                                                                [17]  Y.-J. Liu, S. Lu, and S. Tong, “Neural network controller design for an
+of NN weight can be observed in a more direct manner. Thus,         uncertain robot with time-varying output constraint,” IEEE Trans. Syst.,
+                                                                    Man, Cybern. Syst., vol. 47, no. 8, pp. 2060–2068, Aug. 2017.
+the effectiveness of the proposed composite learning algorithm    [18]  J. Na, B. Jing, Y. Huang, G. Gao, and C. Zhang, “Unknown system
+is demonstrated.                                                         dynamics estimator for motion control of nonlinear robotic systems,”
+                                                                 IEEE Trans. Ind. Electron., vol. 67, no. 5, pp. 3850–3859, May 2020.
+                    V. CONCLUSION                               [19] C. Yang, C. Chen, N. Wang, Z. Ju, J. Fu, and M. Wang, “Biologically
+  In this article, we investigate the control design for bimanual         inspired motion modeling and neural control for robot learning from
+                                                                                    demonstrations,” IEEE Trans. Cogn. Develop.  Syst., vol. 11, no. 2,
+robots to perform the relative motion. The dynamic modeling                                                                                     pp. 281–291, Jun. 2019.
+of the bimanual robot system  is conducted using a holo-    [20] Z. Zhao, C. K. Ahn, and H.-X. Li, “Dead zone compensation and
+nomic kinematic constraint. The command ﬁltered backstep-         adaptive vibration control of uncertain spatial ﬂexible riser systems,”
+                                                               IEEE/ASME  Trans.  Mechatronics,  vol.  25,  no.  3,  pp. 1398–1408,
+ping method is employed for the controller design. Moreover,                                                                                      Jun. 2020.
+a composite learning algorithm is developed for the adaptation    [21]  Y. Zhu and W. X. Zheng, “Observer-based control for cyber-physical
+of RBFNN by using the integration of learning errors. The        systems with periodic DoS attacks via a cyclic switching strategy,” IEEE
+stability analysis is conducted through the Lyapunov theory.         Trans. Autom. Control, vol. 65, no. 8, pp. 3714–3721, Aug. 2020.
+                                                                                [22] Z. Zhao, C. K. Ahn, and H.-X. Li, “Boundary antidisturbance control of
+Finally, the effectiveness and superiority of the proposed com-        a spatially nonlinear ﬂexible string system,” IEEE Trans. Ind. Electron.,
+posite learning algorithm are demonstrated through compara-          vol. 67, no. 6, pp. 4846–4856, Jun. 2020.
+tive simulation studies. Future work includes the asymmetric    [23] M. Wang, Y. Zhang, and C. Wang, “Learning from neural control for
+                                                                              non-afﬁne systems with full state constraints using command ﬁltering,”
+bimanual control of dual-arm robot with the nonrigid surface           Int. J. Control, vol. 93, no. 10, pp. 2392–2406, 2020.
+by using the reinforcement learning method.                        [24]  J. Na, S. Wang, Y.-J. Liu, Y. Huang, and X. Ren, “Finite-time con-
+                                                                                vergence adaptive neural network control for nonlinear servo systems,”
+                  REFERENCES                             IEEE Trans. Cybern., vol. 50, no. 6, pp. 2568–2579, Jun. 2020.
+ [1] M. Fuchs et al., “Rollin’ justin–design considerations and realization of    [25] L. Liu, Y. Liu, D. Li, S. Tong, and Z. Wang, “Barrier Lyapunov function-
+     a mobile platform for a humanoid upper body,” in Proc. IEEE Int. Conf.        based adaptive fuzzy FTC for switched systems and its applications to
+     Robot. Autom., May 2009, pp. 4131–4137.                                     resistance–inductance–capacitance circuit system,” IEEE Trans. Cybern.,
+ [2] R. Liza Ahmad Shauri and K. Nonami, “Assembly manipulation of          vol. 50, no. 8, pp. 3491–3502, Aug. 2020.
+     small objects by dual-arm manipulator,” Assem. Autom., vol. 31, no. 3,    [26]  F. Luan, J. Na, Y. Huang, and G. Gao, “Adaptive neural network con-
+      pp. 263–274, Aug. 2011.                                                                  trol for robotic manipulators with guaranteed ﬁnite-time convergence,”
+ [3] R. Bogue, “Robots to aid the disabled and the elderly,” Ind. Robot, Int.        Neurocomputing, vol. 337, pp. 153–164, Apr. 2019.
+        J., vol. 40, no. 6, pp. 519–524, Oct. 2013.                                [27] C. Liu, G. Wen, Z. Zhao, and R. Sedaghati, “Neural-network-based
+ [4] Y.-H. Liu, Y. Xu, and M. Bergerman, “Cooperation control of multiple         sliding-mode  control  of an  uncertain  robot  using dynamic model
+     manipulators with passive joints,” IEEE Trans. Robot. Autom., vol. 15,        approximated  switching  gain,” IEEE  Trans.  Cybern.,  early  access,
+      no. 2, pp. 258–267, Apr. 1999.                                            Mar. 18, 2020, doi: 10.1109/tcyb.2020.2978003.
+ [5] M.  Li, H. Yin, K. Tahara, and A.  Billard, “Learning  object-level    [28] L. Liu,  Y.-J. Liu, A. Chen, S. Tong, and C. L.  P. Chen, “Integral
+     impedance control for robust grasping and dexterous manipulation,” in          barrier Lyapunov function-based adaptive control for switched nonlinear
+     Proc. IEEE Int. Conf. Robot. Autom. (ICRA), May 2014, pp. 6784–6791.         systems,” Sci. China Inf. Sci., vol. 63, no. 3, pp. 1–14, Mar. 2020.
+
+
+
+          Authorized licensed use limited to: HUNAN UNIVERSITY. Downloaded on April 02,2021 at 07:29:12 UTC from IEEE Xplore. Restrictions apply.
+--- PAGE 11 ---
+                          This article has been accepted for inclusion in a future issue of this journal. Content is final as presented, with the exception of pagination.
+
+
+JIANG et al.: COMPOSITE-LEARNING-BASED ADAPTIVE NEURAL CONTROL FOR DUAL-ARM ROBOTS WITH RELATIVE MOTION                         11
+
+
+
+[29] X. Li, C. K. Ahn, D. Lu, and S. Guo, “Robust simultaneous  fault    [51]  J. Na, G. Herrmann, and K. Zhang, “Improving transient performance
+      estimation and nonfragile output feedback  fault-tolerant  control  for         of adaptive control via a modiﬁed reference model and novel adapta-
+     Markovian jump systems,” IEEE Trans.  Syst., Man, Cybern.  Syst.,           tion,” Int. J. Robust Nonlinear Control, vol. 27, no. 8, pp. 1351–1372,
+      vol. 49, no. 9, pp. 1769–1776, Sep. 2019.                          May 2017.
+[30] L. Liu, Y.-J. Liu, and S. Tong, “Neural networks-based adaptive ﬁnite-
+     time fault-tolerant control for a class of strict-feedback switched non-
+      linear systems,” IEEE Trans. Cybern., vol. 49, no. 7, pp. 2536–2545,                       Yiming Jiang (Member, IEEE) received the B.S.
+      Jul. 2019.                                                                                     degree  in  automation  from  Hunan  University,
+[31]  Y.-J. Liu, L. Tang, S. Tong, and C. L. P. Chen, “Adaptive NN con-                         Changsha, China, in 2011, the M.S. degree in con-
+       troller design for a class of nonlinear MIMO discrete-time systems,”                                  trol theory and engineering from  the School  of
+    IEEE Trans. Neural Netw. Learn. Syst., vol. 26, no. 5, pp. 1007–1018,                          Automation, Guangdong University of Technology,
+    May 2015.                                                                            Guangzhou, China, in 2015, and the Ph.D. degree
+[32] L. Liu, Z. Wang, X. Yao, and H. Zhang, “Echo state networks based                        from the School of Control Science and Engineering,
+      data-driven adaptive fault tolerant control with its application to electro-                          South China University of Technology, Guangzhou,
+     mechanical system,” IEEE/ASME Trans. Mechatronics, vol. 23, no. 3,                               in 2019.
+      pp. 1372–1382, Jun. 2018.                                                     He was a Visiting Scholar with the University of
+[33] C. Chen, Z. Liu, K. Xie, Y. Zhang, and C. L. P. Chen, “Asymptotic fuzzy                           Portsmouth, Portsmouth, U.K., from 2017 to 2018.
+      neural network control for pure-feedback stochastic systems based on   He is currently a Post-Doctoral Fellow with the College of Electrical and
+     a semi-Nussbaum function technique,” IEEE Trans. Cybern., vol. 47,   Information Engineering, Hunan University, Changsha, China. His research
+      no. 9, pp. 2448–2459, Sep. 2017.                                              interests include robotics, intelligent control, and human–robot interaction.
+[34] W. He, Y. Chen, and Z. Yin, “Adaptive neural network control of an
+      uncertain robot with full-state constraints,” IEEE Trans. Cybern., vol. 46,                      Yaonan Wang received the B.S. degree in computer
+      no. 3, pp. 620–629, Mar. 2016.                                                                  engineering from East China Science and Technol-
+[35] C. Yang, G. Peng, Y. Li, R. Cui, L. Cheng, and Z. Li, “Neural networks                        ogy University (ECSTU), Fuzhou, China, in 1981,
+     enhanced adaptive admittance control of optimized robot–environment                         and the M.S. and Ph.D. degrees in electrical engi-
+      interaction,” IEEE Trans. Cybern.,  vol.  49,  no.  7,  pp. 2568–2579,                            neering from Hunan University, Changsha, China,
+      Jul. 2019.                                                                                                in 1990 and 1994, respectively.
+[36] W. He, T. Meng, X. He, and C. Sun, “Iterative learning control for a                       From 1994  to  1995, he was  a  Post-Doctoral
+     ﬂapping wing micro aerial vehicle under distributed disturbances,” IEEE                          Research Fellow with the National University of
+     Trans. Cybern., vol. 49, no. 4, pp. 1524–1535, Apr. 2019.                                    Defence Technology, Changsha. From 1981 to 1994,
+[37] W. He, X. Mu, L. Zhang, and Y. Zou, “Modeling and trajectory tracking                         he was with ECSTU. From 1998 to 2000, he was a
+      control for ﬂapping-wing micro aerial vehicles,” IEEE/CAA J. Automat-                           Senior Humboldt Fellow in Germany. From 2001 to
+      ica Sinica, early access, Sep. 24, 2020, doi: 10.1109/JAS.2020.1003417.   2004, he was a Visiting Professor with the University of Bremen, Bremen,
+[38] W. He, T. Wang, X. He, L.-J. Yang, and O. Kaynak, “Dynamical mod-   Germany. He has been a Professor with Hunan University since 1995. He is an
+      eling and boundary vibration control of a rigid-ﬂexible wing system,”   Academician of the Chinese Academy of Engineering. His current research
+    IEEE/ASME Trans. Mechatronics,  early access, Apr. 21, 2020, doi:    interests include robotics, intelligent perception and control, and computer
+     10.1109/tmech.2020.2987963.                                              vision for industrial applications.
+[39] C. Yang,  Y.  Jiang, W. He,  J. Na,  Z.  Li, and B. Xu, “Adaptive
+     parameter estimation and control design for robot manipulators with
+      ﬁnite-time convergence,” IEEE Trans. Ind. Electron., vol. 65, no. 10,                        Zhiqiang Miao (Member, IEEE) received the B.S.
+      pp. 8112–8123, Oct. 2018.                                                               and Ph.D. degrees in electrical and information engi-
+[40] Z. Miao, Y.-H. Liu, Y. Wang, H. Chen, H. Zhong, and R. Fierro, “Con-                            neering from Hunan University, Changsha, China,
+     sensus with persistently exciting couplings and its application to vision-                               in 2010 and 2016, respectively.
+     based estimation,” IEEE Trans. Cybern., early access, Jun. 10, 2019,                       From 2014 to 2015, he was a Visiting Scholar with
+      doi: 10.1109/tcyb.2019.2918796.                                                                    the University of New Mexico, Albuquerque, NM,
+[41] C. Wang and D. J. Hill, “Learning from neural control,” IEEE Trans.                     USA. From 2016 to 2018, he was a Post-Doctoral
+     Neural Netw., vol. 17, no. 1, pp. 130–146, Jan. 2006.                                          Fellow  with  the Department  of Mechanical and
+                                                                                           Automation Engineering, The Chinese University[42] C. Wang, M. Wang, T. Liu, and D. J. Hill, “Learning from ISS-modular
+                                                                                                        of Hong Kong, Hong Kong. He  is currently an      adaptive NN control of nonlinear strict-feedback systems,” IEEE Trans.
+                                                                                                     Associate Professor with the College of Electrical     Neural Netw. Learn. Syst., vol. 23, no. 10, pp. 1539–1550, Oct. 2012.
+                                                                     and Information Engineering, Hunan University. His current research interests[43]  P. M. Patre, W. MacKunis, M. Johnson, and W. E. Dixon, “Composite
+                                                                               include multirobot systems, visual servoing, motion planning, and nonlinear      adaptive control for Euler–Lagrange systems with additive disturbances,”
+                                                                                       control.     Automatica, vol. 46, no. 1, pp. 140–147, Jan. 2010.
+[44]  J. Na, M. N. Mahyuddin, G. Herrmann, X. Ren, and P. Barber, “Robust
+      adaptive ﬁnite-time parameter estimation and control for robotic sys-                          Jing Na (Member, IEEE) received the B.Eng. degree
+     tems,” Int. J. Robust Nonlinear Control, vol. 25, no. 16, pp. 3045–3071,                               in automation and the Ph.D. degree in control sci-
+     Nov. 2015.                                                                                ence and engineering from the School of Automa-
+[45]  Y. Pan, T. Sun, Y. Liu, and H. Yu, “Composite learning from adap-                                 tion, Beijing Institute of Technology, Beijing, China,
+      tive  backstepping  neural network  control,”  Neural  Netw.,  vol.  95,                               in 2004 and 2010, respectively.
+      pp. 134–142, Nov. 2017.                                                           From 2011  to 2013, he was a Monaco/ITER
+[46] C. Yang, Y. Jiang, J. Na, Z. Li, L. Cheng, and C.-Y. Su, “Finite-time                             Postdoctoral Fellow  at ITER Organization, Saint-
+     convergence adaptive fuzzy control for dual-arm robot with unknown                               Paul-les,  Durance,  France. From 2015  to 2017,
+     kinematics and dynamics,” IEEE Trans. Fuzzy Syst., vol. 27, no. 3,                         he was a Marie Curie Fellow with the Department
+      pp. 574–588, Mar. 2019.                                                                           of Mechanical Engineering, University of Bristol,
+[47] Z. Li, P. Yuen Tao, S. Sam Ge, M. Adams, and W. S. Wijesoma,                                Bristol, U.K. Since 2010, he has been with the
+     “Robust  adaptive  control  of  cooperating mobile manipulators  with    Faculty of Mechanical and Electrical Engineering, Kunming University of
+      relative motion,” IEEE Trans. Syst., Man, Cybern., B, Cybern., vol. 39,   Science and Technology, Kunming, China, where he became a Professor
+      no. 1, pp. 103–116, Feb. 2009.                                               in 2013. He has coauthored one monograph and more than 100 international
+[48]  S. S. Ge, L. Huang, and T. H. Lee, “Model-based and neural-network-    journal and conference  papers. His research  interests  include  intelligent
+     based adaptive control of two robotic arms manipulating an object with    control, adaptive parameter estimation, nonlinear control and applications for
+      relative motion,” Int. J. Syst. Sci., vol. 32, no. 1, pp. 9–23, Jan. 2001.     robotics, vehicle systems, and wave energy convertors.
+[49] C. Yang, J. Na, G. Li, Y. Li, and J. Zhong, “Neural network for complex      Dr. Na was a recipient of the Best Application Paper Award of IFAC ICONS
+     systems: Theory and  applications,” Complexity,  vol. 2018, pp. 1–2,   2013 and the 2017 Hsue-shen Tsien Paper Award. He is currently an Associate
+    May 2018.                                                               Editor of the IEEE TRANSACTIONS ON INDUSTRIAL ELECTRONICS and
+[50] C. Wang and D. J. Hill, Deterministic Learning Theory for Identiﬁcation,   Neurocomputing, and has served as the Organization Committee Chair of
+     Recognition, and Control. Boca Raton, FL, USA: CRC Press, 2018.    DDCLS 2019 and the International Program Committee Chair of ICMIC 2017.
+
+
+
+          Authorized licensed use limited to: HUNAN UNIVERSITY. Downloaded on April 02,2021 at 07:29:12 UTC from IEEE Xplore. Restrictions apply.
+--- PAGE 12 ---
+                          This article has been accepted for inclusion in a future issue of this journal. Content is final as presented, with the exception of pagination.
+
+
+12                                                                     IEEE TRANSACTIONS ON NEURAL NETWORKS AND LEARNING SYSTEMS
+
+
+
+                        Zhijia Zhao (Member, IEEE) received the B.Eng.                      Chenguang Yang (Senior Member, IEEE) received
+                        degree from the North China University of Water                             the  Ph.D.  degree  in  control  engineering  from
+                       Resources and Electric Power, Zhengzhou, China,                             the National University  of Singapore, Singapore,
+                           in 2010, and the M.Eng. and Ph.D. degrees from the                               in  2010, and  Post-Doctoral  Training  in human
+                      South China University of Technology, Guangzhou,                              robotics from Imperial College London, London,
+                        China,  in  2013  and  2017,  respectively,  all  in                        U.K.
+                        automatic control.                                                         His   research   interest   lies   in  human–robot
+                   He  is  currently a Lecturer  of mechanical and                               interaction and intelligent system design.
+                            electrical engineering with Guangzhou University,                              Dr.  Yang  has  been  awarded  the EU  Marie
+                     Guangzhou. His  research  interests  include  ﬂexi-                           Curie International Incoming Fellowship, the U.K.
+                          ble  mechanical  systems,  ocean  cybernetics,  and                   EPSRC UKRI  Innovation  Fellowship,  and  the
+                           robotics.                                            Best Paper Award of the IEEE TRANSACTIONS ON ROBOTICS as well as
+                                                                            over ten international conference best paper awards. He is the Co-Chair of
+                                                                                  the Technical Committee on Bio-mechatronics and Bio-robotics Systems
+                                                                           (B2S), IEEE Systems, Man, and Cybernetics  Society, and the Co-Chair
+                                                                                of  the  Technical Committee on  Collaborative  Automation  for  Flexible
+                                                                         Manufacturing (CAFM), IEEE Robotics and Automation Society. He serves
+                                                                                as an  Associate  Editor  for a number  of IEEE  Transactions and  other
+                                                                                      international leading journals.
+
+
+
+
+
+          Authorized licensed use limited to: HUNAN UNIVERSITY. Downloaded on April 02,2021 at 07:29:12 UTC from IEEE Xplore. Restrictions apply.

@@ -1,0 +1,123 @@
+{
+  "status": "PASS_READONLY_RAW_SCORE_CROSSCHECK",
+  "scope": "12-scene mechanism screen only; no new Plant/training/TEST",
+  "scene_count": 12,
+  "raw_score_count": 36,
+  "paired_count": 24,
+  "loss_count": 5,
+  "primary_win_counts": {
+    "B": {
+      "WIN": 10,
+      "LOSS": 2,
+      "TIE": 0,
+      "improvements_ge_1um": 10,
+      "improvements_ge_10um": 10,
+      "deteriorations_ge_1um": 2,
+      "deteriorations_ge_10um": 2,
+      "ties_at_1e_12": 0
+    },
+    "C2": {
+      "WIN": 9,
+      "LOSS": 3,
+      "TIE": 0,
+      "improvements_ge_1um": 9,
+      "improvements_ge_10um": 9,
+      "deteriorations_ge_1um": 3,
+      "deteriorations_ge_10um": 3,
+      "ties_at_1e_12": 0
+    }
+  },
+  "parent_primary_summary": {
+    "n": 12,
+    "mean_Q_m": {
+      "B": 0.010349102114640803,
+      "C2": 0.009783365739028525,
+      "C3": 0.009116291448069356
+    },
+    "wins_vs_B": 10,
+    "wins_vs_C2": 9
+  },
+  "parent_full_q_summary_sha256": "81a8c5dbd696c829a9c827c9cb27f1fedb4e8107b691a878ee177c02f1c14ba8",
+  "parent_all36_axes_phases_sha256": "abcccf659d4f447e9e7dd9abe2cc6582cc1e8670e604ac7048c6d45a750517dc",
+  "supplemental_means": {
+    "B": {
+      "mean_peak_mm": 37.972571087224,
+      "mean_p95_mm": 21.000620366559563,
+      "mean_motor_saturated_fraction": 0.0,
+      "mean_generalized_clipped_fraction": 0.0,
+      "mean_controller_time_ms_nonformal": 0.08863372166666666,
+      "p95_controller_time_ms_nonformal": 0.20929291666666663
+    },
+    "C2": {
+      "mean_peak_mm": 30.283093763663494,
+      "mean_p95_mm": 21.35386275117626,
+      "mean_motor_saturated_fraction": 0.0,
+      "mean_generalized_clipped_fraction": 0.0,
+      "mean_controller_time_ms_nonformal": 0.12137381083333333,
+      "p95_controller_time_ms_nonformal": 0.3439016666666666
+    },
+    "C3": {
+      "mean_peak_mm": 29.955975247945105,
+      "mean_p95_mm": 20.75973350898516,
+      "mean_motor_saturated_fraction": 0.0,
+      "mean_generalized_clipped_fraction": 0.0,
+      "mean_controller_time_ms_nonformal": 0.17794450083333332,
+      "p95_controller_time_ms_nonformal": 0.57492875
+    }
+  },
+  "pair_tolerance_m": 1e-12,
+  "threshold_sensitivity": {
+    "B": {
+      "WIN": 10,
+      "LOSS": 2,
+      "TIE": 0,
+      "improvements_ge_1um": 10,
+      "improvements_ge_10um": 10,
+      "deteriorations_ge_1um": 2,
+      "deteriorations_ge_10um": 2,
+      "ties_at_1e_12": 0
+    },
+    "C2": {
+      "WIN": 9,
+      "LOSS": 3,
+      "TIE": 0,
+      "improvements_ge_1um": 9,
+      "improvements_ge_10um": 9,
+      "deteriorations_ge_1um": 3,
+      "deteriorations_ge_10um": 3,
+      "ties_at_1e_12": 0
+    }
+  },
+  "all_B_losses": [
+    {
+      "scene_id": "DL1018_VAL_T2_C00_W10",
+      "delta_Q_mm": 0.6491654733617631,
+      "delta_early_x_mm": -0.16053049659978114,
+      "delta_early_y_mm": -0.2457229747512982,
+      "delta_early_z_mm": 1.7533179902484275,
+      "delta_late_x_mm": -0.3573601508093907,
+      "delta_late_y_mm": 1.4252146700071184,
+      "delta_late_z_mm": 0.9472094877066889,
+      "delta_peak_mm": -4.573700466006289,
+      "delta_p95_mm": 10.093767768316646
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C00_W13",
+      "delta_Q_mm": 1.0693952847466133,
+      "delta_early_x_mm": 1.4011362848609905,
+      "delta_early_y_mm": 1.4493698065418252,
+      "delta_early_z_mm": -0.08328896707264585,
+      "delta_late_x_mm": 0.027619377191117525,
+      "delta_late_y_mm": 0.0012764321954024382,
+      "delta_late_z_mm": 1.4270116137079478,
+      "delta_peak_mm": -5.344238131867983,
+      "delta_p95_mm": 9.671205978134429
+    }
+  ],
+  "C2_scene2_collection_status_preserved": "FAILED_NO_RETRY",
+  "C2_scene2_raw_sha256": "f01d4d5463e78b7fd2e448ba93c07eb37a92d337c2228736baf6f74959610167",
+  "C2_scene2_recovery_review_sha256": "2105f1eb4b6ce0ee29dab04066e06c3fde47f3ec8e298293f6b945f3495a4ec4",
+  "formal_timing_qualified": false,
+  "timing_note": "controller_call_time_s is raw recorded timing; no qualification or wall-clock claim.",
+  "interpretation": "12-scene screen only. 10/12 B wins = 83.3%, below 85%; no expansion to DEV72/TEST is supported by this screen."
+}

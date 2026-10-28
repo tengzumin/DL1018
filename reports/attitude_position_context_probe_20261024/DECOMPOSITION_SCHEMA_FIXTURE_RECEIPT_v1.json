@@ -1,0 +1,22 @@
+{
+  "schema": "MATCHED_POSITION_DECOMPOSITION_SCHEMA_FIXTURE_RECEIPT_V1",
+  "source_path": "reports/attitude_position_context_probe_20261024/decompose_matched_position_probe_labels_v1.m",
+  "source_sha256": "6764a74b6a882cb9e0de5fcff8b8d3df5d4af0a1768941d829c9b643fedda3b9",
+  "matlab": "R2025b",
+  "checkcode": {
+    "command": "matlab -batch checkcode(source,'-id') and fail if any issues",
+    "exit_code": 0,
+    "issue_count": 0
+  },
+  "synthetic_fixture": {
+    "reads_real_raw": false,
+    "exit_code": 0,
+    "result": "FIXTURE_PASS scalar_report=1 scenes=4 events_each=1999 compact_event_struct=1 json_bytes=679004 under_64MiB=1",
+    "training_steps": 0,
+    "plant_calls": 0,
+    "command": "matlab -batch inline fixture: four scene cells, each with 1999 compact event_records, scalar top report, jsonencode/jsondecode roundtrip, 64 MiB guard",
+    "test_accessed": false
+  },
+  "raw_decomposition_executed": false,
+  "output_directory_created": false
+}

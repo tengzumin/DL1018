@@ -1,0 +1,13 @@
+# CM18-A1隔离姿态分支主审核
+
+决定：接受隔离源码准备，尚不放行Plant。后续仍需实际best权重跨语言核验、因果输入重放和同状态动作检查。
+
+ROOT已逐段读取父子完整diff。父C5 DEV72引擎SHA保持 `48350037b66efe00301b138068f187c62cf92583f0f9ba2fabc9b24f248a963c`；修订后新引擎SHA为 `4f72db75f176e76de03f77b45e0b82f05ff0e3206907714f3c7faf786ba1092a`。同目录延迟位置helper为父源字节一致副本，CM18 forward为既有已审新函数，不调用旧KAN特征/窗口/Head。
+
+已核对新入口要求三个姿态RBF flag显式false，互斥旧fusion/head/torque学习路径；保留固定名义控制、原BS/滤波/分配/Plant、安全阈值、C5/PCF/坐标掩码及原100Hz事件相位。事件输入的当前body omega、无补偿BS body角加速度、推力/质量、命令u、past-only z、过去十行请求力矩均值，与重标注定义一致；z在完成本转移后推进，每航次初始化。输出按原轴限幅、beta和J0转换后由BS减去，事件间保持。实际运行日志仍需逐事件独立核对这些源代码判断。
+
+初版diff额外跳过了一段原位置路径中已禁用输出/更新的RBF计算。该改动会改变计时和日志对照，ROOT要求恢复父条件，作者已最小恢复；最终diff16个hunks，不顺带优化位置实现。新模型的姿态RBF分支仍不执行，新cm18日志与禁用RBF零日志分别命名。
+
+作者实际执行修订后MATLAB nargin解析和checkcode，OS exit0，NARGIN_PARSE_OK；没有调用引擎或Plant。相关原始静态输出和完整patch见runtime_preparation_v1交接。ROOT已核对完整源码差异，解析结果不能替代真实运行检查。
+
+计时边界沿用父引擎：controllerTime不包含Plant后命令记忆推进和日志操作；cm18_inference_time仅为forward调用。未来正式控制耗时应另行统一完整运行范围，不能据当前字段直接宣称全控制器更快。旧B来源缺口、理想形态/状态反馈/推进执行器假设继续披露，不能将命令积分称为实测构型。

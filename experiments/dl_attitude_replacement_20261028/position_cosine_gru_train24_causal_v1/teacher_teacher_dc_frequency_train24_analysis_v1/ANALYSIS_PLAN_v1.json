@@ -1,0 +1,22 @@
+{
+  "schema": "COSINE_GRU_TRAIN24_TEACHER_DC_FREQUENCY_TIME_ANALYSIS_PLAN_V1",
+  "question": "Which temporal/frequency components of the TRAIN24 feasibility teacher improve frozen SO3 posture, and which are reduced by the DC penalty?",
+  "scope": "Use locked TRAIN_C5_24 inputs and existing teacher, no-DC OOF, and DC-penalty OOF action artifacts only. No VAL/TEST, Plant, or inertia reconstruction.",
+  "input_sha256": {
+    "dataset": "15d689f08fd6d8a53a64c59dbdf62b33f9b8e8a12ce083fb12834cd106df2eeb",
+    "dataset_manifest": "16856362913e5144add83035b9b767affa02c0719c66971635731d237bb0d91e",
+    "dataset_source_lock": "10be2c860c042491acfc0cfaad1067c65d848dd5889c177e6ccb8d65c9602fb7",
+    "teacher_oof": "dc714b61b97f4026f2655794a96330df05b68dfdf1b13209e92724a0934fb0cd",
+    "teacher_position_no_dc_oof": "1dcc509b2bd6beb1729b872440ef69846bd053b3334a44fd1a8df621871cc8ff",
+    "teacher_position_dc_penalty_oof": "0b7b37e777a88af864482f60c2d9f531da7b86d243a725c3a10354c9e4734288"
+  },
+  "fixed_diagnostics": {
+    "sampling_hz": 100,
+    "dc_component": "per-scene time-mean action correction",
+    "frequency_bands_hz": [[0.05, 0.5], [0.5, 2], [2, 5], [5, 20], [20, 50]],
+    "time_windows_s": [[0, 5], [5, 10], [10, 15], [15, 20]],
+    "methods": ["C5 baseline", "feasibility teacher action", "teacher-position student without DC penalty", "teacher-position student with DC penalty"],
+    "band_task_protocol": "For the feasibility teacher only, inject each zero-phase filtered action-correction band alone on the frozen C5 TRAIN trajectory and score SO3; compare the no-DC/DC students by their full-action time replay and correction spectra. Report as a non-additive diagnostic, not a controller rollout."
+  },
+  "decision_rule": "Choose one prespecified training objective after this TRAIN-only descriptive analysis; do not tune its weights/windows on held-out folds and do not claim closed-loop Q from these metrics."
+}

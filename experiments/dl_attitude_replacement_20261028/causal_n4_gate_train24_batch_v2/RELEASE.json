@@ -1,0 +1,155 @@
+{
+  "schema": "DL1018_CAUSAL_N4_GATE_TRAIN24_NOPLANT_V2",
+  "study_id": "causal_n4_gate_train24_batch_v2",
+  "status": "PREPARED_NO_PLANT_PENDING_ROOT_AUDIT",
+  "authorized_scenes": [
+    "DL1018_DEV_T1_C00_W03",
+    "DL1018_DEV_T1_C01_W15",
+    "DL1018_DEV_T1_C04_W00",
+    "DL1018_DEV_T1_C05_W06",
+    "DL1018_DEV_T1_C07_W08",
+    "DL1018_DEV_T1_C10_W09",
+    "DL1018_DEV_T1_C11_W12",
+    "DL1018_DEV_T1_C15_W14",
+    "DL1018_DEV_T2_C00_W04",
+    "DL1018_DEV_T2_C02_W15",
+    "DL1018_DEV_T2_C03_W01",
+    "DL1018_DEV_T2_C06_W07",
+    "DL1018_DEV_T2_C08_W08",
+    "DL1018_DEV_T2_C09_W10",
+    "DL1018_DEV_T2_C12_W13",
+    "DL1018_DEV_T2_C14_W14",
+    "DL1018_DEV_T3_C00_W05",
+    "DL1018_DEV_T3_C03_W15",
+    "DL1018_DEV_T3_C05_W02",
+    "DL1018_DEV_T3_C06_W08",
+    "DL1018_DEV_T3_C09_W09",
+    "DL1018_DEV_T3_C10_W11",
+    "DL1018_DEV_T3_C13_W12",
+    "DL1018_DEV_T3_C15_W14"
+  ],
+  "authorized_Plant_calls": 0,
+  "Plant_calls": 0,
+  "potential_budget_calls": 0,
+  "source_lock_sha256": "c4d57dd944f4f92403df28b7a055ba136a39abd68891b2c5961986e1de3d7b22",
+  "applied_acceleration_static_n4": {
+    "enabled": true,
+    "centers_hz": [
+      2.2,
+      3.2,
+      3.7,
+      4.8
+    ],
+    "quality_factor_each": [
+      4,
+      4,
+      4,
+      4
+    ],
+    "sample_rate_hz": 100,
+    "action_limit_mps2": 3,
+    "b": [
+      [
+        0.98306784940841163,
+        -1.9473815673631925,
+        0.98306784940841163
+      ],
+      [
+        0.97564426290820117,
+        -1.9119799206806107,
+        0.97564426290820117
+      ],
+      [
+        0.972007469545749,
+        -1.8917180425569462,
+        0.972007469545749
+      ],
+      [
+        0.96419909691225436,
+        -1.841359063436488,
+        0.96419909691225436
+      ]
+    ],
+    "a": [
+      [
+        1,
+        -1.9473815673631925,
+        0.96613569881682326
+      ],
+      [
+        1,
+        -1.9119799206806107,
+        0.95128852581640244
+      ],
+      [
+        1,
+        -1.8917180425569462,
+        0.94401493909149792
+      ],
+      [
+        1,
+        -1.841359063436488,
+        0.92839819382450872
+      ]
+    ],
+    "gate_bp_sos": [
+      [
+        0.00782020803349719,
+        0.01564041606699438,
+        0.00782020803349719,
+        1,
+        -1.7653032278569889,
+        0.83753375827904575
+      ],
+      [
+        1,
+        -2,
+        1,
+        1,
+        -1.8957260285978639,
+        0.91459788142420062
+      ]
+    ],
+    "gate_lo_sos": [
+      [
+        0.0020805671354922929,
+        0.0041611342709845858,
+        0.0020805671354922929,
+        1,
+        -1.8925388671474799,
+        0.90417385083708357
+      ],
+      [
+        1,
+        -2,
+        1,
+        1,
+        -1.9667173311097974,
+        0.96797153273500514
+      ]
+    ],
+    "gate_energy_tau_s": 1,
+    "gate_ratio_epsilon": 1E-8,
+    "gate_ratio_low": 0.35,
+    "gate_ratio_span": 0.3,
+    "gate_tau_s": 0.3,
+    "startup_gate_zero_until_s": 2,
+    "event_contract": "1999 events 0.01:0.01:19.99; 31 warmup actions are zero; ZOH at other 1-ms steps",
+    "application_point": "final C5 applied compensation before position_bs_step",
+    "state_initialization": "gate SOS zero; N4 first nonzero input initializes all section histories",
+    "runtime_wind_or_W_code_branching": false
+  },
+  "extra_position_residual_gru_enabled": false,
+  "TEST_read": false,
+  "VAL_data_read": false,
+  "inertia_reconstruction_enabled": false,
+  "Plant_truth_deployment_input": false,
+  "source_split": "TRAIN_C5_24",
+  "source_lock_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\causal_n4_gate_train24_batch_v2\\SOURCE_LOCK_TRAIN24_v2.json",
+  "source_batch_bindings_path": "experiments/dl_attitude_replacement_20261028/no_position_gru_notch_train24_batch_prepare_v1/BATCH_BINDINGS_v1.json",
+  "source_batch_bindings_sha256": "c6e8cb26ba023e88f4120d702c83708938de2fed22762bb10220d2f8eb586c91",
+  "call_protocol_path": "experiments/dl_attitude_replacement_20261028/n4cg_v2/CALL_PROTOCOL_v2.json",
+  "call_protocol_sha256": "5cfec030685a180db167cc2488753c7383ac4f73b4e2bb528f40c11270eda7a7",
+  "candidate_identity_sha256": "7cdb682030f86a5d2adf4264907c9f4fb0f72385a71c42749a650d55b3a12479",
+  "prepared_for_source_only_dynamic_scene_binding": true
+}

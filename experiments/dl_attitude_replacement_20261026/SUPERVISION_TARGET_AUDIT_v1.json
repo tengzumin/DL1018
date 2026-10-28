@@ -1,0 +1,3019 @@
+{
+  "schema": "DL1018_TCN_SUPERVISION_TARGET_RBF_AUDIT_V1",
+  "status": "MISMATCH_CONFIRMED",
+  "dataset_manifest_sha256": "a16c18214f552b8286dcfa09d5858b74e0d26b6bf777ade6f968d4be8f249ed1",
+  "dataset_npz_sha256": "07622eb59821404bf57ed943936a6a805c98a3b4b29f832f388ae2f5f89478cd",
+  "controller_J0_audit_sha256": "d5f4f2709077b1dd53a14519557d376b06f085b0520cdc49a552610f270f71c9",
+  "split": "VAL48",
+  "scenes": 48,
+  "events": 95952,
+  "raw_sha_verified": 48,
+  "run_start_sha_verified": 48,
+  "test_data_read": false,
+  "plant_invoked": false,
+  "controller_J0_source": "MATLAB simulation_parameters at nominal arm lengths then controller_parameters(...,'fixed')",
+  "cfg_plant_inertia_vs_fixed_controller_J0_relative_error_median": 2.538429114700713,
+  "cfg_plant_inertia_vs_fixed_controller_J0_relative_error_min": 2.538429114700713,
+  "stored_BS_accel_feature_error_rms_macro_rad_s2": [
+    0.9878686359338796,
+    0.8774823040067591,
+    0.16977568911195903
+  ],
+  "teacher_RBF_pre_beta_output_rms_macro_rad_s2": [
+    6.7810848413057405,
+    8.537660300987701,
+    0.5185409806960716
+  ],
+  "current_residual_target_rms_macro_rad_s2": [
+    0.6807104548266262,
+    0.7570976108860993,
+    0.14641631864186144
+  ],
+  "teacher_to_target_ratio_scene_median": 11.274762186380624,
+  "teacher_to_target_ratio_scene_p95": 44.35274161948121,
+  "teacher_to_target_ratio_scene_max": 59.117345465909786,
+  "teacher_to_target_ratio_scene_mean": 16.713749034316823,
+  "max_ratio_scene_id": "DL1018_VAL_T1_C08_W15",
+  "teacher_action_mapping_relative_error_median": 6.804493963025691e-09,
+  "teacher_action_mapping_relative_error_max": 0.00021130569299331305,
+  "recommended_supervision": "logged rbf_output_raw at attitude events (pre-beta, rad/s^2); apply only the frozen C5 beta and fixed controller J0 at runtime",
+  "per_scene": [
+    {
+      "scene_id": "DL1018_VAL_T1_C00_W07",
+      "source_class": "REUSE_CERTIFIED_ORIGINAL_B_RAW",
+      "cfg_plant_inertia_kg_m2": [
+        [
+          0.012,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.012,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.022
+        ]
+      ],
+      "controller_fixed_J0_kg_m2": [
+        [
+          0.003257553333333334,
+          -2.168404344971009e-19,
+          0.0
+        ],
+        [
+          -2.168404344971009e-19,
+          0.0032575533333333334,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.006360648333333333
+        ]
+      ],
+      "cfg_vs_controller_J0_relative_error": 2.538429114700713,
+      "stored_vs_actual_BS_accel_feature_rms_rad_s2": [
+        1.4590757212820575,
+        0.5333126130653364,
+        0.049207109916674104
+      ],
+      "actual_BS_accel_feature_rms_rad_s2": [
+        2.002521422629112,
+        0.7324977290169131,
+        0.06922003169401146
+      ],
+      "stored_label_reconstruction_max_abs_rad_s2": 1.550230459557156e-07,
+      "teacher_RBF_pre_beta_output_rms_rad_s2": [
+        0.0012487208689919522,
+        0.0004787168667784345,
+        0.00010296339292867489
+      ],
+      "current_residual_target_rms_rad_s2": [
+        1.5332613906818586,
+        0.560476138203614,
+        0.05174326999552102
+      ],
+      "teacher_to_target_rms_ratio": 0.0008212134282578215,
+      "fixed_J0_beta_teacher_to_logged_torque_relative_error": 0.00011803796673893704
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C01_W08",
+      "source_class": "REUSE_CERTIFIED_ORIGINAL_B_RAW",
+      "cfg_plant_inertia_kg_m2": [
+        [
+          0.012,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.012,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.022
+        ]
+      ],
+      "controller_fixed_J0_kg_m2": [
+        [
+          0.003257553333333334,
+          -2.168404344971009e-19,
+          0.0
+        ],
+        [
+          -2.168404344971009e-19,
+          0.0032575533333333334,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.006360648333333333
+        ]
+      ],
+      "cfg_vs_controller_J0_relative_error": 2.538429114700713,
+      "stored_vs_actual_BS_accel_feature_rms_rad_s2": [
+        2.0627017376109946,
+        2.1468603669146744,
+        0.7038175119680373
+      ],
+      "actual_BS_accel_feature_rms_rad_s2": [
+        2.828095491694317,
+        2.9461841438220895,
+        0.9900656748961201
+      ],
+      "stored_label_reconstruction_max_abs_rad_s2": 4.2884052398051153e-07,
+      "teacher_RBF_pre_beta_output_rms_rad_s2": [
+        9.3994324695596,
+        9.451077696937594,
+        1.2659289671897613
+      ],
+      "current_residual_target_rms_rad_s2": [
+        0.8128262762756149,
+        2.739693788343393,
+        0.5939686055879179
+      ],
+      "teacher_to_target_rms_ratio": 4.587276346937458,
+      "fixed_J0_beta_teacher_to_logged_torque_relative_error": 1.3595990675894758e-08
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C02_W09",
+      "source_class": "REUSE_CERTIFIED_ORIGINAL_B_RAW",
+      "cfg_plant_inertia_kg_m2": [
+        [
+          0.012,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.012,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.022
+        ]
+      ],
+      "controller_fixed_J0_kg_m2": [
+        [
+          0.003257553333333334,
+          -2.168404344971009e-19,
+          0.0
+        ],
+        [
+          -2.168404344971009e-19,
+          0.0032575533333333334,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.006360648333333333
+        ]
+      ],
+      "cfg_vs_controller_J0_relative_error": 2.538429114700713,
+      "stored_vs_actual_BS_accel_feature_rms_rad_s2": [
+        0.6870268184799639,
+        0.4634713676512063,
+        0.11110753395203318
+      ],
+      "actual_BS_accel_feature_rms_rad_s2": [
+        0.9431106888059771,
+        0.6361724930926361,
+        0.15629584912636516
+      ],
+      "stored_label_reconstruction_max_abs_rad_s2": 6.169964805735617e-08,
+      "teacher_RBF_pre_beta_output_rms_rad_s2": [
+        9.174127694999918,
+        9.174500496780375,
+        0.6737660294066237
+      ],
+      "current_residual_target_rms_rad_s2": [
+        0.4589959507612373,
+        0.361904456784317,
+        0.17055235036508057
+      ],
+      "teacher_to_target_rms_ratio": 21.337255292275067,
+      "fixed_J0_beta_teacher_to_logged_torque_relative_error": 3.848219048198687e-09
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C03_W10",
+      "source_class": "REUSE_CERTIFIED_ORIGINAL_B_RAW",
+      "cfg_plant_inertia_kg_m2": [
+        [
+          0.012,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.012,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.022
+        ]
+      ],
+      "controller_fixed_J0_kg_m2": [
+        [
+          0.003257553333333334,
+          -2.168404344971009e-19,
+          0.0
+        ],
+        [
+          -2.168404344971009e-19,
+          0.0032575533333333334,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.006360648333333333
+        ]
+      ],
+      "cfg_vs_controller_J0_relative_error": 2.538429114700713,
+      "stored_vs_actual_BS_accel_feature_rms_rad_s2": [
+        0.5591187755844653,
+        1.1640954019448089,
+        0.17769512715445793
+      ],
+      "actual_BS_accel_feature_rms_rad_s2": [
+        0.7672317292006811,
+        1.597943295430034,
+        0.24996514439105125
+      ],
+      "stored_label_reconstruction_max_abs_rad_s2": 1.4466316677896884e-07,
+      "teacher_RBF_pre_beta_output_rms_rad_s2": [
+        6.030120765257635,
+        6.031094959965928,
+        0.4438903272585069
+      ],
+      "current_residual_target_rms_rad_s2": [
+        0.358043672447414,
+        1.2293176252553055,
+        0.2459421472743693
+      ],
+      "teacher_to_target_rms_ratio": 6.550150113636487,
+      "fixed_J0_beta_teacher_to_logged_torque_relative_error": 9.582589291673154e-09
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C04_W11",
+      "source_class": "REUSE_CERTIFIED_ORIGINAL_B_RAW",
+      "cfg_plant_inertia_kg_m2": [
+        [
+          0.012,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.012,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.022
+        ]
+      ],
+      "controller_fixed_J0_kg_m2": [
+        [
+          0.003257553333333334,
+          -2.168404344971009e-19,
+          0.0
+        ],
+        [
+          -2.168404344971009e-19,
+          0.0032575533333333334,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.006360648333333333
+        ]
+      ],
+      "cfg_vs_controller_J0_relative_error": 2.538429114700713,
+      "stored_vs_actual_BS_accel_feature_rms_rad_s2": [
+        1.591209665359325,
+        0.6524716924381856,
+        0.12953672521529921
+      ],
+      "actual_BS_accel_feature_rms_rad_s2": [
+        2.1841694646541137,
+        0.8954068212850873,
+        0.18222033867674056
+      ],
+      "stored_label_reconstruction_max_abs_rad_s2": 1.5558166888141045e-07,
+      "teacher_RBF_pre_beta_output_rms_rad_s2": [
+        4.1260901969573665,
+        4.125828067746739,
+        0.29234932576889455
+      ],
+      "current_residual_target_rms_rad_s2": [
+        1.48961930708583,
+        0.674026306024653,
+        0.2227161856903035
+      ],
+      "teacher_to_target_rms_ratio": 3.540544993242908,
+      "fixed_J0_beta_teacher_to_logged_torque_relative_error": 2.0198183340695235e-08
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C05_W12",
+      "source_class": "REUSE_CERTIFIED_ORIGINAL_B_RAW",
+      "cfg_plant_inertia_kg_m2": [
+        [
+          0.012,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.012,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.022
+        ]
+      ],
+      "controller_fixed_J0_kg_m2": [
+        [
+          0.003257553333333334,
+          -2.168404344971009e-19,
+          0.0
+        ],
+        [
+          -2.168404344971009e-19,
+          0.0032575533333333334,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.006360648333333333
+        ]
+      ],
+      "cfg_vs_controller_J0_relative_error": 2.538429114700713,
+      "stored_vs_actual_BS_accel_feature_rms_rad_s2": [
+        0.7343901420358784,
+        0.6151249578055685,
+        0.08816152222597808
+      ],
+      "actual_BS_accel_feature_rms_rad_s2": [
+        1.00800460037525,
+        0.8443129315361971,
+        0.12401751250318391
+      ],
+      "stored_label_reconstruction_max_abs_rad_s2": 7.469316543051718e-08,
+      "teacher_RBF_pre_beta_output_rms_rad_s2": [
+        15.683536251201488,
+        8.712353935325648,
+        0.8743358964821019
+      ],
+      "current_residual_target_rms_rad_s2": [
+        0.30529905878662084,
+        0.5098057591483507,
+        0.1863838172563176
+      ],
+      "teacher_to_target_rms_ratio": 28.84231187370394,
+      "fixed_J0_beta_teacher_to_logged_torque_relative_error": 2.214873748144579e-09
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C06_W13",
+      "source_class": "REUSE_CERTIFIED_ORIGINAL_B_RAW",
+      "cfg_plant_inertia_kg_m2": [
+        [
+          0.012,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.012,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.022
+        ]
+      ],
+      "controller_fixed_J0_kg_m2": [
+        [
+          0.003257553333333334,
+          -2.168404344971009e-19,
+          0.0
+        ],
+        [
+          -2.168404344971009e-19,
+          0.0032575533333333334,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.006360648333333333
+        ]
+      ],
+      "cfg_vs_controller_J0_relative_error": 2.538429114700713,
+      "stored_vs_actual_BS_accel_feature_rms_rad_s2": [
+        1.0236319732786094,
+        0.5018389915230002,
+        0.030755378139397518
+      ],
+      "actual_BS_accel_feature_rms_rad_s2": [
+        1.4050563092036372,
+        0.6888201608048633,
+        0.04326383430220213
+      ],
+      "stored_label_reconstruction_max_abs_rad_s2": 1.273884429053851e-07,
+      "teacher_RBF_pre_beta_output_rms_rad_s2": [
+        5.004319075884693,
+        5.004493878239901,
+        0.03124104604827105
+      ],
+      "current_residual_target_rms_rad_s2": [
+        0.86101490749084,
+        0.31632174632994076,
+        0.021991249935311246
+      ],
+      "teacher_to_target_rms_ratio": 7.713370631868395,
+      "fixed_J0_beta_teacher_to_logged_torque_relative_error": 7.703245553048908e-09
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C07_W14",
+      "source_class": "REUSE_CERTIFIED_ORIGINAL_B_RAW",
+      "cfg_plant_inertia_kg_m2": [
+        [
+          0.012,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.012,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.022
+        ]
+      ],
+      "controller_fixed_J0_kg_m2": [
+        [
+          0.003257553333333334,
+          -2.168404344971009e-19,
+          0.0
+        ],
+        [
+          -2.168404344971009e-19,
+          0.0032575533333333334,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.006360648333333333
+        ]
+      ],
+      "cfg_vs_controller_J0_relative_error": 2.538429114700713,
+      "stored_vs_actual_BS_accel_feature_rms_rad_s2": [
+        1.0102122488744958,
+        1.7110408708963412,
+        0.32493998328853424
+      ],
+      "actual_BS_accel_feature_rms_rad_s2": [
+        1.3857247183059185,
+        2.3484070976290847,
+        0.4570956506363449
+      ],
+      "stored_label_reconstruction_max_abs_rad_s2": 1.7047653066981638e-07,
+      "teacher_RBF_pre_beta_output_rms_rad_s2": [
+        1.2841624420245292,
+        19.1433223606433,
+        1.2398682829204264
+      ],
+      "current_residual_target_rms_rad_s2": [
+        0.5991279819087609,
+        1.4207691581709079,
+        0.6457527254390455
+      ],
+      "teacher_to_target_rms_ratio": 11.501178666307684,
+      "fixed_J0_beta_teacher_to_logged_torque_relative_error": 3.984161764322554e-09
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C08_W15",
+      "source_class": "REUSE_CERTIFIED_ORIGINAL_B_RAW",
+      "cfg_plant_inertia_kg_m2": [
+        [
+          0.012,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.012,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.022
+        ]
+      ],
+      "controller_fixed_J0_kg_m2": [
+        [
+          0.003257553333333334,
+          -2.168404344971009e-19,
+          0.0
+        ],
+        [
+          -2.168404344971009e-19,
+          0.0032575533333333334,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.006360648333333333
+        ]
+      ],
+      "cfg_vs_controller_J0_relative_error": 2.538429114700713,
+      "stored_vs_actual_BS_accel_feature_rms_rad_s2": [
+        0.2632775820639435,
+        0.7640158062651105,
+        0.033140533447420954
+      ],
+      "actual_BS_accel_feature_rms_rad_s2": [
+        0.3613756282095467,
+        1.048695254353887,
+        0.046619051180982626
+      ],
+      "stored_label_reconstruction_max_abs_rad_s2": 7.29094491447313e-08,
+      "teacher_RBF_pre_beta_output_rms_rad_s2": [
+        2.8520692885233614,
+        19.07018475915485,
+        0.04698024394549462
+      ],
+      "current_residual_target_rms_rad_s2": [
+        0.10887101616288285,
+        0.3070872629526322,
+        0.01522242853181281
+      ],
+      "teacher_to_target_rms_ratio": 59.117345465909786,
+      "fixed_J0_beta_teacher_to_logged_torque_relative_error": 1.416063497425978e-10
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C09_W00",
+      "source_class": "REUSE_CERTIFIED_ORIGINAL_B_RAW",
+      "cfg_plant_inertia_kg_m2": [
+        [
+          0.012,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.012,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.022
+        ]
+      ],
+      "controller_fixed_J0_kg_m2": [
+        [
+          0.003257553333333334,
+          -2.168404344971009e-19,
+          0.0
+        ],
+        [
+          -2.168404344971009e-19,
+          0.0032575533333333334,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.006360648333333333
+        ]
+      ],
+      "cfg_vs_controller_J0_relative_error": 2.538429114700713,
+      "stored_vs_actual_BS_accel_feature_rms_rad_s2": [
+        0.36997925735148035,
+        0.3592561037155685,
+        0.02036826567627254
+      ],
+      "actual_BS_accel_feature_rms_rad_s2": [
+        0.5079547493151633,
+        0.4930384780562326,
+        0.028652200819448494
+      ],
+      "stored_label_reconstruction_max_abs_rad_s2": 4.146225618395505e-08,
+      "teacher_RBF_pre_beta_output_rms_rad_s2": [
+        4.655881887518175,
+        4.657118133737425,
+        0.026807439800201633
+      ],
+      "current_residual_target_rms_rad_s2": [
+        0.16706168679627545,
+        0.1863870787416455,
+        0.012849759775273712
+      ],
+      "teacher_to_target_rms_ratio": 26.275257891208064,
+      "fixed_J0_beta_teacher_to_logged_torque_relative_error": 4.182213543323333e-09
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C10_W01",
+      "source_class": "REUSE_CERTIFIED_ORIGINAL_B_RAW",
+      "cfg_plant_inertia_kg_m2": [
+        [
+          0.012,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.012,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.022
+        ]
+      ],
+      "controller_fixed_J0_kg_m2": [
+        [
+          0.003257553333333334,
+          -2.168404344971009e-19,
+          0.0
+        ],
+        [
+          -2.168404344971009e-19,
+          0.0032575533333333334,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.006360648333333333
+        ]
+      ],
+      "cfg_vs_controller_J0_relative_error": 2.538429114700713,
+      "stored_vs_actual_BS_accel_feature_rms_rad_s2": [
+        0.7069845864812996,
+        0.3784427580343536,
+        0.04207738713352843
+      ],
+      "actual_BS_accel_feature_rms_rad_s2": [
+        0.9704122747598165,
+        0.5193505588708589,
+        0.05919059410339819
+      ],
+      "stored_label_reconstruction_max_abs_rad_s2": 7.920251476889462e-08,
+      "teacher_RBF_pre_beta_output_rms_rad_s2": [
+        15.204704135604658,
+        7.640538948746541,
+        0.28880887348953577
+      ],
+      "current_residual_target_rms_rad_s2": [
+        0.3731159228569957,
+        0.169136787392675,
+        0.019430897444016042
+      ],
+      "teacher_to_target_rms_ratio": 41.497227781860644,
+      "fixed_J0_beta_teacher_to_logged_torque_relative_error": 4.893324876685354e-09
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C11_W02",
+      "source_class": "REUSE_CERTIFIED_ORIGINAL_B_RAW",
+      "cfg_plant_inertia_kg_m2": [
+        [
+          0.012,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.012,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.022
+        ]
+      ],
+      "controller_fixed_J0_kg_m2": [
+        [
+          0.003257553333333334,
+          -2.168404344971009e-19,
+          0.0
+        ],
+        [
+          -2.168404344971009e-19,
+          0.0032575533333333334,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.006360648333333333
+        ]
+      ],
+      "cfg_vs_controller_J0_relative_error": 2.538429114700713,
+      "stored_vs_actual_BS_accel_feature_rms_rad_s2": [
+        0.5024768101040198,
+        0.5526976924718465,
+        0.1728923937359733
+      ],
+      "actual_BS_accel_feature_rms_rad_s2": [
+        0.6884458547308898,
+        0.7590203240789721,
+        0.24320910100259416
+      ],
+      "stored_label_reconstruction_max_abs_rad_s2": 7.275496516356839e-08,
+      "teacher_RBF_pre_beta_output_rms_rad_s2": [
+        8.745396525209232,
+        3.1000234706926313,
+        0.8807563387808787
+      ],
+      "current_residual_target_rms_rad_s2": [
+        0.27001989442891894,
+        0.5592346452986809,
+        0.07933893254328298
+      ],
+      "teacher_to_target_rms_ratio": 14.887262184338006,
+      "fixed_J0_beta_teacher_to_logged_torque_relative_error": 7.087331321142875e-09
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C12_W03",
+      "source_class": "REUSE_CERTIFIED_ORIGINAL_B_RAW",
+      "cfg_plant_inertia_kg_m2": [
+        [
+          0.012,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.012,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.022
+        ]
+      ],
+      "controller_fixed_J0_kg_m2": [
+        [
+          0.003257553333333334,
+          -2.168404344971009e-19,
+          0.0
+        ],
+        [
+          -2.168404344971009e-19,
+          0.0032575533333333334,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.006360648333333333
+        ]
+      ],
+      "cfg_vs_controller_J0_relative_error": 2.538429114700713,
+      "stored_vs_actual_BS_accel_feature_rms_rad_s2": [
+        0.7555445730014895,
+        0.4628450630442134,
+        0.08335698156055253
+      ],
+      "actual_BS_accel_feature_rms_rad_s2": [
+        1.036995912411466,
+        0.635386777017498,
+        0.11725892687656264
+      ],
+      "stored_label_reconstruction_max_abs_rad_s2": 6.743399749709056e-08,
+      "teacher_RBF_pre_beta_output_rms_rad_s2": [
+        10.937169753427552,
+        2.8754292842660347,
+        0.4327919633054316
+      ],
+      "current_residual_target_rms_rad_s2": [
+        0.6105397364889948,
+        0.28627459722773074,
+        0.03971987985822904
+      ],
+      "teacher_to_target_rms_ratio": 16.75388150104647,
+      "fixed_J0_beta_teacher_to_logged_torque_relative_error": 6.404020197444924e-09
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C13_W04",
+      "source_class": "REUSE_CERTIFIED_ORIGINAL_B_RAW",
+      "cfg_plant_inertia_kg_m2": [
+        [
+          0.012,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.012,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.022
+        ]
+      ],
+      "controller_fixed_J0_kg_m2": [
+        [
+          0.003257553333333334,
+          -2.168404344971009e-19,
+          0.0
+        ],
+        [
+          -2.168404344971009e-19,
+          0.0032575533333333334,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.006360648333333333
+        ]
+      ],
+      "cfg_vs_controller_J0_relative_error": 2.538429114700713,
+      "stored_vs_actual_BS_accel_feature_rms_rad_s2": [
+        1.0326767535762111,
+        1.5465881010068274,
+        0.25197361229660076
+      ],
+      "actual_BS_accel_feature_rms_rad_s2": [
+        1.4121223058039833,
+        2.1243767394911015,
+        0.35445327851199077
+      ],
+      "stored_label_reconstruction_max_abs_rad_s2": 1.517519687688207e-07,
+      "teacher_RBF_pre_beta_output_rms_rad_s2": [
+        3.478916692614223,
+        12.764915943322631,
+        0.744326489340786
+      ],
+      "current_residual_target_rms_rad_s2": [
+        0.6730632045983553,
+        1.5379794809305867,
+        0.17552168960377781
+      ],
+      "teacher_to_target_rms_ratio": 7.850557991961685,
+      "fixed_J0_beta_teacher_to_logged_torque_relative_error": 1.4774446037547472e-08
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C14_W05",
+      "source_class": "REUSE_CERTIFIED_ORIGINAL_B_RAW",
+      "cfg_plant_inertia_kg_m2": [
+        [
+          0.012,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.012,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.022
+        ]
+      ],
+      "controller_fixed_J0_kg_m2": [
+        [
+          0.003257553333333334,
+          -2.168404344971009e-19,
+          0.0
+        ],
+        [
+          -2.168404344971009e-19,
+          0.0032575533333333334,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.006360648333333333
+        ]
+      ],
+      "cfg_vs_controller_J0_relative_error": 2.538429114700713,
+      "stored_vs_actual_BS_accel_feature_rms_rad_s2": [
+        2.4032876997533523,
+        1.165153347206489,
+        0.3518070026727444
+      ],
+      "actual_BS_accel_feature_rms_rad_s2": [
+        3.2961499362796323,
+        1.6032339850030173,
+        0.4948897000163124
+      ],
+      "stored_label_reconstruction_max_abs_rad_s2": 2.5816300031067385e-07,
+      "teacher_RBF_pre_beta_output_rms_rad_s2": [
+        7.633081451521711,
+        16.034223140456028,
+        0.5884156730505982
+      ],
+      "current_residual_target_rms_rad_s2": [
+        2.0299083561061355,
+        0.9056966185833335,
+        0.14226139196756626
+      ],
+      "teacher_to_target_rms_ratio": 7.977279893200849,
+      "fixed_J0_beta_teacher_to_logged_torque_relative_error": 9.923082201823116e-09
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C15_W06",
+      "source_class": "REUSE_CERTIFIED_ORIGINAL_B_RAW",
+      "cfg_plant_inertia_kg_m2": [
+        [
+          0.012,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.012,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.022
+        ]
+      ],
+      "controller_fixed_J0_kg_m2": [
+        [
+          0.003257553333333334,
+          -2.168404344971009e-19,
+          0.0
+        ],
+        [
+          -2.168404344971009e-19,
+          0.0032575533333333334,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.006360648333333333
+        ]
+      ],
+      "cfg_vs_controller_J0_relative_error": 2.538429114700713,
+      "stored_vs_actual_BS_accel_feature_rms_rad_s2": [
+        0.618219976305623,
+        0.8929993871270583,
+        0.15432567278626194
+      ],
+      "actual_BS_accel_feature_rms_rad_s2": [
+        0.8485775605138535,
+        1.2257915320646644,
+        0.21709114757238002
+      ],
+      "stored_label_reconstruction_max_abs_rad_s2": 8.027175146807508e-08,
+      "teacher_RBF_pre_beta_output_rms_rad_s2": [
+        1.3829855763042993,
+        9.518067916228949,
+        0.5488994249486943
+      ],
+      "current_residual_target_rms_rad_s2": [
+        0.2811549943598767,
+        0.7239397530662784,
+        0.10701168295356976
+      ],
+      "teacher_to_target_rms_ratio": 12.288517458416718,
+      "fixed_J0_beta_teacher_to_logged_torque_relative_error": 7.2181555307736736e-09
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C00_W10",
+      "source_class": "CORRECTED_T2_B_RAW",
+      "cfg_plant_inertia_kg_m2": [
+        [
+          0.012,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.012,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.022
+        ]
+      ],
+      "controller_fixed_J0_kg_m2": [
+        [
+          0.003257553333333334,
+          -2.168404344971009e-19,
+          0.0
+        ],
+        [
+          -2.168404344971009e-19,
+          0.0032575533333333334,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.006360648333333333
+        ]
+      ],
+      "cfg_vs_controller_J0_relative_error": 2.538429114700713,
+      "stored_vs_actual_BS_accel_feature_rms_rad_s2": [
+        0.3882903234357464,
+        1.1773202355834962,
+        0.06589922092585973
+      ],
+      "actual_BS_accel_feature_rms_rad_s2": [
+        0.5328684467445507,
+        1.6160111198820022,
+        0.09270095656070375
+      ],
+      "stored_label_reconstruction_max_abs_rad_s2": 1.6624327203729194e-07,
+      "teacher_RBF_pre_beta_output_rms_rad_s2": [
+        0.00020596761372749202,
+        0.0006688075726189139,
+        5.061453069962947e-05
+      ],
+      "current_residual_target_rms_rad_s2": [
+        0.3900463479120771,
+        1.1864992413555941,
+        0.06638627826565249
+      ],
+      "teacher_to_target_rms_ratio": 0.0005609786487772527,
+      "fixed_J0_beta_teacher_to_logged_torque_relative_error": 0.00012107616277273041
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C01_W11",
+      "source_class": "CORRECTED_T2_B_RAW",
+      "cfg_plant_inertia_kg_m2": [
+        [
+          0.012,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.012,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.022
+        ]
+      ],
+      "controller_fixed_J0_kg_m2": [
+        [
+          0.003257553333333334,
+          -2.168404344971009e-19,
+          0.0
+        ],
+        [
+          -2.168404344971009e-19,
+          0.0032575533333333334,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.006360648333333333
+        ]
+      ],
+      "cfg_vs_controller_J0_relative_error": 2.538429114700713,
+      "stored_vs_actual_BS_accel_feature_rms_rad_s2": [
+        1.7195990571966027,
+        0.8088767654189744,
+        0.05630516363311781
+      ],
+      "actual_BS_accel_feature_rms_rad_s2": [
+        2.3602876626743123,
+        1.1103250035882273,
+        0.07920492015165752
+      ],
+      "stored_label_reconstruction_max_abs_rad_s2": 2.0824978630429314e-07,
+      "teacher_RBF_pre_beta_output_rms_rad_s2": [
+        10.794002285865695,
+        10.79333486369682,
+        0.04260829250380898
+      ],
+      "current_residual_target_rms_rad_s2": [
+        1.507301786277054,
+        0.5685292388011882,
+        0.046174046387723516
+      ],
+      "teacher_to_target_rms_ratio": 9.471600142709569,
+      "fixed_J0_beta_teacher_to_logged_torque_relative_error": 7.60633584973096e-09
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C02_W12",
+      "source_class": "CORRECTED_T2_B_RAW",
+      "cfg_plant_inertia_kg_m2": [
+        [
+          0.012,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.012,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.022
+        ]
+      ],
+      "controller_fixed_J0_kg_m2": [
+        [
+          0.003257553333333334,
+          -2.168404344971009e-19,
+          0.0
+        ],
+        [
+          -2.168404344971009e-19,
+          0.0032575533333333334,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.006360648333333333
+        ]
+      ],
+      "cfg_vs_controller_J0_relative_error": 2.538429114700713,
+      "stored_vs_actual_BS_accel_feature_rms_rad_s2": [
+        0.4340935622901315,
+        0.5601488520173794,
+        0.0337814135908825
+      ],
+      "actual_BS_accel_feature_rms_rad_s2": [
+        0.5958122000019248,
+        0.7688708730549142,
+        0.04752058234152915
+      ],
+      "stored_label_reconstruction_max_abs_rad_s2": 5.854123741322326e-08,
+      "teacher_RBF_pre_beta_output_rms_rad_s2": [
+        8.34721723177504,
+        8.346995753618954,
+        0.03609056496629373
+      ],
+      "current_residual_target_rms_rad_s2": [
+        0.19482319117115784,
+        0.4255142432552766,
+        0.02313238093997716
+      ],
+      "teacher_to_target_rms_ratio": 25.193165867923774,
+      "fixed_J0_beta_teacher_to_logged_torque_relative_error": 3.6539576397678136e-09
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C03_W13",
+      "source_class": "CORRECTED_T2_B_RAW",
+      "cfg_plant_inertia_kg_m2": [
+        [
+          0.012,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.012,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.022
+        ]
+      ],
+      "controller_fixed_J0_kg_m2": [
+        [
+          0.003257553333333334,
+          -2.168404344971009e-19,
+          0.0
+        ],
+        [
+          -2.168404344971009e-19,
+          0.0032575533333333334,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.006360648333333333
+        ]
+      ],
+      "cfg_vs_controller_J0_relative_error": 2.538429114700713,
+      "stored_vs_actual_BS_accel_feature_rms_rad_s2": [
+        1.0252609408112618,
+        0.49590803407632167,
+        0.033679761642042665
+      ],
+      "actual_BS_accel_feature_rms_rad_s2": [
+        1.4072833485227387,
+        0.6806778027168955,
+        0.04737758777396458
+      ],
+      "stored_label_reconstruction_max_abs_rad_s2": 1.400951434860076e-07,
+      "teacher_RBF_pre_beta_output_rms_rad_s2": [
+        6.2476747434831745,
+        6.247840022407372,
+        0.030908107643220474
+      ],
+      "current_residual_target_rms_rad_s2": [
+        0.9402580441952072,
+        0.35898734611743066,
+        0.025096235334331495
+      ],
+      "teacher_to_target_rms_ratio": 8.776296993593096,
+      "fixed_J0_beta_teacher_to_logged_torque_relative_error": 5.697079529606031e-09
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C04_W14",
+      "source_class": "CORRECTED_T2_B_RAW",
+      "cfg_plant_inertia_kg_m2": [
+        [
+          0.012,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.012,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.022
+        ]
+      ],
+      "controller_fixed_J0_kg_m2": [
+        [
+          0.003257553333333334,
+          -2.168404344971009e-19,
+          0.0
+        ],
+        [
+          -2.168404344971009e-19,
+          0.0032575533333333334,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.006360648333333333
+        ]
+      ],
+      "cfg_vs_controller_J0_relative_error": 2.538429114700713,
+      "stored_vs_actual_BS_accel_feature_rms_rad_s2": [
+        0.5253443729826466,
+        1.2740061094427408,
+        0.07492152513852804
+      ],
+      "actual_BS_accel_feature_rms_rad_s2": [
+        0.7210618502961597,
+        1.748719116861007,
+        0.10539270355967124
+      ],
+      "stored_label_reconstruction_max_abs_rad_s2": 1.7640024818632583e-07,
+      "teacher_RBF_pre_beta_output_rms_rad_s2": [
+        4.051957187191375,
+        4.052381082822238,
+        0.024101899060836218
+      ],
+      "current_residual_target_rms_rad_s2": [
+        0.41800493684103235,
+        1.2090348731385723,
+        0.06726789578136054
+      ],
+      "teacher_to_target_rms_ratio": 4.473523010260102,
+      "fixed_J0_beta_teacher_to_logged_torque_relative_error": 1.2071270100290828e-08
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C05_W15",
+      "source_class": "CORRECTED_T2_B_RAW",
+      "cfg_plant_inertia_kg_m2": [
+        [
+          0.012,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.012,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.022
+        ]
+      ],
+      "controller_fixed_J0_kg_m2": [
+        [
+          0.003257553333333334,
+          -2.168404344971009e-19,
+          0.0
+        ],
+        [
+          -2.168404344971009e-19,
+          0.0032575533333333334,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.006360648333333333
+        ]
+      ],
+      "cfg_vs_controller_J0_relative_error": 2.538429114700713,
+      "stored_vs_actual_BS_accel_feature_rms_rad_s2": [
+        0.6862718608703201,
+        0.3631692389505471,
+        0.0170648698133498
+      ],
+      "actual_BS_accel_feature_rms_rad_s2": [
+        0.9419662266731401,
+        0.49847253649310264,
+        0.024005287686641605
+      ],
+      "stored_label_reconstruction_max_abs_rad_s2": 7.543520741393195e-08,
+      "teacher_RBF_pre_beta_output_rms_rad_s2": [
+        15.086860323331566,
+        7.195700146035775,
+        0.023730285444781743
+      ],
+      "current_residual_target_rms_rad_s2": [
+        0.24179689676617203,
+        0.15058147699420973,
+        0.00807681317094507
+      ],
+      "teacher_to_target_rms_ratio": 58.656155148404274,
+      "fixed_J0_beta_teacher_to_logged_torque_relative_error": 2.303011997434611e-10
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C06_W00",
+      "source_class": "CORRECTED_T2_B_RAW",
+      "cfg_plant_inertia_kg_m2": [
+        [
+          0.012,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.012,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.022
+        ]
+      ],
+      "controller_fixed_J0_kg_m2": [
+        [
+          0.003257553333333334,
+          -2.168404344971009e-19,
+          0.0
+        ],
+        [
+          -2.168404344971009e-19,
+          0.0032575533333333334,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.006360648333333333
+        ]
+      ],
+      "cfg_vs_controller_J0_relative_error": 2.538429114700713,
+      "stored_vs_actual_BS_accel_feature_rms_rad_s2": [
+        0.32066359007327766,
+        0.31824150112015315,
+        0.05470543204921155
+      ],
+      "actual_BS_accel_feature_rms_rad_s2": [
+        0.4401437478562972,
+        0.43685110161015905,
+        0.07695456505882126
+      ],
+      "stored_label_reconstruction_max_abs_rad_s2": 3.1616600226769265e-08,
+      "teacher_RBF_pre_beta_output_rms_rad_s2": [
+        4.779509398798661,
+        4.779107993341647,
+        0.5378368776098755
+      ],
+      "current_residual_target_rms_rad_s2": [
+        0.14026594022975444,
+        0.1488035839187039,
+        0.02312726496064458
+      ],
+      "teacher_to_target_rms_ratio": 32.946874152910326,
+      "fixed_J0_beta_teacher_to_logged_torque_relative_error": 7.366840827042991e-09
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C07_W01",
+      "source_class": "CORRECTED_T2_B_RAW",
+      "cfg_plant_inertia_kg_m2": [
+        [
+          0.012,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.012,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.022
+        ]
+      ],
+      "controller_fixed_J0_kg_m2": [
+        [
+          0.003257553333333334,
+          -2.168404344971009e-19,
+          0.0
+        ],
+        [
+          -2.168404344971009e-19,
+          0.0032575533333333334,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.006360648333333333
+        ]
+      ],
+      "cfg_vs_controller_J0_relative_error": 2.538429114700713,
+      "stored_vs_actual_BS_accel_feature_rms_rad_s2": [
+        0.5272756178424537,
+        0.7406642237669285,
+        0.18096830489765492
+      ],
+      "actual_BS_accel_feature_rms_rad_s2": [
+        0.7232871283951895,
+        1.017585089724847,
+        0.2545695495232957
+      ],
+      "stored_label_reconstruction_max_abs_rad_s2": 8.104793725038917e-08,
+      "teacher_RBF_pre_beta_output_rms_rad_s2": [
+        1.8812936634682842,
+        19.08492403495984,
+        0.8540727356094094
+      ],
+      "current_residual_target_rms_rad_s2": [
+        0.3790047939404225,
+        0.306066675401351,
+        0.07514606171638737
+      ],
+      "teacher_to_target_rms_ratio": 38.94445751643261,
+      "fixed_J0_beta_teacher_to_logged_torque_relative_error": 1.2155653768409686e-09
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C08_W02",
+      "source_class": "CORRECTED_T2_B_RAW",
+      "cfg_plant_inertia_kg_m2": [
+        [
+          0.012,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.012,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.022
+        ]
+      ],
+      "controller_fixed_J0_kg_m2": [
+        [
+          0.003257553333333334,
+          -2.168404344971009e-19,
+          0.0
+        ],
+        [
+          -2.168404344971009e-19,
+          0.0032575533333333334,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.006360648333333333
+        ]
+      ],
+      "cfg_vs_controller_J0_relative_error": 2.538429114700713,
+      "stored_vs_actual_BS_accel_feature_rms_rad_s2": [
+        0.7028411172726614,
+        0.8565200071845577,
+        0.27359756626418985
+      ],
+      "actual_BS_accel_feature_rms_rad_s2": [
+        0.9635315086091091,
+        1.1761179931891217,
+        0.3848718662062747
+      ],
+      "stored_label_reconstruction_max_abs_rad_s2": 6.476083624917806e-08,
+      "teacher_RBF_pre_beta_output_rms_rad_s2": [
+        5.9463067445438895,
+        19.395515797673173,
+        1.4408994334284286
+      ],
+      "current_residual_target_rms_rad_s2": [
+        0.35028421630453727,
+        0.49708623712689026,
+        0.10926168311605089
+      ],
+      "teacher_to_target_rms_ratio": 32.91713027792584,
+      "fixed_J0_beta_teacher_to_logged_torque_relative_error": 1.1527711117765219e-09
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C09_W03",
+      "source_class": "CORRECTED_T2_B_RAW",
+      "cfg_plant_inertia_kg_m2": [
+        [
+          0.012,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.012,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.022
+        ]
+      ],
+      "controller_fixed_J0_kg_m2": [
+        [
+          0.003257553333333334,
+          -2.168404344971009e-19,
+          0.0
+        ],
+        [
+          -2.168404344971009e-19,
+          0.0032575533333333334,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.006360648333333333
+        ]
+      ],
+      "cfg_vs_controller_J0_relative_error": 2.538429114700713,
+      "stored_vs_actual_BS_accel_feature_rms_rad_s2": [
+        0.6123079396969567,
+        0.3045949327301761,
+        0.06286963200389618
+      ],
+      "actual_BS_accel_feature_rms_rad_s2": [
+        0.840376509572636,
+        0.4182156337542705,
+        0.08843920992179773
+      ],
+      "stored_label_reconstruction_max_abs_rad_s2": 6.368197325024028e-08,
+      "teacher_RBF_pre_beta_output_rms_rad_s2": [
+        4.328156063402815,
+        4.329177054432507,
+        0.3452117311071143
+      ],
+      "current_residual_target_rms_rad_s2": [
+        0.5110262811437336,
+        0.23047555948809006,
+        0.029768887233354604
+      ],
+      "teacher_to_target_rms_ratio": 10.921890847106667,
+      "fixed_J0_beta_teacher_to_logged_torque_relative_error": 8.327173326721009e-09
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C10_W04",
+      "source_class": "CORRECTED_T2_B_RAW",
+      "cfg_plant_inertia_kg_m2": [
+        [
+          0.012,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.012,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.022
+        ]
+      ],
+      "controller_fixed_J0_kg_m2": [
+        [
+          0.003257553333333334,
+          -2.168404344971009e-19,
+          0.0
+        ],
+        [
+          -2.168404344971009e-19,
+          0.0032575533333333334,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.006360648333333333
+        ]
+      ],
+      "cfg_vs_controller_J0_relative_error": 2.538429114700713,
+      "stored_vs_actual_BS_accel_feature_rms_rad_s2": [
+        1.1621065639552208,
+        1.37597457172931,
+        0.3698150259584487
+      ],
+      "actual_BS_accel_feature_rms_rad_s2": [
+        1.591566472754031,
+        1.8891137544594738,
+        0.5202217292163805
+      ],
+      "stored_label_reconstruction_max_abs_rad_s2": 1.6619683318452871e-07,
+      "teacher_RBF_pre_beta_output_rms_rad_s2": [
+        15.597242222749465,
+        9.01065469430141,
+        1.211146828876566
+      ],
+      "current_residual_target_rms_rad_s2": [
+        0.6749158647263556,
+        1.4251176719646705,
+        0.2165490389876759
+      ],
+      "teacher_to_target_rms_ratio": 11.34266447807787,
+      "fixed_J0_beta_teacher_to_logged_torque_relative_error": 4.3805333891211735e-09
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C11_W05",
+      "source_class": "CORRECTED_T2_B_RAW",
+      "cfg_plant_inertia_kg_m2": [
+        [
+          0.012,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.012,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.022
+        ]
+      ],
+      "controller_fixed_J0_kg_m2": [
+        [
+          0.003257553333333334,
+          -2.168404344971009e-19,
+          0.0
+        ],
+        [
+          -2.168404344971009e-19,
+          0.0032575533333333334,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.006360648333333333
+        ]
+      ],
+      "cfg_vs_controller_J0_relative_error": 2.538429114700713,
+      "stored_vs_actual_BS_accel_feature_rms_rad_s2": [
+        1.5317619044900432,
+        0.8007062627173543,
+        0.16582985310333476
+      ],
+      "actual_BS_accel_feature_rms_rad_s2": [
+        2.1012049382988667,
+        1.0982356581084654,
+        0.233274169183237
+      ],
+      "stored_label_reconstruction_max_abs_rad_s2": 1.5392808405678693e-07,
+      "teacher_RBF_pre_beta_output_rms_rad_s2": [
+        8.915258683966623,
+        2.6968748225190486,
+        0.3426385241924865
+      ],
+      "current_residual_target_rms_rad_s2": [
+        1.56624252127495,
+        0.6685560441406448,
+        0.1188926485710347
+      ],
+      "teacher_to_target_rms_ratio": 5.4598385637669535,
+      "fixed_J0_beta_teacher_to_logged_torque_relative_error": 6.780352316748497e-09
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C12_W06",
+      "source_class": "CORRECTED_T2_B_RAW",
+      "cfg_plant_inertia_kg_m2": [
+        [
+          0.012,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.012,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.022
+        ]
+      ],
+      "controller_fixed_J0_kg_m2": [
+        [
+          0.003257553333333334,
+          -2.168404344971009e-19,
+          0.0
+        ],
+        [
+          -2.168404344971009e-19,
+          0.0032575533333333334,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.006360648333333333
+        ]
+      ],
+      "cfg_vs_controller_J0_relative_error": 2.538429114700713,
+      "stored_vs_actual_BS_accel_feature_rms_rad_s2": [
+        0.6019897636087286,
+        0.7630848537832429,
+        0.10861169756102107
+      ],
+      "actual_BS_accel_feature_rms_rad_s2": [
+        0.8261456511805881,
+        1.047377882037536,
+        0.15278493602837634
+      ],
+      "stored_label_reconstruction_max_abs_rad_s2": 7.523504130801939e-08,
+      "teacher_RBF_pre_beta_output_rms_rad_s2": [
+        10.81457008065178,
+        2.9021281206472893,
+        0.452982481136977
+      ],
+      "current_residual_target_rms_rad_s2": [
+        0.3076812951803396,
+        0.7826808097959473,
+        0.09529412640222545
+      ],
+      "teacher_to_target_rms_ratio": 13.240534271634441,
+      "fixed_J0_beta_teacher_to_logged_torque_relative_error": 6.611254770833996e-09
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C13_W07",
+      "source_class": "CORRECTED_T2_B_RAW",
+      "cfg_plant_inertia_kg_m2": [
+        [
+          0.012,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.012,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.022
+        ]
+      ],
+      "controller_fixed_J0_kg_m2": [
+        [
+          0.003257553333333334,
+          -2.168404344971009e-19,
+          0.0
+        ],
+        [
+          -2.168404344971009e-19,
+          0.0032575533333333334,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.006360648333333333
+        ]
+      ],
+      "cfg_vs_controller_J0_relative_error": 2.538429114700713,
+      "stored_vs_actual_BS_accel_feature_rms_rad_s2": [
+        2.349502823779032,
+        0.9554346635264203,
+        0.35548011026781073
+      ],
+      "actual_BS_accel_feature_rms_rad_s2": [
+        3.2242977802061,
+        1.3117618667462894,
+        0.5000566898817193
+      ],
+      "stored_label_reconstruction_max_abs_rad_s2": 2.1054648779994523e-07,
+      "teacher_RBF_pre_beta_output_rms_rad_s2": [
+        5.272186098712181,
+        13.37003222124412,
+        0.85321196374283
+      ],
+      "current_residual_target_rms_rad_s2": [
+        1.4751997077621641,
+        0.8118216568132858,
+        0.3335158072003113
+      ],
+      "teacher_to_target_rms_ratio": 8.387395734982551,
+      "fixed_J0_beta_teacher_to_logged_torque_relative_error": 9.880898081713076e-09
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C14_W08",
+      "source_class": "CORRECTED_T2_B_RAW",
+      "cfg_plant_inertia_kg_m2": [
+        [
+          0.012,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.012,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.022
+        ]
+      ],
+      "controller_fixed_J0_kg_m2": [
+        [
+          0.003257553333333334,
+          -2.168404344971009e-19,
+          0.0
+        ],
+        [
+          -2.168404344971009e-19,
+          0.0032575533333333334,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.006360648333333333
+        ]
+      ],
+      "cfg_vs_controller_J0_relative_error": 2.538429114700713,
+      "stored_vs_actual_BS_accel_feature_rms_rad_s2": [
+        2.969926807497562,
+        2.4753329035888836,
+        0.8213861371183816
+      ],
+      "actual_BS_accel_feature_rms_rad_s2": [
+        4.069736463493186,
+        3.3947619477321025,
+        1.15545039234423
+      ],
+      "stored_label_reconstruction_max_abs_rad_s2": 2.9522174749274654e-07,
+      "teacher_RBF_pre_beta_output_rms_rad_s2": [
+        4.954795327147111,
+        14.487046990119634,
+        1.3884923615442395
+      ],
+      "current_residual_target_rms_rad_s2": [
+        1.1902351429698956,
+        2.727385501183764,
+        0.6021123487737394
+      ],
+      "teacher_to_target_rms_ratio": 5.063673335873247,
+      "fixed_J0_beta_teacher_to_logged_torque_relative_error": 1.3934584258396887e-08
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C15_W09",
+      "source_class": "CORRECTED_T2_B_RAW",
+      "cfg_plant_inertia_kg_m2": [
+        [
+          0.012,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.012,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.022
+        ]
+      ],
+      "controller_fixed_J0_kg_m2": [
+        [
+          0.003257553333333334,
+          -2.168404344971009e-19,
+          0.0
+        ],
+        [
+          -2.168404344971009e-19,
+          0.0032575533333333334,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.006360648333333333
+        ]
+      ],
+      "cfg_vs_controller_J0_relative_error": 2.538429114700713,
+      "stored_vs_actual_BS_accel_feature_rms_rad_s2": [
+        0.6868061975845653,
+        0.5481764292106907,
+        0.07693028699517228
+      ],
+      "actual_BS_accel_feature_rms_rad_s2": [
+        0.9427248634478526,
+        0.7524672688060828,
+        0.10821844479357086
+      ],
+      "stored_label_reconstruction_max_abs_rad_s2": 5.989275009277151e-08,
+      "teacher_RBF_pre_beta_output_rms_rad_s2": [
+        1.3798876013781343,
+        9.348375334645942,
+        0.4251561272017391
+      ],
+      "current_residual_target_rms_rad_s2": [
+        0.48045954290719955,
+        0.2651861934239935,
+        0.08289288247028405
+      ],
+      "teacher_to_target_rms_ratio": 17.043338474376192,
+      "fixed_J0_beta_teacher_to_logged_torque_relative_error": 5.495890391217379e-09
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C00_W13",
+      "source_class": "REUSE_CERTIFIED_ORIGINAL_B_RAW",
+      "cfg_plant_inertia_kg_m2": [
+        [
+          0.012,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.012,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.022
+        ]
+      ],
+      "controller_fixed_J0_kg_m2": [
+        [
+          0.003257553333333334,
+          -2.168404344971009e-19,
+          0.0
+        ],
+        [
+          -2.168404344971009e-19,
+          0.0032575533333333334,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.006360648333333333
+        ]
+      ],
+      "cfg_vs_controller_J0_relative_error": 2.538429114700713,
+      "stored_vs_actual_BS_accel_feature_rms_rad_s2": [
+        0.8576842617730216,
+        0.33817317242499223,
+        0.015610727378612832
+      ],
+      "actual_BS_accel_feature_rms_rad_s2": [
+        1.1772656144106555,
+        0.4641821876972243,
+        0.021959733997267864
+      ],
+      "stored_label_reconstruction_max_abs_rad_s2": 1.0838527808587628e-07,
+      "teacher_RBF_pre_beta_output_rms_rad_s2": [
+        0.00026971231188481395,
+        0.00014219963109660504,
+        1.0346650340077127e-05
+      ],
+      "current_residual_target_rms_rad_s2": [
+        0.8549669203601005,
+        0.33738197999195785,
+        0.015579022352296596
+      ],
+      "teacher_to_target_rms_ratio": 0.0003318735815011726,
+      "fixed_J0_beta_teacher_to_logged_torque_relative_error": 0.00021130569299331305
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C01_W14",
+      "source_class": "REUSE_CERTIFIED_ORIGINAL_B_RAW",
+      "cfg_plant_inertia_kg_m2": [
+        [
+          0.012,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.012,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.022
+        ]
+      ],
+      "controller_fixed_J0_kg_m2": [
+        [
+          0.003257553333333334,
+          -2.168404344971009e-19,
+          0.0
+        ],
+        [
+          -2.168404344971009e-19,
+          0.0032575533333333334,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.006360648333333333
+        ]
+      ],
+      "cfg_vs_controller_J0_relative_error": 2.538429114700713,
+      "stored_vs_actual_BS_accel_feature_rms_rad_s2": [
+        0.7186378103956963,
+        1.552420794000405,
+        0.30214290499344754
+      ],
+      "actual_BS_accel_feature_rms_rad_s2": [
+        0.9857847781057839,
+        2.1310175824001476,
+        0.42502681986564955
+      ],
+      "stored_label_reconstruction_max_abs_rad_s2": 2.675020001063899e-07,
+      "teacher_RBF_pre_beta_output_rms_rad_s2": [
+        9.344514741941543,
+        9.345922532373205,
+        1.0474840174029338
+      ],
+      "current_residual_target_rms_rad_s2": [
+        0.47719224120928067,
+        1.6537074847415798,
+        0.638971911929403
+      ],
+      "teacher_to_target_rms_ratio": 7.221065212812296,
+      "fixed_J0_beta_teacher_to_logged_torque_relative_error": 5.308141293597519e-09
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C02_W15",
+      "source_class": "REUSE_CERTIFIED_ORIGINAL_B_RAW",
+      "cfg_plant_inertia_kg_m2": [
+        [
+          0.012,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.012,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.022
+        ]
+      ],
+      "controller_fixed_J0_kg_m2": [
+        [
+          0.003257553333333334,
+          -2.168404344971009e-19,
+          0.0
+        ],
+        [
+          -2.168404344971009e-19,
+          0.0032575533333333334,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.006360648333333333
+        ]
+      ],
+      "cfg_vs_controller_J0_relative_error": 2.538429114700713,
+      "stored_vs_actual_BS_accel_feature_rms_rad_s2": [
+        0.4183396730883318,
+        0.4030196958994825,
+        0.008189376835883395
+      ],
+      "actual_BS_accel_feature_rms_rad_s2": [
+        0.5742236133815208,
+        0.5531803691438718,
+        0.011520061343747477
+      ],
+      "stored_label_reconstruction_max_abs_rad_s2": 4.3633532342823855e-08,
+      "teacher_RBF_pre_beta_output_rms_rad_s2": [
+        8.240546771938595,
+        8.239608507813669,
+        0.011151706601954947
+      ],
+      "current_residual_target_rms_rad_s2": [
+        0.18010868781011266,
+        0.17894611894973544,
+        0.00479177296379285
+      ],
+      "teacher_to_target_rms_ratio": 45.8903259935846,
+      "fixed_J0_beta_teacher_to_logged_torque_relative_error": 2.459479089746989e-09
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C03_W00",
+      "source_class": "REUSE_CERTIFIED_ORIGINAL_B_RAW",
+      "cfg_plant_inertia_kg_m2": [
+        [
+          0.012,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.012,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.022
+        ]
+      ],
+      "controller_fixed_J0_kg_m2": [
+        [
+          0.003257553333333334,
+          -2.168404344971009e-19,
+          0.0
+        ],
+        [
+          -2.168404344971009e-19,
+          0.0032575533333333334,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.006360648333333333
+        ]
+      ],
+      "cfg_vs_controller_J0_relative_error": 2.538429114700713,
+      "stored_vs_actual_BS_accel_feature_rms_rad_s2": [
+        0.39139225878871664,
+        0.3727334014682483,
+        0.033411321752223416
+      ],
+      "actual_BS_accel_feature_rms_rad_s2": [
+        0.5372166987233292,
+        0.511609433827327,
+        0.046999971225261554
+      ],
+      "stored_label_reconstruction_max_abs_rad_s2": 4.0017628988309184e-08,
+      "teacher_RBF_pre_beta_output_rms_rad_s2": [
+        6.518680222619693,
+        6.51769827199367,
+        0.4079515374976855
+      ],
+      "current_residual_target_rms_rad_s2": [
+        0.16998750671375623,
+        0.21361983781587982,
+        0.014587627049577874
+      ],
+      "teacher_to_target_rms_ratio": 33.75083509391143,
+      "fixed_J0_beta_teacher_to_logged_torque_relative_error": 6.828635609302886e-09
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C04_W01",
+      "source_class": "REUSE_CERTIFIED_ORIGINAL_B_RAW",
+      "cfg_plant_inertia_kg_m2": [
+        [
+          0.012,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.012,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.022
+        ]
+      ],
+      "controller_fixed_J0_kg_m2": [
+        [
+          0.003257553333333334,
+          -2.168404344971009e-19,
+          0.0
+        ],
+        [
+          -2.168404344971009e-19,
+          0.0032575533333333334,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.006360648333333333
+        ]
+      ],
+      "cfg_vs_controller_J0_relative_error": 2.538429114700713,
+      "stored_vs_actual_BS_accel_feature_rms_rad_s2": [
+        0.40183227711083935,
+        0.3079769016276345,
+        0.06282230226736066
+      ],
+      "actual_BS_accel_feature_rms_rad_s2": [
+        0.5513579517067803,
+        0.42248743217470885,
+        0.08837263079694502
+      ],
+      "stored_label_reconstruction_max_abs_rad_s2": 5.503933286910012e-08,
+      "teacher_RBF_pre_beta_output_rms_rad_s2": [
+        3.883818627473416,
+        3.8843833724611856,
+        0.28403194246723884
+      ],
+      "current_residual_target_rms_rad_s2": [
+        0.31555762090092004,
+        0.16010069795235576,
+        0.027293966331370913
+      ],
+      "teacher_to_target_rms_ratio": 15.498143991417457,
+      "fixed_J0_beta_teacher_to_logged_torque_relative_error": 1.0321907525317519e-08
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C05_W02",
+      "source_class": "REUSE_CERTIFIED_ORIGINAL_B_RAW",
+      "cfg_plant_inertia_kg_m2": [
+        [
+          0.012,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.012,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.022
+        ]
+      ],
+      "controller_fixed_J0_kg_m2": [
+        [
+          0.003257553333333334,
+          -2.168404344971009e-19,
+          0.0
+        ],
+        [
+          -2.168404344971009e-19,
+          0.0032575533333333334,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.006360648333333333
+        ]
+      ],
+      "cfg_vs_controller_J0_relative_error": 2.538429114700713,
+      "stored_vs_actual_BS_accel_feature_rms_rad_s2": [
+        0.8255319955323307,
+        0.7047296521082748,
+        0.2664275762600022
+      ],
+      "actual_BS_accel_feature_rms_rad_s2": [
+        1.1330556863458716,
+        0.9668263093133418,
+        0.37478578427745646
+      ],
+      "stored_label_reconstruction_max_abs_rad_s2": 6.857869983001308e-08,
+      "teacher_RBF_pre_beta_output_rms_rad_s2": [
+        16.494059276153333,
+        9.59543679917849,
+        1.4309643579933764
+      ],
+      "current_residual_target_rms_rad_s2": [
+        0.3893082358361565,
+        0.4226985857417714,
+        0.10287893269034142
+      ],
+      "teacher_to_target_rms_ratio": 32.77795402659305,
+      "fixed_J0_beta_teacher_to_logged_torque_relative_error": 4.96975912326661e-09
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C06_W03",
+      "source_class": "REUSE_CERTIFIED_ORIGINAL_B_RAW",
+      "cfg_plant_inertia_kg_m2": [
+        [
+          0.012,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.012,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.022
+        ]
+      ],
+      "controller_fixed_J0_kg_m2": [
+        [
+          0.003257553333333334,
+          -2.168404344971009e-19,
+          0.0
+        ],
+        [
+          -2.168404344971009e-19,
+          0.0032575533333333334,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.006360648333333333
+        ]
+      ],
+      "cfg_vs_controller_J0_relative_error": 2.538429114700713,
+      "stored_vs_actual_BS_accel_feature_rms_rad_s2": [
+        0.6078521562373952,
+        0.3750544803176306,
+        0.020678134705479457
+      ],
+      "actual_BS_accel_feature_rms_rad_s2": [
+        0.8342999915286664,
+        0.5148110810881528,
+        0.029088096050259592
+      ],
+      "stored_label_reconstruction_max_abs_rad_s2": 6.838325683489188e-08,
+      "teacher_RBF_pre_beta_output_rms_rad_s2": [
+        4.997046995348831,
+        4.996892412100402,
+        0.02043395683117013
+      ],
+      "current_residual_target_rms_rad_s2": [
+        0.5839043120983525,
+        0.2560284757092854,
+        0.014429135507236528
+      ],
+      "teacher_to_target_rms_ratio": 11.081149852218536,
+      "fixed_J0_beta_teacher_to_logged_torque_relative_error": 8.492310267710013e-09
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C07_W04",
+      "source_class": "REUSE_CERTIFIED_ORIGINAL_B_RAW",
+      "cfg_plant_inertia_kg_m2": [
+        [
+          0.012,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.012,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.022
+        ]
+      ],
+      "controller_fixed_J0_kg_m2": [
+        [
+          0.003257553333333334,
+          -2.168404344971009e-19,
+          0.0
+        ],
+        [
+          -2.168404344971009e-19,
+          0.0032575533333333334,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.006360648333333333
+        ]
+      ],
+      "cfg_vs_controller_J0_relative_error": 2.538429114700713,
+      "stored_vs_actual_BS_accel_feature_rms_rad_s2": [
+        1.637975042767393,
+        1.5817825838966728,
+        0.34440020616259853
+      ],
+      "actual_BS_accel_feature_rms_rad_s2": [
+        2.2406724681953536,
+        2.171998094365085,
+        0.48447050082730375
+      ],
+      "stored_label_reconstruction_max_abs_rad_s2": 1.7269324059654423e-07,
+      "teacher_RBF_pre_beta_output_rms_rad_s2": [
+        5.580633081549275,
+        20.273932274311676,
+        1.2044162750813985
+      ],
+      "current_residual_target_rms_rad_s2": [
+        0.7680492614388528,
+        1.3644496556009729,
+        0.20677409331075705
+      ],
+      "teacher_to_target_rms_ratio": 13.336060581400776,
+      "fixed_J0_beta_teacher_to_logged_torque_relative_error": 5.769329763290667e-09
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C08_W05",
+      "source_class": "REUSE_CERTIFIED_ORIGINAL_B_RAW",
+      "cfg_plant_inertia_kg_m2": [
+        [
+          0.012,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.012,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.022
+        ]
+      ],
+      "controller_fixed_J0_kg_m2": [
+        [
+          0.003257553333333334,
+          -2.168404344971009e-19,
+          0.0
+        ],
+        [
+          -2.168404344971009e-19,
+          0.0032575533333333334,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.006360648333333333
+        ]
+      ],
+      "cfg_vs_controller_J0_relative_error": 2.538429114700713,
+      "stored_vs_actual_BS_accel_feature_rms_rad_s2": [
+        2.601962908748053,
+        1.1843128508553522,
+        0.40538933188061826
+      ],
+      "actual_BS_accel_feature_rms_rad_s2": [
+        3.569419700166637,
+        1.6286603289506902,
+        0.5702643878657907
+      ],
+      "stored_label_reconstruction_max_abs_rad_s2": 3.373101247206023e-07,
+      "teacher_RBF_pre_beta_output_rms_rad_s2": [
+        4.590717233026821,
+        19.18186856922333,
+        0.9221616550636761
+      ],
+      "current_residual_target_rms_rad_s2": [
+        2.0040267986648677,
+        0.8506839097915824,
+        0.16975463957358747
+      ],
+      "teacher_to_target_rms_ratio": 9.041986278555505,
+      "fixed_J0_beta_teacher_to_logged_torque_relative_error": 4.924034370616339e-09
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C09_W06",
+      "source_class": "REUSE_CERTIFIED_ORIGINAL_B_RAW",
+      "cfg_plant_inertia_kg_m2": [
+        [
+          0.012,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.012,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.022
+        ]
+      ],
+      "controller_fixed_J0_kg_m2": [
+        [
+          0.003257553333333334,
+          -2.168404344971009e-19,
+          0.0
+        ],
+        [
+          -2.168404344971009e-19,
+          0.0032575533333333334,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.006360648333333333
+        ]
+      ],
+      "cfg_vs_controller_J0_relative_error": 2.538429114700713,
+      "stored_vs_actual_BS_accel_feature_rms_rad_s2": [
+        0.40377320139342465,
+        0.768705011590546,
+        0.025855212674848606
+      ],
+      "actual_BS_accel_feature_rms_rad_s2": [
+        0.5541501399392813,
+        1.0551504876859703,
+        0.03637073270204289
+      ],
+      "stored_label_reconstruction_max_abs_rad_s2": 8.208219703931263e-08,
+      "teacher_RBF_pre_beta_output_rms_rad_s2": [
+        4.459315454383624,
+        4.459280100383487,
+        0.018465884151301022
+      ],
+      "current_residual_target_rms_rad_s2": [
+        0.25909090063403206,
+        0.7111384017702747,
+        0.019611900715867055
+      ],
+      "teacher_to_target_rms_ratio": 8.329494976179673,
+      "fixed_J0_beta_teacher_to_logged_torque_relative_error": 1.3776683619080896e-08
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C10_W07",
+      "source_class": "REUSE_CERTIFIED_ORIGINAL_B_RAW",
+      "cfg_plant_inertia_kg_m2": [
+        [
+          0.012,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.012,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.022
+        ]
+      ],
+      "controller_fixed_J0_kg_m2": [
+        [
+          0.003257553333333334,
+          -2.168404344971009e-19,
+          0.0
+        ],
+        [
+          -2.168404344971009e-19,
+          0.0032575533333333334,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.006360648333333333
+        ]
+      ],
+      "cfg_vs_controller_J0_relative_error": 2.538429114700713,
+      "stored_vs_actual_BS_accel_feature_rms_rad_s2": [
+        1.640813611473544,
+        0.7491660442854544,
+        0.17208517777496166
+      ],
+      "actual_BS_accel_feature_rms_rad_s2": [
+        2.2520101235378296,
+        1.0283521937949922,
+        0.24207358418514568
+      ],
+      "stored_label_reconstruction_max_abs_rad_s2": 1.6469459751533577e-07,
+      "teacher_RBF_pre_beta_output_rms_rad_s2": [
+        15.520898005262111,
+        7.7328935249673005,
+        0.31196887867706347
+      ],
+      "current_residual_target_rms_rad_s2": [
+        1.5450476346519815,
+        0.7075208084751414,
+        0.12046134361591813
+      ],
+      "teacher_to_target_rms_ratio": 10.180408827128053,
+      "fixed_J0_beta_teacher_to_logged_torque_relative_error": 8.138851750733068e-09
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C11_W08",
+      "source_class": "REUSE_CERTIFIED_ORIGINAL_B_RAW",
+      "cfg_plant_inertia_kg_m2": [
+        [
+          0.012,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.012,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.022
+        ]
+      ],
+      "controller_fixed_J0_kg_m2": [
+        [
+          0.003257553333333334,
+          -2.168404344971009e-19,
+          0.0
+        ],
+        [
+          -2.168404344971009e-19,
+          0.0032575533333333334,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.006360648333333333
+        ]
+      ],
+      "cfg_vs_controller_J0_relative_error": 2.538429114700713,
+      "stored_vs_actual_BS_accel_feature_rms_rad_s2": [
+        1.0382665281503352,
+        2.2614228749314864,
+        0.49819998564012213
+      ],
+      "actual_BS_accel_feature_rms_rad_s2": [
+        1.4235348592842683,
+        3.104971377231414,
+        0.7008218701828856
+      ],
+      "stored_label_reconstruction_max_abs_rad_s2": 3.0890418400986164e-07,
+      "teacher_RBF_pre_beta_output_rms_rad_s2": [
+        8.594484377370302,
+        2.5087318946854396,
+        0.7480200586690423
+      ],
+      "current_residual_target_rms_rad_s2": [
+        0.9010427284247879,
+        2.637905971963125,
+        0.3376537524604916
+      ],
+      "teacher_to_target_rms_ratio": 3.199639441215215,
+      "fixed_J0_beta_teacher_to_logged_torque_relative_error": 2.614783080133065e-08
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C12_W09",
+      "source_class": "REUSE_CERTIFIED_ORIGINAL_B_RAW",
+      "cfg_plant_inertia_kg_m2": [
+        [
+          0.012,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.012,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.022
+        ]
+      ],
+      "controller_fixed_J0_kg_m2": [
+        [
+          0.003257553333333334,
+          -2.168404344971009e-19,
+          0.0
+        ],
+        [
+          -2.168404344971009e-19,
+          0.0032575533333333334,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.006360648333333333
+        ]
+      ],
+      "cfg_vs_controller_J0_relative_error": 2.538429114700713,
+      "stored_vs_actual_BS_accel_feature_rms_rad_s2": [
+        0.7089901741915966,
+        0.49679025249975417,
+        0.06379539590031162
+      ],
+      "actual_BS_accel_feature_rms_rad_s2": [
+        0.9731639312679485,
+        0.6818866627329561,
+        0.08974148930944732
+      ],
+      "stored_label_reconstruction_max_abs_rad_s2": 7.41293975092816e-08,
+      "teacher_RBF_pre_beta_output_rms_rad_s2": [
+        10.86007384830855,
+        2.105489463186631,
+        0.3833884580426195
+      ],
+      "current_residual_target_rms_rad_s2": [
+        0.4888084805467203,
+        0.3131948269992602,
+        0.08801057700871241
+      ],
+      "teacher_to_target_rms_ratio": 18.851271545104325,
+      "fixed_J0_beta_teacher_to_logged_torque_relative_error": 4.678472379850757e-09
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C13_W10",
+      "source_class": "REUSE_CERTIFIED_ORIGINAL_B_RAW",
+      "cfg_plant_inertia_kg_m2": [
+        [
+          0.012,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.012,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.022
+        ]
+      ],
+      "controller_fixed_J0_kg_m2": [
+        [
+          0.003257553333333334,
+          -2.168404344971009e-19,
+          0.0
+        ],
+        [
+          -2.168404344971009e-19,
+          0.0032575533333333334,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.006360648333333333
+        ]
+      ],
+      "cfg_vs_controller_J0_relative_error": 2.538429114700713,
+      "stored_vs_actual_BS_accel_feature_rms_rad_s2": [
+        0.7353440730241168,
+        1.5357015807639274,
+        0.17583667851978357
+      ],
+      "actual_BS_accel_feature_rms_rad_s2": [
+        1.009742275309298,
+        2.1079124662618742,
+        0.24735085004756466
+      ],
+      "stored_label_reconstruction_max_abs_rad_s2": 1.574253829517147e-07,
+      "teacher_RBF_pre_beta_output_rms_rad_s2": [
+        3.2826905093140564,
+        12.670744452388062,
+        0.6609070258940349
+      ],
+      "current_residual_target_rms_rad_s2": [
+        0.427140537410827,
+        1.2228805278674877,
+        0.27476117443394976
+      ],
+      "teacher_to_target_rms_ratio": 9.897461793627134,
+      "fixed_J0_beta_teacher_to_logged_torque_relative_error": 7.004336585244841e-09
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C14_W11",
+      "source_class": "REUSE_CERTIFIED_ORIGINAL_B_RAW",
+      "cfg_plant_inertia_kg_m2": [
+        [
+          0.012,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.012,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.022
+        ]
+      ],
+      "controller_fixed_J0_kg_m2": [
+        [
+          0.003257553333333334,
+          -2.168404344971009e-19,
+          0.0
+        ],
+        [
+          -2.168404344971009e-19,
+          0.0032575533333333334,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.006360648333333333
+        ]
+      ],
+      "cfg_vs_controller_J0_relative_error": 2.538429114700713,
+      "stored_vs_actual_BS_accel_feature_rms_rad_s2": [
+        1.9737787289325162,
+        1.0623560061030173,
+        0.2121389902589356
+      ],
+      "actual_BS_accel_feature_rms_rad_s2": [
+        2.7088464412730646,
+        1.4589679626180991,
+        0.29841759973550874
+      ],
+      "stored_label_reconstruction_max_abs_rad_s2": 1.782856173804248e-07,
+      "teacher_RBF_pre_beta_output_rms_rad_s2": [
+        7.309971793621844,
+        15.591609260841935,
+        0.4616567430940486
+      ],
+      "current_residual_target_rms_rad_s2": [
+        1.3952446380603607,
+        0.6000336143414934,
+        0.23665694577653526
+      ],
+      "teacher_to_target_rms_ratio": 11.206859894683376,
+      "fixed_J0_beta_teacher_to_logged_torque_relative_error": 6.2013103683060075e-09
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C15_W12",
+      "source_class": "REUSE_CERTIFIED_ORIGINAL_B_RAW",
+      "cfg_plant_inertia_kg_m2": [
+        [
+          0.012,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.012,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.022
+        ]
+      ],
+      "controller_fixed_J0_kg_m2": [
+        [
+          0.003257553333333334,
+          -2.168404344971009e-19,
+          0.0
+        ],
+        [
+          -2.168404344971009e-19,
+          0.0032575533333333334,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.006360648333333333
+        ]
+      ],
+      "cfg_vs_controller_J0_relative_error": 2.538429114700713,
+      "stored_vs_actual_BS_accel_feature_rms_rad_s2": [
+        0.43166305868848714,
+        0.6964311835937955,
+        0.06524101223617326
+      ],
+      "actual_BS_accel_feature_rms_rad_s2": [
+        0.5925185870328603,
+        0.9559397949461733,
+        0.09177504923962963
+      ],
+      "stored_label_reconstruction_max_abs_rad_s2": 6.648663730679516e-08,
+      "teacher_RBF_pre_beta_output_rms_rad_s2": [
+        1.823985180494779,
+        9.358651362720169,
+        0.5885461155651166
+      ],
+      "current_residual_target_rms_rad_s2": [
+        0.2151554600782761,
+        0.46001686944721637,
+        0.10266508555641804
+      ],
+      "teacher_to_target_rms_ratio": 18.437625171225857,
+      "fixed_J0_beta_teacher_to_logged_torque_relative_error": 5.0395764631462075e-09
+    }
+  ],
+  "interpretation": "The current dataset reconstructs alpha_bs with cfg.plant.inertia, while the deployed fixed controller uses the distributed-mass nominal controller inertia. The current target is measured acceleration residual after B's attitude RBF ran, not the RBF action that the new TCN replaces. The logged pre-beta RBF action maps to the applied torque with the fixed controller J0 and beta; no time-varying inertia estimate is needed. Do not release the current checkpoint as a direct RBF replacement."
+}

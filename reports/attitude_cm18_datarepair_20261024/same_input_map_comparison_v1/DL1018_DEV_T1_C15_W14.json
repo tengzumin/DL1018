@@ -1,0 +1,459 @@
+{
+  "schema": "ROOT_CM18_SAME_INPUT_MAP_COMPARISON_SCENE_V1",
+  "status": "PASS_SINGLE_SCENE_DIAGNOSTIC",
+  "scope": {
+    "scene_id": "DL1018_DEV_T1_C15_W14",
+    "event_count": 1999,
+    "transitions": 20000,
+    "plant_calls": 0,
+    "engine_calls": 0,
+    "training_steps": 0,
+    "optimizer_steps": 0,
+    "TEST_accessed": false,
+    "full_allocator_replayed": false
+  },
+  "identity": {
+    "taskbook_path": "reports/attitude_cm18_datarepair_20261024/ROOT_SAME_INPUT_MAP_COMPARISON_TASKBOOK_v1.json",
+    "taskbook_sha256": "cf54be549a7853280309fe35592559382c412f1c490523b5746275cb4a9340ff",
+    "aggregate_path": "reports/attitude_cm18_datarepair_20261024/root_aggregate_decomposition12_v1/A1T_SAME_STATE_DECOMPOSITION12_v1.json",
+    "aggregate_sha256": "6a2e1186f18c0f24d24f88bed5c1fb84888b199c89f892bd22ae70e892e62ae2",
+    "raw_path": "experiments/attitude_cm18_datarepair_20261024/a1t_screen12_control_v1/runs/DL1018_DEV_T1_C15_W14/attempt_01/raw_run.mat",
+    "raw_sha256": "6949a9ebbb416e3e715df1979f4026e8965a01cde324e6d99bbb81399fcc16c7",
+    "decomposition_report_path": "reports/attitude_cm18_datarepair_20261024/a1t_same_state_decomposition_v2/DL1018_DEV_T1_C15_W14/A1T_SAME_STATE_DECOMPOSITION_DL1018_DEV_T1_C15_W14_v2.json",
+    "decomposition_report_sha256": "942318be1c2b6e6d30587ca9839f5585cb99e83515c304f89e1b4dda01eca207",
+    "independent_audit_path": "reports/attitude_cm18_datarepair_20261024/a1t_screen12_control_v1/A1T_SCREEN12_LOG_AUDIT_DL1018_DEV_T1_C15_W14_v1.json",
+    "independent_audit_sha256": "758e3ab77e3463ba559da7a7713671d294e914eca1adad0135ea1c8f44f98b59",
+    "run_release_path": "reports/attitude_cm18_datarepair_20261024/a1t_screen12_control_v1/ROOT_A1T_SCREEN12_CONTROL_RELEASE_DL1018_DEV_T1_C15_W14_v1.json",
+    "run_release_sha256": "047f4f3a628961a46231400c53bc5cdb957dc1de03aed20892c019bcacb0f667",
+    "A1R_deployment_sha256": "b3ab7a3d99df639d4cc0a10ec2b6fcd4622388f58c90c25424e472164ef38d23",
+    "A1T_deployment_sha256": "dd5375623cf47abed1db1e620a7d00358aff71b5985ead13e88ba05218952b42",
+    "numpy_model_path": "experiments/attitude_cm18_a1_20261024/model_cm18_v1.py",
+    "numpy_model_sha256": "ad32c4f97bf96c63172547c944d80c45062502f1062b774934e0f7a868720cf6",
+    "A1R_checkpoint_sha256": "5fa4308b6220e530e6c2e7a6f45c4b6e22ddddef80d1bc5cafdcf58564bc5ef3",
+    "A1T_checkpoint_sha256": "58c72450fcc1e9aaa04f7454ad2a8aa551f161a95e52bb9946f0c99c23957cea",
+    "A1R_selected_step": 40000,
+    "A1T_selected_step": 40000,
+    "A1R_axis_rms_rad_s2": [
+      8.661105500728514,
+      8.66799186955589,
+      0.5565909452598714
+    ],
+    "A1T_axis_rms_rad_s2": [
+      8.71283036857775,
+      8.721630269411728,
+      0.6125819446901479
+    ],
+    "input_normalizers_exactly_equal": true,
+    "source_path": "reports/attitude_cm18_datarepair_20261024/root_same_input_map_comparison_v1.py",
+    "source_sha256": "3522198f93110c1301076505b0a39e75a78a0c67fe316c1ed7ea61d8ac5dbdb1"
+  },
+  "parity": {
+    "A1T_forward_vs_report_max_abs_rad_s2": 1.4210854715202004e-14,
+    "A1T_forward_vs_raw_log_max_abs_rad_s2": 1.4210854715202004e-14,
+    "A1T_clip_vs_raw_log_max_abs_rad_s2": 1.4210854715202004e-14,
+    "A1T_beta_clip_vs_raw_log_max_abs_rad_s2": 1.4210854715202004e-14,
+    "tolerance_abs_rad_s2": 1e-09
+  },
+  "windows": {
+    "ALL_0_20": {
+      "event_count": 1999,
+      "models": {
+        "A1R": {
+          "raw_prediction_minus_Cstar_over_beta": {
+            "count": 1999,
+            "signed_mean_rad_s2": [
+              0.8443895366708131,
+              -0.05117208977075554,
+              -0.4596364476242114
+            ],
+            "axis_rms_rad_s2": [
+              2.187984663259536,
+              1.6750100037487954,
+              1.3764300041702913
+            ],
+            "vector_rms_rad_s2": 3.0801777474194103,
+            "max_abs_rad_s2": [
+              11.251187353202523,
+              13.458452528340255,
+              4.790306848841431
+            ]
+          },
+          "applied_beta_clip_action_minus_Cstar": {
+            "count": 1999,
+            "signed_mean_rad_s2": [
+              0.8443895366708153,
+              -0.05117208977074843,
+              -0.4635410785636139
+            ],
+            "axis_rms_rad_s2": [
+              2.187984663259536,
+              1.6750100037487954,
+              1.3741106333953372
+            ],
+            "vector_rms_rad_s2": 3.079141996096903,
+            "max_abs_rad_s2": [
+              11.251187353202523,
+              13.458452528340255,
+              4.790306848841431
+            ]
+          },
+          "linear_surrogate_E0_minus_G_action": {
+            "count": 1999,
+            "signed_mean_rad_s2": [
+              -0.24923616094711523,
+              -0.006466874644753211,
+              0.2639675301974181
+            ],
+            "axis_rms_rad_s2": [
+              1.4427587941911983,
+              1.3648981413585026,
+              0.7910010338659382
+            ],
+            "vector_rms_rad_s2": 2.1377985195235127,
+            "max_abs_rad_s2": [
+              9.488225337494022,
+              10.879789657403148,
+              2.646738352501904
+            ]
+          },
+          "raw_clip_count_by_axis": [
+            0,
+            0,
+            19
+          ]
+        },
+        "A1T": {
+          "raw_prediction_minus_Cstar_over_beta": {
+            "count": 1999,
+            "signed_mean_rad_s2": [
+              0.73913966275228,
+              -0.2027678774640504,
+              -0.39268564479252194
+            ],
+            "axis_rms_rad_s2": [
+              1.8907871174859074,
+              1.4521833441711862,
+              1.3225168944694283
+            ],
+            "vector_rms_rad_s2": 2.7263461491336605,
+            "max_abs_rad_s2": [
+              9.083947615144817,
+              10.44674253687684,
+              5.190304432392575
+            ]
+          },
+          "applied_beta_clip_action_minus_Cstar": {
+            "count": 1999,
+            "signed_mean_rad_s2": [
+              0.7391396627522824,
+              -0.20276787746404334,
+              -0.4024300246091157
+            ],
+            "axis_rms_rad_s2": [
+              1.8907871174859074,
+              1.4521833441711862,
+              1.3152702617604297
+            ],
+            "vector_rms_rad_s2": 2.722838271034515,
+            "max_abs_rad_s2": [
+              9.083947615144817,
+              10.44674253687684,
+              5.190304432392575
+            ]
+          },
+          "linear_surrogate_E0_minus_G_action": {
+            "count": 1999,
+            "signed_mean_rad_s2": [
+              -0.1997661533988979,
+              0.11846051708126532,
+              0.22757441893824512
+            ],
+            "axis_rms_rad_s2": [
+              1.0950290322521545,
+              1.1565609992036534,
+              0.7584559390267831
+            ],
+            "vector_rms_rad_s2": 1.764079742471706,
+            "max_abs_rad_s2": [
+              7.522207975638208,
+              8.413922867566116,
+              2.867744851396427
+            ]
+          },
+          "raw_clip_count_by_axis": [
+            0,
+            0,
+            35
+          ]
+        }
+      }
+    },
+    "PRE_0_5": {
+      "event_count": 499,
+      "models": {
+        "A1R": {
+          "raw_prediction_minus_Cstar_over_beta": {
+            "count": 499,
+            "signed_mean_rad_s2": [
+              -5.467397875869348e-15,
+              -3.11958690883085e-14,
+              1.1008944405245732e-14
+            ],
+            "axis_rms_rad_s2": [
+              2.0677908999557897e-13,
+              4.60315646132777e-13,
+              4.982187741310654e-14
+            ],
+            "vector_rms_rad_s2": 5.070801767008867e-13,
+            "max_abs_rad_s2": [
+              2.4848179069891793e-12,
+              9.474812627172873e-12,
+              8.822512779463704e-13
+            ]
+          },
+          "applied_beta_clip_action_minus_Cstar": {
+            "count": 499,
+            "signed_mean_rad_s2": [
+              3.364612641048691e-15,
+              -2.6842346664419484e-15,
+              2.839537018301582e-15
+            ],
+            "axis_rms_rad_s2": [
+              2.5787310798501112e-14,
+              2.4263990012341385e-14,
+              4.457447842681251e-15
+            ],
+            "vector_rms_rad_s2": 3.5687469100620154e-14,
+            "max_abs_rad_s2": [
+              8.526512829121202e-14,
+              7.105427357601002e-14,
+              1.3267165144270618e-14
+            ]
+          },
+          "linear_surrogate_E0_minus_G_action": {
+            "count": 499,
+            "signed_mean_rad_s2": [
+              -3.364612641048691e-15,
+              2.684234666441948e-15,
+              -2.839537018301582e-15
+            ],
+            "axis_rms_rad_s2": [
+              2.5787310798501112e-14,
+              2.4263990012341385e-14,
+              4.457447842681251e-15
+            ],
+            "vector_rms_rad_s2": 3.5687469100620154e-14,
+            "max_abs_rad_s2": [
+              8.526512829121202e-14,
+              7.105427357601002e-14,
+              1.326716514427062e-14
+            ]
+          },
+          "raw_clip_count_by_axis": [
+            0,
+            0,
+            0
+          ]
+        },
+        "A1T": {
+          "raw_prediction_minus_Cstar_over_beta": {
+            "count": 499,
+            "signed_mean_rad_s2": [
+              -5.467397875869348e-15,
+              -3.11958690883085e-14,
+              1.1008944405245732e-14
+            ],
+            "axis_rms_rad_s2": [
+              2.0677908999557897e-13,
+              4.60315646132777e-13,
+              4.982187741310654e-14
+            ],
+            "vector_rms_rad_s2": 5.070801767008867e-13,
+            "max_abs_rad_s2": [
+              2.4848179069891793e-12,
+              9.474812627172873e-12,
+              8.822512779463704e-13
+            ]
+          },
+          "applied_beta_clip_action_minus_Cstar": {
+            "count": 499,
+            "signed_mean_rad_s2": [
+              3.364612641048691e-15,
+              -2.6842346664419484e-15,
+              2.839537018301582e-15
+            ],
+            "axis_rms_rad_s2": [
+              2.5787310798501112e-14,
+              2.4263990012341385e-14,
+              4.457447842681251e-15
+            ],
+            "vector_rms_rad_s2": 3.5687469100620154e-14,
+            "max_abs_rad_s2": [
+              8.526512829121202e-14,
+              7.105427357601002e-14,
+              1.3267165144270618e-14
+            ]
+          },
+          "linear_surrogate_E0_minus_G_action": {
+            "count": 499,
+            "signed_mean_rad_s2": [
+              -3.364612641048691e-15,
+              2.684234666441948e-15,
+              -2.839537018301582e-15
+            ],
+            "axis_rms_rad_s2": [
+              2.5787310798501112e-14,
+              2.4263990012341385e-14,
+              4.457447842681251e-15
+            ],
+            "vector_rms_rad_s2": 3.5687469100620154e-14,
+            "max_abs_rad_s2": [
+              8.526512829121202e-14,
+              7.105427357601002e-14,
+              1.326716514427062e-14
+            ]
+          },
+          "raw_clip_count_by_axis": [
+            0,
+            0,
+            0
+          ]
+        }
+      }
+    },
+    "POST_5_20": {
+      "event_count": 1500,
+      "models": {
+        "A1R": {
+          "raw_prediction_minus_Cstar_over_beta": {
+            "count": 1500,
+            "signed_mean_rad_s2": [
+              1.1252897892033054,
+              -0.06819533830114984,
+              -0.6125421725338696
+            ],
+            "axis_rms_rad_s2": [
+              2.5258353728923333,
+              1.9336513589242539,
+              1.588967076060016
+            ],
+            "vector_rms_rad_s2": 3.5557936213490358,
+            "max_abs_rad_s2": [
+              11.251187353202523,
+              13.458452528340255,
+              4.790306848841431
+            ]
+          },
+          "applied_beta_clip_action_minus_Cstar": {
+            "count": 1500,
+            "signed_mean_rad_s2": [
+              1.1252897892033054,
+              -0.06819533830114984,
+              -0.6177457440324436
+            ],
+            "axis_rms_rad_s2": [
+              2.5258353728923333,
+              1.9336513589242539,
+              1.5862895670058603
+            ],
+            "vector_rms_rad_s2": 3.5545979377723453,
+            "max_abs_rad_s2": [
+              11.251187353202523,
+              13.458452528340255,
+              4.790306848841431
+            ]
+          },
+          "linear_surrogate_E0_minus_G_action": {
+            "count": 1500,
+            "signed_mean_rad_s2": [
+              -0.33214872382218785,
+              -0.008618188276575317,
+              0.35178072857642684
+            ],
+            "axis_rms_rad_s2": [
+              1.6655378157407825,
+              1.5756545572410017,
+              0.9131409487836983
+            ],
+            "vector_rms_rad_s2": 2.4678998950043556,
+            "max_abs_rad_s2": [
+              9.488225337494022,
+              10.879789657403148,
+              2.646738352501904
+            ]
+          },
+          "raw_clip_count_by_axis": [
+            0,
+            0,
+            19
+          ]
+        },
+        "A1T": {
+          "raw_prediction_minus_Cstar_over_beta": {
+            "count": 1500,
+            "signed_mean_rad_s2": [
+              0.9850267905612071,
+              -0.27022199136708086,
+              -0.5233190692935046
+            ],
+            "axis_rms_rad_s2": [
+              2.1827470110509344,
+              1.6764176277032583,
+              1.5267291445828377
+            ],
+            "vector_rms_rad_s2": 3.1473262394681387,
+            "max_abs_rad_s2": [
+              9.083947615144817,
+              10.44674253687684,
+              5.190304432392575
+            ]
+          },
+          "applied_beta_clip_action_minus_Cstar": {
+            "count": 1500,
+            "signed_mean_rad_s2": [
+              0.9850267905612071,
+              -0.27022199136708086,
+              -0.5363050794624157
+            ],
+            "axis_rms_rad_s2": [
+              2.1827470110509344,
+              1.6764176277032583,
+              1.5183635460765488
+            ],
+            "vector_rms_rad_s2": 3.1432767035022806,
+            "max_abs_rad_s2": [
+              9.083947615144817,
+              10.44674253687684,
+              5.190304432392575
+            ]
+          },
+          "linear_surrogate_E0_minus_G_action": {
+            "count": 1500,
+            "signed_mean_rad_s2": [
+              -0.26622169376293014,
+              0.15786838243029866,
+              0.30328084230503566
+            ],
+            "axis_rms_rad_s2": [
+              1.264114465905865,
+              1.3351476963025544,
+              0.875570506385619
+            ],
+            "vector_rms_rad_s2": 2.036474518747253,
+            "max_abs_rad_s2": [
+              7.522207975638208,
+              8.413922867566116,
+              2.867744851396427
+            ]
+          },
+          "raw_clip_count_by_axis": [
+            0,
+            0,
+            35
+          ]
+        }
+      }
+    }
+  },
+  "interpretation": "Same recorded A1T event inputs isolate pointwise A1R/A1T map differences on this state set. Errors use the existing C*/beta target and G/E0 linear surrogate; no full allocator, new trajectory, or closed-loop inference is performed. Label semantics and label-derived target RMS changed together, so this does not identify either as a separate cause."
+}

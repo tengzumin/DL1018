@@ -1,0 +1,113 @@
+{
+  "schema": "DL1018_ATTITUDE_ARCHITECTURE_SCREEN_RESULT_V1",
+  "status": "PASS_OFFLINE_SCREEN_ONLY",
+  "architecture_ranking": [
+    "MLP15",
+    "TCN15",
+    "GRU15",
+    "DSSM15"
+  ],
+  "results": [
+    {
+      "architecture": "MLP15",
+      "steps": 2000,
+      "parameter_count": 14723,
+      "training_seconds": 4.1476999999940745,
+      "full_val_seconds": 0.09565940000175033,
+      "normalized_scene_macro_teacher_action_rmse": 0.5235933016422553,
+      "physical_axis_scene_macro_rmse_rad_s2": [
+        3.5487243540357523,
+        3.7878453914370778,
+        0.31543856619897337
+      ],
+      "physical_axis_pooled_rmse_rad_s2": [
+        3.941361982105393,
+        4.2149428854634925,
+        0.40840919206063325
+      ],
+      "val_scene_count": 48,
+      "events_per_scene": 1999,
+      "checkpoint_sha256": "a0f6391d5b3f66c6e83d237a1dd5294a29b8a687ca0a03120d11126979fc3102",
+      "plant_called": false,
+      "test_data_read": false
+    },
+    {
+      "architecture": "TCN15",
+      "steps": 2000,
+      "parameter_count": 9859,
+      "training_seconds": 980.2928914000004,
+      "full_val_seconds": 71.55947880000167,
+      "normalized_scene_macro_teacher_action_rmse": 0.5599344008879333,
+      "physical_axis_scene_macro_rmse_rad_s2": [
+        3.8481917837484008,
+        4.201007552359257,
+        0.3273284312918727
+      ],
+      "physical_axis_pooled_rmse_rad_s2": [
+        4.255669790823377,
+        4.791720343265131,
+        0.42106713080062996
+      ],
+      "val_scene_count": 48,
+      "events_per_scene": 1999,
+      "checkpoint_sha256": "e7835cc0b9b837e08c1456e4b84b287f8b48d01f1514052f8cdbc30104cc42cc",
+      "plant_called": false,
+      "test_data_read": false
+    },
+    {
+      "architecture": "GRU15",
+      "steps": 2000,
+      "parameter_count": 4611,
+      "training_seconds": 6.190541800002393,
+      "full_val_seconds": 0.0837348999993992,
+      "normalized_scene_macro_teacher_action_rmse": 0.5683463713906911,
+      "physical_axis_scene_macro_rmse_rad_s2": [
+        3.681943001796799,
+        4.261979695539389,
+        0.3409659589994704
+      ],
+      "physical_axis_pooled_rmse_rad_s2": [
+        4.081675623182707,
+        4.897989877781637,
+        0.4428527741289726
+      ],
+      "val_scene_count": 48,
+      "events_per_scene": 1999,
+      "checkpoint_sha256": "1413e614108e0d36f5173355891a6f84aa0aa0239acdf3839ebc0649373db99e",
+      "plant_called": false,
+      "test_data_read": false
+    },
+    {
+      "architecture": "DSSM15",
+      "steps": 2000,
+      "parameter_count": 579,
+      "training_seconds": 14.981605999993917,
+      "full_val_seconds": 0.08320599999569822,
+      "normalized_scene_macro_teacher_action_rmse": 0.653686466507133,
+      "physical_axis_scene_macro_rmse_rad_s2": [
+        4.4885550349858105,
+        5.213347641736255,
+        0.3679155524821349
+      ],
+      "physical_axis_pooled_rmse_rad_s2": [
+        4.979170255787617,
+        6.052112041147363,
+        0.4720521314197746
+      ],
+      "val_scene_count": 48,
+      "events_per_scene": 1999,
+      "checkpoint_sha256": "24f63aa3c32ff33886539c5102816386ef66ffee1f74f1cd6441d9c917ed7c9a",
+      "plant_called": false,
+      "test_data_read": false
+    }
+  ],
+  "dataset_sha256": "33e35c5b1aeb474ee038e0e86e6ddb841c71d25a3afc59ace4fd91522a1a6171",
+  "manifest_sha256": "4a98548618d799b01b96809ea274b6a4ffcf5eded0e24f2fde5401619ffc442d",
+  "screen_script_sha256": "66816f8b04776aca47440008bda96523055c70fc0b68700df07ea30c06357700",
+  "training_steps_per_model": 2000,
+  "seed": 2026102001,
+  "device": "cuda:0",
+  "test_data_read": false,
+  "plant_called": false,
+  "interpretation": "Shortlist only; teacher-action fit is not closed-loop evidence."
+}

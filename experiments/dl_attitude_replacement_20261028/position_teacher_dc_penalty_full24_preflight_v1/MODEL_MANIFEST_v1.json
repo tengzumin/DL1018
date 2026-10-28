@@ -1,0 +1,75 @@
+{
+  "schema": "POSITION_C5_TEACHER_POSITION_DC_PENALTY_FULL24_DEPLOY_MODEL_MANIFEST_V1",
+  "weights_mat_sha256": "a59ee6cc35db749d5b67ffb0f87daef0431436e3eb9fd9e3af2e456e802e8870",
+  "checkpoint_sha256": "4da29824058e47217876f26e68889000b32a8a9efafc3f4f2f281c66b39aaa79",
+  "weights_export_npz_sha256": "b250b8122c8ca23f7740a1bb2039f7afb4784b52f92c9dd2ffb9a76ead2ae756",
+  "training_result_sha256": "c8b7c54199074e52cf6dd7dc3b68f9531fef21f409bc627c6d9180e76a5061b5",
+  "training_source_lock_sha256": "6b6db29922bd84a2f0cfc89cba3a2c0e991ade2ceee18041b557b4ad16f2258b",
+  "training_config_sha256": "8801805e327761e663d1e0bf4487576ba82097c1fd45e216518d83e3f0520380",
+  "training_script_sha256": "e4a4c5562de4ee9e6d4d2a2c717d1f3787269ee46bf7bd676e3eda3014942fb0",
+  "dataset_sha256": "15d689f08fd6d8a53a64c59dbdf62b33f9b8e8a12ce083fb12834cd106df2eeb",
+  "teacher_npz_sha256": "e0519bc87a977d1349da3fdb0f582273bffaa61eb24ea380fb44e4a56791634a",
+  "cv_oof_sha256": "0b7b37e777a88af864482f60c2d9f531da7b86d243a725c3a10354c9e4734288",
+  "training_scene_count": 24,
+  "training_scene_ids": [
+    "DL1018_DEV_T1_C00_W03",
+    "DL1018_DEV_T1_C01_W15",
+    "DL1018_DEV_T1_C04_W00",
+    "DL1018_DEV_T1_C05_W06",
+    "DL1018_DEV_T1_C07_W08",
+    "DL1018_DEV_T1_C10_W09",
+    "DL1018_DEV_T1_C11_W12",
+    "DL1018_DEV_T1_C15_W14",
+    "DL1018_DEV_T2_C00_W04",
+    "DL1018_DEV_T2_C02_W15",
+    "DL1018_DEV_T2_C03_W01",
+    "DL1018_DEV_T2_C06_W07",
+    "DL1018_DEV_T2_C08_W08",
+    "DL1018_DEV_T2_C09_W10",
+    "DL1018_DEV_T2_C12_W13",
+    "DL1018_DEV_T2_C14_W14",
+    "DL1018_DEV_T3_C00_W05",
+    "DL1018_DEV_T3_C03_W15",
+    "DL1018_DEV_T3_C05_W02",
+    "DL1018_DEV_T3_C06_W08",
+    "DL1018_DEV_T3_C09_W09",
+    "DL1018_DEV_T3_C10_W11",
+    "DL1018_DEV_T3_C13_W12",
+    "DL1018_DEV_T3_C15_W14"
+  ],
+  "architecture": "GRU(14,32)->Linear(32,3)",
+  "weights_shapes": {
+    "gru_weight_ih_l0": [
+      96,
+      14
+    ],
+    "gru_weight_hh_l0": [
+      96,
+      32
+    ],
+    "gru_bias_ih_l0": [
+      96
+    ],
+    "gru_bias_hh_l0": [
+      96
+    ],
+    "head_weight": [
+      3,
+      32
+    ],
+    "head_bias": [
+      3
+    ],
+    "input_mean": [
+      14
+    ],
+    "input_std": [
+      14
+    ]
+  },
+  "normalizer_scope": "all 24 TRAIN_C5_24 causal X14 rows only",
+  "objective": "0.5*mean(((delta-teacher_delta)/teacher_train_RMS)^2) + 0.5*mean(((student_action-position_target)/C5_position_error_train_RMS)^2), ready events only. + 0.5*mean_scene,axis((mean_ready(student_action-C5_action)/(0.1*teacher_train_RMS))^2).",
+  "teacher_used_at_inference": false,
+  "action_contract": "clip(C5_action + clip(event_time_s/1.8,0,1)*clip(delta,-0.5,0.5), -3,3) m/s^2; zero delta while not ready",
+  "scope": "Full24 deployment weights only; no validation or OOF score produced; no Plant call."
+}

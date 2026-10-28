@@ -1,0 +1,1945 @@
+{
+  "schema": "ROOT_A1T_SCREEN12_PAIRED_SCORE_V1",
+  "status": "COMPLETE_PENDING_ROOT_REVIEW",
+  "scene_count": 12,
+  "a1t_independent_audit_pass_count": 12,
+  "score_scope": "Same-scene A1T/A1R/C5_RBF/original A1; all 20,000 left-aligned transition samples, terminal t=20 s excluded; PRE=[0,5), POST=[5,20). No outcome filtering.",
+  "macro_scope": "Equal-scene arithmetic mean of each scene's metric; group membership is fixed by the SCREEN12 task/category/arm-wind labels. This is a mechanism screen, not independent paper validation.",
+  "audit_source_sha256": "14de8af50058ebfb39b1d7ca484561b50adf5086bdfacd0dc3a541fd6871f6be",
+  "source_pins": {
+    "root_auditor_source_review": {
+      "path": "reports/attitude_cm18_datarepair_20261024/a1t_screen12_control_v1/ROOT_A1T_RAW_AUDITOR_REVIEW_v2.json",
+      "sha256": "7541506221433d467215c038f9725fbf8bd4e37a5df35541da5c1304c1cb50e9"
+    },
+    "screen12_manifest": {
+      "path": "reports/attitude_cm18_a1_20261024/CM18_A1_DEV_SCREEN12_v1.json",
+      "sha256": "fdca3f17c0f39d19eb5b08e94e7e5b1f148ec03cf861eacec64d86ab7922f923"
+    },
+    "frozen_score_function": {
+      "path": "reports/attitude_cm18_a1_20261024/root_screen12_metrics_v1.py",
+      "sha256": "3b345050b31cabdfcb08dab405d9e34b736e1f65c02bc9fd22d3a0f08c9aeb52"
+    },
+    "original_c5_a1_paired_score": {
+      "path": "reports/attitude_cm18_a1_20261024/ROOT_SCREEN12_PAIRED_METRICS_v1.json",
+      "sha256": "6c6a1eb8d2b499d211a5f57379ac6d4a5f3cb7ae560d5bbad070b4bc8d649e27"
+    },
+    "a1r_paired_score_json": {
+      "path": "reports/attitude_cm18_datarepair_20261024/a1r_screen12_control_v1/ROOT_A1R_SCREEN12_PAIRED_SCORE_v1.json",
+      "sha256": "5f943414d7c48bb4c4ef399521320c27fbbb1b4989d846d87425318719dc40e7"
+    },
+    "a1r_clean_v2_scenes_csv": {
+      "path": "reports/attitude_cm18_datarepair_20261024/a1r_screen12_control_v1/ROOT_A1R_SCREEN12_PAIRED_SCENES_clean_v2.csv",
+      "sha256": "c0fb53c49c2577434df86d5c13e04be6863f52249dd0014ddc627e330589ea35"
+    }
+  },
+  "group_membership": {
+    "ALL12": [
+      "DL1018_DEV_T1_C00_W03",
+      "DL1018_DEV_T1_C01_W15",
+      "DL1018_DEV_T1_C15_W14",
+      "DL1018_DEV_T1_C05_W06",
+      "DL1018_DEV_T2_C00_W04",
+      "DL1018_DEV_T2_C02_W15",
+      "DL1018_VAL_T2_C15_W09",
+      "DL1018_DEV_T2_C06_W07",
+      "DL1018_DEV_T3_C00_W05",
+      "DL1018_DEV_T3_C03_W15",
+      "DL1018_DEV_T3_C15_W14",
+      "DL1018_DEV_T3_C05_W02"
+    ],
+    "T1": [
+      "DL1018_DEV_T1_C00_W03",
+      "DL1018_DEV_T1_C01_W15",
+      "DL1018_DEV_T1_C15_W14",
+      "DL1018_DEV_T1_C05_W06"
+    ],
+    "T2": [
+      "DL1018_DEV_T2_C00_W04",
+      "DL1018_DEV_T2_C02_W15",
+      "DL1018_VAL_T2_C15_W09",
+      "DL1018_DEV_T2_C06_W07"
+    ],
+    "T3": [
+      "DL1018_DEV_T3_C00_W05",
+      "DL1018_DEV_T3_C03_W15",
+      "DL1018_DEV_T3_C15_W14",
+      "DL1018_DEV_T3_C05_W02"
+    ],
+    "HF_W09_W14": [
+      "DL1018_DEV_T1_C15_W14",
+      "DL1018_VAL_T2_C15_W09",
+      "DL1018_DEV_T3_C15_W14"
+    ],
+    "NO_WIND_W15": [
+      "DL1018_DEV_T1_C01_W15",
+      "DL1018_DEV_T2_C02_W15",
+      "DL1018_DEV_T3_C03_W15"
+    ]
+  },
+  "aggregates": {
+    "ALL12": {
+      "scene_count": 12,
+      "means_by_period": {
+        "all": {
+          "A1T": {
+            "position_Q_m": 0.010279866541686144,
+            "position_peak_m": 0.03178005820668032,
+            "position_x_RMSE_m": 0.006578589256002746,
+            "position_y_RMSE_m": 0.007123023122885072,
+            "position_z_RMSE_m": 0.0024117940940838137,
+            "SO3_RMSE_deg": 0.5167252148458507,
+            "SO3_peak_deg": 1.228643343647643,
+            "body_rate_RMSE_rads": 0.02014415324027898
+          },
+          "A1R": {
+            "position_Q_m": 0.009900383513730073,
+            "position_peak_m": 0.0316657315918737,
+            "position_x_RMSE_m": 0.006294321976184857,
+            "position_y_RMSE_m": 0.00689521022769014,
+            "position_z_RMSE_m": 0.0024296555560029973,
+            "SO3_RMSE_deg": 0.46069279751926273,
+            "SO3_peak_deg": 1.050498958309513,
+            "body_rate_RMSE_rads": 0.019644408676317508
+          },
+          "C5_RBF": {
+            "position_Q_m": 0.010185517545748528,
+            "position_peak_m": 0.03305125121639628,
+            "position_x_RMSE_m": 0.006413914414368566,
+            "position_y_RMSE_m": 0.007137338293377474,
+            "position_z_RMSE_m": 0.002423209671288741,
+            "SO3_RMSE_deg": 0.6961116858270039,
+            "SO3_peak_deg": 2.10029820672409,
+            "body_rate_RMSE_rads": 0.02948742526919743
+          },
+          "A1": {
+            "position_Q_m": 0.010095481917479854,
+            "position_peak_m": 0.032240114953319625,
+            "position_x_RMSE_m": 0.0064868983353634875,
+            "position_y_RMSE_m": 0.006993776863963497,
+            "position_z_RMSE_m": 0.002440383940596418,
+            "SO3_RMSE_deg": 0.5303210612427143,
+            "SO3_peak_deg": 1.2154627695052844,
+            "body_rate_RMSE_rads": 0.021378525037704755
+          }
+        },
+        "pre": {
+          "A1T": {
+            "position_Q_m": 0.012956802941508076,
+            "position_peak_m": 0.029931617493423334,
+            "position_x_RMSE_m": 0.008031183922578759,
+            "position_y_RMSE_m": 0.008453476670496403,
+            "position_z_RMSE_m": 0.0034230141782247685,
+            "SO3_RMSE_deg": 0.00554991892476879,
+            "SO3_peak_deg": 0.013348162809350554,
+            "body_rate_RMSE_rads": 0.00012250289688900382
+          },
+          "A1R": {
+            "position_Q_m": 0.012956802941508076,
+            "position_peak_m": 0.029931617493423334,
+            "position_x_RMSE_m": 0.008031183922578759,
+            "position_y_RMSE_m": 0.008453476670496403,
+            "position_z_RMSE_m": 0.0034230141782247685,
+            "SO3_RMSE_deg": 0.00554991892476879,
+            "SO3_peak_deg": 0.013348162809350554,
+            "body_rate_RMSE_rads": 0.00012250289688900382
+          },
+          "C5_RBF": {
+            "position_Q_m": 0.012956639458744248,
+            "position_peak_m": 0.029931101249611933,
+            "position_x_RMSE_m": 0.008031070537021128,
+            "position_y_RMSE_m": 0.008453376915658357,
+            "position_z_RMSE_m": 0.0034230280565474692,
+            "SO3_RMSE_deg": 0.0055171764005863206,
+            "SO3_peak_deg": 0.013363912305137615,
+            "body_rate_RMSE_rads": 0.0001425125520498467
+          },
+          "A1": {
+            "position_Q_m": 0.012956802941508076,
+            "position_peak_m": 0.029931617493423334,
+            "position_x_RMSE_m": 0.008031183922578759,
+            "position_y_RMSE_m": 0.008453476670496403,
+            "position_z_RMSE_m": 0.0034230141782247685,
+            "SO3_RMSE_deg": 0.00554991892476879,
+            "SO3_peak_deg": 0.013348162809350554,
+            "body_rate_RMSE_rads": 0.00012250289688900382
+          }
+        },
+        "post": {
+          "A1T": {
+            "position_Q_m": 0.0088207799840787,
+            "position_peak_m": 0.02125016548721138,
+            "position_x_RMSE_m": 0.005741909939295621,
+            "position_y_RMSE_m": 0.006060618196570229,
+            "position_z_RMSE_m": 0.0018811470480779426,
+            "SO3_RMSE_deg": 0.5964932568323253,
+            "SO3_peak_deg": 1.2283953503704466,
+            "body_rate_RMSE_rads": 0.023256400553804336
+          },
+          "A1R": {
+            "position_Q_m": 0.008221903529140304,
+            "position_peak_m": 0.01913789105240015,
+            "position_x_RMSE_m": 0.005369482421596991,
+            "position_y_RMSE_m": 0.005644586646766194,
+            "position_z_RMSE_m": 0.001889412036849695,
+            "SO3_RMSE_deg": 0.5317902772035246,
+            "SO3_peak_deg": 1.0502509650323166,
+            "body_rate_RMSE_rads": 0.02267934339903852
+          },
+          "C5_RBF": {
+            "position_Q_m": 0.008551309302539278,
+            "position_peak_m": 0.020692995801868463,
+            "position_x_RMSE_m": 0.005472831989159527,
+            "position_y_RMSE_m": 0.005948127372656956,
+            "position_z_RMSE_m": 0.0018698601596303596,
+            "SO3_RMSE_deg": 0.8036332172768974,
+            "SO3_peak_deg": 2.099994212658414,
+            "body_rate_RMSE_rads": 0.034044627303953794
+          },
+          "A1": {
+            "position_Q_m": 0.008512592723601872,
+            "position_peak_m": 0.01955333313530793,
+            "position_x_RMSE_m": 0.00566101020707521,
+            "position_y_RMSE_m": 0.0057724947457494895,
+            "position_z_RMSE_m": 0.001911284448412949,
+            "SO3_RMSE_deg": 0.6121893191366813,
+            "SO3_peak_deg": 1.215214776228088,
+            "body_rate_RMSE_rads": 0.024681733317539065
+          }
+        }
+      },
+      "A1T_paired_outcomes_by_period": {
+        "all": {
+          "A1R": {
+            "SO3_RMSE_deg": {
+              "wins": 2,
+              "ties": 3,
+              "losses": 7
+            },
+            "position_Q_m": {
+              "wins": 3,
+              "ties": 3,
+              "losses": 6
+            },
+            "body_rate_RMSE_rads": {
+              "wins": 6,
+              "ties": 3,
+              "losses": 3
+            }
+          },
+          "C5_RBF": {
+            "SO3_RMSE_deg": {
+              "wins": 6,
+              "ties": 0,
+              "losses": 6
+            },
+            "position_Q_m": {
+              "wins": 5,
+              "ties": 0,
+              "losses": 7
+            },
+            "body_rate_RMSE_rads": {
+              "wins": 12,
+              "ties": 0,
+              "losses": 0
+            }
+          },
+          "A1": {
+            "SO3_RMSE_deg": {
+              "wins": 5,
+              "ties": 3,
+              "losses": 4
+            },
+            "position_Q_m": {
+              "wins": 2,
+              "ties": 3,
+              "losses": 7
+            },
+            "body_rate_RMSE_rads": {
+              "wins": 5,
+              "ties": 3,
+              "losses": 4
+            }
+          }
+        },
+        "pre": {
+          "A1R": {
+            "SO3_RMSE_deg": {
+              "wins": 0,
+              "ties": 12,
+              "losses": 0
+            },
+            "position_Q_m": {
+              "wins": 0,
+              "ties": 12,
+              "losses": 0
+            },
+            "body_rate_RMSE_rads": {
+              "wins": 0,
+              "ties": 12,
+              "losses": 0
+            }
+          },
+          "C5_RBF": {
+            "SO3_RMSE_deg": {
+              "wins": 2,
+              "ties": 0,
+              "losses": 10
+            },
+            "position_Q_m": {
+              "wins": 1,
+              "ties": 0,
+              "losses": 11
+            },
+            "body_rate_RMSE_rads": {
+              "wins": 12,
+              "ties": 0,
+              "losses": 0
+            }
+          },
+          "A1": {
+            "SO3_RMSE_deg": {
+              "wins": 0,
+              "ties": 12,
+              "losses": 0
+            },
+            "position_Q_m": {
+              "wins": 0,
+              "ties": 12,
+              "losses": 0
+            },
+            "body_rate_RMSE_rads": {
+              "wins": 0,
+              "ties": 12,
+              "losses": 0
+            }
+          }
+        },
+        "post": {
+          "A1R": {
+            "SO3_RMSE_deg": {
+              "wins": 2,
+              "ties": 3,
+              "losses": 7
+            },
+            "position_Q_m": {
+              "wins": 3,
+              "ties": 3,
+              "losses": 6
+            },
+            "body_rate_RMSE_rads": {
+              "wins": 6,
+              "ties": 3,
+              "losses": 3
+            }
+          },
+          "C5_RBF": {
+            "SO3_RMSE_deg": {
+              "wins": 6,
+              "ties": 0,
+              "losses": 6
+            },
+            "position_Q_m": {
+              "wins": 5,
+              "ties": 0,
+              "losses": 7
+            },
+            "body_rate_RMSE_rads": {
+              "wins": 12,
+              "ties": 0,
+              "losses": 0
+            }
+          },
+          "A1": {
+            "SO3_RMSE_deg": {
+              "wins": 5,
+              "ties": 3,
+              "losses": 4
+            },
+            "position_Q_m": {
+              "wins": 2,
+              "ties": 3,
+              "losses": 7
+            },
+            "body_rate_RMSE_rads": {
+              "wins": 5,
+              "ties": 3,
+              "losses": 4
+            }
+          }
+        }
+      }
+    },
+    "T1": {
+      "scene_count": 4,
+      "means_by_period": {
+        "all": {
+          "A1T": {
+            "position_Q_m": 0.009000460046397615,
+            "position_peak_m": 0.027337784626094694,
+            "position_x_RMSE_m": 0.005423774439814663,
+            "position_y_RMSE_m": 0.006908070014408239,
+            "position_z_RMSE_m": 0.0014122223577211755,
+            "SO3_RMSE_deg": 0.7796424880009797,
+            "SO3_peak_deg": 1.722333546771674,
+            "body_rate_RMSE_rads": 0.023007277610814527
+          },
+          "A1R": {
+            "position_Q_m": 0.008809347804248671,
+            "position_peak_m": 0.027157118191844076,
+            "position_x_RMSE_m": 0.005574608509657683,
+            "position_y_RMSE_m": 0.006584722546019415,
+            "position_z_RMSE_m": 0.0014143787312139093,
+            "SO3_RMSE_deg": 0.6829475963184165,
+            "SO3_peak_deg": 1.4337126637838409,
+            "body_rate_RMSE_rads": 0.020658382168141996
+          },
+          "C5_RBF": {
+            "position_Q_m": 0.008640483272695003,
+            "position_peak_m": 0.02847610830165484,
+            "position_x_RMSE_m": 0.0054793702927321995,
+            "position_y_RMSE_m": 0.006143447594852367,
+            "position_z_RMSE_m": 0.0013770406252987635,
+            "SO3_RMSE_deg": 0.7851489099666848,
+            "SO3_peak_deg": 2.391569925054137,
+            "body_rate_RMSE_rads": 0.03326284065928003
+          },
+          "A1": {
+            "position_Q_m": 0.009194039840172738,
+            "position_peak_m": 0.028711454840250155,
+            "position_x_RMSE_m": 0.006023657002162155,
+            "position_y_RMSE_m": 0.006710642032661746,
+            "position_z_RMSE_m": 0.00144682112037271,
+            "SO3_RMSE_deg": 0.7988532282177429,
+            "SO3_peak_deg": 1.6636098093909986,
+            "body_rate_RMSE_rads": 0.02303712433929493
+          }
+        },
+        "pre": {
+          "A1T": {
+            "position_Q_m": 0.011012155693073756,
+            "position_peak_m": 0.02465054744940616,
+            "position_x_RMSE_m": 0.007054855663573524,
+            "position_y_RMSE_m": 0.007653342088097168,
+            "position_z_RMSE_m": 0.0022780256012237122,
+            "SO3_RMSE_deg": 0.005086907638818241,
+            "SO3_peak_deg": 0.011594381819622409,
+            "body_rate_RMSE_rads": 0.0001071301516189369
+          },
+          "A1R": {
+            "position_Q_m": 0.011012155693073756,
+            "position_peak_m": 0.02465054744940616,
+            "position_x_RMSE_m": 0.007054855663573524,
+            "position_y_RMSE_m": 0.007653342088097168,
+            "position_z_RMSE_m": 0.0022780256012237122,
+            "SO3_RMSE_deg": 0.005086907638818241,
+            "SO3_peak_deg": 0.011594381819622409,
+            "body_rate_RMSE_rads": 0.0001071301516189369
+          },
+          "C5_RBF": {
+            "position_Q_m": 0.011012104505911868,
+            "position_peak_m": 0.024650105497766236,
+            "position_x_RMSE_m": 0.007054803723682576,
+            "position_y_RMSE_m": 0.007653335303145634,
+            "position_z_RMSE_m": 0.0022780377373022086,
+            "SO3_RMSE_deg": 0.005088501109958928,
+            "SO3_peak_deg": 0.01165215939394056,
+            "body_rate_RMSE_rads": 0.00012396092759232676
+          },
+          "A1": {
+            "position_Q_m": 0.011012155693073756,
+            "position_peak_m": 0.02465054744940616,
+            "position_x_RMSE_m": 0.007054855663573524,
+            "position_y_RMSE_m": 0.007653342088097168,
+            "position_z_RMSE_m": 0.0022780256012237122,
+            "SO3_RMSE_deg": 0.005086907638818241,
+            "SO3_peak_deg": 0.011594381819622409,
+            "body_rate_RMSE_rads": 0.0001071301516189369
+          }
+        },
+        "post": {
+          "A1T": {
+            "position_Q_m": 0.0077618856425929195,
+            "position_peak_m": 0.0211877568182342,
+            "position_x_RMSE_m": 0.00448171692791792,
+            "position_y_RMSE_m": 0.006152683872994105,
+            "position_z_RMSE_m": 0.0008811184379960528,
+            "SO3_RMSE_deg": 0.9001531108986278,
+            "SO3_peak_deg": 1.7220725950894633,
+            "body_rate_RMSE_rads": 0.026564116287357407
+          },
+          "A1R": {
+            "position_Q_m": 0.0073770894701712456,
+            "position_peak_m": 0.017918229275910535,
+            "position_x_RMSE_m": 0.004701434230040154,
+            "position_y_RMSE_m": 0.005578699841470152,
+            "position_z_RMSE_m": 0.0008466834740339988,
+            "SO3_RMSE_deg": 0.78849951070289,
+            "SO3_peak_deg": 1.4334517121016301,
+            "body_rate_RMSE_rads": 0.02385184454549473
+          },
+          "C5_RBF": {
+            "position_Q_m": 0.007049342565295418,
+            "position_peak_m": 0.01792976761983175,
+            "position_x_RMSE_m": 0.004428472038365396,
+            "position_y_RMSE_m": 0.005011087281358678,
+            "position_z_RMSE_m": 0.0007551986078868128,
+            "SO3_RMSE_deg": 0.9065078069283012,
+            "SO3_peak_deg": 2.3912668302063382,
+            "body_rate_RMSE_rads": 0.03840592288615365
+          },
+          "A1": {
+            "position_Q_m": 0.007949877142084182,
+            "position_peak_m": 0.01940702646567445,
+            "position_x_RMSE_m": 0.005400646947710377,
+            "position_y_RMSE_m": 0.0057436175954358945,
+            "position_z_RMSE_m": 0.0009110850045496517,
+            "SO3_RMSE_deg": 0.9223365798354799,
+            "SO3_peak_deg": 1.663348857708788,
+            "body_rate_RMSE_rads": 0.02659858846746299
+          }
+        }
+      },
+      "A1T_paired_outcomes_by_period": {
+        "all": {
+          "A1R": {
+            "SO3_RMSE_deg": {
+              "wins": 2,
+              "ties": 1,
+              "losses": 1
+            },
+            "position_Q_m": {
+              "wins": 2,
+              "ties": 1,
+              "losses": 1
+            },
+            "body_rate_RMSE_rads": {
+              "wins": 2,
+              "ties": 1,
+              "losses": 1
+            }
+          },
+          "C5_RBF": {
+            "SO3_RMSE_deg": {
+              "wins": 1,
+              "ties": 0,
+              "losses": 3
+            },
+            "position_Q_m": {
+              "wins": 1,
+              "ties": 0,
+              "losses": 3
+            },
+            "body_rate_RMSE_rads": {
+              "wins": 4,
+              "ties": 0,
+              "losses": 0
+            }
+          },
+          "A1": {
+            "SO3_RMSE_deg": {
+              "wins": 2,
+              "ties": 1,
+              "losses": 1
+            },
+            "position_Q_m": {
+              "wins": 1,
+              "ties": 1,
+              "losses": 2
+            },
+            "body_rate_RMSE_rads": {
+              "wins": 1,
+              "ties": 1,
+              "losses": 2
+            }
+          }
+        },
+        "pre": {
+          "A1R": {
+            "SO3_RMSE_deg": {
+              "wins": 0,
+              "ties": 4,
+              "losses": 0
+            },
+            "position_Q_m": {
+              "wins": 0,
+              "ties": 4,
+              "losses": 0
+            },
+            "body_rate_RMSE_rads": {
+              "wins": 0,
+              "ties": 4,
+              "losses": 0
+            }
+          },
+          "C5_RBF": {
+            "SO3_RMSE_deg": {
+              "wins": 1,
+              "ties": 0,
+              "losses": 3
+            },
+            "position_Q_m": {
+              "wins": 1,
+              "ties": 0,
+              "losses": 3
+            },
+            "body_rate_RMSE_rads": {
+              "wins": 4,
+              "ties": 0,
+              "losses": 0
+            }
+          },
+          "A1": {
+            "SO3_RMSE_deg": {
+              "wins": 0,
+              "ties": 4,
+              "losses": 0
+            },
+            "position_Q_m": {
+              "wins": 0,
+              "ties": 4,
+              "losses": 0
+            },
+            "body_rate_RMSE_rads": {
+              "wins": 0,
+              "ties": 4,
+              "losses": 0
+            }
+          }
+        },
+        "post": {
+          "A1R": {
+            "SO3_RMSE_deg": {
+              "wins": 2,
+              "ties": 1,
+              "losses": 1
+            },
+            "position_Q_m": {
+              "wins": 2,
+              "ties": 1,
+              "losses": 1
+            },
+            "body_rate_RMSE_rads": {
+              "wins": 2,
+              "ties": 1,
+              "losses": 1
+            }
+          },
+          "C5_RBF": {
+            "SO3_RMSE_deg": {
+              "wins": 1,
+              "ties": 0,
+              "losses": 3
+            },
+            "position_Q_m": {
+              "wins": 1,
+              "ties": 0,
+              "losses": 3
+            },
+            "body_rate_RMSE_rads": {
+              "wins": 4,
+              "ties": 0,
+              "losses": 0
+            }
+          },
+          "A1": {
+            "SO3_RMSE_deg": {
+              "wins": 2,
+              "ties": 1,
+              "losses": 1
+            },
+            "position_Q_m": {
+              "wins": 1,
+              "ties": 1,
+              "losses": 2
+            },
+            "body_rate_RMSE_rads": {
+              "wins": 1,
+              "ties": 1,
+              "losses": 2
+            }
+          }
+        }
+      }
+    },
+    "T2": {
+      "scene_count": 4,
+      "means_by_period": {
+        "all": {
+          "A1T": {
+            "position_Q_m": 0.009721387237393703,
+            "position_peak_m": 0.030823346070080117,
+            "position_x_RMSE_m": 0.005840559420511847,
+            "position_y_RMSE_m": 0.006814182160298156,
+            "position_z_RMSE_m": 0.002421411063066091,
+            "SO3_RMSE_deg": 0.20860880469292378,
+            "SO3_peak_deg": 0.6072745486336827,
+            "body_rate_RMSE_rads": 0.013985269518084206
+          },
+          "A1R": {
+            "position_Q_m": 0.009593894759862541,
+            "position_peak_m": 0.03042283615323451,
+            "position_x_RMSE_m": 0.005791997487721407,
+            "position_y_RMSE_m": 0.006683739213210787,
+            "position_z_RMSE_m": 0.00243525917804027,
+            "SO3_RMSE_deg": 0.1703503380493138,
+            "SO3_peak_deg": 0.47069850942589114,
+            "body_rate_RMSE_rads": 0.014597461398784038
+          },
+          "C5_RBF": {
+            "position_Q_m": 0.010069413442942736,
+            "position_peak_m": 0.0319981475947629,
+            "position_x_RMSE_m": 0.006306444748819882,
+            "position_y_RMSE_m": 0.006930110237187191,
+            "position_z_RMSE_m": 0.002450991803715983,
+            "SO3_RMSE_deg": 0.554593010089899,
+            "SO3_peak_deg": 1.764186583108529,
+            "body_rate_RMSE_rads": 0.021123266214868906
+          },
+          "A1": {
+            "position_Q_m": 0.009662685973637649,
+            "position_peak_m": 0.03062000450374793,
+            "position_x_RMSE_m": 0.005800062864040405,
+            "position_y_RMSE_m": 0.006762512026056447,
+            "position_z_RMSE_m": 0.002448829946830343,
+            "SO3_RMSE_deg": 0.18652887214467936,
+            "SO3_peak_deg": 0.5548425007651233,
+            "body_rate_RMSE_rads": 0.014819523647235976
+          }
+        },
+        "pre": {
+          "A1T": {
+            "position_Q_m": 0.012634805159017546,
+            "position_peak_m": 0.02841319648145657,
+            "position_x_RMSE_m": 0.007734272210242123,
+            "position_y_RMSE_m": 0.007459579896509836,
+            "position_z_RMSE_m": 0.0032902198509433766,
+            "SO3_RMSE_deg": 0.004977326967206016,
+            "SO3_peak_deg": 0.012585953712195851,
+            "body_rate_RMSE_rads": 0.00011525949069922873
+          },
+          "A1R": {
+            "position_Q_m": 0.012634805159017546,
+            "position_peak_m": 0.02841319648145657,
+            "position_x_RMSE_m": 0.007734272210242123,
+            "position_y_RMSE_m": 0.007459579896509836,
+            "position_z_RMSE_m": 0.0032902198509433766,
+            "SO3_RMSE_deg": 0.004977326967206016,
+            "SO3_peak_deg": 0.012585953712195851,
+            "body_rate_RMSE_rads": 0.00011525949069922873
+          },
+          "C5_RBF": {
+            "position_Q_m": 0.012634617751624085,
+            "position_peak_m": 0.028412635838108217,
+            "position_x_RMSE_m": 0.00773409091904534,
+            "position_y_RMSE_m": 0.007459520138383807,
+            "position_z_RMSE_m": 0.003290251360947887,
+            "SO3_RMSE_deg": 0.004955022322277886,
+            "SO3_peak_deg": 0.01261872218177528,
+            "body_rate_RMSE_rads": 0.00014105985914292273
+          },
+          "A1": {
+            "position_Q_m": 0.012634805159017546,
+            "position_peak_m": 0.02841319648145657,
+            "position_x_RMSE_m": 0.007734272210242123,
+            "position_y_RMSE_m": 0.007459579896509836,
+            "position_z_RMSE_m": 0.0032902198509433766,
+            "SO3_RMSE_deg": 0.004977326967206016,
+            "SO3_peak_deg": 0.012585953712195851,
+            "body_rate_RMSE_rads": 0.00011525949069922873
+          }
+        },
+        "post": {
+          "A1T": {
+            "position_Q_m": 0.008137111498656353,
+            "position_peak_m": 0.017116798735910283,
+            "position_x_RMSE_m": 0.004714679955312503,
+            "position_y_RMSE_m": 0.00603414548985821,
+            "position_z_RMSE_m": 0.001974122213006829,
+            "SO3_RMSE_deg": 0.24074410363377352,
+            "SO3_peak_deg": 0.6072745486336827,
+            "body_rate_RMSE_rads": 0.01614567242848262
+          },
+          "A1R": {
+            "position_Q_m": 0.007965435134235546,
+            "position_peak_m": 0.01702578286944841,
+            "position_x_RMSE_m": 0.004657550094692033,
+            "position_y_RMSE_m": 0.005847564516264066,
+            "position_z_RMSE_m": 0.0019874919932412177,
+            "SO3_RMSE_deg": 0.19656042498099036,
+            "SO3_peak_deg": 0.47069850942589114,
+            "body_rate_RMSE_rads": 0.016852565392290478
+          },
+          "C5_RBF": {
+            "position_Q_m": 0.00859218923290997,
+            "position_peak_m": 0.019739820864605535,
+            "position_x_RMSE_m": 0.005325056802789072,
+            "position_y_RMSE_m": 0.006169095601278787,
+            "position_z_RMSE_m": 0.002014890471044748,
+            "SO3_RMSE_deg": 0.6402640620020547,
+            "SO3_peak_deg": 1.764186583108529,
+            "body_rate_RMSE_rads": 0.0243875461706798
+          },
+          "A1": {
+            "position_Q_m": 0.008050801598705226,
+            "position_peak_m": 0.01719479424117684,
+            "position_x_RMSE_m": 0.004661931998799867,
+            "position_y_RMSE_m": 0.00594633114050153,
+            "position_z_RMSE_m": 0.002008232021037496,
+            "SO3_RMSE_deg": 0.21523762951660652,
+            "SO3_peak_deg": 0.5548425007651233,
+            "body_rate_RMSE_rads": 0.01710897973653827
+          }
+        }
+      },
+      "A1T_paired_outcomes_by_period": {
+        "all": {
+          "A1R": {
+            "SO3_RMSE_deg": {
+              "wins": 0,
+              "ties": 1,
+              "losses": 3
+            },
+            "position_Q_m": {
+              "wins": 0,
+              "ties": 1,
+              "losses": 3
+            },
+            "body_rate_RMSE_rads": {
+              "wins": 2,
+              "ties": 1,
+              "losses": 1
+            }
+          },
+          "C5_RBF": {
+            "SO3_RMSE_deg": {
+              "wins": 3,
+              "ties": 0,
+              "losses": 1
+            },
+            "position_Q_m": {
+              "wins": 3,
+              "ties": 0,
+              "losses": 1
+            },
+            "body_rate_RMSE_rads": {
+              "wins": 4,
+              "ties": 0,
+              "losses": 0
+            }
+          },
+          "A1": {
+            "SO3_RMSE_deg": {
+              "wins": 2,
+              "ties": 1,
+              "losses": 1
+            },
+            "position_Q_m": {
+              "wins": 0,
+              "ties": 1,
+              "losses": 3
+            },
+            "body_rate_RMSE_rads": {
+              "wins": 2,
+              "ties": 1,
+              "losses": 1
+            }
+          }
+        },
+        "pre": {
+          "A1R": {
+            "SO3_RMSE_deg": {
+              "wins": 0,
+              "ties": 4,
+              "losses": 0
+            },
+            "position_Q_m": {
+              "wins": 0,
+              "ties": 4,
+              "losses": 0
+            },
+            "body_rate_RMSE_rads": {
+              "wins": 0,
+              "ties": 4,
+              "losses": 0
+            }
+          },
+          "C5_RBF": {
+            "SO3_RMSE_deg": {
+              "wins": 1,
+              "ties": 0,
+              "losses": 3
+            },
+            "position_Q_m": {
+              "wins": 0,
+              "ties": 0,
+              "losses": 4
+            },
+            "body_rate_RMSE_rads": {
+              "wins": 4,
+              "ties": 0,
+              "losses": 0
+            }
+          },
+          "A1": {
+            "SO3_RMSE_deg": {
+              "wins": 0,
+              "ties": 4,
+              "losses": 0
+            },
+            "position_Q_m": {
+              "wins": 0,
+              "ties": 4,
+              "losses": 0
+            },
+            "body_rate_RMSE_rads": {
+              "wins": 0,
+              "ties": 4,
+              "losses": 0
+            }
+          }
+        },
+        "post": {
+          "A1R": {
+            "SO3_RMSE_deg": {
+              "wins": 0,
+              "ties": 1,
+              "losses": 3
+            },
+            "position_Q_m": {
+              "wins": 0,
+              "ties": 1,
+              "losses": 3
+            },
+            "body_rate_RMSE_rads": {
+              "wins": 2,
+              "ties": 1,
+              "losses": 1
+            }
+          },
+          "C5_RBF": {
+            "SO3_RMSE_deg": {
+              "wins": 3,
+              "ties": 0,
+              "losses": 1
+            },
+            "position_Q_m": {
+              "wins": 3,
+              "ties": 0,
+              "losses": 1
+            },
+            "body_rate_RMSE_rads": {
+              "wins": 4,
+              "ties": 0,
+              "losses": 0
+            }
+          },
+          "A1": {
+            "SO3_RMSE_deg": {
+              "wins": 2,
+              "ties": 1,
+              "losses": 1
+            },
+            "position_Q_m": {
+              "wins": 0,
+              "ties": 1,
+              "losses": 3
+            },
+            "body_rate_RMSE_rads": {
+              "wins": 2,
+              "ties": 1,
+              "losses": 1
+            }
+          }
+        }
+      }
+    },
+    "T3": {
+      "scene_count": 4,
+      "means_by_period": {
+        "all": {
+          "A1T": {
+            "position_Q_m": 0.012117752341267116,
+            "position_peak_m": 0.03717904392386614,
+            "position_x_RMSE_m": 0.008471433907681729,
+            "position_y_RMSE_m": 0.00764681719394882,
+            "position_z_RMSE_m": 0.0034017488614641747,
+            "SO3_RMSE_deg": 0.5619243518436488,
+            "SO3_peak_deg": 1.3563219355375717,
+            "body_rate_RMSE_rads": 0.023439912591938197
+          },
+          "A1R": {
+            "position_Q_m": 0.011297907977079004,
+            "position_peak_m": 0.03741724043054251,
+            "position_x_RMSE_m": 0.007516359931175481,
+            "position_y_RMSE_m": 0.007417168923840219,
+            "position_z_RMSE_m": 0.0034393287587548126,
+            "SO3_RMSE_deg": 0.5287804581900578,
+            "SO3_peak_deg": 1.2470857017188068,
+            "body_rate_RMSE_rads": 0.023677382462026494
+          },
+          "C5_RBF": {
+            "position_Q_m": 0.011846655921607845,
+            "position_peak_m": 0.03867949775277109,
+            "position_x_RMSE_m": 0.0074559282015536155,
+            "position_y_RMSE_m": 0.008338457048092865,
+            "position_z_RMSE_m": 0.0034415965848514766,
+            "SO3_RMSE_deg": 0.7485931374244278,
+            "SO3_peak_deg": 2.145138112009604,
+            "body_rate_RMSE_rads": 0.03407616893344335
+          },
+          "A1": {
+            "position_Q_m": 0.011429719938629177,
+            "position_peak_m": 0.03738888551596079,
+            "position_x_RMSE_m": 0.007636975139887902,
+            "position_y_RMSE_m": 0.0075081765331723,
+            "position_z_RMSE_m": 0.0034255007545862005,
+            "SO3_RMSE_deg": 0.6055810833657207,
+            "SO3_peak_deg": 1.4279359983597313,
+            "body_rate_RMSE_rads": 0.02627892712658336
+          }
+        },
+        "pre": {
+          "A1T": {
+            "position_Q_m": 0.015223447972432925,
+            "position_peak_m": 0.03673110854940726,
+            "position_x_RMSE_m": 0.009304423893920631,
+            "position_y_RMSE_m": 0.010247508026882204,
+            "position_z_RMSE_m": 0.004700797082507217,
+            "SO3_RMSE_deg": 0.006585522168282113,
+            "SO3_peak_deg": 0.0158641528962334,
+            "body_rate_RMSE_rads": 0.00014511904834884587
+          },
+          "A1R": {
+            "position_Q_m": 0.015223447972432925,
+            "position_peak_m": 0.03673110854940726,
+            "position_x_RMSE_m": 0.009304423893920631,
+            "position_y_RMSE_m": 0.010247508026882204,
+            "position_z_RMSE_m": 0.004700797082507217,
+            "SO3_RMSE_deg": 0.006585522168282113,
+            "SO3_peak_deg": 0.0158641528962334,
+            "body_rate_RMSE_rads": 0.00014511904834884587
+          },
+          "C5_RBF": {
+            "position_Q_m": 0.015223196118696788,
+            "position_peak_m": 0.036730562412961354,
+            "position_x_RMSE_m": 0.009304316968335473,
+            "position_y_RMSE_m": 0.010247275305445629,
+            "position_z_RMSE_m": 0.004700795071392312,
+            "SO3_RMSE_deg": 0.00650800576952215,
+            "SO3_peak_deg": 0.015820855339697005,
+            "body_rate_RMSE_rads": 0.00016251686941429056
+          },
+          "A1": {
+            "position_Q_m": 0.015223447972432925,
+            "position_peak_m": 0.03673110854940726,
+            "position_x_RMSE_m": 0.009304423893920631,
+            "position_y_RMSE_m": 0.010247508026882204,
+            "position_z_RMSE_m": 0.004700797082507217,
+            "SO3_RMSE_deg": 0.006585522168282113,
+            "SO3_peak_deg": 0.0158641528962334,
+            "body_rate_RMSE_rads": 0.00014511904834884587
+          }
+        },
+        "post": {
+          "A1T": {
+            "position_Q_m": 0.010563342810986824,
+            "position_peak_m": 0.02544594090748966,
+            "position_x_RMSE_m": 0.008029332934656441,
+            "position_y_RMSE_m": 0.005995025226858371,
+            "position_z_RMSE_m": 0.0027882004932309463,
+            "SO3_RMSE_deg": 0.6485825559645746,
+            "SO3_peak_deg": 1.3558389073881933,
+            "body_rate_RMSE_rads": 0.027059412945572982
+          },
+          "A1R": {
+            "position_Q_m": 0.009323185983014117,
+            "position_peak_m": 0.022469661011841512,
+            "position_x_RMSE_m": 0.006749462940058785,
+            "position_y_RMSE_m": 0.005507495582564365,
+            "position_z_RMSE_m": 0.002834060643273868,
+            "SO3_RMSE_deg": 0.6103108959266933,
+            "SO3_peak_deg": 1.2466026735694284,
+            "body_rate_RMSE_rads": 0.02733362025933035
+          },
+          "C5_RBF": {
+            "position_Q_m": 0.010012396109412448,
+            "position_peak_m": 0.0244093989211681,
+            "position_x_RMSE_m": 0.006664967126324114,
+            "position_y_RMSE_m": 0.006664199235333404,
+            "position_z_RMSE_m": 0.002839491399959518,
+            "SO3_RMSE_deg": 0.8641277829003363,
+            "SO3_peak_deg": 2.1445292246603747,
+            "body_rate_RMSE_rads": 0.039340412855027915
+          },
+          "A1": {
+            "position_Q_m": 0.009537099430016207,
+            "position_peak_m": 0.022058178699072506,
+            "position_x_RMSE_m": 0.006920451674715385,
+            "position_y_RMSE_m": 0.005627535501311045,
+            "position_z_RMSE_m": 0.0028145363196516995,
+            "SO3_RMSE_deg": 0.6989937480579573,
+            "SO3_peak_deg": 1.427452970210353,
+            "body_rate_RMSE_rads": 0.030337631748615937
+          }
+        }
+      },
+      "A1T_paired_outcomes_by_period": {
+        "all": {
+          "A1R": {
+            "SO3_RMSE_deg": {
+              "wins": 0,
+              "ties": 1,
+              "losses": 3
+            },
+            "position_Q_m": {
+              "wins": 1,
+              "ties": 1,
+              "losses": 2
+            },
+            "body_rate_RMSE_rads": {
+              "wins": 2,
+              "ties": 1,
+              "losses": 1
+            }
+          },
+          "C5_RBF": {
+            "SO3_RMSE_deg": {
+              "wins": 2,
+              "ties": 0,
+              "losses": 2
+            },
+            "position_Q_m": {
+              "wins": 1,
+              "ties": 0,
+              "losses": 3
+            },
+            "body_rate_RMSE_rads": {
+              "wins": 4,
+              "ties": 0,
+              "losses": 0
+            }
+          },
+          "A1": {
+            "SO3_RMSE_deg": {
+              "wins": 1,
+              "ties": 1,
+              "losses": 2
+            },
+            "position_Q_m": {
+              "wins": 1,
+              "ties": 1,
+              "losses": 2
+            },
+            "body_rate_RMSE_rads": {
+              "wins": 2,
+              "ties": 1,
+              "losses": 1
+            }
+          }
+        },
+        "pre": {
+          "A1R": {
+            "SO3_RMSE_deg": {
+              "wins": 0,
+              "ties": 4,
+              "losses": 0
+            },
+            "position_Q_m": {
+              "wins": 0,
+              "ties": 4,
+              "losses": 0
+            },
+            "body_rate_RMSE_rads": {
+              "wins": 0,
+              "ties": 4,
+              "losses": 0
+            }
+          },
+          "C5_RBF": {
+            "SO3_RMSE_deg": {
+              "wins": 0,
+              "ties": 0,
+              "losses": 4
+            },
+            "position_Q_m": {
+              "wins": 0,
+              "ties": 0,
+              "losses": 4
+            },
+            "body_rate_RMSE_rads": {
+              "wins": 4,
+              "ties": 0,
+              "losses": 0
+            }
+          },
+          "A1": {
+            "SO3_RMSE_deg": {
+              "wins": 0,
+              "ties": 4,
+              "losses": 0
+            },
+            "position_Q_m": {
+              "wins": 0,
+              "ties": 4,
+              "losses": 0
+            },
+            "body_rate_RMSE_rads": {
+              "wins": 0,
+              "ties": 4,
+              "losses": 0
+            }
+          }
+        },
+        "post": {
+          "A1R": {
+            "SO3_RMSE_deg": {
+              "wins": 0,
+              "ties": 1,
+              "losses": 3
+            },
+            "position_Q_m": {
+              "wins": 1,
+              "ties": 1,
+              "losses": 2
+            },
+            "body_rate_RMSE_rads": {
+              "wins": 2,
+              "ties": 1,
+              "losses": 1
+            }
+          },
+          "C5_RBF": {
+            "SO3_RMSE_deg": {
+              "wins": 2,
+              "ties": 0,
+              "losses": 2
+            },
+            "position_Q_m": {
+              "wins": 1,
+              "ties": 0,
+              "losses": 3
+            },
+            "body_rate_RMSE_rads": {
+              "wins": 4,
+              "ties": 0,
+              "losses": 0
+            }
+          },
+          "A1": {
+            "SO3_RMSE_deg": {
+              "wins": 1,
+              "ties": 1,
+              "losses": 2
+            },
+            "position_Q_m": {
+              "wins": 1,
+              "ties": 1,
+              "losses": 2
+            },
+            "body_rate_RMSE_rads": {
+              "wins": 2,
+              "ties": 1,
+              "losses": 1
+            }
+          }
+        }
+      }
+    },
+    "HF_W09_W14": {
+      "scene_count": 3,
+      "means_by_period": {
+        "all": {
+          "A1T": {
+            "position_Q_m": 0.011775381856263359,
+            "position_peak_m": 0.03505873797380854,
+            "position_x_RMSE_m": 0.007999427566639258,
+            "position_y_RMSE_m": 0.008389111342543047,
+            "position_z_RMSE_m": 0.0015392393660496172,
+            "SO3_RMSE_deg": 1.152077059039832,
+            "SO3_peak_deg": 2.6780805171143656,
+            "body_rate_RMSE_rads": 0.04636530312026831
+          },
+          "A1R": {
+            "position_Q_m": 0.011529783988732584,
+            "position_peak_m": 0.03494482362576586,
+            "position_x_RMSE_m": 0.00768131229089454,
+            "position_y_RMSE_m": 0.00838755522143918,
+            "position_z_RMSE_m": 0.0015468974165775923,
+            "SO3_RMSE_deg": 1.2290926592334805,
+            "SO3_peak_deg": 2.613778430376234,
+            "body_rate_RMSE_rads": 0.05367763398287336
+          },
+          "C5_RBF": {
+            "position_Q_m": 0.01021043104714957,
+            "position_peak_m": 0.034486364322206094,
+            "position_x_RMSE_m": 0.007206466399709216,
+            "position_y_RMSE_m": 0.0067476184430997075,
+            "position_z_RMSE_m": 0.001504911891884374,
+            "SO3_RMSE_deg": 0.8763793137150998,
+            "SO3_peak_deg": 2.6147903710065736,
+            "body_rate_RMSE_rads": 0.06523527263048712
+          },
+          "A1": {
+            "position_Q_m": 0.012161327571727687,
+            "position_peak_m": 0.03691140536770798,
+            "position_x_RMSE_m": 0.008303508015756739,
+            "position_y_RMSE_m": 0.008652368455847156,
+            "position_z_RMSE_m": 0.0016002824900061515,
+            "SO3_RMSE_deg": 1.4560898404650937,
+            "SO3_peak_deg": 3.082576324944606,
+            "body_rate_RMSE_rads": 0.06005283270879852
+          }
+        },
+        "pre": {
+          "A1T": {
+            "position_Q_m": 0.015228122432428296,
+            "position_peak_m": 0.034486902623759357,
+            "position_x_RMSE_m": 0.008856752812718518,
+            "position_y_RMSE_m": 0.011257508661663099,
+            "position_z_RMSE_m": 0.002212423205498135,
+            "SO3_RMSE_deg": 0.011945354475772515,
+            "SO3_peak_deg": 0.026862512414623386,
+            "body_rate_RMSE_rads": 0.00024047297980217072
+          },
+          "A1R": {
+            "position_Q_m": 0.015228122432428296,
+            "position_peak_m": 0.034486902623759357,
+            "position_x_RMSE_m": 0.008856752812718518,
+            "position_y_RMSE_m": 0.011257508661663099,
+            "position_z_RMSE_m": 0.002212423205498135,
+            "SO3_RMSE_deg": 0.011945354475772515,
+            "SO3_peak_deg": 0.026862512414623386,
+            "body_rate_RMSE_rads": 0.00024047297980217072
+          },
+          "C5_RBF": {
+            "position_Q_m": 0.015228059851777692,
+            "position_peak_m": 0.034486364322206094,
+            "position_x_RMSE_m": 0.008856763116904844,
+            "position_y_RMSE_m": 0.011257456092770521,
+            "position_z_RMSE_m": 0.0022124345777103684,
+            "SO3_RMSE_deg": 0.011985673221819685,
+            "SO3_peak_deg": 0.027050426215270148,
+            "body_rate_RMSE_rads": 0.00028028991393569787
+          },
+          "A1": {
+            "position_Q_m": 0.015228122432428296,
+            "position_peak_m": 0.034486902623759357,
+            "position_x_RMSE_m": 0.008856752812718518,
+            "position_y_RMSE_m": 0.011257508661663099,
+            "position_z_RMSE_m": 0.002212423205498135,
+            "SO3_RMSE_deg": 0.011945354475772515,
+            "SO3_peak_deg": 0.026862512414623386,
+            "body_rate_RMSE_rads": 0.00024047297980217072
+          }
+        },
+        "post": {
+          "A1T": {
+            "position_Q_m": 0.010316573051335305,
+            "position_peak_m": 0.027506782393645002,
+            "position_x_RMSE_m": 0.007584571812538067,
+            "position_y_RMSE_m": 0.006608231617662084,
+            "position_z_RMSE_m": 0.0011562290106605488,
+            "SO3_RMSE_deg": 1.3302856026739667,
+            "SO3_peak_deg": 2.6780805171143656,
+            "body_rate_RMSE_rads": 0.0535378573540149
+          },
+          "A1R": {
+            "position_Q_m": 0.00978257217144584,
+            "position_peak_m": 0.022637291887504556,
+            "position_x_RMSE_m": 0.0072061312308207386,
+            "position_y_RMSE_m": 0.006295813086533066,
+            "position_z_RMSE_m": 0.0011560416515733155,
+            "SO3_RMSE_deg": 1.4192158446700314,
+            "SO3_peak_deg": 2.613778430376234,
+            "body_rate_RMSE_rads": 0.061981437088323134
+          },
+          "C5_RBF": {
+            "position_Q_m": 0.007821285894892714,
+            "position_peak_m": 0.01999629740727471,
+            "position_x_RMSE_m": 0.006475041813483879,
+            "position_y_RMSE_m": 0.004172013559721845,
+            "position_z_RMSE_m": 0.0010558934487889663,
+            "SO3_RMSE_deg": 1.0119290385046724,
+            "SO3_peak_deg": 2.6147903710065736,
+            "body_rate_RMSE_rads": 0.0753270301302467
+          },
+          "A1": {
+            "position_Q_m": 0.010680028170863104,
+            "position_peak_m": 0.024362966545427207,
+            "position_x_RMSE_m": 0.008093630590156596,
+            "position_y_RMSE_m": 0.00663659250384253,
+            "position_z_RMSE_m": 0.0012577263518219995,
+            "SO3_RMSE_deg": 1.6813327157743416,
+            "SO3_peak_deg": 3.082576324944606,
+            "body_rate_RMSE_rads": 0.06934289886878092
+          }
+        }
+      },
+      "A1T_paired_outcomes_by_period": {
+        "all": {
+          "A1R": {
+            "SO3_RMSE_deg": {
+              "wins": 1,
+              "ties": 0,
+              "losses": 2
+            },
+            "position_Q_m": {
+              "wins": 1,
+              "ties": 0,
+              "losses": 2
+            },
+            "body_rate_RMSE_rads": {
+              "wins": 3,
+              "ties": 0,
+              "losses": 0
+            }
+          },
+          "C5_RBF": {
+            "SO3_RMSE_deg": {
+              "wins": 1,
+              "ties": 0,
+              "losses": 2
+            },
+            "position_Q_m": {
+              "wins": 1,
+              "ties": 0,
+              "losses": 2
+            },
+            "body_rate_RMSE_rads": {
+              "wins": 3,
+              "ties": 0,
+              "losses": 0
+            }
+          },
+          "A1": {
+            "SO3_RMSE_deg": {
+              "wins": 3,
+              "ties": 0,
+              "losses": 0
+            },
+            "position_Q_m": {
+              "wins": 1,
+              "ties": 0,
+              "losses": 2
+            },
+            "body_rate_RMSE_rads": {
+              "wins": 3,
+              "ties": 0,
+              "losses": 0
+            }
+          }
+        },
+        "pre": {
+          "A1R": {
+            "SO3_RMSE_deg": {
+              "wins": 0,
+              "ties": 3,
+              "losses": 0
+            },
+            "position_Q_m": {
+              "wins": 0,
+              "ties": 3,
+              "losses": 0
+            },
+            "body_rate_RMSE_rads": {
+              "wins": 0,
+              "ties": 3,
+              "losses": 0
+            }
+          },
+          "C5_RBF": {
+            "SO3_RMSE_deg": {
+              "wins": 2,
+              "ties": 0,
+              "losses": 1
+            },
+            "position_Q_m": {
+              "wins": 1,
+              "ties": 0,
+              "losses": 2
+            },
+            "body_rate_RMSE_rads": {
+              "wins": 3,
+              "ties": 0,
+              "losses": 0
+            }
+          },
+          "A1": {
+            "SO3_RMSE_deg": {
+              "wins": 0,
+              "ties": 3,
+              "losses": 0
+            },
+            "position_Q_m": {
+              "wins": 0,
+              "ties": 3,
+              "losses": 0
+            },
+            "body_rate_RMSE_rads": {
+              "wins": 0,
+              "ties": 3,
+              "losses": 0
+            }
+          }
+        },
+        "post": {
+          "A1R": {
+            "SO3_RMSE_deg": {
+              "wins": 1,
+              "ties": 0,
+              "losses": 2
+            },
+            "position_Q_m": {
+              "wins": 1,
+              "ties": 0,
+              "losses": 2
+            },
+            "body_rate_RMSE_rads": {
+              "wins": 3,
+              "ties": 0,
+              "losses": 0
+            }
+          },
+          "C5_RBF": {
+            "SO3_RMSE_deg": {
+              "wins": 1,
+              "ties": 0,
+              "losses": 2
+            },
+            "position_Q_m": {
+              "wins": 1,
+              "ties": 0,
+              "losses": 2
+            },
+            "body_rate_RMSE_rads": {
+              "wins": 3,
+              "ties": 0,
+              "losses": 0
+            }
+          },
+          "A1": {
+            "SO3_RMSE_deg": {
+              "wins": 3,
+              "ties": 0,
+              "losses": 0
+            },
+            "position_Q_m": {
+              "wins": 1,
+              "ties": 0,
+              "losses": 2
+            },
+            "body_rate_RMSE_rads": {
+              "wins": 3,
+              "ties": 0,
+              "losses": 0
+            }
+          }
+        }
+      }
+    },
+    "NO_WIND_W15": {
+      "scene_count": 3,
+      "means_by_period": {
+        "all": {
+          "A1T": {
+            "position_Q_m": 0.00370874912526261,
+            "position_peak_m": 0.009555172026541263,
+            "position_x_RMSE_m": 0.002332759847217305,
+            "position_y_RMSE_m": 0.002722396692254297,
+            "position_z_RMSE_m": 0.000237628979563717,
+            "SO3_RMSE_deg": 0.16615723987880565,
+            "SO3_peak_deg": 0.43149446115643225,
+            "body_rate_RMSE_rads": 0.006912069719963499
+          },
+          "A1R": {
+            "position_Q_m": 0.0036708961487916143,
+            "position_peak_m": 0.009211779915357475,
+            "position_x_RMSE_m": 0.002304784121131108,
+            "position_y_RMSE_m": 0.0027102270693277557,
+            "position_z_RMSE_m": 0.00025854891942642534,
+            "SO3_RMSE_deg": 0.1762181656256252,
+            "SO3_peak_deg": 0.4465672503146943,
+            "body_rate_RMSE_rads": 0.006942939769359238
+          },
+          "C5_RBF": {
+            "position_Q_m": 0.0051512502347119725,
+            "position_peak_m": 0.01521376779384257,
+            "position_x_RMSE_m": 0.003316489165384788,
+            "position_y_RMSE_m": 0.0039250516447139035,
+            "position_z_RMSE_m": 0.0002660808724350607,
+            "SO3_RMSE_deg": 0.7442509760406072,
+            "SO3_peak_deg": 2.507794511439213,
+            "body_rate_RMSE_rads": 0.018089551015748936
+          },
+          "A1": {
+            "position_Q_m": 0.0035968789147342406,
+            "position_peak_m": 0.009542731619199066,
+            "position_x_RMSE_m": 0.002219567815868071,
+            "position_y_RMSE_m": 0.002669973003447757,
+            "position_z_RMSE_m": 0.00025768744415505463,
+            "SO3_RMSE_deg": 0.1758294646309766,
+            "SO3_peak_deg": 0.4514913586748137,
+            "body_rate_RMSE_rads": 0.0060905983970676834
+          }
+        },
+        "pre": {
+          "A1T": {
+            "position_Q_m": 0.001744674978022818,
+            "position_peak_m": 0.0027332445235625107,
+            "position_x_RMSE_m": 0.0015016975457941516,
+            "position_y_RMSE_m": 0.0007720367503994143,
+            "position_z_RMSE_m": 0.00010199149924513038,
+            "SO3_RMSE_deg": 0.0004941825803162278,
+            "SO3_peak_deg": 0.0011862150205739724,
+            "body_rate_RMSE_rads": 1.2216156963658352e-05
+          },
+          "A1R": {
+            "position_Q_m": 0.001744674978022818,
+            "position_peak_m": 0.0027332445235625107,
+            "position_x_RMSE_m": 0.0015016975457941516,
+            "position_y_RMSE_m": 0.0007720367503994143,
+            "position_z_RMSE_m": 0.00010199149924513038,
+            "SO3_RMSE_deg": 0.0004941825803162278,
+            "SO3_peak_deg": 0.0011862150205739724,
+            "body_rate_RMSE_rads": 1.2216156963658352e-05
+          },
+          "C5_RBF": {
+            "position_Q_m": 0.0017445907648587975,
+            "position_peak_m": 0.0027331679267051964,
+            "position_x_RMSE_m": 0.0015016104524443125,
+            "position_y_RMSE_m": 0.0007720341519850965,
+            "position_z_RMSE_m": 0.0001019911142052322,
+            "SO3_RMSE_deg": 0.00048161579633204725,
+            "SO3_peak_deg": 0.0011832833416982158,
+            "body_rate_RMSE_rads": 1.2532203550166244e-05
+          },
+          "A1": {
+            "position_Q_m": 0.001744674978022818,
+            "position_peak_m": 0.0027332445235625107,
+            "position_x_RMSE_m": 0.0015016975457941516,
+            "position_y_RMSE_m": 0.0007720367503994143,
+            "position_z_RMSE_m": 0.00010199149924513038,
+            "SO3_RMSE_deg": 0.0004941825803162278,
+            "SO3_peak_deg": 0.0011862150205739724,
+            "body_rate_RMSE_rads": 1.2216156963658352e-05
+          }
+        },
+        "post": {
+          "A1T": {
+            "position_Q_m": 0.004036140682610591,
+            "position_peak_m": 0.009555172026541263,
+            "position_x_RMSE_m": 0.0024089348740047203,
+            "position_y_RMSE_m": 0.0030966945417111795,
+            "position_z_RMSE_m": 0.00026456861617777197,
+            "SO3_RMSE_deg": 0.19186150248056608,
+            "SO3_peak_deg": 0.43149446115643225,
+            "body_rate_RMSE_rads": 0.007981365843153974
+          },
+          "A1R": {
+            "position_Q_m": 0.004006190710899749,
+            "position_peak_m": 0.009211779915357475,
+            "position_x_RMSE_m": 0.0023919299945978924,
+            "position_y_RMSE_m": 0.0030851795780736644,
+            "position_z_RMSE_m": 0.00028928212386624216,
+            "SO3_RMSE_deg": 0.20347855505070342,
+            "SO3_peak_deg": 0.4465672503146943,
+            "body_rate_RMSE_rads": 0.008017009902194826
+          },
+          "C5_RBF": {
+            "position_Q_m": 0.0057873471326869265,
+            "position_peak_m": 0.01521376779384257,
+            "position_x_RMSE_m": 0.003605748920177636,
+            "position_y_RMSE_m": 0.0045057729013343525,
+            "position_z_RMSE_m": 0.00029810226468705576,
+            "SO3_RMSE_deg": 0.8593869006679274,
+            "SO3_peak_deg": 2.507794511439213,
+            "body_rate_RMSE_rads": 0.020888012087542453
+          },
+          "A1": {
+            "position_Q_m": 0.003915635097306966,
+            "position_peak_m": 0.009542731619199066,
+            "position_x_RMSE_m": 0.0022907339682798245,
+            "position_y_RMSE_m": 0.003036553798137019,
+            "position_z_RMSE_m": 0.00028809993486618874,
+            "SO3_RMSE_deg": 0.20302959354647754,
+            "SO3_peak_deg": 0.4514913586748137,
+            "body_rate_RMSE_rads": 0.007032811157697566
+          }
+        }
+      },
+      "A1T_paired_outcomes_by_period": {
+        "all": {
+          "A1R": {
+            "SO3_RMSE_deg": {
+              "wins": 1,
+              "ties": 0,
+              "losses": 2
+            },
+            "position_Q_m": {
+              "wins": 2,
+              "ties": 0,
+              "losses": 1
+            },
+            "body_rate_RMSE_rads": {
+              "wins": 2,
+              "ties": 0,
+              "losses": 1
+            }
+          },
+          "C5_RBF": {
+            "SO3_RMSE_deg": {
+              "wins": 3,
+              "ties": 0,
+              "losses": 0
+            },
+            "position_Q_m": {
+              "wins": 3,
+              "ties": 0,
+              "losses": 0
+            },
+            "body_rate_RMSE_rads": {
+              "wins": 3,
+              "ties": 0,
+              "losses": 0
+            }
+          },
+          "A1": {
+            "SO3_RMSE_deg": {
+              "wins": 2,
+              "ties": 0,
+              "losses": 1
+            },
+            "position_Q_m": {
+              "wins": 1,
+              "ties": 0,
+              "losses": 2
+            },
+            "body_rate_RMSE_rads": {
+              "wins": 1,
+              "ties": 0,
+              "losses": 2
+            }
+          }
+        },
+        "pre": {
+          "A1R": {
+            "SO3_RMSE_deg": {
+              "wins": 0,
+              "ties": 3,
+              "losses": 0
+            },
+            "position_Q_m": {
+              "wins": 0,
+              "ties": 3,
+              "losses": 0
+            },
+            "body_rate_RMSE_rads": {
+              "wins": 0,
+              "ties": 3,
+              "losses": 0
+            }
+          },
+          "C5_RBF": {
+            "SO3_RMSE_deg": {
+              "wins": 0,
+              "ties": 0,
+              "losses": 3
+            },
+            "position_Q_m": {
+              "wins": 0,
+              "ties": 0,
+              "losses": 3
+            },
+            "body_rate_RMSE_rads": {
+              "wins": 3,
+              "ties": 0,
+              "losses": 0
+            }
+          },
+          "A1": {
+            "SO3_RMSE_deg": {
+              "wins": 0,
+              "ties": 3,
+              "losses": 0
+            },
+            "position_Q_m": {
+              "wins": 0,
+              "ties": 3,
+              "losses": 0
+            },
+            "body_rate_RMSE_rads": {
+              "wins": 0,
+              "ties": 3,
+              "losses": 0
+            }
+          }
+        },
+        "post": {
+          "A1R": {
+            "SO3_RMSE_deg": {
+              "wins": 1,
+              "ties": 0,
+              "losses": 2
+            },
+            "position_Q_m": {
+              "wins": 2,
+              "ties": 0,
+              "losses": 1
+            },
+            "body_rate_RMSE_rads": {
+              "wins": 2,
+              "ties": 0,
+              "losses": 1
+            }
+          },
+          "C5_RBF": {
+            "SO3_RMSE_deg": {
+              "wins": 3,
+              "ties": 0,
+              "losses": 0
+            },
+            "position_Q_m": {
+              "wins": 3,
+              "ties": 0,
+              "losses": 0
+            },
+            "body_rate_RMSE_rads": {
+              "wins": 3,
+              "ties": 0,
+              "losses": 0
+            }
+          },
+          "A1": {
+            "SO3_RMSE_deg": {
+              "wins": 2,
+              "ties": 0,
+              "losses": 1
+            },
+            "position_Q_m": {
+              "wins": 1,
+              "ties": 0,
+              "losses": 2
+            },
+            "body_rate_RMSE_rads": {
+              "wins": 1,
+              "ties": 0,
+              "losses": 2
+            }
+          }
+        }
+      }
+    }
+  },
+  "a1t_scene_audits": [
+    {
+      "scene_id": "DL1018_DEV_T1_C00_W03",
+      "raw_sha256": "5671d6ccb25dd40a04fee33aed6972b7ec3af3ae5487afa20e1489b461cd4f7e",
+      "audit_sha256": "fd51f9d71923e124f118b82eb10c2ad1adc117f3593ca71f5e5d3a8bc01730cb",
+      "run_start_sha256": "da70df0a8e1fdcb57ee0eb705e7a152f79c69d95222390f6fc3539e36c714d29",
+      "root_release_sha256": "5d37f94a0592e1d8c12f3eee323e666dde5b9469a3f4a22ce1b0cacb8888cfd1",
+      "audit_status": "PASS"
+    },
+    {
+      "scene_id": "DL1018_DEV_T1_C01_W15",
+      "raw_sha256": "8d0626dd7dea4691f7ddd7272c462bc5a3877575f93b4b7dd26ae364a95e0d11",
+      "audit_sha256": "c3cec871f00498e47357b911ba3ca0e8933df2925c6d8cf4ffe27b1a6c269c2e",
+      "run_start_sha256": "87a33be423bbbe08eae29c24119509757f164a778b518374685faefc0590aa68",
+      "root_release_sha256": "6020616f3fcffbbabbf0b03304bcbdb45dfdb8e787c514b5220c68fdec2da7f1",
+      "audit_status": "PASS"
+    },
+    {
+      "scene_id": "DL1018_DEV_T1_C15_W14",
+      "raw_sha256": "6949a9ebbb416e3e715df1979f4026e8965a01cde324e6d99bbb81399fcc16c7",
+      "audit_sha256": "758e3ab77e3463ba559da7a7713671d294e914eca1adad0135ea1c8f44f98b59",
+      "run_start_sha256": "690ccd47573f0c3cf27f9d331e610d3570860209c7ce3361fdf0b726dc8c7752",
+      "root_release_sha256": "047f4f3a628961a46231400c53bc5cdb957dc1de03aed20892c019bcacb0f667",
+      "audit_status": "PASS"
+    },
+    {
+      "scene_id": "DL1018_DEV_T1_C05_W06",
+      "raw_sha256": "2be7bc493a863a9c49c1e07dde07ca8bc66132a7b8af14e5a89a71037a1d7bf4",
+      "audit_sha256": "62d84ce24a8899ae05ae79bc9ecf74b2c9120fc64b587738f8fce0df0331902f",
+      "run_start_sha256": "98a3a30268b082e99867c707bafe769ea31237fcbfce243f82e6000934179f06",
+      "root_release_sha256": "89f754e9a39290b4ff418505f32dc4200ea5ad614cda9b7101d0fb3de7d54ce7",
+      "audit_status": "PASS"
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C00_W04",
+      "raw_sha256": "443487e3a985e80f64d227f8eb1fc88ea2ccb31dfb9730a455ec1726d73b95b2",
+      "audit_sha256": "7941714ed60e09db1776b6a0032c37e880f77ab088e159d4b0226cca319c7da5",
+      "run_start_sha256": "1a326be6222ad56992c87fad5c4b7c611fae51d8450f56fb86f94e540f1abcb8",
+      "root_release_sha256": "598e4857b1d8609df94b975aa9a482e75dc56066994b1089c6f136c897529e4f",
+      "audit_status": "PASS"
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C02_W15",
+      "raw_sha256": "dc7a5f2f32b15be660dd3ed892a1e856f66901961907e4b4924df761a81c8ecd",
+      "audit_sha256": "95422a6c876d48643df3141587442c22e1b482cc6b450e72fd1db12a7ae3bd06",
+      "run_start_sha256": "36d734fd36728224ee7ff7f5825973203373bfe15394a23e4ffb0a401e883895",
+      "root_release_sha256": "e8d6d4760a11428c2836a425450138afe8a1fb5e26f705813f06a709d767d1c6",
+      "audit_status": "PASS"
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C15_W09",
+      "raw_sha256": "80a4d1cad2d0ba33d37cb6b153a53f8e1fb958b39640c6b6882c14efba34ea92",
+      "audit_sha256": "8d56519500cd62ae7936f914dc0bb3cb73e93ba07b260d1629206d016263201e",
+      "run_start_sha256": "6642f28915b9a58be80ce7283730ba3d2fd01760ca7d973092a3d1409785c5b1",
+      "root_release_sha256": "a548277ee9823687fca693815612b229cadc90e5fa8c73e482ab6e905e456099",
+      "audit_status": "PASS"
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C06_W07",
+      "raw_sha256": "fae4f30f86d0ac795c64116d999f5e649014741ba10819ded29791ea139ebe88",
+      "audit_sha256": "e52c6dc5147fb0e87d098accbd1919a38df4304a4ef2efba5d37ba12cf9c91eb",
+      "run_start_sha256": "5f13294b2528afc486747c9c322d55fc1825eef860897a6038d34b93027ef188",
+      "root_release_sha256": "27282e23d6117ba89dd744b09f89c02f794ce55e781d8dcaf74fb958fd013f61",
+      "audit_status": "PASS"
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C00_W05",
+      "raw_sha256": "7b565bdd3022c233c0290f8ab70971dd00a3366d6ea444f375933f63a59eab8e",
+      "audit_sha256": "a837ba2de92f9046514808ebf249d04f3aa619d175aeecfd7d2ac908c5fa0b12",
+      "run_start_sha256": "62f2876551f8e98633290f8ce6d2f29c3a82a02f903816b6f199fa04c512f315",
+      "root_release_sha256": "4134d606e46e30660422a3d669c072bbe9a4a572bb57e7a59e3bb20cb8aef490",
+      "audit_status": "PASS"
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C03_W15",
+      "raw_sha256": "a3a6880d81ac7ae08e1ac322db6708ae6f51fd71f341f756e05160991a143ecd",
+      "audit_sha256": "118fee109997ee3e49d6d67362702f93c5b9e1838adb9b7899bb4693cfbb12e3",
+      "run_start_sha256": "37bb0010647d799e917e4fd1b1c69ad7cec35f8ff8ed88d9a9548473f24bf5bd",
+      "root_release_sha256": "3202c88a24c1e335f5ee3c6dbc0d85558299028c319d941f91cd703b35efa79d",
+      "audit_status": "PASS"
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C15_W14",
+      "raw_sha256": "c40d38e242856c520695d621d08111024f1af45d4d5b062ee13a941a3b421596",
+      "audit_sha256": "e3e0e9babb91663213c835a43bc68bb625ee8e2f375de129696dd53e49c7e74d",
+      "run_start_sha256": "8191ccef2273e31cbdd6a49d0885d73cfba1d3c21ed6b25e669a670b5b996d2b",
+      "root_release_sha256": "504d2e0eaee2906998a15705df6a48070edc4f3cb589cd83ca3d0b6965dfe385",
+      "audit_status": "PASS"
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C05_W02",
+      "raw_sha256": "453871d7ed644cc90074207b4cec798974d03222ec2afa15effa76ff789adf39",
+      "audit_sha256": "80a8cfa0471cab82457b1ef2b6ff0cb69cec354029c2c03aaf590cc78345bea5",
+      "run_start_sha256": "86dda99e6bb42df01e68e81ac405299d48459b240ab4d12cb3cf71074bd4c575",
+      "root_release_sha256": "de02c306268acdf42578737ab04c0feed4e60bcf2dc956e54b989edf455fdcd2",
+      "audit_status": "PASS"
+    }
+  ],
+  "tables": {
+    "scenes": {
+      "path": "reports\\attitude_cm18_datarepair_20261024\\a1t_screen12_control_v1\\ROOT_A1T_SCREEN12_PAIRED_SCENES_v1.csv",
+      "sha256": "4a62f0ab63a1ac4489d0f26e0d615c99d16fac44b7faa8f32006f02e2648f0d0",
+      "bytes": 51424,
+      "rows": 12
+    },
+    "groups": {
+      "path": "reports\\attitude_cm18_datarepair_20261024\\a1t_screen12_control_v1\\ROOT_A1T_SCREEN12_PAIRED_GROUPS_v1.csv",
+      "sha256": "07c25b88352add1d47c0f857ebff80937dc352d7214577e66710ad1cfe7992a6",
+      "bytes": 14950,
+      "rows": 18
+    }
+  }
+}

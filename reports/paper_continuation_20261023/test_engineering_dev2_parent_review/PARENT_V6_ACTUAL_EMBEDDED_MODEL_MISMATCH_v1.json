@@ -1,0 +1,233 @@
+{
+  "schema": "PARENT_V6_ACTUAL_EMBEDDED_MODEL_MISMATCH_V1",
+  "TEST_accessed": false,
+  "old_run_start_sha256": "1b6417b4369f5b5618d1ee81ac8595de1bb6d607e0fdd04ad2913748f6986cde",
+  "new_run_start_sha256": "65915d6b1d84d4aec2c5042ef29b601346a7769bafc792a9f8d20fb4e87b5c13",
+  "model_fields": [
+    {
+      "field": "architecture",
+      "old_shape": [
+        4,
+        1
+      ],
+      "new_shape": [
+        4,
+        1
+      ],
+      "old_dtype": "uint16",
+      "new_dtype": "uint16",
+      "equal": true
+    },
+    {
+      "field": "context_length",
+      "old_shape": [
+        1,
+        1
+      ],
+      "new_shape": [
+        1,
+        1
+      ],
+      "old_dtype": "int32",
+      "new_dtype": "int32",
+      "equal": true,
+      "max_abs_difference": 0.0
+    },
+    {
+      "field": "input_W",
+      "old_shape": [
+        14,
+        32
+      ],
+      "new_shape": [
+        14,
+        32
+      ],
+      "old_dtype": "float32",
+      "new_dtype": "float32",
+      "equal": false,
+      "max_abs_difference": 1.2498540580272675
+    },
+    {
+      "field": "input_b",
+      "old_shape": [
+        1,
+        32
+      ],
+      "new_shape": [
+        1,
+        32
+      ],
+      "old_dtype": "float32",
+      "new_dtype": "float32",
+      "equal": false,
+      "max_abs_difference": 0.5053280172869563
+    },
+    {
+      "field": "input_dim",
+      "old_shape": [
+        1,
+        1
+      ],
+      "new_shape": [
+        1,
+        1
+      ],
+      "old_dtype": "int32",
+      "new_dtype": "int32",
+      "equal": true,
+      "max_abs_difference": 0.0
+    },
+    {
+      "field": "input_mu",
+      "old_shape": [
+        1,
+        14
+      ],
+      "new_shape": [
+        1,
+        14
+      ],
+      "old_dtype": "float32",
+      "new_dtype": "float32",
+      "equal": false,
+      "max_abs_difference": 0.00024291418958455324
+    },
+    {
+      "field": "input_sigma",
+      "old_shape": [
+        1,
+        14
+      ],
+      "new_shape": [
+        1,
+        14
+      ],
+      "old_dtype": "float32",
+      "new_dtype": "float32",
+      "equal": false,
+      "max_abs_difference": 0.010288476943969727
+    },
+    {
+      "field": "model_id",
+      "old_shape": [
+        6,
+        1
+      ],
+      "new_shape": [
+        6,
+        1
+      ],
+      "old_dtype": "uint16",
+      "new_dtype": "uint16",
+      "equal": true
+    },
+    {
+      "field": "output_W",
+      "old_shape": [
+        3,
+        33
+      ],
+      "new_shape": [
+        3,
+        33
+      ],
+      "old_dtype": "float32",
+      "new_dtype": "float32",
+      "equal": false,
+      "max_abs_difference": 0.4603508599102497
+    },
+    {
+      "field": "project_W",
+      "old_shape": [
+        32,
+        32
+      ],
+      "new_shape": [
+        32,
+        32
+      ],
+      "old_dtype": "float32",
+      "new_dtype": "float32",
+      "equal": false,
+      "max_abs_difference": 0.5441011190414429
+    },
+    {
+      "field": "project_b",
+      "old_shape": [
+        1,
+        32
+      ],
+      "new_shape": [
+        1,
+        32
+      ],
+      "old_dtype": "float32",
+      "new_dtype": "float32",
+      "equal": false,
+      "max_abs_difference": 0.0393647700548172
+    },
+    {
+      "field": "seed",
+      "old_shape": [
+        1,
+        1
+      ],
+      "new_shape": [
+        1,
+        1
+      ],
+      "old_dtype": "int64",
+      "new_dtype": "int64",
+      "equal": true,
+      "max_abs_difference": 0.0
+    },
+    {
+      "field": "selected_step",
+      "old_shape": [
+        1,
+        1
+      ],
+      "new_shape": [
+        1,
+        1
+      ],
+      "old_dtype": "int32",
+      "new_dtype": "int32",
+      "equal": true,
+      "max_abs_difference": 0.0
+    },
+    {
+      "field": "ssm_tau",
+      "old_shape": [
+        1,
+        32
+      ],
+      "new_shape": [
+        1,
+        32
+      ],
+      "old_dtype": "float32",
+      "new_dtype": "float32",
+      "equal": false,
+      "max_abs_difference": 0.7588993385434151
+    },
+    {
+      "field": "window",
+      "old_shape": [
+        1,
+        1
+      ],
+      "new_shape": [
+        1,
+        1
+      ],
+      "old_dtype": "int32",
+      "new_dtype": "int32",
+      "equal": true,
+      "max_abs_difference": 0.0
+    }
+  ],
+  "root_cause_confirmed": "build_method_snapshot replaces actual old.opts embedded model/weight/W0 with external model_mat without equality check; matching an earlier reconstruction preflight did not establish actual historical model equality.",
+  "scientific_scope": "B/C5 DEV physical scores not changed by this comparator mismatch; corrected DSSM/KAN identities and independent TEST method cfgopts freeze need audit before release. No new TEST score was accessed."
+}

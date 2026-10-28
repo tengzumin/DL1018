@@ -1,0 +1,57 @@
+{
+  "schema": "CM18_A1T_TRAINING_RELEASE_V1",
+  "decision": "APPROVE_ONE_FORMAL_TRAINING",
+  "created_at": "2026-10-25T02:49:19.9668552+08:00",
+  "seed": 2026102001,
+  "optimizer_steps": 60000,
+  "batch_size": 512,
+  "device": "cuda:0",
+  "output_directory": "experiments/attitude_cm18_datarepair_20261024/training_a1t_v1",
+  "taskbook": {
+    "sha256": "2fe158fd370019bfe9e3d95e6b3222e1f4d7829cfa1681bd8dd85d06615102e9",
+    "path": "reports/attitude_cm18_datarepair_20261024/A1T_TRAINING_TASKBOOK_v1_ZH.md"
+  },
+  "source_manifest": {
+    "sha256": "0f86b47d01940e7b556b78a9664470531572809aa6857a59fc77d88a33681ec5",
+    "path": "reports/attitude_cm18_datarepair_20261024/B_REF_REPAIRED_SOURCE_MANIFEST_v1.json"
+  },
+  "dataset_manifest": {
+    "sha256": "421298399aacf2d7f82031f2bdecc39eacacc28196c7b872b925866655d211a6",
+    "path": "reports/attitude_cm18_datarepair_20261024/cstar_all816_v1/CSTAR_RELABEL_ALL816_v1.json"
+  },
+  "normalizer_audit": {
+    "sha256": "f8db2f1fa13447db4fd5b91b5b945391f437de56a2d8cf3ee01cab7c59f75a06",
+    "path": "reports/attitude_cm18_datarepair_20261024/ROOT_CSTAR_ALL816_INDEPENDENT_AUDIT_v1.json"
+  },
+  "a1r_normalizer": {
+    "sha256": "712627125bf48c3d07cc71de10b13efcb4560b7c31673a179b371cc91d1fe48c",
+    "path": "experiments/attitude_cm18_datarepair_20261024/training_a1r_v1/normalizer.json"
+  },
+  "a1r_initial_parameters": {
+    "sha256": "ba39ca088db1eddd9f0f029ab1b051f601f6861e33203bdea8a747d2d433dc26",
+    "path": "experiments/attitude_cm18_datarepair_20261024/training_a1r_v1/initial_parameters.npz"
+  },
+  "source_files": [
+    {
+      "sha256": "2a5ea2ba6d0ccba1e0bf30a7d84f8a07723144fb44a070a63ca7fd6d68ade88b",
+      "path": "experiments/attitude_cm18_datarepair_20261024/train_cm18_a1t_v1.py"
+    },
+    {
+      "sha256": "ced4251719f986d762f29ccced04fb80208a28e7aed1e2fe12d3b504955a4096",
+      "path": "experiments/attitude_cm18_datarepair_20261024/read_cstar_split_v1.py"
+    },
+    {
+      "sha256": "ad32c4f97bf96c63172547c944d80c45062502f1062b774934e0f7a868720cf6",
+      "path": "experiments/attitude_cm18_a1_20261024/model_cm18_v1.py"
+    },
+    {
+      "sha256": "bc9fe34fe957cb624438eeccfdfe2ddd38ad40cc9a4e706ce58863c9271d5aa0",
+      "path": "experiments/attitude_cm18_a1_20261024/torch_model_cm18_v1.py"
+    }
+  ],
+  "zero_step_receipt": {
+    "sha256": "7f6d4ee588346ebb785d53838983b4637be4b8bc75ad6db9da84ab58d1c05abb",
+    "path": "reports/attitude_cm18_datarepair_20261024/ROOT_A1T_ZERO_STEP_SELF_CHECK_v1.log"
+  },
+  "scope": "One fixed training only; no Plant or TEST; target label and induced TRAIN RMS pipeline changes recorded."
+}

@@ -1,0 +1,1505 @@
+{
+  "schema": "HF_TASK_ERROR_BUDGET_V1",
+  "scene_count": 10,
+  "cohort": "Only the 10 HF_W09_W14 scenes from the completed TRAIN24 summary.",
+  "metric": "SO(3) log-vector error, theta=norm(Log(R_task^T R_actual)); the N=20001 states match score_full72 task_SO3_rad.",
+  "candidate_macro_task_rmse_rad": 0.054644381218716134,
+  "same_scene_B_macro_task_rmse_rad_from_summary": 0.05509093250191145,
+  "candidate_macro_improvement_vs_B_pct": 0.8105712917090724,
+  "aggregate_equal_scene_parseval": {
+    "mean_scene_mse_rad2": 0.0030725622114755806,
+    "rmse_from_mean_scene_mse_rad": 0.055430697374970674,
+    "bands": {
+      "DC": {
+        "mean_scene_mse_rad2": 0.002799828510181489,
+        "fraction_of_mean_total_mse": 0.9112357431607178,
+        "rmse_after_ideal_band_deletion_rad": 0.016514651110274527,
+        "ideal_rmse_drop_pct": 70.20666906180475,
+        "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+      },
+      "0_lt_f_lt_0p5_Hz": {
+        "mean_scene_mse_rad2": 0.00011210044670528,
+        "fraction_of_mean_total_mse": 0.03648435377047887,
+        "rmse_after_ideal_band_deletion_rad": 0.05441012557208723,
+        "ideal_rmse_drop_pct": 1.8411671712870725,
+        "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+      },
+      "0p5_le_f_lt_2_Hz": {
+        "mean_scene_mse_rad2": 0.00010749736225252365,
+        "fraction_of_mean_total_mse": 0.03498622805781975,
+        "rmse_after_ideal_band_deletion_rad": 0.054452409030483276,
+        "ideal_rmse_drop_pct": 1.7648855071578744,
+        "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+      },
+      "2_le_f_le_5_Hz": {
+        "mean_scene_mse_rad2": 5.158345521574349e-05,
+        "fraction_of_mean_total_mse": 0.016788416853883922,
+        "rmse_after_ideal_band_deletion_rad": 0.054963431081582206,
+        "ideal_rmse_drop_pct": 0.8429738673997955,
+        "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+      },
+      "f_gt_5_Hz": {
+        "mean_scene_mse_rad2": 1.5524371205450038e-06,
+        "fraction_of_mean_total_mse": 0.0005052581570999191,
+        "rmse_after_ideal_band_deletion_rad": 0.05541669219968867,
+        "ideal_rmse_drop_pct": 0.025266099733981726,
+        "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+      }
+    },
+    "parseval_max_abs_error_rad2": 8.673617379884035e-19,
+    "finite_window_leakage_note": "Finite-window leakage applies: the 20,001 samples include both t=0 and t=20 s, so the DFT's periodic extension is 20.001 s and generally has endpoint mismatch; non-bin-centered components spread across adjacent bins and band edges."
+  },
+  "paired_candidate_vs_same_scene_B": {
+    "candidate": {
+      "macro_task_rmse_rad": 0.054644381218716134,
+      "mean_scene_2_to_5_Hz_rmse_rad": 0.006346106540616281,
+      "pooled_2_to_5_Hz_rmse_rad": 0.007182162293887788,
+      "mean_scene_demeaned_AC_rmse_rad": 0.016075670054842377,
+      "pooled_demeaned_AC_rmse_rad": 0.01651465111027454,
+      "mean_scene_mse_rad2": 0.0030725622114755806,
+      "mean_scene_band_mse_rad2": {
+        "DC": 0.002799828510181489,
+        "0_lt_f_lt_0p5_Hz": 0.00011210044670528,
+        "0p5_le_f_lt_2_Hz": 0.00010749736225252365,
+        "2_le_f_le_5_Hz": 5.158345521574349e-05,
+        "f_gt_5_Hz": 1.5524371205450038e-06
+      },
+      "parseval_max_abs_error_rad2": 8.673617379884035e-19
+    },
+    "B": {
+      "macro_task_rmse_rad": 0.05509093250191145,
+      "mean_scene_2_to_5_Hz_rmse_rad": 0.004273730497078408,
+      "pooled_2_to_5_Hz_rmse_rad": 0.0050819730655684795,
+      "mean_scene_demeaned_AC_rmse_rad": 0.01749583913956477,
+      "pooled_demeaned_AC_rmse_rad": 0.01785690988951184,
+      "mean_scene_mse_rad2": 0.0031210506831953243,
+      "mean_scene_band_mse_rad2": {
+        "DC": 0.0028021814523931784,
+        "0_lt_f_lt_0p5_Hz": 0.00011756541230615457,
+        "0p5_le_f_lt_2_Hz": 0.00017406481545989598,
+        "2_le_f_le_5_Hz": 2.5826450239163487e-05,
+        "f_gt_5_Hz": 1.4125527969317268e-06
+      },
+      "parseval_max_abs_error_rad2": 1.734723475976807e-18
+    },
+    "candidate_improvement_vs_B_pct_mean_scene_2_to_5_Hz_rmse_rad": -48.49103248215074,
+    "candidate_improvement_vs_B_pct_pooled_2_to_5_Hz_rmse_rad": -41.32625657834686,
+    "candidate_improvement_vs_B_pct_mean_scene_demeaned_AC_rmse_rad": 8.11718188189583,
+    "candidate_improvement_vs_B_pct_pooled_demeaned_AC_rmse_rad": 7.516747228621378,
+    "candidate_improvement_vs_B_pct_macro_task_rmse_rad": 0.8105712917090724,
+    "candidate_improvement_vs_B_pct_by_band_mse": {
+      "DC": 0.08396823159613209,
+      "0_lt_f_lt_0p5_Hz": 4.64844676140218,
+      "0p5_le_f_lt_2_Hz": 38.24291143014441,
+      "2_le_f_le_5_Hz": -99.73110798448724,
+      "f_gt_5_Hz": -9.902944790249713
+    }
+  },
+  "input_sha256": {
+    "score_summary": "d127fc403a8d456924b7040ce8a329e5130f2b67f5ea8a801490e075085f4b21",
+    "frozen_task_scorer": "6baf689802f4d73ead813449e52a8fe85cb0be92c3185850c93646da2d54dd16",
+    "frozen_constants_release": "507f9a13af2d20aca64a08ea7846991198112bd97ca8456dccb9402ec9424862",
+    "analysis_script": "a5c7ccfbe3b37054e4df2422220905a2f751a43a71ea6a9de5900086b08bd6f5",
+    "candidate_raws": {
+      "DL1018_DEV_T1_C10_W09": "3560818b0c2343a2eaac918d0175ee96ab94d0f4128f7ac2c580079c651bd82c",
+      "DL1018_DEV_T1_C11_W12": "e4839cfcfab82f32e3fc21c56add89c524b0257030173cc8c79ac697ff6abac4",
+      "DL1018_DEV_T1_C15_W14": "60194d7cc845018a331f3a2c5adc26407f3b4dd29ec2eaea1c89959c2ebe5410",
+      "DL1018_DEV_T2_C09_W10": "58162100f83284f80e048e3b2b7c35a7f057b2dbf39366e9a303b5cf8b29eefe",
+      "DL1018_DEV_T2_C12_W13": "cb336f29d2777b45ef02843a0155553c7d8f5020798cd00ed5a1f19326128b86",
+      "DL1018_DEV_T2_C14_W14": "e9401c4b62b6d1e2d6bf2c97670226f28214cdf0b4a7adff66e129fd59984f71",
+      "DL1018_DEV_T3_C09_W09": "7c14e5bb271a4141983075ef4cbddef169ff3cff97147d295ab02bb9b757f11e",
+      "DL1018_DEV_T3_C10_W11": "a2d37a9a122679322d396736f717b9ae2ad4ed40b700b43f514f697e446d35f5",
+      "DL1018_DEV_T3_C13_W12": "4c91a0d9166b4c5ae0f1926fe04c9c9eccb06dc5cc15eefeb01f1899a1206a14",
+      "DL1018_DEV_T3_C15_W14": "87a86f337ca0dcd8b569171f561ada43bfd151dafbc65fb39ee0ed6c0617e38a"
+    },
+    "same_scene_B_raws": {
+      "DL1018_DEV_T1_C10_W09": "d1048a81954f856f3d4dac15d510f1cc7130775878bc4677ef76fd088c712a5f",
+      "DL1018_DEV_T1_C11_W12": "334a83e3ce9de14395c65853a1cf8fec9a60923ba2d6375ece0236a4f437a598",
+      "DL1018_DEV_T1_C15_W14": "0f03e6a6778673fef380d7e8ab8012acb16703a2b38adf2a18a2b9427c03f8dd",
+      "DL1018_DEV_T2_C09_W10": "61bb549a6afc78326bb6d577cd52c14f0edd52c046f69681f97a2e88adb5751e",
+      "DL1018_DEV_T2_C12_W13": "8034596f07dc43db58a8babdb9d50f5105e7a14605274b3fb9e0f1c658a28b3b",
+      "DL1018_DEV_T2_C14_W14": "4cd24ea9a1aa296c1c279c31b6b40806888ddb48d97a6a2db46376fba7a0d11a",
+      "DL1018_DEV_T3_C09_W09": "a8cec3af85c0988622a3582385a44a201aa2d5e796fa73a933277cde0cf85f49",
+      "DL1018_DEV_T3_C10_W11": "afb64af0c42aa1161e123c929a0acc6988e2899e02dd88bb7686817fd3fb0bf4",
+      "DL1018_DEV_T3_C13_W12": "cdc06f1810f6a0d7fb42e940a2a2feb1a32ad13fd46b9535f03c8d255a6628e6",
+      "DL1018_DEV_T3_C15_W14": "85515327d99bb679c1ca51a4d36c36cb3d7704a72748744f915ddb24e31116a4"
+    },
+    "batch_bindings": {
+      "DL1018_DEV_T1_C10_W09": "2102247b743edfbcfce7a3c8cb0b9d198b005d68443026d604893a008f6d06ea",
+      "DL1018_DEV_T1_C11_W12": "1eb7ee45a9498acd3ec6c0ebefea48e9e30e3f179d4d547742941757df271faa",
+      "DL1018_DEV_T1_C15_W14": "c86f7cb19fbd06249d132d768ee3102da302e442c12defe9858df38f9dfb3f60",
+      "DL1018_DEV_T2_C09_W10": "e1a9813119148a8ee100b38ae588105da20bcb829d2d33456ac299e98de304af",
+      "DL1018_DEV_T2_C12_W13": "c3bef86eae680f952cc18bba284af0c19cad0d146ccf76b519373afe4e9a84ce",
+      "DL1018_DEV_T2_C14_W14": "04c00465088d39232f0522f115a63819dd7660ea472e1532132f292e486aefe6",
+      "DL1018_DEV_T3_C09_W09": "f9890efc91401dca279d7698595485f4c0495f4f5503b641e8de731f956e34fb",
+      "DL1018_DEV_T3_C10_W11": "38462d3430e9aba3d5ccff06edff58baf1dc5484bfd39944fbe793ca9840287c",
+      "DL1018_DEV_T3_C13_W12": "33ab3b51d10c5fbc8488679bc79150b6ffdb017f83549f584346ac6a81c317be",
+      "DL1018_DEV_T3_C15_W14": "248601fdf148cf7531ec24851ead17edf2b93d043ac4fd39f1931826cc99cf52"
+    }
+  },
+  "frozen_task_formula_source": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_full72_v1\\audits\\score_full72_candidate_v1.py",
+  "frozen_constants_source": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\mlp15_composite_dev_v3\\RELEASE.json",
+  "scope_note": "Reads only these 10 HF candidate raws plus the 10 same-scene TRAIN B raws explicitly named and SHA-bound by this batch's per-scene bindings. No Plant, VAL, TEST, inertia reconstruction, or legacy DL1018_TRAIN input is read.",
+  "scenes": [
+    {
+      "scene_id": "DL1018_DEV_T1_C10_W09",
+      "task": "T1",
+      "wind_code": "W09",
+      "candidate_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\causal_n4_gate_train24_batch_v2\\runs\\DL1018_DEV_T1_C10_W09\\attempt_01\\raw_run.mat",
+      "candidate_raw_sha256": "3560818b0c2343a2eaac918d0175ee96ab94d0f4128f7ac2c580079c651bd82c",
+      "candidate_task_rmse_from_log_SO3_rad": 0.04164024502159498,
+      "summary_candidate_task_rmse_rad": 0.04164024502159498,
+      "candidate_vs_summary_delta_rad": 0.0,
+      "candidate_summary_consistent_1e_10": true,
+      "same_scene_B_task_rmse_from_summary_rad": 0.042200801129056116,
+      "candidate_vs_B_improvement_pct": 1.3283067914916402,
+      "error_log_vector_definition": "Log(R_task^T R_actual) as a right-multiplied SO(3) rotvec; theta=norm(rotvec).",
+      "parseval": {
+        "sample_count": 20001,
+        "sample_interval_s": 0.001,
+        "record_endpoint_s": 20.0,
+        "dft_period_s": 20.001,
+        "frequency_bin_width_Hz": 0.049997500124993745,
+        "mse_direct_rad2": 0.0017339100054584657,
+        "mse_parseval_rad2": 0.0017339100054584657,
+        "parseval_abs_error_rad2": 0.0,
+        "bands": {
+          "DC": {
+            "bin_count": 1,
+            "mse_rad2": 0.001607797668143909,
+            "mse_fraction": 0.9272670802304925,
+            "rmse_after_ideal_band_deletion_rad": 0.011229974947191858,
+            "ideal_rmse_drop_rad": 0.030410270074403126,
+            "ideal_rmse_drop_pct": 73.03095853214145,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          },
+          "0_lt_f_lt_0p5_Hz": {
+            "bin_count": 10,
+            "mse_rad2": 7.528015278129239e-05,
+            "mse_fraction": 0.043416412930489694,
+            "rmse_after_ideal_band_deletion_rad": 0.04072627963216347,
+            "ideal_rmse_drop_rad": 0.0009139653894315106,
+            "ideal_rmse_drop_pct": 2.194908769046677,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          },
+          "0p5_le_f_lt_2_Hz": {
+            "bin_count": 30,
+            "mse_rad2": 3.1728636201463905e-05,
+            "mse_fraction": 0.018298894464868428,
+            "rmse_after_ideal_band_deletion_rad": 0.041257500763582394,
+            "ideal_rmse_drop_rad": 0.0003827442580125878,
+            "ideal_rmse_drop_pct": 0.919169082252262,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          },
+          "2_le_f_le_5_Hz": {
+            "bin_count": 60,
+            "mse_rad2": 1.8395853417332465e-05,
+            "mse_fraction": 0.010609462636135138,
+            "rmse_after_ideal_band_deletion_rad": 0.04141876569915059,
+            "ideal_rmse_drop_rad": 0.00022147932244439422,
+            "ideal_rmse_drop_pct": 0.5318876541901547,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          },
+          "f_gt_5_Hz": {
+            "bin_count": 9900,
+            "mse_rad2": 7.076949144681302e-07,
+            "mse_fraction": 0.00040814973801423307,
+            "rmse_after_ideal_band_deletion_rad": 0.04163174642678346,
+            "ideal_rmse_drop_rad": 8.498594811522098e-06,
+            "ideal_rmse_drop_pct": 0.020409569653383777,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          }
+        },
+        "finite_window_leakage_note": "Finite-window leakage applies: the 20,001 samples include both t=0 and t=20 s, so the DFT's periodic extension is 20.001 s and generally has endpoint mismatch; non-bin-centered components spread across adjacent bins and band edges."
+      },
+      "same_scene_B_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\b_traceable_c3core_dev72_20261023\\runs_b\\DL1018_DEV_T1_C10_W09\\B_TRACEABLE_C3CORE_V1\\attempt_01\\raw_run.mat",
+      "same_scene_B_raw_sha256": "d1048a81954f856f3d4dac15d510f1cc7130775878bc4677ef76fd088c712a5f",
+      "same_scene_B_task_rmse_from_raw_SO3_rad": 0.042200801129056116,
+      "summary_B_task_rmse_rad": 0.042200801129056116,
+      "B_vs_summary_delta_rad": 0.0,
+      "B_summary_consistent_1e_10": true,
+      "same_scene_B_parseval": {
+        "sample_count": 20001,
+        "sample_interval_s": 0.001,
+        "record_endpoint_s": 20.0,
+        "dft_period_s": 20.001,
+        "frequency_bin_width_Hz": 0.049997500124993745,
+        "mse_direct_rad2": 0.001780907615934144,
+        "mse_parseval_rad2": 0.001780907615934145,
+        "parseval_abs_error_rad2": 1.0842021724855044e-18,
+        "bands": {
+          "DC": {
+            "bin_count": 1,
+            "mse_rad2": 0.001608210518693048,
+            "mse_fraction": 0.9030286042375586,
+            "rmse_after_ideal_band_deletion_rad": 0.013141426758198514,
+            "ideal_rmse_drop_rad": 0.0290593743708576,
+            "ideal_rmse_drop_pct": 68.8597694673849,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          },
+          "0_lt_f_lt_0p5_Hz": {
+            "bin_count": 10,
+            "mse_rad2": 7.838246266716613e-05,
+            "mse_fraction": 0.04401264948606106,
+            "rmse_after_ideal_band_deletion_rad": 0.04126166687455777,
+            "ideal_rmse_drop_rad": 0.0009391342544983472,
+            "ideal_rmse_drop_pct": 2.2253943749227405,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          },
+          "0p5_le_f_lt_2_Hz": {
+            "bin_count": 30,
+            "mse_rad2": 8.317732261131885e-05,
+            "mse_fraction": 0.046705018198088644,
+            "rmse_after_ideal_band_deletion_rad": 0.041203522826608226,
+            "ideal_rmse_drop_rad": 0.0009972783024478904,
+            "ideal_rmse_drop_pct": 2.3631738634488717,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          },
+          "2_le_f_le_5_Hz": {
+            "bin_count": 60,
+            "mse_rad2": 1.037722058393057e-05,
+            "mse_fraction": 0.0058269280736875165,
+            "rmse_after_ideal_band_deletion_rad": 0.04207767098295975,
+            "ideal_rmse_drop_rad": 0.00012313014609636325,
+            "ideal_rmse_drop_pct": 0.2917720583545643,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          },
+          "f_gt_5_Hz": {
+            "bin_count": 9900,
+            "mse_rad2": 7.600913786807011e-07,
+            "mse_fraction": 0.00042680000460439853,
+            "rmse_after_ideal_band_deletion_rad": 0.04219179451688993,
+            "ideal_rmse_drop_rad": 9.006612166184702e-06,
+            "ideal_rmse_drop_pct": 0.021342277694305346,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          }
+        },
+        "finite_window_leakage_note": "Finite-window leakage applies: the 20,001 samples include both t=0 and t=20 s, so the DFT's periodic extension is 20.001 s and generally has endpoint mismatch; non-bin-centered components spread across adjacent bins and band edges."
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T1_C11_W12",
+      "task": "T1",
+      "wind_code": "W12",
+      "candidate_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\n4cg_v2\\r2\\runs\\DL1018_DEV_T1_C11_W12\\attempt_01\\raw_run.mat",
+      "candidate_raw_sha256": "e4839cfcfab82f32e3fc21c56add89c524b0257030173cc8c79ac697ff6abac4",
+      "candidate_task_rmse_from_log_SO3_rad": 0.04415323720549651,
+      "summary_candidate_task_rmse_rad": 0.04415323720549651,
+      "candidate_vs_summary_delta_rad": 0.0,
+      "candidate_summary_consistent_1e_10": true,
+      "same_scene_B_task_rmse_from_summary_rad": 0.044442067944485256,
+      "candidate_vs_B_improvement_pct": 0.6499039138987417,
+      "error_log_vector_definition": "Log(R_task^T R_actual) as a right-multiplied SO(3) rotvec; theta=norm(rotvec).",
+      "parseval": {
+        "sample_count": 20001,
+        "sample_interval_s": 0.001,
+        "record_endpoint_s": 20.0,
+        "dft_period_s": 20.001,
+        "frequency_bin_width_Hz": 0.049997500124993745,
+        "mse_direct_rad2": 0.0019495083557248408,
+        "mse_parseval_rad2": 0.0019495083557248415,
+        "parseval_abs_error_rad2": 6.505213034913027e-19,
+        "bands": {
+          "DC": {
+            "bin_count": 1,
+            "mse_rad2": 0.001817897690694897,
+            "mse_fraction": 0.9324903303730596,
+            "rmse_after_ideal_band_deletion_rad": 0.011472169151034332,
+            "ideal_rmse_drop_rad": 0.03268106805446218,
+            "ideal_rmse_drop_pct": 74.01737703253569,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          },
+          "0_lt_f_lt_0p5_Hz": {
+            "bin_count": 10,
+            "mse_rad2": 8.90420415429086e-05,
+            "mse_fraction": 0.045674101001635437,
+            "rmse_after_ideal_band_deletion_rad": 0.04313312316749081,
+            "ideal_rmse_drop_rad": 0.0010201140380056983,
+            "ideal_rmse_drop_pct": 2.3103946676840885,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          },
+          "0p5_le_f_lt_2_Hz": {
+            "bin_count": 30,
+            "mse_rad2": 3.680158198441802e-05,
+            "mse_fraction": 0.018877365606742903,
+            "rmse_after_ideal_band_deletion_rad": 0.04373450324103868,
+            "ideal_rmse_drop_rad": 0.0004187339644578236,
+            "ideal_rmse_drop_pct": 0.9483652637041451,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          },
+          "2_le_f_le_5_Hz": {
+            "bin_count": 60,
+            "mse_rad2": 4.904484287819556e-06,
+            "mse_fraction": 0.002515754432863682,
+            "rmse_after_ideal_band_deletion_rad": 0.04409766287953389,
+            "ideal_rmse_drop_rad": 5.5574325962613746e-05,
+            "ideal_rmse_drop_pct": 0.1258669340686428,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          },
+          "f_gt_5_Hz": {
+            "bin_count": 9900,
+            "mse_rad2": 8.625572147979523e-07,
+            "mse_fraction": 0.00044244858569854524,
+            "rmse_after_ideal_band_deletion_rad": 0.04414346835614577,
+            "ideal_rmse_drop_rad": 9.768849350735853e-06,
+            "ideal_rmse_drop_pct": 0.022124876835802557,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          }
+        },
+        "finite_window_leakage_note": "Finite-window leakage applies: the 20,001 samples include both t=0 and t=20 s, so the DFT's periodic extension is 20.001 s and generally has endpoint mismatch; non-bin-centered components spread across adjacent bins and band edges."
+      },
+      "same_scene_B_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\b_traceable_c3core_dev72_20261023\\runs_b\\DL1018_DEV_T1_C11_W12\\B_TRACEABLE_C3CORE_V1\\attempt_01\\raw_run.mat",
+      "same_scene_B_raw_sha256": "334a83e3ce9de14395c65853a1cf8fec9a60923ba2d6375ece0236a4f437a598",
+      "same_scene_B_task_rmse_from_raw_SO3_rad": 0.044442067944485256,
+      "summary_B_task_rmse_rad": 0.044442067944485256,
+      "B_vs_summary_delta_rad": 0.0,
+      "B_summary_consistent_1e_10": true,
+      "same_scene_B_parseval": {
+        "sample_count": 20001,
+        "sample_interval_s": 0.001,
+        "record_endpoint_s": 20.0,
+        "dft_period_s": 20.001,
+        "frequency_bin_width_Hz": 0.049997500124993745,
+        "mse_direct_rad2": 0.001975097403182245,
+        "mse_parseval_rad2": 0.001975097403182245,
+        "parseval_abs_error_rad2": 0.0,
+        "bands": {
+          "DC": {
+            "bin_count": 1,
+            "mse_rad2": 0.00181769467844701,
+            "mse_fraction": 0.9203063481924334,
+            "rmse_after_ideal_band_deletion_rad": 0.01254602426010865,
+            "ideal_rmse_drop_rad": 0.031896043684376624,
+            "ideal_rmse_drop_pct": 71.76993591796743,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          },
+          "0_lt_f_lt_0p5_Hz": {
+            "bin_count": 10,
+            "mse_rad2": 9.817270754049433e-05,
+            "mse_fraction": 0.04970524865372212,
+            "rmse_after_ideal_band_deletion_rad": 0.0433234889597058,
+            "ideal_rmse_drop_rad": 0.0011185789847794683,
+            "ideal_rmse_drop_pct": 2.5169372995350696,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          },
+          "0p5_le_f_lt_2_Hz": {
+            "bin_count": 30,
+            "mse_rad2": 5.6803403018557056e-05,
+            "mse_fraction": 0.028759798340596436,
+            "rmse_after_ideal_band_deletion_rad": 0.043798333303490984,
+            "ideal_rmse_drop_rad": 0.0006437346409942854,
+            "ideal_rmse_drop_pct": 1.448480394293095,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          },
+          "2_le_f_le_5_Hz": {
+            "bin_count": 60,
+            "mse_rad2": 1.6975001223632518e-06,
+            "mse_fraction": 0.0008594513463631045,
+            "rmse_after_ideal_band_deletion_rad": 0.0444229659417275,
+            "ideal_rmse_drop_rad": 1.9102002757766245e-05,
+            "ideal_rmse_drop_pct": 0.04298180449574821,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          },
+          "f_gt_5_Hz": {
+            "bin_count": 9900,
+            "mse_rad2": 7.291140538197598e-07,
+            "mse_fraction": 0.00036915346688473345,
+            "rmse_after_ideal_band_deletion_rad": 0.044433864215578024,
+            "ideal_rmse_drop_rad": 8.203728907245356e-06,
+            "ideal_rmse_drop_pct": 0.01845937708725217,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          }
+        },
+        "finite_window_leakage_note": "Finite-window leakage applies: the 20,001 samples include both t=0 and t=20 s, so the DFT's periodic extension is 20.001 s and generally has endpoint mismatch; non-bin-centered components spread across adjacent bins and band edges."
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T1_C15_W14",
+      "task": "T1",
+      "wind_code": "W14",
+      "candidate_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\causal_n4_gate_train24_batch_v2\\runs\\DL1018_DEV_T1_C15_W14\\attempt_01\\raw_run.mat",
+      "candidate_raw_sha256": "60194d7cc845018a331f3a2c5adc26407f3b4dd29ec2eaea1c89959c2ebe5410",
+      "candidate_task_rmse_from_log_SO3_rad": 0.056563143918528576,
+      "summary_candidate_task_rmse_rad": 0.056563143918528576,
+      "candidate_vs_summary_delta_rad": 0.0,
+      "candidate_summary_consistent_1e_10": true,
+      "same_scene_B_task_rmse_from_summary_rad": 0.05708308522902606,
+      "candidate_vs_B_improvement_pct": 0.9108500502581496,
+      "error_log_vector_definition": "Log(R_task^T R_actual) as a right-multiplied SO(3) rotvec; theta=norm(rotvec).",
+      "parseval": {
+        "sample_count": 20001,
+        "sample_interval_s": 0.001,
+        "record_endpoint_s": 20.0,
+        "dft_period_s": 20.001,
+        "frequency_bin_width_Hz": 0.049997500124993745,
+        "mse_direct_rad2": 0.003199389249948177,
+        "mse_parseval_rad2": 0.0031993892499481763,
+        "parseval_abs_error_rad2": 8.673617379884035e-19,
+        "bands": {
+          "DC": {
+            "bin_count": 1,
+            "mse_rad2": 0.0027974643429624435,
+            "mse_fraction": 0.874374489758555,
+            "rmse_after_ideal_band_deletion_rad": 0.02004806491873302,
+            "ideal_rmse_drop_rad": 0.03651507899979556,
+            "ideal_rmse_drop_pct": 64.55631082386527,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          },
+          "0_lt_f_lt_0p5_Hz": {
+            "bin_count": 10,
+            "mse_rad2": 0.00019337120914715293,
+            "mse_fraction": 0.06044003840741951,
+            "rmse_after_ideal_band_deletion_rad": 0.05482716517202968,
+            "ideal_rmse_drop_rad": 0.0017359787464989035,
+            "ideal_rmse_drop_pct": 3.0690987562490193,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          },
+          "0p5_le_f_lt_2_Hz": {
+            "bin_count": 30,
+            "mse_rad2": 0.0001751435247173832,
+            "mse_fraction": 0.05474279965159604,
+            "rmse_after_ideal_band_deletion_rad": 0.05499314252914443,
+            "ideal_rmse_drop_rad": 0.0015700013893841513,
+            "ideal_rmse_drop_pct": 2.7756614654332545,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          },
+          "2_le_f_le_5_Hz": {
+            "bin_count": 60,
+            "mse_rad2": 3.1732437447283665e-05,
+            "mse_fraction": 0.009918279699101215,
+            "rmse_after_ideal_band_deletion_rad": 0.05628194037611793,
+            "ideal_rmse_drop_rad": 0.0002812035424106518,
+            "ideal_rmse_drop_pct": 0.4971497744462132,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          },
+          "f_gt_5_Hz": {
+            "bin_count": 9900,
+            "mse_rad2": 1.6777356739128558e-06,
+            "mse_fraction": 0.0005243924833278824,
+            "rmse_after_ideal_band_deletion_rad": 0.05654831132999698,
+            "ideal_rmse_drop_rad": 1.483258853160474e-05,
+            "ideal_rmse_drop_pct": 0.02622306241139821,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          }
+        },
+        "finite_window_leakage_note": "Finite-window leakage applies: the 20,001 samples include both t=0 and t=20 s, so the DFT's periodic extension is 20.001 s and generally has endpoint mismatch; non-bin-centered components spread across adjacent bins and band edges."
+      },
+      "same_scene_B_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\b_traceable_c3core_dev72_20261023\\runs_b\\DL1018_DEV_T1_C15_W14\\B_TRACEABLE_C3CORE_V1\\attempt_01\\raw_run.mat",
+      "same_scene_B_raw_sha256": "0f03e6a6778673fef380d7e8ab8012acb16703a2b38adf2a18a2b9427c03f8dd",
+      "same_scene_B_task_rmse_from_raw_SO3_rad": 0.05708308522902606,
+      "summary_B_task_rmse_rad": 0.05708308522902606,
+      "B_vs_summary_delta_rad": 0.0,
+      "B_summary_consistent_1e_10": true,
+      "same_scene_B_parseval": {
+        "sample_count": 20001,
+        "sample_interval_s": 0.001,
+        "record_endpoint_s": 20.0,
+        "dft_period_s": 20.001,
+        "frequency_bin_width_Hz": 0.049997500124993745,
+        "mse_direct_rad2": 0.003258478619264253,
+        "mse_parseval_rad2": 0.0032584786192642536,
+        "parseval_abs_error_rad2": 4.336808689942018e-19,
+        "bands": {
+          "DC": {
+            "bin_count": 1,
+            "mse_rad2": 0.002814123716970484,
+            "mse_fraction": 0.86363117447918,
+            "rmse_after_ideal_band_deletion_rad": 0.0210797272822437,
+            "ideal_rmse_drop_rad": 0.03600335794678236,
+            "ideal_rmse_drop_pct": 63.071850097680226,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          },
+          "0_lt_f_lt_0p5_Hz": {
+            "bin_count": 10,
+            "mse_rad2": 0.0001963334813364804,
+            "mse_fraction": 0.060253113270637766,
+            "rmse_after_ideal_band_deletion_rad": 0.055336652753195804,
+            "ideal_rmse_drop_rad": 0.0017464324758302563,
+            "ideal_rmse_drop_pct": 3.0594570507590864,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          },
+          "0p5_le_f_lt_2_Hz": {
+            "bin_count": 30,
+            "mse_rad2": 0.00023913638350097602,
+            "mse_fraction": 0.07338896811757252,
+            "rmse_after_ideal_band_deletion_rad": 0.05494854170733995,
+            "ideal_rmse_drop_rad": 0.0021345435216861136,
+            "ideal_rmse_drop_pct": 3.7393625679516074,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          },
+          "2_le_f_le_5_Hz": {
+            "bin_count": 60,
+            "mse_rad2": 7.983462858563409e-06,
+            "mse_fraction": 0.0024500583834937153,
+            "rmse_after_ideal_band_deletion_rad": 0.05701311389852066,
+            "ideal_rmse_drop_rad": 6.997133050540283e-05,
+            "ideal_rmse_drop_pct": 0.1225780460615735,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          },
+          "f_gt_5_Hz": {
+            "bin_count": 9900,
+            "mse_rad2": 9.015745977493447e-07,
+            "mse_fraction": 0.0002766857491159219,
+            "rmse_after_ideal_band_deletion_rad": 0.05707518764460178,
+            "ideal_rmse_drop_rad": 7.897584424279569e-06,
+            "ideal_rmse_drop_pct": 0.013835244525752688,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          }
+        },
+        "finite_window_leakage_note": "Finite-window leakage applies: the 20,001 samples include both t=0 and t=20 s, so the DFT's periodic extension is 20.001 s and generally has endpoint mismatch; non-bin-centered components spread across adjacent bins and band edges."
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C09_W10",
+      "task": "T2",
+      "wind_code": "W10",
+      "candidate_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\causal_n4_gate_train24_batch_v2\\runs\\DL1018_DEV_T2_C09_W10\\attempt_01\\raw_run.mat",
+      "candidate_raw_sha256": "58162100f83284f80e048e3b2b7c35a7f057b2dbf39366e9a303b5cf8b29eefe",
+      "candidate_task_rmse_from_log_SO3_rad": 0.0634145552737441,
+      "summary_candidate_task_rmse_rad": 0.0634145552737441,
+      "candidate_vs_summary_delta_rad": 0.0,
+      "candidate_summary_consistent_1e_10": true,
+      "same_scene_B_task_rmse_from_summary_rad": 0.06360047397520945,
+      "candidate_vs_B_improvement_pct": 0.2923228237855846,
+      "error_log_vector_definition": "Log(R_task^T R_actual) as a right-multiplied SO(3) rotvec; theta=norm(rotvec).",
+      "parseval": {
+        "sample_count": 20001,
+        "sample_interval_s": 0.001,
+        "record_endpoint_s": 20.0,
+        "dft_period_s": 20.001,
+        "frequency_bin_width_Hz": 0.049997500124993745,
+        "mse_direct_rad2": 0.004021405820566745,
+        "mse_parseval_rad2": 0.004021405820566744,
+        "parseval_abs_error_rad2": 8.673617379884035e-19,
+        "bands": {
+          "DC": {
+            "bin_count": 1,
+            "mse_rad2": 0.0036361926842070945,
+            "mse_fraction": 0.9042093353549278,
+            "rmse_after_ideal_band_deletion_rad": 0.019626847336229287,
+            "ideal_rmse_drop_rad": 0.04378770793751481,
+            "ideal_rmse_drop_pct": 69.04993301379264,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          },
+          "0_lt_f_lt_0p5_Hz": {
+            "bin_count": 10,
+            "mse_rad2": 0.00010896513952547142,
+            "mse_fraction": 0.0270962803525546,
+            "rmse_after_ideal_band_deletion_rad": 0.06254950584170328,
+            "ideal_rmse_drop_rad": 0.0008650494320408125,
+            "ideal_rmse_drop_pct": 1.3641181087001553,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          },
+          "0p5_le_f_lt_2_Hz": {
+            "bin_count": 30,
+            "mse_rad2": 0.00013001378491325178,
+            "mse_fraction": 0.03233043137509774,
+            "rmse_after_ideal_band_deletion_rad": 0.06238102304109394,
+            "ideal_rmse_drop_rad": 0.0010335322326501528,
+            "ideal_rmse_drop_pct": 1.6298028554937645,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          },
+          "2_le_f_le_5_Hz": {
+            "bin_count": 60,
+            "mse_rad2": 0.00014506413234133763,
+            "mse_fraction": 0.0360729900970038,
+            "rmse_after_ideal_band_deletion_rad": 0.062260273756428404,
+            "ideal_rmse_drop_rad": 0.0011542815173156903,
+            "ideal_rmse_drop_pct": 1.8202154258323788,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          },
+          "f_gt_5_Hz": {
+            "bin_count": 9900,
+            "mse_rad2": 1.1700795795876437e-06,
+            "mse_fraction": 0.00029096282041555854,
+            "rmse_after_ideal_band_deletion_rad": 0.06340532896363804,
+            "ideal_rmse_drop_rad": 9.226310106053015e-06,
+            "ideal_rmse_drop_pct": 0.01454919941679862,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          }
+        },
+        "finite_window_leakage_note": "Finite-window leakage applies: the 20,001 samples include both t=0 and t=20 s, so the DFT's periodic extension is 20.001 s and generally has endpoint mismatch; non-bin-centered components spread across adjacent bins and band edges."
+      },
+      "same_scene_B_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\b_traceable_c3core_dev72_20261023\\runs_b\\DL1018_DEV_T2_C09_W10\\B_TRACEABLE_C3CORE_V1\\attempt_01\\raw_run.mat",
+      "same_scene_B_raw_sha256": "61bb549a6afc78326bb6d577cd52c14f0edd52c046f69681f97a2e88adb5751e",
+      "same_scene_B_task_rmse_from_raw_SO3_rad": 0.06360047397520945,
+      "summary_B_task_rmse_rad": 0.06360047397520945,
+      "B_vs_summary_delta_rad": 0.0,
+      "B_summary_consistent_1e_10": true,
+      "same_scene_B_parseval": {
+        "sample_count": 20001,
+        "sample_interval_s": 0.001,
+        "record_endpoint_s": 20.0,
+        "dft_period_s": 20.001,
+        "frequency_bin_width_Hz": 0.049997500124993745,
+        "mse_direct_rad2": 0.0040450202898712935,
+        "mse_parseval_rad2": 0.004045020289871294,
+        "parseval_abs_error_rad2": 8.673617379884035e-19,
+        "bands": {
+          "DC": {
+            "bin_count": 1,
+            "mse_rad2": 0.003648709160589884,
+            "mse_fraction": 0.9020249341458755,
+            "rmse_after_ideal_band_deletion_rad": 0.019907564624569468,
+            "ideal_rmse_drop_rad": 0.04369290935063998,
+            "ideal_rmse_drop_pct": 68.69903102871663,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          },
+          "0_lt_f_lt_0p5_Hz": {
+            "bin_count": 10,
+            "mse_rad2": 0.0001059526113677398,
+            "mse_fraction": 0.02619334484750163,
+            "rmse_after_ideal_band_deletion_rad": 0.06276199230827169,
+            "ideal_rmse_drop_rad": 0.000838481666937757,
+            "ideal_rmse_drop_pct": 1.3183575758642698,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          },
+          "0p5_le_f_lt_2_Hz": {
+            "bin_count": 30,
+            "mse_rad2": 0.00020803050397229453,
+            "mse_fraction": 0.05142879122094929,
+            "rmse_after_ideal_band_deletion_rad": 0.06194344021685427,
+            "ideal_rmse_drop_rad": 0.0016570337583551725,
+            "ideal_rmse_drop_pct": 2.605379574688485,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          },
+          "2_le_f_le_5_Hz": {
+            "bin_count": 60,
+            "mse_rad2": 8.095911567905879e-05,
+            "mse_fraction": 0.020014514113014446,
+            "rmse_after_ideal_band_deletion_rad": 0.06296079076847935,
+            "ideal_rmse_drop_rad": 0.0006396832067300934,
+            "ideal_rmse_drop_pct": 1.005783710007307,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          },
+          "f_gt_5_Hz": {
+            "bin_count": 9900,
+            "mse_rad2": 1.3688982623163753e-06,
+            "mse_fraction": 0.0003384156726590688,
+            "rmse_after_ideal_band_deletion_rad": 0.06358971136598261,
+            "ideal_rmse_drop_rad": 1.0762609226833142e-05,
+            "ideal_rmse_drop_pct": 0.016922215439822433,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          }
+        },
+        "finite_window_leakage_note": "Finite-window leakage applies: the 20,001 samples include both t=0 and t=20 s, so the DFT's periodic extension is 20.001 s and generally has endpoint mismatch; non-bin-centered components spread across adjacent bins and band edges."
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C12_W13",
+      "task": "T2",
+      "wind_code": "W13",
+      "candidate_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\causal_n4_gate_train24_batch_v2\\runs\\DL1018_DEV_T2_C12_W13\\attempt_01\\raw_run.mat",
+      "candidate_raw_sha256": "cb336f29d2777b45ef02843a0155553c7d8f5020798cd00ed5a1f19326128b86",
+      "candidate_task_rmse_from_log_SO3_rad": 0.07176743660223889,
+      "summary_candidate_task_rmse_rad": 0.07176743660223889,
+      "candidate_vs_summary_delta_rad": 0.0,
+      "candidate_summary_consistent_1e_10": true,
+      "same_scene_B_task_rmse_from_summary_rad": 0.07213134049087415,
+      "candidate_vs_B_improvement_pct": 0.5045017687995146,
+      "error_log_vector_definition": "Log(R_task^T R_actual) as a right-multiplied SO(3) rotvec; theta=norm(rotvec).",
+      "parseval": {
+        "sample_count": 20001,
+        "sample_interval_s": 0.001,
+        "record_endpoint_s": 20.0,
+        "dft_period_s": 20.001,
+        "frequency_bin_width_Hz": 0.049997500124993745,
+        "mse_direct_rad2": 0.005150564956456379,
+        "mse_parseval_rad2": 0.005150564956456379,
+        "parseval_abs_error_rad2": 0.0,
+        "bands": {
+          "DC": {
+            "bin_count": 1,
+            "mse_rad2": 0.004780259412465322,
+            "mse_fraction": 0.928103897898255,
+            "rmse_after_ideal_band_deletion_rad": 0.019243324660542873,
+            "ideal_rmse_drop_rad": 0.052524111941696025,
+            "ideal_rmse_drop_pct": 73.18655148964517,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          },
+          "0_lt_f_lt_0p5_Hz": {
+            "bin_count": 10,
+            "mse_rad2": 0.00021907959936588446,
+            "mse_fraction": 0.042535061923888944,
+            "rmse_after_ideal_band_deletion_rad": 0.07022453529280556,
+            "ideal_rmse_drop_rad": 0.0015429013094333394,
+            "ideal_rmse_drop_pct": 2.149862643115786,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          },
+          "0p5_le_f_lt_2_Hz": {
+            "bin_count": 30,
+            "mse_rad2": 0.00011152612988028051,
+            "mse_fraction": 0.021653183839663907,
+            "rmse_after_ideal_band_deletion_rad": 0.07098618757600733,
+            "ideal_rmse_drop_rad": 0.0007812490262315702,
+            "ideal_rmse_drop_pct": 1.0885842705536983,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          },
+          "2_le_f_le_5_Hz": {
+            "bin_count": 60,
+            "mse_rad2": 3.777425377005399e-05,
+            "mse_fraction": 0.007334002015196972,
+            "rmse_after_ideal_band_deletion_rad": 0.07150378103769287,
+            "ideal_rmse_drop_rad": 0.00026365556454603645,
+            "ideal_rmse_drop_pct": 0.36737492242799613,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          },
+          "f_gt_5_Hz": {
+            "bin_count": 9900,
+            "mse_rad2": 1.925560974837893e-06,
+            "mse_fraction": 0.00037385432299502365,
+            "rmse_after_ideal_band_deletion_rad": 0.07175402006495205,
+            "ideal_rmse_drop_rad": 1.34165372868561e-05,
+            "ideal_rmse_drop_pct": 0.018694463564604382,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          }
+        },
+        "finite_window_leakage_note": "Finite-window leakage applies: the 20,001 samples include both t=0 and t=20 s, so the DFT's periodic extension is 20.001 s and generally has endpoint mismatch; non-bin-centered components spread across adjacent bins and band edges."
+      },
+      "same_scene_B_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\b_traceable_c3core_dev72_20261023\\runs_b\\DL1018_DEV_T2_C12_W13\\B_TRACEABLE_C3CORE_V1\\attempt_01\\raw_run.mat",
+      "same_scene_B_raw_sha256": "8034596f07dc43db58a8babdb9d50f5105e7a14605274b3fb9e0f1c658a28b3b",
+      "same_scene_B_task_rmse_from_raw_SO3_rad": 0.07213134049087415,
+      "summary_B_task_rmse_rad": 0.07213134049087415,
+      "B_vs_summary_delta_rad": 0.0,
+      "B_summary_consistent_1e_10": true,
+      "same_scene_B_parseval": {
+        "sample_count": 20001,
+        "sample_interval_s": 0.001,
+        "record_endpoint_s": 20.0,
+        "dft_period_s": 20.001,
+        "frequency_bin_width_Hz": 0.049997500124993745,
+        "mse_direct_rad2": 0.005202930281010422,
+        "mse_parseval_rad2": 0.005202930281010424,
+        "parseval_abs_error_rad2": 1.734723475976807e-18,
+        "bands": {
+          "DC": {
+            "bin_count": 1,
+            "mse_rad2": 0.004783401005802112,
+            "mse_fraction": 0.9193667313322452,
+            "rmse_after_ideal_band_deletion_rad": 0.020482413803268165,
+            "ideal_rmse_drop_rad": 0.051648926687606,
+            "ideal_rmse_drop_pct": 71.60400227712455,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          },
+          "0_lt_f_lt_0p5_Hz": {
+            "bin_count": 10,
+            "mse_rad2": 0.00022291560092068543,
+            "mse_fraction": 0.04284424139494613,
+            "rmse_after_ideal_band_deletion_rad": 0.07056921906957549,
+            "ideal_rmse_drop_rad": 0.0015621214212986761,
+            "ideal_rmse_drop_pct": 2.1656625409537633,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          },
+          "0p5_le_f_lt_2_Hz": {
+            "bin_count": 30,
+            "mse_rad2": 0.0001809706778658913,
+            "mse_fraction": 0.034782452981619874,
+            "rmse_after_ideal_band_deletion_rad": 0.07086578584299007,
+            "ideal_rmse_drop_rad": 0.0012655546478840957,
+            "ideal_rmse_drop_pct": 1.7545142503544764,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          },
+          "2_le_f_le_5_Hz": {
+            "bin_count": 60,
+            "mse_rad2": 1.3196981082868986e-05,
+            "mse_fraction": 0.0025364516474562677,
+            "rmse_after_ideal_band_deletion_rad": 0.0720398035805731,
+            "ideal_rmse_drop_rad": 9.153691030105993e-05,
+            "ideal_rmse_drop_pct": 0.1269031043622999,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          },
+          "f_gt_5_Hz": {
+            "bin_count": 9900,
+            "mse_rad2": 2.446015338865161e-06,
+            "mse_fraction": 0.00047012264373262727,
+            "rmse_after_ideal_band_deletion_rad": 0.07211438320939559,
+            "ideal_rmse_drop_rad": 1.695728147857456e-05,
+            "ideal_rmse_drop_pct": 0.023508895527485647,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          }
+        },
+        "finite_window_leakage_note": "Finite-window leakage applies: the 20,001 samples include both t=0 and t=20 s, so the DFT's periodic extension is 20.001 s and generally has endpoint mismatch; non-bin-centered components spread across adjacent bins and band edges."
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C14_W14",
+      "task": "T2",
+      "wind_code": "W14",
+      "candidate_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\causal_n4_gate_train24_batch_v2\\runs\\DL1018_DEV_T2_C14_W14\\attempt_01\\raw_run.mat",
+      "candidate_raw_sha256": "e9401c4b62b6d1e2d6bf2c97670226f28214cdf0b4a7adff66e129fd59984f71",
+      "candidate_task_rmse_from_log_SO3_rad": 0.058207184463687486,
+      "summary_candidate_task_rmse_rad": 0.058207184463687486,
+      "candidate_vs_summary_delta_rad": 0.0,
+      "candidate_summary_consistent_1e_10": true,
+      "same_scene_B_task_rmse_from_summary_rad": 0.058395445752302017,
+      "candidate_vs_B_improvement_pct": 0.32239036142147626,
+      "error_log_vector_definition": "Log(R_task^T R_actual) as a right-multiplied SO(3) rotvec; theta=norm(rotvec).",
+      "parseval": {
+        "sample_count": 20001,
+        "sample_interval_s": 0.001,
+        "record_endpoint_s": 20.0,
+        "dft_period_s": 20.001,
+        "frequency_bin_width_Hz": 0.049997500124993745,
+        "mse_direct_rad2": 0.0033880763231897417,
+        "mse_parseval_rad2": 0.003388076323189741,
+        "parseval_abs_error_rad2": 8.673617379884035e-19,
+        "bands": {
+          "DC": {
+            "bin_count": 1,
+            "mse_rad2": 0.003082312095191777,
+            "mse_fraction": 0.9097528512255888,
+            "rmse_after_ideal_band_deletion_rad": 0.017486115291795508,
+            "ideal_rmse_drop_rad": 0.04072106917189198,
+            "ideal_rmse_drop_pct": 69.9588367777792,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          },
+          "0_lt_f_lt_0p5_Hz": {
+            "bin_count": 10,
+            "mse_rad2": 9.598476705762394e-05,
+            "mse_fraction": 0.02833016670865845,
+            "rmse_after_ideal_band_deletion_rad": 0.05737675100711191,
+            "ideal_rmse_drop_rad": 0.0008304334565755744,
+            "ideal_rmse_drop_pct": 1.4266854929113428,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          },
+          "0p5_le_f_lt_2_Hz": {
+            "bin_count": 30,
+            "mse_rad2": 0.00016853764675870623,
+            "mse_fraction": 0.04974434773064221,
+            "rmse_after_ideal_band_deletion_rad": 0.05674097881100603,
+            "ideal_rmse_drop_rad": 0.0014662056526814557,
+            "ideal_rmse_drop_pct": 2.5189427494060412,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          },
+          "2_le_f_le_5_Hz": {
+            "bin_count": 60,
+            "mse_rad2": 3.8939976902823454e-05,
+            "mse_fraction": 0.011493240762109806,
+            "rmse_after_ideal_band_deletion_rad": 0.05787172320129165,
+            "ideal_rmse_drop_rad": 0.0003354612623958364,
+            "ideal_rmse_drop_pct": 0.5763227778267023,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          },
+          "f_gt_5_Hz": {
+            "bin_count": 9900,
+            "mse_rad2": 2.301837278810892e-06,
+            "mse_fraction": 0.0006793935730006819,
+            "rmse_after_ideal_band_deletion_rad": 0.058187408310655414,
+            "ideal_rmse_drop_rad": 1.9776153032072252e-05,
+            "ideal_rmse_drop_pct": 0.03397545030615524,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          }
+        },
+        "finite_window_leakage_note": "Finite-window leakage applies: the 20,001 samples include both t=0 and t=20 s, so the DFT's periodic extension is 20.001 s and generally has endpoint mismatch; non-bin-centered components spread across adjacent bins and band edges."
+      },
+      "same_scene_B_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\b_traceable_c3core_dev72_20261023\\runs_b\\DL1018_DEV_T2_C14_W14\\B_TRACEABLE_C3CORE_V1\\attempt_01\\raw_run.mat",
+      "same_scene_B_raw_sha256": "4cd24ea9a1aa296c1c279c31b6b40806888ddb48d97a6a2db46376fba7a0d11a",
+      "same_scene_B_task_rmse_from_raw_SO3_rad": 0.058395445752302017,
+      "summary_B_task_rmse_rad": 0.058395445752302017,
+      "B_vs_summary_delta_rad": 0.0,
+      "B_summary_consistent_1e_10": true,
+      "same_scene_B_parseval": {
+        "sample_count": 20001,
+        "sample_interval_s": 0.001,
+        "record_endpoint_s": 20.0,
+        "dft_period_s": 20.001,
+        "frequency_bin_width_Hz": 0.049997500124993745,
+        "mse_direct_rad2": 0.0034100280846100484,
+        "mse_parseval_rad2": 0.0034100280846100493,
+        "parseval_abs_error_rad2": 8.673617379884035e-19,
+        "bands": {
+          "DC": {
+            "bin_count": 1,
+            "mse_rad2": 0.003067852246432165,
+            "mse_fraction": 0.8996560058486988,
+            "rmse_after_ideal_band_deletion_rad": 0.018497995517836076,
+            "ideal_rmse_drop_rad": 0.03989745023446595,
+            "ideal_rmse_drop_pct": 68.3228798418636,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          },
+          "0_lt_f_lt_0p5_Hz": {
+            "bin_count": 10,
+            "mse_rad2": 0.00010743803705548991,
+            "mse_fraction": 0.03150649624863014,
+            "rmse_after_ideal_band_deletion_rad": 0.057468165514087524,
+            "ideal_rmse_drop_rad": 0.0009272802382144993,
+            "ideal_rmse_drop_pct": 1.587932459917809,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          },
+          "0p5_le_f_lt_2_Hz": {
+            "bin_count": 30,
+            "mse_rad2": 0.0002188337574480522,
+            "mse_fraction": 0.06417359388788635,
+            "rmse_after_ideal_band_deletion_rad": 0.05649065699000142,
+            "ideal_rmse_drop_rad": 0.0019047887623006021,
+            "ideal_rmse_drop_pct": 3.2618789663498937,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          },
+          "2_le_f_le_5_Hz": {
+            "bin_count": 60,
+            "mse_rad2": 1.344246057731212e-05,
+            "mse_fraction": 0.003942038084079101,
+            "rmse_after_ideal_band_deletion_rad": 0.05828023356192678,
+            "ideal_rmse_drop_rad": 0.00011521219037524677,
+            "ideal_rmse_drop_pct": 0.1972965338152333,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          },
+          "f_gt_5_Hz": {
+            "bin_count": 9900,
+            "mse_rad2": 2.4615830970290167e-06,
+            "mse_fraction": 0.0007218659307055266,
+            "rmse_after_ideal_band_deletion_rad": 0.058374365105866625,
+            "ideal_rmse_drop_rad": 2.1080646435397976e-05,
+            "ideal_rmse_drop_pct": 0.03609981251760023,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          }
+        },
+        "finite_window_leakage_note": "Finite-window leakage applies: the 20,001 samples include both t=0 and t=20 s, so the DFT's periodic extension is 20.001 s and generally has endpoint mismatch; non-bin-centered components spread across adjacent bins and band edges."
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C09_W09",
+      "task": "T3",
+      "wind_code": "W09",
+      "candidate_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\n4cg_v2\\r1\\runs\\DL1018_DEV_T3_C09_W09\\attempt_01\\raw_run.mat",
+      "candidate_raw_sha256": "7c14e5bb271a4141983075ef4cbddef169ff3cff97147d295ab02bb9b757f11e",
+      "candidate_task_rmse_from_log_SO3_rad": 0.058582949357324283,
+      "summary_candidate_task_rmse_rad": 0.058582949357324283,
+      "candidate_vs_summary_delta_rad": 0.0,
+      "candidate_summary_consistent_1e_10": true,
+      "same_scene_B_task_rmse_from_summary_rad": 0.05906125628102724,
+      "candidate_vs_B_improvement_pct": 0.8098488820269312,
+      "error_log_vector_definition": "Log(R_task^T R_actual) as a right-multiplied SO(3) rotvec; theta=norm(rotvec).",
+      "parseval": {
+        "sample_count": 20001,
+        "sample_interval_s": 0.001,
+        "record_endpoint_s": 20.0,
+        "dft_period_s": 20.001,
+        "frequency_bin_width_Hz": 0.049997500124993745,
+        "mse_direct_rad2": 0.0034319619554028214,
+        "mse_parseval_rad2": 0.0034319619554028214,
+        "parseval_abs_error_rad2": 0.0,
+        "bands": {
+          "DC": {
+            "bin_count": 1,
+            "mse_rad2": 0.0032517922855816003,
+            "mse_fraction": 0.9475024280098484,
+            "rmse_after_ideal_band_deletion_rad": 0.013422729596517283,
+            "ideal_rmse_drop_rad": 0.045160219760807,
+            "ideal_rmse_drop_pct": 77.08765136653346,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          },
+          "0_lt_f_lt_0p5_Hz": {
+            "bin_count": 10,
+            "mse_rad2": 8.565817852710786e-05,
+            "mse_fraction": 0.02495895340339047,
+            "rmse_after_ideal_band_deletion_rad": 0.05784724519694705,
+            "ideal_rmse_drop_rad": 0.000735704160377236,
+            "ideal_rmse_drop_pct": 1.2558332560039591,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          },
+          "0p5_le_f_lt_2_Hz": {
+            "bin_count": 30,
+            "mse_rad2": 5.970953308938526e-05,
+            "mse_fraction": 0.017398075463915492,
+            "rmse_after_ideal_band_deletion_rad": 0.05807109799472915,
+            "ideal_rmse_drop_rad": 0.0005118513625951351,
+            "ideal_rmse_drop_pct": 0.8737207126140387,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          },
+          "2_le_f_le_5_Hz": {
+            "bin_count": 60,
+            "mse_rad2": 3.323760030626107e-05,
+            "mse_fraction": 0.00968472283148018,
+            "rmse_after_ideal_band_deletion_rad": 0.05829857935744713,
+            "ideal_rmse_drop_rad": 0.0002843699998771529,
+            "ideal_rmse_drop_pct": 0.48541427667400255,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          },
+          "f_gt_5_Hz": {
+            "bin_count": 9900,
+            "mse_rad2": 1.5643578984672481e-06,
+            "mse_fraction": 0.000455820291365565,
+            "rmse_after_ideal_band_deletion_rad": 0.058569596186966784,
+            "ideal_rmse_drop_rad": 1.335317035749961e-05,
+            "ideal_rmse_drop_pct": 0.02279361231209528,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          }
+        },
+        "finite_window_leakage_note": "Finite-window leakage applies: the 20,001 samples include both t=0 and t=20 s, so the DFT's periodic extension is 20.001 s and generally has endpoint mismatch; non-bin-centered components spread across adjacent bins and band edges."
+      },
+      "same_scene_B_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\b_traceable_c3core_dev72_20261023\\runs_b\\DL1018_DEV_T3_C09_W09\\B_TRACEABLE_C3CORE_V1\\attempt_01\\raw_run.mat",
+      "same_scene_B_raw_sha256": "a8cec3af85c0988622a3582385a44a201aa2d5e796fa73a933277cde0cf85f49",
+      "same_scene_B_task_rmse_from_raw_SO3_rad": 0.05906125628102724,
+      "summary_B_task_rmse_rad": 0.05906125628102724,
+      "B_vs_summary_delta_rad": 0.0,
+      "B_summary_consistent_1e_10": true,
+      "same_scene_B_parseval": {
+        "sample_count": 20001,
+        "sample_interval_s": 0.001,
+        "record_endpoint_s": 20.0,
+        "dft_period_s": 20.001,
+        "frequency_bin_width_Hz": 0.049997500124993745,
+        "mse_direct_rad2": 0.0034882319934931797,
+        "mse_parseval_rad2": 0.003488231993493179,
+        "parseval_abs_error_rad2": 8.673617379884035e-19,
+        "bands": {
+          "DC": {
+            "bin_count": 1,
+            "mse_rad2": 0.0032493598013684562,
+            "mse_fraction": 0.9315205546619872,
+            "rmse_after_ideal_band_deletion_rad": 0.015455490678872783,
+            "ideal_rmse_drop_rad": 0.043605765602154456,
+            "ideal_rmse_drop_pct": 73.83142240433905,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          },
+          "0_lt_f_lt_0p5_Hz": {
+            "bin_count": 10,
+            "mse_rad2": 9.133494738586895e-05,
+            "mse_fraction": 0.026183736504980695,
+            "rmse_after_ideal_band_deletion_rad": 0.058282905264814236,
+            "ideal_rmse_drop_rad": 0.0007783510162130067,
+            "ideal_rmse_drop_pct": 1.3178707417082882,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          },
+          "0p5_le_f_lt_2_Hz": {
+            "bin_count": 30,
+            "mse_rad2": 0.00012422635886750905,
+            "mse_fraction": 0.03561298649265197,
+            "rmse_after_ideal_band_deletion_rad": 0.05800004857433889,
+            "ideal_rmse_drop_rad": 0.0010612077066883552,
+            "ideal_rmse_drop_pct": 1.7967916253573768,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          },
+          "2_le_f_le_5_Hz": {
+            "bin_count": 60,
+            "mse_rad2": 2.156102039483766e-05,
+            "mse_fraction": 0.006181074089985069,
+            "rmse_after_ideal_band_deletion_rad": 0.05887844234606026,
+            "ideal_rmse_drop_rad": 0.00018281393496698273,
+            "ideal_rmse_drop_pct": 0.3095327571379643,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          },
+          "f_gt_5_Hz": {
+            "bin_count": 9900,
+            "mse_rad2": 1.7498654765062905e-06,
+            "mse_fraction": 0.0005016482503945912,
+            "rmse_after_ideal_band_deletion_rad": 0.059046440434768574,
+            "ideal_rmse_drop_rad": 1.4815846258668663e-05,
+            "ideal_rmse_drop_pct": 0.025085558946073564,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          }
+        },
+        "finite_window_leakage_note": "Finite-window leakage applies: the 20,001 samples include both t=0 and t=20 s, so the DFT's periodic extension is 20.001 s and generally has endpoint mismatch; non-bin-centered components spread across adjacent bins and band edges."
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C10_W11",
+      "task": "T3",
+      "wind_code": "W11",
+      "candidate_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\causal_n4_gate_train24_batch_v2\\runs\\DL1018_DEV_T3_C10_W11\\attempt_01\\raw_run.mat",
+      "candidate_raw_sha256": "a2d37a9a122679322d396736f717b9ae2ad4ed40b700b43f514f697e446d35f5",
+      "candidate_task_rmse_from_log_SO3_rad": 0.05172122038320029,
+      "summary_candidate_task_rmse_rad": 0.05172122038320029,
+      "candidate_vs_summary_delta_rad": 0.0,
+      "candidate_summary_consistent_1e_10": true,
+      "same_scene_B_task_rmse_from_summary_rad": 0.0522519654506897,
+      "candidate_vs_B_improvement_pct": 1.0157418250424932,
+      "error_log_vector_definition": "Log(R_task^T R_actual) as a right-multiplied SO(3) rotvec; theta=norm(rotvec).",
+      "parseval": {
+        "sample_count": 20001,
+        "sample_interval_s": 0.001,
+        "record_endpoint_s": 20.0,
+        "dft_period_s": 20.001,
+        "frequency_bin_width_Hz": 0.049997500124993745,
+        "mse_direct_rad2": 0.002675084637927574,
+        "mse_parseval_rad2": 0.0026750846379275735,
+        "parseval_abs_error_rad2": 4.336808689942018e-19,
+        "bands": {
+          "DC": {
+            "bin_count": 1,
+            "mse_rad2": 0.0022701028689821995,
+            "mse_fraction": 0.8486097362290864,
+            "rmse_after_ideal_band_deletion_rad": 0.02012415883820674,
+            "ideal_rmse_drop_rad": 0.03159706154499356,
+            "ideal_rmse_drop_pct": 61.091098220212686,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          },
+          "0_lt_f_lt_0p5_Hz": {
+            "bin_count": 10,
+            "mse_rad2": 7.076167639954272e-05,
+            "mse_fraction": 0.02645212618557101,
+            "rmse_after_ideal_band_deletion_rad": 0.05103256765564546,
+            "ideal_rmse_drop_rad": 0.0006886527275548338,
+            "ideal_rmse_drop_pct": 1.3314703760905782,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          },
+          "0p5_le_f_lt_2_Hz": {
+            "bin_count": 30,
+            "mse_rad2": 0.00016492029466040958,
+            "mse_fraction": 0.06165049595895242,
+            "rmse_after_ideal_band_deletion_rad": 0.05010154032828895,
+            "ideal_rmse_drop_rad": 0.0016196800549113446,
+            "ideal_rmse_drop_pct": 3.1315580779246988,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          },
+          "2_le_f_le_5_Hz": {
+            "bin_count": 60,
+            "mse_rad2": 0.0001660997933219701,
+            "mse_fraction": 0.062091416087174715,
+            "rmse_after_ideal_band_deletion_rad": 0.05008976786336311,
+            "ideal_rmse_drop_rad": 0.0016314525198371857,
+            "ideal_rmse_drop_pct": 3.1543194606581673,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          },
+          "f_gt_5_Hz": {
+            "bin_count": 9900,
+            "mse_rad2": 3.200004563451806e-06,
+            "mse_fraction": 0.0011962255392154227,
+            "rmse_after_ideal_band_deletion_rad": 0.051690276003946066,
+            "ideal_rmse_drop_rad": 3.0944379254230214e-05,
+            "ideal_rmse_drop_pct": 0.05982917461143538,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          }
+        },
+        "finite_window_leakage_note": "Finite-window leakage applies: the 20,001 samples include both t=0 and t=20 s, so the DFT's periodic extension is 20.001 s and generally has endpoint mismatch; non-bin-centered components spread across adjacent bins and band edges."
+      },
+      "same_scene_B_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\b_traceable_c3core_dev72_20261023\\runs_b\\DL1018_DEV_T3_C10_W11\\B_TRACEABLE_C3CORE_V1\\attempt_01\\raw_run.mat",
+      "same_scene_B_raw_sha256": "afb64af0c42aa1161e123c929a0acc6988e2899e02dd88bb7686817fd3fb0bf4",
+      "same_scene_B_task_rmse_from_raw_SO3_rad": 0.0522519654506897,
+      "summary_B_task_rmse_rad": 0.0522519654506897,
+      "B_vs_summary_delta_rad": 0.0,
+      "B_summary_consistent_1e_10": true,
+      "same_scene_B_parseval": {
+        "sample_count": 20001,
+        "sample_interval_s": 0.001,
+        "record_endpoint_s": 20.0,
+        "dft_period_s": 20.001,
+        "frequency_bin_width_Hz": 0.049997500124993745,
+        "mse_direct_rad2": 0.0027302678934600704,
+        "mse_parseval_rad2": 0.0027302678934600696,
+        "parseval_abs_error_rad2": 8.673617379884035e-19,
+        "bands": {
+          "DC": {
+            "bin_count": 1,
+            "mse_rad2": 0.0022666590324071523,
+            "mse_fraction": 0.830196567097529,
+            "rmse_after_ideal_band_deletion_rad": 0.02153157822949628,
+            "ideal_rmse_drop_rad": 0.030720387221193426,
+            "ideal_rmse_drop_pct": 58.79278790036008,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          },
+          "0_lt_f_lt_0p5_Hz": {
+            "bin_count": 10,
+            "mse_rad2": 8.349133248004487e-05,
+            "mse_fraction": 0.030579904880409462,
+            "rmse_after_ideal_band_deletion_rad": 0.051446832370710883,
+            "ideal_rmse_drop_rad": 0.0008051330799788217,
+            "ideal_rmse_drop_pct": 1.5408665933124135,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          },
+          "0p5_le_f_lt_2_Hz": {
+            "bin_count": 30,
+            "mse_rad2": 0.00028164979246708466,
+            "mse_fraction": 0.10315829927961746,
+            "rmse_after_ideal_band_deletion_rad": 0.049483513426119875,
+            "ideal_rmse_drop_rad": 0.00276845202456983,
+            "ideal_rmse_drop_pct": 5.298273472951795,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          },
+          "2_le_f_le_5_Hz": {
+            "bin_count": 60,
+            "mse_rad2": 9.677045763742233e-05,
+            "mse_fraction": 0.035443576020221614,
+            "rmse_after_ideal_band_deletion_rad": 0.05131761330988268,
+            "ideal_rmse_drop_rad": 0.0009343521408070252,
+            "ideal_rmse_drop_pct": 1.7881664981363723,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          },
+          "f_gt_5_Hz": {
+            "bin_count": 9900,
+            "mse_rad2": 1.6972784683653703e-06,
+            "mse_fraction": 0.0006216527222222168,
+            "rmse_after_ideal_band_deletion_rad": 0.05223572163751263,
+            "ideal_rmse_drop_rad": 1.6243813177073407e-05,
+            "ideal_rmse_drop_pct": 0.031087468264524385,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          }
+        },
+        "finite_window_leakage_note": "Finite-window leakage applies: the 20,001 samples include both t=0 and t=20 s, so the DFT's periodic extension is 20.001 s and generally has endpoint mismatch; non-bin-centered components spread across adjacent bins and band edges."
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C13_W12",
+      "task": "T3",
+      "wind_code": "W12",
+      "candidate_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\causal_n4_gate_train24_batch_v2\\runs\\DL1018_DEV_T3_C13_W12\\attempt_01\\raw_run.mat",
+      "candidate_raw_sha256": "4c91a0d9166b4c5ae0f1926fe04c9c9eccb06dc5cc15eefeb01f1899a1206a14",
+      "candidate_task_rmse_from_log_SO3_rad": 0.04194285252914149,
+      "summary_candidate_task_rmse_rad": 0.04194285252914149,
+      "candidate_vs_summary_delta_rad": 0.0,
+      "candidate_summary_consistent_1e_10": true,
+      "same_scene_B_task_rmse_from_summary_rad": 0.042393916917709905,
+      "candidate_vs_B_improvement_pct": 1.063983753716291,
+      "error_log_vector_definition": "Log(R_task^T R_actual) as a right-multiplied SO(3) rotvec; theta=norm(rotvec).",
+      "parseval": {
+        "sample_count": 20001,
+        "sample_interval_s": 0.001,
+        "record_endpoint_s": 20.0,
+        "dft_period_s": 20.001,
+        "frequency_bin_width_Hz": 0.049997500124993745,
+        "mse_direct_rad2": 0.0017592028782813106,
+        "mse_parseval_rad2": 0.0017592028782813106,
+        "parseval_abs_error_rad2": 0.0,
+        "bands": {
+          "DC": {
+            "bin_count": 1,
+            "mse_rad2": 0.0016505959107222128,
+            "mse_fraction": 0.9382635346383679,
+            "rmse_after_ideal_band_deletion_rad": 0.010421466670248375,
+            "ideal_rmse_drop_rad": 0.031521385858893115,
+            "ideal_rmse_drop_pct": 75.15317618655612,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          },
+          "0_lt_f_lt_0p5_Hz": {
+            "bin_count": 10,
+            "mse_rad2": 5.6939348060213895e-05,
+            "mse_fraction": 0.03236656144846805,
+            "rmse_after_ideal_band_deletion_rad": 0.04125849646098482,
+            "ideal_rmse_drop_rad": 0.0006843560681566718,
+            "ideal_rmse_drop_pct": 1.6316393065569106,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          },
+          "0p5_le_f_lt_2_Hz": {
+            "bin_count": 30,
+            "mse_rad2": 4.485462268525078e-05,
+            "mse_fraction": 0.0254971289775699,
+            "rmse_after_ideal_band_deletion_rad": 0.04140468881172831,
+            "ideal_rmse_drop_rad": 0.0005381637174131787,
+            "ideal_rmse_drop_pct": 1.2830880232556137,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          },
+          "2_le_f_le_5_Hz": {
+            "bin_count": 60,
+            "mse_rad2": 5.891640653438881e-06,
+            "mse_fraction": 0.0033490399124374106,
+            "rmse_after_ideal_band_deletion_rad": 0.041872559482647724,
+            "ideal_rmse_drop_rad": 7.029304649376622e-05,
+            "ideal_rmse_drop_pct": 0.1675924317377491,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          },
+          "f_gt_5_Hz": {
+            "bin_count": 9900,
+            "mse_rad2": 9.213561601943589e-07,
+            "mse_fraction": 0.0005237350231569065,
+            "rmse_after_ideal_band_deletion_rad": 0.04193186762023743,
+            "ideal_rmse_drop_rad": 1.098490890406173e-05,
+            "ideal_rmse_drop_pct": 0.026190180785700068,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          }
+        },
+        "finite_window_leakage_note": "Finite-window leakage applies: the 20,001 samples include both t=0 and t=20 s, so the DFT's periodic extension is 20.001 s and generally has endpoint mismatch; non-bin-centered components spread across adjacent bins and band edges."
+      },
+      "same_scene_B_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\b_traceable_c3core_dev72_20261023\\runs_b\\DL1018_DEV_T3_C13_W12\\B_TRACEABLE_C3CORE_V1\\attempt_01\\raw_run.mat",
+      "same_scene_B_raw_sha256": "cdc06f1810f6a0d7fb42e940a2a2feb1a32ad13fd46b9535f03c8d255a6628e6",
+      "same_scene_B_task_rmse_from_raw_SO3_rad": 0.042393916917709905,
+      "summary_B_task_rmse_rad": 0.042393916917709905,
+      "B_vs_summary_delta_rad": 0.0,
+      "B_summary_consistent_1e_10": true,
+      "same_scene_B_parseval": {
+        "sample_count": 20001,
+        "sample_interval_s": 0.001,
+        "record_endpoint_s": 20.0,
+        "dft_period_s": 20.001,
+        "frequency_bin_width_Hz": 0.049997500124993745,
+        "mse_direct_rad2": 0.0017972441916256903,
+        "mse_parseval_rad2": 0.0017972441916256907,
+        "parseval_abs_error_rad2": 4.336808689942018e-19,
+        "bands": {
+          "DC": {
+            "bin_count": 1,
+            "mse_rad2": 0.001648773106485071,
+            "mse_fraction": 0.9173895868839502,
+            "rmse_after_ideal_band_deletion_rad": 0.01218487115814604,
+            "ideal_rmse_drop_rad": 0.030209045759563867,
+            "ideal_rmse_drop_pct": 71.25797273746166,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          },
+          "0_lt_f_lt_0p5_Hz": {
+            "bin_count": 10,
+            "mse_rad2": 6.507764135858735e-05,
+            "mse_fraction": 0.036209682391418176,
+            "rmse_after_ideal_band_deletion_rad": 0.041619305019030564,
+            "ideal_rmse_drop_rad": 0.0007746118986793407,
+            "ideal_rmse_drop_pct": 1.8271769984899635,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          },
+          "0p5_le_f_lt_2_Hz": {
+            "bin_count": 30,
+            "mse_rad2": 8.068488794215122e-05,
+            "mse_fraction": 0.044893670163522977,
+            "rmse_after_ideal_band_deletion_rad": 0.04143138066349635,
+            "ideal_rmse_drop_rad": 0.0009625362542135529,
+            "ideal_rmse_drop_pct": 2.2704584152531018,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          },
+          "2_le_f_le_5_Hz": {
+            "bin_count": 60,
+            "mse_rad2": 1.951001565975317e-06,
+            "mse_fraction": 0.0010855517436451116,
+            "rmse_after_ideal_band_deletion_rad": 0.04237090027435947,
+            "ideal_rmse_drop_rad": 2.3016643350436128e-05,
+            "ideal_rmse_drop_pct": 0.054292325465262706,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          },
+          "f_gt_5_Hz": {
+            "bin_count": 9900,
+            "mse_rad2": 7.575542739059966e-07,
+            "mse_fraction": 0.0004215088174638939,
+            "rmse_after_ideal_band_deletion_rad": 0.04238498127110338,
+            "ideal_rmse_drop_rad": 8.935646606526848e-06,
+            "ideal_rmse_drop_pct": 0.02107766221241523,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          }
+        },
+        "finite_window_leakage_note": "Finite-window leakage applies: the 20,001 samples include both t=0 and t=20 s, so the DFT's periodic extension is 20.001 s and generally has endpoint mismatch; non-bin-centered components spread across adjacent bins and band edges."
+      }
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C15_W14",
+      "task": "T3",
+      "wind_code": "W14",
+      "candidate_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\causal_n4_gate_train24_batch_v2\\runs\\DL1018_DEV_T3_C15_W14\\attempt_01\\raw_run.mat",
+      "candidate_raw_sha256": "87a86f337ca0dcd8b569171f561ada43bfd151dafbc65fb39ee0ed6c0617e38a",
+      "candidate_task_rmse_from_log_SO3_rad": 0.05845098743220471,
+      "summary_candidate_task_rmse_rad": 0.05845098743220471,
+      "candidate_vs_summary_delta_rad": 0.0,
+      "candidate_summary_consistent_1e_10": true,
+      "same_scene_B_task_rmse_from_summary_rad": 0.05934897184873463,
+      "candidate_vs_B_improvement_pct": 1.5130580843399466,
+      "error_log_vector_definition": "Log(R_task^T R_actual) as a right-multiplied SO(3) rotvec; theta=norm(rotvec).",
+      "parseval": {
+        "sample_count": 20001,
+        "sample_interval_s": 0.001,
+        "record_endpoint_s": 20.0,
+        "dft_period_s": 20.001,
+        "frequency_bin_width_Hz": 0.049997500124993745,
+        "mse_direct_rad2": 0.003416517931799754,
+        "mse_parseval_rad2": 0.003416517931799754,
+        "parseval_abs_error_rad2": 0.0,
+        "bands": {
+          "DC": {
+            "bin_count": 1,
+            "mse_rad2": 0.0031038701428634297,
+            "mse_fraction": 0.908489346411354,
+            "rmse_after_ideal_band_deletion_rad": 0.017681849137924584,
+            "ideal_rmse_drop_rad": 0.04076913829428014,
+            "ideal_rmse_drop_pct": 69.74927214286474,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          },
+          "0_lt_f_lt_0p5_Hz": {
+            "bin_count": 10,
+            "mse_rad2": 0.00012592235464560164,
+            "mse_fraction": 0.03685692777244352,
+            "rmse_after_ideal_band_deletion_rad": 0.05736371306979834,
+            "ideal_rmse_drop_rad": 0.0010872743624063819,
+            "ideal_rmse_drop_pct": 1.8601471252602428,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          },
+          "0p5_le_f_lt_2_Hz": {
+            "bin_count": 30,
+            "mse_rad2": 0.00015173786763468726,
+            "mse_fraction": 0.04441301660452716,
+            "rmse_after_ideal_band_deletion_rad": 0.05713825394746559,
+            "ideal_rmse_drop_rad": 0.0013127334847391273,
+            "ideal_rmse_drop_pct": 2.245870501780182,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          },
+          "2_le_f_le_5_Hz": {
+            "bin_count": 60,
+            "mse_rad2": 3.37943797091141e-05,
+            "mse_fraction": 0.009891468560597277,
+            "rmse_after_ideal_band_deletion_rad": 0.05816118595842626,
+            "ideal_rmse_drop_rad": 0.00028980147377846016,
+            "ideal_rmse_drop_pct": 0.4958025287675266,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          },
+          "f_gt_5_Hz": {
+            "bin_count": 9900,
+            "mse_rad2": 1.1931869469212573e-06,
+            "mse_fraction": 0.0003492406510779559,
+            "rmse_after_ideal_band_deletion_rad": 0.05844077981044429,
+            "ideal_rmse_drop_rad": 1.0207621760426056e-05,
+            "ideal_rmse_drop_pct": 0.017463557433081048,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          }
+        },
+        "finite_window_leakage_note": "Finite-window leakage applies: the 20,001 samples include both t=0 and t=20 s, so the DFT's periodic extension is 20.001 s and generally has endpoint mismatch; non-bin-centered components spread across adjacent bins and band edges."
+      },
+      "same_scene_B_raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\b_traceable_c3core_dev72_20261023\\runs_b\\DL1018_DEV_T3_C15_W14\\B_TRACEABLE_C3CORE_V1\\attempt_01\\raw_run.mat",
+      "same_scene_B_raw_sha256": "85515327d99bb679c1ca51a4d36c36cb3d7704a72748744f915ddb24e31116a4",
+      "same_scene_B_task_rmse_from_raw_SO3_rad": 0.05934897184873463,
+      "summary_B_task_rmse_rad": 0.05934897184873463,
+      "B_vs_summary_delta_rad": 0.0,
+      "B_summary_consistent_1e_10": true,
+      "same_scene_B_parseval": {
+        "sample_count": 20001,
+        "sample_interval_s": 0.001,
+        "record_endpoint_s": 20.0,
+        "dft_period_s": 20.001,
+        "frequency_bin_width_Hz": 0.049997500124993745,
+        "mse_direct_rad2": 0.003522300459501896,
+        "mse_parseval_rad2": 0.003522300459501895,
+        "parseval_abs_error_rad2": 8.673617379884035e-19,
+        "bands": {
+          "DC": {
+            "bin_count": 1,
+            "mse_rad2": 0.003117031256736402,
+            "mse_fraction": 0.8849418987888372,
+            "rmse_after_ideal_band_deletion_rad": 0.020131299082908043,
+            "ideal_rmse_drop_rad": 0.03921767276582659,
+            "ideal_rmse_drop_pct": 66.07978460988747,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          },
+          "0_lt_f_lt_0p5_Hz": {
+            "bin_count": 10,
+            "mse_rad2": 0.0001265553009489886,
+            "mse_fraction": 0.0359297289950345,
+            "rmse_after_ideal_band_deletion_rad": 0.05827302256235648,
+            "ideal_rmse_drop_rad": 0.00107594928637815,
+            "ideal_rmse_drop_pct": 1.8129198415104306,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          },
+          "0p5_le_f_lt_2_Hz": {
+            "bin_count": 30,
+            "mse_rad2": 0.00026713506690512483,
+            "mse_fraction": 0.07584107885643054,
+            "rmse_after_ideal_band_deletion_rad": 0.05705405675845295,
+            "ideal_rmse_drop_rad": 0.0022949150902816795,
+            "ideal_rmse_drop_pct": 3.8668152434566716,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          },
+          "2_le_f_le_5_Hz": {
+            "bin_count": 60,
+            "mse_rad2": 1.0325281889302477e-05,
+            "mse_fraction": 0.002931402930561642,
+            "rmse_after_ideal_band_deletion_rad": 0.059261920130996376,
+            "ideal_rmse_drop_rad": 8.705171773825543e-05,
+            "ideal_rmse_drop_pct": 0.1466777182932975,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          },
+          "f_gt_5_Hz": {
+            "bin_count": 9900,
+            "mse_rad2": 1.2535530220792548e-06,
+            "mse_fraction": 0.00035589042913633924,
+            "rmse_after_ideal_band_deletion_rad": 0.05933841004340963,
+            "ideal_rmse_drop_rad": 1.056180532500034e-05,
+            "ideal_rmse_drop_pct": 0.017796104963569856,
+            "note": "Band removal is an offline Fourier projection of the finite-window error vector. It is not a control-reachable upper bound; it ignores causality, actuator limits, closed-loop dynamics, and SO(3) composition after correction."
+          }
+        },
+        "finite_window_leakage_note": "Finite-window leakage applies: the 20,001 samples include both t=0 and t=20 s, so the DFT's periodic extension is 20.001 s and generally has endpoint mismatch; non-bin-centered components spread across adjacent bins and band edges."
+      }
+    }
+  ]
+}

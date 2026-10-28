@@ -1,0 +1,263 @@
+{
+  "schema": "DL1018_FORCE09_ACTUAL_WIND_CLASSIFICATION_AUDIT_V1",
+  "status": "PASS_RAW_FIELD_RECLASSIFICATION",
+  "created_local_date": "2026-10-27",
+  "scope": "Only the 12 authorized DEV/VAL candidate raws in closed_loop_force09_v1; no TEST arrays read.",
+  "classification_rule": "ACTUAL_NO_WIND_RAW iff max(abs(scene/environment_wind_I)) == 0.0 exactly; otherwise ACTUAL_NONZERO_WIND_RAW. Scene-ID Wxx is retained as scene metadata only. No low-wind threshold/group is inferred.",
+  "source_field": "MATLAB v7.3 raw_run.mat scene/environment_wind_I; only this field and scene_id were read from raw files.",
+  "count": 12,
+  "group_counts": {
+    "ACTUAL_NO_WIND_RAW": 3,
+    "ACTUAL_NONZERO_WIND_RAW": 9
+  },
+  "nonzero_max_speed_range_mps": [
+    11.488877206896609,
+    16.999999373701762
+  ],
+  "scorer_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261027\\mlp15_nominal_residual_v1\\closed_loop_force09_v1\\audits\\score_closed_loop_v1.py",
+  "scorer_sha256_after_wind_patch": "8580b63d53369dcd335ef5c115140b0b4dd9b799f24aa983bb53a2ea78c6a20d",
+  "metric_values_modified": false,
+  "scorer_executed": false,
+  "rows": [
+    {
+      "scene_id": "DL1018_DEV_T1_C01_W15",
+      "split": "DEV",
+      "scene_wind_index": 15,
+      "legacy_scene_index_group": "W15",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261027\\mlp15_nominal_residual_v1\\closed_loop_force09_v1\\runs\\DL1018_DEV_T1_C01_W15\\PHYS_RESIDUAL_ATTEMPT_01\\raw_run.mat",
+      "raw_sha256": "d3041d5e53fbd35096b27661cd1f6792193a98644b01e6c1e30e34894f919d85",
+      "status_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261027\\mlp15_nominal_residual_v1\\closed_loop_force09_v1\\runs\\DL1018_DEV_T1_C01_W15\\PHYS_RESIDUAL_ATTEMPT_01\\run_status.json",
+      "status_sha256": "bd1bd77f9109b8cf83cc06d79c545c76948c5eb679d69acf3fa1c12ca9ba23b3",
+      "environment_wind_field": "scene/environment_wind_I",
+      "environment_wind_shape": [
+        3,
+        20001
+      ],
+      "max_abs_component_mps": 0.0,
+      "max_speed_mps": 0.0,
+      "actual_wind_group": "ACTUAL_NO_WIND_RAW",
+      "raw_status_sha256_match": true,
+      "test_data_read": false
+    },
+    {
+      "scene_id": "DL1018_DEV_T1_C10_W09",
+      "split": "DEV",
+      "scene_wind_index": 9,
+      "legacy_scene_index_group": "HF_W09_W14",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261027\\mlp15_nominal_residual_v1\\closed_loop_force09_v1\\runs\\DL1018_DEV_T1_C10_W09\\PHYS_RESIDUAL_ATTEMPT_01\\raw_run.mat",
+      "raw_sha256": "f272f364a6e92dcc829ceb3a818f726580e2e1a9a3f15191c6d4b95cde9bb7ea",
+      "status_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261027\\mlp15_nominal_residual_v1\\closed_loop_force09_v1\\runs\\DL1018_DEV_T1_C10_W09\\PHYS_RESIDUAL_ATTEMPT_01\\run_status.json",
+      "status_sha256": "22f2b1bec9e72dffad163f1f909eb56b4a1d0e25d11046598601081ca118dff7",
+      "environment_wind_field": "scene/environment_wind_I",
+      "environment_wind_shape": [
+        3,
+        20001
+      ],
+      "max_abs_component_mps": 8.81260956292762,
+      "max_speed_mps": 11.499900869395601,
+      "actual_wind_group": "ACTUAL_NONZERO_WIND_RAW",
+      "raw_status_sha256_match": true,
+      "test_data_read": false
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C00_W04",
+      "split": "DEV",
+      "scene_wind_index": 4,
+      "legacy_scene_index_group": "W00_W08",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261027\\mlp15_nominal_residual_v1\\closed_loop_force09_v1\\runs\\DL1018_DEV_T2_C00_W04\\PHYS_RESIDUAL_ATTEMPT_01\\raw_run.mat",
+      "raw_sha256": "9ce27392e57aa5583d06acfe1182eb9d3a27faa79288b886469d99f2d62e5ee5",
+      "status_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261027\\mlp15_nominal_residual_v1\\closed_loop_force09_v1\\runs\\DL1018_DEV_T2_C00_W04\\PHYS_RESIDUAL_ATTEMPT_01\\run_status.json",
+      "status_sha256": "cc2c214013343b115673ba3e9733438b8f8c696ace46cfdc3ea83091775ad144",
+      "environment_wind_field": "scene/environment_wind_I",
+      "environment_wind_shape": [
+        3,
+        20001
+      ],
+      "max_abs_component_mps": 11.264862002143548,
+      "max_speed_mps": 14.69993597322565,
+      "actual_wind_group": "ACTUAL_NONZERO_WIND_RAW",
+      "raw_status_sha256_match": true,
+      "test_data_read": false
+    },
+    {
+      "scene_id": "DL1018_DEV_T2_C09_W10",
+      "split": "DEV",
+      "scene_wind_index": 10,
+      "legacy_scene_index_group": "HF_W09_W14",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261027\\mlp15_nominal_residual_v1\\closed_loop_force09_v1\\runs\\DL1018_DEV_T2_C09_W10\\PHYS_RESIDUAL_ATTEMPT_01\\raw_run.mat",
+      "raw_sha256": "e65aa828b6e91243bd49b38e38aae962916509c1eb81e81671b937731ca3ec16",
+      "status_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261027\\mlp15_nominal_residual_v1\\closed_loop_force09_v1\\runs\\DL1018_DEV_T2_C09_W10\\PHYS_RESIDUAL_ATTEMPT_01\\run_status.json",
+      "status_sha256": "f4de0437bde31f9e3a1f031c2e38d4af36cf9f65cdf967bdf4291a643ded0bc0",
+      "environment_wind_field": "scene/environment_wind_I",
+      "environment_wind_shape": [
+        3,
+        20001
+      ],
+      "max_abs_component_mps": 14.316950889697758,
+      "max_speed_mps": 14.949896670669824,
+      "actual_wind_group": "ACTUAL_NONZERO_WIND_RAW",
+      "raw_status_sha256_match": true,
+      "test_data_read": false
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C00_W05",
+      "split": "DEV",
+      "scene_wind_index": 5,
+      "legacy_scene_index_group": "W00_W08",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261027\\mlp15_nominal_residual_v1\\closed_loop_force09_v1\\runs\\DL1018_DEV_T3_C00_W05\\PHYS_RESIDUAL_ATTEMPT_01\\raw_run.mat",
+      "raw_sha256": "d98b401000e0ad450fbd5603c305de115405b973dfa6eb44191678669007d8d3",
+      "status_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261027\\mlp15_nominal_residual_v1\\closed_loop_force09_v1\\runs\\DL1018_DEV_T3_C00_W05\\PHYS_RESIDUAL_ATTEMPT_01\\run_status.json",
+      "status_sha256": "2d51234aefd09c793b2f6e6cc917866e98228632f4a61671f4c9a109f47ee68a",
+      "environment_wind_field": "scene/environment_wind_I",
+      "environment_wind_shape": [
+        3,
+        20001
+      ],
+      "max_abs_component_mps": 12.798957987821819,
+      "max_speed_mps": 16.701834688182107,
+      "actual_wind_group": "ACTUAL_NONZERO_WIND_RAW",
+      "raw_status_sha256_match": true,
+      "test_data_read": false
+    },
+    {
+      "scene_id": "DL1018_DEV_T3_C09_W09",
+      "split": "DEV",
+      "scene_wind_index": 9,
+      "legacy_scene_index_group": "HF_W09_W14",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261027\\mlp15_nominal_residual_v1\\closed_loop_force09_v1\\runs\\DL1018_DEV_T3_C09_W09\\PHYS_RESIDUAL_ATTEMPT_01\\raw_run.mat",
+      "raw_sha256": "a2cce42e7020514f58646ab43799b248efc55e9dd844535e4bb08b0f6b70b629",
+      "status_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261027\\mlp15_nominal_residual_v1\\closed_loop_force09_v1\\runs\\DL1018_DEV_T3_C09_W09\\PHYS_RESIDUAL_ATTEMPT_01\\run_status.json",
+      "status_sha256": "a6c3fcd0f3fde74650a7b1ae8d4737f706e8947f763a2039cae76cadcfc42cf9",
+      "environment_wind_field": "scene/environment_wind_I",
+      "environment_wind_shape": [
+        3,
+        20001
+      ],
+      "max_abs_component_mps": 11.002463386359778,
+      "max_speed_mps": 11.488877206896609,
+      "actual_wind_group": "ACTUAL_NONZERO_WIND_RAW",
+      "raw_status_sha256_match": true,
+      "test_data_read": false
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C00_W07",
+      "split": "VAL",
+      "scene_wind_index": 7,
+      "legacy_scene_index_group": "W00_W08",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261027\\mlp15_nominal_residual_v1\\closed_loop_force09_v1\\runs\\DL1018_VAL_T1_C00_W07\\PHYS_RESIDUAL_ATTEMPT_01\\raw_run.mat",
+      "raw_sha256": "94e688784d6086772d58f77fbccaac4395e2251c275a2c6435831775468b3a55",
+      "status_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261027\\mlp15_nominal_residual_v1\\closed_loop_force09_v1\\runs\\DL1018_VAL_T1_C00_W07\\PHYS_RESIDUAL_ATTEMPT_01\\run_status.json",
+      "status_sha256": "08a6b66f4520405b3be1543f668e5de7ad99d5d7ed5358024649606f44e99207",
+      "environment_wind_field": "scene/environment_wind_I",
+      "environment_wind_shape": [
+        3,
+        20001
+      ],
+      "max_abs_component_mps": 12.947063123662767,
+      "max_speed_mps": 14.949980759323555,
+      "actual_wind_group": "ACTUAL_NONZERO_WIND_RAW",
+      "raw_status_sha256_match": true,
+      "test_data_read": false
+    },
+    {
+      "scene_id": "DL1018_VAL_T1_C07_W14",
+      "split": "VAL",
+      "scene_wind_index": 14,
+      "legacy_scene_index_group": "HF_W09_W14",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261027\\mlp15_nominal_residual_v1\\closed_loop_force09_v1\\runs\\DL1018_VAL_T1_C07_W14\\PHYS_RESIDUAL_ATTEMPT_01\\raw_run.mat",
+      "raw_sha256": "03f8ee782f0cd144f03512d6fb952769940a53dfa00c7bb85dd045c51ab1d679",
+      "status_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261027\\mlp15_nominal_residual_v1\\closed_loop_force09_v1\\runs\\DL1018_VAL_T1_C07_W14\\PHYS_RESIDUAL_ATTEMPT_01\\run_status.json",
+      "status_sha256": "bc6a081839c17562692b01db1162c212e50c58f5b7c597f975e623b43340cb37",
+      "environment_wind_field": "scene/environment_wind_I",
+      "environment_wind_shape": [
+        3,
+        20001
+      ],
+      "max_abs_component_mps": 14.722010947957433,
+      "max_speed_mps": 16.99951396763168,
+      "actual_wind_group": "ACTUAL_NONZERO_WIND_RAW",
+      "raw_status_sha256_match": true,
+      "test_data_read": false
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C04_W14",
+      "split": "VAL",
+      "scene_wind_index": 14,
+      "legacy_scene_index_group": "HF_W09_W14",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261027\\mlp15_nominal_residual_v1\\closed_loop_force09_v1\\runs\\DL1018_VAL_T2_C04_W14\\PHYS_RESIDUAL_ATTEMPT_01\\raw_run.mat",
+      "raw_sha256": "abe44eaca098fc50a659c542b3101733aadc84dd4f96fb6a6482ac208df7bd21",
+      "status_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261027\\mlp15_nominal_residual_v1\\closed_loop_force09_v1\\runs\\DL1018_VAL_T2_C04_W14\\PHYS_RESIDUAL_ATTEMPT_01\\run_status.json",
+      "status_sha256": "d67736c0c125e8bbc6deefe91a8a3ac8fb72362cc39733c6d29acb4b9a5df091",
+      "environment_wind_field": "scene/environment_wind_I",
+      "environment_wind_shape": [
+        3,
+        20001
+      ],
+      "max_abs_component_mps": 14.220776639634042,
+      "max_speed_mps": 16.999999373701762,
+      "actual_wind_group": "ACTUAL_NONZERO_WIND_RAW",
+      "raw_status_sha256_match": true,
+      "test_data_read": false
+    },
+    {
+      "scene_id": "DL1018_VAL_T2_C05_W15",
+      "split": "VAL",
+      "scene_wind_index": 15,
+      "legacy_scene_index_group": "W15",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261027\\mlp15_nominal_residual_v1\\closed_loop_force09_v1\\runs\\DL1018_VAL_T2_C05_W15\\PHYS_RESIDUAL_ATTEMPT_01\\raw_run.mat",
+      "raw_sha256": "cc992affec52c55235aea0006b8806f8e63f0c7267643cdeac3178e38ddbf33b",
+      "status_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261027\\mlp15_nominal_residual_v1\\closed_loop_force09_v1\\runs\\DL1018_VAL_T2_C05_W15\\PHYS_RESIDUAL_ATTEMPT_01\\run_status.json",
+      "status_sha256": "f5a88c423d5eb083937764f614f0b9df6ab8e3fde670f35ef293e597c744aac0",
+      "environment_wind_field": "scene/environment_wind_I",
+      "environment_wind_shape": [
+        3,
+        20001
+      ],
+      "max_abs_component_mps": 0.0,
+      "max_speed_mps": 0.0,
+      "actual_wind_group": "ACTUAL_NO_WIND_RAW",
+      "raw_status_sha256_match": true,
+      "test_data_read": false
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C01_W14",
+      "split": "VAL",
+      "scene_wind_index": 14,
+      "legacy_scene_index_group": "HF_W09_W14",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261027\\mlp15_nominal_residual_v1\\closed_loop_force09_v1\\runs\\DL1018_VAL_T3_C01_W14\\PHYS_RESIDUAL_ATTEMPT_01\\raw_run.mat",
+      "raw_sha256": "7a55615bbc86261a4c9b12bcfcebebf7dc33a12444e93757edad7d07aa94420a",
+      "status_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261027\\mlp15_nominal_residual_v1\\closed_loop_force09_v1\\runs\\DL1018_VAL_T3_C01_W14\\PHYS_RESIDUAL_ATTEMPT_01\\run_status.json",
+      "status_sha256": "a36995a14cdb8388cd864e9c78d835ba91908ca3b2dbfc33e0f241f17cd0ad6a",
+      "environment_wind_field": "scene/environment_wind_I",
+      "environment_wind_shape": [
+        3,
+        20001
+      ],
+      "max_abs_component_mps": 14.217443625481199,
+      "max_speed_mps": 16.99601497538465,
+      "actual_wind_group": "ACTUAL_NONZERO_WIND_RAW",
+      "raw_status_sha256_match": true,
+      "test_data_read": false
+    },
+    {
+      "scene_id": "DL1018_VAL_T3_C02_W15",
+      "split": "VAL",
+      "scene_wind_index": 15,
+      "legacy_scene_index_group": "W15",
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261027\\mlp15_nominal_residual_v1\\closed_loop_force09_v1\\runs\\DL1018_VAL_T3_C02_W15\\PHYS_RESIDUAL_ATTEMPT_01\\raw_run.mat",
+      "raw_sha256": "49b1b0a499473edb7dc8e67200173224325bf1989544f4eea5cef5f434e3c26f",
+      "status_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261027\\mlp15_nominal_residual_v1\\closed_loop_force09_v1\\runs\\DL1018_VAL_T3_C02_W15\\PHYS_RESIDUAL_ATTEMPT_01\\run_status.json",
+      "status_sha256": "1aa5f97aad9a2f6c2ccd4dd1de32e42ab19ead28296c313edd288887790b9c69",
+      "environment_wind_field": "scene/environment_wind_I",
+      "environment_wind_shape": [
+        3,
+        20001
+      ],
+      "max_abs_component_mps": 0.0,
+      "max_speed_mps": 0.0,
+      "actual_wind_group": "ACTUAL_NO_WIND_RAW",
+      "raw_status_sha256_match": true,
+      "test_data_read": false
+    }
+  ]
+}

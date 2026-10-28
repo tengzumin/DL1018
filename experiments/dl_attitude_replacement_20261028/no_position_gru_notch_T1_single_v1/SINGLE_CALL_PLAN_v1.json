@@ -1,0 +1,127 @@
+{
+  "schema": "POSITION_DUAL_NOTCH_NO_POSITION_RESIDUAL_GRU_SINGLE_CALL_PLAN_V1",
+  "study_id": "position_compensation_dual_notch_no_residual_gru_ablation_T1_single_call_v1",
+  "status": "PREDECLARED_BEFORE_SINGLE_CALL",
+  "scene_id": "DL1018_DEV_T1_C10_W09",
+  "source_split": "TRAIN_C5_24",
+  "fold_id": "holdout_W06_10",
+  "wind_group": "W09, dominant tones 2.2/3.2 Hz",
+  "claim_limit": "One fixed W09 TRAIN scene; no cross-wind-spectrum generalization.",
+  "purpose": "Measure the incremental position residual-GRU effect with the parent cosine-attitude-GRU, frozen C5 position controller and dual notch held fixed.",
+  "entry_reason": {
+    "prior_frozen_replay_status": "FAIL_FIXED_FROZEN_REPLAY",
+    "why_one_call_is_authorized": "The no-residual-GRU arm has passed independent R2025b helper parity, source-lock, exact-options and full-runner noPlant checks. This fixed scene call isolates the added position-GRU contribution against the previously completed same-scene, same-filter arm.",
+    "parameters_or_thresholds_changed": false
+  },
+  "fixed_intervention": {
+    "sample_rate_hz": 100.0,
+    "centers_hz": [
+      2.2,
+      3.2
+    ],
+    "quality_factor_each": [
+      4.0,
+      4.0
+    ],
+    "action_limit_mps2": 3.0,
+    "filter_location": "after final C5 action, before force injection",
+    "held_between_events": true,
+    "position_residual_gru_enabled": false
+  },
+  "frozen_score": {
+    "implementation": "score_full72_candidate_v1.score_raw",
+    "metrics": [
+      "Q_m",
+      "task_SO3_rad",
+      "inner_SO3_rad",
+      "safety counters"
+    ],
+    "spectrum_sample_rate_hz": 1000.0,
+    "transitions": 20000,
+    "window": "symmetric Hann",
+    "detrend": "constant per channel",
+    "bands_hz": {
+      "peak_2p2": [
+        1.5,
+        2.5
+      ],
+      "peak_3p2": [
+        2.5,
+        3.5
+      ]
+    },
+    "spectrum_units": "vector RMS mrad",
+    "same_scene_comparators": [
+      "B",
+      "C5",
+      "parent_GRU",
+      "candidate_pre_dual_notch",
+      "dual_notch_with_position_residual_gru",
+      "dual_notch_no_position_residual_gru"
+    ],
+    "baseline_score_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\position_dc_penalty_oof_train_pair_preflight_W09_T1_C10_attempt014_v1\\audits\\TRAIN_SINGLE_SCENE_PAIRED_SCORE_v1.json",
+    "baseline_score_sha256": "6dc7d6c603e84fd07ec61dce938f2f819f046d97763751476251b7844286e89f",
+    "with_position_gru_score_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\position_compensation_dual_notch_train_diag_single_call_T1_v1\\audits\\DUAL_NOTCH_SINGLE_CALL_T1_SCORE_v1.json",
+    "with_position_gru_score_sha256": "251de957582824f145eb3cae8f9e83819bf7f59aa477056d0298a62a3c1692dd"
+  },
+  "score_inputs": {
+    "B": {
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\b_traceable_c3core_dev72_20261023\\runs_b\\DL1018_DEV_T1_C10_W09\\B_TRACEABLE_C3CORE_V1\\attempt_01\\raw_run.mat",
+      "status_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\b_traceable_c3core_dev72_20261023\\runs_b\\DL1018_DEV_T1_C10_W09\\B_TRACEABLE_C3CORE_V1\\attempt_01\\run_status.json",
+      "raw_sha256": "d1048a81954f856f3d4dac15d510f1cc7130775878bc4677ef76fd088c712a5f",
+      "status_sha256": "c72577a2033aa594889c2b6c284358dca592299f0b0896e62247f2b572dc7826"
+    },
+    "C5": {
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_DEV_T1_C10_W09\\C5_AXIS_MASK_M110\\attempt_01\\raw_run.mat",
+      "status_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\position_axis_coordinate_c5_dev72_20261023\\runs_dev72_v3\\DL1018_DEV_T1_C10_W09\\C5_AXIS_MASK_M110\\attempt_01\\run_status.json",
+      "raw_sha256": "1e684df2174bc6b754e7798c67acb5c0b4ead218bcc1bd7b1d5cfc1a2fcf4991",
+      "status_sha256": "d2caf08f0ffba7000de0d407db09905375618b0821c545bf4f5e63d299fa8d83"
+    },
+    "parent_GRU": {
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_full72_v1\\runs\\DL1018_DEV_T1_C10_W09\\raw_run.mat",
+      "status_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261026\\gru_stream_cosine_tracking_head_full72_v1\\runs\\DL1018_DEV_T1_C10_W09\\run_status.json",
+      "raw_sha256": "c40239f9c9a6cea0f233eabdea3294b20ff4d3384e22a59055dc4e5358f5b541",
+      "status_sha256": "ca639bd5b85adcb9f8ba7d70c8434272628aa8c45c77eadc347ee44a706770bd"
+    },
+    "candidate_pre_dual_notch": {
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\position_dc_penalty_oof_train_pair_preflight_W09_T1_C10_attempt014_v1\\runs\\DL1018_DEV_T1_C10_W09\\attempt_01\\raw_run.mat",
+      "status_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\position_dc_penalty_oof_train_pair_preflight_W09_T1_C10_attempt014_v1\\runs\\DL1018_DEV_T1_C10_W09\\attempt_01\\run_status.json",
+      "raw_sha256": "5323d0330de6734b37b2f5f5c9cfd872a5e32aa2a3b220510b73c775692a451a",
+      "status_sha256": "9bbd26981dea4aa0e22d7e7a69af55c770582339e8b9740bcdc329d57e9343a0"
+    },
+    "dual_notch_with_position_residual_gru": {
+      "raw_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\position_compensation_dual_notch_train_diag_single_call_T1_v1\\runs\\DL1018_DEV_T1_C10_W09\\attempt_01\\raw_run.mat",
+      "status_path": "C:\\Users\\35326\\Desktop\\postgraduation\\0\\Mcode\\drone_tcn\\DL1018\\experiments\\dl_attitude_replacement_20261028\\position_compensation_dual_notch_train_diag_single_call_T1_v1\\runs\\DL1018_DEV_T1_C10_W09\\attempt_01\\run_status.json",
+      "raw_sha256": "ab14472c4fa827f087c3de6b40741a9868015df8117fee81c765c7ddbf289fb4",
+      "status_sha256": "23ce58cd3f025298516d640705f99014fca02492919b4e7f7ecab7ea59f2e496"
+    }
+  },
+  "measured_baseline_Q_task_inner": {
+    "B": {
+      "Q_m": 0.010984561773262777,
+      "task_SO3_rad": 0.042200801129056116,
+      "inner_SO3_rad": 0.023236953991647456
+    },
+    "C5": {
+      "Q_m": 0.010465882128741399,
+      "task_SO3_rad": 0.04327264903532816,
+      "inner_SO3_rad": 0.023274046930281553
+    },
+    "parent_GRU": {
+      "Q_m": 0.009492906627253345,
+      "task_SO3_rad": 0.04330835597159727,
+      "inner_SO3_rad": 0.02024501714889525
+    },
+    "candidate_pre_dual_notch": {
+      "Q_m": 0.010603095010428788,
+      "task_SO3_rad": 0.0431684191739434,
+      "inner_SO3_rad": 0.02025526275485956
+    }
+  },
+  "one_call_only": true,
+  "authorized_Plant_calls": 1,
+  "TEST_read": false,
+  "VAL_read": false,
+  "inertia_reconstruction_enabled": false,
+  "no_parameter_change_after_result": true
+}

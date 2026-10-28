@@ -1,0 +1,159 @@
+{
+  "schema": "DL1018_MLP15_MATCHED_DATASET_ROOT_AUDIT_V1",
+  "status": "PASS_ROOT_REVIEW_READ_ONLY",
+  "reviewed_utc": "2026-10-26T10:03:59.231454+00:00",
+  "builder_sha256": "303eff1c2f0cbe2c76b431948995992c0c7286a50976d8dd9cbbaa020f6b96d9",
+  "dataset": {
+    "path": "experiments/dl_attitude_replacement_20261026/mlp15_c5_teacher_redistill_v1/matched_teacher_data_v1.npz",
+    "sha256": "b3a8ca6446d6bdde0573e6c233aa222a6cfb28d35f13b084e8dd9683c16c111f",
+    "bytes": 9013928
+  },
+  "manifest": {
+    "path": "experiments/dl_attitude_replacement_20261026/mlp15_c5_teacher_redistill_v1/DATASET_MANIFEST_v1.json",
+    "sha256": "98766ddac3125b81d4637eeb2576349b6ce181c94564c1a444d1d4cab734d55c",
+    "bytes": 408751
+  },
+  "b24_raw_audit": {
+    "path": "experiments/dl_attitude_replacement_20261026/mlp15_c5_teacher_redistill_v1/B24_RAW_TRACE_READONLY_AUDIT_v1.md",
+    "sha256": "f8ff508926b3443819a6cba82092eaad2aa3d66d59f04771ee048652a3be7632",
+    "bytes": 10120
+  },
+  "independent_checks": {
+    "raw_sha_recomputed_count": 96,
+    "status_sha_recomputed_count": 96,
+    "run_start_sha_recomputed_count": 96,
+    "same_scene_B72_status_sha_recomputed_count": 72,
+    "raw_features_and_targets_reconstructed_from_h5": 96,
+    "max_abs_feature_difference": 0.0,
+    "max_abs_target_difference": 0.0,
+    "ordered_scene_id_arrays_match_manifest": true,
+    "B24_C5_DEV24_scene_id_order_matches": true,
+    "B24_C5_DEV24_external_identity_matches": true,
+    "B24_C5_DEV24_morph_command_trace_hash_matches": true,
+    "attitude_event_updates_verified": 191904,
+    "update_flag_true_on_all_events": true,
+    "update_dt_finite_positive_on_all_events": true,
+    "parent_reuse_audits_exactly_matched": 12,
+    "legacy_missing_status_fields_parent_fallback_count": 1,
+    "TEST_accessed": false,
+    "Plant_calls": 0,
+    "training_steps": 0,
+    "old_inputs_modified": false
+  },
+  "splits": {
+    "TRAIN_B24": {
+      "scenes": 24,
+      "events_per_scene": 1999,
+      "ordered_scene_id_sha256": "f3f70c47c5bef1d29181246a9d53fb8e90c3ec3d163bb6d67b18793756656616"
+    },
+    "TRAIN_C5_24": {
+      "scenes": 24,
+      "events_per_scene": 1999,
+      "ordered_scene_id_sha256": "f3f70c47c5bef1d29181246a9d53fb8e90c3ec3d163bb6d67b18793756656616"
+    },
+    "C5_VAL48": {
+      "scenes": 48,
+      "events_per_scene": 1999,
+      "ordered_scene_id_sha256": "83d38875249e9656a5eb73e92f57de835c83dad06a72b657987f7de4c81e0a0a"
+    }
+  },
+  "status_values_by_split": {
+    "TRAIN_B24": {
+      "RUN_COMPLETE_RAW_PENDING_AUDIT": 24
+    },
+    "TRAIN_C5_24": {
+      "RUN_COMPLETE_RAW_PENDING_AUDIT": 24
+    },
+    "C5_VAL48": {
+      "RUN_COMPLETE_RAW_PENDING_AUDIT": 48
+    }
+  },
+  "C5_parent_screen_status_counts": {
+    "NONE": 60,
+    "PASS_C5_RAW_ALL_EVENTS": 12
+  },
+  "identity_fallback_scene_ids": [
+    "DL1018_VAL_T2_C00_W10"
+  ],
+  "input_lock_sha256": {
+    "experiments/position_axis_coordinate_c5_dev72_20261023/C5_DEV72_INPUT_LOCK_v3.json": "82024c01276cc4bfbd9b7772cf5332dee3fdfcbed422969589b68f1c90ed2d75",
+    "experiments/position_axis_coordinate_c5_dev72_20261023/C5_DEV72_BATCH_STATUS_v3.json": "20cc9caca553ebf676fd7b39087fe0a2640fcd976aaf7c8cdb0030c76b5bea22",
+    "experiments/b_traceable_c3core_dev72_20261023/B_TRACEABLE_DEV72_INPUT_LOCK_v3.json": "8d738e5c70ba2fc8697550549d1a0537f08eadb49b99bc5684e5c26f6222f452",
+    "reports/paper_continuation_20261023/c5_axis_coordinate_parent_review/screen12_parent_review/SUMMARY.json": "fe217ac8b259706b1953e07dd44586b6a64368a6d4f5e0145e8f507863d82ad8",
+    "experiments\\position_axis_coordinate_c5_dev72_20261023\\C5_DEV72_INPUT_LOCK_v3.json": "82024c01276cc4bfbd9b7772cf5332dee3fdfcbed422969589b68f1c90ed2d75",
+    "experiments\\position_axis_coordinate_c5_dev72_20261023\\C5_DEV72_BATCH_STATUS_v3.json": "20cc9caca553ebf676fd7b39087fe0a2640fcd976aaf7c8cdb0030c76b5bea22",
+    "experiments\\b_traceable_c3core_dev72_20261023\\B_TRACEABLE_DEV72_INPUT_LOCK_v3.json": "8d738e5c70ba2fc8697550549d1a0537f08eadb49b99bc5684e5c26f6222f452",
+    "reports\\paper_continuation_20261023\\c5_axis_coordinate_parent_review\\screen12_parent_review\\SUMMARY.json": "fe217ac8b259706b1953e07dd44586b6a64368a6d4f5e0145e8f507863d82ad8"
+  },
+  "source_files": {
+    "experiments/dl_attitude_replacement_20261026/mlp15_c5_teacher_redistill_v1/build_matched_teacher_dataset_v1.py": {
+      "path": "experiments/dl_attitude_replacement_20261026/mlp15_c5_teacher_redistill_v1/build_matched_teacher_dataset_v1.py",
+      "sha256": "303eff1c2f0cbe2c76b431948995992c0c7286a50976d8dd9cbbaa020f6b96d9",
+      "bytes": 41050
+    },
+    "experiments/dl_attitude_replacement_20261026/mlp15_c5_teacher_redistill_v1/code/train_matched_mlp15_v1.py": {
+      "path": "experiments/dl_attitude_replacement_20261026/mlp15_c5_teacher_redistill_v1/code/train_matched_mlp15_v1.py",
+      "sha256": "a0d70643908873a94238fc63152128b69a7984c60c87bad5e5b302099ba169aa",
+      "bytes": 22893
+    },
+    "experiments/dl_attitude_replacement_20261026/mlp15_c5_teacher_redistill_v1/code/compare_c5_val_action_v1.py": {
+      "path": "experiments/dl_attitude_replacement_20261026/mlp15_c5_teacher_redistill_v1/code/compare_c5_val_action_v1.py",
+      "sha256": "f5be971c02a8443bcb36e00d8e0e1c063e84aec72f35921a3f7ba3656a63dc7d",
+      "bytes": 16446
+    },
+    "experiments/dl_attitude_replacement_20261026/mlp15_c5_teacher_redistill_v1/MLP15_C5_TEACHER_REDISTILL_TASKBOOK_DRAFT_v1.md": {
+      "path": "experiments/dl_attitude_replacement_20261026/mlp15_c5_teacher_redistill_v1/MLP15_C5_TEACHER_REDISTILL_TASKBOOK_DRAFT_v1.md",
+      "sha256": "e88a548e7cf79c7ff1278412563f9aa45b887ef08d69d0ca7a7aa684abbac592",
+      "bytes": 22825
+    },
+    "experiments/dl_attitude_replacement_20261026/prepare_tcn_teacher_dataset_v2.py": {
+      "path": "experiments/dl_attitude_replacement_20261026/prepare_tcn_teacher_dataset_v2.py",
+      "sha256": "7d01c722f1881096a61df28b48cd7bba9cfe57671d84e870f335c37290513fc2",
+      "bytes": 14135
+    },
+    "experiments/dl_attitude_replacement_20261026/architecture_screen_v1/screen_attitude_architectures_v1.py": {
+      "path": "experiments/dl_attitude_replacement_20261026/architecture_screen_v1/screen_attitude_architectures_v1.py",
+      "sha256": "66816f8b04776aca47440008bda96523055c70fc0b68700df07ea30c06357700",
+      "bytes": 14700
+    },
+    "matlab/core/tcn0916_morphology_scenario.m": {
+      "path": "matlab/core/tcn0916_morphology_scenario.m",
+      "sha256": "711a87e01e616ee141f9068a8c4e31758dc328ade3f692e1a92a5de723d30438",
+      "bytes": 4077
+    },
+    "matlab/core/attitude_bs_step.m": {
+      "path": "matlab/core/attitude_bs_step.m",
+      "sha256": "cf6b20ffc4df2625d9316a80340d69542e380d14feaed66ef8498e793fdaccbc",
+      "bytes": 4000
+    },
+    "matlab/core/rbf_mimo_update.m": {
+      "path": "matlab/core/rbf_mimo_update.m",
+      "sha256": "dde65f5f3b664ecdbd82a393dde0aea8da3b7401b5f54c8a92fcef5acd17f78a",
+      "bytes": 2892
+    },
+    "matlab/runtime/controller_options_dl1018.m": {
+      "path": "matlab/runtime/controller_options_dl1018.m",
+      "sha256": "93633a5fd95f73d33982045c2fa372d49b1a0df8ea0cfb5ca4461208ca9d53b1",
+      "bytes": 2869
+    },
+    "matlab/runtime/run_dl1018_closed_loop.m": {
+      "path": "matlab/runtime/run_dl1018_closed_loop.m",
+      "sha256": "9f6b436c8247c49783ec04ef326b20fc5d7de2870c9ab972212a0b2e4c432bc2",
+      "bytes": 222798
+    },
+    "experiments/position_axis_coordinate_c5_20261023/run_dl1018_closed_loop.m": {
+      "path": "experiments/position_axis_coordinate_c5_20261023/run_dl1018_closed_loop.m",
+      "sha256": "48350037b66efe00301b138068f187c62cf92583f0f9ba2fabc9b24f248a963c",
+      "bytes": 237986
+    }
+  },
+  "environment": {
+    "python": "3.12.7",
+    "platform": "Windows-11-10.0.26300-SP0"
+  },
+  "notes": [
+    "All 96 X/Y rows were independently reconstructed from the locked MAT raw logs at transitions 10..19990 and matched the NPZ bit-for-bit after float32 cast.",
+    "C5 is the deployment candidate; B24 is an equal-count diagnostic training arm only.",
+    "C5 reuse T2_C00_W10 keeps status fields missing and uses the locked parent-screen audit fallback; no historical record was rewritten."
+  ]
+}
